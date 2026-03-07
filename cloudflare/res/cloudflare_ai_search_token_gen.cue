@@ -5,7 +5,6 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_ai_search_token")
 	close({
 		account_id!:  string
-		account_tag?: string
 		cf_api_id!:   string
 		cf_api_key!:  string
 		created_at?:  string
@@ -16,6 +15,5 @@ package res
 		modified_at?: string
 		modified_by?: string
 		name!:        string
-		synced_at?:   string
 	})
 }

@@ -10,6 +10,10 @@ package data
 		// Filter by the name of the permission group.
 		// The value must be URL-encoded.
 		name?: string
+
+		// Filter by the scope of the permission group.
+		// The value must be URL-encoded.
+		scope?: string
 		permission_groups?: matchN(1, [close({
 			// Public ID.
 			id?: string
@@ -29,9 +33,5 @@ package data
 			// Resources to which the Permission Group is scoped
 			scopes?: [...string]
 		})]])
-
-		// Filter by the scope of the permission group.
-		// The value must be URL-encoded.
-		scope?: string
 	})
 }

@@ -4,16 +4,11 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_organization")
 	close({
-		create_time?: string
-		id?:          string
+		create_time?:     string
+		id?:              string
+		name?:            string
+		organization_id?: string
 		filter?: close({
-			// Only return organizations with the specified IDs (ex.
-			// id=foo&id=bar). Send multiple elements
-			// by repeating the query value.
-			id?: [...string]
-
-			// The amount of items to return. Defaults to 10.
-			page_size?: number
 			containing?: close({
 				// Filter the list of organizations to the ones that contain this
 				// particular
@@ -38,6 +33,14 @@ package data
 				// that organization.
 				user?: string
 			})
+
+			// Only return organizations with the specified IDs (ex.
+			// id=foo&id=bar). Send multiple elements
+			// by repeating the query value.
+			id?: [...string]
+
+			// The amount of items to return. Defaults to 10.
+			page_size?: number
 
 			// An opaque token returned from the last list response that when
 			// provided will retrieve the next page.
@@ -74,7 +77,6 @@ package data
 				id?: string
 			})
 		})
-		name?: string
 		meta?: close({
 			// Enable features for Organizations.
 			flags?: close({
@@ -86,7 +88,6 @@ package data
 			})
 			managed_by?: string
 		})
-		organization_id?: string
 		parent?: close({
 			id?:   string
 			name?: string

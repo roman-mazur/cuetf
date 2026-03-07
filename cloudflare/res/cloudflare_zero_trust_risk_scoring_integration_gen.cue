@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_risk_scoring_integration")
 	close({
+		account_id!: string
+
 		// The Cloudflare account tag.
 		account_tag?: string
 
@@ -13,7 +15,6 @@ package res
 
 		// When the integration was created in RFC3339 format.
 		created_at?: string
-		account_id!: string
 
 		// The id of the integration, a UUIDv4.
 		id?: string

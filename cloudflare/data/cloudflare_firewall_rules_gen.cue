@@ -13,6 +13,16 @@ package data
 		// The unique identifier of the firewall rule.
 		id?: string
 
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// When true, indicates that the firewall rule is currently
+		// paused.
+		paused?: bool
+
+		// Defines an identifier.
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// The action to apply to a matched request. The `log` action is
@@ -109,15 +119,5 @@ package data
 				ref?: string
 			})
 		})]])
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// When true, indicates that the firewall rule is currently
-		// paused.
-		paused?: bool
-
-		// Defines an identifier.
-		zone_id!: string
 	})
 }

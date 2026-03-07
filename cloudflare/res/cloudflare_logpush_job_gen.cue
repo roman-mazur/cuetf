@@ -94,6 +94,13 @@ package res
 		// domain name, to make it easier to identify your job.
 		name?: string
 
+		// Ownership challenge token to prove destination ownership.
+		ownership_challenge?: string
+
+		// The Zone ID to use for this endpoint. Mutually exclusive with
+		// the Account ID.
+		zone_id?: string
+
 		// The structured replacement for `logpull_options`. When
 		// including this field, the `logpull_option` field will be
 		// ignored.
@@ -151,12 +158,5 @@ package res
 			// Available values: "unixnano", "unix", "rfc3339".
 			timestamp_format?: string
 		})
-
-		// Ownership challenge token to prove destination ownership.
-		ownership_challenge?: string
-
-		// The Zone ID to use for this endpoint. Mutually exclusive with
-		// the Account ID.
-		zone_id?: string
 	})
 }

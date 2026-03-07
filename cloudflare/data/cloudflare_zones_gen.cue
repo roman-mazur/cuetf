@@ -4,6 +4,23 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zones")
 	close({
+		account?: close({
+			// Filter by an account ID.
+			id?: string
+
+			// An account Name. Optional filter operators can be provided to
+			// extend refine the search:
+			// * `equal` (default)
+			// * `not_equal`
+			// * `starts_with`
+			// * `ends_with`
+			// * `contains`
+			// * `starts_with_case_sensitive`
+			// * `ends_with_case_sensitive`
+			// * `contains_case_sensitive`
+			name?: string
+		})
+
 		// Direction to order zones.
 		// Available values: "asc", "desc".
 		direction?: string
@@ -32,13 +49,12 @@ package data
 		// "account.name", "plan.id".
 		order?: string
 
+		// Specify a zone status to filter by.
+		// Available values: "initializing", "pending", "active", "moved".
+		status?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// The last time proof of ownership was detected and the zone was
-			// made
-			// active.
-			activated_on?: string
-
 			// The account the zone belongs to.
 			account?: close({
 				// Identifier
@@ -47,6 +63,11 @@ package data
 				// The name of the account.
 				name?: string
 			})
+
+			// The last time proof of ownership was detected and the zone was
+			// made
+			// active.
+			activated_on?: string
 
 			// Allows the customer to use a custom apex.
 			// *Tenants Only Configuration*.
@@ -89,8 +110,24 @@ package data
 			// When the zone was last modified.
 			modified_on?: string
 
-			// The domain name.
+			// The domain name. Per [RFC
+			// 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4)
+			// the overall zone name can be up to 253 characters, with each
+			// segment ("label") not exceeding 63 characters.
 			name?: string
+
+			// The name servers Cloudflare assigns to a zone.
+			name_servers?: [...string]
+
+			// DNS host at the time of switching to Cloudflare.
+			original_dnshost?: string
+
+			// Original name servers before moving to Cloudflare.
+			original_name_servers?: [...string]
+
+			// Registrar for the domain at the time of switching to
+			// Cloudflare.
+			original_registrar?: string
 
 			// The owner of the zone.
 			owner?: close({
@@ -104,29 +141,6 @@ package data
 				type?: string
 			})
 
-			// The name servers Cloudflare assigns to a zone.
-			name_servers?: [...string]
-
-			// DNS host at the time of switching to Cloudflare.
-			original_dnshost?: string
-
-			// Original name servers before moving to Cloudflare.
-			original_name_servers?: [...string]
-
-			// The root organizational unit that this zone belongs to (such as
-			// a tenant or organization).
-			tenant?: close({
-				// Identifier
-				id?: string
-
-				// The name of the Tenant account.
-				name?: string
-			})
-
-			// Registrar for the domain at the time of switching to
-			// Cloudflare.
-			original_registrar?: string
-
 			// Indicates whether the zone is only using Cloudflare DNS
 			// services. A
 			// true value means the zone will not receive security or
@@ -138,11 +152,15 @@ package data
 			// Available values: "initializing", "pending", "active", "moved".
 			status?: string
 
-			// A full zone implies that DNS is hosted with Cloudflare. A
-			// partial zone is
-			// typically a partner-hosted zone or a CNAME setup.
-			// Available values: "full", "partial", "secondary", "internal".
-			type?: string
+			// The root organizational unit that this zone belongs to (such as
+			// a tenant or organization).
+			tenant?: close({
+				// Identifier
+				id?: string
+
+				// The name of the Tenant account.
+				name?: string
+			})
 
 			// The immediate parent organizational unit that this zone belongs
 			// to (such as under a tenant or sub-organization).
@@ -150,6 +168,12 @@ package data
 				// Identifier
 				id?: string
 			})
+
+			// A full zone implies that DNS is hosted with Cloudflare. A
+			// partial zone is
+			// typically a partner-hosted zone or a CNAME setup.
+			// Available values: "full", "partial", "secondary", "internal".
+			type?: string
 
 			// An array of domains used for custom name servers. This is only
 			// available for Business and Enterprise plans.
@@ -158,11 +182,6 @@ package data
 			// Verification key for partial zone setup.
 			verification_key?: string
 		}), [...close({
-			// The last time proof of ownership was detected and the zone was
-			// made
-			// active.
-			activated_on?: string
-
 			// The account the zone belongs to.
 			account?: close({
 				// Identifier
@@ -171,6 +190,11 @@ package data
 				// The name of the account.
 				name?: string
 			})
+
+			// The last time proof of ownership was detected and the zone was
+			// made
+			// active.
+			activated_on?: string
 
 			// Allows the customer to use a custom apex.
 			// *Tenants Only Configuration*.
@@ -213,8 +237,24 @@ package data
 			// When the zone was last modified.
 			modified_on?: string
 
-			// The domain name.
+			// The domain name. Per [RFC
+			// 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4)
+			// the overall zone name can be up to 253 characters, with each
+			// segment ("label") not exceeding 63 characters.
 			name?: string
+
+			// The name servers Cloudflare assigns to a zone.
+			name_servers?: [...string]
+
+			// DNS host at the time of switching to Cloudflare.
+			original_dnshost?: string
+
+			// Original name servers before moving to Cloudflare.
+			original_name_servers?: [...string]
+
+			// Registrar for the domain at the time of switching to
+			// Cloudflare.
+			original_registrar?: string
 
 			// The owner of the zone.
 			owner?: close({
@@ -228,29 +268,6 @@ package data
 				type?: string
 			})
 
-			// The name servers Cloudflare assigns to a zone.
-			name_servers?: [...string]
-
-			// DNS host at the time of switching to Cloudflare.
-			original_dnshost?: string
-
-			// Original name servers before moving to Cloudflare.
-			original_name_servers?: [...string]
-
-			// The root organizational unit that this zone belongs to (such as
-			// a tenant or organization).
-			tenant?: close({
-				// Identifier
-				id?: string
-
-				// The name of the Tenant account.
-				name?: string
-			})
-
-			// Registrar for the domain at the time of switching to
-			// Cloudflare.
-			original_registrar?: string
-
 			// Indicates whether the zone is only using Cloudflare DNS
 			// services. A
 			// true value means the zone will not receive security or
@@ -262,11 +279,15 @@ package data
 			// Available values: "initializing", "pending", "active", "moved".
 			status?: string
 
-			// A full zone implies that DNS is hosted with Cloudflare. A
-			// partial zone is
-			// typically a partner-hosted zone or a CNAME setup.
-			// Available values: "full", "partial", "secondary", "internal".
-			type?: string
+			// The root organizational unit that this zone belongs to (such as
+			// a tenant or organization).
+			tenant?: close({
+				// Identifier
+				id?: string
+
+				// The name of the Tenant account.
+				name?: string
+			})
 
 			// The immediate parent organizational unit that this zone belongs
 			// to (such as under a tenant or sub-organization).
@@ -275,6 +296,12 @@ package data
 				id?: string
 			})
 
+			// A full zone implies that DNS is hosted with Cloudflare. A
+			// partial zone is
+			// typically a partner-hosted zone or a CNAME setup.
+			// Available values: "full", "partial", "secondary", "internal".
+			type?: string
+
 			// An array of domains used for custom name servers. This is only
 			// available for Business and Enterprise plans.
 			vanity_name_servers?: [...string]
@@ -282,25 +309,5 @@ package data
 			// Verification key for partial zone setup.
 			verification_key?: string
 		})]])
-		account?: close({
-			// Filter by an account ID.
-			id?: string
-
-			// An account Name. Optional filter operators can be provided to
-			// extend refine the search:
-			// * `equal` (default)
-			// * `not_equal`
-			// * `starts_with`
-			// * `ends_with`
-			// * `contains`
-			// * `starts_with_case_sensitive`
-			// * `ends_with_case_sensitive`
-			// * `contains_case_sensitive`
-			name?: string
-		})
-
-		// Specify a zone status to filter by.
-		// Available values: "initializing", "pending", "active", "moved".
-		status?: string
 	})
 }

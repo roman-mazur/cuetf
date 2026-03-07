@@ -4,14 +4,6 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_waiting_room")
 	close({
-		// Appends a '_' + a custom suffix to the end of Cloudflare
-		// Waiting Room's cookie name(__cf_waitingroom). If
-		// `cookie_suffix` is "abcd", the cookie name will be
-		// `__cf_waitingroom_abcd`. This field is required if using
-		// `additional_routes`.
-		cookie_suffix?: string
-		created_on?:    string
-
 		// Only available for the Waiting Room Advanced subscription.
 		// Additional hostname and path combinations to which this
 		// waiting room will be applied. There is an implied wildcard at
@@ -44,6 +36,33 @@ package res
 			// query parameters are not supported.
 			path?: string
 		})]])
+
+		// Configures cookie attributes for the waiting room cookie. This
+		// encrypted cookie stores a user's status in the waiting room,
+		// such as queue position.
+		cookie_attributes?: close({
+			// Configures the SameSite attribute on the waiting room cookie.
+			// Value `auto` will be translated to `lax` or `none` depending
+			// if **Always Use HTTPS** is enabled. Note that when using value
+			// `none`, the secure attribute cannot be set to `never`.
+			// Available values: "auto", "lax", "none", "strict".
+			samesite?: string
+
+			// Configures the Secure attribute on the waiting room cookie.
+			// Value `always` indicates that the Secure attribute will be set
+			// in the Set-Cookie header, `never` indicates that the Secure
+			// attribute will not be set, and `auto` will set the Secure
+			// attribute depending if **Always Use HTTPS** is enabled.
+			// Available values: "auto", "always", "never".
+			secure?: string
+		})
+
+		// Appends a '_' + a custom suffix to the end of Cloudflare
+		// Waiting Room's cookie name(__cf_waitingroom). If
+		// `cookie_suffix` is "abcd", the cookie name will be
+		// `__cf_waitingroom_abcd`. This field is required if using
+		// `additional_routes`.
+		cookie_suffix?: string
 
 		// Only available for the Waiting Room Advanced subscription. This
 		// is a template html file that will be rendered at the edge. If
@@ -81,26 +100,6 @@ package res
 		// "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
 		default_template_language?: string
 
-		// Configures cookie attributes for the waiting room cookie. This
-		// encrypted cookie stores a user's status in the waiting room,
-		// such as queue position.
-		cookie_attributes?: close({
-			// Configures the SameSite attribute on the waiting room cookie.
-			// Value `auto` will be translated to `lax` or `none` depending
-			// if **Always Use HTTPS** is enabled. Note that when using value
-			// `none`, the secure attribute cannot be set to `never`.
-			// Available values: "auto", "lax", "none", "strict".
-			samesite?: string
-
-			// Configures the Secure attribute on the waiting room cookie.
-			// Value `always` indicates that the Secure attribute will be set
-			// in the Set-Cookie header, `never` indicates that the Secure
-			// attribute will not be set, and `auto` will set the Secure
-			// attribute depending if **Always Use HTTPS** is enabled.
-			// Available values: "auto", "always", "never".
-			secure?: string
-		})
-
 		// A note that you can use to add more details about the waiting
 		// room.
 		description?: string
@@ -120,7 +119,6 @@ package res
 		// wildcards). Please do not include the scheme (http:// or
 		// https://). The host and path combination must be unique.
 		host!: string
-		id?:   string
 
 		// Only available for the Waiting Room Advanced subscription. If
 		// `true`, requests to the waiting room with the header `Accept:
@@ -292,7 +290,6 @@ package res
 		// }
 		// }
 		json_response_enabled?: bool
-		modified_on?:           string
 
 		// A unique name to identify the waiting room. Only alphanumeric
 		// characters, hyphens and underscores are allowed.
@@ -411,6 +408,9 @@ package res
 		turnstile_mode?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id!:     string
+		created_on?:  string
+		id?:          string
+		modified_on?: string
 	})
 }

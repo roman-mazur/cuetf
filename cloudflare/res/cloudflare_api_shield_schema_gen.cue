@@ -5,11 +5,33 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_api_shield_schema")
 	close({
 		created_at?: string
+
+		// Schema file bytes
+		file!: string
+
+		// Kind of schema
+		// Available values: "openapi_v3".
+		kind!: string
+
+		// Name of the schema
+		name?:      string
+		schema_id?: string
+
+		// Source of the schema
+		source?: string
+
+		// Flag whether schema is enabled for validation.
+		// Available values: "true", "false".
+		validation_enabled?: string
+
+		// Identifier.
+		zone_id!: string
 		schema?: close({
+			created_at?: string
+
 			// Kind of schema
 			// Available values: "openapi_v3".
-			kind?:       string
-			created_at?: string
+			kind?: string
 
 			// Name of the schema
 			name?: string
@@ -23,24 +45,6 @@ package res
 			// Flag whether schema is enabled for validation.
 			validation_enabled?: bool
 		})
-
-		// Schema file bytes
-		file!: string
-
-		// Kind of schema
-		// Available values: "openapi_v3".
-		kind!: string
-
-		// Name of the schema
-		name?: string
-
-		// Source of the schema
-		source?:    string
-		schema_id?: string
-
-		// Flag whether schema is enabled for validation.
-		// Available values: "true", "false".
-		validation_enabled?: string
 		upload_details?: close({
 			// Diagnostic warning events that occurred during processing.
 			// These events are non-critical errors found within the schema.
@@ -70,8 +74,5 @@ package res
 				message?: string
 			})]])
 		})
-
-		// Identifier.
-		zone_id!: string
 	})
 }

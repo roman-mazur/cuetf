@@ -14,13 +14,13 @@ package data
 
 		// UUID.
 		certificate_id!: string
+		expires_on?:     string
 
 		// The MD5 fingerprint of the certificate.
 		fingerprint?: string
 
 		// UUID.
-		id?:         string
-		expires_on?: string
+		id?: string
 
 		// The name of the certificate.
 		name?: string

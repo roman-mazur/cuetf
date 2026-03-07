@@ -7,6 +7,9 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Identifier.
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// When set, this applies a mitigation action to this operation
@@ -39,8 +42,5 @@ package data
 			// UUID.
 			operation_id?: string
 		})]])
-
-		// Identifier.
-		zone_id!: string
 	})
 }

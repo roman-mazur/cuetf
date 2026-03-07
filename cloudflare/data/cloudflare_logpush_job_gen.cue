@@ -34,64 +34,6 @@ package data
 		// Flag that indicates if the job is enabled.
 		enabled?: bool
 
-		// The structured replacement for `logpull_options`. When
-		// including this field, the `logpull_option` field will be
-		// ignored.
-		output_options?: close({
-			// String to be prepended before each batch.
-			batch_prefix?: string
-
-			// String to be appended after each batch.
-			batch_suffix?: string
-
-			// If set to true, will cause all occurrences of `${` in the
-			// generated files to be replaced with `x{`.
-			cve_2021_44228?: bool
-
-			// String to join fields. This field be ignored when
-			// `record_template` is set.
-			field_delimiter?: string
-
-			// List of field names to be included in the Logpush output. For
-			// the moment, there is no option to add all fields at once, so
-			// you must specify all the fields names you are interested in.
-			field_names?: [...string]
-
-			// Specifies the output type, such as `ndjson` or `csv`. This sets
-			// default values for the rest of the settings, depending on the
-			// chosen output type. Some formatting rules, like string
-			// quoting, are different between output types.
-			// Available values: "ndjson", "csv".
-			output_type?: string
-
-			// String to be inserted in-between the records as separator.
-			record_delimiter?: string
-
-			// String to be prepended before each record.
-			record_prefix?: string
-
-			// String to be appended after each record.
-			record_suffix?: string
-
-			// String to use as template for each record instead of the
-			// default json key value mapping. All fields used in the
-			// template must be present in `field_names` as well, otherwise
-			// they will end up as null. Format as a Go `text/template`
-			// without any standard functions, like conditionals, loops,
-			// sub-templates, etc.
-			record_template?: string
-
-			// Floating number to specify sampling rate. Sampling is applied
-			// on top of filtering, and regardless of the current
-			// `sample_interval` of the data.
-			sample_rate?: number
-
-			// String to specify the format for timestamps, such as
-			// `unixnano`, `unix`, or `rfc3339`.
-			// Available values: "unixnano", "unix", "rfc3339".
-			timestamp_format?: string
-		})
-
 		// If not null, the job is currently failing. Failures are
 		// usually. repetitive (example: no permissions to write to
 		// destination bucket). Only the last failure is recorded. On
@@ -153,5 +95,63 @@ package data
 		// The Zone ID to use for this endpoint. Mutually exclusive with
 		// the Account ID.
 		zone_id?: string
+
+		// The structured replacement for `logpull_options`. When
+		// including this field, the `logpull_option` field will be
+		// ignored.
+		output_options?: close({
+			// String to be prepended before each batch.
+			batch_prefix?: string
+
+			// String to be appended after each batch.
+			batch_suffix?: string
+
+			// If set to true, will cause all occurrences of `${` in the
+			// generated files to be replaced with `x{`.
+			cve_2021_44228?: bool
+
+			// String to join fields. This field be ignored when
+			// `record_template` is set.
+			field_delimiter?: string
+
+			// List of field names to be included in the Logpush output. For
+			// the moment, there is no option to add all fields at once, so
+			// you must specify all the fields names you are interested in.
+			field_names?: [...string]
+
+			// Specifies the output type, such as `ndjson` or `csv`. This sets
+			// default values for the rest of the settings, depending on the
+			// chosen output type. Some formatting rules, like string
+			// quoting, are different between output types.
+			// Available values: "ndjson", "csv".
+			output_type?: string
+
+			// String to be inserted in-between the records as separator.
+			record_delimiter?: string
+
+			// String to be prepended before each record.
+			record_prefix?: string
+
+			// String to be appended after each record.
+			record_suffix?: string
+
+			// String to use as template for each record instead of the
+			// default json key value mapping. All fields used in the
+			// template must be present in `field_names` as well, otherwise
+			// they will end up as null. Format as a Go `text/template`
+			// without any standard functions, like conditionals, loops,
+			// sub-templates, etc.
+			record_template?: string
+
+			// Floating number to specify sampling rate. Sampling is applied
+			// on top of filtering, and regardless of the current
+			// `sample_interval` of the data.
+			sample_rate?: number
+
+			// String to specify the format for timestamps, such as
+			// `unixnano`, `unix`, or `rfc3339`.
+			// Available values: "unixnano", "unix", "rfc3339".
+			timestamp_format?: string
+		})
 	})
 }

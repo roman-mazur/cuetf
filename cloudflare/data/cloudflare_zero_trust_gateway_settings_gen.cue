@@ -7,6 +7,7 @@ package data
 		account_id!: string
 		created_at?: string
 		id?:         string
+		updated_at?: string
 
 		// Specify account settings.
 		settings?: close({
@@ -23,6 +24,9 @@ package data
 
 				// Specify whether to enable anti-virus scanning on uploads.
 				enabled_upload_phase?: bool
+
+				// Specify whether to block requests for unscannable files.
+				fail_closed?: bool
 
 				// Configure the message the user's device shows during an
 				// antivirus scan.
@@ -41,9 +45,6 @@ package data
 					// the notification opens a block page.
 					support_url?: string
 				})
-
-				// Specify whether to block requests for unscannable files.
-				fail_closed?: bool
 			})
 
 			// Specify block page layout settings.
@@ -209,6 +210,5 @@ package data
 				enabled?: bool
 			})
 		})
-		updated_at?: string
 	})
 }

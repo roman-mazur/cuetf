@@ -11,6 +11,9 @@ package data
 		// string "" will return images where creator field is not set
 		creator?: string
 
+		// Max items to fetch, default: 1000
+		max_items?: number
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			images?: matchN(1, [close({
@@ -117,8 +120,5 @@ package data
 				variants?: [...string]
 			})]])
 		})]])
-
-		// Max items to fetch, default: 1000
-		max_items?: number
 	})
 }

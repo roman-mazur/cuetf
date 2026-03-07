@@ -8,17 +8,7 @@ package data
 		account_id!: string
 
 		// Timestamp for the creation of the SSO connector
-		created_on?: string
-		verification?: close({
-			// DNS verification code. Add this entire string to the DNS TXT
-			// record of the email domain to validate ownership.
-			code?: string
-
-			// The status of the verification code from the verification
-			// process.
-			// Available values: "awaiting", "pending", "failed", "verified".
-			status?: string
-		})
+		created_on?:   string
 		email_domain?: string
 		enabled?:      bool
 
@@ -34,5 +24,15 @@ package data
 		// Controls the display of FedRAMP language to the user during SSO
 		// login
 		use_fedramp_language?: bool
+		verification?: close({
+			// DNS verification code. Add this entire string to the DNS TXT
+			// record of the email domain to validate ownership.
+			code?: string
+
+			// The status of the verification code from the verification
+			// process.
+			// Available values: "awaiting", "pending", "failed", "verified".
+			status?: string
+		})
 	})
 }

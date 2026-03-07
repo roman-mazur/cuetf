@@ -31,6 +31,26 @@ package data
 
 		// Metadata associated with the tunnel.
 		metadata?: string
+
+		// A user-friendly name for a tunnel.
+		name?: string
+
+		// The status of the tunnel. Valid values are `inactive` (tunnel
+		// has never been run), `degraded` (tunnel is active and able to
+		// serve traffic but in an unhealthy state), `healthy` (tunnel is
+		// active and able to serve traffic), or `down` (tunnel can not
+		// serve traffic as it has no connections to the Cloudflare
+		// Edge).
+		// Available values: "inactive", "degraded", "healthy", "down".
+		status?: string
+
+		// The type of tunnel.
+		// Available values: "cfd_tunnel", "warp_connector", "warp",
+		// "magic", "ip_sec", "gre", "cni".
+		tun_type?: string
+
+		// UUID of the tunnel.
+		tunnel_id?: string
 		filter?: close({
 			exclude_prefix?: string
 
@@ -60,25 +80,5 @@ package data
 			was_active_at?:   string
 			was_inactive_at?: string
 		})
-
-		// A user-friendly name for a tunnel.
-		name?: string
-
-		// The status of the tunnel. Valid values are `inactive` (tunnel
-		// has never been run), `degraded` (tunnel is active and able to
-		// serve traffic but in an unhealthy state), `healthy` (tunnel is
-		// active and able to serve traffic), or `down` (tunnel can not
-		// serve traffic as it has no connections to the Cloudflare
-		// Edge).
-		// Available values: "inactive", "degraded", "healthy", "down".
-		status?: string
-
-		// The type of tunnel.
-		// Available values: "cfd_tunnel", "warp_connector", "warp",
-		// "magic", "ip_sec", "gre", "cni".
-		tun_type?: string
-
-		// UUID of the tunnel.
-		tunnel_id?: string
 	})
 }

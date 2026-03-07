@@ -10,13 +10,16 @@ package data
 		created_at?: string
 
 		// The unique identifier for the allow policy.
-		id?: number
-
-		// The unique identifier for the allow policy.
-		pattern_id?:    number
+		id?:            number
 		is_regex?:      bool
 		last_modified?: string
 		pattern?:       string
+
+		// The unique identifier for the allow policy.
+		pattern_id?: number
+
+		// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+		pattern_type?: string
 		filter?: close({
 			// The sorting direction.
 			// Available values: "asc", "desc".
@@ -39,8 +42,5 @@ package data
 			// in the future.
 			search?: string
 		})
-
-		// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-		pattern_type?: string
 	})
 }

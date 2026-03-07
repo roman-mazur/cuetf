@@ -12,14 +12,21 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			consumers_total_count?: number
-			created_on?:            string
-			id?:                    string
-			modified_on?:           string
 			consumers?: matchN(1, [close({
 				// A Resource identifier.
 				consumer_id?: string
 				created_on?:  string
+
+				// Name of the dead letter queue, or empty string if not
+				// configured
+				dead_letter_queue?: string
+				queue_name?:        string
+
+				// Name of a Worker
+				script_name?: string
+
+				// Available values: "worker", "http_pull".
+				type?: string
 				settings?: close({
 					// The maximum number of messages to include in a batch.
 					batch_size?: number
@@ -45,22 +52,21 @@ package data
 					// another attempt.
 					visibility_timeout_ms?: number
 				})
-
-				// A Resource identifier.
-				queue_id?: string
-
-				// Name of a Worker
-				script?: string
-
-				// Name of a Worker
-				script_name?: string
-
-				// Available values: "worker", "http_pull".
-				type?: string
 			}), [...close({
 				// A Resource identifier.
 				consumer_id?: string
 				created_on?:  string
+
+				// Name of the dead letter queue, or empty string if not
+				// configured
+				dead_letter_queue?: string
+				queue_name?:        string
+
+				// Name of a Worker
+				script_name?: string
+
+				// Available values: "worker", "http_pull".
+				type?: string
 				settings?: close({
 					// The maximum number of messages to include in a batch.
 					batch_size?: number
@@ -86,19 +92,14 @@ package data
 					// another attempt.
 					visibility_timeout_ms?: number
 				})
-
-				// A Resource identifier.
-				queue_id?: string
-
-				// Name of a Worker
-				script?: string
-
-				// Name of a Worker
-				script_name?: string
-
-				// Available values: "worker", "http_pull".
-				type?: string
 			})]])
+			consumers_total_count?: number
+			created_on?:            string
+			id?:                    string
+			modified_on?:           string
+			producers_total_count?: number
+			queue_id?:              string
+			queue_name?:            string
 			producers?: matchN(1, [close({
 				bucket_name?: string
 				script?:      string
@@ -112,9 +113,6 @@ package data
 				// Available values: "worker", "r2_bucket".
 				type?: string
 			})]])
-			producers_total_count?: number
-			queue_id?:              string
-			queue_name?:            string
 			settings?: close({
 				// Number of seconds to delay delivery of all messages to
 				// consumers.
@@ -128,14 +126,21 @@ package data
 				message_retention_period?: number
 			})
 		}), [...close({
-			consumers_total_count?: number
-			created_on?:            string
-			id?:                    string
-			modified_on?:           string
 			consumers?: matchN(1, [close({
 				// A Resource identifier.
 				consumer_id?: string
 				created_on?:  string
+
+				// Name of the dead letter queue, or empty string if not
+				// configured
+				dead_letter_queue?: string
+				queue_name?:        string
+
+				// Name of a Worker
+				script_name?: string
+
+				// Available values: "worker", "http_pull".
+				type?: string
 				settings?: close({
 					// The maximum number of messages to include in a batch.
 					batch_size?: number
@@ -161,22 +166,21 @@ package data
 					// another attempt.
 					visibility_timeout_ms?: number
 				})
-
-				// A Resource identifier.
-				queue_id?: string
-
-				// Name of a Worker
-				script?: string
-
-				// Name of a Worker
-				script_name?: string
-
-				// Available values: "worker", "http_pull".
-				type?: string
 			}), [...close({
 				// A Resource identifier.
 				consumer_id?: string
 				created_on?:  string
+
+				// Name of the dead letter queue, or empty string if not
+				// configured
+				dead_letter_queue?: string
+				queue_name?:        string
+
+				// Name of a Worker
+				script_name?: string
+
+				// Available values: "worker", "http_pull".
+				type?: string
 				settings?: close({
 					// The maximum number of messages to include in a batch.
 					batch_size?: number
@@ -202,19 +206,14 @@ package data
 					// another attempt.
 					visibility_timeout_ms?: number
 				})
-
-				// A Resource identifier.
-				queue_id?: string
-
-				// Name of a Worker
-				script?: string
-
-				// Name of a Worker
-				script_name?: string
-
-				// Available values: "worker", "http_pull".
-				type?: string
 			})]])
+			consumers_total_count?: number
+			created_on?:            string
+			id?:                    string
+			modified_on?:           string
+			producers_total_count?: number
+			queue_id?:              string
+			queue_name?:            string
 			producers?: matchN(1, [close({
 				bucket_name?: string
 				script?:      string
@@ -228,9 +227,6 @@ package data
 				// Available values: "worker", "r2_bucket".
 				type?: string
 			})]])
-			producers_total_count?: number
-			queue_id?:              string
-			queue_name?:            string
 			settings?: close({
 				// Number of seconds to delay delivery of all messages to
 				// consumers.

@@ -15,17 +15,7 @@ package data
 			// Timestamp for the creation of the SSO connector
 			created_on?:   string
 			email_domain?: string
-			verification?: close({
-				// DNS verification code. Add this entire string to the DNS TXT
-				// record of the email domain to validate ownership.
-				code?: string
-
-				// The status of the verification code from the verification
-				// process.
-				// Available values: "awaiting", "pending", "failed", "verified".
-				status?: string
-			})
-			enabled?: bool
+			enabled?:      bool
 
 			// SSO Connector identifier tag.
 			id?: string
@@ -36,21 +26,21 @@ package data
 			// Controls the display of FedRAMP language to the user during SSO
 			// login
 			use_fedramp_language?: bool
+			verification?: close({
+				// DNS verification code. Add this entire string to the DNS TXT
+				// record of the email domain to validate ownership.
+				code?: string
+
+				// The status of the verification code from the verification
+				// process.
+				// Available values: "awaiting", "pending", "failed", "verified".
+				status?: string
+			})
 		}), [...close({
 			// Timestamp for the creation of the SSO connector
 			created_on?:   string
 			email_domain?: string
-			verification?: close({
-				// DNS verification code. Add this entire string to the DNS TXT
-				// record of the email domain to validate ownership.
-				code?: string
-
-				// The status of the verification code from the verification
-				// process.
-				// Available values: "awaiting", "pending", "failed", "verified".
-				status?: string
-			})
-			enabled?: bool
+			enabled?:      bool
 
 			// SSO Connector identifier tag.
 			id?: string
@@ -61,6 +51,16 @@ package data
 			// Controls the display of FedRAMP language to the user during SSO
 			// login
 			use_fedramp_language?: bool
+			verification?: close({
+				// DNS verification code. Add this entire string to the DNS TXT
+				// record of the email domain to validate ownership.
+				code?: string
+
+				// The status of the verification code from the verification
+				// process.
+				// Available values: "awaiting", "pending", "failed", "verified".
+				status?: string
+			})
 		})]])
 	})
 }

@@ -11,6 +11,13 @@ package data
 		// Available values: "asc", "desc".
 		direction?: string
 
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// Field to order results by.
+		// Available values: "id", "title".
+		order?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Namespace identifier tag.
@@ -35,12 +42,5 @@ package data
 			// A human-readable string name for a Namespace.
 			title?: string
 		})]])
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// Field to order results by.
-		// Available values: "id", "title".
-		order?: string
 	})
 }

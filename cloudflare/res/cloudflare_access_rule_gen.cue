@@ -12,33 +12,8 @@ package res
 		// request.
 		allowed_modes?: [...string]
 
-		// The rule configuration.
-		configuration!: close({
-			// The configuration target. You must set the target to `ip` when
-			// specifying an IP address in the rule.
-			// Available values: "ip", "ip6", "ip_range", "asn", "country".
-			target?: string
-
-			// The IP address to match. This address will be compared to the
-			// IP address of incoming requests.
-			value?: string
-		})
-
 		// The timestamp of when the rule was created.
 		created_on?: string
-
-		// All zones owned by the user will have the rule applied.
-		scope?: close({
-			// The contact email address of the user.
-			email?: string
-
-			// Defines an identifier.
-			id?: string
-
-			// Defines the scope of the rule.
-			// Available values: "user", "organization".
-			type?: string
-		})
 
 		// The unique identifier of the IP Access rule.
 		id?: string
@@ -58,5 +33,30 @@ package res
 		// The Zone ID to use for this endpoint. Mutually exclusive with
 		// the Account ID.
 		zone_id?: string
+
+		// The rule configuration.
+		configuration!: close({
+			// The configuration target. You must set the target to `ip` when
+			// specifying an IP address in the rule.
+			// Available values: "ip", "ip6", "ip_range", "asn", "country".
+			target?: string
+
+			// The IP address to match. This address will be compared to the
+			// IP address of incoming requests.
+			value?: string
+		})
+
+		// All zones owned by the user will have the rule applied.
+		scope?: close({
+			// The contact email address of the user.
+			email?: string
+
+			// Defines an identifier.
+			id?: string
+
+			// Defines the scope of the rule.
+			// Available values: "user", "organization".
+			type?: string
+		})
 	})
 }

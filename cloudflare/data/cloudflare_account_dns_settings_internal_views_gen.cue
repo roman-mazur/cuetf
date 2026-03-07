@@ -6,19 +6,6 @@ package data
 	close({
 		// Identifier.
 		account_id!: string
-		name?: close({
-			// Substring of the DNS view name.
-			contains?: string
-
-			// Suffix of the DNS view name.
-			endswith?: string
-
-			// Exact value of the DNS view name.
-			exact?: string
-
-			// Prefix of the DNS view name.
-			startswith?: string
-		})
 
 		// Direction to order DNS views in.
 		// Available values: "asc", "desc".
@@ -32,6 +19,16 @@ package data
 
 		// Max items to fetch, default: 1000
 		max_items?: number
+
+		// Field to order DNS views by.
+		// Available values: "name", "created_on", "modified_on".
+		order?: string
+
+		// A zone ID that exists in the zones list for the view.
+		zone_id?: string
+
+		// A zone name that exists in the zones list for the view.
+		zone_name?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -65,15 +62,18 @@ package data
 			// The list of zones linked to this view.
 			zones?: [...string]
 		})]])
+		name?: close({
+			// Substring of the DNS view name.
+			contains?: string
 
-		// Field to order DNS views by.
-		// Available values: "name", "created_on", "modified_on".
-		order?: string
+			// Suffix of the DNS view name.
+			endswith?: string
 
-		// A zone ID that exists in the zones list for the view.
-		zone_id?: string
+			// Exact value of the DNS view name.
+			exact?: string
 
-		// A zone name that exists in the zones list for the view.
-		zone_name?: string
+			// Prefix of the DNS view name.
+			startswith?: string
+		})
 	})
 }

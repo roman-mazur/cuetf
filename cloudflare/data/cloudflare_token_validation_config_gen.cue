@@ -5,11 +5,21 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_token_validation_config")
 	close({
 		// UUID.
-		config_id!:  string
-		created_at?: string
+		config_id!:   string
+		created_at?:  string
+		description?: string
 
 		// UUID.
-		id?: string
+		id?:           string
+		last_updated?: string
+		title?:        string
+		token_sources?: [...string]
+
+		// Available values: "JWT".
+		token_type?: string
+
+		// Identifier.
+		zone_id!: string
 		credentials?: close({
 			keys?: matchN(1, [close({
 				// Algorithm
@@ -69,15 +79,5 @@ package data
 				y?: string
 			})]])
 		})
-		description?: string
-
-		// Available values: "JWT".
-		token_type?:   string
-		last_updated?: string
-		title?:        string
-		token_sources?: [...string]
-
-		// Identifier.
-		zone_id!: string
 	})
 }

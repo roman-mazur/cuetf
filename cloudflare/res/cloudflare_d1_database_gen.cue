@@ -17,16 +17,6 @@ package res
 		// D1 database identifier (UUID).
 		id?: string
 
-		// Configuration for D1 read replication.
-		read_replication?: close({
-			// The read replication mode for the database. Use 'auto' to
-			// create replicas and allow D1 automatically place them around
-			// the world, or 'disabled' to not use any database replicas (it
-			// can take a few hours for all replicas to be deleted).
-			// Available values: "auto", "disabled".
-			mode!: string
-		})
-
 		// Specify the location to restrict the D1 database to run and
 		// store data. If this option is present, the location hint is
 		// ignored.
@@ -46,5 +36,15 @@ package res
 		// D1 database identifier (UUID).
 		uuid?:    string
 		version?: string
+
+		// Configuration for D1 read replication.
+		read_replication?: close({
+			// The read replication mode for the database. Use 'auto' to
+			// create replicas and allow D1 automatically place them around
+			// the world, or 'disabled' to not use any database replicas (it
+			// can take a few hours for all replicas to be deleted).
+			// Available values: "auto", "disabled".
+			mode!: string
+		})
 	})
 }

@@ -16,14 +16,14 @@ package data
 		// Identifier
 		id?:           string
 		last_seen_at?: string
-
-		// Identifier
-		zone_id!: string
 		malicious_domain_categories?: [...string]
 		malicious_url_categories?: [...string]
 		page_urls?: [...string]
 		url?:                       string
 		url_contains_cdn_cgi_path?: bool
 		url_reported_malicious?:    bool
+
+		// Identifier
+		zone_id!: string
 	})
 }

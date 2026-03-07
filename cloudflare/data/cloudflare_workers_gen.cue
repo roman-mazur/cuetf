@@ -12,6 +12,18 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
+			// When the Worker was created.
+			created_on?: string
+
+			// Immutable ID of the Worker.
+			id?: string
+
+			// Whether logpush is enabled for the Worker.
+			logpush?: bool
+
+			// Name of the Worker.
+			name?: string
+
 			// Observability settings for the Worker.
 			observability?: close({
 				// Whether observability is enabled for the Worker.
@@ -166,12 +178,6 @@ package data
 				})]])
 			})
 
-			// When the Worker was created.
-			created_on?: string
-
-			// Immutable ID of the Worker.
-			id?: string
-
 			// Subdomain settings for the Worker.
 			subdomain?: close({
 				// Whether the *.workers.dev subdomain is enabled for the Worker.
@@ -183,11 +189,8 @@ package data
 				previews_enabled?: bool
 			})
 
-			// Whether logpush is enabled for the Worker.
-			logpush?: bool
-
-			// Name of the Worker.
-			name?: string
+			// Tags associated with the Worker.
+			tags?: [...string]
 
 			// Other Workers that should consume logs from the Worker.
 			tail_consumers?: matchN(1, [close({
@@ -197,13 +200,22 @@ package data
 				// Name of the consumer Worker.
 				name?: string
 			})]])
-
-			// Tags associated with the Worker.
-			tags?: [...string]
 
 			// When the Worker was most recently updated.
 			updated_on?: string
 		}), [...close({
+			// When the Worker was created.
+			created_on?: string
+
+			// Immutable ID of the Worker.
+			id?: string
+
+			// Whether logpush is enabled for the Worker.
+			logpush?: bool
+
+			// Name of the Worker.
+			name?: string
+
 			// Observability settings for the Worker.
 			observability?: close({
 				// Whether observability is enabled for the Worker.
@@ -358,12 +370,6 @@ package data
 				})]])
 			})
 
-			// When the Worker was created.
-			created_on?: string
-
-			// Immutable ID of the Worker.
-			id?: string
-
 			// Subdomain settings for the Worker.
 			subdomain?: close({
 				// Whether the *.workers.dev subdomain is enabled for the Worker.
@@ -375,11 +381,8 @@ package data
 				previews_enabled?: bool
 			})
 
-			// Whether logpush is enabled for the Worker.
-			logpush?: bool
-
-			// Name of the Worker.
-			name?: string
+			// Tags associated with the Worker.
+			tags?: [...string]
 
 			// Other Workers that should consume logs from the Worker.
 			tail_consumers?: matchN(1, [close({
@@ -389,9 +392,6 @@ package data
 				// Name of the consumer Worker.
 				name?: string
 			})]])
-
-			// Tags associated with the Worker.
-			tags?: [...string]
 
 			// When the Worker was most recently updated.
 			updated_on?: string

@@ -13,9 +13,6 @@ package res
 		// Jurisdiction of the bucket
 		jurisdiction?: string
 		rules?: matchN(1, [close({
-			// Whether or not this rule is in effect.
-			enabled!: bool
-
 			// Transition to abort ongoing multipart uploads.
 			abort_multipart_uploads_transition?: close({
 				// Condition for lifecycle transitions to apply after an object
@@ -48,6 +45,9 @@ package res
 					type!: string
 				})
 			})
+
+			// Whether or not this rule is in effect.
+			enabled!: bool
 
 			// Unique identifier for this rule.
 			id!: string
@@ -81,9 +81,6 @@ package res
 				storage_class!: string
 			})]])
 		}), [...close({
-			// Whether or not this rule is in effect.
-			enabled!: bool
-
 			// Transition to abort ongoing multipart uploads.
 			abort_multipart_uploads_transition?: close({
 				// Condition for lifecycle transitions to apply after an object
@@ -116,6 +113,9 @@ package res
 					type!: string
 				})
 			})
+
+			// Whether or not this rule is in effect.
+			enabled!: bool
 
 			// Unique identifier for this rule.
 			id!: string

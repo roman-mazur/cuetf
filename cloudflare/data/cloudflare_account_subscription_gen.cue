@@ -18,6 +18,22 @@ package data
 		// initial_period_start if this is the first period.
 		current_period_start?: string
 
+		// How often the subscription is renewed automatically.
+		// Available values: "weekly", "monthly", "quarterly", "yearly".
+		frequency?: string
+
+		// Identifier
+		id?: string
+
+		// The price of the subscription that will be billed, in US
+		// dollars.
+		price?: number
+
+		// The state that the subscription is in.
+		// Available values: "Trial", "Provisioned", "Paid",
+		// "AwaitingPayment", "Cancelled", "Failed", "Expired".
+		state?: string
+
 		// The rate plan applied to the subscription.
 		rate_plan?: close({
 			// The currency applied to the rate plan subscription.
@@ -46,21 +62,5 @@ package data
 			// strings.
 			sets?: [...string]
 		})
-
-		// How often the subscription is renewed automatically.
-		// Available values: "weekly", "monthly", "quarterly", "yearly".
-		frequency?: string
-
-		// Identifier
-		id?: string
-
-		// The price of the subscription that will be billed, in US
-		// dollars.
-		price?: number
-
-		// The state that the subscription is in.
-		// Available values: "Trial", "Provisioned", "Paid",
-		// "AwaitingPayment", "Cancelled", "Failed", "Expired".
-		state?: string
 	})
 }

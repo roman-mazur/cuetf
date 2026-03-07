@@ -11,10 +11,11 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// Specify the list of CIDRs to restrict ingress connections.
-			ips?: [...string]
 			created_at?: string
 			id?:         string
+
+			// Specify the list of CIDRs to restrict ingress connections.
+			ips?: [...string]
 
 			// The proxy endpoint kind
 			// Available values: "ip", "identity".
@@ -28,10 +29,11 @@ package data
 			subdomain?:  string
 			updated_at?: string
 		}), [...close({
-			// Specify the list of CIDRs to restrict ingress connections.
-			ips?: [...string]
 			created_at?: string
 			id?:         string
+
+			// Specify the list of CIDRs to restrict ingress connections.
+			ips?: [...string]
 
 			// The proxy endpoint kind
 			// Available values: "ip", "identity".

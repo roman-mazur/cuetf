@@ -9,21 +9,6 @@ package data
 		// API UUID.
 		id?: string
 
-		// The configuration object containing third-party integration
-		// information.
-		config?: close({
-			// The Workspace One API URL provided in the Workspace One Admin
-			// Dashboard.
-			api_url?: string
-
-			// The Workspace One Authorization URL depending on your region.
-			auth_url?: string
-
-			// The Workspace One client ID provided in the Workspace One Admin
-			// Dashboard.
-			client_id?: string
-		})
-
 		// API UUID.
 		integration_id!: string
 
@@ -40,5 +25,20 @@ package data
 		// "intune", "kolide", "tanium_s2s", "sentinelone_s2s",
 		// "custom_s2s".
 		type?: string
+
+		// The configuration object containing third-party integration
+		// information.
+		config?: close({
+			// The Workspace One API URL provided in the Workspace One Admin
+			// Dashboard.
+			api_url?: string
+
+			// The Workspace One Authorization URL depending on your region.
+			auth_url?: string
+
+			// The Workspace One client ID provided in the Workspace One Admin
+			// Dashboard.
+			client_id?: string
+		})
 	})
 }

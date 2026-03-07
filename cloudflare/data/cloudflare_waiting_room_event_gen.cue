@@ -88,10 +88,10 @@ package data
 		// event will inherit it.
 		// Available values: "off", "invisible",
 		// "visible_non_interactive", "visible_managed".
-		turnstile_mode?: string
+		turnstile_mode?:  string
+		waiting_room_id!: string
 
 		// Identifier.
-		zone_id!:         string
-		waiting_room_id!: string
+		zone_id!: string
 	})
 }

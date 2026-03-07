@@ -10,6 +10,12 @@ package res
 		// Name of the bucket.
 		bucket_name!: string
 
+		// State of Sippy for this bucket.
+		enabled?: bool
+
+		// Jurisdiction of the bucket
+		jurisdiction?: string
+
 		// R2 bucket to copy objects to.
 		destination?: close({
 			// ID of a Cloudflare API token.
@@ -37,9 +43,6 @@ package res
 			// for.
 			secret_access_key?: string
 		})
-
-		// State of Sippy for this bucket.
-		enabled?: bool
 
 		// AWS S3 bucket to copy objects from.
 		source?: close({
@@ -71,8 +74,5 @@ package res
 			// single S3 bucket).
 			secret_access_key?: string
 		})
-
-		// Jurisdiction of the bucket
-		jurisdiction?: string
 	})
 }

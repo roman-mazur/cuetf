@@ -21,13 +21,6 @@ package data
 
 		// UUID.
 		id?: string
-		filter?: close({
-			// The name of the service token.
-			name?: string
-
-			// Search for service tokens by other listed query parameters.
-			search?: string
-		})
 
 		// The name of the service token.
 		name?: string
@@ -38,5 +31,12 @@ package data
 		// The Zone ID to use for this endpoint. Mutually exclusive with
 		// the Account ID.
 		zone_id?: string
+		filter?: close({
+			// The name of the service token.
+			name?: string
+
+			// Search for service tokens by other listed query parameters.
+			search?: string
+		})
 	})
 }

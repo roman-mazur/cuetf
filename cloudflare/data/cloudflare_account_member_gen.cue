@@ -4,26 +4,21 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_account_member")
 	close({
-		filter?: close({
-			// Direction to order results.
-			// Available values: "asc", "desc".
-			direction?: string
-
-			// Field to order results by.
-			// Available values: "user.first_name", "user.last_name",
-			// "user.email", "status".
-			order?: string
-
-			// A member's status in the account.
-			// Available values: "accepted", "pending", "rejected".
-			status?: string
-		})
-
 		// Account identifier tag.
 		account_id!: string
 
 		// The contact email address of the user.
 		email?: string
+
+		// Membership identifier tag.
+		id?: string
+
+		// Membership identifier tag.
+		member_id?: string
+
+		// A member's status in the account.
+		// Available values: "accepted", "pending".
+		status?: string
 
 		// Access policy for the membership
 		policies?: matchN(1, [close({
@@ -36,29 +31,29 @@ package data
 
 			// A set of permission groups that are specified to the policy.
 			permission_groups?: matchN(1, [close({
-				// Attributes associated to the permission group.
-				meta?: close({
-					key?:   string
-					value?: string
-				})
-
 				// Identifier of the permission group.
 				id?: string
 
 				// Name of the permission group.
 				name?: string
+
+				// Attributes associated to the permission group.
+				meta?: close({
+					key?:   string
+					value?: string
+				})
 			}), [...close({
-				// Attributes associated to the permission group.
-				meta?: close({
-					key?:   string
-					value?: string
-				})
-
 				// Identifier of the permission group.
 				id?: string
 
 				// Name of the permission group.
 				name?: string
+
+				// Attributes associated to the permission group.
+				meta?: close({
+					key?:   string
+					value?: string
+				})
 			})]])
 
 			// A list of resource groups that the policy applies to.
@@ -66,14 +61,14 @@ package data
 				// Identifier of the resource group.
 				id?: string
 
+				// Name of the resource group.
+				name?: string
+
 				// Attributes associated to the resource group.
 				meta?: close({
 					key?:   string
 					value?: string
 				})
-
-				// Name of the resource group.
-				name?: string
 
 				// The scope associated to the resource group
 				scope?: matchN(1, [close({
@@ -111,14 +106,14 @@ package data
 				// Identifier of the resource group.
 				id?: string
 
+				// Name of the resource group.
+				name?: string
+
 				// Attributes associated to the resource group.
 				meta?: close({
 					key?:   string
 					value?: string
 				})
-
-				// Name of the resource group.
-				name?: string
 
 				// The scope associated to the resource group
 				scope?: matchN(1, [close({
@@ -163,29 +158,29 @@ package data
 
 			// A set of permission groups that are specified to the policy.
 			permission_groups?: matchN(1, [close({
-				// Attributes associated to the permission group.
-				meta?: close({
-					key?:   string
-					value?: string
-				})
-
 				// Identifier of the permission group.
 				id?: string
 
 				// Name of the permission group.
 				name?: string
+
+				// Attributes associated to the permission group.
+				meta?: close({
+					key?:   string
+					value?: string
+				})
 			}), [...close({
-				// Attributes associated to the permission group.
-				meta?: close({
-					key?:   string
-					value?: string
-				})
-
 				// Identifier of the permission group.
 				id?: string
 
 				// Name of the permission group.
 				name?: string
+
+				// Attributes associated to the permission group.
+				meta?: close({
+					key?:   string
+					value?: string
+				})
 			})]])
 
 			// A list of resource groups that the policy applies to.
@@ -193,14 +188,14 @@ package data
 				// Identifier of the resource group.
 				id?: string
 
+				// Name of the resource group.
+				name?: string
+
 				// Attributes associated to the resource group.
 				meta?: close({
 					key?:   string
 					value?: string
 				})
-
-				// Name of the resource group.
-				name?: string
 
 				// The scope associated to the resource group
 				scope?: matchN(1, [close({
@@ -238,14 +233,14 @@ package data
 				// Identifier of the resource group.
 				id?: string
 
+				// Name of the resource group.
+				name?: string
+
 				// Attributes associated to the resource group.
 				meta?: close({
 					key?:   string
 					value?: string
 				})
-
-				// Name of the resource group.
-				name?: string
 
 				// The scope associated to the resource group
 				scope?: matchN(1, [close({
@@ -282,16 +277,16 @@ package data
 			})]])
 		})]])
 
-		// Membership identifier tag.
-		id?: string
-
-		// Membership identifier tag.
-		member_id?: string
-
 		// Roles assigned to this Member.
 		roles?: matchN(1, [close({
 			// Description of role's permissions.
 			description?: string
+
+			// Role identifier tag.
+			id?: string
+
+			// Role name.
+			name?: string
 			permissions?: close({
 				analytics?: close({
 					read?:  bool
@@ -342,15 +337,15 @@ package data
 					write?: bool
 				})
 			})
-
-			// Role identifier tag.
-			id?: string
-
-			// Role name.
-			name?: string
 		}), [...close({
 			// Description of role's permissions.
 			description?: string
+
+			// Role identifier tag.
+			id?: string
+
+			// Role name.
+			name?: string
 			permissions?: close({
 				analytics?: close({
 					read?:  bool
@@ -401,17 +396,7 @@ package data
 					write?: bool
 				})
 			})
-
-			// Role identifier tag.
-			id?: string
-
-			// Role name.
-			name?: string
 		})]])
-
-		// A member's status in the account.
-		// Available values: "accepted", "pending".
-		status?: string
 
 		// Details of the user associated to the membership.
 		user?: close({
@@ -430,6 +415,20 @@ package data
 			// Indicates whether two-factor authentication is enabled for the
 			// user account. Does not apply to API authentication.
 			two_factor_authentication_enabled?: bool
+		})
+		filter?: close({
+			// Direction to order results.
+			// Available values: "asc", "desc".
+			direction?: string
+
+			// Field to order results by.
+			// Available values: "user.first_name", "user.last_name",
+			// "user.email", "status".
+			order?: string
+
+			// A member's status in the account.
+			// Available values: "accepted", "pending", "rejected".
+			status?: string
 		})
 	})
 }

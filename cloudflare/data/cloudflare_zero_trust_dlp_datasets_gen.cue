@@ -12,6 +12,24 @@ package data
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			case_sensitive?: bool
+			created_at?:     string
+
+			// The description of the dataset.
+			description?:      string
+			encoding_version?: number
+			id?:               string
+			name?:             string
+			num_cells?:        number
+			secret?:           bool
+
+			// Available values: "empty", "uploading", "pending",
+			// "processing", "failed", "complete".
+			status?: string
+
+			// Stores when the dataset was last updated.
+			//
+			// This includes name or description changes as well as uploads.
+			updated_at?: string
 			columns?: matchN(1, [close({
 				entry_id?:    string
 				header_name?: string
@@ -44,26 +62,26 @@ package data
 				status?:  string
 				version?: number
 			})]])
-
-			// The description of the dataset.
-			description?: string
-			created_at?:  string
-
-			// Available values: "empty", "uploading", "pending",
-			// "processing", "failed", "complete".
-			status?:           string
-			encoding_version?: number
-			id?:               string
-			name?:             string
-			num_cells?:        number
-
-			// Stores when the dataset was last updated.
-			//
-			// This includes name or description changes as well as uploads.
-			updated_at?: string
-			secret?:     bool
 		}), [...close({
 			case_sensitive?: bool
+			created_at?:     string
+
+			// The description of the dataset.
+			description?:      string
+			encoding_version?: number
+			id?:               string
+			name?:             string
+			num_cells?:        number
+			secret?:           bool
+
+			// Available values: "empty", "uploading", "pending",
+			// "processing", "failed", "complete".
+			status?: string
+
+			// Stores when the dataset was last updated.
+			//
+			// This includes name or description changes as well as uploads.
+			updated_at?: string
 			columns?: matchN(1, [close({
 				entry_id?:    string
 				header_name?: string
@@ -96,24 +114,6 @@ package data
 				status?:  string
 				version?: number
 			})]])
-
-			// The description of the dataset.
-			description?: string
-			created_at?:  string
-
-			// Available values: "empty", "uploading", "pending",
-			// "processing", "failed", "complete".
-			status?:           string
-			encoding_version?: number
-			id?:               string
-			name?:             string
-			num_cells?:        number
-
-			// Stores when the dataset was last updated.
-			//
-			// This includes name or description changes as well as uploads.
-			updated_at?: string
-			secret?:     bool
 		})]])
 	})
 }

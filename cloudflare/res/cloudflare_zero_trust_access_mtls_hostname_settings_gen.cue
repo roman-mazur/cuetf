@@ -17,6 +17,13 @@ package res
 		// it to the origin as a HTTP header to allow logging on the
 		// origin.
 		client_certificate_forwarding?: bool
+
+		// The hostname that these settings apply to.
+		hostname?: string
+
+		// The Zone ID to use for this endpoint. Mutually exclusive with
+		// the Account ID.
+		zone_id?: string
 		settings!: matchN(1, [close({
 			// Request client certificates for this hostname in China. Can
 			// only be set to true if this zone is china network enabled.
@@ -44,12 +51,5 @@ package res
 			// The hostname that these settings apply to.
 			hostname!: string
 		})]])
-
-		// The hostname that these settings apply to.
-		hostname?: string
-
-		// The Zone ID to use for this endpoint. Mutually exclusive with
-		// the Account ID.
-		zone_id?: string
 	})
 }

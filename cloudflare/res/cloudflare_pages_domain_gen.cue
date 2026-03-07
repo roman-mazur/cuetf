@@ -9,6 +9,22 @@ package res
 
 		// Available values: "google", "lets_encrypt".
 		certificate_authority?: string
+		created_on?:            string
+		domain_id?:             string
+
+		// The domain name.
+		id?: string
+
+		// The domain name.
+		name!: string
+
+		// Name of the project.
+		project_name!: string
+
+		// Available values: "initializing", "pending", "active",
+		// "deactivated", "blocked", "error".
+		status?:   string
+		zone_tag?: string
 		validation_data?: close({
 			error_message?: string
 
@@ -28,21 +44,5 @@ package res
 			// "blocked", "error".
 			status?: string
 		})
-
-		// The domain name.
-		id?: string
-
-		// The domain name.
-		name!:       string
-		created_on?: string
-
-		// Name of the project.
-		project_name!: string
-		domain_id?:    string
-
-		// Available values: "initializing", "pending", "active",
-		// "deactivated", "blocked", "error".
-		status?:   string
-		zone_tag?: string
 	})
 }

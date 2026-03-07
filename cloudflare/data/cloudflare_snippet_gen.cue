@@ -4,16 +4,16 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_snippet")
 	close({
-		// The timestamp of when the snippet was created.
+		// Indicates when the snippet was created.
 		created_on?: string
 
-		// The timestamp of when the snippet was last modified.
+		// Indicates when the snippet was last modified.
 		modified_on?: string
 
-		// The identifying name of the snippet.
+		// Identify the snippet.
 		snippet_name!: string
 
-		// The unique ID of the zone.
+		// Use this field to specify the unique ID of the zone.
 		zone_id!: string
 	})
 }

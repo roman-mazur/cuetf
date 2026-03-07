@@ -14,6 +14,30 @@ package data
 			// The description of the device posture rule.
 			description?: string
 
+			// Sets the expiration time for a posture check result. If empty,
+			// the result remains valid until it is overwritten by new data
+			// from the WARP client.
+			expiration?: string
+
+			// API UUID.
+			id?: string
+
+			// The name of the device posture rule.
+			name?: string
+
+			// Polling frequency for the WARP client posture check. Default:
+			// `5m` (poll every five minutes). Minimum: `1m`.
+			schedule?: string
+
+			// The type of device posture rule.
+			// Available values: "file", "application", "tanium", "gateway",
+			// "warp", "disk_encryption", "serial_number", "sentinelone",
+			// "carbonblack", "firewall", "os_version", "domain_joined",
+			// "client_certificate", "client_certificate_v2", "antivirus",
+			// "unique_client_id", "kolide", "tanium_s2s", "crowdstrike_s2s",
+			// "intune", "workspace_one", "sentinelone_s2s", "custom_s2s".
+			type?: string
+
 			// The value to be checked against.
 			input?: close({
 				// The Number of active threats.
@@ -173,17 +197,6 @@ package data
 				})
 			})
 
-			// Sets the expiration time for a posture check result. If empty,
-			// the result remains valid until it is overwritten by new data
-			// from the WARP client.
-			expiration?: string
-
-			// API UUID.
-			id?: string
-
-			// The name of the device posture rule.
-			name?: string
-
 			// The conditions that the client must match to run the rule.
 			match?: matchN(1, [close({
 				// Available values: "windows", "mac", "linux", "android", "ios",
@@ -194,23 +207,34 @@ package data
 				// "chromeos".
 				platform?: string
 			})]])
-
-			// Polling frequency for the WARP client posture check. Default:
-			// `5m` (poll every five minutes). Minimum: `1m`.
-			schedule?: string
-
-			// The type of device posture rule.
-			// Available values: "file", "application", "tanium", "gateway",
-			// "warp", "disk_encryption", "serial_number", "sentinelone",
-			// "carbonblack", "firewall", "os_version", "domain_joined",
-			// "client_certificate", "client_certificate_v2", "antivirus",
-			// "unique_client_id", "kolide", "tanium_s2s", "crowdstrike_s2s",
-			// "intune", "workspace_one", "sentinelone_s2s", "custom_s2s".
-			type?: string
 		}), [...close({
 			// The description of the device posture rule.
 			description?: string
 
+			// Sets the expiration time for a posture check result. If empty,
+			// the result remains valid until it is overwritten by new data
+			// from the WARP client.
+			expiration?: string
+
+			// API UUID.
+			id?: string
+
+			// The name of the device posture rule.
+			name?: string
+
+			// Polling frequency for the WARP client posture check. Default:
+			// `5m` (poll every five minutes). Minimum: `1m`.
+			schedule?: string
+
+			// The type of device posture rule.
+			// Available values: "file", "application", "tanium", "gateway",
+			// "warp", "disk_encryption", "serial_number", "sentinelone",
+			// "carbonblack", "firewall", "os_version", "domain_joined",
+			// "client_certificate", "client_certificate_v2", "antivirus",
+			// "unique_client_id", "kolide", "tanium_s2s", "crowdstrike_s2s",
+			// "intune", "workspace_one", "sentinelone_s2s", "custom_s2s".
+			type?: string
+
 			// The value to be checked against.
 			input?: close({
 				// The Number of active threats.
@@ -370,17 +394,6 @@ package data
 				})
 			})
 
-			// Sets the expiration time for a posture check result. If empty,
-			// the result remains valid until it is overwritten by new data
-			// from the WARP client.
-			expiration?: string
-
-			// API UUID.
-			id?: string
-
-			// The name of the device posture rule.
-			name?: string
-
 			// The conditions that the client must match to run the rule.
 			match?: matchN(1, [close({
 				// Available values: "windows", "mac", "linux", "android", "ios",
@@ -391,19 +404,6 @@ package data
 				// "chromeos".
 				platform?: string
 			})]])
-
-			// Polling frequency for the WARP client posture check. Default:
-			// `5m` (poll every five minutes). Minimum: `1m`.
-			schedule?: string
-
-			// The type of device posture rule.
-			// Available values: "file", "application", "tanium", "gateway",
-			// "warp", "disk_encryption", "serial_number", "sentinelone",
-			// "carbonblack", "firewall", "os_version", "domain_joined",
-			// "client_certificate", "client_certificate_v2", "antivirus",
-			// "unique_client_id", "kolide", "tanium_s2s", "crowdstrike_s2s",
-			// "intune", "workspace_one", "sentinelone_s2s", "custom_s2s".
-			type?: string
 		})]])
 	})
 }

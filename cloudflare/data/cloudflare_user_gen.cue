@@ -24,6 +24,26 @@ package data
 
 		// Identifier of the user.
 		id?: string
+
+		// User's last name
+		last_name?: string
+
+		// Indicates whether user has been suspended
+		suspended?: bool
+
+		// User's telephone number
+		telephone?: string
+
+		// Indicates whether two-factor authentication is enabled for the
+		// user account. Does not apply to API authentication.
+		two_factor_authentication_enabled?: bool
+
+		// Indicates whether two-factor authentication is required by one
+		// of the accounts that the user is a member of.
+		two_factor_authentication_locked?: bool
+
+		// The zipcode or postal code where the user lives.
+		zipcode?: string
 		organizations?: matchN(1, [close({
 			// Identifier
 			id?: string
@@ -59,25 +79,5 @@ package data
 			// Available values: "member", "invited".
 			status?: string
 		})]])
-
-		// User's last name
-		last_name?: string
-
-		// Indicates whether user has been suspended
-		suspended?: bool
-
-		// User's telephone number
-		telephone?: string
-
-		// Indicates whether two-factor authentication is enabled for the
-		// user account. Does not apply to API authentication.
-		two_factor_authentication_enabled?: bool
-
-		// Indicates whether two-factor authentication is required by one
-		// of the accounts that the user is a member of.
-		two_factor_authentication_locked?: bool
-
-		// The zipcode or postal code where the user lives.
-		zipcode?: string
 	})
 }

@@ -12,17 +12,6 @@ package data
 		// subdomains. Empty arrays allow the video to be viewed on any
 		// origin.
 		allowed_origins?: [...string]
-		input?: close({
-			// The video height in pixels. A value of `-1` means the height is
-			// unknown. The value becomes available after the upload and
-			// before the video is ready.
-			height?: number
-
-			// The video width in pixels. A value of `-1` means the width is
-			// unknown. The value becomes available after the upload and
-			// before the video is ready.
-			width?: number
-		})
 
 		// The date and time the media item was created.
 		created?: string
@@ -40,13 +29,6 @@ package data
 
 		// The live input ID used to upload a video with Stream Live.
 		live_input?: string
-		playback?: close({
-			// DASH Media Presentation Description for the video.
-			dash?: string
-
-			// The HLS manifest for the video.
-			hls?: string
-		})
 
 		// The maximum duration in seconds for a video upload. Can be set
 		// for a video that is not yet uploaded to limit its duration.
@@ -74,6 +56,41 @@ package data
 		// field is empty if the video is not ready for viewing or the
 		// live stream is still in progress.
 		ready_to_stream_at?: string
+
+		// Indicates whether the video can be a accessed using the UID.
+		// When set to `true`, a signed token must be generated with a
+		// signing key to view the video.
+		require_signed_urls?: bool
+
+		// Indicates the date and time at which the video will be deleted.
+		// Omit the field to indicate no change, or include with a `null`
+		// value to remove an existing scheduled deletion. If specified,
+		// must be at least 30 days from upload time.
+		scheduled_deletion?: string
+
+		// The size of the media item in bytes.
+		size?: number
+
+		// The media item's thumbnail URI. This field is omitted until
+		// encoding is complete.
+		thumbnail?: string
+
+		// The timestamp for a thumbnail image calculated as a percentage
+		// value of the video's duration. To convert from a second-wise
+		// timestamp to a percentage, divide the desired timestamp by the
+		// total duration of the video. If this value is not set, the
+		// default thumbnail image is taken from 0s of the video.
+		thumbnail_timestamp_pct?: number
+
+		// A Cloudflare-generated unique identifier for a media item.
+		uid?: string
+
+		// The date and time when the video upload URL is no longer valid
+		// for direct user uploads.
+		upload_expiry?: string
+
+		// The date and time the media item was uploaded.
+		uploaded?: string
 
 		// Specifies a detailed status for a video. If the `state` is
 		// `inprogress` or `error`, the `step` field returns `encoding`
@@ -103,31 +120,24 @@ package data
 			// "inprogress", "ready", "error", "live-inprogress".
 			state?: string
 		})
+		input?: close({
+			// The video height in pixels. A value of `-1` means the height is
+			// unknown. The value becomes available after the upload and
+			// before the video is ready.
+			height?: number
 
-		// Indicates whether the video can be a accessed using the UID.
-		// When set to `true`, a signed token must be generated with a
-		// signing key to view the video.
-		require_signed_urls?: bool
+			// The video width in pixels. A value of `-1` means the width is
+			// unknown. The value becomes available after the upload and
+			// before the video is ready.
+			width?: number
+		})
+		playback?: close({
+			// DASH Media Presentation Description for the video.
+			dash?: string
 
-		// Indicates the date and time at which the video will be deleted.
-		// Omit the field to indicate no change, or include with a `null`
-		// value to remove an existing scheduled deletion. If specified,
-		// must be at least 30 days from upload time.
-		scheduled_deletion?: string
-
-		// The size of the media item in bytes.
-		size?: number
-
-		// The media item's thumbnail URI. This field is omitted until
-		// encoding is complete.
-		thumbnail?: string
-
-		// The timestamp for a thumbnail image calculated as a percentage
-		// value of the video's duration. To convert from a second-wise
-		// timestamp to a percentage, divide the desired timestamp by the
-		// total duration of the video. If this value is not set, the
-		// default thumbnail image is taken from 0s of the video.
-		thumbnail_timestamp_pct?: number
+			// The HLS manifest for the video.
+			hls?: string
+		})
 		watermark?: close({
 			// The date and a time a watermark profile was created.
 			created?: string
@@ -175,15 +185,5 @@ package data
 			// The width of the image in pixels.
 			width?: number
 		})
-
-		// A Cloudflare-generated unique identifier for a media item.
-		uid?: string
-
-		// The date and time when the video upload URL is no longer valid
-		// for direct user uploads.
-		upload_expiry?: string
-
-		// The date and time the media item was uploaded.
-		uploaded?: string
 	})
 }

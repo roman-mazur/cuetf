@@ -7,6 +7,9 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Defines an identifier.
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Defines the unique ID for this custom detection.
@@ -31,8 +34,5 @@ package data
 			// in a request.
 			username?: string
 		})]])
-
-		// Defines an identifier.
-		zone_id!: string
 	})
 }

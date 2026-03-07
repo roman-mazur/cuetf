@@ -18,60 +18,12 @@ package data
 			// the client is available.
 			allow_updates?: bool
 
-			// List of routes excluded in the WARP client's tunnel.
-			exclude?: matchN(1, [close({
-				// The address in CIDR format to exclude from the tunnel. If
-				// `address` is present, `host` must not be present.
-				address?: string
-
-				// A description of the Split Tunnel item, displayed in the client
-				// UI.
-				description?: string
-
-				// The domain name to exclude from the tunnel. If `host` is
-				// present, `address` must not be present.
-				host?: string
-			}), [...close({
-				// The address in CIDR format to exclude from the tunnel. If
-				// `address` is present, `host` must not be present.
-				address?: string
-
-				// A description of the Split Tunnel item, displayed in the client
-				// UI.
-				description?: string
-
-				// The domain name to exclude from the tunnel. If `host` is
-				// present, `address` must not be present.
-				host?: string
-			})]])
-
 			// Whether to allow devices to leave the organization.
 			allowed_to_leave?: bool
 
 			// The amount of time in seconds to reconnect after having been
 			// disabled.
 			auto_connect?: number
-			fallback_domains?: matchN(1, [close({
-				// A description of the fallback domain, displayed in the client
-				// UI.
-				description?: string
-
-				// A list of IP addresses to handle domain resolution.
-				dns_server?: [...string]
-
-				// The domain suffix to match when resolving locally.
-				suffix?: string
-			}), [...close({
-				// A description of the fallback domain, displayed in the client
-				// UI.
-				description?: string
-
-				// A list of IP addresses to handle domain resolution.
-				dns_server?: [...string]
-
-				// The domain suffix to match when resolving locally.
-				suffix?: string
-			})]])
 
 			// Turn on the captive portal after the specified amount of time.
 			captive_portal?: number
@@ -94,34 +46,7 @@ package data
 			// Whether to add Microsoft IPs to Split Tunnel exclusions.
 			exclude_office_ips?: bool
 			gateway_unique_id?:  string
-
-			// List of routes included in the WARP client's tunnel.
-			include?: matchN(1, [close({
-				// The address in CIDR format to include in the tunnel. If
-				// `address` is present, `host` must not be present.
-				address?: string
-
-				// A description of the Split Tunnel item, displayed in the client
-				// UI.
-				description?: string
-
-				// The domain name to include in the tunnel. If `host` is present,
-				// `address` must not be present.
-				host?: string
-			}), [...close({
-				// The address in CIDR format to include in the tunnel. If
-				// `address` is present, `host` must not be present.
-				address?: string
-
-				// A description of the Split Tunnel item, displayed in the client
-				// UI.
-				description?: string
-
-				// The domain name to include in the tunnel. If `host` is present,
-				// `address` must not be present.
-				host?: string
-			})]])
-			id?: string
+			id?:                 string
 
 			// The amount of time in minutes a user is allowed access to their
 			// LAN. A value of 0 will allow LAN access until the next WARP
@@ -129,13 +54,6 @@ package data
 			// Note that this field is omitted from the response if null or
 			// unset.
 			lan_allow_minutes?: number
-			service_mode_v2?: close({
-				// The mode to run the WARP client under.
-				mode?: string
-
-				// The port number when used with proxy mode.
-				port?: number
-			})
 
 			// The size of the subnet for the local access network. Note that
 			// this field is omitted from the response if null or unset.
@@ -174,6 +92,88 @@ package data
 
 			// Determines which tunnel protocol to use.
 			tunnel_protocol?: string
+
+			// List of routes excluded in the WARP client's tunnel.
+			exclude?: matchN(1, [close({
+				// The address in CIDR format to exclude from the tunnel. If
+				// `address` is present, `host` must not be present.
+				address?: string
+
+				// A description of the Split Tunnel item, displayed in the client
+				// UI.
+				description?: string
+
+				// The domain name to exclude from the tunnel. If `host` is
+				// present, `address` must not be present.
+				host?: string
+			}), [...close({
+				// The address in CIDR format to exclude from the tunnel. If
+				// `address` is present, `host` must not be present.
+				address?: string
+
+				// A description of the Split Tunnel item, displayed in the client
+				// UI.
+				description?: string
+
+				// The domain name to exclude from the tunnel. If `host` is
+				// present, `address` must not be present.
+				host?: string
+			})]])
+
+			// List of routes included in the WARP client's tunnel.
+			include?: matchN(1, [close({
+				// The address in CIDR format to include in the tunnel. If
+				// `address` is present, `host` must not be present.
+				address?: string
+
+				// A description of the Split Tunnel item, displayed in the client
+				// UI.
+				description?: string
+
+				// The domain name to include in the tunnel. If `host` is present,
+				// `address` must not be present.
+				host?: string
+			}), [...close({
+				// The address in CIDR format to include in the tunnel. If
+				// `address` is present, `host` must not be present.
+				address?: string
+
+				// A description of the Split Tunnel item, displayed in the client
+				// UI.
+				description?: string
+
+				// The domain name to include in the tunnel. If `host` is present,
+				// `address` must not be present.
+				host?: string
+			})]])
+			fallback_domains?: matchN(1, [close({
+				// A description of the fallback domain, displayed in the client
+				// UI.
+				description?: string
+
+				// A list of IP addresses to handle domain resolution.
+				dns_server?: [...string]
+
+				// The domain suffix to match when resolving locally.
+				suffix?: string
+			}), [...close({
+				// A description of the fallback domain, displayed in the client
+				// UI.
+				description?: string
+
+				// A list of IP addresses to handle domain resolution.
+				dns_server?: [...string]
+
+				// The domain suffix to match when resolving locally.
+				suffix?: string
+			})]])
+			service_mode_v2?: close({
+				// The mode to run the WARP client under.
+				mode?: string
+
+				// The port number when used with proxy mode.
+				port?: number
+			})
 			target_tests?: matchN(1, [close({
 				// The id of the DEX test targeting this policy.
 				id?: string
@@ -195,60 +195,12 @@ package data
 			// the client is available.
 			allow_updates?: bool
 
-			// List of routes excluded in the WARP client's tunnel.
-			exclude?: matchN(1, [close({
-				// The address in CIDR format to exclude from the tunnel. If
-				// `address` is present, `host` must not be present.
-				address?: string
-
-				// A description of the Split Tunnel item, displayed in the client
-				// UI.
-				description?: string
-
-				// The domain name to exclude from the tunnel. If `host` is
-				// present, `address` must not be present.
-				host?: string
-			}), [...close({
-				// The address in CIDR format to exclude from the tunnel. If
-				// `address` is present, `host` must not be present.
-				address?: string
-
-				// A description of the Split Tunnel item, displayed in the client
-				// UI.
-				description?: string
-
-				// The domain name to exclude from the tunnel. If `host` is
-				// present, `address` must not be present.
-				host?: string
-			})]])
-
 			// Whether to allow devices to leave the organization.
 			allowed_to_leave?: bool
 
 			// The amount of time in seconds to reconnect after having been
 			// disabled.
 			auto_connect?: number
-			fallback_domains?: matchN(1, [close({
-				// A description of the fallback domain, displayed in the client
-				// UI.
-				description?: string
-
-				// A list of IP addresses to handle domain resolution.
-				dns_server?: [...string]
-
-				// The domain suffix to match when resolving locally.
-				suffix?: string
-			}), [...close({
-				// A description of the fallback domain, displayed in the client
-				// UI.
-				description?: string
-
-				// A list of IP addresses to handle domain resolution.
-				dns_server?: [...string]
-
-				// The domain suffix to match when resolving locally.
-				suffix?: string
-			})]])
 
 			// Turn on the captive portal after the specified amount of time.
 			captive_portal?: number
@@ -271,34 +223,7 @@ package data
 			// Whether to add Microsoft IPs to Split Tunnel exclusions.
 			exclude_office_ips?: bool
 			gateway_unique_id?:  string
-
-			// List of routes included in the WARP client's tunnel.
-			include?: matchN(1, [close({
-				// The address in CIDR format to include in the tunnel. If
-				// `address` is present, `host` must not be present.
-				address?: string
-
-				// A description of the Split Tunnel item, displayed in the client
-				// UI.
-				description?: string
-
-				// The domain name to include in the tunnel. If `host` is present,
-				// `address` must not be present.
-				host?: string
-			}), [...close({
-				// The address in CIDR format to include in the tunnel. If
-				// `address` is present, `host` must not be present.
-				address?: string
-
-				// A description of the Split Tunnel item, displayed in the client
-				// UI.
-				description?: string
-
-				// The domain name to include in the tunnel. If `host` is present,
-				// `address` must not be present.
-				host?: string
-			})]])
-			id?: string
+			id?:                 string
 
 			// The amount of time in minutes a user is allowed access to their
 			// LAN. A value of 0 will allow LAN access until the next WARP
@@ -306,13 +231,6 @@ package data
 			// Note that this field is omitted from the response if null or
 			// unset.
 			lan_allow_minutes?: number
-			service_mode_v2?: close({
-				// The mode to run the WARP client under.
-				mode?: string
-
-				// The port number when used with proxy mode.
-				port?: number
-			})
 
 			// The size of the subnet for the local access network. Note that
 			// this field is omitted from the response if null or unset.
@@ -351,6 +269,88 @@ package data
 
 			// Determines which tunnel protocol to use.
 			tunnel_protocol?: string
+
+			// List of routes excluded in the WARP client's tunnel.
+			exclude?: matchN(1, [close({
+				// The address in CIDR format to exclude from the tunnel. If
+				// `address` is present, `host` must not be present.
+				address?: string
+
+				// A description of the Split Tunnel item, displayed in the client
+				// UI.
+				description?: string
+
+				// The domain name to exclude from the tunnel. If `host` is
+				// present, `address` must not be present.
+				host?: string
+			}), [...close({
+				// The address in CIDR format to exclude from the tunnel. If
+				// `address` is present, `host` must not be present.
+				address?: string
+
+				// A description of the Split Tunnel item, displayed in the client
+				// UI.
+				description?: string
+
+				// The domain name to exclude from the tunnel. If `host` is
+				// present, `address` must not be present.
+				host?: string
+			})]])
+
+			// List of routes included in the WARP client's tunnel.
+			include?: matchN(1, [close({
+				// The address in CIDR format to include in the tunnel. If
+				// `address` is present, `host` must not be present.
+				address?: string
+
+				// A description of the Split Tunnel item, displayed in the client
+				// UI.
+				description?: string
+
+				// The domain name to include in the tunnel. If `host` is present,
+				// `address` must not be present.
+				host?: string
+			}), [...close({
+				// The address in CIDR format to include in the tunnel. If
+				// `address` is present, `host` must not be present.
+				address?: string
+
+				// A description of the Split Tunnel item, displayed in the client
+				// UI.
+				description?: string
+
+				// The domain name to include in the tunnel. If `host` is present,
+				// `address` must not be present.
+				host?: string
+			})]])
+			fallback_domains?: matchN(1, [close({
+				// A description of the fallback domain, displayed in the client
+				// UI.
+				description?: string
+
+				// A list of IP addresses to handle domain resolution.
+				dns_server?: [...string]
+
+				// The domain suffix to match when resolving locally.
+				suffix?: string
+			}), [...close({
+				// A description of the fallback domain, displayed in the client
+				// UI.
+				description?: string
+
+				// A list of IP addresses to handle domain resolution.
+				dns_server?: [...string]
+
+				// The domain suffix to match when resolving locally.
+				suffix?: string
+			})]])
+			service_mode_v2?: close({
+				// The mode to run the WARP client under.
+				mode?: string
+
+				// The port number when used with proxy mode.
+				port?: number
+			})
 			target_tests?: matchN(1, [close({
 				// The id of the DEX test targeting this policy.
 				id?: string

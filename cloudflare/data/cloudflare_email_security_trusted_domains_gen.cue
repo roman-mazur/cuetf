@@ -24,6 +24,9 @@ package data
 		is_similarity?: bool
 		last_modified?: string
 		pattern?:       string
+
+		// The unique identifier for the trusted domain.
+		trusted_domain_id?: number
 		filter?: close({
 			// The sorting direction.
 			// Available values: "asc", "desc".
@@ -45,8 +48,5 @@ package data
 			// in the future.
 			search?: string
 		})
-
-		// The unique identifier for the trusted domain.
-		trusted_domain_id?: number
 	})
 }

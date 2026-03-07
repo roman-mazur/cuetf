@@ -21,42 +21,6 @@ package res
 		consecutive_successes?: number
 		created_on?:            string
 
-		// Parameters specific to an HTTP or HTTPS health check.
-		http_config?: close({
-			// Do not validate the certificate when the health check uses
-			// HTTPS.
-			allow_insecure?: bool
-
-			// A case-insensitive sub-string to look for in the response body.
-			// If this string is not found, the origin will be marked as
-			// unhealthy.
-			expected_body?: string
-
-			// The expected HTTP response codes (e.g. "200") or code ranges
-			// (e.g. "2xx" for all codes starting with 2) of the health
-			// check.
-			expected_codes?: [...string]
-
-			// Follow redirects if the origin returns a 3xx status code.
-			follow_redirects?: bool
-
-			// The HTTP request headers to send in the health check. It is
-			// recommended you set a Host header by default. The User-Agent
-			// header cannot be overridden.
-			header?: [string]: [...string]
-
-			// The HTTP method to use for the health check.
-			// Available values: "GET", "HEAD".
-			method?: string
-
-			// The endpoint path to health check against.
-			path?: string
-
-			// Port number to connect to for the health check. Defaults to 80
-			// if type is HTTP or 443 if type is HTTPS.
-			port?: number
-		})
-
 		// A human-readable description of the health check.
 		description?: string
 
@@ -99,6 +63,45 @@ package res
 		// protocols are 'HTTP', 'HTTPS' and 'TCP'.
 		type?: string
 
+		// Identifier
+		zone_id!: string
+
+		// Parameters specific to an HTTP or HTTPS health check.
+		http_config?: close({
+			// Do not validate the certificate when the health check uses
+			// HTTPS.
+			allow_insecure?: bool
+
+			// A case-insensitive sub-string to look for in the response body.
+			// If this string is not found, the origin will be marked as
+			// unhealthy.
+			expected_body?: string
+
+			// The expected HTTP response codes (e.g. "200") or code ranges
+			// (e.g. "2xx" for all codes starting with 2) of the health
+			// check.
+			expected_codes?: [...string]
+
+			// Follow redirects if the origin returns a 3xx status code.
+			follow_redirects?: bool
+
+			// The HTTP request headers to send in the health check. It is
+			// recommended you set a Host header by default. The User-Agent
+			// header cannot be overridden.
+			header?: [string]: [...string]
+
+			// The HTTP method to use for the health check.
+			// Available values: "GET", "HEAD".
+			method?: string
+
+			// The endpoint path to health check against.
+			path?: string
+
+			// Port number to connect to for the health check. Defaults to 80
+			// if type is HTTP or 443 if type is HTTPS.
+			port?: number
+		})
+
 		// Parameters specific to TCP health check.
 		tcp_config?: close({
 			// The TCP connection method to use for the health check.
@@ -108,8 +111,5 @@ package res
 			// Port number to connect to for the health check. Defaults to 80.
 			port?: number
 		})
-
-		// Identifier
-		zone_id!: string
 	})
 }

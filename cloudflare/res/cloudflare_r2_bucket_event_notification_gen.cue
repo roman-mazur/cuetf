@@ -10,6 +10,15 @@ package res
 		// Name of the bucket.
 		bucket_name!: string
 
+		// Jurisdiction of the bucket
+		jurisdiction?: string
+
+		// Queue ID.
+		queue_id!: string
+
+		// Name of the queue.
+		queue_name?: string
+
 		// Array of rules to drive notifications.
 		rules!: matchN(1, [close({
 			// Array of R2 object actions that will trigger notifications.
@@ -38,14 +47,5 @@ package res
 			// Notifications will be sent only for objects with this suffix.
 			suffix?: string
 		})]])
-
-		// Jurisdiction of the bucket
-		jurisdiction?: string
-
-		// Queue ID.
-		queue_id!: string
-
-		// Name of the queue.
-		queue_name?: string
 	})
 }

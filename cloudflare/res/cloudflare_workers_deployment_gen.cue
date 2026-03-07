@@ -5,7 +5,17 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_workers_deployment")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id!:   string
+		author_email?: string
+		created_on?:   string
+		id?:           string
+
+		// Name of the script, used in URLs and route configuration.
+		script_name!: string
+		source?:      string
+
+		// Available values: "percentage".
+		strategy!: string
 		annotations?: close({
 			// Human-readable message about the deployment. Truncated to 100
 			// bytes.
@@ -14,11 +24,6 @@ package res
 			// Operation that triggered the creation of the deployment.
 			workers_triggered_by?: string
 		})
-
-		// Name of the script, used in URLs and route configuration.
-		script_name!:  string
-		author_email?: string
-		created_on?:   string
 		versions!: matchN(1, [close({
 			percentage!: number
 			version_id!: string
@@ -26,10 +31,5 @@ package res
 			percentage!: number
 			version_id!: string
 		})]])
-		id?: string
-
-		// Available values: "percentage".
-		strategy!: string
-		source?:   string
 	})
 }

@@ -6,41 +6,41 @@ package data
 	close({
 		// Identifier.
 		id?: string
-		rules?: matchN(1, [close({
-			description?: string
-
-			// Parameters of Cloud Connector Rule
-			parameters?: close({
-				// Host to perform Cloud Connection to
-				host?: string
-			})
-			enabled?: bool
-
-			// Cloud Provider type
-			// Available values: "aws_s3", "cloudflare_r2", "gcp_storage",
-			// "azure_storage".
-			provider?:   string
-			expression?: string
-			id?:         string
-		}), [...close({
-			description?: string
-
-			// Parameters of Cloud Connector Rule
-			parameters?: close({
-				// Host to perform Cloud Connection to
-				host?: string
-			})
-			enabled?: bool
-
-			// Cloud Provider type
-			// Available values: "aws_s3", "cloudflare_r2", "gcp_storage",
-			// "azure_storage".
-			provider?:   string
-			expression?: string
-			id?:         string
-		})]])
 
 		// Identifier.
 		zone_id!: string
+		rules?: matchN(1, [close({
+			description?: string
+			enabled?:     bool
+			expression?:  string
+			id?:          string
+
+			// Cloud Provider type
+			// Available values: "aws_s3", "cloudflare_r2", "gcp_storage",
+			// "azure_storage".
+			provider?: string
+
+			// Parameters of Cloud Connector Rule
+			parameters?: close({
+				// Host to perform Cloud Connection to
+				host?: string
+			})
+		}), [...close({
+			description?: string
+			enabled?:     bool
+			expression?:  string
+			id?:          string
+
+			// Cloud Provider type
+			// Available values: "aws_s3", "cloudflare_r2", "gcp_storage",
+			// "azure_storage".
+			provider?: string
+
+			// Parameters of Cloud Connector Rule
+			parameters?: close({
+				// Host to perform Cloud Connection to
+				host?: string
+			})
+		})]])
 	})
 }

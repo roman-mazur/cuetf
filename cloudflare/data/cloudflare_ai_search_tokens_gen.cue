@@ -11,10 +11,7 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			account_id?:  string
-			account_tag?: string
 			cf_api_id?:   string
-			cf_api_key?:  string
 			created_at?:  string
 			created_by?:  string
 			enabled?:     bool
@@ -23,12 +20,8 @@ package data
 			modified_at?: string
 			modified_by?: string
 			name?:        string
-			synced_at?:   string
 		}), [...close({
-			account_id?:  string
-			account_tag?: string
 			cf_api_id?:   string
-			cf_api_key?:  string
 			created_at?:  string
 			created_by?:  string
 			enabled?:     bool
@@ -37,7 +30,6 @@ package data
 			modified_at?: string
 			modified_by?: string
 			name?:        string
-			synced_at?:   string
 		})]])
 	})
 }

@@ -6,28 +6,6 @@ package data
 	close({
 		// Cloudflare account ID
 		account_id!: string
-		filter?: close({
-			// UUID of the virtual network.
-			id?: string
-
-			// If `true`, only include the default virtual network. If
-			// `false`, exclude the default virtual network. If empty, all
-			// virtual networks will be included.
-			is_default?: bool
-
-			// If `true`, only include the default virtual network. If
-			// `false`, exclude the default virtual network. If empty, all
-			// virtual networks will be included.
-			is_default_network?: bool
-
-			// If `true`, only include deleted virtual networks. If `false`,
-			// exclude deleted virtual networks. If empty, all virtual
-			// networks will be included.
-			is_deleted?: bool
-
-			// A user-friendly name for the virtual network.
-			name?: string
-		})
 
 		// Optional remark describing the virtual network.
 		comment?: string
@@ -50,5 +28,27 @@ package data
 
 		// UUID of the virtual network.
 		virtual_network_id?: string
+		filter?: close({
+			// UUID of the virtual network.
+			id?: string
+
+			// If `true`, only include the default virtual network. If
+			// `false`, exclude the default virtual network. If empty, all
+			// virtual networks will be included.
+			is_default?: bool
+
+			// If `true`, only include the default virtual network. If
+			// `false`, exclude the default virtual network. If empty, all
+			// virtual networks will be included.
+			is_default_network?: bool
+
+			// If `true`, only include deleted virtual networks. If `false`,
+			// exclude deleted virtual networks. If empty, all virtual
+			// networks will be included.
+			is_deleted?: bool
+
+			// A user-friendly name for the virtual network.
+			name?: string
+		})
 	})
 }

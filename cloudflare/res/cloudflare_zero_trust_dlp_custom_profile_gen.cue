@@ -9,14 +9,28 @@ package res
 
 		// Related DLP policies will trigger when the match count exceeds
 		// the number set.
-		allowed_match_count?: number
+		allowed_match_count?:  number
+		confidence_threshold?: string
 
 		// When the profile was created.
-		created_at?:           string
-		confidence_threshold?: string
+		created_at?: string
 
 		// The description of the profile.
 		description?: string
+
+		// The id of the profile (uuid).
+		id?:          string
+		name!:        string
+		ocr_enabled?: bool
+
+		// Whether this profile can be accessed by anyone.
+		open_access?: bool
+
+		// Available values: "custom", "predefined", "integration".
+		type?: string
+
+		// When the profile was lasted updated.
+		updated_at?: string
 
 		// Entries from other profiles (e.g. pre-defined Cloudflare
 		// profiles, or your Microsoft Information Protection profiles).
@@ -35,19 +49,5 @@ package res
 			// "exact_data", "document_fingerprint".
 			entry_type!: string
 		})]])
-
-		// The id of the profile (uuid).
-		id?: string
-
-		// Whether this profile can be accessed by anyone.
-		open_access?: bool
-
-		// Available values: "custom", "predefined", "integration".
-		type?: string
-
-		// When the profile was lasted updated.
-		updated_at?:  string
-		name!:        string
-		ocr_enabled?: bool
 	})
 }

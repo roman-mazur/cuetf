@@ -16,15 +16,6 @@ package res
 		// Identifier
 		id?: string
 
-		// Used only for ECMP routes.
-		scope?: close({
-			// List of colo names for the ECMP scope.
-			colo_names?: [...string]
-
-			// List of colo regions for the ECMP scope.
-			colo_regions?: [...string]
-		})
-
 		// When the route was last modified.
 		modified_on?: string
 
@@ -39,5 +30,14 @@ package res
 
 		// Optional weight of the ECMP scope - if provided.
 		weight?: number
+
+		// Used only for ECMP routes.
+		scope?: close({
+			// List of colo names for the ECMP scope.
+			colo_names?: [...string]
+
+			// List of colo regions for the ECMP scope.
+			colo_regions?: [...string]
+		})
 	})
 }

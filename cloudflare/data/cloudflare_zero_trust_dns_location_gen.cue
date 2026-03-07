@@ -4,13 +4,15 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dns_location")
 	close({
+		account_id!: string
+
 		// Indicate whether this location is the default location.
 		client_default?: bool
+		created_at?:     string
 
 		// Indicate the identifier of the pair of IPv4 addresses assigned
 		// to this location.
 		dns_destination_ips_id?: string
-		account_id!:             string
 
 		// Specify the UUID of the IPv6 block brought to the gateway so
 		// that this location's IPv6 address is allocated from the Bring
@@ -18,9 +20,42 @@ package data
 		// Cloudflare IPv6 block.
 		dns_destination_ipv6_block_id?: string
 
+		// Specify the DNS over HTTPS domain that receives DNS requests.
+		// Gateway automatically generates this value.
+		doh_subdomain?: string
+
+		// Indicate whether the location must resolve EDNS queries.
+		ecs_support?: bool
+		id?:          string
+
+		// Defines the automatically generated IPv6 destination IP
+		// assigned to this location. Gateway counts all DNS requests
+		// sent to this IP as requests under this location.
+		ip?: string
+
+		// Show the primary destination IPv4 address from the pair
+		// identified dns_destination_ips_id. This field read-only.
+		ipv4_destination?: string
+
+		// Show the backup destination IPv4 address from the pair
+		// identified dns_destination_ips_id. This field read-only.
+		ipv4_destination_backup?: string
+		location_id!:             string
+
+		// Specify the location name.
+		name?:       string
+		updated_at?: string
+
 		// Configure the destination endpoints for this location.
 		endpoints?: close({
 			doh?: close({
+				// Indicate whether the DOH endpoint is enabled for this location.
+				enabled?: bool
+
+				// Specify whether the DOH endpoint requires user identity
+				// authentication.
+				require_token?: bool
+
 				// Specify the list of allowed source IP network ranges for this
 				// endpoint. When the list is empty, the endpoint allows all
 				// source IPs. The list takes effect only if the endpoint is
@@ -32,13 +67,6 @@ package data
 					// Specify the IP address or IP CIDR.
 					network?: string
 				})]])
-
-				// Indicate whether the DOH endpoint is enabled for this location.
-				enabled?: bool
-
-				// Specify whether the DOH endpoint requires user identity
-				// authentication.
-				require_token?: bool
 			})
 			dot?: close({
 				// Indicate whether the DOT endpoint is enabled for this location.
@@ -80,32 +108,6 @@ package data
 			})
 		})
 
-		// Specify the DNS over HTTPS domain that receives DNS requests.
-		// Gateway automatically generates this value.
-		doh_subdomain?: string
-		created_at?:    string
-
-		// Indicate whether the location must resolve EDNS queries.
-		ecs_support?: bool
-
-		// Defines the automatically generated IPv6 destination IP
-		// assigned to this location. Gateway counts all DNS requests
-		// sent to this IP as requests under this location.
-		ip?: string
-
-		// Show the primary destination IPv4 address from the pair
-		// identified dns_destination_ips_id. This field read-only.
-		ipv4_destination?: string
-		id?:               string
-
-		// Show the backup destination IPv4 address from the pair
-		// identified dns_destination_ips_id. This field read-only.
-		ipv4_destination_backup?: string
-		location_id!:             string
-
-		// Specify the location name.
-		name?: string
-
 		// Specify the list of network ranges from which requests at this
 		// location originate. The list takes effect only if it is
 		// non-empty and the IPv4 endpoint is enabled for this location.
@@ -118,6 +120,5 @@ package data
 			// maximum of /24.
 			network?: string
 		})]])
-		updated_at?: string
 	})
 }

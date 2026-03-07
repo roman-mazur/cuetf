@@ -10,14 +10,17 @@ package data
 		// Identifier of the resource group.
 		id?: string
 
+		// Name of the resource group.
+		name?: string
+
+		// Resource Group identifier tag.
+		resource_group_id!: string
+
 		// Attributes associated to the resource group.
 		meta?: close({
 			key?:   string
 			value?: string
 		})
-
-		// Name of the resource group.
-		name?: string
 
 		// The scope associated to the resource group
 		scope?: matchN(1, [close({
@@ -51,8 +54,5 @@ package data
 				key?: string
 			})]])
 		})]])
-
-		// Resource Group identifier tag.
-		resource_group_id!: string
 	})
 }

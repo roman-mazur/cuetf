@@ -16,10 +16,10 @@ package data
 		last_updated?:                    string
 		license_key?:                     string
 		notes?:                           string
+		timezone?:                        string
 		device?: close({
 			id?:            string
 			serial_number?: string
 		})
-		timezone?: string
 	})
 }

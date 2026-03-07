@@ -9,6 +9,9 @@ package data
 
 		// Name of the script, used in URLs and route configuration.
 		id?: string
+
+		// Name of the script, used in URLs and route configuration.
+		script_name!: string
 		schedules?: matchN(1, [close({
 			created_on?:  string
 			cron?:        string
@@ -18,8 +21,5 @@ package data
 			cron?:        string
 			modified_on?: string
 		})]])
-
-		// Name of the script, used in URLs and route configuration.
-		script_name!: string
 	})
 }

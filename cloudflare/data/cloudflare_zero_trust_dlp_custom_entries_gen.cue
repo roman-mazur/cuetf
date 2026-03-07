@@ -11,6 +11,28 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
+			// Only applies to custom word lists.
+			// Determines if the words should be matched in a case-sensitive
+			// manner
+			// Cannot be set to false if secret is true
+			case_sensitive?: bool
+			created_at?:     string
+			description?:    string
+			enabled?:        bool
+			id?:             string
+			name?:           string
+			profile_id?:     string
+			secret?:         bool
+
+			// Available values: "custom", "predefined", "integration",
+			// "exact_data", "document_fingerprint", "word_list".
+			type?:       string
+			updated_at?: string
+
+			// Available values: "empty", "uploading", "pending",
+			// "processing", "failed", "complete".
+			upload_status?: string
+			word_list?:     string
 			confidence?: close({
 				// Indicates whether this entry has AI remote service validation.
 				ai_context_available?: bool
@@ -19,30 +41,9 @@ package data
 				// not an AI remote service.
 				available?: bool
 			})
-
-			// Only applies to custom word lists.
-			// Determines if the words should be matched in a case-sensitive
-			// manner
-			// Cannot be set to false if secret is true
-			case_sensitive?: bool
-			created_at?:     string
 			pattern?: close({
 				regex?: string
 			})
-			enabled?: bool
-			id?:      string
-
-			// Available values: "custom", "predefined", "integration",
-			// "exact_data", "document_fingerprint", "word_list".
-			type?:       string
-			name?:       string
-			profile_id?: string
-
-			// Available values: "empty", "uploading", "pending",
-			// "processing", "failed", "complete".
-			upload_status?: string
-			secret?:        bool
-			updated_at?:    string
 			variant?: close({
 				description?: string
 
@@ -52,8 +53,29 @@ package data
 				// Available values: "PromptTopic".
 				type?: string
 			})
-			word_list?: string
 		}), [...close({
+			// Only applies to custom word lists.
+			// Determines if the words should be matched in a case-sensitive
+			// manner
+			// Cannot be set to false if secret is true
+			case_sensitive?: bool
+			created_at?:     string
+			description?:    string
+			enabled?:        bool
+			id?:             string
+			name?:           string
+			profile_id?:     string
+			secret?:         bool
+
+			// Available values: "custom", "predefined", "integration",
+			// "exact_data", "document_fingerprint", "word_list".
+			type?:       string
+			updated_at?: string
+
+			// Available values: "empty", "uploading", "pending",
+			// "processing", "failed", "complete".
+			upload_status?: string
+			word_list?:     string
 			confidence?: close({
 				// Indicates whether this entry has AI remote service validation.
 				ai_context_available?: bool
@@ -62,30 +84,9 @@ package data
 				// not an AI remote service.
 				available?: bool
 			})
-
-			// Only applies to custom word lists.
-			// Determines if the words should be matched in a case-sensitive
-			// manner
-			// Cannot be set to false if secret is true
-			case_sensitive?: bool
-			created_at?:     string
 			pattern?: close({
 				regex?: string
 			})
-			enabled?: bool
-			id?:      string
-
-			// Available values: "custom", "predefined", "integration",
-			// "exact_data", "document_fingerprint", "word_list".
-			type?:       string
-			name?:       string
-			profile_id?: string
-
-			// Available values: "empty", "uploading", "pending",
-			// "processing", "failed", "complete".
-			upload_status?: string
-			secret?:        bool
-			updated_at?:    string
 			variant?: close({
 				description?: string
 
@@ -95,7 +96,6 @@ package data
 				// Available values: "PromptTopic".
 				type?: string
 			})
-			word_list?: string
 		})]])
 	})
 }

@@ -12,6 +12,12 @@ package data
 
 		// Role identifier tag.
 		id?: string
+
+		// Role name.
+		name?: string
+
+		// Role identifier tag.
+		role_id!: string
 		permissions?: close({
 			analytics?: close({
 				read?:  bool
@@ -62,11 +68,5 @@ package data
 				write?: bool
 			})
 		})
-
-		// Role name.
-		name?: string
-
-		// Role identifier tag.
-		role_id!: string
 	})
 }

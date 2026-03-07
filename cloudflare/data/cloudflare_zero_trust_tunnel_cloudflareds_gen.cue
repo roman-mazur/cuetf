@@ -5,23 +5,37 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_tunnel_cloudflareds")
 	close({
 		// Cloudflare account ID
-		account_id!: string
+		account_id!:     string
+		exclude_prefix?: string
 
 		// If provided, include only resources that were created (and not
 		// deleted) before this time. URL encoded.
 		existed_at?:     string
-		exclude_prefix?: string
+		include_prefix?: string
 
 		// If `true`, only include deleted tunnels. If `false`, exclude
 		// deleted tunnels. If empty, all tunnels will be included.
 		is_deleted?: bool
 
 		// Max items to fetch, default: 1000
-		max_items?:      number
-		include_prefix?: string
+		max_items?: number
 
 		// A user-friendly name for a tunnel.
 		name?: string
+
+		// The status of the tunnel. Valid values are `inactive` (tunnel
+		// has never been run), `degraded` (tunnel is active and able to
+		// serve traffic but in an unhealthy state), `healthy` (tunnel is
+		// active and able to serve traffic), or `down` (tunnel can not
+		// serve traffic as it has no connections to the Cloudflare
+		// Edge).
+		// Available values: "inactive", "degraded", "healthy", "down".
+		status?: string
+
+		// UUID of the tunnel.
+		uuid?:            string
+		was_active_at?:   string
+		was_inactive_at?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -123,19 +137,5 @@ package data
 			// "magic", "ip_sec", "gre", "cni".
 			tun_type?: string
 		})]])
-
-		// The status of the tunnel. Valid values are `inactive` (tunnel
-		// has never been run), `degraded` (tunnel is active and able to
-		// serve traffic but in an unhealthy state), `healthy` (tunnel is
-		// active and able to serve traffic), or `down` (tunnel can not
-		// serve traffic as it has no connections to the Cloudflare
-		// Edge).
-		// Available values: "inactive", "degraded", "healthy", "down".
-		status?: string
-
-		// UUID of the tunnel.
-		uuid?:            string
-		was_active_at?:   string
-		was_inactive_at?: string
 	})
 }

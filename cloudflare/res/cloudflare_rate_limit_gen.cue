@@ -7,6 +7,19 @@ package res
 		// The action to perform when the threshold of matched traffic
 		// within the configured period is exceeded.
 		action!: close({
+			// The action to perform.
+			// Available values: "simulate", "ban", "challenge",
+			// "js_challenge", "managed_challenge".
+			mode?: string
+
+			// The time in seconds during which Cloudflare will perform the
+			// mitigation action. Must be an integer value greater than or
+			// equal to the period.
+			// Notes: If "mode" is "challenge", "managed_challenge", or
+			// "js_challenge", Cloudflare will use the zone's Challenge
+			// Passage time and you should not provide this value.
+			timeout?: number
+
 			// A custom content type and reponse to return when the threshold
 			// is exceeded. The custom response configured in this object
 			// will override the custom error for the zone. This object is
@@ -25,19 +38,6 @@ package res
 				// `text/plain`, `text/xml`, or `application/json`.
 				content_type?: string
 			})
-
-			// The action to perform.
-			// Available values: "simulate", "ban", "challenge",
-			// "js_challenge", "managed_challenge".
-			mode?: string
-
-			// The time in seconds during which Cloudflare will perform the
-			// mitigation action. Must be an integer value greater than or
-			// equal to the period.
-			// Notes: If "mode" is "challenge", "managed_challenge", or
-			// "js_challenge", Cloudflare will use the zone's Challenge
-			// Passage time and you should not provide this value.
-			timeout?: number
 		})
 
 		// Criteria specifying when the current rate limit should be

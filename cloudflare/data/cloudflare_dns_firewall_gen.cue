@@ -12,16 +12,6 @@ package data
 
 		// Identifier.
 		dns_firewall_id!: string
-
-		// Attack mitigation settings
-		attack_mitigation?: close({
-			// When enabled, automatically mitigate random-prefix attacks to
-			// protect upstream DNS servers
-			enabled?: bool
-
-			// Only mitigate attacks when upstream servers seem unhealthy
-			only_when_upstream_unhealthy?: bool
-		})
 		dns_firewall_ips?: [...string]
 
 		// Whether to forward client IP (resolver) subnet if no EDNS
@@ -91,5 +81,15 @@ package data
 		// nameservers (not counting the initial attempt)
 		retries?: number
 		upstream_ips?: [...string]
+
+		// Attack mitigation settings
+		attack_mitigation?: close({
+			// When enabled, automatically mitigate random-prefix attacks to
+			// protect upstream DNS servers
+			enabled?: bool
+
+			// Only mitigate attacks when upstream servers seem unhealthy
+			only_when_upstream_unhealthy?: bool
+		})
 	})
 }

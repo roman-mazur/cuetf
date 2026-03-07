@@ -13,6 +13,37 @@ package res
 		// Sets the creator ID asssociated with this live input.
 		default_creator?: string
 
+		// Indicates the number of days after which the live inputs
+		// recordings will be deleted. When a stream completes and the
+		// recording is ready, the value is used to calculate a scheduled
+		// deletion date for that recording. Omit the field to indicate
+		// no change, or include with a `null` value to remove an
+		// existing scheduled deletion.
+		delete_recording_after_days?: number
+
+		// Indicates whether the live input is enabled and can accept
+		// streams.
+		enabled?: bool
+
+		// A unique identifier for a live input.
+		live_input_identifier?: string
+
+		// A user modifiable key-value store used to reference other
+		// systems of record for managing live inputs.
+		meta?: string
+
+		// The date and time the live input was last modified.
+		modified?: string
+
+		// The connection status of a live input.
+		// Available values: "connected", "reconnected", "reconnecting",
+		// "client_disconnect", "ttl_exceeded", "failed_to_connect",
+		// "failed_to_reconnect", "new_configuration_accepted".
+		status?: string
+
+		// A unique identifier for a live input.
+		uid?: string
+
 		// Records the input to a Cloudflare Stream video. Behavior
 		// depends on the mode. In most cases, the video will initially
 		// be viewable as a live video and transition to on-demand after
@@ -48,14 +79,6 @@ package res
 			timeout_seconds?: number
 		})
 
-		// Indicates the number of days after which the live inputs
-		// recordings will be deleted. When a stream completes and the
-		// recording is ready, the value is used to calculate a scheduled
-		// deletion date for that recording. Omit the field to indicate
-		// no change, or include with a `null` value to remove an
-		// existing scheduled deletion.
-		delete_recording_after_days?: number
-
 		// Details for streaming to an live input using RTMPS.
 		rtmps?: close({
 			// The secret key to use when streaming via RTMPS to a live input.
@@ -65,16 +88,6 @@ package res
 			// live video to.
 			url?: string
 		})
-
-		// A unique identifier for a live input.
-		live_input_identifier?: string
-
-		// A user modifiable key-value store used to reference other
-		// systems of record for managing live inputs.
-		meta?: string
-
-		// The date and time the live input was last modified.
-		modified?: string
 
 		// Details for playback from an live input using RTMPS.
 		rtmps_playback?: close({
@@ -122,14 +135,5 @@ package res
 			// The URL used to play live video over WebRTC.
 			url?: string
 		})
-
-		// The connection status of a live input.
-		// Available values: "connected", "reconnected", "reconnecting",
-		// "client_disconnect", "ttl_exceeded", "failed_to_connect",
-		// "failed_to_reconnect", "new_configuration_accepted".
-		status?: string
-
-		// A unique identifier for a live input.
-		uid?: string
 	})
 }

@@ -4,11 +4,6 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_magic_transit_site")
 	close({
-		filter?: close({
-			// Identifier
-			connectorid?: string
-		})
-
 		// Identifier
 		account_id!: string
 
@@ -23,15 +18,6 @@ package data
 		// Identifier
 		id?: string
 
-		// Location of site in latitude and longitude.
-		location?: close({
-			// Latitude
-			lat?: string
-
-			// Longitude
-			lon?: string
-		})
-
 		// The name of the site.
 		name?: string
 
@@ -41,5 +27,18 @@ package data
 
 		// Identifier
 		site_id?: string
+
+		// Location of site in latitude and longitude.
+		location?: close({
+			// Latitude
+			lat?: string
+
+			// Longitude
+			lon?: string
+		})
+		filter?: close({
+			// Identifier
+			connectorid?: string
+		})
 	})
 }

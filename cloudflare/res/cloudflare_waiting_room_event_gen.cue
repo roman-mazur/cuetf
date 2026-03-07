@@ -4,11 +4,12 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_waiting_room_event")
 	close({
+		created_on?: string
+
 		// If set, the event will override the waiting room's
 		// `custom_page_html` property while it is active. If null, the
 		// event will inherit it.
 		custom_page_html?: string
-		created_on?:       string
 
 		// A note that you can use to add more details about the event.
 		description?: string
@@ -26,18 +27,18 @@ package res
 		// configuration. The start time must be at least one minute
 		// before `event_end_time`.
 		event_start_time!: string
+		id?:               string
+		modified_on?:      string
 
 		// A unique name to identify the event. Only alphanumeric
 		// characters, hyphens and underscores are allowed.
 		name!: string
-		id?:   string
 
 		// If set, the event will override the waiting room's
 		// `new_users_per_minute` property while it is active. If null,
 		// the event will inherit it. This can only be set if the event's
 		// `total_active_users` property is also set.
 		new_users_per_minute?: number
-		modified_on?:          string
 
 		// An ISO 8601 timestamp that marks when to begin queueing all
 		// users before the event starts. The prequeue must start at
@@ -86,10 +87,10 @@ package res
 		// event will inherit it.
 		// Available values: "off", "invisible",
 		// "visible_non_interactive", "visible_managed".
-		turnstile_mode?: string
+		turnstile_mode?:  string
+		waiting_room_id!: string
 
 		// Identifier.
-		zone_id!:         string
-		waiting_room_id!: string
+		zone_id!: string
 	})
 }

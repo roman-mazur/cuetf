@@ -16,12 +16,12 @@ package data
 		kind?: string
 
 		// Specify the name of the proxy endpoint.
-		name?: string
+		name?:              string
+		proxy_endpoint_id!: string
 
 		// Specify the subdomain to use as the destination in the proxy
 		// client.
-		subdomain?:         string
-		proxy_endpoint_id!: string
-		updated_at?:        string
+		subdomain?:  string
+		updated_at?: string
 	})
 }

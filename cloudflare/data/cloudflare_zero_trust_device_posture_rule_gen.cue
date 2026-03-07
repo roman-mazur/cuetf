@@ -4,9 +4,10 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_device_posture_rule")
 	close({
+		account_id!: string
+
 		// The description of the device posture rule.
 		description?: string
-		account_id!:  string
 
 		// Sets the expiration time for a posture check result. If empty,
 		// the result remains valid until it is overwritten by new data
@@ -15,6 +16,25 @@ package data
 
 		// API UUID.
 		id?: string
+
+		// The name of the device posture rule.
+		name?: string
+
+		// API UUID.
+		rule_id!: string
+
+		// Polling frequency for the WARP client posture check. Default:
+		// `5m` (poll every five minutes). Minimum: `1m`.
+		schedule?: string
+
+		// The type of device posture rule.
+		// Available values: "file", "application", "tanium", "gateway",
+		// "warp", "disk_encryption", "serial_number", "sentinelone",
+		// "carbonblack", "firewall", "os_version", "domain_joined",
+		// "client_certificate", "client_certificate_v2", "antivirus",
+		// "unique_client_id", "kolide", "tanium_s2s", "crowdstrike_s2s",
+		// "intune", "workspace_one", "sentinelone_s2s", "custom_s2s".
+		type?: string
 
 		// The value to be checked against.
 		input?: close({
@@ -185,24 +205,5 @@ package data
 			// "chromeos".
 			platform?: string
 		})]])
-
-		// The name of the device posture rule.
-		name?: string
-
-		// API UUID.
-		rule_id!: string
-
-		// Polling frequency for the WARP client posture check. Default:
-		// `5m` (poll every five minutes). Minimum: `1m`.
-		schedule?: string
-
-		// The type of device posture rule.
-		// Available values: "file", "application", "tanium", "gateway",
-		// "warp", "disk_encryption", "serial_number", "sentinelone",
-		// "carbonblack", "firewall", "os_version", "domain_joined",
-		// "client_certificate", "client_certificate_v2", "antivirus",
-		// "unique_client_id", "kolide", "tanium_s2s", "crowdstrike_s2s",
-		// "intune", "workspace_one", "sentinelone_s2s", "custom_s2s".
-		type?: string
 	})
 }

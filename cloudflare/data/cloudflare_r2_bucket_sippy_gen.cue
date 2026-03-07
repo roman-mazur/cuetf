@@ -10,6 +10,9 @@ package data
 		// Name of the bucket.
 		bucket_name!: string
 
+		// State of Sippy for this bucket.
+		enabled?: bool
+
 		// Details about the configured destination bucket.
 		destination?: close({
 			// ID of the Cloudflare API token used when writing objects to
@@ -24,9 +27,6 @@ package data
 			// Available values: "r2".
 			r2_bucket_sippy_provider?: string
 		})
-
-		// State of Sippy for this bucket.
-		enabled?: bool
 
 		// Details about the configured source bucket.
 		source?: close({

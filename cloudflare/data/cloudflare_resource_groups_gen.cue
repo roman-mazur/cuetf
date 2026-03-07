@@ -10,19 +10,25 @@ package data
 		// ID of the resource group to be fetched.
 		id?: string
 
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// Name of the resource group to be fetched.
+		name?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Identifier of the resource group.
 			id?: string
+
+			// Name of the resource group.
+			name?: string
 
 			// Attributes associated to the resource group.
 			meta?: close({
 				key?:   string
 				value?: string
 			})
-
-			// Name of the resource group.
-			name?: string
 
 			// The scope associated to the resource group
 			scope?: matchN(1, [close({
@@ -60,14 +66,14 @@ package data
 			// Identifier of the resource group.
 			id?: string
 
+			// Name of the resource group.
+			name?: string
+
 			// Attributes associated to the resource group.
 			meta?: close({
 				key?:   string
 				value?: string
 			})
-
-			// Name of the resource group.
-			name?: string
 
 			// The scope associated to the resource group
 			scope?: matchN(1, [close({
@@ -102,11 +108,5 @@ package data
 				})]])
 			})]])
 		})]])
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// Name of the resource group to be fetched.
-		name?: string
 	})
 }

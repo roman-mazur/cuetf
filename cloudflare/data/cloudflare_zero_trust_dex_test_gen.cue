@@ -4,6 +4,30 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dex_test")
 	close({
+		account_id!: string
+
+		// Additional details about the test.
+		description?: string
+
+		// The unique identifier for the test.
+		dex_test_id?: string
+
+		// Determines whether or not the test is active.
+		enabled?: bool
+
+		// The unique identifier for the test.
+		id?: string
+
+		// How often the test will run.
+		interval?: string
+
+		// The name of the DEX test. Must be unique.
+		name?:     string
+		targeted?: bool
+
+		// The unique identifier for the test.
+		test_id?: string
+
 		// The configuration object which contains the details for the
 		// WARP client to conduct the test.
 		data?: close({
@@ -18,30 +42,6 @@ package data
 			// Available values: "GET".
 			method?: string
 		})
-
-		// Additional details about the test.
-		description?: string
-		account_id!:  string
-
-		// The unique identifier for the test.
-		dex_test_id?: string
-		filter?: close({
-			// Filter by test type
-			// Available values: "http", "traceroute".
-			kind?: string
-
-			// Filter by test name
-			test_name?: string
-		})
-
-		// Determines whether or not the test is active.
-		enabled?: bool
-
-		// The unique identifier for the test.
-		id?: string
-
-		// How often the test will run.
-		interval?: string
 
 		// DEX rules targeted by this test
 		target_policies?: matchN(1, [close({
@@ -63,12 +63,13 @@ package data
 			// The name of the DEX rule
 			name?: string
 		})]])
+		filter?: close({
+			// Filter by test type
+			// Available values: "http", "traceroute".
+			kind?: string
 
-		// The name of the DEX test. Must be unique.
-		name?:     string
-		targeted?: bool
-
-		// The unique identifier for the test.
-		test_id?: string
+			// Filter by test name
+			test_name?: string
+		})
 	})
 }

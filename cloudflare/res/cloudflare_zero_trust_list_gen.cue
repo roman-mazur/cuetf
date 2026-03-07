@@ -4,20 +4,6 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_list")
 	close({
-		// Add items to the list.
-		items?: matchN(1, [close({
-			// Provide the list item description (optional).
-			description?: string
-
-			// Specify the item value.
-			value?: string
-		}), [...close({
-			// Provide the list item description (optional).
-			description?: string
-
-			// Specify the item value.
-			value?: string
-		})]])
 		account_id!: string
 		created_at?: string
 
@@ -38,5 +24,20 @@ package res
 		// "CATEGORY", "LOCATION", "DEVICE".
 		type!:       string
 		updated_at?: string
+
+		// Add items to the list.
+		items?: matchN(1, [close({
+			// Provide the list item description (optional).
+			description?: string
+
+			// Specify the item value.
+			value?: string
+		}), [...close({
+			// Provide the list item description (optional).
+			description?: string
+
+			// Specify the item value.
+			value?: string
+		})]])
 	})
 }

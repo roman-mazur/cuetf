@@ -53,15 +53,15 @@ package data
 
 		// Priority of the routing rule.
 		priority?: number
-		filter?: close({
-			// Filter by enabled routing rules.
-			enabled?: bool
-		})
 
 		// Routing rule identifier.
 		rule_identifier?: string
 
 		// Identifier.
 		zone_id!: string
+		filter?: close({
+			// Filter by enabled routing rules.
+			enabled?: bool
+		})
 	})
 }

@@ -17,34 +17,6 @@ package res
 
 		// Enables loading application content in an iFrame.
 		allow_iframe?: bool
-		cors_headers?: close({
-			// Allows all HTTP request headers.
-			allow_all_headers?: bool
-
-			// Allows all HTTP request methods.
-			allow_all_methods?: bool
-
-			// Allows all origins.
-			allow_all_origins?: bool
-
-			// When set to `true`, includes credentials (cookies,
-			// authorization headers, or TLS client certificates) with
-			// requests.
-			allow_credentials?: bool
-
-			// Allowed HTTP request headers.
-			allowed_headers?: [...string]
-
-			// Allowed HTTP request methods.
-			allowed_methods?: [...string]
-
-			// Allowed origins.
-			allowed_origins?: [...string]
-
-			// The maximum number of seconds the results of a preflight
-			// request can be cached.
-			max_age?: number
-		})
 
 		// The identity providers your users can select when connecting to
 		// this application. Defaults to all IdPs configured in your
@@ -67,6 +39,105 @@ package res
 
 		// The background color of the App Launcher page.
 		bg_color?: string
+
+		// The custom error message shown to a user when they are denied
+		// access to the application.
+		custom_deny_message?: string
+
+		// The custom URL a user is redirected to when they are denied
+		// access to the application when failing identity-based rules.
+		custom_deny_url?: string
+
+		// The custom URL a user is redirected to when they are denied
+		// access to the application when failing non-identity rules.
+		custom_non_identity_deny_url?: string
+
+		// The custom pages that will be displayed when applicable for
+		// this application
+		custom_pages?: [...string]
+
+		// The primary hostname and path secured by Access. This domain
+		// will be displayed if the app is visible in the App Launcher.
+		domain?: string
+
+		// Enables the binding cookie, which increases security against
+		// compromised authorization tokens and CSRF attacks.
+		enable_binding_cookie?: bool
+
+		// The background color of the App Launcher header.
+		header_bg_color?: string
+
+		// Enables the HttpOnly cookie attribute, which increases security
+		// against XSS attacks.
+		http_only_cookie_attribute?: bool
+
+		// UUID.
+		id?: string
+
+		// The image URL for the logo shown in the App Launcher dashboard.
+		logo_url?: string
+
+		// The name of the application.
+		name?: string
+
+		// Allows options preflight requests to bypass Access
+		// authentication and go directly to the origin. Cannot turn on
+		// if cors_headers is set.
+		options_preflight_bypass?: bool
+
+		// Enables cookie paths to scope an application's JWT to the
+		// application path. If disabled, the JWT will scope to the
+		// hostname by default
+		path_cookie_attribute?: bool
+
+		// Allows matching Access Service Tokens passed HTTP in a single
+		// header with this name.
+		// This works as an alternative to the (CF-Access-Client-Id,
+		// CF-Access-Client-Secret) pair of headers.
+		// The header value will be interpreted as a json object similar
+		// to:
+		// {
+		// "cf-access-client-id":
+		// "88bf3b6d86161464f6509f7219099e57.access.example.com",
+		// "cf-access-client-secret":
+		// "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+		// }
+		read_service_tokens_from_header?: string
+
+		// Sets the SameSite cookie setting, which provides increased
+		// security against CSRF attacks.
+		same_site_cookie_attribute?: string
+
+		// Returns a 401 status code when the request is blocked by a
+		// Service Auth policy.
+		service_auth_401_redirect?: bool
+
+		// The amount of time that tokens issued for this application will
+		// be valid. Must be in the format `300ms` or `2h45m`. Valid time
+		// units are: ns, us (or µs), ms, s, m, h. Note: unsupported for
+		// infrastructure type applications.
+		session_duration?: string
+
+		// Determines when to skip the App Launcher landing page.
+		skip_app_launcher_login_page?: bool
+
+		// Enables automatic authentication through cloudflared.
+		skip_interstitial?: bool
+
+		// The tags you want assigned to an application. Tags are used to
+		// filter applications in the App Launcher dashboard.
+		tags?: [...string]
+
+		// The application type.
+		// Available values: "self_hosted", "saas", "ssh", "vnc",
+		// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
+		// "infrastructure", "rdp", "mcp", "mcp_portal",
+		// "proxy_endpoint".
+		type?: string
+
+		// The Zone ID to use for this endpoint. Mutually exclusive with
+		// the Account ID.
+		zone_id?: string
 
 		// List of destinations secured by Access. This supersedes
 		// `self_hosted_domains` to allow for more flexibility in
@@ -140,10 +211,6 @@ package res
 			vnet_id?: string
 		})]])
 
-		// The custom error message shown to a user when they are denied
-		// access to the application.
-		custom_deny_message?: string
-
 		// The links in the App Launcher footer.
 		footer_links?: matchN(1, [close({
 			// The hypertext in the footer link.
@@ -158,14 +225,6 @@ package res
 			// the hyperlink in the footer link.
 			url!: string
 		})]])
-
-		// The custom URL a user is redirected to when they are denied
-		// access to the application when failing identity-based rules.
-		custom_deny_url?: string
-
-		// The custom URL a user is redirected to when they are denied
-		// access to the application when failing non-identity rules.
-		custom_non_identity_deny_url?: string
 
 		// The design of the App Launcher landing page shown to users when
 		// they log in.
@@ -186,18 +245,6 @@ package res
 			title?: string
 		})
 
-		// The custom pages that will be displayed when applicable for
-		// this application
-		custom_pages?: [...string]
-
-		// The primary hostname and path secured by Access. This domain
-		// will be displayed if the app is visible in the App Launcher.
-		domain?: string
-
-		// Enables the binding cookie, which increases security against
-		// compromised authorization tokens and CSRF attacks.
-		enable_binding_cookie?: bool
-
 		// The policies that Access applies to the application, in
 		// ascending order of precedence. Items can reference existing
 		// policies or create new policies exclusive to the application.
@@ -205,6 +252,18 @@ package res
 			// The rules that define how users may connect to the targets
 			// secured by your application.
 			connection_rules?: close({
+				// The RDP-specific rules that define clipboard behavior for RDP
+				// connections.
+				rdp?: close({
+					// Clipboard formats allowed when copying from local machine to
+					// remote RDP session.
+					allowed_clipboard_local_to_remote_formats?: [...string]
+
+					// Clipboard formats allowed when copying from remote RDP session
+					// to local machine.
+					allowed_clipboard_remote_to_local_formats?: [...string]
+				})
+
 				// The SSH-specific rules that define how users may connect to the
 				// targets secured by your application.
 				ssh?: close({
@@ -228,6 +287,9 @@ package res
 			exclude?: matchN(1, [close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
 				auth_context?: close({
 					// The ACID of an Authentication context.
 					ac_id!: string
@@ -271,9 +333,6 @@ package res
 					// The ID of a previously created email list.
 					id!: string
 				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
 				external_evaluation?: close({
 					// The API endpoint containing your business logic.
 					evaluate_url!: string
@@ -357,6 +416,9 @@ package res
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
 				auth_context?: close({
 					// The ACID of an Authentication context.
 					ac_id!: string
@@ -400,9 +462,6 @@ package res
 					// The ID of a previously created email list.
 					id!: string
 				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
 				external_evaluation?: close({
 					// The API endpoint containing your business logic.
 					evaluate_url!: string
@@ -493,6 +552,9 @@ package res
 			include?: matchN(1, [close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
 				auth_context?: close({
 					// The ACID of an Authentication context.
 					ac_id!: string
@@ -536,9 +598,6 @@ package res
 					// The ID of a previously created email list.
 					id!: string
 				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
 				external_evaluation?: close({
 					// The API endpoint containing your business logic.
 					evaluate_url!: string
@@ -622,6 +681,9 @@ package res
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
 				auth_context?: close({
 					// The ACID of an Authentication context.
 					ac_id!: string
@@ -665,9 +727,6 @@ package res
 					// The ID of a previously created email list.
 					id!: string
 				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
 				external_evaluation?: close({
 					// The API endpoint containing your business logic.
 					evaluate_url!: string
@@ -762,6 +821,9 @@ package res
 			require?: matchN(1, [close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
 				auth_context?: close({
 					// The ACID of an Authentication context.
 					ac_id!: string
@@ -805,9 +867,6 @@ package res
 					// The ID of a previously created email list.
 					id!: string
 				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
 				external_evaluation?: close({
 					// The API endpoint containing your business logic.
 					evaluate_url!: string
@@ -891,6 +950,9 @@ package res
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
 				auth_context?: close({
 					// The ACID of an Authentication context.
 					ac_id!: string
@@ -934,9 +996,6 @@ package res
 					// The ID of a previously created email list.
 					id!: string
 				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
 				external_evaluation?: close({
 					// The API endpoint containing your business logic.
 					evaluate_url!: string
@@ -1022,6 +1081,18 @@ package res
 			// The rules that define how users may connect to the targets
 			// secured by your application.
 			connection_rules?: close({
+				// The RDP-specific rules that define clipboard behavior for RDP
+				// connections.
+				rdp?: close({
+					// Clipboard formats allowed when copying from local machine to
+					// remote RDP session.
+					allowed_clipboard_local_to_remote_formats?: [...string]
+
+					// Clipboard formats allowed when copying from remote RDP session
+					// to local machine.
+					allowed_clipboard_remote_to_local_formats?: [...string]
+				})
+
 				// The SSH-specific rules that define how users may connect to the
 				// targets secured by your application.
 				ssh?: close({
@@ -1045,6 +1116,9 @@ package res
 			exclude?: matchN(1, [close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
 				auth_context?: close({
 					// The ACID of an Authentication context.
 					ac_id!: string
@@ -1088,9 +1162,6 @@ package res
 					// The ID of a previously created email list.
 					id!: string
 				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
 				external_evaluation?: close({
 					// The API endpoint containing your business logic.
 					evaluate_url!: string
@@ -1174,6 +1245,9 @@ package res
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
 				auth_context?: close({
 					// The ACID of an Authentication context.
 					ac_id!: string
@@ -1217,9 +1291,6 @@ package res
 					// The ID of a previously created email list.
 					id!: string
 				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
 				external_evaluation?: close({
 					// The API endpoint containing your business logic.
 					evaluate_url!: string
@@ -1310,6 +1381,9 @@ package res
 			include?: matchN(1, [close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
 				auth_context?: close({
 					// The ACID of an Authentication context.
 					ac_id!: string
@@ -1353,9 +1427,6 @@ package res
 					// The ID of a previously created email list.
 					id!: string
 				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
 				external_evaluation?: close({
 					// The API endpoint containing your business logic.
 					evaluate_url!: string
@@ -1439,6 +1510,9 @@ package res
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
 				auth_context?: close({
 					// The ACID of an Authentication context.
 					ac_id!: string
@@ -1482,9 +1556,6 @@ package res
 					// The ID of a previously created email list.
 					id!: string
 				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
 				external_evaluation?: close({
 					// The API endpoint containing your business logic.
 					evaluate_url!: string
@@ -1579,6 +1650,9 @@ package res
 			require?: matchN(1, [close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
 				auth_context?: close({
 					// The ACID of an Authentication context.
 					ac_id!: string
@@ -1622,9 +1696,6 @@ package res
 					// The ID of a previously created email list.
 					id!: string
 				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
 				external_evaluation?: close({
 					// The API endpoint containing your business logic.
 					evaluate_url!: string
@@ -1708,6 +1779,9 @@ package res
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
+
+				// An empty object which matches on all users.
+				everyone?: close({})
 				auth_context?: close({
 					// The ACID of an Authentication context.
 					ac_id!: string
@@ -1751,9 +1825,6 @@ package res
 					// The ID of a previously created email list.
 					id!: string
 				})
-
-				// An empty object which matches on all users.
-				everyone?: close({})
 				external_evaluation?: close({
 					// The API endpoint containing your business logic.
 					evaluate_url!: string
@@ -1836,50 +1907,6 @@ package res
 				})
 			})]])
 		})]])
-
-		// The background color of the App Launcher header.
-		header_bg_color?: string
-
-		// Enables the HttpOnly cookie attribute, which increases security
-		// against XSS attacks.
-		http_only_cookie_attribute?: bool
-
-		// UUID.
-		id?: string
-
-		// The image URL for the logo shown in the App Launcher dashboard.
-		logo_url?: string
-
-		// The name of the application.
-		name?: string
-
-		// Allows options preflight requests to bypass Access
-		// authentication and go directly to the origin. Cannot turn on
-		// if cors_headers is set.
-		options_preflight_bypass?: bool
-
-		// Enables cookie paths to scope an application's JWT to the
-		// application path. If disabled, the JWT will scope to the
-		// hostname by default
-		path_cookie_attribute?: bool
-
-		// Allows matching Access Service Tokens passed HTTP in a single
-		// header with this name.
-		// This works as an alternative to the (CF-Access-Client-Id,
-		// CF-Access-Client-Secret) pair of headers.
-		// The header value will be interpreted as a json object similar
-		// to:
-		// {
-		// "cf-access-client-id":
-		// "88bf3b6d86161464f6509f7219099e57.access.example.com",
-		// "cf-access-client-secret":
-		// "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
-		// }
-		read_service_tokens_from_header?: string
-
-		// Sets the SameSite cookie setting, which provides increased
-		// security against CSRF attacks.
-		same_site_cookie_attribute?: string
 
 		// Configuration for provisioning to this application via SCIM.
 		// This is currently in closed beta.
@@ -1949,6 +1976,19 @@ package res
 				// application.
 				filter?: string
 
+				// Which SCIM resource type this mapping applies to.
+				schema!: string
+
+				// The level of adherence to outbound resource schemas when
+				// provisioning to this mapping. ‘Strict’ removes unknown values,
+				// while ‘passthrough’ passes unknown values to the target.
+				// Available values: "strict", "passthrough".
+				strictness?: string
+
+				// A [JSONata](https://jsonata.org/) expression that transforms
+				// the resource before provisioning it in the application.
+				transform_jsonata?: string
+
 				// Whether or not this mapping applies to creates, updates, or
 				// deletes.
 				operations?: close({
@@ -1963,19 +2003,6 @@ package res
 					// operations.
 					update?: bool
 				})
-
-				// Which SCIM resource type this mapping applies to.
-				schema!: string
-
-				// The level of adherence to outbound resource schemas when
-				// provisioning to this mapping. ‘Strict’ removes unknown values,
-				// while ‘passthrough’ passes unknown values to the target.
-				// Available values: "strict", "passthrough".
-				strictness?: string
-
-				// A [JSONata](https://jsonata.org/) expression that transforms
-				// the resource before provisioning it in the application.
-				transform_jsonata?: string
 			}), [...close({
 				// Whether or not this mapping is enabled.
 				enabled?: bool
@@ -1986,6 +2013,19 @@ package res
 				// application.
 				filter?: string
 
+				// Which SCIM resource type this mapping applies to.
+				schema!: string
+
+				// The level of adherence to outbound resource schemas when
+				// provisioning to this mapping. ‘Strict’ removes unknown values,
+				// while ‘passthrough’ passes unknown values to the target.
+				// Available values: "strict", "passthrough".
+				strictness?: string
+
+				// A [JSONata](https://jsonata.org/) expression that transforms
+				// the resource before provisioning it in the application.
+				transform_jsonata?: string
+
 				// Whether or not this mapping applies to creates, updates, or
 				// deletes.
 				operations?: close({
@@ -2000,28 +2040,39 @@ package res
 					// operations.
 					update?: bool
 				})
-
-				// Which SCIM resource type this mapping applies to.
-				schema!: string
-
-				// The level of adherence to outbound resource schemas when
-				// provisioning to this mapping. ‘Strict’ removes unknown values,
-				// while ‘passthrough’ passes unknown values to the target.
-				// Available values: "strict", "passthrough".
-				strictness?: string
-
-				// A [JSONata](https://jsonata.org/) expression that transforms
-				// the resource before provisioning it in the application.
-				transform_jsonata?: string
 			})]])
 
 			// The base URI for the application's SCIM-compatible API.
 			remote_uri!: string
 		})
+		cors_headers?: close({
+			// Allows all HTTP request headers.
+			allow_all_headers?: bool
 
-		// Returns a 401 status code when the request is blocked by a
-		// Service Auth policy.
-		service_auth_401_redirect?: bool
+			// Allows all HTTP request methods.
+			allow_all_methods?: bool
+
+			// Allows all origins.
+			allow_all_origins?: bool
+
+			// When set to `true`, includes credentials (cookies,
+			// authorization headers, or TLS client certificates) with
+			// requests.
+			allow_credentials?: bool
+
+			// Allowed HTTP request headers.
+			allowed_headers?: [...string]
+
+			// Allowed HTTP request methods.
+			allowed_methods?: [...string]
+
+			// Allowed origins.
+			allowed_origins?: [...string]
+
+			// The maximum number of seconds the results of a preflight
+			// request can be cached.
+			max_age?: number
+		})
 		saas_app?: close({
 			// The lifetime of the OIDC Access Token after creation. Valid
 			// units are m,h. Must be greater than or equal to 1m and less
@@ -2046,77 +2097,6 @@ package res
 
 			// The application client secret, only returned on POST request.
 			client_secret?: string
-			custom_attributes?: matchN(1, [close({
-				// The SAML FriendlyName of the attribute.
-				friendly_name?: string
-
-				// The name of the attribute.
-				name?: string
-				source?: close({
-					// The name of the IdP attribute.
-					name?: string
-
-					// A mapping from IdP ID to attribute name.
-					name_by_idp?: matchN(1, [close({
-						// The UID of the IdP.
-						idp_id?: string
-
-						// The name of the IdP provided attribute.
-						source_name?: string
-					}), [...close({
-						// The UID of the IdP.
-						idp_id?: string
-
-						// The name of the IdP provided attribute.
-						source_name?: string
-					})]])
-				})
-
-				// A globally unique name for an identity or service provider.
-				// Available values:
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
-				name_format?: string
-
-				// If the attribute is required when building a SAML assertion.
-				required?: bool
-			}), [...close({
-				// The SAML FriendlyName of the attribute.
-				friendly_name?: string
-
-				// The name of the attribute.
-				name?: string
-				source?: close({
-					// The name of the IdP attribute.
-					name?: string
-
-					// A mapping from IdP ID to attribute name.
-					name_by_idp?: matchN(1, [close({
-						// The UID of the IdP.
-						idp_id?: string
-
-						// The name of the IdP provided attribute.
-						source_name?: string
-					}), [...close({
-						// The UID of the IdP.
-						idp_id?: string
-
-						// The name of the IdP provided attribute.
-						source_name?: string
-					})]])
-				})
-
-				// A globally unique name for an identity or service provider.
-				// Available values:
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
-				// "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
-				name_format?: string
-
-				// If the attribute is required when building a SAML assertion.
-				required?: bool
-			})]])
 
 			// The service provider's endpoint that is responsible for
 			// receiving and parsing a SAML assertion.
@@ -2132,41 +2112,6 @@ package res
 			// A regex to filter Cloudflare groups returned in ID token and
 			// userinfo endpoint
 			group_filter_regex?: string
-			custom_claims?: matchN(1, [close({
-				// The name of the claim.
-				name?: string
-				source?: close({
-					// The name of the IdP claim.
-					name?: string
-
-					// A mapping from IdP ID to claim name.
-					name_by_idp?: [string]: string
-				})
-
-				// If the claim is required when building an OIDC token.
-				required?: bool
-
-				// The scope of the claim.
-				// Available values: "groups", "profile", "email", "openid".
-				scope?: string
-			}), [...close({
-				// The name of the claim.
-				name?: string
-				source?: close({
-					// The name of the IdP claim.
-					name?: string
-
-					// A mapping from IdP ID to claim name.
-					name_by_idp?: [string]: string
-				})
-
-				// If the claim is required when building an OIDC token.
-				required?: bool
-
-				// The scope of the claim.
-				// Available values: "groups", "profile", "email", "openid".
-				scope?: string
-			})]])
 
 			// The unique identifier for your SaaS application.
 			idp_entity_id?: string
@@ -2210,6 +2155,112 @@ package res
 			// The endpoint where your SaaS application will send login
 			// requests.
 			sso_endpoint?: string
+			custom_attributes?: matchN(1, [close({
+				// The SAML FriendlyName of the attribute.
+				friendly_name?: string
+
+				// The name of the attribute.
+				name?: string
+
+				// A globally unique name for an identity or service provider.
+				// Available values:
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
+				name_format?: string
+
+				// If the attribute is required when building a SAML assertion.
+				required?: bool
+				source?: close({
+					// The name of the IdP attribute.
+					name?: string
+
+					// A mapping from IdP ID to attribute name.
+					name_by_idp?: matchN(1, [close({
+						// The UID of the IdP.
+						idp_id?: string
+
+						// The name of the IdP provided attribute.
+						source_name?: string
+					}), [...close({
+						// The UID of the IdP.
+						idp_id?: string
+
+						// The name of the IdP provided attribute.
+						source_name?: string
+					})]])
+				})
+			}), [...close({
+				// The SAML FriendlyName of the attribute.
+				friendly_name?: string
+
+				// The name of the attribute.
+				name?: string
+
+				// A globally unique name for an identity or service provider.
+				// Available values:
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+				// "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
+				name_format?: string
+
+				// If the attribute is required when building a SAML assertion.
+				required?: bool
+				source?: close({
+					// The name of the IdP attribute.
+					name?: string
+
+					// A mapping from IdP ID to attribute name.
+					name_by_idp?: matchN(1, [close({
+						// The UID of the IdP.
+						idp_id?: string
+
+						// The name of the IdP provided attribute.
+						source_name?: string
+					}), [...close({
+						// The UID of the IdP.
+						idp_id?: string
+
+						// The name of the IdP provided attribute.
+						source_name?: string
+					})]])
+				})
+			})]])
+			custom_claims?: matchN(1, [close({
+				// The name of the claim.
+				name?: string
+
+				// If the claim is required when building an OIDC token.
+				required?: bool
+
+				// The scope of the claim.
+				// Available values: "groups", "profile", "email", "openid".
+				scope?: string
+				source?: close({
+					// The name of the IdP claim.
+					name?: string
+
+					// A mapping from IdP ID to claim name.
+					name_by_idp?: [string]: string
+				})
+			}), [...close({
+				// The name of the claim.
+				name?: string
+
+				// If the claim is required when building an OIDC token.
+				required?: bool
+
+				// The scope of the claim.
+				// Available values: "groups", "profile", "email", "openid".
+				scope?: string
+				source?: close({
+					// The name of the IdP claim.
+					name?: string
+
+					// A mapping from IdP ID to claim name.
+					name_by_idp?: [string]: string
+				})
+			})]])
 			hybrid_and_implicit_options?: close({
 				// If an Access Token should be returned from the OIDC
 				// Authorization endpoint
@@ -2225,33 +2276,6 @@ package res
 				lifetime?: string
 			})
 		})
-
-		// The amount of time that tokens issued for this application will
-		// be valid. Must be in the format `300ms` or `2h45m`. Valid time
-		// units are: ns, us (or µs), ms, s, m, h. Note: unsupported for
-		// infrastructure type applications.
-		session_duration?: string
-
-		// Determines when to skip the App Launcher landing page.
-		skip_app_launcher_login_page?: bool
-
-		// Enables automatic authentication through cloudflared.
-		skip_interstitial?: bool
-
-		// The tags you want assigned to an application. Tags are used to
-		// filter applications in the App Launcher dashboard.
-		tags?: [...string]
-
-		// The application type.
-		// Available values: "self_hosted", "saas", "ssh", "vnc",
-		// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
-		// "infrastructure", "rdp", "mcp", "mcp_portal",
-		// "proxy_endpoint".
-		type?: string
-
-		// The Zone ID to use for this endpoint. Mutually exclusive with
-		// the Account ID.
-		zone_id?: string
 		target_criteria?: matchN(1, [close({
 			// The port that the targets use for the chosen communication
 			// protocol. A port cannot be assigned to multiple protocols.

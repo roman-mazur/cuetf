@@ -5,29 +5,29 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_page_shield_cookies")
 	close({
 		// Identifier
-		cookie_id!:         string
-		domain_attribute?:  string
-		expires_attribute?: string
+		cookie_id!:           string
+		domain_attribute?:    string
+		expires_attribute?:   string
+		first_seen_at?:       string
+		host?:                string
+		http_only_attribute?: bool
 
 		// Identifier
-		id?:            string
-		first_seen_at?: string
-		host?:          string
+		id?:                string
+		last_seen_at?:      string
+		max_age_attribute?: number
+		name?:              string
+		page_urls?: [...string]
+		path_attribute?: string
 
 		// Available values: "lax", "strict", "none".
 		same_site_attribute?: string
-		http_only_attribute?: bool
-		last_seen_at?:        string
-		max_age_attribute?:   number
-		name?:                string
-		page_urls?: [...string]
-		path_attribute?: string
+		secure_attribute?:    bool
 
 		// Available values: "first_party", "unknown".
 		type?: string
 
 		// Identifier
-		zone_id!:          string
-		secure_attribute?: bool
+		zone_id!: string
 	})
 }

@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_gateway_policy")
 	close({
+		account_id!: string
+
 		// Specify the action to perform when the associated traffic,
 		// identity, and device posture expressions either absent or
 		// evaluate to `true`.
@@ -11,14 +13,14 @@ package data
 		// "noscan", "safesearch", "ytrestricted", "isolate",
 		// "noisolate", "override", "l4_override", "egress", "resolve",
 		// "quarantine", "redirect".
-		action?: string
+		action?:     string
+		created_at?: string
 
 		// Indicate the date of deletion, if any.
 		deleted_at?: string
 
 		// Specify the rule description.
 		description?: string
-		account_id!:  string
 
 		// Specify the wirefilter expression used for device posture
 		// check. The API automatically formats and sanitizes expressions
@@ -27,30 +29,7 @@ package data
 		device_posture?: string
 
 		// Specify whether the rule is enabled.
-		enabled?:    bool
-		created_at?: string
-
-		// Defines the expiration time stamp and default duration of a DNS
-		// policy. Takes precedence over the policy's `schedule`
-		// configuration, if any. This does not apply to HTTP or network
-		// policies. Settable only for `dns` rules.
-		expiration?: close({
-			// Defines the default duration a policy active in minutes. Must
-			// set in order to use the `reset_expiration` endpoint on this
-			// rule.
-			duration?: number
-
-			// Indicates whether the policy is expired.
-			expired?: bool
-
-			// Show the timestamp when the policy expires and stops applying.
-			// The value must follow RFC 3339 and include a UTC offset. The
-			// system accepts non-zero offsets but converts them to the
-			// equivalent UTC+00:00 value and returns timestamps with a
-			// trailing Z. Expiration policies ignore client timezones and
-			// expire globally at the specified expires_at time.
-			expires_at?: string
-		})
+		enabled?: bool
 
 		// Specify the protocol or layer to evaluate the traffic,
 		// identity, and device posture expressions. Can only contain a
@@ -76,17 +55,60 @@ package data
 		// to manage precedence via Terraform.
 		precedence?: number
 
+		// Indicate that this rule is shared via the Orgs API and read
+		// only.
+		read_only?: bool
+
+		// Identify the API resource with a UUID.
+		rule_id!: string
+
+		// Indicate that this rule is sharable via the Orgs API.
+		sharable?: bool
+
+		// Provide the account tag of the account that created the rule.
+		source_account?: string
+
+		// Specify the wirefilter expression used for traffic matching.
+		// The API automatically formats and sanitizes expressions before
+		// storing them. To prevent Terraform state drift, use the
+		// formatted expression returned in the API response.
+		traffic?:    string
+		updated_at?: string
+
+		// Indicate the version number of the rule(read-only).
+		version?: number
+
+		// Indicate a warning for a misconfigured rule, if any.
+		warning_status?: string
+
+		// Defines the expiration time stamp and default duration of a DNS
+		// policy. Takes precedence over the policy's `schedule`
+		// configuration, if any. This does not apply to HTTP or network
+		// policies. Settable only for `dns` rules.
+		expiration?: close({
+			// Defines the default duration a policy active in minutes. Must
+			// set in order to use the `reset_expiration` endpoint on this
+			// rule.
+			duration?: number
+
+			// Indicates whether the policy is expired.
+			expired?: bool
+
+			// Show the timestamp when the policy expires and stops applying.
+			// The value must follow RFC 3339 and include a UTC offset. The
+			// system accepts non-zero offsets but converts them to the
+			// equivalent UTC+00:00 value and returns timestamps with a
+			// trailing Z. Expiration policies ignore client timezones and
+			// expire globally at the specified expires_at time.
+			expires_at?: string
+		})
+
 		// Defines settings for this rule. Settings apply only to specific
 		// rule types and must use compatible selectors. If Terraform
 		// detects drift, confirm the setting supports your rule type and
 		// check whether the API modifies the value. Use API-returned
 		// values in your configuration to prevent drift.
 		rule_settings?: close({
-			// Add custom headers to allowed requests as key-value pairs. Use
-			// header names as keys that map to arrays of header values.
-			// Settable only for `http` rules with the action set to `allow`.
-			add_headers?: [string]: [...string]
-
 			// Define the settings for the Audit SSH action. Settable only for
 			// `l4` rules with `audit_ssh` action.
 			audit_ssh?: close({
@@ -158,11 +180,6 @@ package data
 				// Available values: "v1", "v2".
 				version?: string
 			})
-
-			// Set to enable MSP children to bypass this rule. Only parent MSP
-			// accounts can set this. this rule. Settable for all types of
-			// rules.
-			allow_child_bypass?: bool
 
 			// Configure custom block page settings. If missing or null, use
 			// the account settings. Settable only for `http` rules with the
@@ -258,9 +275,29 @@ package data
 				})]])
 			})
 
+			// Add custom headers to allowed requests as key-value pairs. Use
+			// header names as keys that map to arrays of header values.
+			// Settable only for `http` rules with the action set to `allow`.
+			add_headers?: [string]: [...string]
+
+			// Set to enable MSP children to bypass this rule. Only parent MSP
+			// accounts can set this. this rule. Settable for all types of
+			// rules.
+			allow_child_bypass?: bool
+
 			// Enable the custom block page. Settable only for `dns` rules
 			// with action `block`.
 			block_page_enabled?: bool
+
+			// Explain why the rule blocks the request. The custom block page
+			// shows this text (if enabled). Settable only for `dns`, `l4`,
+			// and `http` rules when the action set to `block`.
+			block_reason?: string
+
+			// Set to enable MSP accounts to bypass their parent's rules. Only
+			// MSP child accounts can set this. Settable for all types of
+			// rules.
+			bypass_parent_rule?: bool
 
 			// Configure how Gateway Proxy traffic egresses. You can enable
 			// this setting for rules with Egress actions and filters, or
@@ -278,16 +315,6 @@ package data
 				// Specify the IPv6 range to use for egress.
 				ipv6?: string
 			})
-
-			// Explain why the rule blocks the request. The custom block page
-			// shows this text (if enabled). Settable only for `dns`, `l4`,
-			// and `http` rules when the action set to `block`.
-			block_reason?: string
-
-			// Set to enable MSP accounts to bypass their parent's rules. Only
-			// MSP child accounts can set this. Settable for all types of
-			// rules.
-			bypass_parent_rule?: bool
 
 			// Configure whether a copy of the HTTP request will be sent to
 			// storage when the rule matches.
@@ -351,16 +378,16 @@ package data
 			// `override`.
 			override_host?: string
 
+			// Defines a an IP or set of IPs for overriding matched DNS
+			// queries. Settable only for `dns` rules with the action set to
+			// `override`.
+			override_ips?: [...string]
+
 			// Configure DLP payload logging. Settable only for `http` rules.
 			payload_log?: close({
 				// Enable DLP payload logging for this rule.
 				enabled?: bool
 			})
-
-			// Defines a an IP or set of IPs for overriding matched DNS
-			// queries. Settable only for `dns` rules with the action set to
-			// `override`.
-			override_ips?: [...string]
 
 			// Configure settings that apply to quarantine rules. Settable
 			// only for `http` rules.
@@ -368,13 +395,6 @@ package data
 				// Specify the types of files to sandbox.
 				file_types?: [...string]
 			})
-
-			// Enable to send queries that match the policy to Cloudflare's
-			// default 1.1.1.1 DNS resolver. Cannot set when 'dns_resolvers'
-			// specified or 'resolve_dns_internally' is set. Only valid when
-			// a rule's action set to 'resolve'. Settable only for
-			// `dns_resolver` rules.
-			resolve_dns_through_cloudflare?: bool
 
 			// Apply settings to redirect rules. Settable only for `http`
 			// rules with the action set to `redirect`.
@@ -409,6 +429,13 @@ package data
 				view_id?: string
 			})
 
+			// Enable to send queries that match the policy to Cloudflare's
+			// default 1.1.1.1 DNS resolver. Cannot set when 'dns_resolvers'
+			// specified or 'resolve_dns_internally' is set. Only valid when
+			// a rule's action set to 'resolve'. Settable only for
+			// `dns_resolver` rules.
+			resolve_dns_through_cloudflare?: bool
+
 			// Configure behavior when an upstream certificate is invalid or
 			// an SSL error occurs. Settable only for `http` rules with the
 			// action set to `allow`.
@@ -419,13 +446,6 @@ package data
 				action?: string
 			})
 		})
-
-		// Indicate that this rule is shared via the Orgs API and read
-		// only.
-		read_only?: bool
-
-		// Identify the API resource with a UUID.
-		rule_id!: string
 
 		// Defines the schedule for activating DNS policies. Settable only
 		// for `dns` and `dns_resolver` rules.
@@ -490,24 +510,5 @@ package data
 			// Terraform drift if a unformatted value is used.
 			wed?: string
 		})
-
-		// Indicate that this rule is sharable via the Orgs API.
-		sharable?: bool
-
-		// Provide the account tag of the account that created the rule.
-		source_account?: string
-
-		// Specify the wirefilter expression used for traffic matching.
-		// The API automatically formats and sanitizes expressions before
-		// storing them. To prevent Terraform state drift, use the
-		// formatted expression returned in the API response.
-		traffic?:    string
-		updated_at?: string
-
-		// Indicate the version number of the rule(read-only).
-		version?: number
-
-		// Indicate a warning for a misconfigured rule, if any.
-		warning_status?: string
 	})
 }

@@ -10,20 +10,20 @@ package data
 
 		// Request content.
 		content?: string
+		created?: string
 
 		// UUID.
-		id?:      string
-		created?: string
+		id?: string
 
 		// Tokens for the request messages.
 		message_tokens?: number
+		priority?:       string
 
 		// UUID.
 		priority_id!: string
 
 		// Readable Request ID.
 		readable_id?: string
-		priority?:    string
 
 		// Requested information from request.
 		request?: string

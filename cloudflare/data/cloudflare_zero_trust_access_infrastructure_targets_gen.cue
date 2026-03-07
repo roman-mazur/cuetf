@@ -18,79 +18,6 @@ package data
 		// Available values: "asc", "desc".
 		direction?: string
 
-		// The items returned by the data source
-		result?: matchN(1, [close({
-			// The IPv4/IPv6 address that identifies where to reach a target
-			ip?: close({
-				// The target's IPv4 address
-				ipv4?: close({
-					// IP address of the target
-					ip_addr?: string
-
-					// (optional) Private virtual network identifier for the target.
-					// If omitted, the default virtual network ID will be used.
-					virtual_network_id?: string
-				})
-
-				// The target's IPv6 address
-				ipv6?: close({
-					// IP address of the target
-					ip_addr?: string
-
-					// (optional) Private virtual network identifier for the target.
-					// If omitted, the default virtual network ID will be used.
-					virtual_network_id?: string
-				})
-			})
-
-			// Date and time at which the target was created
-			created_at?: string
-
-			// A non-unique field that refers to a target
-			hostname?: string
-
-			// Target identifier
-			id?: string
-
-			// Date and time at which the target was modified
-			modified_at?: string
-		}), [...close({
-			// The IPv4/IPv6 address that identifies where to reach a target
-			ip?: close({
-				// The target's IPv4 address
-				ipv4?: close({
-					// IP address of the target
-					ip_addr?: string
-
-					// (optional) Private virtual network identifier for the target.
-					// If omitted, the default virtual network ID will be used.
-					virtual_network_id?: string
-				})
-
-				// The target's IPv6 address
-				ipv6?: close({
-					// IP address of the target
-					ip_addr?: string
-
-					// (optional) Private virtual network identifier for the target.
-					// If omitted, the default virtual network ID will be used.
-					virtual_network_id?: string
-				})
-			})
-
-			// Date and time at which the target was created
-			created_at?: string
-
-			// A non-unique field that refers to a target
-			hostname?: string
-
-			// Target identifier
-			id?: string
-
-			// Date and time at which the target was modified
-			modified_at?: string
-		})]])
-
 		// Hostname of a target
 		hostname?: string
 
@@ -157,5 +84,78 @@ package data
 
 		// Private virtual network identifier of the target
 		virtual_network_id?: string
+
+		// The items returned by the data source
+		result?: matchN(1, [close({
+			// Date and time at which the target was created
+			created_at?: string
+
+			// A non-unique field that refers to a target
+			hostname?: string
+
+			// Target identifier
+			id?: string
+
+			// Date and time at which the target was modified
+			modified_at?: string
+
+			// The IPv4/IPv6 address that identifies where to reach a target
+			ip?: close({
+				// The target's IPv4 address
+				ipv4?: close({
+					// IP address of the target
+					ip_addr?: string
+
+					// (optional) Private virtual network identifier for the target.
+					// If omitted, the default virtual network ID will be used.
+					virtual_network_id?: string
+				})
+
+				// The target's IPv6 address
+				ipv6?: close({
+					// IP address of the target
+					ip_addr?: string
+
+					// (optional) Private virtual network identifier for the target.
+					// If omitted, the default virtual network ID will be used.
+					virtual_network_id?: string
+				})
+			})
+		}), [...close({
+			// Date and time at which the target was created
+			created_at?: string
+
+			// A non-unique field that refers to a target
+			hostname?: string
+
+			// Target identifier
+			id?: string
+
+			// Date and time at which the target was modified
+			modified_at?: string
+
+			// The IPv4/IPv6 address that identifies where to reach a target
+			ip?: close({
+				// The target's IPv4 address
+				ipv4?: close({
+					// IP address of the target
+					ip_addr?: string
+
+					// (optional) Private virtual network identifier for the target.
+					// If omitted, the default virtual network ID will be used.
+					virtual_network_id?: string
+				})
+
+				// The target's IPv6 address
+				ipv6?: close({
+					// IP address of the target
+					ip_addr?: string
+
+					// (optional) Private virtual network identifier for the target.
+					// If omitted, the default virtual network ID will be used.
+					virtual_network_id?: string
+				})
+			})
+		})]])
 	})
 }

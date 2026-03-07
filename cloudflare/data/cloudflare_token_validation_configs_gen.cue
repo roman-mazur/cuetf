@@ -7,6 +7,9 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Identifier.
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			created_at?:  string
@@ -16,6 +19,10 @@ package data
 			id?:           string
 			last_updated?: string
 			title?:        string
+			token_sources?: [...string]
+
+			// Available values: "JWT".
+			token_type?: string
 			credentials?: close({
 				keys?: matchN(1, [close({
 					// Algorithm
@@ -75,10 +82,6 @@ package data
 					y?: string
 				})]])
 			})
-
-			// Available values: "JWT".
-			token_type?: string
-			token_sources?: [...string]
 		}), [...close({
 			created_at?:  string
 			description?: string
@@ -87,6 +90,10 @@ package data
 			id?:           string
 			last_updated?: string
 			title?:        string
+			token_sources?: [...string]
+
+			// Available values: "JWT".
+			token_type?: string
 			credentials?: close({
 				keys?: matchN(1, [close({
 					// Algorithm
@@ -146,13 +153,6 @@ package data
 					y?: string
 				})]])
 			})
-
-			// Available values: "JWT".
-			token_type?: string
-			token_sources?: [...string]
 		})]])
-
-		// Identifier.
-		zone_id!: string
 	})
 }

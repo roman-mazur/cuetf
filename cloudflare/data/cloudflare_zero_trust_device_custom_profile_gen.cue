@@ -4,14 +4,6 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_device_custom_profile")
 	close({
-		// Whether to allow the user to switch WARP between modes.
-		allow_mode_switch?: bool
-		account_id!:        string
-
-		// Whether to receive update notifications when a new version of
-		// the client is available.
-		allow_updates?: bool
-
 		// List of routes excluded in the WARP client's tunnel.
 		exclude?: matchN(1, [close({
 			// The address in CIDR format to exclude from the tunnel. If
@@ -39,33 +31,19 @@ package data
 			host?: string
 		})]])
 
+		// Whether to allow the user to switch WARP between modes.
+		allow_mode_switch?: bool
+
+		// Whether to receive update notifications when a new version of
+		// the client is available.
+		allow_updates?: bool
+
 		// Whether to allow devices to leave the organization.
 		allowed_to_leave?: bool
 
 		// The amount of time in seconds to reconnect after having been
 		// disabled.
 		auto_connect?: number
-		fallback_domains?: matchN(1, [close({
-			// A description of the fallback domain, displayed in the client
-			// UI.
-			description?: string
-
-			// A list of IP addresses to handle domain resolution.
-			dns_server?: [...string]
-
-			// The domain suffix to match when resolving locally.
-			suffix?: string
-		}), [...close({
-			// A description of the fallback domain, displayed in the client
-			// UI.
-			description?: string
-
-			// A list of IP addresses to handle domain resolution.
-			dns_server?: [...string]
-
-			// The domain suffix to match when resolving locally.
-			suffix?: string
-		})]])
 
 		// Turn on the captive portal after the specified amount of time.
 		captive_portal?: number
@@ -87,7 +65,6 @@ package data
 
 		// Whether to add Microsoft IPs to Split Tunnel exclusions.
 		exclude_office_ips?: bool
-		gateway_unique_id?:  string
 
 		// List of routes included in the WARP client's tunnel.
 		include?: matchN(1, [close({
@@ -122,14 +99,6 @@ package data
 		// Note that this field is omitted from the response if null or
 		// unset.
 		lan_allow_minutes?: number
-		id?:                string
-		service_mode_v2?: close({
-			// The mode to run the WARP client under.
-			mode?: string
-
-			// The port number when used with proxy mode.
-			port?: number
-		})
 
 		// The size of the subnet for the local access network. Note that
 		// this field is omitted from the response if null or unset.
@@ -143,8 +112,7 @@ package data
 		match?: string
 
 		// The name of the device settings profile.
-		name?:      string
-		policy_id!: string
+		name?: string
 
 		// The precedence of the policy. Lower values indicate higher
 		// precedence. Policies will be evaluated in ascending order of
@@ -167,7 +135,39 @@ package data
 		switch_locked?: bool
 
 		// Determines which tunnel protocol to use.
-		tunnel_protocol?: string
+		tunnel_protocol?:   string
+		account_id!:        string
+		gateway_unique_id?: string
+		id?:                string
+		policy_id!:         string
+		fallback_domains?: matchN(1, [close({
+			// A description of the fallback domain, displayed in the client
+			// UI.
+			description?: string
+
+			// A list of IP addresses to handle domain resolution.
+			dns_server?: [...string]
+
+			// The domain suffix to match when resolving locally.
+			suffix?: string
+		}), [...close({
+			// A description of the fallback domain, displayed in the client
+			// UI.
+			description?: string
+
+			// A list of IP addresses to handle domain resolution.
+			dns_server?: [...string]
+
+			// The domain suffix to match when resolving locally.
+			suffix?: string
+		})]])
+		service_mode_v2?: close({
+			// The mode to run the WARP client under.
+			mode?: string
+
+			// The port number when used with proxy mode.
+			port?: number
+		})
 		target_tests?: matchN(1, [close({
 			// The id of the DEX test targeting this policy.
 			id?: string

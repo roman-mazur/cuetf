@@ -7,6 +7,9 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Identifier.
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Identifier.
@@ -29,8 +32,5 @@ package data
 			// Name of the script to run if the route matches.
 			script?: string
 		})]])
-
-		// Identifier.
-		zone_id!: string
 	})
 }

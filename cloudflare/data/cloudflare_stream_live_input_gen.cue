@@ -18,6 +18,29 @@ package data
 		// existing scheduled deletion.
 		delete_recording_after_days?: number
 
+		// Indicates whether the live input is enabled and can accept
+		// streams.
+		enabled?: bool
+
+		// A unique identifier for a live input.
+		live_input_identifier!: string
+
+		// A user modifiable key-value store used to reference other
+		// systems of record for managing live inputs.
+		meta?: string
+
+		// The date and time the live input was last modified.
+		modified?: string
+
+		// The connection status of a live input.
+		// Available values: "connected", "reconnected", "reconnecting",
+		// "client_disconnect", "ttl_exceeded", "failed_to_connect",
+		// "failed_to_reconnect", "new_configuration_accepted".
+		status?: string
+
+		// A unique identifier for a live input.
+		uid?: string
+
 		// Records the input to a Cloudflare Stream video. Behavior
 		// depends on the mode. In most cases, the video will initially
 		// be viewable as a live video and transition to on-demand after
@@ -53,9 +76,6 @@ package data
 			timeout_seconds?: number
 		})
 
-		// A unique identifier for a live input.
-		live_input_identifier!: string
-
 		// Details for streaming to an live input using RTMPS.
 		rtmps?: close({
 			// The secret key to use when streaming via RTMPS to a live input.
@@ -65,13 +85,6 @@ package data
 			// live video to.
 			url?: string
 		})
-
-		// A user modifiable key-value store used to reference other
-		// systems of record for managing live inputs.
-		meta?: string
-
-		// The date and time the live input was last modified.
-		modified?: string
 
 		// Details for playback from an live input using RTMPS.
 		rtmps_playback?: close({
@@ -113,15 +126,6 @@ package data
 			// stream live video to.
 			url?: string
 		})
-
-		// The connection status of a live input.
-		// Available values: "connected", "reconnected", "reconnecting",
-		// "client_disconnect", "ttl_exceeded", "failed_to_connect",
-		// "failed_to_reconnect", "new_configuration_accepted".
-		status?: string
-
-		// A unique identifier for a live input.
-		uid?: string
 
 		// Details for playback from a live input using WebRTC.
 		web_rtc_playback?: close({

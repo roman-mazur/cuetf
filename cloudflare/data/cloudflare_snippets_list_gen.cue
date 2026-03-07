@@ -7,6 +7,9 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// The unique ID of the zone.
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// The timestamp of when the snippet was created.
@@ -27,8 +30,5 @@ package data
 			// The identifying name of the snippet.
 			snippet_name?: string
 		})]])
-
-		// The unique ID of the zone.
-		zone_id!: string
 	})
 }

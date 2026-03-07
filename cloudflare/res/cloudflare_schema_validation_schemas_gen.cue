@@ -4,9 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_schema_validation_schemas")
 	close({
-		// A unique identifier of this schema
-		id?:         string
 		created_at?: string
+
+		// A unique identifier of this schema
+		id?: string
 
 		// The kind of the schema
 		// Available values: "openapi_v3".

@@ -7,12 +7,6 @@ package res
 		// The timestamp of when the snippet was created.
 		created_on?: string
 
-		// Metadata about the snippet.
-		metadata!: close({
-			// Name of the file that contains the main module of the snippet.
-			main_module!: string
-		})
-
 		// The list of files belonging to the snippet.
 		files!: [...string]
 
@@ -24,5 +18,11 @@ package res
 
 		// The unique ID of the zone.
 		zone_id!: string
+
+		// Metadata about the snippet.
+		metadata!: close({
+			// Name of the file that contains the main module of the snippet.
+			main_module!: string
+		})
 	})
 }

@@ -12,11 +12,6 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// Defines the creation time of the Hyperdrive configuration.
-			created_on?: string
-
-			// Define configurations using a unique string identifier.
-			id?: string
 			caching?: close({
 				// Set to true to disable caching of SQL responses. Default is
 				// false.
@@ -31,8 +26,22 @@ package data
 				stale_while_revalidate?: number
 			})
 
+			// Defines the creation time of the Hyperdrive configuration.
+			created_on?: string
+
+			// Define configurations using a unique string identifier.
+			id?: string
+
 			// Defines the last modified time of the Hyperdrive configuration.
 			modified_on?: string
+
+			// The name of the Hyperdrive configuration. Used to identify the
+			// configuration in the Cloudflare dashboard and API.
+			name?: string
+
+			// The (soft) maximum number of connections the Hyperdrive is
+			// allowed to make to the origin database.
+			origin_connection_limit?: number
 			mtls?: close({
 				// Define CA certificate ID obtained after uploading CA cert.
 				ca_certificate_id?: string
@@ -45,14 +54,6 @@ package data
 				// verify the CA.
 				sslmode?: string
 			})
-
-			// The name of the Hyperdrive configuration. Used to identify the
-			// configuration in the Cloudflare dashboard and API.
-			name?: string
-
-			// The (soft) maximum number of connections the Hyperdrive is
-			// allowed to make to the origin database.
-			origin_connection_limit?: number
 			origin?: close({
 				// Defines the Client ID of the Access token to use when
 				// connecting to the origin database.
@@ -86,11 +87,6 @@ package data
 				user?: string
 			})
 		}), [...close({
-			// Defines the creation time of the Hyperdrive configuration.
-			created_on?: string
-
-			// Define configurations using a unique string identifier.
-			id?: string
 			caching?: close({
 				// Set to true to disable caching of SQL responses. Default is
 				// false.
@@ -105,8 +101,22 @@ package data
 				stale_while_revalidate?: number
 			})
 
+			// Defines the creation time of the Hyperdrive configuration.
+			created_on?: string
+
+			// Define configurations using a unique string identifier.
+			id?: string
+
 			// Defines the last modified time of the Hyperdrive configuration.
 			modified_on?: string
+
+			// The name of the Hyperdrive configuration. Used to identify the
+			// configuration in the Cloudflare dashboard and API.
+			name?: string
+
+			// The (soft) maximum number of connections the Hyperdrive is
+			// allowed to make to the origin database.
+			origin_connection_limit?: number
 			mtls?: close({
 				// Define CA certificate ID obtained after uploading CA cert.
 				ca_certificate_id?: string
@@ -119,14 +129,6 @@ package data
 				// verify the CA.
 				sslmode?: string
 			})
-
-			// The name of the Hyperdrive configuration. Used to identify the
-			// configuration in the Cloudflare dashboard and API.
-			name?: string
-
-			// The (soft) maximum number of connections the Hyperdrive is
-			// allowed to make to the origin database.
-			origin_connection_limit?: number
 			origin?: close({
 				// Defines the Client ID of the Access token to use when
 				// connecting to the origin database.

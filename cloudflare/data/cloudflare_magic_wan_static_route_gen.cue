@@ -9,6 +9,9 @@ package data
 
 		// Identifier
 		id?: string
+
+		// Identifier
+		route_id!: string
 		route?: close({
 			// When the route was created.
 			created_on?: string
@@ -18,15 +21,6 @@ package data
 
 			// Identifier
 			id?: string
-
-			// Used only for ECMP routes.
-			scope?: close({
-				// List of colo names for the ECMP scope.
-				colo_names?: [...string]
-
-				// List of colo regions for the ECMP scope.
-				colo_regions?: [...string]
-			})
 
 			// When the route was last modified.
 			modified_on?: string
@@ -42,9 +36,15 @@ package data
 
 			// Optional weight of the ECMP scope - if provided.
 			weight?: number
-		})
 
-		// Identifier
-		route_id!: string
+			// Used only for ECMP routes.
+			scope?: close({
+				// List of colo names for the ECMP scope.
+				colo_names?: [...string]
+
+				// List of colo regions for the ECMP scope.
+				colo_regions?: [...string]
+			})
+		})
 	})
 }

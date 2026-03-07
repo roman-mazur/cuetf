@@ -12,14 +12,12 @@ package data
 
 		// Account identifier tag.
 		id?: string
-		filter?: close({
-			// Direction to order results.
-			// Available values: "asc", "desc".
-			direction?: string
 
-			// Name of the account.
-			name?: string
-		})
+		// Account name
+		name?: string
+
+		// Available values: "standard", "enterprise".
+		type?: string
 
 		// Parent container details
 		managed_by?: close({
@@ -30,9 +28,6 @@ package data
 			parent_org_name?: string
 		})
 
-		// Account name
-		name?: string
-
 		// Account settings
 		settings?: close({
 			// Sets an abuse contact email to notify for abuse reports.
@@ -42,8 +37,13 @@ package data
 			// Two-Factor Authentication is enabled
 			enforce_twofactor?: bool
 		})
+		filter?: close({
+			// Direction to order results.
+			// Available values: "asc", "desc".
+			direction?: string
 
-		// Available values: "standard", "enterprise".
-		type?: string
+			// Name of the account.
+			name?: string
+		})
 	})
 }

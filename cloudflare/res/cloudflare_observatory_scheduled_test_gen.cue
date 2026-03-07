@@ -21,6 +21,12 @@ package res
 		// "us-south1", "us-west1".
 		region?: string
 
+		// A URL.
+		url!: string
+
+		// Identifier.
+		zone_id!: string
+
 		// The test schedule.
 		schedule?: close({
 			// The frequency of the test.
@@ -41,6 +47,18 @@ package res
 			url?: string
 		})
 		test?: close({
+			date?: string
+
+			// UUID.
+			id?: string
+
+			// The frequency of the test.
+			// Available values: "DAILY", "WEEKLY".
+			schedule_frequency?: string
+
+			// A URL.
+			url?: string
+
 			// The Lighthouse report.
 			desktop_report?: close({
 				// Cumulative Layout Shift.
@@ -74,6 +92,9 @@ package res
 
 				// Time To First Byte.
 				ttfb?: number
+
+				// Time To Interactive.
+				tti?: number
 				error?: close({
 					// The error code of the Lighthouse result.
 					// Available values: "NOT_REACHABLE", "DNS_FAILURE", "NOT_HTML",
@@ -86,18 +107,7 @@ package res
 					// The final URL displayed to the user.
 					final_displayed_url?: string
 				})
-
-				// Time To Interactive.
-				tti?: number
 			})
-			date?: string
-
-			// UUID.
-			id?: string
-
-			// The frequency of the test.
-			// Available values: "DAILY", "WEEKLY".
-			schedule_frequency?: string
 
 			// The Lighthouse report.
 			mobile_report?: close({
@@ -132,6 +142,9 @@ package res
 
 				// Time To First Byte.
 				ttfb?: number
+
+				// Time To Interactive.
+				tti?: number
 				error?: close({
 					// The error code of the Lighthouse result.
 					// Available values: "NOT_REACHABLE", "DNS_FAILURE", "NOT_HTML",
@@ -144,9 +157,6 @@ package res
 					// The final URL displayed to the user.
 					final_displayed_url?: string
 				})
-
-				// Time To Interactive.
-				tti?: number
 			})
 
 			// A test region with a label.
@@ -163,15 +173,6 @@ package res
 				// "us-south1", "us-west1".
 				value?: string
 			})
-
-			// A URL.
-			url?: string
 		})
-
-		// A URL.
-		url!: string
-
-		// Identifier.
-		zone_id!: string
 	})
 }

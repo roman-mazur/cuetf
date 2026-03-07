@@ -25,6 +25,15 @@ package data
 		// Available values: "block", "challenge", "js_challenge",
 		// "managed_challenge".
 		mode?: string
+
+		// When true, indicates that the rule is currently paused.
+		paused?: bool
+
+		// The unique identifier of the User Agent Blocking rule.
+		ua_rule_id?: string
+
+		// Defines an identifier.
+		zone_id!: string
 		filter?: close({
 			// A string to search for in the description of existing rules.
 			description?: string
@@ -36,14 +45,5 @@ package data
 			// rules.
 			user_agent?: string
 		})
-
-		// When true, indicates that the rule is currently paused.
-		paused?: bool
-
-		// The unique identifier of the User Agent Blocking rule.
-		ua_rule_id?: string
-
-		// Defines an identifier.
-		zone_id!: string
 	})
 }

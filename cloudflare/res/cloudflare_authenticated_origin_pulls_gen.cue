@@ -57,6 +57,12 @@ package res
 		// "pending_deletion", "active", "deleted",
 		// "deployment_timed_out", "deletion_timed_out".
 		status?: string
+
+		// The time when the certificate was updated.
+		updated_at?: string
+
+		// Identifier.
+		zone_id!: string
 		config!: matchN(1, [close({
 			// Certificate identifier tag.
 			cert_id?: string
@@ -80,11 +86,5 @@ package res
 			// uploaded will be used.
 			hostname?: string
 		})]])
-
-		// The time when the certificate was updated.
-		updated_at?: string
-
-		// Identifier.
-		zone_id!: string
 	})
 }

@@ -22,14 +22,14 @@ package data
 		// "basic_challenge", "country_challenge", "ip_block",
 		// "managed_challenge", "ratelimit_block", "under_attack",
 		// "waf_block", "waf_challenge".
-		identifier!:  string
-		modified_on?: string
+		identifier!:     string
+		modified_on?:    string
+		preview_target?: string
+		required_tokens?: [...string]
 
 		// The custom page state.
 		// Available values: "default", "customized".
-		state?:          string
-		preview_target?: string
-		required_tokens?: [...string]
+		state?: string
 
 		// The URL associated with the custom page.
 		url?: string

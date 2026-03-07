@@ -32,6 +32,7 @@ import "github.com/roman-mazur/cuetf/cloudflare/res"
 	_#res: "\(#cloudflarePrefix)_calls_sfu_app": res.#cloudflare_calls_sfu_app
 	_#res: "\(#cloudflarePrefix)_calls_turn_app": res.#cloudflare_calls_turn_app
 	_#res: "\(#cloudflarePrefix)_certificate_pack": res.#cloudflare_certificate_pack
+	_#res: "\(#cloudflarePrefix)_client_certificate": res.#cloudflare_client_certificate
 	_#res: "\(#cloudflarePrefix)_cloud_connector_rules": res.#cloudflare_cloud_connector_rules
 	_#res: "\(#cloudflarePrefix)_cloudforce_one_request_asset": res.#cloudflare_cloudforce_one_request_asset
 	_#res: "\(#cloudflarePrefix)_cloudforce_one_request": res.#cloudflare_cloudforce_one_request
@@ -42,6 +43,7 @@ import "github.com/roman-mazur/cuetf/cloudflare/res"
 	_#res: "\(#cloudflarePrefix)_content_scanning": res.#cloudflare_content_scanning
 	_#res: "\(#cloudflarePrefix)_custom_hostname_fallback_origin": res.#cloudflare_custom_hostname_fallback_origin
 	_#res: "\(#cloudflarePrefix)_custom_hostname": res.#cloudflare_custom_hostname
+	_#res: "\(#cloudflarePrefix)_custom_origin_trust_store": res.#cloudflare_custom_origin_trust_store
 	_#res: "\(#cloudflarePrefix)_custom_pages": res.#cloudflare_custom_pages
 	_#res: "\(#cloudflarePrefix)_custom_ssl": res.#cloudflare_custom_ssl
 	_#res: "\(#cloudflarePrefix)_d1_database": res.#cloudflare_d1_database
@@ -182,6 +184,7 @@ import "github.com/roman-mazur/cuetf/cloudflare/res"
 	_#res: "\(#cloudflarePrefix)_zero_trust_device_posture_integration": res.#cloudflare_zero_trust_device_posture_integration
 	_#res: "\(#cloudflarePrefix)_zero_trust_device_posture_rule": res.#cloudflare_zero_trust_device_posture_rule
 	_#res: "\(#cloudflarePrefix)_zero_trust_device_settings": res.#cloudflare_zero_trust_device_settings
+	_#res: "\(#cloudflarePrefix)_zero_trust_dex_rule": res.#cloudflare_zero_trust_dex_rule
 	_#res: "\(#cloudflarePrefix)_zero_trust_dex_test": res.#cloudflare_zero_trust_dex_test
 	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_custom_entry": res.#cloudflare_zero_trust_dlp_custom_entry
 	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_custom_profile": res.#cloudflare_zero_trust_dlp_custom_profile
@@ -193,6 +196,7 @@ import "github.com/roman-mazur/cuetf/cloudflare/res"
 	_#res: "\(#cloudflarePrefix)_zero_trust_dns_location": res.#cloudflare_zero_trust_dns_location
 	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_certificate": res.#cloudflare_zero_trust_gateway_certificate
 	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_logging": res.#cloudflare_zero_trust_gateway_logging
+	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_pacfile": res.#cloudflare_zero_trust_gateway_pacfile
 	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_policy": res.#cloudflare_zero_trust_gateway_policy
 	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_proxy_endpoint": res.#cloudflare_zero_trust_gateway_proxy_endpoint
 	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_settings": res.#cloudflare_zero_trust_gateway_settings

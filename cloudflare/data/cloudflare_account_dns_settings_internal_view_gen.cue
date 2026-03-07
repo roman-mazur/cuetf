@@ -15,6 +15,15 @@ package data
 
 		// When the view was last modified.
 		modified_time?: string
+
+		// The name of the view.
+		name?: string
+
+		// Identifier.
+		view_id?: string
+
+		// The list of zones linked to this view.
+		zones?: [...string]
 		filter?: close({
 			// Direction to order DNS views in.
 			// Available values: "asc", "desc".
@@ -32,6 +41,9 @@ package data
 
 			// A zone ID that exists in the zones list for the view.
 			zone_id?: string
+
+			// A zone name that exists in the zones list for the view.
+			zone_name?: string
 			name?: close({
 				// Substring of the DNS view name.
 				contains?: string
@@ -45,18 +57,6 @@ package data
 				// Prefix of the DNS view name.
 				startswith?: string
 			})
-
-			// A zone name that exists in the zones list for the view.
-			zone_name?: string
 		})
-
-		// The name of the view.
-		name?: string
-
-		// Identifier.
-		view_id?: string
-
-		// The list of zones linked to this view.
-		zones?: [...string]
 	})
 }

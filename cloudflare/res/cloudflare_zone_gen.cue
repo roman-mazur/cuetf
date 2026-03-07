@@ -24,10 +24,6 @@ package res
 
 		// Identifier
 		id?: string
-		account!: close({
-			// Identifier
-			id?: string
-		})
 
 		// Metadata about the zone.
 		meta?: close({
@@ -54,11 +50,24 @@ package res
 		// When the zone was last modified.
 		modified_on?: string
 
-		// The domain name.
+		// The domain name. Per [RFC
+		// 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4)
+		// the overall zone name can be up to 253 characters, with each
+		// segment ("label") not exceeding 63 characters.
 		name!: string
 
 		// The name servers Cloudflare assigns to a zone.
 		name_servers?: [...string]
+
+		// DNS host at the time of switching to Cloudflare.
+		original_dnshost?: string
+
+		// Original name servers before moving to Cloudflare.
+		original_name_servers?: [...string]
+
+		// Registrar for the domain at the time of switching to
+		// Cloudflare.
+		original_registrar?: string
 
 		// The owner of the zone.
 		owner?: close({
@@ -72,26 +81,6 @@ package res
 			type?: string
 		})
 
-		// DNS host at the time of switching to Cloudflare.
-		original_dnshost?: string
-
-		// Original name servers before moving to Cloudflare.
-		original_name_servers?: [...string]
-
-		// The root organizational unit that this zone belongs to (such as
-		// a tenant or organization).
-		tenant?: close({
-			// Identifier
-			id?: string
-
-			// The name of the Tenant account.
-			name?: string
-		})
-
-		// Registrar for the domain at the time of switching to
-		// Cloudflare.
-		original_registrar?: string
-
 		// Indicates whether the zone is only using Cloudflare DNS
 		// services. A
 		// true value means the zone will not receive security or
@@ -102,6 +91,16 @@ package res
 		// The zone status on Cloudflare.
 		// Available values: "initializing", "pending", "active", "moved".
 		status?: string
+
+		// The root organizational unit that this zone belongs to (such as
+		// a tenant or organization).
+		tenant?: close({
+			// Identifier
+			id?: string
+
+			// The name of the Tenant account.
+			name?: string
+		})
 
 		// The immediate parent organizational unit that this zone belongs
 		// to (such as under a tenant or sub-organization).
@@ -122,5 +121,9 @@ package res
 
 		// Verification key for partial zone setup.
 		verification_key?: string
+		account!: close({
+			// Identifier
+			id?: string
+		})
 	})
 }

@@ -9,34 +9,9 @@ package data
 
 		// Defines the creation time of the Hyperdrive configuration.
 		created_on?: string
-		caching?: close({
-			// Set to true to disable caching of SQL responses. Default is
-			// false.
-			disabled?: bool
-
-			// Specify the maximum duration (in seconds) items should persist
-			// in the cache. Defaults to 60 seconds if not specified.
-			max_age?: number
-
-			// Specify the number of seconds the cache may serve a stale
-			// response. Defaults to 15 seconds if not specified.
-			stale_while_revalidate?: number
-		})
 
 		// Define configurations using a unique string identifier.
 		hyperdrive_id!: string
-		mtls?: close({
-			// Define CA certificate ID obtained after uploading CA cert.
-			ca_certificate_id?: string
-
-			// Define mTLS certificate ID obtained after uploading client
-			// cert.
-			mtls_certificate_id?: string
-
-			// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to
-			// verify the CA.
-			sslmode?: string
-		})
 
 		// Define configurations using a unique string identifier.
 		id?: string
@@ -51,6 +26,31 @@ package data
 		// The (soft) maximum number of connections the Hyperdrive is
 		// allowed to make to the origin database.
 		origin_connection_limit?: number
+		caching?: close({
+			// Set to true to disable caching of SQL responses. Default is
+			// false.
+			disabled?: bool
+
+			// Specify the maximum duration (in seconds) items should persist
+			// in the cache. Defaults to 60 seconds if not specified.
+			max_age?: number
+
+			// Specify the number of seconds the cache may serve a stale
+			// response. Defaults to 15 seconds if not specified.
+			stale_while_revalidate?: number
+		})
+		mtls?: close({
+			// Define CA certificate ID obtained after uploading CA cert.
+			ca_certificate_id?: string
+
+			// Define mTLS certificate ID obtained after uploading client
+			// cert.
+			mtls_certificate_id?: string
+
+			// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to
+			// verify the CA.
+			sslmode?: string
+		})
 		origin?: close({
 			// Defines the Client ID of the Access token to use when
 			// connecting to the origin database.

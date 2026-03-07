@@ -4,6 +4,15 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_magic_transit_site_wans")
 	close({
+		// Identifier
+		account_id!: string
+
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// Identifier
+		site_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Magic WAN health check rate for tunnels created on this link.
@@ -22,6 +31,9 @@ package data
 			// Identifier
 			site_id?: string
 
+			// VLAN ID. Use zero for untagged.
+			vlan_tag?: number
+
 			// (optional) if omitted, use DHCP. Submit secondary_address when
 			// site is in high availability mode.
 			static_addressing?: close({
@@ -34,9 +46,6 @@ package data
 				// A valid CIDR notation representing an IP range.
 				secondary_address?: string
 			})
-
-			// VLAN ID. Use zero for untagged.
-			vlan_tag?: number
 		}), [...close({
 			// Magic WAN health check rate for tunnels created on this link.
 			// The default value is `mid`.
@@ -54,6 +63,9 @@ package data
 			// Identifier
 			site_id?: string
 
+			// VLAN ID. Use zero for untagged.
+			vlan_tag?: number
+
 			// (optional) if omitted, use DHCP. Submit secondary_address when
 			// site is in high availability mode.
 			static_addressing?: close({
@@ -66,18 +78,6 @@ package data
 				// A valid CIDR notation representing an IP range.
 				secondary_address?: string
 			})
-
-			// VLAN ID. Use zero for untagged.
-			vlan_tag?: number
 		})]])
-
-		// Identifier
-		account_id!: string
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// Identifier
-		site_id!: string
 	})
 }

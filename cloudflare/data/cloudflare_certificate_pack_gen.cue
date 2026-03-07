@@ -4,6 +4,87 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_certificate_pack")
 	close({
+		// Array of certificates in this pack.
+		certificates?: matchN(1, [close({
+			// Certificate bundle method.
+			bundle_method?: string
+
+			// When the certificate from the authority expires.
+			expires_on?: string
+
+			// Hostnames covered by this certificate.
+			hosts?: [...string]
+
+			// Certificate identifier.
+			id?: string
+
+			// The certificate authority that issued the certificate.
+			issuer?: string
+
+			// When the certificate was last modified.
+			modified_on?: string
+
+			// The order/priority in which the certificate will be used.
+			priority?: number
+
+			// The type of hash used for the certificate.
+			signature?: string
+
+			// Certificate status.
+			status?: string
+
+			// When the certificate was uploaded to Cloudflare.
+			uploaded_on?: string
+
+			// Identifier.
+			zone_id?: string
+
+			// Specify the region where your private key can be held locally.
+			geo_restrictions?: close({
+				// Available values: "us", "eu", "highest_security".
+				label?: string
+			})
+		}), [...close({
+			// Certificate bundle method.
+			bundle_method?: string
+
+			// When the certificate from the authority expires.
+			expires_on?: string
+
+			// Hostnames covered by this certificate.
+			hosts?: [...string]
+
+			// Certificate identifier.
+			id?: string
+
+			// The certificate authority that issued the certificate.
+			issuer?: string
+
+			// When the certificate was last modified.
+			modified_on?: string
+
+			// The order/priority in which the certificate will be used.
+			priority?: number
+
+			// The type of hash used for the certificate.
+			signature?: string
+
+			// Certificate status.
+			status?: string
+
+			// When the certificate was uploaded to Cloudflare.
+			uploaded_on?: string
+
+			// Identifier.
+			zone_id?: string
+
+			// Specify the region where your private key can be held locally.
+			geo_restrictions?: close({
+				// Available values: "us", "eu", "highest_security".
+				label?: string
+			})
+		})]])
+
 		// Certificate Authority selected for the order. For information
 		// on any certificate authority specific details or restrictions
 		// [see this page for more
@@ -19,100 +100,72 @@ package data
 		// Name if set to true.
 		cloudflare_branding?: bool
 
+		// DCV Delegation records for domain validation.
+		dcv_delegation_records?: matchN(1, [close({
+			// The CNAME record hostname for DCV delegation.
+			cname?: string
+
+			// The CNAME record target value for DCV delegation.
+			cname_target?: string
+
+			// The set of email addresses that the certificate authority (CA)
+			// will use to complete domain validation.
+			emails?: [...string]
+
+			// The content that the certificate authority (CA) will expect to
+			// find at the http_url during the domain validation.
+			http_body?: string
+
+			// The url that will be checked during domain validation.
+			http_url?: string
+
+			// Status of the validation record.
+			status?: string
+
+			// The hostname that the certificate authority (CA) will check for
+			// a TXT record during domain validation .
+			txt_name?: string
+
+			// The TXT record that the certificate authority (CA) will check
+			// during domain validation.
+			txt_value?: string
+		}), [...close({
+			// The CNAME record hostname for DCV delegation.
+			cname?: string
+
+			// The CNAME record target value for DCV delegation.
+			cname_target?: string
+
+			// The set of email addresses that the certificate authority (CA)
+			// will use to complete domain validation.
+			emails?: [...string]
+
+			// The content that the certificate authority (CA) will expect to
+			// find at the http_url during the domain validation.
+			http_body?: string
+
+			// The url that will be checked during domain validation.
+			http_url?: string
+
+			// Status of the validation record.
+			status?: string
+
+			// The hostname that the certificate authority (CA) will check for
+			// a TXT record during domain validation .
+			txt_name?: string
+
+			// The TXT record that the certificate authority (CA) will check
+			// during domain validation.
+			txt_value?: string
+		})]])
+
 		// Comma separated list of valid host names for the certificate
 		// packs. Must contain the zone apex, may not contain more than
 		// 50 hosts, and may not be empty.
 		hosts?: [...string]
 
-		// Array of certificates in this pack.
-		certificates?: matchN(1, [close({
-			// Certificate bundle method.
-			bundle_method?: string
-
-			// When the certificate from the authority expires.
-			expires_on?: string
-
-			// Specify the region where your private key can be held locally.
-			geo_restrictions?: close({
-				// Available values: "us", "eu", "highest_security".
-				label?: string
-			})
-
-			// Hostnames covered by this certificate.
-			hosts?: [...string]
-
-			// Certificate identifier.
-			id?: string
-
-			// The certificate authority that issued the certificate.
-			issuer?: string
-
-			// When the certificate was last modified.
-			modified_on?: string
-
-			// The order/priority in which the certificate will be used.
-			priority?: number
-
-			// The type of hash used for the certificate.
-			signature?: string
-
-			// Certificate status.
-			status?: string
-
-			// When the certificate was uploaded to Cloudflare.
-			uploaded_on?: string
-
-			// Identifier.
-			zone_id?: string
-		}), [...close({
-			// Certificate bundle method.
-			bundle_method?: string
-
-			// When the certificate from the authority expires.
-			expires_on?: string
-
-			// Specify the region where your private key can be held locally.
-			geo_restrictions?: close({
-				// Available values: "us", "eu", "highest_security".
-				label?: string
-			})
-
-			// Hostnames covered by this certificate.
-			hosts?: [...string]
-
-			// Certificate identifier.
-			id?: string
-
-			// The certificate authority that issued the certificate.
-			issuer?: string
-
-			// When the certificate was last modified.
-			modified_on?: string
-
-			// The order/priority in which the certificate will be used.
-			priority?: number
-
-			// The type of hash used for the certificate.
-			signature?: string
-
-			// Certificate status.
-			status?: string
-
-			// When the certificate was uploaded to Cloudflare.
-			uploaded_on?: string
-
-			// Identifier.
-			zone_id?: string
-		})]])
-
 		// Identifier.
 		id?: string
-		filter?: close({
-			// Include Certificate Packs of all statuses, not just active
-			// ones.
-			// Available values: "all".
-			status?: string
-		})
 
 		// Identifier of the primary certificate in a pack.
 		primary_certificate?: string
@@ -150,6 +203,12 @@ package data
 
 		// Certificates' validation records.
 		validation_records?: matchN(1, [close({
+			// The CNAME record hostname for DCV delegation.
+			cname?: string
+
+			// The CNAME record target value for DCV delegation.
+			cname_target?: string
+
 			// The set of email addresses that the certificate authority (CA)
 			// will use to complete domain validation.
 			emails?: [...string]
@@ -160,6 +219,9 @@ package data
 
 			// The url that will be checked during domain validation.
 			http_url?: string
+
+			// Status of the validation record.
+			status?: string
 
 			// The hostname that the certificate authority (CA) will check for
 			// a TXT record during domain validation .
@@ -169,6 +231,12 @@ package data
 			// during domain validation.
 			txt_value?: string
 		}), [...close({
+			// The CNAME record hostname for DCV delegation.
+			cname?: string
+
+			// The CNAME record target value for DCV delegation.
+			cname_target?: string
+
 			// The set of email addresses that the certificate authority (CA)
 			// will use to complete domain validation.
 			emails?: [...string]
@@ -179,6 +247,9 @@ package data
 
 			// The url that will be checked during domain validation.
 			http_url?: string
+
+			// Status of the validation record.
+			status?: string
 
 			// The hostname that the certificate authority (CA) will check for
 			// a TXT record during domain validation .
@@ -195,5 +266,15 @@ package data
 
 		// Identifier.
 		zone_id!: string
+		filter?: close({
+			// Specify the deployment environment for the certificate packs.
+			// Available values: "staging", "production".
+			deploy?: string
+
+			// Include Certificate Packs of all statuses, not just active
+			// ones.
+			// Available values: "all".
+			status?: string
+		})
 	})
 }

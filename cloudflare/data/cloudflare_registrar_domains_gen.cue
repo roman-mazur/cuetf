@@ -16,6 +16,38 @@ package data
 			// Registrar.
 			available?: bool
 
+			// Indicates if the domain can be registered as a new domain.
+			can_register?: bool
+
+			// Shows time of creation.
+			created_at?: string
+
+			// Shows name of current registrar.
+			current_registrar?: string
+
+			// Shows when domain name registration expires.
+			expires_at?: string
+
+			// Domain identifier.
+			id?: string
+
+			// Shows whether a registrar lock is in place for a domain.
+			locked?: bool
+
+			// A comma-separated list of registry status codes. A full list of
+			// status codes can be found at [EPP Status
+			// Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
+			registry_statuses?: string
+
+			// Whether a particular TLD is currently supported by Cloudflare
+			// Registrar. Refer to [TLD
+			// Policies](https://www.cloudflare.com/tld-policies/) for a list
+			// of supported TLDs.
+			supported_tld?: bool
+
+			// Last updated.
+			updated_at?: string
+
 			// Shows contact information for domain registrant.
 			registrant_contact?: close({
 				// Address.
@@ -58,12 +90,6 @@ package data
 				zip?: string
 			})
 
-			// Indicates if the domain can be registered as a new domain.
-			can_register?: bool
-
-			// Shows time of creation.
-			created_at?: string
-
 			// Statuses for domain transfers into Cloudflare Registrar.
 			transfer_in?: close({
 				// Form of authorization has been accepted by the registrant.
@@ -92,37 +118,43 @@ package data
 				// "unknown".
 				unlock_domain?: string
 			})
-
-			// Shows name of current registrar.
-			current_registrar?: string
-
-			// Shows when domain name registration expires.
-			expires_at?: string
-
-			// Domain identifier.
-			id?: string
-
-			// Shows whether a registrar lock is in place for a domain.
-			locked?: bool
-
-			// A comma-separated list of registry status codes. A full list of
-			// status codes can be found at [EPP Status
-			// Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
-			registry_statuses?: string
-
-			// Whether a particular TLD is currently supported by Cloudflare
-			// Registrar. Refer to [TLD
-			// Policies](https://www.cloudflare.com/tld-policies/) for a list
-			// of supported TLDs.
-			supported_tld?: bool
-
-			// Last updated.
-			updated_at?: string
 		}), [...close({
 			// Shows if a domain is available for transferring into Cloudflare
 			// Registrar.
 			available?: bool
 
+			// Indicates if the domain can be registered as a new domain.
+			can_register?: bool
+
+			// Shows time of creation.
+			created_at?: string
+
+			// Shows name of current registrar.
+			current_registrar?: string
+
+			// Shows when domain name registration expires.
+			expires_at?: string
+
+			// Domain identifier.
+			id?: string
+
+			// Shows whether a registrar lock is in place for a domain.
+			locked?: bool
+
+			// A comma-separated list of registry status codes. A full list of
+			// status codes can be found at [EPP Status
+			// Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
+			registry_statuses?: string
+
+			// Whether a particular TLD is currently supported by Cloudflare
+			// Registrar. Refer to [TLD
+			// Policies](https://www.cloudflare.com/tld-policies/) for a list
+			// of supported TLDs.
+			supported_tld?: bool
+
+			// Last updated.
+			updated_at?: string
+
 			// Shows contact information for domain registrant.
 			registrant_contact?: close({
 				// Address.
@@ -165,12 +197,6 @@ package data
 				zip?: string
 			})
 
-			// Indicates if the domain can be registered as a new domain.
-			can_register?: bool
-
-			// Shows time of creation.
-			created_at?: string
-
 			// Statuses for domain transfers into Cloudflare Registrar.
 			transfer_in?: close({
 				// Form of authorization has been accepted by the registrant.
@@ -199,32 +225,6 @@ package data
 				// "unknown".
 				unlock_domain?: string
 			})
-
-			// Shows name of current registrar.
-			current_registrar?: string
-
-			// Shows when domain name registration expires.
-			expires_at?: string
-
-			// Domain identifier.
-			id?: string
-
-			// Shows whether a registrar lock is in place for a domain.
-			locked?: bool
-
-			// A comma-separated list of registry status codes. A full list of
-			// status codes can be found at [EPP Status
-			// Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
-			registry_statuses?: string
-
-			// Whether a particular TLD is currently supported by Cloudflare
-			// Registrar. Refer to [TLD
-			// Policies](https://www.cloudflare.com/tld-policies/) for a list
-			// of supported TLDs.
-			supported_tld?: bool
-
-			// Last updated.
-			updated_at?: string
 		})]])
 	})
 }

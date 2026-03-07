@@ -7,12 +7,12 @@ package data
 		// Action to take on requests that match operations included in
 		// `selector` and fail `expression`.
 		// Available values: "log", "block".
-		action?: string
+		action?:     string
+		created_at?: string
 
 		// A human-readable description that gives more details than
 		// `title`.
 		description?: string
-		created_at?:  string
 
 		// Toggle rule on or off.
 		enabled?: bool
@@ -23,31 +23,19 @@ package data
 		// For details on expressions, see the [Cloudflare
 		// Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
 		expression?: string
-		filter?: close({
-			// Action to take on requests that match operations included in
-			// `selector` and fail `expression`.
-			// Available values: "log", "block".
-			action?: string
-
-			// Toggle rule on or off.
-			enabled?: bool
-
-			// Select rules with this host in `include`.
-			host?: string
-
-			// Select rules with this host in `include`.
-			hostname?: string
-
-			// Select rules with these IDs.
-			id?: string
-
-			// Select rules using any of these token configurations.
-			token_configuration?: [...string]
-		})
 
 		// UUID.
 		id?:           string
 		last_updated?: string
+
+		// UUID.
+		rule_id?: string
+
+		// A human-readable name for the rule.
+		title?: string
+
+		// Identifier.
+		zone_id!: string
 
 		// Select operations covered by this rule.
 		//
@@ -72,14 +60,26 @@ package data
 				host?: [...string]
 			})]])
 		})
+		filter?: close({
+			// Action to take on requests that match operations included in
+			// `selector` and fail `expression`.
+			// Available values: "log", "block".
+			action?: string
 
-		// UUID.
-		rule_id?: string
+			// Toggle rule on or off.
+			enabled?: bool
 
-		// A human-readable name for the rule.
-		title?: string
+			// Select rules with this host in `include`.
+			host?: string
 
-		// Identifier.
-		zone_id!: string
+			// Select rules with this host in `include`.
+			hostname?: string
+
+			// Select rules with these IDs.
+			id?: string
+
+			// Select rules using any of these token configurations.
+			token_configuration?: [...string]
+		})
 	})
 }

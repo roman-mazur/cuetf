@@ -4,16 +4,6 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_magic_wan_ipsec_tunnel")
 	close({
-		// Identifier
-		account_id!: string
-
-		// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in
-		// the ESP tunnel (Phase 2).
-		allow_null_cipher?: bool
-
-		// True if automatic stateful return routing should be enabled for
-		// a tunnel, false otherwise.
-		automatic_return_routing?: bool
 		bgp?: close({
 			// ASN used on the customer end of the BGP session
 			customer_asn!: number
@@ -48,40 +38,23 @@ package res
 			md5_key?: string
 		})
 
+		// Identifier
+		account_id!: string
+
+		// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in
+		// the ESP tunnel (Phase 2).
+		allow_null_cipher?: bool
+
+		// True if automatic stateful return routing should be enabled for
+		// a tunnel, false otherwise.
+		automatic_return_routing?: bool
+
 		// The IP address assigned to the Cloudflare side of the IPsec
 		// tunnel.
 		cloudflare_endpoint!: string
-		bgp_status?: close({
-			bgp_state?:       string
-			cf_speaker_ip?:   string
-			cf_speaker_port?: number
-
-			// Available values: "BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING".
-			state?:                 string
-			customer_speaker_ip?:   string
-			customer_speaker_port?: number
-			tcp_established?:       bool
-			updated_at?:            string
-		})
 
 		// The date and time the tunnel was created.
 		created_on?: string
-		custom_remote_identities?: close({
-			// A custom IKE ID of type FQDN that may be used to identity the
-			// IPsec tunnel. The
-			// generated IKE IDs can still be used even if this custom value
-			// is specified.
-			//
-			// Must be of the form `<custom label>.<account
-			// ID>.custom.ipsec.cloudflare.com`.
-			//
-			// This custom ID does not need to be unique. Two IPsec tunnels
-			// may have the same custom
-			// fqdn_id. However, if another IPsec tunnel has the same value
-			// then the two tunnels
-			// cannot have the same cloudflare_endpoint.
-			fqdn_id?: string
-		})
 
 		// The IP address assigned to the customer side of the IPsec
 		// tunnel. Not required, but must be set for proactive
@@ -113,28 +86,49 @@ package res
 		// The name of the IPsec tunnel. The name cannot share a name with
 		// other tunnels.
 		name!: string
+
+		// A randomly generated or provided string for use in the IPsec
+		// tunnel.
+		psk?: string
+
+		// The PSK metadata that includes when the PSK was generated.
+		psk_metadata?: close({
+			// The date and time the tunnel was last modified.
+			last_generated_on?: string
+		})
+
+		// If `true`, then IPsec replay protection will be supported in
+		// the Cloudflare-to-customer direction.
+		replay_protection?: bool
+		bgp_status?: close({
+			bgp_state?:             string
+			cf_speaker_ip?:         string
+			cf_speaker_port?:       number
+			customer_speaker_ip?:   string
+			customer_speaker_port?: number
+
+			// Available values: "BGP_DOWN", "BGP_UP", "BGP_ESTABLISHING".
+			state?:           string
+			tcp_established?: bool
+			updated_at?:      string
+		})
+		custom_remote_identities?: close({
+			// A custom IKE ID of type FQDN that may be used to identity the
+			// IPsec tunnel. The
+			// generated IKE IDs can still be used even if this custom value
+			// is specified.
+			//
+			// Must be of the form `<custom label>.<account
+			// ID>.custom.ipsec.cloudflare.com`.
+			//
+			// This custom ID does not need to be unique. Two IPsec tunnels
+			// may have the same custom
+			// fqdn_id. However, if another IPsec tunnel has the same value
+			// then the two tunnels
+			// cannot have the same cloudflare_endpoint.
+			fqdn_id?: string
+		})
 		health_check?: close({
-			// The destination address in a request type health check. After
-			// the healthcheck is decapsulated at the customer end of the
-			// tunnel, the ICMP echo will be forwarded to this address. This
-			// field defaults to `customer_gre_endpoint address`. This field
-			// is ignored for bidirectional healthchecks as the
-			// interface_address (not assigned to the Cloudflare side of the
-			// tunnel) is used as the target. Must be in object form if the
-			// x-magic-new-hc-target header is set to true and string form if
-			// x-magic-new-hc-target is absent or set to false.
-			target?: close({
-				// The effective health check target. If 'saved' is empty, then
-				// this field will be populated with the calculated default value
-				// on GET requests. Ignored in POST, PUT, and PATCH requests.
-				effective?: string
-
-				// The saved health check target. Setting the value to the empty
-				// string indicates that the calculated default value will be
-				// used.
-				saved?: string
-			})
-
 			// The direction of the flow of the healthcheck. Either
 			// unidirectional, where the probe comes to you via the tunnel
 			// and the result comes back to Cloudflare via the open Internet,
@@ -155,20 +149,27 @@ package res
 			// value is `reply`.
 			// Available values: "reply", "request".
 			type?: string
+
+			// The destination address in a request type health check. After
+			// the healthcheck is decapsulated at the customer end of the
+			// tunnel, the ICMP echo will be forwarded to this address. This
+			// field defaults to `customer_gre_endpoint address`. This field
+			// is ignored for bidirectional healthchecks as the
+			// interface_address (not assigned to the Cloudflare side of the
+			// tunnel) is used as the target. Must be in object form if the
+			// x-magic-new-hc-target header is set to true and string form if
+			// x-magic-new-hc-target is absent or set to false.
+			target?: close({
+				// The effective health check target. If 'saved' is empty, then
+				// this field will be populated with the calculated default value
+				// on GET requests. Ignored in POST, PUT, and PATCH requests.
+				effective?: string
+
+				// The saved health check target. Setting the value to the empty
+				// string indicates that the calculated default value will be
+				// used.
+				saved?: string
+			})
 		})
-
-		// A randomly generated or provided string for use in the IPsec
-		// tunnel.
-		psk?: string
-
-		// The PSK metadata that includes when the PSK was generated.
-		psk_metadata?: close({
-			// The date and time the tunnel was last modified.
-			last_generated_on?: string
-		})
-
-		// If `true`, then IPsec replay protection will be supported in
-		// the Cloudflare-to-customer direction.
-		replay_protection?: bool
 	})
 }

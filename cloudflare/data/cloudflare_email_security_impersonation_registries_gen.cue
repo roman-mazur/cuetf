@@ -14,6 +14,23 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// The field to sort by.
+		// Available values: "name", "email", "created_at".
+		order?: string
+
+		// Available values: "A1S_INTERNAL", "SNOOPY-CASB_OFFICE_365",
+		// "SNOOPY-OFFICE_365", "SNOOPY-GOOGLE_DIRECTORY".
+		provenance?: string
+
+		// Allows searching in multiple properties of a record
+		// simultaneously.
+		// This parameter is intended for human users, not automation. Its
+		// exact
+		// behavior is intentionally left unspecified and is subject to
+		// change
+		// in the future.
+		search?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			comments?:          string
@@ -38,22 +55,5 @@ package data
 			name?:              string
 			provenance?:        string
 		})]])
-
-		// The field to sort by.
-		// Available values: "name", "email", "created_at".
-		order?: string
-
-		// Available values: "A1S_INTERNAL", "SNOOPY-CASB_OFFICE_365",
-		// "SNOOPY-OFFICE_365", "SNOOPY-GOOGLE_DIRECTORY".
-		provenance?: string
-
-		// Allows searching in multiple properties of a record
-		// simultaneously.
-		// This parameter is intended for human users, not automation. Its
-		// exact
-		// behavior is intentionally left unspecified and is subject to
-		// change
-		// in the future.
-		search?: string
 	})
 }

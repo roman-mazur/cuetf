@@ -13,17 +13,6 @@ package res
 		// An allowlist of ciphers for TLS termination. These ciphers must
 		// be in the BoringSSL format.
 		ciphers?: [...string]
-		status?: close({
-			// Ownership status of the domain.
-			// Available values: "pending", "active", "deactivated",
-			// "blocked", "error", "unknown".
-			ownership?: string
-
-			// SSL certificate status.
-			// Available values: "initializing", "pending", "active",
-			// "deactivated", "error", "unknown".
-			ssl?: string
-		})
 
 		// Name of the custom domain to be added.
 		domain!: string
@@ -45,5 +34,16 @@ package res
 
 		// Zone that the custom domain resides in.
 		zone_name?: string
+		status?: close({
+			// Ownership status of the domain.
+			// Available values: "pending", "active", "deactivated",
+			// "blocked", "error", "unknown".
+			ownership?: string
+
+			// SSL certificate status.
+			// Available values: "initializing", "pending", "active",
+			// "deactivated", "error", "unknown".
+			ssl?: string
+		})
 	})
 }

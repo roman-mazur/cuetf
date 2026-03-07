@@ -7,6 +7,17 @@ package data
 		// Account identifier tag.
 		account_id!: string
 
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// Filter by the name of the permission group.
+		// The value must be URL-encoded.
+		name?: string
+
+		// Filter by the scope of the permission group.
+		// The value must be URL-encoded.
+		scope?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Public ID.
@@ -27,16 +38,5 @@ package data
 			// Resources to which the Permission Group is scoped
 			scopes?: [...string]
 		})]])
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// Filter by the name of the permission group.
-		// The value must be URL-encoded.
-		name?: string
-
-		// Filter by the scope of the permission group.
-		// The value must be URL-encoded.
-		scope?: string
 	})
 }

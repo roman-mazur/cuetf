@@ -7,11 +7,27 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Defines an identifier.
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// The action to perform when the threshold of matched traffic
 			// within the configured period is exceeded.
 			action?: close({
+				// The action to perform.
+				// Available values: "simulate", "ban", "challenge",
+				// "js_challenge", "managed_challenge".
+				mode?: string
+
+				// The time in seconds during which Cloudflare will perform the
+				// mitigation action. Must be an integer value greater than or
+				// equal to the period.
+				// Notes: If "mode" is "challenge", "managed_challenge", or
+				// "js_challenge", Cloudflare will use the zone's Challenge
+				// Passage time and you should not provide this value.
+				timeout?: number
+
 				// A custom content type and reponse to return when the threshold
 				// is exceeded. The custom response configured in this object
 				// will override the custom error for the zone. This object is
@@ -30,24 +46,7 @@ package data
 					// `text/plain`, `text/xml`, or `application/json`.
 					content_type?: string
 				})
-
-				// The action to perform.
-				// Available values: "simulate", "ban", "challenge",
-				// "js_challenge", "managed_challenge".
-				mode?: string
-
-				// The time in seconds during which Cloudflare will perform the
-				// mitigation action. Must be an integer value greater than or
-				// equal to the period.
-				// Notes: If "mode" is "challenge", "managed_challenge", or
-				// "js_challenge", Cloudflare will use the zone's Challenge
-				// Passage time and you should not provide this value.
-				timeout?: number
 			})
-
-			// An informative summary of the rule. This value is sanitized and
-			// any tags will be removed.
-			description?: string
 
 			// Criteria specifying when the current rate limit should be
 			// bypassed. You can specify that the rate limit should not apply
@@ -66,16 +65,15 @@ package data
 				value?: string
 			})]])
 
+			// An informative summary of the rule. This value is sanitized and
+			// any tags will be removed.
+			description?: string
+
 			// When true, indicates that the rate limit is currently disabled.
 			disabled?: bool
 
 			// The unique identifier of the rate limit.
 			id?: string
-
-			// The time in seconds (an integer value) to count matching
-			// traffic. If the count exceeds the configured threshold within
-			// this period, Cloudflare will perform the configured action.
-			period?: number
 
 			// Determines which traffic the rate limit counts towards the
 			// threshold.
@@ -132,6 +130,11 @@ package data
 					origin_traffic?: bool
 				})
 			})
+
+			// The time in seconds (an integer value) to count matching
+			// traffic. If the count exceeds the configured threshold within
+			// this period, Cloudflare will perform the configured action.
+			period?: number
 
 			// The threshold that will trigger the configured mitigation
 			// action. Configure this value along with the `period` property
@@ -141,6 +144,19 @@ package data
 			// The action to perform when the threshold of matched traffic
 			// within the configured period is exceeded.
 			action?: close({
+				// The action to perform.
+				// Available values: "simulate", "ban", "challenge",
+				// "js_challenge", "managed_challenge".
+				mode?: string
+
+				// The time in seconds during which Cloudflare will perform the
+				// mitigation action. Must be an integer value greater than or
+				// equal to the period.
+				// Notes: If "mode" is "challenge", "managed_challenge", or
+				// "js_challenge", Cloudflare will use the zone's Challenge
+				// Passage time and you should not provide this value.
+				timeout?: number
+
 				// A custom content type and reponse to return when the threshold
 				// is exceeded. The custom response configured in this object
 				// will override the custom error for the zone. This object is
@@ -159,24 +175,7 @@ package data
 					// `text/plain`, `text/xml`, or `application/json`.
 					content_type?: string
 				})
-
-				// The action to perform.
-				// Available values: "simulate", "ban", "challenge",
-				// "js_challenge", "managed_challenge".
-				mode?: string
-
-				// The time in seconds during which Cloudflare will perform the
-				// mitigation action. Must be an integer value greater than or
-				// equal to the period.
-				// Notes: If "mode" is "challenge", "managed_challenge", or
-				// "js_challenge", Cloudflare will use the zone's Challenge
-				// Passage time and you should not provide this value.
-				timeout?: number
 			})
-
-			// An informative summary of the rule. This value is sanitized and
-			// any tags will be removed.
-			description?: string
 
 			// Criteria specifying when the current rate limit should be
 			// bypassed. You can specify that the rate limit should not apply
@@ -195,16 +194,15 @@ package data
 				value?: string
 			})]])
 
+			// An informative summary of the rule. This value is sanitized and
+			// any tags will be removed.
+			description?: string
+
 			// When true, indicates that the rate limit is currently disabled.
 			disabled?: bool
 
 			// The unique identifier of the rate limit.
 			id?: string
-
-			// The time in seconds (an integer value) to count matching
-			// traffic. If the count exceeds the configured threshold within
-			// this period, Cloudflare will perform the configured action.
-			period?: number
 
 			// Determines which traffic the rate limit counts towards the
 			// threshold.
@@ -262,13 +260,15 @@ package data
 				})
 			})
 
+			// The time in seconds (an integer value) to count matching
+			// traffic. If the count exceeds the configured threshold within
+			// this period, Cloudflare will perform the configured action.
+			period?: number
+
 			// The threshold that will trigger the configured mitigation
 			// action. Configure this value along with the `period` property
 			// to establish a threshold per period.
 			threshold?: number
 		})]])
-
-		// Defines an identifier.
-		zone_id!: string
 	})
 }

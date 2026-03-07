@@ -7,28 +7,28 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Use this field to specify the unique ID of the zone.
+		zone_id!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// The timestamp of when the snippet was created.
+			// Indicates when the snippet was created.
 			created_on?: string
 
-			// The timestamp of when the snippet was last modified.
+			// Indicates when the snippet was last modified.
 			modified_on?: string
 
-			// The identifying name of the snippet.
+			// Identify the snippet.
 			snippet_name?: string
 		}), [...close({
-			// The timestamp of when the snippet was created.
+			// Indicates when the snippet was created.
 			created_on?: string
 
-			// The timestamp of when the snippet was last modified.
+			// Indicates when the snippet was last modified.
 			modified_on?: string
 
-			// The identifying name of the snippet.
+			// Identify the snippet.
 			snippet_name?: string
 		})]])
-
-		// The unique ID of the zone.
-		zone_id!: string
 	})
 }

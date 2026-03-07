@@ -28,6 +28,9 @@ package data
 
 		// Whether the API call was successful.
 		success?: bool
+
+		// Identifier.
+		zone_id!: string
 		messages?: matchN(1, [close({
 			code?:              number
 			documentation_url?: string
@@ -53,6 +56,16 @@ package data
 			// Required for MX, SRV and URI records. Unused by other record
 			// types. Records with lower priorities are preferred.
 			priority?: number
+
+			// Time to live, in seconds, of the DNS record. Must be between 60
+			// and 86400, or 1 for 'automatic'.
+			ttl?: number
+
+			// DNS record type.
+			// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV",
+			// "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA",
+			// "SSHFP", "SVCB", "TLSA", "URI".
+			type?: string
 			errors?: matchN(1, [close({
 				code?: string
 
@@ -104,16 +117,6 @@ package data
 					type?: string
 				})
 			})]])
-
-			// Time to live, in seconds, of the DNS record. Must be between 60
-			// and 86400, or 1 for 'automatic'.
-			ttl?: number
-
-			// DNS record type.
-			// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV",
-			// "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA",
-			// "SSHFP", "SVCB", "TLSA", "URI".
-			type?: string
 			record?: matchN(1, [close({
 				// DNS record content.
 				content?: string
@@ -156,9 +159,6 @@ package data
 				type?: string
 			})]])
 		})
-
-		// Identifier.
-		zone_id!: string
 		result_info?: close({
 			// Total number of results for the requested service.
 			email_routing_dns_count?: number

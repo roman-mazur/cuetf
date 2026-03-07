@@ -7,6 +7,24 @@ package res
 		// Account identifier
 		account_id!: string
 
+		// Date and time at which the target was created
+		created_at?: string
+
+		// A non-unique field that refers to a target. Case insensitive,
+		// maximum
+		// length of 255 characters, supports the use of special
+		// characters dash
+		// and period, does not support spaces, and must start and end
+		// with an
+		// alphanumeric character.
+		hostname!: string
+
+		// Target identifier
+		id?: string
+
+		// Date and time at which the target was modified
+		modified_at?: string
+
 		// The IPv4/IPv6 address that identifies where to reach a target
 		ip!: close({
 			// The target's IPv4 address
@@ -29,23 +47,5 @@ package res
 				virtual_network_id?: string
 			})
 		})
-
-		// Date and time at which the target was created
-		created_at?: string
-
-		// A non-unique field that refers to a target. Case insensitive,
-		// maximum
-		// length of 255 characters, supports the use of special
-		// characters dash
-		// and period, does not support spaces, and must start and end
-		// with an
-		// alphanumeric character.
-		hostname!: string
-
-		// Target identifier
-		id?: string
-
-		// Date and time at which the target was modified
-		modified_at?: string
 	})
 }

@@ -13,17 +13,31 @@ package data
 		// zone.
 		foundation_dns?: bool
 
-		// Settings for this internal zone.
-		internal_dns?: close({
-			// The ID of the zone to fallback to.
-			reference_zone_id?: string
-		})
-
 		// Whether to enable multi-provider DNS, which causes Cloudflare
 		// to activate the zone even when non-Cloudflare NS records
 		// exist, and to respect NS records at the zone apex during
 		// outbound zone transfers.
 		multi_provider?: bool
+
+		// The time to live (TTL) of the zone's nameserver (NS) records.
+		ns_ttl?: number
+
+		// Allows a Secondary DNS zone to use (proxied) override records
+		// and CNAME flattening at the zone apex.
+		secondary_overrides?: bool
+
+		// Identifier.
+		zone_id!: string
+
+		// Whether the zone mode is a regular or CDN/DNS only zone.
+		// Available values: "standard", "cdn_only", "dns_only".
+		zone_mode?: string
+
+		// Settings for this internal zone.
+		internal_dns?: close({
+			// The ID of the zone to fallback to.
+			reference_zone_id?: string
+		})
 
 		// Settings determining the nameservers through which the zone
 		// should be available.
@@ -36,13 +50,6 @@ package data
 			// "custom.tenant", "custom.zone".
 			type?: string
 		})
-
-		// The time to live (TTL) of the zone's nameserver (NS) records.
-		ns_ttl?: number
-
-		// Allows a Secondary DNS zone to use (proxied) override records
-		// and CNAME flattening at the zone apex.
-		secondary_overrides?: bool
 
 		// Components of the zone's SOA record.
 		soa?: close({
@@ -73,12 +80,5 @@ package data
 			// The time to live (TTL) of the SOA record itself.
 			ttl?: number
 		})
-
-		// Identifier.
-		zone_id!: string
-
-		// Whether the zone mode is a regular or CDN/DNS only zone.
-		// Available values: "standard", "cdn_only", "dns_only".
-		zone_mode?: string
 	})
 }

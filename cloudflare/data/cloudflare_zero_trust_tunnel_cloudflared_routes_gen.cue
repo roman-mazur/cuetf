@@ -7,6 +7,39 @@ package data
 		// Cloudflare account ID
 		account_id!: string
 
+		// Optional remark describing the route.
+		comment?: string
+
+		// If provided, include only resources that were created (and not
+		// deleted) before this time. URL encoded.
+		existed_at?: string
+
+		// If `true`, only include deleted routes. If `false`, exclude
+		// deleted routes. If empty, all routes will be included.
+		is_deleted?: bool
+
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// If set, only list routes that are contained within this IP
+		// range.
+		network_subset?: string
+
+		// If set, only list routes that contain this IP range.
+		network_superset?: string
+
+		// UUID of the route.
+		route_id?: string
+
+		// The types of tunnels to filter by, separated by commas.
+		tun_types?: [...string]
+
+		// UUID of the tunnel.
+		tunnel_id?: string
+
+		// UUID of the virtual network.
+		virtual_network_id?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Optional remark describing the route.
@@ -77,38 +110,5 @@ package data
 			// A user-friendly name for the virtual network.
 			virtual_network_name?: string
 		})]])
-
-		// Optional remark describing the route.
-		comment?: string
-
-		// If provided, include only resources that were created (and not
-		// deleted) before this time. URL encoded.
-		existed_at?: string
-
-		// If `true`, only include deleted routes. If `false`, exclude
-		// deleted routes. If empty, all routes will be included.
-		is_deleted?: bool
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// If set, only list routes that are contained within this IP
-		// range.
-		network_subset?: string
-
-		// If set, only list routes that contain this IP range.
-		network_superset?: string
-
-		// UUID of the route.
-		route_id?: string
-
-		// The types of tunnels to filter by, separated by commas.
-		tun_types?: [...string]
-
-		// UUID of the tunnel.
-		tunnel_id?: string
-
-		// UUID of the virtual network.
-		virtual_network_id?: string
 	})
 }

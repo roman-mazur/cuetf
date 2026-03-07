@@ -14,6 +14,33 @@ package data
 		// API. This is true for Cloudflare-managed maps.
 		can_delete?: bool
 
+		// If set to false, then the IPs on the Address Map cannot be
+		// modified via the API. This is true for Cloudflare-managed
+		// maps.
+		can_modify_ips?: bool
+		created_at?:     string
+
+		// If you have legacy TLS clients which do not send the TLS server
+		// name indicator, then you can specify one default SNI on the
+		// map. If Cloudflare receives a TLS handshake from a client
+		// without an SNI, it will respond with the default SNI on those
+		// IPs. The default SNI can be any valid zone or subdomain owned
+		// by the account.
+		default_sni?: string
+
+		// An optional description field which may be used to describe the
+		// types of IPs or zones on the map.
+		description?: string
+
+		// Whether the Address Map is enabled or not. Cloudflare's DNS
+		// will not respond with IP addresses on an Address Map until the
+		// map is enabled.
+		enabled?: bool
+
+		// Identifier of an Address Map.
+		id?:          string
+		modified_at?: string
+
 		// The set of IPs on the Address Map.
 		ips?: matchN(1, [close({
 			created_at?: string
@@ -55,32 +82,5 @@ package data
 			// Available values: "zone", "account".
 			kind?: string
 		})]])
-
-		// If set to false, then the IPs on the Address Map cannot be
-		// modified via the API. This is true for Cloudflare-managed
-		// maps.
-		can_modify_ips?: bool
-		created_at?:     string
-
-		// If you have legacy TLS clients which do not send the TLS server
-		// name indicator, then you can specify one default SNI on the
-		// map. If Cloudflare receives a TLS handshake from a client
-		// without an SNI, it will respond with the default SNI on those
-		// IPs. The default SNI can be any valid zone or subdomain owned
-		// by the account.
-		default_sni?: string
-
-		// An optional description field which may be used to describe the
-		// types of IPs or zones on the map.
-		description?: string
-
-		// Whether the Address Map is enabled or not. Cloudflare's DNS
-		// will not respond with IP addresses on an Address Map until the
-		// map is enabled.
-		enabled?: bool
-
-		// Identifier of an Address Map.
-		id?:          string
-		modified_at?: string
 	})
 }

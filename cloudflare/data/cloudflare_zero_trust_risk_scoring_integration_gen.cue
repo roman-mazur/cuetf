@@ -14,7 +14,9 @@ package data
 		active?: bool
 
 		// When the integration was created in RFC3339 format.
-		created_at?: string
+		created_at?:     string
+		id?:             string
+		integration_id!: string
 
 		// Available values: "Okta".
 		integration_type?: string
@@ -23,9 +25,7 @@ package data
 		// Should be set to the Access-Okta IDP integration ID.
 		// Useful when the risk-score integration needs to be associated
 		// with a secondary asset and recalled using that ID.
-		reference_id?:   string
-		id?:             string
-		integration_id!: string
+		reference_id?: string
 
 		// The base URL for the tenant. E.g. "https://tenant.okta.com".
 		tenant_url?: string

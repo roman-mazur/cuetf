@@ -10,12 +10,24 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Name of the project.
+		project_name!: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Available values: "google", "lets_encrypt".
 			certificate_authority?: string
 			created_on?:            string
 			domain_id?:             string
+			id?:                    string
+
+			// The domain name.
+			name?: string
+
+			// Available values: "initializing", "pending", "active",
+			// "deactivated", "blocked", "error".
+			status?:   string
+			zone_tag?: string
 			validation_data?: close({
 				error_message?: string
 
@@ -35,20 +47,20 @@ package data
 				// "blocked", "error".
 				status?: string
 			})
-
-			// The domain name.
-			name?: string
-			id?:   string
-
-			// Available values: "initializing", "pending", "active",
-			// "deactivated", "blocked", "error".
-			status?:   string
-			zone_tag?: string
 		}), [...close({
 			// Available values: "google", "lets_encrypt".
 			certificate_authority?: string
 			created_on?:            string
 			domain_id?:             string
+			id?:                    string
+
+			// The domain name.
+			name?: string
+
+			// Available values: "initializing", "pending", "active",
+			// "deactivated", "blocked", "error".
+			status?:   string
+			zone_tag?: string
 			validation_data?: close({
 				error_message?: string
 
@@ -68,18 +80,6 @@ package data
 				// "blocked", "error".
 				status?: string
 			})
-
-			// The domain name.
-			name?: string
-			id?:   string
-
-			// Available values: "initializing", "pending", "active",
-			// "deactivated", "blocked", "error".
-			status?:   string
-			zone_tag?: string
 		})]])
-
-		// Name of the project.
-		project_name!: string
 	})
 }

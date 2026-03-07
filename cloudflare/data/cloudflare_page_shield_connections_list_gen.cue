@@ -30,41 +30,6 @@ package data
 		// filtered by exact match
 		hosts?: string
 
-		// The items returned by the data source
-		result?: matchN(1, [close({
-			added_at?:                  string
-			domain_reported_malicious?: bool
-			first_page_url?:            string
-			first_seen_at?:             string
-			host?:                      string
-
-			// Identifier
-			id?:           string
-			last_seen_at?: string
-			malicious_domain_categories?: [...string]
-			malicious_url_categories?: [...string]
-			page_urls?: [...string]
-			url?:                       string
-			url_contains_cdn_cgi_path?: bool
-			url_reported_malicious?:    bool
-		}), [...close({
-			added_at?:                  string
-			domain_reported_malicious?: bool
-			first_page_url?:            string
-			first_seen_at?:             string
-			host?:                      string
-
-			// Identifier
-			id?:           string
-			last_seen_at?: string
-			malicious_domain_categories?: [...string]
-			malicious_url_categories?: [...string]
-			page_urls?: [...string]
-			url?:                       string
-			url_contains_cdn_cgi_path?: bool
-			url_reported_malicious?:    bool
-		})]])
-
 		// Max items to fetch, default: 1000
 		max_items?: number
 
@@ -108,5 +73,40 @@ package data
 
 		// Identifier
 		zone_id!: string
+
+		// The items returned by the data source
+		result?: matchN(1, [close({
+			added_at?:                  string
+			domain_reported_malicious?: bool
+			first_page_url?:            string
+			first_seen_at?:             string
+			host?:                      string
+
+			// Identifier
+			id?:           string
+			last_seen_at?: string
+			malicious_domain_categories?: [...string]
+			malicious_url_categories?: [...string]
+			page_urls?: [...string]
+			url?:                       string
+			url_contains_cdn_cgi_path?: bool
+			url_reported_malicious?:    bool
+		}), [...close({
+			added_at?:                  string
+			domain_reported_malicious?: bool
+			first_page_url?:            string
+			first_seen_at?:             string
+			host?:                      string
+
+			// Identifier
+			id?:           string
+			last_seen_at?: string
+			malicious_domain_categories?: [...string]
+			malicious_url_categories?: [...string]
+			page_urls?: [...string]
+			url?:                       string
+			url_contains_cdn_cgi_path?: bool
+			url_reported_malicious?:    bool
+		})]])
 	})
 }

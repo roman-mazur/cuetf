@@ -26,15 +26,15 @@ package data
 		// The raw schema, e.g., the OpenAPI schema, either as JSON or
 		// YAML
 		source?: string
-		filter?: close({
-			// Filter for enabled schemas
-			validation_enabled?: bool
-		})
 
 		// An indicator if this schema is enabled
 		validation_enabled?: bool
 
 		// Identifier.
 		zone_id!: string
+		filter?: close({
+			// Filter for enabled schemas
+			validation_enabled?: bool
+		})
 	})
 }

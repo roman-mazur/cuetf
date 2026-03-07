@@ -10,9 +10,6 @@ package data
 		// Name of the bucket.
 		bucket_name!: string
 		rules?: matchN(1, [close({
-			// Whether or not this rule is in effect.
-			enabled?: bool
-
 			// Transition to abort ongoing multipart uploads.
 			abort_multipart_uploads_transition?: close({
 				// Condition for lifecycle transitions to apply after an object
@@ -45,6 +42,9 @@ package data
 					type?: string
 				})
 			})
+
+			// Whether or not this rule is in effect.
+			enabled?: bool
 
 			// Unique identifier for this rule.
 			id?: string
@@ -78,9 +78,6 @@ package data
 				storage_class?: string
 			})]])
 		}), [...close({
-			// Whether or not this rule is in effect.
-			enabled?: bool
-
 			// Transition to abort ongoing multipart uploads.
 			abort_multipart_uploads_transition?: close({
 				// Condition for lifecycle transitions to apply after an object
@@ -113,6 +110,9 @@ package data
 					type?: string
 				})
 			})
+
+			// Whether or not this rule is in effect.
+			enabled?: bool
 
 			// Unique identifier for this rule.
 			id?: string

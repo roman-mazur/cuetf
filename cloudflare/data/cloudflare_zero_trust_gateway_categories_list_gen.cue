@@ -26,6 +26,12 @@ package data
 			// Provide a short summary of domains in the category.
 			description?: string
 
+			// Identify this category. Only one category per ID.
+			id?: number
+
+			// Specify the category name.
+			name?: string
+
 			// Provide all subcategories for this category.
 			subcategories?: matchN(1, [close({
 				// Indicate whether the category is in beta and subject to change.
@@ -68,12 +74,6 @@ package data
 				// Specify the category name.
 				name?: string
 			})]])
-
-			// Identify this category. Only one category per ID.
-			id?: number
-
-			// Specify the category name.
-			name?: string
 		}), [...close({
 			// Indicate whether the category is in beta and subject to change.
 			beta?: bool
@@ -89,6 +89,12 @@ package data
 			// Provide a short summary of domains in the category.
 			description?: string
 
+			// Identify this category. Only one category per ID.
+			id?: number
+
+			// Specify the category name.
+			name?: string
+
 			// Provide all subcategories for this category.
 			subcategories?: matchN(1, [close({
 				// Indicate whether the category is in beta and subject to change.
@@ -131,12 +137,6 @@ package data
 				// Specify the category name.
 				name?: string
 			})]])
-
-			// Identify this category. Only one category per ID.
-			id?: number
-
-			// Specify the category name.
-			name?: string
 		})]])
 	})
 }

@@ -18,6 +18,20 @@ package data
 		// the given value, the filter is case-insensitive.
 		hostname?: string
 
+		// The hostname route ID.
+		id?: string
+
+		// If `true`, only return deleted hostname routes. If `false`,
+		// exclude deleted hostname routes.
+		is_deleted?: bool
+
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// If set, only list hostname routes that point to a specific
+		// tunnel.
+		tunnel_id?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// An optional description of the hostname route.
@@ -64,19 +78,5 @@ package data
 			// A user-friendly name for a tunnel.
 			tunnel_name?: string
 		})]])
-
-		// The hostname route ID.
-		id?: string
-
-		// If `true`, only return deleted hostname routes. If `false`,
-		// exclude deleted hostname routes.
-		is_deleted?: bool
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// If set, only list hostname routes that point to a specific
-		// tunnel.
-		tunnel_id?: string
 	})
 }

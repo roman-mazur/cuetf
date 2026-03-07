@@ -12,9 +12,6 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// Whether to refuse to answer queries for the ANY type
-			deprecate_any_requests?: bool
-
 			// Attack mitigation settings
 			attack_mitigation?: close({
 				// When enabled, automatically mitigate random-prefix attacks to
@@ -24,7 +21,9 @@ package data
 				// Only mitigate attacks when upstream servers seem unhealthy
 				only_when_upstream_unhealthy?: bool
 			})
-			dns_firewall_ips?: [...string]
+
+			// Whether to refuse to answer queries for the ANY type
+			deprecate_any_requests?: bool
 
 			// Whether to forward client IP (resolver) subnet if no EDNS
 			// Client Subnet is sent
@@ -92,11 +91,9 @@ package data
 			// Number of retries for fetching DNS responses from upstream
 			// nameservers (not counting the initial attempt)
 			retries?: number
+			dns_firewall_ips?: [...string]
 			upstream_ips?: [...string]
 		}), [...close({
-			// Whether to refuse to answer queries for the ANY type
-			deprecate_any_requests?: bool
-
 			// Attack mitigation settings
 			attack_mitigation?: close({
 				// When enabled, automatically mitigate random-prefix attacks to
@@ -106,7 +103,9 @@ package data
 				// Only mitigate attacks when upstream servers seem unhealthy
 				only_when_upstream_unhealthy?: bool
 			})
-			dns_firewall_ips?: [...string]
+
+			// Whether to refuse to answer queries for the ANY type
+			deprecate_any_requests?: bool
 
 			// Whether to forward client IP (resolver) subnet if no EDNS
 			// Client Subnet is sent
@@ -174,6 +173,7 @@ package data
 			// Number of retries for fetching DNS responses from upstream
 			// nameservers (not counting the initial attempt)
 			retries?: number
+			dns_firewall_ips?: [...string]
 			upstream_ips?: [...string]
 		})]])
 	})

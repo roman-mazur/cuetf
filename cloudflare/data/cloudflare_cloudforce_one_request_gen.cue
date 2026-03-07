@@ -17,13 +17,33 @@ package data
 
 		// Tokens for the request messages.
 		message_tokens?: number
+		priority?:       string
 
 		// Readable Request ID.
 		readable_id?: string
-		priority?:    string
 
 		// Requested information from request.
 		request?: string
+
+		// UUID.
+		request_id?: string
+
+		// Request Status.
+		// Available values: "open", "accepted", "reported", "approved",
+		// "completed", "declined".
+		status?: string
+
+		// Brief description of the request.
+		summary?: string
+
+		// The CISA defined Traffic Light Protocol (TLP).
+		// Available values: "clear", "amber", "amber-strict", "green",
+		// "red".
+		tlp?: string
+
+		// Tokens for the request.
+		tokens?:  number
+		updated?: string
 		filter?: close({
 			// Retrieve requests completed after this time.
 			completed_after?: string
@@ -58,25 +78,5 @@ package data
 			// "completed", "declined".
 			status?: string
 		})
-
-		// UUID.
-		request_id?: string
-
-		// Request Status.
-		// Available values: "open", "accepted", "reported", "approved",
-		// "completed", "declined".
-		status?: string
-
-		// Brief description of the request.
-		summary?: string
-
-		// The CISA defined Traffic Light Protocol (TLP).
-		// Available values: "clear", "amber", "amber-strict", "green",
-		// "red".
-		tlp?: string
-
-		// Tokens for the request.
-		tokens?:  number
-		updated?: string
 	})
 }

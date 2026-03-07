@@ -12,25 +12,9 @@ package data
 			// always be flattened.
 			flatten_all_cnames?: bool
 
-			// Settings for this internal zone.
-			internal_dns?: close({
-				// The ID of the zone to fallback to.
-				reference_zone_id?: string
-			})
-
 			// Whether to enable Foundation DNS Advanced Nameservers on the
 			// zone.
 			foundation_dns?: bool
-
-			// Settings determining the nameservers through which the zone
-			// should be available.
-			nameservers?: close({
-				// Nameserver type
-				// Available values: "cloudflare.standard",
-				// "cloudflare.standard.random", "custom.account",
-				// "custom.tenant".
-				type?: string
-			})
 
 			// Whether to enable multi-provider DNS, which causes Cloudflare
 			// to activate the zone even when non-Cloudflare NS records
@@ -44,6 +28,26 @@ package data
 			// Allows a Secondary DNS zone to use (proxied) override records
 			// and CNAME flattening at the zone apex.
 			secondary_overrides?: bool
+
+			// Whether the zone mode is a regular or CDN/DNS only zone.
+			// Available values: "standard", "cdn_only", "dns_only".
+			zone_mode?: string
+
+			// Settings for this internal zone.
+			internal_dns?: close({
+				// The ID of the zone to fallback to.
+				reference_zone_id?: string
+			})
+
+			// Settings determining the nameservers through which the zone
+			// should be available.
+			nameservers?: close({
+				// Nameserver type
+				// Available values: "cloudflare.standard",
+				// "cloudflare.standard.random", "custom.account",
+				// "custom.tenant".
+				type?: string
+			})
 
 			// Components of the zone's SOA record.
 			soa?: close({
@@ -74,10 +78,6 @@ package data
 				// The time to live (TTL) of the SOA record itself.
 				ttl?: number
 			})
-
-			// Whether the zone mode is a regular or CDN/DNS only zone.
-			// Available values: "standard", "cdn_only", "dns_only".
-			zone_mode?: string
 		})
 	})
 }

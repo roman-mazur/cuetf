@@ -21,10 +21,10 @@ package res
 
 		// When the widget was created.
 		created_on?: string
+		domains!: [...string]
 
 		// Return the Ephemeral ID in /siteverify (ENT only).
 		ephemeral_id?: bool
-		domains!: [...string]
 
 		// Widget item identifier tag.
 		id?: string

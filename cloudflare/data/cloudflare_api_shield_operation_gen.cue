@@ -23,6 +23,17 @@ package data
 		// UUID.
 		id?:           string
 		last_updated?: string
+
+		// The HTTP method used to access the endpoint.
+		// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT",
+		// "DELETE", "CONNECT", "PATCH", "TRACE".
+		method?: string
+
+		// UUID.
+		operation_id?: string
+
+		// Identifier.
+		zone_id!: string
 		features?: close({
 			// API Routing settings on endpoint.
 			api_routing?: close({
@@ -81,22 +92,23 @@ package data
 				})
 			})
 			schema_info?: close({
-				// True if a Cloudflare-provided learned schema is available for
-				// this endpoint.
-				learned_available?: bool
-
 				// Schema active on endpoint.
 				active_schema?: close({
+					created_at?: string
+
 					// UUID.
 					id?: string
 
 					// True if schema is Cloudflare-provided.
 					is_learned?: bool
-					created_at?: string
 
 					// Schema file name.
 					name?: string
 				})
+
+				// True if a Cloudflare-provided learned schema is available for
+				// this endpoint.
+				learned_available?: bool
 
 				// Action taken on requests failing validation.
 				// Available values: "none", "log", "block".
@@ -108,11 +120,11 @@ package data
 
 				// The number of data points used for the threshold suggestion
 				// calculation.
-				data_points?: number
+				data_points?:  number
+				last_updated?: string
 
 				// The p50 quantile of requests (in period_seconds).
-				p50?:          number
-				last_updated?: string
+				p50?: number
 
 				// The p90 quantile of requests (in period_seconds).
 				p90?: number
@@ -131,14 +143,6 @@ package data
 				suggested_threshold?: number
 			})
 		})
-
-		// The HTTP method used to access the endpoint.
-		// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT",
-		// "DELETE", "CONNECT", "PATCH", "TRACE".
-		method?: string
-
-		// UUID.
-		operation_id?: string
 		filter?: close({
 			// Direction to order results.
 			// Available values: "asc", "desc".
@@ -167,8 +171,5 @@ package data
 			// "thresholds.$key".
 			order?: string
 		})
-
-		// Identifier.
-		zone_id!: string
 	})
 }

@@ -19,6 +19,30 @@ package data
 		// Retrieve requests created before this time.
 		created_before?: string
 
+		// Max items to fetch, default: 1000
+		max_items?: number
+
+		// Page number of results.
+		page!: number
+
+		// Number of results per page.
+		per_page!: number
+
+		// Requested information from request.
+		request_type?: string
+
+		// Field to sort results by.
+		sort_by?: string
+
+		// Sort order (asc or desc).
+		// Available values: "asc", "desc".
+		sort_order?: string
+
+		// Request Status.
+		// Available values: "open", "accepted", "reported", "approved",
+		// "completed", "declined".
+		status?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Request completion time.
@@ -101,29 +125,5 @@ package data
 			// Request last updated time.
 			updated?: string
 		})]])
-
-		// Max items to fetch, default: 1000
-		max_items?: number
-
-		// Page number of results.
-		page!: number
-
-		// Number of results per page.
-		per_page!: number
-
-		// Requested information from request.
-		request_type?: string
-
-		// Field to sort results by.
-		sort_by?: string
-
-		// Sort order (asc or desc).
-		// Available values: "asc", "desc".
-		sort_order?: string
-
-		// Request Status.
-		// Available values: "open", "accepted", "reported", "approved",
-		// "completed", "declined".
-		status?: string
 	})
 }
