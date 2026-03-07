@@ -7,11 +7,15 @@ package data
 		// Generated ID for the indices.
 		id?: string
 
+		// Comma-separated list of data streams, indices, and aliases used
+		// to limit the request. Supports wildcards (*).
+		//
+		// To target all data streams and indices, omit this attribute or
+		// use `*` or `_all`.
+		target?: string
+
 		// The list of indices.
 		indices?: matchN(1, [close({
-			// A JSON string describing the analyzers applied to the index.
-			analysis_analyzer?: string
-
 			// Aliases for the index.
 			alias?: matchN(1, [close({
 				// Query used to limit documents the alias can access.
@@ -66,6 +70,9 @@ package data
 				// operations.
 				search_routing?: string
 			})]])
+
+			// A JSON string describing the analyzers applied to the index.
+			analysis_analyzer?: string
 
 			// A JSON string describing the char_filters applied to the index.
 			analysis_char_filter?: string
@@ -127,7 +134,7 @@ package data
 			// fail if the final pipeline is set and the pipeline does not
 			// exist. The final pipeline always runs after the request
 			// pipeline (if specified) and the default pipeline (if it
-			// exists). The special pipeline name _none indicates no ingest
+			// exists). The special pipeline name `_none` indicates no ingest
 			// pipeline will run.
 			final_pipeline?: string
 
@@ -147,10 +154,10 @@ package data
 			indexing_slowlog_level?: string
 
 			// Set the number of characters of the `_source` to include in the
-			// slowlog lines, `false` or `0` will skip logging the source
-			// entirely and setting it to `true` will log the entire source
-			// regardless of size. The original `_source` is reformatted by
-			// default to make sure that it fits on a single log line.
+			// slowlog lines. `false` or `0` skips logging the source
+			// entirely; `true` logs the entire source regardless of size.
+			// The original `_source` is reformatted by default to make sure
+			// that it fits on a single log line.
 			indexing_slowlog_source?: string
 
 			// Set the cutoff for shard level slow search logging of slow
@@ -178,17 +185,19 @@ package data
 			mapping_coerce?: bool
 
 			// Mapping for fields in the index.
+			//
 			// If specified, this mapping can include: field names, [field
 			// data
 			// types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html),
 			// [mapping
 			// parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html).
+			//
 			// **NOTE:**
 			// - Changing datatypes in the existing _mappings_ will force
 			// index to be re-created.
-			// - Removing field will be ignored by default same as
-			// elasticsearch. You need to recreate the index to remove field
-			// completely.
+			// - Removing a field will be ignored by default (same as
+			// Elasticsearch). You need to recreate the index to remove the
+			// field completely.
 			mappings?: string
 
 			// Period to wait for a connection to the master node. If no
@@ -336,13 +345,11 @@ package data
 			// The number of shard copies that must be active before
 			// proceeding with the operation. Set to `all` or any positive
 			// integer up to the total number of shards in the index
-			// (number_of_replicas+1). Default: `1`, the primary shard. This
-			// value is ignored when running against Serverless projects.
+			// (`number_of_replicas+1`). Default: `1`, the primary shard.
+			// This value is ignored when running against Serverless
+			// projects.
 			wait_for_active_shards?: string
 		}), [...close({
-			// A JSON string describing the analyzers applied to the index.
-			analysis_analyzer?: string
-
 			// Aliases for the index.
 			alias?: matchN(1, [close({
 				// Query used to limit documents the alias can access.
@@ -397,6 +404,9 @@ package data
 				// operations.
 				search_routing?: string
 			})]])
+
+			// A JSON string describing the analyzers applied to the index.
+			analysis_analyzer?: string
 
 			// A JSON string describing the char_filters applied to the index.
 			analysis_char_filter?: string
@@ -458,7 +468,7 @@ package data
 			// fail if the final pipeline is set and the pipeline does not
 			// exist. The final pipeline always runs after the request
 			// pipeline (if specified) and the default pipeline (if it
-			// exists). The special pipeline name _none indicates no ingest
+			// exists). The special pipeline name `_none` indicates no ingest
 			// pipeline will run.
 			final_pipeline?: string
 
@@ -478,10 +488,10 @@ package data
 			indexing_slowlog_level?: string
 
 			// Set the number of characters of the `_source` to include in the
-			// slowlog lines, `false` or `0` will skip logging the source
-			// entirely and setting it to `true` will log the entire source
-			// regardless of size. The original `_source` is reformatted by
-			// default to make sure that it fits on a single log line.
+			// slowlog lines. `false` or `0` skips logging the source
+			// entirely; `true` logs the entire source regardless of size.
+			// The original `_source` is reformatted by default to make sure
+			// that it fits on a single log line.
 			indexing_slowlog_source?: string
 
 			// Set the cutoff for shard level slow search logging of slow
@@ -509,17 +519,19 @@ package data
 			mapping_coerce?: bool
 
 			// Mapping for fields in the index.
+			//
 			// If specified, this mapping can include: field names, [field
 			// data
 			// types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html),
 			// [mapping
 			// parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html).
+			//
 			// **NOTE:**
 			// - Changing datatypes in the existing _mappings_ will force
 			// index to be re-created.
-			// - Removing field will be ignored by default same as
-			// elasticsearch. You need to recreate the index to remove field
-			// completely.
+			// - Removing a field will be ignored by default (same as
+			// Elasticsearch). You need to recreate the index to remove the
+			// field completely.
 			mappings?: string
 
 			// Period to wait for a connection to the master node. If no
@@ -667,15 +679,10 @@ package data
 			// The number of shard copies that must be active before
 			// proceeding with the operation. Set to `all` or any positive
 			// integer up to the total number of shards in the index
-			// (number_of_replicas+1). Default: `1`, the primary shard. This
-			// value is ignored when running against Serverless projects.
+			// (`number_of_replicas+1`). Default: `1`, the primary shard.
+			// This value is ignored when running against Serverless
+			// projects.
 			wait_for_active_shards?: string
 		})]])
-
-		// Comma-separated list of data streams, indices, and aliases used
-		// to limit the request. Supports wildcards (*). To target all
-		// data streams and indices, omit this attribute or use * or
-		// _all.
-		target?: string
 	})
 }

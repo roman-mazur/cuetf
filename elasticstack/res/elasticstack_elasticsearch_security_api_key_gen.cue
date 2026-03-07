@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_security_api_key")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+
 		// Access configuration for cross-cluster API keys. Only
 		// applicable when type is 'cross_cluster'.
 		access?: close({
@@ -69,7 +71,6 @@ package res
 
 		// Arbitrary metadata that you want to associate with the API key.
 		metadata?: string
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
 		// Specifies the name for this API key.
 		name!: string

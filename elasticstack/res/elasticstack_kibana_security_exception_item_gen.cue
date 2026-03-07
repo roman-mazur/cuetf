@@ -4,12 +4,6 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_security_exception_item")
 	close({
-		// The timestamp of when the exception item was created.
-		created_at?: string
-
-		// The user who created the exception item.
-		created_by?: string
-
 		// Array of comments about the exception item.
 		comments?: matchN(1, [close({
 			// The comment text.
@@ -27,8 +21,144 @@ package res
 			id?: string
 		})]])
 
+		// The timestamp of when the exception item was created.
+		created_at?: string
+
+		// The user who created the exception item.
+		created_by?: string
+
 		// Describes the exception item.
 		description!: string
+
+		// The exception item entries. This defines the conditions under
+		// which the exception applies.
+		entries!: matchN(1, [close({
+			// Nested entries (for `nested` type). Only `match`, `match_any`,
+			// and `exists` entry types are allowed as nested entries.
+			entries?: matchN(1, [close({
+				// The field name.
+				field!: string
+
+				// The operator to use. Valid values: `included`, `excluded`.
+				operator!: string
+
+				// The type of nested entry. Valid values: `match`, `match_any`,
+				// `exists`.
+				type!: string
+
+				// The value to match (for `match` type).
+				value?: string
+
+				// Array of values to match (for `match_any` type).
+				values?: [...string]
+			}), [...close({
+				// The field name.
+				field!: string
+
+				// The operator to use. Valid values: `included`, `excluded`.
+				operator!: string
+
+				// The type of nested entry. Valid values: `match`, `match_any`,
+				// `exists`.
+				type!: string
+
+				// The value to match (for `match` type).
+				value?: string
+
+				// Array of values to match (for `match_any` type).
+				values?: [...string]
+			})]])
+
+			// The field name. Required for all entry types.
+			field!: string
+
+			// Value list reference (for `list` type).
+			list?: close({
+				// The value list ID.
+				id!: string
+
+				// The value list type (e.g., `keyword`, `ip`, `ip_range`).
+				type!: string
+			})
+
+			// The operator to use. Valid values: `included`, `excluded`.
+			// Note: The operator field is not supported for nested entry
+			// types and will be ignored if specified.
+			operator?: string
+
+			// The type of entry. Valid values: `match`, `match_any`, `list`,
+			// `exists`, `nested`, `wildcard`.
+			type!: string
+
+			// The value to match (for `match` and `wildcard` types).
+			value?: string
+
+			// Array of values to match (for `match_any` type).
+			values?: [...string]
+		}), [...close({
+			// Nested entries (for `nested` type). Only `match`, `match_any`,
+			// and `exists` entry types are allowed as nested entries.
+			entries?: matchN(1, [close({
+				// The field name.
+				field!: string
+
+				// The operator to use. Valid values: `included`, `excluded`.
+				operator!: string
+
+				// The type of nested entry. Valid values: `match`, `match_any`,
+				// `exists`.
+				type!: string
+
+				// The value to match (for `match` type).
+				value?: string
+
+				// Array of values to match (for `match_any` type).
+				values?: [...string]
+			}), [...close({
+				// The field name.
+				field!: string
+
+				// The operator to use. Valid values: `included`, `excluded`.
+				operator!: string
+
+				// The type of nested entry. Valid values: `match`, `match_any`,
+				// `exists`.
+				type!: string
+
+				// The value to match (for `match` type).
+				value?: string
+
+				// Array of values to match (for `match_any` type).
+				values?: [...string]
+			})]])
+
+			// The field name. Required for all entry types.
+			field!: string
+
+			// Value list reference (for `list` type).
+			list?: close({
+				// The value list ID.
+				id!: string
+
+				// The value list type (e.g., `keyword`, `ip`, `ip_range`).
+				type!: string
+			})
+
+			// The operator to use. Valid values: `included`, `excluded`.
+			// Note: The operator field is not supported for nested entry
+			// types and will be ignored if specified.
+			operator?: string
+
+			// The type of entry. Valid values: `match`, `match_any`, `list`,
+			// `exists`, `nested`, `wildcard`.
+			type!: string
+
+			// The value to match (for `match` and `wildcard` types).
+			value?: string
+
+			// Array of values to match (for `match_any` type).
+			values?: [...string]
+		})]])
 
 		// The exception item's expiration date in RFC3339 format. This
 		// field is only available for regular exception items, not
@@ -41,136 +171,6 @@ package res
 
 		// The exception item's human readable string identifier.
 		item_id?: string
-
-		// The exception item entries. This defines the conditions under
-		// which the exception applies.
-		entries!: matchN(1, [close({
-			// The field name. Required for all entry types.
-			field!: string
-
-			// The operator to use. Valid values: `included`, `excluded`.
-			// Note: The operator field is not supported for nested entry
-			// types and will be ignored if specified.
-			operator?: string
-
-			// Nested entries (for `nested` type). Only `match`, `match_any`,
-			// and `exists` entry types are allowed as nested entries.
-			entries?: matchN(1, [close({
-				// The field name.
-				field!: string
-
-				// The operator to use. Valid values: `included`, `excluded`.
-				operator!: string
-
-				// The type of nested entry. Valid values: `match`, `match_any`,
-				// `exists`.
-				type!: string
-
-				// The value to match (for `match` type).
-				value?: string
-
-				// Array of values to match (for `match_any` type).
-				values?: [...string]
-			}), [...close({
-				// The field name.
-				field!: string
-
-				// The operator to use. Valid values: `included`, `excluded`.
-				operator!: string
-
-				// The type of nested entry. Valid values: `match`, `match_any`,
-				// `exists`.
-				type!: string
-
-				// The value to match (for `match` type).
-				value?: string
-
-				// Array of values to match (for `match_any` type).
-				values?: [...string]
-			})]])
-
-			// The type of entry. Valid values: `match`, `match_any`, `list`,
-			// `exists`, `nested`, `wildcard`.
-			type!: string
-
-			// The value to match (for `match` and `wildcard` types).
-			value?: string
-
-			// Value list reference (for `list` type).
-			list?: close({
-				// The value list ID.
-				id!: string
-
-				// The value list type (e.g., `keyword`, `ip`, `ip_range`).
-				type!: string
-			})
-
-			// Array of values to match (for `match_any` type).
-			values?: [...string]
-		}), [...close({
-			// The field name. Required for all entry types.
-			field!: string
-
-			// The operator to use. Valid values: `included`, `excluded`.
-			// Note: The operator field is not supported for nested entry
-			// types and will be ignored if specified.
-			operator?: string
-
-			// Nested entries (for `nested` type). Only `match`, `match_any`,
-			// and `exists` entry types are allowed as nested entries.
-			entries?: matchN(1, [close({
-				// The field name.
-				field!: string
-
-				// The operator to use. Valid values: `included`, `excluded`.
-				operator!: string
-
-				// The type of nested entry. Valid values: `match`, `match_any`,
-				// `exists`.
-				type!: string
-
-				// The value to match (for `match` type).
-				value?: string
-
-				// Array of values to match (for `match_any` type).
-				values?: [...string]
-			}), [...close({
-				// The field name.
-				field!: string
-
-				// The operator to use. Valid values: `included`, `excluded`.
-				operator!: string
-
-				// The type of nested entry. Valid values: `match`, `match_any`,
-				// `exists`.
-				type!: string
-
-				// The value to match (for `match` type).
-				value?: string
-
-				// Array of values to match (for `match_any` type).
-				values?: [...string]
-			})]])
-
-			// The type of entry. Valid values: `match`, `match_any`, `list`,
-			// `exists`, `nested`, `wildcard`.
-			type!: string
-
-			// The value to match (for `match` and `wildcard` types).
-			value?: string
-
-			// Value list reference (for `list` type).
-			list?: close({
-				// The value list ID.
-				id!: string
-
-				// The value list type (e.g., `keyword`, `ip`, `ip_range`).
-				type!: string
-			})
-
-			// Array of values to match (for `match_any` type).
-			values?: [...string]
-		})]])
 
 		// The exception list's identifier that this item belongs to.
 		list_id!: string

@@ -4,6 +4,16 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_slo")
 	close({
+		apm_availability_indicator?: matchN(1, [#apm_availability_indicator, [...#apm_availability_indicator]])
+		apm_latency_indicator?: matchN(1, [#apm_latency_indicator, [...#apm_latency_indicator]])
+		histogram_custom_indicator?: matchN(1, [#histogram_custom_indicator, [...#histogram_custom_indicator]])
+		kql_custom_indicator?: matchN(1, [#kql_custom_indicator, [...#kql_custom_indicator]])
+		metric_custom_indicator?: matchN(1, [#metric_custom_indicator, [...#metric_custom_indicator]])
+		objective?: matchN(1, [#objective, [...#objective]])
+		settings?: #settings
+		time_window?: matchN(1, [#time_window, [...#time_window]])
+		timeslice_metric_indicator?: matchN(1, [#timeslice_metric_indicator, [...#timeslice_metric_indicator]])
+
 		// An `occurrences` budgeting method uses the number of good and
 		// total events during the time window. A `timeslices` budgeting
 		// method uses the number of good slices and total slices during
@@ -14,7 +24,6 @@ package res
 		// window. A budgeting method is required and must be either
 		// occurrences or timeslices.
 		budgeting_method!: string
-		apm_availability_indicator?: matchN(1, [#apm_availability_indicator, [...#apm_availability_indicator]])
 
 		// A description for the SLO.
 		description!: string
@@ -28,19 +37,11 @@ package res
 
 		// The name of the SLO.
 		name!: string
-		apm_latency_indicator?: matchN(1, [#apm_latency_indicator, [...#apm_latency_indicator]])
 
 		// An ID (8 to 48 characters) that contains only letters, numbers,
 		// hyphens, and underscores. If omitted, a UUIDv1 will be
 		// generated server-side.
 		slo_id?: string
-		histogram_custom_indicator?: matchN(1, [#histogram_custom_indicator, [...#histogram_custom_indicator]])
-		kql_custom_indicator?: matchN(1, [#kql_custom_indicator, [...#kql_custom_indicator]])
-		metric_custom_indicator?: matchN(1, [#metric_custom_indicator, [...#metric_custom_indicator]])
-		objective?: matchN(1, [#objective, [...#objective]])
-		settings?: #settings
-		time_window?: matchN(1, [#time_window, [...#time_window]])
-		timeslice_metric_indicator?: matchN(1, [#timeslice_metric_indicator, [...#timeslice_metric_indicator]])
 
 		// An identifier for the space. If space_id is not provided, the
 		// default space is used.
@@ -70,13 +71,14 @@ package res
 	})
 
 	#histogram_custom_indicator: close({
+		good?: matchN(1, [_#defs."/$defs/histogram_custom_indicator/$defs/good", [..._#defs."/$defs/histogram_custom_indicator/$defs/good"]])
+		total?: matchN(1, [_#defs."/$defs/histogram_custom_indicator/$defs/total", [..._#defs."/$defs/histogram_custom_indicator/$defs/total"]])
+
 		// Optional data view id to use for this indicator.
 		data_view_id?:    string
 		filter?:          string
 		index!:           string
 		timestamp_field?: string
-		good?: matchN(1, [_#defs."/$defs/histogram_custom_indicator/$defs/good", [..._#defs."/$defs/histogram_custom_indicator/$defs/good"]])
-		total?: matchN(1, [_#defs."/$defs/histogram_custom_indicator/$defs/total", [..._#defs."/$defs/histogram_custom_indicator/$defs/total"]])
 	})
 
 	#kql_custom_indicator: close({
@@ -90,13 +92,14 @@ package res
 	})
 
 	#metric_custom_indicator: close({
+		good?: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/good", [..._#defs."/$defs/metric_custom_indicator/$defs/good"]])
+		total?: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/total", [..._#defs."/$defs/metric_custom_indicator/$defs/total"]])
+
 		// Optional data view id to use for this indicator.
 		data_view_id?:    string
 		filter?:          string
 		index!:           string
 		timestamp_field?: string
-		good?: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/good", [..._#defs."/$defs/metric_custom_indicator/$defs/good"]])
-		total?: matchN(1, [_#defs."/$defs/metric_custom_indicator/$defs/total", [..._#defs."/$defs/metric_custom_indicator/$defs/total"]])
 	})
 
 	#objective: close({
@@ -121,12 +124,13 @@ package res
 	})
 
 	#timeslice_metric_indicator: close({
+		metric?: matchN(1, [_#defs."/$defs/timeslice_metric_indicator/$defs/metric", [..._#defs."/$defs/timeslice_metric_indicator/$defs/metric"]])
+
 		// Optional data view id to use for this indicator.
 		data_view_id?:    string
 		filter?:          string
 		index!:           string
 		timestamp_field!: string
-		metric?: matchN(1, [_#defs."/$defs/timeslice_metric_indicator/$defs/metric", [..._#defs."/$defs/timeslice_metric_indicator/$defs/metric"]])
 	})
 
 	_#defs: "/$defs/histogram_custom_indicator/$defs/good": close({
@@ -178,12 +182,14 @@ package res
 
 	_#defs: "/$defs/timeslice_metric_indicator/$defs/metric/$defs/metrics": close({
 		// The aggregation type for this metric. One of: sum, avg, min,
-		// max, value_count, percentile, doc_count. Determines which
-		// other fields are required:
+		// max, value_count, last_value, cardinality, std_deviation,
+		// percentile, doc_count. Determines which other fields are
+		// required.
 		aggregation!: string
 
-		// Field to aggregate. Required for aggregations: sum, avg, min,
-		// max, value_count, percentile. Must NOT be set for doc_count.
+		// Field to aggregate. Required for sum, avg, min, max,
+		// value_count, last_value, cardinality, std_deviation,
+		// percentile. Must NOT be set for doc_count.
 		field?: string
 
 		// Optional KQL filter for this metric. Supported for all

@@ -12,6 +12,11 @@ package data
 		// be selected. Omit this value to select all enrollment tokens.
 		policy_id?: string
 
+		// The Kibana space ID to query enrollment tokens from. When the
+		// agent policy is space-scoped, this must be set to match the
+		// policy's space. If not specified, queries the default space.
+		space_id?: string
+
 		// A list of enrollment tokens.
 		tokens?: matchN(1, [close({
 			// Indicates if the enrollment token is active.
@@ -56,10 +61,5 @@ package data
 			// The identifier of the associated agent policy.
 			policy_id?: string
 		})]])
-
-		// The Kibana space ID to query enrollment tokens from. When the
-		// agent policy is space-scoped, this must be set to match the
-		// policy's space. If not specified, queries the default space.
-		space_id?: string
 	})
 }

@@ -25,39 +25,6 @@ package res
 		// The name of the integration package.
 		integration_name!: string
 
-		// Integration inputs mapped by input ID.
-		inputs?: [string]: close({
-			// Input defaults.
-			defaults?: close({
-				// Stream-level defaults mapped by stream ID.
-				streams?: [string]: close({
-					// Default enabled state for the stream.
-					enabled?: bool
-
-					// Stream-level variable defaults as JSON.
-					vars?: string
-				})
-
-				// Input-level variable defaults as JSON.
-				vars?: string
-			})
-
-			// Enable the input.
-			enabled?: bool
-
-			// Input streams mapped by stream ID.
-			streams?: [string]: close({
-				// Enable the stream.
-				enabled?: bool
-
-				// Stream-level variables as JSON.
-				vars?: string
-			})
-
-			// Input-level variables as JSON.
-			vars?: string
-		})
-
 		// The version of the integration package.
 		integration_version!: string
 
@@ -93,5 +60,38 @@ package res
 		// internally by the provider, and you should not set this
 		// property within your Terraform configuration.
 		vars_json?: string
+
+		// Integration inputs mapped by input ID.
+		inputs?: [string]: close({
+			// Input defaults.
+			defaults?: close({
+				// Stream-level defaults mapped by stream ID.
+				streams?: [string]: close({
+					// Default enabled state for the stream.
+					enabled?: bool
+
+					// Stream-level variable defaults as JSON.
+					vars?: string
+				})
+
+				// Input-level variable defaults as JSON.
+				vars?: string
+			})
+
+			// Enable the input.
+			enabled?: bool
+
+			// Input streams mapped by stream ID.
+			streams?: [string]: close({
+				// Enable the stream.
+				enabled?: bool
+
+				// Stream-level variables as JSON.
+				vars?: string
+			})
+
+			// Input-level variables as JSON.
+			vars?: string
+		})
 	})
 }

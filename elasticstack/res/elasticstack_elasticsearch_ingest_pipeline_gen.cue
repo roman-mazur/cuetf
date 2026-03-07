@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_ingest_pipeline")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+
 		// Description of the ingest pipeline.
 		description?: string
 
@@ -35,7 +37,6 @@ import "list"
 		// https://www.elastic.co/guide/en/elasticsearch/reference/current/processors.html.
 		// Each record must be a valid JSON document.
 		processors!: [...string]
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
 	})
 
 	#elasticsearch_connection: close({

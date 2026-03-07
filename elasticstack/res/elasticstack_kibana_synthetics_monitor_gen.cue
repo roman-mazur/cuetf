@@ -4,12 +4,6 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_synthetics_monitor")
 	close({
-		// Whether the monitor is enabled. Default: `true`
-		enabled?: bool
-
-		// Generated identifier for the monitor
-		id?: string
-
 		// Alert configuration. Default: `{ status: { enabled: true },
 		// tls: { enabled: true } }`.
 		alert?: close({
@@ -20,10 +14,6 @@ package res
 				enabled?: bool
 			})
 		})
-
-		// Key-value pairs of labels to associate with the monitor. Labels
-		// can be used for filtering and grouping monitors.
-		labels?: [string]: string
 
 		// Browser Monitor specific fields
 		browser?: close({
@@ -44,10 +34,8 @@ package res
 			synthetics_args?: [...string]
 		})
 
-		// Where to deploy the monitor. Monitors can be deployed in
-		// multiple locations so that you can detect differences in
-		// availability and response times across those locations.
-		locations?: [...string]
+		// Whether the monitor is enabled. Default: `true`
+		enabled?: bool
 
 		// HTTP Monitor specific fields
 		http?: close({
@@ -111,9 +99,6 @@ package res
 			username?: string
 		})
 
-		// The monitor's name.
-		name!: string
-
 		// ICMP Monitor specific fields
 		icmp?: close({
 			// Host to ping; it can be an IP address or a hostname.
@@ -123,12 +108,27 @@ package res
 			wait?: number
 		})
 
+		// Generated identifier for the monitor
+		id?: string
+
+		// Key-value pairs of labels to associate with the monitor. Labels
+		// can be used for filtering and grouping monitors.
+		labels?: [string]: string
+
+		// Where to deploy the monitor. Monitors can be deployed in
+		// multiple locations so that you can detect differences in
+		// availability and response times across those locations.
+		locations?: [...string]
+
+		// The monitor's name.
+		name!: string
+
 		// The data stream namespace. Note: if you change its value,
 		// kibana creates new datastream. A user needs permissions for
 		// new/old datastream in update case to be able to see full
 		// monitor history. The `namespace` field should be lowercase and
 		// not contain spaces. The namespace must not include any of the
-		// following characters: *, \, /, ?, ", <, >, |, whitespace, ,,
+		// following characters: *, \\, /, ?, ", <, >, |, whitespace, ,,
 		// #, :, or -. Default: `default`
 		namespace?: string
 
@@ -153,6 +153,19 @@ package res
 		// The monitor's schedule in minutes. Supported values are 1, 3,
 		// 5, 10, 15, 30, 60, 120 and 240.
 		schedule?: number
+
+		// The APM service name.
+		service_name?: string
+
+		// Kibana space. The space ID that is part of the Kibana URL when
+		// inside the space. Space IDs are limited to lowercase
+		// alphanumeric, underscore, and hyphen characters (a-z, 0-9, _,
+		// and -). You are cannot change the ID with the update
+		// operation.
+		space_id?: string
+
+		// An array of tags.
+		tags?: [...string]
 
 		// TCP Monitor specific fields
 		tcp?: close({
@@ -200,19 +213,6 @@ package res
 			// Controls the verification of server certificates.
 			ssl_verification_mode?: string
 		})
-
-		// The APM service name.
-		service_name?: string
-
-		// Kibana space. The space ID that is part of the Kibana URL when
-		// inside the space. Space IDs are limited to lowercase
-		// alphanumeric, underscore, and hyphen characters (a-z, 0-9, _,
-		// and -). You are cannot change the ID with the update
-		// operation.
-		space_id?: string
-
-		// An array of tags.
-		tags?: [...string]
 
 		// The monitor timeout in seconds, monitor will fail if it doesn't
 		// complete within this time. Default: `16`

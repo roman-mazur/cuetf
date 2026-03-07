@@ -57,10 +57,6 @@ package res
 		// Generated ID for the maintenance window.
 		id?: string
 
-		// An identifier for the space. If space_id is not provided, the
-		// default space is used.
-		space_id?: string
-
 		// An object that narrows the scope of what is affected by this
 		// maintenance window.
 		scope?: close({
@@ -70,6 +66,10 @@ package res
 				kql!: string
 			})
 		})
+
+		// An identifier for the space. If space_id is not provided, the
+		// default space is used.
+		space_id?: string
 
 		// The name of the maintenance window.
 		title!: string

@@ -4,6 +4,12 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_index_alias")
 	close({
+		// Generated ID of the alias resource.
+		id?: string
+
+		// The alias name.
+		name!: string
+
 		// Set of read indices for the alias.
 		read_indices?: matchN(1, [close({
 			// Query used to limit documents the alias can access.
@@ -45,9 +51,6 @@ package res
 			search_routing?: string
 		})]])
 
-		// Generated ID of the alias resource.
-		id?: string
-
 		// The write index for the alias. Only one write index is allowed
 		// per alias.
 		write_index?: close({
@@ -70,8 +73,5 @@ package res
 			// Value used to route search operations to a specific shard.
 			search_routing?: string
 		})
-
-		// The alias name.
-		name!: string
 	})
 }

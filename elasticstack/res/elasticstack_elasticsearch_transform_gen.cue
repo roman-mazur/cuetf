@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_transform")
 	close({
+		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
+		retention_policy?: matchN(1, [#retention_policy, list.MaxItems(1) & [...#retention_policy]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		sync?: matchN(1, [#sync, list.MaxItems(1) & [...#sync]])
+
 		// Specifies whether the transform checkpoint ranges should be
 		// optimized for performance.
 		align_checkpoints?: bool
@@ -50,10 +55,6 @@ import "list"
 		// Defines the initial page size to use for the composite
 		// aggregation for each checkpoint. Default is 500.
 		max_page_search_size?: number
-		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
-		retention_policy?: matchN(1, [#retention_policy, list.MaxItems(1) & [...#retention_policy]])
-		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
-		sync?: matchN(1, [#sync, list.MaxItems(1) & [...#sync]])
 
 		// Defines optional transform metadata.
 		metadata?: string

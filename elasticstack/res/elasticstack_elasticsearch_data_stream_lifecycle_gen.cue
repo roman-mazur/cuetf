@@ -14,6 +14,17 @@ package res
 		// Data stream lifecycle on/off.
 		enabled?: bool
 
+		// Determines how wildcard patterns in the `indices` parameter
+		// match data streams and indices. Supports comma-separated
+		// values, such as `closed,hidden`.
+		expand_wildcards?: string
+
+		// Internal identifier of the resource.
+		id?: string
+
+		// Name of the data stream. Supports wildcards.
+		name!: string
+
 		// Downsampling configuration objects, each defining an after
 		// interval representing when the backing index is meant to be
 		// downsampled and a fixed_interval representing the downsampling
@@ -35,17 +46,6 @@ package res
 			// index.
 			fixed_interval!: string
 		})]])
-
-		// Determines how wildcard patterns in the `indices` parameter
-		// match data streams and indices. Supports comma-separated
-		// values, such as `closed,hidden`.
-		expand_wildcards?: string
-
-		// Internal identifier of the resource.
-		id?: string
-
-		// Name of the data stream. Supports wildcards.
-		name!: string
 	})
 
 	#elasticsearch_connection: close({

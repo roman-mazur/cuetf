@@ -4,12 +4,25 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_ml_job_state")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+
 		// When closing a job, use to forcefully close it. This method is
 		// quicker but can miss important clean up tasks.
 		force?: bool
 
 		// Internal identifier of the resource
 		id?: string
+
+		// Identifier for the anomaly detection job.
+		job_id!: string
+
+		// Timeout for the operation. Examples: `30s`, `5m`, `1h`. Default
+		// is `30s`.
+		job_timeout?: string
+
+		// The desired state for the ML job. Valid values are `opened` and
+		// `closed`.
+		state!: string
 		timeouts?: close({
 			// A string that can be [parsed as a
 			// duration](https://pkg.go.dev/time#ParseDuration) consisting of
@@ -23,18 +36,6 @@ package res
 			// time units are "s" (seconds), "m" (minutes), "h" (hours).
 			update?: string
 		})
-
-		// Identifier for the anomaly detection job.
-		job_id!: string
-
-		// Timeout for the operation. Examples: `30s`, `5m`, `1h`. Default
-		// is `30s`.
-		job_timeout?: string
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
-
-		// The desired state for the ML job. Valid values are `opened` and
-		// `closed`.
-		state!: string
 	})
 
 	#elasticsearch_connection: close({

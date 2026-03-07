@@ -7,22 +7,22 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_snapshot_repository")
 	close({
 		azure?: matchN(1, [#azure, list.MaxItems(1) & [...#azure]])
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+		fs?: matchN(1, [#fs, list.MaxItems(1) & [...#fs]])
+		gcs?: matchN(1, [#gcs, list.MaxItems(1) & [...#gcs]])
+		hdfs?: matchN(1, [#hdfs, list.MaxItems(1) & [...#hdfs]])
+		s3?: matchN(1, [#s3, list.MaxItems(1) & [...#s3]])
+		url?: matchN(1, [#url, list.MaxItems(1) & [...#url]])
 
 		// Internal identifier of the resource
 		id?: string
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
 
 		// Name of the snapshot repository to register or update.
 		name!: string
-		fs?: matchN(1, [#fs, list.MaxItems(1) & [...#fs]])
-		gcs?: matchN(1, [#gcs, list.MaxItems(1) & [...#gcs]])
 
 		// If true, the request verifies the repository is functional on
 		// all master and data nodes in the cluster.
 		verify?: bool
-		hdfs?: matchN(1, [#hdfs, list.MaxItems(1) & [...#hdfs]])
-		s3?: matchN(1, [#s3, list.MaxItems(1) & [...#s3]])
-		url?: matchN(1, [#url, list.MaxItems(1) & [...#url]])
 	})
 
 	#azure: close({

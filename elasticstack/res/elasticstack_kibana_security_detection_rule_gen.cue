@@ -14,6 +14,20 @@ package res
 			// Object containing an action's conditional filters.
 			alerts_filter?: [string]: string
 
+			// Optionally groups actions by use cases. Use 'default' for alert
+			// notifications.
+			group?: string
+
+			// The connector ID.
+			id!: string
+
+			// Object containing the allowed connector fields, which varies
+			// according to the connector type.
+			params!: [string]: string
+
+			// A unique identifier for the action.
+			uuid?: string
+
 			// The action frequency defines when the action runs.
 			frequency?: close({
 				// Defines how often rules run actions. Valid values:
@@ -29,20 +43,6 @@ package res
 				// 'no_actions', 'rule').
 				throttle!: string
 			})
-
-			// Optionally groups actions by use cases. Use 'default' for alert
-			// notifications.
-			group?: string
-
-			// The connector ID.
-			id!: string
-
-			// Object containing the allowed connector fields, which varies
-			// according to the connector type.
-			params!: [string]: string
-
-			// A unique identifier for the action.
-			uuid?: string
 		}), [...close({
 			// The action type used for sending notifications (e.g., .slack,
 			// .email, .webhook, .pagerduty, etc.).
@@ -51,6 +51,20 @@ package res
 			// Object containing an action's conditional filters.
 			alerts_filter?: [string]: string
 
+			// Optionally groups actions by use cases. Use 'default' for alert
+			// notifications.
+			group?: string
+
+			// The connector ID.
+			id!: string
+
+			// Object containing the allowed connector fields, which varies
+			// according to the connector type.
+			params!: [string]: string
+
+			// A unique identifier for the action.
+			uuid?: string
+
 			// The action frequency defines when the action runs.
 			frequency?: close({
 				// Defines how often rules run actions. Valid values:
@@ -66,20 +80,6 @@ package res
 				// 'no_actions', 'rule').
 				throttle!: string
 			})
-
-			// Optionally groups actions by use cases. Use 'default' for alert
-			// notifications.
-			group?: string
-
-			// The connector ID.
-			id!: string
-
-			// Object containing the allowed connector fields, which varies
-			// according to the connector type.
-			params!: [string]: string
-
-			// A unique identifier for the action.
-			uuid?: string
 		})]])
 
 		// Defines alert suppression configuration to reduce duplicate
@@ -97,6 +97,56 @@ package res
 			// will be created.
 			missing_fields_strategy?: string
 		})
+
+		// Array of exception containers to prevent the rule from
+		// generating alerts.
+		exceptions_list?: matchN(1, [close({
+			// The exception container ID.
+			id!: string
+
+			// The exception container's list ID.
+			list_id!: string
+
+			// The namespace type for the exception container.
+			namespace_type!: string
+
+			// The type of exception container.
+			type!: string
+		}), [...close({
+			// The exception container ID.
+			id!: string
+
+			// The exception container's list ID.
+			list_id!: string
+
+			// The namespace type for the exception container.
+			namespace_type!: string
+
+			// The type of exception container.
+			type!: string
+		})]])
+
+		// Array of related integrations that provide additional context
+		// for the rule.
+		related_integrations?: matchN(1, [close({
+			// Name of the specific integration.
+			integration?: string
+
+			// Name of the integration package.
+			package!: string
+
+			// Version of the integration package.
+			version!: string
+		}), [...close({
+			// Name of the specific integration.
+			integration?: string
+
+			// Name of the integration package.
+			package!: string
+
+			// Version of the integration package.
+			version!: string
+		})]])
 
 		// Anomaly score threshold above which the rule creates an alert.
 		// Valid values are from 0 to 100. Required for machine_learning
@@ -136,34 +186,6 @@ package res
 		// issue false-positive alerts.
 		false_positives?: [...string]
 
-		// Array of exception containers to prevent the rule from
-		// generating alerts.
-		exceptions_list?: matchN(1, [close({
-			// The exception container ID.
-			id!: string
-
-			// The exception container's list ID.
-			list_id!: string
-
-			// The namespace type for the exception container.
-			namespace_type!: string
-
-			// The type of exception container.
-			type!: string
-		}), [...close({
-			// The exception container ID.
-			id!: string
-
-			// The exception container's list ID.
-			list_id!: string
-
-			// The namespace type for the exception container.
-			namespace_type!: string
-
-			// The type of exception container.
-			type!: string
-		})]])
-
 		// Query and filter context array to define alert conditions as
 		// JSON. Supports complex filter structures including bool
 		// queries, term filters, range filters, etc. Available for all
@@ -185,28 +207,6 @@ package res
 		// Indices on which the rule functions.
 		index?: [...string]
 
-		// Array of related integrations that provide additional context
-		// for the rule.
-		related_integrations?: matchN(1, [close({
-			// Name of the specific integration.
-			integration?: string
-
-			// Name of the integration package.
-			package!: string
-
-			// Version of the integration package.
-			version!: string
-		}), [...close({
-			// Name of the specific integration.
-			integration?: string
-
-			// Name of the integration package.
-			package!: string
-
-			// Version of the integration package.
-			version!: string
-		})]])
-
 		// Frequency of rule execution, using a date math range.
 		interval?: string
 
@@ -217,30 +217,6 @@ package res
 		// Number of items to search for in each concurrent search.
 		// Optional for threat_match rules.
 		items_per_search?: number
-
-		// Array of Elasticsearch fields and types that must be present in
-		// source indices for the rule to function properly.
-		required_fields?: matchN(1, [close({
-			// Indicates whether the field is ECS-compliant. This is computed
-			// by the backend based on the field name and type.
-			ecs?: bool
-
-			// Name of the Elasticsearch field.
-			name!: string
-
-			// Type of the Elasticsearch field.
-			type!: string
-		}), [...close({
-			// Indicates whether the field is ECS-compliant. This is computed
-			// by the backend based on the field name and type.
-			ecs?: bool
-
-			// Name of the Elasticsearch field.
-			name!: string
-
-			// Type of the Elasticsearch field.
-			type!: string
-		})]])
 
 		// The query language (KQL or Lucene).
 		language?: string
@@ -269,6 +245,37 @@ package res
 		// Notes to help investigate alerts produced by the rule.
 		note?: string
 
+		// The query language definition.
+		query?: string
+
+		// String array containing references and URLs to sources of
+		// additional information.
+		references?: [...string]
+
+		// Array of Elasticsearch fields and types that must be present in
+		// source indices for the rule to function properly.
+		required_fields?: matchN(1, [close({
+			// Indicates whether the field is ECS-compliant. This is computed
+			// by the backend based on the field name and type.
+			ecs?: bool
+
+			// Name of the Elasticsearch field.
+			name!: string
+
+			// Type of the Elasticsearch field.
+			type!: string
+		}), [...close({
+			// Indicates whether the field is ECS-compliant. This is computed
+			// by the backend based on the field name and type.
+			ecs?: bool
+
+			// Name of the Elasticsearch field.
+			name!: string
+
+			// Type of the Elasticsearch field.
+			type!: string
+		})]])
+
 		// Array of response actions to take when alerts are generated by
 		// the rule.
 		response_actions?: matchN(1, [close({
@@ -279,6 +286,29 @@ package res
 			// Parameters for the response action. Structure varies based on
 			// action_type_id.
 			params!: close({
+				// Command to run (endpoint only). Valid values: isolate,
+				// kill-process, suspend-process.
+				command?: string
+
+				// Comment describing the action (endpoint only).
+				comment?: string
+
+				// Map Osquery results columns to ECS fields (osquery only).
+				ecs_mapping?: [string]: string
+
+				// Query pack identifier (osquery only).
+				pack_id?: string
+
+				// SQL query to run (osquery only). Example: 'SELECT * FROM
+				// processes;'
+				query?: string
+
+				// Saved query identifier (osquery only).
+				saved_query_id?: string
+
+				// Timeout period in seconds (osquery only). Min: 60, Max: 900.
+				timeout?: number
+
 				// Configuration for process commands (endpoint only).
 				config?: close({
 					// Field to use instead of process.pid.
@@ -332,29 +362,6 @@ package res
 					// Query version.
 					version?: string
 				})]])
-
-				// Command to run (endpoint only). Valid values: isolate,
-				// kill-process, suspend-process.
-				command?: string
-
-				// Comment describing the action (endpoint only).
-				comment?: string
-
-				// Map Osquery results columns to ECS fields (osquery only).
-				ecs_mapping?: [string]: string
-
-				// Query pack identifier (osquery only).
-				pack_id?: string
-
-				// SQL query to run (osquery only). Example: 'SELECT * FROM
-				// processes;'
-				query?: string
-
-				// Saved query identifier (osquery only).
-				saved_query_id?: string
-
-				// Timeout period in seconds (osquery only). Min: 60, Max: 900.
-				timeout?: number
 			})
 		}), [...close({
 			// The action type used for response actions (.osquery,
@@ -364,6 +371,29 @@ package res
 			// Parameters for the response action. Structure varies based on
 			// action_type_id.
 			params!: close({
+				// Command to run (endpoint only). Valid values: isolate,
+				// kill-process, suspend-process.
+				command?: string
+
+				// Comment describing the action (endpoint only).
+				comment?: string
+
+				// Map Osquery results columns to ECS fields (osquery only).
+				ecs_mapping?: [string]: string
+
+				// Query pack identifier (osquery only).
+				pack_id?: string
+
+				// SQL query to run (osquery only). Example: 'SELECT * FROM
+				// processes;'
+				query?: string
+
+				// Saved query identifier (osquery only).
+				saved_query_id?: string
+
+				// Timeout period in seconds (osquery only). Min: 60, Max: 900.
+				timeout?: number
+
 				// Configuration for process commands (endpoint only).
 				config?: close({
 					// Field to use instead of process.pid.
@@ -417,34 +447,15 @@ package res
 					// Query version.
 					version?: string
 				})]])
-
-				// Command to run (endpoint only). Valid values: isolate,
-				// kill-process, suspend-process.
-				command?: string
-
-				// Comment describing the action (endpoint only).
-				comment?: string
-
-				// Map Osquery results columns to ECS fields (osquery only).
-				ecs_mapping?: [string]: string
-
-				// Query pack identifier (osquery only).
-				pack_id?: string
-
-				// SQL query to run (osquery only). Example: 'SELECT * FROM
-				// processes;'
-				query?: string
-
-				// Saved query identifier (osquery only).
-				saved_query_id?: string
-
-				// Timeout period in seconds (osquery only). Min: 60, Max: 900.
-				timeout?: number
 			})
 		})]])
 
-		// The query language definition.
-		query?: string
+		// The rule's revision number.
+		revision?: number
+
+		// A numerical representation of the alert's severity from 0 to
+		// 100.
+		risk_score?: number
 
 		// Array of risk score mappings to override the default risk score
 		// based on source event field values.
@@ -478,9 +489,22 @@ package res
 			value!: string
 		})]])
 
-		// String array containing references and URLs to sources of
-		// additional information.
-		references?: [...string]
+		// A stable unique identifier for the rule object. If omitted, a
+		// UUID is generated.
+		rule_id?: string
+
+		// Override the rule name in Kibana. Available for all rule types.
+		rule_name_override?: string
+
+		// Identifier of the saved query used for the rule. Required for
+		// saved_query rules.
+		saved_id?: string
+
+		// Setup guide with instructions on rule prerequisites.
+		setup?: string
+
+		// Severity level of alerts produced by the rule.
+		severity?: string
 
 		// Array of severity mappings to override the default severity
 		// based on source event field values.
@@ -512,8 +536,19 @@ package res
 			value!: string
 		})]])
 
+		// An identifier for the space. If space_id is not provided, the
+		// default space is used.
+		space_id?: string
+
+		// String array containing words and phrases to help categorize,
+		// filter, and search rules.
+		tags?: [...string]
+
 		// MITRE ATT&CK framework threat information.
 		threat?: matchN(1, [close({
+			// Threat framework (typically 'MITRE ATT&CK').
+			framework!: string
+
 			// MITRE ATT&CK tactic information.
 			tactic!: close({
 				// MITRE ATT&CK tactic ID.
@@ -526,9 +561,6 @@ package res
 				reference!: string
 			})
 
-			// Threat framework (typically 'MITRE ATT&CK').
-			framework!: string
-
 			// MITRE ATT&CK technique information.
 			technique?: matchN(1, [close({
 				// MITRE ATT&CK technique ID.
@@ -537,6 +569,9 @@ package res
 				// MITRE ATT&CK technique name.
 				name!: string
 
+				// MITRE ATT&CK technique reference URL.
+				reference!: string
+
 				// MITRE ATT&CK sub-technique information.
 				subtechnique?: matchN(1, [close({
 					// MITRE ATT&CK sub-technique ID.
@@ -557,9 +592,6 @@ package res
 					// MITRE ATT&CK sub-technique reference URL.
 					reference!: string
 				})]])
-
-				// MITRE ATT&CK technique reference URL.
-				reference!: string
 			}), [...close({
 				// MITRE ATT&CK technique ID.
 				id!: string
@@ -567,6 +599,9 @@ package res
 				// MITRE ATT&CK technique name.
 				name!: string
 
+				// MITRE ATT&CK technique reference URL.
+				reference!: string
+
 				// MITRE ATT&CK sub-technique information.
 				subtechnique?: matchN(1, [close({
 					// MITRE ATT&CK sub-technique ID.
@@ -587,11 +622,11 @@ package res
 					// MITRE ATT&CK sub-technique reference URL.
 					reference!: string
 				})]])
-
-				// MITRE ATT&CK technique reference URL.
-				reference!: string
 			})]])
 		}), [...close({
+			// Threat framework (typically 'MITRE ATT&CK').
+			framework!: string
+
 			// MITRE ATT&CK tactic information.
 			tactic!: close({
 				// MITRE ATT&CK tactic ID.
@@ -604,9 +639,6 @@ package res
 				reference!: string
 			})
 
-			// Threat framework (typically 'MITRE ATT&CK').
-			framework!: string
-
 			// MITRE ATT&CK technique information.
 			technique?: matchN(1, [close({
 				// MITRE ATT&CK technique ID.
@@ -615,6 +647,9 @@ package res
 				// MITRE ATT&CK technique name.
 				name!: string
 
+				// MITRE ATT&CK technique reference URL.
+				reference!: string
+
 				// MITRE ATT&CK sub-technique information.
 				subtechnique?: matchN(1, [close({
 					// MITRE ATT&CK sub-technique ID.
@@ -635,9 +670,6 @@ package res
 					// MITRE ATT&CK sub-technique reference URL.
 					reference!: string
 				})]])
-
-				// MITRE ATT&CK technique reference URL.
-				reference!: string
 			}), [...close({
 				// MITRE ATT&CK technique ID.
 				id!: string
@@ -645,6 +677,9 @@ package res
 				// MITRE ATT&CK technique name.
 				name!: string
 
+				// MITRE ATT&CK technique reference URL.
+				reference!: string
+
 				// MITRE ATT&CK sub-technique information.
 				subtechnique?: matchN(1, [close({
 					// MITRE ATT&CK sub-technique ID.
@@ -665,11 +700,20 @@ package res
 					// MITRE ATT&CK sub-technique reference URL.
 					reference!: string
 				})]])
-
-				// MITRE ATT&CK technique reference URL.
-				reference!: string
 			})]])
 		})]])
+
+		// Additional filters for threat intelligence data. Optional for
+		// threat_match rules.
+		threat_filters?: [...string]
+
+		// Array of index patterns for the threat intelligence indices.
+		// Required for threat_match rules.
+		threat_index?: [...string]
+
+		// Path to the threat indicator in the indicator documents.
+		// Optional for threat_match rules.
+		threat_indicator_path?: string
 
 		// Array of threat mappings that specify how to match events with
 		// threat intelligence. Required for threat_match rules.
@@ -717,35 +761,12 @@ package res
 			})]])
 		})]])
 
-		// The rule's revision number.
-		revision?: number
-
-		// A numerical representation of the alert's severity from 0 to
-		// 100.
-		risk_score?: number
-
-		// A stable unique identifier for the rule object. If omitted, a
-		// UUID is generated.
-		rule_id?: string
-
-		// Override the rule name in Kibana. Available for all rule types.
-		rule_name_override?: string
-
-		// Identifier of the saved query used for the rule. Required for
-		// saved_query rules.
-		saved_id?: string
-
-		// Setup guide with instructions on rule prerequisites.
-		setup?: string
-
-		// Severity level of alerts produced by the rule.
-		severity?: string
+		// Query used to filter threat intelligence data. Optional for
+		// threat_match rules.
+		threat_query?: string
 
 		// Threshold settings for the rule. Required for threshold rules.
 		threshold?: close({
-			// Field(s) to use for threshold aggregation.
-			field?: [...string]
-
 			// Cardinality settings for threshold rule.
 			cardinality?: matchN(1, [close({
 				// The field on which to calculate and compare the cardinality.
@@ -761,33 +782,12 @@ package res
 				value!: number
 			})]])
 
+			// Field(s) to use for threshold aggregation.
+			field?: [...string]
+
 			// The threshold value from which an alert is generated.
 			value!: number
 		})
-
-		// An identifier for the space. If space_id is not provided, the
-		// default space is used.
-		space_id?: string
-
-		// String array containing words and phrases to help categorize,
-		// filter, and search rules.
-		tags?: [...string]
-
-		// Additional filters for threat intelligence data. Optional for
-		// threat_match rules.
-		threat_filters?: [...string]
-
-		// Array of index patterns for the threat intelligence indices.
-		// Required for threat_match rules.
-		threat_index?: [...string]
-
-		// Path to the threat indicator in the indicator documents.
-		// Optional for threat_match rules.
-		threat_indicator_path?: string
-
-		// Query used to filter threat intelligence data. Optional for
-		// threat_match rules.
-		threat_query?: string
 
 		// Sets the tiebreaker field. Required for EQL rules when
 		// event.dataset is not provided.

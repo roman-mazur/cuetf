@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_security_system_user")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+
 		// Specifies whether the user is enabled. The default value is
 		// true.
 		enabled?: bool
@@ -20,7 +22,6 @@ package res
 		// storage (see the [security settings
 		// documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings)).
 		password_hash?: string
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
 		// An identifier for the system user (see the [built-in users
 		// documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html)).

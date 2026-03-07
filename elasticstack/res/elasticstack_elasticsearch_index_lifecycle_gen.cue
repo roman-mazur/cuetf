@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_index_lifecycle")
 	close({
+		cold?: matchN(1, [#cold, list.MaxItems(1) & [...#cold]])
+		delete?: matchN(1, [#delete, list.MaxItems(1) & [...#delete]])
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+		frozen?: matchN(1, [#frozen, list.MaxItems(1) & [...#frozen]])
+		hot?: matchN(1, [#hot, list.MaxItems(1) & [...#hot]])
+		warm?: matchN(1, [#warm, list.MaxItems(1) & [...#warm]])
+
 		// Internal identifier of the resource
 		id?: string
 
@@ -15,24 +22,13 @@ import "list"
 
 		// The DateTime of the last modification.
 		modified_date?: string
-		cold?: matchN(1, [#cold, list.MaxItems(1) & [...#cold]])
-		delete?: matchN(1, [#delete, list.MaxItems(1) & [...#delete]])
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
-		frozen?: matchN(1, [#frozen, list.MaxItems(1) & [...#frozen]])
 
 		// Identifier for the policy.
 		name!: string
-		hot?: matchN(1, [#hot, list.MaxItems(1) & [...#hot]])
-		warm?: matchN(1, [#warm, list.MaxItems(1) & [...#warm]])
 	})
 
 	#cold: close({
 		allocate?: matchN(1, [_#defs."/$defs/cold/$defs/allocate", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/allocate"]])
-
-		// ILM moves indices through the lifecycle according to their age.
-		// To control the timing of these transitions, you set a minimum
-		// age for each phase.
-		min_age?: string
 		downsample?: matchN(1, [_#defs."/$defs/cold/$defs/downsample", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/downsample"]])
 		freeze?: matchN(1, [_#defs."/$defs/cold/$defs/freeze", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/freeze"]])
 		migrate?: matchN(1, [_#defs."/$defs/cold/$defs/migrate", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/migrate"]])
@@ -40,6 +36,11 @@ import "list"
 		searchable_snapshot?: matchN(1, [_#defs."/$defs/cold/$defs/searchable_snapshot", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/searchable_snapshot"]])
 		set_priority?: matchN(1, [_#defs."/$defs/cold/$defs/set_priority", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/set_priority"]])
 		unfollow?: matchN(1, [_#defs."/$defs/cold/$defs/unfollow", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/unfollow"]])
+
+		// ILM moves indices through the lifecycle according to their age.
+		// To control the timing of these transitions, you set a minimum
+		// age for each phase.
+		min_age?: string
 	})
 
 	#delete: close({
@@ -111,11 +112,6 @@ import "list"
 
 	#hot: close({
 		downsample?: matchN(1, [_#defs."/$defs/hot/$defs/downsample", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/downsample"]])
-
-		// ILM moves indices through the lifecycle according to their age.
-		// To control the timing of these transitions, you set a minimum
-		// age for each phase.
-		min_age?: string
 		forcemerge?: matchN(1, [_#defs."/$defs/hot/$defs/forcemerge", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/forcemerge"]])
 		readonly?: matchN(1, [_#defs."/$defs/hot/$defs/readonly", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/readonly"]])
 		rollover?: matchN(1, [_#defs."/$defs/hot/$defs/rollover", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/rollover"]])
@@ -123,15 +119,15 @@ import "list"
 		set_priority?: matchN(1, [_#defs."/$defs/hot/$defs/set_priority", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/set_priority"]])
 		shrink?: matchN(1, [_#defs."/$defs/hot/$defs/shrink", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/shrink"]])
 		unfollow?: matchN(1, [_#defs."/$defs/hot/$defs/unfollow", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/unfollow"]])
-	})
-
-	#warm: close({
-		allocate?: matchN(1, [_#defs."/$defs/warm/$defs/allocate", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/allocate"]])
 
 		// ILM moves indices through the lifecycle according to their age.
 		// To control the timing of these transitions, you set a minimum
 		// age for each phase.
 		min_age?: string
+	})
+
+	#warm: close({
+		allocate?: matchN(1, [_#defs."/$defs/warm/$defs/allocate", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/allocate"]])
 		downsample?: matchN(1, [_#defs."/$defs/warm/$defs/downsample", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/downsample"]])
 		forcemerge?: matchN(1, [_#defs."/$defs/warm/$defs/forcemerge", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/forcemerge"]])
 		migrate?: matchN(1, [_#defs."/$defs/warm/$defs/migrate", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/migrate"]])
@@ -139,6 +135,11 @@ import "list"
 		set_priority?: matchN(1, [_#defs."/$defs/warm/$defs/set_priority", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/set_priority"]])
 		shrink?: matchN(1, [_#defs."/$defs/warm/$defs/shrink", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/shrink"]])
 		unfollow?: matchN(1, [_#defs."/$defs/warm/$defs/unfollow", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/unfollow"]])
+
+		// ILM moves indices through the lifecycle according to their age.
+		// To control the timing of these transitions, you set a minimum
+		// age for each phase.
+		min_age?: string
 	})
 
 	_#defs: "/$defs/cold/$defs/allocate": close({

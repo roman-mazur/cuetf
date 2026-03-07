@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_security_role")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+
 		// A list of application privilege entries.
 		applications?: [...close({
 			application?: string
@@ -41,15 +43,15 @@ import "list"
 
 		// Optional meta-data.
 		metadata?: string
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
 
 		// The name of the role.
 		name!: string
 
-		// A list of remote indices permissions entries. Remote indices
-		// are effective for remote clusters configured with the API key
-		// based model. They have no effect for remote clusters
-		// configured with the certificate based model.
+		// A list of remote indices permissions entries.
+		//
+		// Remote indices are effective for remote clusters configured
+		// with the API key based model. They have no effect for remote
+		// clusters configured with the certificate based model.
 		remote_indices?: [...close({
 			clusters?: [...string]
 			field_security?: [...close({

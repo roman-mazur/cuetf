@@ -17,6 +17,9 @@ package res
 		// A label for the private location, used as unique identifier
 		label!: string
 
+		// An array of tags to categorize the private location.
+		tags?: [...string]
+
 		// Geographic coordinates (WGS84) for the location
 		geo?: close({
 			// The latitude of the location.
@@ -25,8 +28,5 @@ package res
 			// The longitude of the location.
 			lon!: number
 		})
-
-		// An array of tags to categorize the private location.
-		tags?: [...string]
 	})
 }

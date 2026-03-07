@@ -4,21 +4,10 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_ml_datafeed_state")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+
 		// Identifier for the ML datafeed.
 		datafeed_id!: string
-		timeouts?: close({
-			// A string that can be [parsed as a
-			// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-			// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-			// time units are "s" (seconds), "m" (minutes), "h" (hours).
-			create?: string
-
-			// A string that can be [parsed as a
-			// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-			// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-			// time units are "s" (seconds), "m" (minutes), "h" (hours).
-			update?: string
-		})
 
 		// Timeout for the operation. Examples: `30s`, `5m`, `1h`. Default
 		// is `30s`.
@@ -43,7 +32,19 @@ package res
 		// The desired state for the ML datafeed. Valid values are
 		// `started` and `stopped`.
 		state!: string
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+			// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+			// time units are "s" (seconds), "m" (minutes), "h" (hours).
+			create?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+			// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+			// time units are "s" (seconds), "m" (minutes), "h" (hours).
+			update?: string
+		})
 	})
 
 	#elasticsearch_connection: close({
