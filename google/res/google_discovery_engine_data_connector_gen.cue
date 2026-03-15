@@ -1,9 +1,14 @@
 package res
 
+import "list"
+
 #google_discovery_engine_data_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_data_connector")
 	close({
+		action_config?: matchN(1, [#action_config, list.MaxItems(1) & [...#action_config]])
+		bap_config?: matchN(1, [#bap_config, list.MaxItems(1) & [...#bap_config]])
+		destination_configs?: matchN(1, [#destination_configs, [...#destination_configs]])
 		entities?: matchN(1, [#entities, [...#entities]])
 		timeouts?: #timeouts
 
@@ -69,6 +74,9 @@ package res
 		// Supported values: 'salesforce', 'jira', 'confluence',
 		// 'bigquery'.
 		data_source!: string
+
+		// The version of the data source. For example, '3' for Jira v3.
+		data_source_version?: number
 
 		// The errors from initialization or from the latest connector
 		// run.
@@ -182,6 +190,42 @@ package res
 		update_time?: string
 	})
 
+	#action_config: close({
+		// Params needed to configure the actions in the format of
+		// String-to-String (Key, Value) pairs. Contains connection
+		// credentials and configuration for the action connector.
+		action_params?: [string]: string
+
+		// Whether to create a BAP (Business Application Platform)
+		// connection
+		// for this action connector.
+		create_bap_connection?: bool
+
+		// Whether the action connector is fully configured. Set by the
+		// system
+		// after the action configuration is validated.
+		is_action_configured?: bool
+	})
+
+	#bap_config: close({
+		// The list of enabled actions for this connector. Supported
+		// values include: 'create_issue', 'update_issue',
+		// 'change_issue_status', 'create_comment', 'update_comment',
+		// 'upload_attachment'.
+		enabled_actions?: [...string]
+
+		// The connector modes supported by the BAP configuration.
+		// The possible values include: 'ACTIONS'.
+		supported_connector_modes?: [...string]
+	})
+
+	#destination_configs: close({
+		destinations?: matchN(1, [_#defs."/$defs/destination_configs/$defs/destinations", [..._#defs."/$defs/destination_configs/$defs/destinations"]])
+
+		// The key of the destination configuration, for example 'url'.
+		key?: string
+	})
+
 	#entities: close({
 		// The full resource name of the associated data store for the
 		// source
@@ -220,5 +264,11 @@ package res
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/destination_configs/$defs/destinations": close({
+		// The host of the destination, for example
+		// 'https://example.atlassian.net'.
+		host?: string
 	})
 }

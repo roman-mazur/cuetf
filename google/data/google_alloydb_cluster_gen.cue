@@ -92,6 +92,13 @@ package data
 		// upgrading the AlloyDB cluster which is an irreversible change.
 		database_version?: string
 
+		// Configuration for Dataplex integration. This is an optional
+		// field. If not set, Dataplex integration will be enabled by
+		// default.
+		dataplex_config?: [...close({
+			enabled?: bool
+		})]
+
 		// Policy to determine if the cluster should be deleted
 		// forcefully.
 		// Deleting a cluster forcefully, deletes the cluster and all its

@@ -57,6 +57,12 @@ package data
 
 		// The network this VPN gateway is accepting traffic for.
 		network?: string
+
+		// Additional params passed with the request, but not persisted as
+		// part of resource payload
+		params?: [...close({
+			resource_manager_tags?: [string]: string
+		})]
 		project?: string
 
 		// The region this gateway should sit in.

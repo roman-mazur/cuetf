@@ -71,6 +71,9 @@ import "list"
 		// Specifies the tier of the cluster created.
 		cluster_tier?: string
 
+		// The type of the cluster.
+		cluster_type?: string
+
 		// The Cloud Storage staging bucket used to stage files, such as
 		// Hadoop jars, between client machines and the cluster. Note: If
 		// you don't explicitly specify a staging_bucket then GCP will

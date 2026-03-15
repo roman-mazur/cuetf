@@ -1,9 +1,12 @@
 package res
 
+import "list"
+
 #google_compute_vpn_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_vpn_gateway")
 	close({
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 		timeouts?: #timeouts
 
 		// Creation timestamp in RFC3339 text format.
@@ -37,6 +40,15 @@ package res
 		// The region this gateway should sit in.
 		region?:    string
 		self_link?: string
+	})
+
+	#params: close({
+		// Resource manager tags to be bound to the Vpn Gateway. Tag keys
+		// and values have the
+		// same definition as resource manager tags. Keys must be in the
+		// format tagKeys/{tag_key_id},
+		// and values are in the format tagValues/456.
+		resource_manager_tags?: [string]: string
 	})
 
 	#timeouts: close({

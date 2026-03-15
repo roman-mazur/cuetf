@@ -66,6 +66,10 @@ import "list"
 		name!:    string
 		project?: string
 
+		// The number of Kubernetes Namespaces backed up in the last
+		// successful Backup created via this BackupPlan.
+		protected_namespace_count?: number
+
 		// The number of Kubernetes Pods backed up in the last successful
 		// Backup created via this BackupPlan.
 		protected_pod_count?: number

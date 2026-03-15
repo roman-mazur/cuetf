@@ -70,7 +70,8 @@ package data
 				raw_key?:                 string
 				rsa_encrypted_key?:       string
 			})]
-			type?: string
+			storage_pool?: string
+			type?:         string
 		})]
 
 		// All of labels (key/value pairs) present on the resource in GCP,

@@ -1156,6 +1156,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_tags_tag_value_iam_policy": res.#google_tags_tag_value_iam_policy
 	_#res: "\(#googlePrefix)_transcoder_job": res.#google_transcoder_job
 	_#res: "\(#googlePrefix)_transcoder_job_template": res.#google_transcoder_job_template
+	_#res: "\(#googlePrefix)_vector_search_collection": res.#google_vector_search_collection
 	_#res: "\(#googlePrefix)_vertex_ai_cache_config": res.#google_vertex_ai_cache_config
 	_#res: "\(#googlePrefix)_vertex_ai_dataset": res.#google_vertex_ai_dataset
 	_#res: "\(#googlePrefix)_vertex_ai_deployment_resource_pool": res.#google_vertex_ai_deployment_resource_pool

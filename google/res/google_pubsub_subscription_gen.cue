@@ -197,6 +197,7 @@ import "list"
 
 	#cloud_storage_config: close({
 		avro_config?: matchN(1, [_#defs."/$defs/cloud_storage_config/$defs/avro_config", list.MaxItems(1) & [..._#defs."/$defs/cloud_storage_config/$defs/avro_config"]])
+		text_config?: matchN(1, [_#defs."/$defs/cloud_storage_config/$defs/text_config", list.MaxItems(1) & [..._#defs."/$defs/cloud_storage_config/$defs/text_config"]])
 
 		// User-provided name for the Cloud Storage bucket. The bucket
 		// must be created by the user. The bucket name must be without
@@ -372,6 +373,11 @@ import "list"
 		// attributes, and orderingKey as additional fields in the
 		// output.
 		write_metadata?: bool
+	})
+
+	_#defs: "/$defs/cloud_storage_config/$defs/text_config": close({
+		// Output only. Placeholder to allow the empty text_config block.
+		state?: string
 	})
 
 	_#defs: "/$defs/message_transforms/$defs/javascript_udf": close({

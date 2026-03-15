@@ -275,6 +275,9 @@ import "list"
 		// required except for local SSD.
 		source_snapshot?: string
 
+		// The self_link or ID of the Storage Pool to create this disk in.
+		storage_pool?: string
+
 		// The type of Google Compute Engine disk, can be either "SCRATCH"
 		// or "PERSISTENT".
 		type?: string

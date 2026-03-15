@@ -67,7 +67,9 @@ import "list"
 	#actions: close({
 		export_data?: matchN(1, [_#defs."/$defs/actions/$defs/export_data", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/export_data"]])
 		pub_sub_notification?: matchN(1, [_#defs."/$defs/actions/$defs/pub_sub_notification", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/pub_sub_notification"]])
+		publish_to_chronicle?: matchN(1, [_#defs."/$defs/actions/$defs/publish_to_chronicle", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/publish_to_chronicle"]])
 		publish_to_dataplex_catalog?: matchN(1, [_#defs."/$defs/actions/$defs/publish_to_dataplex_catalog", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/publish_to_dataplex_catalog"]])
+		publish_to_scc?: matchN(1, [_#defs."/$defs/actions/$defs/publish_to_scc", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/publish_to_scc"]])
 		tag_resources?: matchN(1, [_#defs."/$defs/actions/$defs/tag_resources", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/tag_resources"]])
 	})
 
@@ -101,9 +103,23 @@ import "list"
 
 	_#defs: "/$defs/actions/$defs/export_data": close({
 		profile_table?: matchN(1, [_#defs."/$defs/actions/$defs/export_data/$defs/profile_table", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/export_data/$defs/profile_table"]])
+		sample_findings_table?: matchN(1, [_#defs."/$defs/actions/$defs/export_data/$defs/sample_findings_table", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/export_data/$defs/sample_findings_table"]])
 	})
 
 	_#defs: "/$defs/actions/$defs/export_data/$defs/profile_table": close({
+		// Dataset Id of the table
+		dataset_id?: string
+
+		// The Google Cloud Platform project ID of the project containing
+		// the table. If omitted, the project ID is inferred from the API
+		// call.
+		project_id?: string
+
+		// Name of the table
+		table_id?: string
+	})
+
+	_#defs: "/$defs/actions/$defs/export_data/$defs/sample_findings_table": close({
 		// Dataset Id of the table
 		dataset_id?: string
 
@@ -156,7 +172,11 @@ import "list"
 		minimum_sensitivity_score?: string
 	})
 
+	_#defs: "/$defs/actions/$defs/publish_to_chronicle": close({})
+
 	_#defs: "/$defs/actions/$defs/publish_to_dataplex_catalog": close({})
+
+	_#defs: "/$defs/actions/$defs/publish_to_scc": close({})
 
 	_#defs: "/$defs/actions/$defs/tag_resources": close({
 		tag_conditions?: matchN(1, [_#defs."/$defs/actions/$defs/tag_resources/$defs/tag_conditions", [..._#defs."/$defs/actions/$defs/tag_resources/$defs/tag_conditions"]])
@@ -320,6 +340,13 @@ import "list"
 	_#defs: "/$defs/targets/$defs/big_query_target/$defs/filter/$defs/table_reference": close({
 		// Dataset ID of the table.
 		dataset_id!: string
+
+		// The Google Cloud project ID of the project containing the
+		// table.
+		// If omitted, the project ID is inferred from the parent project.
+		// This field is required if the parent resource is an
+		// organization.
+		project_id?: string
 
 		// Name of the table.
 		table_id!: string

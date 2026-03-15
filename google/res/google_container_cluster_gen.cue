@@ -880,6 +880,10 @@ import "list"
 		// the control plane nodes.
 		control_plane_disk_encryption_key?: string
 
+		// The Cloud KMS cryptoKey versions to use for Confidential
+		// Hyperdisk on the control plane nodes.
+		control_plane_disk_encryption_key_versions?: [...string]
+
 		// The Certificate Authority Service caPool to use for the etcd
 		// API CA in this cluster.
 		etcd_api_ca?: string

@@ -1201,6 +1201,7 @@ package data
 			aggregation_ca?:                    string
 			cluster_ca?:                        string
 			control_plane_disk_encryption_key?: string
+			control_plane_disk_encryption_key_versions?: [...string]
 			etcd_api_ca?:                       string
 			etcd_peer_ca?:                      string
 			gkeops_etcd_backup_encryption_key?: string
