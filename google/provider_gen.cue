@@ -185,6 +185,7 @@ package google
 		transcoder_custom_endpoint?:                    string
 		universe_domain?:                               string
 		user_project_override?:                         bool
+		vector_search_custom_endpoint?:                 string
 		vertex_ai_custom_endpoint?:                     string
 		vmwareengine_custom_endpoint?:                  string
 		vpc_access_custom_endpoint?:                    string

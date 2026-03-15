@@ -8,6 +8,7 @@ import "list"
 	close({
 		automated_backup_policy?: matchN(1, [#automated_backup_policy, list.MaxItems(1) & [...#automated_backup_policy]])
 		continuous_backup_config?: matchN(1, [#continuous_backup_config, list.MaxItems(1) & [...#continuous_backup_config]])
+		dataplex_config?: matchN(1, [#dataplex_config, list.MaxItems(1) & [...#dataplex_config]])
 		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
 		initial_user?: matchN(1, [#initial_user, list.MaxItems(1) & [...#initial_user]])
 		maintenance_update_policy?: matchN(1, [#maintenance_update_policy, list.MaxItems(1) & [...#maintenance_update_policy]])
@@ -218,6 +219,12 @@ import "list"
 		//
 		// If not set, defaults to 14 days.
 		recovery_window_days?: number
+	})
+
+	#dataplex_config: close({
+		// Indicates whether Dataplex integration is enabled for the
+		// cluster.
+		enabled!: bool
 	})
 
 	#encryption_config: close({

@@ -48,8 +48,15 @@ package res
 		// bucket:
 		// gs://bucket-name, the catalog name will be exactly
 		// "bucket-name".
-		name!:    string
-		project?: string
+		name!: string
+
+		// The primary location for mirroring the remote catalog metadata.
+		// It must be
+		// a BigLake-supported location, and it should be proximate to the
+		// remote
+		// catalog's location.
+		primary_location?: string
+		project?:          string
 
 		// Output only. The replicas for the catalog metadata.
 		replicas?: [...close({

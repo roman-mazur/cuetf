@@ -1,9 +1,12 @@
 package res
 
+import "list"
+
 #google_compute_ha_vpn_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_ha_vpn_gateway")
 	close({
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 		timeouts?: #timeouts
 		vpn_interfaces?: matchN(1, [#vpn_interfaces, [...#vpn_interfaces]])
 
@@ -76,6 +79,15 @@ package res
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+	})
+
+	#params: close({
+		// Resource manager tags to be bound to the HaVpnGateway. Tag keys
+		// and values have the
+		// same definition as resource manager tags. Keys must be in the
+		// format tagKeys/{tag_key_id},
+		// and values are in the format tagValues/456.
+		resource_manager_tags?: [string]: string
 	})
 
 	#timeouts: close({

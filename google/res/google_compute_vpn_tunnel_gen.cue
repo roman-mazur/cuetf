@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_vpn_tunnel")
 	close({
 		cipher_suite?: matchN(1, [#cipher_suite, list.MaxItems(1) & [...#cipher_suite]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 		timeouts?: #timeouts
 
 		// Creation timestamp in RFC3339 text format.
@@ -143,6 +144,15 @@ import "list"
 	#cipher_suite: close({
 		phase1?: matchN(1, [_#defs."/$defs/cipher_suite/$defs/phase1", list.MaxItems(1) & [..._#defs."/$defs/cipher_suite/$defs/phase1"]])
 		phase2?: matchN(1, [_#defs."/$defs/cipher_suite/$defs/phase2", list.MaxItems(1) & [..._#defs."/$defs/cipher_suite/$defs/phase2"]])
+	})
+
+	#params: close({
+		// Resource manager tags to be bound to the Vpn Tunnel. Tag keys
+		// and values have the
+		// same definition as resource manager tags. Keys must be in the
+		// format tagKeys/{tag_key_id},
+		// and values are in the format tagValues/456.
+		resource_manager_tags?: [string]: string
 	})
 
 	#timeouts: close({

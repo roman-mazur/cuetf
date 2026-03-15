@@ -304,6 +304,8 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_oracle_database_cloud_vm_clusters": data.#google_oracle_database_cloud_vm_clusters
 	_#ds: "\(#googlePrefix)_oracle_database_db_nodes": data.#google_oracle_database_db_nodes
 	_#ds: "\(#googlePrefix)_oracle_database_db_servers": data.#google_oracle_database_db_servers
+	_#ds: "\(#googlePrefix)_oracle_database_odb_network": data.#google_oracle_database_odb_network
+	_#ds: "\(#googlePrefix)_oracle_database_odb_subnet": data.#google_oracle_database_odb_subnet
 	_#ds: "\(#googlePrefix)_organization": data.#google_organization
 	_#ds: "\(#googlePrefix)_organization_iam_custom_role": data.#google_organization_iam_custom_role
 	_#ds: "\(#googlePrefix)_organization_iam_custom_roles": data.#google_organization_iam_custom_roles

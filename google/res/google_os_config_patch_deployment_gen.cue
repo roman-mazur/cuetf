@@ -106,6 +106,23 @@ import "list"
 		// Post-patch reboot settings. Possible values: ["DEFAULT",
 		// "ALWAYS", "NEVER"]
 		reboot_config?: string
+
+		// Enables enhanced reporting for the patch job:
+		//
+		// 1. The patch job skips instances that cannot be patched and
+		// reports them as 'SKIPPED'. An instance cannot be patched for
+		// two reasons:
+		// * The instance runs Container-Optimized OS (COS), which cannot
+		// be patched.
+		// * The instance is part of a managed instance group (MIG), and
+		// patching MIG instances is disabled in the patch job's
+		// configuration ('mig_instances_allowed' is false).
+		// 2. The patch job is reported as 'SUCCEEDED' if it completes
+		// without errors, even if some instances are 'SKIPPED'.
+		// 3. The patch job is reported as 'COMPLETED_WITH_INACTIVE_VMS'
+		// if it completes without errors, but does not patch instances
+		// that are 'INACTIVE'.
+		skip_unpatchable_vms?: bool
 	})
 
 	#recurring_schedule: close({

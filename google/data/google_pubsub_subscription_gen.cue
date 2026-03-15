@@ -70,6 +70,9 @@ package data
 			max_messages?:             number
 			service_account_email?:    string
 			state?:                    string
+			text_config?: [...close({
+				state?: string
+			})]
 		})]
 
 		// A policy that specifies the conditions for dead lettering
