@@ -19,5 +19,6 @@ package res
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		threat_intel_set_id?: string
 	})
 }
