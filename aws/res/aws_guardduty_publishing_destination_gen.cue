@@ -4,7 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_guardduty_publishing_destination")
 	close({
+		arn?:              string
 		destination_arn!:  string
+		destination_id?:   string
 		destination_type?: string
 		detector_id!:      string
 		id?:               string
@@ -15,5 +17,7 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 	})
 }

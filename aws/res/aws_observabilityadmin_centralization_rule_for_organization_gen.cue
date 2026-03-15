@@ -45,12 +45,17 @@ package res
 
 	_#defs: "/$defs/rule/$defs/destination/$defs/destination_logs_configuration": close({
 		backup_configuration?: matchN(1, [_#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/backup_configuration", [..._#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/backup_configuration"]])
+		log_group_name_configuration?: matchN(1, [_#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/log_group_name_configuration", [..._#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/log_group_name_configuration"]])
 		logs_encryption_configuration?: matchN(1, [_#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/logs_encryption_configuration", [..._#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/logs_encryption_configuration"]])
 	})
 
 	_#defs: "/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/backup_configuration": close({
 		kms_key_arn?: string
 		region?:      string
+	})
+
+	_#defs: "/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/log_group_name_configuration": close({
+		log_group_name_pattern!: string
 	})
 
 	_#defs: "/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/logs_encryption_configuration": close({

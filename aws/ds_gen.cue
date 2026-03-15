@@ -285,6 +285,7 @@ import "github.com/roman-mazur/cuetf/aws/data"
 	_#ds: "\(#awsPrefix)_iam_instance_profile": data.#aws_iam_instance_profile
 	_#ds: "\(#awsPrefix)_iam_instance_profiles": data.#aws_iam_instance_profiles
 	_#ds: "\(#awsPrefix)_iam_openid_connect_provider": data.#aws_iam_openid_connect_provider
+	_#ds: "\(#awsPrefix)_iam_outbound_web_identity_federation": data.#aws_iam_outbound_web_identity_federation
 	_#ds: "\(#awsPrefix)_iam_policy_document": data.#aws_iam_policy_document
 	_#ds: "\(#awsPrefix)_iam_policy": data.#aws_iam_policy
 	_#ds: "\(#awsPrefix)_iam_principal_policy_simulation": data.#aws_iam_principal_policy_simulation

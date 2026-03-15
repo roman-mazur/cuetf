@@ -9,6 +9,7 @@ package res
 		detector_id!: string
 		format!:      string
 		id?:          string
+		ip_set_id?:   string
 		location!:    string
 		name!:        string
 

@@ -7,7 +7,6 @@ package res
 		configuration?: matchN(1, [#configuration, [...#configuration]])
 		timeouts?:                    #timeouts
 		arn?:                         string
-		id?:                          string
 		meta_store_manager_role_arn!: string
 
 		// Region where this resource will be
