@@ -5368,7 +5368,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "75 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 4
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             75.0
             PeakBandwidthInGbps:                 75.0
             DefaultEnaQueueCountPerInterface:    16
@@ -5450,7 +5450,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "100 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 1
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             100.0
             PeakBandwidthInGbps:                 100.0
             DefaultEnaQueueCountPerInterface:    16
@@ -5532,7 +5532,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "150 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 9
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             150.0
             PeakBandwidthInGbps:                 150.0
             DefaultEnaQueueCountPerInterface:    32
@@ -5696,7 +5696,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "Up to 170 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 4
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             200.0
             PeakBandwidthInGbps:                 200.0
             DefaultEnaQueueCountPerInterface:    32
@@ -5706,7 +5706,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    1
             NetworkPerformance:                  "Up to 170 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 4
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             200.0
             PeakBandwidthInGbps:                 200.0
             DefaultEnaQueueCountPerInterface:    32
@@ -5873,7 +5873,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "50 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 2
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             50.0
             PeakBandwidthInGbps:                 50.0
             DefaultEnaQueueCountPerInterface:    16
@@ -9905,7 +9905,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -10421,7 +10421,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
