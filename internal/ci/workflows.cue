@@ -57,7 +57,7 @@ _scriptPrepareForGitPush: """
 		#prepareForGitUse: bool | *false
 
 		name: "Checkout"
-		uses: "actions/checkout@v4"
+		uses: "actions/checkout@v6"
 
 		if #prepareForGitUse {
 			with: "fetch-depth": 0
@@ -67,7 +67,7 @@ _scriptPrepareForGitPush: """
 
 	#installGo: {
 		name: "Set up Go"
-		uses: "actions/setup-go@v4"
+		uses: "actions/setup-go@v6"
 		with: "go-version": #versions.go
 	}
 
