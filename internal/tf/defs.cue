@@ -9,8 +9,10 @@ package tf
 
 	// TODO: add support. Used in the AWS provider.
 	ephemeral_resource_schemas: [string]: #type
-	// TODO: add support. Used in the Scaleway provider.
+	// TODO: add support. Used in the Scaleway and Azure providers.
 	action_schemas: [string]: #type
+	// TODO: add support. Used in Azure provider.
+	list_resource_schemas: [string]: #type
 
 	// Unused properties below.
 
@@ -21,7 +23,7 @@ package tf
 }
 
 #type: {
-	version: uint
+	version?: uint
 	block:   #block
 }
 
