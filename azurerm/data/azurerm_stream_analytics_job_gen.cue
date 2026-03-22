@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_stream_analytics_job")
 	close({
+		timeouts?:                                 #timeouts
 		compatibility_level?:                      string
 		data_locale?:                              string
 		events_late_arrival_max_delay_in_seconds?: number
@@ -24,7 +25,6 @@ package data
 		resource_group_name!:  string
 		sku_name?:             string
 		start_mode?:           string
-		timeouts?:             #timeouts
 		start_time?:           string
 		streaming_units?:      number
 		transformation_query?: string

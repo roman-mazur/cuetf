@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_credential_user_managed_identity")
 	close({
+		timeouts?: #timeouts
+
 		// (Optional) List of string annotations.
 		annotations?: [...string]
 
@@ -16,7 +18,6 @@ package res
 
 		// The resource ID of the User Assigned Managed Identity
 		identity_id!: string
-		timeouts?:    #timeouts
 
 		// The desired name of the credential resource
 		name!: string

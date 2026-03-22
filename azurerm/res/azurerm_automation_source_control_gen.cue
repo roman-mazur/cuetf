@@ -6,16 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_automation_source_control")
 	close({
-		automatic_sync?:        bool
-		automation_account_id!: string
-		branch?:                string
-		description?:           string
-		folder_path!:           string
-		id?:                    string
-		name!:                  string
 		security!: matchN(1, [#security, list.MaxItems(1) & [_, ...] & [...#security]])
-		publish_runbook_enabled?: bool
 		timeouts?:                #timeouts
+		automatic_sync?:          bool
+		automation_account_id!:   string
+		branch?:                  string
+		description?:             string
+		folder_path!:             string
+		id?:                      string
+		name!:                    string
+		publish_runbook_enabled?: bool
 		repository_url!:          string
 		source_control_type!:     string
 	})

@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_servicebus_queue")
 	close({
+		timeouts?:                                #timeouts
 		auto_delete_on_idle?:                     string
 		batched_operations_enabled?:              bool
 		dead_lettering_on_message_expiration?:    bool
@@ -19,7 +20,6 @@ package res
 		max_size_in_megabytes?:                   number
 		name!:                                    string
 		namespace_id!:                            string
-		timeouts?:                                #timeouts
 		partitioning_enabled?:                    bool
 		requires_duplicate_detection?:            bool
 		requires_session?:                        bool

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_managed_instance")
 	close({
+		azure_active_directory_administrator?: matchN(1, [#azure_active_directory_administrator, list.MaxItems(1) & [...#azure_active_directory_administrator]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:                       #timeouts
 		administrator_login?:            string
 		administrator_login_password?:   string
 		collation?:                      string
@@ -20,17 +23,14 @@ import "list"
 		maintenance_configuration_name?: string
 		minimum_tls_version?:            string
 		name!:                           string
-		azure_active_directory_administrator?: matchN(1, [#azure_active_directory_administrator, list.MaxItems(1) & [...#azure_active_directory_administrator]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		proxy_override?:               string
-		public_data_endpoint_enabled?: bool
-		resource_group_name!:          string
-		service_principal_type?:       string
-		sku_name!:                     string
-		timeouts?:                     #timeouts
-		storage_account_type?:         string
-		storage_size_in_gb!:           number
-		subnet_id!:                    string
+		proxy_override?:                 string
+		public_data_endpoint_enabled?:   bool
+		resource_group_name!:            string
+		service_principal_type?:         string
+		sku_name!:                       string
+		storage_account_type?:           string
+		storage_size_in_gb!:             number
+		subnet_id!:                      string
 		tags?: [string]: string
 		timezone_id?:            string
 		vcores!:                 number

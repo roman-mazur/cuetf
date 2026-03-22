@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_desktop_application_group")
 	close({
+		timeouts?:                     #timeouts
 		default_desktop_display_name?: string
 		description?:                  string
 		friendly_name?:                string
@@ -11,7 +12,6 @@ package res
 		id?:                           string
 		location!:                     string
 		name!:                         string
-		timeouts?:                     #timeouts
 		resource_group_name!:          string
 		tags?: [string]: string
 		type!: string

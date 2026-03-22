@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_server_extended_auditing_policy")
 	close({
+		timeouts?: #timeouts
 		audit_actions_and_groups?: [...string]
 		enabled?:                                 bool
 		id?:                                      string
@@ -13,7 +14,6 @@ package res
 		server_id!:                               string
 		storage_account_access_key?:              string
 		storage_account_access_key_is_secondary?: bool
-		timeouts?:                                #timeouts
 		storage_account_subscription_id?:         string
 		storage_endpoint?:                        string
 	})

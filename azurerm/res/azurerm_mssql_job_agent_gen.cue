@@ -7,13 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_job_agent")
 	close({
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:    #timeouts
 		database_id!: string
 		id?:          string
 		location!:    string
 		name!:        string
 		sku?:         string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#identity: close({

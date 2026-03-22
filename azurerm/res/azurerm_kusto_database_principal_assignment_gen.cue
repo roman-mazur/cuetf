@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kusto_database_principal_assignment")
 	close({
+		timeouts?:            #timeouts
 		cluster_name!:        string
 		database_name!:       string
 		id?:                  string
@@ -13,7 +14,6 @@ package res
 		principal_type!:      string
 		resource_group_name!: string
 		role!:                string
-		timeouts?:            #timeouts
 		tenant_id!:           string
 		tenant_name?:         string
 	})

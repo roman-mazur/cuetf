@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_linked_service_cosmosdb")
 	close({
+		timeouts?:         #timeouts
 		account_endpoint?: string
 		account_key?:      string
 		additional_properties?: [string]: string
@@ -12,7 +13,6 @@ package res
 		data_factory_id!:          string
 		database?:                 string
 		description?:              string
-		timeouts?:                 #timeouts
 		id?:                       string
 		integration_runtime_name?: string
 		name!:                     string

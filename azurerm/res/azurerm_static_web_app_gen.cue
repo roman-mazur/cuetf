@@ -6,7 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_static_web_app")
 	close({
-		api_key?: string
+		basic_auth?: matchN(1, [#basic_auth, list.MaxItems(1) & [...#basic_auth]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?: #timeouts
+		api_key?:  string
 		app_settings?: [string]: string
 		configuration_file_changes_enabled?: bool
 		default_host_name?:                  string
@@ -15,15 +18,12 @@ import "list"
 		name!:                               string
 		preview_environments_enabled?:       bool
 		public_network_access_enabled?:      bool
-		basic_auth?: matchN(1, [#basic_auth, list.MaxItems(1) & [...#basic_auth]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		repository_branch?:   string
-		timeouts?:            #timeouts
-		repository_token?:    string
-		repository_url?:      string
-		resource_group_name!: string
-		sku_size?:            string
-		sku_tier?:            string
+		repository_branch?:                  string
+		repository_token?:                   string
+		repository_url?:                     string
+		resource_group_name!:                string
+		sku_size?:                           string
+		sku_tier?:                           string
 		tags?: [string]: string
 	})
 

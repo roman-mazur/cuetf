@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_vmware_private_cloud")
 	close({
+		timeouts?: #timeouts
 		circuit?: [...close({
 			express_route_id?:                 string
 			express_route_private_peering_id?: string
@@ -28,7 +29,6 @@ package data
 		resource_group_name!:         string
 		sku_name?:                    string
 		tags?: [string]: string
-		timeouts?:                       #timeouts
 		vcenter_certificate_thumbprint?: string
 		vcsa_endpoint?:                  string
 		vmotion_subnet_cidr?:            string

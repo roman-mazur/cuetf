@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_linked_service_sftp")
 	close({
+		key_vault_password?: matchN(1, [#key_vault_password, [...#key_vault_password]])
+		key_vault_private_key_content_base64?: matchN(1, [#key_vault_private_key_content_base64, list.MaxItems(1) & [...#key_vault_private_key_content_base64]])
+		key_vault_private_key_passphrase?: matchN(1, [#key_vault_private_key_passphrase, list.MaxItems(1) & [...#key_vault_private_key_passphrase]])
+		timeouts?: #timeouts
 		additional_properties?: [string]: string
 		annotations?: [...string]
 		authentication_type!:      string
@@ -16,18 +20,14 @@ import "list"
 		id?:                       string
 		integration_runtime_name?: string
 		name!:                     string
-		key_vault_password?: matchN(1, [#key_vault_password, [...#key_vault_password]])
-		key_vault_private_key_content_base64?: matchN(1, [#key_vault_private_key_content_base64, list.MaxItems(1) & [...#key_vault_private_key_content_base64]])
 		parameters?: [string]: string
 		password?:                   string
 		port!:                       number
 		private_key_content_base64?: string
-		key_vault_private_key_passphrase?: matchN(1, [#key_vault_private_key_passphrase, list.MaxItems(1) & [...#key_vault_private_key_passphrase]])
-		private_key_passphrase?:   string
-		private_key_path?:         string
-		skip_host_key_validation?: bool
-		username!:                 string
-		timeouts?:                 #timeouts
+		private_key_passphrase?:     string
+		private_key_path?:           string
+		skip_host_key_validation?:   bool
+		username!:                   string
 	})
 
 	#key_vault_password: close({

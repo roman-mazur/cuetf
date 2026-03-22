@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stack_hci_network_interface")
 	close({
 		ip_configuration!: matchN(1, [#ip_configuration, list.MaxItems(1) & [_, ...] & [...#ip_configuration]])
+		timeouts?:           #timeouts
 		custom_location_id!: string
 		dns_servers?: [...string]
 		id?:                  string
@@ -15,7 +16,6 @@ import "list"
 		name!:                string
 		resource_group_name!: string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#ip_configuration: close({

@@ -4,8 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_app_configuration")
 	close({
-		data_plane_proxy_authentication_mode?:             string
 		timeouts?:                                         #timeouts
+		data_plane_proxy_authentication_mode?:             string
 		data_plane_proxy_private_link_delegation_enabled?: bool
 		encryption?: [...close({
 			identity_client_id?:       string

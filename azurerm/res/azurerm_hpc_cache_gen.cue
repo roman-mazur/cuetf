@@ -6,26 +6,26 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_hpc_cache")
 	close({
+		default_access_policy?: matchN(1, [#default_access_policy, list.MaxItems(1) & [...#default_access_policy]])
+		directory_active_directory?: matchN(1, [#directory_active_directory, list.MaxItems(1) & [...#directory_active_directory]])
+		directory_flat_file?: matchN(1, [#directory_flat_file, list.MaxItems(1) & [...#directory_flat_file]])
+		directory_ldap?: matchN(1, [#directory_ldap, list.MaxItems(1) & [...#directory_ldap]])
+		dns?: matchN(1, [#dns, list.MaxItems(1) & [...#dns]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:                                   #timeouts
 		automatically_rotate_key_to_latest_enabled?: bool
 		cache_size_in_gb!:                           number
 		id?:                                         string
 		key_vault_key_id?:                           string
 		location!:                                   string
 		mount_addresses?: [...string]
-		mtu?:        number
-		name!:       string
-		ntp_server?: string
-		default_access_policy?: matchN(1, [#default_access_policy, list.MaxItems(1) & [...#default_access_policy]])
-		directory_active_directory?: matchN(1, [#directory_active_directory, list.MaxItems(1) & [...#directory_active_directory]])
-		directory_flat_file?: matchN(1, [#directory_flat_file, list.MaxItems(1) & [...#directory_flat_file]])
+		mtu?:                 number
+		name!:                string
+		ntp_server?:          string
 		resource_group_name!: string
 		sku_name!:            string
 		subnet_id!:           string
-		directory_ldap?: matchN(1, [#directory_ldap, list.MaxItems(1) & [...#directory_ldap]])
-		dns?: matchN(1, [#dns, list.MaxItems(1) & [...#dns]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#default_access_policy: close({

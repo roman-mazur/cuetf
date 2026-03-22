@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dns_zone")
 	close({
 		soa_record?: matchN(1, [#soa_record, list.MaxItems(1) & [...#soa_record]])
+		timeouts?:                  #timeouts
 		id?:                        string
 		max_number_of_record_sets?: number
 		name!:                      string
@@ -14,7 +15,6 @@ import "list"
 		number_of_record_sets?: number
 		resource_group_name!:   string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#soa_record: close({

@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_sentinel_alert_rule_ms_security_incident")
 	close({
+		timeouts?:                 #timeouts
 		alert_rule_template_guid?: string
 		description?:              string
 		display_name!:             string
@@ -13,7 +14,6 @@ package res
 		id?:                         string
 		log_analytics_workspace_id!: string
 		name!:                       string
-		timeouts?:                   #timeouts
 		product_filter!:             string
 		severity_filter!: [...string]
 	})

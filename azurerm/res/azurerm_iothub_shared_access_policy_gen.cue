@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iothub_shared_access_policy")
 	close({
+		timeouts?:                    #timeouts
 		device_connect?:              bool
 		id?:                          string
 		iothub_name!:                 string
@@ -12,7 +13,6 @@ package res
 		primary_key?:                 string
 		registry_read?:               bool
 		registry_write?:              bool
-		timeouts?:                    #timeouts
 		resource_group_name!:         string
 		secondary_connection_string?: string
 		secondary_key?:               string

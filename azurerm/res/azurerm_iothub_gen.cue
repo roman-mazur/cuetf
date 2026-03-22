@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iothub")
 	close({
+		cloud_to_device?: matchN(1, [#cloud_to_device, list.MaxItems(1) & [...#cloud_to_device]])
+		fallback_route?: matchN(1, [#fallback_route, list.MaxItems(1) & [...#fallback_route]])
+		file_upload?: matchN(1, [#file_upload, list.MaxItems(1) & [...#file_upload]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		network_rule_set?: matchN(1, [#network_rule_set, [...#network_rule_set]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		timeouts?: #timeouts
 		endpoint?: [...close({
 			authentication_type?:        string
 			batch_frequency_in_seconds?: number
@@ -35,12 +42,9 @@ import "list"
 		event_hub_partition_count?:     number
 		event_hub_retention_in_days?:   number
 		hostname?:                      string
-		cloud_to_device?: matchN(1, [#cloud_to_device, list.MaxItems(1) & [...#cloud_to_device]])
-		id?: string
-		fallback_route?: matchN(1, [#fallback_route, list.MaxItems(1) & [...#fallback_route]])
-		local_authentication_enabled?: bool
-		location!:                     string
-		file_upload?: matchN(1, [#file_upload, list.MaxItems(1) & [...#file_upload]])
+		id?:                            string
+		local_authentication_enabled?:  bool
+		location!:                      string
 		min_tls_version?:               string
 		name!:                          string
 		public_network_access_enabled?: bool
@@ -58,12 +62,8 @@ import "list"
 			primary_key?:   string
 			secondary_key?: string
 		})]
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		tags?: [string]: string
-		network_rule_set?: matchN(1, [#network_rule_set, [...#network_rule_set]])
 		type?: string
-		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
-		timeouts?: #timeouts
 	})
 
 	#cloud_to_device: close({

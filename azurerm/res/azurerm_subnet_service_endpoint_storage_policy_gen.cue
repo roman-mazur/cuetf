@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_subnet_service_endpoint_storage_policy")
 	close({
 		definition?: matchN(1, [#definition, list.MaxItems(2) & [...#definition]])
+		timeouts?:            #timeouts
 		id?:                  string
 		location!:            string
 		name!:                string
 		resource_group_name!: string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#definition: close({

@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_recovery_services_vault")
 	close({
+		encryption?: matchN(1, [#encryption, list.MaxItems(1) & [...#encryption]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		monitoring?: matchN(1, [#monitoring, list.MaxItems(1) & [...#monitoring]])
+		timeouts?:                           #timeouts
 		classic_vmware_replication_enabled?: bool
 		cross_region_restore_enabled?:       bool
 		id?:                                 string
@@ -13,15 +17,10 @@ import "list"
 		location!:                           string
 		name!:                               string
 		public_network_access_enabled?:      bool
-		encryption?: matchN(1, [#encryption, list.MaxItems(1) & [...#encryption]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		monitoring?: matchN(1, [#monitoring, list.MaxItems(1) & [...#monitoring]])
-		resource_group_name!: string
-		sku!:                 string
-		soft_delete_enabled?: bool
-		storage_mode_type?:   string
+		resource_group_name!:                string
+		sku!:                                string
+		storage_mode_type?:                  string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#encryption: close({

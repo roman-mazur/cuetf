@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_maintenance_configuration")
 	close({
+		install_patches?: matchN(1, [#install_patches, list.MaxItems(1) & [...#install_patches]])
+		timeouts?: #timeouts
+		window?: matchN(1, [#window, list.MaxItems(1) & [...#window]])
 		id?:                       string
 		in_guest_user_patch_mode?: string
 		location!:                 string
@@ -13,10 +16,7 @@ import "list"
 		properties?: [string]: string
 		resource_group_name!: string
 		scope!:               string
-		install_patches?: matchN(1, [#install_patches, list.MaxItems(1) & [...#install_patches]])
 		tags?: [string]: string
-		timeouts?: #timeouts
-		window?: matchN(1, [#window, list.MaxItems(1) & [...#window]])
 		visibility?: string
 	})
 

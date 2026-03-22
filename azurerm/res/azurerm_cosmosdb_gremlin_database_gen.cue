@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cosmosdb_gremlin_database")
 	close({
 		autoscale_settings?: matchN(1, [#autoscale_settings, list.MaxItems(1) & [...#autoscale_settings]])
+		timeouts?:            #timeouts
 		account_name!:        string
 		id?:                  string
 		name!:                string
 		resource_group_name!: string
 		throughput?:          number
-		timeouts?:            #timeouts
 	})
 
 	#autoscale_settings: close({

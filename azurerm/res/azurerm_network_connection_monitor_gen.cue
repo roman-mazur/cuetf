@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_network_connection_monitor")
 	close({
+		endpoint!: matchN(1, [#endpoint, [_, ...] & [...#endpoint]])
+		test_configuration!: matchN(1, [#test_configuration, [_, ...] & [...#test_configuration]])
+		test_group!: matchN(1, [#test_group, [_, ...] & [...#test_group]])
+		timeouts?:           #timeouts
 		id?:                 string
 		location!:           string
 		name!:               string
 		network_watcher_id!: string
 		notes?:              string
 		output_workspace_resource_ids?: [...string]
-		endpoint!: matchN(1, [#endpoint, [_, ...] & [...#endpoint]])
 		tags?: [string]: string
-		test_configuration!: matchN(1, [#test_configuration, [_, ...] & [...#test_configuration]])
-		test_group!: matchN(1, [#test_group, [_, ...] & [...#test_group]])
-		timeouts?: #timeouts
 	})
 
 	#endpoint: close({
@@ -32,13 +32,13 @@ import "list"
 
 	#test_configuration: close({
 		http_configuration?: matchN(1, [_#defs."/$defs/test_configuration/$defs/http_configuration", list.MaxItems(1) & [..._#defs."/$defs/test_configuration/$defs/http_configuration"]])
+		icmp_configuration?: matchN(1, [_#defs."/$defs/test_configuration/$defs/icmp_configuration", list.MaxItems(1) & [..._#defs."/$defs/test_configuration/$defs/icmp_configuration"]])
+		success_threshold?: matchN(1, [_#defs."/$defs/test_configuration/$defs/success_threshold", list.MaxItems(1) & [..._#defs."/$defs/test_configuration/$defs/success_threshold"]])
+		tcp_configuration?: matchN(1, [_#defs."/$defs/test_configuration/$defs/tcp_configuration", list.MaxItems(1) & [..._#defs."/$defs/test_configuration/$defs/tcp_configuration"]])
 		name!:                      string
 		preferred_ip_version?:      string
 		protocol!:                  string
 		test_frequency_in_seconds?: number
-		icmp_configuration?: matchN(1, [_#defs."/$defs/test_configuration/$defs/icmp_configuration", list.MaxItems(1) & [..._#defs."/$defs/test_configuration/$defs/icmp_configuration"]])
-		success_threshold?: matchN(1, [_#defs."/$defs/test_configuration/$defs/success_threshold", list.MaxItems(1) & [..._#defs."/$defs/test_configuration/$defs/success_threshold"]])
-		tcp_configuration?: matchN(1, [_#defs."/$defs/test_configuration/$defs/tcp_configuration", list.MaxItems(1) & [..._#defs."/$defs/test_configuration/$defs/tcp_configuration"]])
 	})
 
 	#test_group: close({

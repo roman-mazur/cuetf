@@ -6,16 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_network_watcher_flow_log")
 	close({
+		retention_policy!: matchN(1, [#retention_policy, list.MaxItems(1) & [_, ...] & [...#retention_policy]])
+		timeouts?: #timeouts
+		traffic_analytics?: matchN(1, [#traffic_analytics, list.MaxItems(1) & [...#traffic_analytics]])
 		enabled!:              bool
 		id?:                   string
 		location?:             string
 		name!:                 string
 		network_watcher_name!: string
 		resource_group_name!:  string
-		retention_policy!: matchN(1, [#retention_policy, list.MaxItems(1) & [_, ...] & [...#retention_policy]])
-		storage_account_id!: string
-		timeouts?:           #timeouts
-		traffic_analytics?: matchN(1, [#traffic_analytics, list.MaxItems(1) & [...#traffic_analytics]])
+		storage_account_id!:   string
 		tags?: [string]: string
 		target_resource_id?: string
 		version?:            number

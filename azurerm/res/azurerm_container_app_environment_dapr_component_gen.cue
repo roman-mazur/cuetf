@@ -4,17 +4,21 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_app_environment_dapr_component")
 	close({
+		metadata?: matchN(1, [#metadata, [...#metadata]])
+		secret?: matchN(1, [#secret, [...#secret]])
+		timeouts?: #timeouts
+
 		// The Dapr Component Type. For example `state.azure.blobstorage`.
 		component_type!: string
 
 		// The Container App Managed Environment ID to configure this Dapr
 		// component on.
 		container_app_environment_id!: string
+		id?:                           string
 
 		// Should the Dapr sidecar to continue initialisation if the
 		// component fails to load. Defaults to `false`
 		ignore_errors?: bool
-		id?:            string
 
 		// The component initialisation timeout in ISO8601 format. e.g.
 		// `5s`, `2h`, `1m`. Defaults to `5s`.
@@ -26,9 +30,6 @@ package res
 		// A list of scopes to which this component applies. e.g. a
 		// Container App's `dapr.app_id` value.
 		scopes?: [...string]
-		metadata?: matchN(1, [#metadata, [...#metadata]])
-		secret?: matchN(1, [#secret, [...#secret]])
-		timeouts?: #timeouts
 
 		// The version of the component.
 		version!: string

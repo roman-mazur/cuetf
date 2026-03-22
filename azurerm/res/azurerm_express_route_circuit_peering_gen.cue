@@ -6,16 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_express_route_circuit_peering")
 	close({
-		azure_asn?: number
 		ipv6?: matchN(1, [#ipv6, list.MaxItems(1) & [...#ipv6]])
-		express_route_circuit_name!: string
-		gateway_manager_etag?:       string
-		id?:                         string
-		ipv4_enabled?:               bool
-		peer_asn?:                   number
-		peering_type!:               string
-		primary_azure_port?:         string
 		microsoft_peering_config?: matchN(1, [#microsoft_peering_config, list.MaxItems(1) & [...#microsoft_peering_config]])
+		timeouts?:                      #timeouts
+		azure_asn?:                     number
+		express_route_circuit_name!:    string
+		gateway_manager_etag?:          string
+		id?:                            string
+		ipv4_enabled?:                  bool
+		peer_asn?:                      number
+		peering_type!:                  string
+		primary_azure_port?:            string
 		primary_peer_address_prefix?:   string
 		resource_group_name!:           string
 		route_filter_id?:               string
@@ -23,7 +24,6 @@ import "list"
 		secondary_peer_address_prefix?: string
 		shared_key?:                    string
 		vlan_id!:                       number
-		timeouts?:                      #timeouts
 	})
 
 	#ipv6: close({

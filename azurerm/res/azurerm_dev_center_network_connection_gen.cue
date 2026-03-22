@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dev_center_network_connection")
 	close({
+		timeouts?:            #timeouts
 		domain_join_type!:    string
 		domain_name?:         string
 		domain_password?:     string
@@ -13,7 +14,6 @@ package res
 		name!:                string
 		organization_unit?:   string
 		resource_group_name!: string
-		timeouts?:            #timeouts
 		subnet_id!:           string
 		tags?: [string]: string
 	})

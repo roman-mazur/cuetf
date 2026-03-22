@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_virtual_desktop_host_pool")
 	close({
+		timeouts?:                         #timeouts
 		custom_rdp_properties?:            string
 		description?:                      string
 		friendly_name?:                    string
@@ -13,7 +14,6 @@ package data
 		maximum_sessions_allowed?:         number
 		name!:                             string
 		personal_desktop_assignment_type?: string
-		timeouts?:                         #timeouts
 		preferred_app_group_type?:         string
 		resource_group_name!:              string
 		scheduled_agent_updates?: [...close({

@@ -6,15 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_elastic_san_volume_group")
 	close({
+		encryption?: matchN(1, [#encryption, list.MaxItems(1) & [...#encryption]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		network_rule?: matchN(1, [#network_rule, [...#network_rule]])
+		timeouts?:        #timeouts
 		elastic_san_id!:  string
 		encryption_type?: string
 		id?:              string
 		name!:            string
 		protocol_type?:   string
-		encryption?: matchN(1, [#encryption, list.MaxItems(1) & [...#encryption]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		network_rule?: matchN(1, [#network_rule, [...#network_rule]])
-		timeouts?: #timeouts
 	})
 
 	#encryption: close({

@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dev_test_virtual_network")
 	close({
 		subnet?: matchN(1, [#subnet, list.MaxItems(1) & [...#subnet]])
+		timeouts?:            #timeouts
 		description?:         string
 		id?:                  string
 		lab_name!:            string
@@ -14,7 +15,6 @@ import "list"
 		resource_group_name!: string
 		tags?: [string]: string
 		unique_identifier?: string
-		timeouts?:          #timeouts
 	})
 
 	#subnet: close({

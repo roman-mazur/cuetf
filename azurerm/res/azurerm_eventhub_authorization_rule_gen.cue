@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_eventhub_authorization_rule")
 	close({
+		timeouts?:                          #timeouts
 		eventhub_name!:                     string
 		id?:                                string
 		listen?:                            bool
@@ -16,7 +17,6 @@ package res
 		resource_group_name!:               string
 		secondary_connection_string?:       string
 		secondary_connection_string_alias?: string
-		timeouts?:                          #timeouts
 		secondary_key?:                     string
 		send?:                              bool
 	})

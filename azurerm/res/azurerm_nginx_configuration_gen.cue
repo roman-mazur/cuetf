@@ -5,12 +5,12 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_nginx_configuration")
 	close({
 		config_file?: matchN(1, [#config_file, [...#config_file]])
+		protected_file?: matchN(1, [#protected_file, [...#protected_file]])
+		timeouts?:            #timeouts
 		id?:                  string
 		nginx_deployment_id!: string
 		package_data?:        string
 		root_file!:           string
-		protected_file?: matchN(1, [#protected_file, [...#protected_file]])
-		timeouts?: #timeouts
 	})
 
 	#config_file: close({

@@ -5,12 +5,12 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_automation_connection_type")
 	close({
 		field!: matchN(1, [#field, [_, ...] & [...#field]])
+		timeouts?:                #timeouts
 		automation_account_name!: string
 		id?:                      string
 		is_global?:               bool
 		name!:                    string
 		resource_group_name!:     string
-		timeouts?:                #timeouts
 	})
 
 	#field: close({

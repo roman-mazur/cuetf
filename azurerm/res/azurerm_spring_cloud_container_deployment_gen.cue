@@ -6,15 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_container_deployment")
 	close({
+		quota?: matchN(1, [#quota, list.MaxItems(1) & [...#quota]])
+		timeouts?:   #timeouts
 		addon_json?: string
 		application_performance_monitoring_ids?: [...string]
 		arguments?: [...string]
 		commands?: [...string]
 		environment_variables?: [string]: string
-		id?: string
-		quota?: matchN(1, [#quota, list.MaxItems(1) & [...#quota]])
+		id?:                  string
 		image!:               string
-		timeouts?:            #timeouts
 		instance_count?:      number
 		language_framework?:  string
 		name!:                string

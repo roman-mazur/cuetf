@@ -6,16 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_automation_account")
 	close({
-		dsc_primary_access_key?: string
 		encryption?: matchN(1, [#encryption, [...#encryption]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:                     #timeouts
+		dsc_primary_access_key?:       string
 		dsc_secondary_access_key?:     string
 		dsc_server_endpoint?:          string
 		hybrid_service_url?:           string
 		id?:                           string
 		local_authentication_enabled?: bool
 		location!:                     string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		name!: string
+		name!:                         string
 		private_endpoint_connection?: [...close({
 			id?:   string
 			name?: string
@@ -24,7 +25,6 @@ import "list"
 		resource_group_name!:           string
 		sku_name!:                      string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#encryption: close({

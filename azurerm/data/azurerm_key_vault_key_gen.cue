@@ -4,9 +4,10 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_key_vault_key")
 	close({
-		curve?: string
-		e?:     string
-		id?:    string
+		timeouts?: #timeouts
+		curve?:    string
+		e?:        string
+		id?:       string
 		key_opts?: [...string]
 		key_size?:                number
 		key_type?:                string
@@ -19,7 +20,6 @@ package data
 		resource_versionless_id?: string
 		tags?: [string]: string
 		version?:        string
-		timeouts?:       #timeouts
 		versionless_id?: string
 		x?:              string
 		y?:              string

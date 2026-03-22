@@ -4,7 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_eventgrid_system_topic")
 	close({
-		id?: string
+		timeouts?: #timeouts
+		id?:       string
 		identity?: [...close({
 			identity_ids?: [...string]
 			principal_id?: string
@@ -18,7 +19,6 @@ package data
 		resource_group_name!:    string
 		source_arm_resource_id?: string
 		source_resource_id?:     string
-		timeouts?:               #timeouts
 		tags?: [string]: string
 		topic_type?: string
 	})

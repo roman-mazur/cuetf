@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_site_recovery_protection_container_mapping")
 	close({
 		automatic_update?: matchN(1, [#automatic_update, list.MaxItems(1) & [...#automatic_update]])
+		timeouts?:                                  #timeouts
 		id?:                                        string
 		name!:                                      string
 		recovery_fabric_name!:                      string
@@ -15,7 +16,6 @@ import "list"
 		recovery_target_protection_container_id!:   string
 		recovery_vault_name!:                       string
 		resource_group_name!:                       string
-		timeouts?:                                  #timeouts
 	})
 
 	#automatic_update: close({

@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management_user")
 	close({
+		timeouts?:            #timeouts
 		api_management_name!: string
 		confirmation?:        string
 		email!:               string
@@ -13,7 +14,6 @@ package res
 		note?:                string
 		password?:            string
 		resource_group_name!: string
-		timeouts?:            #timeouts
 		state?:               string
 		user_id!:             string
 	})

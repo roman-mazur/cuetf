@@ -6,8 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cosmosdb_sql_container")
 	close({
-		account_name!: string
 		autoscale_settings?: matchN(1, [#autoscale_settings, list.MaxItems(1) & [...#autoscale_settings]])
+		conflict_resolution_policy?: matchN(1, [#conflict_resolution_policy, list.MaxItems(1) & [...#conflict_resolution_policy]])
+		indexing_policy?: matchN(1, [#indexing_policy, list.MaxItems(1) & [...#indexing_policy]])
+		timeouts?: #timeouts
+		unique_key?: matchN(1, [#unique_key, [...#unique_key]])
+		account_name!:           string
 		analytical_storage_ttl?: number
 		database_name!:          string
 		default_ttl?:            number
@@ -15,13 +19,9 @@ import "list"
 		name!:                   string
 		partition_key_kind?:     string
 		partition_key_paths!: [...string]
-		conflict_resolution_policy?: matchN(1, [#conflict_resolution_policy, list.MaxItems(1) & [...#conflict_resolution_policy]])
-		indexing_policy?: matchN(1, [#indexing_policy, list.MaxItems(1) & [...#indexing_policy]])
 		partition_key_version?: number
-		timeouts?:              #timeouts
-		unique_key?: matchN(1, [#unique_key, [...#unique_key]])
-		resource_group_name!: string
-		throughput?:          number
+		resource_group_name!:   string
+		throughput?:            number
 	})
 
 	#autoscale_settings: close({

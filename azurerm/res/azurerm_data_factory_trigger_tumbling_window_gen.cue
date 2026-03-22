@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_trigger_tumbling_window")
 	close({
+		pipeline!: matchN(1, [#pipeline, list.MaxItems(1) & [_, ...] & [...#pipeline]])
+		retry?: matchN(1, [#retry, list.MaxItems(1) & [...#retry]])
+		timeouts?: #timeouts
+		trigger_dependency?: matchN(1, [#trigger_dependency, [...#trigger_dependency]])
 		activated?: bool
 		additional_properties?: [string]: string
 		annotations?: [...string]
@@ -15,14 +19,10 @@ import "list"
 		end_time?:        string
 		frequency!:       string
 		id?:              string
-		pipeline!: matchN(1, [#pipeline, list.MaxItems(1) & [_, ...] & [...#pipeline]])
 		interval!:        number
 		max_concurrency?: number
 		name!:            string
 		start_time!:      string
-		retry?: matchN(1, [#retry, list.MaxItems(1) & [...#retry]])
-		timeouts?: #timeouts
-		trigger_dependency?: matchN(1, [#trigger_dependency, [...#trigger_dependency]])
 	})
 
 	#pipeline: close({

@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_vpn_gateway")
 	close({
+		bgp_settings?: matchN(1, [#bgp_settings, list.MaxItems(1) & [...#bgp_settings]])
+		timeouts?:                              #timeouts
 		bgp_route_translation_for_nat_enabled?: bool
 		id?:                                    string
 		ip_configuration?: [...close({
@@ -17,9 +19,7 @@ import "list"
 		name!:                string
 		resource_group_name!: string
 		routing_preference?:  string
-		bgp_settings?: matchN(1, [#bgp_settings, list.MaxItems(1) & [...#bgp_settings]])
-		scale_unit?: number
-		timeouts?:   #timeouts
+		scale_unit?:          number
 		tags?: [string]: string
 		virtual_hub_id!: string
 	})

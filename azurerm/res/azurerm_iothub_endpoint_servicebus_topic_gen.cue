@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iothub_endpoint_servicebus_topic")
 	close({
+		timeouts?:            #timeouts
 		authentication_type?: string
 		connection_string?:   string
 		endpoint_uri?:        string
@@ -11,7 +12,6 @@ package res
 		id?:                  string
 		identity_id?:         string
 		iothub_id!:           string
-		timeouts?:            #timeouts
 		name!:                string
 		resource_group_name!: string
 		subscription_id?:     string

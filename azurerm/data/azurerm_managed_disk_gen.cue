@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_managed_disk")
 	close({
+		timeouts?:               #timeouts
 		create_option?:          string
 		disk_access_id?:         string
 		disk_encryption_set_id?: string
@@ -25,7 +26,6 @@ package data
 		image_reference_id?:    string
 		location?:              string
 		name!:                  string
-		timeouts?:              #timeouts
 		network_access_policy?: string
 		os_type?:               string
 		resource_group_name!:   string

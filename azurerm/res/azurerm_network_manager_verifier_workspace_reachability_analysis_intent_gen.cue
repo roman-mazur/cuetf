@@ -7,13 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_network_manager_verifier_workspace_reachability_analysis_intent")
 	close({
 		ip_traffic!: matchN(1, [#ip_traffic, list.MaxItems(1) & [_, ...] & [...#ip_traffic]])
+		timeouts?:                #timeouts
 		description?:             string
 		destination_resource_id!: string
 		id?:                      string
 		name!:                    string
 		source_resource_id!:      string
 		verifier_workspace_id!:   string
-		timeouts?:                #timeouts
 	})
 
 	#ip_traffic: close({

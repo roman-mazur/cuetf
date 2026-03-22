@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_storage_share_file")
 	close({
+		timeouts?:            #timeouts
 		content_disposition?: string
 		content_encoding?:    string
 		content_length?:      number
@@ -13,7 +14,6 @@ package res
 		metadata?: [string]: string
 		name!:              string
 		path?:              string
-		timeouts?:          #timeouts
 		source?:            string
 		storage_share_url?: string
 	})

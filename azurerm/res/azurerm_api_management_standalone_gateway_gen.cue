@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management_standalone_gateway")
 	close({
 		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		timeouts?:            #timeouts
 		backend_subnet_id?:   string
 		id?:                  string
 		location!:            string
@@ -14,7 +15,6 @@ import "list"
 		resource_group_name!: string
 		tags?: [string]: string
 		virtual_network_type?: string
-		timeouts?:             #timeouts
 	})
 
 	#sku: close({

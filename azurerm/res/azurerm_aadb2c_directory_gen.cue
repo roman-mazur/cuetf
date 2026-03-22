@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_aadb2c_directory")
 	close({
+		timeouts?: #timeouts
+
 		// The type of billing for the B2C tenant. Possible values
 		// include: `MAU` or `Auths`.
 		billing_type?: string
@@ -27,12 +29,11 @@ package res
 		// populated until after the first billing cycle.
 		effective_start_date?: string
 		id?:                   string
+		resource_group_name!:  string
 
 		// Billing SKU for the B2C tenant. See https://aka.ms/b2cBilling
 		// for more information.
-		sku_name!:            string
-		timeouts?:            #timeouts
-		resource_group_name!: string
+		sku_name!: string
 		tags?: [string]: string
 
 		// The Tenant ID for the B2C tenant.

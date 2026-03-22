@@ -6,24 +6,24 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_shared_image")
 	close({
+		identifier!: matchN(1, [#identifier, list.MaxItems(1) & [_, ...] & [...#identifier]])
+		purchase_plan?: matchN(1, [#purchase_plan, list.MaxItems(1) & [...#purchase_plan]])
+		timeouts?:                            #timeouts
 		accelerated_network_support_enabled?: bool
 		architecture?:                        string
 		confidential_vm_enabled?:             bool
 		confidential_vm_supported?:           bool
-		identifier!: matchN(1, [#identifier, list.MaxItems(1) & [_, ...] & [...#identifier]])
-		description?:                       string
-		disk_controller_type_nvme_enabled?: bool
+		description?:                         string
+		disk_controller_type_nvme_enabled?:   bool
 		disk_types_not_allowed?: [...string]
-		end_of_life_date?:    string
-		eula?:                string
-		gallery_name!:        string
-		hibernation_enabled?: bool
-		hyper_v_generation?:  string
-		id?:                  string
-		location!:            string
-		purchase_plan?: matchN(1, [#purchase_plan, list.MaxItems(1) & [...#purchase_plan]])
+		end_of_life_date?:             string
+		eula?:                         string
+		gallery_name!:                 string
+		hibernation_enabled?:          bool
+		hyper_v_generation?:           string
+		id?:                           string
+		location!:                     string
 		max_recommended_memory_in_gb?: number
-		timeouts?:                     #timeouts
 		max_recommended_vcpu_count?:   number
 		min_recommended_memory_in_gb?: number
 		min_recommended_vcpu_count?:   number

@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_servicebus_subscription")
 	close({
+		client_scoped_subscription?: matchN(1, [#client_scoped_subscription, list.MaxItems(1) & [...#client_scoped_subscription]])
+		timeouts?:                                  #timeouts
 		auto_delete_on_idle?:                       string
 		batched_operations_enabled?:                bool
 		client_scoped_subscription_enabled?:        bool
@@ -14,15 +16,13 @@ import "list"
 		default_message_ttl?:                       string
 		forward_dead_lettered_messages_to?:         string
 		forward_to?:                                string
-		client_scoped_subscription?: matchN(1, [#client_scoped_subscription, list.MaxItems(1) & [...#client_scoped_subscription]])
-		id?:                 string
-		lock_duration?:      string
-		max_delivery_count!: number
-		timeouts?:           #timeouts
-		name!:               string
-		requires_session?:   bool
-		status?:             string
-		topic_id!:           string
+		id?:                                        string
+		lock_duration?:                             string
+		max_delivery_count!:                        number
+		name!:                                      string
+		requires_session?:                          bool
+		status?:                                    string
+		topic_id!:                                  string
 	})
 
 	#client_scoped_subscription: close({

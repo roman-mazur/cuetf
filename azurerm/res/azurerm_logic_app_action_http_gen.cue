@@ -5,15 +5,15 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_logic_app_action_http")
 	close({
 		run_after?: matchN(1, [#run_after, [...#run_after]])
-		body?: string
+		timeouts?: #timeouts
+		body?:     string
 		headers?: [string]: string
 		id?:           string
 		logic_app_id!: string
 		method!:       string
 		name!:         string
 		queries?: [string]: string
-		uri!:      string
-		timeouts?: #timeouts
+		uri!: string
 	})
 
 	#run_after: close({

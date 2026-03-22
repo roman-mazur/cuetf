@@ -4,15 +4,15 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_lb")
 	close({
+		frontend_ip_configuration?: matchN(1, [#frontend_ip_configuration, [...#frontend_ip_configuration]])
+		timeouts?:           #timeouts
 		edge_zone?:          string
 		id?:                 string
 		location!:           string
 		name!:               string
 		private_ip_address?: string
 		private_ip_addresses?: [...string]
-		frontend_ip_configuration?: matchN(1, [#frontend_ip_configuration, [...#frontend_ip_configuration]])
 		public_ip_address_id?: string
-		timeouts?:             #timeouts
 		resource_group_name!:  string
 		sku?:                  string
 		sku_tier?:             string

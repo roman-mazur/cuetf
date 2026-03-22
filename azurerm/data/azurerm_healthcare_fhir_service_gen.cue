@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_healthcare_fhir_service")
 	close({
+		timeouts?: #timeouts
 		access_policy_object_ids?: [...string]
 		authentication?: [...close({
 			audience?:            string
@@ -27,7 +28,6 @@ package data
 			type?:         string
 		})]
 		kind?:     string
-		timeouts?: #timeouts
 		location?: string
 		name!:     string
 		tags?: [string]: string

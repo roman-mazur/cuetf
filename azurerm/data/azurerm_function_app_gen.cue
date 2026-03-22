@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_function_app")
 	close({
+		timeouts?:            #timeouts
 		app_service_plan_id?: string
 		app_settings?: [string]: string
 		client_cert_mode?: string
@@ -28,7 +29,6 @@ package data
 		outbound_ip_addresses?:          string
 		possible_outbound_ip_addresses?: string
 		resource_group_name!:            string
-		timeouts?:                       #timeouts
 		site_config?: [...close({
 			always_on?:           bool
 			app_scale_limit?:     number

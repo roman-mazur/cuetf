@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_elastic_san")
 	close({
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		timeouts?:             #timeouts
 		base_size_in_tib!:     number
 		extended_size_in_tib?: number
 		id?:                   string
@@ -13,10 +15,8 @@ import "list"
 		name!:                 string
 		resource_group_name!:  string
 		tags?: [string]: string
-		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		total_iops?:               number
 		total_mbps?:               number
-		timeouts?:                 #timeouts
 		total_size_in_tib?:        number
 		total_volume_size_in_gib?: number
 		volume_group_count?:       number

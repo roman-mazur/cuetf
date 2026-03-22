@@ -6,27 +6,28 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_pim_eligible_role_assignment")
 	close({
+		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
+		ticket?: matchN(1, [#ticket, list.MaxItems(1) & [...#ticket]])
+		timeouts?:          #timeouts
+		condition?:         string
+		condition_version?: string
+		id?:                string
+
 		// The justification for this eligible role assignment
 		justification?: string
-		condition?:     string
 
 		// Object ID of the principal for this eligible role assignment
-		principal_id!:      string
-		condition_version?: string
-		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
-		id?: string
+		principal_id!: string
 
 		// Type of principal to which the role will be assigned
 		principal_type?: string
 
 		// Role definition ID for this eligible role assignment
 		role_definition_id!: string
-		ticket?: matchN(1, [#ticket, list.MaxItems(1) & [...#ticket]])
 
 		// Scope for this eligible role assignment, should be a valid
 		// resource ID
-		scope!:    string
-		timeouts?: #timeouts
+		scope!: string
 	})
 
 	#schedule: close({

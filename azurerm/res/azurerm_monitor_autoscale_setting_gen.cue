@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_autoscale_setting")
 	close({
+		notification?: matchN(1, [#notification, list.MaxItems(1) & [...#notification]])
+		predictive?: matchN(1, [#predictive, list.MaxItems(1) & [...#predictive]])
+		profile!: matchN(1, [#profile, list.MaxItems(20) & [_, ...] & [...#profile]])
+		timeouts?:            #timeouts
 		enabled?:             bool
 		id?:                  string
 		location!:            string
 		name!:                string
 		resource_group_name!: string
 		tags?: [string]: string
-		notification?: matchN(1, [#notification, list.MaxItems(1) & [...#notification]])
 		target_resource_id!: string
-		predictive?: matchN(1, [#predictive, list.MaxItems(1) & [...#predictive]])
-		profile!: matchN(1, [#profile, list.MaxItems(20) & [_, ...] & [...#profile]])
-		timeouts?: #timeouts
 	})
 
 	#notification: close({
@@ -80,6 +80,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/profile/$defs/rule/$defs/metric_trigger": close({
+		dimensions?: matchN(1, [_#defs."/$defs/profile/$defs/rule/$defs/metric_trigger/$defs/dimensions", [..._#defs."/$defs/profile/$defs/rule/$defs/metric_trigger/$defs/dimensions"]])
 		divide_by_instance_count?: bool
 		metric_name!:              string
 		metric_namespace?:         string
@@ -87,10 +88,9 @@ import "list"
 		operator!:                 string
 		statistic!:                string
 		threshold!:                number
-		dimensions?: matchN(1, [_#defs."/$defs/profile/$defs/rule/$defs/metric_trigger/$defs/dimensions", [..._#defs."/$defs/profile/$defs/rule/$defs/metric_trigger/$defs/dimensions"]])
-		time_aggregation!: string
-		time_grain!:       string
-		time_window!:      string
+		time_aggregation!:         string
+		time_grain!:               string
+		time_window!:              string
 	})
 
 	_#defs: "/$defs/profile/$defs/rule/$defs/metric_trigger/$defs/dimensions": close({

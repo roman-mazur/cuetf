@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_bastion_host")
 	close({
+		timeouts?:           #timeouts
 		copy_paste_enabled?: bool
 		dns_name?:           string
 		file_copy_enabled?:  bool
@@ -17,7 +18,6 @@ package data
 		location?:                  string
 		name!:                      string
 		resource_group_name!:       string
-		timeouts?:                  #timeouts
 		scale_units?:               number
 		session_recording_enabled?: bool
 		shareable_link_enabled?:    bool

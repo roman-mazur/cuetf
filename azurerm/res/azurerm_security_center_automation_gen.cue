@@ -4,17 +4,17 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_security_center_automation")
 	close({
-		description?: string
-		enabled?:     bool
-		id?:          string
-		location!:    string
 		action!: matchN(1, [#action, [_, ...] & [...#action]])
+		source!: matchN(1, [#source, [_, ...] & [...#source]])
+		timeouts?:            #timeouts
+		description?:         string
+		enabled?:             bool
+		id?:                  string
+		location!:            string
 		name!:                string
 		resource_group_name!: string
 		scopes!: [...string]
 		tags?: [string]: string
-		source!: matchN(1, [#source, [_, ...] & [...#source]])
-		timeouts?: #timeouts
 	})
 
 	#action: close({

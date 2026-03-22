@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_bot_connection")
 	close({
+		timeouts?:      #timeouts
 		bot_name!:      string
 		client_id!:     string
 		client_secret!: string
@@ -11,7 +12,6 @@ package res
 		location!:      string
 		name!:          string
 		parameters?: [string]: string
-		timeouts?:              #timeouts
 		resource_group_name!:   string
 		scopes?:                string
 		service_provider_name!: string

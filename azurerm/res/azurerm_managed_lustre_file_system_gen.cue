@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_managed_lustre_file_system")
 	close({
+		encryption_key?: matchN(1, [#encryption_key, list.MaxItems(1) & [...#encryption_key]])
+		hsm_setting?: matchN(1, [#hsm_setting, list.MaxItems(1) & [...#hsm_setting]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		maintenance_window!: matchN(1, [#maintenance_window, list.MaxItems(1) & [_, ...] & [...#maintenance_window]])
+		root_squash?: matchN(1, [#root_squash, list.MaxItems(1) & [...#root_squash]])
+		timeouts?:               #timeouts
 		id?:                     string
 		location!:               string
 		mgs_address?:            string
@@ -14,13 +20,7 @@ import "list"
 		sku_name!:               string
 		storage_capacity_in_tb!: number
 		subnet_id!:              string
-		encryption_key?: matchN(1, [#encryption_key, list.MaxItems(1) & [...#encryption_key]])
 		tags?: [string]: string
-		hsm_setting?: matchN(1, [#hsm_setting, list.MaxItems(1) & [...#hsm_setting]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		maintenance_window!: matchN(1, [#maintenance_window, list.MaxItems(1) & [_, ...] & [...#maintenance_window]])
-		root_squash?: matchN(1, [#root_squash, list.MaxItems(1) & [...#root_squash]])
-		timeouts?: #timeouts
 		zones!: [...string]
 	})
 

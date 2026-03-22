@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_databricks_workspace")
 	close({
+		timeouts?: #timeouts
 		custom_parameters?: [...close({
 			machine_learning_workspace_id?: string
 			nat_gateway_name?:              string
@@ -32,7 +33,6 @@ package data
 		name!:                string
 		resource_group_name!: string
 		sku?:                 string
-		timeouts?:            #timeouts
 		storage_account_identity?: [...close({
 			principal_id?: string
 			tenant_id?:    string

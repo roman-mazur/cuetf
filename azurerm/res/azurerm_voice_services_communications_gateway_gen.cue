@@ -4,19 +4,19 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_voice_services_communications_gateway")
 	close({
+		service_location!: matchN(1, [#service_location, [_, ...] & [...#service_location]])
+		timeouts?:                               #timeouts
 		api_bridge?:                             string
 		auto_generated_domain_name_label_scope?: string
 		codecs!:                                 string
 		connectivity!:                           string
 		e911_type!:                              string
 		emergency_dial_strings?: [...string]
-		id?:       string
-		location!: string
-		service_location!: matchN(1, [#service_location, [_, ...] & [...#service_location]])
+		id?:                                     string
+		location!:                               string
 		microsoft_teams_voicemail_pilot_number?: string
 		name!:                                   string
 		on_prem_mcp_enabled?:                    bool
-		timeouts?:                               #timeouts
 		platforms!: [...string]
 		resource_group_name!: string
 		tags?: [string]: string

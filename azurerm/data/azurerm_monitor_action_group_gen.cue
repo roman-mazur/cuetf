@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_monitor_action_group")
 	close({
+		timeouts?: #timeouts
 		arm_role_receiver?: [...close({
 			name?:                    string
 			role_id?:                 string
@@ -51,7 +52,6 @@ package data
 			ticket_configuration?: string
 			workspace_id?:         string
 		})]
-		timeouts?: #timeouts
 		logic_app_receiver?: [...close({
 			callback_url?:            string
 			name?:                    string

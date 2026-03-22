@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_oracle_cloud_vm_cluster")
 	close({
+		data_collection_options?: matchN(1, [#data_collection_options, list.MaxItems(1) & [...#data_collection_options]])
+		file_system_configuration?: matchN(1, [#file_system_configuration, [...#file_system_configuration]])
+		timeouts?:                        #timeouts
 		backup_subnet_cidr?:              string
 		cloud_exadata_infrastructure_id!: string
 		cluster_name?:                    string
@@ -14,11 +17,10 @@ import "list"
 		data_storage_size_in_tbs?:        number
 		db_node_storage_size_in_gbs?:     number
 		db_servers!: [...string]
-		display_name!: string
-		domain?:       string
-		gi_version!:   string
-		hostname!:     string
-		data_collection_options?: matchN(1, [#data_collection_options, list.MaxItems(1) & [...#data_collection_options]])
+		display_name!:               string
+		domain?:                     string
+		gi_version!:                 string
+		hostname!:                   string
 		hostname_actual?:            string
 		id?:                         string
 		license_model!:              string
@@ -37,9 +39,7 @@ import "list"
 		tags?: [string]: string
 		time_zone?:          string
 		virtual_network_id!: string
-		file_system_configuration?: matchN(1, [#file_system_configuration, [...#file_system_configuration]])
-		zone_id?:  string
-		timeouts?: #timeouts
+		zone_id?:            string
 	})
 
 	#data_collection_options: close({

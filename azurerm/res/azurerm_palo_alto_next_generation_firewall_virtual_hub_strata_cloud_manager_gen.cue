@@ -6,18 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_palo_alto_next_generation_firewall_virtual_hub_strata_cloud_manager")
 	close({
-		id?: string
 		destination_nat?: matchN(1, [#destination_nat, [...#destination_nat]])
-		location!:             string
-		marketplace_offer_id?: string
-		name!:                 string
-		plan_id?:              string
 		dns_settings?: matchN(1, [#dns_settings, list.MaxItems(1) & [...#dns_settings]])
-		resource_group_name!:              string
-		strata_cloud_manager_tenant_name!: string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		network_profile!: matchN(1, [#network_profile, list.MaxItems(1) & [_, ...] & [...#network_profile]])
-		timeouts?: #timeouts
+		timeouts?:                         #timeouts
+		id?:                               string
+		location!:                         string
+		marketplace_offer_id?:             string
+		name!:                             string
+		plan_id?:                          string
+		resource_group_name!:              string
+		strata_cloud_manager_tenant_name!: string
 		tags?: [string]: string
 	})
 

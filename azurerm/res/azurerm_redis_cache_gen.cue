@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_redis_cache")
 	close({
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		patch_schedule?: matchN(1, [#patch_schedule, [...#patch_schedule]])
+		redis_configuration?: matchN(1, [#redis_configuration, list.MaxItems(1) & [...#redis_configuration]])
+		timeouts?:                           #timeouts
 		access_keys_authentication_enabled?: bool
 		capacity!:                           number
 		family!:                             string
@@ -21,22 +25,18 @@ import "list"
 		private_static_ip_address?:          string
 		public_network_access_enabled?:      bool
 		redis_version?:                      string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		replicas_per_master?:         number
-		replicas_per_primary?:        number
-		resource_group_name!:         string
-		secondary_access_key?:        string
-		secondary_connection_string?: string
-		shard_count?:                 number
-		sku_name!:                    string
-		ssl_port?:                    number
-		subnet_id?:                   string
+		replicas_per_master?:                number
+		replicas_per_primary?:               number
+		resource_group_name!:                string
+		secondary_access_key?:               string
+		secondary_connection_string?:        string
+		shard_count?:                        number
+		sku_name!:                           string
+		ssl_port?:                           number
+		subnet_id?:                          string
 		tags?: [string]:            string
 		tenant_settings?: [string]: string
-		patch_schedule?: matchN(1, [#patch_schedule, [...#patch_schedule]])
 		zones?: [...string]
-		redis_configuration?: matchN(1, [#redis_configuration, list.MaxItems(1) & [...#redis_configuration]])
-		timeouts?: #timeouts
 	})
 
 	#identity: close({

@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kusto_eventhub_data_connection")
 	close({
+		timeouts?:              #timeouts
 		cluster_name!:          string
 		compression?:           string
 		consumer_group!:        string
@@ -13,7 +14,6 @@ package res
 		event_system_properties?: [...string]
 		eventhub_id!:          string
 		id?:                   string
-		timeouts?:             #timeouts
 		identity_id?:          string
 		location!:             string
 		mapping_rule_name?:    string

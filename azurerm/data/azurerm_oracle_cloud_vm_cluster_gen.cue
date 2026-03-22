@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_oracle_cloud_vm_cluster")
 	close({
+		timeouts?:                        #timeouts
 		backup_subnet_cidr?:              string
 		cloud_exadata_infrastructure_id?: string
 		cluster_name?:                    string
@@ -57,7 +58,6 @@ package data
 		ocpu_count?:                   number
 		resource_group_name!:          string
 		scan_dns_name?:                string
-		timeouts?:                     #timeouts
 		scan_dns_record_id?:           string
 		scan_ip_ids?: [...string]
 		scan_listener_port_tcp?:     number

@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dynatrace_monitor")
 	close({
+		environment_properties?: matchN(1, [#environment_properties, [...#environment_properties]])
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		plan!: matchN(1, [#plan, list.MaxItems(1) & [_, ...] & [...#plan]])
+		timeouts?: #timeouts
+		user!: matchN(1, [#user, list.MaxItems(1) & [_, ...] & [...#user]])
 		id?:                       string
 		location!:                 string
 		marketplace_subscription!: string
@@ -13,11 +18,6 @@ import "list"
 		name!:                     string
 		resource_group_name!:      string
 		tags?: [string]: string
-		environment_properties?: matchN(1, [#environment_properties, [...#environment_properties]])
-		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
-		plan!: matchN(1, [#plan, list.MaxItems(1) & [_, ...] & [...#plan]])
-		timeouts?: #timeouts
-		user!: matchN(1, [#user, list.MaxItems(1) & [_, ...] & [...#user]])
 	})
 
 	#environment_properties: close({

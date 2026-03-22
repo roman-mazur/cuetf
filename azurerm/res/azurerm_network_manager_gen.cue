@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_network_manager")
 	close({
 		scope!: matchN(1, [#scope, list.MaxItems(1) & [_, ...] & [...#scope]])
+		timeouts?: #timeouts
 		cross_tenant_scopes?: [...close({
 			management_groups?: [...string]
 			subscriptions?: [...string]
@@ -19,7 +20,6 @@ import "list"
 		resource_group_name!: string
 		scope_accesses?: [...string]
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#scope: close({

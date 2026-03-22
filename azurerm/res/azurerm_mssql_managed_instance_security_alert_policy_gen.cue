@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_managed_instance_security_alert_policy")
 	close({
+		timeouts?: #timeouts
 		disabled_alerts?: [...string]
 		email_account_admins_enabled?: bool
 		email_addresses?: [...string]
@@ -11,7 +12,6 @@ package res
 		id?:                         string
 		managed_instance_name!:      string
 		resource_group_name!:        string
-		timeouts?:                   #timeouts
 		retention_days?:             number
 		storage_account_access_key?: string
 		storage_endpoint?:           string

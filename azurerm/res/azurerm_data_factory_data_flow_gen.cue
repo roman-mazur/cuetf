@@ -6,18 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_data_flow")
 	close({
-		annotations?: [...string]
 		sink!: matchN(1, [#sink, [_, ...] & [...#sink]])
+		source!: matchN(1, [#source, [_, ...] & [...#source]])
+		timeouts?: #timeouts
+		transformation?: matchN(1, [#transformation, [...#transformation]])
+		annotations?: [...string]
 		data_factory_id!: string
 		description?:     string
 		folder?:          string
-		source!: matchN(1, [#source, [_, ...] & [...#source]])
-		id?:       string
-		timeouts?: #timeouts
-		name!:     string
-		script?:   string
+		id?:              string
+		name!:            string
+		script?:          string
 		script_lines?: [...string]
-		transformation?: matchN(1, [#transformation, [...#transformation]])
 	})
 
 	#sink: close({

@@ -5,11 +5,11 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_sentinel_alert_rule_fusion")
 	close({
 		source?: matchN(1, [#source, [...#source]])
+		timeouts?:                   #timeouts
 		alert_rule_template_guid!:   string
 		enabled?:                    bool
 		id?:                         string
 		log_analytics_workspace_id!: string
-		timeouts?:                   #timeouts
 	})
 
 	#source: close({

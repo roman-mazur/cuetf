@@ -6,14 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_backup_policy_vm_workload")
 	close({
-		id?: string
 		protection_policy!: matchN(1, [#protection_policy, [_, ...] & [...#protection_policy]])
+		settings!: matchN(1, [#settings, list.MaxItems(1) & [_, ...] & [...#settings]])
+		timeouts?:            #timeouts
+		id?:                  string
 		name!:                string
 		recovery_vault_name!: string
 		resource_group_name!: string
 		workload_type!:       string
-		settings!: matchN(1, [#settings, list.MaxItems(1) & [_, ...] & [...#settings]])
-		timeouts?: #timeouts
 	})
 
 	#protection_policy: close({

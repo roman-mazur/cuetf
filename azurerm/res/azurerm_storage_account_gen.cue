@@ -6,78 +6,85 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_storage_account")
 	close({
-		access_tier?:                       string
-		account_kind?:                      string
-		account_replication_type!:          string
-		account_tier!:                      string
-		allow_nested_items_to_be_public?:   bool
-		allowed_copy_scope?:                string
-		cross_tenant_replication_enabled?:  bool
-		default_to_oauth_authentication?:   bool
-		dns_endpoint_type?:                 string
-		edge_zone?:                         string
-		https_traffic_only_enabled?:        bool
-		id?:                                string
-		infrastructure_encryption_enabled?: bool
-		is_hns_enabled?:                    bool
-		large_file_share_enabled?:          bool
-		local_user_enabled?:                bool
-		location!:                          string
-		min_tls_version?:                   string
-		name!:                              string
-		nfsv3_enabled?:                     bool
-		primary_access_key?:                string
-		primary_blob_connection_string?:    string
-		primary_blob_endpoint?:             string
 		azure_files_authentication?: matchN(1, [#azure_files_authentication, list.MaxItems(1) & [...#azure_files_authentication]])
-		primary_blob_host?:                string
-		primary_blob_internet_endpoint?:   string
-		primary_blob_internet_host?:       string
-		primary_blob_microsoft_endpoint?:  string
-		primary_blob_microsoft_host?:      string
-		primary_connection_string?:        string
-		primary_dfs_endpoint?:             string
-		primary_dfs_host?:                 string
-		primary_dfs_internet_endpoint?:    string
-		primary_dfs_internet_host?:        string
-		primary_dfs_microsoft_endpoint?:   string
-		primary_dfs_microsoft_host?:       string
-		primary_file_endpoint?:            string
-		primary_file_host?:                string
-		primary_file_internet_endpoint?:   string
-		primary_file_internet_host?:       string
-		primary_file_microsoft_endpoint?:  string
-		primary_file_microsoft_host?:      string
-		primary_location?:                 string
-		primary_queue_endpoint?:           string
-		primary_queue_host?:               string
-		primary_queue_microsoft_endpoint?: string
-		primary_queue_microsoft_host?:     string
-		primary_table_endpoint?:           string
-		primary_table_host?:               string
-		primary_table_microsoft_endpoint?: string
-		primary_table_microsoft_host?:     string
-		primary_web_endpoint?:             string
-		primary_web_host?:                 string
-		primary_web_internet_endpoint?:    string
 		blob_properties?: matchN(1, [#blob_properties, list.MaxItems(1) & [...#blob_properties]])
-		primary_web_internet_host?:      string
-		primary_web_microsoft_endpoint?: string
 		custom_domain?: matchN(1, [#custom_domain, list.MaxItems(1) & [...#custom_domain]])
 		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
-		primary_web_microsoft_host?:        string
-		provisioned_billing_model_version?: string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		public_network_access_enabled?:    bool
-		queue_encryption_key_type?:        string
-		resource_group_name!:              string
-		secondary_access_key?:             string
-		secondary_blob_connection_string?: string
-		secondary_blob_endpoint?:          string
-		secondary_blob_host?:              string
-		secondary_blob_internet_endpoint?: string
-		secondary_blob_internet_host?:     string
 		immutability_policy?: matchN(1, [#immutability_policy, list.MaxItems(1) & [...#immutability_policy]])
+		network_rules?: matchN(1, [#network_rules, list.MaxItems(1) & [...#network_rules]])
+		queue_properties?: matchN(1, [#queue_properties, list.MaxItems(1) & [...#queue_properties]])
+		routing?: matchN(1, [#routing, list.MaxItems(1) & [...#routing]])
+		sas_policy?: matchN(1, [#sas_policy, list.MaxItems(1) & [...#sas_policy]])
+		share_properties?: matchN(1, [#share_properties, list.MaxItems(1) & [...#share_properties]])
+		static_website?: matchN(1, [#static_website, list.MaxItems(1) & [...#static_website]])
+		timeouts?:                           #timeouts
+		access_tier?:                        string
+		account_kind?:                       string
+		account_replication_type!:           string
+		account_tier!:                       string
+		allow_nested_items_to_be_public?:    bool
+		allowed_copy_scope?:                 string
+		cross_tenant_replication_enabled?:   bool
+		default_to_oauth_authentication?:    bool
+		dns_endpoint_type?:                  string
+		edge_zone?:                          string
+		https_traffic_only_enabled?:         bool
+		id?:                                 string
+		infrastructure_encryption_enabled?:  bool
+		is_hns_enabled?:                     bool
+		large_file_share_enabled?:           bool
+		local_user_enabled?:                 bool
+		location!:                           string
+		min_tls_version?:                    string
+		name!:                               string
+		nfsv3_enabled?:                      bool
+		primary_access_key?:                 string
+		primary_blob_connection_string?:     string
+		primary_blob_endpoint?:              string
+		primary_blob_host?:                  string
+		primary_blob_internet_endpoint?:     string
+		primary_blob_internet_host?:         string
+		primary_blob_microsoft_endpoint?:    string
+		primary_blob_microsoft_host?:        string
+		primary_connection_string?:          string
+		primary_dfs_endpoint?:               string
+		primary_dfs_host?:                   string
+		primary_dfs_internet_endpoint?:      string
+		primary_dfs_internet_host?:          string
+		primary_dfs_microsoft_endpoint?:     string
+		primary_dfs_microsoft_host?:         string
+		primary_file_endpoint?:              string
+		primary_file_host?:                  string
+		primary_file_internet_endpoint?:     string
+		primary_file_internet_host?:         string
+		primary_file_microsoft_endpoint?:    string
+		primary_file_microsoft_host?:        string
+		primary_location?:                   string
+		primary_queue_endpoint?:             string
+		primary_queue_host?:                 string
+		primary_queue_microsoft_endpoint?:   string
+		primary_queue_microsoft_host?:       string
+		primary_table_endpoint?:             string
+		primary_table_host?:                 string
+		primary_table_microsoft_endpoint?:   string
+		primary_table_microsoft_host?:       string
+		primary_web_endpoint?:               string
+		primary_web_host?:                   string
+		primary_web_internet_endpoint?:      string
+		primary_web_internet_host?:          string
+		primary_web_microsoft_endpoint?:     string
+		primary_web_microsoft_host?:         string
+		provisioned_billing_model_version?:  string
+		public_network_access_enabled?:      bool
+		queue_encryption_key_type?:          string
+		resource_group_name!:                string
+		secondary_access_key?:               string
+		secondary_blob_connection_string?:   string
+		secondary_blob_endpoint?:            string
+		secondary_blob_host?:                string
+		secondary_blob_internet_endpoint?:   string
+		secondary_blob_internet_host?:       string
 		secondary_blob_microsoft_endpoint?:  string
 		secondary_blob_microsoft_host?:      string
 		secondary_connection_string?:        string
@@ -109,16 +116,9 @@ import "list"
 		secondary_web_microsoft_endpoint?:   string
 		secondary_web_microsoft_host?:       string
 		sftp_enabled?:                       bool
-		network_rules?: matchN(1, [#network_rules, list.MaxItems(1) & [...#network_rules]])
-		queue_properties?: matchN(1, [#queue_properties, list.MaxItems(1) & [...#queue_properties]])
-		routing?: matchN(1, [#routing, list.MaxItems(1) & [...#routing]])
-		shared_access_key_enabled?: bool
-		table_encryption_key_type?: string
+		shared_access_key_enabled?:          bool
+		table_encryption_key_type?:          string
 		tags?: [string]: string
-		sas_policy?: matchN(1, [#sas_policy, list.MaxItems(1) & [...#sas_policy]])
-		share_properties?: matchN(1, [#share_properties, list.MaxItems(1) & [...#share_properties]])
-		static_website?: matchN(1, [#static_website, list.MaxItems(1) & [...#static_website]])
-		timeouts?: #timeouts
 	})
 
 	#azure_files_authentication: close({
@@ -128,15 +128,15 @@ import "list"
 	})
 
 	#blob_properties: close({
+		container_delete_retention_policy?: matchN(1, [_#defs."/$defs/blob_properties/$defs/container_delete_retention_policy", list.MaxItems(1) & [..._#defs."/$defs/blob_properties/$defs/container_delete_retention_policy"]])
+		cors_rule?: matchN(1, [_#defs."/$defs/blob_properties/$defs/cors_rule", list.MaxItems(5) & [..._#defs."/$defs/blob_properties/$defs/cors_rule"]])
+		delete_retention_policy?: matchN(1, [_#defs."/$defs/blob_properties/$defs/delete_retention_policy", list.MaxItems(1) & [..._#defs."/$defs/blob_properties/$defs/delete_retention_policy"]])
+		restore_policy?: matchN(1, [_#defs."/$defs/blob_properties/$defs/restore_policy", list.MaxItems(1) & [..._#defs."/$defs/blob_properties/$defs/restore_policy"]])
 		change_feed_enabled?:           bool
 		change_feed_retention_in_days?: number
 		default_service_version?:       string
 		last_access_time_enabled?:      bool
 		versioning_enabled?:            bool
-		container_delete_retention_policy?: matchN(1, [_#defs."/$defs/blob_properties/$defs/container_delete_retention_policy", list.MaxItems(1) & [..._#defs."/$defs/blob_properties/$defs/container_delete_retention_policy"]])
-		cors_rule?: matchN(1, [_#defs."/$defs/blob_properties/$defs/cors_rule", list.MaxItems(5) & [..._#defs."/$defs/blob_properties/$defs/cors_rule"]])
-		delete_retention_policy?: matchN(1, [_#defs."/$defs/blob_properties/$defs/delete_retention_policy", list.MaxItems(1) & [..._#defs."/$defs/blob_properties/$defs/delete_retention_policy"]])
-		restore_policy?: matchN(1, [_#defs."/$defs/blob_properties/$defs/restore_policy", list.MaxItems(1) & [..._#defs."/$defs/blob_properties/$defs/restore_policy"]])
 	})
 
 	#custom_domain: close({

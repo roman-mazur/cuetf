@@ -7,13 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_network_profile")
 	close({
 		container_network_interface!: matchN(1, [#container_network_interface, list.MaxItems(1) & [_, ...] & [...#container_network_interface]])
+		timeouts?: #timeouts
 		container_network_interface_ids?: [...string]
 		id?:                  string
 		location!:            string
 		name!:                string
 		resource_group_name!: string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#container_network_interface: close({

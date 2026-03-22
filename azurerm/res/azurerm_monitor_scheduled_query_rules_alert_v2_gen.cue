@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_scheduled_query_rules_alert_v2")
 	close({
+		action?: matchN(1, [#action, list.MaxItems(1) & [...#action]])
+		criteria!: matchN(1, [#criteria, [_, ...] & [...#criteria]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:                               #timeouts
 		auto_mitigation_enabled?:                bool
 		created_with_api_version?:               string
 		description?:                            string
@@ -15,21 +19,17 @@ import "list"
 		id?:                                     string
 		is_a_legacy_log_analytics_rule?:         bool
 		is_workspace_alerts_storage_configured?: bool
-		action?: matchN(1, [#action, list.MaxItems(1) & [...#action]])
-		location!:                          string
-		mute_actions_after_alert_duration?: string
-		name!:                              string
-		criteria!: matchN(1, [#criteria, [_, ...] & [...#criteria]])
-		query_time_range_override?: string
-		resource_group_name!:       string
+		location!:                               string
+		mute_actions_after_alert_duration?:      string
+		name!:                                   string
+		query_time_range_override?:              string
+		resource_group_name!:                    string
 		scopes!: [...string]
 		severity!:              number
 		skip_query_validation?: bool
 		tags?: [string]: string
 		target_resource_types?: [...string]
-		window_duration!: string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		timeouts?:                         #timeouts
+		window_duration!:                  string
 		workspace_alerts_storage_enabled?: bool
 	})
 
@@ -40,13 +40,13 @@ import "list"
 
 	#criteria: close({
 		dimension?: matchN(1, [_#defs."/$defs/criteria/$defs/dimension", [..._#defs."/$defs/criteria/$defs/dimension"]])
+		failing_periods?: matchN(1, [_#defs."/$defs/criteria/$defs/failing_periods", list.MaxItems(1) & [..._#defs."/$defs/criteria/$defs/failing_periods"]])
 		metric_measure_column?:   string
 		operator!:                string
 		query!:                   string
 		resource_id_column?:      string
 		threshold!:               number
 		time_aggregation_method!: string
-		failing_periods?: matchN(1, [_#defs."/$defs/criteria/$defs/failing_periods", list.MaxItems(1) & [..._#defs."/$defs/criteria/$defs/failing_periods"]])
 	})
 
 	#identity: close({

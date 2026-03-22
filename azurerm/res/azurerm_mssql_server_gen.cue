@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_server")
 	close({
+		azuread_administrator?: matchN(1, [#azuread_administrator, list.MaxItems(1) & [...#azuread_administrator]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:                                 #timeouts
 		administrator_login?:                      string
 		administrator_login_password?:             string
 		administrator_login_password_wo?:          string
@@ -17,16 +20,13 @@ import "list"
 		location!:                                 string
 		minimum_tls_version?:                      string
 		name!:                                     string
-		azuread_administrator?: matchN(1, [#azuread_administrator, list.MaxItems(1) & [...#azuread_administrator]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		outbound_network_restriction_enabled?: bool
-		primary_user_assigned_identity_id?:    string
-		public_network_access_enabled?:        bool
-		resource_group_name!:                  string
+		outbound_network_restriction_enabled?:     bool
+		primary_user_assigned_identity_id?:        string
+		public_network_access_enabled?:            bool
+		resource_group_name!:                      string
 		restorable_dropped_database_ids?: [...string]
 		tags?: [string]: string
 		transparent_data_encryption_key_vault_key_id?: string
-		timeouts?:                                     #timeouts
 		version!:                                      string
 	})
 

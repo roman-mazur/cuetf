@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_container_app_environment")
 	close({
+		timeouts?: #timeouts
+
 		// The ID of the Custom Domain Verification for this Container App
 		// Environment.
 		custom_domain_verification_id?: string
@@ -40,15 +42,14 @@ package data
 		// `platform_reserved_cidr` that is reserved for the internal DNS
 		// server.
 		platform_reserved_dns_ip_address?: string
-		timeouts?:                         #timeouts
 
 		// The public network access setting for this Container App
 		// Environment.
 		public_network_access?: string
+		resource_group_name!:   string
 
 		// The Static IP Address of the Environment.
-		static_ip_address?:   string
-		resource_group_name!: string
+		static_ip_address?: string
 		tags?: [string]: string
 	})
 

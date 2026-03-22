@@ -6,19 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_synapse_workspace")
 	close({
+		azure_devops_repo?: matchN(1, [#azure_devops_repo, list.MaxItems(1) & [...#azure_devops_repo]])
+		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
+		github_repo?: matchN(1, [#github_repo, list.MaxItems(1) & [...#github_repo]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:                    #timeouts
 		azuread_authentication_only?: bool
 		compute_subnet_id?:           string
 		connectivity_endpoints?: [string]: string
 		data_exfiltration_protection_enabled?: bool
 		id?:                                   string
 		linking_allowed_for_aad_tenant_ids?: [...string]
-		location!:                        string
-		managed_resource_group_name?:     string
-		managed_virtual_network_enabled?: bool
-		name!:                            string
-		public_network_access_enabled?:   bool
-		azure_devops_repo?: matchN(1, [#azure_devops_repo, list.MaxItems(1) & [...#azure_devops_repo]])
-		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
+		location!:                             string
+		managed_resource_group_name?:          string
+		managed_virtual_network_enabled?:      bool
+		name!:                                 string
+		public_network_access_enabled?:        bool
 		purview_id?:                           string
 		resource_group_name!:                  string
 		sql_administrator_login?:              string
@@ -26,9 +29,6 @@ import "list"
 		sql_identity_control_enabled?:         bool
 		storage_data_lake_gen2_filesystem_id!: string
 		tags?: [string]: string
-		github_repo?: matchN(1, [#github_repo, list.MaxItems(1) & [...#github_repo]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		timeouts?: #timeouts
 	})
 
 	#azure_devops_repo: close({

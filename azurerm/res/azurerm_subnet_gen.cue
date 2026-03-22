@@ -6,19 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_subnet")
 	close({
-		address_prefixes?: [...string]
-		default_outbound_access_enabled?: bool
-		id?:                              string
-		name!:                            string
 		delegation?: matchN(1, [#delegation, [...#delegation]])
+		ip_address_pool?: matchN(1, [#ip_address_pool, list.MaxItems(1) & [...#ip_address_pool]])
+		timeouts?: #timeouts
+		address_prefixes?: [...string]
+		default_outbound_access_enabled?:               bool
+		id?:                                            string
+		name!:                                          string
 		private_endpoint_network_policies?:             string
 		private_link_service_network_policies_enabled?: bool
 		resource_group_name!:                           string
 		service_endpoint_policy_ids?: [...string]
 		service_endpoints?: [...string]
-		sharing_scope?: string
-		ip_address_pool?: matchN(1, [#ip_address_pool, list.MaxItems(1) & [...#ip_address_pool]])
-		timeouts?:             #timeouts
+		sharing_scope?:        string
 		virtual_network_name!: string
 	})
 

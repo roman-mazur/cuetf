@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_group")
 	close({
+		container!: matchN(1, [#container, [_, ...] & [...#container]])
+		diagnostics?: matchN(1, [#diagnostics, list.MaxItems(1) & [...#diagnostics]])
+		dns_config?: matchN(1, [#dns_config, list.MaxItems(1) & [...#dns_config]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		image_registry_credential?: matchN(1, [#image_registry_credential, [...#image_registry_credential]])
+		init_container?: matchN(1, [#init_container, [...#init_container]])
+		timeouts?:                    #timeouts
 		dns_name_label?:              string
 		dns_name_label_reuse_policy?: string
 		exposed_port?: [...close({
@@ -18,39 +25,32 @@ import "list"
 		ip_address_type?:                     string
 		key_vault_key_id?:                    string
 		key_vault_user_assigned_identity_id?: string
-		container!: matchN(1, [#container, [_, ...] & [...#container]])
-		diagnostics?: matchN(1, [#diagnostics, list.MaxItems(1) & [...#diagnostics]])
-		location!: string
-		dns_config?: matchN(1, [#dns_config, list.MaxItems(1) & [...#dns_config]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		name!:    string
-		os_type!: string
-		image_registry_credential?: matchN(1, [#image_registry_credential, [...#image_registry_credential]])
-		priority?:            string
-		resource_group_name!: string
-		restart_policy?:      string
-		sku?:                 string
+		location!:                            string
+		name!:                                string
+		os_type!:                             string
+		priority?:                            string
+		resource_group_name!:                 string
+		restart_policy?:                      string
+		sku?:                                 string
 		subnet_ids?: [...string]
-		init_container?: matchN(1, [#init_container, [...#init_container]])
 		tags?: [string]: string
 		zones?: [...string]
-		timeouts?: #timeouts
 	})
 
 	#container: close({
+		liveness_probe?: matchN(1, [_#defs."/$defs/container/$defs/liveness_probe", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/liveness_probe"]])
+		ports?: matchN(1, [_#defs."/$defs/container/$defs/ports", [..._#defs."/$defs/container/$defs/ports"]])
+		readiness_probe?: matchN(1, [_#defs."/$defs/container/$defs/readiness_probe", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/readiness_probe"]])
+		security?: matchN(1, [_#defs."/$defs/container/$defs/security", [..._#defs."/$defs/container/$defs/security"]])
+		volume?: matchN(1, [_#defs."/$defs/container/$defs/volume", [..._#defs."/$defs/container/$defs/volume"]])
 		commands?: [...string]
 		cpu!:       number
 		cpu_limit?: number
 		environment_variables?: [string]: string
-		image!: string
-		liveness_probe?: matchN(1, [_#defs."/$defs/container/$defs/liveness_probe", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/liveness_probe"]])
+		image!:        string
 		memory!:       number
 		memory_limit?: number
-		ports?: matchN(1, [_#defs."/$defs/container/$defs/ports", [..._#defs."/$defs/container/$defs/ports"]])
-		readiness_probe?: matchN(1, [_#defs."/$defs/container/$defs/readiness_probe", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/readiness_probe"]])
-		name!: string
-		security?: matchN(1, [_#defs."/$defs/container/$defs/security", [..._#defs."/$defs/container/$defs/security"]])
-		volume?: matchN(1, [_#defs."/$defs/container/$defs/volume", [..._#defs."/$defs/container/$defs/volume"]])
+		name!:         string
 		secure_environment_variables?: [string]: string
 	})
 
@@ -83,12 +83,12 @@ import "list"
 
 	#init_container: close({
 		security?: matchN(1, [_#defs."/$defs/init_container/$defs/security", [..._#defs."/$defs/init_container/$defs/security"]])
+		volume?: matchN(1, [_#defs."/$defs/init_container/$defs/volume", [..._#defs."/$defs/init_container/$defs/volume"]])
 		commands?: [...string]
 		environment_variables?: [string]: string
 		image!: string
 		name!:  string
 		secure_environment_variables?: [string]: string
-		volume?: matchN(1, [_#defs."/$defs/init_container/$defs/volume", [..._#defs."/$defs/init_container/$defs/volume"]])
 	})
 
 	#timeouts: close({

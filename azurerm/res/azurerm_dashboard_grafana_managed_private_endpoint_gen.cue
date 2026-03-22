@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dashboard_grafana_managed_private_endpoint")
 	close({
+		timeouts?:   #timeouts
 		grafana_id!: string
 		group_ids?: [...string]
 		id?:                           string
@@ -11,7 +12,6 @@ package res
 		name!:                         string
 		private_link_resource_id!:     string
 		private_link_resource_region?: string
-		timeouts?:                     #timeouts
 		private_link_service_url?:     string
 		request_message?:              string
 		tags?: [string]: string

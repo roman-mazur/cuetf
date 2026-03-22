@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_virtual_machine")
 	close({
+		assessment?: matchN(1, [#assessment, list.MaxItems(1) & [...#assessment]])
+		auto_backup?: matchN(1, [#auto_backup, list.MaxItems(1) & [...#auto_backup]])
+		auto_patching?: matchN(1, [#auto_patching, list.MaxItems(1) & [...#auto_patching]])
+		key_vault_credential?: matchN(1, [#key_vault_credential, list.MaxItems(1) & [...#key_vault_credential]])
+		sql_instance?: matchN(1, [#sql_instance, list.MaxItems(1) & [...#sql_instance]])
+		storage_configuration?: matchN(1, [#storage_configuration, list.MaxItems(1) & [...#storage_configuration]])
+		timeouts?: #timeouts
+		wsfc_domain_credential?: matchN(1, [#wsfc_domain_credential, list.MaxItems(1) & [...#wsfc_domain_credential]])
 		id?:                               string
 		r_services_enabled?:               bool
 		sql_connectivity_port?:            number
@@ -16,14 +24,6 @@ import "list"
 		sql_virtual_machine_group_id?:     string
 		tags?: [string]: string
 		virtual_machine_id!: string
-		assessment?: matchN(1, [#assessment, list.MaxItems(1) & [...#assessment]])
-		auto_backup?: matchN(1, [#auto_backup, list.MaxItems(1) & [...#auto_backup]])
-		auto_patching?: matchN(1, [#auto_patching, list.MaxItems(1) & [...#auto_patching]])
-		key_vault_credential?: matchN(1, [#key_vault_credential, list.MaxItems(1) & [...#key_vault_credential]])
-		sql_instance?: matchN(1, [#sql_instance, list.MaxItems(1) & [...#sql_instance]])
-		storage_configuration?: matchN(1, [#storage_configuration, list.MaxItems(1) & [...#storage_configuration]])
-		timeouts?: #timeouts
-		wsfc_domain_credential?: matchN(1, [#wsfc_domain_credential, list.MaxItems(1) & [...#wsfc_domain_credential]])
 	})
 
 	#assessment: close({

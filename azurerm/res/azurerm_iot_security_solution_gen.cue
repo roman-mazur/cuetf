@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iot_security_solution")
 	close({
+		additional_workspace?: matchN(1, [#additional_workspace, [...#additional_workspace]])
+		recommendations_enabled?: matchN(1, [#recommendations_enabled, list.MaxItems(1) & [...#recommendations_enabled]])
+		timeouts?: #timeouts
 		disabled_data_sources?: [...string]
 		display_name!: string
 		enabled?:      bool
@@ -14,12 +17,9 @@ import "list"
 		iothub_ids!: [...string]
 		location!:                   string
 		log_analytics_workspace_id?: string
-		additional_workspace?: matchN(1, [#additional_workspace, [...#additional_workspace]])
-		recommendations_enabled?: matchN(1, [#recommendations_enabled, list.MaxItems(1) & [...#recommendations_enabled]])
-		log_unmasked_ips_enabled?: bool
-		name!:                     string
-		timeouts?:                 #timeouts
-		query_for_resources?:      string
+		log_unmasked_ips_enabled?:   bool
+		name!:                       string
+		query_for_resources?:        string
 		query_subscription_ids?: [...string]
 		resource_group_name!: string
 		tags?: [string]: string

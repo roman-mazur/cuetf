@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_activity_log_alert")
 	close({
-		description?: string
-		enabled?:     bool
-		id?:          string
-		location!:    string
 		action?: matchN(1, [#action, [...#action]])
+		criteria!: matchN(1, [#criteria, list.MaxItems(1) & [_, ...] & [...#criteria]])
+		timeouts?:            #timeouts
+		description?:         string
+		enabled?:             bool
+		id?:                  string
+		location!:            string
 		name!:                string
 		resource_group_name!: string
 		scopes!: [...string]
 		tags?: [string]: string
-		criteria!: matchN(1, [#criteria, list.MaxItems(1) & [_, ...] & [...#criteria]])
-		timeouts?: #timeouts
 	})
 
 	#action: close({
@@ -25,13 +25,13 @@ import "list"
 	})
 
 	#criteria: close({
-		caller?: string
 		resource_health?: matchN(1, [_#defs."/$defs/criteria/$defs/resource_health", list.MaxItems(1) & [..._#defs."/$defs/criteria/$defs/resource_health"]])
+		service_health?: matchN(1, [_#defs."/$defs/criteria/$defs/service_health", list.MaxItems(1) & [..._#defs."/$defs/criteria/$defs/service_health"]])
+		caller?:   string
 		category!: string
 		level?:    string
 		levels?: [...string]
-		operation_name?: string
-		service_health?: matchN(1, [_#defs."/$defs/criteria/$defs/service_health", list.MaxItems(1) & [..._#defs."/$defs/criteria/$defs/service_health"]])
+		operation_name?:          string
 		recommendation_category?: string
 		recommendation_impact?:   string
 		recommendation_type?:     string

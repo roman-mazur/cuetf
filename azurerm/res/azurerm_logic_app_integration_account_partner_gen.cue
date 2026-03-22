@@ -5,12 +5,12 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_logic_app_integration_account_partner")
 	close({
 		business_identity!: matchN(1, [#business_identity, [_, ...] & [...#business_identity]])
+		timeouts?:                 #timeouts
 		id?:                       string
 		integration_account_name!: string
 		metadata?:                 string
 		name!:                     string
 		resource_group_name!:      string
-		timeouts?:                 #timeouts
 	})
 
 	#business_identity: close({

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_fluid_relay_server")
 	close({
+		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:      #timeouts
 		frs_tenant_id?: string
 		id?:            string
 		location!:      string
@@ -13,10 +16,7 @@ import "list"
 		orderer_endpoints?: [...string]
 		primary_key?:         string
 		resource_group_name!: string
-		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		secondary_key?: string
-		timeouts?:      #timeouts
+		secondary_key?:       string
 		service_endpoints?: [...string]
 		storage_endpoints?: [...string]
 		storage_sku?: string

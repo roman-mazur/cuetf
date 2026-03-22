@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_network_gateway")
 	close({
+		bgp_settings?: matchN(1, [#bgp_settings, list.MaxItems(1) & [...#bgp_settings]])
+		custom_route?: matchN(1, [#custom_route, list.MaxItems(1) & [...#custom_route]])
+		ip_configuration!: matchN(1, [#ip_configuration, list.MaxItems(3) & [_, ...] & [...#ip_configuration]])
+		policy_group?: matchN(1, [#policy_group, [...#policy_group]])
+		timeouts?: #timeouts
+		vpn_client_configuration?: matchN(1, [#vpn_client_configuration, list.MaxItems(1) & [...#vpn_client_configuration]])
 		active_active?:                         bool
 		bgp_enabled?:                           bool
 		bgp_route_translation_for_nat_enabled?: bool
@@ -18,19 +24,13 @@ import "list"
 		location!:                              string
 		name!:                                  string
 		private_ip_address_enabled?:            bool
-		bgp_settings?: matchN(1, [#bgp_settings, list.MaxItems(1) & [...#bgp_settings]])
-		remote_vnet_traffic_enabled?: bool
-		resource_group_name!:         string
-		custom_route?: matchN(1, [#custom_route, list.MaxItems(1) & [...#custom_route]])
-		sku!: string
-		ip_configuration!: matchN(1, [#ip_configuration, list.MaxItems(3) & [_, ...] & [...#ip_configuration]])
+		remote_vnet_traffic_enabled?:           bool
+		resource_group_name!:                   string
+		sku!:                                   string
 		tags?: [string]: string
 		type!:                        string
 		virtual_wan_traffic_enabled?: bool
-		policy_group?: matchN(1, [#policy_group, [...#policy_group]])
-		timeouts?: #timeouts
-		vpn_client_configuration?: matchN(1, [#vpn_client_configuration, list.MaxItems(1) & [...#vpn_client_configuration]])
-		vpn_type?: string
+		vpn_type?:                    string
 	})
 
 	#bgp_settings: close({
@@ -65,18 +65,18 @@ import "list"
 	})
 
 	#vpn_client_configuration: close({
-		aad_audience?: string
 		ipsec_policy?: matchN(1, [_#defs."/$defs/vpn_client_configuration/$defs/ipsec_policy", list.MaxItems(1) & [..._#defs."/$defs/vpn_client_configuration/$defs/ipsec_policy"]])
-		aad_issuer?: string
-		aad_tenant?: string
-		address_space!: [...string]
-		radius_server_address?: string
 		radius_server?: matchN(1, [_#defs."/$defs/vpn_client_configuration/$defs/radius_server", [..._#defs."/$defs/vpn_client_configuration/$defs/radius_server"]])
-		radius_server_secret?: string
-		vpn_auth_types?: [...string]
 		revoked_certificate?: matchN(1, [_#defs."/$defs/vpn_client_configuration/$defs/revoked_certificate", [..._#defs."/$defs/vpn_client_configuration/$defs/revoked_certificate"]])
 		root_certificate?: matchN(1, [_#defs."/$defs/vpn_client_configuration/$defs/root_certificate", [..._#defs."/$defs/vpn_client_configuration/$defs/root_certificate"]])
 		virtual_network_gateway_client_connection?: matchN(1, [_#defs."/$defs/vpn_client_configuration/$defs/virtual_network_gateway_client_connection", [..._#defs."/$defs/vpn_client_configuration/$defs/virtual_network_gateway_client_connection"]])
+		aad_audience?: string
+		aad_issuer?:   string
+		aad_tenant?:   string
+		address_space!: [...string]
+		radius_server_address?: string
+		radius_server_secret?:  string
+		vpn_auth_types?: [...string]
 		vpn_client_protocols?: [...string]
 	})
 

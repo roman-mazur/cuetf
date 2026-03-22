@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management_identity_provider_aadb2c")
 	close({
+		timeouts?:               #timeouts
 		allowed_tenant!:         string
 		api_management_name!:    string
 		authority!:              string
@@ -12,7 +13,6 @@ package res
 		client_secret!:          string
 		id?:                     string
 		password_reset_policy?:  string
-		timeouts?:               #timeouts
 		profile_editing_policy?: string
 		resource_group_name!:    string
 		signin_policy!:          string

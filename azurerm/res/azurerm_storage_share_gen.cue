@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_storage_share")
 	close({
 		acl?: matchN(1, [#acl, [...#acl]])
+		timeouts?:         #timeouts
 		access_tier?:      string
 		enabled_protocol?: string
 		id?:               string
@@ -13,7 +14,6 @@ package res
 		quota!:              number
 		storage_account_id?: string
 		url?:                string
-		timeouts?:           #timeouts
 	})
 
 	#acl: close({

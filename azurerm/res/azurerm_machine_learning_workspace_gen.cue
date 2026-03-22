@@ -6,31 +6,31 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_machine_learning_workspace")
 	close({
-		application_insights_id!:  string
-		container_registry_id?:    string
-		description?:              string
-		discovery_url?:            string
-		friendly_name?:            string
-		high_business_impact?:     bool
-		id?:                       string
-		image_build_compute_name?: string
 		encryption?: matchN(1, [#encryption, list.MaxItems(1) & [...#encryption]])
-		key_vault_id!:                   string
-		kind?:                           string
-		location!:                       string
-		name!:                           string
-		primary_user_assigned_identity?: string
 		feature_store?: matchN(1, [#feature_store, list.MaxItems(1) & [...#feature_store]])
-		public_network_access_enabled?: bool
 		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		managed_network?: matchN(1, [#managed_network, list.MaxItems(1) & [...#managed_network]])
+		serverless_compute?: matchN(1, [#serverless_compute, list.MaxItems(1) & [...#serverless_compute]])
+		timeouts?:                        #timeouts
+		application_insights_id!:         string
+		container_registry_id?:           string
+		description?:                     string
+		discovery_url?:                   string
+		friendly_name?:                   string
+		high_business_impact?:            bool
+		id?:                              string
+		image_build_compute_name?:        string
+		key_vault_id!:                    string
+		kind?:                            string
+		location!:                        string
+		name!:                            string
+		primary_user_assigned_identity?:  string
+		public_network_access_enabled?:   bool
 		resource_group_name!:             string
 		service_side_encryption_enabled?: bool
 		sku_name?:                        string
 		storage_account_id!:              string
 		tags?: [string]: string
-		managed_network?: matchN(1, [#managed_network, list.MaxItems(1) & [...#managed_network]])
-		serverless_compute?: matchN(1, [#serverless_compute, list.MaxItems(1) & [...#serverless_compute]])
-		timeouts?:               #timeouts
 		v1_legacy_mode_enabled?: bool
 		workspace_id?:           string
 	})

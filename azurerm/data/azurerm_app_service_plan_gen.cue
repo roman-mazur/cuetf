@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_app_service_plan")
 	close({
+		timeouts?:                     #timeouts
 		app_service_environment_id?:   string
 		id?:                           string
 		is_xenon?:                     bool
@@ -20,7 +21,6 @@ package data
 			size?:     string
 			tier?:     string
 		})]
-		timeouts?: #timeouts
 		tags?: [string]: string
 		zone_redundant?: bool
 	})

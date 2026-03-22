@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_arc_kubernetes_flux_configuration")
 	close({
-		cluster_id!: string
 		blob_storage?: matchN(1, [#blob_storage, list.MaxItems(1) & [...#blob_storage]])
+		bucket?: matchN(1, [#bucket, list.MaxItems(1) & [...#bucket]])
+		git_repository?: matchN(1, [#git_repository, list.MaxItems(1) & [...#git_repository]])
+		kustomizations!: matchN(1, [#kustomizations, [_, ...] & [...#kustomizations]])
+		timeouts?:                          #timeouts
+		cluster_id!:                        string
 		continuous_reconciliation_enabled?: bool
 		id?:                                string
 		name!:                              string
 		namespace!:                         string
 		scope?:                             string
-		bucket?: matchN(1, [#bucket, list.MaxItems(1) & [...#bucket]])
-		git_repository?: matchN(1, [#git_repository, list.MaxItems(1) & [...#git_repository]])
-		kustomizations!: matchN(1, [#kustomizations, [_, ...] & [...#kustomizations]])
-		timeouts?: #timeouts
 	})
 
 	#blob_storage: close({

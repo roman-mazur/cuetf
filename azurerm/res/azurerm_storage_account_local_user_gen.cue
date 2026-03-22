@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_storage_account_local_user")
 	close({
-		home_directory?: string
-		id?:             string
-		name!:           string
-		password?:       string
 		permission_scope?: matchN(1, [#permission_scope, [...#permission_scope]])
+		ssh_authorized_key?: matchN(1, [#ssh_authorized_key, [...#ssh_authorized_key]])
+		timeouts?:             #timeouts
+		home_directory?:       string
+		id?:                   string
+		name!:                 string
+		password?:             string
 		sid?:                  string
 		ssh_key_enabled?:      bool
 		ssh_password_enabled?: bool
 		storage_account_id!:   string
-		ssh_authorized_key?: matchN(1, [#ssh_authorized_key, [...#ssh_authorized_key]])
-		timeouts?: #timeouts
 	})
 
 	#permission_scope: close({

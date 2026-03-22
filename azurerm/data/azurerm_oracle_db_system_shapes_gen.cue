@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_oracle_db_system_shapes")
 	close({
+		timeouts?: #timeouts
 		db_system_shapes?: [...close({
 			are_server_types_supported?:               bool
 			available_core_count?:                     number
@@ -29,12 +30,11 @@ package data
 			runtime_minimum_core_count?:               number
 			shape_family?:                             string
 		})]
-
-		// Filter the versions by zone
-		zone?:     string
 		id?:       string
 		location!: string
-		timeouts?: #timeouts
+
+		// Filter the versions by zone
+		zone?: string
 	})
 
 	#timeouts: close({

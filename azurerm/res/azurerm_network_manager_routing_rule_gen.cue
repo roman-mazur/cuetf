@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_network_manager_routing_rule")
 	close({
 		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
+		next_hop!: matchN(1, [#next_hop, list.MaxItems(1) & [_, ...] & [...#next_hop]])
+		timeouts?:           #timeouts
 		description?:        string
 		id?:                 string
 		name!:               string
 		rule_collection_id!: string
-		next_hop!: matchN(1, [#next_hop, list.MaxItems(1) & [_, ...] & [...#next_hop]])
-		timeouts?: #timeouts
 	})
 
 	#destination: close({

@@ -6,16 +6,24 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_windows_web_app_slot")
 	close({
+		auth_settings?: matchN(1, [#auth_settings, list.MaxItems(1) & [...#auth_settings]])
+		auth_settings_v2?: matchN(1, [#auth_settings_v2, list.MaxItems(1) & [...#auth_settings_v2]])
+		backup?: matchN(1, [#backup, list.MaxItems(1) & [...#backup]])
+		connection_string?: matchN(1, [#connection_string, [...#connection_string]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		logs?: matchN(1, [#logs, list.MaxItems(1) & [...#logs]])
+		site_config!: matchN(1, [#site_config, list.MaxItems(1) & [_, ...] & [...#site_config]])
+		storage_account?: matchN(1, [#storage_account, [...#storage_account]])
+		timeouts?:       #timeouts
 		app_service_id!: string
 		app_settings?: [string]: string
+		client_affinity_enabled?:    bool
+		client_certificate_enabled?: bool
 
 		// Paths to exclude when using client certificates, separated by ;
-		client_certificate_exclusion_paths?: string
-		client_affinity_enabled?:            bool
-		client_certificate_enabled?:         bool
-		client_certificate_mode?:            string
-		custom_domain_verification_id?:      string
-		auth_settings?: matchN(1, [#auth_settings, list.MaxItems(1) & [...#auth_settings]])
+		client_certificate_exclusion_paths?:       string
+		client_certificate_mode?:                  string
+		custom_domain_verification_id?:            string
 		default_hostname?:                         string
 		enabled?:                                  bool
 		ftp_publish_basic_authentication_enabled?: bool
@@ -28,39 +36,37 @@ import "list"
 		outbound_ip_address_list?: [...string]
 		outbound_ip_addresses?: string
 		possible_outbound_ip_address_list?: [...string]
-		auth_settings_v2?: matchN(1, [#auth_settings_v2, list.MaxItems(1) & [...#auth_settings_v2]])
 		possible_outbound_ip_addresses?: string
 		public_network_access_enabled?:  bool
 		service_plan_id?:                string
-		backup?: matchN(1, [#backup, list.MaxItems(1) & [...#backup]])
 		site_credential?: [...close({
 			name?:     string
 			password?: string
 		})]
 		tags?: [string]: string
-		virtual_network_backup_restore_enabled?: bool
-		virtual_network_image_pull_enabled?:     bool
+		virtual_network_backup_restore_enabled?:         bool
+		virtual_network_image_pull_enabled?:             bool
+		virtual_network_subnet_id?:                      string
+		webdeploy_publish_basic_authentication_enabled?: bool
 
 		// The local path and filename of the Zip packaged application to
 		// deploy to this Windows Web App. **Note:** Using this value
 		// requires `WEBSITE_RUN_FROM_PACKAGE=1` on the App in
 		// `app_settings`.
-		zip_deploy_file?:           string
-		virtual_network_subnet_id?: string
-		connection_string?: matchN(1, [#connection_string, [...#connection_string]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		webdeploy_publish_basic_authentication_enabled?: bool
-		logs?: matchN(1, [#logs, list.MaxItems(1) & [...#logs]])
-		site_config!: matchN(1, [#site_config, list.MaxItems(1) & [_, ...] & [...#site_config]])
-		storage_account?: matchN(1, [#storage_account, [...#storage_account]])
-		timeouts?: #timeouts
+		zip_deploy_file?: string
 	})
 
 	#auth_settings: close({
+		active_directory?: matchN(1, [_#defs."/$defs/auth_settings/$defs/active_directory", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/active_directory"]])
+		facebook?: matchN(1, [_#defs."/$defs/auth_settings/$defs/facebook", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/facebook"]])
+		github?: matchN(1, [_#defs."/$defs/auth_settings/$defs/github", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/github"]])
+		google?: matchN(1, [_#defs."/$defs/auth_settings/$defs/google", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/google"]])
+		microsoft?: matchN(1, [_#defs."/$defs/auth_settings/$defs/microsoft", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/microsoft"]])
+		twitter?: matchN(1, [_#defs."/$defs/auth_settings/$defs/twitter", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/twitter"]])
+
 		// Specifies a map of Login Parameters to send to the OpenID
 		// Connect authorization endpoint when a user logs in.
 		additional_login_parameters?: [string]: string
-		active_directory?: matchN(1, [_#defs."/$defs/auth_settings/$defs/active_directory", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/active_directory"]])
 
 		// Specifies a list of External URLs that can be redirected to as
 		// part of logging in or logging out of the Windows Web App.
@@ -82,11 +88,6 @@ import "list"
 		// The RuntimeVersion of the Authentication / Authorization
 		// feature in use.
 		runtime_version?: string
-		facebook?: matchN(1, [_#defs."/$defs/auth_settings/$defs/facebook", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/facebook"]])
-		github?: matchN(1, [_#defs."/$defs/auth_settings/$defs/github", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/github"]])
-		google?: matchN(1, [_#defs."/$defs/auth_settings/$defs/google", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/google"]])
-		microsoft?: matchN(1, [_#defs."/$defs/auth_settings/$defs/microsoft", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/microsoft"]])
-		twitter?: matchN(1, [_#defs."/$defs/auth_settings/$defs/twitter", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/twitter"]])
 
 		// The number of hours after session token expiration that a
 		// session token can be used to call the token refresh API.
@@ -105,6 +106,17 @@ import "list"
 	})
 
 	#auth_settings_v2: close({
+		active_directory_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/active_directory_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/active_directory_v2"]])
+		apple_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/apple_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/apple_v2"]])
+		azure_static_web_app_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/azure_static_web_app_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/azure_static_web_app_v2"]])
+		custom_oidc_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/custom_oidc_v2", [..._#defs."/$defs/auth_settings_v2/$defs/custom_oidc_v2"]])
+		facebook_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/facebook_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/facebook_v2"]])
+		github_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/github_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/github_v2"]])
+		google_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/google_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/google_v2"]])
+		login!: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/login", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_settings_v2/$defs/login"]])
+		microsoft_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/microsoft_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/microsoft_v2"]])
+		twitter_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/twitter_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/twitter_v2"]])
+
 		// Should the AuthV2 Settings be enabled. Defaults to `false`
 		auth_enabled?: bool
 
@@ -140,19 +152,9 @@ import "list"
 		// The prefix that should precede all the authentication and
 		// authorisation paths. Defaults to `/.auth`
 		http_route_api_prefix?: string
-		active_directory_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/active_directory_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/active_directory_v2"]])
-		apple_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/apple_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/apple_v2"]])
-		azure_static_web_app_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/azure_static_web_app_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/azure_static_web_app_v2"]])
-		custom_oidc_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/custom_oidc_v2", [..._#defs."/$defs/auth_settings_v2/$defs/custom_oidc_v2"]])
-		facebook_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/facebook_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/facebook_v2"]])
-		github_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/github_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/github_v2"]])
-		google_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/google_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/google_v2"]])
-		login!: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/login", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/auth_settings_v2/$defs/login"]])
-		microsoft_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/microsoft_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/microsoft_v2"]])
 
 		// Should the authentication flow be used for all requests.
 		require_authentication?: bool
-		twitter_v2?: matchN(1, [_#defs."/$defs/auth_settings_v2/$defs/twitter_v2", list.MaxItems(1) & [..._#defs."/$defs/auth_settings_v2/$defs/twitter_v2"]])
 
 		// Should HTTPS be required on connections? Defaults to true.
 		require_https?: bool
@@ -169,9 +171,10 @@ import "list"
 	})
 
 	#backup: close({
+		schedule!: matchN(1, [_#defs."/$defs/backup/$defs/schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/backup/$defs/schedule"]])
+
 		// Should this backup job be enabled?
 		enabled?: bool
-		schedule!: matchN(1, [_#defs."/$defs/backup/$defs/schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/backup/$defs/schedule"]])
 
 		// The name which should be used for this Backup.
 		name!: string
@@ -209,50 +212,50 @@ import "list"
 	})
 
 	#site_config: close({
-		always_on?:             bool
-		api_definition_url?:    string
-		api_management_api_id?: string
-		app_command_line?:      string
-		auto_swap_slot_name?:   string
+		application_stack?: matchN(1, [_#defs."/$defs/site_config/$defs/application_stack", list.MaxItems(1) & [..._#defs."/$defs/site_config/$defs/application_stack"]])
+		auto_heal_setting?: matchN(1, [_#defs."/$defs/site_config/$defs/auto_heal_setting", list.MaxItems(1) & [..._#defs."/$defs/site_config/$defs/auto_heal_setting"]])
+		cors?: matchN(1, [_#defs."/$defs/site_config/$defs/cors", list.MaxItems(1) & [..._#defs."/$defs/site_config/$defs/cors"]])
+		handler_mapping?: matchN(1, [_#defs."/$defs/site_config/$defs/handler_mapping", [..._#defs."/$defs/site_config/$defs/handler_mapping"]])
+		ip_restriction?: matchN(1, [_#defs."/$defs/site_config/$defs/ip_restriction", [..._#defs."/$defs/site_config/$defs/ip_restriction"]])
+		scm_ip_restriction?: matchN(1, [_#defs."/$defs/site_config/$defs/scm_ip_restriction", [..._#defs."/$defs/site_config/$defs/scm_ip_restriction"]])
+		virtual_application?: matchN(1, [_#defs."/$defs/site_config/$defs/virtual_application", [..._#defs."/$defs/site_config/$defs/virtual_application"]])
+		always_on?:                                     bool
+		api_definition_url?:                            string
+		api_management_api_id?:                         string
+		app_command_line?:                              string
+		auto_swap_slot_name?:                           string
+		container_registry_managed_identity_client_id?: string
+		container_registry_use_managed_identity?:       bool
+		default_documents?: [...string]
+		detailed_error_logging_enabled?: bool
+		ftps_state?:                     string
 
 		// The amount of time in minutes that a node is unhealthy before
 		// being removed from the load balancer. Possible values are
 		// between `2` and `10`. Only valid in conjunction with
 		// `health_check_path`
 		health_check_eviction_time_in_min?: number
-		application_stack?: matchN(1, [_#defs."/$defs/site_config/$defs/application_stack", list.MaxItems(1) & [..._#defs."/$defs/site_config/$defs/application_stack"]])
-		container_registry_managed_identity_client_id?: string
-		container_registry_use_managed_identity?:       bool
-		auto_heal_setting?: matchN(1, [_#defs."/$defs/site_config/$defs/auto_heal_setting", list.MaxItems(1) & [..._#defs."/$defs/site_config/$defs/auto_heal_setting"]])
-		default_documents?: [...string]
-		detailed_error_logging_enabled?: bool
-		ftps_state?:                     string
-		health_check_path?:              string
-		http2_enabled?:                  bool
-		ip_restriction_default_action?:  string
-		load_balancing_mode?:            string
-		local_mysql_enabled?:            bool
-		cors?: matchN(1, [_#defs."/$defs/site_config/$defs/cors", list.MaxItems(1) & [..._#defs."/$defs/site_config/$defs/cors"]])
-		managed_pipeline_mode?:    string
-		minimum_tls_version?:      string
-		remote_debugging_enabled?: bool
-		handler_mapping?: matchN(1, [_#defs."/$defs/site_config/$defs/handler_mapping", [..._#defs."/$defs/site_config/$defs/handler_mapping"]])
-
-		// Should all outbound traffic to have Virtual Network Security
-		// Groups and User Defined Routes applied? Defaults to `false`.
-		vnet_route_all_enabled?:            bool
+		health_check_path?:                 string
+		http2_enabled?:                     bool
+		ip_restriction_default_action?:     string
+		load_balancing_mode?:               string
+		local_mysql_enabled?:               bool
+		managed_pipeline_mode?:             string
+		minimum_tls_version?:               string
+		remote_debugging_enabled?:          bool
 		remote_debugging_version?:          string
 		scm_ip_restriction_default_action?: string
 		scm_minimum_tls_version?:           string
 		scm_type?:                          string
 		scm_use_main_ip_restriction?:       bool
 		use_32_bit_worker?:                 bool
-		ip_restriction?: matchN(1, [_#defs."/$defs/site_config/$defs/ip_restriction", [..._#defs."/$defs/site_config/$defs/ip_restriction"]])
-		scm_ip_restriction?: matchN(1, [_#defs."/$defs/site_config/$defs/scm_ip_restriction", [..._#defs."/$defs/site_config/$defs/scm_ip_restriction"]])
-		websockets_enabled?: bool
-		windows_fx_version?: string
-		worker_count?:       number
-		virtual_application?: matchN(1, [_#defs."/$defs/site_config/$defs/virtual_application", [..._#defs."/$defs/site_config/$defs/virtual_application"]])
+
+		// Should all outbound traffic to have Virtual Network Security
+		// Groups and User Defined Routes applied? Defaults to `false`.
+		vnet_route_all_enabled?: bool
+		websockets_enabled?:     bool
+		windows_fx_version?:     string
+		worker_count?:           number
 	})
 
 	#storage_account: close({
@@ -659,14 +662,15 @@ import "list"
 	})
 
 	_#defs: "/$defs/site_config/$defs/application_stack": close({
-		// The version of DotNetCore to use.
-		dotnet_core_version?:      string
 		current_stack?:            string
 		docker_image_name?:        string
 		docker_registry_password?: string
 		docker_registry_url?:      string
 		docker_registry_username?: string
-		dotnet_version?:           string
+
+		// The version of DotNetCore to use.
+		dotnet_core_version?: string
+		dotnet_version?:      string
 
 		// Should the application use the embedded web server for the
 		// version of Java in use.
@@ -750,6 +754,12 @@ import "list"
 
 		// The description of the IP restriction rule.
 		description?: string
+		headers?: [...close({
+			x_azure_fdid?: [...string]
+			x_fd_health_probe?: [...string]
+			x_forwarded_for?: [...string]
+			x_forwarded_host?: [...string]
+		})]
 
 		// The CIDR notation of the IP or IP Range to match. For example:
 		// `10.0.0.0/24` or `192.168.10.1/32` or `fe80::/64` or
@@ -761,12 +771,6 @@ import "list"
 
 		// The priority value of this `ip_restriction`.
 		priority?: number
-		headers?: [...close({
-			x_azure_fdid?: [...string]
-			x_fd_health_probe?: [...string]
-			x_forwarded_for?: [...string]
-			x_forwarded_host?: [...string]
-		})]
 
 		// The Service Tag used for this IP Restriction.
 		service_tag?: string
@@ -781,6 +785,12 @@ import "list"
 
 		// The description of the IP restriction rule.
 		description?: string
+		headers?: [...close({
+			x_azure_fdid?: [...string]
+			x_fd_health_probe?: [...string]
+			x_forwarded_for?: [...string]
+			x_forwarded_host?: [...string]
+		})]
 
 		// The CIDR notation of the IP or IP Range to match. For example:
 		// `10.0.0.0/24` or `192.168.10.1/32` or `fe80::/64` or
@@ -792,12 +802,6 @@ import "list"
 
 		// The priority value of this `ip_restriction`.
 		priority?: number
-		headers?: [...close({
-			x_azure_fdid?: [...string]
-			x_fd_health_probe?: [...string]
-			x_forwarded_for?: [...string]
-			x_forwarded_host?: [...string]
-		})]
 
 		// The Service Tag used for this IP Restriction.
 		service_tag?: string

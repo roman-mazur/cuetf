@@ -6,16 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_eventhub")
 	close({
-		id?: string
 		capture_description?: matchN(1, [#capture_description, list.MaxItems(1) & [...#capture_description]])
+		retention_description?: matchN(1, [#retention_description, list.MaxItems(1) & [...#retention_description]])
+		timeouts?:          #timeouts
+		id?:                string
 		message_retention?: number
 		name!:              string
 		namespace_id?:      string
 		partition_count!:   number
 		partition_ids?: [...string]
 		status?: string
-		retention_description?: matchN(1, [#retention_description, list.MaxItems(1) & [...#retention_description]])
-		timeouts?: #timeouts
 	})
 
 	#capture_description: close({

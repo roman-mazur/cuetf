@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_managed_redis")
 	close({
+		timeouts?: #timeouts
 		customer_managed_key?: [...close({
 			key_vault_key_id?:          string
 			user_assigned_identity_id?: string
@@ -38,7 +39,6 @@ package data
 		})]
 		location?:              string
 		name!:                  string
-		timeouts?:              #timeouts
 		public_network_access?: string
 		resource_group_name!:   string
 		sku_name?:              string

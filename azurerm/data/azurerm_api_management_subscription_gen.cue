@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_api_management_subscription")
 	close({
+		timeouts?:          #timeouts
 		allow_tracing?:     bool
 		api_id?:            string
 		api_management_id!: string
@@ -13,7 +14,6 @@ package data
 		product_id?:        string
 		secondary_key?:     string
 		state?:             string
-		timeouts?:          #timeouts
 		subscription_id!:   string
 		user_id?:           string
 	})

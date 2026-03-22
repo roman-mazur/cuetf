@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_healthcare_service")
 	close({
+		authentication_configuration?: matchN(1, [#authentication_configuration, list.MaxItems(1) & [...#authentication_configuration]])
+		cors_configuration?: matchN(1, [#cors_configuration, list.MaxItems(1) & [...#cors_configuration]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?: #timeouts
 		access_policy_object_ids?: [...string]
 		configuration_export_storage_account_name?: string
 		cosmosdb_key_vault_key_versionless_id?:     string
@@ -14,12 +18,8 @@ import "list"
 		kind?:                                      string
 		location!:                                  string
 		name!:                                      string
-		authentication_configuration?: matchN(1, [#authentication_configuration, list.MaxItems(1) & [...#authentication_configuration]])
-		public_network_access_enabled?: bool
-		cors_configuration?: matchN(1, [#cors_configuration, list.MaxItems(1) & [...#cors_configuration]])
-		resource_group_name!: string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		timeouts?: #timeouts
+		public_network_access_enabled?:             bool
+		resource_group_name!:                       string
 		tags?: [string]: string
 	})
 

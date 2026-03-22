@@ -5,12 +5,12 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_vpn_server_configuration_policy_group")
 	close({
 		policy!: matchN(1, [#policy, [_, ...] & [...#policy]])
+		timeouts?:                    #timeouts
 		id?:                          string
 		is_default?:                  bool
 		name!:                        string
 		priority?:                    number
 		vpn_server_configuration_id!: string
-		timeouts?:                    #timeouts
 	})
 
 	#policy: close({

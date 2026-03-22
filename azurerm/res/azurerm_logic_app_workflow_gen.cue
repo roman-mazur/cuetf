@@ -6,8 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_logic_app_workflow")
 	close({
-		access_endpoint?: string
 		access_control?: matchN(1, [#access_control, list.MaxItems(1) & [...#access_control]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:        #timeouts
+		access_endpoint?: string
 		connector_endpoint_ip_addresses?: [...string]
 		connector_outbound_ip_addresses?: [...string]
 		enabled?:                            bool
@@ -17,12 +19,10 @@ import "list"
 		logic_app_integration_account_id?:   string
 		name!:                               string
 		parameters?: [string]: string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		resource_group_name!: string
 		tags?: [string]: string
 		workflow_endpoint_ip_addresses?: [...string]
 		workflow_outbound_ip_addresses?: [...string]
-		timeouts?: #timeouts
 		workflow_parameters?: [string]: string
 		workflow_schema?:  string
 		workflow_version?: string

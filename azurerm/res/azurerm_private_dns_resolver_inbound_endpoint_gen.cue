@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_private_dns_resolver_inbound_endpoint")
 	close({
 		ip_configurations!: matchN(1, [#ip_configurations, list.MaxItems(1) & [_, ...] & [...#ip_configurations]])
+		timeouts?:                #timeouts
 		id?:                      string
 		location!:                string
 		name!:                    string
 		private_dns_resolver_id!: string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#ip_configurations: close({

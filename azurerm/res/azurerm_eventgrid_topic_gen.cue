@@ -6,25 +6,25 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_eventgrid_topic")
 	close({
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		input_mapping_default_values?: matchN(1, [#input_mapping_default_values, list.MaxItems(1) & [...#input_mapping_default_values]])
+		input_mapping_fields?: matchN(1, [#input_mapping_fields, list.MaxItems(1) & [...#input_mapping_fields]])
+		timeouts?: #timeouts
 		endpoint?: string
 		id?:       string
 		inbound_ip_rule?: [...close({
 			action?:  string
 			ip_mask?: string
 		})]
-		input_schema?:       string
-		local_auth_enabled?: bool
-		location!:           string
-		name!:               string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		input_mapping_default_values?: matchN(1, [#input_mapping_default_values, list.MaxItems(1) & [...#input_mapping_default_values]])
-		input_mapping_fields?: matchN(1, [#input_mapping_fields, list.MaxItems(1) & [...#input_mapping_fields]])
+		input_schema?:                  string
+		local_auth_enabled?:            bool
+		location!:                      string
+		name!:                          string
 		primary_access_key?:            string
 		public_network_access_enabled?: bool
 		resource_group_name!:           string
 		secondary_access_key?:          string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#identity: close({

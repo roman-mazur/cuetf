@@ -4,21 +4,21 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_site_recovery_vmware_replicated_vm")
 	close({
-		appliance_name!:                        string
-		default_log_storage_account_id?:        string
-		default_recovery_disk_type?:            string
-		default_target_disk_encryption_set_id?: string
-		id?:                                    string
-		license_type?:                          string
-		multi_vm_group_name?:                   string
-		name!:                                  string
-		physical_server_credential_name!:       string
 		managed_disk?: matchN(1, [#managed_disk, [...#managed_disk]])
-		recovery_replication_policy_id!: string
-		recovery_vault_id!:              string
-		source_vm_name!:                 string
 		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
 		timeouts?:                                   #timeouts
+		appliance_name!:                             string
+		default_log_storage_account_id?:             string
+		default_recovery_disk_type?:                 string
+		default_target_disk_encryption_set_id?:      string
+		id?:                                         string
+		license_type?:                               string
+		multi_vm_group_name?:                        string
+		name!:                                       string
+		physical_server_credential_name!:            string
+		recovery_replication_policy_id!:             string
+		recovery_vault_id!:                          string
+		source_vm_name!:                             string
 		target_availability_set_id?:                 string
 		target_boot_diagnostics_storage_account_id?: string
 		target_network_id?:                          string

@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_container_registry")
 	close({
+		timeouts?:              #timeouts
 		admin_enabled?:         bool
 		admin_password?:        string
 		admin_username?:        string
@@ -12,7 +13,6 @@ package data
 		id?:                  string
 		location?:            string
 		login_server?:        string
-		timeouts?:            #timeouts
 		name!:                string
 		resource_group_name!: string
 		sku?:                 string

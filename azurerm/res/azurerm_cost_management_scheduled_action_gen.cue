@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cost_management_scheduled_action")
 	close({
+		timeouts?:     #timeouts
 		day_of_month?: number
 		days_of_week?: [...string]
 		display_name!:         string
@@ -16,7 +17,6 @@ package res
 		id?:            string
 		message?:       string
 		name!:          string
-		timeouts?:      #timeouts
 		start_date!:    string
 		view_id!:       string
 		weeks_of_month?: [...string]

@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_alert_prometheus_rule_group")
 	close({
+		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
+		timeouts?:            #timeouts
 		cluster_name?:        string
 		description?:         string
 		id?:                  string
@@ -13,15 +15,14 @@ import "list"
 		location!:            string
 		name!:                string
 		resource_group_name!: string
-		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
-		rule_group_enabled?: bool
-		timeouts?:           #timeouts
+		rule_group_enabled?:  bool
 		scopes!: [...string]
 		tags?: [string]: string
 	})
 
 	#rule: close({
 		action?: matchN(1, [_#defs."/$defs/rule/$defs/action", list.MaxItems(5) & [..._#defs."/$defs/rule/$defs/action"]])
+		alert_resolution?: matchN(1, [_#defs."/$defs/rule/$defs/alert_resolution", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/alert_resolution"]])
 		alert?: string
 		annotations?: [string]: string
 		enabled?:    bool
@@ -30,7 +31,6 @@ import "list"
 		labels?: [string]: string
 		record?:   string
 		severity?: number
-		alert_resolution?: matchN(1, [_#defs."/$defs/rule/$defs/alert_resolution", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/alert_resolution"]])
 	})
 
 	#timeouts: close({

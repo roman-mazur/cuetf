@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_log_analytics_workspace")
 	close({
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:                                #timeouts
 		allow_resource_only_permissions?:         bool
 		cmk_for_query_forced?:                    bool
 		daily_quota_gb?:                          number
@@ -16,15 +18,13 @@ import "list"
 		internet_query_enabled?:                  bool
 		local_authentication_enabled?:            bool
 		location!:                                string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		name!:                               string
-		primary_shared_key?:                 string
-		reservation_capacity_in_gb_per_day?: number
-		resource_group_name!:                string
-		timeouts?:                           #timeouts
-		retention_in_days?:                  number
-		secondary_shared_key?:               string
-		sku?:                                string
+		name!:                                    string
+		primary_shared_key?:                      string
+		reservation_capacity_in_gb_per_day?:      number
+		resource_group_name!:                     string
+		retention_in_days?:                       number
+		secondary_shared_key?:                    string
+		sku?:                                     string
 		tags?: [string]: string
 		workspace_id?: string
 	})

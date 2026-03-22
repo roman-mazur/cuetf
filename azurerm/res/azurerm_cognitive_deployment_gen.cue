@@ -7,14 +7,14 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cognitive_deployment")
 	close({
 		model!: matchN(1, [#model, list.MaxItems(1) & [_, ...] & [...#model]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		timeouts?:                   #timeouts
 		cognitive_account_id!:       string
 		dynamic_throttling_enabled?: bool
 		id?:                         string
 		name!:                       string
 		rai_policy_name?:            string
 		version_upgrade_option?:     string
-		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
-		timeouts?: #timeouts
 	})
 
 	#model: close({

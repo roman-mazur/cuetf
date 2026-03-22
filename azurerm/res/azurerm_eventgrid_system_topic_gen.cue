@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_eventgrid_system_topic")
 	close({
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:               #timeouts
 		id?:                     string
 		location!:               string
 		metric_arm_resource_id?: string
 		metric_resource_id?:     string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		name!:                string
-		resource_group_name!: string
-		source_resource_id?:  string
+		name!:                   string
+		resource_group_name!:    string
+		source_resource_id?:     string
 		tags?: [string]: string
 		topic_type!: string
-		timeouts?:   #timeouts
 	})
 
 	#identity: close({

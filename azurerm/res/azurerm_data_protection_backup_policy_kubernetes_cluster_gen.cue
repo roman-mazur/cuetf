@@ -7,14 +7,14 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_protection_backup_policy_kubernetes_cluster")
 	close({
 		default_retention_rule!: matchN(1, [#default_retention_rule, list.MaxItems(1) & [_, ...] & [...#default_retention_rule]])
+		retention_rule?: matchN(1, [#retention_rule, [...#retention_rule]])
+		timeouts?: #timeouts
 		backup_repeating_time_intervals!: [...string]
 		id?:                  string
 		name!:                string
 		resource_group_name!: string
 		time_zone?:           string
 		vault_name!:          string
-		retention_rule?: matchN(1, [#retention_rule, [...#retention_rule]])
-		timeouts?: #timeouts
 	})
 
 	#default_retention_rule: close({

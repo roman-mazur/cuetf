@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_storage_data_lake_gen2_filesystem")
 	close({
 		ace?: matchN(1, [#ace, [...#ace]])
+		timeouts?:                 #timeouts
 		default_encryption_scope?: string
 		group?:                    string
 		id?:                       string
@@ -12,7 +13,6 @@ package res
 		owner?:                    string
 		properties?: [string]: string
 		storage_account_id!: string
-		timeouts?:           #timeouts
 	})
 
 	#ace: close({

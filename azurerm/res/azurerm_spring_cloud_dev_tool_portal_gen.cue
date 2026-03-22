@@ -7,13 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_dev_tool_portal")
 	close({
 		sso?: matchN(1, [#sso, list.MaxItems(1) & [...#sso]])
+		timeouts?:                        #timeouts
 		application_accelerator_enabled?: bool
 		application_live_view_enabled?:   bool
 		id?:                              string
 		name!:                            string
 		public_network_access_enabled?:   bool
 		spring_cloud_service_id!:         string
-		timeouts?:                        #timeouts
 	})
 
 	#sso: close({

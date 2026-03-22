@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_network_interface")
 	close({
+		timeouts?:                       #timeouts
 		accelerated_networking_enabled?: bool
 		applied_dns_servers?: [...string]
 		dns_servers?: [...string]
@@ -26,7 +27,6 @@ package data
 		ip_forwarding_enabled?:     bool
 		location?:                  string
 		mac_address?:               string
-		timeouts?:                  #timeouts
 		name!:                      string
 		network_security_group_id?: string
 		private_ip_address?:        string

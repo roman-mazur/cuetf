@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_sentinel_data_connector_threat_intelligence_taxii")
 	close({
+		timeouts?:                   #timeouts
 		api_root_url!:               string
 		collection_id!:              string
 		display_name!:               string
@@ -13,7 +14,6 @@ package res
 		name!:                       string
 		password?:                   string
 		polling_frequency?:          string
-		timeouts?:                   #timeouts
 		tenant_id?:                  string
 		user_name?:                  string
 	})

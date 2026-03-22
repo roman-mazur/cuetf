@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cosmosdb_postgresql_cluster")
 	close({
+		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
+		timeouts?:                             #timeouts
 		administrator_login_password?:         string
 		citus_version?:                        string
 		coordinator_public_ip_access_enabled?: bool
@@ -19,14 +21,12 @@ import "list"
 		name!:                                 string
 		node_count!:                           number
 		node_public_ip_access_enabled?:        bool
-		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
-		node_server_edition?:      string
-		node_storage_quota_in_mb?: number
-		timeouts?:                 #timeouts
-		node_vcores?:              number
-		point_in_time_in_utc?:     string
-		preferred_primary_zone?:   string
-		resource_group_name!:      string
+		node_server_edition?:                  string
+		node_storage_quota_in_mb?:             number
+		node_vcores?:                          number
+		point_in_time_in_utc?:                 string
+		preferred_primary_zone?:               string
+		resource_group_name!:                  string
 		servers?: [...close({
 			fqdn?: string
 			name?: string

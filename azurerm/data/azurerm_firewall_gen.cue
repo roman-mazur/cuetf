@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_firewall")
 	close({
+		timeouts?:          #timeouts
 		dns_proxy_enabled?: bool
 		dns_servers?: [...string]
 		firewall_policy_id?: string
@@ -26,7 +27,6 @@ package data
 		sku_name?:            string
 		sku_tier?:            string
 		tags?: [string]: string
-		timeouts?:          #timeouts
 		threat_intel_mode?: string
 		virtual_hub?: [...close({
 			private_ip_address?: string

@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_spring_cloud_app")
 	close({
+		timeouts?:   #timeouts
 		fqdn?:       string
 		https_only?: bool
 		id?:         string
@@ -21,7 +22,6 @@ package data
 		})]
 		resource_group_name!: string
 		service_name!:        string
-		timeouts?:            #timeouts
 		tls_enabled?:         bool
 		url?:                 string
 	})

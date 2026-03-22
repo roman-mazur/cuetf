@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kubernetes_fleet_manager")
 	close({
 		hub_profile?: matchN(1, [#hub_profile, list.MaxItems(1) & [...#hub_profile]])
+		timeouts?:            #timeouts
 		id?:                  string
 		location!:            string
 		name!:                string
 		resource_group_name!: string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#hub_profile: close({

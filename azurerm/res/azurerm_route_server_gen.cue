@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_route_server")
 	close({
+		timeouts?:                         #timeouts
 		branch_to_branch_traffic_enabled?: bool
 		hub_routing_preference?:           string
 		id?:                               string
@@ -12,7 +13,6 @@ package res
 		public_ip_address_id!:             string
 		resource_group_name!:              string
 		routing_state?:                    string
-		timeouts?:                         #timeouts
 		sku!:                              string
 		subnet_id!:                        string
 		tags?: [string]: string

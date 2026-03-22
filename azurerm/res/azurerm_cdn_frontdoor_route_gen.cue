@@ -6,19 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cdn_frontdoor_route")
 	close({
+		cache?: matchN(1, [#cache, list.MaxItems(1) & [...#cache]])
+		timeouts?: #timeouts
 		cdn_frontdoor_custom_domain_ids?: [...string]
 		cdn_frontdoor_endpoint_id!:     string
 		cdn_frontdoor_origin_group_id!: string
 		cdn_frontdoor_origin_ids!: [...string]
 		cdn_frontdoor_origin_path?: string
 		cdn_frontdoor_rule_set_ids?: [...string]
-		enabled?:             bool
-		forwarding_protocol?: string
-		cache?: matchN(1, [#cache, list.MaxItems(1) & [...#cache]])
+		enabled?:                bool
+		forwarding_protocol?:    string
 		https_redirect_enabled?: bool
 		id?:                     string
 		link_to_default_domain?: bool
-		timeouts?:               #timeouts
 		name!:                   string
 		patterns_to_match!: [...string]
 		supported_protocols!: [...string]

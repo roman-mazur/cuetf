@@ -6,13 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_eventhub_namespace")
 	close({
-		auto_inflate_enabled?: bool
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:                                  #timeouts
+		auto_inflate_enabled?:                      bool
 		capacity?:                                  number
 		dedicated_cluster_id?:                      string
 		default_primary_connection_string?:         string
 		default_primary_connection_string_alias?:   string
-		timeouts?:                                  #timeouts
 		default_primary_key?:                       string
 		default_secondary_connection_string?:       string
 		default_secondary_connection_string_alias?: string

@@ -4,19 +4,19 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_app_configuration_feature")
 	close({
-		configuration_store_id!: string
-		description?:            string
-		enabled?:                bool
-		etag?:                   string
 		targeting_filter?: matchN(1, [#targeting_filter, [...#targeting_filter]])
+		timeouts?: #timeouts
+		timewindow_filter?: matchN(1, [#timewindow_filter, [...#timewindow_filter]])
+		configuration_store_id!:  string
+		description?:             string
+		enabled?:                 bool
+		etag?:                    string
 		id?:                      string
 		key?:                     string
 		label?:                   string
 		locked?:                  bool
 		name!:                    string
 		percentage_filter_value?: number
-		timeouts?:                #timeouts
-		timewindow_filter?: matchN(1, [#timewindow_filter, [...#timewindow_filter]])
 		tags?: [string]: string
 	})
 

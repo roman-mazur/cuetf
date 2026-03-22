@@ -6,19 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_hdinsight_kafka_cluster")
 	close({
-		cluster_version!:               string
-		encryption_in_transit_enabled?: bool
 		component_version!: matchN(1, [#component_version, list.MaxItems(1) & [_, ...] & [...#component_version]])
-		https_endpoint?:            string
-		id?:                        string
-		kafka_rest_proxy_endpoint?: string
-		location!:                  string
-		name!:                      string
-		resource_group_name!:       string
-		ssh_endpoint?:              string
-		tags?: [string]: string
-		tier!:            string
-		tls_min_version?: string
 		compute_isolation?: matchN(1, [#compute_isolation, list.MaxItems(1) & [...#compute_isolation]])
 		disk_encryption?: matchN(1, [#disk_encryption, [...#disk_encryption]])
 		extension?: matchN(1, [#extension, list.MaxItems(1) & [...#extension]])
@@ -32,7 +20,19 @@ import "list"
 		security_profile?: matchN(1, [#security_profile, list.MaxItems(1) & [...#security_profile]])
 		storage_account?: matchN(1, [#storage_account, [...#storage_account]])
 		storage_account_gen2?: matchN(1, [#storage_account_gen2, list.MaxItems(1) & [...#storage_account_gen2]])
-		timeouts?: #timeouts
+		timeouts?:                      #timeouts
+		cluster_version!:               string
+		encryption_in_transit_enabled?: bool
+		https_endpoint?:                string
+		id?:                            string
+		kafka_rest_proxy_endpoint?:     string
+		location!:                      string
+		name!:                          string
+		resource_group_name!:           string
+		ssh_endpoint?:                  string
+		tags?: [string]: string
+		tier!:            string
+		tls_min_version?: string
 	})
 
 	#component_version: close({

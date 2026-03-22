@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_build_deployment")
 	close({
 		quota?: matchN(1, [#quota, list.MaxItems(1) & [...#quota]])
+		timeouts?:   #timeouts
 		addon_json?: string
 		application_performance_monitoring_ids?: [...string]
 		build_result_id!: string
@@ -15,7 +16,6 @@ import "list"
 		instance_count?:      number
 		name!:                string
 		spring_cloud_app_id!: string
-		timeouts?:            #timeouts
 	})
 
 	#quota: close({

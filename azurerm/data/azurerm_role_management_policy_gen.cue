@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_role_management_policy")
 	close({
+		timeouts?: #timeouts
+
 		// The activation rules of the policy
 		activation_rules?: [...close({
 			approval_stage?: [...close({
@@ -37,6 +39,7 @@ package data
 			expiration_required?: bool
 			expire_after?:        string
 		})]
+		id?: string
 
 		// The name of the policy
 		name?: string
@@ -95,8 +98,6 @@ package data
 				})]
 			})]
 		})]
-		id?:       string
-		timeouts?: #timeouts
 
 		// ID of the Azure Role to which this policy is assigned
 		role_definition_id!: string

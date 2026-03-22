@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_web_pubsub_hub")
 	close({
 		event_handler?: matchN(1, [#event_handler, [...#event_handler]])
+		event_listener?: matchN(1, [#event_listener, [...#event_listener]])
+		timeouts?:                      #timeouts
 		anonymous_connections_enabled?: bool
 		id?:                            string
 		name!:                          string
 		web_pubsub_id!:                 string
-		event_listener?: matchN(1, [#event_listener, [...#event_listener]])
-		timeouts?: #timeouts
 	})
 
 	#event_handler: close({

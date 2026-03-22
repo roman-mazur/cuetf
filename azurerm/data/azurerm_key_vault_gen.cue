@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_key_vault")
 	close({
+		timeouts?: #timeouts
 		access_policy?: [...close({
 			application_id?: string
 			certificate_permissions?: [...string]
@@ -26,7 +27,6 @@ package data
 			virtual_network_subnet_ids?: [...string]
 		})]
 		public_network_access_enabled?: bool
-		timeouts?:                      #timeouts
 		purge_protection_enabled?:      bool
 		rbac_authorization_enabled?:    bool
 		resource_group_name!:           string

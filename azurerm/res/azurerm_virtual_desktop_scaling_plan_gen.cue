@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_desktop_scaling_plan")
 	close({
+		host_pool?: matchN(1, [#host_pool, [...#host_pool]])
+		schedule!: matchN(1, [#schedule, [_, ...] & [...#schedule]])
+		timeouts?:            #timeouts
 		description?:         string
 		exclusion_tag?:       string
 		friendly_name?:       string
@@ -11,10 +14,7 @@ package res
 		location!:            string
 		name!:                string
 		resource_group_name!: string
-		host_pool?: matchN(1, [#host_pool, [...#host_pool]])
 		tags?: [string]: string
-		schedule!: matchN(1, [#schedule, [_, ...] & [...#schedule]])
-		timeouts?:  #timeouts
 		time_zone!: string
 	})
 

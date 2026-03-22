@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_search_service")
 	close({
+		timeouts?:                                          #timeouts
 		customer_managed_key_encryption_compliance_status?: string
 		id?:                                                string
 		identity?: [...close({
@@ -20,7 +21,6 @@ package data
 			key?:  string
 			name?: string
 		})]
-		timeouts?:            #timeouts
 		replica_count?:       number
 		resource_group_name!: string
 		secondary_key?:       string

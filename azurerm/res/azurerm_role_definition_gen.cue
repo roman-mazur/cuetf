@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_role_definition")
 	close({
 		permissions?: matchN(1, [#permissions, [...#permissions]])
+		timeouts?: #timeouts
 		assignable_scopes?: [...string]
 		description?:                 string
 		id?:                          string
@@ -12,7 +13,6 @@ package res
 		role_definition_id?:          string
 		role_definition_resource_id?: string
 		scope!:                       string
-		timeouts?:                    #timeouts
 	})
 
 	#permissions: close({

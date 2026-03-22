@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_policy_assignment")
 	close({
+		timeouts?:     #timeouts
 		description?:  string
 		display_name?: string
 		enforce?:      bool
@@ -17,7 +18,6 @@ package data
 		location?: string
 		metadata?: string
 		name!:     string
-		timeouts?: #timeouts
 		non_compliance_message?: [...close({
 			content?:                        string
 			policy_definition_reference_id?: string

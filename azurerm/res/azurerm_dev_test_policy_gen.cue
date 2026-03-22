@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dev_test_policy")
 	close({
+		timeouts?:            #timeouts
 		description?:         string
 		evaluator_type!:      string
 		fact_data?:           string
@@ -11,7 +12,6 @@ package res
 		lab_name!:            string
 		name!:                string
 		policy_set_name!:     string
-		timeouts?:            #timeouts
 		resource_group_name!: string
 		tags?: [string]: string
 		threshold!: string

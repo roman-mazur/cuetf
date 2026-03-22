@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_frontdoor")
 	close({
+		backend_pool!: matchN(1, [#backend_pool, [_, ...] & [...#backend_pool]])
+		backend_pool_health_probe!: matchN(1, [#backend_pool_health_probe, list.MaxItems(5000) & [_, ...] & [...#backend_pool_health_probe]])
+		backend_pool_load_balancing!: matchN(1, [#backend_pool_load_balancing, list.MaxItems(5000) & [_, ...] & [...#backend_pool_load_balancing]])
+		backend_pool_settings?: matchN(1, [#backend_pool_settings, [...#backend_pool_settings]])
+		frontend_endpoint!: matchN(1, [#frontend_endpoint, list.MaxItems(500) & [_, ...] & [...#frontend_endpoint]])
+		routing_rule!: matchN(1, [#routing_rule, list.MaxItems(500) & [_, ...] & [...#routing_rule]])
+		timeouts?: #timeouts
 		backend_pool_health_probes?: [string]:           string
 		backend_pool_load_balancing_settings?: [string]: string
 		backend_pools?: [string]:                        string
@@ -19,20 +26,13 @@ import "list"
 		})]
 		friendly_name?: string
 		frontend_endpoints?: [string]: string
-		header_frontdoor_id?: string
-		id?:                  string
-		backend_pool!: matchN(1, [#backend_pool, [_, ...] & [...#backend_pool]])
+		header_frontdoor_id?:   string
+		id?:                    string
 		load_balancer_enabled?: bool
 		name!:                  string
-		backend_pool_health_probe!: matchN(1, [#backend_pool_health_probe, list.MaxItems(5000) & [_, ...] & [...#backend_pool_health_probe]])
-		resource_group_name!: string
+		resource_group_name!:   string
 		routing_rules?: [string]: string
 		tags?: [string]:          string
-		backend_pool_load_balancing!: matchN(1, [#backend_pool_load_balancing, list.MaxItems(5000) & [_, ...] & [...#backend_pool_load_balancing]])
-		backend_pool_settings?: matchN(1, [#backend_pool_settings, [...#backend_pool_settings]])
-		frontend_endpoint!: matchN(1, [#frontend_endpoint, list.MaxItems(500) & [_, ...] & [...#frontend_endpoint]])
-		routing_rule!: matchN(1, [#routing_rule, list.MaxItems(500) & [_, ...] & [...#routing_rule]])
-		timeouts?: #timeouts
 	})
 
 	#backend_pool: close({
@@ -77,13 +77,13 @@ import "list"
 
 	#routing_rule: close({
 		forwarding_configuration?: matchN(1, [_#defs."/$defs/routing_rule/$defs/forwarding_configuration", list.MaxItems(1) & [..._#defs."/$defs/routing_rule/$defs/forwarding_configuration"]])
+		redirect_configuration?: matchN(1, [_#defs."/$defs/routing_rule/$defs/redirect_configuration", list.MaxItems(1) & [..._#defs."/$defs/routing_rule/$defs/redirect_configuration"]])
 		accepted_protocols!: [...string]
 		enabled?: bool
 		frontend_endpoints!: [...string]
 		id?:   string
 		name!: string
 		patterns_to_match!: [...string]
-		redirect_configuration?: matchN(1, [_#defs."/$defs/routing_rule/$defs/redirect_configuration", list.MaxItems(1) & [..._#defs."/$defs/routing_rule/$defs/redirect_configuration"]])
 	})
 
 	#timeouts: close({

@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_machine_learning_compute_cluster")
 	close({
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		scale_settings!: matchN(1, [#scale_settings, list.MaxItems(1) & [_, ...] & [...#scale_settings]])
+		ssh?: matchN(1, [#ssh, list.MaxItems(1) & [...#ssh]])
+		timeouts?:                      #timeouts
 		description?:                   string
 		id?:                            string
 		local_auth_enabled?:            bool
@@ -13,15 +17,11 @@ import "list"
 		machine_learning_workspace_id!: string
 		name!:                          string
 		node_public_ip_enabled?:        bool
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		scale_settings!: matchN(1, [#scale_settings, list.MaxItems(1) & [_, ...] & [...#scale_settings]])
-		ssh?: matchN(1, [#ssh, list.MaxItems(1) & [...#ssh]])
-		ssh_public_access_enabled?: bool
-		subnet_resource_id?:        string
+		ssh_public_access_enabled?:     bool
+		subnet_resource_id?:            string
 		tags?: [string]: string
 		vm_priority!: string
 		vm_size!:     string
-		timeouts?:    #timeouts
 	})
 
 	#identity: close({

@@ -6,18 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_managed_redis")
 	close({
+		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
+		default_database?: matchN(1, [#default_database, list.MaxItems(1) & [...#default_database]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:                  #timeouts
 		high_availability_enabled?: bool
 		hostname?:                  string
 		id?:                        string
 		location!:                  string
 		name!:                      string
-		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
-		public_network_access?: string
-		default_database?: matchN(1, [#default_database, list.MaxItems(1) & [...#default_database]])
-		resource_group_name!: string
-		sku_name!:            string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		timeouts?: #timeouts
+		public_network_access?:     string
+		resource_group_name!:       string
+		sku_name!:                  string
 		tags?: [string]: string
 	})
 
@@ -27,6 +27,7 @@ import "list"
 	})
 
 	#default_database: close({
+		module?: matchN(1, [_#defs."/$defs/default_database/$defs/module", list.MaxItems(4) & [..._#defs."/$defs/default_database/$defs/module"]])
 		access_keys_authentication_enabled?:            bool
 		client_protocol?:                               string
 		clustering_policy?:                             string
@@ -36,9 +37,8 @@ import "list"
 		persistence_append_only_file_backup_frequency?: string
 		persistence_redis_database_backup_frequency?:   string
 		port?:                                          number
-		module?: matchN(1, [_#defs."/$defs/default_database/$defs/module", list.MaxItems(4) & [..._#defs."/$defs/default_database/$defs/module"]])
-		primary_access_key?:   string
-		secondary_access_key?: string
+		primary_access_key?:                            string
+		secondary_access_key?:                          string
 	})
 
 	#identity: close({

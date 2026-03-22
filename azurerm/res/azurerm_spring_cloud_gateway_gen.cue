@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_gateway")
 	close({
+		api_metadata?: matchN(1, [#api_metadata, list.MaxItems(1) & [...#api_metadata]])
+		client_authorization?: matchN(1, [#client_authorization, list.MaxItems(1) & [...#client_authorization]])
+		cors?: matchN(1, [#cors, list.MaxItems(1) & [...#cors]])
+		local_response_cache_per_instance?: matchN(1, [#local_response_cache_per_instance, list.MaxItems(1) & [...#local_response_cache_per_instance]])
+		local_response_cache_per_route?: matchN(1, [#local_response_cache_per_route, list.MaxItems(1) & [...#local_response_cache_per_route]])
+		quota?: matchN(1, [#quota, list.MaxItems(1) & [...#quota]])
+		sso?: matchN(1, [#sso, list.MaxItems(1) & [...#sso]])
+		timeouts?: #timeouts
 		application_performance_monitoring_ids?: [...string]
 		application_performance_monitoring_types?: [...string]
 		environment_variables?: [string]: string
@@ -15,16 +23,8 @@ import "list"
 		name!:                          string
 		public_network_access_enabled?: bool
 		sensitive_environment_variables?: [string]: string
-		api_metadata?: matchN(1, [#api_metadata, list.MaxItems(1) & [...#api_metadata]])
 		spring_cloud_service_id!: string
 		url?:                     string
-		client_authorization?: matchN(1, [#client_authorization, list.MaxItems(1) & [...#client_authorization]])
-		cors?: matchN(1, [#cors, list.MaxItems(1) & [...#cors]])
-		local_response_cache_per_instance?: matchN(1, [#local_response_cache_per_instance, list.MaxItems(1) & [...#local_response_cache_per_instance]])
-		local_response_cache_per_route?: matchN(1, [#local_response_cache_per_route, list.MaxItems(1) & [...#local_response_cache_per_route]])
-		quota?: matchN(1, [#quota, list.MaxItems(1) & [...#quota]])
-		sso?: matchN(1, [#sso, list.MaxItems(1) & [...#sso]])
-		timeouts?: #timeouts
 	})
 
 	#api_metadata: close({

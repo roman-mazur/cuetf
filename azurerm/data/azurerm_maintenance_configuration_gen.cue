@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_maintenance_configuration")
 	close({
+		timeouts?:                 #timeouts
 		id?:                       string
 		in_guest_user_patch_mode?: string
 		install_patches?: [...close({
@@ -25,7 +26,6 @@ package data
 		resource_group_name!: string
 		scope?:               string
 		tags?: [string]: string
-		timeouts?:   #timeouts
 		visibility?: string
 		window?: [...close({
 			duration?:             string

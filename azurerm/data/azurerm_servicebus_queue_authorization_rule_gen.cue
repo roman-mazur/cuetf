@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_servicebus_queue_authorization_rule")
 	close({
+		timeouts?:                          #timeouts
 		id?:                                string
 		listen?:                            bool
 		manage?:                            bool
@@ -16,7 +17,6 @@ package data
 		queue_name?:                        string
 		resource_group_name?:               string
 		secondary_connection_string?:       string
-		timeouts?:                          #timeouts
 		secondary_connection_string_alias?: string
 		secondary_key?:                     string
 		send?:                              bool

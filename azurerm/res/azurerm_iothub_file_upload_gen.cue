@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iothub_file_upload")
 	close({
+		timeouts?:              #timeouts
 		authentication_type?:   string
 		connection_string!:     string
 		container_name!:        string
@@ -13,7 +14,6 @@ package res
 		iothub_id!:             string
 		lock_duration?:         string
 		max_delivery_count?:    number
-		timeouts?:              #timeouts
 		notifications_enabled?: bool
 		sas_ttl?:               string
 	})

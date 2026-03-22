@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_bot_service_azure_bot")
 	close({
+		timeouts?:                              #timeouts
 		cmk_key_vault_key_url?:                 string
 		developer_app_insights_api_key?:        string
 		developer_app_insights_application_id?: string
@@ -22,7 +23,6 @@ package res
 		microsoft_app_type?:            string
 		name!:                          string
 		public_network_access_enabled?: bool
-		timeouts?:                      #timeouts
 		resource_group_name!:           string
 		sku!:                           string
 		streaming_endpoint_enabled?:    bool

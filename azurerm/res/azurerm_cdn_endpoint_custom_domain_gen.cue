@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cdn_endpoint_custom_domain")
 	close({
 		cdn_managed_https?: matchN(1, [#cdn_managed_https, list.MaxItems(1) & [...#cdn_managed_https]])
+		timeouts?: #timeouts
+		user_managed_https?: matchN(1, [#user_managed_https, list.MaxItems(1) & [...#user_managed_https]])
 		cdn_endpoint_id!: string
 		host_name!:       string
 		id?:              string
 		name!:            string
-		timeouts?:        #timeouts
-		user_managed_https?: matchN(1, [#user_managed_https, list.MaxItems(1) & [...#user_managed_https]])
 	})
 
 	#cdn_managed_https: close({

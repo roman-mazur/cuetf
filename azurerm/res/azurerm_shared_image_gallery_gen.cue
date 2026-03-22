@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_shared_image_gallery")
 	close({
 		sharing?: matchN(1, [#sharing, list.MaxItems(1) & [...#sharing]])
+		timeouts?:            #timeouts
 		description?:         string
 		id?:                  string
 		location!:            string
@@ -14,7 +15,6 @@ import "list"
 		resource_group_name!: string
 		tags?: [string]: string
 		unique_name?: string
-		timeouts?:    #timeouts
 	})
 
 	#sharing: close({

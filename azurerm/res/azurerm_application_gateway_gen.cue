@@ -8,20 +8,7 @@ import "list"
 	close({
 		authentication_certificate?: matchN(1, [#authentication_certificate, [...#authentication_certificate]])
 		autoscale_configuration?: matchN(1, [#autoscale_configuration, list.MaxItems(1) & [...#autoscale_configuration]])
-		fips_enabled?:                      bool
-		firewall_policy_id?:                string
-		force_firewall_policy_association?: bool
-		http2_enabled?:                     bool
-		id?:                                string
-		location!:                          string
-		name!:                              string
 		backend_address_pool!: matchN(1, [#backend_address_pool, [_, ...] & [...#backend_address_pool]])
-		private_endpoint_connection?: [...close({
-			id?:   string
-			name?: string
-		})]
-		resource_group_name!: string
-		tags?: [string]: string
 		backend_http_settings!: matchN(1, [#backend_http_settings, [_, ...] & [...#backend_http_settings]])
 		custom_error_configuration?: matchN(1, [#custom_error_configuration, [...#custom_error_configuration]])
 		frontend_ip_configuration!: matchN(1, [#frontend_ip_configuration, [_, ...] & [...#frontend_ip_configuration]])
@@ -34,7 +21,6 @@ import "list"
 		probe?: matchN(1, [#probe, [...#probe]])
 		redirect_configuration?: matchN(1, [#redirect_configuration, [...#redirect_configuration]])
 		request_routing_rule!: matchN(1, [#request_routing_rule, [_, ...] & [...#request_routing_rule]])
-		zones?: [...string]
 		rewrite_rule_set?: matchN(1, [#rewrite_rule_set, [...#rewrite_rule_set]])
 		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		ssl_certificate?: matchN(1, [#ssl_certificate, [...#ssl_certificate]])
@@ -45,6 +31,20 @@ import "list"
 		trusted_root_certificate?: matchN(1, [#trusted_root_certificate, [...#trusted_root_certificate]])
 		url_path_map?: matchN(1, [#url_path_map, [...#url_path_map]])
 		waf_configuration?: matchN(1, [#waf_configuration, list.MaxItems(1) & [...#waf_configuration]])
+		fips_enabled?:                      bool
+		firewall_policy_id?:                string
+		force_firewall_policy_association?: bool
+		http2_enabled?:                     bool
+		id?:                                string
+		location!:                          string
+		name!:                              string
+		private_endpoint_connection?: [...close({
+			id?:   string
+			name?: string
+		})]
+		resource_group_name!: string
+		tags?: [string]: string
+		zones?: [...string]
 	})
 
 	#authentication_certificate: close({
@@ -66,6 +66,8 @@ import "list"
 	})
 
 	#backend_http_settings: close({
+		authentication_certificate?: matchN(1, [_#defs."/$defs/backend_http_settings/$defs/authentication_certificate", [..._#defs."/$defs/backend_http_settings/$defs/authentication_certificate"]])
+		connection_draining?: matchN(1, [_#defs."/$defs/backend_http_settings/$defs/connection_draining", list.MaxItems(1) & [..._#defs."/$defs/backend_http_settings/$defs/connection_draining"]])
 		affinity_cookie_name?:                 string
 		cookie_based_affinity!:                string
 		dedicated_backend_connection_enabled?: bool
@@ -74,13 +76,11 @@ import "list"
 		name!:                                 string
 		path?:                                 string
 		pick_host_name_from_backend_address?:  bool
-		authentication_certificate?: matchN(1, [_#defs."/$defs/backend_http_settings/$defs/authentication_certificate", [..._#defs."/$defs/backend_http_settings/$defs/authentication_certificate"]])
-		port!:       number
-		probe_id?:   string
-		probe_name?: string
-		connection_draining?: matchN(1, [_#defs."/$defs/backend_http_settings/$defs/connection_draining", list.MaxItems(1) & [..._#defs."/$defs/backend_http_settings/$defs/connection_draining"]])
-		protocol!:        string
-		request_timeout?: number
+		port!:                                 number
+		probe_id?:                             string
+		probe_name?:                           string
+		protocol!:                             string
+		request_timeout?:                      number
 		trusted_root_certificate_names?: [...string]
 	})
 
@@ -119,6 +119,7 @@ import "list"
 	})
 
 	#http_listener: close({
+		custom_error_configuration?: matchN(1, [_#defs."/$defs/http_listener/$defs/custom_error_configuration", [..._#defs."/$defs/http_listener/$defs/custom_error_configuration"]])
 		firewall_policy_id?:             string
 		frontend_ip_configuration_id?:   string
 		frontend_ip_configuration_name!: string
@@ -126,12 +127,11 @@ import "list"
 		frontend_port_name!:             string
 		host_name?:                      string
 		host_names?: [...string]
-		id?:                 string
-		name!:               string
-		protocol!:           string
-		require_sni?:        bool
-		ssl_certificate_id?: string
-		custom_error_configuration?: matchN(1, [_#defs."/$defs/http_listener/$defs/custom_error_configuration", [..._#defs."/$defs/http_listener/$defs/custom_error_configuration"]])
+		id?:                   string
+		name!:                 string
+		protocol!:             string
+		require_sni?:          bool
+		ssl_certificate_id?:   string
 		ssl_certificate_name?: string
 		ssl_profile_id?:       string
 		ssl_profile_name?:     string
@@ -151,6 +151,7 @@ import "list"
 	})
 
 	#probe: close({
+		match?: matchN(1, [_#defs."/$defs/probe/$defs/match", list.MaxItems(1) & [..._#defs."/$defs/probe/$defs/match"]])
 		host?:                                      string
 		id?:                                        string
 		interval!:                                  number
@@ -160,9 +161,8 @@ import "list"
 		pick_host_name_from_backend_http_settings?: bool
 		port?:                                      number
 		protocol!:                                  string
-		match?: matchN(1, [_#defs."/$defs/probe/$defs/match", list.MaxItems(1) & [..._#defs."/$defs/probe/$defs/match"]])
-		timeout!:             number
-		unhealthy_threshold!: number
+		timeout!:                                   number
+		unhealthy_threshold!:                       number
 	})
 
 	#redirect_configuration: close({
@@ -254,6 +254,7 @@ import "list"
 	})
 
 	#url_path_map: close({
+		path_rule!: matchN(1, [_#defs."/$defs/url_path_map/$defs/path_rule", [_, ...] & [..._#defs."/$defs/url_path_map/$defs/path_rule"]])
 		default_backend_address_pool_id?:     string
 		default_backend_address_pool_name?:   string
 		default_backend_http_settings_id?:    string
@@ -261,14 +262,14 @@ import "list"
 		default_redirect_configuration_id?:   string
 		default_redirect_configuration_name?: string
 		default_rewrite_rule_set_id?:         string
-		path_rule!: matchN(1, [_#defs."/$defs/url_path_map/$defs/path_rule", [_, ...] & [..._#defs."/$defs/url_path_map/$defs/path_rule"]])
-		default_rewrite_rule_set_name?: string
-		id?:                            string
-		name!:                          string
+		default_rewrite_rule_set_name?:       string
+		id?:                                  string
+		name!:                                string
 	})
 
 	#waf_configuration: close({
 		disabled_rule_group?: matchN(1, [_#defs."/$defs/waf_configuration/$defs/disabled_rule_group", [..._#defs."/$defs/waf_configuration/$defs/disabled_rule_group"]])
+		exclusion?: matchN(1, [_#defs."/$defs/waf_configuration/$defs/exclusion", [..._#defs."/$defs/waf_configuration/$defs/exclusion"]])
 		enabled!:                  bool
 		file_upload_limit_mb?:     number
 		firewall_mode!:            string
@@ -276,7 +277,6 @@ import "list"
 		request_body_check?:       bool
 		rule_set_type?:            string
 		rule_set_version!:         string
-		exclusion?: matchN(1, [_#defs."/$defs/waf_configuration/$defs/exclusion", [..._#defs."/$defs/waf_configuration/$defs/exclusion"]])
 	})
 
 	_#defs: "/$defs/backend_http_settings/$defs/authentication_certificate": close({

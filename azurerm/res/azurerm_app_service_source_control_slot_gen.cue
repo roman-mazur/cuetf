@@ -6,12 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_app_service_source_control_slot")
 	close({
+		github_action_configuration?: matchN(1, [#github_action_configuration, list.MaxItems(1) & [...#github_action_configuration]])
+		timeouts?: #timeouts
+
 		// The URL for the repository
 		branch?: string
+		id?:     string
 
 		// The branch name to use for deployments.
 		repo_url?: string
-		id?:       string
 
 		// Should the Deployment Rollback be enabled? Defaults to `false`
 		rollback_enabled?: bool
@@ -30,8 +33,6 @@ import "list"
 		// continuous integration, such as webhooks into online repos
 		// such as GitHub. Defaults to `false`
 		use_manual_integration?: bool
-		github_action_configuration?: matchN(1, [#github_action_configuration, list.MaxItems(1) & [...#github_action_configuration]])
-		timeouts?: #timeouts
 
 		// The repository specified is Mercurial. Defaults to `false`.
 		use_mercurial?: bool

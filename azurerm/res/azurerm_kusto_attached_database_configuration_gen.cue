@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kusto_attached_database_configuration")
 	close({
-		attached_database_names?: [...string]
-		cluster_id?:    string
-		cluster_name!:  string
-		database_name!: string
 		sharing?: matchN(1, [#sharing, list.MaxItems(1) & [...#sharing]])
+		timeouts?: #timeouts
+		attached_database_names?: [...string]
+		cluster_id?:                          string
+		cluster_name!:                        string
+		database_name!:                       string
 		default_principal_modification_kind?: string
 		id?:                                  string
 		location!:                            string
 		name!:                                string
 		resource_group_name!:                 string
-		timeouts?:                            #timeouts
 	})
 
 	#sharing: close({

@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_arc_kubernetes_cluster")
 	close({
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		timeouts?:                     #timeouts
 		agent_public_key_certificate!: string
 		agent_version?:                string
 		distribution?:                 string
@@ -13,11 +15,9 @@ import "list"
 		infrastructure?:               string
 		kubernetes_version?:           string
 		location!:                     string
-		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
-		name!:                string
-		offering?:            string
-		timeouts?:            #timeouts
-		resource_group_name!: string
+		name!:                         string
+		offering?:                     string
+		resource_group_name!:          string
 		tags?: [string]: string
 		total_core_count?: number
 		total_node_count?: number

@@ -6,17 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_hdinsight_hbase_cluster")
 	close({
-		cluster_version!: string
-		https_endpoint?:  string
-		id?:              string
-		location!:        string
-		name!:            string
 		component_version!: matchN(1, [#component_version, list.MaxItems(1) & [_, ...] & [...#component_version]])
-		resource_group_name!: string
-		ssh_endpoint?:        string
-		tags?: [string]: string
-		tier!:            string
-		tls_min_version?: string
 		compute_isolation?: matchN(1, [#compute_isolation, list.MaxItems(1) & [...#compute_isolation]])
 		disk_encryption?: matchN(1, [#disk_encryption, [...#disk_encryption]])
 		extension?: matchN(1, [#extension, list.MaxItems(1) & [...#extension]])
@@ -29,7 +19,17 @@ import "list"
 		security_profile?: matchN(1, [#security_profile, list.MaxItems(1) & [...#security_profile]])
 		storage_account?: matchN(1, [#storage_account, [...#storage_account]])
 		storage_account_gen2?: matchN(1, [#storage_account_gen2, list.MaxItems(1) & [...#storage_account_gen2]])
-		timeouts?: #timeouts
+		timeouts?:            #timeouts
+		cluster_version!:     string
+		https_endpoint?:      string
+		id?:                  string
+		location!:            string
+		name!:                string
+		resource_group_name!: string
+		ssh_endpoint?:        string
+		tags?: [string]: string
+		tier!:            string
+		tls_min_version?: string
 	})
 
 	#component_version: close({
@@ -164,6 +164,7 @@ import "list"
 
 	_#defs: "/$defs/roles/$defs/worker_node": close({
 		autoscale?: matchN(1, [_#defs."/$defs/roles/$defs/worker_node/$defs/autoscale", list.MaxItems(1) & [..._#defs."/$defs/roles/$defs/worker_node/$defs/autoscale"]])
+		script_actions?: matchN(1, [_#defs."/$defs/roles/$defs/worker_node/$defs/script_actions", [..._#defs."/$defs/roles/$defs/worker_node/$defs/script_actions"]])
 		password?: string
 		ssh_keys?: [...string]
 		subnet_id?:             string
@@ -171,7 +172,6 @@ import "list"
 		username!:              string
 		virtual_network_id?:    string
 		vm_size!:               string
-		script_actions?: matchN(1, [_#defs."/$defs/roles/$defs/worker_node/$defs/script_actions", [..._#defs."/$defs/roles/$defs/worker_node/$defs/script_actions"]])
 	})
 
 	_#defs: "/$defs/roles/$defs/worker_node/$defs/autoscale": close({

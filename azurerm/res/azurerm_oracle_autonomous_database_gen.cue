@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_oracle_autonomous_database")
 	close({
+		long_term_backup_schedule?: matchN(1, [#long_term_backup_schedule, list.MaxItems(1) & [...#long_term_backup_schedule]])
+		timeouts?:       #timeouts
 		admin_password!: string
 		allowed_ips?: [...string]
 		auto_scaling_enabled!:             bool
@@ -18,13 +20,11 @@ import "list"
 		data_storage_size_in_tbs!: number
 		db_version!:               string
 		db_workload!:              string
-		long_term_backup_schedule?: matchN(1, [#long_term_backup_schedule, list.MaxItems(1) & [...#long_term_backup_schedule]])
 		display_name!:             string
 		id?:                       string
 		license_model!:            string
 		location!:                 string
 		mtls_connection_required!: bool
-		timeouts?:                 #timeouts
 		name!:                     string
 		national_character_set!:   string
 		resource_group_name!:      string

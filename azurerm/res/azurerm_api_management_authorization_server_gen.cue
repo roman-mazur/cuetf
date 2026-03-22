@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management_authorization_server")
 	close({
+		timeouts?: #timeouts
+		token_body_parameter?: matchN(1, [#token_body_parameter, [...#token_body_parameter]])
 		api_management_name!:    string
 		authorization_endpoint!: string
 		authorization_methods!: [...string]
@@ -14,12 +16,10 @@ package res
 		client_secret?:                string
 		default_scope?:                string
 		description?:                  string
-		timeouts?:                     #timeouts
 		display_name!:                 string
 		grant_types!: [...string]
-		id?:   string
-		name!: string
-		token_body_parameter?: matchN(1, [#token_body_parameter, [...#token_body_parameter]])
+		id?:                      string
+		name!:                    string
 		resource_group_name!:     string
 		resource_owner_password?: string
 		resource_owner_username?: string

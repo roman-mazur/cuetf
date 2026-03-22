@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kubernetes_cluster_node_pool")
 	close({
+		kubelet_config?: matchN(1, [#kubelet_config, list.MaxItems(1) & [...#kubelet_config]])
+		linux_os_config?: matchN(1, [#linux_os_config, list.MaxItems(1) & [...#linux_os_config]])
+		node_network_profile?: matchN(1, [#node_network_profile, list.MaxItems(1) & [...#node_network_profile]])
+		timeouts?: #timeouts
+		upgrade_settings?: matchN(1, [#upgrade_settings, list.MaxItems(1) & [...#upgrade_settings]])
+		windows_profile?: matchN(1, [#windows_profile, list.MaxItems(1) & [...#windows_profile]])
 		auto_scaling_enabled?:          bool
 		capacity_reservation_group_id?: string
 		eviction_policy?:               string
@@ -23,17 +29,13 @@ import "list"
 		mode?:                          string
 		name!:                          string
 		node_count?:                    number
-		kubelet_config?: matchN(1, [#kubelet_config, list.MaxItems(1) & [...#kubelet_config]])
 		node_labels?: [string]: string
 		node_public_ip_enabled?:   bool
 		node_public_ip_prefix_id?: string
 		node_taints?: [...string]
-		linux_os_config?: matchN(1, [#linux_os_config, list.MaxItems(1) & [...#linux_os_config]])
-		node_network_profile?: matchN(1, [#node_network_profile, list.MaxItems(1) & [...#node_network_profile]])
 		orchestrator_version?:         string
 		os_disk_size_gb?:              number
 		os_disk_type?:                 string
-		timeouts?:                     #timeouts
 		os_sku?:                       string
 		os_type?:                      string
 		pod_subnet_id?:                string
@@ -46,10 +48,8 @@ import "list"
 		temporary_name_for_rotation?: string
 		ultra_ssd_enabled?:           bool
 		vm_size?:                     string
-		upgrade_settings?: matchN(1, [#upgrade_settings, list.MaxItems(1) & [...#upgrade_settings]])
-		vnet_subnet_id?: string
-		windows_profile?: matchN(1, [#windows_profile, list.MaxItems(1) & [...#windows_profile]])
-		workload_runtime?: string
+		vnet_subnet_id?:              string
+		workload_runtime?:            string
 		zones?: [...string]
 	})
 

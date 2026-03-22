@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stack_hci_logical_network")
 	close({
 		subnet!: matchN(1, [#subnet, list.MaxItems(1) & [_, ...] & [...#subnet]])
+		timeouts?:           #timeouts
 		custom_location_id!: string
 		dns_servers?: [...string]
 		id?:                  string
@@ -15,7 +16,6 @@ import "list"
 		resource_group_name!: string
 		tags?: [string]: string
 		virtual_switch_name!: string
-		timeouts?:            #timeouts
 	})
 
 	#subnet: close({

@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_integration_runtime_self_hosted")
 	close({
 		rbac_authorization?: matchN(1, [#rbac_authorization, [...#rbac_authorization]])
+		timeouts?:                                     #timeouts
 		data_factory_id!:                              string
 		description?:                                  string
 		id?:                                           string
@@ -12,7 +13,6 @@ package res
 		primary_authorization_key?:                    string
 		secondary_authorization_key?:                  string
 		self_contained_interactive_authoring_enabled?: bool
-		timeouts?:                                     #timeouts
 	})
 
 	#rbac_authorization: close({

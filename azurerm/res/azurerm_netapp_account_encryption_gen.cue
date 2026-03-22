@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_netapp_account_encryption")
 	close({
+		timeouts?: #timeouts
+
 		// The full resource ID of the cross-tenant key vault. Required
 		// when using federated_client_id for cross-tenant scenarios.
 		cross_tenant_key_vault_resource_id?: string
@@ -18,7 +20,6 @@ package res
 
 		// The ID of the NetApp Account where encryption will be set.
 		netapp_account_id!: string
-		timeouts?:          #timeouts
 
 		// The Principal ID of the System Assigned Identity to use for
 		// encryption.

@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_shared_image")
 	close({
+		timeouts?:                            #timeouts
 		accelerated_network_support_enabled?: bool
 		architecture?:                        string
 		confidential_vm_enabled?:             bool
@@ -30,7 +31,6 @@ package data
 		})]
 		release_note_uri?:    string
 		resource_group_name!: string
-		timeouts?:            #timeouts
 		specialized?:         bool
 		tags?: [string]: string
 		trusted_launch_enabled?:   bool

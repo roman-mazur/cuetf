@@ -4,7 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_site_recovery_replicated_vm")
 	close({
-		id?: string
+		timeouts?: #timeouts
+		id?:       string
 		managed_disk?: [...close({
 			disk_id?:                    string
 			staging_storage_account_id?: string
@@ -25,7 +26,6 @@ package res
 		})]
 		multi_vm_group_name?: string
 		name!:                string
-		timeouts?:            #timeouts
 		network_interface?: [...close({
 			failover_test_public_ip_address_id?: string
 			failover_test_static_ip?:            string

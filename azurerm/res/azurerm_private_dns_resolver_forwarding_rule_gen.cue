@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_private_dns_resolver_forwarding_rule")
 	close({
 		target_dns_servers!: matchN(1, [#target_dns_servers, [_, ...] & [...#target_dns_servers]])
+		timeouts?:                  #timeouts
 		dns_forwarding_ruleset_id!: string
 		domain_name!:               string
 		enabled?:                   bool
 		id?:                        string
 		metadata?: [string]: string
-		name!:     string
-		timeouts?: #timeouts
+		name!: string
 	})
 
 	#target_dns_servers: close({

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_app_service_environment_v3")
 	close({
+		cluster_setting?: matchN(1, [#cluster_setting, [...#cluster_setting]])
+		timeouts?:                               #timeouts
 		allow_new_private_endpoint_connections?: bool
 		dedicated_host_count?:                   number
 		dns_suffix?:                             string
@@ -18,12 +20,10 @@ package res
 		internal_load_balancing_mode?: string
 		ip_ssl_address_count?:         number
 		linux_outbound_ip_addresses?: [...string]
-		cluster_setting?: matchN(1, [#cluster_setting, [...#cluster_setting]])
 		location?:                 string
 		name!:                     string
 		pricing_tier?:             string
 		remote_debugging_enabled?: bool
-		timeouts?:                 #timeouts
 		resource_group_name!:      string
 		subnet_id!:                string
 		tags?: [string]: string

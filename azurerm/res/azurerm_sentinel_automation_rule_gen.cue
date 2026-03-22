@@ -4,20 +4,20 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_sentinel_automation_rule")
 	close({
+		action_incident?: matchN(1, [#action_incident, [...#action_incident]])
+		action_incident_task?: matchN(1, [#action_incident_task, [...#action_incident_task]])
+		action_playbook?: matchN(1, [#action_playbook, [...#action_playbook]])
+		timeouts?:                   #timeouts
 		condition_json?:             string
 		display_name!:               string
 		enabled?:                    bool
 		expiration?:                 string
 		id?:                         string
 		log_analytics_workspace_id!: string
-		action_incident?: matchN(1, [#action_incident, [...#action_incident]])
-		action_incident_task?: matchN(1, [#action_incident_task, [...#action_incident_task]])
-		action_playbook?: matchN(1, [#action_playbook, [...#action_playbook]])
-		name!:          string
-		order!:         number
-		triggers_on?:   string
-		triggers_when?: string
-		timeouts?:      #timeouts
+		name!:                       string
+		order!:                      number
+		triggers_on?:                string
+		triggers_when?:              string
 	})
 
 	#action_incident: close({

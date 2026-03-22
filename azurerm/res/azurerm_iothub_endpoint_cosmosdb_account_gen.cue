@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iothub_endpoint_cosmosdb_account")
 	close({
+		timeouts?:               #timeouts
 		authentication_type?:    string
 		container_name!:         string
 		database_name!:          string
@@ -16,7 +17,6 @@ package res
 		partition_key_template?: string
 		primary_key?:            string
 		resource_group_name!:    string
-		timeouts?:               #timeouts
 		secondary_key?:          string
 		subscription_id?:        string
 	})

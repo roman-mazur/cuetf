@@ -6,20 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_new_relic_monitor")
 	close({
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		plan!: matchN(1, [#plan, list.MaxItems(1) & [_, ...] & [...#plan]])
+		timeouts?: #timeouts
+		user!: matchN(1, [#user, list.MaxItems(1) & [_, ...] & [...#user]])
 		account_creation_source?: string
 		account_id?:              string
 		id?:                      string
 		ingestion_key?:           string
 		location!:                string
 		name!:                    string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		plan!: matchN(1, [#plan, list.MaxItems(1) & [_, ...] & [...#plan]])
-		timeouts?:            #timeouts
-		org_creation_source?: string
-		organization_id?:     string
-		resource_group_name!: string
-		user_id?:             string
-		user!: matchN(1, [#user, list.MaxItems(1) & [_, ...] & [...#user]])
+		org_creation_source?:     string
+		organization_id?:         string
+		resource_group_name!:     string
+		user_id?:                 string
 	})
 
 	#identity: close({

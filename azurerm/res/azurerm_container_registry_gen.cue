@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_registry")
 	close({
+		georeplications?: matchN(1, [#georeplications, [...#georeplications]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:               #timeouts
 		admin_enabled?:          bool
 		admin_password?:         string
 		admin_username?:         string
@@ -16,13 +19,11 @@ import "list"
 			identity_client_id?: string
 			key_vault_key_id?:   string
 		})]
-		export_policy_enabled?: bool
-		id?:                    string
-		location!:              string
-		login_server?:          string
-		name!:                  string
-		georeplications?: matchN(1, [#georeplications, [...#georeplications]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		export_policy_enabled?:      bool
+		id?:                         string
+		location!:                   string
+		login_server?:               string
+		name!:                       string
 		network_rule_bypass_option?: string
 		network_rule_set?: [...close({
 			default_action?: string
@@ -33,7 +34,6 @@ import "list"
 		})]
 		public_network_access_enabled?: bool
 		quarantine_policy_enabled?:     bool
-		timeouts?:                      #timeouts
 		resource_group_name!:           string
 		retention_policy_in_days?:      number
 		sku!:                           string

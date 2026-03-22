@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_kubernetes_cluster_node_pool")
 	close({
+		timeouts?:                #timeouts
 		auto_scaling_enabled?:    bool
 		eviction_policy?:         string
 		gpu_driver?:              string
@@ -19,7 +20,6 @@ package data
 		node_public_ip_enabled?:   bool
 		node_public_ip_prefix_id?: string
 		node_taints?: [...string]
-		timeouts?:                     #timeouts
 		orchestrator_version?:         string
 		os_disk_size_gb?:              number
 		os_disk_type?:                 string

@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_linked_service_web")
 	close({
+		timeouts?: #timeouts
 		additional_properties?: [string]: string
 		annotations?: [...string]
 		authentication_type!:      string
@@ -12,7 +13,6 @@ package res
 		id?:                       string
 		integration_runtime_name?: string
 		name!:                     string
-		timeouts?:                 #timeouts
 		parameters?: [string]: string
 		password?: string
 		url!:      string

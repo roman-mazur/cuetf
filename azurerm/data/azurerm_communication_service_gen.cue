@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_communication_service")
 	close({
+		timeouts?:                    #timeouts
 		data_location?:               string
 		hostname?:                    string
 		id?:                          string
@@ -13,7 +14,6 @@ package data
 		primary_key?:                 string
 		resource_group_name!:         string
 		secondary_connection_string?: string
-		timeouts?:                    #timeouts
 		secondary_key?:               string
 		tags?: [string]: string
 	})

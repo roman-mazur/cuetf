@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_dynatrace_application_performance_monitoring")
 	close({
+		timeouts?:                #timeouts
 		api_token?:               string
 		api_url?:                 string
 		connection_point!:        string
@@ -11,7 +12,6 @@ package res
 		globally_enabled?:        bool
 		id?:                      string
 		name!:                    string
-		timeouts?:                #timeouts
 		spring_cloud_service_id!: string
 		tenant!:                  string
 		tenant_token!:            string

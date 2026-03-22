@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_blueprint_assignment")
 	close({
+		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		timeouts?:       #timeouts
 		blueprint_name?: string
 		description?:    string
 		display_name?:   string
@@ -13,12 +15,10 @@ import "list"
 		location!:       string
 		lock_exclude_actions?: [...string]
 		lock_exclude_principals?: [...string]
-		lock_mode?: string
-		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		lock_mode?:              string
 		name!:                   string
 		parameter_values?:       string
 		resource_groups?:        string
-		timeouts?:               #timeouts
 		target_subscription_id!: string
 		type?:                   string
 		version_id!:             string

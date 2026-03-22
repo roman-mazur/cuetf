@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_monitor_scheduled_query_rules_alert")
 	close({
+		timeouts?: #timeouts
 		action?: [...close({
 			action_group?: [...string]
 			custom_webhook_payload?: string
@@ -20,7 +21,6 @@ package data
 		query?:               string
 		query_type?:          string
 		resource_group_name!: string
-		timeouts?:            #timeouts
 		severity?:            number
 		tags?: [string]: string
 		throttling?:  number

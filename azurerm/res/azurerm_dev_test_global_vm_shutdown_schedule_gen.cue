@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dev_test_global_vm_shutdown_schedule")
 	close({
 		notification_settings!: matchN(1, [#notification_settings, list.MaxItems(1) & [_, ...] & [...#notification_settings]])
+		timeouts?:              #timeouts
 		daily_recurrence_time!: string
 		enabled?:               bool
 		id?:                    string
@@ -14,7 +15,6 @@ import "list"
 		tags?: [string]: string
 		timezone!:           string
 		virtual_machine_id!: string
-		timeouts?:           #timeouts
 	})
 
 	#notification_settings: close({

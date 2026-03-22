@@ -8,15 +8,15 @@ import "list"
 	close({
 		azure_active_directory_authentication?: matchN(1, [#azure_active_directory_authentication, [...#azure_active_directory_authentication]])
 		client_revoked_certificate?: matchN(1, [#client_revoked_certificate, [...#client_revoked_certificate]])
+		client_root_certificate?: matchN(1, [#client_root_certificate, [...#client_root_certificate]])
+		ipsec_policy?: matchN(1, [#ipsec_policy, list.MaxItems(1) & [...#ipsec_policy]])
+		radius?: matchN(1, [#radius, list.MaxItems(1) & [...#radius]])
+		timeouts?:            #timeouts
 		id?:                  string
 		location!:            string
 		name!:                string
 		resource_group_name!: string
-		client_root_certificate?: matchN(1, [#client_root_certificate, [...#client_root_certificate]])
-		ipsec_policy?: matchN(1, [#ipsec_policy, list.MaxItems(1) & [...#ipsec_policy]])
-		radius?: matchN(1, [#radius, list.MaxItems(1) & [...#radius]])
 		tags?: [string]: string
-		timeouts?: #timeouts
 		vpn_authentication_types!: [...string]
 		vpn_protocols?: [...string]
 	})

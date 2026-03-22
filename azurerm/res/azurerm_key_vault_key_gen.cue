@@ -6,13 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_key_vault_key")
 	close({
-		curve?: string
 		rotation_policy?: matchN(1, [#rotation_policy, list.MaxItems(1) & [...#rotation_policy]])
+		timeouts?:        #timeouts
+		curve?:           string
 		e?:               string
 		expiration_date?: string
 		id?:              string
 		key_opts!: [...string]
-		timeouts?:                #timeouts
 		key_size?:                number
 		key_type!:                string
 		key_vault_id!:            string

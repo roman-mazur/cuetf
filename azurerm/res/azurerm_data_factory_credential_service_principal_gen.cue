@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_credential_service_principal")
 	close({
+		service_principal_key?: matchN(1, [#service_principal_key, list.MaxItems(1) & [...#service_principal_key]])
+		timeouts?: #timeouts
+
 		// (Optional) List of string annotations.
 		annotations?: [...string]
 
@@ -14,15 +17,13 @@ import "list"
 
 		// (Optional) Short text description
 		description?: string
+		id?:          string
 
 		// The desired name of the credential resource
 		name!: string
-		id?:   string
 
 		// The Client ID of the Service Principal
 		service_principal_id!: string
-		service_principal_key?: matchN(1, [#service_principal_key, list.MaxItems(1) & [...#service_principal_key]])
-		timeouts?: #timeouts
 
 		// The Tenant ID of the Service Principal
 		tenant_id!: string

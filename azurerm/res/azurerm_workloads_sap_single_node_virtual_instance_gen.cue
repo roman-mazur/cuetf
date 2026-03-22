@@ -6,19 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_workloads_sap_single_node_virtual_instance")
 	close({
-		app_location!: string
-		environment!:  string
-		id?:           string
-		location!:     string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		single_server_configuration!: matchN(1, [#single_server_configuration, list.MaxItems(1) & [_, ...] & [...#single_server_configuration]])
+		timeouts?:                              #timeouts
+		app_location!:                          string
+		environment!:                           string
+		id?:                                    string
+		location!:                              string
 		managed_resource_group_name?:           string
 		managed_resources_network_access_type?: string
 		name!:                                  string
 		resource_group_name!:                   string
 		sap_fqdn!:                              string
 		sap_product!:                           string
-		single_server_configuration!: matchN(1, [#single_server_configuration, list.MaxItems(1) & [_, ...] & [...#single_server_configuration]])
-		timeouts?: #timeouts
 		tags?: [string]: string
 	})
 
@@ -29,12 +29,12 @@ import "list"
 
 	#single_server_configuration: close({
 		disk_volume_configuration?: matchN(1, [_#defs."/$defs/single_server_configuration/$defs/disk_volume_configuration", [..._#defs."/$defs/single_server_configuration/$defs/disk_volume_configuration"]])
+		virtual_machine_configuration!: matchN(1, [_#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration"]])
+		virtual_machine_resource_names?: matchN(1, [_#defs."/$defs/single_server_configuration/$defs/virtual_machine_resource_names", list.MaxItems(1) & [..._#defs."/$defs/single_server_configuration/$defs/virtual_machine_resource_names"]])
 		app_resource_group_name!: string
 		database_type?:           string
 		secondary_ip_enabled?:    bool
 		subnet_id!:               string
-		virtual_machine_configuration!: matchN(1, [_#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/single_server_configuration/$defs/virtual_machine_configuration"]])
-		virtual_machine_resource_names?: matchN(1, [_#defs."/$defs/single_server_configuration/$defs/virtual_machine_resource_names", list.MaxItems(1) & [..._#defs."/$defs/single_server_configuration/$defs/virtual_machine_resource_names"]])
 	})
 
 	#timeouts: close({

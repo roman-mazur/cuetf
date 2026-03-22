@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_custom_ip_prefix")
 	close({
+		timeouts?:                      #timeouts
 		cidr!:                          string
 		commissioning_enabled?:         bool
 		id?:                            string
@@ -12,7 +13,6 @@ package res
 		name!:                          string
 		parent_custom_ip_prefix_id?:    string
 		resource_group_name!:           string
-		timeouts?:                      #timeouts
 		roa_validity_end_date?:         string
 		tags?: [string]: string
 		wan_validation_signed_message?: string

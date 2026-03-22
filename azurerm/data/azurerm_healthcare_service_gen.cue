@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_healthcare_service")
 	close({
+		timeouts?: #timeouts
 		access_policy_object_ids?: [...string]
 		authentication_configuration?: [...close({
 			audience?:            string
@@ -23,7 +24,6 @@ package data
 		kind?:                                  string
 		location!:                              string
 		name!:                                  string
-		timeouts?:                              #timeouts
 		resource_group_name!:                   string
 		tags?: [string]: string
 	})

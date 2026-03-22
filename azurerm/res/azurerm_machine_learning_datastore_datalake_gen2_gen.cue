@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_machine_learning_datastore_datalake_gen2")
 	close({
+		timeouts?:              #timeouts
 		authority_url?:         string
 		client_id?:             string
 		client_secret?:         string
@@ -12,7 +13,6 @@ package res
 		is_default?:            bool
 		name!:                  string
 		service_data_identity?: string
-		timeouts?:              #timeouts
 		storage_container_id!:  string
 		tags?: [string]: string
 		tenant_id?:    string

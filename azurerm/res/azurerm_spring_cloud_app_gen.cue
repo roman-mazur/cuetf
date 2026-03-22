@@ -6,8 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_app")
 	close({
-		addon_json?: string
 		custom_persistent_disk?: matchN(1, [#custom_persistent_disk, [...#custom_persistent_disk]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		ingress_settings?: matchN(1, [#ingress_settings, list.MaxItems(1) & [...#ingress_settings]])
+		persistent_disk?: matchN(1, [#persistent_disk, list.MaxItems(1) & [...#persistent_disk]])
+		timeouts?:                #timeouts
+		addon_json?:              string
 		fqdn?:                    string
 		https_only?:              bool
 		id?:                      string
@@ -15,13 +19,9 @@ import "list"
 		name!:                    string
 		public_endpoint_enabled?: bool
 		resource_group_name!:     string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		ingress_settings?: matchN(1, [#ingress_settings, list.MaxItems(1) & [...#ingress_settings]])
-		service_name!: string
-		persistent_disk?: matchN(1, [#persistent_disk, list.MaxItems(1) & [...#persistent_disk]])
-		timeouts?:    #timeouts
-		tls_enabled?: bool
-		url?:         string
+		service_name!:            string
+		tls_enabled?:             bool
+		url?:                     string
 	})
 
 	#custom_persistent_disk: close({

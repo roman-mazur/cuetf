@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_new_relic_application_performance_monitoring")
 	close({
+		timeouts?:                        #timeouts
 		agent_enabled?:                   bool
 		app_name!:                        string
 		app_server_port?:                 number
@@ -12,7 +13,6 @@ package res
 		auto_transaction_naming_enabled?: bool
 		custom_tracing_enabled?:          bool
 		globally_enabled?:                bool
-		timeouts?:                        #timeouts
 		id?:                              string
 		labels?: [string]: string
 		license_key!:             string

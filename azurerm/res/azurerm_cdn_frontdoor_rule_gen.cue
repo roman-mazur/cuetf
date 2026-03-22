@@ -7,14 +7,14 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cdn_frontdoor_rule")
 	close({
 		actions!: matchN(1, [#actions, list.MaxItems(1) & [_, ...] & [...#actions]])
+		conditions?: matchN(1, [#conditions, list.MaxItems(1) & [...#conditions]])
+		timeouts?:                    #timeouts
 		behavior_on_match?:           string
 		cdn_frontdoor_rule_set_id!:   string
 		cdn_frontdoor_rule_set_name?: string
 		id?:                          string
 		name!:                        string
 		order!:                       number
-		conditions?: matchN(1, [#conditions, list.MaxItems(1) & [...#conditions]])
-		timeouts?: #timeouts
 	})
 
 	#actions: close({

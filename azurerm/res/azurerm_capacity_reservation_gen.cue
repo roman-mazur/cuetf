@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_capacity_reservation")
 	close({
 		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		timeouts?:                      #timeouts
 		capacity_reservation_group_id!: string
 		id?:                            string
 		name!:                          string
 		tags?: [string]: string
-		zone?:     string
-		timeouts?: #timeouts
+		zone?: string
 	})
 
 	#sku: close({

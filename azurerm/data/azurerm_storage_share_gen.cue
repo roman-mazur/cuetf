@@ -5,13 +5,13 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_storage_share")
 	close({
 		acl?: matchN(1, [#acl, [...#acl]])
-		id?: string
+		timeouts?: #timeouts
+		id?:       string
 		metadata?: [string]: string
 		name!:                 string
 		quota?:                number
 		storage_account_id?:   string
 		storage_account_name?: string
-		timeouts?:             #timeouts
 	})
 
 	#acl: close({

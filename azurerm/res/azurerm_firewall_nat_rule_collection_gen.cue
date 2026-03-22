@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_firewall_nat_rule_collection")
 	close({
 		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
+		timeouts?:            #timeouts
 		action!:              string
 		azure_firewall_name!: string
 		id?:                  string
 		name!:                string
 		priority!:            number
 		resource_group_name!: string
-		timeouts?:            #timeouts
 	})
 
 	#rule: close({

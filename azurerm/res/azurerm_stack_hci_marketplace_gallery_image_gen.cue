@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stack_hci_marketplace_gallery_image")
 	close({
+		identifier!: matchN(1, [#identifier, list.MaxItems(1) & [_, ...] & [...#identifier]])
+		timeouts?:            #timeouts
 		custom_location_id!:  string
 		hyperv_generation!:   string
 		id?:                  string
@@ -13,9 +15,7 @@ import "list"
 		name!:                string
 		os_type!:             string
 		resource_group_name!: string
-		identifier!: matchN(1, [#identifier, list.MaxItems(1) & [_, ...] & [...#identifier]])
-		storage_path_id?: string
-		timeouts?:        #timeouts
+		storage_path_id?:     string
 		tags?: [string]: string
 		version!: string
 	})

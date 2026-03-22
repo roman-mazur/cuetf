@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_app_service_certificate_order")
 	close({
+		timeouts?: #timeouts
 		app_service_certificate_not_renewable_reasons?: [...string]
 		auto_renew?: bool
 		certificates?: [...close({
@@ -20,7 +21,6 @@ package data
 		intermediate_thumbprint?:       string
 		is_private_key_external?:       bool
 		key_size?:                      number
-		timeouts?:                      #timeouts
 		location?:                      string
 		name!:                          string
 		product_type?:                  string

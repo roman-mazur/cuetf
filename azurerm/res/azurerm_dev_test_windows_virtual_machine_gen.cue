@@ -6,8 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dev_test_windows_virtual_machine")
 	close({
-		allow_claim?: bool
 		gallery_image_reference!: matchN(1, [#gallery_image_reference, list.MaxItems(1) & [_, ...] & [...#gallery_image_reference]])
+		inbound_nat_rule?: matchN(1, [#inbound_nat_rule, [...#inbound_nat_rule]])
+		timeouts?:                   #timeouts
+		allow_claim?:                bool
 		disallow_public_ip_address?: bool
 		fqdn?:                       string
 		id?:                         string
@@ -17,12 +19,10 @@ import "list"
 		location!:                   string
 		name!:                       string
 		notes?:                      string
-		inbound_nat_rule?: matchN(1, [#inbound_nat_rule, [...#inbound_nat_rule]])
-		password!:            string
-		resource_group_name!: string
-		size!:                string
-		storage_type!:        string
-		timeouts?:            #timeouts
+		password!:                   string
+		resource_group_name!:        string
+		size!:                       string
+		storage_type!:               string
 		tags?: [string]: string
 		unique_identifier?: string
 		username!:          string

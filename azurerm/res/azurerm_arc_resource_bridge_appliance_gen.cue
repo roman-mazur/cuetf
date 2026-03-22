@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_arc_resource_bridge_appliance")
 	close({
 		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		timeouts?:                #timeouts
 		distro!:                  string
 		id?:                      string
 		infrastructure_provider!: string
@@ -15,7 +16,6 @@ import "list"
 		public_key_base64?:       string
 		resource_group_name!:     string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#identity: close({

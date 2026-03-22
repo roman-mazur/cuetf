@@ -6,6 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management")
 	close({
+		additional_location?: matchN(1, [#additional_location, [...#additional_location]])
+		certificate?: matchN(1, [#certificate, list.MaxItems(10) & [...#certificate]])
+		delegation?: matchN(1, [#delegation, list.MaxItems(1) & [...#delegation]])
+		hostname_configuration?: matchN(1, [#hostname_configuration, list.MaxItems(1) & [...#hostname_configuration]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		protocols?: matchN(1, [#protocols, list.MaxItems(1) & [...#protocols]])
+		security?: matchN(1, [#security, list.MaxItems(1) & [...#security]])
+		sign_in?: matchN(1, [#sign_in, list.MaxItems(1) & [...#sign_in]])
+		sign_up?: matchN(1, [#sign_up, list.MaxItems(1) & [...#sign_up]])
+		tenant_access?: matchN(1, [#tenant_access, list.MaxItems(1) & [...#tenant_access]])
+		timeouts?: #timeouts
+		virtual_network_configuration?: matchN(1, [#virtual_network_configuration, list.MaxItems(1) & [...#virtual_network_configuration]])
 		client_certificate_enabled?: bool
 		developer_portal_url?:       string
 		gateway_disabled?:           bool
@@ -21,27 +33,15 @@ import "list"
 		private_ip_addresses?: [...string]
 		public_ip_address_id?: string
 		public_ip_addresses?: [...string]
-		additional_location?: matchN(1, [#additional_location, [...#additional_location]])
 		public_network_access_enabled?: bool
 		publisher_email!:               string
 		publisher_name!:                string
-		certificate?: matchN(1, [#certificate, list.MaxItems(10) & [...#certificate]])
-		delegation?: matchN(1, [#delegation, list.MaxItems(1) & [...#delegation]])
-		resource_group_name!: string
-		scm_url?:             string
-		sku_name!:            string
+		resource_group_name!:           string
+		scm_url?:                       string
+		sku_name!:                      string
 		tags?: [string]: string
 		virtual_network_type?: string
 		zones?: [...string]
-		hostname_configuration?: matchN(1, [#hostname_configuration, list.MaxItems(1) & [...#hostname_configuration]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		protocols?: matchN(1, [#protocols, list.MaxItems(1) & [...#protocols]])
-		security?: matchN(1, [#security, list.MaxItems(1) & [...#security]])
-		sign_in?: matchN(1, [#sign_in, list.MaxItems(1) & [...#sign_in]])
-		sign_up?: matchN(1, [#sign_up, list.MaxItems(1) & [...#sign_up]])
-		tenant_access?: matchN(1, [#tenant_access, list.MaxItems(1) & [...#tenant_access]])
-		timeouts?: #timeouts
-		virtual_network_configuration?: matchN(1, [#virtual_network_configuration, list.MaxItems(1) & [...#virtual_network_configuration]])
 	})
 
 	#additional_location: close({

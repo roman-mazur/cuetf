@@ -6,8 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management_diagnostic")
 	close({
-		always_log_errors?: bool
 		backend_request?: matchN(1, [#backend_request, list.MaxItems(1) & [...#backend_request]])
+		backend_response?: matchN(1, [#backend_response, list.MaxItems(1) & [...#backend_response]])
+		frontend_request?: matchN(1, [#frontend_request, list.MaxItems(1) & [...#frontend_request]])
+		frontend_response?: matchN(1, [#frontend_response, list.MaxItems(1) & [...#frontend_response]])
+		timeouts?:                  #timeouts
+		always_log_errors?:         bool
 		api_management_logger_id!:  string
 		api_management_name!:       string
 		http_correlation_protocol?: string
@@ -15,13 +19,9 @@ import "list"
 		identifier!:                string
 		log_client_ip?:             bool
 		operation_name_format?:     string
-		backend_response?: matchN(1, [#backend_response, list.MaxItems(1) & [...#backend_response]])
-		frontend_request?: matchN(1, [#frontend_request, list.MaxItems(1) & [...#frontend_request]])
-		resource_group_name!: string
-		frontend_response?: matchN(1, [#frontend_response, list.MaxItems(1) & [...#frontend_response]])
-		timeouts?:            #timeouts
-		sampling_percentage?: number
-		verbosity?:           string
+		resource_group_name!:       string
+		sampling_percentage?:       number
+		verbosity?:                 string
 	})
 
 	#backend_request: close({

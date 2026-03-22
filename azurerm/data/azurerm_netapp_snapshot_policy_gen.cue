@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_netapp_snapshot_policy")
 	close({
+		timeouts?:     #timeouts
 		account_name!: string
 		daily_schedule?: [...close({
 			hour?:              number
@@ -25,7 +26,6 @@ package data
 		})]
 		name!:                string
 		resource_group_name!: string
-		timeouts?:            #timeouts
 		tags?: [string]: string
 		weekly_schedule?: [...close({
 			days_of_week?: [...string]

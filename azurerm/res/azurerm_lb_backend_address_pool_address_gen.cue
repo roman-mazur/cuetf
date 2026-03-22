@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_lb_backend_address_pool_address")
 	close({
+		timeouts?: #timeouts
+
 		// For global load balancer, user needs to specify the
 		// `backend_address_ip_configuration_id` of the added regional
 		// load balancers
@@ -18,7 +20,6 @@ package res
 		ip_address?:         string
 		name!:               string
 		virtual_network_id?: string
-		timeouts?:           #timeouts
 	})
 
 	#timeouts: close({
