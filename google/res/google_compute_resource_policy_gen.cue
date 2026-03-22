@@ -110,8 +110,9 @@ import "list"
 
 		// The maximum topology distance. This field can be set only when
 		// the workload policy type is HIGH_THROUGHPUT
-		// and cannot be set if accelerator topology is set. Possible
-		// values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
+		// and cannot be set if accelerator topology or accelerator
+		// topology mode is set. Possible values: ["BLOCK", "CLUSTER",
+		// "SUBBLOCK"]
 		max_topology_distance?: string
 
 		// The type of workload policy. Possible values:

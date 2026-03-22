@@ -118,6 +118,10 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_biglake_iceberg_namespace_iam_binding": res.#google_biglake_iceberg_namespace_iam_binding
 	_#res: "\(#googlePrefix)_biglake_iceberg_namespace_iam_member": res.#google_biglake_iceberg_namespace_iam_member
 	_#res: "\(#googlePrefix)_biglake_iceberg_namespace_iam_policy": res.#google_biglake_iceberg_namespace_iam_policy
+	_#res: "\(#googlePrefix)_biglake_iceberg_table": res.#google_biglake_iceberg_table
+	_#res: "\(#googlePrefix)_biglake_iceberg_table_iam_binding": res.#google_biglake_iceberg_table_iam_binding
+	_#res: "\(#googlePrefix)_biglake_iceberg_table_iam_member": res.#google_biglake_iceberg_table_iam_member
+	_#res: "\(#googlePrefix)_biglake_iceberg_table_iam_policy": res.#google_biglake_iceberg_table_iam_policy
 	_#res: "\(#googlePrefix)_biglake_table": res.#google_biglake_table
 	_#res: "\(#googlePrefix)_bigquery_analytics_hub_data_exchange": res.#google_bigquery_analytics_hub_data_exchange
 	_#res: "\(#googlePrefix)_bigquery_analytics_hub_data_exchange_iam_binding": res.#google_bigquery_analytics_hub_data_exchange_iam_binding
@@ -428,6 +432,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_compute_vpn_tunnel": res.#google_compute_vpn_tunnel
 	_#res: "\(#googlePrefix)_compute_wire_group": res.#google_compute_wire_group
 	_#res: "\(#googlePrefix)_contact_center_insights_analysis_rule": res.#google_contact_center_insights_analysis_rule
+	_#res: "\(#googlePrefix)_contact_center_insights_auto_labeling_rule": res.#google_contact_center_insights_auto_labeling_rule
 	_#res: "\(#googlePrefix)_contact_center_insights_view": res.#google_contact_center_insights_view
 	_#res: "\(#googlePrefix)_container_analysis_note": res.#google_container_analysis_note
 	_#res: "\(#googlePrefix)_container_analysis_note_iam_binding": res.#google_container_analysis_note_iam_binding
@@ -950,6 +955,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_notebooks_runtime_iam_binding": res.#google_notebooks_runtime_iam_binding
 	_#res: "\(#googlePrefix)_notebooks_runtime_iam_member": res.#google_notebooks_runtime_iam_member
 	_#res: "\(#googlePrefix)_notebooks_runtime_iam_policy": res.#google_notebooks_runtime_iam_policy
+	_#res: "\(#googlePrefix)_observability_trace_scope": res.#google_observability_trace_scope
 	_#res: "\(#googlePrefix)_oracle_database_autonomous_database": res.#google_oracle_database_autonomous_database
 	_#res: "\(#googlePrefix)_oracle_database_cloud_exadata_infrastructure": res.#google_oracle_database_cloud_exadata_infrastructure
 	_#res: "\(#googlePrefix)_oracle_database_cloud_vm_cluster": res.#google_oracle_database_cloud_vm_cluster
@@ -1114,6 +1120,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_spanner_instance_partition": res.#google_spanner_instance_partition
 	_#res: "\(#googlePrefix)_sql_database": res.#google_sql_database
 	_#res: "\(#googlePrefix)_sql_database_instance": res.#google_sql_database_instance
+	_#res: "\(#googlePrefix)_sql_provision_script": res.#google_sql_provision_script
 	_#res: "\(#googlePrefix)_sql_source_representation_instance": res.#google_sql_source_representation_instance
 	_#res: "\(#googlePrefix)_sql_ssl_cert": res.#google_sql_ssl_cert
 	_#res: "\(#googlePrefix)_sql_user": res.#google_sql_user

@@ -142,11 +142,15 @@ import "list"
 		// with this ID.
 		pod_range?: string
 
-		// The subnetwork path for the node pool. Format:
-		// projects/{project}/regions/{region}/subnetworks/{subnetwork} .
-		// If the cluster is associated with multiple subnetworks, the
-		// subnetwork for the node pool is picked based on the IP
-		// utilization during node pool creation and is immutable.
+		// The subnetwork name/path for the node pool. Format: subnetwork
+		// or
+		// projects/{project}/regions/{region}/subnetworks/{subnetwork}.
+		// This value may be specified via the nested network_config
+		// block (setting this attribute directly is supported for
+		// backward compatibility). Once created the node pool's
+		// subnetwork is immutable. If not set, the provider/API will
+		// choose the subnetwork (e.g. based on IP utilization) and
+		// report it here.
 		subnetwork?: string
 	})
 

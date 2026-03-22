@@ -162,6 +162,20 @@ import "list"
 		// default is 0 replicas.
 		replica_count?: number
 
+		// The serverCaMode for the TLS enabled Memorystore instance.
+		// If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as
+		// default Possible values: ["GOOGLE_MANAGED_PER_INSTANCE_CA",
+		// "GOOGLE_MANAGED_SHARED_CA", "CUSTOMER_MANAGED_CAS_CA",
+		// "SERVER_CA_MODE_UNSPECIFIED"]
+		server_ca_mode?: string
+
+		// The resource name of the server CA pool for an instance with
+		// CUSTOMER_MANAGED_CAS_CA
+		// as the server_ca_mode.
+		// Format:
+		// projects/{project}/locations/{region}/caPools/{caPoolId}
+		server_ca_pool?: string
+
 		// Required. Number of shards for the instance.
 		shard_count!: number
 

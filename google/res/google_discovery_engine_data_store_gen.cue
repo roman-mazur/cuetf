@@ -12,7 +12,7 @@ import "list"
 
 		// The content config of the data store. Possible values:
 		// ["NO_CONTENT", "CONTENT_REQUIRED", "PUBLIC_WEBSITE"]
-		content_config!: string
+		content_config?: string
 
 		// If true, an advanced data store for site search will be
 		// created. If the

@@ -57,6 +57,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_beyondcorp_security_gateway_iam_policy": data.#google_beyondcorp_security_gateway_iam_policy
 	_#ds: "\(#googlePrefix)_biglake_iceberg_catalog_iam_policy": data.#google_biglake_iceberg_catalog_iam_policy
 	_#ds: "\(#googlePrefix)_biglake_iceberg_namespace_iam_policy": data.#google_biglake_iceberg_namespace_iam_policy
+	_#ds: "\(#googlePrefix)_biglake_iceberg_table_iam_policy": data.#google_biglake_iceberg_table_iam_policy
 	_#ds: "\(#googlePrefix)_bigquery_analytics_hub_data_exchange_iam_policy": data.#google_bigquery_analytics_hub_data_exchange_iam_policy
 	_#ds: "\(#googlePrefix)_bigquery_analytics_hub_listing_iam_policy": data.#google_bigquery_analytics_hub_listing_iam_policy
 	_#ds: "\(#googlePrefix)_bigquery_connection_iam_policy": data.#google_bigquery_connection_iam_policy
