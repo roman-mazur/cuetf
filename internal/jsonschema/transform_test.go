@@ -16,6 +16,7 @@ import (
 	"cuelang.org/go/cue"
 	"cuelang.org/go/cue/cuecontext"
 	"cuelang.org/go/cue/load"
+	"rmazur.io/cuetf/internal/embedassets"
 	"rmazur.io/cuetf/internal/gen"
 	. "rmazur.io/cuetf/internal/testtools"
 )
@@ -154,8 +155,11 @@ func injectSamples(t *testing.T, provider string, dst string) {
 }
 
 func initTestModule(t *testing.T, workDir string, provider string) {
+	t.Helper()
 	RunCUE(t, workDir, "mod", "init", "github.com/roman-mazur/cuetf")
-	RunCommand(t, exec.Command("cp", "-r", "..", filepath.Join(workDir, "internal")))
+	if err := embedassets.CopyInternalDeps(workDir); err != nil {
+		t.Fatal(err)
+	}
 	providerDir := filepath.Join(workDir, provider)
 	RunCommand(t, exec.Command("mkdir", providerDir))
 }
