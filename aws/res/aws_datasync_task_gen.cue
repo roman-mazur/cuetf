@@ -59,6 +59,7 @@ import "list"
 
 	#schedule: close({
 		schedule_expression!: string
+		status?:              string
 	})
 
 	#task_report_config: close({

@@ -61,7 +61,7 @@ package res
 	_#defs: "/$defs/resource_data/$defs/lf_tag": close({
 		catalog_id?: string
 		key!:        string
-		value!:      string
+		values!: [...string]
 	})
 
 	_#defs: "/$defs/resource_data/$defs/lf_tag_expression": close({

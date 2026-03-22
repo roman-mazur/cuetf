@@ -548,6 +548,8 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_ec2_transit_gateway_default_route_table_association": res.#aws_ec2_transit_gateway_default_route_table_association
 	_#res: "\(#awsPrefix)_ec2_transit_gateway_default_route_table_propagation": res.#aws_ec2_transit_gateway_default_route_table_propagation
 	_#res: "\(#awsPrefix)_ec2_transit_gateway": res.#aws_ec2_transit_gateway
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_metering_policy_entry": res.#aws_ec2_transit_gateway_metering_policy_entry
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_metering_policy": res.#aws_ec2_transit_gateway_metering_policy
 	_#res: "\(#awsPrefix)_ec2_transit_gateway_multicast_domain_association": res.#aws_ec2_transit_gateway_multicast_domain_association
 	_#res: "\(#awsPrefix)_ec2_transit_gateway_multicast_domain": res.#aws_ec2_transit_gateway_multicast_domain
 	_#res: "\(#awsPrefix)_ec2_transit_gateway_multicast_group_member": res.#aws_ec2_transit_gateway_multicast_group_member
@@ -1594,7 +1596,9 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_wafv2_web_acl_association": res.#aws_wafv2_web_acl_association
 	_#res: "\(#awsPrefix)_wafv2_web_acl": res.#aws_wafv2_web_acl
 	_#res: "\(#awsPrefix)_wafv2_web_acl_logging_configuration": res.#aws_wafv2_web_acl_logging_configuration
+	_#res: "\(#awsPrefix)_wafv2_web_acl_rule": res.#aws_wafv2_web_acl_rule
 	_#res: "\(#awsPrefix)_wafv2_web_acl_rule_group_association": res.#aws_wafv2_web_acl_rule_group_association
+	_#res: "\(#awsPrefix)_workmail_organization": res.#aws_workmail_organization
 	_#res: "\(#awsPrefix)_workspaces_connection_alias": res.#aws_workspaces_connection_alias
 	_#res: "\(#awsPrefix)_workspaces_directory": res.#aws_workspaces_directory
 	_#res: "\(#awsPrefix)_workspaces_ip_group": res.#aws_workspaces_ip_group
