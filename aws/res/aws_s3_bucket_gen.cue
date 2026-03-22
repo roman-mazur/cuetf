@@ -19,6 +19,7 @@ import "list"
 		arn?:                         string
 		bucket?:                      string
 		bucket_domain_name?:          string
+		bucket_namespace?:            string
 		bucket_prefix?:               string
 		bucket_region?:               string
 		bucket_regional_domain_name?: string

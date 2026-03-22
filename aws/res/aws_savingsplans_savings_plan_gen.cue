@@ -21,9 +21,6 @@ package res
 		// The end time of the Savings Plan.
 		end?: string
 
-		// The ID of the offering.
-		offering_id?: string
-
 		// The payment option for the Savings Plan.
 		payment_option?: string
 

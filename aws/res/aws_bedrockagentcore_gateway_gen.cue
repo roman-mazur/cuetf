@@ -71,6 +71,7 @@ package res
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer": close({
 		allowed_audience?: [...string]
 		allowed_clients?: [...string]
+		allowed_scopes?: [...string]
 		discovery_url!: string
 	})
 
