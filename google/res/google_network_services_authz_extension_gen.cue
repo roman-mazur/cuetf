@@ -8,7 +8,7 @@ package res
 
 		// The :authority header in the gRPC request sent from Envoy to
 		// the extension service.
-		authority!: string
+		authority?: string
 
 		// The timestamp when the resource was created.
 		create_time?: string

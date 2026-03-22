@@ -475,6 +475,7 @@ import "list"
 
 	#maintenance_policy: close({
 		daily_maintenance_window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/daily_maintenance_window", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/daily_maintenance_window"]])
+		disruption_budget?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/disruption_budget", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/disruption_budget"]])
 		maintenance_exclusion?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion", list.MaxItems(20) & [..._#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion"]])
 		recurring_window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/recurring_window", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/recurring_window"]])
 	})
@@ -1169,6 +1170,13 @@ import "list"
 		start_time!: string
 	})
 
+	_#defs: "/$defs/maintenance_policy/$defs/disruption_budget": close({
+		last_disruption_time?:               string
+		last_minor_version_disruption_time?: string
+		minor_version_disruption_interval?:  string
+		patch_version_disruption_interval?:  string
+	})
+
 	_#defs: "/$defs/maintenance_policy/$defs/maintenance_exclusion": close({
 		exclusion_options?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion/$defs/exclusion_options", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion/$defs/exclusion_options"]])
 		end_time?:       string
@@ -1753,11 +1761,15 @@ import "list"
 		// with this ID.
 		pod_range?: string
 
-		// The subnetwork path for the node pool. Format:
-		// projects/{project}/regions/{region}/subnetworks/{subnetwork} .
-		// If the cluster is associated with multiple subnetworks, the
-		// subnetwork for the node pool is picked based on the IP
-		// utilization during node pool creation and is immutable.
+		// The subnetwork name/path for the node pool. Format: subnetwork
+		// or
+		// projects/{project}/regions/{region}/subnetworks/{subnetwork}.
+		// This value may be specified via the nested network_config
+		// block (setting this attribute directly is supported for
+		// backward compatibility). Once created the node pool's
+		// subnetwork is immutable. If not set, the provider/API will
+		// choose the subnetwork (e.g. based on IP utilization) and
+		// report it here.
 		subnetwork?: string
 	})
 

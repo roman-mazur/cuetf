@@ -172,6 +172,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/mcp_toolset/$defs/api_authentication/$defs/service_account_auth_config": close({
+		// The OAuth scopes to grant. If not specified, the default scope
+		// 'https://www.googleapis.com/auth/cloud-platform' is used.
+		scopes?: [...string]
+
 		// The email address of the service account used for
 		// authenticatation. CES
 		// uses this service account to exchange an access token and the
@@ -287,6 +291,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/open_api_toolset/$defs/api_authentication/$defs/service_account_auth_config": close({
+		// The OAuth scopes to grant. If not specified, the default scope
+		// 'https://www.googleapis.com/auth/cloud-platform' is used.
+		scopes?: [...string]
+
 		// The email address of the service account used for
 		// authenticatation. CES
 		// uses this service account to exchange an access token and the

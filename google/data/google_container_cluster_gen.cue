@@ -372,6 +372,12 @@ package data
 				duration?:   string
 				start_time?: string
 			})]
+			disruption_budget?: [...close({
+				last_disruption_time?:               string
+				last_minor_version_disruption_time?: string
+				minor_version_disruption_interval?:  string
+				patch_version_disruption_interval?:  string
+			})]
 			maintenance_exclusion?: [...close({
 				end_time?:       string
 				exclusion_name?: string

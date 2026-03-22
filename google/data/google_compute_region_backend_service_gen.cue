@@ -193,7 +193,8 @@ package data
 		// [Choosing a load
 		// balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 		// Default value: "INTERNAL" Possible values: ["EXTERNAL",
-		// "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED"]
+		// "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED",
+		// "INTERNAL_SELF_MANAGED"]
 		load_balancing_scheme?: string
 
 		// The load balancing algorithm used within the scope of the
