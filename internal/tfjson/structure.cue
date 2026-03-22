@@ -1,11 +1,5 @@
 package tfjson
 
-#Schema: {
-	terraform?: {
-		required_providers?: [string]: _
-		...
-	}
-	provider?: [string]: _
-	resource?: [string]: _
-	data?: [string]: _
-}
+import "github.com/roman-mazur/cuetf"
+
+#Schema: cuetf.#TfJson

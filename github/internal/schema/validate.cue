@@ -1,6 +1,7 @@
 package schema
 
-import "github.com/roman-mazur/cuetf/internal/tf"
+import "github.com/roman-mazur/cuetf"
 
 // Ensure that the obtained Terraform schema matches the definitions we use to make transforms.
-provider_schemas: "registry.terraform.io/integrations/github": tf.#ProviderSchema
+cuetf.#ProviderSchemaFile
+provider_schemas: "registry.terraform.io/integrations/github": cuetf.#ProviderSchema
