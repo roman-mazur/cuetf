@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_servicebus_topic")
 	close({
+		timeouts?:                                #timeouts
 		auto_delete_on_idle?:                     string
 		batched_operations_enabled?:              bool
 		default_message_ttl?:                     string
@@ -13,7 +14,6 @@ package data
 		enable_partitioning?:                     bool
 		express_enabled?:                         bool
 		id?:                                      string
-		timeouts?:                                #timeouts
 		max_size_in_megabytes?:                   number
 		name!:                                    string
 		namespace_id?:                            string

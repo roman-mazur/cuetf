@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_network_security_rule")
 	close({
+		timeouts?:                   #timeouts
 		access!:                     string
 		description?:                string
 		destination_address_prefix?: string
@@ -19,7 +20,6 @@ package res
 		protocol!:                    string
 		resource_group_name!:         string
 		source_address_prefix?:       string
-		timeouts?:                    #timeouts
 		source_address_prefixes?: [...string]
 		source_application_security_group_ids?: [...string]
 		source_port_range?: string

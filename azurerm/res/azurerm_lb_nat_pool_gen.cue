@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_lb_nat_pool")
 	close({
+		timeouts?:                       #timeouts
 		backend_port!:                   number
 		floating_ip_enabled?:            bool
 		frontend_ip_configuration_id?:   string
@@ -12,7 +13,6 @@ package res
 		frontend_port_start!:            number
 		id?:                             string
 		idle_timeout_in_minutes?:        number
-		timeouts?:                       #timeouts
 		loadbalancer_id!:                string
 		name!:                           string
 		protocol!:                       string

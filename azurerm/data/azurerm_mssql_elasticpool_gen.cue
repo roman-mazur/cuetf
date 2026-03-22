@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_mssql_elasticpool")
 	close({
+		timeouts?:            #timeouts
 		enclave_type?:        string
 		id?:                  string
 		license_type?:        string
@@ -21,7 +22,6 @@ package data
 			name?:     string
 			tier?:     string
 		})]
-		timeouts?: #timeouts
 		tags?: [string]: string
 		zone_redundant?: bool
 	})

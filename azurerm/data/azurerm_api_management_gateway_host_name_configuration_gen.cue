@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_api_management_gateway_host_name_configuration")
 	close({
+		timeouts?:                           #timeouts
 		api_management_id!:                  string
 		certificate_id?:                     string
 		gateway_name!:                       string
@@ -11,7 +12,6 @@ package data
 		http2_enabled?:                      bool
 		id?:                                 string
 		name!:                               string
-		timeouts?:                           #timeouts
 		request_client_certificate_enabled?: bool
 		tls10_enabled?:                      bool
 		tls11_enabled?:                      bool

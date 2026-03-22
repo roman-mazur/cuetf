@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_gateway_route_config")
 	close({
+		open_api?: matchN(1, [#open_api, list.MaxItems(1) & [...#open_api]])
+		route?: matchN(1, [#route, [...#route]])
+		timeouts?: #timeouts
 		filters?: [...string]
 		id?:   string
 		name!: string
 		predicates?: [...string]
-		open_api?: matchN(1, [#open_api, list.MaxItems(1) & [...#open_api]])
 		protocol!:                string
 		spring_cloud_app_id?:     string
 		spring_cloud_gateway_id!: string
 		sso_validation_enabled?:  bool
-		route?: matchN(1, [#route, [...#route]])
-		timeouts?: #timeouts
 	})
 
 	#open_api: close({

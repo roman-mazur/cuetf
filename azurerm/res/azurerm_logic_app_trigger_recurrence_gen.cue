@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_logic_app_trigger_recurrence")
 	close({
 		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
+		timeouts?:     #timeouts
 		frequency!:    string
 		id?:           string
 		interval!:     number
@@ -14,7 +15,6 @@ import "list"
 		name!:         string
 		start_time?:   string
 		time_zone?:    string
-		timeouts?:     #timeouts
 	})
 
 	#schedule: close({

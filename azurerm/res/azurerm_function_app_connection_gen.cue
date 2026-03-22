@@ -7,14 +7,14 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_function_app_connection")
 	close({
 		authentication!: matchN(1, [#authentication, list.MaxItems(1) & [_, ...] & [...#authentication]])
+		secret_store?: matchN(1, [#secret_store, list.MaxItems(1) & [...#secret_store]])
+		timeouts?:           #timeouts
 		client_type?:        string
 		function_app_id!:    string
 		id?:                 string
 		name!:               string
 		target_resource_id!: string
 		vnet_solution?:      string
-		secret_store?: matchN(1, [#secret_store, list.MaxItems(1) & [...#secret_store]])
-		timeouts?: #timeouts
 	})
 
 	#authentication: close({

@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_app_job")
 	close({
+		event_trigger_config?: matchN(1, [#event_trigger_config, list.MaxItems(1) & [...#event_trigger_config]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		manual_trigger_config?: matchN(1, [#manual_trigger_config, list.MaxItems(1) & [...#manual_trigger_config]])
+		registry?: matchN(1, [#registry, [...#registry]])
+		schedule_trigger_config?: matchN(1, [#schedule_trigger_config, list.MaxItems(1) & [...#schedule_trigger_config]])
+		secret?: matchN(1, [#secret, [...#secret]])
+		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
+		timeouts?:                     #timeouts
 		container_app_environment_id!: string
 		event_stream_endpoint?:        string
 		id?:                           string
@@ -15,16 +23,8 @@ import "list"
 		replica_retry_limit?:        number
 		replica_timeout_in_seconds!: number
 		resource_group_name!:        string
-		event_trigger_config?: matchN(1, [#event_trigger_config, list.MaxItems(1) & [...#event_trigger_config]])
 		tags?: [string]: string
 		workload_profile_name?: string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		manual_trigger_config?: matchN(1, [#manual_trigger_config, list.MaxItems(1) & [...#manual_trigger_config]])
-		registry?: matchN(1, [#registry, [...#registry]])
-		schedule_trigger_config?: matchN(1, [#schedule_trigger_config, list.MaxItems(1) & [...#schedule_trigger_config]])
-		secret?: matchN(1, [#secret, [...#secret]])
-		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
-		timeouts?: #timeouts
 	})
 
 	#event_trigger_config: close({
@@ -115,6 +115,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/container": close({
+		env?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/env", [..._#defs."/$defs/template/$defs/container/$defs/env"]])
+		liveness_probe?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/liveness_probe", [..._#defs."/$defs/template/$defs/container/$defs/liveness_probe"]])
+		readiness_probe?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/readiness_probe", [..._#defs."/$defs/template/$defs/container/$defs/readiness_probe"]])
+		startup_probe?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/startup_probe", [..._#defs."/$defs/template/$defs/container/$defs/startup_probe"]])
+		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/container/$defs/volume_mounts"]])
+
 		// A list of args to pass to the container.
 		args?: [...string]
 
@@ -134,11 +140,6 @@ import "list"
 
 		// The amount of memory to allocate to the container.
 		memory!: string
-		env?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/env", [..._#defs."/$defs/template/$defs/container/$defs/env"]])
-		liveness_probe?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/liveness_probe", [..._#defs."/$defs/template/$defs/container/$defs/liveness_probe"]])
-		readiness_probe?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/readiness_probe", [..._#defs."/$defs/template/$defs/container/$defs/readiness_probe"]])
-		startup_probe?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/startup_probe", [..._#defs."/$defs/template/$defs/container/$defs/startup_probe"]])
-		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/container/$defs/volume_mounts"]])
 
 		// The name of the container.
 		name!: string
@@ -158,6 +159,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/container/$defs/liveness_probe": close({
+		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/liveness_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/liveness_probe/$defs/header"]])
+
 		// The number of consecutive failures required to consider this
 		// probe as failed. Possible values are between `1` and `30`.
 		// Defaults to `3`.
@@ -188,7 +191,6 @@ import "list"
 		// The time in seconds after the container is sent the termination
 		// signal before the process if forcibly killed.
 		termination_grace_period_seconds?: number
-		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/liveness_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/liveness_probe/$defs/header"]])
 
 		// Time in seconds after which the probe times out. Possible
 		// values are between `1` an `240`. Defaults to `1`.
@@ -207,6 +209,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/container/$defs/readiness_probe": close({
+		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/readiness_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/readiness_probe/$defs/header"]])
+
 		// The number of consecutive failures required to consider this
 		// probe as failed. Possible values are between `1` and `30`.
 		// Defaults to `3`.
@@ -238,7 +242,6 @@ import "list"
 		// consider this probe as successful. Possible values are between
 		// `1` and `10`. Defaults to `3`.
 		success_count_threshold?: number
-		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/readiness_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/readiness_probe/$defs/header"]])
 
 		// Time in seconds after which the probe times out. Possible
 		// values are between `1` an `240`. Defaults to `1`.
@@ -257,6 +260,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/container/$defs/startup_probe": close({
+		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/startup_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/startup_probe/$defs/header"]])
+
 		// The number of consecutive failures required to consider this
 		// probe as failed. Possible values are between `1` and `30`.
 		// Defaults to `3`.
@@ -287,7 +292,6 @@ import "list"
 		// The time in seconds after the container is sent the termination
 		// signal before the process if forcibly killed.
 		termination_grace_period_seconds?: number
-		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/startup_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/startup_probe/$defs/header"]])
 
 		// Time in seconds after which the probe times out. Possible
 		// values are between `1` an `240`. Defaults to `1`.
@@ -317,6 +321,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/init_container": close({
+		env?: matchN(1, [_#defs."/$defs/template/$defs/init_container/$defs/env", [..._#defs."/$defs/template/$defs/init_container/$defs/env"]])
+		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/init_container/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/init_container/$defs/volume_mounts"]])
+
 		// A list of args to pass to the container.
 		args?: [...string]
 
@@ -333,8 +340,6 @@ import "list"
 
 		// The image to use to create the container.
 		image!: string
-		env?: matchN(1, [_#defs."/$defs/template/$defs/init_container/$defs/env", [..._#defs."/$defs/template/$defs/init_container/$defs/env"]])
-		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/init_container/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/init_container/$defs/volume_mounts"]])
 
 		// The amount of memory to allocate to the container.
 		memory?: string

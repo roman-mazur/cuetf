@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_function_app_active_slot")
 	close({
+		timeouts?: #timeouts
+		id?:       string
+
 		// The timestamp of the last successful swap with `Production`
 		last_successful_swap?: string
 
@@ -11,11 +14,9 @@ package res
 		// configuration with the configuration from this slot. Defaults
 		// to `true`.
 		overwrite_network_config?: bool
-		id?:                       string
 
 		// The ID of the Slot to swap with `Production`.
-		slot_id!:  string
-		timeouts?: #timeouts
+		slot_id!: string
 	})
 
 	#timeouts: close({

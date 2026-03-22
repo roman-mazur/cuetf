@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_oracle_exascale_database_storage_vault")
 	close({
+		high_capacity_database_storage!: matchN(1, [#high_capacity_database_storage, list.MaxItems(1) & [_, ...] & [...#high_capacity_database_storage]])
+		timeouts?:                          #timeouts
 		additional_flash_cache_percentage!: number
 		description?:                       string
 		display_name!:                      string
@@ -13,9 +15,7 @@ import "list"
 		location!:                          string
 		name!:                              string
 		resource_group_name!:               string
-		high_capacity_database_storage!: matchN(1, [#high_capacity_database_storage, list.MaxItems(1) & [_, ...] & [...#high_capacity_database_storage]])
 		tags?: [string]: string
-		timeouts?:  #timeouts
 		time_zone?: string
 		zones!: [...string]
 	})

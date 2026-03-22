@@ -6,16 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_databricks_workspace")
 	close({
-		access_connector_id?:                   string
-		customer_managed_key_enabled?:          bool
-		default_storage_firewall_enabled?:      bool
-		disk_encryption_set_id?:                string
-		id?:                                    string
-		infrastructure_encryption_enabled?:     bool
-		load_balancer_backend_address_pool_id?: string
-		location!:                              string
-		managed_disk_cmk_key_vault_id?:         string
 		custom_parameters?: matchN(1, [#custom_parameters, list.MaxItems(1) & [...#custom_parameters]])
+		enhanced_security_compliance?: matchN(1, [#enhanced_security_compliance, list.MaxItems(1) & [...#enhanced_security_compliance]])
+		timeouts?:                                            #timeouts
+		access_connector_id?:                                 string
+		customer_managed_key_enabled?:                        bool
+		default_storage_firewall_enabled?:                    bool
+		disk_encryption_set_id?:                              string
+		id?:                                                  string
+		infrastructure_encryption_enabled?:                   bool
+		load_balancer_backend_address_pool_id?:               string
+		location!:                                            string
+		managed_disk_cmk_key_vault_id?:                       string
 		managed_disk_cmk_key_vault_key_id?:                   string
 		managed_disk_cmk_rotation_to_latest_version_enabled?: bool
 		managed_disk_identity?: [...close({
@@ -38,8 +40,6 @@ import "list"
 			type?:         string
 		})]
 		tags?: [string]: string
-		enhanced_security_compliance?: matchN(1, [#enhanced_security_compliance, list.MaxItems(1) & [...#enhanced_security_compliance]])
-		timeouts?:      #timeouts
 		workspace_id?:  string
 		workspace_url?: string
 	})

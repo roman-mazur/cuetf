@@ -6,13 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_search_service")
 	close({
-		allowed_ips?: [...string]
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?: #timeouts
+		allowed_ips?: [...string]
 		authentication_failure_mode?:                       string
 		customer_managed_key_encryption_compliance_status?: string
 		customer_managed_key_enforcement_enabled?:          bool
 		hosting_mode?:                                      string
-		timeouts?:                                          #timeouts
 		id?:                                                string
 		local_authentication_enabled?:                      bool
 		location!:                                          string

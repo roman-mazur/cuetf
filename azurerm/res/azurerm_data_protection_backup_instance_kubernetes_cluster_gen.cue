@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_protection_backup_instance_kubernetes_cluster")
 	close({
 		backup_datasource_parameters?: matchN(1, [#backup_datasource_parameters, list.MaxItems(1) & [...#backup_datasource_parameters]])
+		timeouts?:                     #timeouts
 		backup_policy_id!:             string
 		id?:                           string
 		kubernetes_cluster_id!:        string
@@ -15,7 +16,6 @@ import "list"
 		protection_state?:             string
 		snapshot_resource_group_name!: string
 		vault_id!:                     string
-		timeouts?:                     #timeouts
 	})
 
 	#backup_datasource_parameters: close({

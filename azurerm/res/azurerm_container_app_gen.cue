@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_app")
 	close({
+		dapr?: matchN(1, [#dapr, list.MaxItems(1) & [...#dapr]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		ingress?: matchN(1, [#ingress, list.MaxItems(1) & [...#ingress]])
+		registry?: matchN(1, [#registry, [...#registry]])
+		secret?: matchN(1, [#secret, [...#secret]])
+		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
+		timeouts?: #timeouts
+
 		// The ID of the Container App Environment to host this Container
 		// App.
 		container_app_environment_id!: string
@@ -26,16 +34,9 @@ import "list"
 		// The name for this Container App.
 		name!: string
 		outbound_ip_addresses?: [...string]
-		dapr?: matchN(1, [#dapr, list.MaxItems(1) & [...#dapr]])
 		resource_group_name!: string
 		revision_mode!:       string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		ingress?: matchN(1, [#ingress, list.MaxItems(1) & [...#ingress]])
-		registry?: matchN(1, [#registry, [...#registry]])
-		secret?: matchN(1, [#secret, [...#secret]])
 		tags?: [string]: string
-		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
-		timeouts?:              #timeouts
 		workload_profile_name?: string
 	})
 
@@ -60,6 +61,10 @@ import "list"
 	})
 
 	#ingress: close({
+		cors?: matchN(1, [_#defs."/$defs/ingress/$defs/cors", list.MaxItems(1) & [..._#defs."/$defs/ingress/$defs/cors"]])
+		ip_security_restriction?: matchN(1, [_#defs."/$defs/ingress/$defs/ip_security_restriction", [..._#defs."/$defs/ingress/$defs/ip_security_restriction"]])
+		traffic_weight!: matchN(1, [_#defs."/$defs/ingress/$defs/traffic_weight", [_, ...] & [..._#defs."/$defs/ingress/$defs/traffic_weight"]])
+
 		// Should this ingress allow insecure connections?
 		allow_insecure_connections?: bool
 
@@ -69,14 +74,14 @@ import "list"
 		// not require a client certificate. Require indicates server
 		// requires a client certificate.
 		client_certificate_mode?: string
-
-		// The exposed port on the container for the Ingress traffic.
-		exposed_port?: number
 		custom_domain?: [...close({
 			certificate_binding_type?: string
 			certificate_id?:           string
 			name?:                     string
 		})]
+
+		// The exposed port on the container for the Ingress traffic.
+		exposed_port?: number
 
 		// Is this an external Ingress.
 		external_enabled?: bool
@@ -86,9 +91,6 @@ import "list"
 
 		// The target port on the container for the Ingress traffic.
 		target_port!: number
-		cors?: matchN(1, [_#defs."/$defs/ingress/$defs/cors", list.MaxItems(1) & [..._#defs."/$defs/ingress/$defs/cors"]])
-		ip_security_restriction?: matchN(1, [_#defs."/$defs/ingress/$defs/ip_security_restriction", [..._#defs."/$defs/ingress/$defs/ip_security_restriction"]])
-		traffic_weight!: matchN(1, [_#defs."/$defs/ingress/$defs/traffic_weight", [_, ...] & [..._#defs."/$defs/ingress/$defs/traffic_weight"]])
 
 		// The transport method for the Ingress. Possible values include
 		// `auto`, `http`, and `http2`, `tcp`. Defaults to `auto`
@@ -127,6 +129,14 @@ import "list"
 	})
 
 	#template: close({
+		azure_queue_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/azure_queue_scale_rule", [..._#defs."/$defs/template/$defs/azure_queue_scale_rule"]])
+		container!: matchN(1, [_#defs."/$defs/template/$defs/container", [_, ...] & [..._#defs."/$defs/template/$defs/container"]])
+		custom_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/custom_scale_rule", [..._#defs."/$defs/template/$defs/custom_scale_rule"]])
+		http_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/http_scale_rule", [..._#defs."/$defs/template/$defs/http_scale_rule"]])
+		init_container?: matchN(1, [_#defs."/$defs/template/$defs/init_container", [..._#defs."/$defs/template/$defs/init_container"]])
+		tcp_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/tcp_scale_rule", [..._#defs."/$defs/template/$defs/tcp_scale_rule"]])
+		volume?: matchN(1, [_#defs."/$defs/template/$defs/volume", [..._#defs."/$defs/template/$defs/volume"]])
+
 		// The number of seconds to wait before scaling down the number of
 		// instances again.
 		cooldown_period_in_seconds?: number
@@ -136,21 +146,14 @@ import "list"
 
 		// The minimum number of replicas for this container.
 		min_replicas?: number
-		azure_queue_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/azure_queue_scale_rule", [..._#defs."/$defs/template/$defs/azure_queue_scale_rule"]])
 
 		// The interval in seconds used for polling KEDA.
 		polling_interval_in_seconds?: number
-		container!: matchN(1, [_#defs."/$defs/template/$defs/container", [_, ...] & [..._#defs."/$defs/template/$defs/container"]])
-		custom_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/custom_scale_rule", [..._#defs."/$defs/template/$defs/custom_scale_rule"]])
-		http_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/http_scale_rule", [..._#defs."/$defs/template/$defs/http_scale_rule"]])
-		init_container?: matchN(1, [_#defs."/$defs/template/$defs/init_container", [..._#defs."/$defs/template/$defs/init_container"]])
 
 		// The suffix for the revision. This value must be unique for the
 		// lifetime of the Resource. If omitted the service will use a
 		// hash function to create one.
 		revision_suffix?: string
-		tcp_scale_rule?: matchN(1, [_#defs."/$defs/template/$defs/tcp_scale_rule", [..._#defs."/$defs/template/$defs/tcp_scale_rule"]])
-		volume?: matchN(1, [_#defs."/$defs/template/$defs/volume", [..._#defs."/$defs/template/$defs/volume"]])
 
 		// The time in seconds after the container is sent the termination
 		// signal before the process if forcibly killed.
@@ -220,6 +223,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/container": close({
+		env?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/env", [..._#defs."/$defs/template/$defs/container/$defs/env"]])
+		liveness_probe?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/liveness_probe", [..._#defs."/$defs/template/$defs/container/$defs/liveness_probe"]])
+		readiness_probe?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/readiness_probe", [..._#defs."/$defs/template/$defs/container/$defs/readiness_probe"]])
+		startup_probe?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/startup_probe", [..._#defs."/$defs/template/$defs/container/$defs/startup_probe"]])
+		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/container/$defs/volume_mounts"]])
+
 		// A list of args to pass to the container.
 		args?: [...string]
 
@@ -239,11 +248,6 @@ import "list"
 
 		// The amount of memory to allocate to the container.
 		memory!: string
-		env?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/env", [..._#defs."/$defs/template/$defs/container/$defs/env"]])
-		liveness_probe?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/liveness_probe", [..._#defs."/$defs/template/$defs/container/$defs/liveness_probe"]])
-		readiness_probe?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/readiness_probe", [..._#defs."/$defs/template/$defs/container/$defs/readiness_probe"]])
-		startup_probe?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/startup_probe", [..._#defs."/$defs/template/$defs/container/$defs/startup_probe"]])
-		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/container/$defs/volume_mounts"]])
 
 		// The name of the container.
 		name!: string
@@ -263,6 +267,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/container/$defs/liveness_probe": close({
+		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/liveness_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/liveness_probe/$defs/header"]])
+
 		// The number of consecutive failures required to consider this
 		// probe as failed. Possible values are between `1` and `30`.
 		// Defaults to `3`.
@@ -293,7 +299,6 @@ import "list"
 		// The time in seconds after the container is sent the termination
 		// signal before the process if forcibly killed.
 		termination_grace_period_seconds?: number
-		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/liveness_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/liveness_probe/$defs/header"]])
 
 		// Time in seconds after which the probe times out. Possible
 		// values are between `1` an `240`. Defaults to `1`.
@@ -312,6 +317,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/container/$defs/readiness_probe": close({
+		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/readiness_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/readiness_probe/$defs/header"]])
+
 		// The number of consecutive failures required to consider this
 		// probe as failed. Possible values are between `1` and `30`.
 		// Defaults to `3`.
@@ -343,7 +350,6 @@ import "list"
 		// consider this probe as successful. Possible values are between
 		// `1` and `10`. Defaults to `3`.
 		success_count_threshold?: number
-		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/readiness_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/readiness_probe/$defs/header"]])
 
 		// Time in seconds after which the probe times out. Possible
 		// values are between `1` an `240`. Defaults to `1`.
@@ -362,6 +368,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/container/$defs/startup_probe": close({
+		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/startup_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/startup_probe/$defs/header"]])
+
 		// The number of consecutive failures required to consider this
 		// probe as failed. Possible values are between `1` and `30`.
 		// Defaults to `3`.
@@ -392,7 +400,6 @@ import "list"
 		// The time in seconds after the container is sent the termination
 		// signal before the process if forcibly killed.
 		termination_grace_period_seconds?: number
-		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/startup_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/startup_probe/$defs/header"]])
 
 		// Time in seconds after which the probe times out. Possible
 		// values are between `1` an `240`. Defaults to `1`.
@@ -445,6 +452,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/init_container": close({
+		env?: matchN(1, [_#defs."/$defs/template/$defs/init_container/$defs/env", [..._#defs."/$defs/template/$defs/init_container/$defs/env"]])
+		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/init_container/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/init_container/$defs/volume_mounts"]])
+
 		// A list of args to pass to the container.
 		args?: [...string]
 
@@ -461,8 +471,6 @@ import "list"
 
 		// The image to use to create the container.
 		image!: string
-		env?: matchN(1, [_#defs."/$defs/template/$defs/init_container/$defs/env", [..._#defs."/$defs/template/$defs/init_container/$defs/env"]])
-		volume_mounts?: matchN(1, [_#defs."/$defs/template/$defs/init_container/$defs/volume_mounts", [..._#defs."/$defs/template/$defs/init_container/$defs/volume_mounts"]])
 
 		// The amount of memory to allocate to the container.
 		memory?: string

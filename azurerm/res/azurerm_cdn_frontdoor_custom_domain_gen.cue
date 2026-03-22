@@ -6,7 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cdn_frontdoor_custom_domain")
 	close({
-		timeouts?:                 #timeouts
+		timeouts?: #timeouts
+		tls!: matchN(1, [#tls, list.MaxItems(1) & [_, ...] & [...#tls]])
 		cdn_frontdoor_profile_id!: string
 		dns_zone_id?:              string
 		expiration_date?:          string
@@ -14,7 +15,6 @@ import "list"
 		id?:                       string
 		name!:                     string
 		validation_token?:         string
-		tls!: matchN(1, [#tls, list.MaxItems(1) & [_, ...] & [...#tls]])
 	})
 
 	#timeouts: close({

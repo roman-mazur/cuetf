@@ -5,11 +5,11 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_security_center_subscription_pricing")
 	close({
 		extension?: matchN(1, [#extension, [...#extension]])
+		timeouts?:      #timeouts
 		id?:            string
 		resource_type?: string
 		subplan?:       string
 		tier!:          string
-		timeouts?:      #timeouts
 	})
 
 	#extension: close({

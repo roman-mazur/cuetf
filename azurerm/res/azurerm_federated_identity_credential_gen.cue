@@ -6,11 +6,11 @@ package res
 	close({
 		timeouts?: #timeouts
 		audience!: [...string]
-		id?:        string
-		issuer!:    string
-		name!:      string
-		parent_id!: string
-		subject!:   string
+		id?:                        string
+		issuer!:                    string
+		name!:                      string
+		subject!:                   string
+		user_assigned_identity_id?: string
 	})
 
 	#timeouts: close({

@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dev_center_catalog")
 	close({
 		catalog_adogit?: matchN(1, [#catalog_adogit, list.MaxItems(1) & [...#catalog_adogit]])
+		catalog_github?: matchN(1, [#catalog_github, list.MaxItems(1) & [...#catalog_github]])
+		timeouts?:            #timeouts
 		dev_center_id!:       string
 		id?:                  string
 		name!:                string
 		resource_group_name!: string
-		catalog_github?: matchN(1, [#catalog_github, list.MaxItems(1) & [...#catalog_github]])
-		timeouts?: #timeouts
 	})
 
 	#catalog_adogit: close({

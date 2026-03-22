@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_hpc_cache_nfs_target")
 	close({
 		namespace_junction!: matchN(1, [#namespace_junction, list.MaxItems(10) & [_, ...] & [...#namespace_junction]])
+		timeouts?:                      #timeouts
 		cache_name!:                    string
 		id?:                            string
 		name!:                          string
@@ -15,7 +16,6 @@ import "list"
 		usage_model!:                   string
 		verification_timer_in_seconds?: number
 		write_back_timer_in_seconds?:   number
-		timeouts?:                      #timeouts
 	})
 
 	#namespace_junction: close({

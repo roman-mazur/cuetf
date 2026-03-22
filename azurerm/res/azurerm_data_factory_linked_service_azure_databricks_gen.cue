@@ -6,22 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_linked_service_azure_databricks")
 	close({
+		instance_pool?: matchN(1, [#instance_pool, list.MaxItems(1) & [...#instance_pool]])
+		key_vault_password?: matchN(1, [#key_vault_password, list.MaxItems(1) & [...#key_vault_password]])
+		new_cluster_config?: matchN(1, [#new_cluster_config, list.MaxItems(1) & [...#new_cluster_config]])
+		timeouts?:     #timeouts
 		access_token?: string
 		adb_domain!:   string
 		additional_properties?: [string]: string
 		annotations?: [...string]
-		data_factory_id!:     string
-		description?:         string
-		existing_cluster_id?: string
-		instance_pool?: matchN(1, [#instance_pool, list.MaxItems(1) & [...#instance_pool]])
-		key_vault_password?: matchN(1, [#key_vault_password, list.MaxItems(1) & [...#key_vault_password]])
-		new_cluster_config?: matchN(1, [#new_cluster_config, list.MaxItems(1) & [...#new_cluster_config]])
+		data_factory_id!:          string
+		description?:              string
+		existing_cluster_id?:      string
 		id?:                       string
 		integration_runtime_name?: string
 		msi_workspace_id?:         string
 		name!:                     string
 		parameters?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#instance_pool: close({

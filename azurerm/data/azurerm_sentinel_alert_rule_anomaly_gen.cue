@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_sentinel_alert_rule_anomaly")
 	close({
+		timeouts?:                   #timeouts
 		anomaly_settings_version?:   number
 		anomaly_version?:            string
 		description?:                string
@@ -37,7 +38,6 @@ package data
 			supported_values?: [...string]
 			value?: string
 		})]
-		timeouts?: #timeouts
 		tactics?: [...string]
 		techniques?: [...string]
 		threshold_observation?: [...close({

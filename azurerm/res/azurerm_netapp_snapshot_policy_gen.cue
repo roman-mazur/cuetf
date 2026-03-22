@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_netapp_snapshot_policy")
 	close({
+		daily_schedule?: matchN(1, [#daily_schedule, list.MaxItems(1) & [...#daily_schedule]])
+		hourly_schedule?: matchN(1, [#hourly_schedule, list.MaxItems(1) & [...#hourly_schedule]])
+		monthly_schedule?: matchN(1, [#monthly_schedule, list.MaxItems(1) & [...#monthly_schedule]])
+		timeouts?: #timeouts
+		weekly_schedule?: matchN(1, [#weekly_schedule, list.MaxItems(1) & [...#weekly_schedule]])
 		account_name!:        string
 		enabled!:             bool
 		id?:                  string
@@ -13,11 +18,6 @@ import "list"
 		name!:                string
 		resource_group_name!: string
 		tags?: [string]: string
-		daily_schedule?: matchN(1, [#daily_schedule, list.MaxItems(1) & [...#daily_schedule]])
-		hourly_schedule?: matchN(1, [#hourly_schedule, list.MaxItems(1) & [...#hourly_schedule]])
-		monthly_schedule?: matchN(1, [#monthly_schedule, list.MaxItems(1) & [...#monthly_schedule]])
-		timeouts?: #timeouts
-		weekly_schedule?: matchN(1, [#weekly_schedule, list.MaxItems(1) & [...#weekly_schedule]])
 	})
 
 	#daily_schedule: close({

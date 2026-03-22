@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_logic_app_standard")
 	close({
+		connection_string?: matchN(1, [#connection_string, [...#connection_string]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		site_config?: matchN(1, [#site_config, list.MaxItems(1) & [...#site_config]])
+		timeouts?:            #timeouts
 		app_service_plan_id!: string
 		app_settings?: [string]: string
 		bundle_version?:                           string
@@ -21,9 +25,6 @@ import "list"
 		location!:                                 string
 		name!:                                     string
 		outbound_ip_addresses?:                    string
-		connection_string?: matchN(1, [#connection_string, [...#connection_string]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		site_config?: matchN(1, [#site_config, list.MaxItems(1) & [...#site_config]])
 		possible_outbound_ip_addresses?:           string
 		public_network_access?:                    string
 		resource_group_name!:                      string
@@ -40,7 +41,6 @@ import "list"
 		version?:                    string
 		virtual_network_subnet_id?:  string
 		vnet_content_share_enabled?: bool
-		timeouts?:                   #timeouts
 	})
 
 	#connection_string: close({
@@ -57,27 +57,27 @@ import "list"
 	})
 
 	#site_config: close({
-		always_on?:                bool
-		app_scale_limit?:          number
-		auto_swap_slot_name?:      string
-		dotnet_framework_version?: string
-		elastic_instance_minimum?: number
-		ftps_state?:               string
-		health_check_path?:        string
-		http2_enabled?:            bool
-		linux_fx_version?:         string
-		min_tls_version?:          string
 		cors?: matchN(1, [_#defs."/$defs/site_config/$defs/cors", list.MaxItems(1) & [..._#defs."/$defs/site_config/$defs/cors"]])
 		ip_restriction?: matchN(1, [_#defs."/$defs/site_config/$defs/ip_restriction", [..._#defs."/$defs/site_config/$defs/ip_restriction"]])
+		scm_ip_restriction?: matchN(1, [_#defs."/$defs/site_config/$defs/scm_ip_restriction", [..._#defs."/$defs/site_config/$defs/scm_ip_restriction"]])
+		always_on?:                        bool
+		app_scale_limit?:                  number
+		auto_swap_slot_name?:              string
+		dotnet_framework_version?:         string
+		elastic_instance_minimum?:         number
+		ftps_state?:                       string
+		health_check_path?:                string
+		http2_enabled?:                    bool
+		linux_fx_version?:                 string
+		min_tls_version?:                  string
 		pre_warmed_instance_count?:        number
 		runtime_scale_monitoring_enabled?: bool
 		scm_min_tls_version?:              string
-		scm_ip_restriction?: matchN(1, [_#defs."/$defs/site_config/$defs/scm_ip_restriction", [..._#defs."/$defs/site_config/$defs/scm_ip_restriction"]])
-		scm_type?:                    string
-		scm_use_main_ip_restriction?: bool
-		use_32_bit_worker_process?:   bool
-		vnet_route_all_enabled?:      bool
-		websockets_enabled?:          bool
+		scm_type?:                         string
+		scm_use_main_ip_restriction?:      bool
+		use_32_bit_worker_process?:        bool
+		vnet_route_all_enabled?:           bool
+		websockets_enabled?:               bool
 	})
 
 	#timeouts: close({
@@ -102,6 +102,12 @@ import "list"
 
 		// The description of the IP restriction rule.
 		description?: string
+		headers?: [...close({
+			x_azure_fdid?: [...string]
+			x_fd_health_probe?: [...string]
+			x_forwarded_for?: [...string]
+			x_forwarded_host?: [...string]
+		})]
 
 		// The CIDR notation of the IP or IP Range to match. For example:
 		// `10.0.0.0/24` or `192.168.10.1/32` or `fe80::/64` or
@@ -113,12 +119,6 @@ import "list"
 
 		// The priority value of this `ip_restriction`.
 		priority?: number
-		headers?: [...close({
-			x_azure_fdid?: [...string]
-			x_fd_health_probe?: [...string]
-			x_forwarded_for?: [...string]
-			x_forwarded_host?: [...string]
-		})]
 
 		// The Service Tag used for this IP Restriction.
 		service_tag?: string
@@ -133,6 +133,12 @@ import "list"
 
 		// The description of the IP restriction rule.
 		description?: string
+		headers?: [...close({
+			x_azure_fdid?: [...string]
+			x_fd_health_probe?: [...string]
+			x_forwarded_for?: [...string]
+			x_forwarded_host?: [...string]
+		})]
 
 		// The CIDR notation of the IP or IP Range to match. For example:
 		// `10.0.0.0/24` or `192.168.10.1/32` or `fe80::/64` or
@@ -144,12 +150,6 @@ import "list"
 
 		// The priority value of this `ip_restriction`.
 		priority?: number
-		headers?: [...close({
-			x_azure_fdid?: [...string]
-			x_fd_health_probe?: [...string]
-			x_forwarded_for?: [...string]
-			x_forwarded_host?: [...string]
-		})]
 
 		// The Service Tag used for this IP Restriction.
 		service_tag?: string

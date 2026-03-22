@@ -7,11 +7,11 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management_gateway")
 	close({
 		location_data!: matchN(1, [#location_data, list.MaxItems(1) & [_, ...] & [...#location_data]])
+		timeouts?:          #timeouts
 		api_management_id!: string
 		description?:       string
 		id?:                string
 		name!:              string
-		timeouts?:          #timeouts
 	})
 
 	#location_data: close({

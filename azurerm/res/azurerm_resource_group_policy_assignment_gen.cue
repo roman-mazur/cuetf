@@ -6,8 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_resource_group_policy_assignment")
 	close({
-		description?: string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		non_compliance_message?: matchN(1, [#non_compliance_message, [...#non_compliance_message]])
+		overrides?: matchN(1, [#overrides, [...#overrides]])
+		resource_selectors?: matchN(1, [#resource_selectors, [...#resource_selectors]])
+		timeouts?:     #timeouts
+		description?:  string
 		display_name?: string
 		enforce?:      bool
 		id?:           string
@@ -15,11 +19,7 @@ import "list"
 		metadata?:     string
 		name!:         string
 		not_scopes?: [...string]
-		non_compliance_message?: matchN(1, [#non_compliance_message, [...#non_compliance_message]])
-		overrides?: matchN(1, [#overrides, [...#overrides]])
-		parameters?: string
-		resource_selectors?: matchN(1, [#resource_selectors, [...#resource_selectors]])
-		timeouts?:             #timeouts
+		parameters?:           string
 		policy_definition_id!: string
 		resource_group_id!:    string
 	})

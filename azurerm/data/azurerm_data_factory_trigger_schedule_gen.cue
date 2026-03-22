@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_data_factory_trigger_schedule")
 	close({
+		timeouts?:  #timeouts
 		activated?: bool
 		annotations?: [...string]
 		data_factory_id!: string
@@ -12,7 +13,6 @@ package data
 		frequency?:       string
 		id?:              string
 		interval?:        number
-		timeouts?:        #timeouts
 		name!:            string
 		pipeline_name?:   string
 		schedule?: [...close({

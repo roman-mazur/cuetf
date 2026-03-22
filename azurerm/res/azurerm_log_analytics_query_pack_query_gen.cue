@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_log_analytics_query_pack_query")
 	close({
+		timeouts?:                 #timeouts
 		additional_settings_json?: string
 		body!:                     string
 		categories?: [...string]
@@ -13,7 +14,6 @@ package res
 		name?:          string
 		query_pack_id!: string
 		resource_types?: [...string]
-		timeouts?: #timeouts
 		solutions?: [...string]
 		tags?: [string]: string
 	})

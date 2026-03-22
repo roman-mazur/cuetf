@@ -6,27 +6,27 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_batch_account")
 	close({
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		key_vault_reference?: matchN(1, [#key_vault_reference, list.MaxItems(1) & [...#key_vault_reference]])
+		network_profile?: matchN(1, [#network_profile, list.MaxItems(1) & [...#network_profile]])
+		timeouts?:         #timeouts
 		account_endpoint?: string
 		allowed_authentication_modes?: [...string]
 		encryption?: [...close({
 			key_vault_key_id?: string
 		})]
-		id?:       string
-		location!: string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		name!:                          string
-		pool_allocation_mode?:          string
-		primary_access_key?:            string
-		public_network_access_enabled?: bool
-		resource_group_name!:           string
-		key_vault_reference?: matchN(1, [#key_vault_reference, list.MaxItems(1) & [...#key_vault_reference]])
+		id?:                                  string
+		location!:                            string
+		name!:                                string
+		pool_allocation_mode?:                string
+		primary_access_key?:                  string
+		public_network_access_enabled?:       bool
+		resource_group_name!:                 string
 		secondary_access_key?:                string
 		storage_account_authentication_mode?: string
 		storage_account_id?:                  string
 		storage_account_node_identity?:       string
 		tags?: [string]: string
-		network_profile?: matchN(1, [#network_profile, list.MaxItems(1) & [...#network_profile]])
-		timeouts?: #timeouts
 	})
 
 	#identity: close({

@@ -7,11 +7,11 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_policy_virtual_machine_configuration_assignment")
 	close({
 		configuration!: matchN(1, [#configuration, list.MaxItems(1) & [_, ...] & [...#configuration]])
+		timeouts?:           #timeouts
 		id?:                 string
 		location!:           string
 		name!:               string
 		virtual_machine_id!: string
-		timeouts?:           #timeouts
 	})
 
 	#configuration: close({

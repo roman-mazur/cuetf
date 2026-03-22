@@ -6,11 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_postgresql_flexible_server")
 	close({
+		authentication?: matchN(1, [#authentication, list.MaxItems(1) & [...#authentication]])
+		cluster?: matchN(1, [#cluster, list.MaxItems(1) & [...#cluster]])
+		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
+		high_availability?: matchN(1, [#high_availability, list.MaxItems(1) & [...#high_availability]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
+		timeouts?:                          #timeouts
 		administrator_login?:               string
 		administrator_password?:            string
 		administrator_password_wo?:         string
 		administrator_password_wo_version?: number
-		authentication?: matchN(1, [#authentication, list.MaxItems(1) & [...#authentication]])
 		auto_grow_enabled?:                 bool
 		backup_retention_days?:             number
 		create_mode?:                       string
@@ -23,21 +29,15 @@ import "list"
 		point_in_time_restore_time_in_utc?: string
 		private_dns_zone_id?:               string
 		public_network_access_enabled?:     bool
-		cluster?: matchN(1, [#cluster, list.MaxItems(1) & [...#cluster]])
-		replication_role?:    string
-		resource_group_name!: string
-		sku_name?:            string
-		source_server_id?:    string
-		storage_mb?:          number
-		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
-		storage_tier?: string
-		high_availability?: matchN(1, [#high_availability, list.MaxItems(1) & [...#high_availability]])
+		replication_role?:                  string
+		resource_group_name!:               string
+		sku_name?:                          string
+		source_server_id?:                  string
+		storage_mb?:                        number
+		storage_tier?:                      string
 		tags?: [string]: string
 		version?: string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		zone?: string
-		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
-		timeouts?: #timeouts
+		zone?:    string
 	})
 
 	#authentication: close({

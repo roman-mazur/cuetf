@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_kubernetes_cluster")
 	close({
+		timeouts?: #timeouts
 		aci_connector_linux?: [...close({
 			subnet_name?: string
 		})]
@@ -40,7 +41,11 @@ package data
 			azure_rbac_enabled?: bool
 			tenant_id?:          string
 		})]
-		azure_policy_enabled?:               bool
+		azure_policy_enabled?: bool
+		bootstrap_profile?: [...close({
+			artifact_source?:       string
+			container_registry_id?: string
+		})]
 		current_kubernetes_version?:         string
 		disk_encryption_set_id?:             string
 		dns_prefix?:                         string
@@ -120,6 +125,7 @@ package data
 			load_balancer_sku?:  string
 			network_plugin?:     string
 			network_policy?:     string
+			outbound_type?:      string
 			pod_cidr?:           string
 			service_cidr?:       string
 		})]
@@ -137,7 +143,6 @@ package data
 			})]
 		})]
 		open_service_mesh_enabled?:         bool
-		timeouts?:                          #timeouts
 		private_cluster_enabled?:           bool
 		private_fqdn?:                      string
 		resource_group_name!:               string

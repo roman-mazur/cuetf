@@ -4,6 +4,11 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_sentinel_alert_rule_anomaly_duplicate")
 	close({
+		multi_select_observation?: matchN(1, [#multi_select_observation, [...#multi_select_observation]])
+		prioritized_exclude_observation?: matchN(1, [#prioritized_exclude_observation, [...#prioritized_exclude_observation]])
+		single_select_observation?: matchN(1, [#single_select_observation, [...#single_select_observation]])
+		threshold_observation?: matchN(1, [#threshold_observation, [...#threshold_observation]])
+		timeouts?:                   #timeouts
 		anomaly_settings_version?:   number
 		anomaly_version?:            string
 		built_in_rule_id!:           string
@@ -15,17 +20,12 @@ package res
 		is_default_settings?:        bool
 		log_analytics_workspace_id!: string
 		mode!:                       string
-		multi_select_observation?: matchN(1, [#multi_select_observation, [...#multi_select_observation]])
-		name?: string
+		name?:                       string
 		required_data_connector?: [...close({
 			connector_id?: string
 			data_types?: [...string]
 		})]
-		prioritized_exclude_observation?: matchN(1, [#prioritized_exclude_observation, [...#prioritized_exclude_observation]])
 		settings_definition_id?: string
-		single_select_observation?: matchN(1, [#single_select_observation, [...#single_select_observation]])
-		threshold_observation?: matchN(1, [#threshold_observation, [...#threshold_observation]])
-		timeouts?: #timeouts
 		tactics?: [...string]
 		techniques?: [...string]
 	})

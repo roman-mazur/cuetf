@@ -4,6 +4,9 @@ package azurerm
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm/provider")
 	close({
+		enhanced_validation?: matchN(1, [#enhanced_validation, [...#enhanced_validation]])
+		features?: matchN(1, [#features, [...#features]])
+
 		// The Azure DevOps Pipeline Service Connection ID.
 		ado_pipeline_service_connection_id?: string
 		auxiliary_tenant_ids?: [...string]
@@ -73,7 +76,6 @@ package azurerm
 		// token. For use when authenticating as a Service Principal
 		// using OpenID Connect.
 		oidc_request_url?: string
-		features?: matchN(1, [#features, [...#features]])
 
 		// The OIDC ID token for use when authenticating as a Service
 		// Principal using OpenID Connect.
@@ -118,6 +120,20 @@ package azurerm
 
 		// Allow OpenID Connect to be used for authentication
 		use_oidc?: bool
+	})
+
+	#enhanced_validation: close({
+		// Should the AzureRM Provider validate location arguments against
+		// the list of supported Azure Locations? When enabled, invalid
+		// locations are caught at plan time; when disabled, they are
+		// caught at apply time.
+		locations?: bool
+
+		// Should the AzureRM Provider validate Resource Provider
+		// arguments against the list of supported Resource Providers?
+		// When enabled, invalid resource providers are caught at plan
+		// time; when disabled, they are caught at apply time.
+		resource_providers?: bool
 	})
 
 	#features: close({

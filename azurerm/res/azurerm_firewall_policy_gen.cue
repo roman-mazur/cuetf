@@ -6,6 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_firewall_policy")
 	close({
+		dns?: matchN(1, [#dns, list.MaxItems(1) & [...#dns]])
+		explicit_proxy?: matchN(1, [#explicit_proxy, list.MaxItems(1) & [...#explicit_proxy]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		insights?: matchN(1, [#insights, list.MaxItems(1) & [...#insights]])
+		intrusion_detection?: matchN(1, [#intrusion_detection, list.MaxItems(1) & [...#intrusion_detection]])
+		threat_intelligence_allowlist?: matchN(1, [#threat_intelligence_allowlist, list.MaxItems(1) & [...#threat_intelligence_allowlist]])
+		timeouts?: #timeouts
+		tls_certificate?: matchN(1, [#tls_certificate, list.MaxItems(1) & [...#tls_certificate]])
 		auto_learn_private_ranges_enabled?: bool
 		base_policy_id?:                    string
 		child_policies?: [...string]
@@ -16,18 +24,10 @@ import "list"
 		private_ip_ranges?: [...string]
 		resource_group_name!: string
 		rule_collection_groups?: [...string]
-		dns?: matchN(1, [#dns, list.MaxItems(1) & [...#dns]])
-		explicit_proxy?: matchN(1, [#explicit_proxy, list.MaxItems(1) & [...#explicit_proxy]])
 		sku?:                  string
 		sql_redirect_allowed?: bool
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		tags?: [string]: string
-		insights?: matchN(1, [#insights, list.MaxItems(1) & [...#insights]])
-		intrusion_detection?: matchN(1, [#intrusion_detection, list.MaxItems(1) & [...#intrusion_detection]])
-		threat_intelligence_allowlist?: matchN(1, [#threat_intelligence_allowlist, list.MaxItems(1) & [...#threat_intelligence_allowlist]])
 		threat_intelligence_mode?: string
-		timeouts?:                 #timeouts
-		tls_certificate?: matchN(1, [#tls_certificate, list.MaxItems(1) & [...#tls_certificate]])
 	})
 
 	#dns: close({

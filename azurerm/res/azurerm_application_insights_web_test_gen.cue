@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_application_insights_web_test")
 	close({
+		timeouts?:                #timeouts
 		application_insights_id!: string
 		configuration!:           string
 		description?:             string
@@ -16,7 +17,6 @@ package res
 		name!:                 string
 		resource_group_name!:  string
 		retry_enabled?:        bool
-		timeouts?:             #timeouts
 		synthetic_monitor_id?: string
 		tags?: [string]: string
 		timeout?: number

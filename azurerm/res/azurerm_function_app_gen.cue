@@ -6,28 +6,30 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_function_app")
 	close({
+		auth_settings?: matchN(1, [#auth_settings, list.MaxItems(1) & [...#auth_settings]])
+		connection_string?: matchN(1, [#connection_string, [...#connection_string]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		site_config?: matchN(1, [#site_config, list.MaxItems(1) & [...#site_config]])
+		source_control?: matchN(1, [#source_control, list.MaxItems(1) & [...#source_control]])
+		timeouts?:            #timeouts
 		app_service_plan_id!: string
 		app_settings?: [string]: string
-		client_cert_mode?:              string
-		custom_domain_verification_id?: string
-		daily_memory_time_quota?:       number
-		default_hostname?:              string
-		enable_builtin_logging?:        bool
-		auth_settings?: matchN(1, [#auth_settings, list.MaxItems(1) & [...#auth_settings]])
-		enabled?:    bool
-		https_only?: bool
-		id?:         string
-		connection_string?: matchN(1, [#connection_string, [...#connection_string]])
+		client_cert_mode?:                string
+		custom_domain_verification_id?:   string
+		daily_memory_time_quota?:         number
+		default_hostname?:                string
+		enable_builtin_logging?:          bool
+		enabled?:                         bool
+		https_only?:                      bool
+		id?:                              string
 		key_vault_reference_identity_id?: string
 		kind?:                            string
 		location!:                        string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		name!:    string
-		os_type?: string
-		site_config?: matchN(1, [#site_config, list.MaxItems(1) & [...#site_config]])
-		outbound_ip_addresses?:          string
-		possible_outbound_ip_addresses?: string
-		resource_group_name!:            string
+		name!:                            string
+		os_type?:                         string
+		outbound_ip_addresses?:           string
+		possible_outbound_ip_addresses?:  string
+		resource_group_name!:             string
 		site_credential?: [...close({
 			password?: string
 			username?: string
@@ -35,25 +37,23 @@ import "list"
 		storage_account_access_key!: string
 		storage_account_name!:       string
 		tags?: [string]: string
-		source_control?: matchN(1, [#source_control, list.MaxItems(1) & [...#source_control]])
-		version?:  string
-		timeouts?: #timeouts
+		version?: string
 	})
 
 	#auth_settings: close({
-		additional_login_params?: [string]: string
-		allowed_external_redirect_urls?: [...string]
-		default_provider?: string
-		enabled!:          bool
-		issuer?:           string
 		active_directory?: matchN(1, [_#defs."/$defs/auth_settings/$defs/active_directory", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/active_directory"]])
-		runtime_version?:               string
-		token_refresh_extension_hours?: number
 		facebook?: matchN(1, [_#defs."/$defs/auth_settings/$defs/facebook", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/facebook"]])
 		google?: matchN(1, [_#defs."/$defs/auth_settings/$defs/google", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/google"]])
-		token_store_enabled?: bool
 		microsoft?: matchN(1, [_#defs."/$defs/auth_settings/$defs/microsoft", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/microsoft"]])
 		twitter?: matchN(1, [_#defs."/$defs/auth_settings/$defs/twitter", list.MaxItems(1) & [..._#defs."/$defs/auth_settings/$defs/twitter"]])
+		additional_login_params?: [string]: string
+		allowed_external_redirect_urls?: [...string]
+		default_provider?:              string
+		enabled!:                       bool
+		issuer?:                        string
+		runtime_version?:               string
+		token_refresh_extension_hours?: number
+		token_store_enabled?:           bool
 		unauthenticated_client_action?: string
 	})
 
@@ -71,6 +71,7 @@ import "list"
 	})
 
 	#site_config: close({
+		cors?: matchN(1, [_#defs."/$defs/site_config/$defs/cors", list.MaxItems(1) & [..._#defs."/$defs/site_config/$defs/cors"]])
 		always_on?:                bool
 		app_scale_limit?:          number
 		auto_swap_slot_name?:      string
@@ -93,9 +94,8 @@ import "list"
 			service_tag?:               string
 			virtual_network_subnet_id?: string
 		})]
-		java_version?:     string
-		linux_fx_version?: string
-		cors?: matchN(1, [_#defs."/$defs/site_config/$defs/cors", list.MaxItems(1) & [..._#defs."/$defs/site_config/$defs/cors"]])
+		java_version?:                     string
+		linux_fx_version?:                 string
 		min_tls_version?:                  string
 		pre_warmed_instance_count?:        number
 		runtime_scale_monitoring_enabled?: bool

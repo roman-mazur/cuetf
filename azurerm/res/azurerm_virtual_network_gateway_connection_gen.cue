@@ -6,20 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_network_gateway_connection")
 	close({
+		custom_bgp_addresses?: matchN(1, [#custom_bgp_addresses, list.MaxItems(1) & [...#custom_bgp_addresses]])
+		ipsec_policy?: matchN(1, [#ipsec_policy, list.MaxItems(1) & [...#ipsec_policy]])
+		timeouts?: #timeouts
+		traffic_selector_policy?: matchN(1, [#traffic_selector_policy, [...#traffic_selector_policy]])
 		authorization_key?:   string
 		bgp_enabled?:         bool
 		connection_mode?:     string
 		connection_protocol?: string
 		dpd_timeout_seconds?: number
 		egress_nat_rule_ids?: [...string]
-		express_route_circuit_id?: string
-		custom_bgp_addresses?: matchN(1, [#custom_bgp_addresses, list.MaxItems(1) & [...#custom_bgp_addresses]])
+		express_route_circuit_id?:     string
 		express_route_gateway_bypass?: bool
 		id?:                           string
 		ingress_nat_rule_ids?: [...string]
-		local_azure_ip_address_enabled?: bool
-		local_network_gateway_id?:       string
-		ipsec_policy?: matchN(1, [#ipsec_policy, list.MaxItems(1) & [...#ipsec_policy]])
+		local_azure_ip_address_enabled?:  bool
+		local_network_gateway_id?:        string
 		location!:                        string
 		name!:                            string
 		peer_virtual_network_gateway_id?: string
@@ -27,12 +29,10 @@ import "list"
 		resource_group_name!:             string
 		routing_weight?:                  number
 		shared_key?:                      string
-		timeouts?:                        #timeouts
 		tags?: [string]: string
 		type!:                               string
 		use_policy_based_traffic_selectors?: bool
 		virtual_network_gateway_id!:         string
-		traffic_selector_policy?: matchN(1, [#traffic_selector_policy, [...#traffic_selector_policy]])
 	})
 
 	#custom_bgp_addresses: close({

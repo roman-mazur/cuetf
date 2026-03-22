@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_extended_location_custom_location")
 	close({
+		timeouts?: #timeouts
 		authentication?: [...close({
 			type?:  string
 			value?: string
@@ -14,7 +15,6 @@ package data
 		host_type?:           string
 		id?:                  string
 		location?:            string
-		timeouts?:            #timeouts
 		name!:                string
 		namespace?:           string
 		resource_group_name!: string

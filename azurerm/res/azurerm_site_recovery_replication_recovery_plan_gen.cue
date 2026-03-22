@@ -7,15 +7,15 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_site_recovery_replication_recovery_plan")
 	close({
 		azure_to_azure_settings?: matchN(1, [#azure_to_azure_settings, list.MaxItems(1) & [...#azure_to_azure_settings]])
+		boot_recovery_group!: matchN(1, [#boot_recovery_group, [_, ...] & [...#boot_recovery_group]])
+		failover_recovery_group!: matchN(1, [#failover_recovery_group, list.MaxItems(1) & [_, ...] & [...#failover_recovery_group]])
+		shutdown_recovery_group!: matchN(1, [#shutdown_recovery_group, list.MaxItems(1) & [_, ...] & [...#shutdown_recovery_group]])
+		timeouts?:                  #timeouts
 		id?:                        string
 		name!:                      string
 		recovery_vault_id!:         string
 		source_recovery_fabric_id!: string
 		target_recovery_fabric_id!: string
-		boot_recovery_group!: matchN(1, [#boot_recovery_group, [_, ...] & [...#boot_recovery_group]])
-		failover_recovery_group!: matchN(1, [#failover_recovery_group, list.MaxItems(1) & [_, ...] & [...#failover_recovery_group]])
-		shutdown_recovery_group!: matchN(1, [#shutdown_recovery_group, list.MaxItems(1) & [_, ...] & [...#shutdown_recovery_group]])
-		timeouts?: #timeouts
 	})
 
 	#azure_to_azure_settings: close({

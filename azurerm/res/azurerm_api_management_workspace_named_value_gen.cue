@@ -6,7 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management_workspace_named_value")
 	close({
-		timeouts?:                    #timeouts
+		timeouts?: #timeouts
+		value_from_key_vault?: matchN(1, [#value_from_key_vault, list.MaxItems(1) & [...#value_from_key_vault]])
 		api_management_workspace_id!: string
 		display_name!:                string
 		id?:                          string
@@ -14,7 +15,6 @@ import "list"
 		secret?:                      bool
 		tags?: [...string]
 		value?: string
-		value_from_key_vault?: matchN(1, [#value_from_key_vault, list.MaxItems(1) & [...#value_from_key_vault]])
 	})
 
 	#timeouts: close({

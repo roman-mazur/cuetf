@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_oracle_exascale_database_storage_vault")
 	close({
+		timeouts?:                          #timeouts
 		additional_flash_cache_percentage?: number
 		description?:                       string
 		display_name?:                      string
@@ -19,7 +20,6 @@ package data
 		oci_url?:                       string
 		ocid?:                          string
 		resource_group_name!:           string
-		timeouts?:                      #timeouts
 		time_zone?:                     string
 		virtual_machine_cluster_count?: number
 		zones?: [...string]

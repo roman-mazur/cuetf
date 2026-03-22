@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_alert_processing_rule_action_group")
 	close({
-		add_action_group_ids!: [...string]
-		description?: string
-		enabled?:     bool
-		id?:          string
 		condition?: matchN(1, [#condition, list.MaxItems(1) & [...#condition]])
+		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
+		timeouts?: #timeouts
+		add_action_group_ids!: [...string]
+		description?:         string
+		enabled?:             bool
+		id?:                  string
 		name!:                string
 		resource_group_name!: string
 		scopes!: [...string]
 		tags?: [string]: string
-		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
-		timeouts?: #timeouts
 	})
 
 	#condition: close({

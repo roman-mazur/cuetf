@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_container_app")
 	close({
+		timeouts?:                     #timeouts
 		container_app_environment_id?: string
 
 		// The ID of the Custom Domain Verification for this Container
@@ -213,7 +214,6 @@ package data
 			})]
 		})]
 		workload_profile_name?: string
-		timeouts?:              #timeouts
 	})
 
 	#timeouts: close({

@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_windows_web_app")
 	close({
+		timeouts?: #timeouts
 		app_settings?: [string]: string
 		auth_settings?: [...close({
 			active_directory?: [...close({
@@ -169,7 +170,6 @@ package data
 		enabled?:                                  bool
 		ftp_publish_basic_authentication_enabled?: bool
 		hosting_environment_id?:                   string
-		timeouts?:                                 #timeouts
 		https_only?:                               bool
 		id?:                                       string
 		identity?: [...close({

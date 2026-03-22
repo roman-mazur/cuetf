@@ -7,13 +7,6 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_action_group")
 	close({
 		arm_role_receiver?: matchN(1, [#arm_role_receiver, [...#arm_role_receiver]])
-		enabled?:             bool
-		id?:                  string
-		location?:            string
-		name!:                string
-		resource_group_name!: string
-		short_name!:          string
-		tags?: [string]: string
 		automation_runbook_receiver?: matchN(1, [#automation_runbook_receiver, [...#automation_runbook_receiver]])
 		azure_app_push_receiver?: matchN(1, [#azure_app_push_receiver, [...#azure_app_push_receiver]])
 		azure_function_receiver?: matchN(1, [#azure_function_receiver, [...#azure_function_receiver]])
@@ -25,6 +18,13 @@ import "list"
 		timeouts?: #timeouts
 		voice_receiver?: matchN(1, [#voice_receiver, [...#voice_receiver]])
 		webhook_receiver?: matchN(1, [#webhook_receiver, [...#webhook_receiver]])
+		enabled?:             bool
+		id?:                  string
+		location?:            string
+		name!:                string
+		resource_group_name!: string
+		short_name!:          string
+		tags?: [string]: string
 	})
 
 	#arm_role_receiver: close({

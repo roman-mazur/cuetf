@@ -7,13 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_protection_backup_policy_disk")
 	close({
 		retention_rule?: matchN(1, [#retention_rule, [...#retention_rule]])
+		timeouts?: #timeouts
 		backup_repeating_time_intervals!: [...string]
 		default_retention_duration!: string
 		id?:                         string
 		name!:                       string
 		time_zone?:                  string
 		vault_id!:                   string
-		timeouts?:                   #timeouts
 	})
 
 	#retention_rule: close({

@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_machine_scale_set_standby_pool")
 	close({
 		elasticity_profile!: matchN(1, [#elasticity_profile, list.MaxItems(1) & [_, ...] & [...#elasticity_profile]])
+		timeouts?:                              #timeouts
 		attached_virtual_machine_scale_set_id!: string
 		id?:                                    string
 		location!:                              string
@@ -14,7 +15,6 @@ import "list"
 		resource_group_name!:                   string
 		tags?: [string]: string
 		virtual_machine_state!: string
-		timeouts?:              #timeouts
 	})
 
 	#elasticity_profile: close({

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_automation_runbook")
 	close({
+		draft?: matchN(1, [#draft, list.MaxItems(1) & [...#draft]])
+		publish_content_link?: matchN(1, [#publish_content_link, list.MaxItems(1) & [...#publish_content_link]])
+		timeouts?:                #timeouts
 		automation_account_name!: string
 		content?:                 string
 		description?:             string
@@ -19,11 +22,8 @@ import "list"
 		location!:                 string
 		log_activity_trace_level?: number
 		log_progress!:             bool
-		draft?: matchN(1, [#draft, list.MaxItems(1) & [...#draft]])
-		publish_content_link?: matchN(1, [#publish_content_link, list.MaxItems(1) & [...#publish_content_link]])
 		log_verbose!:              bool
 		name!:                     string
-		timeouts?:                 #timeouts
 		resource_group_name!:      string
 		runbook_type!:             string
 		runtime_environment_name?: string
@@ -32,11 +32,11 @@ import "list"
 
 	#draft: close({
 		content_link?: matchN(1, [_#defs."/$defs/draft/$defs/content_link", list.MaxItems(1) & [..._#defs."/$defs/draft/$defs/content_link"]])
+		parameters?: matchN(1, [_#defs."/$defs/draft/$defs/parameters", [..._#defs."/$defs/draft/$defs/parameters"]])
 		creation_time?:      string
 		edit_mode_enabled?:  bool
 		last_modified_time?: string
 		output_types?: [...string]
-		parameters?: matchN(1, [_#defs."/$defs/draft/$defs/parameters", [..._#defs."/$defs/draft/$defs/parameters"]])
 	})
 
 	#publish_content_link: close({

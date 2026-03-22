@@ -5,11 +5,11 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_bot_channel_line")
 	close({
 		line_channel!: matchN(1, [#line_channel, [_, ...] & [...#line_channel]])
+		timeouts?:            #timeouts
 		bot_name!:            string
 		id?:                  string
 		location!:            string
 		resource_group_name!: string
-		timeouts?:            #timeouts
 	})
 
 	#line_channel: close({

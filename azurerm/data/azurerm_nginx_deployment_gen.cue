@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_nginx_deployment")
 	close({
+		timeouts?: #timeouts
 		auto_scale_profile?: [...close({
 			max_capacity?: number
 			min_capacity?: number
@@ -36,7 +37,6 @@ package data
 			subnet_id?: string
 		})]
 		nginx_version?:       string
-		timeouts?:            #timeouts
 		resource_group_name!: string
 		sku?:                 string
 		tags?: [string]: string

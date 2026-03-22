@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_app_environment_storage")
 	close({
+		timeouts?: #timeouts
+
 		// The Storage Account Access Key.
 		access_key?: string
 
@@ -23,7 +25,6 @@ package res
 		// The name for this Storage.
 		name!:           string
 		nfs_server_url?: string
-		timeouts?:       #timeouts
 
 		// The name of the Azure Storage Share to use.
 		share_name!: string

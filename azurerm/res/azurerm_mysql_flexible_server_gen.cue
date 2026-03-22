@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mysql_flexible_server")
 	close({
+		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
+		high_availability?: matchN(1, [#high_availability, list.MaxItems(1) & [...#high_availability]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
+		storage?: matchN(1, [#storage, list.MaxItems(1) & [...#storage]])
+		timeouts?:                          #timeouts
 		administrator_login?:               string
 		administrator_password?:            string
 		administrator_password_wo?:         string
@@ -20,22 +26,16 @@ import "list"
 		name!:                              string
 		point_in_time_restore_time_in_utc?: string
 		private_dns_zone_id?:               string
-		customer_managed_key?: matchN(1, [#customer_managed_key, list.MaxItems(1) & [...#customer_managed_key]])
-		public_network_access?:         string
-		public_network_access_enabled?: bool
-		replica_capacity?:              number
-		replication_role?:              string
-		resource_group_name!:           string
-		high_availability?: matchN(1, [#high_availability, list.MaxItems(1) & [...#high_availability]])
-		sku_name?:         string
-		source_server_id?: string
+		public_network_access?:             string
+		public_network_access_enabled?:     bool
+		replica_capacity?:                  number
+		replication_role?:                  string
+		resource_group_name!:               string
+		sku_name?:                          string
+		source_server_id?:                  string
 		tags?: [string]: string
 		version?: string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
-		storage?: matchN(1, [#storage, list.MaxItems(1) & [...#storage]])
-		timeouts?: #timeouts
-		zone?:     string
+		zone?:    string
 	})
 
 	#customer_managed_key: close({

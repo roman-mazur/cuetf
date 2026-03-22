@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_firewall")
 	close({
+		ip_configuration?: matchN(1, [#ip_configuration, [...#ip_configuration]])
+		management_ip_configuration?: matchN(1, [#management_ip_configuration, list.MaxItems(1) & [...#management_ip_configuration]])
+		timeouts?: #timeouts
+		virtual_hub?: matchN(1, [#virtual_hub, list.MaxItems(1) & [...#virtual_hub]])
 		dns_proxy_enabled?: bool
 		dns_servers?: [...string]
 		firewall_policy_id?: string
@@ -15,14 +19,10 @@ import "list"
 		private_ip_ranges?: [...string]
 		resource_group_name!: string
 		sku_name!:            string
-		ip_configuration?: matchN(1, [#ip_configuration, [...#ip_configuration]])
-		sku_tier!: string
+		sku_tier!:            string
 		tags?: [string]: string
 		threat_intel_mode?: string
 		zones?: [...string]
-		management_ip_configuration?: matchN(1, [#management_ip_configuration, list.MaxItems(1) & [...#management_ip_configuration]])
-		timeouts?: #timeouts
-		virtual_hub?: matchN(1, [#virtual_hub, list.MaxItems(1) & [...#virtual_hub]])
 	})
 
 	#ip_configuration: close({

@@ -7,15 +7,15 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_notification_hub")
 	close({
 		apns_credential?: matchN(1, [#apns_credential, list.MaxItems(1) & [...#apns_credential]])
+		browser_credential?: matchN(1, [#browser_credential, list.MaxItems(1) & [...#browser_credential]])
+		gcm_credential?: matchN(1, [#gcm_credential, list.MaxItems(1) & [...#gcm_credential]])
+		timeouts?:            #timeouts
 		id?:                  string
 		location!:            string
 		name!:                string
 		namespace_name!:      string
 		resource_group_name!: string
 		tags?: [string]: string
-		browser_credential?: matchN(1, [#browser_credential, list.MaxItems(1) & [...#browser_credential]])
-		gcm_credential?: matchN(1, [#gcm_credential, list.MaxItems(1) & [...#gcm_credential]])
-		timeouts?: #timeouts
 	})
 
 	#apns_credential: close({

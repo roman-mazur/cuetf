@@ -4,16 +4,16 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_policy_set_definition")
 	close({
-		description?: string
 		policy_definition_group?: matchN(1, [#policy_definition_group, [...#policy_definition_group]])
+		policy_definition_reference!: matchN(1, [#policy_definition_reference, [_, ...] & [...#policy_definition_reference]])
+		timeouts?:     #timeouts
+		description?:  string
 		display_name!: string
 		id?:           string
 		metadata?:     string
 		name!:         string
 		parameters?:   string
 		policy_type!:  string
-		policy_definition_reference!: matchN(1, [#policy_definition_reference, [_, ...] & [...#policy_definition_reference]])
-		timeouts?: #timeouts
 	})
 
 	#policy_definition_group: close({

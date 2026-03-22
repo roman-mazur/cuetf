@@ -6,15 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_job_step")
 	close({
-		id?:                             string
-		initial_retry_interval_seconds?: number
-		job_credential_id?:              string
-		job_id!:                         string
-		job_step_index!:                 number
-		job_target_group_id!:            string
 		output_target?: matchN(1, [#output_target, list.MaxItems(1) & [...#output_target]])
-		maximum_retry_interval_seconds?:    number
 		timeouts?:                          #timeouts
+		id?:                                string
+		initial_retry_interval_seconds?:    number
+		job_credential_id?:                 string
+		job_id!:                            string
+		job_step_index!:                    number
+		job_target_group_id!:               string
+		maximum_retry_interval_seconds?:    number
 		name!:                              string
 		retry_attempts?:                    number
 		retry_interval_backoff_multiplier?: number

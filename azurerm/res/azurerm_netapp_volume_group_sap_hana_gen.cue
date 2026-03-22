@@ -6,7 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_netapp_volume_group_sap_hana")
 	close({
-		timeouts?:               #timeouts
+		timeouts?: #timeouts
+		volume!: matchN(1, [#volume, list.MaxItems(5) & [_, _, ...] & [...#volume]])
 		account_name!:           string
 		application_identifier!: string
 		group_description!:      string
@@ -14,7 +15,6 @@ import "list"
 		location!:               string
 		name!:                   string
 		resource_group_name!:    string
-		volume!: matchN(1, [#volume, list.MaxItems(5) & [_, _, ...] & [...#volume]])
 	})
 
 	#timeouts: close({
@@ -25,6 +25,9 @@ import "list"
 	})
 
 	#volume: close({
+		data_protection_replication?: matchN(1, [_#defs."/$defs/volume/$defs/data_protection_replication", list.MaxItems(1) & [..._#defs."/$defs/volume/$defs/data_protection_replication"]])
+		data_protection_snapshot_policy?: matchN(1, [_#defs."/$defs/volume/$defs/data_protection_snapshot_policy", list.MaxItems(1) & [..._#defs."/$defs/volume/$defs/data_protection_snapshot_policy"]])
+		export_policy_rule!: matchN(1, [_#defs."/$defs/volume/$defs/export_policy_rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/volume/$defs/export_policy_rule"]])
 		capacity_pool_id!:              string
 		encryption_key_source?:         string
 		id?:                            string
@@ -36,17 +39,14 @@ import "list"
 		proximity_placement_group_id?: string
 		security_style!:               string
 		service_level!:                string
-		data_protection_replication?: matchN(1, [_#defs."/$defs/volume/$defs/data_protection_replication", list.MaxItems(1) & [..._#defs."/$defs/volume/$defs/data_protection_replication"]])
-		data_protection_snapshot_policy?: matchN(1, [_#defs."/$defs/volume/$defs/data_protection_snapshot_policy", list.MaxItems(1) & [..._#defs."/$defs/volume/$defs/data_protection_snapshot_policy"]])
-		snapshot_directory_visible!: bool
-		storage_quota_in_gb!:        number
-		subnet_id!:                  string
+		snapshot_directory_visible!:   bool
+		storage_quota_in_gb!:          number
+		subnet_id!:                    string
 		tags?: [string]: string
 		throughput_in_mibps!: number
 		volume_path!:         string
 		volume_spec_name!:    string
-		export_policy_rule!: matchN(1, [_#defs."/$defs/volume/$defs/export_policy_rule", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/volume/$defs/export_policy_rule"]])
-		zone?: string
+		zone?:                string
 	})
 
 	_#defs: "/$defs/volume/$defs/data_protection_replication": close({

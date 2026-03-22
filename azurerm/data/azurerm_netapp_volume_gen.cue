@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_netapp_volume")
 	close({
+		timeouts?: #timeouts
+
 		// The accept grow capacity pool for short term clone split
 		// property.
 		accept_grow_capacity_pool_for_short_term_clone_split?: string
@@ -27,7 +29,6 @@ package data
 		mount_ip_addresses?: [...string]
 		name!:             string
 		network_features?: string
-		timeouts?:         #timeouts
 		pool_name!:        string
 		protocols?: [...string]
 		resource_group_name!:                  string

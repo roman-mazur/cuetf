@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_express_route_connection")
 	close({
 		routing?: matchN(1, [#routing, list.MaxItems(1) & [...#routing]])
+		timeouts?:                             #timeouts
 		authorization_key?:                    string
 		express_route_circuit_peering_id!:     string
 		express_route_gateway_bypass_enabled?: bool
@@ -15,7 +16,6 @@ import "list"
 		internet_security_enabled?:            bool
 		name!:                                 string
 		routing_weight?:                       number
-		timeouts?:                             #timeouts
 	})
 
 	#routing: close({

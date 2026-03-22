@@ -4,16 +4,16 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_network_gateway_nat_rule")
 	close({
-		id?: string
 		external_mapping!: matchN(1, [#external_mapping, [_, ...] & [...#external_mapping]])
+		internal_mapping!: matchN(1, [#internal_mapping, [_, ...] & [...#internal_mapping]])
+		timeouts?:                   #timeouts
+		id?:                         string
 		ip_configuration_id?:        string
 		mode?:                       string
 		name!:                       string
 		resource_group_name!:        string
 		type?:                       string
 		virtual_network_gateway_id!: string
-		internal_mapping!: matchN(1, [#internal_mapping, [_, ...] & [...#internal_mapping]])
-		timeouts?: #timeouts
 	})
 
 	#external_mapping: close({

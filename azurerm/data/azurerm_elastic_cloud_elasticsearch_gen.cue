@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_elastic_cloud_elasticsearch")
 	close({
+		logs?: matchN(1, [#logs, [...#logs]])
+		timeouts?:                      #timeouts
 		elastic_cloud_deployment_id?:   string
 		elastic_cloud_email_address?:   string
 		elastic_cloud_sso_default_url?: string
@@ -12,13 +14,11 @@ package data
 		id?:                            string
 		kibana_service_url?:            string
 		kibana_sso_uri?:                string
-		logs?: matchN(1, [#logs, [...#logs]])
-		location?:            string
-		monitoring_enabled?:  bool
-		name!:                string
-		timeouts?:            #timeouts
-		resource_group_name!: string
-		sku_name?:            string
+		location?:                      string
+		monitoring_enabled?:            bool
+		name!:                          string
+		resource_group_name!:           string
+		sku_name?:                      string
 		tags?: [string]: string
 	})
 

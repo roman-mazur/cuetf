@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_active_directory_domain_service")
 	close({
+		timeouts?:                  #timeouts
 		deployment_id?:             string
 		domain_configuration_type?: string
 		domain_name?:               string
@@ -44,7 +45,6 @@ package data
 		})]
 		sku?:        string
 		sync_owner?: string
-		timeouts?:   #timeouts
 		tags?: [string]: string
 		tenant_id?: string
 		version?:   number

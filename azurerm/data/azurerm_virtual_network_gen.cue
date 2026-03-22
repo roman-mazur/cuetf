@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_virtual_network")
 	close({
+		timeouts?: #timeouts
 		address_space?: [...string]
 		dns_servers?: [...string]
 		guid?:                string
@@ -12,8 +13,7 @@ package data
 		name!:                string
 		resource_group_name!: string
 		subnets?: [...string]
-		tags?: [string]: string
-		timeouts?: #timeouts
+		tags?: [string]:          string
 		vnet_peerings?: [string]: string
 		vnet_peerings_addresses?: [...string]
 	})

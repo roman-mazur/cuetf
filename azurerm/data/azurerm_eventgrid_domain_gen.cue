@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_eventgrid_domain")
 	close({
+		timeouts?: #timeouts
 		endpoint?: string
 		id?:       string
 		identity?: [...close({
@@ -35,7 +36,6 @@ package data
 		primary_access_key?:            string
 		public_network_access_enabled?: bool
 		resource_group_name!:           string
-		timeouts?:                      #timeouts
 		secondary_access_key?:          string
 		tags?: [string]: string
 	})

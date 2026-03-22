@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_linux_web_app")
 	close({
+		timeouts?: #timeouts
 		app_metadata?: [string]: string
 		app_settings?: [string]: string
 		auth_settings?: [...close({
@@ -181,7 +182,6 @@ package data
 		})]
 		key_vault_reference_identity_id?: string
 		kind?:                            string
-		timeouts?:                        #timeouts
 		location?:                        string
 		logs?: [...close({
 			application_logs?: [...close({

@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_logic_app_standard")
 	close({
+		timeouts?:            #timeouts
 		app_service_plan_id?: string
 		app_settings?: [string]: string
 		bundle_version?:          string
@@ -92,7 +93,6 @@ package data
 			username?: string
 		})]
 		storage_account_access_key?: string
-		timeouts?:                   #timeouts
 		storage_account_name?:       string
 		storage_account_share_name?: string
 		tags?: [string]: string

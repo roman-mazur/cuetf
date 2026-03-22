@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_express_route_circuit_peering")
 	close({
+		timeouts?:                      #timeouts
 		azure_asn?:                     number
 		express_route_circuit_name!:    string
 		gateway_manager_etag?:          string
@@ -16,7 +17,6 @@ package data
 		resource_group_name!:           string
 		route_filter_id?:               string
 		secondary_azure_port?:          string
-		timeouts?:                      #timeouts
 		secondary_peer_address_prefix?: string
 		shared_key?:                    string
 		vlan_id?:                       number

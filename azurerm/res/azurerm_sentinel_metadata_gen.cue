@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_sentinel_metadata")
 	close({
+		author?: matchN(1, [#author, list.MaxItems(1) & [...#author]])
+		category?: matchN(1, [#category, list.MaxItems(1) & [...#category]])
+		source?: matchN(1, [#source, list.MaxItems(1) & [...#source]])
+		support?: matchN(1, [#support, list.MaxItems(1) & [...#support]])
+		timeouts?:               #timeouts
 		content_id!:             string
 		content_schema_version?: string
 		custom_version?:         string
@@ -17,8 +22,6 @@ import "list"
 		last_publish_date?:      string
 		name!:                   string
 		parent_id!:              string
-		author?: matchN(1, [#author, list.MaxItems(1) & [...#author]])
-		category?: matchN(1, [#category, list.MaxItems(1) & [...#category]])
 		preview_images?: [...string]
 		preview_images_dark?: [...string]
 		providers?: [...string]
@@ -26,9 +29,6 @@ import "list"
 		threat_analysis_techniques?: [...string]
 		version?:      string
 		workspace_id!: string
-		source?: matchN(1, [#source, list.MaxItems(1) & [...#source]])
-		support?: matchN(1, [#support, list.MaxItems(1) & [...#support]])
-		timeouts?: #timeouts
 	})
 
 	#author: close({

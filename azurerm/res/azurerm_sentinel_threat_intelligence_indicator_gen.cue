@@ -4,22 +4,23 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_sentinel_threat_intelligence_indicator")
 	close({
-		confidence?:   number
-		created_by?:   string
-		created_on?:   string
-		defanged?:     bool
-		description?:  string
-		display_name!: string
-		extension?:    string
-		external_id?:  string
 		external_reference?: matchN(1, [#external_reference, [...#external_reference]])
+		granular_marking?: matchN(1, [#granular_marking, [...#granular_marking]])
+		kill_chain_phase?: matchN(1, [#kill_chain_phase, [...#kill_chain_phase]])
+		timeouts?:                       #timeouts
+		confidence?:                     number
+		created_by?:                     string
+		created_on?:                     string
+		defanged?:                       bool
+		description?:                    string
+		display_name!:                   string
+		extension?:                      string
+		external_id?:                    string
 		external_last_updated_time_utc?: string
 		guid?:                           string
 		id?:                             string
 		indicator_type?: [...string]
-		language?: string
-		granular_marking?: matchN(1, [#granular_marking, [...#granular_marking]])
-		kill_chain_phase?: matchN(1, [#kill_chain_phase, [...#kill_chain_phase]])
+		language?:              string
 		last_updated_time_utc?: string
 		object_marking_refs?: [...string]
 		parsed_pattern?: [...close({
@@ -39,7 +40,6 @@ package res
 		validate_from_utc!:  string
 		validate_until_utc?: string
 		workspace_id!:       string
-		timeouts?:           #timeouts
 	})
 
 	#external_reference: close({

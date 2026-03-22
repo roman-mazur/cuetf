@@ -5,12 +5,12 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mongo_cluster_user")
 	close({
 		role!: matchN(1, [#role, [_, ...] & [...#role]])
+		timeouts?:               #timeouts
 		id?:                     string
 		identity_provider_type!: string
 		mongo_cluster_id!:       string
 		object_id!:              string
 		principal_type!:         string
-		timeouts?:               #timeouts
 	})
 
 	#role: close({

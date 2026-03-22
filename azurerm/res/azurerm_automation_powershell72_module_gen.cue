@@ -7,11 +7,11 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_automation_powershell72_module")
 	close({
 		module_link!: matchN(1, [#module_link, list.MaxItems(1) & [_, ...] & [...#module_link]])
+		timeouts?:              #timeouts
 		automation_account_id!: string
 		id?:                    string
 		name!:                  string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#module_link: close({

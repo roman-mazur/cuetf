@@ -6,19 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_workloads_sap_three_tier_virtual_instance")
 	close({
-		app_location!: string
-		environment!:  string
-		id?:           string
-		location!:     string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		three_tier_configuration!: matchN(1, [#three_tier_configuration, list.MaxItems(1) & [_, ...] & [...#three_tier_configuration]])
+		timeouts?:                              #timeouts
+		app_location!:                          string
+		environment!:                           string
+		id?:                                    string
+		location!:                              string
 		managed_resource_group_name?:           string
 		managed_resources_network_access_type?: string
 		name!:                                  string
 		resource_group_name!:                   string
 		sap_fqdn!:                              string
 		sap_product!:                           string
-		three_tier_configuration!: matchN(1, [#three_tier_configuration, list.MaxItems(1) & [_, ...] & [...#three_tier_configuration]])
-		timeouts?: #timeouts
 		tags?: [string]: string
 	})
 
@@ -30,12 +30,12 @@ import "list"
 	#three_tier_configuration: close({
 		application_server_configuration!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/application_server_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/application_server_configuration"]])
 		central_server_configuration!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/central_server_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/central_server_configuration"]])
-		app_resource_group_name!: string
 		database_server_configuration!: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/database_server_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/three_tier_configuration/$defs/database_server_configuration"]])
-		high_availability_type?: string
 		resource_names?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/resource_names", list.MaxItems(1) & [..._#defs."/$defs/three_tier_configuration/$defs/resource_names"]])
 		transport_create_and_mount?: matchN(1, [_#defs."/$defs/three_tier_configuration/$defs/transport_create_and_mount", list.MaxItems(1) & [..._#defs."/$defs/three_tier_configuration/$defs/transport_create_and_mount"]])
-		secondary_ip_enabled?: bool
+		app_resource_group_name!: string
+		high_availability_type?:  string
+		secondary_ip_enabled?:    bool
 	})
 
 	#timeouts: close({

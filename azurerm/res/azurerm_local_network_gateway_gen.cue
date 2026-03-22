@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_local_network_gateway")
 	close({
 		bgp_settings?: matchN(1, [#bgp_settings, list.MaxItems(1) & [...#bgp_settings]])
+		timeouts?: #timeouts
 		address_space?: [...string]
 		gateway_address?:     string
 		gateway_fqdn?:        string
@@ -15,7 +16,6 @@ import "list"
 		name!:                string
 		resource_group_name!: string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#bgp_settings: close({

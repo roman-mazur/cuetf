@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_logic_app_workflow")
 	close({
+		timeouts?:        #timeouts
 		access_endpoint?: string
 		connector_endpoint_ip_addresses?: [...string]
 		connector_outbound_ip_addresses?: [...string]
@@ -21,7 +22,6 @@ package data
 		resource_group_name!: string
 		tags?: [string]: string
 		workflow_endpoint_ip_addresses?: [...string]
-		timeouts?: #timeouts
 		workflow_outbound_ip_addresses?: [...string]
 		workflow_schema?:  string
 		workflow_version?: string

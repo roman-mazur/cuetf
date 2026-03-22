@@ -7,22 +7,22 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_hub_connection")
 	close({
 		routing?: matchN(1, [#routing, list.MaxItems(1) & [...#routing]])
+		timeouts?:                  #timeouts
 		id?:                        string
 		internet_security_enabled?: bool
 		name!:                      string
 		remote_virtual_network_id!: string
 		virtual_hub_id!:            string
-		timeouts?:                  #timeouts
 	})
 
 	#routing: close({
 		propagated_route_table?: matchN(1, [_#defs."/$defs/routing/$defs/propagated_route_table", list.MaxItems(1) & [..._#defs."/$defs/routing/$defs/propagated_route_table"]])
+		static_vnet_route?: matchN(1, [_#defs."/$defs/routing/$defs/static_vnet_route", [..._#defs."/$defs/routing/$defs/static_vnet_route"]])
 		associated_route_table_id?:                   string
 		inbound_route_map_id?:                        string
 		outbound_route_map_id?:                       string
 		static_vnet_local_route_override_criteria?:   string
 		static_vnet_propagate_static_routes_enabled?: bool
-		static_vnet_route?: matchN(1, [_#defs."/$defs/routing/$defs/static_vnet_route", [..._#defs."/$defs/routing/$defs/static_vnet_route"]])
 	})
 
 	#timeouts: close({

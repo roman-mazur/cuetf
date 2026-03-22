@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_batch_certificate")
 	close({
+		timeouts?:             #timeouts
 		account_name!:         string
 		certificate!:          string
 		format!:               string
@@ -11,7 +12,6 @@ package res
 		name?:                 string
 		password?:             string
 		public_data?:          string
-		timeouts?:             #timeouts
 		resource_group_name!:  string
 		thumbprint!:           string
 		thumbprint_algorithm!: string

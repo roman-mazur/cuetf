@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_log_analytics_solution")
 	close({
 		plan!: matchN(1, [#plan, list.MaxItems(1) & [_, ...] & [...#plan]])
+		timeouts?:            #timeouts
 		id?:                  string
 		location!:            string
 		resource_group_name!: string
@@ -14,7 +15,6 @@ import "list"
 		tags?: [string]: string
 		workspace_name!:        string
 		workspace_resource_id!: string
-		timeouts?:              #timeouts
 	})
 
 	#plan: close({

@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_virtual_wan")
 	close({
+		timeouts?:                          #timeouts
 		allow_branch_to_branch_traffic?:    bool
 		disable_vpn_encryption?:            bool
 		id?:                                string
@@ -13,7 +14,6 @@ package data
 		resource_group_name!:               string
 		sku?:                               string
 		tags?: [string]: string
-		timeouts?: #timeouts
 		virtual_hub_ids?: [...string]
 		vpn_site_ids?: [...string]
 	})

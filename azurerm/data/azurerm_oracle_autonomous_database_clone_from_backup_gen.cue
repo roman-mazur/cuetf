@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_oracle_autonomous_database_clone_from_backup")
 	close({
+		timeouts?:                            #timeouts
 		actual_used_data_storage_size_in_tb?: number
 		allocated_storage_size_in_tb?:        number
 		allowed_ip_addresses?: [...string]
@@ -43,7 +44,6 @@ package data
 		national_character_set?:               string
 		next_long_term_backup_timestamp?:      string
 		oci_url?:                              string
-		timeouts?:                             #timeouts
 		ocid?:                                 string
 		peer_database_ids?: [...string]
 		preview?:                                     bool

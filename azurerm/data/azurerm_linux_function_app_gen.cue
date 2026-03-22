@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_linux_function_app")
 	close({
+		timeouts?: #timeouts
 		app_settings?: [string]: string
 		auth_settings?: [...close({
 			active_directory?: [...close({
@@ -289,7 +290,6 @@ package data
 			connection_string_names?: [...string]
 		})]
 		storage_account_access_key?: string
-		timeouts?:                   #timeouts
 		storage_account_name?:       string
 
 		// The Key Vault Secret ID, including version, that contains the

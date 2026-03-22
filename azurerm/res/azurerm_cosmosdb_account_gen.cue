@@ -6,6 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cosmosdb_account")
 	close({
+		analytical_storage?: matchN(1, [#analytical_storage, list.MaxItems(1) & [...#analytical_storage]])
+		backup?: matchN(1, [#backup, list.MaxItems(1) & [...#backup]])
+		capabilities?: matchN(1, [#capabilities, [...#capabilities]])
+		capacity?: matchN(1, [#capacity, list.MaxItems(1) & [...#capacity]])
+		consistency_policy!: matchN(1, [#consistency_policy, list.MaxItems(1) & [_, ...] & [...#consistency_policy]])
+		cors_rule?: matchN(1, [#cors_rule, list.MaxItems(1) & [...#cors_rule]])
+		geo_location!: matchN(1, [#geo_location, [_, ...] & [...#geo_location]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		restore?: matchN(1, [#restore, list.MaxItems(1) & [...#restore]])
+		timeouts?: #timeouts
+		virtual_network_rule?: matchN(1, [#virtual_network_rule, [...#virtual_network_rule]])
 		access_key_metadata_writes_enabled?: bool
 		analytical_storage_enabled?:         bool
 		automatic_failover_enabled?:         bool
@@ -14,8 +25,7 @@ import "list"
 		default_identity_type?:              string
 		endpoint?:                           string
 		free_tier_enabled?:                  bool
-		analytical_storage?: matchN(1, [#analytical_storage, list.MaxItems(1) & [...#analytical_storage]])
-		id?: string
+		id?:                                 string
 		ip_range_filter?: [...string]
 		is_virtual_network_filter_enabled?:     bool
 		key_vault_key_id?:                      string
@@ -29,19 +39,15 @@ import "list"
 		name!:                                  string
 		network_acl_bypass_for_azure_services?: bool
 		network_acl_bypass_ids?: [...string]
-		offer_type!: string
-		backup?: matchN(1, [#backup, list.MaxItems(1) & [...#backup]])
-		partition_merge_enabled?: bool
-		primary_key?:             string
-		capabilities?: matchN(1, [#capabilities, [...#capabilities]])
-		capacity?: matchN(1, [#capacity, list.MaxItems(1) & [...#capacity]])
+		offer_type!:                                 string
+		partition_merge_enabled?:                    bool
+		primary_key?:                                string
 		primary_mongodb_connection_string?:          string
 		primary_readonly_key?:                       string
 		primary_readonly_mongodb_connection_string?: string
-		consistency_policy!: matchN(1, [#consistency_policy, list.MaxItems(1) & [_, ...] & [...#consistency_policy]])
-		primary_readonly_sql_connection_string?: string
-		primary_sql_connection_string?:          string
-		public_network_access_enabled?:          bool
+		primary_readonly_sql_connection_string?:     string
+		primary_sql_connection_string?:              string
+		public_network_access_enabled?:              bool
 		read_endpoints?: [...string]
 		resource_group_name!:                          string
 		secondary_key?:                                string
@@ -50,14 +56,8 @@ import "list"
 		secondary_readonly_mongodb_connection_string?: string
 		secondary_readonly_sql_connection_string?:     string
 		secondary_sql_connection_string?:              string
-		cors_rule?: matchN(1, [#cors_rule, list.MaxItems(1) & [...#cors_rule]])
-		geo_location!: matchN(1, [#geo_location, [_, ...] & [...#geo_location]])
 		tags?: [string]: string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		write_endpoints?: [...string]
-		restore?: matchN(1, [#restore, list.MaxItems(1) & [...#restore]])
-		timeouts?: #timeouts
-		virtual_network_rule?: matchN(1, [#virtual_network_rule, [...#virtual_network_rule]])
 	})
 
 	#analytical_storage: close({

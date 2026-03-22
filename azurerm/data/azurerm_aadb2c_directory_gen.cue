@@ -4,6 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_aadb2c_directory")
 	close({
+		timeouts?: #timeouts
+
 		// The type of billing for the B2C tenant. Possible values
 		// include: `MAU` or `Auths`.
 		billing_type?: string
@@ -20,7 +22,6 @@ package data
 		effective_start_date?: string
 		id?:                   string
 		resource_group_name!:  string
-		timeouts?:             #timeouts
 
 		// Billing SKU for the B2C tenant.
 		sku_name?: string

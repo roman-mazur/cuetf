@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_netapp_volume")
 	close({
+		cool_access?: matchN(1, [#cool_access, list.MaxItems(1) & [...#cool_access]])
+		data_protection_backup_policy?: matchN(1, [#data_protection_backup_policy, list.MaxItems(1) & [...#data_protection_backup_policy]])
+		data_protection_replication?: matchN(1, [#data_protection_replication, list.MaxItems(1) & [...#data_protection_replication]])
+		data_protection_snapshot_policy?: matchN(1, [#data_protection_snapshot_policy, list.MaxItems(1) & [...#data_protection_snapshot_policy]])
+		export_policy_rule?: matchN(1, [#export_policy_rule, list.MaxItems(5) & [...#export_policy_rule]])
+		timeouts?: #timeouts
+
 		// While auto splitting the short term clone volume, if the parent
 		// pool does not have enough space to accommodate the volume
 		// after split, it will be automatically resized, which will lead
@@ -28,20 +35,19 @@ import "list"
 
 		// Indicates whether the volume is a large volume.
 		large_volume_enabled?: bool
-		cool_access?: matchN(1, [#cool_access, list.MaxItems(1) & [...#cool_access]])
-		location!: string
+		location!:             string
 		mount_ip_addresses?: [...string]
-		name!: string
-
-		// SMB3 encryption option should be used only for SMB/DualProtocol
-		// volumes. Using it for any other workloads is not supported.
-		smb3_protocol_encryption_enabled?: bool
-		network_features?:                 string
-		pool_name!:                        string
+		name!:             string
+		network_features?: string
+		pool_name!:        string
 		protocols?: [...string]
 		resource_group_name!: string
 		security_style?:      string
 		service_level!:       string
+
+		// SMB3 encryption option should be used only for SMB/DualProtocol
+		// volumes. Using it for any other workloads is not supported.
+		smb3_protocol_encryption_enabled?: bool
 
 		// Enable access based enumeration setting for SMB/Dual Protocol
 		// volume. When enabled, users who do not have permission to
@@ -57,17 +63,12 @@ import "list"
 		// Enable non browsable share setting for SMB/Dual Protocol
 		// volume. When enabled, it restricts windows clients to browse
 		// the share
-		smb_non_browsable_enabled?: bool
-		data_protection_backup_policy?: matchN(1, [#data_protection_backup_policy, list.MaxItems(1) & [...#data_protection_backup_policy]])
+		smb_non_browsable_enabled?:  bool
 		snapshot_directory_visible?: bool
 		storage_quota_in_gb!:        number
 		subnet_id!:                  string
-		data_protection_replication?: matchN(1, [#data_protection_replication, list.MaxItems(1) & [...#data_protection_replication]])
-		data_protection_snapshot_policy?: matchN(1, [#data_protection_snapshot_policy, list.MaxItems(1) & [...#data_protection_snapshot_policy]])
 		tags?: [string]: string
-		export_policy_rule?: matchN(1, [#export_policy_rule, list.MaxItems(5) & [...#export_policy_rule]])
 		throughput_in_mibps?: number
-		timeouts?:            #timeouts
 		volume_path!:         string
 		zone?:                string
 	})

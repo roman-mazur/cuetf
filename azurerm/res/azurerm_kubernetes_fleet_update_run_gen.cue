@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kubernetes_fleet_update_run")
 	close({
 		managed_cluster_update!: matchN(1, [#managed_cluster_update, list.MaxItems(1) & [_, ...] & [...#managed_cluster_update]])
+		stage?: matchN(1, [#stage, [...#stage]])
+		timeouts?:                    #timeouts
 		fleet_update_strategy_id?:    string
 		id?:                          string
 		kubernetes_fleet_manager_id!: string
 		name!:                        string
-		stage?: matchN(1, [#stage, [...#stage]])
-		timeouts?: #timeouts
 	})
 
 	#managed_cluster_update: close({

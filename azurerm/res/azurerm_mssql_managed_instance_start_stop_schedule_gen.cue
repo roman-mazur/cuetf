@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_managed_instance_start_stop_schedule")
 	close({
 		schedule!: matchN(1, [#schedule, [_, ...] & [...#schedule]])
+		timeouts?:            #timeouts
 		description?:         string
 		id?:                  string
 		managed_instance_id!: string
 		next_execution_time?: string
 		next_run_action?:     string
 		timezone_id?:         string
-		timeouts?:            #timeouts
 	})
 
 	#schedule: close({

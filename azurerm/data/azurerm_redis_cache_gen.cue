@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_redis_cache")
 	close({
+		timeouts?:                           #timeouts
 		access_keys_authentication_enabled?: bool
 		capacity?:                           number
 		family?:                             string
@@ -21,7 +22,6 @@ package data
 		port?:                      number
 		primary_access_key?:        string
 		primary_connection_string?: string
-		timeouts?:                  #timeouts
 		private_static_ip_address?: string
 		redis_configuration?: [...close({
 			active_directory_authentication_enabled?: bool

@@ -6,15 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_app_service_source_control")
 	close({
+		github_action_configuration?: matchN(1, [#github_action_configuration, list.MaxItems(1) & [...#github_action_configuration]])
+		timeouts?: #timeouts
+
 		// The ID of the Windows or Linux Web App.
 		app_id!: string
 
 		// The branch name to use for deployments.
 		branch?: string
+		id?:     string
 
 		// The URL for the repository.
 		repo_url?: string
-		id?:       string
 
 		// Should the Deployment Rollback be enabled? Defaults to `false`.
 		rollback_enabled?: bool
@@ -33,8 +36,6 @@ import "list"
 
 		// The repository specified is Mercurial. Defaults to `false`.
 		use_mercurial?: bool
-		github_action_configuration?: matchN(1, [#github_action_configuration, list.MaxItems(1) & [...#github_action_configuration]])
-		timeouts?: #timeouts
 
 		// Indicates if the Slot uses a GitHub action for deployment. This
 		// value is decoded by the service from the repository

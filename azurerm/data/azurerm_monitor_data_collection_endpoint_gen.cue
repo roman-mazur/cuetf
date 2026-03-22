@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_monitor_data_collection_endpoint")
 	close({
+		timeouts?:                      #timeouts
 		configuration_access_endpoint?: string
 		description?:                   string
 		id?:                            string
@@ -12,7 +13,6 @@ package data
 		location?:                      string
 		logs_ingestion_endpoint?:       string
 		metrics_ingestion_endpoint?:    string
-		timeouts?:                      #timeouts
 		name!:                          string
 		public_network_access_enabled?: bool
 		resource_group_name!:           string

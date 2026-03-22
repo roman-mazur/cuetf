@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_key_vault_certificate")
 	close({
+		certificate?: matchN(1, [#certificate, list.MaxItems(1) & [...#certificate]])
+		certificate_policy?: matchN(1, [#certificate_policy, list.MaxItems(1) & [...#certificate_policy]])
+		timeouts?: #timeouts
 		certificate_attribute?: [...close({
 			created?:        string
 			enabled?:        bool
@@ -21,11 +24,8 @@ import "list"
 		name!:                            string
 		resource_manager_id?:             string
 		resource_manager_versionless_id?: string
-		certificate?: matchN(1, [#certificate, list.MaxItems(1) & [...#certificate]])
-		certificate_policy?: matchN(1, [#certificate_policy, list.MaxItems(1) & [...#certificate_policy]])
-		secret_id?: string
+		secret_id?:                       string
 		tags?: [string]: string
-		timeouts?:              #timeouts
 		thumbprint?:            string
 		version?:               string
 		versionless_id?:        string

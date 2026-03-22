@@ -6,19 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dev_test_schedule")
 	close({
+		daily_recurrence?: matchN(1, [#daily_recurrence, list.MaxItems(1) & [...#daily_recurrence]])
+		hourly_recurrence?: matchN(1, [#hourly_recurrence, list.MaxItems(1) & [...#hourly_recurrence]])
+		notification_settings!: matchN(1, [#notification_settings, list.MaxItems(1) & [_, ...] & [...#notification_settings]])
+		timeouts?: #timeouts
+		weekly_recurrence?: matchN(1, [#weekly_recurrence, list.MaxItems(1) & [...#weekly_recurrence]])
 		id?:                  string
 		lab_name!:            string
 		location!:            string
 		name!:                string
 		resource_group_name!: string
-		daily_recurrence?: matchN(1, [#daily_recurrence, list.MaxItems(1) & [...#daily_recurrence]])
-		status?: string
+		status?:              string
 		tags?: [string]: string
-		hourly_recurrence?: matchN(1, [#hourly_recurrence, list.MaxItems(1) & [...#hourly_recurrence]])
-		notification_settings!: matchN(1, [#notification_settings, list.MaxItems(1) & [_, ...] & [...#notification_settings]])
-		task_type!: string
-		timeouts?:  #timeouts
-		weekly_recurrence?: matchN(1, [#weekly_recurrence, list.MaxItems(1) & [...#weekly_recurrence]])
+		task_type!:    string
 		time_zone_id!: string
 	})
 

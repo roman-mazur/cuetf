@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kubernetes_cluster_extension")
 	close({
+		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
+		timeouts?: #timeouts
 		aks_assigned_identity?: [...close({
 			principal_id?: string
 			tenant_id?:    string
@@ -14,11 +16,9 @@ import "list"
 		cluster_id!: string
 		configuration_protected_settings?: [string]: string
 		configuration_settings?: [string]:           string
-		current_version?: string
-		extension_type!:  string
-		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
+		current_version?:   string
+		extension_type!:    string
 		id?:                string
-		timeouts?:          #timeouts
 		name!:              string
 		release_namespace?: string
 		release_train?:     string

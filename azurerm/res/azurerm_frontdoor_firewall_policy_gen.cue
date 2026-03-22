@@ -6,19 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_frontdoor_firewall_policy")
 	close({
+		custom_rule?: matchN(1, [#custom_rule, list.MaxItems(100) & [...#custom_rule]])
+		managed_rule?: matchN(1, [#managed_rule, list.MaxItems(100) & [...#managed_rule]])
+		timeouts?:                          #timeouts
 		custom_block_response_body?:        string
 		custom_block_response_status_code?: number
 		enabled?:                           bool
 		frontend_endpoint_ids?: [...string]
-		custom_rule?: matchN(1, [#custom_rule, list.MaxItems(100) & [...#custom_rule]])
 		id?:                  string
 		location?:            string
 		mode?:                string
 		name!:                string
 		redirect_url?:        string
 		resource_group_name!: string
-		managed_rule?: matchN(1, [#managed_rule, list.MaxItems(100) & [...#managed_rule]])
-		timeouts?: #timeouts
 		tags?: [string]: string
 	})
 

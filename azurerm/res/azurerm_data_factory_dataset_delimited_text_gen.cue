@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_dataset_delimited_text")
 	close({
+		azure_blob_fs_location?: matchN(1, [#azure_blob_fs_location, list.MaxItems(1) & [...#azure_blob_fs_location]])
+		azure_blob_storage_location?: matchN(1, [#azure_blob_storage_location, list.MaxItems(1) & [...#azure_blob_storage_location]])
+		http_server_location?: matchN(1, [#http_server_location, list.MaxItems(1) & [...#http_server_location]])
+		schema_column?: matchN(1, [#schema_column, [...#schema_column]])
+		timeouts?: #timeouts
 		additional_properties?: [string]: string
 		annotations?: [...string]
 		column_delimiter?:    string
@@ -17,8 +22,6 @@ import "list"
 		escape_character?:    string
 		first_row_as_header?: bool
 		folder?:              string
-		azure_blob_fs_location?: matchN(1, [#azure_blob_fs_location, list.MaxItems(1) & [...#azure_blob_fs_location]])
-		azure_blob_storage_location?: matchN(1, [#azure_blob_storage_location, list.MaxItems(1) & [...#azure_blob_storage_location]])
 		id?:                  string
 		linked_service_name!: string
 		name!:                string
@@ -26,9 +29,6 @@ import "list"
 		parameters?: [string]: string
 		quote_character?: string
 		row_delimiter?:   string
-		http_server_location?: matchN(1, [#http_server_location, list.MaxItems(1) & [...#http_server_location]])
-		schema_column?: matchN(1, [#schema_column, [...#schema_column]])
-		timeouts?: #timeouts
 	})
 
 	#azure_blob_fs_location: close({

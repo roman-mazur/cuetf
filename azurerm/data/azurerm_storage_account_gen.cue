@@ -4,8 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_storage_account")
 	close({
-		access_tier?:                     string
 		timeouts?:                        #timeouts
+		access_tier?:                     string
 		account_kind?:                    string
 		account_replication_type?:        string
 		account_tier?:                    string

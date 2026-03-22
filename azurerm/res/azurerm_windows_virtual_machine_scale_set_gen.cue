@@ -6,6 +6,26 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_windows_virtual_machine_scale_set")
 	close({
+		additional_capabilities?: matchN(1, [#additional_capabilities, list.MaxItems(1) & [...#additional_capabilities]])
+		additional_unattend_content?: matchN(1, [#additional_unattend_content, [...#additional_unattend_content]])
+		automatic_instance_repair?: matchN(1, [#automatic_instance_repair, list.MaxItems(1) & [...#automatic_instance_repair]])
+		automatic_os_upgrade_policy?: matchN(1, [#automatic_os_upgrade_policy, list.MaxItems(1) & [...#automatic_os_upgrade_policy]])
+		boot_diagnostics?: matchN(1, [#boot_diagnostics, list.MaxItems(1) & [...#boot_diagnostics]])
+		data_disk?: matchN(1, [#data_disk, [...#data_disk]])
+		extension?: matchN(1, [#extension, [...#extension]])
+		gallery_application?: matchN(1, [#gallery_application, list.MaxItems(100) & [...#gallery_application]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		network_interface!: matchN(1, [#network_interface, [_, ...] & [...#network_interface]])
+		os_disk!: matchN(1, [#os_disk, list.MaxItems(1) & [_, ...] & [...#os_disk]])
+		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
+		rolling_upgrade_policy?: matchN(1, [#rolling_upgrade_policy, list.MaxItems(1) & [...#rolling_upgrade_policy]])
+		scale_in?: matchN(1, [#scale_in, list.MaxItems(1) & [...#scale_in]])
+		secret?: matchN(1, [#secret, [...#secret]])
+		source_image_reference?: matchN(1, [#source_image_reference, list.MaxItems(1) & [...#source_image_reference]])
+		spot_restore?: matchN(1, [#spot_restore, list.MaxItems(1) & [...#spot_restore]])
+		termination_notification?: matchN(1, [#termination_notification, list.MaxItems(1) & [...#termination_notification]])
+		timeouts?: #timeouts
+		winrm_listener?: matchN(1, [#winrm_listener, [...#winrm_listener]])
 		admin_password!:                                    string
 		admin_username!:                                    string
 		capacity_reservation_group_id?:                     string
@@ -23,49 +43,29 @@ import "list"
 		id?:                                                string
 		instances!:                                         number
 		license_type?:                                      string
-		additional_capabilities?: matchN(1, [#additional_capabilities, list.MaxItems(1) & [...#additional_capabilities]])
-		additional_unattend_content?: matchN(1, [#additional_unattend_content, [...#additional_unattend_content]])
-		location!:                     string
-		max_bid_price?:                number
-		name!:                         string
-		overprovision?:                bool
-		platform_fault_domain_count?:  number
-		priority?:                     string
-		provision_vm_agent?:           bool
-		proximity_placement_group_id?: string
-		automatic_instance_repair?: matchN(1, [#automatic_instance_repair, list.MaxItems(1) & [...#automatic_instance_repair]])
-		resilient_vm_creation_enabled?: bool
-		resilient_vm_deletion_enabled?: bool
-		resource_group_name!:           string
-		secure_boot_enabled?:           bool
-		single_placement_group?:        bool
-		sku!:                           string
-		source_image_id?:               string
+		location!:                                          string
+		max_bid_price?:                                     number
+		name!:                                              string
+		overprovision?:                                     bool
+		platform_fault_domain_count?:                       number
+		priority?:                                          string
+		provision_vm_agent?:                                bool
+		proximity_placement_group_id?:                      string
+		resilient_vm_creation_enabled?:                     bool
+		resilient_vm_deletion_enabled?:                     bool
+		resource_group_name!:                               string
+		secure_boot_enabled?:                               bool
+		single_placement_group?:                            bool
+		sku!:                                               string
+		source_image_id?:                                   string
 		tags?: [string]: string
 		timezone?:     string
 		unique_id?:    string
 		upgrade_mode?: string
 		user_data?:    string
 		vtpm_enabled?: bool
-		automatic_os_upgrade_policy?: matchN(1, [#automatic_os_upgrade_policy, list.MaxItems(1) & [...#automatic_os_upgrade_policy]])
-		boot_diagnostics?: matchN(1, [#boot_diagnostics, list.MaxItems(1) & [...#boot_diagnostics]])
-		data_disk?: matchN(1, [#data_disk, [...#data_disk]])
-		extension?: matchN(1, [#extension, [...#extension]])
-		gallery_application?: matchN(1, [#gallery_application, list.MaxItems(100) & [...#gallery_application]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		network_interface!: matchN(1, [#network_interface, [_, ...] & [...#network_interface]])
-		os_disk!: matchN(1, [#os_disk, list.MaxItems(1) & [_, ...] & [...#os_disk]])
-		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
-		rolling_upgrade_policy?: matchN(1, [#rolling_upgrade_policy, list.MaxItems(1) & [...#rolling_upgrade_policy]])
 		zone_balance?: bool
 		zones?: [...string]
-		scale_in?: matchN(1, [#scale_in, list.MaxItems(1) & [...#scale_in]])
-		secret?: matchN(1, [#secret, [...#secret]])
-		source_image_reference?: matchN(1, [#source_image_reference, list.MaxItems(1) & [...#source_image_reference]])
-		spot_restore?: matchN(1, [#spot_restore, list.MaxItems(1) & [...#spot_restore]])
-		termination_notification?: matchN(1, [#termination_notification, list.MaxItems(1) & [...#termination_notification]])
-		timeouts?: #timeouts
-		winrm_listener?: matchN(1, [#winrm_listener, [...#winrm_listener]])
 	})
 
 	#additional_capabilities: close({
@@ -106,14 +106,14 @@ import "list"
 	})
 
 	#extension: close({
+		protected_settings_from_key_vault?: matchN(1, [_#defs."/$defs/extension/$defs/protected_settings_from_key_vault", list.MaxItems(1) & [..._#defs."/$defs/extension/$defs/protected_settings_from_key_vault"]])
 		auto_upgrade_minor_version?: bool
 		automatic_upgrade_enabled?:  bool
 		force_update_tag?:           string
 		name!:                       string
 		protected_settings?:         string
 		provision_after_extensions?: [...string]
-		publisher!: string
-		protected_settings_from_key_vault?: matchN(1, [_#defs."/$defs/extension/$defs/protected_settings_from_key_vault", list.MaxItems(1) & [..._#defs."/$defs/extension/$defs/protected_settings_from_key_vault"]])
+		publisher!:            string
 		settings?:             string
 		type!:                 string
 		type_handler_version!: string

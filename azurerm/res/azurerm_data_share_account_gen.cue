@@ -7,12 +7,12 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_share_account")
 	close({
 		identity!: matchN(1, [#identity, list.MaxItems(1) & [_, ...] & [...#identity]])
+		timeouts?:            #timeouts
 		id?:                  string
 		location!:            string
 		name!:                string
 		resource_group_name!: string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#identity: close({

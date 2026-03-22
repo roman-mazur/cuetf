@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stream_analytics_job")
 	close({
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		job_storage_account?: matchN(1, [#job_storage_account, list.MaxItems(1) & [...#job_storage_account]])
+		timeouts?:                                 #timeouts
 		compatibility_level?:                      string
 		content_storage_policy?:                   string
 		data_locale?:                              string
@@ -16,14 +19,11 @@ import "list"
 		job_id?:                                   string
 		location!:                                 string
 		name!:                                     string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		job_storage_account?: matchN(1, [#job_storage_account, list.MaxItems(1) & [...#job_storage_account]])
-		output_error_policy?:         string
-		resource_group_name!:         string
-		sku_name?:                    string
-		timeouts?:                    #timeouts
-		stream_analytics_cluster_id?: string
-		streaming_units?:             number
+		output_error_policy?:                      string
+		resource_group_name!:                      string
+		sku_name?:                                 string
+		stream_analytics_cluster_id?:              string
+		streaming_units?:                          number
 		tags?: [string]: string
 		transformation_query!: string
 		type?:                 string

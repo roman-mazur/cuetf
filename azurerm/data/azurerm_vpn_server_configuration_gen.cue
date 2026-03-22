@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_vpn_server_configuration")
 	close({
+		timeouts?: #timeouts
 		azure_active_directory_authentication?: [...close({
 			audience?: string
 			issuer?:   string
@@ -45,7 +46,6 @@ package data
 				public_cert_data?: string
 			})]
 		})]
-		timeouts?:            #timeouts
 		resource_group_name!: string
 		tags?: [string]: string
 		vpn_authentication_types?: [...string]

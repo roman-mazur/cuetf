@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_linked_service_azure_search")
 	close({
+		timeouts?: #timeouts
 		additional_properties?: [string]: string
 		annotations?: [...string]
 		data_factory_id!:          string
@@ -13,7 +14,6 @@ package res
 		integration_runtime_name?: string
 		name!:                     string
 		parameters?: [string]: string
-		timeouts?:           #timeouts
 		search_service_key!: string
 		url!:                string
 	})

@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_mssql_managed_instance")
 	close({
+		timeouts?:                #timeouts
 		administrator_login?:     string
 		collation?:               string
 		customer_managed_key_id?: string
@@ -27,7 +28,6 @@ package data
 		sku_name?:                     string
 		storage_account_type?:         string
 		storage_size_in_gb?:           number
-		timeouts?:                     #timeouts
 		subnet_id?:                    string
 		tags?: [string]: string
 		timezone_id?: string

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_vpn_site")
 	close({
+		link?: matchN(1, [#link, [...#link]])
+		o365_policy?: matchN(1, [#o365_policy, list.MaxItems(1) & [...#o365_policy]])
+		timeouts?: #timeouts
 		address_cidrs?: [...string]
 		device_model?:        string
 		device_vendor?:       string
@@ -13,10 +16,7 @@ import "list"
 		location!:            string
 		name!:                string
 		resource_group_name!: string
-		link?: matchN(1, [#link, [...#link]])
 		tags?: [string]: string
-		o365_policy?: matchN(1, [#o365_policy, list.MaxItems(1) & [...#o365_policy]])
-		timeouts?:       #timeouts
 		virtual_wan_id!: string
 	})
 

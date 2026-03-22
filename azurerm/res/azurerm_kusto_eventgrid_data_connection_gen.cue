@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kusto_eventgrid_data_connection")
 	close({
+		timeouts?:                        #timeouts
 		blob_storage_event_type?:         string
 		cluster_name!:                    string
 		data_format?:                     string
@@ -16,7 +17,6 @@ package res
 		location!:                        string
 		managed_identity_id?:             string
 		mapping_rule_name?:               string
-		timeouts?:                        #timeouts
 		name!:                            string
 		resource_group_name!:             string
 		skip_first_record?:               bool

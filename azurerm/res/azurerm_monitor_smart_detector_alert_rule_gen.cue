@@ -6,16 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_smart_detector_alert_rule")
 	close({
-		description?:   string
-		detector_type!: string
-		enabled?:       bool
-		frequency!:     string
-		id?:            string
-		name!:          string
 		action_group!: matchN(1, [#action_group, list.MaxItems(1) & [_, ...] & [...#action_group]])
+		timeouts?:            #timeouts
+		description?:         string
+		detector_type!:       string
+		enabled?:             bool
+		frequency!:           string
+		id?:                  string
+		name!:                string
 		resource_group_name!: string
 		scope_resource_ids!: [...string]
-		timeouts?: #timeouts
 		severity!: string
 		tags?: [string]: string
 		throttling_duration?: string

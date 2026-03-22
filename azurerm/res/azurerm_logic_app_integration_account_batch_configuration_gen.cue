@@ -7,13 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_logic_app_integration_account_batch_configuration")
 	close({
 		release_criteria!: matchN(1, [#release_criteria, list.MaxItems(1) & [_, ...] & [...#release_criteria]])
+		timeouts?:                 #timeouts
 		batch_group_name!:         string
 		id?:                       string
 		integration_account_name!: string
 		metadata?: [string]: string
 		name!:                string
 		resource_group_name!: string
-		timeouts?:            #timeouts
 	})
 
 	#release_criteria: close({

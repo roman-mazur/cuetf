@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cosmosdb_sql_role_definition")
 	close({
 		permissions!: matchN(1, [#permissions, [_, ...] & [...#permissions]])
+		timeouts?:     #timeouts
 		account_name!: string
 		assignable_scopes!: [...string]
 		id?:                  string
@@ -12,7 +13,6 @@ package res
 		resource_group_name!: string
 		role_definition_id?:  string
 		type?:                string
-		timeouts?:            #timeouts
 	})
 
 	#permissions: close({

@@ -6,6 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_windows_virtual_machine")
 	close({
+		additional_capabilities?: matchN(1, [#additional_capabilities, list.MaxItems(1) & [...#additional_capabilities]])
+		additional_unattend_content?: matchN(1, [#additional_unattend_content, [...#additional_unattend_content]])
+		boot_diagnostics?: matchN(1, [#boot_diagnostics, list.MaxItems(1) & [...#boot_diagnostics]])
+		gallery_application?: matchN(1, [#gallery_application, list.MaxItems(100) & [...#gallery_application]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		os_disk!: matchN(1, [#os_disk, list.MaxItems(1) & [_, ...] & [...#os_disk]])
+		os_image_notification?: matchN(1, [#os_image_notification, list.MaxItems(1) & [...#os_image_notification]])
+		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
+		secret?: matchN(1, [#secret, [...#secret]])
+		source_image_reference?: matchN(1, [#source_image_reference, list.MaxItems(1) & [...#source_image_reference]])
+		termination_notification?: matchN(1, [#termination_notification, list.MaxItems(1) & [...#termination_notification]])
+		timeouts?: #timeouts
+		winrm_listener?: matchN(1, [#winrm_listener, [...#winrm_listener]])
 		admin_password?:                                         string
 		admin_username?:                                         string
 		allow_extension_operations?:                             bool
@@ -26,20 +39,15 @@ import "list"
 		id?:                                                     string
 		license_type?:                                           string
 		location!:                                               string
-		additional_capabilities?: matchN(1, [#additional_capabilities, list.MaxItems(1) & [...#additional_capabilities]])
-		max_bid_price?: number
-		name!:          string
+		max_bid_price?:                                          number
+		name!:                                                   string
 		network_interface_ids!: [...string]
 		os_managed_disk_id?:    string
 		patch_assessment_mode?: string
 		patch_mode?:            string
-		additional_unattend_content?: matchN(1, [#additional_unattend_content, [...#additional_unattend_content]])
 		platform_fault_domain?: number
 		priority?:              string
-		boot_diagnostics?: matchN(1, [#boot_diagnostics, list.MaxItems(1) & [...#boot_diagnostics]])
-		gallery_application?: matchN(1, [#gallery_application, list.MaxItems(100) & [...#gallery_application]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		private_ip_address?: string
+		private_ip_address?:    string
 		private_ip_addresses?: [...string]
 		provision_vm_agent?:           bool
 		proximity_placement_group_id?: string
@@ -50,21 +58,13 @@ import "list"
 		secure_boot_enabled?: bool
 		size!:                string
 		source_image_id?:     string
-		os_disk!: matchN(1, [#os_disk, list.MaxItems(1) & [_, ...] & [...#os_disk]])
 		tags?: [string]: string
-		timezone?:           string
-		user_data?:          string
-		virtual_machine_id?: string
-		os_image_notification?: matchN(1, [#os_image_notification, list.MaxItems(1) & [...#os_image_notification]])
-		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
-		secret?: matchN(1, [#secret, [...#secret]])
+		timezone?:                     string
+		user_data?:                    string
+		virtual_machine_id?:           string
 		virtual_machine_scale_set_id?: string
 		vtpm_enabled?:                 bool
 		zone?:                         string
-		source_image_reference?: matchN(1, [#source_image_reference, list.MaxItems(1) & [...#source_image_reference]])
-		termination_notification?: matchN(1, [#termination_notification, list.MaxItems(1) & [...#termination_notification]])
-		timeouts?: #timeouts
-		winrm_listener?: matchN(1, [#winrm_listener, [...#winrm_listener]])
 	})
 
 	#additional_capabilities: close({

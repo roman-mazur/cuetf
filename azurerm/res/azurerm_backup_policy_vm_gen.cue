@@ -6,21 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_backup_policy_vm")
 	close({
-		id?:                             string
-		instant_restore_retention_days?: number
-		name!:                           string
-		policy_type?:                    string
-		recovery_vault_name!:            string
 		backup!: matchN(1, [#backup, list.MaxItems(1) & [_, ...] & [...#backup]])
-		resource_group_name!: string
 		instant_restore_resource_group?: matchN(1, [#instant_restore_resource_group, list.MaxItems(1) & [...#instant_restore_resource_group]])
 		retention_daily?: matchN(1, [#retention_daily, list.MaxItems(1) & [...#retention_daily]])
 		retention_monthly?: matchN(1, [#retention_monthly, list.MaxItems(1) & [...#retention_monthly]])
 		retention_weekly?: matchN(1, [#retention_weekly, list.MaxItems(1) & [...#retention_weekly]])
 		retention_yearly?: matchN(1, [#retention_yearly, list.MaxItems(1) & [...#retention_yearly]])
 		tiering_policy?: matchN(1, [#tiering_policy, list.MaxItems(1) & [...#tiering_policy]])
-		timezone?: string
-		timeouts?: #timeouts
+		timeouts?:                       #timeouts
+		id?:                             string
+		instant_restore_retention_days?: number
+		name!:                           string
+		policy_type?:                    string
+		recovery_vault_name!:            string
+		resource_group_name!:            string
+		timezone?:                       string
 	})
 
 	#backup: close({

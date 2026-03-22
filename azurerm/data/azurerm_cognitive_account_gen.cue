@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_cognitive_account")
 	close({
+		timeouts?:                                    #timeouts
 		custom_question_answering_search_service_id?: string
 		custom_subdomain_name?:                       string
 		customer_managed_key?: [...close({
@@ -27,7 +28,6 @@ package data
 		metrics_advisor_aad_tenant_id?:   string
 		metrics_advisor_super_user_name?: string
 		metrics_advisor_website_name?:    string
-		timeouts?:                        #timeouts
 		name!:                            string
 		network_acls?: [...close({
 			bypass?:         string

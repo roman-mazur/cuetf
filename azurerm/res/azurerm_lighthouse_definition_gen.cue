@@ -7,15 +7,15 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_lighthouse_definition")
 	close({
 		authorization!: matchN(1, [#authorization, [_, ...] & [...#authorization]])
+		eligible_authorization?: matchN(1, [#eligible_authorization, [...#eligible_authorization]])
+		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
+		timeouts?:                 #timeouts
 		description?:              string
 		id?:                       string
 		lighthouse_definition_id?: string
 		managing_tenant_id!:       string
 		name!:                     string
 		scope!:                    string
-		eligible_authorization?: matchN(1, [#eligible_authorization, [...#eligible_authorization]])
-		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
-		timeouts?: #timeouts
 	})
 
 	#authorization: close({

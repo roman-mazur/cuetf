@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_eventhub_namespace")
 	close({
+		timeouts?:                                  #timeouts
 		auto_inflate_enabled?:                      bool
 		capacity?:                                  number
 		dedicated_cluster_id?:                      string
@@ -16,7 +17,6 @@ package data
 		id?:                                        string
 		kafka_enabled?:                             bool
 		location?:                                  string
-		timeouts?:                                  #timeouts
 		maximum_throughput_units?:                  number
 		name!:                                      string
 		resource_group_name!:                       string

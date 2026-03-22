@@ -4,14 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_storage_table")
 	close({
-		id?:   string
-		name!: string
+		acl?: matchN(1, [#acl, [...#acl]])
+		timeouts?: #timeouts
+		id?:       string
+		name!:     string
 
 		// The Resource Manager ID of this Storage Table.
 		resource_manager_id?:  string
 		storage_account_name!: string
-		acl?: matchN(1, [#acl, [...#acl]])
-		timeouts?: #timeouts
 	})
 
 	#acl: close({

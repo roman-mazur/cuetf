@@ -6,6 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_service")
 	close({
+		config_server_git_setting?: matchN(1, [#config_server_git_setting, list.MaxItems(1) & [...#config_server_git_setting]])
+		container_registry?: matchN(1, [#container_registry, [...#container_registry]])
+		default_build_service?: matchN(1, [#default_build_service, list.MaxItems(1) & [...#default_build_service]])
+		marketplace?: matchN(1, [#marketplace, list.MaxItems(1) & [...#marketplace]])
+		network?: matchN(1, [#network, list.MaxItems(1) & [...#network]])
+		timeouts?: #timeouts
+		trace?: matchN(1, [#trace, list.MaxItems(1) & [...#trace]])
 		build_agent_pool_size?:              string
 		id?:                                 string
 		location!:                           string
@@ -22,18 +29,11 @@ import "list"
 		})]
 		resource_group_name!:      string
 		service_registry_enabled?: bool
-		config_server_git_setting?: matchN(1, [#config_server_git_setting, list.MaxItems(1) & [...#config_server_git_setting]])
-		container_registry?: matchN(1, [#container_registry, [...#container_registry]])
-		default_build_service?: matchN(1, [#default_build_service, list.MaxItems(1) & [...#default_build_service]])
-		service_registry_id?: string
-		marketplace?: matchN(1, [#marketplace, list.MaxItems(1) & [...#marketplace]])
-		sku_name?: string
-		sku_tier?: string
+		service_registry_id?:      string
+		sku_name?:                 string
+		sku_tier?:                 string
 		tags?: [string]: string
-		network?: matchN(1, [#network, list.MaxItems(1) & [...#network]])
-		timeouts?:       #timeouts
 		zone_redundant?: bool
-		trace?: matchN(1, [#trace, list.MaxItems(1) & [...#trace]])
 	})
 
 	#config_server_git_setting: close({
@@ -91,12 +91,12 @@ import "list"
 
 	_#defs: "/$defs/config_server_git_setting/$defs/repository": close({
 		http_basic_auth?: matchN(1, [_#defs."/$defs/config_server_git_setting/$defs/repository/$defs/http_basic_auth", list.MaxItems(1) & [..._#defs."/$defs/config_server_git_setting/$defs/repository/$defs/http_basic_auth"]])
+		ssh_auth?: matchN(1, [_#defs."/$defs/config_server_git_setting/$defs/repository/$defs/ssh_auth", list.MaxItems(1) & [..._#defs."/$defs/config_server_git_setting/$defs/repository/$defs/ssh_auth"]])
 		label?: string
 		name!:  string
 		pattern?: [...string]
 		search_paths?: [...string]
 		uri!: string
-		ssh_auth?: matchN(1, [_#defs."/$defs/config_server_git_setting/$defs/repository/$defs/ssh_auth", list.MaxItems(1) & [..._#defs."/$defs/config_server_git_setting/$defs/repository/$defs/ssh_auth"]])
 	})
 
 	_#defs: "/$defs/config_server_git_setting/$defs/repository/$defs/http_basic_auth": close({

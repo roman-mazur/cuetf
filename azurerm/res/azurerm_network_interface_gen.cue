@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_network_interface")
 	close({
+		ip_configuration!: matchN(1, [#ip_configuration, [_, ...] & [...#ip_configuration]])
+		timeouts?:                       #timeouts
 		accelerated_networking_enabled?: bool
 		applied_dns_servers?: [...string]
 		auxiliary_mode?: string
@@ -14,12 +16,10 @@ package res
 		internal_dns_name_label?:     string
 		internal_domain_name_suffix?: string
 		ip_forwarding_enabled?:       bool
-		ip_configuration!: matchN(1, [#ip_configuration, [_, ...] & [...#ip_configuration]])
-		location!:           string
-		mac_address?:        string
-		name!:               string
-		private_ip_address?: string
-		timeouts?:           #timeouts
+		location!:                    string
+		mac_address?:                 string
+		name!:                        string
+		private_ip_address?:          string
 		private_ip_addresses?: [...string]
 		resource_group_name!: string
 		tags?: [string]: string

@@ -7,14 +7,14 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cosmosdb_cassandra_table")
 	close({
 		autoscale_settings?: matchN(1, [#autoscale_settings, list.MaxItems(1) & [...#autoscale_settings]])
+		schema!: matchN(1, [#schema, list.MaxItems(1) & [_, ...] & [...#schema]])
+		timeouts?:               #timeouts
 		analytical_storage_ttl?: number
 		cassandra_keyspace_id!:  string
 		default_ttl?:            number
 		id?:                     string
 		name!:                   string
 		throughput?:             number
-		schema!: matchN(1, [#schema, list.MaxItems(1) & [_, ...] & [...#schema]])
-		timeouts?: #timeouts
 	})
 
 	#autoscale_settings: close({

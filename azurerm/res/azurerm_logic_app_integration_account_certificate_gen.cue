@@ -7,13 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_logic_app_integration_account_certificate")
 	close({
 		key_vault_key?: matchN(1, [#key_vault_key, list.MaxItems(1) & [...#key_vault_key]])
+		timeouts?:                 #timeouts
 		id?:                       string
 		integration_account_name!: string
 		metadata?:                 string
 		name!:                     string
 		public_certificate?:       string
 		resource_group_name!:      string
-		timeouts?:                 #timeouts
 	})
 
 	#key_vault_key: close({

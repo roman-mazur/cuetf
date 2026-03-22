@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_windows_function_app")
 	close({
+		timeouts?: #timeouts
 		app_settings?: [string]: string
 		auth_settings?: [...close({
 			active_directory?: [...close({
@@ -159,7 +160,6 @@ package data
 		// Paths to exclude when using client certificates, separated by ;
 		client_certificate_exclusion_paths?: string
 		client_certificate_mode?:            string
-		timeouts?:                           #timeouts
 		connection_string?: [...close({
 			name?:  string
 			type?:  string
@@ -274,17 +274,17 @@ package data
 			name?:     string
 			password?: string
 		})]
-
-		// The Key Vault Secret ID, including version, that contains the
-		// Connection String used to connect to the storage account for
-		// this Function App.
-		storage_key_vault_secret_id?: string
 		sticky_settings?: [...close({
 			app_setting_names?: [...string]
 			connection_string_names?: [...string]
 		})]
-		storage_account_access_key?:    string
-		storage_account_name?:          string
+		storage_account_access_key?: string
+		storage_account_name?:       string
+
+		// The Key Vault Secret ID, including version, that contains the
+		// Connection String used to connect to the storage account for
+		// this Function App.
+		storage_key_vault_secret_id?:   string
 		storage_uses_managed_identity?: bool
 		tags?: [string]: string
 		virtual_network_backup_restore_enabled?:         bool

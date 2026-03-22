@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_healthcare_dicom_service")
 	close({
+		cors?: matchN(1, [#cors, list.MaxItems(1) & [...#cors]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		storage?: matchN(1, [#storage, list.MaxItems(1) & [...#storage]])
+		timeouts?: #timeouts
 		authentication?: [...close({
 			audience?: [...string]
 			authority?: string
@@ -20,12 +24,8 @@ import "list"
 			name?: string
 		})]
 		public_network_access_enabled?: bool
-		cors?: matchN(1, [#cors, list.MaxItems(1) & [...#cors]])
-		service_url?: string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		service_url?:                   string
 		tags?: [string]: string
-		storage?: matchN(1, [#storage, list.MaxItems(1) & [...#storage]])
-		timeouts?:     #timeouts
 		workspace_id!: string
 	})
 

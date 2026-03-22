@@ -4,15 +4,17 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_function_app_hybrid_connection")
 	close({
+		timeouts?: #timeouts
+
 		// The ID of the Function App for this Hybrid Connection.
 		function_app_id!: string
 
 		// The hostname of the endpoint.
 		hostname!: string
+		id?:       string
 
 		// The name of the Relay Namespace.
 		namespace_name?: string
-		id?:             string
 
 		// The port to use for the endpoint
 		port!: number
@@ -29,7 +31,6 @@ package res
 
 		// The Primary Access Key for the `send_key_name`
 		send_key_value?: string
-		timeouts?:       #timeouts
 
 		// The Service Bus Namespace.
 		service_bus_namespace?: string

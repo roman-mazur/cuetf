@@ -6,21 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_data_collection_rule")
 	close({
-		data_collection_endpoint_id?: string
-		description?:                 string
-		id?:                          string
-		immutable_id?:                string
 		data_flow!: matchN(1, [#data_flow, [_, ...] & [...#data_flow]])
-		kind?:                string
-		location!:            string
-		name!:                string
-		resource_group_name!: string
 		data_sources?: matchN(1, [#data_sources, list.MaxItems(1) & [...#data_sources]])
 		destinations!: matchN(1, [#destinations, list.MaxItems(1) & [_, ...] & [...#destinations]])
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		stream_declaration?: matchN(1, [#stream_declaration, [...#stream_declaration]])
+		timeouts?:                    #timeouts
+		data_collection_endpoint_id?: string
+		description?:                 string
+		id?:                          string
+		immutable_id?:                string
+		kind?:                        string
+		location!:                    string
+		name!:                        string
+		resource_group_name!:         string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#data_flow: close({

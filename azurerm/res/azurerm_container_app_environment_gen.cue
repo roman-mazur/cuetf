@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_app_environment")
 	close({
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?: #timeouts
+		workload_profile?: matchN(1, [#workload_profile, [...#workload_profile]])
+
 		// The ID of the Custom Domain Verification for this Container App
 		// Environment.
 		custom_domain_verification_id?: string
@@ -60,9 +64,6 @@ import "list"
 		// The IP range, in CIDR notation, that is reserved for
 		// environment infrastructure IP addresses.
 		platform_reserved_cidr?: string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		timeouts?: #timeouts
-		workload_profile?: matchN(1, [#workload_profile, [...#workload_profile]])
 
 		// The IP address from the IP range defined by
 		// `platform_reserved_cidr` that is reserved for the internal DNS

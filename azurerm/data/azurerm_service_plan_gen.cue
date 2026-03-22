@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_service_plan")
 	close({
+		timeouts?:                     #timeouts
 		app_service_environment_id?:   string
 		id?:                           string
 		kind?:                         string
@@ -16,7 +17,6 @@ package data
 		resource_group_name!:          string
 		sku_name?:                     string
 		tags?: [string]: string
-		timeouts?:               #timeouts
 		worker_count?:           number
 		zone_balancing_enabled?: bool
 	})

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_hub")
 	close({
+		route?: matchN(1, [#route, [...#route]])
+		timeouts?:                         #timeouts
 		address_prefix?:                   string
 		branch_to_branch_traffic_enabled?: bool
 		default_route_table_id?:           string
@@ -12,11 +14,9 @@ package res
 		location!:                         string
 		name!:                             string
 		resource_group_name!:              string
-		route?: matchN(1, [#route, [...#route]])
-		sku?: string
+		sku?:                              string
 		tags?: [string]: string
 		virtual_router_asn?:                     number
-		timeouts?:                               #timeouts
 		virtual_router_auto_scale_min_capacity?: number
 		virtual_router_ips?: [...string]
 		virtual_wan_id?: string

@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_oracle_exadata_infrastructure")
 	close({
+		timeouts?:                      #timeouts
 		activated_storage_count?:       number
 		additional_storage_count?:      number
 		available_storage_size_in_gbs?: number
@@ -46,7 +47,6 @@ package data
 			weeks_of_month?: [...number]
 		})]
 		max_cpu_count?:                   number
-		timeouts?:                        #timeouts
 		max_data_storage_in_tbs?:         number
 		max_db_node_storage_size_in_gbs?: number
 		max_memory_in_gbs?:               number

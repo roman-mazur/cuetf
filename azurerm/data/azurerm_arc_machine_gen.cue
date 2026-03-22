@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_arc_machine")
 	close({
+		timeouts?:              #timeouts
 		active_directory_fqdn?: string
 		agent?: [...close({
 			extensions_allow_list?: [...close({
@@ -67,7 +68,6 @@ package data
 		os_version?:                     string
 		parent_cluster_resource_id?:     string
 		private_link_scope_resource_id?: string
-		timeouts?:                       #timeouts
 		resource_group_name!:            string
 		service_status?: [...close({
 			extension_service?: [...close({

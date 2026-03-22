@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_notification_hub_namespace")
 	close({
+		timeouts?:            #timeouts
 		enabled?:             bool
 		id?:                  string
 		location!:            string
@@ -13,7 +14,6 @@ package res
 		resource_group_name!: string
 		servicebus_endpoint?: string
 		sku_name!:            string
-		timeouts?:            #timeouts
 		tags?: [string]: string
 		zone_redundancy_enabled?: bool
 	})

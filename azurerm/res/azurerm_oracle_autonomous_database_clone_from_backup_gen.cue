@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_oracle_autonomous_database_clone_from_backup")
 	close({
+		timeouts?:       #timeouts
 		admin_password!: string
 		allowed_ip_addresses?: [...string]
 		auto_scaling_enabled!:             bool
@@ -25,7 +26,6 @@ package res
 		mtls_connection_required!:      bool
 		name!:                          string
 		national_character_set!:        string
-		timeouts?:                      #timeouts
 		resource_group_name!:           string
 		source_autonomous_database_id!: string
 		subnet_id?:                     string

@@ -6,6 +6,36 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kubernetes_cluster")
 	close({
+		aci_connector_linux?: matchN(1, [#aci_connector_linux, list.MaxItems(1) & [...#aci_connector_linux]])
+		api_server_access_profile?: matchN(1, [#api_server_access_profile, list.MaxItems(1) & [...#api_server_access_profile]])
+		auto_scaler_profile?: matchN(1, [#auto_scaler_profile, list.MaxItems(1) & [...#auto_scaler_profile]])
+		azure_active_directory_role_based_access_control?: matchN(1, [#azure_active_directory_role_based_access_control, list.MaxItems(1) & [...#azure_active_directory_role_based_access_control]])
+		bootstrap_profile?: matchN(1, [#bootstrap_profile, list.MaxItems(1) & [...#bootstrap_profile]])
+		confidential_computing?: matchN(1, [#confidential_computing, list.MaxItems(1) & [...#confidential_computing]])
+		default_node_pool!: matchN(1, [#default_node_pool, list.MaxItems(1) & [_, ...] & [...#default_node_pool]])
+		http_proxy_config?: matchN(1, [#http_proxy_config, list.MaxItems(1) & [...#http_proxy_config]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		ingress_application_gateway?: matchN(1, [#ingress_application_gateway, list.MaxItems(1) & [...#ingress_application_gateway]])
+		key_management_service?: matchN(1, [#key_management_service, list.MaxItems(1) & [...#key_management_service]])
+		key_vault_secrets_provider?: matchN(1, [#key_vault_secrets_provider, list.MaxItems(1) & [...#key_vault_secrets_provider]])
+		kubelet_identity?: matchN(1, [#kubelet_identity, list.MaxItems(1) & [...#kubelet_identity]])
+		linux_profile?: matchN(1, [#linux_profile, list.MaxItems(1) & [...#linux_profile]])
+		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
+		maintenance_window_auto_upgrade?: matchN(1, [#maintenance_window_auto_upgrade, list.MaxItems(1) & [...#maintenance_window_auto_upgrade]])
+		maintenance_window_node_os?: matchN(1, [#maintenance_window_node_os, list.MaxItems(1) & [...#maintenance_window_node_os]])
+		microsoft_defender?: matchN(1, [#microsoft_defender, list.MaxItems(1) & [...#microsoft_defender]])
+		monitor_metrics?: matchN(1, [#monitor_metrics, list.MaxItems(1) & [...#monitor_metrics]])
+		network_profile?: matchN(1, [#network_profile, list.MaxItems(1) & [...#network_profile]])
+		node_provisioning_profile?: matchN(1, [#node_provisioning_profile, list.MaxItems(1) & [...#node_provisioning_profile]])
+		oms_agent?: matchN(1, [#oms_agent, list.MaxItems(1) & [...#oms_agent]])
+		service_mesh_profile?: matchN(1, [#service_mesh_profile, list.MaxItems(1) & [...#service_mesh_profile]])
+		service_principal?: matchN(1, [#service_principal, list.MaxItems(1) & [...#service_principal]])
+		storage_profile?: matchN(1, [#storage_profile, list.MaxItems(1) & [...#storage_profile]])
+		timeouts?: #timeouts
+		upgrade_override?: matchN(1, [#upgrade_override, list.MaxItems(1) & [...#upgrade_override]])
+		web_app_routing?: matchN(1, [#web_app_routing, list.MaxItems(1) & [...#web_app_routing]])
+		windows_profile?: matchN(1, [#windows_profile, list.MaxItems(1) & [...#windows_profile]])
+		workload_autoscaler_profile?: matchN(1, [#workload_autoscaler_profile, list.MaxItems(1) & [...#workload_autoscaler_profile]])
 		ai_toolchain_operator_enabled?: bool
 		automatic_upgrade_channel?:     string
 		azure_policy_enabled?:          bool
@@ -39,59 +69,29 @@ import "list"
 			password?:               string
 			username?:               string
 		})]
-		kube_config_raw?:         string
-		kubernetes_version?:      string
-		local_account_disabled?:  bool
-		location!:                string
-		name!:                    string
-		node_os_upgrade_channel?: string
-		node_resource_group?:     string
-		node_resource_group_id?:  string
-		oidc_issuer_enabled?:     bool
-		oidc_issuer_url?:         string
-		aci_connector_linux?: matchN(1, [#aci_connector_linux, list.MaxItems(1) & [...#aci_connector_linux]])
-		open_service_mesh_enabled?: bool
-		portal_fqdn?:               string
-		api_server_access_profile?: matchN(1, [#api_server_access_profile, list.MaxItems(1) & [...#api_server_access_profile]])
+		kube_config_raw?:                     string
+		kubernetes_version?:                  string
+		local_account_disabled?:              bool
+		location!:                            string
+		name!:                                string
+		node_os_upgrade_channel?:             string
+		node_resource_group?:                 string
+		node_resource_group_id?:              string
+		oidc_issuer_enabled?:                 bool
+		oidc_issuer_url?:                     string
+		open_service_mesh_enabled?:           bool
+		portal_fqdn?:                         string
 		private_cluster_enabled?:             bool
 		private_cluster_public_fqdn_enabled?: bool
 		private_dns_zone_id?:                 string
 		private_fqdn?:                        string
 		resource_group_name!:                 string
-		auto_scaler_profile?: matchN(1, [#auto_scaler_profile, list.MaxItems(1) & [...#auto_scaler_profile]])
-		role_based_access_control_enabled?: bool
-		run_command_enabled?:               bool
-		sku_tier?:                          string
-		support_plan?:                      string
-		azure_active_directory_role_based_access_control?: matchN(1, [#azure_active_directory_role_based_access_control, list.MaxItems(1) & [...#azure_active_directory_role_based_access_control]])
-		bootstrap_profile?: matchN(1, [#bootstrap_profile, list.MaxItems(1) & [...#bootstrap_profile]])
-		confidential_computing?: matchN(1, [#confidential_computing, list.MaxItems(1) & [...#confidential_computing]])
-		default_node_pool!: matchN(1, [#default_node_pool, list.MaxItems(1) & [_, ...] & [...#default_node_pool]])
-		http_proxy_config?: matchN(1, [#http_proxy_config, list.MaxItems(1) & [...#http_proxy_config]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		ingress_application_gateway?: matchN(1, [#ingress_application_gateway, list.MaxItems(1) & [...#ingress_application_gateway]])
-		key_management_service?: matchN(1, [#key_management_service, list.MaxItems(1) & [...#key_management_service]])
-		key_vault_secrets_provider?: matchN(1, [#key_vault_secrets_provider, list.MaxItems(1) & [...#key_vault_secrets_provider]])
-		kubelet_identity?: matchN(1, [#kubelet_identity, list.MaxItems(1) & [...#kubelet_identity]])
-		linux_profile?: matchN(1, [#linux_profile, list.MaxItems(1) & [...#linux_profile]])
-		maintenance_window?: matchN(1, [#maintenance_window, list.MaxItems(1) & [...#maintenance_window]])
-		maintenance_window_auto_upgrade?: matchN(1, [#maintenance_window_auto_upgrade, list.MaxItems(1) & [...#maintenance_window_auto_upgrade]])
-		maintenance_window_node_os?: matchN(1, [#maintenance_window_node_os, list.MaxItems(1) & [...#maintenance_window_node_os]])
-		microsoft_defender?: matchN(1, [#microsoft_defender, list.MaxItems(1) & [...#microsoft_defender]])
-		monitor_metrics?: matchN(1, [#monitor_metrics, list.MaxItems(1) & [...#monitor_metrics]])
+		role_based_access_control_enabled?:   bool
+		run_command_enabled?:                 bool
+		sku_tier?:                            string
+		support_plan?:                        string
 		tags?: [string]: string
 		workload_identity_enabled?: bool
-		network_profile?: matchN(1, [#network_profile, list.MaxItems(1) & [...#network_profile]])
-		node_provisioning_profile?: matchN(1, [#node_provisioning_profile, list.MaxItems(1) & [...#node_provisioning_profile]])
-		oms_agent?: matchN(1, [#oms_agent, list.MaxItems(1) & [...#oms_agent]])
-		service_mesh_profile?: matchN(1, [#service_mesh_profile, list.MaxItems(1) & [...#service_mesh_profile]])
-		service_principal?: matchN(1, [#service_principal, list.MaxItems(1) & [...#service_principal]])
-		storage_profile?: matchN(1, [#storage_profile, list.MaxItems(1) & [...#storage_profile]])
-		timeouts?: #timeouts
-		upgrade_override?: matchN(1, [#upgrade_override, list.MaxItems(1) & [...#upgrade_override]])
-		web_app_routing?: matchN(1, [#web_app_routing, list.MaxItems(1) & [...#web_app_routing]])
-		windows_profile?: matchN(1, [#windows_profile, list.MaxItems(1) & [...#windows_profile]])
-		workload_autoscaler_profile?: matchN(1, [#workload_autoscaler_profile, list.MaxItems(1) & [...#workload_autoscaler_profile]])
 	})
 
 	#aci_connector_linux: close({
@@ -148,6 +148,10 @@ import "list"
 	})
 
 	#default_node_pool: close({
+		kubelet_config?: matchN(1, [_#defs."/$defs/default_node_pool/$defs/kubelet_config", list.MaxItems(1) & [..._#defs."/$defs/default_node_pool/$defs/kubelet_config"]])
+		linux_os_config?: matchN(1, [_#defs."/$defs/default_node_pool/$defs/linux_os_config", list.MaxItems(1) & [..._#defs."/$defs/default_node_pool/$defs/linux_os_config"]])
+		node_network_profile?: matchN(1, [_#defs."/$defs/default_node_pool/$defs/node_network_profile", list.MaxItems(1) & [..._#defs."/$defs/default_node_pool/$defs/node_network_profile"]])
+		upgrade_settings?: matchN(1, [_#defs."/$defs/default_node_pool/$defs/upgrade_settings", list.MaxItems(1) & [..._#defs."/$defs/default_node_pool/$defs/upgrade_settings"]])
 		auto_scaling_enabled?:          bool
 		capacity_reservation_group_id?: string
 		fips_enabled?:                  bool
@@ -157,19 +161,16 @@ import "list"
 		host_group_id?:                 string
 		kubelet_disk_type?:             string
 		max_count?:                     number
-		kubelet_config?: matchN(1, [_#defs."/$defs/default_node_pool/$defs/kubelet_config", list.MaxItems(1) & [..._#defs."/$defs/default_node_pool/$defs/kubelet_config"]])
-		max_pods?:   number
-		min_count?:  number
-		name!:       string
-		node_count?: number
+		max_pods?:                      number
+		min_count?:                     number
+		name!:                          string
+		node_count?:                    number
 		node_labels?: [string]: string
 		node_public_ip_enabled?:       bool
 		node_public_ip_prefix_id?:     string
 		only_critical_addons_enabled?: bool
 		orchestrator_version?:         string
-		linux_os_config?: matchN(1, [_#defs."/$defs/default_node_pool/$defs/linux_os_config", list.MaxItems(1) & [..._#defs."/$defs/default_node_pool/$defs/linux_os_config"]])
-		os_disk_size_gb?: number
-		node_network_profile?: matchN(1, [_#defs."/$defs/default_node_pool/$defs/node_network_profile", list.MaxItems(1) & [..._#defs."/$defs/default_node_pool/$defs/node_network_profile"]])
+		os_disk_size_gb?:              number
 		os_disk_type?:                 string
 		os_sku?:                       string
 		pod_subnet_id?:                string
@@ -184,7 +185,6 @@ import "list"
 		vnet_subnet_id?:              string
 		workload_runtime?:            string
 		zones?: [...string]
-		upgrade_settings?: matchN(1, [_#defs."/$defs/default_node_pool/$defs/upgrade_settings", list.MaxItems(1) & [..._#defs."/$defs/default_node_pool/$defs/upgrade_settings"]])
 	})
 
 	#http_proxy_config: close({
@@ -281,22 +281,22 @@ import "list"
 	})
 
 	#network_profile: close({
-		dns_service_ip?: string
 		advanced_networking?: matchN(1, [_#defs."/$defs/network_profile/$defs/advanced_networking", list.MaxItems(1) & [..._#defs."/$defs/network_profile/$defs/advanced_networking"]])
+		load_balancer_profile?: matchN(1, [_#defs."/$defs/network_profile/$defs/load_balancer_profile", list.MaxItems(1) & [..._#defs."/$defs/network_profile/$defs/load_balancer_profile"]])
+		nat_gateway_profile?: matchN(1, [_#defs."/$defs/network_profile/$defs/nat_gateway_profile", list.MaxItems(1) & [..._#defs."/$defs/network_profile/$defs/nat_gateway_profile"]])
+		dns_service_ip?: string
 		ip_versions?: [...string]
 		load_balancer_sku?:   string
 		network_data_plane?:  string
 		network_mode?:        string
 		network_plugin!:      string
 		network_plugin_mode?: string
-		load_balancer_profile?: matchN(1, [_#defs."/$defs/network_profile/$defs/load_balancer_profile", list.MaxItems(1) & [..._#defs."/$defs/network_profile/$defs/load_balancer_profile"]])
-		network_policy?: string
-		outbound_type?:  string
-		pod_cidr?:       string
+		network_policy?:      string
+		outbound_type?:       string
+		pod_cidr?:            string
 		pod_cidrs?: [...string]
 		service_cidr?: string
 		service_cidrs?: [...string]
-		nat_gateway_profile?: matchN(1, [_#defs."/$defs/network_profile/$defs/nat_gateway_profile", list.MaxItems(1) & [..._#defs."/$defs/network_profile/$defs/nat_gateway_profile"]])
 	})
 
 	#node_provisioning_profile: close({

@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_web_application_firewall_policy")
 	close({
+		custom_rules?: matchN(1, [#custom_rules, [...#custom_rules]])
+		managed_rules!: matchN(1, [#managed_rules, list.MaxItems(1) & [_, ...] & [...#managed_rules]])
+		policy_settings?: matchN(1, [#policy_settings, list.MaxItems(1) & [...#policy_settings]])
+		timeouts?: #timeouts
 		http_listener_ids?: [...string]
 		id?:       string
 		location!: string
 		name!:     string
 		path_based_rule_ids?: [...string]
 		resource_group_name!: string
-		custom_rules?: matchN(1, [#custom_rules, [...#custom_rules]])
 		tags?: [string]: string
-		managed_rules!: matchN(1, [#managed_rules, list.MaxItems(1) & [_, ...] & [...#managed_rules]])
-		policy_settings?: matchN(1, [#policy_settings, list.MaxItems(1) & [...#policy_settings]])
-		timeouts?: #timeouts
 	})
 
 	#custom_rules: close({

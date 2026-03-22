@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_dashboard_grafana")
 	close({
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:                               #timeouts
 		api_key_enabled?:                        bool
 		auto_generated_domain_name_label_scope?: string
 		azure_monitor_workspace_integrations?: [...close({
@@ -16,11 +18,9 @@ import "list"
 		grafana_major_version?:             string
 		grafana_version?:                   string
 		id?:                                string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		location?: string
-		name!:     string
+		location?:                          string
+		name!:                              string
 		outbound_ips?: [...string]
-		timeouts?:                      #timeouts
 		public_network_access_enabled?: bool
 		resource_group_name!:           string
 		sku?:                           string

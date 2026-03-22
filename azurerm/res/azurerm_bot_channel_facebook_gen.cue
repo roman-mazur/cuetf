@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_bot_channel_facebook")
 	close({
 		page!: matchN(1, [#page, [_, ...] & [...#page]])
+		timeouts?:                    #timeouts
 		bot_name!:                    string
 		facebook_application_id!:     string
 		facebook_application_secret!: string
 		id?:                          string
 		location!:                    string
 		resource_group_name!:         string
-		timeouts?:                    #timeouts
 	})
 
 	#page: close({

@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_elastic_san_volume")
 	close({
 		create_source?: matchN(1, [#create_source, list.MaxItems(1) & [...#create_source]])
+		timeouts?:               #timeouts
 		id?:                     string
 		name!:                   string
 		size_in_gib!:            number
@@ -15,7 +16,6 @@ import "list"
 		target_portal_port?:     number
 		volume_group_id!:        string
 		volume_id?:              string
-		timeouts?:               #timeouts
 	})
 
 	#create_source: close({

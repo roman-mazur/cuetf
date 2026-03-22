@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_palo_alto_next_generation_firewall_virtual_hub_panorama")
 	close({
+		destination_nat?: matchN(1, [#destination_nat, [...#destination_nat]])
+		dns_settings?: matchN(1, [#dns_settings, list.MaxItems(1) & [...#dns_settings]])
+		network_profile!: matchN(1, [#network_profile, list.MaxItems(1) & [_, ...] & [...#network_profile]])
+		timeouts?:             #timeouts
 		id?:                   string
 		location!:             string
 		marketplace_offer_id?: string
@@ -19,13 +23,9 @@ import "list"
 			template_name?:           string
 			virtual_machine_ssh_key?: string
 		})]
-		destination_nat?: matchN(1, [#destination_nat, [...#destination_nat]])
 		panorama_base64_config!: string
-		dns_settings?: matchN(1, [#dns_settings, list.MaxItems(1) & [...#dns_settings]])
-		plan_id?:             string
-		resource_group_name!: string
-		network_profile!: matchN(1, [#network_profile, list.MaxItems(1) & [_, ...] & [...#network_profile]])
-		timeouts?: #timeouts
+		plan_id?:                string
+		resource_group_name!:    string
 		tags?: [string]: string
 	})
 

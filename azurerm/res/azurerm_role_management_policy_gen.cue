@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_role_management_policy")
 	close({
+		activation_rules?: matchN(1, [#activation_rules, list.MaxItems(1) & [...#activation_rules]])
+		active_assignment_rules?: matchN(1, [#active_assignment_rules, list.MaxItems(1) & [...#active_assignment_rules]])
+		eligible_assignment_rules?: matchN(1, [#eligible_assignment_rules, list.MaxItems(1) & [...#eligible_assignment_rules]])
+		notification_rules?: matchN(1, [#notification_rules, list.MaxItems(1) & [...#notification_rules]])
+		timeouts?: #timeouts
+
 		// The Description of the policy
 		description?: string
 		id?:          string
@@ -15,17 +21,14 @@ import "list"
 
 		// ID of the Azure Role to which this policy is assigned
 		role_definition_id!: string
-		activation_rules?: matchN(1, [#activation_rules, list.MaxItems(1) & [...#activation_rules]])
-		active_assignment_rules?: matchN(1, [#active_assignment_rules, list.MaxItems(1) & [...#active_assignment_rules]])
-		eligible_assignment_rules?: matchN(1, [#eligible_assignment_rules, list.MaxItems(1) & [...#eligible_assignment_rules]])
 
 		// The scope of the role to which this policy will apply
 		scope!: string
-		notification_rules?: matchN(1, [#notification_rules, list.MaxItems(1) & [...#notification_rules]])
-		timeouts?: #timeouts
 	})
 
 	#activation_rules: close({
+		approval_stage?: matchN(1, [_#defs."/$defs/activation_rules/$defs/approval_stage", list.MaxItems(1) & [..._#defs."/$defs/activation_rules/$defs/approval_stage"]])
+
 		// The time after which the an activation can be valid for
 		maximum_duration?: string
 
@@ -45,7 +48,6 @@ import "list"
 		// Whether a conditional access context is required during
 		// activation
 		required_conditional_access_authentication_context?: string
-		approval_stage?: matchN(1, [_#defs."/$defs/activation_rules/$defs/approval_stage", list.MaxItems(1) & [..._#defs."/$defs/activation_rules/$defs/approval_stage"]])
 	})
 
 	#active_assignment_rules: close({

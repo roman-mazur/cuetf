@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_app_cosmosdb_association")
 	close({
+		timeouts?:                         #timeouts
 		api_type!:                         string
 		cosmosdb_access_key!:              string
 		cosmosdb_account_id!:              string
@@ -13,7 +14,6 @@ package res
 		cosmosdb_mongo_database_name?:     string
 		cosmosdb_sql_database_name?:       string
 		id?:                               string
-		timeouts?:                         #timeouts
 		name!:                             string
 		spring_cloud_app_id!:              string
 	})

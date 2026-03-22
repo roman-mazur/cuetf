@@ -6,6 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_sentinel_alert_rule_scheduled")
 	close({
+		alert_details_override?: matchN(1, [#alert_details_override, [...#alert_details_override]])
+		entity_mapping?: matchN(1, [#entity_mapping, list.MaxItems(10) & [...#entity_mapping]])
+		event_grouping?: matchN(1, [#event_grouping, list.MaxItems(1) & [...#event_grouping]])
+		incident?: matchN(1, [#incident, list.MaxItems(1) & [...#incident]])
+		sentinel_entity_mapping?: matchN(1, [#sentinel_entity_mapping, list.MaxItems(10) & [...#sentinel_entity_mapping]])
+		timeouts?:                    #timeouts
 		alert_rule_template_guid?:    string
 		alert_rule_template_version?: string
 		custom_details?: [string]: string
@@ -18,18 +24,12 @@ import "list"
 		query!:                      string
 		query_frequency?:            string
 		query_period?:               string
-		alert_details_override?: matchN(1, [#alert_details_override, [...#alert_details_override]])
-		severity!:             string
-		suppression_duration?: string
-		entity_mapping?: matchN(1, [#entity_mapping, list.MaxItems(10) & [...#entity_mapping]])
-		suppression_enabled?: bool
-		event_grouping?: matchN(1, [#event_grouping, list.MaxItems(1) & [...#event_grouping]])
+		severity!:                   string
+		suppression_duration?:       string
+		suppression_enabled?:        bool
 		tactics?: [...string]
 		techniques?: [...string]
-		trigger_operator?: string
-		incident?: matchN(1, [#incident, list.MaxItems(1) & [...#incident]])
-		sentinel_entity_mapping?: matchN(1, [#sentinel_entity_mapping, list.MaxItems(10) & [...#sentinel_entity_mapping]])
-		timeouts?:          #timeouts
+		trigger_operator?:  string
 		trigger_threshold?: number
 	})
 

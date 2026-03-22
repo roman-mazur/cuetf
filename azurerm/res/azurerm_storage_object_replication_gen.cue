@@ -5,12 +5,12 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_storage_object_replication")
 	close({
 		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
+		timeouts?:                          #timeouts
 		destination_object_replication_id?: string
 		destination_storage_account_id!:    string
 		id?:                                string
 		source_object_replication_id?:      string
 		source_storage_account_id!:         string
-		timeouts?:                          #timeouts
 	})
 
 	#rules: close({

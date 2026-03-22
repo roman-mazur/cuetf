@@ -6,36 +6,36 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_machine_scale_set")
 	close({
-		automatic_os_upgrade?: bool
-		eviction_policy?:      string
-		health_probe_id?:      string
-		id?:                   string
-		license_type?:         string
-		location!:             string
-		name!:                 string
-		overprovision?:        bool
-		priority?:             string
 		boot_diagnostics?: matchN(1, [#boot_diagnostics, list.MaxItems(1) & [...#boot_diagnostics]])
 		extension?: matchN(1, [#extension, [...#extension]])
-		proximity_placement_group_id?: string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		resource_group_name!:    string
-		single_placement_group?: bool
 		network_profile!: matchN(1, [#network_profile, [_, ...] & [...#network_profile]])
 		os_profile!: matchN(1, [#os_profile, list.MaxItems(1) & [_, ...] & [...#os_profile]])
-		tags?: [string]: string
 		os_profile_linux_config?: matchN(1, [#os_profile_linux_config, list.MaxItems(1) & [...#os_profile_linux_config]])
 		os_profile_secrets?: matchN(1, [#os_profile_secrets, [...#os_profile_secrets]])
 		os_profile_windows_config?: matchN(1, [#os_profile_windows_config, list.MaxItems(1) & [...#os_profile_windows_config]])
 		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
 		rolling_upgrade_policy?: matchN(1, [#rolling_upgrade_policy, list.MaxItems(1) & [...#rolling_upgrade_policy]])
-		upgrade_policy_mode!: string
-		zones?: [...string]
 		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		storage_profile_data_disk?: matchN(1, [#storage_profile_data_disk, [...#storage_profile_data_disk]])
 		storage_profile_image_reference?: matchN(1, [#storage_profile_image_reference, list.MaxItems(1) & [...#storage_profile_image_reference]])
 		storage_profile_os_disk!: matchN(1, [#storage_profile_os_disk, list.MaxItems(1) & [_, ...] & [...#storage_profile_os_disk]])
-		timeouts?: #timeouts
+		timeouts?:                     #timeouts
+		automatic_os_upgrade?:         bool
+		eviction_policy?:              string
+		health_probe_id?:              string
+		id?:                           string
+		license_type?:                 string
+		location!:                     string
+		name!:                         string
+		overprovision?:                bool
+		priority?:                     string
+		proximity_placement_group_id?: string
+		resource_group_name!:          string
+		single_placement_group?:       bool
+		tags?: [string]: string
+		upgrade_policy_mode!: string
+		zones?: [...string]
 	})
 
 	#boot_diagnostics: close({
@@ -63,12 +63,12 @@ import "list"
 
 	#network_profile: close({
 		dns_settings?: matchN(1, [_#defs."/$defs/network_profile/$defs/dns_settings", list.MaxItems(1) & [..._#defs."/$defs/network_profile/$defs/dns_settings"]])
+		ip_configuration!: matchN(1, [_#defs."/$defs/network_profile/$defs/ip_configuration", [_, ...] & [..._#defs."/$defs/network_profile/$defs/ip_configuration"]])
 		accelerated_networking?:    bool
 		ip_forwarding?:             bool
 		name!:                      string
 		network_security_group_id?: string
 		primary!:                   bool
-		ip_configuration!: matchN(1, [_#defs."/$defs/network_profile/$defs/ip_configuration", [_, ...] & [..._#defs."/$defs/network_profile/$defs/ip_configuration"]])
 	})
 
 	#os_profile: close({

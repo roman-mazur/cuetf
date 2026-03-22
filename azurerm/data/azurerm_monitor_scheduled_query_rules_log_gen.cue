@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_monitor_scheduled_query_rules_log")
 	close({
+		timeouts?: #timeouts
 		authorized_resource_ids?: [...string]
 		criteria?: [...close({
 			dimension?: [...close({
@@ -18,7 +19,6 @@ package data
 		enabled?:             bool
 		id?:                  string
 		location?:            string
-		timeouts?:            #timeouts
 		name!:                string
 		resource_group_name!: string
 		tags?: [string]: string

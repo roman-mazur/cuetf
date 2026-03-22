@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cosmosdb_cassandra_cluster")
 	close({
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:              #timeouts
 		authentication_method?: string
 		client_certificate_pems?: [...string]
 		default_admin_password!:         string
@@ -14,12 +16,10 @@ import "list"
 		external_seed_node_ip_addresses?: [...string]
 		hours_between_backups?: number
 		id?:                    string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		location!:            string
-		name!:                string
-		repair_enabled?:      bool
-		timeouts?:            #timeouts
-		resource_group_name!: string
+		location!:              string
+		name!:                  string
+		repair_enabled?:        bool
+		resource_group_name!:   string
 		tags?: [string]: string
 		version?: string
 	})

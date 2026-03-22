@@ -6,18 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_subscription_cost_management_view")
 	close({
-		accumulated!: bool
 		dataset!: matchN(1, [#dataset, list.MaxItems(1) & [_, ...] & [...#dataset]])
-		chart_type!:   string
-		display_name!: string
-		id?:           string
 		kpi?: matchN(1, [#kpi, [...#kpi]])
-		name!: string
 		pivot?: matchN(1, [#pivot, [...#pivot]])
+		timeouts?:        #timeouts
+		accumulated!:     bool
+		chart_type!:      string
+		display_name!:    string
+		id?:              string
+		name!:            string
 		report_type!:     string
 		subscription_id!: string
 		timeframe!:       string
-		timeouts?:        #timeouts
 	})
 
 	#dataset: close({

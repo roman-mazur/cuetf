@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_web_pubsub_socketio")
 	close({
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		timeouts?:                             #timeouts
 		aad_auth_enabled?:                     bool
 		external_ip?:                          string
 		hostname?:                             string
@@ -18,17 +21,14 @@ import "list"
 		location!:                             string
 		name!:                                 string
 		primary_access_key?:                   string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
-		primary_connection_string?:   string
-		public_network_access?:       string
-		public_port?:                 number
-		resource_group_name!:         string
-		timeouts?:                    #timeouts
-		secondary_access_key?:        string
-		secondary_connection_string?: string
-		server_port?:                 number
-		service_mode?:                string
+		primary_connection_string?:            string
+		public_network_access?:                string
+		public_port?:                          number
+		resource_group_name!:                  string
+		secondary_access_key?:                 string
+		secondary_connection_string?:          string
+		server_port?:                          number
+		service_mode?:                         string
 		tags?: [string]: string
 		tls_client_cert_enabled?: bool
 	})

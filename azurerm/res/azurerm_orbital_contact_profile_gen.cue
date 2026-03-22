@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_orbital_contact_profile")
 	close({
+		links!: matchN(1, [#links, [_, ...] & [...#links]])
+		timeouts?:                          #timeouts
 		auto_tracking!:                     string
 		event_hub_uri?:                     string
 		id?:                                string
@@ -11,10 +13,8 @@ package res
 		minimum_elevation_degrees?:         number
 		minimum_variable_contact_duration!: string
 		name!:                              string
-		links!: matchN(1, [#links, [_, ...] & [...#links]])
-		network_configuration_subnet_id!: string
-		timeouts?:                        #timeouts
-		resource_group_name!:             string
+		network_configuration_subnet_id!:   string
+		resource_group_name!:               string
 		tags?: [string]: string
 	})
 

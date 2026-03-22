@@ -7,11 +7,11 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_build_pack_binding")
 	close({
 		launch?: matchN(1, [#launch, list.MaxItems(1) & [...#launch]])
+		timeouts?:                #timeouts
 		binding_type?:            string
 		id?:                      string
 		name!:                    string
 		spring_cloud_builder_id!: string
-		timeouts?:                #timeouts
 	})
 
 	#launch: close({

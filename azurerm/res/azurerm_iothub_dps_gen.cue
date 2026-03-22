@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iothub_dps")
 	close({
+		ip_filter_rule?: matchN(1, [#ip_filter_rule, [...#ip_filter_rule]])
+		linked_hub?: matchN(1, [#linked_hub, [...#linked_hub]])
+		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
+		timeouts?:                      #timeouts
 		allocation_policy?:             string
 		data_residency_enabled?:        bool
 		device_provisioning_host_name?: string
@@ -14,12 +18,8 @@ import "list"
 		location!:                      string
 		name!:                          string
 		public_network_access_enabled?: bool
-		ip_filter_rule?: matchN(1, [#ip_filter_rule, [...#ip_filter_rule]])
-		resource_group_name!: string
-		linked_hub?: matchN(1, [#linked_hub, [...#linked_hub]])
-		service_operations_host_name?: string
-		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
-		timeouts?: #timeouts
+		resource_group_name!:           string
+		service_operations_host_name?:  string
 		tags?: [string]: string
 	})
 

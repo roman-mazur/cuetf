@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_api_management")
 	close({
+		timeouts?: #timeouts
 		additional_location?: [...close({
 			capacity?:             number
 			gateway_regional_url?: string
@@ -67,7 +68,6 @@ package data
 		publisher_email?:     string
 		publisher_name?:      string
 		resource_group_name!: string
-		timeouts?:            #timeouts
 		scm_url?:             string
 		sku_name?:            string
 		tags?: [string]: string

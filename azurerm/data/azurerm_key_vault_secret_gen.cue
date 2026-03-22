@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_key_vault_secret")
 	close({
+		timeouts?:                #timeouts
 		content_type?:            string
 		expiration_date?:         string
 		id?:                      string
@@ -12,7 +13,6 @@ package data
 		not_before_date?:         string
 		resource_id?:             string
 		resource_versionless_id?: string
-		timeouts?:                #timeouts
 		tags?: [string]: string
 		value?:          string
 		version?:        string

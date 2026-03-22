@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_synapse_spark_pool")
 	close({
+		auto_pause?: matchN(1, [#auto_pause, list.MaxItems(1) & [...#auto_pause]])
+		auto_scale?: matchN(1, [#auto_scale, list.MaxItems(1) & [...#auto_scale]])
+		library_requirement?: matchN(1, [#library_requirement, list.MaxItems(1) & [...#library_requirement]])
+		spark_config?: matchN(1, [#spark_config, list.MaxItems(1) & [...#spark_config]])
+		timeouts?:                            #timeouts
 		cache_size?:                          number
 		compute_isolation_enabled?:           bool
 		dynamic_executor_allocation_enabled?: bool
@@ -17,15 +22,10 @@ import "list"
 		node_size!:                           string
 		node_size_family!:                    string
 		session_level_packages_enabled?:      bool
-		auto_pause?: matchN(1, [#auto_pause, list.MaxItems(1) & [...#auto_pause]])
-		spark_events_folder?: string
-		spark_log_folder?:    string
-		auto_scale?: matchN(1, [#auto_scale, list.MaxItems(1) & [...#auto_scale]])
-		spark_version!: string
-		library_requirement?: matchN(1, [#library_requirement, list.MaxItems(1) & [...#library_requirement]])
-		spark_config?: matchN(1, [#spark_config, list.MaxItems(1) & [...#spark_config]])
-		timeouts?:             #timeouts
-		synapse_workspace_id!: string
+		spark_events_folder?:                 string
+		spark_log_folder?:                    string
+		spark_version!:                       string
+		synapse_workspace_id!:                string
 		tags?: [string]: string
 	})
 

@@ -4,15 +4,15 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_trigger_blob_event")
 	close({
+		pipeline!: matchN(1, [#pipeline, [_, ...] & [...#pipeline]])
+		timeouts?:  #timeouts
 		activated?: bool
 		additional_properties?: [string]: string
 		annotations?: [...string]
 		blob_path_begins_with?: string
 		blob_path_ends_with?:   string
 		data_factory_id!:       string
-		pipeline!: matchN(1, [#pipeline, [_, ...] & [...#pipeline]])
-		description?: string
-		timeouts?:    #timeouts
+		description?:           string
 		events!: [...string]
 		id?:                 string
 		ignore_empty_blobs?: bool

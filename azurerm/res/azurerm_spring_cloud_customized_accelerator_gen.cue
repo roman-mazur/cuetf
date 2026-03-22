@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_customized_accelerator")
 	close({
 		git_repository!: matchN(1, [#git_repository, list.MaxItems(1) & [_, ...] & [...#git_repository]])
+		timeouts?: #timeouts
 		accelerator_tags?: [...string]
 		accelerator_type?:            string
 		description?:                 string
@@ -15,11 +16,11 @@ import "list"
 		id?:                          string
 		name!:                        string
 		spring_cloud_accelerator_id!: string
-		timeouts?:                    #timeouts
 	})
 
 	#git_repository: close({
 		basic_auth?: matchN(1, [_#defs."/$defs/git_repository/$defs/basic_auth", list.MaxItems(1) & [..._#defs."/$defs/git_repository/$defs/basic_auth"]])
+		ssh_auth?: matchN(1, [_#defs."/$defs/git_repository/$defs/ssh_auth", list.MaxItems(1) & [..._#defs."/$defs/git_repository/$defs/ssh_auth"]])
 		branch?:              string
 		ca_certificate_id?:   string
 		commit?:              string
@@ -27,7 +28,6 @@ import "list"
 		interval_in_seconds?: number
 		path?:                string
 		url!:                 string
-		ssh_auth?: matchN(1, [_#defs."/$defs/git_repository/$defs/ssh_auth", list.MaxItems(1) & [..._#defs."/$defs/git_repository/$defs/ssh_auth"]])
 	})
 
 	#timeouts: close({

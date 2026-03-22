@@ -4,8 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_servicebus_queue")
 	close({
-		auto_delete_on_idle?:                     string
 		timeouts?:                                #timeouts
+		auto_delete_on_idle?:                     string
 		batched_operations_enabled?:              bool
 		dead_lettering_on_message_expiration?:    bool
 		default_message_ttl?:                     string

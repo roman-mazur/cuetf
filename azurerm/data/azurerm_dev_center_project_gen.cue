@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_dev_center_project")
 	close({
+		timeouts?:       #timeouts
 		description?:    string
 		dev_center_id?:  string
 		dev_center_uri?: string
@@ -16,7 +17,6 @@ package data
 		})]
 		location?:                   string
 		maximum_dev_boxes_per_user?: number
-		timeouts?:                   #timeouts
 		name!:                       string
 		resource_group_name!:        string
 		tags?: [string]: string

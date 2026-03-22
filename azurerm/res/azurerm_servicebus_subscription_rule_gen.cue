@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_servicebus_subscription_rule")
 	close({
 		correlation_filter?: matchN(1, [#correlation_filter, list.MaxItems(1) & [...#correlation_filter]])
+		timeouts?:                       #timeouts
 		action?:                         string
 		filter_type!:                    string
 		id?:                             string
@@ -14,7 +15,6 @@ import "list"
 		sql_filter?:                     string
 		sql_filter_compatibility_level?: number
 		subscription_id!:                string
-		timeouts?:                       #timeouts
 	})
 
 	#correlation_filter: close({

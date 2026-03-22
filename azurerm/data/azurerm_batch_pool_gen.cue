@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_batch_pool")
 	close({
+		timeouts?:     #timeouts
 		account_name!: string
 		auto_scale?: [...close({
 			evaluation_interval?: string
@@ -138,7 +139,6 @@ package data
 			})]
 			wait_for_success?: bool
 		})]
-		timeouts?: #timeouts
 		storage_image_reference?: [...close({
 			id?:        string
 			offer?:     string

@@ -6,19 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management_api_operation")
 	close({
+		request?: matchN(1, [#request, list.MaxItems(1) & [...#request]])
+		response?: matchN(1, [#response, [...#response]])
+		template_parameter?: matchN(1, [#template_parameter, [...#template_parameter]])
+		timeouts?:            #timeouts
 		api_management_name!: string
 		api_name!:            string
 		description?:         string
 		display_name!:        string
 		id?:                  string
-		request?: matchN(1, [#request, list.MaxItems(1) & [...#request]])
-		method!: string
-		response?: matchN(1, [#response, [...#response]])
+		method!:              string
 		operation_id!:        string
 		resource_group_name!: string
-		template_parameter?: matchN(1, [#template_parameter, [...#template_parameter]])
-		timeouts?:     #timeouts
-		url_template!: string
+		url_template!:        string
 	})
 
 	#request: close({

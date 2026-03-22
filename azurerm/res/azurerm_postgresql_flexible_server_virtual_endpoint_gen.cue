@@ -4,7 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_postgresql_flexible_server_virtual_endpoint")
 	close({
-		id?: string
+		timeouts?: #timeouts
+		id?:       string
 
 		// The name of the Virtual Endpoint
 		name!: string
@@ -16,7 +17,6 @@ package res
 		// The Resource ID of the *Source* Postgres Flexible Server this
 		// should be associated with
 		source_server_id!: string
-		timeouts?:         #timeouts
 
 		// The type of Virtual Endpoint
 		type!: string

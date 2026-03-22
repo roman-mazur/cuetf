@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_key_vault_managed_hardware_security_module_key")
 	close({
+		timeouts?:        #timeouts
 		curve?:           string
 		expiration_date?: string
 		id?:              string
@@ -12,7 +13,6 @@ package data
 		key_type?:        string
 		managed_hsm_id!:  string
 		name!:            string
-		timeouts?:        #timeouts
 		not_before_date?: string
 		tags?: [string]: string
 		version?:      string

@@ -4,8 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_app_service")
 	close({
-		app_service_plan_id?: string
 		timeouts?:            #timeouts
+		app_service_plan_id?: string
 		app_settings?: [string]: string
 		client_affinity_enabled?: bool
 		client_cert_enabled?:     bool

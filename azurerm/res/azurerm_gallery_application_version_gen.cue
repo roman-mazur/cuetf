@@ -6,20 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_gallery_application_version")
 	close({
+		manage_action!: matchN(1, [#manage_action, list.MaxItems(1) & [_, ...] & [...#manage_action]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		target_region!: matchN(1, [#target_region, [_, ...] & [...#target_region]])
+		timeouts?:               #timeouts
 		config_file?:            string
 		enable_health_check?:    bool
 		end_of_life_date?:       string
 		exclude_from_latest?:    bool
 		gallery_application_id!: string
 		id?:                     string
-		manage_action!: matchN(1, [#manage_action, list.MaxItems(1) & [_, ...] & [...#manage_action]])
-		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
-		target_region!: matchN(1, [#target_region, [_, ...] & [...#target_region]])
-		location!:     string
-		name!:         string
-		package_file?: string
+		location!:               string
+		name!:                   string
+		package_file?:           string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#manage_action: close({

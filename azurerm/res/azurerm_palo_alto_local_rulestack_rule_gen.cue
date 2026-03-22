@@ -6,7 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_palo_alto_local_rulestack_rule")
 	close({
-		action!: string
+		category?: matchN(1, [#category, list.MaxItems(1) & [...#category]])
+		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
+		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		timeouts?: #timeouts
+		action!:   string
 		applications!: [...string]
 		audit_comment?:             string
 		decryption_rule_type?:      string
@@ -17,16 +21,12 @@ import "list"
 		logging_enabled?:           bool
 		name!:                      string
 		negate_destination?:        bool
-		category?: matchN(1, [#category, list.MaxItems(1) & [...#category]])
-		negate_source?: bool
-		priority!:      number
-		protocol?:      string
+		negate_source?:             bool
+		priority!:                  number
+		protocol?:                  string
 		protocol_ports?: [...string]
 		rulestack_id!: string
 		tags?: [string]: string
-		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
-		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
-		timeouts?: #timeouts
 	})
 
 	#category: close({

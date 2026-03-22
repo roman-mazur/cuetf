@@ -6,16 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_machine_packet_capture")
 	close({
-		id?: string
 		filter?: matchN(1, [#filter, [...#filter]])
+		storage_location!: matchN(1, [#storage_location, list.MaxItems(1) & [_, ...] & [...#storage_location]])
+		timeouts?:                            #timeouts
+		id?:                                  string
 		maximum_bytes_per_packet?:            number
 		maximum_bytes_per_session?:           number
 		maximum_capture_duration_in_seconds?: number
 		name!:                                string
 		network_watcher_id!:                  string
 		virtual_machine_id!:                  string
-		storage_location!: matchN(1, [#storage_location, list.MaxItems(1) & [_, ...] & [...#storage_location]])
-		timeouts?: #timeouts
 	})
 
 	#filter: close({

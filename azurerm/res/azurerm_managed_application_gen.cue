@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_managed_application")
 	close({
+		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
+		timeouts?:                    #timeouts
 		application_definition_id?:   string
 		id?:                          string
 		kind!:                        string
@@ -13,9 +15,7 @@ import "list"
 		managed_resource_group_name!: string
 		name!:                        string
 		outputs?: [string]: string
-		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
 		parameter_values?:    string
-		timeouts?:            #timeouts
 		resource_group_name!: string
 		tags?: [string]: string
 	})

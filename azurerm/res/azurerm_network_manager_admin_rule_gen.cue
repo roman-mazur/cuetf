@@ -4,18 +4,18 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_network_manager_admin_rule")
 	close({
+		destination?: matchN(1, [#destination, [...#destination]])
+		source?: matchN(1, [#source, [...#source]])
+		timeouts?:                 #timeouts
 		action!:                   string
 		admin_rule_collection_id!: string
 		description?:              string
 		destination_port_ranges?: [...string]
 		direction!: string
 		id?:        string
-		destination?: matchN(1, [#destination, [...#destination]])
-		name!: string
-		source?: matchN(1, [#source, [...#source]])
-		timeouts?: #timeouts
-		priority!: number
-		protocol!: string
+		name!:      string
+		priority!:  number
+		protocol!:  string
 		source_port_ranges?: [...string]
 	})
 

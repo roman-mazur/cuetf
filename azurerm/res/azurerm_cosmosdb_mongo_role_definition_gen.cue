@@ -7,11 +7,11 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cosmosdb_mongo_role_definition")
 	close({
 		privilege?: matchN(1, [#privilege, [...#privilege]])
+		timeouts?:                 #timeouts
 		cosmos_mongo_database_id!: string
 		id?:                       string
 		inherited_role_names?: [...string]
 		role_name!: string
-		timeouts?:  #timeouts
 	})
 
 	#privilege: close({

@@ -6,6 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_orchestrated_virtual_machine_scale_set")
 	close({
+		additional_capabilities?: matchN(1, [#additional_capabilities, list.MaxItems(1) & [...#additional_capabilities]])
+		automatic_instance_repair?: matchN(1, [#automatic_instance_repair, list.MaxItems(1) & [...#automatic_instance_repair]])
+		boot_diagnostics?: matchN(1, [#boot_diagnostics, list.MaxItems(1) & [...#boot_diagnostics]])
+		data_disk?: matchN(1, [#data_disk, [...#data_disk]])
+		extension?: matchN(1, [#extension, [...#extension]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
+		os_disk?: matchN(1, [#os_disk, list.MaxItems(1) & [...#os_disk]])
+		os_profile?: matchN(1, [#os_profile, list.MaxItems(1) & [...#os_profile]])
+		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
+		priority_mix?: matchN(1, [#priority_mix, list.MaxItems(1) & [...#priority_mix]])
+		rolling_upgrade_policy?: matchN(1, [#rolling_upgrade_policy, list.MaxItems(1) & [...#rolling_upgrade_policy]])
+		sku_profile?: matchN(1, [#sku_profile, list.MaxItems(1) & [...#sku_profile]])
+		source_image_reference?: matchN(1, [#source_image_reference, list.MaxItems(1) & [...#source_image_reference]])
+		termination_notification?: matchN(1, [#termination_notification, list.MaxItems(1) & [...#termination_notification]])
+		timeouts?:                      #timeouts
 		capacity_reservation_group_id?: string
 		encryption_at_host_enabled?:    bool
 		eviction_policy?:               string
@@ -23,30 +39,14 @@ import "list"
 		proximity_placement_group_id?:  string
 		resource_group_name!:           string
 		single_placement_group?:        bool
-		additional_capabilities?: matchN(1, [#additional_capabilities, list.MaxItems(1) & [...#additional_capabilities]])
-		sku_name?:        string
-		source_image_id?: string
+		sku_name?:                      string
+		source_image_id?:               string
 		tags?: [string]: string
 		unique_id?:        string
 		upgrade_mode?:     string
 		user_data_base64?: string
 		zone_balance?:     bool
 		zones?: [...string]
-		automatic_instance_repair?: matchN(1, [#automatic_instance_repair, list.MaxItems(1) & [...#automatic_instance_repair]])
-		boot_diagnostics?: matchN(1, [#boot_diagnostics, list.MaxItems(1) & [...#boot_diagnostics]])
-		data_disk?: matchN(1, [#data_disk, [...#data_disk]])
-		extension?: matchN(1, [#extension, [...#extension]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
-		os_disk?: matchN(1, [#os_disk, list.MaxItems(1) & [...#os_disk]])
-		os_profile?: matchN(1, [#os_profile, list.MaxItems(1) & [...#os_profile]])
-		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
-		priority_mix?: matchN(1, [#priority_mix, list.MaxItems(1) & [...#priority_mix]])
-		rolling_upgrade_policy?: matchN(1, [#rolling_upgrade_policy, list.MaxItems(1) & [...#rolling_upgrade_policy]])
-		sku_profile?: matchN(1, [#sku_profile, list.MaxItems(1) & [...#sku_profile]])
-		source_image_reference?: matchN(1, [#source_image_reference, list.MaxItems(1) & [...#source_image_reference]])
-		termination_notification?: matchN(1, [#termination_notification, list.MaxItems(1) & [...#termination_notification]])
-		timeouts?: #timeouts
 	})
 
 	#additional_capabilities: close({
@@ -76,6 +76,7 @@ import "list"
 	})
 
 	#extension: close({
+		protected_settings_from_key_vault?: matchN(1, [_#defs."/$defs/extension/$defs/protected_settings_from_key_vault", list.MaxItems(1) & [..._#defs."/$defs/extension/$defs/protected_settings_from_key_vault"]])
 		auto_upgrade_minor_version_enabled?: bool
 		extensions_to_provision_after_vm_creation?: [...string]
 		failure_suppression_enabled?:         bool
@@ -83,10 +84,9 @@ import "list"
 		name!:                                string
 		protected_settings?:                  string
 		publisher!:                           string
-		protected_settings_from_key_vault?: matchN(1, [_#defs."/$defs/extension/$defs/protected_settings_from_key_vault", list.MaxItems(1) & [..._#defs."/$defs/extension/$defs/protected_settings_from_key_vault"]])
-		settings?:             string
-		type!:                 string
-		type_handler_version!: string
+		settings?:                            string
+		type!:                                string
+		type_handler_version!:                string
 	})
 
 	#identity: close({
@@ -204,6 +204,7 @@ import "list"
 
 	_#defs: "/$defs/os_profile/$defs/linux_configuration": close({
 		admin_ssh_key?: matchN(1, [_#defs."/$defs/os_profile/$defs/linux_configuration/$defs/admin_ssh_key", [..._#defs."/$defs/os_profile/$defs/linux_configuration/$defs/admin_ssh_key"]])
+		secret?: matchN(1, [_#defs."/$defs/os_profile/$defs/linux_configuration/$defs/secret", [..._#defs."/$defs/os_profile/$defs/linux_configuration/$defs/secret"]])
 		admin_password?:                  string
 		admin_username!:                  string
 		computer_name_prefix?:            string
@@ -211,7 +212,6 @@ import "list"
 		patch_assessment_mode?:           string
 		patch_mode?:                      string
 		provision_vm_agent?:              bool
-		secret?: matchN(1, [_#defs."/$defs/os_profile/$defs/linux_configuration/$defs/secret", [..._#defs."/$defs/os_profile/$defs/linux_configuration/$defs/secret"]])
 	})
 
 	_#defs: "/$defs/os_profile/$defs/linux_configuration/$defs/admin_ssh_key": close({
@@ -229,6 +229,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/os_profile/$defs/windows_configuration": close({
+		additional_unattend_content?: matchN(1, [_#defs."/$defs/os_profile/$defs/windows_configuration/$defs/additional_unattend_content", [..._#defs."/$defs/os_profile/$defs/windows_configuration/$defs/additional_unattend_content"]])
+		secret?: matchN(1, [_#defs."/$defs/os_profile/$defs/windows_configuration/$defs/secret", [..._#defs."/$defs/os_profile/$defs/windows_configuration/$defs/secret"]])
+		winrm_listener?: matchN(1, [_#defs."/$defs/os_profile/$defs/windows_configuration/$defs/winrm_listener", [..._#defs."/$defs/os_profile/$defs/windows_configuration/$defs/winrm_listener"]])
 		admin_password!:           string
 		admin_username!:           string
 		computer_name_prefix?:     string
@@ -236,11 +239,8 @@ import "list"
 		hotpatching_enabled?:      bool
 		patch_assessment_mode?:    string
 		patch_mode?:               string
-		additional_unattend_content?: matchN(1, [_#defs."/$defs/os_profile/$defs/windows_configuration/$defs/additional_unattend_content", [..._#defs."/$defs/os_profile/$defs/windows_configuration/$defs/additional_unattend_content"]])
-		provision_vm_agent?: bool
-		secret?: matchN(1, [_#defs."/$defs/os_profile/$defs/windows_configuration/$defs/secret", [..._#defs."/$defs/os_profile/$defs/windows_configuration/$defs/secret"]])
-		winrm_listener?: matchN(1, [_#defs."/$defs/os_profile/$defs/windows_configuration/$defs/winrm_listener", [..._#defs."/$defs/os_profile/$defs/windows_configuration/$defs/winrm_listener"]])
-		timezone?: string
+		provision_vm_agent?:       bool
+		timezone?:                 string
 	})
 
 	_#defs: "/$defs/os_profile/$defs/windows_configuration/$defs/additional_unattend_content": close({

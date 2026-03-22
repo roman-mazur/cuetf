@@ -5,12 +5,12 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_configuration_service")
 	close({
 		repository?: matchN(1, [#repository, [...#repository]])
+		timeouts?:                    #timeouts
 		generation?:                  string
 		id?:                          string
 		name!:                        string
 		refresh_interval_in_seconds?: number
 		spring_cloud_service_id!:     string
-		timeouts?:                    #timeouts
 	})
 
 	#repository: close({

@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_automanage_configuration")
 	close({
+		antimalware?: matchN(1, [#antimalware, list.MaxItems(1) & [...#antimalware]])
+		azure_security_baseline?: matchN(1, [#azure_security_baseline, list.MaxItems(1) & [...#azure_security_baseline]])
+		backup?: matchN(1, [#backup, list.MaxItems(1) & [...#backup]])
+		timeouts?:                    #timeouts
 		automation_account_enabled?:  bool
 		boot_diagnostics_enabled?:    bool
 		defender_for_cloud_enabled?:  bool
@@ -14,12 +18,8 @@ import "list"
 		location!:                    string
 		log_analytics_enabled?:       bool
 		name!:                        string
-		antimalware?: matchN(1, [#antimalware, list.MaxItems(1) & [...#antimalware]])
-		resource_group_name!: string
-		azure_security_baseline?: matchN(1, [#azure_security_baseline, list.MaxItems(1) & [...#azure_security_baseline]])
+		resource_group_name!:         string
 		status_change_alert_enabled?: bool
-		backup?: matchN(1, [#backup, list.MaxItems(1) & [...#backup]])
-		timeouts?: #timeouts
 		tags?: [string]: string
 	})
 

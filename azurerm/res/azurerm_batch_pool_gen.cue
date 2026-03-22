@@ -6,21 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_batch_pool")
 	close({
-		account_name!:             string
-		display_name?:             string
-		id?:                       string
-		inter_node_communication?: string
-		license_type?:             string
-		max_tasks_per_node?:       number
-		metadata?: [string]: string
-		name!:              string
-		node_agent_sku_id!: string
 		auto_scale?: matchN(1, [#auto_scale, list.MaxItems(1) & [...#auto_scale]])
-		os_disk_placement?:             string
-		resource_group_name!:           string
-		stop_pending_resize_operation?: bool
 		certificate?: matchN(1, [#certificate, [...#certificate]])
-		target_node_communication_mode?: string
 		container_configuration?: matchN(1, [#container_configuration, list.MaxItems(1) & [...#container_configuration]])
 		data_disks?: matchN(1, [#data_disks, [...#data_disks]])
 		disk_encryption?: matchN(1, [#disk_encryption, [...#disk_encryption]])
@@ -31,13 +18,26 @@ import "list"
 		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
 		node_placement?: matchN(1, [#node_placement, [...#node_placement]])
 		security_profile?: matchN(1, [#security_profile, list.MaxItems(1) & [...#security_profile]])
-		vm_size!: string
 		start_task?: matchN(1, [#start_task, list.MaxItems(1) & [...#start_task]])
 		storage_image_reference!: matchN(1, [#storage_image_reference, list.MaxItems(1) & [_, ...] & [...#storage_image_reference]])
 		task_scheduling_policy?: matchN(1, [#task_scheduling_policy, [...#task_scheduling_policy]])
 		timeouts?: #timeouts
 		user_accounts?: matchN(1, [#user_accounts, [...#user_accounts]])
 		windows?: matchN(1, [#windows, [...#windows]])
+		account_name!:             string
+		display_name?:             string
+		id?:                       string
+		inter_node_communication?: string
+		license_type?:             string
+		max_tasks_per_node?:       number
+		metadata?: [string]: string
+		name!:                           string
+		node_agent_sku_id!:              string
+		os_disk_placement?:              string
+		resource_group_name!:            string
+		stop_pending_resize_operation?:  bool
+		target_node_communication_mode?: string
+		vm_size!:                        string
 	})
 
 	#auto_scale: close({
@@ -127,12 +127,12 @@ import "list"
 
 	#start_task: close({
 		container?: matchN(1, [_#defs."/$defs/start_task/$defs/container", [..._#defs."/$defs/start_task/$defs/container"]])
+		resource_file?: matchN(1, [_#defs."/$defs/start_task/$defs/resource_file", [..._#defs."/$defs/start_task/$defs/resource_file"]])
+		user_identity!: matchN(1, [_#defs."/$defs/start_task/$defs/user_identity", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/start_task/$defs/user_identity"]])
 		command_line!: string
 		common_environment_properties?: [string]: string
 		task_retry_maximum?: number
 		wait_for_success?:   bool
-		resource_file?: matchN(1, [_#defs."/$defs/start_task/$defs/resource_file", [..._#defs."/$defs/start_task/$defs/resource_file"]])
-		user_identity!: matchN(1, [_#defs."/$defs/start_task/$defs/user_identity", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/start_task/$defs/user_identity"]])
 	})
 
 	#storage_image_reference: close({

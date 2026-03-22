@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_machine_learning_synapse_spark")
 	close({
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:                      #timeouts
 		description?:                   string
 		id?:                            string
 		local_auth_enabled?:            bool
@@ -15,7 +16,6 @@ import "list"
 		name!:                          string
 		synapse_spark_pool_id!:         string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#identity: close({

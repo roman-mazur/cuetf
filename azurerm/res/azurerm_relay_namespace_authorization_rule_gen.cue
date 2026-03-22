@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_relay_namespace_authorization_rule")
 	close({
+		timeouts?:                    #timeouts
 		id?:                          string
 		listen?:                      bool
 		manage?:                      bool
@@ -13,7 +14,6 @@ package res
 		primary_key?:                 string
 		resource_group_name!:         string
 		secondary_connection_string?: string
-		timeouts?:                    #timeouts
 		secondary_key?:               string
 		send?:                        bool
 	})

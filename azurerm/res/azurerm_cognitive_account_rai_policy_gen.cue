@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cognitive_account_rai_policy")
 	close({
 		content_filter!: matchN(1, [#content_filter, [_, ...] & [...#content_filter]])
+		timeouts?:             #timeouts
 		base_policy_name!:     string
 		cognitive_account_id!: string
 		id?:                   string
 		mode?:                 string
 		name!:                 string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#content_filter: close({

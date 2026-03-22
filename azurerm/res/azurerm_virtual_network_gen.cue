@@ -6,16 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_network")
 	close({
+		ddos_protection_plan?: matchN(1, [#ddos_protection_plan, list.MaxItems(1) & [...#ddos_protection_plan]])
+		encryption?: matchN(1, [#encryption, list.MaxItems(1) & [...#encryption]])
+		ip_address_pool?: matchN(1, [#ip_address_pool, list.MaxItems(2) & [...#ip_address_pool]])
+		timeouts?: #timeouts
 		address_space?: [...string]
 		bgp_community?: string
 		dns_servers?: [...string]
-		edge_zone?:               string
-		flow_timeout_in_minutes?: number
-		guid?:                    string
-		id?:                      string
-		location!:                string
-		name!:                    string
-		ddos_protection_plan?: matchN(1, [#ddos_protection_plan, list.MaxItems(1) & [...#ddos_protection_plan]])
+		edge_zone?:                      string
+		flow_timeout_in_minutes?:        number
+		guid?:                           string
+		id?:                             string
+		location!:                       string
+		name!:                           string
 		private_endpoint_vnet_policies?: string
 		resource_group_name!:            string
 		subnet?: [...close({
@@ -38,9 +41,6 @@ import "list"
 			service_endpoints?: [...string]
 		})]
 		tags?: [string]: string
-		encryption?: matchN(1, [#encryption, list.MaxItems(1) & [...#encryption]])
-		ip_address_pool?: matchN(1, [#ip_address_pool, list.MaxItems(2) & [...#ip_address_pool]])
-		timeouts?: #timeouts
 	})
 
 	#ddos_protection_plan: close({

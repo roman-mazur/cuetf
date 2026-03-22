@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_app_configuration_key")
 	close({
+		timeouts?:               #timeouts
 		configuration_store_id!: string
 		content_type?:           string
 		etag?:                   string
@@ -13,7 +14,6 @@ package res
 		locked?:                 bool
 		tags?: [string]: string
 		type?:                string
-		timeouts?:            #timeouts
 		value?:               string
 		vault_key_reference?: string
 	})

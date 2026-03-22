@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_orbital_spacecraft")
 	close({
 		links!: matchN(1, [#links, [_, ...] & [...#links]])
+		timeouts?:            #timeouts
 		id?:                  string
 		location!:            string
 		name!:                string
@@ -13,7 +14,6 @@ package res
 		tags?: [string]: string
 		title_line!: string
 		two_line_elements!: [...string]
-		timeouts?: #timeouts
 	})
 
 	#links: close({

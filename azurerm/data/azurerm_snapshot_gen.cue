@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_snapshot")
 	close({
+		timeouts?:        #timeouts
 		creation_option?: string
 		disk_size_gb?:    number
 		encryption_settings?: [...close({
@@ -22,7 +23,6 @@ package data
 		os_type?:                string
 		resource_group_name!:    string
 		source_resource_id?:     string
-		timeouts?:               #timeouts
 		source_uri?:             string
 		storage_account_id?:     string
 		time_created?:           string

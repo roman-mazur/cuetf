@@ -6,43 +6,43 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_database")
 	close({
-		auto_pause_delay_in_minutes?:    number
-		collation?:                      string
-		create_mode?:                    string
-		creation_source_database_id?:    string
-		elastic_pool_id?:                string
-		enclave_type?:                   string
-		geo_backup_enabled?:             bool
-		id?:                             string
-		ledger_enabled?:                 bool
-		license_type?:                   string
-		maintenance_configuration_name?: string
-		max_size_gb?:                    number
-		min_capacity?:                   number
-		name!:                           string
-		read_replica_count?:             number
-		read_scale?:                     bool
-		recover_database_id?:            string
-		recovery_point_id?:              string
-		restore_dropped_database_id?:    string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		restore_long_term_retention_backup_id?: string
 		import?: matchN(1, [#import, list.MaxItems(1) & [...#import]])
-		restore_point_in_time?: string
 		long_term_retention_policy?: matchN(1, [#long_term_retention_policy, list.MaxItems(1) & [...#long_term_retention_policy]])
-		sample_name?:          string
-		secondary_type?:       string
-		server_id!:            string
-		sku_name?:             string
-		storage_account_type?: string
+		short_term_retention_policy?: matchN(1, [#short_term_retention_policy, list.MaxItems(1) & [...#short_term_retention_policy]])
+		threat_detection_policy?: matchN(1, [#threat_detection_policy, list.MaxItems(1) & [...#threat_detection_policy]])
+		timeouts?:                              #timeouts
+		auto_pause_delay_in_minutes?:           number
+		collation?:                             string
+		create_mode?:                           string
+		creation_source_database_id?:           string
+		elastic_pool_id?:                       string
+		enclave_type?:                          string
+		geo_backup_enabled?:                    bool
+		id?:                                    string
+		ledger_enabled?:                        bool
+		license_type?:                          string
+		maintenance_configuration_name?:        string
+		max_size_gb?:                           number
+		min_capacity?:                          number
+		name!:                                  string
+		read_replica_count?:                    number
+		read_scale?:                            bool
+		recover_database_id?:                   string
+		recovery_point_id?:                     string
+		restore_dropped_database_id?:           string
+		restore_long_term_retention_backup_id?: string
+		restore_point_in_time?:                 string
+		sample_name?:                           string
+		secondary_type?:                        string
+		server_id!:                             string
+		sku_name?:                              string
+		storage_account_type?:                  string
 		tags?: [string]: string
 		transparent_data_encryption_enabled?:                        bool
 		transparent_data_encryption_key_automatic_rotation_enabled?: bool
-		short_term_retention_policy?: matchN(1, [#short_term_retention_policy, list.MaxItems(1) & [...#short_term_retention_policy]])
-		transparent_data_encryption_key_vault_key_id?: string
-		threat_detection_policy?: matchN(1, [#threat_detection_policy, list.MaxItems(1) & [...#threat_detection_policy]])
-		timeouts?:       #timeouts
-		zone_redundant?: bool
+		transparent_data_encryption_key_vault_key_id?:               string
+		zone_redundant?:                                             bool
 	})
 
 	#identity: close({

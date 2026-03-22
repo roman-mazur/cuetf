@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_integration_runtime_azure")
 	close({
+		timeouts?:                #timeouts
 		cleanup_enabled?:         bool
 		compute_type?:            string
 		core_count?:              number
@@ -11,7 +12,6 @@ package res
 		description?:             string
 		id?:                      string
 		location!:                string
-		timeouts?:                #timeouts
 		name!:                    string
 		time_to_live_min?:        number
 		virtual_network_enabled?: bool

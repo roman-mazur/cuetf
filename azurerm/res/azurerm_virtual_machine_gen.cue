@@ -6,6 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_machine")
 	close({
+		additional_capabilities?: matchN(1, [#additional_capabilities, list.MaxItems(1) & [...#additional_capabilities]])
+		boot_diagnostics?: matchN(1, [#boot_diagnostics, list.MaxItems(1) & [...#boot_diagnostics]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		os_profile?: matchN(1, [#os_profile, list.MaxItems(1) & [...#os_profile]])
+		os_profile_linux_config?: matchN(1, [#os_profile_linux_config, list.MaxItems(1) & [...#os_profile_linux_config]])
+		os_profile_secrets?: matchN(1, [#os_profile_secrets, [...#os_profile_secrets]])
+		os_profile_windows_config?: matchN(1, [#os_profile_windows_config, list.MaxItems(1) & [...#os_profile_windows_config]])
+		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
+		storage_data_disk?: matchN(1, [#storage_data_disk, [...#storage_data_disk]])
+		storage_image_reference?: matchN(1, [#storage_image_reference, list.MaxItems(1) & [...#storage_image_reference]])
+		storage_os_disk!: matchN(1, [#storage_os_disk, list.MaxItems(1) & [_, ...] & [...#storage_os_disk]])
+		timeouts?:                         #timeouts
 		availability_set_id?:              string
 		delete_data_disks_on_termination?: bool
 		delete_os_disk_on_termination?:    bool
@@ -19,19 +31,7 @@ import "list"
 		resource_group_name!:          string
 		tags?: [string]: string
 		vm_size!: string
-		additional_capabilities?: matchN(1, [#additional_capabilities, list.MaxItems(1) & [...#additional_capabilities]])
 		zones?: [...string]
-		boot_diagnostics?: matchN(1, [#boot_diagnostics, list.MaxItems(1) & [...#boot_diagnostics]])
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		os_profile?: matchN(1, [#os_profile, list.MaxItems(1) & [...#os_profile]])
-		os_profile_linux_config?: matchN(1, [#os_profile_linux_config, list.MaxItems(1) & [...#os_profile_linux_config]])
-		os_profile_secrets?: matchN(1, [#os_profile_secrets, [...#os_profile_secrets]])
-		os_profile_windows_config?: matchN(1, [#os_profile_windows_config, list.MaxItems(1) & [...#os_profile_windows_config]])
-		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
-		storage_data_disk?: matchN(1, [#storage_data_disk, [...#storage_data_disk]])
-		storage_image_reference?: matchN(1, [#storage_image_reference, list.MaxItems(1) & [...#storage_image_reference]])
-		storage_os_disk!: matchN(1, [#storage_os_disk, list.MaxItems(1) & [_, ...] & [...#storage_os_disk]])
-		timeouts?: #timeouts
 	})
 
 	#additional_capabilities: close({

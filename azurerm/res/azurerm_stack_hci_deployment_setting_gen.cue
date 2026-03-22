@@ -7,14 +7,20 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stack_hci_deployment_setting")
 	close({
 		scale_unit!: matchN(1, [#scale_unit, [_, ...] & [...#scale_unit]])
+		timeouts?: #timeouts
 		arc_resource_ids!: [...string]
 		id?:                   string
 		stack_hci_cluster_id!: string
 		version!:              string
-		timeouts?:             #timeouts
 	})
 
 	#scale_unit: close({
+		cluster!: matchN(1, [_#defs."/$defs/scale_unit/$defs/cluster", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/cluster"]])
+		host_network!: matchN(1, [_#defs."/$defs/scale_unit/$defs/host_network", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/host_network"]])
+		infrastructure_network!: matchN(1, [_#defs."/$defs/scale_unit/$defs/infrastructure_network", [_, ...] & [..._#defs."/$defs/scale_unit/$defs/infrastructure_network"]])
+		optional_service!: matchN(1, [_#defs."/$defs/scale_unit/$defs/optional_service", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/optional_service"]])
+		physical_node!: matchN(1, [_#defs."/$defs/scale_unit/$defs/physical_node", [_, ...] & [..._#defs."/$defs/scale_unit/$defs/physical_node"]])
+		storage!: matchN(1, [_#defs."/$defs/scale_unit/$defs/storage", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/storage"]])
 		active_directory_organizational_unit_path!: string
 		bitlocker_boot_volume_enabled?:             bool
 		bitlocker_data_volume_enabled?:             bool
@@ -28,16 +34,10 @@ import "list"
 		name_prefix!:                               string
 		secrets_location!:                          string
 		side_channel_mitigation_enabled?:           bool
-		cluster!: matchN(1, [_#defs."/$defs/scale_unit/$defs/cluster", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/cluster"]])
-		smb_cluster_encryption_enabled?: bool
-		smb_signing_enabled?:            bool
-		streaming_data_client_enabled?:  bool
-		host_network!: matchN(1, [_#defs."/$defs/scale_unit/$defs/host_network", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/host_network"]])
-		wdac_enabled?: bool
-		infrastructure_network!: matchN(1, [_#defs."/$defs/scale_unit/$defs/infrastructure_network", [_, ...] & [..._#defs."/$defs/scale_unit/$defs/infrastructure_network"]])
-		optional_service!: matchN(1, [_#defs."/$defs/scale_unit/$defs/optional_service", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/optional_service"]])
-		physical_node!: matchN(1, [_#defs."/$defs/scale_unit/$defs/physical_node", [_, ...] & [..._#defs."/$defs/scale_unit/$defs/physical_node"]])
-		storage!: matchN(1, [_#defs."/$defs/scale_unit/$defs/storage", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/scale_unit/$defs/storage"]])
+		smb_cluster_encryption_enabled?:            bool
+		smb_signing_enabled?:                       bool
+		streaming_data_client_enabled?:             bool
+		wdac_enabled?:                              bool
 	})
 
 	#timeouts: close({
@@ -63,14 +63,14 @@ import "list"
 
 	_#defs: "/$defs/scale_unit/$defs/host_network/$defs/intent": close({
 		adapter_property_override?: matchN(1, [_#defs."/$defs/scale_unit/$defs/host_network/$defs/intent/$defs/adapter_property_override", list.MaxItems(1) & [..._#defs."/$defs/scale_unit/$defs/host_network/$defs/intent/$defs/adapter_property_override"]])
+		qos_policy_override?: matchN(1, [_#defs."/$defs/scale_unit/$defs/host_network/$defs/intent/$defs/qos_policy_override", list.MaxItems(1) & [..._#defs."/$defs/scale_unit/$defs/host_network/$defs/intent/$defs/qos_policy_override"]])
+		virtual_switch_configuration_override?: matchN(1, [_#defs."/$defs/scale_unit/$defs/host_network/$defs/intent/$defs/virtual_switch_configuration_override", list.MaxItems(1) & [..._#defs."/$defs/scale_unit/$defs/host_network/$defs/intent/$defs/virtual_switch_configuration_override"]])
 		adapter!: [...string]
 		adapter_property_override_enabled?: bool
 		name!:                              string
 		qos_policy_override_enabled?:       bool
 		traffic_type!: [...string]
 		virtual_switch_configuration_override_enabled?: bool
-		qos_policy_override?: matchN(1, [_#defs."/$defs/scale_unit/$defs/host_network/$defs/intent/$defs/qos_policy_override", list.MaxItems(1) & [..._#defs."/$defs/scale_unit/$defs/host_network/$defs/intent/$defs/qos_policy_override"]])
-		virtual_switch_configuration_override?: matchN(1, [_#defs."/$defs/scale_unit/$defs/host_network/$defs/intent/$defs/virtual_switch_configuration_override", list.MaxItems(1) & [..._#defs."/$defs/scale_unit/$defs/host_network/$defs/intent/$defs/virtual_switch_configuration_override"]])
 	})
 
 	_#defs: "/$defs/scale_unit/$defs/host_network/$defs/intent/$defs/adapter_property_override": close({

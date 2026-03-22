@@ -6,22 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_express_route_port")
 	close({
-		bandwidth_in_gbps!: number
-		billing_type?:      string
-		encapsulation!:     string
-		ethertype?:         string
-		guid?:              string
-		id?:                string
-		location!:          string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		link1?: matchN(1, [#link1, list.MaxItems(1) & [...#link1]])
 		link2?: matchN(1, [#link2, list.MaxItems(1) & [...#link2]])
+		timeouts?:            #timeouts
+		bandwidth_in_gbps!:   number
+		billing_type?:        string
+		encapsulation!:       string
+		ethertype?:           string
+		guid?:                string
+		id?:                  string
+		location!:            string
 		mtu?:                 string
 		name!:                string
 		peering_location!:    string
 		resource_group_name!: string
 		tags?: [string]: string
-		timeouts?: #timeouts
 	})
 
 	#identity: close({

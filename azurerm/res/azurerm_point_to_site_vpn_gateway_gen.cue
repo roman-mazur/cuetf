@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_point_to_site_vpn_gateway")
 	close({
+		connection_configuration!: matchN(1, [#connection_configuration, [_, ...] & [...#connection_configuration]])
+		timeouts?: #timeouts
 		dns_servers?: [...string]
 		id?:                                  string
 		location!:                            string
@@ -13,9 +15,7 @@ import "list"
 		resource_group_name!:                 string
 		routing_preference_internet_enabled?: bool
 		scale_unit!:                          number
-		connection_configuration!: matchN(1, [#connection_configuration, [_, ...] & [...#connection_configuration]])
 		tags?: [string]: string
-		timeouts?:                    #timeouts
 		virtual_hub_id!:              string
 		vpn_server_configuration_id!: string
 	})

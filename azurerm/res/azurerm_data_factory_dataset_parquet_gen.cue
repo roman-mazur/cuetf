@@ -6,21 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_dataset_parquet")
 	close({
-		additional_properties?: [string]: string
 		azure_blob_fs_location?: matchN(1, [#azure_blob_fs_location, list.MaxItems(1) & [...#azure_blob_fs_location]])
-		annotations?: [...string]
-		compression_codec?: string
-		compression_level?: string
-		data_factory_id!:   string
-		description?:       string
-		folder?:            string
-		id?:                string
 		azure_blob_storage_location?: matchN(1, [#azure_blob_storage_location, list.MaxItems(1) & [...#azure_blob_storage_location]])
 		http_server_location?: matchN(1, [#http_server_location, list.MaxItems(1) & [...#http_server_location]])
-		linked_service_name!: string
 		schema_column?: matchN(1, [#schema_column, [...#schema_column]])
 		timeouts?: #timeouts
-		name!:     string
+		additional_properties?: [string]: string
+		annotations?: [...string]
+		compression_codec?:   string
+		compression_level?:   string
+		data_factory_id!:     string
+		description?:         string
+		folder?:              string
+		id?:                  string
+		linked_service_name!: string
+		name!:                string
 		parameters?: [string]: string
 	})
 

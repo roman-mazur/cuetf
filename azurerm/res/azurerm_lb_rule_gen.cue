@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_lb_rule")
 	close({
+		timeouts?: #timeouts
 		backend_address_pool_ids?: [...string]
 		backend_port!:                   number
 		disable_outbound_snat?:          bool
@@ -16,7 +17,6 @@ package res
 		load_distribution?:              string
 		loadbalancer_id!:                string
 		name!:                           string
-		timeouts?:                       #timeouts
 		probe_id?:                       string
 		protocol!:                       string
 		tcp_reset_enabled?:              bool

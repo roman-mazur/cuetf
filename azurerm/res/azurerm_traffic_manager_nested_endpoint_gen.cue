@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_traffic_manager_nested_endpoint")
 	close({
+		custom_header?: matchN(1, [#custom_header, [...#custom_header]])
+		subnet?: matchN(1, [#subnet, [...#subnet]])
+		timeouts?:          #timeouts
 		enabled?:           bool
 		endpoint_location?: string
 		geo_mappings?: [...string]
@@ -11,14 +14,11 @@ package res
 		minimum_child_endpoints!:               number
 		minimum_required_child_endpoints_ipv4?: number
 		minimum_required_child_endpoints_ipv6?: number
-		custom_header?: matchN(1, [#custom_header, [...#custom_header]])
-		subnet?: matchN(1, [#subnet, [...#subnet]])
-		name!:               string
-		timeouts?:           #timeouts
-		priority?:           number
-		profile_id!:         string
-		target_resource_id!: string
-		weight?:             number
+		name!:                                  string
+		priority?:                              number
+		profile_id!:                            string
+		target_resource_id!:                    string
+		weight?:                                number
 	})
 
 	#custom_header: close({

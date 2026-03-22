@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_app_environment_custom_domain")
 	close({
+		timeouts?: #timeouts
+
 		// The Custom Domain Certificate Private Key as a base64 encoded
 		// PFX or PEM.
 		certificate_blob_base64!: string
@@ -14,7 +16,6 @@ package res
 		// The Container App Managed Environment ID to configure this
 		// Custom Domain on.
 		container_app_environment_id!: string
-		timeouts?:                     #timeouts
 
 		// The Custom Domain DNS suffix for this Container App
 		// Environment.

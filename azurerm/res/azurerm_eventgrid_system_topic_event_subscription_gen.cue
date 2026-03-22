@@ -6,6 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_eventgrid_system_topic_event_subscription")
 	close({
+		advanced_filter?: matchN(1, [#advanced_filter, list.MaxItems(1) & [...#advanced_filter]])
+		azure_function_endpoint?: matchN(1, [#azure_function_endpoint, list.MaxItems(1) & [...#azure_function_endpoint]])
+		dead_letter_identity?: matchN(1, [#dead_letter_identity, list.MaxItems(1) & [...#dead_letter_identity]])
+		delivery_identity?: matchN(1, [#delivery_identity, list.MaxItems(1) & [...#delivery_identity]])
+		delivery_property?: matchN(1, [#delivery_property, [...#delivery_property]])
+		retry_policy?: matchN(1, [#retry_policy, list.MaxItems(1) & [...#retry_policy]])
+		storage_blob_dead_letter_destination?: matchN(1, [#storage_blob_dead_letter_destination, list.MaxItems(1) & [...#storage_blob_dead_letter_destination]])
+		storage_queue_endpoint?: matchN(1, [#storage_queue_endpoint, list.MaxItems(1) & [...#storage_queue_endpoint]])
+		subject_filter?: matchN(1, [#subject_filter, list.MaxItems(1) & [...#subject_filter]])
+		timeouts?: #timeouts
+		webhook_endpoint?: matchN(1, [#webhook_endpoint, list.MaxItems(1) & [...#webhook_endpoint]])
 		advanced_filtering_on_arrays_enabled?: bool
 		event_delivery_schema?:                string
 		eventhub_endpoint_id?:                 string
@@ -14,22 +25,11 @@ import "list"
 		id?:                                   string
 		included_event_types?: [...string]
 		labels?: [...string]
-		name!:                string
-		resource_group_name!: string
-		advanced_filter?: matchN(1, [#advanced_filter, list.MaxItems(1) & [...#advanced_filter]])
+		name!:                          string
+		resource_group_name!:           string
 		service_bus_queue_endpoint_id?: string
-		azure_function_endpoint?: matchN(1, [#azure_function_endpoint, list.MaxItems(1) & [...#azure_function_endpoint]])
-		dead_letter_identity?: matchN(1, [#dead_letter_identity, list.MaxItems(1) & [...#dead_letter_identity]])
-		delivery_identity?: matchN(1, [#delivery_identity, list.MaxItems(1) & [...#delivery_identity]])
 		service_bus_topic_endpoint_id?: string
-		delivery_property?: matchN(1, [#delivery_property, [...#delivery_property]])
-		retry_policy?: matchN(1, [#retry_policy, list.MaxItems(1) & [...#retry_policy]])
-		storage_blob_dead_letter_destination?: matchN(1, [#storage_blob_dead_letter_destination, list.MaxItems(1) & [...#storage_blob_dead_letter_destination]])
-		system_topic!: string
-		storage_queue_endpoint?: matchN(1, [#storage_queue_endpoint, list.MaxItems(1) & [...#storage_queue_endpoint]])
-		subject_filter?: matchN(1, [#subject_filter, list.MaxItems(1) & [...#subject_filter]])
-		timeouts?: #timeouts
-		webhook_endpoint?: matchN(1, [#webhook_endpoint, list.MaxItems(1) & [...#webhook_endpoint]])
+		system_topic!:                  string
 	})
 
 	#advanced_filter: close({

@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_postgresql_server")
 	close({
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		threat_detection_policy?: matchN(1, [#threat_detection_policy, list.MaxItems(1) & [...#threat_detection_policy]])
+		timeouts?:                                #timeouts
 		administrator_login?:                     string
 		administrator_login_password?:            string
 		administrator_login_password_wo?:         string
@@ -18,18 +21,15 @@ import "list"
 		geo_redundant_backup_enabled?:            bool
 		id?:                                      string
 		infrastructure_encryption_enabled?:       bool
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		threat_detection_policy?: matchN(1, [#threat_detection_policy, list.MaxItems(1) & [...#threat_detection_policy]])
-		timeouts?:                         #timeouts
-		location!:                         string
-		name!:                             string
-		public_network_access_enabled?:    bool
-		resource_group_name!:              string
-		restore_point_in_time?:            string
-		sku_name!:                         string
-		ssl_enforcement_enabled!:          bool
-		ssl_minimal_tls_version_enforced?: string
-		storage_mb?:                       number
+		location!:                                string
+		name!:                                    string
+		public_network_access_enabled?:           bool
+		resource_group_name!:                     string
+		restore_point_in_time?:                   string
+		sku_name!:                                string
+		ssl_enforcement_enabled!:                 bool
+		ssl_minimal_tls_version_enforced?:        string
+		storage_mb?:                              number
 		tags?: [string]: string
 		version!: string
 	})

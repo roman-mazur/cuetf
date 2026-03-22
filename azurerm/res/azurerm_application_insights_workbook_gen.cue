@@ -6,16 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_application_insights_workbook")
 	close({
-		category?:     string
-		data_json!:    string
-		description?:  string
-		display_name!: string
-		id?:           string
-		location!:     string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?:             #timeouts
+		category?:             string
+		data_json!:            string
+		description?:          string
+		display_name!:         string
+		id?:                   string
+		location!:             string
 		name!:                 string
 		resource_group_name!:  string
-		timeouts?:             #timeouts
 		source_id?:            string
 		storage_container_id?: string
 		tags?: [string]: string

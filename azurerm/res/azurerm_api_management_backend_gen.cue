@@ -6,21 +6,21 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management_backend")
 	close({
-		api_management_name!: string
-		description?:         string
-		id?:                  string
-		name!:                string
 		circuit_breaker_rule?: matchN(1, [#circuit_breaker_rule, list.MaxItems(1) & [...#circuit_breaker_rule]])
-		protocol!:            string
-		resource_group_name!: string
-		resource_id?:         string
-		title?:               string
 		credentials?: matchN(1, [#credentials, list.MaxItems(1) & [...#credentials]])
 		proxy?: matchN(1, [#proxy, list.MaxItems(1) & [...#proxy]])
 		service_fabric_cluster?: matchN(1, [#service_fabric_cluster, list.MaxItems(1) & [...#service_fabric_cluster]])
 		timeouts?: #timeouts
-		url!:      string
 		tls?: matchN(1, [#tls, list.MaxItems(1) & [...#tls]])
+		api_management_name!: string
+		description?:         string
+		id?:                  string
+		name!:                string
+		protocol!:            string
+		resource_group_name!: string
+		resource_id?:         string
+		title?:               string
+		url!:                 string
 	})
 
 	#circuit_breaker_rule: close({

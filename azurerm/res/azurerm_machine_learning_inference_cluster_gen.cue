@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_machine_learning_inference_cluster")
 	close({
-		cluster_purpose?:       string
-		description?:           string
-		id?:                    string
-		kubernetes_cluster_id!: string
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		ssl?: matchN(1, [#ssl, list.MaxItems(1) & [...#ssl]])
+		timeouts?:                      #timeouts
+		cluster_purpose?:               string
+		description?:                   string
+		id?:                            string
+		kubernetes_cluster_id!:         string
 		location!:                      string
 		machine_learning_workspace_id!: string
 		name!:                          string
 		tags?: [string]: string
-		ssl?: matchN(1, [#ssl, list.MaxItems(1) & [...#ssl]])
-		timeouts?: #timeouts
 	})
 
 	#identity: close({

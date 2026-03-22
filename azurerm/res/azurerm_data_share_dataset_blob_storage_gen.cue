@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_share_dataset_blob_storage")
 	close({
 		storage_account!: matchN(1, [#storage_account, list.MaxItems(1) & [_, ...] & [...#storage_account]])
+		timeouts?:       #timeouts
 		container_name!: string
 		data_share_id!:  string
 		display_name?:   string
@@ -14,7 +15,6 @@ import "list"
 		folder_path?:    string
 		id?:             string
 		name!:           string
-		timeouts?:       #timeouts
 	})
 
 	#storage_account: close({

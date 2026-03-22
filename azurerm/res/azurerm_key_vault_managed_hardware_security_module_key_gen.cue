@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_key_vault_managed_hardware_security_module_key")
 	close({
+		timeouts?:        #timeouts
 		curve?:           string
 		expiration_date?: string
 		id?:              string
@@ -13,7 +14,6 @@ package res
 		managed_hsm_id!:  string
 		name!:            string
 		not_before_date?: string
-		timeouts?:        #timeouts
 		tags?: [string]: string
 		versioned_id?: string
 	})

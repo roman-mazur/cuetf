@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_oracle_exadata_infrastructure")
 	close({
+		maintenance_window?: matchN(1, [#maintenance_window, [...#maintenance_window]])
+		timeouts?:      #timeouts
 		compute_count!: number
 		customer_contacts?: [...string]
 		database_server_type?: string
@@ -11,12 +13,10 @@ package res
 		id?:                   string
 		location!:             string
 		name!:                 string
-		maintenance_window?: matchN(1, [#maintenance_window, [...#maintenance_window]])
-		resource_group_name!: string
-		shape!:               string
-		timeouts?:            #timeouts
-		storage_count!:       number
-		storage_server_type?: string
+		resource_group_name!:  string
+		shape!:                string
+		storage_count!:        number
+		storage_server_type?:  string
 		tags?: [string]: string
 		zones!: [...string]
 	})

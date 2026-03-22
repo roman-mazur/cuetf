@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_image")
 	close({
+		timeouts?: #timeouts
 		data_disk?: [...close({
 			blob_uri?:        string
 			caching?:         string
@@ -24,7 +25,6 @@ package data
 			size_gb?:         number
 		})]
 		resource_group_name!: string
-		timeouts?:            #timeouts
 		sort_descending?:     bool
 		tags?: [string]: string
 		zone_resilient?: bool

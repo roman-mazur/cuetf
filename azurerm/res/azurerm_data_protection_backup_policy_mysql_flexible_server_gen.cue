@@ -6,14 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_protection_backup_policy_mysql_flexible_server")
 	close({
-		backup_repeating_time_intervals!: [...string]
 		default_retention_rule!: matchN(1, [#default_retention_rule, list.MaxItems(1) & [_, ...] & [...#default_retention_rule]])
+		retention_rule?: matchN(1, [#retention_rule, [...#retention_rule]])
+		timeouts?: #timeouts
+		backup_repeating_time_intervals!: [...string]
 		id?:        string
 		name!:      string
 		time_zone?: string
 		vault_id!:  string
-		retention_rule?: matchN(1, [#retention_rule, [...#retention_rule]])
-		timeouts?: #timeouts
 	})
 
 	#default_retention_rule: close({

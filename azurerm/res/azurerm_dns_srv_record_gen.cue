@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dns_srv_record")
 	close({
 		record!: matchN(1, [#record, [_, ...] & [...#record]])
+		timeouts?:            #timeouts
 		fqdn?:                string
 		id?:                  string
 		name!:                string
@@ -12,7 +13,6 @@ package res
 		tags?: [string]: string
 		ttl!:       number
 		zone_name!: string
-		timeouts?:  #timeouts
 	})
 
 	#record: close({

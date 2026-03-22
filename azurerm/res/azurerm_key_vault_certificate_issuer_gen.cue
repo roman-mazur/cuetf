@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_key_vault_certificate_issuer")
 	close({
 		admin?: matchN(1, [#admin, [...#admin]])
+		timeouts?:      #timeouts
 		account_id?:    string
 		id?:            string
 		key_vault_id!:  string
@@ -12,7 +13,6 @@ package res
 		org_id?:        string
 		password?:      string
 		provider_name!: string
-		timeouts?:      #timeouts
 	})
 
 	#admin: close({

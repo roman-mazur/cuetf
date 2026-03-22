@@ -6,17 +6,17 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_static_site")
 	close({
-		api_key?: string
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		timeouts?: #timeouts
+		api_key?:  string
 		app_settings?: [string]: string
 		default_host_name?:   string
 		id?:                  string
 		location!:            string
 		name!:                string
 		resource_group_name!: string
-		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		sku_size?: string
-		timeouts?: #timeouts
-		sku_tier?: string
+		sku_size?:            string
+		sku_tier?:            string
 		tags?: [string]: string
 	})
 

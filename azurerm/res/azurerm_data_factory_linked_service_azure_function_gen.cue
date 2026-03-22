@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_linked_service_azure_function")
 	close({
+		key_vault_key?: matchN(1, [#key_vault_key, list.MaxItems(1) & [...#key_vault_key]])
+		timeouts?: #timeouts
 		additional_properties?: [string]: string
 		annotations?: [...string]
 		data_factory_id!:          string
@@ -13,9 +15,7 @@ import "list"
 		id?:                       string
 		integration_runtime_name?: string
 		key?:                      string
-		key_vault_key?: matchN(1, [#key_vault_key, list.MaxItems(1) & [...#key_vault_key]])
-		name!:     string
-		timeouts?: #timeouts
+		name!:                     string
 		parameters?: [string]: string
 		url!: string
 	})

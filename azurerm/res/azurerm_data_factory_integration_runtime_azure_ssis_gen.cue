@@ -6,6 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_integration_runtime_azure_ssis")
 	close({
+		catalog_info?: matchN(1, [#catalog_info, list.MaxItems(1) & [...#catalog_info]])
+		copy_compute_scale?: matchN(1, [#copy_compute_scale, list.MaxItems(1) & [...#copy_compute_scale]])
+		custom_setup_script?: matchN(1, [#custom_setup_script, list.MaxItems(1) & [...#custom_setup_script]])
+		express_custom_setup?: matchN(1, [#express_custom_setup, list.MaxItems(1) & [...#express_custom_setup]])
+		express_vnet_integration?: matchN(1, [#express_vnet_integration, list.MaxItems(1) & [...#express_vnet_integration]])
+		package_store?: matchN(1, [#package_store, [...#package_store]])
+		pipeline_external_compute_scale?: matchN(1, [#pipeline_external_compute_scale, list.MaxItems(1) & [...#pipeline_external_compute_scale]])
+		proxy?: matchN(1, [#proxy, list.MaxItems(1) & [...#proxy]])
+		timeouts?: #timeouts
+		vnet_integration?: matchN(1, [#vnet_integration, list.MaxItems(1) & [...#vnet_integration]])
 		credential_name?:                  string
 		data_factory_id!:                  string
 		description?:                      string
@@ -17,16 +27,6 @@ import "list"
 		name!:                             string
 		node_size!:                        string
 		number_of_nodes?:                  number
-		catalog_info?: matchN(1, [#catalog_info, list.MaxItems(1) & [...#catalog_info]])
-		copy_compute_scale?: matchN(1, [#copy_compute_scale, list.MaxItems(1) & [...#copy_compute_scale]])
-		custom_setup_script?: matchN(1, [#custom_setup_script, list.MaxItems(1) & [...#custom_setup_script]])
-		express_custom_setup?: matchN(1, [#express_custom_setup, list.MaxItems(1) & [...#express_custom_setup]])
-		express_vnet_integration?: matchN(1, [#express_vnet_integration, list.MaxItems(1) & [...#express_vnet_integration]])
-		package_store?: matchN(1, [#package_store, [...#package_store]])
-		pipeline_external_compute_scale?: matchN(1, [#pipeline_external_compute_scale, list.MaxItems(1) & [...#pipeline_external_compute_scale]])
-		proxy?: matchN(1, [#proxy, list.MaxItems(1) & [...#proxy]])
-		timeouts?: #timeouts
-		vnet_integration?: matchN(1, [#vnet_integration, list.MaxItems(1) & [...#vnet_integration]])
 	})
 
 	#catalog_info: close({

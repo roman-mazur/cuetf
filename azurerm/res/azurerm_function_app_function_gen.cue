@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_function_app_function")
 	close({
+		file?: matchN(1, [#file, [...#file]])
+		timeouts?: #timeouts
+
 		// The config for this Function in JSON format.
 		config_json!: string
 
@@ -16,6 +19,7 @@ package res
 		// The ID of the Function App in which this function should
 		// reside.
 		function_app_id!: string
+		id?:              string
 
 		// The invocation URL.
 		invocation_url?: string
@@ -25,7 +29,6 @@ package res
 
 		// The name of the function.
 		name!: string
-		id?:   string
 
 		// The Script root path URL.
 		script_root_path_url?: string
@@ -35,8 +38,6 @@ package res
 
 		// The URL for the Secrets File.
 		secrets_file_url?: string
-		file?: matchN(1, [#file, [...#file]])
-		timeouts?: #timeouts
 
 		// The test data for the function.
 		test_data?: string

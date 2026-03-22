@@ -7,13 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_share")
 	close({
 		snapshot_schedule?: matchN(1, [#snapshot_schedule, list.MaxItems(1) & [...#snapshot_schedule]])
+		timeouts?:    #timeouts
 		account_id!:  string
 		description?: string
 		id?:          string
 		kind!:        string
 		name!:        string
 		terms?:       string
-		timeouts?:    #timeouts
 	})
 
 	#snapshot_schedule: close({

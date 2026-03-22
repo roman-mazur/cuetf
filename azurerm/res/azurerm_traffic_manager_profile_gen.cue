@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_traffic_manager_profile")
 	close({
+		dns_config!: matchN(1, [#dns_config, list.MaxItems(1) & [_, ...] & [...#dns_config]])
+		monitor_config!: matchN(1, [#monitor_config, list.MaxItems(1) & [_, ...] & [...#monitor_config]])
+		timeouts?:            #timeouts
 		fqdn?:                string
 		id?:                  string
 		max_return?:          number
@@ -13,11 +16,8 @@ import "list"
 		profile_status?:      string
 		resource_group_name!: string
 		tags?: [string]: string
-		dns_config!: matchN(1, [#dns_config, list.MaxItems(1) & [_, ...] & [...#dns_config]])
 		traffic_routing_method!: string
-		monitor_config!: matchN(1, [#monitor_config, list.MaxItems(1) & [_, ...] & [...#monitor_config]])
-		timeouts?:             #timeouts
-		traffic_view_enabled?: bool
+		traffic_view_enabled?:   bool
 	})
 
 	#dns_config: close({

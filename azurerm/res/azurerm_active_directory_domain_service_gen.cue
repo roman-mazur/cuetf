@@ -6,8 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_active_directory_domain_service")
 	close({
-		deployment_id?: string
 		initial_replica_set!: matchN(1, [#initial_replica_set, list.MaxItems(1) & [_, ...] & [...#initial_replica_set]])
+		notifications?: matchN(1, [#notifications, list.MaxItems(1) & [...#notifications]])
+		secure_ldap?: matchN(1, [#secure_ldap, list.MaxItems(1) & [...#secure_ldap]])
+		security?: matchN(1, [#security, list.MaxItems(1) & [...#security]])
+		timeouts?:                  #timeouts
+		deployment_id?:             string
 		domain_configuration_type?: string
 		domain_name!:               string
 		filtered_sync_enabled?:     bool
@@ -15,16 +19,12 @@ import "list"
 		location!:                  string
 		name!:                      string
 		resource_group_name!:       string
-		notifications?: matchN(1, [#notifications, list.MaxItems(1) & [...#notifications]])
-		secure_ldap?: matchN(1, [#secure_ldap, list.MaxItems(1) & [...#secure_ldap]])
-		resource_id?: string
-		sku!:         string
-		sync_owner?:  string
+		resource_id?:               string
+		sku!:                       string
+		sync_owner?:                string
 		tags?: [string]: string
 		tenant_id?: string
-		security?: matchN(1, [#security, list.MaxItems(1) & [...#security]])
-		timeouts?: #timeouts
-		version?:  number
+		version?:   number
 	})
 
 	#initial_replica_set: close({

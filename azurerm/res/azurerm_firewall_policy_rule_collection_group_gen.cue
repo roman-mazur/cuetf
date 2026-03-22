@@ -5,13 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_firewall_policy_rule_collection_group")
 	close({
 		application_rule_collection?: matchN(1, [#application_rule_collection, [...#application_rule_collection]])
+		nat_rule_collection?: matchN(1, [#nat_rule_collection, [...#nat_rule_collection]])
+		network_rule_collection?: matchN(1, [#network_rule_collection, [...#network_rule_collection]])
+		timeouts?:           #timeouts
 		firewall_policy_id!: string
 		id?:                 string
 		name!:               string
 		priority!:           number
-		nat_rule_collection?: matchN(1, [#nat_rule_collection, [...#nat_rule_collection]])
-		network_rule_collection?: matchN(1, [#network_rule_collection, [...#network_rule_collection]])
-		timeouts?: #timeouts
 	})
 
 	#application_rule_collection: close({
@@ -43,6 +43,8 @@ package res
 	})
 
 	_#defs: "/$defs/application_rule_collection/$defs/rule": close({
+		http_headers?: matchN(1, [_#defs."/$defs/application_rule_collection/$defs/rule/$defs/http_headers", [..._#defs."/$defs/application_rule_collection/$defs/rule/$defs/http_headers"]])
+		protocols?: matchN(1, [_#defs."/$defs/application_rule_collection/$defs/rule/$defs/protocols", [..._#defs."/$defs/application_rule_collection/$defs/rule/$defs/protocols"]])
 		description?: string
 		destination_addresses?: [...string]
 		destination_fqdn_tags?: [...string]
@@ -50,9 +52,7 @@ package res
 		destination_urls?: [...string]
 		name!: string
 		source_addresses?: [...string]
-		http_headers?: matchN(1, [_#defs."/$defs/application_rule_collection/$defs/rule/$defs/http_headers", [..._#defs."/$defs/application_rule_collection/$defs/rule/$defs/http_headers"]])
 		source_ip_groups?: [...string]
-		protocols?: matchN(1, [_#defs."/$defs/application_rule_collection/$defs/rule/$defs/protocols", [..._#defs."/$defs/application_rule_collection/$defs/rule/$defs/protocols"]])
 		terminate_tls?: bool
 		web_categories?: [...string]
 	})

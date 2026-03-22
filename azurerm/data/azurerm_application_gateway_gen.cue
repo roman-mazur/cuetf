@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_application_gateway")
 	close({
+		timeouts?: #timeouts
 		authentication_certificate?: [...close({
 			id?:   string
 			name?: string
@@ -206,7 +207,6 @@ package data
 			name?:                string
 			public_cert_data?:    string
 		})]
-		timeouts?: #timeouts
 		ssl_policy?: [...close({
 			cipher_suites?: [...string]
 			disabled_protocols?: [...string]

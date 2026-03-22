@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_arc_machine_extension")
 	close({
+		timeouts?:                  #timeouts
 		arc_machine_id!:            string
 		automatic_upgrade_enabled?: bool
 		force_update_tag?:          string
@@ -12,7 +13,6 @@ package res
 		name!:                      string
 		protected_settings?:        string
 		publisher!:                 string
-		timeouts?:                  #timeouts
 		settings?:                  string
 		tags?: [string]: string
 		type!:                 string

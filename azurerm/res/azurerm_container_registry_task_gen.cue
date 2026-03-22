@@ -6,17 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_registry_task")
 	close({
-		agent_pool_name?: string
 		agent_setting?: matchN(1, [#agent_setting, list.MaxItems(1) & [...#agent_setting]])
-		container_registry_id!: string
-		enabled?:               bool
-		id?:                    string
-		is_system_task?:        bool
-		log_template?:          string
-		name!:                  string
 		base_image_trigger?: matchN(1, [#base_image_trigger, list.MaxItems(1) & [...#base_image_trigger]])
-		tags?: [string]: string
-		timeout_in_seconds?: number
 		docker_step?: matchN(1, [#docker_step, list.MaxItems(1) & [...#docker_step]])
 		encoded_step?: matchN(1, [#encoded_step, list.MaxItems(1) & [...#encoded_step]])
 		file_step?: matchN(1, [#file_step, list.MaxItems(1) & [...#file_step]])
@@ -26,6 +17,15 @@ import "list"
 		source_trigger?: matchN(1, [#source_trigger, [...#source_trigger]])
 		timeouts?: #timeouts
 		timer_trigger?: matchN(1, [#timer_trigger, [...#timer_trigger]])
+		agent_pool_name?:       string
+		container_registry_id!: string
+		enabled?:               bool
+		id?:                    string
+		is_system_task?:        bool
+		log_template?:          string
+		name!:                  string
+		tags?: [string]: string
+		timeout_in_seconds?: number
 	})
 
 	#agent_setting: close({

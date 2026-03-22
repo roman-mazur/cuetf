@@ -6,22 +6,22 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_application_insights_standard_web_test")
 	close({
-		application_insights_id!: string
 		request!: matchN(1, [#request, list.MaxItems(1) & [_, ...] & [...#request]])
-		description?: string
-		enabled?:     bool
-		frequency?:   number
+		timeouts?: #timeouts
+		validation_rules?: matchN(1, [#validation_rules, list.MaxItems(1) & [...#validation_rules]])
+		application_insights_id!: string
+		description?:             string
+		enabled?:                 bool
+		frequency?:               number
 		geo_locations!: [...string]
 		id?:                   string
 		location!:             string
-		timeouts?:             #timeouts
 		name!:                 string
 		resource_group_name!:  string
 		retry_enabled?:        bool
 		synthetic_monitor_id?: string
 		tags?: [string]: string
 		timeout?: number
-		validation_rules?: matchN(1, [#validation_rules, list.MaxItems(1) & [...#validation_rules]])
 	})
 
 	#request: close({

@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_cosmosdb_account")
 	close({
+		timeouts?:                   #timeouts
 		automatic_failover_enabled?: bool
 		capabilities?: [...close({
 			name?: string
@@ -39,7 +40,6 @@ package data
 		resource_group_name!:                          string
 		secondary_key?:                                string
 		secondary_mongodb_connection_string?:          string
-		timeouts?:                                     #timeouts
 		secondary_readonly_key?:                       string
 		secondary_readonly_mongodb_connection_string?: string
 		secondary_readonly_sql_connection_string?:     string

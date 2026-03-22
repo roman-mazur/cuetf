@@ -6,25 +6,26 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_managed_disk")
 	close({
-		create_option!:              string
-		disk_access_id?:             string
-		disk_encryption_set_id?:     string
-		disk_iops_read_only?:        number
-		disk_iops_read_write?:       number
-		disk_mbps_read_only?:        number
-		disk_mbps_read_write?:       number
-		disk_size_gb?:               number
-		edge_zone?:                  string
-		gallery_image_reference_id?: string
-		hyper_v_generation?:         string
-		id?:                         string
-		image_reference_id?:         string
-		location!:                   string
-		logical_sector_size?:        number
-		max_shares?:                 number
-		name!:                       string
-		network_access_policy?:      string
 		encryption_settings?: matchN(1, [#encryption_settings, list.MaxItems(1) & [...#encryption_settings]])
+		timeouts?:                          #timeouts
+		create_option!:                     string
+		disk_access_id?:                    string
+		disk_encryption_set_id?:            string
+		disk_iops_read_only?:               number
+		disk_iops_read_write?:              number
+		disk_mbps_read_only?:               number
+		disk_mbps_read_write?:              number
+		disk_size_gb?:                      number
+		edge_zone?:                         string
+		gallery_image_reference_id?:        string
+		hyper_v_generation?:                string
+		id?:                                string
+		image_reference_id?:                string
+		location!:                          string
+		logical_sector_size?:               number
+		max_shares?:                        number
+		name!:                              string
+		network_access_policy?:             string
 		on_demand_bursting_enabled?:        bool
 		optimized_frequent_attach_enabled?: bool
 		os_type?:                           string
@@ -33,7 +34,6 @@ import "list"
 		resource_group_name!:               string
 		secure_vm_disk_encryption_set_id?:  string
 		security_type?:                     string
-		timeouts?:                          #timeouts
 		source_resource_id?:                string
 		source_uri?:                        string
 		storage_account_id?:                string

@@ -7,13 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_chaos_studio_experiment")
 	close({
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		selectors!: matchN(1, [#selectors, [_, ...] & [...#selectors]])
+		steps!: matchN(1, [#steps, [_, ...] & [...#steps]])
+		timeouts?:            #timeouts
 		id?:                  string
 		location!:            string
 		name!:                string
 		resource_group_name!: string
-		selectors!: matchN(1, [#selectors, [_, ...] & [...#selectors]])
-		steps!: matchN(1, [#steps, [_, ...] & [...#steps]])
-		timeouts?: #timeouts
 	})
 
 	#identity: close({

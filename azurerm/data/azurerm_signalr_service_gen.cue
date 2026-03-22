@@ -4,6 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_signalr_service")
 	close({
+		timeouts?:                                 #timeouts
 		aad_auth_enabled?:                         bool
 		hostname?:                                 string
 		id?:                                       string
@@ -19,7 +20,6 @@ package data
 		secondary_access_key?:                     string
 		secondary_connection_string?:              string
 		server_port?:                              number
-		timeouts?:                                 #timeouts
 		serverless_connection_timeout_in_seconds?: number
 		tags?: [string]: string
 		tls_client_cert_enabled?: bool

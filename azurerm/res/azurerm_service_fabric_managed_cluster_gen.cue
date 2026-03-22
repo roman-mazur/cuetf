@@ -6,6 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_service_fabric_managed_cluster")
 	close({
+		authentication?: matchN(1, [#authentication, list.MaxItems(1) & [...#authentication]])
+		custom_fabric_setting?: matchN(1, [#custom_fabric_setting, [...#custom_fabric_setting]])
+		lb_rule!: matchN(1, [#lb_rule, [_, ...] & [...#lb_rule]])
+		node_type?: matchN(1, [#node_type, [...#node_type]])
+		timeouts?:               #timeouts
 		backup_service_enabled?: bool
 		client_connection_port!: number
 		dns_name?:               string
@@ -15,17 +20,12 @@ import "list"
 		location!:               string
 		name!:                   string
 		password?:               string
-		authentication?: matchN(1, [#authentication, list.MaxItems(1) & [...#authentication]])
-		resource_group_name!: string
-		sku?:                 string
-		custom_fabric_setting?: matchN(1, [#custom_fabric_setting, [...#custom_fabric_setting]])
-		subnet_id?: string
+		resource_group_name!:    string
+		sku?:                    string
+		subnet_id?:              string
 		tags?: [string]: string
 		upgrade_wave?: string
 		username?:     string
-		lb_rule!: matchN(1, [#lb_rule, [_, ...] & [...#lb_rule]])
-		node_type?: matchN(1, [#node_type, [...#node_type]])
-		timeouts?: #timeouts
 	})
 
 	#authentication: close({
@@ -48,6 +48,7 @@ import "list"
 	})
 
 	#node_type: close({
+		vm_secrets?: matchN(1, [_#defs."/$defs/node_type/$defs/vm_secrets", [..._#defs."/$defs/node_type/$defs/vm_secrets"]])
 		application_port_range!: string
 		capacities?: [string]: string
 		data_disk_size_gb!:                 number
@@ -57,10 +58,9 @@ import "list"
 		multiple_placement_groups_enabled?: bool
 		name!:                              string
 		placement_properties?: [string]: string
-		primary?:        bool
-		stateless?:      bool
-		vm_image_offer!: string
-		vm_secrets?: matchN(1, [_#defs."/$defs/node_type/$defs/vm_secrets", [..._#defs."/$defs/node_type/$defs/vm_secrets"]])
+		primary?:            bool
+		stateless?:          bool
+		vm_image_offer!:     string
 		vm_image_publisher!: string
 		vm_image_sku!:       string
 		vm_image_version!:   string
