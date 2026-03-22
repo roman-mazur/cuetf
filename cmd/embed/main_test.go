@@ -36,12 +36,12 @@ func TestRun(t *testing.T) {
 			}
 
 			const modulePath = "github.com/roman-mazur/cuetf"
-			helmRoot := filepath.Join(tmpRepo, "cue.mod", "pkg", filepath.FromSlash(modulePath), path.Base(tc.provider))
-			if _, err := os.Stat(filepath.Join(helmRoot, "provider_gen.cue")); err != nil {
+			moduleRoot := filepath.Join(tmpRepo, "cue.mod", "pkg", filepath.FromSlash(modulePath), path.Base(tc.provider))
+			if _, err := os.Stat(filepath.Join(moduleRoot, "provider_gen.cue")); err != nil {
 				t.Fatalf("provider schema was not generated: %v", err)
 			}
 
-			versionBytes, err := os.ReadFile(filepath.Join(helmRoot, "version_gen.cue"))
+			versionBytes, err := os.ReadFile(filepath.Join(moduleRoot, "version_gen.cue"))
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -49,7 +49,7 @@ func TestRun(t *testing.T) {
 				t.Fatalf("unexpected version file content:\n%s", string(versionBytes))
 			}
 
-			mappingBytes, err := os.ReadFile(filepath.Join(helmRoot, "resources_gen.cue"))
+			mappingBytes, err := os.ReadFile(filepath.Join(moduleRoot, "resources_gen.cue"))
 			if err != nil {
 				t.Fatal(err)
 			}
