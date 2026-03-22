@@ -16,15 +16,9 @@ workflows: autorelease: {
 			contents:   "write"
 		}
 		steps: [
-			{
-				name: "Checkout"
-				uses: "actions/checkout@v4"
-				with: "fetch-depth": 0
-				with: token:         "${{ secrets.GENERATOR_TOKEN }}"
-			},
-
-			{name: "Set up Go", uses: "actions/setup-go@v4", with: "go-version": #versions.go},
-			{name: "Set up CUE", run: "go install cuelang.org/go/cmd/cue"},
+			#steps.#checkout & {#prepareForGitUse: true},
+			#steps.#installGo,
+			#steps.#installCue,
 
 			{name: "Login to CUE Registry", uses: "cue-labs/registry-login-action@v1"},
 

@@ -22,24 +22,12 @@ workflows: [N=string]: githubactions.#Workflow & {
 
 		if #script != _|_ {
 			steps: [
-				{
-					name: "Checkout"
-					uses: "actions/checkout@v4"
-					if #useGit {
-						with: "fetch-depth": 0
-						with: token:         "${{ secrets.GENERATOR_TOKEN }}"
-					}
-				},
+				#steps.#checkout & {#prepareForGitUse: #useGit},
+				#steps.#installGo,
 
-				{name: "Set up Go", uses: "actions/setup-go@v4", with: "go-version": #versions.go},
+				{name: "Setup Terraform", uses: "hashicorp/setup-terraform@v3", with: terraform_version: #versions.terraform},
 
-				{
-					name: "Setup Terraform"
-					uses: "hashicorp/setup-terraform@v3"
-					with: terraform_version: #versions.terraform
-				},
-
-				{name: "Set up CUE", run: "go install cuelang.org/go/cmd/cue"},
+				#steps.#installCue,
 
 				{
 					name: "Execute"
@@ -63,3 +51,28 @@ _scriptPrepareForGitPush: """
 	branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
 	git checkout "origin/$branch"
 	"""
+
+#steps: {
+	#checkout: {
+		#prepareForGitUse: bool | *false
+
+		name: "Checkout"
+		uses: "actions/checkout@v4"
+
+		if #prepareForGitUse {
+			with: "fetch-depth": 0
+			with: token:         "${{ secrets.GENERATOR_TOKEN }}"
+		}
+	}
+
+	#installGo: {
+		name: "Set up Go"
+		uses: "actions/setup-go@v4"
+		with: "go-version": #versions.go
+	}
+
+	#installCue: {
+		name: "Set up CUE"
+		run:  "go install cuelang.org/go/cmd/cue"
+	}
+}
