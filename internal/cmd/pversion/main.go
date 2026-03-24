@@ -19,7 +19,7 @@ func main() {
 
 	const corpusFile = "corpus.tf"
 
-	raw, err := os.ReadFile(filepath.Join(provider, "internal", corpusFile))
+	raw, err := os.ReadFile(filepath.Join("providers", provider, "internal", corpusFile))
 	if err != nil {
 		log.Fatal("cannot read corpus file: ", err)
 	}
