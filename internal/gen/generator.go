@@ -152,9 +152,9 @@ func generateMappings(providerPath string, pkgName string, modulePath string) {
 func generateInterface(providerPath string, providerUri string, pkgName string, modulePath string) {
 	const tpl = `package {{.PackageName}}
 
-import "{{.ModulePath}}/internal/tfjson"
+import "github.com/roman-mazur/cuetf"
 
-#Terraform: tfjson.#Schema & {
+#Terraform: cuetf.#TfJson & {
 	#{{.PackageName}}Prefix:       string | *{{.PackageName | printf "%q"}}
 	let prefix = #{{.PackageName}}Prefix
 	_#{{.PackageName}}ProviderName: =~"^\(prefix)_.+"

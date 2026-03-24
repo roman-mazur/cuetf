@@ -80,6 +80,13 @@ func TestProviders(t *testing.T) {
 				"helm_release",
 			},
 		},
+		{
+			name: "scaleway",
+			examples: []string{
+				"provider",
+				"scaleway_account_project",
+			},
+		},
 	} {
 		runTestCase := func(name string) {
 			t.Run(name, func(t *testing.T) {
