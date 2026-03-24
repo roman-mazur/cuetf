@@ -22,16 +22,16 @@ function process() {
   fi
 
   echo "Processing $provider ($version)..."
-  (cd "$provider/internal" && terraUpdate "$provider")
+  (cd "providers/$provider/internal" && terraUpdate "$provider")
 
-  exclude=$(cat "$provider/exclude" 2>/dev/null || echo "")
+  exclude=$(cat "providers/$provider/exclude" 2>/dev/null || echo "")
   if [ -n "$exclude" ]; then
     exclude="-e $exclude"
   fi
-  go run ./internal/cmd/gen $exclude --version="$version" "$provider/internal/schema/schema.json" . 2> logs/"$provider-log.txt" &
+  go run ./internal/cmd/gen $exclude --version="$version" "providers/$provider/internal/schema/schema.json" ./providers 2> logs/"$provider-log.txt" &
   defs_pid=$!
 
-  (cd "$provider" && ([ -f import.sh ] && ./import.sh || exit 0))
+  (cd "providers/$provider" && ([ -f import.sh ] && ./import.sh || exit 0))
 
   echo "Waiting for the schemas import to finish..."
   wait $defs_pid
@@ -46,7 +46,7 @@ function process() {
 input_provider=$1
 
 if [ -z "$input_provider" ]; then
-  for corpus in */internal/corpus.tf; do
+  for corpus in providers/*/internal/corpus.tf; do
     provider="${corpus%%/*}"
     case "$provider" in
       aws|google|azurerm) echo "Skipping $provider (too large for automated runs)" ;;
