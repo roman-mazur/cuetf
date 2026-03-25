@@ -4,7 +4,7 @@ package scaleway
 //
 // Example:
 //
-//		import "github.com/roman-mazur/cuetf/scaleway"
+//		import "github.com/roman-mazur/cuetf/providers/scaleway"
 //
 //		myScalewayTerraform: scaleway.#Terraform & {
 //			provider: scaleway: project_id: "my-proj"
