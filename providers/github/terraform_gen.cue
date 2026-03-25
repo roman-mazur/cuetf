@@ -1,8 +1,8 @@
 package github
 
-import "github.com/roman-mazur/cuetf/internal/tfjson"
+import "github.com/roman-mazur/cuetf"
 
-#Terraform: tfjson.#Schema & {
+#Terraform: cuetf.#TfJson & {
 	#githubPrefix:       string | *"github"
 	let prefix = #githubPrefix
 	_#githubProviderName: =~"^\(prefix)_.+"

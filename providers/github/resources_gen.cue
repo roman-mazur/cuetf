@@ -1,6 +1,6 @@
 package github
 
-import "github.com/roman-mazur/cuetf/github/res"
+import "github.com/roman-mazur/cuetf/providers/github/res"
 
 #Terraform: {
 	#githubPrefix: string
