@@ -67,7 +67,7 @@ func (g *Generator) Generate(cfg *Config) error {
 			g.generateDefs(cfg, data, providerPath, modulePath)
 		}
 		if cfg.GenerateMappings {
-			generateMappings(providerPath, shortName, modulePath)
+			generateMappings(providerPath, shortName)
 		}
 		if cfg.GenerateInterface {
 			generateInterface(providerPath, provider, shortName, modulePath)
@@ -136,15 +136,15 @@ func generateMapDefs(cfg *Config, logf clog.Logf, data map[string]*schemaData, d
 	}
 }
 
-func generateMappings(providerPath string, pkgName string, modulePath string) {
+func generateMappings(providerPath string, pkgName string) {
 	createFile(
 		filepath.Join(providerPath, "resources_gen.cue"),
-		wrapWithMappingHeader(modulePath, pkgName, "res",
+		wrapWithMappingHeader(pkgName, "res",
 			mapping("_#res", "res", pkgName, listDefs(filepath.Join(providerPath, "res")))),
 	)
 	createFile(
 		filepath.Join(providerPath, "ds_gen.cue"),
-		wrapWithMappingHeader(modulePath, pkgName, "data",
+		wrapWithMappingHeader(pkgName, "data",
 			mapping("_#ds", "data", pkgName, listDefs(filepath.Join(providerPath, "data")))),
 	)
 }
@@ -199,17 +199,17 @@ import "github.com/roman-mazur/cuetf"
 	)
 }
 
-func wrapWithMappingHeader(modulePath, pkgName, typ, content string) string {
+func wrapWithMappingHeader(pkgName, typ, content string) string {
 	const code = `package %s
 
-import "%s/%s/%s"
+import "github.com/roman-mazur/cuetf/providers/%s/%s"
 
 #Terraform: {
 	#%sPrefix: string
 %s
 }
 `
-	return fmt.Sprintf(code, pkgName, modulePath, pkgName, typ, pkgName, content)
+	return fmt.Sprintf(code, pkgName, pkgName, typ, pkgName, content)
 }
 
 func mapping(prefix string, typ string, provider string, defs []string) string {
