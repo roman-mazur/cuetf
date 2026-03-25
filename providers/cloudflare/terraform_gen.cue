@@ -1,8 +1,8 @@
 package cloudflare
 
-import "github.com/roman-mazur/cuetf/internal/tfjson"
+import "github.com/roman-mazur/cuetf"
 
-#Terraform: tfjson.#Schema & {
+#Terraform: cuetf.#TfJson & {
 	#cloudflarePrefix:       string | *"cloudflare"
 	let prefix = #cloudflarePrefix
 	_#cloudflareProviderName: =~"^\(prefix)_.+"

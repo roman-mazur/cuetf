@@ -1,6 +1,6 @@
 package cloudflare
 
-import "github.com/roman-mazur/cuetf/cloudflare/data"
+import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 
 #Terraform: {
 	#cloudflarePrefix: string
