@@ -1,6 +1,6 @@
 package google
 
-import "github.com/roman-mazur/cuetf/google/res"
+import "github.com/roman-mazur/cuetf/providers/google/res"
 
 #Terraform: {
 	#googlePrefix: string

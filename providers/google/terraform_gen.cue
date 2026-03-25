@@ -1,8 +1,8 @@
 package google
 
-import "github.com/roman-mazur/cuetf/internal/tfjson"
+import "github.com/roman-mazur/cuetf"
 
-#Terraform: tfjson.#Schema & {
+#Terraform: cuetf.#TfJson & {
 	#googlePrefix:       string | *"google"
 	let prefix = #googlePrefix
 	_#googleProviderName: =~"^\(prefix)_.+"
