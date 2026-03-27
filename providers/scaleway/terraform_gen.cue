@@ -1,8 +1,8 @@
 package scaleway
 
-import "github.com/roman-mazur/cuetf/internal/tfjson"
+import "github.com/roman-mazur/cuetf"
 
-#Terraform: tfjson.#Schema & {
+#Terraform: cuetf.#TfJson & {
 	#scalewayPrefix:       string | *"scaleway"
 	let prefix = #scalewayPrefix
 	_#scalewayProviderName: =~"^\(prefix)_.+"

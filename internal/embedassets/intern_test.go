@@ -1,4 +1,4 @@
-package main
+package embedassets
 
 import (
 	"os"
@@ -15,14 +15,16 @@ func TestInstallInternalDepsCopiesEmbeddedAssets(t *testing.T) {
 		t.Fatalf("InstallInternalDeps() failed: %v", err)
 	}
 
-	root := filepath.Join(repoRoot, "cue.mod", "pkg", filepath.FromSlash(modulePath), "internal")
+	root := filepath.Join(repoRoot, "cue.mod", "pkg", filepath.FromSlash(modulePath))
 	for _, tc := range []struct {
 		path     string
 		contains string
 	}{
-		{path: filepath.Join(root, "tf", "defs.cue"), contains: "package tf"},
-		{path: filepath.Join(root, "tfjson", "structure.cue"), contains: "package tfjson"},
-		{path: filepath.Join(root, "jsonschema", "transform.cue"), contains: "package jsonschema"},
+		{path: filepath.Join(root, "internal", "tf", "defs.cue"), contains: "package tf"},
+		{path: filepath.Join(root, "internal", "tfjson", "structure.cue"), contains: "package tfjson"},
+		{path: filepath.Join(root, "internal", "jsonschema", "transform.cue"), contains: "package jsonschema"},
+		{path: filepath.Join(root, "defs.cue"), contains: "package cuetf"},
+		{path: filepath.Join(root, "file.cue"), contains: "#ProviderSchemaFile"},
 	} {
 		data, err := os.ReadFile(tc.path)
 		if err != nil {

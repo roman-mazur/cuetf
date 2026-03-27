@@ -1,4 +1,4 @@
-package main
+package embedassets
 
 import (
 	"io"
@@ -6,12 +6,20 @@ import (
 	"os"
 	"path/filepath"
 
-	embedassets "rmazur.io/cuetf/internal"
+	"rmazur.io/cuetf"
+	assets "rmazur.io/cuetf/internal"
 )
 
 func InstallInternalDeps(repoRoot string, modulePath string) error {
-	dstBase := filepath.Join(repoRoot, "cue.mod", "pkg", filepath.FromSlash(modulePath), "internal")
-	return copyCueDir(embedassets.InternalCUE, ".", dstBase)
+	dstRoot := filepath.Join(repoRoot, "cue.mod", "pkg", filepath.FromSlash(modulePath))
+	return CopyInternalDeps(dstRoot)
+}
+
+func CopyInternalDeps(dst string) error {
+	if err := copyCueDir(cuetf.Data, ".", dst); err != nil {
+		return err
+	}
+	return copyCueDir(assets.InternalCUE, ".", filepath.Join(dst, "internal"))
 }
 
 func copyCueDir(srcFS fs.FS, srcDir, dst string) error {

@@ -1,6 +1,6 @@
 package scaleway
 
-import "github.com/roman-mazur/cuetf/scaleway/res"
+import "github.com/roman-mazur/cuetf/providers/scaleway/res"
 
 #Terraform: {
 	#scalewayPrefix: string
