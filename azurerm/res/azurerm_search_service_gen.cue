@@ -12,6 +12,7 @@ import "list"
 		authentication_failure_mode?:                       string
 		customer_managed_key_encryption_compliance_status?: string
 		customer_managed_key_enforcement_enabled?:          bool
+		endpoint?:                                          string
 		hosting_mode?:                                      string
 		id?:                                                string
 		local_authentication_enabled?:                      bool

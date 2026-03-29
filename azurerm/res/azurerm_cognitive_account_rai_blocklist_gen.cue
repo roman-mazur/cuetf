@@ -9,6 +9,7 @@ package res
 		description?:          string
 		id?:                   string
 		name!:                 string
+		tags?: [string]: string
 	})
 
 	#timeouts: close({
