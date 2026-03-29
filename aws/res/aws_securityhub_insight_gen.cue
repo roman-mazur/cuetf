@@ -21,7 +21,12 @@ import "list"
 
 	#filters: close({
 		aws_account_id?: matchN(1, [_#defs."/$defs/filters/$defs/aws_account_id", list.MaxItems(20) & [..._#defs."/$defs/filters/$defs/aws_account_id"]])
+		aws_account_name?: matchN(1, [_#defs."/$defs/filters/$defs/aws_account_name", list.MaxItems(20) & [..._#defs."/$defs/filters/$defs/aws_account_name"]])
 		company_name?: matchN(1, [_#defs."/$defs/filters/$defs/company_name", list.MaxItems(20) & [..._#defs."/$defs/filters/$defs/company_name"]])
+		compliance_associated_standards_id?: matchN(1, [_#defs."/$defs/filters/$defs/compliance_associated_standards_id", list.MaxItems(20) & [..._#defs."/$defs/filters/$defs/compliance_associated_standards_id"]])
+		compliance_security_control_id?: matchN(1, [_#defs."/$defs/filters/$defs/compliance_security_control_id", list.MaxItems(20) & [..._#defs."/$defs/filters/$defs/compliance_security_control_id"]])
+		compliance_security_control_parameters_name?: matchN(1, [_#defs."/$defs/filters/$defs/compliance_security_control_parameters_name", list.MaxItems(20) & [..._#defs."/$defs/filters/$defs/compliance_security_control_parameters_name"]])
+		compliance_security_control_parameters_value?: matchN(1, [_#defs."/$defs/filters/$defs/compliance_security_control_parameters_value", list.MaxItems(20) & [..._#defs."/$defs/filters/$defs/compliance_security_control_parameters_value"]])
 		compliance_status?: matchN(1, [_#defs."/$defs/filters/$defs/compliance_status", list.MaxItems(20) & [..._#defs."/$defs/filters/$defs/compliance_status"]])
 		confidence?: matchN(1, [_#defs."/$defs/filters/$defs/confidence", list.MaxItems(20) & [..._#defs."/$defs/filters/$defs/confidence"]])
 		created_at?: matchN(1, [_#defs."/$defs/filters/$defs/created_at", list.MaxItems(20) & [..._#defs."/$defs/filters/$defs/created_at"]])
@@ -115,7 +120,32 @@ import "list"
 		value!:      string
 	})
 
+	_#defs: "/$defs/filters/$defs/aws_account_name": close({
+		comparison!: string
+		value!:      string
+	})
+
 	_#defs: "/$defs/filters/$defs/company_name": close({
+		comparison!: string
+		value!:      string
+	})
+
+	_#defs: "/$defs/filters/$defs/compliance_associated_standards_id": close({
+		comparison!: string
+		value!:      string
+	})
+
+	_#defs: "/$defs/filters/$defs/compliance_security_control_id": close({
+		comparison!: string
+		value!:      string
+	})
+
+	_#defs: "/$defs/filters/$defs/compliance_security_control_parameters_name": close({
+		comparison!: string
+		value!:      string
+	})
+
+	_#defs: "/$defs/filters/$defs/compliance_security_control_parameters_value": close({
 		comparison!: string
 		value!:      string
 	})

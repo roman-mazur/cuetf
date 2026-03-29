@@ -100,10 +100,27 @@ package res
 	})
 
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer": close({
+		custom_claim?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/custom_claim", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/custom_claim"]])
 		allowed_audience?: [...string]
 		allowed_clients?: [...string]
 		allowed_scopes?: [...string]
 		discovery_url!: string
+	})
+
+	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/custom_claim": close({
+		authorizing_claim_match_value?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/custom_claim/$defs/authorizing_claim_match_value", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/custom_claim/$defs/authorizing_claim_match_value"]])
+		inbound_token_claim_name!:       string
+		inbound_token_claim_value_type!: string
+	})
+
+	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/custom_claim/$defs/authorizing_claim_match_value": close({
+		claim_match_value?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/custom_claim/$defs/authorizing_claim_match_value/$defs/claim_match_value", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/custom_claim/$defs/authorizing_claim_match_value/$defs/claim_match_value"]])
+		claim_match_operator!: string
+	})
+
+	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/custom_claim/$defs/authorizing_claim_match_value/$defs/claim_match_value": close({
+		match_value_string?: string
+		match_value_string_list?: [...string]
 	})
 
 	_#defs: "/$defs/network_configuration/$defs/network_mode_config": close({

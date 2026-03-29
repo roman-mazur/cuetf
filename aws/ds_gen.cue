@@ -166,6 +166,7 @@ import "github.com/roman-mazur/cuetf/aws/data"
 	_#ds: "\(#awsPrefix)_dx_location": data.#aws_dx_location
 	_#ds: "\(#awsPrefix)_dx_locations": data.#aws_dx_locations
 	_#ds: "\(#awsPrefix)_dx_router_configuration": data.#aws_dx_router_configuration
+	_#ds: "\(#awsPrefix)_dynamodb_backups": data.#aws_dynamodb_backups
 	_#ds: "\(#awsPrefix)_dynamodb_table": data.#aws_dynamodb_table
 	_#ds: "\(#awsPrefix)_dynamodb_table_item": data.#aws_dynamodb_table_item
 	_#ds: "\(#awsPrefix)_dynamodb_tables": data.#aws_dynamodb_tables
@@ -388,6 +389,7 @@ import "github.com/roman-mazur/cuetf/aws/data"
 	_#ds: "\(#awsPrefix)_msk_cluster": data.#aws_msk_cluster
 	_#ds: "\(#awsPrefix)_msk_configuration": data.#aws_msk_configuration
 	_#ds: "\(#awsPrefix)_msk_kafka_version": data.#aws_msk_kafka_version
+	_#ds: "\(#awsPrefix)_msk_topic": data.#aws_msk_topic
 	_#ds: "\(#awsPrefix)_msk_vpc_connection": data.#aws_msk_vpc_connection
 	_#ds: "\(#awsPrefix)_mskconnect_connector": data.#aws_mskconnect_connector
 	_#ds: "\(#awsPrefix)_mskconnect_custom_plugin": data.#aws_mskconnect_custom_plugin
@@ -531,6 +533,7 @@ import "github.com/roman-mazur/cuetf/aws/data"
 	_#ds: "\(#awsPrefix)_s3control_multi_region_access_point": data.#aws_s3control_multi_region_access_point
 	_#ds: "\(#awsPrefix)_s3control_multi_region_access_points": data.#aws_s3control_multi_region_access_points
 	_#ds: "\(#awsPrefix)_sagemaker_prebuilt_ecr_image": data.#aws_sagemaker_prebuilt_ecr_image
+	_#ds: "\(#awsPrefix)_savingsplans_offerings": data.#aws_savingsplans_offerings
 	_#ds: "\(#awsPrefix)_savingsplans_savings_plan": data.#aws_savingsplans_savings_plan
 	_#ds: "\(#awsPrefix)_secretsmanager_random_password": data.#aws_secretsmanager_random_password
 	_#ds: "\(#awsPrefix)_secretsmanager_secret": data.#aws_secretsmanager_secret
