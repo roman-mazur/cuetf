@@ -6,8 +6,10 @@ package res
 	close({
 		timeouts?: #timeouts
 
-		// A reference to the BackendService resource.
-		backend_service!: string
+		// A reference to the BackendService resource. This field is
+		// optional when
+		// the loadBalancingScheme (available in beta) is specified.
+		backend_service?: string
 
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string

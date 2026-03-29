@@ -15,6 +15,12 @@ import "list"
 		// with nanosecond resolution and up to nine fractional digits.
 		create_time?: string
 
+		// Optional. The deletion policy for the reasoning engine. Setting
+		// this to FORCE allows the reasoning engine to be deleted
+		// regardless of child undeleted resources. Possible values:
+		// ["FORCE"]
+		deletion_policy?: string
+
 		// The description of the ReasoningEngine.
 		description?: string
 

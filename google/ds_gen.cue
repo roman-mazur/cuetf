@@ -144,6 +144,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_compute_machine_types": data.#google_compute_machine_types
 	_#ds: "\(#googlePrefix)_compute_network_attachment": data.#google_compute_network_attachment
 	_#ds: "\(#googlePrefix)_compute_network_endpoint_group": data.#google_compute_network_endpoint_group
+	_#ds: "\(#googlePrefix)_compute_network_endpoint_groups": data.#google_compute_network_endpoint_groups
 	_#ds: "\(#googlePrefix)_compute_network": data.#google_compute_network
 	_#ds: "\(#googlePrefix)_compute_network_peering": data.#google_compute_network_peering
 	_#ds: "\(#googlePrefix)_compute_networks": data.#google_compute_networks

@@ -18,5 +18,10 @@ package data
 		// have the form
 		// 'projects/<project_id_or_number>'.
 		key_project?: string
+
+		// How Autokey determines which project to use when provisioning
+		// CMEK keys. Possible values: ["DEDICATED_KEY_PROJECT",
+		// "RESOURCE_PROJECT", "DISABLED"]
+		key_project_resolution_mode?: string
 	})
 }

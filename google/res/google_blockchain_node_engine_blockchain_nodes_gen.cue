@@ -109,6 +109,18 @@ import "list"
 	})
 
 	_#defs: "/$defs/ethereum_details/$defs/validator_config": close({
+		// An Ethereum address which the beacon client will send fee
+		// rewards to if no recipient is configured in the validator
+		// client. See
+		// https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html
+		// or
+		// https://docs.prylabs.network/docs/execution-node/fee-recipient
+		// for examples of how this is used. Note that while this is
+		// often described as "suggested", as we run the execution node
+		// we can trust the execution node, and therefore this is
+		// considered enforced.
+		beacon_fee_recipient?: string
+
 		// URLs for MEV-relay services to use for block building. When
 		// set, a managed MEV-boost service is configured on the beacon
 		// client.

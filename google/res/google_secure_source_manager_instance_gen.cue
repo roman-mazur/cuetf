@@ -78,6 +78,8 @@ import "list"
 	})
 
 	#private_config: close({
+		custom_host_config?: matchN(1, [_#defs."/$defs/private_config/$defs/custom_host_config", list.MaxItems(1) & [..._#defs."/$defs/private_config/$defs/custom_host_config"]])
+
 		// CA pool resource, resource must in the format of
 		// 'projects/{project}/locations/{location}/caPools/{ca_pool}'.
 		ca_pool?: string
@@ -103,5 +105,19 @@ import "list"
 	#workforce_identity_federation_config: close({
 		// 'Whether Workforce Identity Federation is enabled.'
 		enabled!: bool
+	})
+
+	_#defs: "/$defs/private_config/$defs/custom_host_config": close({
+		// API hostname.
+		api!: string
+
+		// Git HTTP hostname.
+		git_http!: string
+
+		// Git SSH hostname.
+		git_ssh!: string
+
+		// HTML hostname.
+		html!: string
 	})
 }

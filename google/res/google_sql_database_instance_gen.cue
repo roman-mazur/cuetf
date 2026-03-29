@@ -208,6 +208,9 @@ import "list"
 		// the source instance.
 		preferred_zone?: string
 
+		// The region of the target instance to restore to.
+		region?: string
+
 		// The name of the target instance to restore to.
 		target_instance?: string
 	})

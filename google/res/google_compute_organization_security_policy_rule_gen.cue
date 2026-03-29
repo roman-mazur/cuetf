@@ -33,7 +33,8 @@ import "list"
 	})
 
 	#match: close({
-		config!: matchN(1, [_#defs."/$defs/match/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/match/$defs/config"]])
+		config?: matchN(1, [_#defs."/$defs/match/$defs/config", list.MaxItems(1) & [..._#defs."/$defs/match/$defs/config"]])
+		expr?: matchN(1, [_#defs."/$defs/match/$defs/expr", list.MaxItems(1) & [..._#defs."/$defs/match/$defs/expr"]])
 
 		// A description of the rule.
 		description?: string
@@ -56,5 +57,13 @@ import "list"
 		// Source IP address range in CIDR format. Required for
 		// INGRESS rules.
 		src_ip_ranges?: [...string]
+	})
+
+	_#defs: "/$defs/match/$defs/expr": close({
+		// Textual representation of an expression in Common Expression
+		// Language syntax. The application context of the containing
+		// message determines which well-known feature set of CEL is
+		// supported.
+		expression!: string
 	})
 }
