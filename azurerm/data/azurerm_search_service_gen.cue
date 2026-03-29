@@ -6,6 +6,7 @@ package data
 	close({
 		timeouts?:                                          #timeouts
 		customer_managed_key_encryption_compliance_status?: string
+		endpoint?:                                          string
 		id?:                                                string
 		identity?: [...close({
 			identity_ids?: [...string]

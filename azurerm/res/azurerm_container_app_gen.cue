@@ -320,7 +320,7 @@ import "list"
 		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/readiness_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/readiness_probe/$defs/header"]])
 
 		// The number of consecutive failures required to consider this
-		// probe as failed. Possible values are between `1` and `30`.
+		// probe as failed. Possible values are between `1` and `48`.
 		// Defaults to `3`.
 		failure_count_threshold?: number
 
@@ -371,7 +371,7 @@ import "list"
 		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/startup_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/startup_probe/$defs/header"]])
 
 		// The number of consecutive failures required to consider this
-		// probe as failed. Possible values are between `1` and `30`.
+		// probe as failed. Possible values are between `1` and `240`.
 		// Defaults to `3`.
 		failure_count_threshold?: number
 

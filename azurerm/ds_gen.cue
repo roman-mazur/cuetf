@@ -70,6 +70,7 @@ import "github.com/roman-mazur/cuetf/azurerm/data"
 	_#ds: "\(#azurermPrefix)_consumption_budget_subscription": data.#azurerm_consumption_budget_subscription
 	_#ds: "\(#azurermPrefix)_container_app_environment_certificate": data.#azurerm_container_app_environment_certificate
 	_#ds: "\(#azurermPrefix)_container_app_environment": data.#azurerm_container_app_environment
+	_#ds: "\(#azurermPrefix)_container_app_environment_storage": data.#azurerm_container_app_environment_storage
 	_#ds: "\(#azurermPrefix)_container_app": data.#azurerm_container_app
 	_#ds: "\(#azurermPrefix)_container_group": data.#azurerm_container_group
 	_#ds: "\(#azurermPrefix)_container_registry_cache_rule": data.#azurerm_container_registry_cache_rule
