@@ -20,15 +20,18 @@ import "list"
 		// to, as one of the routing rules to route the requests served
 		// by the gateway.
 		// Each gateway reference should match the pattern:
-		// projects/*/locations/global/gateways/<gateway_name>
+		// projects/*/locations/*/gateways/<gateway_name>
 		gateways?: [...string]
 		id?: string
+
+		// Location (region) of the TLS Route.
+		location?: string
 
 		// Meshes defines a list of meshes this TlsRoute is attached to,
 		// as one of the routing rules to route the requests served by
 		// the mesh.
 		// Each mesh reference should match the pattern:
-		// projects/*/locations/global/meshes/<mesh_name>
+		// projects/*/locations/*/meshes/<mesh_name>
 		// The attached Mesh should be of a type SIDECAR
 		meshes?: [...string]
 
@@ -38,6 +41,13 @@ import "list"
 
 		// Server-defined URL of this resource.
 		self_link?: string
+
+		// TargetProxies defines a list of target proxies this TlsRoute is
+		// attached to, as one of the routing rules to route the requests
+		// served by the load balancer.
+		// Each target proxy reference should match the pattern:
+		// projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
+		target_proxies?: [...string]
 
 		// Time the TlsRoute was updated in UTC.
 		update_time?: string

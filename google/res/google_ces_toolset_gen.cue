@@ -65,6 +65,15 @@ import "list"
 		service_directory_config?: matchN(1, [_#defs."/$defs/mcp_toolset/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/mcp_toolset/$defs/service_directory_config"]])
 		tls_config?: matchN(1, [_#defs."/$defs/mcp_toolset/$defs/tls_config", list.MaxItems(1) & [..._#defs."/$defs/mcp_toolset/$defs/tls_config"]])
 
+		// The custom headers to send in the request to the MCP server.
+		// The values
+		// must be in the format '$context.variables.<name_of_variable>'
+		// and can be
+		// set in the session variables. See
+		// https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+		// for more details.
+		custom_headers?: [string]: string
+
 		// The address of the MCP server, for example,
 		// "https://example.com/mcp/". If
 		// the server is built with the MCP SDK, the url should be

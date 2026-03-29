@@ -120,6 +120,12 @@ import "list"
 		// characters.
 		description?: string
 
+		// If true, populates additional debug information in Cloud Audit
+		// Logs for this provider. Logged attribute mappings and values
+		// can be found in 'sts.googleapis.com' data access logs. Default
+		// value is false.
+		detailed_audit_logging?: bool
+
 		// Whether the provider is disabled. You cannot use a disabled
 		// provider to exchange tokens.
 		// However, existing tokens still grant access.

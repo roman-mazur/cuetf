@@ -450,8 +450,9 @@ import "list"
 
 		// The maximum duration for which new events are added before a
 		// file is closed and a new file is created.
+		// Values within the range of 15-60 seconds are allowed.
 		// A duration in seconds with up to nine fractional digits,
-		// terminated by 's'. Example: "3.5s". Defaults to 900s.
+		// terminated by 's'. Example: "3.5s".
 		file_rotation_interval?: string
 
 		// The maximum file size to be saved in the bucket.

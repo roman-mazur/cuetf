@@ -7,8 +7,7 @@ package data
 		// The ID of the backup plan
 		backup_plan_id!: string
 
-		// The backup rules for this 'BackupPlan'. There must be at least
-		// one 'BackupRule' message.
+		// The backup rules for this 'BackupPlan'.
 		backup_rules?: [...close({
 			backup_retention_days?: number
 			rule_id?:               string
@@ -44,7 +43,13 @@ package data
 		// The description allows for additional details about
 		// 'BackupPlan' and its use cases to be provided.
 		description?: string
-		id?:          string
+
+		// Defines optional disk related properties for backups generated
+		// by this plan.
+		disk_backup_plan_properties?: [...close({
+			guest_flush?: bool
+		})]
+		id?: string
 
 		// The location for the backup plan
 		location!: string

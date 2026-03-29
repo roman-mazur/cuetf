@@ -72,6 +72,38 @@ package data
 		// https://google.aip.dev/122.
 		location?: string
 
+		// The maintenance policy for the instance to determine when to
+		// allow or exclude the instance from maintenance updates.
+		maintenance_policy?: [...close({
+			maintenance_exclusion_window?: [...close({
+				end_date?: [...close({
+					day?:   number
+					month?: number
+					year?:  number
+				})]
+				start_date?: [...close({
+					day?:   number
+					month?: number
+					year?:  number
+				})]
+				time?: [...close({
+					hours?:   number
+					minutes?: number
+					nanos?:   number
+					seconds?: number
+				})]
+			})]
+			weekly_maintenance_windows?: [...close({
+				day_of_week?: string
+				start_time?: [...close({
+					hours?:   number
+					minutes?: number
+					nanos?:   number
+					seconds?: number
+				})]
+			})]
+		})]
+
 		// Mount point of the instance in the format
 		// 'IP_ADDRESS@tcp:/FILESYSTEM'.
 		mount_point?: string

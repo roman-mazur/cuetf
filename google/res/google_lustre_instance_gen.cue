@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_lustre_instance")
 	close({
 		access_rules_options?: matchN(1, [#access_rules_options, list.MaxItems(1) & [...#access_rules_options]])
+		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
 		timeouts?: #timeouts
 
 		// The storage capacity of the instance in gibibytes (GiB).
@@ -118,6 +119,11 @@ import "list"
 		default_squash_uid?: number
 	})
 
+	#maintenance_policy: close({
+		maintenance_exclusion_window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion_window", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion_window"]])
+		weekly_maintenance_windows?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_windows", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_windows"]])
+	})
+
 	#timeouts: close({
 		create?: string
 		delete?: string
@@ -136,5 +142,74 @@ import "list"
 		// "NO_SQUASH"
 		// is supported for exceptions. Possible values: ["NO_SQUASH"]
 		squash_mode!: string
+	})
+
+	_#defs: "/$defs/maintenance_policy/$defs/maintenance_exclusion_window": close({
+		end_date!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion_window/$defs/end_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion_window/$defs/end_date"]])
+		start_date!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion_window/$defs/start_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion_window/$defs/start_date"]])
+		time!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion_window/$defs/time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion_window/$defs/time"]])
+	})
+
+	_#defs: "/$defs/maintenance_policy/$defs/maintenance_exclusion_window/$defs/end_date": close({
+		// Day of a month. Must be from 1 to 31 and valid for the year and
+		// month.
+		day?: number
+
+		// Month of a year. Must be from 1 to 12.
+		month?: number
+
+		// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+		year?: number
+	})
+
+	_#defs: "/$defs/maintenance_policy/$defs/maintenance_exclusion_window/$defs/start_date": close({
+		// Day of a month. Must be from 1 to 31 and valid for the year and
+		// month.
+		day?: number
+
+		// Month of a year. Must be from 1 to 12.
+		month?: number
+
+		// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+		year?: number
+	})
+
+	_#defs: "/$defs/maintenance_policy/$defs/maintenance_exclusion_window/$defs/time": close({
+		// Hours of day in 24 hour format. Should be from 0 to 23.
+		hours?: number
+
+		// Minutes of hour of day. Must be from 0 to 59.
+		minutes?: number
+
+		// Fractions of seconds in nanoseconds. Must be from 0 to
+		// 999,999,999.
+		nanos?: number
+
+		// Seconds of minutes of the time. Must be from 0 to 59.
+		seconds?: number
+	})
+
+	_#defs: "/$defs/maintenance_policy/$defs/weekly_maintenance_windows": close({
+		start_time!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_windows/$defs/start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/weekly_maintenance_windows/$defs/start_time"]])
+
+		// Day of the week for the maintenance window. Possible values:
+		// ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY",
+		// "FRIDAY", "SATURDAY"]
+		day_of_week!: string
+	})
+
+	_#defs: "/$defs/maintenance_policy/$defs/weekly_maintenance_windows/$defs/start_time": close({
+		// Hours of day in 24 hour format. Should be from 0 to 23.
+		hours?: number
+
+		// Minutes of hour of day. Must be from 0 to 59.
+		minutes?: number
+
+		// Fractions of seconds in nanoseconds. Must be from 0 to
+		// 999,999,999.
+		nanos?: number
+
+		// Seconds of minutes of the time. Must be from 0 to 59.
+		seconds?: number
 	})
 }

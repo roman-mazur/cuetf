@@ -6,7 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_backup_dr_backup_plan")
 	close({
-		backup_rules!: matchN(1, [#backup_rules, [_, ...] & [...#backup_rules]])
+		backup_rules?: matchN(1, [#backup_rules, [...#backup_rules]])
+		disk_backup_plan_properties?: matchN(1, [#disk_backup_plan_properties, list.MaxItems(1) & [...#disk_backup_plan_properties]])
 		timeouts?: #timeouts
 
 		// The ID of the backup plan
@@ -73,6 +74,16 @@ import "list"
 		// The unique ID of this 'BackupRule'. The 'rule_id' is unique per
 		// 'BackupPlan'.
 		rule_id!: string
+	})
+
+	#disk_backup_plan_properties: close({
+		// Indicates whether to perform a guest flush operation before
+		// taking a disk
+		// backup. When set to true, the system will attempt to ensure
+		// application-consistent backups. When set to false, the system
+		// will
+		// create crash-consistent backups.
+		guest_flush!: bool
 	})
 
 	#timeouts: close({

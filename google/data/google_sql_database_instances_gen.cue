@@ -46,6 +46,7 @@ package data
 				datasource?:         string
 				point_in_time?:      string
 				preferred_zone?:     string
+				region?:             string
 				target_instance?:    string
 			})]
 			private_ip_address?:          string

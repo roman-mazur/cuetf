@@ -579,6 +579,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_dialogflow_cx_webhook": res.#google_dialogflow_cx_webhook
 	_#res: "\(#googlePrefix)_dialogflow_encryption_spec": res.#google_dialogflow_encryption_spec
 	_#res: "\(#googlePrefix)_dialogflow_entity_type": res.#google_dialogflow_entity_type
+	_#res: "\(#googlePrefix)_dialogflow_environment": res.#google_dialogflow_environment
 	_#res: "\(#googlePrefix)_dialogflow_fulfillment": res.#google_dialogflow_fulfillment
 	_#res: "\(#googlePrefix)_dialogflow_generator": res.#google_dialogflow_generator
 	_#res: "\(#googlePrefix)_dialogflow_intent": res.#google_dialogflow_intent
@@ -824,6 +825,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_kms_key_ring_iam_member": res.#google_kms_key_ring_iam_member
 	_#res: "\(#googlePrefix)_kms_key_ring_iam_policy": res.#google_kms_key_ring_iam_policy
 	_#res: "\(#googlePrefix)_kms_key_ring_import_job": res.#google_kms_key_ring_import_job
+	_#res: "\(#googlePrefix)_kms_project_autokey_config": res.#google_kms_project_autokey_config
 	_#res: "\(#googlePrefix)_kms_secret_ciphertext": res.#google_kms_secret_ciphertext
 	_#res: "\(#googlePrefix)_logging_billing_account_bucket_config": res.#google_logging_billing_account_bucket_config
 	_#res: "\(#googlePrefix)_logging_billing_account_exclusion": res.#google_logging_billing_account_exclusion
