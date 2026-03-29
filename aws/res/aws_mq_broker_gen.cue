@@ -12,7 +12,7 @@ import "list"
 		logs?: matchN(1, [#logs, list.MaxItems(1) & [...#logs]])
 		maintenance_window_start_time?: matchN(1, [#maintenance_window_start_time, list.MaxItems(1) & [...#maintenance_window_start_time]])
 		timeouts?: #timeouts
-		user!: matchN(1, [#user, [_, ...] & [...#user]])
+		user?: matchN(1, [#user, [...#user]])
 		apply_immediately?:                   bool
 		arn?:                                 string
 		authentication_strategy?:             string

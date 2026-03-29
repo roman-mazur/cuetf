@@ -953,6 +953,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_msk_scram_secret_association": res.#aws_msk_scram_secret_association
 	_#res: "\(#awsPrefix)_msk_serverless_cluster": res.#aws_msk_serverless_cluster
 	_#res: "\(#awsPrefix)_msk_single_scram_secret_association": res.#aws_msk_single_scram_secret_association
+	_#res: "\(#awsPrefix)_msk_topic": res.#aws_msk_topic
 	_#res: "\(#awsPrefix)_msk_vpc_connection": res.#aws_msk_vpc_connection
 	_#res: "\(#awsPrefix)_mskconnect_connector": res.#aws_mskconnect_connector
 	_#res: "\(#awsPrefix)_mskconnect_custom_plugin": res.#aws_mskconnect_custom_plugin
@@ -1023,6 +1024,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_oam_sink": res.#aws_oam_sink
 	_#res: "\(#awsPrefix)_oam_sink_policy": res.#aws_oam_sink_policy
 	_#res: "\(#awsPrefix)_observabilityadmin_centralization_rule_for_organization": res.#aws_observabilityadmin_centralization_rule_for_organization
+	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_enrichment": res.#aws_observabilityadmin_telemetry_enrichment
 	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_pipeline": res.#aws_observabilityadmin_telemetry_pipeline
 	_#res: "\(#awsPrefix)_odb_cloud_autonomous_vm_cluster": res.#aws_odb_cloud_autonomous_vm_cluster
 	_#res: "\(#awsPrefix)_odb_cloud_exadata_infrastructure": res.#aws_odb_cloud_exadata_infrastructure
@@ -1272,6 +1274,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_s3vectors_index": res.#aws_s3vectors_index
 	_#res: "\(#awsPrefix)_s3vectors_vector_bucket": res.#aws_s3vectors_vector_bucket
 	_#res: "\(#awsPrefix)_s3vectors_vector_bucket_policy": res.#aws_s3vectors_vector_bucket_policy
+	_#res: "\(#awsPrefix)_sagemaker_algorithm": res.#aws_sagemaker_algorithm
 	_#res: "\(#awsPrefix)_sagemaker_app": res.#aws_sagemaker_app
 	_#res: "\(#awsPrefix)_sagemaker_app_image_config": res.#aws_sagemaker_app_image_config
 	_#res: "\(#awsPrefix)_sagemaker_code_repository": res.#aws_sagemaker_code_repository
@@ -1598,6 +1601,8 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_wafv2_web_acl_logging_configuration": res.#aws_wafv2_web_acl_logging_configuration
 	_#res: "\(#awsPrefix)_wafv2_web_acl_rule": res.#aws_wafv2_web_acl_rule
 	_#res: "\(#awsPrefix)_wafv2_web_acl_rule_group_association": res.#aws_wafv2_web_acl_rule_group_association
+	_#res: "\(#awsPrefix)_workmail_default_domain": res.#aws_workmail_default_domain
+	_#res: "\(#awsPrefix)_workmail_domain": res.#aws_workmail_domain
 	_#res: "\(#awsPrefix)_workmail_organization": res.#aws_workmail_organization
 	_#res: "\(#awsPrefix)_workspaces_connection_alias": res.#aws_workspaces_connection_alias
 	_#res: "\(#awsPrefix)_workspaces_directory": res.#aws_workspaces_directory

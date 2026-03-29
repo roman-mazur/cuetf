@@ -32,6 +32,7 @@ import "list"
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                   string
+		restore_backup_arn?:       string
 		restore_date_time?:        string
 		restore_source_name?:      string
 		restore_source_table_arn?: string

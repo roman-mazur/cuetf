@@ -34,6 +34,7 @@ import "list"
 		stateful_rule_group_reference?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateful_rule_group_reference", [..._#defs."/$defs/firewall_policy/$defs/stateful_rule_group_reference"]])
 		stateless_custom_action?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateless_custom_action", [..._#defs."/$defs/firewall_policy/$defs/stateless_custom_action"]])
 		stateless_rule_group_reference?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateless_rule_group_reference", [..._#defs."/$defs/firewall_policy/$defs/stateless_rule_group_reference"]])
+		enable_tls_session_holding?: bool
 		stateful_default_actions?: [...string]
 		stateless_default_actions!: [...string]
 		stateless_fragment_default_actions!: [...string]

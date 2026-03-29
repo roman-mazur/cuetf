@@ -7,6 +7,7 @@ package data
 		arn?:         string
 		description?: string
 		firewall_policy?: [...close({
+			enable_tls_session_holding?: bool
 			policy_variables?: [...close({
 				rule_variables?: [...close({
 					ip_set?: [...close({

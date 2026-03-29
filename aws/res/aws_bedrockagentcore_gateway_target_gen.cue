@@ -92,10 +92,34 @@ package res
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/mcp": close({
+		api_gateway?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/api_gateway", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/api_gateway"]])
 		lambda?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda"]])
 		mcp_server?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/mcp_server", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/mcp_server"]])
 		open_api_schema?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/open_api_schema", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/open_api_schema"]])
 		smithy_model?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/smithy_model", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/smithy_model"]])
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/api_gateway": close({
+		api_gateway_tool_configuration?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/api_gateway/$defs/api_gateway_tool_configuration", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/api_gateway/$defs/api_gateway_tool_configuration"]])
+		rest_api_id!: string
+		stage!:       string
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/api_gateway/$defs/api_gateway_tool_configuration": close({
+		tool_filter?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/api_gateway/$defs/api_gateway_tool_configuration/$defs/tool_filter", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/api_gateway/$defs/api_gateway_tool_configuration/$defs/tool_filter"]])
+		tool_override?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/api_gateway/$defs/api_gateway_tool_configuration/$defs/tool_override", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/api_gateway/$defs/api_gateway_tool_configuration/$defs/tool_override"]])
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/api_gateway/$defs/api_gateway_tool_configuration/$defs/tool_filter": close({
+		filter_path!: string
+		methods!: [...string]
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/api_gateway/$defs/api_gateway_tool_configuration/$defs/tool_override": close({
+		description?: string
+		method!:      string
+		name!:        string
+		path!:        string
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/lambda": close({
