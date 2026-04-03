@@ -61,7 +61,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -136,7 +141,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -211,7 +221,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -286,7 +301,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -361,7 +381,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -436,7 +461,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -514,7 +544,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -592,7 +627,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -670,7 +710,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -748,7 +793,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -826,7 +876,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -904,7 +959,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -979,7 +1039,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1054,7 +1119,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1132,7 +1202,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1210,7 +1285,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1288,7 +1368,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1366,7 +1451,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1444,7 +1534,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1522,7 +1617,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1600,7 +1700,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1678,7 +1783,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1766,7 +1876,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1854,7 +1969,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -1942,7 +2062,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2030,7 +2155,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2118,7 +2248,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2206,7 +2341,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2294,7 +2434,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2379,7 +2524,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2464,7 +2614,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2545,7 +2700,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2623,7 +2783,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2701,7 +2866,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2782,7 +2952,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2860,7 +3035,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -2938,7 +3118,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3013,7 +3198,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3092,7 +3282,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3171,7 +3366,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3249,7 +3449,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3328,7 +3533,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3406,7 +3616,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3487,7 +3702,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3566,7 +3786,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3645,7 +3870,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3724,7 +3954,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3802,7 +4037,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3878,7 +4118,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -3956,7 +4201,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4034,7 +4284,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4112,7 +4367,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4190,7 +4450,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4268,7 +4533,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4346,7 +4616,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4422,7 +4697,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4497,7 +4777,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4572,7 +4857,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4660,7 +4950,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4748,7 +5043,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4836,7 +5136,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -4924,7 +5229,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5012,7 +5322,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5100,7 +5415,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5186,7 +5506,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5271,7 +5596,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5356,7 +5686,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5434,7 +5769,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5515,7 +5855,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5593,7 +5938,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5671,7 +6021,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5749,7 +6104,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5827,7 +6187,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5905,7 +6270,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -5983,7 +6353,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6049,7 +6424,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "18.75 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 4
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             18.75
             PeakBandwidthInGbps:                 18.75
             DefaultEnaQueueCountPerInterface:    8
@@ -6064,7 +6439,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6130,7 +6510,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "25 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 1
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             25.0
             PeakBandwidthInGbps:                 25.0
             DefaultEnaQueueCountPerInterface:    8
@@ -6145,7 +6525,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6211,7 +6596,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "37.5 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 9
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             37.5
             PeakBandwidthInGbps:                 37.5
             DefaultEnaQueueCountPerInterface:    8
@@ -6226,7 +6611,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6307,7 +6697,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6373,7 +6768,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "50 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 9
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             50.0
             PeakBandwidthInGbps:                 50.0
             DefaultEnaQueueCountPerInterface:    8
@@ -6391,7 +6786,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6472,7 +6872,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6538,7 +6943,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "12.5 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 2
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             12.5
             PeakBandwidthInGbps:                 12.5
             DefaultEnaQueueCountPerInterface:    8
@@ -6553,7 +6958,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6634,7 +7044,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6713,7 +7128,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6791,7 +7211,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6882,7 +7307,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -6973,7 +7403,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7064,7 +7499,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7155,7 +7595,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7249,7 +7694,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7340,7 +7790,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7431,7 +7886,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7522,7 +7982,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7611,7 +8076,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7699,7 +8169,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -7765,21 +8240,26 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "75 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 0
+            AdditionalFlexibleNetworkInterfaces: 4
             BaselineBandwidthInGbps:             75.0
             PeakBandwidthInGbps:                 75.0
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -7847,21 +8327,26 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "100 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 0
+            AdditionalFlexibleNetworkInterfaces: 1
             BaselineBandwidthInGbps:             100.0
             PeakBandwidthInGbps:                 100.0
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                240
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -7929,21 +8414,26 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "150 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 0
+            AdditionalFlexibleNetworkInterfaces: 9
             BaselineBandwidthInGbps:             150.0
             PeakBandwidthInGbps:                 150.0
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                480
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -8018,14 +8508,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -8093,7 +8588,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "Up to 170 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 0
+            AdditionalFlexibleNetworkInterfaces: 4
             BaselineBandwidthInGbps:             200.0
             PeakBandwidthInGbps:                 200.0
             DefaultEnaQueueCountPerInterface:    32
@@ -8103,7 +8598,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    1
             NetworkPerformance:                  "Up to 170 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 0
+            AdditionalFlexibleNetworkInterfaces: 4
             BaselineBandwidthInGbps:             200.0
             PeakBandwidthInGbps:                 200.0
             DefaultEnaQueueCountPerInterface:    32
@@ -8118,9 +8613,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 2
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -8195,14 +8695,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -8270,21 +8775,26 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "50 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 0
+            AdditionalFlexibleNetworkInterfaces: 2
             BaselineBandwidthInGbps:             50.0
             PeakBandwidthInGbps:                 50.0
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -8359,14 +8869,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -8450,9 +8965,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 2
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -8524,14 +9044,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -8603,14 +9128,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -8682,14 +9212,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -8761,14 +9296,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -8840,14 +9380,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -8919,14 +9464,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -9006,9 +9556,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -9080,14 +9635,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -9159,14 +9719,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -9238,14 +9803,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -9315,14 +9885,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          4
-        Ipv6AddressesPerInterface:          4
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -9399,9 +9974,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -9470,14 +10050,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -9549,14 +10134,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -9636,9 +10226,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -9710,14 +10305,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -9789,14 +10389,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -9868,14 +10473,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -9947,14 +10557,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -10024,14 +10639,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          4
-        Ipv6AddressesPerInterface:          4
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -10108,9 +10728,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -10179,14 +10804,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -10268,14 +10898,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -10365,9 +11000,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -10449,14 +11089,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -10538,14 +11183,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -10627,14 +11277,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -10716,14 +11371,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -10803,14 +11463,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          4
-        Ipv6AddressesPerInterface:          4
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -10897,9 +11562,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -10978,14 +11648,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -11057,14 +11732,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -11136,14 +11816,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -11215,14 +11900,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -11294,14 +11984,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -11373,14 +12068,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -11452,14 +12152,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -11531,14 +12236,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -11610,14 +12320,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -11689,14 +12404,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -11768,14 +12488,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -11847,14 +12572,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -11934,9 +12664,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -12008,14 +12743,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -12087,14 +12827,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -12166,14 +12911,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -12242,14 +12992,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -12323,9 +13078,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -12394,14 +13154,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -12481,7 +13246,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -12561,7 +13331,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -12644,7 +13419,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -12724,7 +13504,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -12807,7 +13592,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -12887,7 +13677,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -12967,7 +13762,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -13047,7 +13847,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -13125,7 +13930,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -13205,7 +14015,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -13282,7 +14097,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -13359,7 +14179,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -13449,7 +14274,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -13539,7 +14369,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -13632,7 +14467,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -13722,7 +14562,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -13815,7 +14660,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -13905,7 +14755,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -13995,7 +14850,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -14085,7 +14945,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -14173,7 +15038,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -14263,7 +15133,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -14350,7 +15225,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -14437,7 +15317,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -14512,14 +15397,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                192
             MaximumEnaQueueCountPerInterface:    64
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -14602,9 +15492,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -14687,9 +15582,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -14764,14 +15664,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -14819,16 +15724,34 @@ InstanceTypes: [{
         EbsOptimizedSupport: "default"
         EncryptionSupport:   "supported"
         EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  120000
+            BaselineThroughputInMBps: 15000.0
+            BaselineIops:             480000
+            MaximumBandwidthInMbps:   120000
+            MaximumThroughputInMBps:  15000.0
+            MaximumIops:              480000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 128
+        AttachmentLimitType:   "dedicated"
+        MaximumEbsCards:       2
+        EbsCards: [{
+            EbsCardIndex:             0
             BaselineBandwidthInMbps:  60000
             BaselineThroughputInMBps: 7500.0
             BaselineIops:             240000
             MaximumBandwidthInMbps:   60000
             MaximumThroughputInMBps:  7500.0
             MaximumIops:              240000
-        }
-        NvmeSupport:           "required"
-        MaximumEbsAttachments: 128
-        AttachmentLimitType:   "dedicated"
+        }, {
+            EbsCardIndex:             1
+            BaselineBandwidthInMbps:  60000
+            BaselineThroughputInMBps: 7500.0
+            BaselineIops:             240000
+            MaximumBandwidthInMbps:   60000
+            MaximumThroughputInMBps:  7500.0
+            MaximumIops:              240000
+        }]
     }
     NetworkInfo: {
         NetworkPerformance:       "600 Gigabit"
@@ -14864,9 +15787,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 2
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -14941,14 +15869,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -15023,14 +15956,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -15105,14 +16043,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -15185,14 +16128,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                2
             MaximumEnaQueueCountPerInterface:    1
         }]
-        Ipv4AddressesPerInterface:          4
-        Ipv6AddressesPerInterface:          4
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -15267,14 +16215,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -15358,7 +16311,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -15442,7 +16400,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -15526,7 +16489,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -15610,7 +16578,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -15694,7 +16667,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -15781,7 +16759,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -15865,7 +16848,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -15949,7 +16937,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -16036,7 +17029,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -16120,7 +17118,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -16203,7 +17206,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -16283,7 +17291,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -16364,7 +17377,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -16454,7 +17472,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16539,7 +17562,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16624,7 +17652,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16709,7 +17742,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16794,7 +17832,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16882,7 +17925,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -16970,7 +18018,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -17058,7 +18111,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -17145,7 +18203,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     FpgaInfo: {
         Fpgas: [{
@@ -17240,7 +18303,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     FpgaInfo: {
         Fpgas: [{
@@ -17328,14 +18396,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -17436,9 +18509,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -17531,14 +18609,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -17639,7 +18722,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -17648,7 +18736,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -17738,7 +18826,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -17837,7 +18930,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -17936,7 +19034,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -18035,7 +19138,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -18044,7 +19152,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -18137,7 +19245,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -18242,7 +19355,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -18251,7 +19369,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -18344,7 +19462,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -18353,7 +19476,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -18446,7 +19569,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -18455,7 +19583,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -18551,7 +19679,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -18560,7 +19693,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -18653,7 +19786,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -18752,7 +19890,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -18855,7 +19998,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -18958,7 +20106,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -19061,7 +20214,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -19161,7 +20319,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -19264,7 +20427,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -19364,7 +20532,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -19467,7 +20640,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -19567,7 +20745,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -19576,7 +20759,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -19669,9 +20852,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -19682,7 +20870,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -19775,9 +20963,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -19788,7 +20981,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -19881,9 +21074,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -19979,14 +21177,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -20090,9 +21293,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -20188,14 +21396,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -20299,9 +21512,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -20397,14 +21615,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -20500,14 +21723,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -20603,14 +21831,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -20621,7 +21854,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.5
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 11444
             }
@@ -20706,14 +21939,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -20724,7 +21962,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.125
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 2861
             }
@@ -20809,14 +22047,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -20912,14 +22155,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -21023,9 +22271,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -21121,14 +22374,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -21232,7 +22490,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21317,7 +22580,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21402,7 +22670,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21487,7 +22760,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21572,7 +22850,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21657,7 +22940,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21745,7 +23033,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21836,7 +23129,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -21924,7 +23222,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22012,7 +23315,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22100,7 +23408,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22188,7 +23501,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22276,7 +23594,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22361,7 +23684,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22449,7 +23777,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22537,7 +23870,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22625,7 +23963,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22713,7 +24056,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22804,7 +24152,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22892,7 +24245,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -22980,7 +24338,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23068,7 +24431,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23156,7 +24524,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23241,7 +24614,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -23321,14 +24699,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              28.125
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -23410,14 +24793,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -23507,9 +24895,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -23591,14 +24984,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -23688,9 +25086,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -23772,14 +25175,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -23861,14 +25269,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -23950,14 +25363,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -24036,14 +25454,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -24127,9 +25550,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -24208,14 +25636,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -24297,14 +25730,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -24386,14 +25824,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 16
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -24475,14 +25918,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -24564,14 +26012,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -24653,14 +26106,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -24750,9 +26208,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -24834,14 +26297,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -24923,14 +26391,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -25009,14 +26482,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -25100,9 +26578,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -25181,14 +26664,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -25270,14 +26758,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              28.125
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -25359,14 +26852,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -25448,14 +26946,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 16
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -25537,14 +27040,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -25634,9 +27142,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -25718,14 +27231,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -25807,14 +27325,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -25896,14 +27419,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -25982,14 +27510,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 32
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -26068,14 +27601,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -26168,7 +27706,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26256,7 +27799,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26344,7 +27892,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26432,7 +27985,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26520,7 +28078,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26608,7 +28171,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26689,7 +28257,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26792,7 +28365,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26895,7 +28473,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -26998,7 +28581,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27101,7 +28689,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27204,7 +28797,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27307,7 +28905,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27410,7 +29013,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27523,7 +29131,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27608,7 +29221,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27693,7 +29311,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27778,7 +29401,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27863,7 +29491,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -27948,7 +29581,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28023,7 +29661,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28098,7 +29741,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28173,7 +29821,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28248,7 +29901,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28323,7 +29981,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28398,7 +30061,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28473,7 +30141,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28551,7 +30224,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28629,7 +30307,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28707,7 +30390,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28785,7 +30473,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28863,7 +30556,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -28941,7 +30639,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29016,7 +30719,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29091,7 +30799,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29169,7 +30882,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29247,7 +30965,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29325,7 +31048,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29403,7 +31131,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29481,7 +31214,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29559,7 +31297,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29637,7 +31380,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29715,7 +31463,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29803,7 +31556,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29891,7 +31649,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -29979,7 +31742,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -30067,7 +31835,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -30155,7 +31928,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -30243,7 +32021,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -30331,7 +32114,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -30419,7 +32207,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -30507,7 +32300,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -30595,7 +32393,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -30683,7 +32486,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -30771,7 +32579,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -30859,7 +32672,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -30947,7 +32765,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31035,7 +32858,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31120,7 +32948,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31205,7 +33038,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31283,7 +33121,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31361,7 +33204,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31439,7 +33287,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31518,7 +33371,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31596,7 +33454,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31677,7 +33540,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31756,7 +33624,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31835,7 +33708,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31914,7 +33792,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -31992,7 +33875,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32068,7 +33956,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32146,7 +34039,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32224,7 +34122,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32302,7 +34205,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32380,7 +34288,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32458,7 +34371,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32536,7 +34454,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32612,7 +34535,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32687,7 +34615,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32762,7 +34695,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32850,7 +34788,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -32938,7 +34881,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -33026,7 +34974,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -33114,7 +35067,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -33202,7 +35160,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -33290,7 +35253,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -33376,7 +35344,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -33461,7 +35434,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -33546,7 +35524,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -33612,7 +35595,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "18.75 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 4
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             18.75
             PeakBandwidthInGbps:                 18.75
             DefaultEnaQueueCountPerInterface:    8
@@ -33627,7 +35610,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -33693,7 +35681,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "25 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 1
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             25.0
             PeakBandwidthInGbps:                 25.0
             DefaultEnaQueueCountPerInterface:    8
@@ -33708,7 +35696,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -33774,7 +35767,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "37.5 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 9
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             37.5
             PeakBandwidthInGbps:                 37.5
             DefaultEnaQueueCountPerInterface:    8
@@ -33789,7 +35782,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -33870,7 +35868,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -33936,7 +35939,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "50 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 9
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             50.0
             PeakBandwidthInGbps:                 50.0
             DefaultEnaQueueCountPerInterface:    8
@@ -33954,7 +35957,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -34035,7 +36043,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -34101,7 +36114,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "12.5 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 2
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             12.5
             PeakBandwidthInGbps:                 12.5
             DefaultEnaQueueCountPerInterface:    8
@@ -34116,7 +36129,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -34197,7 +36215,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -34276,7 +36299,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -34354,7 +36382,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -34445,7 +36478,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -34536,7 +36574,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -34627,7 +36670,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -34718,7 +36766,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -34812,7 +36865,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -34903,7 +36961,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -34994,7 +37057,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -35085,7 +37153,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -35174,7 +37247,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -35262,7 +37340,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -35345,14 +37428,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -35437,14 +37525,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                240
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -35529,14 +37622,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                480
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -35621,14 +37719,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -35731,9 +37834,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 2
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -35818,14 +37926,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -35910,14 +38023,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -36002,14 +38120,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -36103,9 +38226,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 2
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -36187,14 +38315,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -36262,21 +38395,26 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "75 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 0
+            AdditionalFlexibleNetworkInterfaces: 4
             BaselineBandwidthInGbps:             75.0
             PeakBandwidthInGbps:                 75.0
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -36344,21 +38482,26 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "100 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 0
+            AdditionalFlexibleNetworkInterfaces: 1
             BaselineBandwidthInGbps:             100.0
             PeakBandwidthInGbps:                 100.0
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                240
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -36426,21 +38569,26 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "150 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 0
+            AdditionalFlexibleNetworkInterfaces: 9
             BaselineBandwidthInGbps:             150.0
             PeakBandwidthInGbps:                 150.0
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                480
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -36515,14 +38663,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -36590,7 +38743,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "Up to 170 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 0
+            AdditionalFlexibleNetworkInterfaces: 4
             BaselineBandwidthInGbps:             200.0
             PeakBandwidthInGbps:                 200.0
             DefaultEnaQueueCountPerInterface:    32
@@ -36600,7 +38753,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    1
             NetworkPerformance:                  "Up to 170 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 0
+            AdditionalFlexibleNetworkInterfaces: 4
             BaselineBandwidthInGbps:             200.0
             PeakBandwidthInGbps:                 200.0
             DefaultEnaQueueCountPerInterface:    32
@@ -36615,9 +38768,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 2
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -36692,14 +38850,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -36767,21 +38930,26 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "50 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 0
+            AdditionalFlexibleNetworkInterfaces: 2
             BaselineBandwidthInGbps:             50.0
             PeakBandwidthInGbps:                 50.0
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -36856,14 +39024,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -36947,9 +39120,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 2
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -37021,14 +39199,19 @@ InstanceTypes: [{
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "supported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -37100,14 +39283,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -37179,14 +39367,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -37258,14 +39451,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -37337,14 +39535,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -37416,14 +39619,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -37503,9 +39711,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -37577,14 +39790,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -37656,14 +39874,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -37735,14 +39958,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -37812,14 +40040,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          4
-        Ipv6AddressesPerInterface:          4
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -37896,9 +40129,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -37967,14 +40205,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -38046,14 +40289,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -38133,9 +40381,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -38207,14 +40460,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -38286,14 +40544,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -38365,14 +40628,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -38444,14 +40712,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -38521,14 +40794,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          4
-        Ipv6AddressesPerInterface:          4
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -38605,9 +40883,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -38676,14 +40959,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -38755,14 +41043,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -38834,14 +41127,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -38913,14 +41211,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -38992,14 +41295,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -39071,14 +41379,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -39150,14 +41463,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -39229,14 +41547,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -39308,14 +41631,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -39387,14 +41715,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -39466,14 +41799,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -39545,14 +41883,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -39632,9 +41975,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -39706,14 +42054,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -39785,14 +42138,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -39864,14 +42222,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -39940,14 +42303,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -40021,9 +42389,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -40092,14 +42465,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -40179,7 +42557,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -40259,7 +42642,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -40342,7 +42730,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -40422,7 +42815,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -40505,7 +42903,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -40585,7 +42988,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -40665,7 +43073,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -40745,7 +43158,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -40823,7 +43241,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -40903,7 +43326,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -40980,7 +43408,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -41057,7 +43490,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -41147,7 +43585,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -41237,7 +43680,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -41330,7 +43778,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -41420,7 +43873,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -41513,7 +43971,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -41603,7 +44066,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -41693,7 +44161,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -41783,7 +44256,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -41871,7 +44349,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -41961,7 +44444,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -42048,7 +44536,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -42135,7 +44628,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -42219,7 +44717,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -42303,7 +44806,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -42387,7 +44895,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -42471,7 +44984,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -42555,7 +45073,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -42639,7 +45162,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -42723,7 +45251,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -42807,7 +45340,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -42891,7 +45429,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -42975,7 +45518,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -43059,7 +45607,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -43143,7 +45696,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -43230,7 +45788,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -43314,7 +45877,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -43398,7 +45966,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -43485,7 +46058,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -43569,7 +46147,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -43652,7 +46235,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -43732,7 +46320,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -43813,7 +46406,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -43890,7 +46488,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -43964,7 +46567,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -44052,7 +46660,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -44140,7 +46753,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -44263,7 +46881,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     GpuInfo: {
         Gpus: [{
@@ -44579,9 +47202,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 32
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -44685,9 +47313,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -45008,9 +47641,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 32
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -45104,7 +47742,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -45179,7 +47822,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -45254,7 +47902,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -45329,7 +47982,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -45404,7 +48062,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -45479,7 +48142,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -45554,7 +48222,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -45632,7 +48305,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -45710,7 +48388,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -45788,7 +48471,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -45866,7 +48554,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -45944,7 +48637,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -46022,7 +48720,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -46097,7 +48800,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -46172,7 +48880,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -46250,7 +48963,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -46328,7 +49046,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -46406,7 +49129,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -46484,7 +49212,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -46562,7 +49295,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -46640,7 +49378,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -46718,7 +49461,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -46796,7 +49544,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -46884,7 +49637,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -46972,7 +49730,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -47060,7 +49823,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -47148,7 +49916,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -47236,7 +50009,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -47324,7 +50102,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -47412,7 +50195,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -47500,7 +50288,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -47578,7 +50371,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -47656,7 +50454,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -47734,7 +50537,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -47812,7 +50620,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -47890,7 +50703,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -47968,7 +50786,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -48046,7 +50869,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -48121,7 +50949,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -48196,7 +51029,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -48284,7 +51122,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -48372,7 +51215,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -48460,7 +51308,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -48548,7 +51401,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -48636,7 +51494,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -48724,7 +51587,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -48812,7 +51680,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -48897,7 +51770,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -48982,7 +51860,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -49060,7 +51943,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -49138,7 +52026,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -49219,7 +52112,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -49297,7 +52195,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -49375,7 +52278,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -49453,7 +52361,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -49531,7 +52444,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -49609,7 +52527,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -49684,7 +52607,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -49762,7 +52690,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -49840,7 +52773,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -49918,7 +52856,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -49996,7 +52939,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -50074,7 +53022,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -50152,7 +53105,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -50228,7 +53186,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -50303,7 +53266,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -50378,7 +53346,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -50466,7 +53439,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -50554,7 +53532,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -50642,7 +53625,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -50730,7 +53718,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -50818,7 +53811,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -50906,7 +53904,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -50992,7 +53995,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -51077,7 +54085,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -51162,7 +54175,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -51228,7 +54246,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "18.75 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 4
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             18.75
             PeakBandwidthInGbps:                 18.75
             DefaultEnaQueueCountPerInterface:    8
@@ -51243,7 +54261,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -51309,7 +54332,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "25 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 1
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             25.0
             PeakBandwidthInGbps:                 25.0
             DefaultEnaQueueCountPerInterface:    8
@@ -51324,7 +54347,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -51390,7 +54418,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "37.5 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 9
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             37.5
             PeakBandwidthInGbps:                 37.5
             DefaultEnaQueueCountPerInterface:    8
@@ -51405,7 +54433,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -51486,7 +54519,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -51552,7 +54590,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "50 Gigabit"
             MaximumNetworkInterfaces:            15
-            AdditionalFlexibleNetworkInterfaces: 9
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             50.0
             PeakBandwidthInGbps:                 50.0
             DefaultEnaQueueCountPerInterface:    8
@@ -51570,7 +54608,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -51651,7 +54694,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -51717,7 +54765,7 @@ InstanceTypes: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "12.5 Gigabit"
             MaximumNetworkInterfaces:            8
-            AdditionalFlexibleNetworkInterfaces: 2
+            AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             12.5
             PeakBandwidthInGbps:                 12.5
             DefaultEnaQueueCountPerInterface:    8
@@ -51732,7 +54780,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -51813,7 +54866,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -51892,7 +54950,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -51970,7 +55033,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -52061,7 +55129,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -52152,7 +55225,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -52243,7 +55321,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -52334,7 +55417,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -52428,7 +55516,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -52519,7 +55612,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -52610,7 +55708,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -52701,7 +55804,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -52790,7 +55898,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -52878,7 +55991,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "supported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -52948,14 +56066,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -53035,9 +56158,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -53109,14 +56237,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -53188,14 +56321,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -53267,14 +56405,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -53346,14 +56489,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -53423,14 +56571,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          4
-        Ipv6AddressesPerInterface:          4
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -53507,9 +56660,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -53578,14 +56736,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -53667,14 +56830,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -53764,9 +56932,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -53848,14 +57021,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -53937,14 +57115,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -54026,14 +57209,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -54115,14 +57303,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -54202,14 +57395,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
         }]
-        Ipv4AddressesPerInterface:          4
-        Ipv6AddressesPerInterface:          4
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -54296,9 +57494,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -54377,14 +57580,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -54456,14 +57664,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -54535,14 +57748,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -54614,14 +57832,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -54693,14 +57916,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -54780,9 +58008,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -54854,14 +58087,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -54933,14 +58171,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          30
-        Ipv6AddressesPerInterface:          30
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -55012,14 +58255,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
         }]
-        Ipv4AddressesPerInterface:          10
-        Ipv6AddressesPerInterface:          10
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    10
+        Ipv6AddressesPerInterface:    10
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -55088,14 +58336,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
         }]
-        Ipv4AddressesPerInterface:          50
-        Ipv6AddressesPerInterface:          50
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    50
+        Ipv6AddressesPerInterface:    50
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -55169,9 +58422,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -55240,14 +58498,19 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
         }]
-        Ipv4AddressesPerInterface:          15
-        Ipv6AddressesPerInterface:          15
-        Ipv6Supported:                      true
-        EnaSupport:                         "required"
-        EfaSupported:                       false
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    false
-        FlexibleEnaQueuesSupport:           "unsupported"
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -55327,7 +58590,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -55407,7 +58675,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -55490,7 +58763,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -55570,7 +58848,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -55653,7 +58936,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -55733,7 +59021,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -55813,7 +59106,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -55893,7 +59191,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -55971,7 +59274,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -56051,7 +59359,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -56128,7 +59441,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -56205,7 +59523,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -56295,7 +59618,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -56385,7 +59713,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -56478,7 +59811,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -56568,7 +59906,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -56661,7 +60004,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -56751,7 +60099,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -56841,7 +60194,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -56931,7 +60289,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -57019,7 +60382,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -57109,7 +60477,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -57196,7 +60569,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -57283,7 +60661,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "unsupported"
+        FlexibleEnaQueuesSupport: "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -57367,7 +60750,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -57451,7 +60839,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -57535,7 +60928,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -57619,7 +61017,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -57703,7 +61106,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -57787,7 +61195,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -57871,7 +61284,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -57955,7 +61373,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -58039,7 +61462,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -58123,7 +61551,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -58207,7 +61640,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -58291,7 +61729,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -58378,7 +61821,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -58462,7 +61910,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -58546,7 +61999,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -58633,7 +62091,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -58717,7 +62180,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -58800,7 +62268,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -58880,7 +62353,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -58961,7 +62439,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         BandwidthWeightings: ["default", "ebs-1", "vpc-1"]
-        FlexibleEnaQueuesSupport:           "supported"
+        FlexibleEnaQueuesSupport: "supported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -59031,7 +62514,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -59096,7 +62584,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -59161,7 +62654,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -59226,7 +62724,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -59291,7 +62794,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -59356,7 +62864,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -59421,7 +62934,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -59496,7 +63014,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -59574,7 +63097,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -59652,7 +63180,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -59730,7 +63263,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -59808,7 +63346,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -59886,7 +63429,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -59964,7 +63512,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -60042,7 +63595,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -60120,7 +63678,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -60198,7 +63761,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -60276,7 +63844,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -60354,7 +63927,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -60432,7 +64010,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -60510,7 +64093,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -60588,7 +64176,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -60666,7 +64259,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -60744,7 +64342,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -60822,7 +64425,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -60900,7 +64508,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -60978,7 +64591,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -61056,7 +64674,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["partition", "spread"]
@@ -61134,7 +64757,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -61209,7 +64837,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -61284,9 +64917,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -61366,9 +65004,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 1
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -61455,9 +65098,14 @@ InstanceTypes: [{
         EfaInfo: {
             MaximumEfaInterfaces: 2
         }
-        EncryptionInTransitSupported:       true
-        EnaSrdSupported:                    true
-        FlexibleEnaQueuesSupport:           "unsupported"
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
         SecondaryNetworkSupported:          false
         Ipv4AddressesPerSecondaryInterface: 0
     }
@@ -61547,7 +65195,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -61632,7 +65285,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -61717,7 +65375,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -61805,7 +65468,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -61896,7 +65564,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -61984,7 +65657,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -62069,7 +65747,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -62157,7 +65840,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -62245,7 +65933,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -62336,7 +66029,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -62424,7 +66122,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -62512,7 +66215,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -62600,7 +66308,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              true
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -62685,7 +66398,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: true
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -62773,7 +66491,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -62861,7 +66584,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -62949,7 +66677,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -63037,7 +66770,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -63125,7 +66863,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -63210,7 +66953,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -63295,7 +67043,12 @@ InstanceTypes: [{
         EncryptionInTransitSupported: false
         EnaSrdSupported:              false
         FlexibleEnaQueuesSupport:     "unsupported"
-        SecondaryNetworkSupported:    false
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
