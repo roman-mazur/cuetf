@@ -11,14 +11,14 @@ if [ -z "$pkgName" ]; then
 fi
 
 dst="./out/$provider/$pkgName"
-itypes="../../$provider/regions/$pkgName/itypes_gen.cue"
+itypes="../../providers/$provider/regions/$pkgName/itypes_gen.cue"
 rm -rf "$dst"
 mkdir -p "$dst"
 
 cat >"$dst/sort_tmp.cue" <<EOF
 package $pkgName
 
-import "github.com/roman-mazur/cuetf/aws/regions"
+import "github.com/roman-mazur/cuetf/providers/aws/regions"
 
 sortedOutput: (regions.#InstaceTypesSort & {input: InstanceTypes}).output
 EOF
