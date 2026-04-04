@@ -1,8 +1,8 @@
 package aws
 
-import "github.com/roman-mazur/cuetf/internal/tfjson"
+import "github.com/roman-mazur/cuetf"
 
-#Terraform: tfjson.#Schema & {
+#Terraform: cuetf.#TfJson & {
 	#awsPrefix:       string | *"aws"
 	let prefix = #awsPrefix
 	_#awsProviderName: =~"^\(prefix)_.+"

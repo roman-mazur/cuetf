@@ -1,6 +1,6 @@
 package aws
 
-import "github.com/roman-mazur/cuetf/aws/data"
+import "github.com/roman-mazur/cuetf/providers/aws/data"
 
 #Terraform: {
 	#awsPrefix: string
