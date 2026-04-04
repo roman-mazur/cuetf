@@ -1,6 +1,6 @@
 package elasticstack
 
-import "github.com/roman-mazur/cuetf/elasticstack/res"
+import "github.com/roman-mazur/cuetf/providers/elasticstack/res"
 
 #Terraform: {
 	#elasticstackPrefix: string
