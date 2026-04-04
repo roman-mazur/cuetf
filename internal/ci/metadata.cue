@@ -12,7 +12,7 @@ workflows: metadata: {
 		#script: """
 			\(_scriptPrepareForGitPush)
 
-			cd aws && ./import.sh
+			cd providers/aws && ./import.sh
 
 			if [ $(git status --porcelain | wc -l) -gt 0 ]; then
 					git add .
