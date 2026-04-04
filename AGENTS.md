@@ -7,12 +7,12 @@ This repository manages the generation of CUE schemas for Terraform providers. I
 * **`internal/jsonschema/`**: Contains the core implementation for the conversion and generation logic. This is the "engine" of the project.
 * **`internal/ci/`**: Contains CUE files that define GitHub Actions logic. These files generate the actual `.github/workflows/` files.
 * **`internal/analysis/`**: Contains scripts and Go generate directives for provider analysis (e.g. AWS region data). Output is stored in `internal/analysis/out/`.
-* **`[provider]/internal/`**: The workspace for a specific provider's schema extraction.
+* **`providers/[provider]/internal/`**: The workspace for a specific provider's schema extraction.
     * **`corpus.tf`**: Contains the Terraform code that imports the provider. Create this to add a new provider or edit to bump a version manually.
     * **`schema/`**: Contains raw Terraform JSON schemas. **DO NOT ANALYZE** (Too large).
-* **`[provider]/doc.cue`**: User-facing documentation with an example of importing the provider's definitions.
-* **`[provider]/exclude`**: Optional file listing resource name patterns to exclude from generation.
-* **`[provider]/res/` & `[provider]/data/`**: Auto-generated CUE definitions for Resources and Data Sources. **DO NOT ANALYZE** (Too many files).
+* **`providers/[provider]/doc.cue`**: User-facing documentation with an example of importing the provider's definitions.
+* **`providers/[provider]/exclude`**: Optional file listing resource name patterns to exclude from generation.
+* **`providers/[provider]/res/` & `providers/[provider]/data/`**: Auto-generated CUE definitions for Resources and Data Sources. **DO NOT ANALYZE** (Too many files).
 
 ---
 
@@ -21,7 +21,7 @@ This repository manages the generation of CUE schemas for Terraform providers. I
 To maintain performance and stay within token limits, follow these rules:
 
 1.  **Ignore Generated Output**: Never attempt to read or analyze the contents of `res/` or `data/` directories. They contain thousands of files.
-2.  **Avoid Raw Schemas**: Do not open files in `[provider]/internal/schema/`. These JSON files are massive and will degrade session performance.
+2.  **Avoid Raw Schemas**: Do not open files in `providers/[provider]/internal/schema/`. These JSON files are massive and will degrade session performance.
 3.  **Source of Truth**: If you need to fix how a resource is mapped, modify the transformation logic in the root `internal/` directory.
 
 ---
@@ -30,9 +30,9 @@ To maintain performance and stay within token limits, follow these rules:
 
 ### 1. Adding a New Provider
 To add a new provider (e.g., `aws`):
-1.  Create the directory `[provider]/internal/`.
-2.  Create `[provider]/internal/corpus.tf` with the required `terraform { required_providers { ... } }` block.
-3.  Add `[provider]/doc.cue` with an example of importing the definitions.
+1.  Create the directory `providers/[provider]/internal/`.
+2.  Create `providers/[provider]/internal/corpus.tf` with the required `terraform { required_providers { ... } }` block.
+3.  Add `providers/[provider]/doc.cue` with an example of importing the definitions.
 4.  Run the update script from the root: `./update-providers.sh [provider-name]`.
 
 ### 2. Updating Providers (Automation)
