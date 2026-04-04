@@ -1,6 +1,6 @@
 package helm
 
-import "github.com/roman-mazur/cuetf/helm/data"
+import "github.com/roman-mazur/cuetf/providers/helm/data"
 
 #Terraform: {
 	#helmPrefix: string
