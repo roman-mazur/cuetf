@@ -1,8 +1,8 @@
 package azurerm
 
-import "github.com/roman-mazur/cuetf/internal/tfjson"
+import "github.com/roman-mazur/cuetf"
 
-#Terraform: tfjson.#Schema & {
+#Terraform: cuetf.#TfJson & {
 	#azurermPrefix:       string | *"azurerm"
 	let prefix = #azurermPrefix
 	_#azurermProviderName: =~"^\(prefix)_.+"

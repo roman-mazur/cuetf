@@ -1,6 +1,6 @@
 package azurerm
 
-import "github.com/roman-mazur/cuetf/azurerm/data"
+import "github.com/roman-mazur/cuetf/providers/azurerm/data"
 
 #Terraform: {
 	#azurermPrefix: string
