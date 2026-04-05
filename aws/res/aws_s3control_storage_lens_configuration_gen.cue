@@ -34,6 +34,7 @@ import "list"
 		activity_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/activity_metrics", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/activity_metrics"]])
 		advanced_cost_optimization_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/advanced_cost_optimization_metrics", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/advanced_cost_optimization_metrics"]])
 		advanced_data_protection_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/advanced_data_protection_metrics", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/advanced_data_protection_metrics"]])
+		advanced_performance_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/advanced_performance_metrics", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/advanced_performance_metrics"]])
 		bucket_level!: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level"]])
 		detailed_status_code_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/detailed_status_code_metrics", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/detailed_status_code_metrics"]])
 	})
@@ -50,10 +51,15 @@ import "list"
 		enabled?: bool
 	})
 
+	_#defs: "/$defs/storage_lens_configuration/$defs/account_level/$defs/advanced_performance_metrics": close({
+		enabled?: bool
+	})
+
 	_#defs: "/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level": close({
 		activity_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/activity_metrics", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/activity_metrics"]])
 		advanced_cost_optimization_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/advanced_cost_optimization_metrics", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/advanced_cost_optimization_metrics"]])
 		advanced_data_protection_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/advanced_data_protection_metrics", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/advanced_data_protection_metrics"]])
+		advanced_performance_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/advanced_performance_metrics", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/advanced_performance_metrics"]])
 		detailed_status_code_metrics?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/detailed_status_code_metrics", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/detailed_status_code_metrics"]])
 		prefix_level?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/prefix_level", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/prefix_level"]])
 	})
@@ -67,6 +73,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/advanced_data_protection_metrics": close({
+		enabled?: bool
+	})
+
+	_#defs: "/$defs/storage_lens_configuration/$defs/account_level/$defs/bucket_level/$defs/advanced_performance_metrics": close({
 		enabled?: bool
 	})
 

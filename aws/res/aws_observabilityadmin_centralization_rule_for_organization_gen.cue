@@ -71,7 +71,8 @@ package res
 	})
 
 	_#defs: "/$defs/rule/$defs/source/$defs/source_logs_configuration": close({
-		encrypted_log_group_strategy!: string
-		log_group_selection_criteria!: string
+		data_source_selection_criteria?: string
+		encrypted_log_group_strategy!:   string
+		log_group_selection_criteria?:   string
 	})
 }

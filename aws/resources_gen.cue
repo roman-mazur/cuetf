@@ -1048,6 +1048,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_opensearchserverless_security_policy": res.#aws_opensearchserverless_security_policy
 	_#res: "\(#awsPrefix)_opensearchserverless_vpc_endpoint": res.#aws_opensearchserverless_vpc_endpoint
 	_#res: "\(#awsPrefix)_organizations_account": res.#aws_organizations_account
+	_#res: "\(#awsPrefix)_organizations_aws_service_access": res.#aws_organizations_aws_service_access
 	_#res: "\(#awsPrefix)_organizations_delegated_administrator": res.#aws_organizations_delegated_administrator
 	_#res: "\(#awsPrefix)_organizations_organization": res.#aws_organizations_organization
 	_#res: "\(#awsPrefix)_organizations_organizational_unit": res.#aws_organizations_organizational_unit
@@ -1306,6 +1307,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_sagemaker_servicecatalog_portfolio_status": res.#aws_sagemaker_servicecatalog_portfolio_status
 	_#res: "\(#awsPrefix)_sagemaker_space": res.#aws_sagemaker_space
 	_#res: "\(#awsPrefix)_sagemaker_studio_lifecycle_config": res.#aws_sagemaker_studio_lifecycle_config
+	_#res: "\(#awsPrefix)_sagemaker_training_job": res.#aws_sagemaker_training_job
 	_#res: "\(#awsPrefix)_sagemaker_user_profile": res.#aws_sagemaker_user_profile
 	_#res: "\(#awsPrefix)_sagemaker_workforce": res.#aws_sagemaker_workforce
 	_#res: "\(#awsPrefix)_sagemaker_workteam": res.#aws_sagemaker_workteam
@@ -1493,6 +1495,7 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_transfer_web_app_customization": res.#aws_transfer_web_app_customization
 	_#res: "\(#awsPrefix)_transfer_web_app": res.#aws_transfer_web_app
 	_#res: "\(#awsPrefix)_transfer_workflow": res.#aws_transfer_workflow
+	_#res: "\(#awsPrefix)_uxc_account_customizations": res.#aws_uxc_account_customizations
 	_#res: "\(#awsPrefix)_verifiedaccess_endpoint": res.#aws_verifiedaccess_endpoint
 	_#res: "\(#awsPrefix)_verifiedaccess_group": res.#aws_verifiedaccess_group
 	_#res: "\(#awsPrefix)_verifiedaccess_instance": res.#aws_verifiedaccess_instance
@@ -1603,7 +1606,9 @@ import "github.com/roman-mazur/cuetf/aws/res"
 	_#res: "\(#awsPrefix)_wafv2_web_acl_rule_group_association": res.#aws_wafv2_web_acl_rule_group_association
 	_#res: "\(#awsPrefix)_workmail_default_domain": res.#aws_workmail_default_domain
 	_#res: "\(#awsPrefix)_workmail_domain": res.#aws_workmail_domain
+	_#res: "\(#awsPrefix)_workmail_group": res.#aws_workmail_group
 	_#res: "\(#awsPrefix)_workmail_organization": res.#aws_workmail_organization
+	_#res: "\(#awsPrefix)_workmail_user": res.#aws_workmail_user
 	_#res: "\(#awsPrefix)_workspaces_connection_alias": res.#aws_workspaces_connection_alias
 	_#res: "\(#awsPrefix)_workspaces_directory": res.#aws_workspaces_directory
 	_#res: "\(#awsPrefix)_workspaces_ip_group": res.#aws_workspaces_ip_group

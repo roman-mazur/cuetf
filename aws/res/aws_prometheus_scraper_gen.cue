@@ -34,6 +34,7 @@ package res
 
 	#source: close({
 		eks?: matchN(1, [_#defs."/$defs/source/$defs/eks", [..._#defs."/$defs/source/$defs/eks"]])
+		vpc?: matchN(1, [_#defs."/$defs/source/$defs/vpc", [..._#defs."/$defs/source/$defs/vpc"]])
 	})
 
 	#timeouts: close({
@@ -66,6 +67,11 @@ package res
 	_#defs: "/$defs/source/$defs/eks": close({
 		cluster_arn!: string
 		security_group_ids?: [...string]
+		subnet_ids!: [...string]
+	})
+
+	_#defs: "/$defs/source/$defs/vpc": close({
+		security_group_ids!: [...string]
 		subnet_ids!: [...string]
 	})
 }
