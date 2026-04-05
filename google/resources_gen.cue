@@ -155,6 +155,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_bigquery_job": res.#google_bigquery_job
 	_#res: "\(#googlePrefix)_bigquery_reservation_assignment": res.#google_bigquery_reservation_assignment
 	_#res: "\(#googlePrefix)_bigquery_reservation": res.#google_bigquery_reservation
+	_#res: "\(#googlePrefix)_bigquery_reservation_group": res.#google_bigquery_reservation_group
 	_#res: "\(#googlePrefix)_bigquery_routine": res.#google_bigquery_routine
 	_#res: "\(#googlePrefix)_bigquery_row_access_policy": res.#google_bigquery_row_access_policy
 	_#res: "\(#googlePrefix)_bigquery_table": res.#google_bigquery_table
@@ -366,12 +367,15 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_compute_region_backend_bucket": res.#google_compute_region_backend_bucket
 	_#res: "\(#googlePrefix)_compute_region_backend_service": res.#google_compute_region_backend_service
 	_#res: "\(#googlePrefix)_compute_region_commitment": res.#google_compute_region_commitment
+	_#res: "\(#googlePrefix)_compute_region_composite_health_check": res.#google_compute_region_composite_health_check
 	_#res: "\(#googlePrefix)_compute_region_disk": res.#google_compute_region_disk
 	_#res: "\(#googlePrefix)_compute_region_disk_iam_binding": res.#google_compute_region_disk_iam_binding
 	_#res: "\(#googlePrefix)_compute_region_disk_iam_member": res.#google_compute_region_disk_iam_member
 	_#res: "\(#googlePrefix)_compute_region_disk_iam_policy": res.#google_compute_region_disk_iam_policy
 	_#res: "\(#googlePrefix)_compute_region_disk_resource_policy_attachment": res.#google_compute_region_disk_resource_policy_attachment
+	_#res: "\(#googlePrefix)_compute_region_health_aggregation_policy": res.#google_compute_region_health_aggregation_policy
 	_#res: "\(#googlePrefix)_compute_region_health_check": res.#google_compute_region_health_check
+	_#res: "\(#googlePrefix)_compute_region_health_source": res.#google_compute_region_health_source
 	_#res: "\(#googlePrefix)_compute_region_instance_group_manager": res.#google_compute_region_instance_group_manager
 	_#res: "\(#googlePrefix)_compute_region_instance_template": res.#google_compute_region_instance_template
 	_#res: "\(#googlePrefix)_compute_region_network_endpoint": res.#google_compute_region_network_endpoint
@@ -432,6 +436,7 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_compute_vpn_tunnel": res.#google_compute_vpn_tunnel
 	_#res: "\(#googlePrefix)_compute_wire_group": res.#google_compute_wire_group
 	_#res: "\(#googlePrefix)_contact_center_insights_analysis_rule": res.#google_contact_center_insights_analysis_rule
+	_#res: "\(#googlePrefix)_contact_center_insights_assessment_rule": res.#google_contact_center_insights_assessment_rule
 	_#res: "\(#googlePrefix)_contact_center_insights_auto_labeling_rule": res.#google_contact_center_insights_auto_labeling_rule
 	_#res: "\(#googlePrefix)_contact_center_insights_view": res.#google_contact_center_insights_view
 	_#res: "\(#googlePrefix)_container_analysis_note": res.#google_container_analysis_note
@@ -752,6 +757,9 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_iam_workforce_pool_provider_scim_tenant": res.#google_iam_workforce_pool_provider_scim_tenant
 	_#res: "\(#googlePrefix)_iam_workforce_pool_provider_scim_token": res.#google_iam_workforce_pool_provider_scim_token
 	_#res: "\(#googlePrefix)_iam_workload_identity_pool": res.#google_iam_workload_identity_pool
+	_#res: "\(#googlePrefix)_iam_workload_identity_pool_iam_binding": res.#google_iam_workload_identity_pool_iam_binding
+	_#res: "\(#googlePrefix)_iam_workload_identity_pool_iam_member": res.#google_iam_workload_identity_pool_iam_member
+	_#res: "\(#googlePrefix)_iam_workload_identity_pool_iam_policy": res.#google_iam_workload_identity_pool_iam_policy
 	_#res: "\(#googlePrefix)_iam_workload_identity_pool_provider": res.#google_iam_workload_identity_pool_provider
 	_#res: "\(#googlePrefix)_iap_app_engine_service_iam_binding": res.#google_iap_app_engine_service_iam_binding
 	_#res: "\(#googlePrefix)_iap_app_engine_service_iam_member": res.#google_iap_app_engine_service_iam_member
@@ -1199,5 +1207,14 @@ import "github.com/roman-mazur/cuetf/google/res"
 	_#res: "\(#googlePrefix)_workbench_instance_iam_member": res.#google_workbench_instance_iam_member
 	_#res: "\(#googlePrefix)_workbench_instance_iam_policy": res.#google_workbench_instance_iam_policy
 	_#res: "\(#googlePrefix)_workflows_workflow": res.#google_workflows_workflow
+	_#res: "\(#googlePrefix)_workstations_workstation_cluster": res.#google_workstations_workstation_cluster
+	_#res: "\(#googlePrefix)_workstations_workstation_config": res.#google_workstations_workstation_config
+	_#res: "\(#googlePrefix)_workstations_workstation_config_iam_binding": res.#google_workstations_workstation_config_iam_binding
+	_#res: "\(#googlePrefix)_workstations_workstation_config_iam_member": res.#google_workstations_workstation_config_iam_member
+	_#res: "\(#googlePrefix)_workstations_workstation_config_iam_policy": res.#google_workstations_workstation_config_iam_policy
+	_#res: "\(#googlePrefix)_workstations_workstation": res.#google_workstations_workstation
+	_#res: "\(#googlePrefix)_workstations_workstation_iam_binding": res.#google_workstations_workstation_iam_binding
+	_#res: "\(#googlePrefix)_workstations_workstation_iam_member": res.#google_workstations_workstation_iam_member
+	_#res: "\(#googlePrefix)_workstations_workstation_iam_policy": res.#google_workstations_workstation_iam_policy
 
 }

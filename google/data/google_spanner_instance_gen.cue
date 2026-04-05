@@ -18,9 +18,15 @@ package data
 			asymmetric_autoscaling_options?: [...close({
 				overrides?: [...close({
 					autoscaling_limits?: [...close({
-						max_nodes?: number
-						min_nodes?: number
+						max_nodes?:            number
+						max_processing_units?: number
+						min_nodes?:            number
+						min_processing_units?: number
 					})]
+					autoscaling_target_high_priority_cpu_utilization_percent?: number
+					autoscaling_target_total_cpu_utilization_percent?:         number
+					disable_high_priority_cpu_autoscaling?:                    bool
+					disable_total_cpu_autoscaling?:                            bool
 				})]
 				replica_selection?: [...close({
 					location?: string

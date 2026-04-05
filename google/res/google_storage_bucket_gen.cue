@@ -144,12 +144,16 @@ import "list"
 	})
 
 	#encryption: close({
+		customer_managed_encryption_enforcement_config?: matchN(1, [_#defs."/$defs/encryption/$defs/customer_managed_encryption_enforcement_config", list.MaxItems(1) & [..._#defs."/$defs/encryption/$defs/customer_managed_encryption_enforcement_config"]])
+		customer_supplied_encryption_enforcement_config?: matchN(1, [_#defs."/$defs/encryption/$defs/customer_supplied_encryption_enforcement_config", list.MaxItems(1) & [..._#defs."/$defs/encryption/$defs/customer_supplied_encryption_enforcement_config"]])
+		google_managed_encryption_enforcement_config?: matchN(1, [_#defs."/$defs/encryption/$defs/google_managed_encryption_enforcement_config", list.MaxItems(1) & [..._#defs."/$defs/encryption/$defs/google_managed_encryption_enforcement_config"]])
+
 		// A Cloud KMS key that will be used to encrypt objects inserted
 		// into this bucket, if no encryption method is specified. You
 		// must pay attention to whether the crypto key is available in
 		// the location that this bucket is created in. See the docs for
 		// more details.
-		default_kms_key_name!: string
+		default_kms_key_name?: string
 	})
 
 	#hierarchical_namespace: close({
@@ -232,6 +236,42 @@ import "list"
 		// The custom object to return when a requested resource is not
 		// found.
 		not_found_page?: string
+	})
+
+	_#defs: "/$defs/encryption/$defs/customer_managed_encryption_enforcement_config": close({
+		// Time from which the config was effective. This is
+		// service-provided.
+		effective_time?: string
+
+		// Whether CMEK is restricted for new objects within the bucket.
+		// If FullyRestricted, new objects can't be created using CMEK
+		// encryption. If NotRestricted or unset, creation of new objects
+		// with CMEK encryption is allowed.
+		restriction_mode!: string
+	})
+
+	_#defs: "/$defs/encryption/$defs/customer_supplied_encryption_enforcement_config": close({
+		// Time from which the config was effective. This is
+		// service-provided.
+		effective_time?: string
+
+		// Whether CSEK is restricted for new objects within the bucket.
+		// If FullyRestricted, new objects can't be created using CSEK
+		// encryption. If NotRestricted or unset, creation of new objects
+		// with CSEK encryption is allowed.
+		restriction_mode!: string
+	})
+
+	_#defs: "/$defs/encryption/$defs/google_managed_encryption_enforcement_config": close({
+		// Time from which the config was effective. This is
+		// service-provided.
+		effective_time?: string
+
+		// Whether GMEK is restricted for new objects within the bucket.
+		// If FullyRestricted, new objects can't be created using GMEK
+		// encryption. If NotRestricted or unset, creation of new objects
+		// with GMEK encryption is allowed.
+		restriction_mode!: string
 	})
 
 	_#defs: "/$defs/ip_filter/$defs/public_network_source": close({

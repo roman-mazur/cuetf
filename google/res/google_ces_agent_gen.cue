@@ -208,6 +208,16 @@ import "list"
 		// Dialogflow
 		// agent execution ends.
 		output_variable_mapping?: [string]: string
+
+		// Indicates whether to respect the message-level interruption
+		// settings configured in the Dialogflow agent. * If false: all
+		// response messages from the Dialogflow agent follow the
+		// app-level barge-in settings. * If true: only response messages
+		// with
+		// ['allow_playback_interruption'](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text)
+		// set to true will be interruptable, all other messages follow
+		// the app-level barge-in settings.
+		respect_response_interruption_settings?: bool
 	})
 
 	#timeouts: close({

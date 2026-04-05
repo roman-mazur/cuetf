@@ -191,6 +191,7 @@ package google
 		vpc_access_custom_endpoint?:                    string
 		workbench_custom_endpoint?:                     string
 		workflows_custom_endpoint?:                     string
+		workstations_custom_endpoint?:                  string
 		zone?:                                          string
 	})
 

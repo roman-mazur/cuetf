@@ -43,7 +43,19 @@ package data
 
 		// The bucket's encryption configuration.
 		encryption?: [...close({
+			customer_managed_encryption_enforcement_config?: [...close({
+				effective_time?:   string
+				restriction_mode?: string
+			})]
+			customer_supplied_encryption_enforcement_config?: [...close({
+				effective_time?:   string
+				restriction_mode?: string
+			})]
 			default_kms_key_name?: string
+			google_managed_encryption_enforcement_config?: [...close({
+				effective_time?:   string
+				restriction_mode?: string
+			})]
 		})]
 
 		// When true, before deleting a bucket, delete all objects within

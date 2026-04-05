@@ -153,6 +153,10 @@ import "list"
 		// 'networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}'
 		reserved_internal_range?: string
 
+		// 'Configures subnet mask resolution for this subnetwork.'
+		// Possible values: ["ARP_ALL_RANGES", "ARP_PRIMARY_RANGE"]
+		resolve_subnet_mask?: string
+
 		// The role of subnetwork.
 		// Currently, this field is only used when 'purpose' is
 		// 'REGIONAL_MANAGED_PROXY'.

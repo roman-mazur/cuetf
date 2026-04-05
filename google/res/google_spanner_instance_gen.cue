@@ -121,15 +121,52 @@ import "list"
 	})
 
 	_#defs: "/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides": close({
-		autoscaling_limits!: matchN(1, [_#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides/$defs/autoscaling_limits", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides/$defs/autoscaling_limits"]])
+		autoscaling_limits?: matchN(1, [_#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides/$defs/autoscaling_limits", list.MaxItems(1) & [..._#defs."/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides/$defs/autoscaling_limits"]])
+
+		// The target high priority cpu utilization percentage that the
+		// autoscaler
+		// should be trying to achieve for this replica.
+		// This number is on a scale from 0 (no utilization) to 100 (full
+		// utilization).
+		autoscaling_target_high_priority_cpu_utilization_percent?: number
+
+		// The target total cpu utilization percentage that the autoscaler
+		// should be trying to achieve for this replica.
+		// This number is on a scale from 0 (no utilization) to 100 (full
+		// utilization).
+		autoscaling_target_total_cpu_utilization_percent?: number
+
+		// If true, disables high priority CPU autoscaling for this
+		// replica and ignores
+		// high_priority_cpu_utilization_percent in the top-level
+		// autoscaling configuration.
+		disable_high_priority_cpu_autoscaling?: bool
+
+		// If true, disables total CPU autoscaling for this replica and
+		// ignores
+		// total_cpu_utilization_percent in the top-level autoscaling
+		// configuration.
+		disable_total_cpu_autoscaling?: bool
 	})
 
 	_#defs: "/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/overrides/$defs/autoscaling_limits": close({
 		// The maximum number of nodes for this specific replica.
-		max_nodes!: number
+		max_nodes?: number
+
+		// The maximum number of processing units for this specific
+		// replica.
+		// If set, this number should be multiples of 1000 and be greater
+		// than or equal to
+		// min_processing_units.
+		max_processing_units?: number
 
 		// The minimum number of nodes for this specific replica.
-		min_nodes!: number
+		min_nodes?: number
+
+		// The minimum number of processing units for this specific
+		// replica.
+		// If set, this number should be multiples of 1000.
+		min_processing_units?: number
 	})
 
 	_#defs: "/$defs/autoscaling_config/$defs/asymmetric_autoscaling_options/$defs/replica_selection": close({
