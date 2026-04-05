@@ -60,24 +60,26 @@ import "list"
 		cors?: matchN(1, [_#defs."/$defs/site_config/$defs/cors", list.MaxItems(1) & [..._#defs."/$defs/site_config/$defs/cors"]])
 		ip_restriction?: matchN(1, [_#defs."/$defs/site_config/$defs/ip_restriction", [..._#defs."/$defs/site_config/$defs/ip_restriction"]])
 		scm_ip_restriction?: matchN(1, [_#defs."/$defs/site_config/$defs/scm_ip_restriction", [..._#defs."/$defs/site_config/$defs/scm_ip_restriction"]])
-		always_on?:                        bool
-		app_scale_limit?:                  number
-		auto_swap_slot_name?:              string
-		dotnet_framework_version?:         string
-		elastic_instance_minimum?:         number
-		ftps_state?:                       string
-		health_check_path?:                string
-		http2_enabled?:                    bool
-		linux_fx_version?:                 string
-		min_tls_version?:                  string
-		pre_warmed_instance_count?:        number
-		runtime_scale_monitoring_enabled?: bool
-		scm_min_tls_version?:              string
-		scm_type?:                         string
-		scm_use_main_ip_restriction?:      bool
-		use_32_bit_worker_process?:        bool
-		vnet_route_all_enabled?:           bool
-		websockets_enabled?:               bool
+		always_on?:                         bool
+		app_scale_limit?:                   number
+		auto_swap_slot_name?:               string
+		dotnet_framework_version?:          string
+		elastic_instance_minimum?:          number
+		ftps_state?:                        string
+		health_check_path?:                 string
+		http2_enabled?:                     bool
+		ip_restriction_default_action?:     string
+		linux_fx_version?:                  string
+		min_tls_version?:                   string
+		pre_warmed_instance_count?:         number
+		runtime_scale_monitoring_enabled?:  bool
+		scm_ip_restriction_default_action?: string
+		scm_min_tls_version?:               string
+		scm_type?:                          string
+		scm_use_main_ip_restriction?:       bool
+		use_32_bit_worker_process?:         bool
+		vnet_route_all_enabled?:            bool
+		websockets_enabled?:                bool
 	})
 
 	#timeouts: close({

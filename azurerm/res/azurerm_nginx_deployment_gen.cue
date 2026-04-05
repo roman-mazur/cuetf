@@ -17,7 +17,6 @@ import "list"
 		automatic_upgrade_channel?: string
 		capacity?:                  number
 		dataplane_api_endpoint?:    string
-		diagnose_support_enabled?:  bool
 		email?:                     string
 		id?:                        string
 		ip_address?:                string

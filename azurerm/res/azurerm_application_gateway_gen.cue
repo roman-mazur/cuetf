@@ -8,20 +8,23 @@ import "list"
 	close({
 		authentication_certificate?: matchN(1, [#authentication_certificate, [...#authentication_certificate]])
 		autoscale_configuration?: matchN(1, [#autoscale_configuration, list.MaxItems(1) & [...#autoscale_configuration]])
+		backend?: matchN(1, [#backend, [...#backend]])
 		backend_address_pool!: matchN(1, [#backend_address_pool, [_, ...] & [...#backend_address_pool]])
-		backend_http_settings!: matchN(1, [#backend_http_settings, [_, ...] & [...#backend_http_settings]])
+		backend_http_settings?: matchN(1, [#backend_http_settings, [...#backend_http_settings]])
 		custom_error_configuration?: matchN(1, [#custom_error_configuration, [...#custom_error_configuration]])
 		frontend_ip_configuration!: matchN(1, [#frontend_ip_configuration, [_, ...] & [...#frontend_ip_configuration]])
 		frontend_port!: matchN(1, [#frontend_port, [_, ...] & [...#frontend_port]])
 		gateway_ip_configuration!: matchN(1, [#gateway_ip_configuration, list.MaxItems(2) & [_, ...] & [...#gateway_ip_configuration]])
 		global?: matchN(1, [#global, list.MaxItems(1) & [...#global]])
-		http_listener!: matchN(1, [#http_listener, [_, ...] & [...#http_listener]])
+		http_listener?: matchN(1, [#http_listener, [...#http_listener]])
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
+		listener?: matchN(1, [#listener, [...#listener]])
 		private_link_configuration?: matchN(1, [#private_link_configuration, [...#private_link_configuration]])
 		probe?: matchN(1, [#probe, [...#probe]])
 		redirect_configuration?: matchN(1, [#redirect_configuration, [...#redirect_configuration]])
-		request_routing_rule!: matchN(1, [#request_routing_rule, [_, ...] & [...#request_routing_rule]])
+		request_routing_rule?: matchN(1, [#request_routing_rule, [...#request_routing_rule]])
 		rewrite_rule_set?: matchN(1, [#rewrite_rule_set, [...#rewrite_rule_set]])
+		routing_rule?: matchN(1, [#routing_rule, [...#routing_rule]])
 		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		ssl_certificate?: matchN(1, [#ssl_certificate, [...#ssl_certificate]])
 		ssl_policy?: matchN(1, [#ssl_policy, list.MaxItems(1) & [...#ssl_policy]])
@@ -56,6 +59,19 @@ import "list"
 	#autoscale_configuration: close({
 		max_capacity?: number
 		min_capacity!: number
+	})
+
+	#backend: close({
+		client_ip_preservation_enabled?: bool
+		host_name?:                      string
+		id?:                             string
+		name!:                           string
+		port!:                           number
+		probe_id?:                       string
+		probe_name?:                     string
+		protocol!:                       string
+		timeout_in_seconds?:             number
+		trusted_root_certificate_names?: [...string]
 	})
 
 	#backend_address_pool: close({
@@ -144,6 +160,21 @@ import "list"
 		type!:         string
 	})
 
+	#listener: close({
+		frontend_ip_configuration_id?:   string
+		frontend_ip_configuration_name!: string
+		frontend_port_id?:               string
+		frontend_port_name!:             string
+		host_names?: [...string]
+		id?:                   string
+		name!:                 string
+		protocol!:             string
+		ssl_certificate_id?:   string
+		ssl_certificate_name?: string
+		ssl_profile_id?:       string
+		ssl_profile_name?:     string
+	})
+
 	#private_link_configuration: close({
 		ip_configuration!: matchN(1, [_#defs."/$defs/private_link_configuration/$defs/ip_configuration", [_, ...] & [..._#defs."/$defs/private_link_configuration/$defs/ip_configuration"]])
 		id?:   string
@@ -157,10 +188,11 @@ import "list"
 		interval!:                                  number
 		minimum_servers?:                           number
 		name!:                                      string
-		path!:                                      string
+		path?:                                      string
 		pick_host_name_from_backend_http_settings?: bool
 		port?:                                      number
 		protocol!:                                  string
+		proxy_protocol_header_enabled?:             bool
 		timeout!:                                   number
 		unhealthy_threshold!:                       number
 	})
@@ -199,6 +231,18 @@ import "list"
 		rewrite_rule?: matchN(1, [_#defs."/$defs/rewrite_rule_set/$defs/rewrite_rule", [..._#defs."/$defs/rewrite_rule_set/$defs/rewrite_rule"]])
 		id?:   string
 		name!: string
+	})
+
+	#routing_rule: close({
+		backend_address_pool_id?:   string
+		backend_address_pool_name!: string
+		backend_id?:                string
+		backend_name!:              string
+		id?:                        string
+		listener_id?:               string
+		listener_name!:             string
+		name!:                      string
+		priority!:                  number
 	})
 
 	#sku: close({

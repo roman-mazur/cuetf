@@ -13,6 +13,18 @@ package data
 			max_capacity?: number
 			min_capacity?: number
 		})]
+		backend?: [...close({
+			client_ip_preservation_enabled?: bool
+			host_name?:                      string
+			id?:                             string
+			name?:                           string
+			port?:                           number
+			probe_id?:                       string
+			probe_name?:                     string
+			protocol?:                       string
+			timeout_in_seconds?:             number
+			trusted_root_certificate_names?: [...string]
+		})]
 		backend_address_pool?: [...close({
 			fqdns?: [...string]
 			id?: string
@@ -105,6 +117,20 @@ package data
 			tenant_id?:    string
 			type?:         string
 		})]
+		listener?: [...close({
+			frontend_ip_configuration_id?:   string
+			frontend_ip_configuration_name?: string
+			frontend_port_id?:               string
+			frontend_port_name?:             string
+			host_names?: [...string]
+			id?:                   string
+			name?:                 string
+			protocol?:             string
+			ssl_certificate_id?:   string
+			ssl_certificate_name?: string
+			ssl_profile_id?:       string
+			ssl_profile_name?:     string
+		})]
 		location?: string
 		name!:     string
 		private_endpoint_connection?: [...close({
@@ -136,6 +162,7 @@ package data
 			pick_host_name_from_backend_http_settings?: bool
 			port?:                                      number
 			protocol?:                                  string
+			proxy_protocol_header_enabled?:             bool
 			timeout?:                                   number
 			unhealthy_threshold?:                       number
 		})]
@@ -195,6 +222,17 @@ package data
 					reroute?:      bool
 				})]
 			})]
+		})]
+		routing_rule?: [...close({
+			backend_address_pool_id?:   string
+			backend_address_pool_name?: string
+			backend_id?:                string
+			backend_name?:              string
+			id?:                        string
+			listener_id?:               string
+			listener_name?:             string
+			name?:                      string
+			priority?:                  number
 		})]
 		sku?: [...close({
 			capacity?: number

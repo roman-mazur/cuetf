@@ -4,18 +4,19 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_mssql_elasticpool")
 	close({
-		timeouts?:            #timeouts
-		enclave_type?:        string
-		id?:                  string
-		license_type?:        string
-		location?:            string
-		max_size_bytes?:      number
-		max_size_gb?:         number
-		name!:                string
-		per_db_max_capacity?: number
-		per_db_min_capacity?: number
-		resource_group_name!: string
-		server_name!:         string
+		timeouts?:                        #timeouts
+		enclave_type?:                    string
+		high_availability_replica_count?: number
+		id?:                              string
+		license_type?:                    string
+		location?:                        string
+		max_size_bytes?:                  number
+		max_size_gb?:                     number
+		name!:                            string
+		per_db_max_capacity?:             number
+		per_db_min_capacity?:             number
+		resource_group_name!:             string
+		server_name!:                     string
 		sku?: [...close({
 			capacity?: number
 			family?:   string

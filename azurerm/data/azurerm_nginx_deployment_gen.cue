@@ -13,7 +13,6 @@ package data
 		automatic_upgrade_channel?: string
 		capacity?:                  number
 		dataplane_api_endpoint?:    string
-		diagnose_support_enabled?:  bool
 		email?:                     string
 		frontend_private?: [...close({
 			allocation_method?: string

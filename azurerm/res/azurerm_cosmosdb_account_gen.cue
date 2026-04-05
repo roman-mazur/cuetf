@@ -32,7 +32,6 @@ import "list"
 		kind?:                                  string
 		local_authentication_disabled?:         bool
 		location!:                              string
-		managed_hsm_key_id?:                    string
 		minimal_tls_version?:                   string
 		mongo_server_version?:                  string
 		multiple_write_locations_enabled?:      bool

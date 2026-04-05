@@ -8,17 +8,18 @@ import "list"
 	close({
 		per_database_settings!: matchN(1, [#per_database_settings, list.MaxItems(1) & [_, ...] & [...#per_database_settings]])
 		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
-		timeouts?:                       #timeouts
-		enclave_type?:                   string
-		id?:                             string
-		license_type?:                   string
-		location!:                       string
-		maintenance_configuration_name?: string
-		max_size_bytes?:                 number
-		max_size_gb?:                    number
-		name!:                           string
-		resource_group_name!:            string
-		server_name!:                    string
+		timeouts?:                        #timeouts
+		enclave_type?:                    string
+		high_availability_replica_count?: number
+		id?:                              string
+		license_type?:                    string
+		location!:                        string
+		maintenance_configuration_name?:  string
+		max_size_bytes?:                  number
+		max_size_gb?:                     number
+		name!:                            string
+		resource_group_name!:             string
+		server_name!:                     string
 		tags?: [string]: string
 		zone_redundant?: bool
 	})
