@@ -12,6 +12,8 @@ import "list"
 		cluster_id?:                          string
 		cluster_name!:                        string
 		database_name!:                       string
+		database_name_override?:              string
+		database_name_prefix?:                string
 		default_principal_modification_kind?: string
 		id?:                                  string
 		location!:                            string
@@ -22,6 +24,8 @@ import "list"
 	#sharing: close({
 		external_tables_to_exclude?: [...string]
 		external_tables_to_include?: [...string]
+		functions_to_exclude?: [...string]
+		functions_to_include?: [...string]
 		materialized_views_to_exclude?: [...string]
 		materialized_views_to_include?: [...string]
 		tables_to_exclude?: [...string]

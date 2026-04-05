@@ -314,6 +314,7 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_data_protection_backup_instance_postgresql_flexible_server": res.#azurerm_data_protection_backup_instance_postgresql_flexible_server
 	_#res: "\(#azurermPrefix)_data_protection_backup_instance_postgresql": res.#azurerm_data_protection_backup_instance_postgresql
 	_#res: "\(#azurermPrefix)_data_protection_backup_policy_blob_storage": res.#azurerm_data_protection_backup_policy_blob_storage
+	_#res: "\(#azurermPrefix)_data_protection_backup_policy_data_lake_storage": res.#azurerm_data_protection_backup_policy_data_lake_storage
 	_#res: "\(#azurermPrefix)_data_protection_backup_policy_disk": res.#azurerm_data_protection_backup_policy_disk
 	_#res: "\(#azurermPrefix)_data_protection_backup_policy_kubernetes_cluster": res.#azurerm_data_protection_backup_policy_kubernetes_cluster
 	_#res: "\(#azurermPrefix)_data_protection_backup_policy_mysql_flexible_server": res.#azurerm_data_protection_backup_policy_mysql_flexible_server
@@ -389,6 +390,7 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_eventgrid_domain_topic": res.#azurerm_eventgrid_domain_topic
 	_#res: "\(#azurermPrefix)_eventgrid_event_subscription": res.#azurerm_eventgrid_event_subscription
 	_#res: "\(#azurermPrefix)_eventgrid_namespace": res.#azurerm_eventgrid_namespace
+	_#res: "\(#azurermPrefix)_eventgrid_namespace_topic": res.#azurerm_eventgrid_namespace_topic
 	_#res: "\(#azurermPrefix)_eventgrid_partner_configuration": res.#azurerm_eventgrid_partner_configuration
 	_#res: "\(#azurermPrefix)_eventgrid_partner_namespace": res.#azurerm_eventgrid_partner_namespace
 	_#res: "\(#azurermPrefix)_eventgrid_partner_registration": res.#azurerm_eventgrid_partner_registration
@@ -494,6 +496,7 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_key_vault_managed_storage_account": res.#azurerm_key_vault_managed_storage_account
 	_#res: "\(#azurermPrefix)_key_vault_managed_storage_account_sas_token_definition": res.#azurerm_key_vault_managed_storage_account_sas_token_definition
 	_#res: "\(#azurermPrefix)_key_vault_secret": res.#azurerm_key_vault_secret
+	_#res: "\(#azurermPrefix)_kubernetes_cluster_deployment_safeguard": res.#azurerm_kubernetes_cluster_deployment_safeguard
 	_#res: "\(#azurermPrefix)_kubernetes_cluster_extension": res.#azurerm_kubernetes_cluster_extension
 	_#res: "\(#azurermPrefix)_kubernetes_cluster": res.#azurerm_kubernetes_cluster
 	_#res: "\(#azurermPrefix)_kubernetes_cluster_node_pool": res.#azurerm_kubernetes_cluster_node_pool
@@ -831,6 +834,7 @@ import "github.com/roman-mazur/cuetf/azurerm/res"
 	_#res: "\(#azurermPrefix)_resource_policy_assignment": res.#azurerm_resource_policy_assignment
 	_#res: "\(#azurermPrefix)_resource_policy_exemption": res.#azurerm_resource_policy_exemption
 	_#res: "\(#azurermPrefix)_resource_policy_remediation": res.#azurerm_resource_policy_remediation
+	_#res: "\(#azurermPrefix)_resource_provider_feature_registration": res.#azurerm_resource_provider_feature_registration
 	_#res: "\(#azurermPrefix)_resource_provider_registration": res.#azurerm_resource_provider_registration
 	_#res: "\(#azurermPrefix)_restore_point_collection": res.#azurerm_restore_point_collection
 	_#res: "\(#azurermPrefix)_role_assignment": res.#azurerm_role_assignment

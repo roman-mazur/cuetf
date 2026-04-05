@@ -62,6 +62,7 @@ package data
 				service_tag?:               string
 				virtual_network_subnet_id?: string
 			})]
+			ip_restriction_default_action?:    string
 			linux_fx_version?:                 string
 			min_tls_version?:                  string
 			pre_warmed_instance_count?:        number
@@ -81,12 +82,13 @@ package data
 				service_tag?:               string
 				virtual_network_subnet_id?: string
 			})]
-			scm_min_tls_version?:         string
-			scm_type?:                    string
-			scm_use_main_ip_restriction?: bool
-			use_32_bit_worker_process?:   bool
-			vnet_route_all_enabled?:      bool
-			websockets_enabled?:          bool
+			scm_ip_restriction_default_action?: string
+			scm_min_tls_version?:               string
+			scm_type?:                          string
+			scm_use_main_ip_restriction?:       bool
+			use_32_bit_worker_process?:         bool
+			vnet_route_all_enabled?:            bool
+			websockets_enabled?:                bool
 		})]
 		site_credential?: [...close({
 			password?: string
