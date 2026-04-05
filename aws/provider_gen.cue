@@ -1111,6 +1111,9 @@ package aws
 		transfer?: string
 
 		// Use this to override the default service endpoint URL
+		uxc?: string
+
+		// Use this to override the default service endpoint URL
 		verifiedpermissions?: string
 
 		// Use this to override the default service endpoint URL

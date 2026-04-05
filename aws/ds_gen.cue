@@ -291,6 +291,8 @@ import "github.com/roman-mazur/cuetf/aws/data"
 	_#ds: "\(#awsPrefix)_iam_policy": data.#aws_iam_policy
 	_#ds: "\(#awsPrefix)_iam_principal_policy_simulation": data.#aws_iam_principal_policy_simulation
 	_#ds: "\(#awsPrefix)_iam_role": data.#aws_iam_role
+	_#ds: "\(#awsPrefix)_iam_role_policies": data.#aws_iam_role_policies
+	_#ds: "\(#awsPrefix)_iam_role_policy_attachments": data.#aws_iam_role_policy_attachments
 	_#ds: "\(#awsPrefix)_iam_roles": data.#aws_iam_roles
 	_#ds: "\(#awsPrefix)_iam_saml_provider": data.#aws_iam_saml_provider
 	_#ds: "\(#awsPrefix)_iam_server_certificate": data.#aws_iam_server_certificate
@@ -406,6 +408,7 @@ import "github.com/roman-mazur/cuetf/aws/data"
 	_#ds: "\(#awsPrefix)_networkfirewall_resource_policy": data.#aws_networkfirewall_resource_policy
 	_#ds: "\(#awsPrefix)_networkmanager_connection": data.#aws_networkmanager_connection
 	_#ds: "\(#awsPrefix)_networkmanager_connections": data.#aws_networkmanager_connections
+	_#ds: "\(#awsPrefix)_networkmanager_core_network": data.#aws_networkmanager_core_network
 	_#ds: "\(#awsPrefix)_networkmanager_core_network_policy_document": data.#aws_networkmanager_core_network_policy_document
 	_#ds: "\(#awsPrefix)_networkmanager_device": data.#aws_networkmanager_device
 	_#ds: "\(#awsPrefix)_networkmanager_devices": data.#aws_networkmanager_devices
@@ -609,6 +612,7 @@ import "github.com/roman-mazur/cuetf/aws/data"
 	_#ds: "\(#awsPrefix)_timestreamwrite_table": data.#aws_timestreamwrite_table
 	_#ds: "\(#awsPrefix)_transfer_connector": data.#aws_transfer_connector
 	_#ds: "\(#awsPrefix)_transfer_server": data.#aws_transfer_server
+	_#ds: "\(#awsPrefix)_uxc_services": data.#aws_uxc_services
 	_#ds: "\(#awsPrefix)_verifiedpermissions_policy_store": data.#aws_verifiedpermissions_policy_store
 	_#ds: "\(#awsPrefix)_vpc_dhcp_options": data.#aws_vpc_dhcp_options
 	_#ds: "\(#awsPrefix)_vpc_endpoint_associations": data.#aws_vpc_endpoint_associations

@@ -17,8 +17,7 @@ package data
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
-		tags?: [string]:     string
-		tags_all?: [string]: string
+		tags?: [string]: string
 		type?:      string
 		user_name?: string
 	})
