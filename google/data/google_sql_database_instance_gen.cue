@@ -286,9 +286,10 @@ package data
 					})]
 					psc_enabled?: bool
 				})]
-				server_ca_mode?: string
-				server_ca_pool?: string
-				ssl_mode?:       string
+				server_ca_mode?:                   string
+				server_ca_pool?:                   string
+				server_certificate_rotation_mode?: string
+				ssl_mode?:                         string
 			})]
 			location_preference?: [...close({
 				follow_gae_application?: string

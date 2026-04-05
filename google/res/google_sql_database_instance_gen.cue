@@ -596,6 +596,9 @@ import "list"
 		// "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
 		server_ca_pool?: string
 
+		// Settings for how the server certificate gets rotated.
+		server_certificate_rotation_mode?: string
+
 		// Specify how SSL connection should be enforced in DB
 		// connections.
 		ssl_mode?: string

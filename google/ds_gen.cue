@@ -246,6 +246,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_iam_testable_permissions": data.#google_iam_testable_permissions
 	_#ds: "\(#googlePrefix)_iam_workforce_pool_iam_policy": data.#google_iam_workforce_pool_iam_policy
 	_#ds: "\(#googlePrefix)_iam_workload_identity_pool": data.#google_iam_workload_identity_pool
+	_#ds: "\(#googlePrefix)_iam_workload_identity_pool_iam_policy": data.#google_iam_workload_identity_pool_iam_policy
 	_#ds: "\(#googlePrefix)_iam_workload_identity_pool_provider": data.#google_iam_workload_identity_pool_provider
 	_#ds: "\(#googlePrefix)_iap_app_engine_service_iam_policy": data.#google_iap_app_engine_service_iam_policy
 	_#ds: "\(#googlePrefix)_iap_app_engine_version_iam_policy": data.#google_iap_app_engine_version_iam_policy
@@ -296,6 +297,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_network_management_connectivity_test_run": data.#google_network_management_connectivity_test_run
 	_#ds: "\(#googlePrefix)_network_management_connectivity_tests": data.#google_network_management_connectivity_tests
 	_#ds: "\(#googlePrefix)_network_security_address_group_iam_policy": data.#google_network_security_address_group_iam_policy
+	_#ds: "\(#googlePrefix)_network_security_address_groups": data.#google_network_security_address_groups
 	_#ds: "\(#googlePrefix)_notebooks_instance_iam_policy": data.#google_notebooks_instance_iam_policy
 	_#ds: "\(#googlePrefix)_notebooks_runtime_iam_policy": data.#google_notebooks_runtime_iam_policy
 	_#ds: "\(#googlePrefix)_oracle_database_autonomous_database": data.#google_oracle_database_autonomous_database
@@ -416,5 +418,7 @@ import "github.com/roman-mazur/cuetf/google/data"
 	_#ds: "\(#googlePrefix)_vmwareengine_vcenter_credentials": data.#google_vmwareengine_vcenter_credentials
 	_#ds: "\(#googlePrefix)_vpc_access_connector": data.#google_vpc_access_connector
 	_#ds: "\(#googlePrefix)_workbench_instance_iam_policy": data.#google_workbench_instance_iam_policy
+	_#ds: "\(#googlePrefix)_workstations_workstation_config_iam_policy": data.#google_workstations_workstation_config_iam_policy
+	_#ds: "\(#googlePrefix)_workstations_workstation_iam_policy": data.#google_workstations_workstation_iam_policy
 
 }

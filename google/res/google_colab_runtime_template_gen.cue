@@ -109,6 +109,7 @@ import "list"
 	})
 
 	#software_config: close({
+		colab_image?: matchN(1, [_#defs."/$defs/software_config/$defs/colab_image", list.MaxItems(1) & [..._#defs."/$defs/software_config/$defs/colab_image"]])
 		env?: matchN(1, [_#defs."/$defs/software_config/$defs/env", [..._#defs."/$defs/software_config/$defs/env"]])
 		post_startup_script_config?: matchN(1, [_#defs."/$defs/software_config/$defs/post_startup_script_config", list.MaxItems(1) & [..._#defs."/$defs/software_config/$defs/post_startup_script_config"]])
 	})
@@ -117,6 +118,12 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/software_config/$defs/colab_image": close({
+		// The release name of the NotebookRuntime Colab image, e.g.
+		// "py310". If not specified, detault to the latest release.
+		release_name?: string
 	})
 
 	_#defs: "/$defs/software_config/$defs/env": close({

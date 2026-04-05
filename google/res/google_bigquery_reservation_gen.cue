@@ -70,6 +70,9 @@ import "list"
 			last_replication_time?: string
 		})]
 
+		// The reservation group that this reservation belongs to.
+		reservation_group?: string
+
 		// The current location of the reservation's secondary replica.
 		// This field is only set for
 		// reservations using the managed disaster recovery feature. Users
