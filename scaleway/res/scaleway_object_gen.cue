@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_object")
 	close({
+		timeouts?: #timeouts
+
 		// The bucket's name or regional ID.
 		bucket!: string
 
@@ -18,17 +20,16 @@ package res
 		// object should be interpreted by clients. See RFC 9110:
 		// https://www.rfc-editor.org/rfc/rfc9110.html#name-content-type
 		content_type?: string
-		timeouts?:     #timeouts
 
 		// Path of the file to upload, defaults to an empty file
 		file?: string
 
 		// File hash to trigger upload
 		hash?: string
+		id?:   string
 
 		// Key of the object
 		key!: string
-		id?:  string
 
 		// Map of object's metadata, only lower case keys are allowed
 		metadata?: [string]: string

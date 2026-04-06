@@ -11,7 +11,7 @@ package data
 		data?: string
 
 		// The raw data payload of your secret version in
-		// [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only)
+		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
 		// mode. Must not exceed 64KiB in size (e.g.
 		// `my-secret-version-payload`). Only one of `data` or `data_wo`
 		// should be specified. `data_wo` will not be set in the
@@ -20,7 +20,7 @@ package data
 		data_wo?: string
 
 		// The version of the
-		// [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only)
+		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
 		// data. To update the `data_wo`, you must also update the
 		// `data_wo_version`.
 		data_wo_version?: number

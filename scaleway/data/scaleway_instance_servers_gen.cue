@@ -32,8 +32,13 @@ package data
 			})]
 			project_id?: string
 			public_ips?: [...close({
-				address?: string
-				id?:      string
+				address?:           string
+				dynamic?:           bool
+				family?:            string
+				gateway?:           string
+				id?:                string
+				netmask?:           string
+				provisioning_mode?: string
 			})]
 			security_group_id?: string
 			state?:             string

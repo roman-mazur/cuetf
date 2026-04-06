@@ -4,24 +4,25 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_instance_security_group")
 	close({
+		inbound_rule?: matchN(1, [#inbound_rule, [...#inbound_rule]])
+		outbound_rule?: matchN(1, [#outbound_rule, [...#outbound_rule]])
+		timeouts?: #timeouts
+
 		// The description of the security group
 		description?: string
-		inbound_rule?: matchN(1, [#inbound_rule, [...#inbound_rule]])
 
 		// Enable blocking of SMTP on IPv4 and IPv6
 		enable_default_security?: bool
-		outbound_rule?: matchN(1, [#outbound_rule, [...#outbound_rule]])
 
 		// External rules for this security group
 		external_rules?: bool
+		id?:             string
 
 		// Default inbound traffic policy for this security group
 		inbound_default_policy?: string
-		id?:                     string
 
 		// The name of the security group
-		name?:     string
-		timeouts?: #timeouts
+		name?: string
 
 		// The organization_id you want to attach the resource to
 		organization_id?: string

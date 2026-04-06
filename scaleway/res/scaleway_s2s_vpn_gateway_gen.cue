@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_s2s_vpn_gateway")
 	close({
+		public_config?: matchN(1, [#public_config, [...#public_config]])
+		timeouts?: #timeouts
+
 		// The AS Number of the vpn gateway
 		asn?: number
 
@@ -13,7 +16,6 @@ package res
 		// The VPN gateway type (commercial offer type)
 		gateway_type!: string
 		id?:           string
-		public_config?: matchN(1, [#public_config, [...#public_config]])
 
 		// The ID of the IPAM private IPv4 address to attach to the VPN
 		// gateway
@@ -28,7 +30,6 @@ package res
 
 		// Organization ID of the Project
 		organization_id?: string
-		timeouts?:        #timeouts
 
 		// The ID of the Private Network to attach to the VPN gateway
 		private_network_id!: string

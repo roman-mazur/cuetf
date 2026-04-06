@@ -73,7 +73,7 @@ package data
 		password?: string
 
 		// Password for the first user of the database instance in
-		// [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only)
+		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
 		// mode. Only one of `password` or `password_wo` should be
 		// specified. `password_wo` will not be set in the Terraform
 		// state. To update the `password_wo`, you must also update the
@@ -81,7 +81,7 @@ package data
 		password_wo?: string
 
 		// The version of the
-		// [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only)
+		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
 		// password. To update the `password_wo`, you must also update
 		// the `password_wo_version`.
 		password_wo_version?: number

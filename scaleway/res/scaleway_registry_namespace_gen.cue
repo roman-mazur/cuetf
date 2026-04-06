@@ -4,16 +4,17 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_registry_namespace")
 	close({
+		timeouts?: #timeouts
+
 		// The description of the container registry namespace
 		description?: string
 
 		// The endpoint reachable by docker
 		endpoint?: string
+		id?:       string
 
 		// Define the default visibility policy
 		is_public?: bool
-		id?:        string
-		timeouts?:  #timeouts
 
 		// The name of the container registry namespace
 		name!: string

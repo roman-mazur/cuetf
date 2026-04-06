@@ -4,16 +4,17 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_rdb_snapshot")
 	close({
+		timeouts?: #timeouts
+
 		// Expiration date of the snapshot in ISO 8601 format (RFC 3339).
 		created_at?: string
 
 		// Expiration date of the snapshot in ISO 8601 format (RFC 3339).
 		expires_at?: string
+		id?:         string
 
 		// UUID of the Database Instance on which the snapshot is applied.
 		instance_id!: string
-		timeouts?:    #timeouts
-		id?:          string
 
 		// Name of the snapshot.
 		name!: string

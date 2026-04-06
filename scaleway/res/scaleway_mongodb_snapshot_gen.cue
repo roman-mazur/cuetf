@@ -4,16 +4,17 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_mongodb_snapshot")
 	close({
+		timeouts?: #timeouts
+
 		// The date and time when the snapshot was created
 		created_at?: string
 
 		// Expiration date (Format ISO 8601). Cannot be removed.
 		expires_at!: string
+		id?:         string
 
 		// The ID of the instance from which the snapshot was created
 		instance_id!: string
-		timeouts?:    #timeouts
-		id?:          string
 
 		// Name of the instance from which the snapshot was created
 		instance_name?: string

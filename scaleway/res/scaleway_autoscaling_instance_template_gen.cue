@@ -61,10 +61,11 @@ import "list"
 	})
 
 	#volumes: close({
-		// Force the Instance to boot on this volume
-		boot?: bool
 		from_empty?: matchN(1, [_#defs."/$defs/volumes/$defs/from_empty", list.MaxItems(1) & [..._#defs."/$defs/volumes/$defs/from_empty"]])
 		from_snapshot?: matchN(1, [_#defs."/$defs/volumes/$defs/from_snapshot", list.MaxItems(1) & [..._#defs."/$defs/volumes/$defs/from_snapshot"]])
+
+		// Force the Instance to boot on this volume
+		boot?: bool
 
 		// The name of the volume
 		name!: string

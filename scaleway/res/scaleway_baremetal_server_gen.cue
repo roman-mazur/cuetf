@@ -80,7 +80,7 @@ package res
 		password?: string
 
 		// Password used for the installation in
-		// [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only)
+		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
 		// mode. Only one of `password` or `password_wo` should be
 		// specified. `password_wo` will not be set in the Terraform
 		// state. To update the `password_wo`, you must also update the
@@ -88,7 +88,7 @@ package res
 		password_wo?: string
 
 		// The version of the
-		// [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only)
+		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
 		// password. To update the `password_wo`, you must also update
 		// the `password_wo_version`.
 		password_wo_version?: number
@@ -110,7 +110,7 @@ package res
 		service_password?: string
 
 		// Password used for the service to install in
-		// [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only)
+		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
 		// mode. Only one of `service_password` or `service_password_wo`
 		// should be specified. `service_password_wo` will not be set in
 		// the Terraform state. To update the `service_password_wo`, you
@@ -118,7 +118,7 @@ package res
 		service_password_wo?: string
 
 		// The version of the
-		// [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only)
+		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
 		// service password. To update the `service_password_wo`, you
 		// must also update the `service_password_wo_version`.
 		service_password_wo_version?: number

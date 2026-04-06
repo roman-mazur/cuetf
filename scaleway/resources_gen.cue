@@ -15,6 +15,7 @@ import "github.com/roman-mazur/cuetf/scaleway/res"
 	_#res: "\(#scalewayPrefix)_block_snapshot": res.#scaleway_block_snapshot
 	_#res: "\(#scalewayPrefix)_block_volume": res.#scaleway_block_volume
 	_#res: "\(#scalewayPrefix)_cockpit_alert_manager": res.#scaleway_cockpit_alert_manager
+	_#res: "\(#scalewayPrefix)_cockpit_exporter": res.#scaleway_cockpit_exporter
 	_#res: "\(#scalewayPrefix)_cockpit": res.#scaleway_cockpit
 	_#res: "\(#scalewayPrefix)_cockpit_grafana_user": res.#scaleway_cockpit_grafana_user
 	_#res: "\(#scalewayPrefix)_cockpit_source": res.#scaleway_cockpit_source
@@ -54,6 +55,8 @@ import "github.com/roman-mazur/cuetf/scaleway/res"
 	_#res: "\(#scalewayPrefix)_iam_group": res.#scaleway_iam_group
 	_#res: "\(#scalewayPrefix)_iam_group_membership": res.#scaleway_iam_group_membership
 	_#res: "\(#scalewayPrefix)_iam_policy": res.#scaleway_iam_policy
+	_#res: "\(#scalewayPrefix)_iam_saml_certificate": res.#scaleway_iam_saml_certificate
+	_#res: "\(#scalewayPrefix)_iam_saml": res.#scaleway_iam_saml
 	_#res: "\(#scalewayPrefix)_iam_ssh_key": res.#scaleway_iam_ssh_key
 	_#res: "\(#scalewayPrefix)_iam_user": res.#scaleway_iam_user
 	_#res: "\(#scalewayPrefix)_inference_deployment": res.#scaleway_inference_deployment
@@ -105,6 +108,7 @@ import "github.com/roman-mazur/cuetf/scaleway/res"
 	_#res: "\(#scalewayPrefix)_object_bucket": res.#scaleway_object_bucket
 	_#res: "\(#scalewayPrefix)_object_bucket_lock_configuration": res.#scaleway_object_bucket_lock_configuration
 	_#res: "\(#scalewayPrefix)_object_bucket_policy": res.#scaleway_object_bucket_policy
+	_#res: "\(#scalewayPrefix)_object_bucket_server_side_encryption_configuration": res.#scaleway_object_bucket_server_side_encryption_configuration
 	_#res: "\(#scalewayPrefix)_object_bucket_website_configuration": res.#scaleway_object_bucket_website_configuration
 	_#res: "\(#scalewayPrefix)_object": res.#scaleway_object
 	_#res: "\(#scalewayPrefix)_opensearch_deployment": res.#scaleway_opensearch_deployment
@@ -130,6 +134,7 @@ import "github.com/roman-mazur/cuetf/scaleway/res"
 	_#res: "\(#scalewayPrefix)_tem_domain_validation": res.#scaleway_tem_domain_validation
 	_#res: "\(#scalewayPrefix)_tem_webhook": res.#scaleway_tem_webhook
 	_#res: "\(#scalewayPrefix)_vpc_acl": res.#scaleway_vpc_acl
+	_#res: "\(#scalewayPrefix)_vpc_connector": res.#scaleway_vpc_connector
 	_#res: "\(#scalewayPrefix)_vpc_gateway_network": res.#scaleway_vpc_gateway_network
 	_#res: "\(#scalewayPrefix)_vpc": res.#scaleway_vpc
 	_#res: "\(#scalewayPrefix)_vpc_private_network": res.#scaleway_vpc_private_network

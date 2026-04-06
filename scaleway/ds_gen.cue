@@ -21,16 +21,26 @@ import "github.com/roman-mazur/cuetf/scaleway/data"
 	_#ds: "\(#scalewayPrefix)_billing_invoices": data.#scaleway_billing_invoices
 	_#ds: "\(#scalewayPrefix)_block_snapshot": data.#scaleway_block_snapshot
 	_#ds: "\(#scalewayPrefix)_block_volume": data.#scaleway_block_volume
+	_#ds: "\(#scalewayPrefix)_cockpit_exporter": data.#scaleway_cockpit_exporter
 	_#ds: "\(#scalewayPrefix)_cockpit": data.#scaleway_cockpit
 	_#ds: "\(#scalewayPrefix)_cockpit_grafana": data.#scaleway_cockpit_grafana
 	_#ds: "\(#scalewayPrefix)_cockpit_preconfigured_alert": data.#scaleway_cockpit_preconfigured_alert
+	_#ds: "\(#scalewayPrefix)_cockpit_products": data.#scaleway_cockpit_products
 	_#ds: "\(#scalewayPrefix)_cockpit_source": data.#scaleway_cockpit_source
 	_#ds: "\(#scalewayPrefix)_cockpit_sources": data.#scaleway_cockpit_sources
 	_#ds: "\(#scalewayPrefix)_config": data.#scaleway_config
 	_#ds: "\(#scalewayPrefix)_container": data.#scaleway_container
 	_#ds: "\(#scalewayPrefix)_container_namespace": data.#scaleway_container_namespace
 	_#ds: "\(#scalewayPrefix)_domain_record": data.#scaleway_domain_record
+	_#ds: "\(#scalewayPrefix)_domain_registration": data.#scaleway_domain_registration
 	_#ds: "\(#scalewayPrefix)_domain_zone": data.#scaleway_domain_zone
+	_#ds: "\(#scalewayPrefix)_edge_services_backend_stage": data.#scaleway_edge_services_backend_stage
+	_#ds: "\(#scalewayPrefix)_edge_services_cache_stage": data.#scaleway_edge_services_cache_stage
+	_#ds: "\(#scalewayPrefix)_edge_services_dns_stage": data.#scaleway_edge_services_dns_stage
+	_#ds: "\(#scalewayPrefix)_edge_services_pipeline": data.#scaleway_edge_services_pipeline
+	_#ds: "\(#scalewayPrefix)_edge_services_route_stage": data.#scaleway_edge_services_route_stage
+	_#ds: "\(#scalewayPrefix)_edge_services_tls_stage": data.#scaleway_edge_services_tls_stage
+	_#ds: "\(#scalewayPrefix)_edge_services_waf_stage": data.#scaleway_edge_services_waf_stage
 	_#ds: "\(#scalewayPrefix)_flexible_ip": data.#scaleway_flexible_ip
 	_#ds: "\(#scalewayPrefix)_flexible_ips": data.#scaleway_flexible_ips
 	_#ds: "\(#scalewayPrefix)_function": data.#scaleway_function
@@ -39,6 +49,8 @@ import "github.com/roman-mazur/cuetf/scaleway/data"
 	_#ds: "\(#scalewayPrefix)_iam_application": data.#scaleway_iam_application
 	_#ds: "\(#scalewayPrefix)_iam_group": data.#scaleway_iam_group
 	_#ds: "\(#scalewayPrefix)_iam_policy": data.#scaleway_iam_policy
+	_#ds: "\(#scalewayPrefix)_iam_saml_certificate": data.#scaleway_iam_saml_certificate
+	_#ds: "\(#scalewayPrefix)_iam_saml": data.#scaleway_iam_saml
 	_#ds: "\(#scalewayPrefix)_iam_ssh_key": data.#scaleway_iam_ssh_key
 	_#ds: "\(#scalewayPrefix)_iam_user": data.#scaleway_iam_user
 	_#ds: "\(#scalewayPrefix)_inference_model": data.#scaleway_inference_model
@@ -52,6 +64,8 @@ import "github.com/roman-mazur/cuetf/scaleway/data"
 	_#ds: "\(#scalewayPrefix)_instance_servers": data.#scaleway_instance_servers
 	_#ds: "\(#scalewayPrefix)_instance_snapshot": data.#scaleway_instance_snapshot
 	_#ds: "\(#scalewayPrefix)_instance_volume": data.#scaleway_instance_volume
+	_#ds: "\(#scalewayPrefix)_interlink_partner": data.#scaleway_interlink_partner
+	_#ds: "\(#scalewayPrefix)_interlink_partners": data.#scaleway_interlink_partners
 	_#ds: "\(#scalewayPrefix)_iot_device": data.#scaleway_iot_device
 	_#ds: "\(#scalewayPrefix)_iot_hub": data.#scaleway_iot_hub
 	_#ds: "\(#scalewayPrefix)_ipam_ip": data.#scaleway_ipam_ip
@@ -80,7 +94,9 @@ import "github.com/roman-mazur/cuetf/scaleway/data"
 	_#ds: "\(#scalewayPrefix)_mongodb_instance": data.#scaleway_mongodb_instance
 	_#ds: "\(#scalewayPrefix)_object_bucket": data.#scaleway_object_bucket
 	_#ds: "\(#scalewayPrefix)_object_bucket_policy": data.#scaleway_object_bucket_policy
+	_#ds: "\(#scalewayPrefix)_object_bucket_server_side_encryption_configuration": data.#scaleway_object_bucket_server_side_encryption_configuration
 	_#ds: "\(#scalewayPrefix)_object": data.#scaleway_object
+	_#ds: "\(#scalewayPrefix)_opensearch_deployment": data.#scaleway_opensearch_deployment
 	_#ds: "\(#scalewayPrefix)_rdb_acl": data.#scaleway_rdb_acl
 	_#ds: "\(#scalewayPrefix)_rdb_database_backup": data.#scaleway_rdb_database_backup
 	_#ds: "\(#scalewayPrefix)_rdb_database": data.#scaleway_rdb_database
@@ -98,6 +114,8 @@ import "github.com/roman-mazur/cuetf/scaleway/data"
 	_#ds: "\(#scalewayPrefix)_secret_version": data.#scaleway_secret_version
 	_#ds: "\(#scalewayPrefix)_tem_domain": data.#scaleway_tem_domain
 	_#ds: "\(#scalewayPrefix)_tem_offer_subscription": data.#scaleway_tem_offer_subscription
+	_#ds: "\(#scalewayPrefix)_vpc_acl": data.#scaleway_vpc_acl
+	_#ds: "\(#scalewayPrefix)_vpc_connector": data.#scaleway_vpc_connector
 	_#ds: "\(#scalewayPrefix)_vpc_gateway_network": data.#scaleway_vpc_gateway_network
 	_#ds: "\(#scalewayPrefix)_vpc": data.#scaleway_vpc
 	_#ds: "\(#scalewayPrefix)_vpc_private_network": data.#scaleway_vpc_private_network
@@ -106,6 +124,7 @@ import "github.com/roman-mazur/cuetf/scaleway/data"
 	_#ds: "\(#scalewayPrefix)_vpc_public_gateway": data.#scaleway_vpc_public_gateway
 	_#ds: "\(#scalewayPrefix)_vpc_public_gateway_ip": data.#scaleway_vpc_public_gateway_ip
 	_#ds: "\(#scalewayPrefix)_vpc_public_gateway_pat_rule": data.#scaleway_vpc_public_gateway_pat_rule
+	_#ds: "\(#scalewayPrefix)_vpc_route": data.#scaleway_vpc_route
 	_#ds: "\(#scalewayPrefix)_vpc_routes": data.#scaleway_vpc_routes
 	_#ds: "\(#scalewayPrefix)_vpcs": data.#scaleway_vpcs
 	_#ds: "\(#scalewayPrefix)_webhosting": data.#scaleway_webhosting

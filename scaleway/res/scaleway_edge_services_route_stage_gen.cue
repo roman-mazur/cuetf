@@ -6,10 +6,15 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_edge_services_route_stage")
 	close({
+		rule?: matchN(1, [#rule, [...#rule]])
+
+		// The ID of the backend stage HTTP requests should be forwarded
+		// to when no rules are matched
+		backend_stage_id?: string
+
 		// The date and time of the creation of the route stage
 		created_at?: string
-		rule?: matchN(1, [#rule, [...#rule]])
-		id?: string
+		id?:         string
 
 		// The ID of the pipeline
 		pipeline_id!: string
@@ -30,7 +35,11 @@ import "list"
 
 		// ID of the backend stage that requests matching the rule should
 		// be forwarded to
-		backend_stage_id!: string
+		backend_stage_id?: string
+
+		// ID of the WAF stage that requests matching the rule should be
+		// forwarded to
+		waf_stage_id?: string
 	})
 
 	_#defs: "/$defs/rule/$defs/rule_http_match": close({

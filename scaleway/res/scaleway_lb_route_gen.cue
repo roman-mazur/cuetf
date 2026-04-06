@@ -4,20 +4,21 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_lb_route")
 	close({
+		timeouts?: #timeouts
+
 		// The backend ID destination of redirection
 		backend_id!: string
 
 		// The date at which the route was created (RFC 3339 format)
 		created_at?: string
-		timeouts?:   #timeouts
 
 		// The frontend ID origin of redirection
 		frontend_id!: string
+		id?:          string
 
 		// Specifies the host of the server to which the request is being
 		// sent
 		match_host_header?: string
-		id?:                string
 
 		// Value to match in the URL beginning path from an incoming
 		// request

@@ -4,15 +4,16 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_lb_private_network")
 	close({
+		timeouts?: #timeouts
+
 		// The date and time of the creation of the private network
 		// connection
 		created_at?: string
+		id?:         string
 
 		// IPAM ID of a pre-reserved IP address to assign to the Load
 		// Balancer on this Private Network
 		ipam_ip_ids?: [...string]
-		timeouts?: #timeouts
-		id?:       string
 
 		// The load-balancer ID to attach the private network to
 		lb_id!: string

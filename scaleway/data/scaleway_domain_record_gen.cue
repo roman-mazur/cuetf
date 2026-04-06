@@ -41,7 +41,7 @@ package data
 		// The project_id you want to attach the resource to
 		project_id?: string
 
-		// The ID of the record
+		// The ID of the record (UUID or dns_zone/uuid format)
 		record_id?: string
 
 		// Does the DNS zone is the root zone or not
