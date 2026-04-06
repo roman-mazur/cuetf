@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_iot_device")
 	close({
+		certificate?: matchN(1, [#certificate, list.MaxItems(1) & [...#certificate]])
+		message_filters?: matchN(1, [#message_filters, list.MaxItems(1) & [...#message_filters]])
+
 		// Allow plain and server-authenticated SSL connections in
 		// addition to mutually-authenticated ones
 		allow_insecure?: bool
@@ -15,7 +18,6 @@ import "list"
 
 		// The date and time of the creation of the device
 		created_at?: string
-		certificate?: matchN(1, [#certificate, list.MaxItems(1) & [...#certificate]])
 
 		// The description of the device
 		description?: string
@@ -26,7 +28,6 @@ import "list"
 
 		// The MQTT connection status of the device
 		is_connected?: bool
-		message_filters?: matchN(1, [#message_filters, list.MaxItems(1) & [...#message_filters]])
 
 		// The date and time of last MQTT activity of the device
 		last_activity_at?: string

@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_edge_services_tls_stage")
 	close({
+		secrets?: matchN(1, [#secrets, [...#secrets]])
+
 		// The backend stage ID the TLS stage will be linked to
 		backend_stage_id?: string
 
@@ -12,15 +14,14 @@ package res
 
 		// TThe expiration date of the certificate
 		certificate_expires_at?: string
-		secrets?: matchN(1, [#secrets, [...#secrets]])
 
 		// The date and time of the creation of the TLS stage
 		created_at?: string
+		id?:         string
 
 		// Set to true when Scaleway generates and manages a Let's Encrypt
 		// certificate for the TLS stage/custom endpoint
 		managed_certificate?: bool
-		id?:                  string
 
 		// The ID of the pipeline
 		pipeline_id!: string

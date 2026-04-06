@@ -29,10 +29,6 @@ package res
 		// attach an existing IP to the gateway
 		ip_id?: string
 
-		// Put a Public Gateway in IPAM mode, so that it can be used with
-		// the Public Gateways API v2
-		move_to_ipam?: bool
-
 		// name of the gateway
 		name?: string
 
@@ -57,10 +53,6 @@ package res
 
 		// The date and time of the last update of the public gateway
 		updated_at?: string
-
-		// override the gateway's default recursive DNS servers, if DNS
-		// features are enabled
-		upstream_dns_servers?: [...string]
 
 		// The zone you want to attach the resource to
 		zone?: string

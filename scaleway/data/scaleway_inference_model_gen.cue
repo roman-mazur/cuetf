@@ -47,7 +47,7 @@ package data
 
 		// A token or credential used to authenticate when pulling the
 		// model from a private or gated source in
-		// [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only)
+		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
 		// mode. For example, a Hugging Face access token with read
 		// permissions. `secret_wo` will not be set in the Terraform
 		// state. Only one of `secret` or `secret_wo` should be
@@ -55,7 +55,7 @@ package data
 		secret_wo?: string
 
 		// The version of the
-		// [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only)
+		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
 		// secret. To update the `secret_wo`, you must also update the
 		// `secret_wo_version`.
 		secret_wo_version?: number

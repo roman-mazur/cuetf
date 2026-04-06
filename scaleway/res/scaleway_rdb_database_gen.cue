@@ -4,11 +4,11 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_rdb_database")
 	close({
-		id?: string
+		timeouts?: #timeouts
+		id?:       string
 
 		// Instance on which the database is created
 		instance_id!: string
-		timeouts?:    #timeouts
 
 		// Whether or not the database is managed
 		managed?: bool

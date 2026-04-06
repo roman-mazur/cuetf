@@ -1043,14 +1043,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					password_wo: {
 						type:             "string"
-						description:      "Password used for the installation in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "Password used for the installation in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 						write_only:       true
 					}
 					password_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) password. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) password. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -1082,14 +1082,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					service_password_wo: {
 						type:             "string"
-						description:      "Password used for the service to install in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Only one of `service_password` or `service_password_wo` should be specified. `service_password_wo` will not be set in the Terraform state. To update the `service_password_wo`, you must also update the `service_password_wo_version`."
+						description:      "Password used for the service to install in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `service_password` or `service_password_wo` should be specified. `service_password_wo` will not be set in the Terraform state. To update the `service_password_wo`, you must also update the `service_password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 						write_only:       true
 					}
 					service_password_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) service password. To update the `service_password_wo`, you must also update the `service_password_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) service password. To update the `service_password_wo`, you must also update the `service_password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -1594,6 +1594,155 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 						description:      "A list of contact points"
 						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_cockpit_exporter: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "Date and time of the creation of the data export (RFC 3339 format)"
+						description_kind: "plain"
+						computed:         true
+					}
+					datasource_id: {
+						type:             "string"
+						description:      "ID of the data source linked to the data export"
+						description_kind: "plain"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of the data export"
+						description_kind: "plain"
+						optional:         true
+					}
+					exported_products: {
+						type: ["list", "string"]
+						description:      "List of Scaleway products to export. Use [\"all\"] to export all products. Use scaleway_cockpit_products data source for valid product names."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the data export"
+						description_kind: "plain"
+						required:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Status of the data export"
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "Date and time of the last update of the data export (RFC 3339 format)"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					datadog_destination: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								api_key: {
+									type:             "string"
+									description:      "Datadog API key"
+									description_kind: "plain"
+									required:         true
+									sensitive:        true
+								}
+								endpoint: {
+									type:             "string"
+									description:      "Datadog endpoint URL"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "Datadog destination configuration"
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					otlp_destination: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								endpoint: {
+									type:             "string"
+									description:      "OTLP endpoint URL"
+									description_kind: "plain"
+									required:         true
+								}
+								headers: {
+									type: ["map", "string"]
+									description:      "Headers to include in requests"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "OTLP destination configuration"
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								default: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -2776,10 +2925,23 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					password: {
 						type:             "string"
-						description:      "Password for the first user of the deployment"
+						description:      "Password for the first user of the deployment. Only one of `password` or `password_wo` should be specified."
 						description_kind: "plain"
 						optional:         true
 						sensitive:        true
+					}
+					password_wo: {
+						type:             "string"
+						description:      "Password for the first user of the deployment in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`. When updating, the password is rotated via the Data Warehouse Users API (the initial user is selected as an admin user when present, otherwise the first user by name)."
+						description_kind: "plain"
+						optional:         true
+						write_only:       true
+					}
+					password_wo_version: {
+						type:             "number"
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) password. To update the `password_wo`, you must also update the `password_wo_version`."
+						description_kind: "plain"
+						optional:         true
 					}
 					project_id: {
 						type:             "string"
@@ -2818,6 +2980,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "Number of replicas"
 						description_kind: "plain"
 						required:         true
+					}
+					started: {
+						type:             "bool"
+						description:      "Whether the deployment should be running (`true`) or stopped (`false`). Maps to the Start deployment and Stop deployment API actions."
+						description_kind: "plain"
+						optional:         true
 					}
 					status: {
 						type:             "string"
@@ -4173,6 +4341,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			version: 0
 			block: {
 				attributes: {
+					backend_stage_id: {
+						type:             "string"
+						description:      "The ID of the backend stage HTTP requests should be forwarded to when no rules are matched"
+						description_kind: "plain"
+						optional:         true
+					}
 					created_at: {
 						type:             "string"
 						description:      "The date and time of the creation of the route stage"
@@ -4214,11 +4388,19 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				block_types: rule: {
 					nesting_mode: "list"
 					block: {
-						attributes: backend_stage_id: {
-							type:             "string"
-							description:      "ID of the backend stage that requests matching the rule should be forwarded to"
-							description_kind: "plain"
-							required:         true
+						attributes: {
+							backend_stage_id: {
+								type:             "string"
+								description:      "ID of the backend stage that requests matching the rule should be forwarded to"
+								description_kind: "plain"
+								optional:         true
+							}
+							waf_stage_id: {
+								type:             "string"
+								description:      "ID of the WAF stage that requests matching the rule should be forwarded to"
+								description_kind: "plain"
+								optional:         true
+							}
 						}
 						block_types: rule_http_match: {
 							nesting_mode: "list"
@@ -5769,6 +5951,116 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_iam_saml: {
+			version: 0
+			block: {
+				attributes: {
+					entity_id: {
+						type:             "string"
+						description:      "The entity ID of the SAML Identity Provider"
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the SAML configuration"
+						description_kind: "markdown"
+						computed:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The organization ID. If not provided, the default organization configured in the provider is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					service_provider: {
+						type: ["object", {
+							assertion_consumer_service_url: "string"
+							entity_id:                      "string"
+						}]
+						description:      "The Service Provider information"
+						description_kind: "markdown"
+						computed:         true
+					}
+					single_sign_on_url: {
+						type:             "string"
+						description:      "The single sign-on URL of the SAML Identity Provider"
+						description_kind: "markdown"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "The status of the SAML configuration"
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Manages SAML activation for an organization. SAML (Security Assertion Markup Language) is an open standard for exchanging authentication and authorization data between parties, specifically between an identity provider and a service provider. This resource allows you to enable and disable SAML-based single sign-on for your Scaleway organization.
+
+					For configuring SAML parameters (`entity_id` and `single_sign_on_url`), use the [`scaleway_iam_update_saml_configuration`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/iam_update_saml_configuration) action.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		scaleway_iam_saml_certificate: {
+			version: 0
+			block: {
+				attributes: {
+					content: {
+						type:             "string"
+						description:      "The content of the SAML certificate"
+						description_kind: "markdown"
+						required:         true
+					}
+					expires_at: {
+						type:             "string"
+						description:      "The expiration date and time of the SAML certificate"
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the SAML certificate"
+						description_kind: "markdown"
+						computed:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The organization ID"
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					origin: {
+						type:             "string"
+						description:      "The origin of the SAML certificate"
+						description_kind: "markdown"
+						computed:         true
+					}
+					saml_id: {
+						type:             "string"
+						description:      "The ID of the SAML configuration"
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The type of the SAML certificate"
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					Manages SAML certificates for an organization. SAML certificates are used to establish trust between your organization and identity providers. SAML (Security Assertion Markup Language) is an open standard for exchanging authentication and authorization data between parties, specifically between an identity provider and a service provider. This resource allows you to manage SAML certificates in your Scaleway organization.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		scaleway_iam_ssh_key: {
 			version: 0
 			block: {
@@ -5920,14 +6212,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					password_wo: {
 						type:             "string"
-						description:      "The member's password for first access in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "The member's password for first access in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 						write_only:       true
 					}
 					password_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) password. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) password. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -5982,7 +6274,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 				description: """
 					Creates and manages Scaleway IAM [Users](https://www.scaleway.com/en/docs/iam/concepts/#member).
+
 					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/iam/#path-users-list-users-of-an-organization).
+
+					-> **Security Best Practice:**
+					For enhanced security, we recommend using the [`password_wo` write-only argument](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) instead of the regular `password` argument. This ensures your sensitive credentials are never stored in Terraform state files, providing superior protection against accidental exposure. Write-Only arguments are supported in Terraform 1.11.0 and later.
 
 					"""
 				description_kind: "plain"
@@ -6293,14 +6589,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					secret_wo: {
 						type:             "string"
-						description:      "A token or credential used to authenticate when pulling the model from a private or gated source in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. For example, a Hugging Face access token with read permissions. `secret_wo` will not be set in the Terraform state. Only one of `secret` or `secret_wo` should be specified."
+						description:      "A token or credential used to authenticate when pulling the model from a private or gated source in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. For example, a Hugging Face access token with read permissions. `secret_wo` will not be set in the Terraform state. Only one of `secret` or `secret_wo` should be specified."
 						description_kind: "plain"
 						optional:         true
 						write_only:       true
 					}
 					secret_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) secret. To update the `secret_wo`, you must also update the `secret_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) secret. To update the `secret_wo`, you must also update the `secret_wo_version`."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -6358,7 +6654,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
-				description:      "The scaleway_inference_model resource allows you to upload and manage inference models in the Scaleway Inference ecosystem. Once registered, a model can be used in any scaleway_inference_deployment resource."
+				description: """
+					The scaleway_inference_model resource allows you to upload and manage inference models in the Scaleway Inference ecosystem. Once registered, a model can be used in any scaleway_inference_deployment resource.
+
+					-> **Security Best Practice:**
+					For enhanced security, we recommend using the [`secret_wo` write-only argument](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) instead of the regular `secret` argument. This ensures your sensitive credentials are never stored in Terraform state files, providing superior protection against accidental exposure. Write-Only arguments are supported in Terraform 1.11.0 and later.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -11746,14 +12048,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					password_wo: {
 						type:             "string"
-						description:      "Password of the user in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "Password of the user in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 						write_only:       true
 					}
 					password_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) password. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) password. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -11965,7 +12267,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 				description: """
 					Creates and manages Scaleway MongoDB® instance.
-					For more information refer to the [product documentation](https://www.scaleway.com/en/docs/managed-mongodb-databases/).
+					For more information, see the [product documentation](https://www.scaleway.com/en/docs/managed-mongodb-databases/).
+
+					-> **Security Best Practice:**
+					For enhanced security, we recommend using the [`password_wo` write-only argument](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) instead of the regular `password` argument. This ensures your sensitive credentials are never stored in Terraform state files, providing superior protection against accidental exposure. Write-Only arguments are supported in Terraform 1.11.0 and later.
 
 					"""
 				description_kind: "plain"
@@ -12105,14 +12410,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					password_wo: {
 						type:             "string"
-						description:      "MongoDB user password in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "MongoDB user password in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 						write_only:       true
 					}
 					password_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) password. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) password. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -12185,7 +12490,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
-				description:      "Manages MongoDB users. For more information, see [the documentation](https://developers.scaleway.com/products/mongodb/api/)."
+				description: """
+					Manages MongoDB users. For more information, see the [API documentation](https://developers.scaleway.com/products/mongodb/api/).
+
+					-> **Security Best Practice:**
+					For enhanced security, we recommend using the [`password_wo` write-only argument](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) instead of the regular `password` argument. This ensures your sensitive credentials are never stored in Terraform state files, providing superior protection against accidental exposure. Write-Only arguments are supported in Terraform 1.11.0 and later.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -12785,6 +13096,48 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_object_bucket_server_side_encryption_configuration: {
+			version: 0
+			block: {
+				attributes: {
+					bucket: {
+						type:             "string"
+						description:      "The bucket's name or regional ID."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: rule: {
+					nesting_mode: "set"
+					block: {
+						block_types: apply_server_side_encryption_by_default: {
+							nesting_mode: "list"
+							block: {
+								attributes: sse_algorithm: {
+									type:             "string"
+									description:      "Server-side encryption algorithm to use. Valid values are AES256"
+									description_kind: "plain"
+									required:         true
+								}
+								description:      "Single object for setting server-side encryption by default."
+								description_kind: "plain"
+							}
+							max_items: 1
+						}
+						description:      "Set of server-side encryption configuration rules"
+						description_kind: "plain"
+					}
+					min_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
 		scaleway_object_bucket_website_configuration: {
 			version: 0
 			block: {
@@ -12923,6 +13276,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The project_id you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					public_dashboard_url: {
+						type:             "string"
+						description:      "URL of the OpenSearch Dashboards service when it is exposed on a public endpoint (including when the API uses a private network)"
+						description_kind: "plain"
 						computed:         true
 					}
 					region: {
@@ -13424,14 +13783,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					password_wo: {
 						type:             "string"
-						description:      "Password for the first user of the database instance in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "Password for the first user of the database instance in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 						write_only:       true
 					}
 					password_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) password. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) password. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -13699,7 +14058,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 				description: """
 					Creates and manages Scaleway Database Instances.
-					For more information, see refer to the [API documentation](https://www.scaleway.com/en/developers/api/managed-database-postgre-mysql/).
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/managed-database-postgre-mysql/).
+
+					-> **Security Best Practice:**
+					For enhanced security, we recommend using the [`password_wo` write-only argument](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) instead of the regular `password` argument. This ensures your sensitive credentials are never stored in Terraform state files, providing superior protection against accidental exposure. Write-Only arguments are supported in Terraform 1.11.0 and later.
+
 					"""
 				description_kind: "plain"
 			}
@@ -14094,14 +14457,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					password_wo: {
 						type:             "string"
-						description:      "Database user password in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "Database user password in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 						write_only:       true
 					}
 					password_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) password. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) password. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -14147,7 +14510,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 				description: """
 					The [`scaleway_rdb_user`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/rdb_user) resource creates and manages database users.
-					For more information refer to the [API documentation](https://www.scaleway.com/en/developers/api/managed-database-postgre-mysql/).
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/managed-database-postgre-mysql/).
+
+					-> **Security Best Practice:**
+					For enhanced security, we recommend using the [`password_wo` write-only argument](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) instead of the regular `password` argument. This ensures your sensitive credentials are never stored in Terraform state files, providing superior protection against accidental exposure. Write-Only arguments are supported in Terraform 1.11.0 and later.
 
 					"""
 				description_kind: "plain"
@@ -14204,14 +14570,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					password_wo: {
 						type:             "string"
-						description:      "Password of the user in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "Password of the user in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 						write_only:       true
 					}
 					password_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) password. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) password. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -14423,7 +14789,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 				description: """
 					Creates and manages Scaleway Redis™ clusters.
-					For more information refer to the [API documentation](https://www.scaleway.com/en/developers/api/managed-database-redis).
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/managed-database-redis).
+
+					-> **Security Best Practice:**
+					For enhanced security, we recommend using the [`password_wo` write-only argument](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) instead of the regular `password` argument. This ensures your sensitive credentials are never stored in Terraform state files, providing superior protection against accidental exposure. Write-Only arguments are supported in Terraform 1.11.0 and later.
+
 					"""
 				description_kind: "plain"
 			}
@@ -15341,7 +15711,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					data_wo: {
 						type:             "string"
-						description:      "The raw data payload of your secret version in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Must not exceed 64KiB in size (e.g. `my-secret-version-payload`). Only one of `data` or `data_wo` should be specified. `data_wo` will not be set in the Terraform state. To update the `data_wo`, you must also update the `data_wo_version`."
+						description:      "The raw data payload of your secret version in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Must not exceed 64KiB in size (e.g. `my-secret-version-payload`). Only one of `data` or `data_wo` should be specified. `data_wo` will not be set in the Terraform state. To update the `data_wo`, you must also update the `data_wo_version`."
 						description_kind: "plain"
 						optional:         true
 						sensitive:        true
@@ -15349,7 +15719,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					data_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) data. To update the `data_wo`, you must also update the `data_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) data. To update the `data_wo`, you must also update the `data_wo_version`."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -15973,6 +16343,90 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_vpc_connector: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The date and time of the creation of the vpc connector"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the VPC connector"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The organization_id you want to attach the resource to"
+						description_kind: "plain"
+						computed:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					status: {
+						type:             "string"
+						description:      "The VPC connector status"
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "The tags associated with the VPC connector"
+						description_kind: "plain"
+						optional:         true
+					}
+					target_vpc_id: {
+						type:             "string"
+						description:      "The ID of the target VPC to connect to"
+						description_kind: "plain"
+						required:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time of the last update of the vpc connector"
+						description_kind: "plain"
+						computed:         true
+					}
+					vpc_id: {
+						type:             "string"
+						description:      "The ID of the source VPC"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description: """
+					Creates and manages Scaleway VPC Connectors.
+
+					A VPC connector enables network connectivity between two VPCs, allowing resources in separate VPCs to communicate with each other.
+
+					For more information, see [the main documentation](https://www.scaleway.com/en/docs/vpc/concepts/).
+
+					"""
+				description_kind: "plain"
+			}
+		}
 		scaleway_vpc_gateway_network: {
 			version: 0
 			block: {
@@ -16398,6 +16852,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						type:             "bool"
 						description:      "Put a Public Gateway in IPAM mode, so that it can be used with the Public Gateways API v2"
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					name: {
@@ -16454,6 +16909,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						type: ["list", "string"]
 						description:      "override the gateway's default recursive DNS servers, if DNS features are enabled"
 						description_kind: "plain"
+						deprecated:       true
 						computed:         true
 					}
 					zone: {
@@ -16609,6 +17065,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						type:             "string"
 						description:      "Subnet for the DHCP server"
 						description_kind: "plain"
+						deprecated:       true
 						required:         true
 					}
 					updated_at: {
@@ -18114,13 +18571,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					password_wo: {
 						type:             "string"
-						description:      "Password used for the installation in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "Password used for the installation in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						computed:         true
 					}
 					password_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) password. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) password. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -18179,13 +18636,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					service_password_wo: {
 						type:             "string"
-						description:      "Password used for the service to install in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Only one of `service_password` or `service_password_wo` should be specified. `service_password_wo` will not be set in the Terraform state. To update the `service_password_wo`, you must also update the `service_password_wo_version`."
+						description:      "Password used for the service to install in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `service_password` or `service_password_wo` should be specified. `service_password_wo` will not be set in the Terraform state. To update the `service_password_wo`, you must also update the `service_password_wo_version`."
 						description_kind: "plain"
 						computed:         true
 					}
 					service_password_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) service password. To update the `service_password_wo`, you must also update the `service_password_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) service password. To update the `service_password_wo`, you must also update the `service_password_wo_version`."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -18527,6 +18984,92 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				deprecated:       true
 			}
 		}
+		scaleway_cockpit_exporter: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "Date and time of the creation of the data export (RFC 3339 format)"
+						description_kind: "plain"
+						computed:         true
+					}
+					datadog_destination: {
+						type: ["list", ["object", {
+							api_key:  "string"
+							endpoint: "string"
+						}]]
+						description:      "Datadog destination configuration"
+						description_kind: "plain"
+						computed:         true
+					}
+					datasource_id: {
+						type:             "string"
+						description:      "ID of the data source linked to the data export"
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of the data export"
+						description_kind: "plain"
+						computed:         true
+					}
+					exported_products: {
+						type: ["list", "string"]
+						description:      "List of Scaleway products to export. Use [\"all\"] to export all products. Use scaleway_cockpit_products data source for valid product names."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "ID of the exporter."
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the data export"
+						description_kind: "plain"
+						optional:         true
+					}
+					otlp_destination: {
+						type: ["list", ["object", {
+							endpoint: "string"
+							headers: ["map", "string"]
+						}]]
+						description:      "OTLP destination configuration"
+						description_kind: "plain"
+						computed:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Status of the data export"
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "Date and time of the last update of the data export (RFC 3339 format)"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		scaleway_cockpit_grafana: {
 			version: 0
 			block: {
@@ -18605,6 +19148,42 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					rule_status: {
 						type:             "string"
 						description:      "Filter alerts by rule status (enabled, disabled)"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_cockpit_products: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					names: {
+						type: ["list", "string"]
+						description:      "List of product names for use in scaleway_cockpit_exporter.exported_products."
+						description_kind: "plain"
+						computed:         true
+					}
+					products: {
+						type: ["list", ["object", {
+							display_name: "string"
+							family_name:  "string"
+							name:         "string"
+						}]]
+						description:      "List of Cockpit products available for exported_products in scaleway_cockpit_exporter."
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -19264,7 +19843,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					record_id: {
 						type:             "string"
-						description:      "The ID of the record"
+						description:      "The ID of the record (UUID or dns_zone/uuid format)"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -19301,6 +19880,237 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							weight: "number"
 						}]]
 						description:      "Return record based on weight"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_domain_registration: {
+			version: 0
+			block: {
+				attributes: {
+					administrative_contact: {
+						type: ["list", ["object", {
+							address_line_1:              "string"
+							address_line_2:              "string"
+							city:                        "string"
+							company_identification_code: "string"
+							company_name:                "string"
+							country:                     "string"
+							email:                       "string"
+							email_alt:                   "string"
+							extension_eu: ["list", ["object", {
+								european_citizenship: "string"
+							}]]
+							extension_fr: ["list", ["object", {
+								association_info: ["list", ["object", {
+									publication_jo:      "string"
+									publication_jo_page: "number"
+								}]]
+								code_auth_afnic_info: ["list", ["object", {
+									code_auth_afnic: "string"
+								}]]
+								duns_info: ["list", ["object", {
+									duns_id:  "string"
+									local_id: "string"
+								}]]
+								individual_info: ["list", ["object", {
+									whois_opt_in: "bool"
+								}]]
+								mode: "string"
+								trademark_info: ["list", ["object", {
+									trademark_inpi: "string"
+								}]]
+							}]]
+							extension_nl: ["list", "string"]
+							fax_number:              "string"
+							firstname:               "string"
+							lang:                    "string"
+							lastname:                "string"
+							legal_form:              "string"
+							phone_number:            "string"
+							resale:                  "bool"
+							state:                   "string"
+							vat_identification_code: "string"
+							whois_opt_in:            "bool"
+							zip:                     "string"
+						}]]
+						description:      "Details of the administrative contact."
+						description_kind: "plain"
+						computed:         true
+					}
+					auto_renew: {
+						type:             "bool"
+						description:      "Enable or disable auto-renewal of the domain."
+						description_kind: "plain"
+						computed:         true
+					}
+					dnssec: {
+						type:             "bool"
+						description:      "Enable or disable dnssec for the domain."
+						description_kind: "plain"
+						computed:         true
+					}
+					domain_name: {
+						type:             "string"
+						description:      "The domain name to look up (e.g. example.com)."
+						description_kind: "plain"
+						required:         true
+					}
+					domain_names: {
+						type: ["list", "string"]
+						description:      "List of domain names in the registration."
+						description_kind: "plain"
+						computed:         true
+					}
+					ds_record: {
+						type: ["list", ["object", {
+							algorithm: "string"
+							digest: ["list", ["object", {
+								digest: "string"
+								public_key: ["list", ["object", {
+									key: "string"
+								}]]
+								type: "string"
+							}]]
+							key_id: "number"
+							public_key: ["list", ["object", {
+								key: "string"
+							}]]
+						}]]
+						description:      "dnssec DS record configuration."
+						description_kind: "plain"
+						computed:         true
+					}
+					duration_in_years: {
+						type:             "number"
+						description:      "Duration of the registration period in years."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					owner_contact: {
+						type: ["list", ["object", {
+							address_line_1:              "string"
+							address_line_2:              "string"
+							city:                        "string"
+							company_identification_code: "string"
+							company_name:                "string"
+							country:                     "string"
+							email:                       "string"
+							email_alt:                   "string"
+							extension_eu: ["list", ["object", {
+								european_citizenship: "string"
+							}]]
+							extension_fr: ["list", ["object", {
+								association_info: ["list", ["object", {
+									publication_jo:      "string"
+									publication_jo_page: "number"
+								}]]
+								code_auth_afnic_info: ["list", ["object", {
+									code_auth_afnic: "string"
+								}]]
+								duns_info: ["list", ["object", {
+									duns_id:  "string"
+									local_id: "string"
+								}]]
+								individual_info: ["list", ["object", {
+									whois_opt_in: "bool"
+								}]]
+								mode: "string"
+								trademark_info: ["list", ["object", {
+									trademark_inpi: "string"
+								}]]
+							}]]
+							extension_nl: ["list", "string"]
+							fax_number:              "string"
+							firstname:               "string"
+							lang:                    "string"
+							lastname:                "string"
+							legal_form:              "string"
+							phone_number:            "string"
+							resale:                  "bool"
+							state:                   "string"
+							vat_identification_code: "string"
+							whois_opt_in:            "bool"
+							zip:                     "string"
+						}]]
+						description:      "Details of the owner contact. Either `owner_contact_id` or `owner_contact` must be provided."
+						description_kind: "plain"
+						computed:         true
+					}
+					owner_contact_id: {
+						type:             "string"
+						description:      "ID of the owner contact. Either `owner_contact_id` or `owner_contact` must be provided."
+						description_kind: "plain"
+						computed:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					task_id: {
+						type:             "string"
+						description:      "ID of the task that created the domain."
+						description_kind: "plain"
+						computed:         true
+					}
+					technical_contact: {
+						type: ["list", ["object", {
+							address_line_1:              "string"
+							address_line_2:              "string"
+							city:                        "string"
+							company_identification_code: "string"
+							company_name:                "string"
+							country:                     "string"
+							email:                       "string"
+							email_alt:                   "string"
+							extension_eu: ["list", ["object", {
+								european_citizenship: "string"
+							}]]
+							extension_fr: ["list", ["object", {
+								association_info: ["list", ["object", {
+									publication_jo:      "string"
+									publication_jo_page: "number"
+								}]]
+								code_auth_afnic_info: ["list", ["object", {
+									code_auth_afnic: "string"
+								}]]
+								duns_info: ["list", ["object", {
+									duns_id:  "string"
+									local_id: "string"
+								}]]
+								individual_info: ["list", ["object", {
+									whois_opt_in: "bool"
+								}]]
+								mode: "string"
+								trademark_info: ["list", ["object", {
+									trademark_inpi: "string"
+								}]]
+							}]]
+							extension_nl: ["list", "string"]
+							fax_number:              "string"
+							firstname:               "string"
+							lang:                    "string"
+							lastname:                "string"
+							legal_form:              "string"
+							phone_number:            "string"
+							resale:                  "bool"
+							state:                   "string"
+							vat_identification_code: "string"
+							whois_opt_in:            "bool"
+							zip:                     "string"
+						}]]
+						description:      "Details of the technical contact."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -19373,6 +20183,597 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_edge_services_backend_stage: {
+			version: 0
+			block: {
+				attributes: {
+					backend_stage_id: {
+						type:             "string"
+						description:      "The ID of the backend stage"
+						description_kind: "plain"
+						optional:         true
+					}
+					bucket_name: {
+						type:             "string"
+						description:      "Filter by S3 bucket name"
+						description_kind: "plain"
+						optional:         true
+					}
+					bucket_region: {
+						type:             "string"
+						description:      "Filter by S3 bucket region"
+						description_kind: "plain"
+						optional:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of the creation of the backend stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					lb_backend_config: {
+						type: ["list", ["object", {
+							lb_config: ["list", ["object", {
+								domain_name: "string", frontend_id: "string", has_websocket: "bool", id: "string", is_ssl: "bool", zone: "string"
+							}]]
+						}]]
+						description:      "The Scaleway Load Balancer origin linked to the backend stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					lb_id: {
+						type:             "string"
+						description:      "Filter by Load Balancer ID"
+						description_kind: "plain"
+						optional:         true
+					}
+					pipeline_id: {
+						type:             "string"
+						description:      "The ID of the pipeline"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						computed:         true
+					}
+					s3_backend_config: {
+						type: ["list", ["object", {
+							bucket_name:   "string"
+							bucket_region: "string"
+							is_website:    "bool"
+						}]]
+						description:      "The Scaleway Object Storage origin bucket (S3) linked to the backend stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time of the last update of the backend stage"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description: """
+					Gets information about an Edge Services backend stage.
+
+					A backend stage defines the origin (Scaleway Object Storage bucket or Load Balancer) that Edge Services forwards requests to.
+
+					"""
+				description_kind: "plain"
+			}
+		}
+		scaleway_edge_services_cache_stage: {
+			version: 0
+			block: {
+				attributes: {
+					backend_stage_id: {
+						type:             "string"
+						description:      "The backend stage ID the cache stage will be linked to"
+						description_kind: "plain"
+						computed:         true
+					}
+					cache_stage_id: {
+						type:             "string"
+						description:      "The ID of the cache stage"
+						description_kind: "plain"
+						optional:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of the creation of the cache stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					fallback_ttl: {
+						type:             "number"
+						description:      "The Time To Live (TTL) in seconds. Defines how long content is cached"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					include_cookies: {
+						type:             "bool"
+						description:      "Defines whether responses to requests with cookies must be stored in the cache"
+						description_kind: "plain"
+						computed:         true
+					}
+					pipeline_id: {
+						type:             "string"
+						description:      "The ID of the pipeline"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						computed:         true
+					}
+					purge_requests: {
+						type: ["set", ["object", {
+							all: "bool"
+							assets: ["list", "string"]
+							pipeline_id: "string"
+						}]]
+						description:      "Set of purge requests"
+						description_kind: "plain"
+						computed:         true
+					}
+					refresh_cache: {
+						type:             "string"
+						description:      "Trigger a refresh of the cache by changing this field's value"
+						description_kind: "plain"
+						computed:         true
+					}
+					route_stage_id: {
+						type:             "string"
+						description:      "The route stage ID the cache stage will be linked to"
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time of the last update of the cache stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					waf_stage_id: {
+						type:             "string"
+						description:      "The WAF stage ID the cache stage will be linked to"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description: """
+					Gets information about an Edge Services cache stage.
+
+					A cache stage defines the caching behavior for an Edge Services pipeline, including TTL and whether cookies are included in cache keys.
+
+					"""
+				description_kind: "plain"
+			}
+		}
+		scaleway_edge_services_dns_stage: {
+			version: 0
+			block: {
+				attributes: {
+					backend_stage_id: {
+						type:             "string"
+						description:      "The backend stage ID the DNS stage will be linked to"
+						description_kind: "plain"
+						computed:         true
+					}
+					cache_stage_id: {
+						type:             "string"
+						description:      "The cache stage ID the DNS stage will be linked to"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of the creation of the DNS stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					default_fqdn: {
+						type:             "string"
+						description:      "Default Fully Qualified Domain Name attached to the stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					dns_stage_id: {
+						type:             "string"
+						description:      "The ID of the DNS stage"
+						description_kind: "plain"
+						optional:         true
+					}
+					fqdn: {
+						type:             "string"
+						description:      "FQDN to filter for (in the format subdomain.example.com)"
+						description_kind: "plain"
+						optional:         true
+					}
+					fqdns: {
+						type: ["list", "string"]
+						description:      "Fully Qualified Domain Name (in the format subdomain.example.com) to attach to the stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					pipeline_id: {
+						type:             "string"
+						description:      "The ID of the pipeline"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						computed:         true
+					}
+					tls_stage_id: {
+						type:             "string"
+						description:      "The TLS stage ID the DNS stage will be linked to"
+						description_kind: "plain"
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The type of the stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time of the last update of the DNS stage"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description: """
+					Gets information about an Edge Services DNS stage.
+
+					A DNS stage defines the Fully Qualified Domain Names (FQDNs) attached to an Edge Services pipeline and links them to the next processing stage.
+
+					"""
+				description_kind: "plain"
+			}
+		}
+		scaleway_edge_services_pipeline: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The pipeline description"
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The pipeline description"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The pipeline name"
+						description_kind: "plain"
+						optional:         true
+					}
+					pipeline_id: {
+						type:             "string"
+						description:      "The ID of the pipeline"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					status: {
+						type:             "string"
+						description:      "The pipeline description"
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The pipeline description"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description: """
+					Gets information about an Edge Services pipeline.
+
+					A pipeline is the top-level resource that groups together all the stages (DNS, TLS, cache, backend, etc.) of an Edge Services configuration.
+
+					"""
+				description_kind: "plain"
+			}
+		}
+		scaleway_edge_services_route_stage: {
+			version: 0
+			block: {
+				attributes: {
+					backend_stage_id: {
+						type:             "string"
+						description:      "The ID of the backend stage HTTP requests should be forwarded to when no rules are matched"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of the creation of the route stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					pipeline_id: {
+						type:             "string"
+						description:      "The ID of the pipeline"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						computed:         true
+					}
+					route_stage_id: {
+						type:             "string"
+						description:      "The ID of the route stage"
+						description_kind: "plain"
+						optional:         true
+					}
+					rule: {
+						type: ["list", ["object", {
+							backend_stage_id: "string"
+							rule_http_match: ["list", ["object", {
+								method_filters: ["list", "string"]
+								path_filter: ["list", ["object", {
+									path_filter_type: "string"
+									value:            "string"
+								}]]
+							}]]
+							waf_stage_id: "string"
+						}]]
+						description:      "List of rules to be checked against every HTTP request. The first matching rule will forward the request to its specified backend stage. If no rules are matched, the request is forwarded to the WAF stage defined by `waf_stage_id`"
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time of the last update of the route stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					waf_stage_id: {
+						type:             "string"
+						description:      "The ID of the WAF stage HTTP requests should be forwarded to when no rules are matched"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description: """
+					Gets information about an Edge Services route stage.
+
+					A route stage defines HTTP request routing rules that forward requests to different backend stages based on method and path matching.
+
+					"""
+				description_kind: "plain"
+			}
+		}
+		scaleway_edge_services_tls_stage: {
+			version: 0
+			block: {
+				attributes: {
+					backend_stage_id: {
+						type:             "string"
+						description:      "The backend stage ID the TLS stage will be linked to"
+						description_kind: "plain"
+						computed:         true
+					}
+					cache_stage_id: {
+						type:             "string"
+						description:      "The cache stage ID the TLS stage will be linked to"
+						description_kind: "plain"
+						computed:         true
+					}
+					certificate_expires_at: {
+						type:             "string"
+						description:      "TThe expiration date of the certificate"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of the creation of the TLS stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					managed_certificate: {
+						type:             "bool"
+						description:      "Set to true when Scaleway generates and manages a Let's Encrypt certificate for the TLS stage/custom endpoint"
+						description_kind: "plain"
+						computed:         true
+					}
+					pipeline_id: {
+						type:             "string"
+						description:      "The ID of the pipeline"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						computed:         true
+					}
+					route_stage_id: {
+						type:             "string"
+						description:      "The route stage ID the TLS stage will be linked to"
+						description_kind: "plain"
+						computed:         true
+					}
+					secret_id: {
+						type:             "string"
+						description:      "Secret ID to filter for. Only TLS stages with this Secret ID will be returned"
+						description_kind: "plain"
+						optional:         true
+					}
+					secret_region: {
+						type:             "string"
+						description:      "Secret region to filter for. Only TLS stages with a Secret in this region will be returned"
+						description_kind: "plain"
+						optional:         true
+					}
+					secrets: {
+						type: ["list", ["object", {
+							region:    "string"
+							secret_id: "string"
+						}]]
+						description:      "The TLS secrets"
+						description_kind: "plain"
+						computed:         true
+					}
+					tls_stage_id: {
+						type:             "string"
+						description:      "The ID of the TLS stage"
+						description_kind: "plain"
+						optional:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time of the last update of the TLS stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					waf_stage_id: {
+						type:             "string"
+						description:      "The WAF stage ID the TLS stage will be linked to"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description: """
+					Gets information about an Edge Services TLS stage.
+
+					A TLS stage manages TLS/SSL certificates for an Edge Services pipeline, supporting both managed Let's Encrypt certificates and custom certificates stored in Scaleway Secret Manager.
+
+					"""
+				description_kind: "plain"
+			}
+		}
+		scaleway_edge_services_waf_stage: {
+			version: 0
+			block: {
+				attributes: {
+					backend_stage_id: {
+						type:             "string"
+						description:      "The ID of the backend stage to forward requests to after the WAF stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of the creation of the WAF stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					mode: {
+						type:             "string"
+						description:      "Mode defining WAF behavior (`disable`/`log_only`/`enable`)"
+						description_kind: "plain"
+						computed:         true
+					}
+					paranoia_level: {
+						type:             "number"
+						description:      "The sensitivity level (`1`,`2`,`3`,`4`) to use when classifying requests as malicious. With a high level, requests are more likely to be classed as malicious, and false positives are expected. With a lower level, requests are more likely to be classed as benign"
+						description_kind: "plain"
+						computed:         true
+					}
+					pipeline_id: {
+						type:             "string"
+						description:      "The ID of the pipeline"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time of the last update of the WAF stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					waf_stage_id: {
+						type:             "string"
+						description:      "The ID of the WAF stage"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description: """
+					Gets information about an Edge Services WAF (Web Application Firewall) stage.
+
+					A WAF stage provides web application firewall protection for an Edge Services pipeline, inspecting HTTP requests and blocking malicious traffic based on a configurable paranoia level.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -20098,6 +21499,102 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_iam_saml: {
+			version: 0
+			block: {
+				attributes: {
+					entity_id: {
+						type:             "string"
+						description:      "The entity ID of the SAML Identity Provider"
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the SAML configuration"
+						description_kind: "markdown"
+						computed:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The organization ID"
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					service_provider: {
+						type: ["object", {
+							assertion_consumer_service_url: "string"
+							entity_id:                      "string"
+						}]
+						description:      "The Service Provider information"
+						description_kind: "markdown"
+						computed:         true
+					}
+					single_sign_on_url: {
+						type:             "string"
+						description:      "The single sign-on URL of the SAML Identity Provider"
+						description_kind: "markdown"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "The status of the SAML configuration"
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Retrieves SAML configuration for an organization. This data source enables you to retrieve the SAML-based single sign-on (SSO) configuration for your Scaleway organization.
+
+					SAML (Security Assertion Markup Language) is an open standard for exchanging authentication and authorization data between parties, specifically between an identity provider and a service provider.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		scaleway_iam_saml_certificate: {
+			version: 0
+			block: {
+				attributes: {
+					certificate_id: {
+						type:             "string"
+						description:      "The ID of the SAML certificate"
+						description_kind: "markdown"
+						required:         true
+					}
+					content: {
+						type:             "string"
+						description:      "The content of the SAML certificate"
+						description_kind: "markdown"
+						computed:         true
+					}
+					expires_at: {
+						type:             "string"
+						description:      "The expiration date and time of the SAML certificate"
+						description_kind: "markdown"
+						computed:         true
+					}
+					origin: {
+						type:             "string"
+						description:      "The origin of the SAML certificate. Possible values are: `scaleway`, `identity_provider`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The type of the SAML certificate. Possible values are: `signing`, `encryption`."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Get information about a SAML certificate. This data source allows you to retrieve information about a specific SAML certificate by its ID.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		scaleway_iam_ssh_key: {
 			version: 0
 			block: {
@@ -20283,13 +21780,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					secret_wo: {
 						type:             "string"
-						description:      "A token or credential used to authenticate when pulling the model from a private or gated source in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. For example, a Hugging Face access token with read permissions. `secret_wo` will not be set in the Terraform state. Only one of `secret` or `secret_wo` should be specified."
+						description:      "A token or credential used to authenticate when pulling the model from a private or gated source in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. For example, a Hugging Face access token with read permissions. `secret_wo` will not be set in the Terraform state. Only one of `secret` or `secret_wo` should be specified."
 						description_kind: "plain"
 						computed:         true
 					}
 					secret_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) secret. To update the `secret_wo`, you must also update the `secret_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) secret. To update the `secret_wo`, you must also update the `secret_wo_version`."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -21108,8 +22605,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							}]]
 							project_id: "string"
 							public_ips: ["list", ["object", {
-								address: "string"
-								id:      "string"
+								address:           "string"
+								dynamic:           "bool"
+								family:            "string"
+								gateway:           "string"
+								id:                "string"
+								netmask:           "string"
+								provisioning_mode: "string"
 							}]]
 							security_group_id: "string"
 							state:             "string"
@@ -21297,6 +22799,121 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_interlink_partner: {
+			version: 0
+			block: {
+				attributes: {
+					contact_email: {
+						type:             "string"
+						description:      "Contact email address of the partner"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "Creation date of the partner"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					logo_url: {
+						type:             "string"
+						description:      "URL of the partner's logo"
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the partner to filter for"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					partner_id: {
+						type:             "string"
+						description:      "The ID of the partner"
+						description_kind: "plain"
+						optional:         true
+					}
+					portal_url: {
+						type:             "string"
+						description:      "URL of the partner's portal"
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "Last update date of the partner"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description: """
+					Gets information about an Interlink Partner.
+
+					A partner is an organization that provides shared connections at PoPs, allowing you to create hosted links without owning physical infrastructure.
+
+					"""
+				description_kind: "plain"
+			}
+		}
+		scaleway_interlink_partners: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					partners: {
+						type: ["list", ["object", {
+							contact_email: "string"
+							created_at:    "string"
+							id:            "string"
+							logo_url:      "string"
+							name:          "string"
+							portal_url:    "string"
+							updated_at:    "string"
+						}]]
+						description:      "List of partners"
+						description_kind: "plain"
+						computed:         true
+					}
+					pop_ids: {
+						type: ["list", "string"]
+						description:      "Filter for partners present in one of these PoPs"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description: """
+					Gets information about multiple Interlink Partners.
+
+					A partner is an organization that provides shared connections at PoPs. Use this data source to list and filter available partners for creating hosted links.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -23842,13 +25459,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					password_wo: {
 						type:             "string"
-						description:      "Password of the user in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "Password of the user in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						computed:         true
 					}
 					password_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) password. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) password. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -24208,6 +25825,176 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_object_bucket_server_side_encryption_configuration: {
+			version: 0
+			block: {
+				attributes: {
+					bucket: {
+						type:             "string"
+						description:      "The bucket's name or regional ID."
+						description_kind: "plain"
+						optional:         true
+					}
+					bucket_server_side_encryption_configuration_id: {
+						type:             "string"
+						description:      "The ID of the bucket server side encryption configuration"
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					rule: {
+						type: ["set", ["object", {
+							apply_server_side_encryption_by_default: ["list", ["object", {
+								sse_algorithm: "string"
+							}]]
+						}]]
+						description:      "Set of server-side encryption configuration rules"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description: """
+					Get information about a bucket server side encryption configuration. This data source allows you to retrieve information about the server-side encryption configuration of a bucket.
+
+					"""
+				description_kind: "plain"
+			}
+		}
+		scaleway_opensearch_deployment: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "Date and time of deployment creation (RFC 3339 format)"
+						description_kind: "plain"
+						computed:         true
+					}
+					deployment_id: {
+						type:             "string"
+						description:      "The ID of the OpenSearch deployment"
+						description_kind: "plain"
+						optional:         true
+					}
+					endpoints: {
+						type: ["list", ["object", {
+							id:                 "string"
+							private_network_id: "string"
+							public:             "bool"
+							services: ["list", ["object", {
+								name: "string"
+								port: "number"
+								url:  "string"
+							}]]
+						}]]
+						description:      "List of endpoints"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the OpenSearch deployment"
+						description_kind: "plain"
+						optional:         true
+					}
+					node_amount: {
+						type:             "number"
+						description:      "Number of nodes"
+						description_kind: "plain"
+						computed:         true
+					}
+					node_type: {
+						type:             "string"
+						description:      "Type of node"
+						description_kind: "plain"
+						computed:         true
+					}
+					password: {
+						type:             "string"
+						description:      "Password for the deployment user"
+						description_kind: "plain"
+						computed:         true
+					}
+					private_network: {
+						type: ["list", ["object", {
+							private_network_id: "string"
+						}]]
+						description:      "Private network configuration"
+						description_kind: "plain"
+						computed:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					public_dashboard_url: {
+						type:             "string"
+						description:      "URL of the OpenSearch Dashboards service when it is exposed on a public endpoint (including when the API uses a private network)"
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					status: {
+						type:             "string"
+						description:      "The status of the deployment"
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "List of tags to apply"
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "Date and time of deployment last update (RFC 3339 format)"
+						description_kind: "plain"
+						computed:         true
+					}
+					user_name: {
+						type:             "string"
+						description:      "Username for the deployment"
+						description_kind: "plain"
+						computed:         true
+					}
+					version: {
+						type:             "string"
+						description:      "OpenSearch version to use"
+						description_kind: "plain"
+						computed:         true
+					}
+					volume: {
+						type: ["list", ["object", {
+							size_in_gb: "number"
+							type:       "string"
+						}]]
+						description:      "Volume configuration"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		scaleway_rdb_acl: {
 			version: 0
 			block: {
@@ -24526,13 +26313,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					password_wo: {
 						type:             "string"
-						description:      "Password for the first user of the database instance in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "Password for the first user of the database instance in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						computed:         true
 					}
 					password_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) password. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) password. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -24742,13 +26529,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					password_wo: {
 						type:             "string"
-						description:      "Password of the user in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "Password of the user in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						computed:         true
 					}
 					password_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) password. To update the `password_wo`, you must also update the `password_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) password. To update the `password_wo`, you must also update the `password_wo_version`."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -25659,13 +27446,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					data_wo: {
 						type:             "string"
-						description:      "The raw data payload of your secret version in [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) mode. Must not exceed 64KiB in size (e.g. `my-secret-version-payload`). Only one of `data` or `data_wo` should be specified. `data_wo` will not be set in the Terraform state. To update the `data_wo`, you must also update the `data_wo_version`."
+						description:      "The raw data payload of your secret version in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Must not exceed 64KiB in size (e.g. `my-secret-version-payload`). Only one of `data` or `data_wo` should be specified. `data_wo` will not be set in the Terraform state. To update the `data_wo`, you must also update the `data_wo_version`."
 						description_kind: "plain"
 						computed:         true
 					}
 					data_wo_version: {
 						type:             "number"
-						description:      "The version of the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) data. To update the `data_wo`, you must also update the `data_wo_version`."
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) data. To update the `data_wo`, you must also update the `data_wo_version`."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -26081,6 +27868,146 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_vpc_acl: {
+			version: 0
+			block: {
+				attributes: {
+					default_policy: {
+						type:             "string"
+						description:      "The action to take for packets which do not match any rules"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_ipv6: {
+						type:             "bool"
+						description:      "Defines whether this set of ACL rules is for IPv6 (false = IPv4). Each Network ACL can have rules for only one IP type"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					rules: {
+						type: ["list", ["object", {
+							action:        "string"
+							description:   "string"
+							destination:   "string"
+							dst_port_high: "number"
+							dst_port_low:  "number"
+							protocol:      "string"
+							source:        "string"
+							src_port_high: "number"
+							src_port_low:  "number"
+						}]]
+						description:      "The list of Network ACL rules"
+						description_kind: "plain"
+						computed:         true
+					}
+					vpc_id: {
+						type:             "string"
+						description:      "The VPC ID to look up the ACL for"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_vpc_connector: {
+			version: 0
+			block: {
+				attributes: {
+					connector_id: {
+						type:             "string"
+						description:      "The ID of the VPC connector"
+						description_kind: "plain"
+						optional:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of the creation of the vpc connector"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the VPC connector"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The organization_id you want to attach the resource to"
+						description_kind: "plain"
+						computed:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					status: {
+						type:             "string"
+						description:      "The VPC connector status"
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "The tags associated with the VPC connector"
+						description_kind: "plain"
+						optional:         true
+					}
+					target_vpc_id: {
+						type:             "string"
+						description:      "The ID of the target VPC to connect to"
+						description_kind: "plain"
+						optional:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time of the last update of the vpc connector"
+						description_kind: "plain"
+						computed:         true
+					}
+					vpc_id: {
+						type:             "string"
+						description:      "The ID of the source VPC"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description: """
+					Gets information about a VPC connector.
+
+					A VPC connector enables network connectivity between two VPCs, allowing resources in separate VPCs to communicate with each other.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -26562,6 +28489,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		scaleway_vpc_public_gateway_dhcp_reservation: {
@@ -26636,6 +28564,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		scaleway_vpc_public_gateway_ip: {
@@ -26773,6 +28702,92 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					zone: {
 						type:             "string"
 						description:      "The zone you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_vpc_route: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The date and time of the creation of the route"
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The route description"
+						description_kind: "plain"
+						computed:         true
+					}
+					destination: {
+						type:             "string"
+						description:      "The destination IP or IP range of the route"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_ipv6: {
+						type:             "bool"
+						description:      "Only routes with an IPv6 destination will be returned"
+						description_kind: "plain"
+						optional:         true
+					}
+					nexthop_private_network_id: {
+						type:             "string"
+						description:      "The ID of the nexthop private network"
+						description_kind: "plain"
+						optional:         true
+					}
+					nexthop_resource_id: {
+						type:             "string"
+						description:      "The ID of the nexthop resource"
+						description_kind: "plain"
+						optional:         true
+					}
+					nexthop_resource_type: {
+						type:             "string"
+						description:      "Only routes with a matching next hop resource type will be returned"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					route_id: {
+						type:             "string"
+						description:      "The ID of the route"
+						description_kind: "plain"
+						optional:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "The tags associated with the Route"
+						description_kind: "plain"
+						optional:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time of the last update of the route"
+						description_kind: "plain"
+						computed:         true
+					}
+					vpc_id: {
+						type:             "string"
+						description:      "VPC ID the Route belongs to"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -27251,7 +29266,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 
 					Contrary to the scw_config Data Source, this is an Ephemeral Resource: it is not stored in the Terraform state file. The configuration information is retrieved fresh with each Terraform apply.
 
-					Refer to the Scaleway [documentation](https://www.scaleway.com/en/docs/) and [API documentation](https://www.scaleway.com/en/developers/api/) for more information.
+					For more information, see [our guide to using Ephemeral Resources with Terraform Scaleway Provider](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-ephemeral-resources), the Scaleway [documentation](https://www.scaleway.com/en/docs/), and the [API documentation](https://www.scaleway.com/en/developers/api/).
 
 					"""
 				description_kind: "markdown"
@@ -27327,9 +29342,9 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description: """
 					The [`scaleway_iam_api_key`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/ephemeral-resource/iam_api_key) Ephemeral Resource is used to create and manage Scaleway API Keys. An API key can be associated with either an application or a user.
 
-					Contrary to the iam_api_key Resource, this is an Ephemeral Resource: it is not stored in the Terraform state file, and is therefore not managed by Terraform and needs to be managed separately. A new Scaleway API key will be created with each Terraform apply. You may set the `expires_at` attribute for the key to be automatically deleted at a set date.
+					~> **Important:** This ephemeral resource is currently experimental and may evolve as we refine its functionality. Unlike the regular [`scaleway_iam_api_key` Resource](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/iam_api_key), this ephemeral resource is not stored in Terraform state and is not managed by Terraform after creation. Each `terraform apply` will generate a new API key. For automatic cleanup, you can set the `expires_at` attribute to specify when the key should be deleted.
 
-					Refer to the IAM [documentation](https://www.scaleway.com/en/docs/iam/) and [API documentation](https://www.scaleway.com/en/developers/api/iam/) for more information.
+					For more information, see [our guide to using Ephemeral Resources](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-ephemeral-resources), the [IAM documentation](https://www.scaleway.com/en/docs/iam/), and the [API documentation](https://www.scaleway.com/en/developers/api/iam/).
 					"""
 				description_kind: "markdown"
 			}
@@ -27375,7 +29390,8 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description: """
 					The [`scaleway_key_manager_decrypt`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/ephemeral-resource/key_manager_decrypt) ephemeral resource is helpful to decrypt a payload using an existing key.
 
-					Refer to the Key Manager [documentation](https://www.scaleway.com/en/docs/key-manager/) and [API documentation](https://www.scaleway.com/en/developers/api/key-manager/) for more information.
+					For more information, see [our guide to using Ephemeral Resources with Terraform Scaleway Provider](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-ephemeral-resources), the Key Manager [documentation](https://www.scaleway.com/en/docs/key-manager/), and the [API documentation](https://www.scaleway.com/en/developers/api/key-manager/).
+
 					"""
 				description_kind: "markdown"
 			}
@@ -27421,7 +29437,8 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description: """
 					The [`scaleway_key_manager_encrypt`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/ephemeral-resource/key_manager_encrypt) ephemeral resource is helpful to encrypt a payload using an existing key.
 
-					Refer to the Key Manager [documentation](https://www.scaleway.com/en/docs/key-manager/) and [API documentation](https://www.scaleway.com/en/developers/api/key-manager/) for more information.
+					For more information, see [our guide to using Ephemeral Resources with Terraform Scaleway Provider](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-ephemeral-resources), the Key Manager [documentation](https://www.scaleway.com/en/docs/key-manager/), and the [API documentation](https://www.scaleway.com/en/developers/api/key-manager/).
+
 					"""
 				description_kind: "markdown"
 			}
@@ -27479,7 +29496,8 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 
 					The data encryption key is returned in plaintext and ciphertext but it should only be stored in its encrypted form (ciphertext). Key Manager does not store your data encryption key. To retrieve your key's plaintext, use the Decrypt method with your key's ID and ciphertext.
 
-					Refer to the Key Manager [documentation](https://www.scaleway.com/en/docs/key-manager/) and [API documentation](https://www.scaleway.com/en/developers/api/key-manager/) for more information.
+					For more information, see [our guide to using Ephemeral Resources with Terraform Scaleway Provider](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-ephemeral-resources), the Key Manager [documentation](https://www.scaleway.com/en/docs/key-manager/), and the [API documentation](https://www.scaleway.com/en/developers/api/key-manager/).
+
 					"""
 				description_kind: "markdown"
 			}
@@ -27517,7 +29535,8 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description: """
 					The [`scaleway_key_manager_sign`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/ephemeral-resource/key_manager_sign) ephemeral resource is helpful to sign a message digest with a given key. The key must have its usage set to asymmetric_signing. The digest must be created using the same digest algorithm that is defined in the key's algorithm configuration.
 
-					Refer to the Key Manager [documentation](https://www.scaleway.com/en/docs/key-manager/) and [API documentation](https://www.scaleway.com/en/developers/api/key-manager/) for more information.
+					For more information, see [our guide to using Ephemeral Resources with Terraform Scaleway Provider](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-ephemeral-resources), the Key Manager [documentation](https://www.scaleway.com/en/docs/key-manager/), and the [API documentation](https://www.scaleway.com/en/developers/api/key-manager/).
+
 					"""
 				description_kind: "markdown"
 			}
@@ -27602,9 +29621,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 
 					Contrary to the secret_version data source, this is an [ephemeral resource](https://developer.hashicorp.com/terraform/plugin/framework/ephemeral-resources): it will not be persisted in plan or state artifacts.
 
-					This ephemeral resource is particularly useful when you need to access secret values during Terraform execution without persisting them in the state file, especially if that secret's data has been set with the [write-only](https://developer.hashicorp.com/terraform/language/manage-sensitive-data/write-only) attribute [`data_wo`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/secret_version#data_wo-2). You can avoid exposing sensitive data in your Terraform state files, from the creation to the access of your secret_version resource.
+					This ephemeral resource is particularly useful when you need to access secret values during Terraform execution without persisting them in the state file, especially if that secret's data has been set with the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) attribute [`data_wo`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/secret_version#data_wo-2). You can avoid exposing sensitive data in your Terraform state files, from the creation to the access of your secret_version resource.
 
-					Refer to the Secret Manager [documentation](https://www.scaleway.com/en/docs/secret-manager/) and [API documentation](https://www.scaleway.com/en/developers/api/secret-manager/) for more information.
+					For more information, see [our guide to using Ephemeral Resources with Terraform Scaleway Provider](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-ephemeral-resources), the Secret Manager [documentation](https://www.scaleway.com/en/docs/secret-manager/), and the [API documentation](https://www.scaleway.com/en/developers/api/secret-manager/).
+
 					"""
 				description_kind: "markdown"
 			}
@@ -27656,6 +29676,104 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 			}
 		}
+		scaleway_autoscaling_instance_group: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				zone: {
+					type:                "string"
+					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_autoscaling_instance_policy: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				zone: {
+					type:                "string"
+					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_autoscaling_instance_template: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				zone: {
+					type:                "string"
+					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_cockpit: {
+			version: 0
+			attributes: project_id: {
+				type:                "string"
+				description:         "The ID of the project (UUID format)"
+				required_for_import: true
+			}
+		}
+		scaleway_cockpit_alert_manager: {
+			version: 0
+			attributes: {
+				project_id: {
+					type:                "string"
+					description:         "The ID of the project (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_cockpit_exporter: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_cockpit_grafana_user: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The ID of the Grafana user"
+					required_for_import: true
+				}
+				project_id: {
+					type:                "string"
+					description:         "The ID of the project (UUID format)"
+					required_for_import: true
+				}
+			}
+		}
 		scaleway_cockpit_source: {
 			version: 0
 			attributes: {
@@ -27684,6 +29802,29 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					description:         "The region of the resource"
 					required_for_import: true
 				}
+			}
+		}
+		scaleway_domain_record: {
+			version: 0
+			attributes: {
+				dns_zone: {
+					type:                "string"
+					description:         "The DNS zone of the record"
+					required_for_import: true
+				}
+				id: {
+					type:                "string"
+					description:         "The ID of the record (UUID format)"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_domain_zone: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				description:         "The id of the resource (UUID format)"
+				required_for_import: true
 			}
 		}
 		scaleway_edge_services_backend_stage: {
@@ -27763,6 +29904,21 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				type:                "string"
 				description:         "The id of the resource (UUID format)"
 				required_for_import: true
+			}
+		}
+		scaleway_file_filesystem: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
 			}
 		}
 		scaleway_flexible_ip: {
@@ -27920,6 +30076,81 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 			}
 		}
+		scaleway_iot_device: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_iot_hub: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_iot_network: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_iot_route: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_ipam_ip: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
 		scaleway_kafka_cluster: {
 			version: 0
 			attributes: {
@@ -28060,6 +30291,161 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 			}
 		}
+		scaleway_mnq_nats_account: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_mnq_nats_credentials: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_mnq_sns: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_mnq_sns_credentials: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_mnq_sns_topic: {
+			version: 0
+			attributes: {
+				name: {
+					type:                "string"
+					description:         "The topic name"
+					required_for_import: true
+				}
+				project_id: {
+					type:                "string"
+					description:         "The ID of the project (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_mnq_sns_topic_subscription: {
+			version: 0
+			attributes: {
+				project_id: {
+					type:                "string"
+					description:         "The ID of the project (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					description:         "The subscription ID"
+					required_for_import: true
+				}
+				topic_name: {
+					type:                "string"
+					description:         "The topic name"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_mnq_sqs: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_mnq_sqs_credentials: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_mnq_sqs_queue: {
+			version: 0
+			attributes: {
+				name: {
+					type:                "string"
+					description:         "The queue name"
+					required_for_import: true
+				}
+				project_id: {
+					type:                "string"
+					description:         "The ID of the project (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
 		scaleway_mongodb_instance: {
 			version: 0
 			attributes: {
@@ -28101,6 +30487,21 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				name: {
 					type:                "string"
 					description:         "The MongoDB user name"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_object_bucket_server_side_encryption_configuration: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
 					required_for_import: true
 				}
 				region: {
@@ -28260,6 +30661,66 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 			}
 		}
+		scaleway_s2s_vpn_connection: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_s2s_vpn_customer_gateway: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_s2s_vpn_gateway: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_s2s_vpn_routing_policy: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
 		scaleway_tem_blocked_list: {
 			version: 0
 			attributes: {
@@ -28350,6 +30811,36 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 			}
 		}
+		scaleway_vpc_connector: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_vpc_gateway_network: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				zone: {
+					type:                "string"
+					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
 		scaleway_vpc_private_network: {
 			version: 0
 			attributes: {
@@ -28365,7 +30856,82 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 			}
 		}
+		scaleway_vpc_public_gateway: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				zone: {
+					type:                "string"
+					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_vpc_public_gateway_ip: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				zone: {
+					type:                "string"
+					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_vpc_public_gateway_ip_reverse_dns: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				zone: {
+					type:                "string"
+					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_vpc_public_gateway_pat_rule: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				zone: {
+					type:                "string"
+					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
 		scaleway_vpc_route: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_webhosting: {
 			version: 0
 			attributes: {
 				id: {
@@ -28540,6 +31106,35 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_cockpit_trigger_test_alert`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/cockpit_trigger_test_alert) action is helpful to ensure that your alerts are properly triggered.
 
 				Refer to the Cockpit [documentation](https://www.scaleway.com/en/docs/managed-services/cockpit/) and [API documentation](https://www.scaleway.com/en/developers/api/cockpit/regional-api/) for more information.
+				"""
+			description_kind: "markdown"
+		}
+		scaleway_iam_update_saml_configuration: block: {
+			attributes: {
+				entity_id: {
+					type:             "string"
+					description:      "The entity ID of the SAML Identity Provider"
+					description_kind: "markdown"
+					optional:         true
+				}
+				organization_id: {
+					type:             "string"
+					description:      "The organization ID. If not provided, the default organization configured in the provider is used."
+					description_kind: "markdown"
+					optional:         true
+				}
+				single_sign_on_url: {
+					type:             "string"
+					description:      "The single sign-on URL of the SAML Identity Provider"
+					description_kind: "markdown"
+					optional:         true
+				}
+			}
+			description: """
+				Update SAML configuration parameters for an organization. SAML (Security Assertion Markup Language) is an open standard for exchanging authentication and authorization data between parties, specifically between an identity provider and a service provider. This resource allows you to configure the entity_id and single_sign_on_url for SAML-based single sign-on for your Scaleway organization.
+
+				Note: This action requires that SAML is already enabled using the [`scaleway_iam_saml`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/iam_saml) resource.
+
 				"""
 			description_kind: "markdown"
 		}

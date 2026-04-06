@@ -4,13 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_cockpit_source")
 	close({
+		timeouts?: #timeouts
+
 		// The date and time of the creation of the cockpit datasource
 		created_at?: string
+		id?:         string
 
 		// Name of the datasource
-		name?:     string
-		timeouts?: #timeouts
-		id?:       string
+		name?: string
 
 		// The origin of the datasource
 		origin?: string

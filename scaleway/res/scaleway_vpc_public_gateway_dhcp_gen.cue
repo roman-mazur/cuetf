@@ -63,9 +63,6 @@ package res
 		// 30s lower than `rebind_timer`. Defaults to 50m (3000s).
 		renew_timer?: number
 
-		// Subnet for the DHCP server
-		subnet!: string
-
 		// The date and time of the last update of the public gateway.
 		updated_at?: string
 
@@ -74,6 +71,7 @@ package res
 		valid_lifetime?: number
 
 		// The zone you want to attach the resource to
-		zone?: string
+		zone?:   string
+		subnet!: _
 	})
 }
