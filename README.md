@@ -5,7 +5,7 @@ CUE definitions for the selected Terraform providers.
 
 Usage example:
 ```cue
-import "github.com/roman-mazur/cuetf/google"
+import "github.com/roman-mazur/cuetf/providers/google"
 
 googleInfra: google.#Terraform & {
 	provider: google: {
