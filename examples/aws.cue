@@ -1,6 +1,6 @@
 package examples
 
-import "github.com/roman-mazur/cuetf/aws"
+import "github.com/roman-mazur/cuetf/providers/aws"
 
 awsServer: {
 	aws.#Terraform & {

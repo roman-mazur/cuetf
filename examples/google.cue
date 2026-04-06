@@ -1,6 +1,6 @@
 package examples
 
-import "github.com/roman-mazur/cuetf/google"
+import "github.com/roman-mazur/cuetf/providers/google"
 
 googleServer: google.#Terraform & {
 	provider: google: {
