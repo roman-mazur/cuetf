@@ -3,7 +3,7 @@ package jsonschema
 import (
 	"list"
 	"path"
-	"github.com/roman-mazur/cuetf/internal/tf"
+	"github.com/roman-mazur/cuetf"
 )
 
 // #SchemaTransform can be used to tranform the Terraform provider schema document into a an equivalent JSON Schema.
@@ -38,13 +38,13 @@ import (
 						(name): (#fieldTransform & {#type: info.type}).out
 					}
 					if info.nested_type != _|_ {
-						#: "nested_block_\(name)": (#blockTransform & {#block: {
+						_#x: "nested_block_\(name)": (#blockTransform & {#block: {
 							attributes: info.nested_type.attributes
 							block_types: {}
 						}}).out
 						(name): (#nestingTransform & {
 							#nest: info.nested_type
-							#def:  #["nested_block_\(name)"]
+							#def:  _#x["nested_block_\(name)"]
 						}).out
 					}
 
@@ -94,7 +94,7 @@ import (
 	}
 
 	#nestingTransform: {
-		#nest: tf.nestable & {...}
+		#nest: cuetf.nestable & {...}
 		#def: _
 
 		out: {
@@ -128,7 +128,7 @@ import (
 
 // Helper to transform into an object property.
 #fieldTransform: {
-	#type!: tf.#attr.#primitive
+	#type!: cuetf.#attr.#primitive
 	out: type: _primitivesMap[#type]
 } | {
 	#type!: ["object", _]
