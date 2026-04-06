@@ -16,6 +16,7 @@ import (
 	"cuelang.org/go/cue"
 	"cuelang.org/go/cue/cuecontext"
 	"cuelang.org/go/cue/load"
+	"rmazur.io/cuetf/internal/embedassets"
 	"rmazur.io/cuetf/internal/gen"
 	. "rmazur.io/cuetf/internal/testtools"
 )
@@ -79,6 +80,13 @@ func TestProviders(t *testing.T) {
 				"helm_release",
 			},
 		},
+		{
+			name: "scaleway",
+			examples: []string{
+				"provider",
+				"scaleway_account_project",
+			},
+		},
 	} {
 		runTestCase := func(name string) {
 			t.Run(name, func(t *testing.T) {
@@ -106,13 +114,14 @@ func testProvider(t *testing.T, provider string, names []string) {
 
 func runGen(t *testing.T, provider string, names []string) string {
 	t.Helper()
-	dst := t.TempDir()
-	initTestModule(t, dst, provider)
+	moduleDir := t.TempDir()
+	initTestModule(t, moduleDir, provider)
 
+	dst := filepath.Join(moduleDir, "providers")
 	filter := fmt.Sprintf("^(%s)$", strings.Join(names, "|"))
 	g := gen.NewGenerator(t.Logf)
 	err := g.Generate(&gen.Config{
-		SchemaPath:        filepath.Join("../..", provider, "internal/schema/schema.json"),
+		SchemaPath:        filepath.Join("../../providers", provider, "internal/schema/schema.json"),
 		OutputPath:        dst,
 		Version:           "0.0.1",
 		GenerateDefs:      true,
@@ -154,10 +163,16 @@ func injectSamples(t *testing.T, provider string, dst string) {
 }
 
 func initTestModule(t *testing.T, workDir string, provider string) {
+	t.Helper()
+	t.Log("init cue module")
 	RunCUE(t, workDir, "mod", "init", "github.com/roman-mazur/cuetf")
-	RunCommand(t, exec.Command("cp", "-r", "..", filepath.Join(workDir, "internal")))
-	providerDir := filepath.Join(workDir, provider)
-	RunCommand(t, exec.Command("mkdir", providerDir))
+	t.Log("copy internal deps")
+	if err := embedassets.CopyInternalDeps(workDir); err != nil {
+		t.Fatal(err)
+	}
+	providerDir := filepath.Join(workDir, "providers", provider)
+	t.Log("making provider folder", providerDir)
+	RunCommand(t, exec.Command("mkdir", "-p", providerDir))
 }
 
 func TestSample(t *testing.T) {

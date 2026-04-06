@@ -13,6 +13,7 @@ import (
 	"regexp"
 	"strings"
 
+	"rmazur.io/cuetf/internal/embedassets"
 	"rmazur.io/cuetf/internal/gen"
 )
 
@@ -50,7 +51,7 @@ func Run(dir string, args []string) error {
 	if err != nil {
 		return err
 	}
-	if err := InstallInternalDeps(repoRoot, cuetfModulePath); err != nil {
+	if err := embedassets.InstallInternalDeps(repoRoot, cuetfModulePath); err != nil {
 		return err
 	}
 

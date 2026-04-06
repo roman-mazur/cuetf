@@ -1,7 +1,7 @@
 // Command monthly-release performs the following actions:
 // - checks if the HEAD of the git repo is different from the latest tag,
 // - tags the HEAD using the current month (in a form of <major>.YYMM.<patch>),
-// - published the cue module with this new version.
+// - publishes the provider cue modules (each in ./providers) with this new version.
 package main
 
 import (
@@ -10,13 +10,14 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
 )
 
 func main() {
-	// 1. Check HEAD and latest tag
+	// 1. Check HEAD and latest tag.
 	headHash, err := runCmd("git", "rev-parse", "HEAD")
 	if err != nil {
 		log.Fatalf("❌ Failed to get HEAD hash: %v", err)
@@ -33,7 +34,7 @@ func main() {
 		os.Exit(0)
 	}
 
-	// 2. Generate and Create the tag locally
+	// 2. Generate and Create the tag locally.
 	newTag := GenerateVersion(latestTag, time.Now())
 	for {
 		exists, err := TagExists(newTag)
@@ -50,16 +51,27 @@ func main() {
 		log.Fatalf("❌ Failed to create git tag %s: %v", newTag, err)
 	}
 
-	// 3. Push the tag to origin
+	// 3. Push the tag to origin.
 	fmt.Printf("⬆️ Pushing tag %s to origin...\n", newTag)
 	if err := PushTag(newTag); err != nil {
 		log.Fatalf("❌ Failed to push tag to origin: %v", err)
 	}
 
-	// 4. Publish the CUE module
-	fmt.Printf("📦 Publishing CUE module version %s...\n", newTag)
-	if _, err := runCmd("cue", "mod", "publish", newTag); err != nil {
-		log.Fatalf("❌ Failed to publish CUE module: %v", err)
+	// 4. Publish provider CUE modules.
+	const providersDir = "./providers"
+	pEntries, err := os.ReadDir(providersDir)
+	if err != nil {
+		log.Fatal("❌ Failed to read providers directory: ", err)
+	}
+	for _, entry := range pEntries {
+		if !entry.IsDir() || strings.HasPrefix(entry.Name(), ".") {
+			continue
+		}
+		pDir := filepath.Join(providersDir, entry.Name())
+		fmt.Printf("📦 Publishing CUE module %q version %s...\n", entry.Name(), newTag)
+		if _, err := runCmdInDir(pDir, "cue", "mod", "publish", newTag); err != nil {
+			log.Fatalf("❌ Failed to publish CUE module: %v", err)
+		}
 	}
 
 	fmt.Printf("🎉 Successfully released: %s\n", newTag)
@@ -117,7 +129,14 @@ func PushTag(tag string) error {
 }
 
 func runCmd(name string, args ...string) (string, error) {
+	return runCmdInDir("", name, args...)
+}
+
+func runCmdInDir(dir string, name string, args ...string) (string, error) {
 	cmd := exec.Command(name, args...)
+	if dir != "" {
+		cmd.Dir = dir
+	}
 	out, err := cmd.CombinedOutput()
 	return strings.TrimSpace(string(out)), err
 }

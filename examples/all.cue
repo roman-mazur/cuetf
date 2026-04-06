@@ -1,6 +1,6 @@
 package examples
 
-import "github.com/roman-mazur/cuetf/aws"
+import "github.com/roman-mazur/cuetf/providers/aws"
 
 // Export this to have a final .tf.json file:
 // 		cue export -e allInfra > infra.tf.json

@@ -8,7 +8,7 @@ import (
 )
 
 func TestPVersion(t *testing.T) {
-	for _, provider := range []string{"aws", "github", "helm"} {
+	for _, provider := range []string{"aws", "github", "helm", "scaleway"} {
 		t.Run(provider, func(t *testing.T) {
 			cmd := exec.Command("go", "run", "./internal/cmd/pversion", provider)
 			cmd.Dir = "../../.."

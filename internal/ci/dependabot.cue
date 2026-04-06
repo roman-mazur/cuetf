@@ -3,7 +3,7 @@ package ci
 (#dbot): updates: [
 	{
 		"package-ecosystem": "terraform"
-		directories: ["*/internal"]
+		directories: ["providers/*/internal"]
 		schedule: interval: "weekly"
 		"open-pull-requests-limit": 5
 	},
