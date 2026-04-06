@@ -4,15 +4,15 @@ language: {
 }
 deps: {
 	"github.com/roman-mazur/cuetf/providers/aws@v0": {
-		v:       "v0.2603.0-alpha.1"
+		v:       "v0.2604.0"
 		default: true
 	}
 	"github.com/roman-mazur/cuetf/providers/google@v0": {
-		v:       "v0.2603.0-alpha.1"
+		v:       "v0.2604.0"
 		default: true
 	}
 	"github.com/roman-mazur/cuetf@v0": {
-		v:       "v0.2603.0-alpha.1"
+		v:       "v0.2604.0"
 		default: true
 	}
 }
