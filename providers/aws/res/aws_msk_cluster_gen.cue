@@ -91,6 +91,7 @@ import "list"
 	_#defs: "/$defs/broker_node_group_info/$defs/connectivity_info": close({
 		public_access?: matchN(1, [_#defs."/$defs/broker_node_group_info/$defs/connectivity_info/$defs/public_access", list.MaxItems(1) & [..._#defs."/$defs/broker_node_group_info/$defs/connectivity_info/$defs/public_access"]])
 		vpc_connectivity?: matchN(1, [_#defs."/$defs/broker_node_group_info/$defs/connectivity_info/$defs/vpc_connectivity", list.MaxItems(1) & [..._#defs."/$defs/broker_node_group_info/$defs/connectivity_info/$defs/vpc_connectivity"]])
+		network_type?: string
 	})
 
 	_#defs: "/$defs/broker_node_group_info/$defs/connectivity_info/$defs/public_access": close({

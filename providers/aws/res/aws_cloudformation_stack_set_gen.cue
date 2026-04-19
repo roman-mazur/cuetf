@@ -34,6 +34,7 @@ import "list"
 	})
 
 	#auto_deployment: close({
+		depends_on_stack_sets?: [...string]
 		enabled?:                          bool
 		retain_stacks_on_account_removal?: bool
 	})

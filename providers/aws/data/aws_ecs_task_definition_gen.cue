@@ -72,6 +72,12 @@ package data
 			})]
 			host_path?: string
 			name?:      string
+			s3files_volume_configuration?: [...close({
+				access_point_arn?:        string
+				file_system_arn?:         string
+				root_directory?:          string
+				transit_encryption_port?: number
+			})]
 		})]
 	})
 }

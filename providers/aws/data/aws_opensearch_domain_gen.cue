@@ -57,10 +57,13 @@ package data
 			role_arn?:         string
 			user_pool_id?:     string
 		})]
-		created?:                           bool
-		dashboard_endpoint?:                string
-		dashboard_endpoint_v2?:             string
-		deleted?:                           bool
+		created?:               bool
+		dashboard_endpoint?:    string
+		dashboard_endpoint_v2?: string
+		deleted?:               bool
+		deployment_strategy_options?: [...close({
+			deployment_strategy?: string
+		})]
 		domain_endpoint_v2_hosted_zone_id?: string
 		domain_id?:                         string
 		domain_name!:                       string

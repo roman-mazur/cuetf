@@ -14,6 +14,8 @@ import "list"
 		id?:                   string
 		no_password_required?: bool
 		passwords?: [...string]
+		passwords_wo?:         string
+		passwords_wo_version?: number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

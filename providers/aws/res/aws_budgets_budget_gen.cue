@@ -19,8 +19,9 @@ import "list"
 		id?:               string
 		limit_amount?:     string
 		limit_unit?:       string
-		name?:             string
-		name_prefix?:      string
+		metrics?: [...string]
+		name?:        string
+		name_prefix?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		time_period_end?:   string

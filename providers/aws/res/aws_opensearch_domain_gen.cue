@@ -11,6 +11,7 @@ import "list"
 		auto_tune_options?: matchN(1, [#auto_tune_options, list.MaxItems(1) & [...#auto_tune_options]])
 		cluster_config?: matchN(1, [#cluster_config, list.MaxItems(1) & [...#cluster_config]])
 		cognito_options?: matchN(1, [#cognito_options, list.MaxItems(1) & [...#cognito_options]])
+		deployment_strategy_options?: matchN(1, [#deployment_strategy_options, list.MaxItems(1) & [...#deployment_strategy_options]])
 		domain_endpoint_options?: matchN(1, [#domain_endpoint_options, list.MaxItems(1) & [...#domain_endpoint_options]])
 		ebs_options?: matchN(1, [#ebs_options, list.MaxItems(1) & [...#ebs_options]])
 		encrypt_at_rest?: matchN(1, [#encrypt_at_rest, list.MaxItems(1) & [...#encrypt_at_rest]])
@@ -87,6 +88,10 @@ import "list"
 		identity_pool_id!: string
 		role_arn!:         string
 		user_pool_id!:     string
+	})
+
+	#deployment_strategy_options: close({
+		deployment_strategy!: string
 	})
 
 	#domain_endpoint_options: close({

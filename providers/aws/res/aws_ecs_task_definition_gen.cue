@@ -62,6 +62,7 @@ import "list"
 		docker_volume_configuration?: matchN(1, [_#defs."/$defs/volume/$defs/docker_volume_configuration", list.MaxItems(1) & [..._#defs."/$defs/volume/$defs/docker_volume_configuration"]])
 		efs_volume_configuration?: matchN(1, [_#defs."/$defs/volume/$defs/efs_volume_configuration", list.MaxItems(1) & [..._#defs."/$defs/volume/$defs/efs_volume_configuration"]])
 		fsx_windows_file_server_volume_configuration?: matchN(1, [_#defs."/$defs/volume/$defs/fsx_windows_file_server_volume_configuration", list.MaxItems(1) & [..._#defs."/$defs/volume/$defs/fsx_windows_file_server_volume_configuration"]])
+		s3files_volume_configuration?: matchN(1, [_#defs."/$defs/volume/$defs/s3files_volume_configuration", list.MaxItems(1) & [..._#defs."/$defs/volume/$defs/s3files_volume_configuration"]])
 		configure_at_launch?: bool
 		host_path?:           string
 		name!:                string
@@ -97,5 +98,12 @@ import "list"
 	_#defs: "/$defs/volume/$defs/fsx_windows_file_server_volume_configuration/$defs/authorization_config": close({
 		credentials_parameter!: string
 		domain!:                string
+	})
+
+	_#defs: "/$defs/volume/$defs/s3files_volume_configuration": close({
+		access_point_arn?:        string
+		file_system_arn!:         string
+		root_directory?:          string
+		transit_encryption_port?: number
 	})
 }

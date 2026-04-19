@@ -259,6 +259,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_cloudtrail_event_data_store": res.#aws_cloudtrail_event_data_store
 	_#res: "\(#awsPrefix)_cloudtrail": res.#aws_cloudtrail
 	_#res: "\(#awsPrefix)_cloudtrail_organization_delegated_admin_account": res.#aws_cloudtrail_organization_delegated_admin_account
+	_#res: "\(#awsPrefix)_cloudwatch_alarm_mute_rule": res.#aws_cloudwatch_alarm_mute_rule
 	_#res: "\(#awsPrefix)_cloudwatch_composite_alarm": res.#aws_cloudwatch_composite_alarm
 	_#res: "\(#awsPrefix)_cloudwatch_contributor_insight_rule": res.#aws_cloudwatch_contributor_insight_rule
 	_#res: "\(#awsPrefix)_cloudwatch_contributor_managed_insight_rule": res.#aws_cloudwatch_contributor_managed_insight_rule
@@ -1043,6 +1044,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_opensearch_vpc_endpoint": res.#aws_opensearch_vpc_endpoint
 	_#res: "\(#awsPrefix)_opensearchserverless_access_policy": res.#aws_opensearchserverless_access_policy
 	_#res: "\(#awsPrefix)_opensearchserverless_collection": res.#aws_opensearchserverless_collection
+	_#res: "\(#awsPrefix)_opensearchserverless_collection_group": res.#aws_opensearchserverless_collection_group
 	_#res: "\(#awsPrefix)_opensearchserverless_lifecycle_policy": res.#aws_opensearchserverless_lifecycle_policy
 	_#res: "\(#awsPrefix)_opensearchserverless_security_config": res.#aws_opensearchserverless_security_config
 	_#res: "\(#awsPrefix)_opensearchserverless_security_policy": res.#aws_opensearchserverless_security_policy
@@ -1264,6 +1266,11 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_s3control_object_lambda_access_point": res.#aws_s3control_object_lambda_access_point
 	_#res: "\(#awsPrefix)_s3control_object_lambda_access_point_policy": res.#aws_s3control_object_lambda_access_point_policy
 	_#res: "\(#awsPrefix)_s3control_storage_lens_configuration": res.#aws_s3control_storage_lens_configuration
+	_#res: "\(#awsPrefix)_s3files_access_point": res.#aws_s3files_access_point
+	_#res: "\(#awsPrefix)_s3files_file_system": res.#aws_s3files_file_system
+	_#res: "\(#awsPrefix)_s3files_file_system_policy": res.#aws_s3files_file_system_policy
+	_#res: "\(#awsPrefix)_s3files_mount_target": res.#aws_s3files_mount_target
+	_#res: "\(#awsPrefix)_s3files_synchronization_configuration": res.#aws_s3files_synchronization_configuration
 	_#res: "\(#awsPrefix)_s3outposts_endpoint": res.#aws_s3outposts_endpoint
 	_#res: "\(#awsPrefix)_s3tables_namespace": res.#aws_s3tables_namespace
 	_#res: "\(#awsPrefix)_s3tables_table_bucket": res.#aws_s3tables_table_bucket
@@ -1367,6 +1374,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_servicecatalogappregistry_application": res.#aws_servicecatalogappregistry_application
 	_#res: "\(#awsPrefix)_servicecatalogappregistry_attribute_group_association": res.#aws_servicecatalogappregistry_attribute_group_association
 	_#res: "\(#awsPrefix)_servicecatalogappregistry_attribute_group": res.#aws_servicecatalogappregistry_attribute_group
+	_#res: "\(#awsPrefix)_servicequotas_auto_management": res.#aws_servicequotas_auto_management
 	_#res: "\(#awsPrefix)_servicequotas_service_quota": res.#aws_servicequotas_service_quota
 	_#res: "\(#awsPrefix)_servicequotas_template_association": res.#aws_servicequotas_template_association
 	_#res: "\(#awsPrefix)_servicequotas_template": res.#aws_servicequotas_template

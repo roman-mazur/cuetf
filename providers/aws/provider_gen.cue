@@ -982,6 +982,9 @@ package aws
 		s3control?: string
 
 		// Use this to override the default service endpoint URL
+		s3files?: string
+
+		// Use this to override the default service endpoint URL
 		s3outposts?: string
 
 		// Use this to override the default service endpoint URL
