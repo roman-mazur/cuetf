@@ -17,6 +17,5 @@ package res
 		create?: string
 		delete?: string
 		read?:   string
-		update?: string
 	})
 }

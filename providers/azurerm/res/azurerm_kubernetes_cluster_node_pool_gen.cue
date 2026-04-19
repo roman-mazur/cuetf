@@ -29,6 +29,7 @@ import "list"
 		mode?:                          string
 		name!:                          string
 		node_count?:                    number
+		node_image_version?:            string
 		node_labels?: [string]: string
 		node_public_ip_enabled?:   bool
 		node_public_ip_prefix_id?: string

@@ -206,6 +206,7 @@ import "github.com/roman-mazur/cuetf/providers/azurerm/data"
 	_#ds: "\(#azurermPrefix)_maintenance_configuration": data.#azurerm_maintenance_configuration
 	_#ds: "\(#azurermPrefix)_managed_api": data.#azurerm_managed_api
 	_#ds: "\(#azurermPrefix)_managed_application_definition": data.#azurerm_managed_application_definition
+	_#ds: "\(#azurermPrefix)_managed_devops_pool": data.#azurerm_managed_devops_pool
 	_#ds: "\(#azurermPrefix)_managed_disk": data.#azurerm_managed_disk
 	_#ds: "\(#azurermPrefix)_managed_disks": data.#azurerm_managed_disks
 	_#ds: "\(#azurermPrefix)_managed_redis_access_policy_assignment": data.#azurerm_managed_redis_access_policy_assignment

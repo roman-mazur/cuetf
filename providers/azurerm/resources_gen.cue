@@ -134,6 +134,7 @@ import "github.com/roman-mazur/cuetf/providers/azurerm/res"
 	_#res: "\(#azurermPrefix)_automation_python3_package": res.#azurerm_automation_python3_package
 	_#res: "\(#azurermPrefix)_automation_runbook": res.#azurerm_automation_runbook
 	_#res: "\(#azurermPrefix)_automation_runtime_environment": res.#azurerm_automation_runtime_environment
+	_#res: "\(#azurermPrefix)_automation_runtime_environment_package": res.#azurerm_automation_runtime_environment_package
 	_#res: "\(#azurermPrefix)_automation_schedule": res.#azurerm_automation_schedule
 	_#res: "\(#azurermPrefix)_automation_software_update_configuration": res.#azurerm_automation_software_update_configuration
 	_#res: "\(#azurermPrefix)_automation_source_control": res.#azurerm_automation_source_control
@@ -210,6 +211,7 @@ import "github.com/roman-mazur/cuetf/providers/azurerm/res"
 	_#res: "\(#azurermPrefix)_container_app_environment_custom_domain": res.#azurerm_container_app_environment_custom_domain
 	_#res: "\(#azurermPrefix)_container_app_environment_dapr_component": res.#azurerm_container_app_environment_dapr_component
 	_#res: "\(#azurermPrefix)_container_app_environment": res.#azurerm_container_app_environment
+	_#res: "\(#azurermPrefix)_container_app_environment_managed_certificate": res.#azurerm_container_app_environment_managed_certificate
 	_#res: "\(#azurermPrefix)_container_app_environment_storage": res.#azurerm_container_app_environment_storage
 	_#res: "\(#azurermPrefix)_container_app": res.#azurerm_container_app
 	_#res: "\(#azurermPrefix)_container_app_job": res.#azurerm_container_app_job
@@ -308,6 +310,7 @@ import "github.com/roman-mazur/cuetf/providers/azurerm/res"
 	_#res: "\(#azurermPrefix)_data_factory_trigger_schedule": res.#azurerm_data_factory_trigger_schedule
 	_#res: "\(#azurermPrefix)_data_factory_trigger_tumbling_window": res.#azurerm_data_factory_trigger_tumbling_window
 	_#res: "\(#azurermPrefix)_data_protection_backup_instance_blob_storage": res.#azurerm_data_protection_backup_instance_blob_storage
+	_#res: "\(#azurermPrefix)_data_protection_backup_instance_data_lake_storage": res.#azurerm_data_protection_backup_instance_data_lake_storage
 	_#res: "\(#azurermPrefix)_data_protection_backup_instance_disk": res.#azurerm_data_protection_backup_instance_disk
 	_#res: "\(#azurermPrefix)_data_protection_backup_instance_kubernetes_cluster": res.#azurerm_data_protection_backup_instance_kubernetes_cluster
 	_#res: "\(#azurermPrefix)_data_protection_backup_instance_mysql_flexible_server": res.#azurerm_data_protection_backup_instance_mysql_flexible_server
@@ -585,6 +588,7 @@ import "github.com/roman-mazur/cuetf/providers/azurerm/res"
 	_#res: "\(#azurermPrefix)_maintenance_configuration": res.#azurerm_maintenance_configuration
 	_#res: "\(#azurermPrefix)_managed_application_definition": res.#azurerm_managed_application_definition
 	_#res: "\(#azurermPrefix)_managed_application": res.#azurerm_managed_application
+	_#res: "\(#azurermPrefix)_managed_devops_pool": res.#azurerm_managed_devops_pool
 	_#res: "\(#azurermPrefix)_managed_disk": res.#azurerm_managed_disk
 	_#res: "\(#azurermPrefix)_managed_disk_sas_token": res.#azurerm_managed_disk_sas_token
 	_#res: "\(#azurermPrefix)_managed_lustre_file_system": res.#azurerm_managed_lustre_file_system

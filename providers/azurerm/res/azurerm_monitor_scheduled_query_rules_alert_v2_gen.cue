@@ -36,6 +36,7 @@ import "list"
 	#action: close({
 		action_groups?: [...string]
 		custom_properties?: [string]: string
+		email_subject?: string
 	})
 
 	#criteria: close({

@@ -16,6 +16,7 @@ import "list"
 		dns_zone?:                       string
 		dns_zone_partner_id?:            string
 		fqdn?:                           string
+		general_purpose_v2_enabled?:     bool
 		hybrid_secondary_usage?:         string
 		id?:                             string
 		license_type!:                   string

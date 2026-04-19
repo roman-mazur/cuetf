@@ -4,14 +4,15 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_mssql_managed_instance")
 	close({
-		timeouts?:                #timeouts
-		administrator_login?:     string
-		collation?:               string
-		customer_managed_key_id?: string
-		dns_zone?:                string
-		dns_zone_partner_id?:     string
-		fqdn?:                    string
-		id?:                      string
+		timeouts?:                   #timeouts
+		administrator_login?:        string
+		collation?:                  string
+		customer_managed_key_id?:    string
+		dns_zone?:                   string
+		dns_zone_partner_id?:        string
+		fqdn?:                       string
+		general_purpose_v2_enabled?: bool
+		id?:                         string
 		identity?: [...close({
 			identity_ids?: [...string]
 			principal_id?: string

@@ -11,7 +11,7 @@ import "list"
 		cdn_frontdoor_custom_domain_ids?: [...string]
 		cdn_frontdoor_endpoint_id!:     string
 		cdn_frontdoor_origin_group_id!: string
-		cdn_frontdoor_origin_ids!: [...string]
+		cdn_frontdoor_origin_ids?: [...string]
 		cdn_frontdoor_origin_path?: string
 		cdn_frontdoor_rule_set_ids?: [...string]
 		enabled?:                bool

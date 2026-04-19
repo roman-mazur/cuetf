@@ -17,6 +17,7 @@ package data
 		ip_connect_enabled?:        bool
 		location?:                  string
 		name!:                      string
+		private_only_enabled?:      bool
 		resource_group_name!:       string
 		scale_units?:               number
 		session_recording_enabled?: bool

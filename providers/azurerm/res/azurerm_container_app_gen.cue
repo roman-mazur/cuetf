@@ -431,6 +431,10 @@ import "list"
 	_#defs: "/$defs/template/$defs/custom_scale_rule": close({
 		authentication?: matchN(1, [_#defs."/$defs/template/$defs/custom_scale_rule/$defs/authentication", [..._#defs."/$defs/template/$defs/custom_scale_rule/$defs/authentication"]])
 		custom_rule_type!: string
+
+		// ID of the System or User Managed Identity used to execute scale
+		// rule.
+		identity_id?: string
 		metadata!: [string]: string
 		name!: string
 	})
