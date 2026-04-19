@@ -19,12 +19,14 @@ package $pkgName
 EOF
 
   # Sort instance types.
-  echo "package $pkgName" > regions/$pkgName/sort_tmp.cue
-  echo 'import "github.com/roman-mazur/cuetf/aws/regions"' >> regions/$pkgName/sort_tmp.cue
-  echo "sortedOutput: (regions.#InstaceTypesSort & {input: InstanceTypes}).output" >> regions/$pkgName/sort_tmp.cue
-  echo "result: InstanceTypes: sortedOutput" >> regions/$pkgName/sort_tmp.cue
+  {
+    echo "package $pkgName"
+    echo 'import "github.com/roman-mazur/cuetf/providers/aws/regions"'
+    echo "sortedOutput: (regions.#InstaceTypesSort & {input: InstanceTypes}).output"
+    echo "result: InstanceTypes: sortedOutput"
+  } > "regions/$pkgName/sort_tmp.cue"
 
-  (cd regions/$pkgName \
+  (cd "regions/$pkgName" \
     && cue vet \
     && ( echo "package $pkgName"; echo "" ) > itypes_gen2.cue \
     && cue eval -e "result" >> itypes_gen2.cue \
