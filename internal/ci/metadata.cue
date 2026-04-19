@@ -19,7 +19,7 @@ workflows: metadata: {
 
 			if [ $(git status --porcelain | wc -l) -gt 0 ]; then
 					git add .
-					git commit -m "aws: update metadata"
+					git commit -m "providers/aws: update metadata"
 					git push origin HEAD:"$branch"
 			fi
 			"""
