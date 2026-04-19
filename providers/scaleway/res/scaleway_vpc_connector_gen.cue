@@ -14,7 +14,7 @@ package res
 		// The organization_id you want to attach the resource to
 		organization_id?: string
 
-		// The project_id you want to attach the resource to
+		// The Scaleway Project the VPC connector belongs to
 		project_id?: string
 
 		// The region you want to attach the resource to

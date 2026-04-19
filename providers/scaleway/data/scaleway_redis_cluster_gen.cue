@@ -21,6 +21,14 @@ package data
 		// Number of nodes for the cluster.
 		cluster_size?: number
 
+		// Redis connection URI for the first reachable endpoint (public
+		// is preferred over private). Uses scheme `rediss` when TLS is
+		// enabled. Database index is always `0`. When a password is
+		// available in state, userinfo includes `user_name` and the
+		// password (Redis ACL). When `password_wo` is used, the password
+		// is omitted because it is not stored in state.
+		connection_string?: string
+
 		// The date and time of the creation of the Redis cluster
 		created_at?: string
 		id?:         string

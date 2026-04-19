@@ -6,18 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_cockpit_token")
 	close({
+		scopes?: matchN(1, [#scopes, list.MaxItems(1) & [...#scopes]])
+		timeouts?: #timeouts
+
 		// The date and time of the creation of the Cockpit Token (Format
 		// ISO 8601)
 		created_at?: string
 		id?:         string
-		scopes?: matchN(1, [#scopes, list.MaxItems(1) & [...#scopes]])
 
 		// The name of the token
 		name!: string
 
 		// The project_id you want to attach the resource to
 		project_id?: string
-		timeouts?:   #timeouts
 
 		// The region you want to attach the resource to
 		region?: string

@@ -32,7 +32,7 @@ package data
 		// Minimum size of the pool
 		min_size?: number
 
-		// The name of the cluster
+		// The name of the pool
 		name?: string
 
 		// Server type of the pool servers

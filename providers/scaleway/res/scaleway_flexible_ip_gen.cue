@@ -4,17 +4,18 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_flexible_ip")
 	close({
+		timeouts?: #timeouts
+
 		// The date and time of the creation of the Flexible IP (Format
 		// ISO 8601)
 		created_at?: string
 
 		// Description of the flexible IP
 		description?: string
+		id?:          string
 
 		// The IP address of the flexible IP
 		ip_address?: string
-		timeouts?:   #timeouts
-		id?:         string
 
 		// Defines whether the flexible IP has an IPv6 address
 		is_ipv6?: bool

@@ -6,17 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_edge_services_route_stage")
 	close({
+		rule?: matchN(1, [#rule, [...#rule]])
+
 		// The ID of the backend stage HTTP requests should be forwarded
 		// to when no rules are matched
 		backend_stage_id?: string
 
 		// The date and time of the creation of the route stage
 		created_at?: string
-		rule?: matchN(1, [#rule, [...#rule]])
+		id?:         string
 
 		// The ID of the pipeline
 		pipeline_id!: string
-		id?:          string
 
 		// The project_id you want to attach the resource to
 		project_id?: string
@@ -42,6 +43,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/rule/$defs/rule_http_match": close({
+		host_filter?: matchN(1, [_#defs."/$defs/rule/$defs/rule_http_match/$defs/host_filter", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/rule_http_match/$defs/host_filter"]])
 		path_filter?: matchN(1, [_#defs."/$defs/rule/$defs/rule_http_match/$defs/path_filter", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/rule_http_match/$defs/path_filter"]])
 
 		// HTTP methods to filter for. A request using any of these
@@ -49,6 +51,14 @@ import "list"
 		// are `get`, `post`, `put`, `patch`, `delete`, `head`,
 		// `options`. All methods will match if none is provided
 		method_filters?: [...string]
+	})
+
+	_#defs: "/$defs/rule/$defs/rule_http_match/$defs/host_filter": close({
+		// The type of filter to match for the host path
+		host_filter_type!: string
+
+		// The value to be matched for the host path
+		value!: string
 	})
 
 	_#defs: "/$defs/rule/$defs/rule_http_match/$defs/path_filter": close({

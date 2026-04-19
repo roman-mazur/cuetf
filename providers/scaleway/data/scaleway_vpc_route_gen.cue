@@ -27,6 +27,9 @@ package data
 		// returned
 		nexthop_resource_type?: string
 
+		// The ID of the nexthop VPC Connector
+		nexthop_vpc_connector_id?: string
+
 		// The region you want to attach the resource to
 		region?: string
 
