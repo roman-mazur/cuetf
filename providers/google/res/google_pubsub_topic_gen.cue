@@ -115,6 +115,7 @@ import "list"
 	})
 
 	#message_transforms: close({
+		ai_inference?: matchN(1, [_#defs."/$defs/message_transforms/$defs/ai_inference", list.MaxItems(1) & [..._#defs."/$defs/message_transforms/$defs/ai_inference"]])
 		javascript_udf?: matchN(1, [_#defs."/$defs/message_transforms/$defs/javascript_udf", list.MaxItems(1) & [..._#defs."/$defs/message_transforms/$defs/javascript_udf"]])
 
 		// Controls whether or not to use this transform. If not set or
@@ -285,6 +286,29 @@ import "list"
 		// ["SEVERITY_UNSPECIFIED", "DISABLED", "DEBUG", "INFO",
 		// "WARNING", "ERROR"]
 		severity?: string
+	})
+
+	_#defs: "/$defs/message_transforms/$defs/ai_inference": close({
+		unstructured_inference?: matchN(1, [_#defs."/$defs/message_transforms/$defs/ai_inference/$defs/unstructured_inference", list.MaxItems(1) & [..._#defs."/$defs/message_transforms/$defs/ai_inference/$defs/unstructured_inference"]])
+
+		// The endpoint to a Vertex AI model of the form
+		// 'projects/{project}/locations/{location}/endpoints/{endpoint}'
+		// or
+		// 'projects/{project}/locations/{location}/publishers/{publisher}/models/{model}'.
+		// Vertex AI API requests will be sent to this endpoint.
+		endpoint!: string
+
+		// The service account to use to make prediction requests against
+		// endpoints.
+		service_account_email?: string
+	})
+
+	_#defs: "/$defs/message_transforms/$defs/ai_inference/$defs/unstructured_inference": close({
+		// A parameters object to be included in each inference request.
+		// The parameters object is combined with the data field of the
+		// Pub/Sub
+		// message to form the inference request.
+		parameters?: [string]: string
 	})
 
 	_#defs: "/$defs/message_transforms/$defs/javascript_udf": close({

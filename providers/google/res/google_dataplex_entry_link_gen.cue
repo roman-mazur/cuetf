@@ -1,9 +1,12 @@
 package res
 
+import "list"
+
 #google_dataplex_entry_link: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_entry_link")
 	close({
+		aspects?: matchN(1, [#aspects, [...#aspects]])
 		entry_references!: matchN(1, [#entry_references, [_, ...] & [...#entry_references]])
 		timeouts?: #timeouts
 
@@ -34,6 +37,15 @@ package res
 		update_time?: string
 	})
 
+	#aspects: close({
+		aspect!: matchN(1, [_#defs."/$defs/aspects/$defs/aspect", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/aspects/$defs/aspect"]])
+
+		// The map keys of the Aspects which the service should modify.
+		// It should be the aspect type reference in the format
+		// '{project_number}.{location_id}.{aspect_type_id}'.
+		aspect_key!: string
+	})
+
 	#entry_references: close({
 		// The relative resource name of the referenced Entry, of the
 		// form:
@@ -53,5 +65,25 @@ package res
 	#timeouts: close({
 		create?: string
 		delete?: string
+		update?: string
+	})
+
+	_#defs: "/$defs/aspects/$defs/aspect": close({
+		// The resource name of the type used to create this Aspect.
+		aspect_type?: string
+
+		// The time when the Aspect was created.
+		create_time?: string
+
+		// The content of the aspect in JSON form, according to its aspect
+		// type schema. The maximum size of the field is 120KB (encoded
+		// as UTF-8).
+		data!: string
+
+		// The path in the entry link under which the aspect is attached.
+		path?: string
+
+		// The time when the Aspect was last modified.
+		update_time?: string
 	})
 }

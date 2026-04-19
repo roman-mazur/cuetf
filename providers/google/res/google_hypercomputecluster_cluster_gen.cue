@@ -12,10 +12,10 @@ import "list"
 		storage_resources?: matchN(1, [#storage_resources, [...#storage_resources]])
 		timeouts?: #timeouts
 
-		// ID of the cluster to create. Must conform to
-		// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034)
-		// (lower-case,
-		// alphanumeric, and at most 63 characters).
+		// ID of the cluster to create. Must start with a lowercase
+		// letter,
+		// use only lowercase letters and numbers, and be at most 10
+		// characters long.
 		cluster_id!: string
 
 		// Time that the cluster was originally created.

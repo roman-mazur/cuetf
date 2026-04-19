@@ -101,6 +101,9 @@ import "list"
 		// See https://cloud.google.com/bigquery/docs/locations for
 		// supported locations.
 		location!: string
+
+		// List of regions where the subscriber wants dataset replicas.
+		replica_locations?: [...string]
 	})
 
 	#timeouts: close({

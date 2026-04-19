@@ -4,6 +4,15 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_iam_workload_identity_pool")
 	close({
+		// Defines which workloads can receive an identity within a pool.
+		// When an AttestationRule is
+		// defined under a managed identity, matching workloads may
+		// receive that identity. A maximum of
+		// 50 AttestationRules can be set.
+		attestation_rules?: [...close({
+			google_cloud_resource?: string
+		})]
+
 		// A description of the pool. Cannot exceed 256 characters.
 		description?: string
 

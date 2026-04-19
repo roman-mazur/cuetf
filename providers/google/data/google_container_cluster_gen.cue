@@ -35,6 +35,7 @@ package data
 				disabled?: bool
 			})]
 			lustre_csi_driver_config?: [...close({
+				disable_multi_nic?:         bool
 				enable_legacy_lustre_port?: bool
 				enabled?:                   bool
 			})]
@@ -74,6 +75,22 @@ package data
 		authenticator_groups_config?: [...close({
 			security_group?: string
 		})]
+
+		// Configuration for the cluster policy.
+		autopilot_cluster_policy_config?: [...close({
+			no_standard_node_pools?:  bool
+			no_system_impersonation?: bool
+			no_system_mutation?:      bool
+			no_unsafe_webhooks?:      bool
+		})]
+
+		// The customer allowlist Cloud Storage paths for the cluster.
+		// These paths are used with the
+		// `--autopilot-privileged-admission` flag to authorize
+		// privileged workloads in Autopilot clusters. To allow default
+		// partner allowlists, set to []. To allow no allowlists, set to
+		// [""].
+		autopilot_privileged_admission?: [...string]
 
 		// Configuration options for the Binary Authorization feature.
 		binary_authorization?: [...close({

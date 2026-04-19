@@ -91,6 +91,15 @@ package res
 		// in all other cases a region name.
 		location!: string
 
+		// Mode of the storage pool.
+		// The operational mode of the storage pool. ONTAP mode enables
+		// operations
+		// via ONTAP Mode APIs, while DEFAULT mode enables operations via
+		// NetApp Volumes APIs.
+		// If not specified during creation, the mode defaults to DEFAULT.
+		// Possible values: ["MODE_UNSPECIFIED", "DEFAULT", "ONTAP"]
+		mode?: string
+
 		// The resource name of the storage pool. Needs to be unique per
 		// location/region.
 		name!: string
@@ -110,6 +119,12 @@ package res
 		// [zone
 		// switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 		replica_zone?: string
+
+		// The scale type of the storage pool. Defaults to
+		// 'SCALE_TYPE_DEFAULT' if not specified. Possible values:
+		// ["SCALE_TYPE_UNSPECIFIED", "SCALE_TYPE_DEFAULT",
+		// "SCALE_TYPE_SCALEOUT"]
+		scale_type?: string
 
 		// Service level of the storage pool. Possible values: ["PREMIUM",
 		// "EXTREME", "STANDARD", "FLEX"]

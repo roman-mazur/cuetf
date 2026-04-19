@@ -214,11 +214,14 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_dataproc_metastore_service_iam_policy": data.#google_dataproc_metastore_service_iam_policy
 	_#ds: "\(#googlePrefix)_dataproc_metastore_table_iam_policy": data.#google_dataproc_metastore_table_iam_policy
 	_#ds: "\(#googlePrefix)_datastream_static_ips": data.#google_datastream_static_ips
+	_#ds: "\(#googlePrefix)_discovery_engine_data_store": data.#google_discovery_engine_data_store
+	_#ds: "\(#googlePrefix)_discovery_engine_data_stores": data.#google_discovery_engine_data_stores
 	_#ds: "\(#googlePrefix)_dns_keys": data.#google_dns_keys
 	_#ds: "\(#googlePrefix)_dns_managed_zone": data.#google_dns_managed_zone
 	_#ds: "\(#googlePrefix)_dns_managed_zone_iam_policy": data.#google_dns_managed_zone_iam_policy
 	_#ds: "\(#googlePrefix)_dns_managed_zones": data.#google_dns_managed_zones
 	_#ds: "\(#googlePrefix)_dns_record_set": data.#google_dns_record_set
+	_#ds: "\(#googlePrefix)_dns_record_sets": data.#google_dns_record_sets
 	_#ds: "\(#googlePrefix)_endpoints_service_consumers_iam_policy": data.#google_endpoints_service_consumers_iam_policy
 	_#ds: "\(#googlePrefix)_endpoints_service_iam_policy": data.#google_endpoints_service_iam_policy
 	_#ds: "\(#googlePrefix)_filestore_instance": data.#google_filestore_instance
@@ -403,6 +406,8 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_tags_tag_value_iam_policy": data.#google_tags_tag_value_iam_policy
 	_#ds: "\(#googlePrefix)_tags_tag_values": data.#google_tags_tag_values
 	_#ds: "\(#googlePrefix)_vertex_ai_index": data.#google_vertex_ai_index
+	_#ds: "\(#googlePrefix)_vertex_ai_reasoning_engine_iam_policy": data.#google_vertex_ai_reasoning_engine_iam_policy
+	_#ds: "\(#googlePrefix)_vertex_ai_reasoning_engine_query": data.#google_vertex_ai_reasoning_engine_query
 	_#ds: "\(#googlePrefix)_vmwareengine_announcements": data.#google_vmwareengine_announcements
 	_#ds: "\(#googlePrefix)_vmwareengine_cluster": data.#google_vmwareengine_cluster
 	_#ds: "\(#googlePrefix)_vmwareengine_datastore": data.#google_vmwareengine_datastore

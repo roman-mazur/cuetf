@@ -100,6 +100,20 @@ import "list"
 		// Resource name of the dataset source for this listing. e.g.
 		// projects/myproject/datasets/123
 		dataset!: string
+
+		// Server owned effective state of replicas. Contains both primary
+		// and secondary replicas.
+		// Each replica includes a system-computed (output-only) state and
+		// primary designation.
+		effective_replicas?: [...close({
+			location?:      string
+			primary_state?: string
+			replica_state?: string
+		})]
+
+		// A list of regions where the publisher has created shared
+		// dataset replicas.
+		replica_locations?: [...string]
 	})
 
 	#data_provider: close({
@@ -150,6 +164,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/bigquery_dataset/$defs/selected_resources": close({
+		// Format: For routine:
+		// projects/{projectId}/datasets/{datasetId}/routines/{routineId}
+		// Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+		routine?: string
+
 		// Format: For table:
 		// projects/{projectId}/datasets/{datasetId}/tables/{tableId}
 		// Example:"projects/test_project/datasets/test_dataset/tables/test_table"

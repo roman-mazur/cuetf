@@ -15,6 +15,7 @@ import "list"
 		stateful_disk?: matchN(1, [#stateful_disk, [...#stateful_disk]])
 		stateful_external_ip?: matchN(1, [#stateful_external_ip, [...#stateful_external_ip]])
 		stateful_internal_ip?: matchN(1, [#stateful_internal_ip, [...#stateful_internal_ip]])
+		target_size_policy?: matchN(1, [#target_size_policy, [...#target_size_policy]])
 		timeouts?: #timeouts
 		update_policy?: matchN(1, [#update_policy, list.MaxItems(1) & [...#update_policy]])
 		version!: matchN(1, [#version, [_, ...] & [...#version]])
@@ -225,6 +226,12 @@ import "list"
 
 		// The network interface name
 		interface_name?: string
+	})
+
+	#target_size_policy: close({
+		// The mode of target size policy based on which the MIG creates
+		// its VMs individually or all at once.
+		mode!: string
 	})
 
 	#timeouts: close({

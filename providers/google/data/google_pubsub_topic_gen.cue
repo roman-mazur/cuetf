@@ -108,6 +108,13 @@ package data
 		// Transforms are applied in the
 		// order specified.
 		message_transforms?: [...close({
+			ai_inference?: [...close({
+				endpoint?:              string
+				service_account_email?: string
+				unstructured_inference?: [...close({
+					parameters?: [string]: string
+				})]
+			})]
 			disabled?: bool
 			javascript_udf?: [...close({
 				code?:          string

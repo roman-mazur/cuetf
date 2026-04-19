@@ -73,9 +73,21 @@ import "list"
 	})
 
 	#linked_interconnect_attachments: close({
-		// IP ranges allowed to be included during import from hub (does
-		// not control transit connectivity).
-		// The only allowed value for now is "ALL_IPV4_RANGES".
+		// Dynamic routes overlapped/encompassed by exclude export ranges
+		// are excluded during export to hub.
+		exclude_export_ranges?: [...string]
+
+		// Hub routes overlapped/encompassed by exclude import ranges are
+		// excluded during import from hub.
+		exclude_import_ranges?: [...string]
+
+		// Dynamic routes fully encompassed by include export ranges are
+		// included during export to hub.
+		include_export_ranges?: [...string]
+
+		// Hub routes fully encompassed by include import ranges are
+		// included during import from hub.
+		// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 		include_import_ranges?: [...string]
 
 		// A value that controls whether site-to-site data transfer is
@@ -110,9 +122,21 @@ import "list"
 	#linked_router_appliance_instances: close({
 		instances!: matchN(1, [_#defs."/$defs/linked_router_appliance_instances/$defs/instances", [_, ...] & [..._#defs."/$defs/linked_router_appliance_instances/$defs/instances"]])
 
-		// IP ranges allowed to be included during import from hub (does
-		// not control transit connectivity).
-		// The only allowed value for now is "ALL_IPV4_RANGES".
+		// Dynamic routes overlapped/encompassed by exclude export ranges
+		// are excluded during export to hub.
+		exclude_export_ranges?: [...string]
+
+		// Hub routes overlapped/encompassed by exclude import ranges are
+		// excluded during import from hub.
+		exclude_import_ranges?: [...string]
+
+		// Dynamic routes fully encompassed by include export ranges are
+		// included during export to hub.
+		include_export_ranges?: [...string]
+
+		// Hub routes fully encompassed by include import ranges are
+		// included during import from hub.
+		// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 		include_import_ranges?: [...string]
 
 		// A value that controls whether site-to-site data transfer is
@@ -133,9 +157,21 @@ import "list"
 	})
 
 	#linked_vpn_tunnels: close({
-		// IP ranges allowed to be included during import from hub (does
-		// not control transit connectivity).
-		// The only allowed value for now is "ALL_IPV4_RANGES".
+		// Dynamic routes overlapped/encompassed by exclude export ranges
+		// are excluded during export to hub.
+		exclude_export_ranges?: [...string]
+
+		// Hub routes overlapped/encompassed by exclude import ranges are
+		// excluded during import from hub.
+		exclude_import_ranges?: [...string]
+
+		// Dynamic routes fully encompassed by include export ranges are
+		// included during export to hub.
+		include_export_ranges?: [...string]
+
+		// Hub routes fully encompassed by include import ranges are
+		// included during import from hub.
+		// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 		include_import_ranges?: [...string]
 
 		// A value that controls whether site-to-site data transfer is

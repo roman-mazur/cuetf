@@ -24,15 +24,16 @@ import "list"
 		// strings. For example, when connecting with Cloud SQL Proxy.
 		connection_name?: string
 
-		// The MySQL, PostgreSQL or SQL Server (beta) version to use.
-		// Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0,
-		// MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11,
-		// POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15,
-		// POSTGRES_16, POSTGRES_17, POSTGRES_18,
-		// SQLSERVER_2017_STANDARD, SQLSERVER_2017_ENTERPRISE,
-		// SQLSERVER_2017_EXPRESS, SQLSERVER_2017_WEB. Database Version
-		// Policies includes an up-to-date reference of supported
-		// versions.
+		// The MySQL, PostgreSQL or SQL Server version to use. Supported
+		// values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4,
+		// POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12,
+		// POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16,
+		// POSTGRES_17, POSTGRES_18, SQLSERVER_2022_STANDARD,
+		// SQLSERVER_2022_ENTERPRISE, SQLSERVER_2022_EXPRESS,
+		// SQLSERVER_2022_WEB, SQLSERVER_2025_STANDARD,
+		// SQLSERVER_2025_ENTERPRISE, SQLSERVER_2025_EXPRESS,
+		// SQLSERVER_2025_WEB. Database Version Policies includes an
+		// up-to-date reference of supported versions.
 		database_version!: string
 
 		// Used to block Terraform from deleting a SQL Instance. Defaults
@@ -183,6 +184,9 @@ import "list"
 		// The name of the instance from which the point in time should be
 		// restored.
 		source_instance_name!: string
+
+		// The project ID of the source project
+		source_project?: string
 	})
 
 	#point_in_time_restore_context: close({
