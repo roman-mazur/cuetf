@@ -16,6 +16,7 @@ package data
 			az_distribution?: string
 			client_subnets?: [...string]
 			connectivity_info?: [...close({
+				network_type?: string
 				public_access?: [...close({
 					type?: string
 				})]

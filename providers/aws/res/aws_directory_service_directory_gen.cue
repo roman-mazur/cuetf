@@ -14,11 +14,12 @@ import "list"
 		description?:                          string
 		desired_number_of_domain_controllers?: number
 		dns_ip_addresses?: [...string]
-		edition?:    string
-		enable_sso?: bool
-		id?:         string
-		name!:       string
-		password!:   string
+		edition?:                      string
+		enable_directory_data_access?: bool
+		enable_sso?:                   bool
+		id?:                           string
+		name!:                         string
+		password!:                     string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

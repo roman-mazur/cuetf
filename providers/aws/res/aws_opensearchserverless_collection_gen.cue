@@ -11,13 +11,20 @@ package res
 		// data upload requests to an OpenSearch Serverless collection.
 		collection_endpoint?: string
 
+		// Name of the collection group to associate with this collection.
+		collection_group_name?: string
+
 		// Collection-specific endpoint used to access OpenSearch
 		// Dashboards.
 		dashboard_endpoint?: string
 
 		// Description of the collection.
 		description?: string
-		id?:          string
+		encryption_config?: [...close({
+			aws_owned_key?: bool
+			kms_key_arn?:   string
+		})]
+		id?: string
 
 		// The ARN of the Amazon Web Services KMS key used to encrypt the
 		// collection.

@@ -441,6 +441,8 @@ import "github.com/roman-mazur/cuetf/providers/aws/data"
 	_#ds: "\(#awsPrefix)_opensearch_domain": data.#aws_opensearch_domain
 	_#ds: "\(#awsPrefix)_opensearchserverless_access_policy": data.#aws_opensearchserverless_access_policy
 	_#ds: "\(#awsPrefix)_opensearchserverless_collection": data.#aws_opensearchserverless_collection
+	_#ds: "\(#awsPrefix)_opensearchserverless_collection_group": data.#aws_opensearchserverless_collection_group
+	_#ds: "\(#awsPrefix)_opensearchserverless_collection_groups": data.#aws_opensearchserverless_collection_groups
 	_#ds: "\(#awsPrefix)_opensearchserverless_lifecycle_policy": data.#aws_opensearchserverless_lifecycle_policy
 	_#ds: "\(#awsPrefix)_opensearchserverless_security_config": data.#aws_opensearchserverless_security_config
 	_#ds: "\(#awsPrefix)_opensearchserverless_security_policy": data.#aws_opensearchserverless_security_policy
@@ -535,6 +537,10 @@ import "github.com/roman-mazur/cuetf/providers/aws/data"
 	_#ds: "\(#awsPrefix)_s3control_access_points": data.#aws_s3control_access_points
 	_#ds: "\(#awsPrefix)_s3control_multi_region_access_point": data.#aws_s3control_multi_region_access_point
 	_#ds: "\(#awsPrefix)_s3control_multi_region_access_points": data.#aws_s3control_multi_region_access_points
+	_#ds: "\(#awsPrefix)_s3files_access_point": data.#aws_s3files_access_point
+	_#ds: "\(#awsPrefix)_s3files_file_system": data.#aws_s3files_file_system
+	_#ds: "\(#awsPrefix)_s3files_file_systems": data.#aws_s3files_file_systems
+	_#ds: "\(#awsPrefix)_s3files_mount_target": data.#aws_s3files_mount_target
 	_#ds: "\(#awsPrefix)_sagemaker_prebuilt_ecr_image": data.#aws_sagemaker_prebuilt_ecr_image
 	_#ds: "\(#awsPrefix)_savingsplans_offerings": data.#aws_savingsplans_offerings
 	_#ds: "\(#awsPrefix)_savingsplans_savings_plan": data.#aws_savingsplans_savings_plan

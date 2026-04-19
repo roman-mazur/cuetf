@@ -18,6 +18,7 @@ package res
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		remediation_types?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version!: string
