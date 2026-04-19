@@ -10,10 +10,10 @@ package res
 
 		// The name of the environment.
 		environment!: string
+		id?:          string
 
 		// The name of the GitHub repository.
 		repository!: string
-		id?:         string
 
 		// The name pattern that tags must match in order to deploy to the
 		// environment.

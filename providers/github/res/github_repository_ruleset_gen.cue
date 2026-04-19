@@ -10,20 +10,20 @@ import "list"
 		// `evaluate`. Note: `evaluate` is currently only supported for
 		// owners of type `organization`.
 		enforcement!: string
+		etag?:        string
+		bypass_actors?: matchN(1, [#bypass_actors, [...#bypass_actors]])
+		conditions?: matchN(1, [#conditions, list.MaxItems(1) & [...#conditions]])
+		id?: string
 
 		// The name of the ruleset.
 		name!: string
 
 		// GraphQL global node id for use with v4 API.
 		node_id?: string
-		etag?:    string
+		rules!: matchN(1, [#rules, list.MaxItems(1) & [_, ...] & [...#rules]])
 
 		// Name of the repository to apply ruleset to.
 		repository!: string
-		id?:         string
-		bypass_actors?: matchN(1, [#bypass_actors, [...#bypass_actors]])
-		conditions?: matchN(1, [#conditions, list.MaxItems(1) & [...#conditions]])
-		rules!: matchN(1, [#rules, list.MaxItems(1) & [_, ...] & [...#rules]])
 
 		// GitHub ID for the ruleset.
 		ruleset_id?: number
@@ -55,24 +55,11 @@ import "list"
 	})
 
 	#rules: close({
+		branch_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/branch_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/branch_name_pattern"]])
+
 		// Only allow users with bypass permission to create matching
 		// refs.
 		creation?: bool
-		branch_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/branch_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/branch_name_pattern"]])
-
-		// Only allow users with bypass permissions to delete matching
-		// refs.
-		deletion?: bool
-
-		// Prevent users with push access from force pushing to branches.
-		non_fast_forward?: bool
-
-		// Prevent merge commits from being pushed to matching branches.
-		required_linear_history?: bool
-
-		// Commits pushed to matching branches must have verified
-		// signatures.
-		required_signatures?: bool
 		commit_author_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_author_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_author_email_pattern"]])
 		commit_message_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_message_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_message_pattern"]])
 		committer_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/committer_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/committer_email_pattern"]])
@@ -87,6 +74,20 @@ import "list"
 		required_deployments?: matchN(1, [_#defs."/$defs/rules/$defs/required_deployments", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_deployments"]])
 		required_status_checks?: matchN(1, [_#defs."/$defs/rules/$defs/required_status_checks", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_status_checks"]])
 		tag_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/tag_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/tag_name_pattern"]])
+
+		// Only allow users with bypass permissions to delete matching
+		// refs.
+		deletion?: bool
+
+		// Prevent users with push access from force pushing to branches.
+		non_fast_forward?: bool
+
+		// Prevent merge commits from being pushed to matching branches.
+		required_linear_history?: bool
+
+		// Commits pushed to matching branches must have verified
+		// signatures.
+		required_signatures?: bool
 
 		// Only allow users with bypass permission to update matching
 		// refs.
@@ -245,6 +246,7 @@ import "list"
 		// Array of allowed merge methods. Allowed values include `merge`,
 		// `squash`, and `rebase`. At least one option must be enabled.
 		allowed_merge_methods?: [...string]
+		required_reviewers?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers", [..._#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers"]])
 
 		// New, reviewable commits pushed will dismiss previous pull
 		// request review approvals. Defaults to `false`.
@@ -266,7 +268,6 @@ import "list"
 		// All conversations on code must be resolved before a pull
 		// request can be merged. Defaults to `false`.
 		required_review_thread_resolution?: bool
-		required_reviewers?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers", [..._#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers"]])
 	})
 
 	_#defs: "/$defs/rules/$defs/pull_request/$defs/required_reviewers": close({

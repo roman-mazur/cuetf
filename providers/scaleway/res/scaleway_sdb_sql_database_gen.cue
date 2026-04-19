@@ -4,15 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_sdb_sql_database")
 	close({
-		timeouts?: #timeouts
-
 		// endpoint of the database
 		endpoint?: string
-		id?:       string
 
 		// The maximum number of CPU units for your Serverless SQL
 		// Database
-		max_cpu?: number
+		max_cpu?:  number
+		timeouts?: #timeouts
+		id?:       string
 
 		// The minimum number of CPU units for your Serverless SQL
 		// Database

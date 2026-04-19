@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_actions_repository_permissions")
 	close({
+		allowed_actions_config?: matchN(1, [#allowed_actions_config, list.MaxItems(1) & [...#allowed_actions_config]])
+
 		// The permissions policy that controls the actions that are
 		// allowed to run. Can be one of: 'all', 'local_only', or
 		// 'selected'.
@@ -13,11 +15,10 @@ import "list"
 
 		// Should GitHub actions be enabled on this repository.
 		enabled?: bool
+		id?:      string
 
 		// The GitHub repository.
 		repository!: string
-		id?:         string
-		allowed_actions_config?: matchN(1, [#allowed_actions_config, list.MaxItems(1) & [...#allowed_actions_config]])
 
 		// Whether pinning to a specific SHA is required for all actions
 		// and reusable workflows in a repository.

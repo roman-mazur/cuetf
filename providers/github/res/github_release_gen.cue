@@ -20,6 +20,7 @@ package res
 
 		// Set to 'false' to create a published release.
 		draft?: bool
+		etag?:  string
 
 		// Set to 'true' to automatically generate the name and body for
 		// this release. If 'name' is specified, the specified name will
@@ -27,10 +28,10 @@ package res
 		// 'body' is specified, the body will be pre-pended to the
 		// automatically generated notes.
 		generate_release_notes?: bool
-		etag?:                   string
 
 		// The HTML URL for the release.
 		html_url?: string
+		id?:       string
 
 		// The name of the release.
 		name?: string
@@ -40,7 +41,6 @@ package res
 
 		// Set to 'false' to identify the release as a full release.
 		prerelease?: bool
-		id?:         string
 
 		// The date and time the release was published.
 		published_at?: string

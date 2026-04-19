@@ -7,10 +7,10 @@ package res
 		// The body of the project.
 		body?: string
 		etag?: string
+		id?:   string
 
 		// The name of the project.
 		name!: string
-		id?:   string
 
 		// URL of the project.
 		url?: string

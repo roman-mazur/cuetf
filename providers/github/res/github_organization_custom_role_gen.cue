@@ -9,10 +9,10 @@ package res
 
 		// The description of the custom repository role.
 		description?: string
+		id?:          string
 
 		// The organization custom repository role to create.
 		name!: string
-		id?:   string
 
 		// The permissions for the custom repository role.
 		permissions!: [...string]

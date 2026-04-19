@@ -4,15 +4,13 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_secret")
 	close({
-		ephemeral_policy?: matchN(1, [#ephemeral_policy, [...#ephemeral_policy]])
-		timeouts?: #timeouts
-
 		// Date and time of secret's creation (RFC 3339 format)
 		created_at?: string
 
 		// Description of the secret
 		description?: string
 		id?:          string
+		ephemeral_policy?: matchN(1, [#ephemeral_policy, [...#ephemeral_policy]])
 
 		// The secret name
 		name!: string
@@ -28,7 +26,8 @@ package res
 		protected?: bool
 
 		// The region you want to attach the resource to
-		region?: string
+		region?:   string
+		timeouts?: #timeouts
 
 		// Status of the secret
 		status?: string

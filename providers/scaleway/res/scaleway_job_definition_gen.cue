@@ -6,9 +6,6 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_job_definition")
 	close({
-		cron?: matchN(1, [#cron, list.MaxItems(1) & [...#cron]])
-		secret_reference?: matchN(1, [#secret_reference, [...#secret_reference]])
-
 		// Job arguments in list format. Overrides the default arguments
 		// defined in the job image.
 		args?: [...string]
@@ -18,6 +15,7 @@ import "list"
 
 		// The job description
 		description?: string
+		cron?: matchN(1, [#cron, list.MaxItems(1) & [...#cron]])
 
 		// Environment variables to pass to the job
 		env?: [string]: string
@@ -28,6 +26,7 @@ import "list"
 
 		// Local storage capacity of the job in MiB
 		local_storage_capacity!: number
+		secret_reference?: matchN(1, [#secret_reference, [...#secret_reference]])
 
 		// Memory limit of the job
 		memory_limit!: number

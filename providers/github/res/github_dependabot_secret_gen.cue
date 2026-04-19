@@ -10,10 +10,10 @@ package res
 		// Encrypted value of the secret using the GitHub public key in
 		// Base64 format.
 		encrypted_value?: string
+		id?:              string
 
 		// ID of the public key used to encrypt the secret.
 		key_id?: string
-		id?:     string
 
 		// Plaintext value of the secret to be encrypted.
 		plaintext_value?: string

@@ -6,14 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_branch_protection_v3")
 	close({
+		required_pull_request_reviews?: matchN(1, [#required_pull_request_reviews, list.MaxItems(1) & [...#required_pull_request_reviews]])
+
 		// The Git branch to protect.
 		branch!: string
+		required_status_checks?: matchN(1, [#required_status_checks, list.MaxItems(1) & [...#required_status_checks]])
 
 		// Setting this to 'true' enforces status checks for repository
 		// administrators.
 		enforce_admins?: bool
 		etag?:           string
-		id?:             string
+		restrictions?: matchN(1, [#restrictions, list.MaxItems(1) & [...#restrictions]])
+		id?: string
 
 		// The GitHub repository name.
 		repository!: string
@@ -25,15 +29,13 @@ import "list"
 		// Setting this to 'true' requires all commits to be signed with
 		// GPG.
 		require_signed_commits?: bool
-		required_pull_request_reviews?: matchN(1, [#required_pull_request_reviews, list.MaxItems(1) & [...#required_pull_request_reviews]])
-		required_status_checks?: matchN(1, [#required_status_checks, list.MaxItems(1) & [...#required_status_checks]])
-		restrictions?: matchN(1, [#restrictions, list.MaxItems(1) & [...#restrictions]])
 	})
 
 	#required_pull_request_reviews: close({
 		// Dismiss approved reviews automatically when a new commit is
 		// pushed.
 		dismiss_stale_reviews?: bool
+		bypass_pull_request_allowances?: matchN(1, [_#defs."/$defs/required_pull_request_reviews/$defs/bypass_pull_request_allowances", list.MaxItems(1) & [..._#defs."/$defs/required_pull_request_reviews/$defs/bypass_pull_request_allowances"]])
 
 		// The list of apps slugs with dismissal access. Always use slug
 		// of the app, not its name. Each app already has to have access
@@ -55,7 +57,6 @@ import "list"
 		// Require that the most recent push must be approved by someone
 		// other than the last pusher.
 		require_last_push_approval?: bool
-		bypass_pull_request_allowances?: matchN(1, [_#defs."/$defs/required_pull_request_reviews/$defs/bypass_pull_request_allowances", list.MaxItems(1) & [..._#defs."/$defs/required_pull_request_reviews/$defs/bypass_pull_request_allowances"]])
 
 		// Require 'x' number of approvals to satisfy branch protection
 		// requirements. If this is specified it must be a number between

@@ -4,14 +4,13 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_autoscaling_instance_policy")
 	close({
-		metric?: matchN(1, [#metric, [...#metric]])
-
 		// Action to execute when the metric-based condition is met
 		action!: string
-		id?:     string
 
 		// ID of the instance group related to this policy
 		instance_group_id!: string
+		metric?: matchN(1, [#metric, [...#metric]])
+		id?: string
 
 		// The policy name
 		name?: string

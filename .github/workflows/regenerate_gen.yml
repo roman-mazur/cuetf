@@ -38,9 +38,10 @@ jobs:
           echo "Regenerating for $provider"
           ./update-providers.sh "$provider"
 
-          git add "$provider"
+          provider_path="providers/$provider"
+          git add "$provider_path"
           git add "logs/$provider-log.txt"
-          git commit -m "$provider: regenerate on dep update"
+          git commit -m "$provider_path: regenerate on dep update"
           git push origin HEAD:"$branch"
 
           echo "Setting the PR to merge after all checks"

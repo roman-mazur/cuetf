@@ -4,12 +4,11 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_mongodb_user")
 	close({
-		roles?: matchN(1, [#roles, [...#roles]])
-		timeouts?: #timeouts
-		id?:       string
+		id?: string
 
 		// Instance on which the user is created
 		instance_id!: string
+		roles?: matchN(1, [#roles, [...#roles]])
 
 		// MongoDB user name
 		name!: string
@@ -17,6 +16,7 @@ package res
 		// MongoDB user password. Only one of `password` or `password_wo`
 		// should be specified.
 		password?: string
+		timeouts?: #timeouts
 
 		// MongoDB user password in
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)

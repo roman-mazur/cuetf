@@ -10,6 +10,7 @@ package res
 		// Encrypted value of the secret using the GitHub public key in
 		// Base64 format.
 		encrypted_value?: string
+		id?:              string
 
 		// ID of the public key used to encrypt the secret.
 		key_id?: string
@@ -19,7 +20,6 @@ package res
 
 		// Date of secret update at the remote.
 		remote_updated_at?: string
-		id?:                string
 
 		// Name of the secret.
 		secret_name!: string

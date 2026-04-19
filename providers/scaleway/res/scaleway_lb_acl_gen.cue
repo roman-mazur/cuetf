@@ -7,17 +7,17 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_lb_acl")
 	close({
 		action!: matchN(1, [#action, list.MaxItems(1) & [_, ...] & [...#action]])
-		match?: matchN(1, [#match, list.MaxItems(1) & [...#match]])
-		timeouts?: #timeouts
 
 		// IsDate and time of ACL's creation (RFC 3339 format)
 		created_at?: string
+		match?: matchN(1, [#match, list.MaxItems(1) & [...#match]])
 
 		// Description of the ACL
 		description?: string
 
 		// The frontend ID on which the ACL is applied
 		frontend_id!: string
+		timeouts?:    #timeouts
 		id?:          string
 
 		// The priority of the ACL. (ACLs are applied in ascending order,

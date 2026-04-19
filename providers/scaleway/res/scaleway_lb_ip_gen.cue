@@ -4,14 +4,13 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_lb_ip")
 	close({
-		timeouts?: #timeouts
-		id?:       string
-
 		// The load-balancer public IP address
 		ip_address?: string
 
 		// If true, creates a Flexible IP with an IPv6 address
-		is_ipv6?: bool
+		is_ipv6?:  bool
+		id?:       string
+		timeouts?: #timeouts
 
 		// The ID of the load balancer attached to this IP, if any
 		lb_id?: string

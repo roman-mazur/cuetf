@@ -4,15 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_instance_volume")
 	close({
-		timeouts?: #timeouts
-
 		// Create a volume based on a image
 		from_snapshot_id?: string
-		id?:               string
 
 		// If true, consider that this volume may have been migrated and
 		// no longer exists.
 		migrate_to_sbs?: bool
+		id?:             string
+		timeouts?:       #timeouts
 
 		// The name of the volume
 		name?: string

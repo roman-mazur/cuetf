@@ -7,10 +7,10 @@ package res
 		// The ID of the column.
 		column_id?: number
 		etag?:      string
+		id?:        string
 
 		// The name of the column.
 		name!: string
-		id?:   string
 
 		// The ID of an existing project that the column will be created
 		// in.

@@ -9,6 +9,7 @@ package res
 
 		// Name of the environment.
 		environment!: string
+		id?:          string
 
 		// Name of the repository.
 		repository!: string
@@ -18,7 +19,6 @@ package res
 
 		// Date of 'actions_variable' update.
 		updated_at?: string
-		id?:         string
 
 		// Value of the variable.
 		value!: string

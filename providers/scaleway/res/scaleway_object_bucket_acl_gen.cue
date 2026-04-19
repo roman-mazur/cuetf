@@ -6,11 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_object_bucket_acl")
 	close({
-		access_control_policy?: matchN(1, [#access_control_policy, list.MaxItems(1) & [...#access_control_policy]])
-
 		// ACL of the bucket: either 'private', 'public-read',
 		// 'public-read-write' or 'authenticated-read'.
 		acl?: string
+		access_control_policy?: matchN(1, [#access_control_policy, list.MaxItems(1) & [...#access_control_policy]])
 
 		// The bucket's name or regional ID.
 		bucket!: string

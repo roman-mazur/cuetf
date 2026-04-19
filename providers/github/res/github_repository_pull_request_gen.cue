@@ -24,10 +24,10 @@ package res
 
 		// Head commit SHA of the Pull Request head.
 		head_sha?: string
+		id?:       string
 
 		// List of names of labels on the PR
 		labels?: [...string]
-		id?: string
 
 		// Controls whether the base repository maintainers can modify the
 		// Pull Request. Default: 'false'.

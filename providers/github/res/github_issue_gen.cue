@@ -9,14 +9,14 @@ package res
 
 		// Body of the issue.
 		body?: string
+		etag?: string
+		id?:   string
 
 		// The issue id.
 		issue_id?: number
-		etag?:     string
 
 		// List of labels to attach to the issue.
 		labels?: [...string]
-		id?: string
 
 		// Milestone number to assign to the issue.
 		milestone_number?: number

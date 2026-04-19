@@ -4,10 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_flexible_ip_mac_address")
 	close({
-		timeouts?: #timeouts
-
 		// Virtual MAC address
-		address?: string
+		address?:  string
+		timeouts?: #timeouts
 
 		// The date and time of the creation of the virtual MAC (Format
 		// ISO 8601)

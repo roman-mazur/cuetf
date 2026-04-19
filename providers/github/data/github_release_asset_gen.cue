@@ -23,6 +23,7 @@ package data
 		// The base64-encoded release asset file contents (requires
 		// `download_file_contents` to be `true`)
 		file_contents?: string
+		id?:            string
 
 		// Label for the asset
 		label?: string
@@ -35,7 +36,6 @@ package data
 
 		// Owner of the repository
 		owner!: string
-		id?:    string
 
 		// Name of the repository to retrieve the release asset from
 		repository!: string

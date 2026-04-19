@@ -6,12 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_instance_snapshot")
 	close({
-		import?: matchN(1, [#import, list.MaxItems(1) & [...#import]])
-		timeouts?: #timeouts
-
 		// The date and time of the creation of the snapshot
 		created_at?: string
 		id?:         string
+		import?: matchN(1, [#import, list.MaxItems(1) & [...#import]])
 
 		// The name of the snapshot
 		name?: string
@@ -24,6 +22,7 @@ import "list"
 
 		// The size of the snapshot in gigabyte
 		size_in_gb?: number
+		timeouts?:   #timeouts
 
 		// The tags associated with the snapshot
 		tags?: [...string]

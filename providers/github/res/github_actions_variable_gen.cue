@@ -6,10 +6,10 @@ package res
 	close({
 		// Date of 'actions_variable' creation.
 		created_at?: string
+		id?:         string
 
 		// Name of the repository.
 		repository!: string
-		id?:         string
 
 		// ID of the repository.
 		repository_id?: number

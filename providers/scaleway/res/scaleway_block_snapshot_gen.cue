@@ -7,15 +7,15 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_block_snapshot")
 	close({
 		export?: matchN(1, [#export, list.MaxItems(1) & [...#export]])
-		import?: matchN(1, [#import, list.MaxItems(1) & [...#import]])
-		timeouts?: #timeouts
-		id?:       string
 
 		// The snapshot name
 		name?: string
+		import?: matchN(1, [#import, list.MaxItems(1) & [...#import]])
+		id?: string
 
 		// The project_id you want to attach the resource to
 		project_id?: string
+		timeouts?:   #timeouts
 
 		// The tags associated with the snapshot
 		tags?: [...string]

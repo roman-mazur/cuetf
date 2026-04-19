@@ -6,8 +6,6 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_ipam_ip")
 	close({
-		resource?: matchN(1, [#resource, list.MaxItems(1) & [...#resource]])
-
 		// The IP address
 		address?: string
 
@@ -17,10 +15,11 @@ import "list"
 		// Defines whether to filter only for IPs which are attached to a
 		// resource
 		attached?: bool
-		id?:       string
+		resource?: matchN(1, [#resource, list.MaxItems(1) & [...#resource]])
 
 		// The ID of the IPAM IP
 		ipam_ip_id?: string
+		id?:         string
 
 		// The MAC address to filter for
 		mac_address?: string

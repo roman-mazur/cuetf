@@ -4,19 +4,18 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_vpc_gateway_network")
 	close({
-		ipam_config?: matchN(1, [#ipam_config, [...#ipam_config]])
-		private_ip?: matchN(1, [#private_ip, [...#private_ip]])
-		timeouts?: #timeouts
-
 		// The date and time of the creation of the gateway network
 		created_at?: string
+		ipam_config?: matchN(1, [#ipam_config, [...#ipam_config]])
 
 		// Enable masquerade on this network
 		enable_masquerade?: bool
+		private_ip?: matchN(1, [#private_ip, [...#private_ip]])
 
 		// The ID of the public gateway where connect to
 		gateway_id!: string
 		id?:         string
+		timeouts?:   #timeouts
 
 		// The mac address on this network
 		mac_address?: string

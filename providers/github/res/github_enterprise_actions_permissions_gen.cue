@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_enterprise_actions_permissions")
 	close({
+		allowed_actions_config?: matchN(1, [#allowed_actions_config, list.MaxItems(1) & [...#allowed_actions_config]])
+		enabled_organizations_config?: matchN(1, [#enabled_organizations_config, list.MaxItems(1) & [...#enabled_organizations_config]])
+
 		// The permissions policy that controls the actions that are
 		// allowed to run. Can be one of: 'all', 'local_only', or
 		// 'selected'.
@@ -18,9 +21,7 @@ import "list"
 
 		// The slug of the enterprise.
 		enterprise_slug!: string
-		allowed_actions_config?: matchN(1, [#allowed_actions_config, list.MaxItems(1) & [...#allowed_actions_config]])
-		id?: string
-		enabled_organizations_config?: matchN(1, [#enabled_organizations_config, list.MaxItems(1) & [...#enabled_organizations_config]])
+		id?:              string
 	})
 
 	#allowed_actions_config: close({

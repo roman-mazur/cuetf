@@ -4,10 +4,11 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository_collaborator")
 	close({
+		id?: string
+
 		// ID of the invitation to be used in
 		// 'github_user_invitation_accepter'
 		invitation_id?: string
-		id?:            string
 
 		// The permission of the outside collaborator for the repository.
 		// Must be one of 'pull', 'push', 'maintain', 'triage' or 'admin'

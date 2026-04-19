@@ -10,11 +10,11 @@ package res
 		// while keeping them in the organization
 		downgrade_on_destroy?: bool
 		etag?:                 string
+		id?:                   string
 
 		// The role of the user within the organization. Must be one of
 		// 'member' or 'admin'.
 		role?: string
-		id?:   string
 
 		// The user to add to the organization.
 		username!: string

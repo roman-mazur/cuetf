@@ -10,14 +10,14 @@ package res
 
 		// A short description of the label.
 		description?: string
+		etag?:        string
+		id?:          string
 
 		// The name of the label.
 		name!: string
-		etag?: string
 
 		// The GitHub repository.
 		repository!: string
-		id?:         string
 
 		// The URL to the issue label.
 		url?: string

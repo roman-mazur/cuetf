@@ -7,16 +7,16 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_iot_route")
 	close({
 		database?: matchN(1, [#database, list.MaxItems(1) & [...#database]])
-		rest?: matchN(1, [#rest, list.MaxItems(1) & [...#rest]])
-		s3?: matchN(1, [#s3, list.MaxItems(1) & [...#s3]])
-		timeouts?: #timeouts
 
 		// The date and time of the creation of the IoT Route
 		created_at?: string
+		rest?: matchN(1, [#rest, list.MaxItems(1) & [...#rest]])
+		s3?: matchN(1, [#s3, list.MaxItems(1) & [...#s3]])
 
 		// The ID of the route's hub
-		hub_id!: string
-		id?:     string
+		hub_id!:   string
+		timeouts?: #timeouts
+		id?:       string
 
 		// The name of the route
 		name!: string

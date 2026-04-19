@@ -10,11 +10,11 @@ package res
 
 		// The slug of the enterprise.
 		enterprise_slug!: string
+		id?:              string
 
 		// Whether secret scanning is automatically enabled for new
 		// repositories.
 		secret_scanning_enabled_for_new_repositories?: bool
-		id?:                                           string
 
 		// Custom URL for secret scanning push protection bypass
 		// instructions.

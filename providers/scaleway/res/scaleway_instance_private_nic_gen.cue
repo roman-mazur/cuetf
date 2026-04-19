@@ -4,9 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_instance_private_nic")
 	close({
-		private_ips?: matchN(1, [#private_ips, [...#private_ips]])
-		timeouts?: #timeouts
-		id?:       string
+		id?: string
 
 		// IPAM ip list, should be for internal use only
 		ip_ids?: [...string]
@@ -14,12 +12,14 @@ package res
 		// IPAM IDs of a pre-reserved IP addresses to assign to the
 		// Instance in the requested private network
 		ipam_ip_ids?: [...string]
+		private_ips?: matchN(1, [#private_ips, [...#private_ips]])
 
 		// MAC address of the NIC
 		mac_address?: string
 
 		// The private network ID
 		private_network_id!: string
+		timeouts?:           #timeouts
 
 		// The server ID
 		server_id!: string

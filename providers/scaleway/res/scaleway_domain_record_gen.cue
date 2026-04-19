@@ -6,21 +6,20 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_domain_record")
 	close({
-		geo_ip?: matchN(1, [#geo_ip, list.MaxItems(1) & [...#geo_ip]])
-		http_service?: matchN(1, [#http_service, list.MaxItems(1) & [...#http_service]])
-		timeouts?: #timeouts
-		view?: matchN(1, [#view, [...#view]])
-		weighted?: matchN(1, [#weighted, [...#weighted]])
-
 		// The data of the record
 		data!: string
 
 		// The zone you want to add the record in
 		dns_zone!: string
+		geo_ip?: matchN(1, [#geo_ip, list.MaxItems(1) & [...#geo_ip]])
+		http_service?: matchN(1, [#http_service, list.MaxItems(1) & [...#http_service]])
+		timeouts?: #timeouts
+		view?: matchN(1, [#view, [...#view]])
 
 		// The FQDN of the record
 		fqdn?: string
 		id?:   string
+		weighted?: matchN(1, [#weighted, [...#weighted]])
 
 		// The name of the record
 		name?: string

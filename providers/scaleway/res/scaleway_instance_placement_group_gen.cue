@@ -4,11 +4,11 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_instance_placement_group")
 	close({
-		timeouts?: #timeouts
-		id?:       string
+		id?: string
 
 		// The name of the placement group
-		name?: string
+		name?:     string
+		timeouts?: #timeouts
 
 		// The organization_id you want to attach the resource to
 		organization_id?: string

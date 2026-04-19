@@ -6,27 +6,28 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_organization_ruleset")
 	close({
+		bypass_actors?: matchN(1, [#bypass_actors, [...#bypass_actors]])
+
 		// The enforcement level of the ruleset. `evaluate` allows admins
 		// to test rules before enforcing them. Possible values are
 		// `disabled`, `active`, and `evaluate`. Note: `evaluate` is only
 		// available for Enterprise plans.
 		enforcement!: string
+		conditions?: matchN(1, [#conditions, list.MaxItems(1) & [...#conditions]])
 
 		// An etag representing the ruleset for caching purposes.
 		etag?: string
+		id?:   string
+		rules!: matchN(1, [#rules, list.MaxItems(1) & [_, ...] & [...#rules]])
 
 		// The name of the ruleset.
 		name!: string
-		id?:   string
 
 		// GraphQL global node id for use with v4 API.
 		node_id?: string
-		bypass_actors?: matchN(1, [#bypass_actors, [...#bypass_actors]])
 
 		// GitHub ID for the ruleset.
 		ruleset_id?: number
-		conditions?: matchN(1, [#conditions, list.MaxItems(1) & [...#conditions]])
-		rules!: matchN(1, [#rules, list.MaxItems(1) & [_, ...] & [...#rules]])
 
 		// The target of the ruleset. Possible values are branch, tag and
 		// push.
@@ -61,10 +62,24 @@ import "list"
 	})
 
 	#rules: close({
+		branch_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/branch_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/branch_name_pattern"]])
+		commit_author_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_author_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_author_email_pattern"]])
+		commit_message_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_message_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_message_pattern"]])
+		committer_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/committer_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/committer_email_pattern"]])
+		copilot_code_review?: matchN(1, [_#defs."/$defs/rules/$defs/copilot_code_review", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/copilot_code_review"]])
+		file_extension_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_extension_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_extension_restriction"]])
+		file_path_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_path_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_path_restriction"]])
+		max_file_path_length?: matchN(1, [_#defs."/$defs/rules/$defs/max_file_path_length", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/max_file_path_length"]])
+		max_file_size?: matchN(1, [_#defs."/$defs/rules/$defs/max_file_size", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/max_file_size"]])
+		pull_request?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/pull_request"]])
+		required_code_scanning?: matchN(1, [_#defs."/$defs/rules/$defs/required_code_scanning", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_code_scanning"]])
+		required_status_checks?: matchN(1, [_#defs."/$defs/rules/$defs/required_status_checks", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_status_checks"]])
+		required_workflows?: matchN(1, [_#defs."/$defs/rules/$defs/required_workflows", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_workflows"]])
+		tag_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/tag_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/tag_name_pattern"]])
+
 		// Only allow users with bypass permission to create matching
 		// refs.
 		creation?: bool
-		branch_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/branch_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/branch_name_pattern"]])
 
 		// Only allow users with bypass permissions to delete matching
 		// refs.
@@ -79,19 +94,6 @@ import "list"
 		// Commits pushed to matching branches must have verified
 		// signatures.
 		required_signatures?: bool
-		commit_author_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_author_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_author_email_pattern"]])
-		commit_message_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/commit_message_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/commit_message_pattern"]])
-		committer_email_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/committer_email_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/committer_email_pattern"]])
-		copilot_code_review?: matchN(1, [_#defs."/$defs/rules/$defs/copilot_code_review", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/copilot_code_review"]])
-		file_extension_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_extension_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_extension_restriction"]])
-		file_path_restriction?: matchN(1, [_#defs."/$defs/rules/$defs/file_path_restriction", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/file_path_restriction"]])
-		max_file_path_length?: matchN(1, [_#defs."/$defs/rules/$defs/max_file_path_length", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/max_file_path_length"]])
-		max_file_size?: matchN(1, [_#defs."/$defs/rules/$defs/max_file_size", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/max_file_size"]])
-		pull_request?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/pull_request"]])
-		required_code_scanning?: matchN(1, [_#defs."/$defs/rules/$defs/required_code_scanning", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_code_scanning"]])
-		required_status_checks?: matchN(1, [_#defs."/$defs/rules/$defs/required_status_checks", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_status_checks"]])
-		required_workflows?: matchN(1, [_#defs."/$defs/rules/$defs/required_workflows", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_workflows"]])
-		tag_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/tag_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/tag_name_pattern"]])
 
 		// Only allow users with bypass permission to update matching
 		// refs.
@@ -221,6 +223,7 @@ import "list"
 		// Array of allowed merge methods. Allowed values include `merge`,
 		// `squash`, and `rebase`. At least one option must be enabled.
 		allowed_merge_methods?: [...string]
+		required_reviewers?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers", [..._#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers"]])
 
 		// New, reviewable commits pushed will dismiss previous pull
 		// request review approvals. Defaults to `false`.
@@ -242,7 +245,6 @@ import "list"
 		// All conversations on code must be resolved before a pull
 		// request can be merged. Defaults to `false`.
 		required_review_thread_resolution?: bool
-		required_reviewers?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers", [..._#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers"]])
 	})
 
 	_#defs: "/$defs/rules/$defs/pull_request/$defs/required_reviewers": close({

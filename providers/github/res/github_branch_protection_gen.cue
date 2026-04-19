@@ -6,9 +6,11 @@ package res
 	close({
 		// Setting this to 'true' to allow the branch to be deleted.
 		allows_deletions?: bool
+		required_pull_request_reviews?: matchN(1, [#required_pull_request_reviews, [...#required_pull_request_reviews]])
 
 		// Setting this to 'true' to allow force pushes on the branch.
 		allows_force_pushes?: bool
+		required_status_checks?: matchN(1, [#required_status_checks, [...#required_status_checks]])
 
 		// Setting this to 'true' enforces status checks for repository
 		// administrators.
@@ -19,6 +21,8 @@ package res
 		// for users or the organization name followed by a '/' for
 		// teams.
 		force_push_bypassers?: [...string]
+		id?: string
+		restrict_pushes?: matchN(1, [#restrict_pushes, [...#restrict_pushes]])
 
 		// Setting this to 'true' will make the branch read-only and
 		// preventing any pushes to it.
@@ -26,7 +30,6 @@ package res
 
 		// Identifies the protection rule pattern.
 		pattern!: string
-		id?:      string
 
 		// The name or node ID of the repository associated with this
 		// branch protection rule.
@@ -35,9 +38,6 @@ package res
 		// Setting this to 'true' requires all conversations on code must
 		// be resolved before a pull request can be merged.
 		require_conversation_resolution?: bool
-		required_pull_request_reviews?: matchN(1, [#required_pull_request_reviews, [...#required_pull_request_reviews]])
-		required_status_checks?: matchN(1, [#required_status_checks, [...#required_status_checks]])
-		restrict_pushes?: matchN(1, [#restrict_pushes, [...#restrict_pushes]])
 
 		// Setting this to 'true' requires all commits to be signed with
 		// GPG.

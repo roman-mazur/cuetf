@@ -6,16 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_vpc_private_network")
 	close({
-		ipv4_subnet?: matchN(1, [#ipv4_subnet, list.MaxItems(1) & [...#ipv4_subnet]])
-		ipv6_subnets?: matchN(1, [#ipv6_subnets, [...#ipv6_subnets]])
-
 		// The date and time of the creation of the private network
 		created_at?: string
 
 		// Defines whether default v4 and v6 routes are propagated for
 		// this Private Network
 		enable_default_route_propagation?: bool
-		id?:                               string
+		ipv4_subnet?: matchN(1, [#ipv4_subnet, list.MaxItems(1) & [...#ipv4_subnet]])
+		id?: string
 
 		// The name of the private network
 		name?: string
@@ -25,6 +23,7 @@ import "list"
 
 		// The project_id you want to attach the resource to
 		project_id?: string
+		ipv6_subnets?: matchN(1, [#ipv6_subnets, [...#ipv6_subnets]])
 
 		// The region you want to attach the resource to
 		region?: string

@@ -4,8 +4,6 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_edge_services_cache_stage")
 	close({
-		purge_requests?: matchN(1, [#purge_requests, [...#purge_requests]])
-
 		// The backend stage ID the cache stage will be linked to
 		backend_stage_id?: string
 
@@ -15,11 +13,12 @@ package res
 		// The Time To Live (TTL) in seconds. Defines how long content is
 		// cached
 		fallback_ttl?: number
-		id?:           string
+		purge_requests?: matchN(1, [#purge_requests, [...#purge_requests]])
 
 		// Defines whether responses to requests with cookies must be
 		// stored in the cache
 		include_cookies?: bool
+		id?:              string
 
 		// The ID of the pipeline
 		pipeline_id!: string

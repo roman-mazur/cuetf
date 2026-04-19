@@ -6,14 +6,14 @@ package res
 	close({
 		// The body of the project.
 		body?: string
+		etag?: string
+		id?:   string
 
 		// The name of the project.
 		name!: string
-		etag?: string
 
 		// The repository of the project.
 		repository!: string
-		id?:         string
 
 		// URL of the project
 		url?: string

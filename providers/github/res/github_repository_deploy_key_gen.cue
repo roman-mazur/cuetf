@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository_deploy_key")
 	close({
 		etag?: string
+		id?:   string
 
 		// A SSH key.
 		key!: string
@@ -12,7 +13,6 @@ package res
 		// A boolean qualifying the key to be either read only or
 		// read/write.
 		read_only?: bool
-		id?:        string
 
 		// Name of the GitHub repository.
 		repository!: string

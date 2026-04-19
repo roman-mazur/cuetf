@@ -9,6 +9,7 @@ package res
 
 		// The milestone due date. In 'yyyy-mm-dd' format.
 		due_date?: string
+		id?:       string
 
 		// The number of the milestone.
 		"number"?: number
@@ -18,7 +19,6 @@ package res
 
 		// The name of the GitHub Repository.
 		repository!: string
-		id?:         string
 
 		// The state of the milestone. Either 'open' or 'closed'. Default:
 		// 'open'.

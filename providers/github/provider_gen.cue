@@ -11,6 +11,7 @@ import "list"
 
 		// Enable `insecure` mode for testing purposes
 		insecure?: bool
+		app_auth?: matchN(1, [#app_auth, list.MaxItems(1) & [...#app_auth]])
 
 		// Number of items per page for paginationDefaults to 100
 		max_per_page?: number
@@ -39,7 +40,6 @@ import "list"
 		// GitHub API after an error response. Defaults to 1000ms or 1s
 		// if not set, the max_retries must be set to greater than zero.
 		retry_delay_ms?: number
-		app_auth?: matchN(1, [#app_auth, list.MaxItems(1) & [...#app_auth]])
 
 		// Allow the provider to retry after receiving an error status
 		// code, the max_retries should be set for this to workDefaults

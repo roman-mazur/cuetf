@@ -13,10 +13,10 @@ package res
 
 		// Name of the environment.
 		environment!: string
+		id?:          string
 
 		// ID of the public key used to encrypt the secret.
 		key_id?: string
-		id?:     string
 
 		// Plaintext value of the secret to be encrypted.
 		plaintext_value?: string

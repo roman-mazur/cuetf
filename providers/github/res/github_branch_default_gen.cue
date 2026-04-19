@@ -7,11 +7,11 @@ package res
 		// The branch (e.g. 'main').
 		branch!: string
 		etag?:   string
+		id?:     string
 
 		// Indicate if it should rename the branch rather than use an
 		// existing branch. Defaults to 'false'.
 		rename?: bool
-		id?:     string
 
 		// The GitHub repository.
 		repository!: string

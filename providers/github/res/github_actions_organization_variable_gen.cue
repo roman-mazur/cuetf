@@ -6,11 +6,11 @@ package res
 	close({
 		// Date of 'actions_variable' creation.
 		created_at?: string
+		id?:         string
 
 		// An array of repository ids that can access the organization
 		// variable.
 		selected_repository_ids?: [...number]
-		id?: string
 
 		// Date of 'actions_variable' update.
 		updated_at?: string

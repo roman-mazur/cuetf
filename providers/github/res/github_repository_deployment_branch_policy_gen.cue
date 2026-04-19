@@ -9,10 +9,10 @@ package res
 
 		// An etag representing the Branch object.
 		etag?: string
+		id?:   string
 
 		// The name of the branch
 		name!: string
-		id?:   string
 
 		// The GitHub repository name.
 		repository!: string

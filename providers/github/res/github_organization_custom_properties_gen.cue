@@ -12,13 +12,13 @@ package res
 
 		// The description of the custom property
 		description?: string
+		id?:          string
 
 		// The name of the custom property
 		property_name!: string
 
 		// Whether the custom property is required
 		required?: bool
-		id?:       string
 
 		// The type of the custom property
 		value_type?: string

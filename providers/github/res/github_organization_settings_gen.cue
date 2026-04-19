@@ -47,6 +47,7 @@ package res
 		// Whether or not repository projects are enabled for the
 		// organization.
 		has_repository_projects?: bool
+		id?:                      string
 
 		// The location for the organization.
 		location?: string
@@ -54,7 +55,6 @@ package res
 		// Whether or not organization members can create new internal
 		// repositories. For Enterprise Organizations only.
 		members_can_create_internal_repositories?: bool
-		id?:                                       string
 
 		// Whether or not organization members can create new pages.
 		members_can_create_pages?: bool

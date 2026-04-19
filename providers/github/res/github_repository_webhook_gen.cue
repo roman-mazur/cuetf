@@ -9,7 +9,8 @@ import "list"
 		// Indicate if the webhook should receive events. Defaults to
 		// 'true'.
 		active?: bool
-		etag?:   string
+		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
+		etag?: string
 
 		// A list of events which should trigger the webhook
 		events!: [...string]
@@ -18,7 +19,6 @@ import "list"
 		// The repository name of the webhook, not including the
 		// organization, which will be inferred.
 		repository!: string
-		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
 
 		// Configuration block for the webhook
 		url?: string

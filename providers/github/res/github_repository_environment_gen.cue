@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository_environment")
 	close({
+		deployment_branch_policy?: matchN(1, [#deployment_branch_policy, list.MaxItems(1) & [...#deployment_branch_policy]])
+		reviewers?: matchN(1, [#reviewers, list.MaxItems(6) & [...#reviewers]])
+
 		// Can Admins bypass deployment protections
 		can_admins_bypass?: bool
 
@@ -16,7 +19,6 @@ import "list"
 		// Prevent users from approving workflows runs that they
 		// triggered.
 		prevent_self_review?: bool
-		deployment_branch_policy?: matchN(1, [#deployment_branch_policy, list.MaxItems(1) & [...#deployment_branch_policy]])
 
 		// The repository of the environment.
 		repository!: string
@@ -24,7 +26,6 @@ import "list"
 		// Amount of time to delay a job after the job is initially
 		// triggered.
 		wait_timer?: number
-		reviewers?: matchN(1, [#reviewers, list.MaxItems(6) & [...#reviewers]])
 	})
 
 	#deployment_branch_policy: close({

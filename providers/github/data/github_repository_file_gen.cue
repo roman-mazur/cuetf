@@ -26,10 +26,10 @@ package data
 
 		// The file path to manage
 		file!: string
+		id?:   string
 
 		// The name of the commit/branch/tag
 		ref?: string
-		id?:  string
 
 		// The repository name
 		repository!: string

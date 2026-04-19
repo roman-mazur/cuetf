@@ -6,15 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_lb_frontend")
 	close({
-		acl?: matchN(1, [#acl, [...#acl]])
-		timeouts?: #timeouts
-
 		// The load-balancer backend ID
 		backend_id!: string
 
 		// Collection of Certificate IDs related to the load balancer and
 		// domain
 		certificate_ids?: [...string]
+		acl?: matchN(1, [#acl, [...#acl]])
 
 		// Rate limit for new connections established on this frontend.
 		// Use 0 value to disable, else value is connections per second
@@ -28,6 +26,7 @@ import "list"
 
 		// Activates HTTP/3 protocol
 		enable_http3?: bool
+		timeouts?:     #timeouts
 
 		// This boolean determines if ACLs should be managed externally
 		// through the 'lb_acl' resource. If set to `true`, `acl`

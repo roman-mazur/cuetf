@@ -9,6 +9,7 @@ package res
 
 		// An etag representing the Branch object.
 		etag?: string
+		id?:   string
 
 		// A string representing a branch reference, in the form of
 		// 'refs/heads/<branch>'.
@@ -19,7 +20,6 @@ package res
 
 		// A string storing the reference's HEAD commit's SHA1.
 		sha?: string
-		id?:  string
 
 		// The branch name to start from. Defaults to 'main'.
 		source_branch?: string

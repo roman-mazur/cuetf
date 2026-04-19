@@ -22,10 +22,12 @@ package data
 		draft?:      bool
 		html_url?:   string
 		id?:         string
+		name?:       string
 
 		// Owner of the repository.
-		owner!: string
-		name?:  string
+		owner!:        string
+		prerelease?:   bool
+		published_at?: string
 
 		// ID of the release to retrieve. Must be specified when
 		// `retrieve_by` = `id`.
@@ -33,9 +35,7 @@ package data
 
 		// ID of the release to retrieve. Must be specified when
 		// `retrieve_by` = `tag`.
-		release_tag?:  string
-		prerelease?:   bool
-		published_at?: string
+		release_tag?: string
 
 		// Name of the repository to retrieve the release from.
 		repository!: string

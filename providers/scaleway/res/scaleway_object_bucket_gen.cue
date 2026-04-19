@@ -6,16 +6,14 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_object_bucket")
 	close({
-		cors_rule?: matchN(1, [#cors_rule, [...#cors_rule]])
-		lifecycle_rule?: matchN(1, [#lifecycle_rule, [...#lifecycle_rule]])
-		timeouts?: #timeouts
-		versioning?: matchN(1, [#versioning, list.MaxItems(1) & [...#versioning]])
-
 		// API URL of the bucket
 		api_endpoint?: string
 
 		// Endpoint of the bucket
 		endpoint?: string
+		cors_rule?: matchN(1, [#cors_rule, [...#cors_rule]])
+		lifecycle_rule?: matchN(1, [#lifecycle_rule, [...#lifecycle_rule]])
+		timeouts?: #timeouts
 
 		// Delete objects in bucket
 		force_destroy?: bool
@@ -23,6 +21,7 @@ import "list"
 
 		// The name of the bucket
 		name!: string
+		versioning?: matchN(1, [#versioning, list.MaxItems(1) & [...#versioning]])
 
 		// Enable object lock
 		object_lock_enabled?: bool
@@ -55,12 +54,11 @@ import "list"
 	})
 
 	#lifecycle_rule: close({
-		expiration?: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/expiration", list.MaxItems(1) & [..._#defs."/$defs/lifecycle_rule/$defs/expiration"]])
-		transition?: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/transition", [..._#defs."/$defs/lifecycle_rule/$defs/transition"]])
-
 		// Specifies the number of days after initiating a multipart
 		// upload when the multipart upload must be completed
 		abort_incomplete_multipart_upload_days?: number
+		expiration?: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/expiration", list.MaxItems(1) & [..._#defs."/$defs/lifecycle_rule/$defs/expiration"]])
+		transition?: matchN(1, [_#defs."/$defs/lifecycle_rule/$defs/transition", [..._#defs."/$defs/lifecycle_rule/$defs/transition"]])
 
 		// Specifies if the configuration rule is Enabled or Disabled
 		enabled!: bool

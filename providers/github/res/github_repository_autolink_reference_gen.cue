@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository_autolink_reference")
 	close({
 		etag?: string
+		id?:   string
 
 		// Whether this autolink reference matches alphanumeric
 		// characters. If false, this autolink reference only matches
@@ -14,7 +15,6 @@ package res
 		// This prefix appended by a number will generate a link any time
 		// it is found in an issue, pull request, or commit
 		key_prefix!: string
-		id?:         string
 
 		// The repository name
 		repository!: string

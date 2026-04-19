@@ -4,9 +4,6 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_autoscaling_instance_group")
 	close({
-		capacity?: matchN(1, [#capacity, [...#capacity]])
-		load_balancer?: matchN(1, [#load_balancer, [...#load_balancer]])
-
 		// The date and time of the creation of the Instance group
 		created_at?: string
 
@@ -14,13 +11,15 @@ package res
 		// destroyed. Set to `true` to tear them down, `false` (the
 		// default) leaves them running
 		delete_servers_on_destroy?: bool
-		id?:                        string
+		capacity?: matchN(1, [#capacity, [...#capacity]])
+		id?: string
 
 		// The Instance group name
 		name?: string
 
 		// The project_id you want to attach the resource to
 		project_id?: string
+		load_balancer?: matchN(1, [#load_balancer, [...#load_balancer]])
 
 		// The tags associated with the Instance group
 		tags?: [...string]

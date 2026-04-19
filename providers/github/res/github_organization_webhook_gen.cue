@@ -6,17 +6,18 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_organization_webhook")
 	close({
+		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
+
 		// Indicate if the webhook should receive events.
 		active?: bool
+		etag?:   string
 
 		// A list of events which should trigger the webhook.
 		events!: [...string]
-		etag?: string
+		id?: string
 
 		// URL of the webhook.
 		url?: string
-		id?:  string
-		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
 	})
 
 	#configuration: close({

@@ -6,6 +6,10 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository")
 	close({
+		pages?: matchN(1, [#pages, list.MaxItems(1) & [...#pages]])
+		security_and_analysis?: matchN(1, [#security_and_analysis, list.MaxItems(1) & [...#security_and_analysis]])
+		template?: matchN(1, [#template, list.MaxItems(1) & [...#template]])
+
 		// Set to 'true' to allow auto-merging pull requests on the
 		// repository.
 		allow_auto_merge?: bool
@@ -90,9 +94,6 @@ import "list"
 		// via HTTPS.
 		http_clone_url?: string
 		id?:             string
-		pages?: matchN(1, [#pages, list.MaxItems(1) & [...#pages]])
-		security_and_analysis?: matchN(1, [#security_and_analysis, list.MaxItems(1) & [...#security_and_analysis]])
-		template?: matchN(1, [#template, list.MaxItems(1) & [...#template]])
 
 		// Set to 'true' to tell GitHub that this is a template
 		// repository.
@@ -167,6 +168,7 @@ import "list"
 	#pages: close({
 		// The type the page should be sourced.
 		build_type?: string
+		source?: matchN(1, [_#defs."/$defs/pages/$defs/source", list.MaxItems(1) & [..._#defs."/$defs/pages/$defs/source"]])
 
 		// The custom domain for the repository. This can only be set
 		// after the repository has been created.
@@ -180,8 +182,7 @@ import "list"
 
 		// The GitHub Pages site's build status e.g. building or built.
 		status?: string
-		source?: matchN(1, [_#defs."/$defs/pages/$defs/source", list.MaxItems(1) & [..._#defs."/$defs/pages/$defs/source"]])
-		url?: string
+		url?:    string
 	})
 
 	#security_and_analysis: close({

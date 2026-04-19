@@ -9,10 +9,10 @@ package data
 
 		// The description of the organization role.
 		description?: string
+		id?:          string
 
 		// The name of the organization role.
 		name?: string
-		id?:   string
 
 		// A list of permissions included in this role.
 		permissions?: [...string]

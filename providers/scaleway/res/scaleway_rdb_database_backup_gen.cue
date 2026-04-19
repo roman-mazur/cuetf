@@ -4,8 +4,6 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_rdb_database_backup")
 	close({
-		timeouts?: #timeouts
-
 		// Creation date (Format ISO 8601).
 		created_at?: string
 
@@ -14,16 +12,17 @@ package res
 
 		// URL you can download the backup from (when exporting).
 		download_url?: string
+		timeouts?:     #timeouts
 
 		// Expiration date of the download link (Format ISO 8601).
 		download_url_expires_at?: string
 
 		// Expiration date (Format ISO 8601). Cannot be removed.
 		expires_at?: string
-		id?:         string
 
 		// Instance on which the user is created
 		instance_id!: string
+		id?:          string
 
 		// Name of the instance of the backup.
 		instance_name?: string
