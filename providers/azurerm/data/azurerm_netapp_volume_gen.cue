@@ -10,6 +10,9 @@ package data
 		// property.
 		accept_grow_capacity_pool_for_short_term_clone_split?: string
 		account_name!:                                         string
+		data_protection_advanced_ransomware?: [...close({
+			protection_enabled?: bool
+		})]
 		data_protection_backup_policy?: [...close({
 			backup_policy_id?: string
 			backup_vault_id?:  string

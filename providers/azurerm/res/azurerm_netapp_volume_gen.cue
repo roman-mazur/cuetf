@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_netapp_volume")
 	close({
 		cool_access?: matchN(1, [#cool_access, list.MaxItems(1) & [...#cool_access]])
+		data_protection_advanced_ransomware?: matchN(1, [#data_protection_advanced_ransomware, list.MaxItems(1) & [...#data_protection_advanced_ransomware]])
 		data_protection_backup_policy?: matchN(1, [#data_protection_backup_policy, list.MaxItems(1) & [...#data_protection_backup_policy]])
 		data_protection_replication?: matchN(1, [#data_protection_replication, list.MaxItems(1) & [...#data_protection_replication]])
 		data_protection_snapshot_policy?: matchN(1, [#data_protection_snapshot_policy, list.MaxItems(1) & [...#data_protection_snapshot_policy]])
@@ -77,6 +78,11 @@ import "list"
 		coolness_period_in_days!: number
 		retrieval_policy!:        string
 		tiering_policy!:          string
+	})
+
+	#data_protection_advanced_ransomware: close({
+		// Enable or disable the Advanced Ransomware Protection feature.
+		protection_enabled!: bool
 	})
 
 	#data_protection_backup_policy: close({

@@ -163,6 +163,7 @@ package data
 					trigger_parameter?: string
 				})]
 				custom_rule_type?: string
+				identity_id?:      string
 				metadata?: [string]: string
 				name?: string
 			})]

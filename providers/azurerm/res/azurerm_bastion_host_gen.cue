@@ -16,6 +16,7 @@ import "list"
 		kerberos_enabled?:          bool
 		location!:                  string
 		name!:                      string
+		private_only_enabled?:      bool
 		resource_group_name!:       string
 		scale_units?:               number
 		session_recording_enabled?: bool
@@ -29,7 +30,7 @@ import "list"
 
 	#ip_configuration: close({
 		name!:                 string
-		public_ip_address_id!: string
+		public_ip_address_id?: string
 		subnet_id!:            string
 	})
 

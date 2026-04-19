@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_app_configuration_feature")
 	close({
+		custom_filter?: matchN(1, [#custom_filter, [...#custom_filter]])
 		targeting_filter?: matchN(1, [#targeting_filter, [...#targeting_filter]])
 		timeouts?: #timeouts
 		timewindow_filter?: matchN(1, [#timewindow_filter, [...#timewindow_filter]])
@@ -18,6 +19,11 @@ package res
 		name!:                    string
 		percentage_filter_value?: number
 		tags?: [string]: string
+	})
+
+	#custom_filter: close({
+		name!: string
+		parameters?: [string]: string
 	})
 
 	#targeting_filter: close({

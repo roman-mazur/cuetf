@@ -105,6 +105,10 @@ import "list"
 	_#defs: "/$defs/event_trigger_config/$defs/scale/$defs/rules": close({
 		authentication?: matchN(1, [_#defs."/$defs/event_trigger_config/$defs/scale/$defs/rules/$defs/authentication", [..._#defs."/$defs/event_trigger_config/$defs/scale/$defs/rules/$defs/authentication"]])
 		custom_rule_type!: string
+
+		// ID of the System or User Managed Identity used to execute scale
+		// rule.
+		identity_id?: string
 		metadata!: [string]: string
 		name!: string
 	})
