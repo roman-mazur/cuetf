@@ -169,6 +169,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/auxiliary_node_groups/$defs/node_group/$defs/node_group_config/$defs/disk_config": close({
+		// Indicates how many IOPS to provision for the disk. This sets
+		// the number of I/O operations per second that the disk can
+		// handle.
+		boot_disk_provisioned_iops?: number
+
+		// Indicates how much throughput to provision for the disk. This
+		// sets the number of throughput mb per second that the disk can
+		// handle.
+		boot_disk_provisioned_throughput?: number
+
 		// Size of the primary disk attached to each node, specified in
 		// GB. The primary disk contains the boot volume and system
 		// libraries, and the smallest allowed disk size is 10GB. GCP
@@ -390,6 +400,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/master_config/$defs/disk_config": close({
+		// Indicates how many IOPS to provision for the disk. This sets
+		// the number of I/O operations per second that the disk can
+		// handle.
+		boot_disk_provisioned_iops?: number
+
+		// Indicates how much throughput to provision for the disk. This
+		// sets the number of throughput mb per second that the disk can
+		// handle.
+		boot_disk_provisioned_throughput?: number
+
 		// Size of the primary disk attached to each node, specified in
 		// GB. The primary disk contains the boot volume and system
 		// libraries, and the smallest allowed disk size is 10GB. GCP
@@ -457,6 +477,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/preemptible_worker_config/$defs/disk_config": close({
+		// Indicates how many IOPS to provision for the disk. This sets
+		// the number of I/O operations per second that the disk can
+		// handle.
+		boot_disk_provisioned_iops?: number
+
+		// Indicates how much throughput to provision for the disk. This
+		// sets the number of throughput mb per second that the disk can
+		// handle.
+		boot_disk_provisioned_throughput?: number
+
 		// Size of the primary disk attached to each preemptible worker
 		// node, specified in GB. The smallest allowed disk size is 10GB.
 		// GCP will default to a predetermined computed value if not set
@@ -650,6 +680,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/worker_config/$defs/disk_config": close({
+		// Indicates how many IOPS to provision for the disk. This sets
+		// the number of I/O operations per second that the disk can
+		// handle.
+		boot_disk_provisioned_iops?: number
+
+		// Indicates how much throughput to provision for the disk. This
+		// sets the number of throughput mb per second that the disk can
+		// handle.
+		boot_disk_provisioned_throughput?: number
+
 		// Size of the primary disk attached to each node, specified in
 		// GB. The primary disk contains the boot volume and system
 		// libraries, and the smallest allowed disk size is 10GB. GCP

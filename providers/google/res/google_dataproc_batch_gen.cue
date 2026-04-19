@@ -298,7 +298,7 @@ import "list"
 
 	_#defs: "/$defs/runtime_config/$defs/autotuning_config": close({
 		// Optional. Scenarios for which tunings are applied. Possible
-		// values: ["SCALING", "BROADCAST_HASH_JOIN", "MEMORY"]
+		// values: ["AUTO", "SCALING", "BROADCAST_HASH_JOIN", "MEMORY"]
 		scenarios?: [...string]
 	})
 }

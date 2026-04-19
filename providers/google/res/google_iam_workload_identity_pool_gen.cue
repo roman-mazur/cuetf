@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_workload_identity_pool")
 	close({
+		attestation_rules?: matchN(1, [#attestation_rules, [...#attestation_rules]])
 		inline_certificate_issuance_config?: matchN(1, [#inline_certificate_issuance_config, list.MaxItems(1) & [...#inline_certificate_issuance_config]])
 		inline_trust_config?: matchN(1, [#inline_trust_config, list.MaxItems(1) & [...#inline_trust_config]])
 		timeouts?: #timeouts
@@ -100,6 +101,12 @@ import "list"
 		// [a-z0-9-]. The prefix
 		// 'gcp-' is reserved for use by Google, and may not be specified.
 		workload_identity_pool_id!: string
+	})
+
+	#attestation_rules: close({
+		// A single workload operating on Google Cloud. For example:
+		// '//run.googleapis.com/projects/123/type/Service/*'.
+		google_cloud_resource!: string
 	})
 
 	#inline_certificate_issuance_config: close({

@@ -26,7 +26,23 @@ import "list"
 
 		// The display name of the ReasoningEngine.
 		display_name!: string
-		id?:           string
+
+		// All of labels (key/value pairs) present on the resource in GCP,
+		// including the labels configured through Terraform, other
+		// clients and services.
+		effective_labels?: [string]: string
+		id?: string
+
+		// The labels associated with this ReasoningEngine. You can use
+		// these to
+		// organize and group your ReasoningEngines.
+		//
+		//
+		// **Note**: This field is non-authoritative, and will only manage
+		// the labels present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the
+		// labels present on the resource.
+		labels?: [string]: string
 
 		// The generated name of the ReasoningEngine, in the format
 		// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
@@ -35,6 +51,10 @@ import "list"
 
 		// The region of the reasoning engine. eg us-central1
 		region?: string
+
+		// The combination of labels configured directly on the resource
+		// and default labels configured on the provider.
+		terraform_labels?: [string]: string
 
 		// The timestamp of when the Index was last updated in RFC3339 UTC
 		// "Zulu"
@@ -55,6 +75,7 @@ import "list"
 	})
 
 	#spec: close({
+		container_spec?: matchN(1, [_#defs."/$defs/spec/$defs/container_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/container_spec"]])
 		deployment_spec?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/deployment_spec"]])
 		package_spec?: matchN(1, [_#defs."/$defs/spec/$defs/package_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/package_spec"]])
 		source_code_spec?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec"]])
@@ -65,6 +86,23 @@ import "list"
 		// Optional. Declarations for object class methods in OpenAPI
 		// specification format.
 		class_methods?: string
+
+		// The identity to use for the Reasoning Engine.
+		effective_identity?: string
+
+		// Optional. The identity type to use for the Reasoning Engine.
+		// If not specified, the 'service_account' field will be used if
+		// set,
+		// otherwise the default Vertex AI Reasoning Engine Service Agent
+		// in the project will be used.
+		// Possible values:
+		// * 'SERVICE_ACCOUNT': Use a custom service account if the
+		// 'service_account' field is set, otherwise use the default
+		// Vertex AI Reasoning Engine Service Agent in the project.
+		// * 'AGENT_IDENTITY': Use Agent Identity. The 'service_account'
+		// field must not be set. Possible values: ["SERVICE_ACCOUNT",
+		// "AGENT_IDENTITY"]
+		identity_type?: string
 
 		// Optional. The service account that the Reasoning Engine
 		// artifact runs
@@ -82,6 +120,14 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/spec/$defs/container_spec": close({
+		// The Artifact Registry Docker image URI (e.g.,
+		// 'us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag')
+		// of the
+		// container image that is to be run on each worker replica.
+		image_uri!: string
 	})
 
 	_#defs: "/$defs/spec/$defs/deployment_spec": close({
@@ -204,6 +250,7 @@ import "list"
 
 	_#defs: "/$defs/spec/$defs/source_code_spec": close({
 		developer_connect_source?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/developer_connect_source", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/developer_connect_source"]])
+		image_spec?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/image_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/image_spec"]])
 		inline_source?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/inline_source", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/inline_source"]])
 		python_spec?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/python_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/python_spec"]])
 	})
@@ -224,6 +271,12 @@ import "list"
 		// The revision to fetch from the Git repository such as a branch,
 		// a tag, a commit SHA, or any Git ref.
 		revision!: string
+	})
+
+	_#defs: "/$defs/spec/$defs/source_code_spec/$defs/image_spec": close({
+		// Build arguments to be used. They will be passed through
+		// --build-arg flags.
+		build_args?: [string]: string
 	})
 
 	_#defs: "/$defs/spec/$defs/source_code_spec/$defs/inline_source": close({

@@ -17,6 +17,15 @@ package res
 		// for IPv6.
 		addresses?: [...string]
 
+		// Configures this gateway to ​listen on all ports.
+		// By enabling the wildcard ports feature on​ ​your Secure Web
+		// Proxy Gateway,
+		// it will accept traffic destined for any port (1-65535) on its​
+		// assigned IP address.​
+		// This field is configurable only for gateways of type
+		// SECURE_WEB_GATEWAY.
+		all_ports?: bool
+
 		// A fully-qualified Certificates URL reference. The proxy
 		// presents a Certificate (selected based on SNI) when
 		// establishing a TLS connection.
@@ -93,7 +102,7 @@ package res
 		// The proxy binds to the specified ports.
 		// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and ::
 		// for IPv6 and support multiple ports.
-		ports!: [...number]
+		ports?: [...number]
 		project?: string
 
 		// The routing mode of the Gateway. This field is configurable

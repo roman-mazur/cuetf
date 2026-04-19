@@ -88,6 +88,12 @@ import "list"
 		// values: 'LICENSE_TYPE_UNSPECIFIED', 'LICENSE_TYPE_DEFAULT',
 		// 'LICENSE_TYPE_BRING_YOUR_OWN_LICENSE'
 		license_type?: string
+
+		// Persistent disk type to use. If unspecified (default), all
+		// types are considered, based on available usage data. Possible
+		// values: ["PERSISTENT_DISK_TYPE_STANDARD",
+		// "PERSISTENT_DISK_TYPE_BALANCED", "PERSISTENT_DISK_TYPE_SSD"]
+		persistent_disk_type?: string
 	})
 
 	_#defs: "/$defs/virtual_machine_preferences/$defs/compute_engine_preferences/$defs/machine_preferences": close({

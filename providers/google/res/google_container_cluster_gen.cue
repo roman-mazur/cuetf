@@ -9,6 +9,7 @@ import "list"
 		addons_config?: matchN(1, [#addons_config, list.MaxItems(1) & [...#addons_config]])
 		anonymous_authentication_config?: matchN(1, [#anonymous_authentication_config, list.MaxItems(1) & [...#anonymous_authentication_config]])
 		authenticator_groups_config?: matchN(1, [#authenticator_groups_config, list.MaxItems(1) & [...#authenticator_groups_config]])
+		autopilot_cluster_policy_config?: matchN(1, [#autopilot_cluster_policy_config, list.MaxItems(1) & [...#autopilot_cluster_policy_config]])
 		binary_authorization?: matchN(1, [#binary_authorization, list.MaxItems(1) & [...#binary_authorization]])
 		cluster_autoscaling?: matchN(1, [#cluster_autoscaling, list.MaxItems(1) & [...#cluster_autoscaling]])
 		confidential_nodes?: matchN(1, [#confidential_nodes, list.MaxItems(1) & [...#confidential_nodes]])
@@ -52,6 +53,14 @@ import "list"
 
 		// Enable NET_ADMIN for this cluster.
 		allow_net_admin?: bool
+
+		// The customer allowlist Cloud Storage paths for the cluster.
+		// These paths are used with the
+		// `--autopilot-privileged-admission` flag to authorize
+		// privileged workloads in Autopilot clusters. To allow default
+		// partner allowlists, set to []. To allow no allowlists, set to
+		// [""].
+		autopilot_privileged_admission?: [...string]
 
 		// The IP address range of the Kubernetes pods in this cluster in
 		// CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
@@ -297,6 +306,22 @@ import "list"
 		// security groups in Kubernetes RBAC. Group name must be in
 		// format gke-security-groups@yourdomain.com.
 		security_group!: string
+	})
+
+	#autopilot_cluster_policy_config: close({
+		// If true, prevents standard node pools and requires only
+		// autopilot node pools.
+		no_standard_node_pools?: bool
+
+		// If true, prevents impersonation and CSRs for GKE System users.
+		no_system_impersonation?: bool
+
+		// If true, prevents creation and mutation of resources in GKE
+		// managed namespaces and cluster-scoped GKE managed resources.
+		no_system_mutation?: bool
+
+		// If true, unsafe webhooks are not allowed.
+		no_unsafe_webhooks?: bool
 	})
 
 	#binary_authorization: close({
@@ -954,6 +979,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/addons_config/$defs/lustre_csi_driver_config": close({
+		// When set to true, this disables multi-NIC support for the
+		// Lustre CSI driver. By default, GKE enables multi-NIC support,
+		// which
+		// allows the Lustre CSI driver to automatically detect and
+		// configure all suitable network interfaces on a node to
+		// maximize I/O performance for demanding workloads.
+		disable_multi_nic?: bool
+
 		// If set to true, the Lustre CSI driver will initialize LNet (the
 		// virtual network layer for Lustre kernel module) using port
 		// 6988.

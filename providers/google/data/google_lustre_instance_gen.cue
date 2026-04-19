@@ -4,10 +4,9 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_lustre_instance")
 	close({
-		// Access control rules for the Lustre instance. Configures
-		// default root
-		// squashing behavior and specific access rules based on IP
-		// addresses.
+		// IP-based access rules for the Managed Lustre instance. These
+		// options
+		// define the root user squash configuration.
 		access_rules_options?: [...close({
 			access_rules?: [...close({
 				ip_address_ranges?: [...string]
@@ -21,7 +20,12 @@ package data
 
 		// The storage capacity of the instance in gibibytes (GiB).
 		// Allowed values
-		// are from '18000' to '954000', in increments of 9000.
+		// are from '9000' to '7632000', depending on the
+		// 'perUnitStorageThroughput'.
+		// See [Performance tiers and maximum storage
+		// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+		// for specific minimums, maximums, and step sizes for each
+		// performance tier.
 		capacity_gib?: string
 
 		// Timestamp when the instance was created.
@@ -29,6 +33,11 @@ package data
 
 		// A user-readable description of the instance.
 		description?: string
+
+		// Dynamic tier options for a Managed Lustre instance.
+		dynamic_tier_options?: [...close({
+			mode?: string
+		})]
 
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other
@@ -56,7 +65,13 @@ package data
 		// * Must end with a number or a letter.
 		instance_id!: string
 
-		// The KMS key id to use for encryption of the Lustre instance.
+		// The Cloud KMS key name to use for data encryption.
+		// If not set, the instance will use Google-managed encryption
+		// keys.
+		// If set, the instance will use customer-managed encryption keys.
+		// The key must be in the same region as the instance.
+		// The key format is:
+		// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
 		kms_key?: string
 
 		// Labels as key value pairs.
@@ -72,8 +87,7 @@ package data
 		// https://google.aip.dev/122.
 		location?: string
 
-		// The maintenance policy for the instance to determine when to
-		// allow or exclude the instance from maintenance updates.
+		// Defines a maintenance policy for a resource.
 		maintenance_policy?: [...close({
 			maintenance_exclusion_window?: [...close({
 				end_date?: [...close({
@@ -117,8 +131,16 @@ package data
 		// 'projects/{project_id}/global/networks/{network_name}'.
 		network?: string
 
-		// The throughput of the instance in MB/s/TiB.
-		// Valid values are 125, 250, 500, 1000.
+		// The throughput of the instance in MBps per TiB. Valid values
+		// are 125, 250,
+		// 500, 1000.
+		// See [Performance tiers and maximum storage
+		// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+		// for more information.
+		//
+		// If the instance is using the Dynamic tier, this field must not
+		// be set or
+		// must be set to zero.
 		per_unit_storage_throughput?: string
 
 		// The placement policy name for the instance in the format of
@@ -127,17 +149,36 @@ package data
 		project?:          string
 
 		// The state of the instance.
-		// Please see
-		// https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state
-		// for values
+		// Possible values:
+		// ACTIVE
+		// CREATING
+		// DELETING
+		// UPGRADING
+		// REPAIRING
+		// STOPPED
+		// UPDATING
+		// SUSPENDED
 		state?: string
 
-		// The reason why the instance is in a certain state.
+		// The reason why the instance is in a certain state (e.g.
+		// SUSPENDED).
 		state_reason?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+
+		// Unique ID of the resource.
+		// This is unrelated to the access rules which allow specifying
+		// the root
+		// squash uid.
+		uid?: string
+
+		// Represents a scheduled maintenance event.
+		upcoming_maintenance_schedule?: [...close({
+			end_time?:   string
+			start_time?: string
+		})]
 
 		// Timestamp when the instance was last updated.
 		update_time?: string

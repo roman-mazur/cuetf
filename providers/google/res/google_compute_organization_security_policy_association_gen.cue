@@ -11,7 +11,13 @@ package res
 
 		// The display name of the security policy of the association.
 		display_name?: string
-		id?:           string
+
+		// A list of folders to exclude from the security policy.
+		excluded_folders?: [...string]
+
+		// A list of projects to exclude from the security policy.
+		excluded_projects?: [...string]
+		id?: string
 
 		// The name for an association.
 		name!: string

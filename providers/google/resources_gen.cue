@@ -65,6 +65,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_apigee_security_profile_v2": res.#google_apigee_security_profile_v2
 	_#res: "\(#googlePrefix)_apigee_sharedflow_deployment": res.#google_apigee_sharedflow_deployment
 	_#res: "\(#googlePrefix)_apigee_sharedflow": res.#google_apigee_sharedflow
+	_#res: "\(#googlePrefix)_apigee_space": res.#google_apigee_space
 	_#res: "\(#googlePrefix)_apigee_sync_authorization": res.#google_apigee_sync_authorization
 	_#res: "\(#googlePrefix)_apigee_target_server": res.#google_apigee_target_server
 	_#res: "\(#googlePrefix)_apihub_api_hub_instance": res.#google_apihub_api_hub_instance
@@ -760,6 +761,8 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_iam_workload_identity_pool_iam_binding": res.#google_iam_workload_identity_pool_iam_binding
 	_#res: "\(#googlePrefix)_iam_workload_identity_pool_iam_member": res.#google_iam_workload_identity_pool_iam_member
 	_#res: "\(#googlePrefix)_iam_workload_identity_pool_iam_policy": res.#google_iam_workload_identity_pool_iam_policy
+	_#res: "\(#googlePrefix)_iam_workload_identity_pool_managed_identity": res.#google_iam_workload_identity_pool_managed_identity
+	_#res: "\(#googlePrefix)_iam_workload_identity_pool_namespace": res.#google_iam_workload_identity_pool_namespace
 	_#res: "\(#googlePrefix)_iam_workload_identity_pool_provider": res.#google_iam_workload_identity_pool_provider
 	_#res: "\(#googlePrefix)_iap_app_engine_service_iam_binding": res.#google_iap_app_engine_service_iam_binding
 	_#res: "\(#googlePrefix)_iap_app_engine_service_iam_member": res.#google_iap_app_engine_service_iam_member
@@ -1191,6 +1194,9 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_vertex_ai_index": res.#google_vertex_ai_index
 	_#res: "\(#googlePrefix)_vertex_ai_rag_engine_config": res.#google_vertex_ai_rag_engine_config
 	_#res: "\(#googlePrefix)_vertex_ai_reasoning_engine": res.#google_vertex_ai_reasoning_engine
+	_#res: "\(#googlePrefix)_vertex_ai_reasoning_engine_iam_binding": res.#google_vertex_ai_reasoning_engine_iam_binding
+	_#res: "\(#googlePrefix)_vertex_ai_reasoning_engine_iam_member": res.#google_vertex_ai_reasoning_engine_iam_member
+	_#res: "\(#googlePrefix)_vertex_ai_reasoning_engine_iam_policy": res.#google_vertex_ai_reasoning_engine_iam_policy
 	_#res: "\(#googlePrefix)_vertex_ai_tensorboard": res.#google_vertex_ai_tensorboard
 	_#res: "\(#googlePrefix)_vmwareengine_cluster": res.#google_vmwareengine_cluster
 	_#res: "\(#googlePrefix)_vmwareengine_datastore": res.#google_vmwareengine_datastore
@@ -1207,6 +1213,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_workbench_instance_iam_member": res.#google_workbench_instance_iam_member
 	_#res: "\(#googlePrefix)_workbench_instance_iam_policy": res.#google_workbench_instance_iam_policy
 	_#res: "\(#googlePrefix)_workflows_workflow": res.#google_workflows_workflow
+	_#res: "\(#googlePrefix)_workload_identity_service_agent": res.#google_workload_identity_service_agent
 	_#res: "\(#googlePrefix)_workstations_workstation_cluster": res.#google_workstations_workstation_cluster
 	_#res: "\(#googlePrefix)_workstations_workstation_config": res.#google_workstations_workstation_config
 	_#res: "\(#googlePrefix)_workstations_workstation_config_iam_binding": res.#google_workstations_workstation_config_iam_binding

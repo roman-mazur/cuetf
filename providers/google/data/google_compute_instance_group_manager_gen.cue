@@ -136,6 +136,12 @@ package data
 		// case it should never be set. Defaults to 0.
 		target_size?: number
 
+		// The policy that specifies how the MIG creates its VMs to
+		// achieve the target size.
+		target_size_policy?: [...close({
+			mode?: string
+		})]
+
 		// The target number of stopped instances for this managed
 		// instance group.
 		target_stopped_size?: number

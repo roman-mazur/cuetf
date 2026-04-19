@@ -18,6 +18,7 @@ package data
 				preferred_zone?:                string
 				source_instance_deletion_time?: string
 				source_instance_name?:          string
+				source_project?:                string
 			})]
 			connection_name?:     string
 			database_version?:    string
