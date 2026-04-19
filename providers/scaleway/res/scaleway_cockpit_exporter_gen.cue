@@ -6,14 +6,16 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_cockpit_exporter")
 	close({
+		datadog_destination?: matchN(1, [#datadog_destination, list.MaxItems(1) & [...#datadog_destination]])
+		otlp_destination?: matchN(1, [#otlp_destination, list.MaxItems(1) & [...#otlp_destination]])
+		timeouts?: #timeouts
+
 		// Date and time of the creation of the data export (RFC 3339
 		// format)
 		created_at?: string
 
 		// ID of the data source linked to the data export
 		datasource_id!: string
-		datadog_destination?: matchN(1, [#datadog_destination, list.MaxItems(1) & [...#datadog_destination]])
-		otlp_destination?: matchN(1, [#otlp_destination, list.MaxItems(1) & [...#otlp_destination]])
 
 		// Description of the data export
 		description?: string
@@ -22,8 +24,7 @@ import "list"
 		// products. Use scaleway_cockpit_products data source for valid
 		// product names.
 		exported_products?: [...string]
-		id?:       string
-		timeouts?: #timeouts
+		id?: string
 
 		// Name of the data export
 		name!: string

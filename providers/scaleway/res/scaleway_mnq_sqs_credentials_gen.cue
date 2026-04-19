@@ -6,10 +6,11 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_mnq_sqs_credentials")
 	close({
+		permissions?: matchN(1, [#permissions, list.MaxItems(1) & [...#permissions]])
+
 		// SQS credentials access key
 		access_key?: string
-		permissions?: matchN(1, [#permissions, list.MaxItems(1) & [...#permissions]])
-		id?: string
+		id?:         string
 
 		// The credentials name
 		name?: string

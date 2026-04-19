@@ -4,13 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_file_filesystem")
 	close({
+		timeouts?: #timeouts
+
 		// The creation date of the filesystem
 		created_at?: string
+		id?:         string
 
 		// The name of the filesystem
-		name?:     string
-		id?:       string
-		timeouts?: #timeouts
+		name?: string
 
 		// The current number of attachments (mounts) that the filesystem
 		// has

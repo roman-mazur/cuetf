@@ -4,11 +4,11 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_block_volume")
 	close({
-		id?: string
+		timeouts?: #timeouts
+		id?:       string
 
 		// The instance volume to create the block volume from
 		instance_volume_id?: string
-		timeouts?:           #timeouts
 
 		// The maximum IO/s expected, must match available options
 		iops!: number

@@ -6,18 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_lb_certificate")
 	close({
+		custom_certificate?: matchN(1, [#custom_certificate, list.MaxItems(1) & [...#custom_certificate]])
+		letsencrypt?: matchN(1, [#letsencrypt, list.MaxItems(1) & [...#letsencrypt]])
+		timeouts?: #timeouts
+
 		// The main domain name of the certificate
 		common_name?: string
 
 		// The identifier (SHA-1) of the certificate
 		fingerprint?: string
-		custom_certificate?: matchN(1, [#custom_certificate, list.MaxItems(1) & [...#custom_certificate]])
-		letsencrypt?: matchN(1, [#letsencrypt, list.MaxItems(1) & [...#letsencrypt]])
+		id?:          string
 
 		// The load-balancer ID
-		lb_id!:    string
-		id?:       string
-		timeouts?: #timeouts
+		lb_id!: string
 
 		// The name of the load-balancer certificate
 		name?: string

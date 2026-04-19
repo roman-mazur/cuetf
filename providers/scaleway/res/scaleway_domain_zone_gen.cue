@@ -4,13 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_domain_zone")
 	close({
+		timeouts?: #timeouts
+
 		// The domain where the DNS zone will be created.
 		domain!: string
+		id?:     string
 
 		// Message
-		message?:  string
-		timeouts?: #timeouts
-		id?:       string
+		message?: string
 
 		// NameServer list for zone.
 		ns?: [...string]

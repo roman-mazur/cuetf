@@ -4,7 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_rdb_user")
 	close({
-		id?: string
+		timeouts?: #timeouts
+		id?:       string
 
 		// Instance on which the user is created
 		instance_id!: string
@@ -13,8 +14,7 @@ package res
 		is_admin?: bool
 
 		// Database user name
-		name!:     string
-		timeouts?: #timeouts
+		name!: string
 
 		// Database user password
 		password?: string

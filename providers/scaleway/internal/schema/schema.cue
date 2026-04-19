@@ -4412,27 +4412,51 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									optional:         true
 									computed:         true
 								}
-								block_types: path_filter: {
-									nesting_mode: "list"
-									block: {
-										attributes: {
-											path_filter_type: {
-												type:             "string"
-												description:      "The type of filter to match for the HTTP URL path. For now, all path filters must be written in regex and use the `regex` type"
-												description_kind: "plain"
-												required:         true
+								block_types: {
+									host_filter: {
+										nesting_mode: "list"
+										block: {
+											attributes: {
+												host_filter_type: {
+													type:             "string"
+													description:      "The type of filter to match for the host path"
+													description_kind: "plain"
+													required:         true
+												}
+												value: {
+													type:             "string"
+													description:      "The value to be matched for the host path"
+													description_kind: "plain"
+													required:         true
+												}
 											}
-											value: {
-												type:             "string"
-												description:      "The value to be matched for the HTTP URL path"
-												description_kind: "plain"
-												required:         true
-											}
+											description:      "Host to filter for. A request whose host matches the given filter will be considered to match the rule. All hosts will match if none is provided"
+											description_kind: "plain"
 										}
-										description:      "HTTP URL path to filter for. A request whose path matches the given filter will be considered to match the rule. All paths will match if none is provided"
-										description_kind: "plain"
+										max_items: 1
 									}
-									max_items: 1
+									path_filter: {
+										nesting_mode: "list"
+										block: {
+											attributes: {
+												path_filter_type: {
+													type:             "string"
+													description:      "The type of filter to match for the HTTP URL path. For now, all path filters must be written in regex and use the `regex` type"
+													description_kind: "plain"
+													required:         true
+												}
+												value: {
+													type:             "string"
+													description:      "The value to be matched for the HTTP URL path"
+													description_kind: "plain"
+													required:         true
+												}
+											}
+											description:      "HTTP URL path to filter for. A request whose path matches the given filter will be considered to match the rule. All paths will match if none is provided"
+											description_kind: "plain"
+										}
+										max_items: 1
+									}
 								}
 								description:      "Rule condition to be matched. Requests matching the condition defined here will be directly forwarded to the backend specified by the `backend_stage_id` field. Requests that do not match will be checked by the next rule's condition"
 								description_kind: "plain"
@@ -8122,6 +8146,295 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_interlink_link: {
+			version: 0
+			block: {
+				attributes: {
+					bandwidth_mbps: {
+						type:             "number"
+						description:      "Desired bandwidth for the link. Must be compatible with available link bandwidths and remaining bandwidth capacity of the connection"
+						description_kind: "plain"
+						required:         true
+					}
+					bgp_v4_status: {
+						type:             "string"
+						description:      "Status of the link's BGP IPv4 session"
+						description_kind: "plain"
+						computed:         true
+					}
+					bgp_v6_status: {
+						type:             "string"
+						description:      "Status of the link's BGP IPv6 session"
+						description_kind: "plain"
+						computed:         true
+					}
+					connection_id: {
+						type:             "string"
+						description:      "If set, creates a self-hosted link using this dedicated physical connection"
+						description_kind: "plain"
+						optional:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "Creation date of the link"
+						description_kind: "plain"
+						computed:         true
+					}
+					enable_route_propagation: {
+						type:             "bool"
+						description:      "Defines whether route propagation is enabled or not"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the link"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The Organization ID the link is associated with"
+						description_kind: "plain"
+						computed:         true
+					}
+					pairing_key: {
+						type:             "string"
+						description:      "Used to identify a link from a user or partner's point of view"
+						description_kind: "plain"
+						computed:         true
+						sensitive:        true
+					}
+					partner_id: {
+						type:             "string"
+						description:      "If set, creates a hosted link on a partner's connection. Specify the ID of the chosen partner, who already has a shared connection with available bandwidth"
+						description_kind: "plain"
+						optional:         true
+					}
+					peer_asn: {
+						type:             "number"
+						description:      "For self-hosted links, the peer AS Number to establish BGP session. If not given, a default one will be assigned"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					peer_bgp_config: {
+						type: ["list", ["object", {
+							asn:  "number"
+							ipv4: "string"
+							ipv6: "string"
+						}]]
+						description:      "BGP configuration on peer's side (on-premises or other hosting provider)"
+						description_kind: "plain"
+						computed:         true
+					}
+					pop_id: {
+						type:             "string"
+						description:      "PoP (location) where the link will be created"
+						description_kind: "plain"
+						required:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					routing_policy_v4_id: {
+						type:             "string"
+						description:      "If set, attaches this routing policy containing IPv4 prefixes to the link. A BGP IPv4 session will be created"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					routing_policy_v6_id: {
+						type:             "string"
+						description:      "If set, attaches this routing policy containing IPv6 prefixes to the link. A BGP IPv6 session will be created"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					scw_bgp_config: {
+						type: ["list", ["object", {
+							asn:  "number"
+							ipv4: "string"
+							ipv6: "string"
+						}]]
+						description:      "BGP configuration on Scaleway's side"
+						description_kind: "plain"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Status of the link"
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "List of tags associated with the link"
+						description_kind: "plain"
+						optional:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "Last modification date of the link"
+						description_kind: "plain"
+						computed:         true
+					}
+					vlan: {
+						type:             "number"
+						description:      "For self-hosted links only, the VLAN ID. If the VLAN is not available (already taken or out of range), an error is returned"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					vpc_id: {
+						type:             "string"
+						description:      "ID of the Scaleway VPC attached to the link"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							default: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							read: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description: """
+					Creates and manages Scaleway Interlink Links.
+
+					A link is a logical Interlink session created within a PoP, representing the connection between your infrastructure and Scaleway. Links can be hosted (facilitated by a partner's shared connection) or self-hosted (using your own dedicated physical connection).
+
+					"""
+				description_kind: "plain"
+			}
+		}
+		scaleway_interlink_routing_policy: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The date and time of the creation of the routing policy"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_ipv6: {
+						type:             "bool"
+						description:      "IP prefixes version of the routing policy"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the routing policy"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The Organization ID the routing policy is associated with"
+						description_kind: "plain"
+						computed:         true
+					}
+					prefix_filter_in: {
+						type: ["list", "string"]
+						description:      "IP prefixes to accept from the peer (ranges of route announcements to accept)"
+						description_kind: "plain"
+						optional:         true
+					}
+					prefix_filter_out: {
+						type: ["list", "string"]
+						description:      "IP prefix filters to advertise to the peer (ranges of routes to advertise)"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "The list of tags associated with the routing policy"
+						description_kind: "plain"
+						optional:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time of the last update of the routing policy"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description: """
+					Creates and manages Scaleway Interlink Routing Policies.
+
+					A routing policy defines IP prefix filters that control which routes are accepted from and advertised to a peer via BGP on an Interlink connection. All routes across a link are blocked by default, so you must attach a routing policy to enable traffic flow.
+
+					"""
+				description_kind: "plain"
+			}
+		}
 		scaleway_iot_device: {
 			version: 0
 			block: {
@@ -9574,10 +9887,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "Minimum size of the pool"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					name: {
 						type:             "string"
-						description:      "The name of the cluster"
+						description:      "The name of the pool"
 						description_kind: "plain"
 						required:         true
 					}
@@ -14077,6 +14391,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						required:         true
 					}
+					effective_permission: {
+						type:             "string"
+						description:      "Actual permission currently set in Scaleway. May differ from 'permission' after database schema changes"
+						description_kind: "plain"
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
@@ -14091,9 +14411,15 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					permission: {
 						type:             "string"
-						description:      "Privilege"
+						description:      "Desired permission (readonly, readwrite, all, custom, none)"
 						description_kind: "plain"
 						required:         true
+					}
+					permission_status: {
+						type:             "string"
+						description:      "Permission synchronization status: 'synced' if effective matches desired, 'drifted' if they differ"
+						description_kind: "plain"
+						computed:         true
 					}
 					region: {
 						type:             "string"
@@ -14535,6 +14861,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					connection_string: {
+						type:             "string"
+						description:      "Redis connection URI for the first reachable endpoint (public is preferred over private). Uses scheme `rediss` when TLS is enabled. Database index is always `0`. When a password is available in state, userinfo includes `user_name` and the password (Redis ACL). When `password_wo` is used, the password is omitted because it is not stored in state."
+						description_kind: "plain"
+						computed:         true
+						sensitive:        true
 					}
 					created_at: {
 						type:             "string"
@@ -16016,12 +16349,22 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					nesting_mode: "single"
 					block: {
 						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
 							default: {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
 							}
 							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
@@ -16374,9 +16717,8 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					project_id: {
 						type:             "string"
-						description:      "The project_id you want to attach the resource to"
+						description:      "The Scaleway Project the VPC connector belongs to"
 						description_kind: "plain"
-						optional:         true
 						computed:         true
 					}
 					region: {
@@ -17435,6 +17777,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					nexthop_resource_id: {
 						type:             "string"
 						description:      "The ID of the nexthop resource"
+						description_kind: "plain"
+						optional:         true
+					}
+					nexthop_vpc_connector_id: {
+						type:             "string"
+						description:      "The ID of the nexthop VPC Connector"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -20568,6 +20916,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						type: ["list", ["object", {
 							backend_stage_id: "string"
 							rule_http_match: ["list", ["object", {
+								host_filter: ["list", ["object", {
+									host_filter_type: "string"
+									value:            "string"
+								}]]
 								method_filters: ["list", "string"]
 								path_filter: ["list", ["object", {
 									path_filter_type: "string"
@@ -22802,6 +23154,178 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_interlink_link: {
+			version: 0
+			block: {
+				attributes: {
+					bandwidth_mbps: {
+						type:             "number"
+						description:      "Desired bandwidth for the link. Must be compatible with available link bandwidths and remaining bandwidth capacity of the connection"
+						description_kind: "plain"
+						computed:         true
+					}
+					bgp_v4_status: {
+						type:             "string"
+						description:      "Status of the link's BGP IPv4 session"
+						description_kind: "plain"
+						computed:         true
+					}
+					bgp_v6_status: {
+						type:             "string"
+						description:      "Status of the link's BGP IPv6 session"
+						description_kind: "plain"
+						computed:         true
+					}
+					connection_id: {
+						type:             "string"
+						description:      "If set, creates a self-hosted link using this dedicated physical connection"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "Creation date of the link"
+						description_kind: "plain"
+						computed:         true
+					}
+					enable_route_propagation: {
+						type:             "bool"
+						description:      "Defines whether route propagation is enabled or not"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					link_id: {
+						type:             "string"
+						description:      "The ID of the link"
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the link"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The Organization ID the link is associated with"
+						description_kind: "plain"
+						computed:         true
+					}
+					pairing_key: {
+						type:             "string"
+						description:      "Used to identify a link from a user or partner's point of view"
+						description_kind: "plain"
+						computed:         true
+					}
+					partner_id: {
+						type:             "string"
+						description:      "If set, creates a hosted link on a partner's connection. Specify the ID of the chosen partner, who already has a shared connection with available bandwidth"
+						description_kind: "plain"
+						computed:         true
+					}
+					peer_asn: {
+						type:             "number"
+						description:      "For self-hosted links, the peer AS Number to establish BGP session. If not given, a default one will be assigned"
+						description_kind: "plain"
+						computed:         true
+					}
+					peer_bgp_config: {
+						type: ["list", ["object", {
+							asn:  "number"
+							ipv4: "string"
+							ipv6: "string"
+						}]]
+						description:      "BGP configuration on peer's side (on-premises or other hosting provider)"
+						description_kind: "plain"
+						computed:         true
+					}
+					pop_id: {
+						type:             "string"
+						description:      "PoP (location) where the link will be created"
+						description_kind: "plain"
+						computed:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					routing_policy_v4_id: {
+						type:             "string"
+						description:      "If set, attaches this routing policy containing IPv4 prefixes to the link. A BGP IPv4 session will be created"
+						description_kind: "plain"
+						computed:         true
+					}
+					routing_policy_v6_id: {
+						type:             "string"
+						description:      "If set, attaches this routing policy containing IPv6 prefixes to the link. A BGP IPv6 session will be created"
+						description_kind: "plain"
+						computed:         true
+					}
+					scw_bgp_config: {
+						type: ["list", ["object", {
+							asn:  "number"
+							ipv4: "string"
+							ipv6: "string"
+						}]]
+						description:      "BGP configuration on Scaleway's side"
+						description_kind: "plain"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Status of the link"
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "List of tags associated with the link"
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "Last modification date of the link"
+						description_kind: "plain"
+						computed:         true
+					}
+					vlan: {
+						type:             "number"
+						description:      "For self-hosted links only, the VLAN ID. If the VLAN is not available (already taken or out of range), an error is returned"
+						description_kind: "plain"
+						computed:         true
+					}
+					vpc_id: {
+						type:             "string"
+						description:      "ID of the Scaleway VPC attached to the link"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description: """
+					Gets information about an Interlink Link.
+
+					A link is a logical Interlink session created within a PoP, representing the connection between your infrastructure and Scaleway.
+
+					"""
+				description_kind: "plain"
+			}
+		}
 		scaleway_interlink_partner: {
 			version: 0
 			block: {
@@ -22912,6 +23436,239 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					Gets information about multiple Interlink Partners.
 
 					A partner is an organization that provides shared connections at PoPs. Use this data source to list and filter available partners for creating hosted links.
+
+					"""
+				description_kind: "plain"
+			}
+		}
+		scaleway_interlink_pop: {
+			version: 0
+			block: {
+				attributes: {
+					address: {
+						type:             "string"
+						description:      "Physical address of the PoP"
+						description_kind: "plain"
+						computed:         true
+					}
+					available_link_bandwidths_mbps: {
+						type: ["list", "number"]
+						description:      "Available bandwidth options in Mbps for hosted links"
+						description_kind: "plain"
+						computed:         true
+					}
+					city: {
+						type:             "string"
+						description:      "City where the PoP is located"
+						description_kind: "plain"
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "Human-readable display name of the PoP"
+						description_kind: "plain"
+						computed:         true
+					}
+					hosting_provider_name: {
+						type:             "string"
+						description:      "Name of the PoP's hosting provider"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					logo_url: {
+						type:             "string"
+						description:      "URL of the PoP's logo"
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the PoP to filter for"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					pop_id: {
+						type:             "string"
+						description:      "The ID of the PoP"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description: """
+					Gets information about an Interlink PoP (Point of Presence).
+
+					A PoP is a physical location where Scaleway infrastructure connects to external networks. PoPs host connections that can be used to create links between your Scaleway VPC and external networks.
+
+					"""
+				description_kind: "plain"
+			}
+		}
+		scaleway_interlink_pops: {
+			version: 0
+			block: {
+				attributes: {
+					dedicated_available: {
+						type:             "bool"
+						description:      "Filter for PoPs with a dedicated connection available for self-hosted links"
+						description_kind: "plain"
+						optional:         true
+					}
+					hosting_provider_name: {
+						type:             "string"
+						description:      "Hosting provider name to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					link_bandwidth_mbps: {
+						type:             "number"
+						description:      "Filter for PoPs with a shared connection allowing this bandwidth size"
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "PoP name to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					partner_id: {
+						type:             "string"
+						description:      "Filter for PoPs hosting an available shared connection from this partner"
+						description_kind: "plain"
+						optional:         true
+					}
+					pops: {
+						type: ["list", ["object", {
+							address: "string"
+							available_link_bandwidths_mbps: ["list", "number"]
+							city:                  "string"
+							display_name:          "string"
+							hosting_provider_name: "string"
+							id:                    "string"
+							logo_url:              "string"
+							name:                  "string"
+							region:                "string"
+						}]]
+						description:      "List of PoPs"
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description: """
+					Gets information about multiple Interlink PoPs (Points of Presence).
+
+					A PoP is a physical location where Scaleway infrastructure connects to external networks. Use this data source to list and filter available PoPs for creating interlink connections.
+
+					"""
+				description_kind: "plain"
+			}
+		}
+		scaleway_interlink_routing_policy: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The date and time of the creation of the routing policy"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_ipv6: {
+						type:             "bool"
+						description:      "IP prefixes version of the routing policy"
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the routing policy"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The Organization ID the routing policy is associated with"
+						description_kind: "plain"
+						computed:         true
+					}
+					prefix_filter_in: {
+						type: ["list", "string"]
+						description:      "IP prefixes to accept from the peer (ranges of route announcements to accept)"
+						description_kind: "plain"
+						computed:         true
+					}
+					prefix_filter_out: {
+						type: ["list", "string"]
+						description:      "IP prefix filters to advertise to the peer (ranges of routes to advertise)"
+						description_kind: "plain"
+						computed:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					routing_policy_id: {
+						type:             "string"
+						description:      "The ID of the routing policy"
+						description_kind: "plain"
+						optional:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "The list of tags associated with the routing policy"
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time of the last update of the routing policy"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description: """
+					Gets information about an Interlink Routing Policy.
+
+					A routing policy defines IP prefix filters that control which routes are accepted from and advertised to a peer via BGP on an Interlink connection.
 
 					"""
 				description_kind: "plain"
@@ -23671,7 +24428,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					name: {
 						type:             "string"
-						description:      "The name of the cluster"
+						description:      "The name of the pool"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -26431,6 +27188,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						required:         true
 					}
+					effective_permission: {
+						type:             "string"
+						description:      "Actual permission currently set in Scaleway. May differ from 'permission' after database schema changes"
+						description_kind: "plain"
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
@@ -26445,7 +27208,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					permission: {
 						type:             "string"
-						description:      "Privilege"
+						description:      "Desired permission (readonly, readwrite, all, custom, none)"
+						description_kind: "plain"
+						computed:         true
+					}
+					permission_status: {
+						type:             "string"
+						description:      "Permission synchronization status: 'synced' if effective matches desired, 'drifted' if they differ"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -26494,6 +27263,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					cluster_size: {
 						type:             "number"
 						description:      "Number of nodes for the cluster."
+						description_kind: "plain"
+						computed:         true
+					}
+					connection_string: {
+						type:             "string"
+						description:      "Redis connection URI for the first reachable endpoint (public is preferred over private). Uses scheme `rediss` when TLS is enabled. Database index is always `0`. When a password is available in state, userinfo includes `user_name` and the password (Redis ACL). When `password_wo` is used, the password is omitted because it is not stored in state."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -27961,7 +28736,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					project_id: {
 						type:             "string"
-						description:      "The project_id you want to attach the resource to"
+						description:      "The Scaleway Project the VPC connector belongs to"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -28760,6 +29535,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "Only routes with a matching next hop resource type will be returned"
 						description_kind: "plain"
 						optional:         true
+					}
+					nexthop_vpc_connector_id: {
+						type:             "string"
+						description:      "The ID of the nexthop VPC Connector"
+						description_kind: "plain"
+						computed:         true
 					}
 					region: {
 						type:             "string"
@@ -29630,6 +30411,56 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			}
 		}
 	}
+	list_resource_schemas: scaleway_vpc: {
+		version: 0
+		block: {
+			attributes: {
+				is_default: {
+					type:             "bool"
+					description:      "Whether the VPC is the default VPC"
+					description_kind: "plain"
+					optional:         true
+				}
+				name: {
+					type:             "string"
+					description:      "Name of the vpc to list for"
+					description_kind: "plain"
+					optional:         true
+				}
+				organization_id: {
+					type:             "string"
+					description:      "Organization ID of the VPC to list for"
+					description_kind: "plain"
+					optional:         true
+				}
+				project_ids: {
+					type: ["list", "string"]
+					description:      "Project IDs of the VPC to list for Use '*' to list across all projects"
+					description_kind: "plain"
+					optional:         true
+				}
+				regions: {
+					type: ["list", "string"]
+					description:      "Regions of the VPC to list for Use '*' to list from all regions"
+					description_kind: "plain"
+					optional:         true
+				}
+				routing_enabled: {
+					type:             "bool"
+					description:      "Whether routing is enabled for VPC"
+					description_kind: "plain"
+					optional:         true
+				}
+				tags: {
+					type: ["list", "string"]
+					description:      "Tags of the VPC to list for"
+					description_kind: "plain"
+					optional:         true
+				}
+			}
+			description_kind: "plain"
+		}
+	}
 	functions: region_from_id: {
 		description: "Given an ID string value, returns the region contained in the ID."
 		summary:     "Extract a region from the ID"
@@ -29815,6 +30646,21 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				id: {
 					type:                "string"
 					description:         "The ID of the record (UUID format)"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_domain_registration: {
+			version: 0
+			attributes: {
+				project_id: {
+					type:                "string"
+					description:         "The ID of the project (UUID format)"
+					required_for_import: true
+				}
+				task_id: {
+					type:                "string"
+					description:         "The ID of the registration task"
 					required_for_import: true
 				}
 			}
@@ -30072,6 +30918,36 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				zone: {
 					type:                "string"
 					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_interlink_link: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_interlink_routing_policy: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
 					required_for_import: true
 				}
 			}

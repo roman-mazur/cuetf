@@ -4,6 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_ipam_ip")
 	close({
+		custom_resource?: matchN(1, [#custom_resource, [...#custom_resource]])
+		source!: matchN(1, [#source, [_, ...] & [...#source]])
+
 		// Request a specific IP in the requested source pool
 		address?: string
 
@@ -12,8 +15,7 @@ package res
 
 		// The date and time of the creation of the IP
 		created_at?: string
-		custom_resource?: matchN(1, [#custom_resource, [...#custom_resource]])
-		id?: string
+		id?:         string
 
 		// Request an IPv6 instead of an IPv4
 		is_ipv6?: bool
@@ -23,7 +25,6 @@ package res
 
 		// The region you want to attach the resource to
 		region?: string
-		source!: matchN(1, [#source, [_, ...] & [...#source]])
 
 		// The IP resource
 		resource?: [...close({

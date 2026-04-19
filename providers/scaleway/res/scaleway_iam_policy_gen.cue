@@ -4,12 +4,13 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_iam_policy")
 	close({
+		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
+
 		// Application id
 		application_id?: string
 
 		// The date and time of the creation of the policy
 		created_at?: string
-		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
 
 		// The description of the iam policy
 		description?: string

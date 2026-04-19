@@ -72,6 +72,8 @@ import "github.com/roman-mazur/cuetf/providers/scaleway/res"
 	_#res: "\(#scalewayPrefix)_instance_snapshot": res.#scaleway_instance_snapshot
 	_#res: "\(#scalewayPrefix)_instance_user_data": res.#scaleway_instance_user_data
 	_#res: "\(#scalewayPrefix)_instance_volume": res.#scaleway_instance_volume
+	_#res: "\(#scalewayPrefix)_interlink_link": res.#scaleway_interlink_link
+	_#res: "\(#scalewayPrefix)_interlink_routing_policy": res.#scaleway_interlink_routing_policy
 	_#res: "\(#scalewayPrefix)_iot_device": res.#scaleway_iot_device
 	_#res: "\(#scalewayPrefix)_iot_hub": res.#scaleway_iot_hub
 	_#res: "\(#scalewayPrefix)_iot_network": res.#scaleway_iot_network

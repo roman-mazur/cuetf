@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_domain_registration")
 	close({
+		owner_contact?: matchN(1, [#owner_contact, list.MaxItems(1) & [...#owner_contact]])
+		timeouts?: #timeouts
+
 		// Details of the administrative contact.
 		administrative_contact?: [...close({
 			address_line_1?:              string
@@ -55,7 +58,6 @@ import "list"
 
 		// Enable or disable auto-renewal of the domain.
 		auto_renew?: bool
-		owner_contact?: matchN(1, [#owner_contact, list.MaxItems(1) & [...#owner_contact]])
 
 		// Enable or disable dnssec for the domain.
 		dnssec?: bool
@@ -78,7 +80,6 @@ import "list"
 				key?: string
 			})]
 		})]
-		timeouts?: #timeouts
 
 		// Duration of the registration period in years.
 		duration_in_years?: number

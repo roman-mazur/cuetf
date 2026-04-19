@@ -4,16 +4,17 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_container_cron")
 	close({
+		timeouts?: #timeouts
+
 		// Cron arguments as json object to pass through during execution.
 		args!: string
 
 		// The Container ID to link with your trigger.
 		container_id!: string
-		timeouts?:     #timeouts
+		id?:           string
 
 		// Cron job name
 		name?: string
-		id?:   string
 
 		// The region you want to attach the resource to
 		region?: string

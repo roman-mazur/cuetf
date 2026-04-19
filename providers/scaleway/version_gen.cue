@@ -1,3 +1,3 @@
 package scaleway
 
-#Version: "2.71.0"
+#Version: "2.73.0"

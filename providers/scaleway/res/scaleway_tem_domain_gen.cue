@@ -99,7 +99,9 @@ package res
 	})
 
 	#timeouts: close({
+		create?:  string
 		default?: string
 		delete?:  string
+		update?:  string
 	})
 }

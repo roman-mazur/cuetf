@@ -20,6 +20,9 @@ package res
 		// The ID of the nexthop resource
 		nexthop_resource_id?: string
 
+		// The ID of the nexthop VPC Connector
+		nexthop_vpc_connector_id?: string
+
 		// The region you want to attach the resource to
 		region?: string
 

@@ -28,6 +28,10 @@ package data
 		rule?: [...close({
 			backend_stage_id?: string
 			rule_http_match?: [...close({
+				host_filter?: [...close({
+					host_filter_type?: string
+					value?:            string
+				})]
 				method_filters?: [...string]
 				path_filter?: [...close({
 					path_filter_type?: string
