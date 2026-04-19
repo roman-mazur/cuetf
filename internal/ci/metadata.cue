@@ -1,7 +1,10 @@
 package ci
 
 workflows: metadata: {
-	on: schedule: [{cron: "0 6 * * FRI"}]
+	on: {
+		schedule: [{cron: "0 6 * * FRI"}]
+		workflow_dispatch: {}
+	}
 
 	jobs: aws: {
 		env: {
