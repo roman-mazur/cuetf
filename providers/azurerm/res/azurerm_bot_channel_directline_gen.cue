@@ -7,6 +7,8 @@ package res
 		site!: matchN(1, [#site, [_, ...] & [...#site]])
 		timeouts?:            #timeouts
 		bot_name!:            string
+		extension_key_1?:     string
+		extension_key_2?:     string
 		id?:                  string
 		location!:            string
 		resource_group_name!: string

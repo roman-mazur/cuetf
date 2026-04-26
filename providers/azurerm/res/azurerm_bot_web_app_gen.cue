@@ -13,11 +13,14 @@ package res
 		id?:                                    string
 		location!:                              string
 		luis_app_ids?: [...string]
-		luis_key?:            string
-		microsoft_app_id!:    string
-		name!:                string
-		resource_group_name!: string
-		sku!:                 string
+		luis_key?:                                string
+		microsoft_app_id!:                        string
+		microsoft_app_tenant_id?:                 string
+		microsoft_app_type?:                      string
+		microsoft_app_user_assigned_identity_id?: string
+		name!:                                    string
+		resource_group_name!:                     string
+		sku!:                                     string
 		tags?: [string]: string
 	})
 

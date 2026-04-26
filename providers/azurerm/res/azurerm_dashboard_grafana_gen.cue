@@ -23,6 +23,7 @@ import "list"
 		public_network_access_enabled?: bool
 		resource_group_name!:           string
 		sku?:                           string
+		sku_size?:                      string
 		tags?: [string]: string
 		zone_redundancy_enabled?: bool
 	})
