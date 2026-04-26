@@ -152,23 +152,15 @@ import "list"
 		// be 'internal'.
 		visibility?: string
 
-		// Set to 'true' to enable security alerts for vulnerable
-		// dependencies. Enabling requires alerts to be enabled on the
-		// owner level. (Note for importing: GitHub enables the alerts on
-		// all repos by default). Note that vulnerability alerts have not
-		// been successfully tested on any GitHub Enterprise instance and
-		// may be unavailable in those settings.
-		vulnerability_alerts?: bool
-
-		// Require contributors to sign off on web-based commits. Defaults
-		// to 'false'.
+		// Require contributors to sign off on web-based commits.
 		web_commit_signoff_required?: bool
 	})
 
 	#pages: close({
+		source?: matchN(1, [_#defs."/$defs/pages/$defs/source", list.MaxItems(1) & [..._#defs."/$defs/pages/$defs/source"]])
+
 		// The type the page should be sourced.
 		build_type?: string
-		source?: matchN(1, [_#defs."/$defs/pages/$defs/source", list.MaxItems(1) & [..._#defs."/$defs/pages/$defs/source"]])
 
 		// The custom domain for the repository. This can only be set
 		// after the repository has been created.

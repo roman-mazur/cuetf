@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository_environment")
 	close({
 		deployment_branch_policy?: matchN(1, [#deployment_branch_policy, list.MaxItems(1) & [...#deployment_branch_policy]])
-		reviewers?: matchN(1, [#reviewers, list.MaxItems(6) & [...#reviewers]])
+		reviewers?: matchN(1, [#reviewers, list.MaxItems(1) & [...#reviewers]])
 
 		// Can Admins bypass deployment protections
 		can_admins_bypass?: bool
@@ -22,6 +22,9 @@ import "list"
 
 		// The repository of the environment.
 		repository!: string
+
+		// The ID of the GitHub repository.
+		repository_id?: number
 
 		// Amount of time to delay a job after the job is initially
 		// triggered.

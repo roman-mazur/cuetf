@@ -6,11 +6,12 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository_webhook")
 	close({
+		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
+
 		// Indicate if the webhook should receive events. Defaults to
 		// 'true'.
 		active?: bool
-		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
-		etag?: string
+		etag?:   string
 
 		// A list of events which should trigger the webhook
 		events!: [...string]

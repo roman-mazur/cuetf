@@ -6,12 +6,13 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/github/provider")
 	close({
+		app_auth?: matchN(1, [#app_auth, list.MaxItems(1) & [...#app_auth]])
+
 		// The GitHub Base API URL
 		base_url?: string
 
 		// Enable `insecure` mode for testing purposes
 		insecure?: bool
-		app_auth?: matchN(1, [#app_auth, list.MaxItems(1) & [...#app_auth]])
 
 		// Number of items per page for paginationDefaults to 100
 		max_per_page?: number

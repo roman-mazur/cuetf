@@ -37,6 +37,7 @@ import "github.com/roman-mazur/cuetf/providers/github/data"
 	_#ds: "\(#githubPrefix)_ip_ranges": data.#github_ip_ranges
 	_#ds: "\(#githubPrefix)_issue_labels": data.#github_issue_labels
 	_#ds: "\(#githubPrefix)_membership": data.#github_membership
+	_#ds: "\(#githubPrefix)_organization_app_installations": data.#github_organization_app_installations
 	_#ds: "\(#githubPrefix)_organization_custom_properties": data.#github_organization_custom_properties
 	_#ds: "\(#githubPrefix)_organization_custom_role": data.#github_organization_custom_role
 	_#ds: "\(#githubPrefix)_organization_external_identities": data.#github_organization_external_identities
@@ -66,6 +67,7 @@ import "github.com/roman-mazur/cuetf/providers/github/data"
 	_#ds: "\(#githubPrefix)_repository_file": data.#github_repository_file
 	_#ds: "\(#githubPrefix)_repository": data.#github_repository
 	_#ds: "\(#githubPrefix)_repository_milestone": data.#github_repository_milestone
+	_#ds: "\(#githubPrefix)_repository_pages": data.#github_repository_pages
 	_#ds: "\(#githubPrefix)_repository_pull_request": data.#github_repository_pull_request
 	_#ds: "\(#githubPrefix)_repository_pull_requests": data.#github_repository_pull_requests
 	_#ds: "\(#githubPrefix)_repository_teams": data.#github_repository_teams

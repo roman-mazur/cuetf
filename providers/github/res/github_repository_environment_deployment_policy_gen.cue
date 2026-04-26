@@ -12,8 +12,14 @@ package res
 		environment!: string
 		id?:          string
 
+		// The ID of the deployment policy.
+		policy_id?: number
+
 		// The name of the GitHub repository.
 		repository!: string
+
+		// The ID of the GitHub repository.
+		repository_id?: number
 
 		// The name pattern that tags must match in order to deploy to the
 		// environment.

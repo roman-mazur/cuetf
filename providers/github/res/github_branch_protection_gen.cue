@@ -4,13 +4,15 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_branch_protection")
 	close({
+		required_pull_request_reviews?: matchN(1, [#required_pull_request_reviews, [...#required_pull_request_reviews]])
+		required_status_checks?: matchN(1, [#required_status_checks, [...#required_status_checks]])
+		restrict_pushes?: matchN(1, [#restrict_pushes, [...#restrict_pushes]])
+
 		// Setting this to 'true' to allow the branch to be deleted.
 		allows_deletions?: bool
-		required_pull_request_reviews?: matchN(1, [#required_pull_request_reviews, [...#required_pull_request_reviews]])
 
 		// Setting this to 'true' to allow force pushes on the branch.
 		allows_force_pushes?: bool
-		required_status_checks?: matchN(1, [#required_status_checks, [...#required_status_checks]])
 
 		// Setting this to 'true' enforces status checks for repository
 		// administrators.
@@ -22,7 +24,6 @@ package res
 		// teams.
 		force_push_bypassers?: [...string]
 		id?: string
-		restrict_pushes?: matchN(1, [#restrict_pushes, [...#restrict_pushes]])
 
 		// Setting this to 'true' will make the branch read-only and
 		// preventing any pushes to it.

@@ -1,3 +1,3 @@
 package github
 
-#Version: "6.11.1"
+#Version: "6.12.0"
