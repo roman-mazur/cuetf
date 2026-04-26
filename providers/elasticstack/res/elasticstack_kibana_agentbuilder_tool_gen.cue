@@ -1,42 +1,34 @@
-package data
+package res
 
-#elasticstack_kibana_export_saved_objects: {
+#elasticstack_kibana_agentbuilder_tool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_kibana_export_saved_objects")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_agentbuilder_tool")
 	close({
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
-		// Do not add export details. Defaults to true.
-		exclude_export_details?: bool
+		// The tool configuration as a JSON-encoded string. Use
+		// `jsonencode()` to pass a configuration object.
+		configuration!: string
 
-		// The exported objects in NDJSON format.
-		exported_objects?: string
+		// The tool description.
+		description?: string
 
-		// Generated ID for the export.
+		// The composite ID of the tool: `<tool_id>/<space_id>`.
 		id?: string
 
-		// Include references to other saved objects recursively. Defaults
-		// to true.
-		include_references_deep?: bool
-
-		// An identifier for the space. If space_id is not provided, the
+		// An identifier for the Kibana space. If not provided, the
 		// default space is used.
 		space_id?: string
 
-		// List of objects to export.
-		objects!: matchN(1, [close({
-			// The ID of the saved object.
-			id!: string
+		// List of tags for the tool.
+		tags?: [...string]
 
-			// The type of the saved object.
-			type!: string
-		}), [...close({
-			// The ID of the saved object.
-			id!: string
+		// The tool ID.
+		tool_id!: string
 
-			// The type of the saved object.
-			type!: string
-		})]])
+		// The tool type. Must be one of: [esql index_search workflow
+		// mcp].
+		type!: string
 	})
 
 	#kibana_connection: close({

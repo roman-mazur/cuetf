@@ -110,6 +110,12 @@ package res
 		// only on creation.
 		codec?: string
 
+		// The concrete Elasticsearch index name managed by this resource.
+		// For static index names this equals `name`. For date math index
+		// names this is the resolved concrete index name returned by
+		// Elasticsearch after creation.
+		concrete_name?: string
+
 		// The default ingest node pipeline for this index. Index requests
 		// will fail if the default pipeline is set and the pipeline does
 		// not exist.
@@ -137,7 +143,8 @@ package res
 		// highlight request.
 		highlight_max_analyzed_offset?: number
 
-		// Internal identifier of the resource
+		// Internal identifier of the resource in the format
+		// <cluster_uuid>/<concrete_index_name>.
 		id?: string
 
 		// Set which logging level to use for the search slow log, can be:

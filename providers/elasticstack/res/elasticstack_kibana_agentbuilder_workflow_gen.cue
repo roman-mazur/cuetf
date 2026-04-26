@@ -1,42 +1,37 @@
-package data
+package res
 
-#elasticstack_kibana_export_saved_objects: {
+#elasticstack_kibana_agentbuilder_workflow: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_kibana_export_saved_objects")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_agentbuilder_workflow")
 	close({
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
-		// Do not add export details. Defaults to true.
-		exclude_export_details?: bool
+		// The YAML configuration for the workflow.
+		configuration_yaml!: string
 
-		// The exported objects in NDJSON format.
-		exported_objects?: string
+		// The workflow description (extracted from YAML configuration).
+		description?: string
 
-		// Generated ID for the export.
+		// Whether the workflow is enabled (extracted from YAML
+		// configuration).
+		enabled?: bool
+
+		// The composite ID of the workflow: `<workflow_id>/<space_id>`.
 		id?: string
 
-		// Include references to other saved objects recursively. Defaults
-		// to true.
-		include_references_deep?: bool
+		// The workflow name (extracted from YAML configuration).
+		name?: string
 
-		// An identifier for the space. If space_id is not provided, the
+		// An identifier for the Kibana space. If not provided, the
 		// default space is used.
 		space_id?: string
 
-		// List of objects to export.
-		objects!: matchN(1, [close({
-			// The ID of the saved object.
-			id!: string
+		// Whether the workflow configuration is valid.
+		valid?: bool
 
-			// The type of the saved object.
-			type!: string
-		}), [...close({
-			// The ID of the saved object.
-			id!: string
-
-			// The type of the saved object.
-			type!: string
-		})]])
+		// The workflow ID. If not provided, it will be auto-generated.
+		// IDs are `workflow-<UUIDv4>`.
+		workflow_id?: string
 	})
 
 	#kibana_connection: close({

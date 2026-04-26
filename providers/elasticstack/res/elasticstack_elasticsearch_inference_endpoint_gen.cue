@@ -1,45 +1,38 @@
 package res
 
-#elasticstack_elasticsearch_watch: {
+#elasticstack_elasticsearch_inference_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_watch")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_inference_endpoint")
 	close({
 		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
-		// The list of actions that will be run if the condition matches.
-		actions?: string
-
-		// Defines whether the watch is active or inactive by default. The
-		// default value is true, which means the watch is active by
-		// default.
-		active?: bool
-
-		// The condition that defines if the actions should be run.
-		condition?: string
+		// Configuration for chunking input text, as a JSON object.
+		// Applicable only for embedding task types.
+		chunking_settings?: string
 
 		// Internal identifier of the resource.
 		id?: string
 
-		// The input that defines the input that loads the data for the
-		// watch.
-		input?: string
+		// The unique identifier of the inference endpoint.
+		inference_id!: string
 
-		// Metadata json that will be copied into the history entries.
-		metadata?: string
+		// The service type for the inference endpoint (e.g. `openai`,
+		// `cohere`, `elasticsearch`).
+		service!: string
 
-		// Minimum time in milliseconds between actions being run.
-		// Defaults to 5000.
-		throttle_period_in_millis?: number
+		// Settings specific to the service provider, as a JSON object.
+		// May include credentials and model identifiers.
+		service_settings!: string
 
-		// Processes the watch payload to prepare it for the watch
-		// actions.
-		transform?: string
+		// Task-specific settings, as a JSON object. Optional and
+		// service-dependent. Only keys explicitly set here are tracked;
+		// server-applied defaults returned by the API are ignored to
+		// avoid perpetual drift.
+		task_settings?: string
 
-		// The trigger that defines when the watch should run.
-		trigger!: string
-
-		// Identifier for the watch.
-		watch_id!: string
+		// must be one of [`sparse_embedding`, `text_embedding`, `rerank`,
+		// `completion`, `chat_completion`, `embedding`]
+		task_type?: string
 	})
 
 	#elasticsearch_connection: close({
