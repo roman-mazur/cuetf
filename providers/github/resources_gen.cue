@@ -40,6 +40,7 @@ import "github.com/roman-mazur/cuetf/providers/github/res"
 	_#res: "\(#githubPrefix)_enterprise_actions_permissions": res.#github_enterprise_actions_permissions
 	_#res: "\(#githubPrefix)_enterprise_actions_runner_group": res.#github_enterprise_actions_runner_group
 	_#res: "\(#githubPrefix)_enterprise_actions_workflow_permissions": res.#github_enterprise_actions_workflow_permissions
+	_#res: "\(#githubPrefix)_enterprise_ip_allow_list_entry": res.#github_enterprise_ip_allow_list_entry
 	_#res: "\(#githubPrefix)_enterprise_organization": res.#github_enterprise_organization
 	_#res: "\(#githubPrefix)_enterprise_security_analysis_settings": res.#github_enterprise_security_analysis_settings
 	_#res: "\(#githubPrefix)_issue": res.#github_issue
@@ -74,11 +75,13 @@ import "github.com/roman-mazur/cuetf/providers/github/res"
 	_#res: "\(#githubPrefix)_repository_file": res.#github_repository_file
 	_#res: "\(#githubPrefix)_repository": res.#github_repository
 	_#res: "\(#githubPrefix)_repository_milestone": res.#github_repository_milestone
+	_#res: "\(#githubPrefix)_repository_pages": res.#github_repository_pages
 	_#res: "\(#githubPrefix)_repository_project": res.#github_repository_project
 	_#res: "\(#githubPrefix)_repository_pull_request": res.#github_repository_pull_request
 	_#res: "\(#githubPrefix)_repository_ruleset": res.#github_repository_ruleset
 	_#res: "\(#githubPrefix)_repository_tag_protection": res.#github_repository_tag_protection
 	_#res: "\(#githubPrefix)_repository_topics": res.#github_repository_topics
+	_#res: "\(#githubPrefix)_repository_vulnerability_alerts": res.#github_repository_vulnerability_alerts
 	_#res: "\(#githubPrefix)_repository_webhook": res.#github_repository_webhook
 	_#res: "\(#githubPrefix)_team": res.#github_team
 	_#res: "\(#githubPrefix)_team_members": res.#github_team_members

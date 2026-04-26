@@ -7,19 +7,12 @@ package res
 		// Date of 'actions_environment_secret' creation.
 		created_at?: string
 
-		// Encrypted value of the secret using the GitHub public key in
-		// Base64 format.
-		encrypted_value?: string
-
 		// Name of the environment.
 		environment!: string
 		id?:          string
 
 		// ID of the public key used to encrypt the secret.
 		key_id?: string
-
-		// Plaintext value of the secret to be encrypted.
-		plaintext_value?: string
 
 		// Date of remote 'actions_environment_secret' update.
 		remote_updated_at?: string
@@ -35,5 +28,12 @@ package res
 
 		// Date of 'actions_environment_secret' update.
 		updated_at?: string
+
+		// Plaintext value to be encrypted.
+		value?: string
+
+		// Value encrypted with the GitHub public key, defined by key_id,
+		// in Base64 format.
+		value_encrypted?: string
 	})
 }

@@ -9,6 +9,10 @@ import "list"
 		review_request_delegation?: matchN(1, [#review_request_delegation, list.MaxItems(1) & [...#review_request_delegation]])
 		id?: string
 
+		// Whether to notify the entire team when at least one member is
+		// also assigned to the pull request.
+		notify?: bool
+
 		// The GitHub team id or the GitHub team slug.
 		team_id!: string
 
@@ -22,15 +26,10 @@ import "list"
 
 	#review_request_delegation: close({
 		// The algorithm to use when assigning pull requests to team
-		// members. Supported values are 'ROUND_ROBIN' and
-		// 'LOAD_BALANCE'.
+		// members. Supported values are ROUND_ROBIN and LOAD_BALANCE.
 		algorithm?: string
 
 		// The number of team members to assign to a pull request.
 		member_count?: number
-
-		// whether to notify the entire team when at least one member is
-		// also assigned to the pull request.
-		notify?: bool
 	})
 }

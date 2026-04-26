@@ -7,18 +7,18 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_organization_ruleset")
 	close({
 		bypass_actors?: matchN(1, [#bypass_actors, [...#bypass_actors]])
+		conditions?: matchN(1, [#conditions, list.MaxItems(1) & [...#conditions]])
+		rules!: matchN(1, [#rules, list.MaxItems(1) & [_, ...] & [...#rules]])
 
 		// The enforcement level of the ruleset. `evaluate` allows admins
 		// to test rules before enforcing them. Possible values are
 		// `disabled`, `active`, and `evaluate`. Note: `evaluate` is only
 		// available for Enterprise plans.
 		enforcement!: string
-		conditions?: matchN(1, [#conditions, list.MaxItems(1) & [...#conditions]])
 
 		// An etag representing the ruleset for caching purposes.
 		etag?: string
 		id?:   string
-		rules!: matchN(1, [#rules, list.MaxItems(1) & [_, ...] & [...#rules]])
 
 		// The name of the ruleset.
 		name!: string
@@ -55,9 +55,10 @@ import "list"
 	#conditions: close({
 		ref_name?: matchN(1, [_#defs."/$defs/conditions/$defs/ref_name", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/ref_name"]])
 		repository_name?: matchN(1, [_#defs."/$defs/conditions/$defs/repository_name", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/repository_name"]])
+		repository_property?: matchN(1, [_#defs."/$defs/conditions/$defs/repository_property", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/repository_property"]])
 
 		// The repository IDs that the ruleset applies to. One of these
-		// IDs must match for the condition to pass.
+		// IDs must match for the ruleset to apply.
 		repository_id?: [...number]
 	})
 
@@ -124,6 +125,24 @@ import "list"
 
 		// Whether renaming of target repositories is prevented.
 		protected?: bool
+	})
+
+	_#defs: "/$defs/conditions/$defs/repository_property": close({
+		// The repository properties and values to exclude. The ruleset
+		// will not apply if any of these properties match.
+		exclude?: [...close({
+			name?: string
+			property_values?: [...string]
+			source?: string
+		})]
+
+		// The repository properties and values to include. All of these
+		// properties must match for the condition to pass.
+		include?: [...close({
+			name?: string
+			property_values?: [...string]
+			source?: string
+		})]
 	})
 
 	_#defs: "/$defs/rules/$defs/branch_name_pattern": close({
@@ -220,10 +239,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/pull_request": close({
+		required_reviewers?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers", [..._#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers"]])
+
 		// Array of allowed merge methods. Allowed values include `merge`,
 		// `squash`, and `rebase`. At least one option must be enabled.
 		allowed_merge_methods?: [...string]
-		required_reviewers?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers", [..._#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers"]])
 
 		// New, reviewable commits pushed will dismiss previous pull
 		// request review approvals. Defaults to `false`.

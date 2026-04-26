@@ -6,6 +6,9 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_actions_hosted_runner")
 	close({
+		image!: matchN(1, [#image, list.MaxItems(1) & [_, ...] & [...#image]])
+		timeouts?: #timeouts
+
 		// The hosted runner ID.
 		id?: string
 
@@ -16,7 +19,6 @@ import "list"
 		// The version of the runner image to deploy. This is relevant
 		// only for runners using custom images.
 		image_version?: string
-		image!: matchN(1, [#image, list.MaxItems(1) & [_, ...] & [...#image]])
 
 		// Timestamp when the runner was last active.
 		last_active_on?: string
@@ -31,7 +33,6 @@ import "list"
 
 		// Maximum number of runners to scale up to.
 		maximum_runners?: number
-		timeouts?:        #timeouts
 
 		// Name of the hosted runner. Must be between 1 and 64 characters
 		// and may only contain upper and lowercase letters a-z, numbers

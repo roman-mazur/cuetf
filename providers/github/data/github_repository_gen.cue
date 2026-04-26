@@ -30,21 +30,9 @@ package data
 		merge_commit_title?:     string
 		name?:                   string
 		node_id?:                string
-		pages?: [...close({
-			build_type?: string
-			cname?:      string
-			custom_404?: bool
-			html_url?:   string
-			source?: [...close({
-				branch?: string
-				path?:   string
-			})]
-			status?: string
-			url?:    string
-		})]
-		primary_language?: string
-		private?:          bool
-		repo_id?:          number
+		primary_language?:       string
+		private?:                bool
+		repo_id?:                number
 		repository_license?: [...close({
 			content?:      string
 			download_url?: string

@@ -11,7 +11,12 @@ package res
 
 		// Map of usernames to invitation ID for any users added
 		invitation_ids?: [string]: string
+
+		// Name of the repository.
 		repository!: string
+
+		// ID of the repository.
+		repository_id?: number
 	})
 
 	#ignore_team: close({

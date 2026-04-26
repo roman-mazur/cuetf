@@ -7,17 +7,17 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_branch_protection_v3")
 	close({
 		required_pull_request_reviews?: matchN(1, [#required_pull_request_reviews, list.MaxItems(1) & [...#required_pull_request_reviews]])
+		required_status_checks?: matchN(1, [#required_status_checks, list.MaxItems(1) & [...#required_status_checks]])
+		restrictions?: matchN(1, [#restrictions, list.MaxItems(1) & [...#restrictions]])
 
 		// The Git branch to protect.
 		branch!: string
-		required_status_checks?: matchN(1, [#required_status_checks, list.MaxItems(1) & [...#required_status_checks]])
 
 		// Setting this to 'true' enforces status checks for repository
 		// administrators.
 		enforce_admins?: bool
 		etag?:           string
-		restrictions?: matchN(1, [#restrictions, list.MaxItems(1) & [...#restrictions]])
-		id?: string
+		id?:             string
 
 		// The GitHub repository name.
 		repository!: string
@@ -32,10 +32,11 @@ import "list"
 	})
 
 	#required_pull_request_reviews: close({
+		bypass_pull_request_allowances?: matchN(1, [_#defs."/$defs/required_pull_request_reviews/$defs/bypass_pull_request_allowances", list.MaxItems(1) & [..._#defs."/$defs/required_pull_request_reviews/$defs/bypass_pull_request_allowances"]])
+
 		// Dismiss approved reviews automatically when a new commit is
 		// pushed.
 		dismiss_stale_reviews?: bool
-		bypass_pull_request_allowances?: matchN(1, [_#defs."/$defs/required_pull_request_reviews/$defs/bypass_pull_request_allowances", list.MaxItems(1) & [..._#defs."/$defs/required_pull_request_reviews/$defs/bypass_pull_request_allowances"]])
 
 		// The list of apps slugs with dismissal access. Always use slug
 		// of the app, not its name. Each app already has to have access
