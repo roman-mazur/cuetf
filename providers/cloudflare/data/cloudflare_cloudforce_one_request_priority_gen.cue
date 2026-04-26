@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_cloudforce_one_request_priority")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 		completed?:  string
 
 		// Request content.

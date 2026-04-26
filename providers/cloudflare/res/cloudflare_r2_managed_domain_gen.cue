@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_r2_managed_domain")
 	close({
 		// Account ID.
-		account_id!: string
+		account_id?: string
 
 		// Bucket ID.
 		bucket_id?: string

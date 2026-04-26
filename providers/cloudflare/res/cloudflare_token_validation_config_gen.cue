@@ -17,7 +17,7 @@ package res
 		token_type!: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 		credentials!: close({
 			keys!: matchN(1, [close({
 				// Algorithm

@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_worker_version")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Date indicating targeted support in the Workers runtime.
 		// Backwards incompatible fixes to the runtime following this
@@ -20,8 +20,9 @@ package data
 		// When the version was created.
 		created_on?: string
 
-		// Identifier for the version, which can be ID or the literal
-		// "latest" to operate on the most recently created version.
+		// Identifier for the version, which can be a UUID, a UUID prefix
+		// (minimum length 8), or the literal "latest" to operate on the
+		// most recently created version.
 		id?: string
 
 		// Whether to include the `modules` property of the version in the
@@ -38,6 +39,11 @@ package data
 		// for service worker syntax workers (not ES modules).
 		main_script_base64?: string
 
+		// Durable Object migration tag. Set when the version is deployed.
+		// Omitted if the version has not been deployed or the Worker
+		// does not use Durable Objects.
+		migration_tag?: string
+
 		// The integer version number, starting from one.
 		"number"?: number
 
@@ -48,8 +54,14 @@ package data
 		// startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
 		startup_time_ms?: number
 
-		// Identifier for the version, which can be ID or the literal
-		// "latest" to operate on the most recently created version.
+		// All routable URLs that always point to this version. Does not
+		// include alias URLs, since aliases can be updated to point to a
+		// different version.
+		urls?: [...string]
+
+		// Identifier for the version, which can be a UUID, a UUID prefix
+		// (minimum length 8), or the literal "latest" to operate on the
+		// most recently created version.
 		version_id!: string
 
 		// Identifier for the Worker, which can be ID or name.
@@ -57,10 +69,11 @@ package data
 
 		// Metadata about the version.
 		annotations?: close({
-			// Human-readable message about the version.
+			// Human-readable message about the version. Truncated to 1000
+			// bytes if longer.
 			workers_message?: string
 
-			// User-provided identifier for the version.
+			// User-provided identifier for the version. Maximum 100 bytes.
 			workers_tag?: string
 
 			// Operation that triggered the creation of the version.
@@ -117,6 +130,9 @@ package data
 			// List of allowed sender addresses.
 			allowed_sender_addresses?: [...string]
 
+			// ID of the Flagship app to bind to for feature flag evaluation.
+			app_id?: string
+
 			// R2 bucket to bind to.
 			bucket_name?: string
 
@@ -126,11 +142,20 @@ package data
 			// The exported class name of the Durable Object.
 			class_name?: string
 
+			// Identifier of the D1 database to bind to.
+			database_id?: string
+
 			// The name of the dataset to bind to.
 			dataset?: string
 
 			// Destination address for the email.
 			destination_address?: string
+
+			// The dispatch namespace the Durable Object script belongs to.
+			dispatch_namespace?: string
+
+			// Entrypoint to invoke on the target Worker.
+			entrypoint?: string
 
 			// The environment of the script_name to bind to.
 			environment?: string
@@ -146,13 +171,18 @@ package data
 			// Name of the Vectorize index to bind to.
 			index_name?: string
 
+			// The user-chosen instance name. Must exist at deploy time. The
+			// worker can search, chat, update, and manage items/jobs on this
+			// instance.
+			instance_name?: string
+
 			// JSON data to use.
 			json?: string
 
 			// The
 			// [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
 			// of the R2 bucket.
-			// Available values: "eu", "fedramp".
+			// Available values: "eu", "fedramp", "fedramp-high".
 			jurisdiction?: string
 
 			// Base64-encoded key data. Required if `format` is "raw",
@@ -167,11 +197,17 @@ package data
 			// A JavaScript variable name for the binding.
 			name?: string
 
-			// The name of the dispatch namespace.
+			// The namespace the instance belongs to. Defaults to "default" if
+			// omitted. Customers who don't use namespaces can simply omit
+			// this field.
 			namespace?: string
 
 			// Namespace identifier tag.
 			namespace_id?: string
+
+			// Identifier of the network to bind to. Only "cf1:network" is
+			// currently supported. Mutually exclusive with tunnel_id.
+			network_id?: string
 
 			// The old name of the inherited binding. If set, the binding will
 			// be renamed from `old_name` to `name` in the new version. If
@@ -198,21 +234,30 @@ package data
 			// Name of Worker to bind to.
 			service?: string
 
+			// Identifier of the VPC service to bind to.
+			service_id?: string
+
 			// ID of the store containing the secret.
 			store_id?: string
 
 			// The text value to use.
 			text?: string
 
+			// UUID of the Cloudflare Tunnel to bind to. Mutually exclusive
+			// with network_id.
+			tunnel_id?: string
+
 			// The kind of resource that the binding provides.
-			// Available values: "ai", "analytics_engine", "assets",
-			// "browser", "d1", "data_blob", "dispatch_namespace",
-			// "durable_object_namespace", "hyperdrive", "inherit", "images",
-			// "json", "kv_namespace", "mtls_certificate", "plain_text",
-			// "pipelines", "queue", "ratelimit", "r2_bucket", "secret_text",
+			// Available values: "ai", "ai_search", "ai_search_namespace",
+			// "analytics_engine", "assets", "browser", "d1", "data_blob",
+			// "dispatch_namespace", "durable_object_namespace",
+			// "hyperdrive", "inherit", "images", "json", "kv_namespace",
+			// "media", "mtls_certificate", "plain_text", "pipelines",
+			// "queue", "ratelimit", "r2_bucket", "secret_text",
 			// "send_email", "service", "text_blob", "vectorize",
-			// "version_metadata", "secrets_store_secret", "secret_key",
-			// "workflow", "wasm_module".
+			// "version_metadata", "secrets_store_secret", "flagship",
+			// "secret_key", "workflow", "wasm_module", "vpc_service",
+			// "vpc_network".
 			type?: string
 
 			// Allowed operations with the key. [Learn
@@ -272,6 +317,9 @@ package data
 			// List of allowed sender addresses.
 			allowed_sender_addresses?: [...string]
 
+			// ID of the Flagship app to bind to for feature flag evaluation.
+			app_id?: string
+
 			// R2 bucket to bind to.
 			bucket_name?: string
 
@@ -281,11 +329,20 @@ package data
 			// The exported class name of the Durable Object.
 			class_name?: string
 
+			// Identifier of the D1 database to bind to.
+			database_id?: string
+
 			// The name of the dataset to bind to.
 			dataset?: string
 
 			// Destination address for the email.
 			destination_address?: string
+
+			// The dispatch namespace the Durable Object script belongs to.
+			dispatch_namespace?: string
+
+			// Entrypoint to invoke on the target Worker.
+			entrypoint?: string
 
 			// The environment of the script_name to bind to.
 			environment?: string
@@ -301,13 +358,18 @@ package data
 			// Name of the Vectorize index to bind to.
 			index_name?: string
 
+			// The user-chosen instance name. Must exist at deploy time. The
+			// worker can search, chat, update, and manage items/jobs on this
+			// instance.
+			instance_name?: string
+
 			// JSON data to use.
 			json?: string
 
 			// The
 			// [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
 			// of the R2 bucket.
-			// Available values: "eu", "fedramp".
+			// Available values: "eu", "fedramp", "fedramp-high".
 			jurisdiction?: string
 
 			// Base64-encoded key data. Required if `format` is "raw",
@@ -322,11 +384,17 @@ package data
 			// A JavaScript variable name for the binding.
 			name?: string
 
-			// The name of the dispatch namespace.
+			// The namespace the instance belongs to. Defaults to "default" if
+			// omitted. Customers who don't use namespaces can simply omit
+			// this field.
 			namespace?: string
 
 			// Namespace identifier tag.
 			namespace_id?: string
+
+			// Identifier of the network to bind to. Only "cf1:network" is
+			// currently supported. Mutually exclusive with tunnel_id.
+			network_id?: string
 
 			// The old name of the inherited binding. If set, the binding will
 			// be renamed from `old_name` to `name` in the new version. If
@@ -353,21 +421,30 @@ package data
 			// Name of Worker to bind to.
 			service?: string
 
+			// Identifier of the VPC service to bind to.
+			service_id?: string
+
 			// ID of the store containing the secret.
 			store_id?: string
 
 			// The text value to use.
 			text?: string
 
+			// UUID of the Cloudflare Tunnel to bind to. Mutually exclusive
+			// with network_id.
+			tunnel_id?: string
+
 			// The kind of resource that the binding provides.
-			// Available values: "ai", "analytics_engine", "assets",
-			// "browser", "d1", "data_blob", "dispatch_namespace",
-			// "durable_object_namespace", "hyperdrive", "inherit", "images",
-			// "json", "kv_namespace", "mtls_certificate", "plain_text",
-			// "pipelines", "queue", "ratelimit", "r2_bucket", "secret_text",
+			// Available values: "ai", "ai_search", "ai_search_namespace",
+			// "analytics_engine", "assets", "browser", "d1", "data_blob",
+			// "dispatch_namespace", "durable_object_namespace",
+			// "hyperdrive", "inherit", "images", "json", "kv_namespace",
+			// "media", "mtls_certificate", "plain_text", "pipelines",
+			// "queue", "ratelimit", "r2_bucket", "secret_text",
 			// "send_email", "service", "text_blob", "vectorize",
-			// "version_metadata", "secrets_store_secret", "secret_key",
-			// "workflow", "wasm_module".
+			// "version_metadata", "secrets_store_secret", "flagship",
+			// "secret_key", "workflow", "wasm_module", "vpc_service",
+			// "vpc_network".
 			type?: string
 
 			// Allowed operations with the key. [Learn
@@ -418,10 +495,25 @@ package data
 			})
 		})]])
 
+		// List of containers attached to a Worker. Containers can only be
+		// attached to Durable Object classes of this Worker script.
+		containers?: matchN(1, [close({
+			// Select which Durable Object class should get this container
+			// attached.
+			class_name?: string
+		}), [...close({
+			// Select which Durable Object class should get this container
+			// attached.
+			class_name?: string
+		})]])
+
 		// Resource limits enforced at runtime.
 		limits?: close({
 			// CPU time limit in milliseconds.
 			cpu_ms?: number
+
+			// Subrequest limit per request.
+			subrequests?: number
 		})
 
 		// Migrations for Durable Objects associated with the version.

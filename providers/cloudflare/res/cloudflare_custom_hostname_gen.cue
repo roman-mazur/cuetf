@@ -42,7 +42,7 @@ package res
 		verification_errors?: [...string]
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// This is a record which can be placed to activate a hostname.
 		ownership_verification?: close({
@@ -69,7 +69,7 @@ package res
 		})
 
 		// SSL properties used when creating the custom hostname.
-		ssl!: close({
+		ssl?: close({
 			// A ubiquitous bundle has the highest probability of being
 			// verified everywhere, even by clients using outdated or unusual
 			// trust stores. An optimal bundle uses the shortest chain and
@@ -90,6 +90,9 @@ package res
 
 			// If a custom uploaded certificate is used.
 			custom_certificate?: string
+
+			// The identifier for the Custom CSR that was used.
+			custom_csr_id?: string
 
 			// The key for a custom uploaded certificate.
 			custom_key?: string

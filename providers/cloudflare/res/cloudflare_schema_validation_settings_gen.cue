@@ -24,6 +24,6 @@ package res
 		validation_override_mitigation_action?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 	})
 }

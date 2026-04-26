@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_list_item")
 	close({
 		// The Account ID for this resource.
-		account_id!: string
+		account_id?: string
 
 		// A non-negative 32 bit integer
 		asn?: number

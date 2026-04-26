@@ -5,10 +5,14 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_worker")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// When the Worker was created.
 		created_on?: string
+
+		// When the Worker's most recent deployment was created. `null` if
+		// the Worker has never been deployed.
+		deployed_on?: string
 
 		// Identifier for the Worker, which can be ID or name.
 		id?: string
@@ -26,7 +30,7 @@ package data
 		updated_on?: string
 
 		// Identifier for the Worker, which can be ID or name.
-		worker_id!: string
+		worker_id?: string
 
 		// Observability settings for the Worker.
 		observability?: close({
@@ -39,6 +43,9 @@ package data
 
 			// Log settings for the Worker.
 			logs?: close({
+				// A list of destinations where logs will be exported to.
+				destinations?: [...string]
+
 				// Whether logs are enabled for the Worker.
 				enabled?: bool
 
@@ -49,6 +56,25 @@ package data
 				// logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs)
 				// are enabled for the Worker.
 				invocation_logs?: bool
+
+				// Whether log persistence is enabled for the Worker.
+				persist?: bool
+			})
+
+			// Trace settings for the Worker.
+			traces?: close({
+				// A list of destinations where traces will be exported to.
+				destinations?: [...string]
+
+				// Whether traces are enabled for the Worker.
+				enabled?: bool
+
+				// The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 =
+				// 10%).
+				head_sampling_rate?: number
+
+				// Whether trace persistence is enabled for the Worker.
+				persist?: bool
 			})
 		})
 
@@ -201,5 +227,15 @@ package data
 			// Name of the consumer Worker.
 			name?: string
 		})]])
+		filter?: close({
+			// Sort direction.
+			// Available values: "asc", "desc".
+			order?: string
+
+			// Property to sort results by.
+			// Available values: "deployed_on", "updated_on", "created_on",
+			// "name".
+			order_by?: string
+		})
 	})
 }

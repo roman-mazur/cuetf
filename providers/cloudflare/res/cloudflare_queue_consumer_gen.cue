@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_queue_consumer")
 	close({
 		// A Resource identifier.
-		account_id!: string
+		account_id?: string
 
 		// A Resource identifier.
 		consumer_id?:       string

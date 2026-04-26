@@ -5,7 +5,15 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_account_dns_settings")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
+
+		// When enabled, forces all proxied DNS records in the account to
+		// behave as DNS-only at the edge, regardless of each record's
+		// individual proxy setting. Note that this account-level
+		// override does not modify the records themselves; it only
+		// affects how they are served at the edge. See more on [Enforce
+		// DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+		enforce_dns_only?: bool
 		zone_defaults?: close({
 			// Whether to flatten all CNAME records in the zone. Note that,
 			// due to DNS limitations, a CNAME record at the zone apex will

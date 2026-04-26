@@ -24,6 +24,6 @@ package data
 		routing?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 	})
 }

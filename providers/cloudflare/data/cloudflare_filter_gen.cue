@@ -24,7 +24,7 @@ package data
 		ref?: string
 
 		// Defines an identifier.
-		zone_id!: string
+		zone_id?: string
 		filter?: close({
 			// A case-insensitive string to find in the description.
 			description?: string

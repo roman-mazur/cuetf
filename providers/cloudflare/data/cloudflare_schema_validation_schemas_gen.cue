@@ -31,7 +31,7 @@ package data
 		validation_enabled?: bool
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 		filter?: close({
 			// Filter for enabled schemas
 			validation_enabled?: bool

@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_account_dns_settings_internal_view")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// When the view was created.
 		created_time?: string

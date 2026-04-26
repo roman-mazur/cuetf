@@ -4,7 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dlp_custom_entry")
 	close({
-		account_id!: string
+		account_id?: string
 
 		// Only applies to custom word lists.
 		// Determines if the words should be matched in a case-sensitive

@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_magic_transit_site_acl")
 	close({
 		// Identifier
-		account_id!: string
+		account_id?: string
 
 		// Description for the ACL.
 		description?: string

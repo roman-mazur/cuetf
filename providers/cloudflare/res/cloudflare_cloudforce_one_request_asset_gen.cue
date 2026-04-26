@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_cloudforce_one_request_asset")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Defines the asset creation time.
 		created?: string

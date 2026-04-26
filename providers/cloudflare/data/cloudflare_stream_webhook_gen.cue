@@ -5,6 +5,15 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_stream_webhook")
 	close({
 		// The account identifier tag.
-		account_id!: string
+		account_id?: string
+
+		// The date and time the webhook was last modified.
+		modified?: string
+
+		// The URL where webhooks will be sent.
+		notification_url?: string
+
+		// The secret used to verify webhook signatures.
+		secret?: string
 	})
 }

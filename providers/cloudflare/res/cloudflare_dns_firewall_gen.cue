@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_dns_firewall")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Whether to refuse to answer queries for the ANY type
 		deprecate_any_requests?: bool

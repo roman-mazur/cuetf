@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workers_script")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Name of the script, used in URLs and route configuration.
 		id?:     string

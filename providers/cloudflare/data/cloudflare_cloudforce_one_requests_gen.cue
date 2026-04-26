@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_cloudforce_one_requests")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Retrieve requests completed after this time.
 		completed_after?: string

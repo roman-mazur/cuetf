@@ -41,11 +41,6 @@ package data
 		// Terraform for this account when enabled.
 		is_ui_read_only?: bool
 
-		// Indicates if this organization can enforce multi-factor
-		// authentication (MFA) requirements at the application and
-		// policy level.
-		mfa_configuration_allowed?: bool
-
 		// Determines whether global MFA settings apply to applications by
 		// default. The organization must have MFA enabled with at least
 		// one authentication method and a session duration configured.
@@ -86,10 +81,50 @@ package data
 			// Lists the MFA methods that users can authenticate with.
 			allowed_authenticators?: [...string]
 
+			// Allows a user to skip MFA via Authentication Method Reference
+			// (AMR) matching when the AMR claim provided by the IdP the user
+			// used to authenticate contains "mfa". Must be in minutes (m) or
+			// hours (h). Minimum: 0m. Maximum: 720h (30 days).
+			amr_matching_session_duration?: string
+
+			// Specifies a Cloudflare List of required FIDO2 authenticator
+			// device AAGUIDs.
+			required_aaguids?: string
+
 			// Defines the duration of an MFA session. Must be in minutes (m)
 			// or hours (h). Minimum: 0m. Maximum: 720h (30 days).
 			// Examples:`5m` or `24h`.
 			session_duration?: string
+		})
+
+		// Configures SSH PIV key requirements for MFA using hardware
+		// security keys.
+		mfa_ssh_piv_key_requirements?: close({
+			// Defines when a PIN is required to use the SSH key. Valid
+			// values: `never` (no PIN required), `once` (PIN required once
+			// per session), `always` (PIN required for each use).
+			// Available values: "never", "once", "always".
+			pin_policy?: string
+
+			// Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1
+			// or higher validated device.
+			require_fips_device?: bool
+
+			// Specifies the allowed SSH key sizes in bits. Valid sizes depend
+			// on key type. Ed25519 has a fixed key size and does not accept
+			// this parameter.
+			ssh_key_size?: [...number]
+
+			// Specifies the allowed SSH key types. Valid values are `ecdsa`,
+			// `ed25519`, and `rsa`.
+			ssh_key_type?: [...string]
+
+			// Defines when physical touch is required to use the SSH key.
+			// Valid values: `never` (no touch required), `always` (touch
+			// required for each use), `cached` (touch cached for 15
+			// seconds).
+			// Available values: "never", "always", "cached".
+			touch_policy?: string
 		})
 		custom_pages?: close({
 			// The uid of the custom page to use when a user is denied access

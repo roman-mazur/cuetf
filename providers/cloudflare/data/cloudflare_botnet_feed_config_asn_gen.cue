@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_botnet_feed_config_asn")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 		asn?:        number
 	})
 }

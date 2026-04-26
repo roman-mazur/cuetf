@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_workers_script_subdomain")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Whether the Worker should be available on the workers.dev
 		// subdomain.

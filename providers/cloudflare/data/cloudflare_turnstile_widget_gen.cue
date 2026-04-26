@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_turnstile_widget")
 	close({
 		// Identifier
-		account_id!: string
+		account_id?: string
 
 		// If bot_fight_mode is set to `true`, Cloudflare issues
 		// computationally

@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_access_tag")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// The name of the tag
 		id?: string

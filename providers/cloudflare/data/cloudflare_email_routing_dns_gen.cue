@@ -30,7 +30,7 @@ package data
 		success?: bool
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 		messages?: matchN(1, [close({
 			code?:              number
 			documentation_url?: string
@@ -171,6 +171,9 @@ package data
 
 			// Total results available without any search parameters.
 			total_count?: number
+
+			// The number of total pages in the entire result set.
+			total_pages?: number
 		})
 	})
 }

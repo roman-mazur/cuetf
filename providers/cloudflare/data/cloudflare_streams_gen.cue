@@ -5,10 +5,18 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_streams")
 	close({
 		// The account identifier tag.
-		account_id!: string
+		account_id?: string
+
+		// Alias for 'start'. Returns videos created after this date/time
+		// (RFC 3339 format).
+		after?: string
 
 		// Lists videos in ascending order of creation.
 		asc?: bool
+
+		// Alias for 'end'. Returns videos created before this date/time
+		// (RFC 3339 format).
+		before?: string
 
 		// A user-defined identifier for the media creator.
 		creator?: string
@@ -16,12 +24,27 @@ package data
 		// Lists videos created before the specified date.
 		end?: string
 
+		// Filter by video ID(s). Can be a single ID or a comma-separated
+		// list of IDs.
+		id?: string
+
 		// Includes the total number of videos associated with the
 		// submitted query parameters.
 		include_counts?: bool
 
+		// Maximum number of videos to return (default 1000, max 1000).
+		limit?: number
+
+		// Filter by live input ID to find videos associated with a
+		// specific live stream.
+		live_input_id?: string
+
 		// Max items to fetch, default: 1000
 		max_items?: number
+
+		// Filter by video name/UID(s). Can be a single name or a
+		// comma-separated list.
+		name?: string
 
 		// Provides a partial word match of the `name` key in the `meta`
 		// field. Slow for medium to large video libraries. May be
@@ -52,6 +75,10 @@ package data
 			// origin.
 			allowed_origins?: [...string]
 
+			// The unique identifier of the source video this video was
+			// clipped from.
+			clipped_from?: string
+
 			// The date and time the media item was created.
 			created?: string
 
@@ -71,6 +98,9 @@ package data
 			// Uploads that exceed the specified duration will fail during
 			// processing. A value of `-1` means the value is unknown.
 			max_duration_seconds?: number
+
+			// The maximum size in bytes for the video upload.
+			max_size_bytes?: number
 
 			// A user modifiable key-value store used to reference other
 			// systems of record for managing videos.
@@ -107,6 +137,37 @@ package data
 			// The size of the media item in bytes.
 			size?: number
 
+			// The media item's thumbnail URI. This field is omitted until
+			// encoding is complete.
+			thumbnail?: string
+
+			// The timestamp for a thumbnail image calculated as a percentage
+			// value of the video's duration. To convert from a second-wise
+			// timestamp to a percentage, divide the desired timestamp by the
+			// total duration of the video. If this value is not set, the
+			// default thumbnail image is taken from 0s of the video.
+			thumbnail_timestamp_pct?: number
+
+			// A Cloudflare-generated unique identifier for a media item.
+			uid?: string
+
+			// The date and time when the video upload URL is no longer valid
+			// for direct user uploads.
+			upload_expiry?: string
+
+			// The date and time the media item was uploaded.
+			uploaded?: string
+
+			// Public details for the video including title, share link,
+			// channel link, and logo.
+			public_details?: close({
+				channel_link?: string
+				logo?:         string
+				media_id?:     number
+				share_link?:   string
+				title?:        string
+			})
+
 			// Specifies a detailed status for a video. If the `state` is
 			// `inprogress` or `error`, the `step` field returns `encoding`
 			// or `manifest`. If the `state` is `inprogress`, `pctComplete`
@@ -135,27 +196,6 @@ package data
 				// "inprogress", "ready", "error", "live-inprogress".
 				state?: string
 			})
-
-			// The media item's thumbnail URI. This field is omitted until
-			// encoding is complete.
-			thumbnail?: string
-
-			// The timestamp for a thumbnail image calculated as a percentage
-			// value of the video's duration. To convert from a second-wise
-			// timestamp to a percentage, divide the desired timestamp by the
-			// total duration of the video. If this value is not set, the
-			// default thumbnail image is taken from 0s of the video.
-			thumbnail_timestamp_pct?: number
-
-			// A Cloudflare-generated unique identifier for a media item.
-			uid?: string
-
-			// The date and time when the video upload URL is no longer valid
-			// for direct user uploads.
-			upload_expiry?: string
-
-			// The date and time the media item was uploaded.
-			uploaded?: string
 			input?: close({
 				// The video height in pixels. A value of `-1` means the height is
 				// unknown. The value becomes available after the upload and
@@ -228,6 +268,10 @@ package data
 			// origin.
 			allowed_origins?: [...string]
 
+			// The unique identifier of the source video this video was
+			// clipped from.
+			clipped_from?: string
+
 			// The date and time the media item was created.
 			created?: string
 
@@ -247,6 +291,9 @@ package data
 			// Uploads that exceed the specified duration will fail during
 			// processing. A value of `-1` means the value is unknown.
 			max_duration_seconds?: number
+
+			// The maximum size in bytes for the video upload.
+			max_size_bytes?: number
 
 			// A user modifiable key-value store used to reference other
 			// systems of record for managing videos.
@@ -283,6 +330,37 @@ package data
 			// The size of the media item in bytes.
 			size?: number
 
+			// The media item's thumbnail URI. This field is omitted until
+			// encoding is complete.
+			thumbnail?: string
+
+			// The timestamp for a thumbnail image calculated as a percentage
+			// value of the video's duration. To convert from a second-wise
+			// timestamp to a percentage, divide the desired timestamp by the
+			// total duration of the video. If this value is not set, the
+			// default thumbnail image is taken from 0s of the video.
+			thumbnail_timestamp_pct?: number
+
+			// A Cloudflare-generated unique identifier for a media item.
+			uid?: string
+
+			// The date and time when the video upload URL is no longer valid
+			// for direct user uploads.
+			upload_expiry?: string
+
+			// The date and time the media item was uploaded.
+			uploaded?: string
+
+			// Public details for the video including title, share link,
+			// channel link, and logo.
+			public_details?: close({
+				channel_link?: string
+				logo?:         string
+				media_id?:     number
+				share_link?:   string
+				title?:        string
+			})
+
 			// Specifies a detailed status for a video. If the `state` is
 			// `inprogress` or `error`, the `step` field returns `encoding`
 			// or `manifest`. If the `state` is `inprogress`, `pctComplete`
@@ -311,27 +389,6 @@ package data
 				// "inprogress", "ready", "error", "live-inprogress".
 				state?: string
 			})
-
-			// The media item's thumbnail URI. This field is omitted until
-			// encoding is complete.
-			thumbnail?: string
-
-			// The timestamp for a thumbnail image calculated as a percentage
-			// value of the video's duration. To convert from a second-wise
-			// timestamp to a percentage, divide the desired timestamp by the
-			// total duration of the video. If this value is not set, the
-			// default thumbnail image is taken from 0s of the video.
-			thumbnail_timestamp_pct?: number
-
-			// A Cloudflare-generated unique identifier for a media item.
-			uid?: string
-
-			// The date and time when the video upload URL is no longer valid
-			// for direct user uploads.
-			upload_expiry?: string
-
-			// The date and time the media item was uploaded.
-			uploaded?: string
 			input?: close({
 				// The video height in pixels. A value of `-1` means the height is
 				// unknown. The value becomes available after the upload and

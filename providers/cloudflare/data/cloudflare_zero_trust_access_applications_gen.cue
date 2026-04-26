@@ -33,34 +33,53 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			cors_headers?: close({
-				// Allows all HTTP request headers.
-				allow_all_headers?: bool
+			// When set to true, users can authenticate to this application
+			// using their WARP session. When set to false this application
+			// will always require direct IdP authentication. This setting
+			// always overrides the organization setting for WARP
+			// authentication.
+			allow_authenticate_via_warp?: bool
 
-				// Allows all HTTP request methods.
-				allow_all_methods?: bool
+			// Enables loading application content in an iFrame.
+			allow_iframe?: bool
 
-				// Allows all origins.
-				allow_all_origins?: bool
+			// The identity providers your users can select when connecting to
+			// this application. Defaults to all IdPs configured in your
+			// account.
+			allowed_idps?: [...string]
 
-				// When set to `true`, includes credentials (cookies,
-				// authorization headers, or TLS client certificates) with
-				// requests.
-				allow_credentials?: bool
+			// The image URL of the logo shown in the App Launcher header.
+			app_launcher_logo_url?: string
 
-				// Allowed HTTP request headers.
-				allowed_headers?: [...string]
+			// Displays the application in the App Launcher.
+			app_launcher_visible?: bool
 
-				// Allowed HTTP request methods.
-				allowed_methods?: [...string]
+			// Audience tag.
+			aud?: string
 
-				// Allowed origins.
-				allowed_origins?: [...string]
+			// When set to `true`, users skip the identity provider selection
+			// step during login. You must specify only one identity provider
+			// in allowed_idps.
+			auto_redirect_to_identity?: bool
 
-				// The maximum number of seconds the results of a preflight
-				// request can be cached.
-				max_age?: number
-			})
+			// The background color of the App Launcher page.
+			bg_color?: string
+
+			// The custom error message shown to a user when they are denied
+			// access to the application.
+			custom_deny_message?: string
+
+			// The custom URL a user is redirected to when they are denied
+			// access to the application when failing identity-based rules.
+			custom_deny_url?: string
+
+			// The custom URL a user is redirected to when they are denied
+			// access to the application when failing non-identity rules.
+			custom_non_identity_deny_url?: string
+
+			// The custom pages that will be displayed when applicable for
+			// this application
+			custom_pages?: [...string]
 
 			// List of destinations secured by Access. This supersedes
 			// `self_hosted_domains` to allow for more flexibility in
@@ -134,6 +153,14 @@ package data
 				vnet_id?: string
 			})]])
 
+			// The primary hostname and path secured by Access. This domain
+			// will be displayed if the app is visible in the App Launcher.
+			domain?: string
+
+			// Enables the binding cookie, which increases security against
+			// compromised authorization tokens and CSRF attacks.
+			enable_binding_cookie?: bool
+
 			// The links in the App Launcher footer.
 			footer_links?: matchN(1, [close({
 				// The hypertext in the footer link.
@@ -148,62 +175,6 @@ package data
 				// the hyperlink in the footer link.
 				url?: string
 			})]])
-
-			// When set to true, users can authenticate to this application
-			// using their WARP session. When set to false this application
-			// will always require direct IdP authentication. This setting
-			// always overrides the organization setting for WARP
-			// authentication.
-			allow_authenticate_via_warp?: bool
-
-			// Enables loading application content in an iFrame.
-			allow_iframe?: bool
-
-			// The identity providers your users can select when connecting to
-			// this application. Defaults to all IdPs configured in your
-			// account.
-			allowed_idps?: [...string]
-
-			// The image URL of the logo shown in the App Launcher header.
-			app_launcher_logo_url?: string
-
-			// Displays the application in the App Launcher.
-			app_launcher_visible?: bool
-
-			// Audience tag.
-			aud?: string
-
-			// When set to `true`, users skip the identity provider selection
-			// step during login. You must specify only one identity provider
-			// in allowed_idps.
-			auto_redirect_to_identity?: bool
-
-			// The background color of the App Launcher page.
-			bg_color?: string
-
-			// The custom error message shown to a user when they are denied
-			// access to the application.
-			custom_deny_message?: string
-
-			// The custom URL a user is redirected to when they are denied
-			// access to the application when failing identity-based rules.
-			custom_deny_url?: string
-
-			// The custom URL a user is redirected to when they are denied
-			// access to the application when failing non-identity rules.
-			custom_non_identity_deny_url?: string
-
-			// The custom pages that will be displayed when applicable for
-			// this application
-			custom_pages?: [...string]
-
-			// The primary hostname and path secured by Access. This domain
-			// will be displayed if the app is visible in the App Launcher.
-			domain?: string
-
-			// Enables the binding cookie, which increases security against
-			// compromised authorization tokens and CSRF attacks.
-			enable_binding_cookie?: bool
 
 			// The background color of the App Launcher header.
 			header_bg_color?: string
@@ -431,6 +402,34 @@ package data
 			// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
 			// "infrastructure", "rdp", "mcp", "mcp_portal".
 			type?: string
+			cors_headers?: close({
+				// Allows all HTTP request headers.
+				allow_all_headers?: bool
+
+				// Allows all HTTP request methods.
+				allow_all_methods?: bool
+
+				// Allows all origins.
+				allow_all_origins?: bool
+
+				// When set to `true`, includes credentials (cookies,
+				// authorization headers, or TLS client certificates) with
+				// requests.
+				allow_credentials?: bool
+
+				// Allowed HTTP request headers.
+				allowed_headers?: [...string]
+
+				// Allowed HTTP request methods.
+				allowed_methods?: [...string]
+
+				// Allowed origins.
+				allowed_origins?: [...string]
+
+				// The maximum number of seconds the results of a preflight
+				// request can be cached.
+				max_age?: number
+			})
 			policies?: matchN(1, [close({
 				// Administrators who can approve a temporary authentication
 				// request.
@@ -2387,34 +2386,53 @@ package data
 				target_attributes?: [string]: [...string]
 			})]])
 		}), [...close({
-			cors_headers?: close({
-				// Allows all HTTP request headers.
-				allow_all_headers?: bool
+			// When set to true, users can authenticate to this application
+			// using their WARP session. When set to false this application
+			// will always require direct IdP authentication. This setting
+			// always overrides the organization setting for WARP
+			// authentication.
+			allow_authenticate_via_warp?: bool
 
-				// Allows all HTTP request methods.
-				allow_all_methods?: bool
+			// Enables loading application content in an iFrame.
+			allow_iframe?: bool
 
-				// Allows all origins.
-				allow_all_origins?: bool
+			// The identity providers your users can select when connecting to
+			// this application. Defaults to all IdPs configured in your
+			// account.
+			allowed_idps?: [...string]
 
-				// When set to `true`, includes credentials (cookies,
-				// authorization headers, or TLS client certificates) with
-				// requests.
-				allow_credentials?: bool
+			// The image URL of the logo shown in the App Launcher header.
+			app_launcher_logo_url?: string
 
-				// Allowed HTTP request headers.
-				allowed_headers?: [...string]
+			// Displays the application in the App Launcher.
+			app_launcher_visible?: bool
 
-				// Allowed HTTP request methods.
-				allowed_methods?: [...string]
+			// Audience tag.
+			aud?: string
 
-				// Allowed origins.
-				allowed_origins?: [...string]
+			// When set to `true`, users skip the identity provider selection
+			// step during login. You must specify only one identity provider
+			// in allowed_idps.
+			auto_redirect_to_identity?: bool
 
-				// The maximum number of seconds the results of a preflight
-				// request can be cached.
-				max_age?: number
-			})
+			// The background color of the App Launcher page.
+			bg_color?: string
+
+			// The custom error message shown to a user when they are denied
+			// access to the application.
+			custom_deny_message?: string
+
+			// The custom URL a user is redirected to when they are denied
+			// access to the application when failing identity-based rules.
+			custom_deny_url?: string
+
+			// The custom URL a user is redirected to when they are denied
+			// access to the application when failing non-identity rules.
+			custom_non_identity_deny_url?: string
+
+			// The custom pages that will be displayed when applicable for
+			// this application
+			custom_pages?: [...string]
 
 			// List of destinations secured by Access. This supersedes
 			// `self_hosted_domains` to allow for more flexibility in
@@ -2488,6 +2506,14 @@ package data
 				vnet_id?: string
 			})]])
 
+			// The primary hostname and path secured by Access. This domain
+			// will be displayed if the app is visible in the App Launcher.
+			domain?: string
+
+			// Enables the binding cookie, which increases security against
+			// compromised authorization tokens and CSRF attacks.
+			enable_binding_cookie?: bool
+
 			// The links in the App Launcher footer.
 			footer_links?: matchN(1, [close({
 				// The hypertext in the footer link.
@@ -2502,62 +2528,6 @@ package data
 				// the hyperlink in the footer link.
 				url?: string
 			})]])
-
-			// When set to true, users can authenticate to this application
-			// using their WARP session. When set to false this application
-			// will always require direct IdP authentication. This setting
-			// always overrides the organization setting for WARP
-			// authentication.
-			allow_authenticate_via_warp?: bool
-
-			// Enables loading application content in an iFrame.
-			allow_iframe?: bool
-
-			// The identity providers your users can select when connecting to
-			// this application. Defaults to all IdPs configured in your
-			// account.
-			allowed_idps?: [...string]
-
-			// The image URL of the logo shown in the App Launcher header.
-			app_launcher_logo_url?: string
-
-			// Displays the application in the App Launcher.
-			app_launcher_visible?: bool
-
-			// Audience tag.
-			aud?: string
-
-			// When set to `true`, users skip the identity provider selection
-			// step during login. You must specify only one identity provider
-			// in allowed_idps.
-			auto_redirect_to_identity?: bool
-
-			// The background color of the App Launcher page.
-			bg_color?: string
-
-			// The custom error message shown to a user when they are denied
-			// access to the application.
-			custom_deny_message?: string
-
-			// The custom URL a user is redirected to when they are denied
-			// access to the application when failing identity-based rules.
-			custom_deny_url?: string
-
-			// The custom URL a user is redirected to when they are denied
-			// access to the application when failing non-identity rules.
-			custom_non_identity_deny_url?: string
-
-			// The custom pages that will be displayed when applicable for
-			// this application
-			custom_pages?: [...string]
-
-			// The primary hostname and path secured by Access. This domain
-			// will be displayed if the app is visible in the App Launcher.
-			domain?: string
-
-			// Enables the binding cookie, which increases security against
-			// compromised authorization tokens and CSRF attacks.
-			enable_binding_cookie?: bool
 
 			// The background color of the App Launcher header.
 			header_bg_color?: string
@@ -2785,6 +2755,34 @@ package data
 			// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
 			// "infrastructure", "rdp", "mcp", "mcp_portal".
 			type?: string
+			cors_headers?: close({
+				// Allows all HTTP request headers.
+				allow_all_headers?: bool
+
+				// Allows all HTTP request methods.
+				allow_all_methods?: bool
+
+				// Allows all origins.
+				allow_all_origins?: bool
+
+				// When set to `true`, includes credentials (cookies,
+				// authorization headers, or TLS client certificates) with
+				// requests.
+				allow_credentials?: bool
+
+				// Allowed HTTP request headers.
+				allowed_headers?: [...string]
+
+				// Allowed HTTP request methods.
+				allowed_methods?: [...string]
+
+				// Allowed origins.
+				allowed_origins?: [...string]
+
+				// The maximum number of seconds the results of a preflight
+				// request can be cached.
+				max_age?: number
+			})
 			policies?: matchN(1, [close({
 				// Administrators who can approve a temporary authentication
 				// request.

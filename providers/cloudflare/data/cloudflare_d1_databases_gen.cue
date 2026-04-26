@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_d1_databases")
 	close({
 		// Account identifier tag.
-		account_id!: string
+		account_id?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number
@@ -22,6 +22,12 @@ package data
 			// D1 database identifier (UUID).
 			id?: string
 
+			// Specify the location to restrict the D1 database to run and
+			// store data. If this option is present, the location hint is
+			// ignored.
+			// Available values: "eu", "fedramp".
+			jurisdiction?: string
+
 			// D1 database name.
 			name?: string
 
@@ -35,6 +41,12 @@ package data
 
 			// D1 database identifier (UUID).
 			id?: string
+
+			// Specify the location to restrict the D1 database to run and
+			// store data. If this option is present, the location hint is
+			// ignored.
+			// Available values: "eu", "fedramp".
+			jurisdiction?: string
 
 			// D1 database name.
 			name?: string

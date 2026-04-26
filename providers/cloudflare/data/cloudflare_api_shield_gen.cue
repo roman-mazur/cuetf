@@ -30,6 +30,6 @@ package data
 		normalize?: bool
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 	})
 }

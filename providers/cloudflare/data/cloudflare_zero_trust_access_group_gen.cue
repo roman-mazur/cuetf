@@ -4,6 +4,23 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_access_group")
 	close({
+		// The Account ID to use for this endpoint. Mutually exclusive
+		// with the Zone ID.
+		account_id?: string
+
+		// UUID.
+		group_id?: string
+
+		// UUID.
+		id?: string
+
+		// The name of the Access group.
+		name?: string
+
+		// The Zone ID to use for this endpoint. Mutually exclusive with
+		// the Account ID.
+		zone_id?: string
+
 		// Rules evaluated with a NOT logical operator. To match a policy,
 		// a user cannot meet any of the Exclude rules.
 		exclude?: matchN(1, [close({
@@ -135,6 +152,11 @@ package data
 				// The ID of a Service Token.
 				token_id?: string
 			})
+			user_risk_score?: close({
+				// A list of risk score levels to match. Values can be low,
+				// medium, high, or unscored.
+				user_risk_score?: [...string]
+			})
 		}), [...close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
@@ -264,17 +286,12 @@ package data
 				// The ID of a Service Token.
 				token_id?: string
 			})
+			user_risk_score?: close({
+				// A list of risk score levels to match. Values can be low,
+				// medium, high, or unscored.
+				user_risk_score?: [...string]
+			})
 		})]])
-
-		// The Account ID to use for this endpoint. Mutually exclusive
-		// with the Zone ID.
-		account_id?: string
-
-		// UUID.
-		group_id?: string
-
-		// UUID.
-		id?: string
 
 		// Rules evaluated with an OR logical operator. A user needs to
 		// meet only one of the Include rules.
@@ -407,6 +424,11 @@ package data
 				// The ID of a Service Token.
 				token_id?: string
 			})
+			user_risk_score?: close({
+				// A list of risk score levels to match. Values can be low,
+				// medium, high, or unscored.
+				user_risk_score?: [...string]
+			})
 		}), [...close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
@@ -535,6 +557,11 @@ package data
 			service_token?: close({
 				// The ID of a Service Token.
 				token_id?: string
+			})
+			user_risk_score?: close({
+				// A list of risk score levels to match. Values can be low,
+				// medium, high, or unscored.
+				user_risk_score?: [...string]
 			})
 		})]])
 
@@ -669,6 +696,11 @@ package data
 				// The ID of a Service Token.
 				token_id?: string
 			})
+			user_risk_score?: close({
+				// A list of risk score levels to match. Values can be low,
+				// medium, high, or unscored.
+				user_risk_score?: [...string]
+			})
 		}), [...close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
@@ -798,10 +830,12 @@ package data
 				// The ID of a Service Token.
 				token_id?: string
 			})
+			user_risk_score?: close({
+				// A list of risk score levels to match. Values can be low,
+				// medium, high, or unscored.
+				user_risk_score?: [...string]
+			})
 		})]])
-
-		// The name of the Access group.
-		name?: string
 
 		// Rules evaluated with an AND logical operator. To match a
 		// policy, a user must meet all of the Require rules.
@@ -934,6 +968,11 @@ package data
 				// The ID of a Service Token.
 				token_id?: string
 			})
+			user_risk_score?: close({
+				// A list of risk score levels to match. Values can be low,
+				// medium, high, or unscored.
+				user_risk_score?: [...string]
+			})
 		}), [...close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
@@ -1063,11 +1102,12 @@ package data
 				// The ID of a Service Token.
 				token_id?: string
 			})
+			user_risk_score?: close({
+				// A list of risk score levels to match. Values can be low,
+				// medium, high, or unscored.
+				user_risk_score?: [...string]
+			})
 		})]])
-
-		// The Zone ID to use for this endpoint. Mutually exclusive with
-		// the Account ID.
-		zone_id?: string
 		filter?: close({
 			// The name of the group.
 			name?: string

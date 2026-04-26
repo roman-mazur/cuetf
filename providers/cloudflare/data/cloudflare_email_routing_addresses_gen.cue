@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_email_routing_addresses")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Sorts results in an ascending or descending order.
 		// Available values: "asc", "desc".

@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_email_routing_address")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// The date and time the destination address has been created.
 		created?: string

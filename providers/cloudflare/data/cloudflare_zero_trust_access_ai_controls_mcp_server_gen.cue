@@ -4,7 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_access_ai_controls_mcp_server")
 	close({
-		account_id!: string
+		account_id?: string
 
 		// Available values: "oauth", "bearer", "unauthenticated".
 		auth_type?:   string
@@ -32,5 +32,27 @@ package data
 			// Search by id, name
 			search?: string
 		})
+		updated_prompts?: matchN(1, [close({
+			alias?:       string
+			description?: string
+			enabled?:     bool
+			name?:        string
+		}), [...close({
+			alias?:       string
+			description?: string
+			enabled?:     bool
+			name?:        string
+		})]])
+		updated_tools?: matchN(1, [close({
+			alias?:       string
+			description?: string
+			enabled?:     bool
+			name?:        string
+		}), [...close({
+			alias?:       string
+			description?: string
+			enabled?:     bool
+			name?:        string
+		})]])
 	})
 }

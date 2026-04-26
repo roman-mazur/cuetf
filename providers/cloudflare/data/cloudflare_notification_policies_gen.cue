@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_notification_policies")
 	close({
 		// The account id
-		account_id!: string
+		account_id?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number
@@ -30,7 +30,8 @@ package data
 			// "bot_traffic_basic_alert", "brand_protection_alert",
 			// "brand_protection_digest", "clickhouse_alert_fw_anomaly",
 			// "clickhouse_alert_fw_ent_anomaly",
-			// "cloudforce_one_request_notification", "custom_analytics",
+			// "cloudforce_one_request_notification",
+			// "cni_maintenance_notification", "custom_analytics",
 			// "custom_bot_detection_alert",
 			// "custom_ssl_certificate_event_type",
 			// "dedicated_ssl_certificate_event_type",
@@ -262,7 +263,8 @@ package data
 			// "bot_traffic_basic_alert", "brand_protection_alert",
 			// "brand_protection_digest", "clickhouse_alert_fw_anomaly",
 			// "clickhouse_alert_fw_ent_anomaly",
-			// "cloudforce_one_request_notification", "custom_analytics",
+			// "cloudforce_one_request_notification",
+			// "cni_maintenance_notification", "custom_analytics",
 			// "custom_bot_detection_alert",
 			// "custom_ssl_certificate_event_type",
 			// "dedicated_ssl_certificate_event_type",

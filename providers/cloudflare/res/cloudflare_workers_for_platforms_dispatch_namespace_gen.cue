@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_workers_for_platforms_dispatch_namespace")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Identifier.
 		created_by?: string

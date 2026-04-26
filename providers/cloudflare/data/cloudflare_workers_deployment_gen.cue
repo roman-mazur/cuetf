@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workers_deployment")
 	close({
 		// Identifier.
-		account_id!:    string
+		account_id?:    string
 		author_email?:  string
 		created_on?:    string
 		deployment_id!: string
@@ -18,8 +18,8 @@ package data
 		// Available values: "percentage".
 		strategy?: string
 		annotations?: close({
-			// Human-readable message about the deployment. Truncated to 100
-			// bytes.
+			// Human-readable message about the deployment. Truncated to 1000
+			// bytes if longer.
 			workers_message?: string
 
 			// Operation that triggered the creation of the deployment.

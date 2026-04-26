@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_dns_zone_transfers_peer")
 	close({
-		account_id!: string
+		account_id?: string
 		id?:         string
 
 		// IPv4/IPv6 address of primary or secondary nameserver, depending

@@ -4,7 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_device_posture_rules")
 	close({
-		account_id!: string
+		account_id?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number
@@ -42,6 +42,10 @@ package data
 			input?: close({
 				// The Number of active threats.
 				active_threats?: number
+
+				// The set of Kolide device authentication states that pass the
+				// posture check. Device must match one of the specified states.
+				auth_state?: [...string]
 
 				// UUID of Cloudflare managed certificate.
 				certificate_id?: string
@@ -239,6 +243,10 @@ package data
 			input?: close({
 				// The Number of active threats.
 				active_threats?: number
+
+				// The set of Kolide device authentication states that pass the
+				// posture check. Device must match one of the specified states.
+				auth_state?: [...string]
 
 				// UUID of Cloudflare managed certificate.
 				certificate_id?: string

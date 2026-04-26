@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_device_settings")
 	close({
-		account_id!: string
+		account_id?: string
 
 		// Sets the time limit, in seconds, that a user can use an
 		// override code to bypass WARP.

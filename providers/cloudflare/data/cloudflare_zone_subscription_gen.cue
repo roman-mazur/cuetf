@@ -33,7 +33,7 @@ package data
 		state?: string
 
 		// Identifier
-		zone_id!: string
+		zone_id?: string
 
 		// The rate plan applied to the subscription.
 		rate_plan?: close({

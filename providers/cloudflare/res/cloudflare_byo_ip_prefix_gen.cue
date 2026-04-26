@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_byo_ip_prefix")
 	close({
 		// Identifier of a Cloudflare account.
-		account_id!: string
+		account_id?: string
 
 		// Approval state of the prefix (P = pending, V = active).
 		approved?: string

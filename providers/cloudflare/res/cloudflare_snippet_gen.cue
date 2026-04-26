@@ -20,7 +20,7 @@ package res
 		snippet_name!: string
 
 		// Use this field to specify the unique ID of the zone.
-		zone_id!: string
+		zone_id?: string
 
 		// Provide metadata about the snippet.
 		metadata!: close({

@@ -27,7 +27,7 @@ package res
 		secondary_overrides?: bool
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// Whether the zone mode is a regular or CDN/DNS only zone.
 		// Available values: "standard", "cdn_only", "dns_only".

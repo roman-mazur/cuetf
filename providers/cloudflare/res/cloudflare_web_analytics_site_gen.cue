@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_web_analytics_site")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// If enabled, the JavaScript snippet is automatically injected
 		// for orange-clouded sites.

@@ -4,10 +4,14 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_ai_search_tokens")
 	close({
-		account_id!: string
+		account_id?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number
+
+		// Filter tokens whose name contains this string
+		// (case-insensitive).
+		search?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({

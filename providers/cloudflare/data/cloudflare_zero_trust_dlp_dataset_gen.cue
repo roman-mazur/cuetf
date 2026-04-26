@@ -4,7 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dlp_dataset")
 	close({
-		account_id!:     string
+		account_id?:     string
 		case_sensitive?: bool
 		created_at?:     string
 		dataset_id!:     string

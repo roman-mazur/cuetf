@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_access_infrastructure_targets")
 	close({
 		// Account identifier
-		account_id!: string
+		account_id?: string
 
 		// Date and time at which the target was created after (inclusive)
 		created_after?: string

@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workers_script_subdomain")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Whether the Worker is available on the workers.dev subdomain.
 		enabled?: bool

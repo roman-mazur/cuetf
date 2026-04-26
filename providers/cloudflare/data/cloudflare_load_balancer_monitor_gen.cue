@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_load_balancer_monitor")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Do not validate the certificate when monitor use HTTPS. This
 		// parameter is currently only valid for HTTP and HTTPS monitors.

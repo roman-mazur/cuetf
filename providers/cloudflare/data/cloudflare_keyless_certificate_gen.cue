@@ -38,7 +38,7 @@ package data
 		status?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// Configuration for using Keyless SSL through a Cloudflare Tunnel
 		tunnel?: close({

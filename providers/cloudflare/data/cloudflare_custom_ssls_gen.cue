@@ -17,7 +17,7 @@ package data
 		status?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -28,6 +28,9 @@ package data
 			// but does not otherwise modify it.
 			// Available values: "ubiquitous", "optimal", "force".
 			bundle_method?: string
+
+			// The identifier for the Custom CSR that was used.
+			custom_csr_id?: string
 
 			// When the certificate from the authority expires.
 			expires_on?: string
@@ -135,6 +138,9 @@ package data
 			// but does not otherwise modify it.
 			// Available values: "ubiquitous", "optimal", "force".
 			bundle_method?: string
+
+			// The identifier for the Custom CSR that was used.
+			custom_csr_id?: string
 
 			// When the certificate from the authority expires.
 			expires_on?: string

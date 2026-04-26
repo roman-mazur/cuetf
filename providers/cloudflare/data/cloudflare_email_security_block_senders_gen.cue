@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_email_security_block_senders")
 	close({
 		// Account Identifier
-		account_id!: string
+		account_id?: string
 
 		// The sorting direction.
 		// Available values: "asc", "desc".

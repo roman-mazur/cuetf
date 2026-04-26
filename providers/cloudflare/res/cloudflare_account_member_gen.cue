@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_account_member")
 	close({
 		// Account identifier tag.
-		account_id!: string
+		account_id?: string
 
 		// The contact email address of the user.
 		email!: string

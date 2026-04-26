@@ -22,6 +22,6 @@ package data
 
 		// The serial number of the SOA for the given zone.
 		soa_serial?: number
-		zone_id!:    string
+		zone_id?:    string
 	})
 }

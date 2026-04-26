@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_list_items")
 	close({
 		// The Account ID for this resource.
-		account_id!: string
+		account_id?: string
 
 		// The unique ID of the list.
 		list_id!: string

@@ -5,16 +5,29 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workers")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number
+
+		// Sort direction.
+		// Available values: "asc", "desc".
+		order?: string
+
+		// Property to sort results by.
+		// Available values: "deployed_on", "updated_on", "created_on",
+		// "name".
+		order_by?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// When the Worker was created.
 			created_on?: string
 
+			// When the Worker's most recent deployment was created. `null` if
+			// the Worker has never been deployed.
+			deployed_on?: string
+
 			// Immutable ID of the Worker.
 			id?: string
 
@@ -23,6 +36,12 @@ package data
 
 			// Name of the Worker.
 			name?: string
+
+			// Tags associated with the Worker.
+			tags?: [...string]
+
+			// When the Worker was most recently updated.
+			updated_on?: string
 
 			// Observability settings for the Worker.
 			observability?: close({
@@ -35,6 +54,9 @@ package data
 
 				// Log settings for the Worker.
 				logs?: close({
+					// A list of destinations where logs will be exported to.
+					destinations?: [...string]
+
 					// Whether logs are enabled for the Worker.
 					enabled?: bool
 
@@ -45,6 +67,25 @@ package data
 					// logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs)
 					// are enabled for the Worker.
 					invocation_logs?: bool
+
+					// Whether log persistence is enabled for the Worker.
+					persist?: bool
+				})
+
+				// Trace settings for the Worker.
+				traces?: close({
+					// A list of destinations where traces will be exported to.
+					destinations?: [...string]
+
+					// Whether traces are enabled for the Worker.
+					enabled?: bool
+
+					// The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 =
+					// 10%).
+					head_sampling_rate?: number
+
+					// Whether trace persistence is enabled for the Worker.
+					persist?: bool
 				})
 			})
 
@@ -189,9 +230,6 @@ package data
 				previews_enabled?: bool
 			})
 
-			// Tags associated with the Worker.
-			tags?: [...string]
-
 			// Other Workers that should consume logs from the Worker.
 			tail_consumers?: matchN(1, [close({
 				// Name of the consumer Worker.
@@ -200,13 +238,14 @@ package data
 				// Name of the consumer Worker.
 				name?: string
 			})]])
-
-			// When the Worker was most recently updated.
-			updated_on?: string
 		}), [...close({
 			// When the Worker was created.
 			created_on?: string
 
+			// When the Worker's most recent deployment was created. `null` if
+			// the Worker has never been deployed.
+			deployed_on?: string
+
 			// Immutable ID of the Worker.
 			id?: string
 
@@ -215,6 +254,12 @@ package data
 
 			// Name of the Worker.
 			name?: string
+
+			// Tags associated with the Worker.
+			tags?: [...string]
+
+			// When the Worker was most recently updated.
+			updated_on?: string
 
 			// Observability settings for the Worker.
 			observability?: close({
@@ -227,6 +272,9 @@ package data
 
 				// Log settings for the Worker.
 				logs?: close({
+					// A list of destinations where logs will be exported to.
+					destinations?: [...string]
+
 					// Whether logs are enabled for the Worker.
 					enabled?: bool
 
@@ -237,6 +285,25 @@ package data
 					// logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs)
 					// are enabled for the Worker.
 					invocation_logs?: bool
+
+					// Whether log persistence is enabled for the Worker.
+					persist?: bool
+				})
+
+				// Trace settings for the Worker.
+				traces?: close({
+					// A list of destinations where traces will be exported to.
+					destinations?: [...string]
+
+					// Whether traces are enabled for the Worker.
+					enabled?: bool
+
+					// The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 =
+					// 10%).
+					head_sampling_rate?: number
+
+					// Whether trace persistence is enabled for the Worker.
+					persist?: bool
 				})
 			})
 
@@ -381,9 +448,6 @@ package data
 				previews_enabled?: bool
 			})
 
-			// Tags associated with the Worker.
-			tags?: [...string]
-
 			// Other Workers that should consume logs from the Worker.
 			tail_consumers?: matchN(1, [close({
 				// Name of the consumer Worker.
@@ -392,9 +456,6 @@ package data
 				// Name of the consumer Worker.
 				name?: string
 			})]])
-
-			// When the Worker was most recently updated.
-			updated_on?: string
 		})]])
 	})
 }

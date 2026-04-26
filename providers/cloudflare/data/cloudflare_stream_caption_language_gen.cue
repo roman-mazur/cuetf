@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_stream_caption_language")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Whether the caption was generated via AI.
 		generated?: bool

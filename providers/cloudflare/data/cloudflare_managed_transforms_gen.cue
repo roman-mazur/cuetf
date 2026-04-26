@@ -8,7 +8,7 @@ package data
 		id?: string
 
 		// The unique ID of the zone.
-		zone_id!: string
+		zone_id?: string
 
 		// The list of Managed Request Transforms.
 		managed_request_headers?: matchN(1, [close({

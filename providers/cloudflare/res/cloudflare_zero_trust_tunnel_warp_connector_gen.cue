@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_tunnel_warp_connector")
 	close({
 		// Cloudflare account ID
-		account_id!: string
+		account_id?: string
 
 		// Cloudflare account ID
 		account_tag?: string
@@ -25,6 +25,10 @@ package res
 		// Timestamp of when the resource was deleted. If `null`, the
 		// resource has not been deleted.
 		deleted_at?: string
+
+		// Indicates that the tunnel will be created to be highly
+		// available. If omitted, defaults to false.
+		ha?: bool
 
 		// UUID of the tunnel.
 		id?: string

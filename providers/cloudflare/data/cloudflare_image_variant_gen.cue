@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_image_variant")
 	close({
 		// Account identifier tag.
-		account_id!: string
+		account_id?: string
 		id?:         string
 		variant_id!: string
 		variant?: close({

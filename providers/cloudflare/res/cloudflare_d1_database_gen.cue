@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_d1_database")
 	close({
 		// Account identifier tag.
-		account_id!: string
+		account_id?: string
 
 		// Specifies the timestamp the resource was created as an ISO8601
 		// string.

@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_tunnel_cloudflared_config")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 		created_at?: string
 
 		// Indicates if this is a locally or remotely configured tunnel.

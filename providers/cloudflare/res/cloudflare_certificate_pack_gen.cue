@@ -51,7 +51,7 @@ package res
 		validity_days!: number
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// Array of certificates in this pack.
 		certificates?: matchN(1, [close({

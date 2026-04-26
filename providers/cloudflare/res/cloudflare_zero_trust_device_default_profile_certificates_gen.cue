@@ -7,6 +7,6 @@ package res
 		// The current status of the device policy certificate
 		// provisioning feature for WARP clients.
 		enabled!: bool
-		zone_id!: string
+		zone_id?: string
 	})
 }

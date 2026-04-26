@@ -4,7 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_gateway_policies")
 	close({
-		account_id!: string
+		account_id?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number
@@ -111,6 +111,16 @@ package data
 			// check whether the API modifies the value. Use API-returned
 			// values in your configuration to prevent drift.
 			rule_settings?: close({
+				// Add custom headers to allowed requests as key-value pairs. Use
+				// header names as keys that map to arrays of header values.
+				// Settable only for `http` rules with the action set to `allow`.
+				add_headers?: [string]: [...string]
+
+				// Set to enable MSP children to bypass this rule. Only parent MSP
+				// accounts can set this. this rule. Settable for all types of
+				// rules.
+				allow_child_bypass?: bool
+
 				// Define the settings for the Audit SSH action. Settable only for
 				// `l4` rules with `audit_ssh` action.
 				audit_ssh?: close({
@@ -141,8 +151,9 @@ package data
 					dk?: bool
 
 					// Configure download behavior. When set to remote_only, users can
-					// view downloads but cannot save them. Applies only when version
-					// == "v2".
+					// view downloads but cannot save them. If this field is absent,
+					// downloading remains enabled. Applies only when version ==
+					// "v2".
 					// Available values: "enabled", "disabled", "remote_only".
 					download?: string
 
@@ -181,6 +192,11 @@ package data
 					// apply.
 					// Available values: "v1", "v2".
 					version?: string
+
+					// Specify the watermark ID (UUID) to apply to the isolated
+					// browser session. When present, enables watermark rendering in
+					// the isolated browser.
+					wm_id?: string
 				})
 
 				// Configure custom block page settings. If missing or null, use
@@ -194,6 +210,20 @@ package data
 					// Specify the URI to which the user is redirected.
 					target_uri?: string
 				})
+
+				// Enable the custom block page. Settable only for `dns` rules
+				// with action `block`.
+				block_page_enabled?: bool
+
+				// Explain why the rule blocks the request. The custom block page
+				// shows this text (if enabled). Settable only for `dns`, `l4`,
+				// and `http` rules when the action set to `block`.
+				block_reason?: string
+
+				// Set to enable MSP accounts to bypass their parent's rules. Only
+				// MSP child accounts can set this. Settable for all types of
+				// rules.
+				bypass_parent_rule?: bool
 
 				// Configure session check behavior. Settable only for `l4` and
 				// `http` rules with the action set to `allow`.
@@ -276,30 +306,6 @@ package data
 						vnet_id?: string
 					})]])
 				})
-
-				// Add custom headers to allowed requests as key-value pairs. Use
-				// header names as keys that map to arrays of header values.
-				// Settable only for `http` rules with the action set to `allow`.
-				add_headers?: [string]: [...string]
-
-				// Set to enable MSP children to bypass this rule. Only parent MSP
-				// accounts can set this. this rule. Settable for all types of
-				// rules.
-				allow_child_bypass?: bool
-
-				// Enable the custom block page. Settable only for `dns` rules
-				// with action `block`.
-				block_page_enabled?: bool
-
-				// Explain why the rule blocks the request. The custom block page
-				// shows this text (if enabled). Settable only for `dns`, `l4`,
-				// and `http` rules when the action set to `block`.
-				block_reason?: string
-
-				// Set to enable MSP accounts to bypass their parent's rules. Only
-				// MSP child accounts can set this. Settable for all types of
-				// rules.
-				bypass_parent_rule?: bool
 
 				// Configure how Gateway Proxy traffic egresses. You can enable
 				// this setting for rules with Egress actions and filters, or
@@ -613,6 +619,16 @@ package data
 			// check whether the API modifies the value. Use API-returned
 			// values in your configuration to prevent drift.
 			rule_settings?: close({
+				// Add custom headers to allowed requests as key-value pairs. Use
+				// header names as keys that map to arrays of header values.
+				// Settable only for `http` rules with the action set to `allow`.
+				add_headers?: [string]: [...string]
+
+				// Set to enable MSP children to bypass this rule. Only parent MSP
+				// accounts can set this. this rule. Settable for all types of
+				// rules.
+				allow_child_bypass?: bool
+
 				// Define the settings for the Audit SSH action. Settable only for
 				// `l4` rules with `audit_ssh` action.
 				audit_ssh?: close({
@@ -643,8 +659,9 @@ package data
 					dk?: bool
 
 					// Configure download behavior. When set to remote_only, users can
-					// view downloads but cannot save them. Applies only when version
-					// == "v2".
+					// view downloads but cannot save them. If this field is absent,
+					// downloading remains enabled. Applies only when version ==
+					// "v2".
 					// Available values: "enabled", "disabled", "remote_only".
 					download?: string
 
@@ -683,6 +700,11 @@ package data
 					// apply.
 					// Available values: "v1", "v2".
 					version?: string
+
+					// Specify the watermark ID (UUID) to apply to the isolated
+					// browser session. When present, enables watermark rendering in
+					// the isolated browser.
+					wm_id?: string
 				})
 
 				// Configure custom block page settings. If missing or null, use
@@ -696,6 +718,20 @@ package data
 					// Specify the URI to which the user is redirected.
 					target_uri?: string
 				})
+
+				// Enable the custom block page. Settable only for `dns` rules
+				// with action `block`.
+				block_page_enabled?: bool
+
+				// Explain why the rule blocks the request. The custom block page
+				// shows this text (if enabled). Settable only for `dns`, `l4`,
+				// and `http` rules when the action set to `block`.
+				block_reason?: string
+
+				// Set to enable MSP accounts to bypass their parent's rules. Only
+				// MSP child accounts can set this. Settable for all types of
+				// rules.
+				bypass_parent_rule?: bool
 
 				// Configure session check behavior. Settable only for `l4` and
 				// `http` rules with the action set to `allow`.
@@ -778,30 +814,6 @@ package data
 						vnet_id?: string
 					})]])
 				})
-
-				// Add custom headers to allowed requests as key-value pairs. Use
-				// header names as keys that map to arrays of header values.
-				// Settable only for `http` rules with the action set to `allow`.
-				add_headers?: [string]: [...string]
-
-				// Set to enable MSP children to bypass this rule. Only parent MSP
-				// accounts can set this. this rule. Settable for all types of
-				// rules.
-				allow_child_bypass?: bool
-
-				// Enable the custom block page. Settable only for `dns` rules
-				// with action `block`.
-				block_page_enabled?: bool
-
-				// Explain why the rule blocks the request. The custom block page
-				// shows this text (if enabled). Settable only for `dns`, `l4`,
-				// and `http` rules when the action set to `block`.
-				block_reason?: string
-
-				// Set to enable MSP accounts to bypass their parent's rules. Only
-				// MSP child accounts can set this. Settable for all types of
-				// rules.
-				bypass_parent_rule?: bool
 
 				// Configure how Gateway Proxy traffic egresses. You can enable
 				// this setting for rules with Egress actions and filters, or

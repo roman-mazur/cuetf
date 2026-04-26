@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_tunnel_cloudflareds")
 	close({
 		// Cloudflare account ID
-		account_id!:     string
+		account_id?:     string
 		exclude_prefix?: string
 
 		// If provided, include only resources that were created (and not

@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_load_balancer_pools")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number
@@ -19,6 +19,7 @@ package data
 			// A list of regions from which to run health checks. Null means
 			// every Cloudflare data center.
 			check_regions?: [...string]
+			created_on?: string
 
 			// A human-readable description of the pool.
 			description?: string
@@ -32,11 +33,47 @@ package data
 			// checks. Disabling a pool will cause any load balancers using
 			// it to failover to the next pool (if any).
 			enabled?: bool
+			id?:      string
 
 			// The latitude of the data center containing the origins used in
 			// this pool in decimal degrees. If this is set, longitude must
 			// also be set.
 			latitude?: number
+
+			// The longitude of the data center containing the origins used in
+			// this pool in decimal degrees. If this is set, latitude must
+			// also be set.
+			longitude?: number
+
+			// The minimum number of origins that must be healthy for this
+			// pool to serve traffic. If the number of healthy origins falls
+			// below this number, the pool will be marked unhealthy and will
+			// failover to the next available pool.
+			minimum_origins?: number
+			modified_on?:     string
+
+			// The ID of the Monitor to use for checking the health of origins
+			// within this pool.
+			monitor?: string
+
+			// The ID of the Monitor Group to use for checking the health of
+			// origins within this pool.
+			monitor_group?: string
+
+			// A short name (tag) for the pool. Only alphanumeric characters,
+			// hyphens, and underscores are allowed.
+			name?: string
+
+			// List of networks where Load Balancer or Pool is enabled.
+			networks?: [...string]
+
+			// This field is now deprecated. It has been moved to Cloudflare's
+			// Centralized Notification service
+			// https://developers.cloudflare.com/fundamentals/notifications/.
+			// The email address to send health status notifications to. This
+			// can be an individual mailbox or a mailing list. Multiple
+			// emails can be supplied as a comma delimited list.
+			notification_email?: string
 
 			// Configures load shedding policies and percentages for the pool.
 			load_shedding?: close({
@@ -61,40 +98,6 @@ package data
 				// Available values: "hash".
 				session_policy?: string
 			})
-
-			// The longitude of the data center containing the origins used in
-			// this pool in decimal degrees. If this is set, latitude must
-			// also be set.
-			longitude?: number
-
-			// The minimum number of origins that must be healthy for this
-			// pool to serve traffic. If the number of healthy origins falls
-			// below this number, the pool will be marked unhealthy and will
-			// failover to the next available pool.
-			minimum_origins?: number
-
-			// The ID of the Monitor to use for checking the health of origins
-			// within this pool.
-			monitor?: string
-
-			// The ID of the Monitor Group to use for checking the health of
-			// origins within this pool.
-			monitor_group?: string
-
-			// A short name (tag) for the pool. Only alphanumeric characters,
-			// hyphens, and underscores are allowed.
-			name?: string
-
-			// List of networks where Load Balancer or Pool is enabled.
-			networks?: [...string]
-
-			// This field is now deprecated. It has been moved to Cloudflare's
-			// Centralized Notification service
-			// https://developers.cloudflare.com/fundamentals/notifications/.
-			// The email address to send health status notifications to. This
-			// can be an individual mailbox or a mailing list. Multiple
-			// emails can be supplied as a comma delimited list.
-			notification_email?: string
 
 			// Filter pool and origin health notifications by resource type or
 			// health status. Use null to reset.
@@ -169,6 +172,14 @@ package data
 				// current pool.
 				enabled?: bool
 
+				// Whether to flatten CNAME records for this origin, resolving
+				// them to A/AAAA records before returning to the client. When
+				// true (the default), the director resolves CNAME addresses to
+				// their underlying A/AAAA records. When false, the origin
+				// address is returned as a raw CNAME record without resolution.
+				// This setting mirrors the DNS API record flatten_cname setting.
+				flatten_cname?: bool
+
 				// A human-identifiable name for the origin.
 				name?: string
 
@@ -215,6 +226,14 @@ package data
 				// current pool.
 				enabled?: bool
 
+				// Whether to flatten CNAME records for this origin, resolving
+				// them to A/AAAA records before returning to the client. When
+				// true (the default), the director resolves CNAME addresses to
+				// their underlying A/AAAA records. When false, the origin
+				// address is returned as a raw CNAME record without resolution.
+				// This setting mirrors the DNS API record flatten_cname setting.
+				flatten_cname?: bool
+
 				// A human-identifiable name for the origin.
 				name?: string
 
@@ -244,13 +263,11 @@ package data
 					host?: [...string]
 				})
 			})]])
-			created_on?:  string
-			id?:          string
-			modified_on?: string
 		}), [...close({
 			// A list of regions from which to run health checks. Null means
 			// every Cloudflare data center.
 			check_regions?: [...string]
+			created_on?: string
 
 			// A human-readable description of the pool.
 			description?: string
@@ -264,11 +281,47 @@ package data
 			// checks. Disabling a pool will cause any load balancers using
 			// it to failover to the next pool (if any).
 			enabled?: bool
+			id?:      string
 
 			// The latitude of the data center containing the origins used in
 			// this pool in decimal degrees. If this is set, longitude must
 			// also be set.
 			latitude?: number
+
+			// The longitude of the data center containing the origins used in
+			// this pool in decimal degrees. If this is set, latitude must
+			// also be set.
+			longitude?: number
+
+			// The minimum number of origins that must be healthy for this
+			// pool to serve traffic. If the number of healthy origins falls
+			// below this number, the pool will be marked unhealthy and will
+			// failover to the next available pool.
+			minimum_origins?: number
+			modified_on?:     string
+
+			// The ID of the Monitor to use for checking the health of origins
+			// within this pool.
+			monitor?: string
+
+			// The ID of the Monitor Group to use for checking the health of
+			// origins within this pool.
+			monitor_group?: string
+
+			// A short name (tag) for the pool. Only alphanumeric characters,
+			// hyphens, and underscores are allowed.
+			name?: string
+
+			// List of networks where Load Balancer or Pool is enabled.
+			networks?: [...string]
+
+			// This field is now deprecated. It has been moved to Cloudflare's
+			// Centralized Notification service
+			// https://developers.cloudflare.com/fundamentals/notifications/.
+			// The email address to send health status notifications to. This
+			// can be an individual mailbox or a mailing list. Multiple
+			// emails can be supplied as a comma delimited list.
+			notification_email?: string
 
 			// Configures load shedding policies and percentages for the pool.
 			load_shedding?: close({
@@ -293,40 +346,6 @@ package data
 				// Available values: "hash".
 				session_policy?: string
 			})
-
-			// The longitude of the data center containing the origins used in
-			// this pool in decimal degrees. If this is set, latitude must
-			// also be set.
-			longitude?: number
-
-			// The minimum number of origins that must be healthy for this
-			// pool to serve traffic. If the number of healthy origins falls
-			// below this number, the pool will be marked unhealthy and will
-			// failover to the next available pool.
-			minimum_origins?: number
-
-			// The ID of the Monitor to use for checking the health of origins
-			// within this pool.
-			monitor?: string
-
-			// The ID of the Monitor Group to use for checking the health of
-			// origins within this pool.
-			monitor_group?: string
-
-			// A short name (tag) for the pool. Only alphanumeric characters,
-			// hyphens, and underscores are allowed.
-			name?: string
-
-			// List of networks where Load Balancer or Pool is enabled.
-			networks?: [...string]
-
-			// This field is now deprecated. It has been moved to Cloudflare's
-			// Centralized Notification service
-			// https://developers.cloudflare.com/fundamentals/notifications/.
-			// The email address to send health status notifications to. This
-			// can be an individual mailbox or a mailing list. Multiple
-			// emails can be supplied as a comma delimited list.
-			notification_email?: string
 
 			// Filter pool and origin health notifications by resource type or
 			// health status. Use null to reset.
@@ -401,6 +420,14 @@ package data
 				// current pool.
 				enabled?: bool
 
+				// Whether to flatten CNAME records for this origin, resolving
+				// them to A/AAAA records before returning to the client. When
+				// true (the default), the director resolves CNAME addresses to
+				// their underlying A/AAAA records. When false, the origin
+				// address is returned as a raw CNAME record without resolution.
+				// This setting mirrors the DNS API record flatten_cname setting.
+				flatten_cname?: bool
+
 				// A human-identifiable name for the origin.
 				name?: string
 
@@ -447,6 +474,14 @@ package data
 				// current pool.
 				enabled?: bool
 
+				// Whether to flatten CNAME records for this origin, resolving
+				// them to A/AAAA records before returning to the client. When
+				// true (the default), the director resolves CNAME addresses to
+				// their underlying A/AAAA records. When false, the origin
+				// address is returned as a raw CNAME record without resolution.
+				// This setting mirrors the DNS API record flatten_cname setting.
+				flatten_cname?: bool
+
 				// A human-identifiable name for the origin.
 				name?: string
 
@@ -476,9 +511,6 @@ package data
 					host?: [...string]
 				})
 			})]])
-			created_on?:  string
-			id?:          string
-			modified_on?: string
 		})]])
 	})
 }

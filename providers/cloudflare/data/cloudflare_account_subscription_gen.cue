@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_account_subscription")
 	close({
 		// Identifier
-		account_id!: string
+		account_id?: string
 
 		// The monetary unit in which pricing information is displayed.
 		currency?: string

@@ -23,6 +23,12 @@ package data
 		// Available values: "off", "policy_only".
 		cf_robots_variant?: string
 
+		// Enable rule to block content bots. When enabled, blocks
+		// automated traffic with low bot scores, excluding safe verified
+		// bot categories. Exceptions should be managed via skip rules.
+		// Available values: "block", "disabled".
+		content_bots_protection?: string
+
 		// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 		// Available values: "enabled", "disabled".
 		crawler_protection?: string
@@ -79,7 +85,7 @@ package data
 		using_latest_model?: bool
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// A read-only field that shows which unauthorized settings are
 		// currently active on the zone. These settings typically result

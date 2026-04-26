@@ -5,13 +5,17 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_stream")
 	close({
 		// The account identifier tag.
-		account_id!: string
+		account_id?: string
 
 		// Lists the origins allowed to display the video. Enter allowed
 		// origin domains in an array and use `*` for wildcard
 		// subdomains. Empty arrays allow the video to be viewed on any
 		// origin.
 		allowed_origins?: [...string]
+
+		// The unique identifier of the source video this video was
+		// clipped from.
+		clipped_from?: string
 
 		// The date and time the media item was created.
 		created?: string
@@ -35,6 +39,9 @@ package res
 		// Uploads that exceed the specified duration will fail during
 		// processing. A value of `-1` means the value is unknown.
 		max_duration_seconds?: number
+
+		// The maximum size in bytes for the video upload.
+		max_size_bytes?: number
 
 		// A user modifiable key-value store used to reference other
 		// systems of record for managing videos.
@@ -82,7 +89,8 @@ package res
 		// default thumbnail image is taken from 0s of the video.
 		thumbnail_timestamp_pct?: number
 
-		// A Cloudflare-generated unique identifier for a media item.
+		// The unique identifier for the video. Can be used to verify the
+		// video being updated.
 		uid?: string
 
 		// The date and time when the video upload URL is no longer valid
@@ -91,6 +99,15 @@ package res
 
 		// The date and time the media item was uploaded.
 		uploaded?: string
+
+		// Public details for the video including title, share link,
+		// channel link, and logo.
+		public_details?: close({
+			channel_link?: string
+			logo?:         string
+			share_link?:   string
+			title?:        string
+		})
 
 		// Specifies a detailed status for a video. If the `state` is
 		// `inprogress` or `error`, the `step` field returns `encoding`

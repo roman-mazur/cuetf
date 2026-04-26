@@ -11,6 +11,6 @@ package data
 		id?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 	})
 }

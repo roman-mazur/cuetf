@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_access_policies")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number
@@ -15,43 +15,6 @@ package data
 			// Number of access applications currently using this policy.
 			app_count?: number
 
-			// Requires the user to request access from an administrator at
-			// the start of each session.
-			approval_required?: bool
-			created_at?:        string
-
-			// The action Access will take if a user matches this policy.
-			// Infrastructure application policies can only use the Allow
-			// action.
-			// Available values: "allow", "deny", "non_identity", "bypass".
-			decision?: string
-
-			// The UUID of the policy
-			id?: string
-
-			// Require this application to be served in an isolated browser
-			// for users matching this policy. 'Client Web Isolation' must be
-			// on for the account in order to use this feature.
-			isolation_required?: bool
-
-			// The name of the Access policy.
-			name?: string
-
-			// A custom message that will appear on the purpose justification
-			// screen.
-			purpose_justification_prompt?: string
-
-			// Require users to enter a justification when they log in to the
-			// application.
-			purpose_justification_required?: bool
-			reusable?:                       bool
-
-			// The amount of time that tokens issued for the application will
-			// be valid. Must be in the format `300ms` or `2h45m`. Valid time
-			// units are: ns, us (or µs), ms, s, m, h.
-			session_duration?: string
-			updated_at?:       string
-
 			// Administrators who can approve a temporary authentication
 			// request.
 			approval_groups?: matchN(1, [close({
@@ -74,6 +37,10 @@ package data
 				email_list_uuid?: string
 			})]])
 
+			// Requires the user to request access from an administrator at
+			// the start of each session.
+			approval_required?: bool
+
 			// The rules that define how users may connect to targets secured
 			// by your application.
 			connection_rules?: close({
@@ -89,6 +56,12 @@ package data
 					allowed_clipboard_remote_to_local_formats?: [...string]
 				})
 			})
+
+			// The action Access will take if a user matches this policy.
+			// Infrastructure application policies can only use the Allow
+			// action.
+			// Available values: "allow", "deny", "non_identity", "bypass".
+			decision?: string
 
 			// Rules evaluated with a NOT logical operator. To match the
 			// policy, a user cannot meet any of the Exclude rules.
@@ -221,6 +194,11 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
@@ -350,7 +328,15 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			})]])
+
+			// The UUID of the policy
+			id?: string
 
 			// Rules evaluated with an OR logical operator. A user needs to
 			// meet only one of the Include rules.
@@ -483,6 +469,11 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
@@ -612,22 +603,43 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			})]])
+
+			// Require this application to be served in an isolated browser
+			// for users matching this policy. 'Client Web Isolation' must be
+			// on for the account in order to use this feature.
+			isolation_required?: bool
 
 			// Configures multi-factor authentication (MFA) settings.
 			mfa_config?: close({
 				// Lists the MFA methods that users can authenticate with.
 				allowed_authenticators?: [...string]
 
-				// Indicates whether to bypass MFA for this resource. This option
+				// Indicates whether to disable MFA for this resource. This option
 				// is available at the application and policy level.
-				mfa_bypass?: bool
+				mfa_disabled?: bool
 
 				// Defines the duration of an MFA session. Must be in minutes (m)
 				// or hours (h). Minimum: 0m. Maximum: 720h (30 days).
 				// Examples:`5m` or `24h`.
 				session_duration?: string
 			})
+
+			// The name of the Access policy.
+			name?: string
+
+			// A custom message that will appear on the purpose justification
+			// screen.
+			purpose_justification_prompt?: string
+
+			// Require users to enter a justification when they log in to the
+			// application.
+			purpose_justification_required?: bool
 
 			// Rules evaluated with an AND logical operator. To match the
 			// policy, a user must meet all of the Require rules.
@@ -760,6 +772,11 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
@@ -889,48 +906,24 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			})]])
+
+			// The amount of time that tokens issued for the application will
+			// be valid. Must be in the format `300ms` or `2h45m`. Valid time
+			// units are: ns, us (or µs), ms, s, m, h.
+			session_duration?: string
+			created_at?:       string
+			reusable?:         bool
+			updated_at?:       string
 		}), [...close({
 			// Number of access applications currently using this policy.
 			app_count?: number
 
-			// Requires the user to request access from an administrator at
-			// the start of each session.
-			approval_required?: bool
-			created_at?:        string
-
-			// The action Access will take if a user matches this policy.
-			// Infrastructure application policies can only use the Allow
-			// action.
-			// Available values: "allow", "deny", "non_identity", "bypass".
-			decision?: string
-
-			// The UUID of the policy
-			id?: string
-
-			// Require this application to be served in an isolated browser
-			// for users matching this policy. 'Client Web Isolation' must be
-			// on for the account in order to use this feature.
-			isolation_required?: bool
-
-			// The name of the Access policy.
-			name?: string
-
-			// A custom message that will appear on the purpose justification
-			// screen.
-			purpose_justification_prompt?: string
-
-			// Require users to enter a justification when they log in to the
-			// application.
-			purpose_justification_required?: bool
-			reusable?:                       bool
-
-			// The amount of time that tokens issued for the application will
-			// be valid. Must be in the format `300ms` or `2h45m`. Valid time
-			// units are: ns, us (or µs), ms, s, m, h.
-			session_duration?: string
-			updated_at?:       string
-
 			// Administrators who can approve a temporary authentication
 			// request.
 			approval_groups?: matchN(1, [close({
@@ -953,6 +946,10 @@ package data
 				email_list_uuid?: string
 			})]])
 
+			// Requires the user to request access from an administrator at
+			// the start of each session.
+			approval_required?: bool
+
 			// The rules that define how users may connect to targets secured
 			// by your application.
 			connection_rules?: close({
@@ -968,6 +965,12 @@ package data
 					allowed_clipboard_remote_to_local_formats?: [...string]
 				})
 			})
+
+			// The action Access will take if a user matches this policy.
+			// Infrastructure application policies can only use the Allow
+			// action.
+			// Available values: "allow", "deny", "non_identity", "bypass".
+			decision?: string
 
 			// Rules evaluated with a NOT logical operator. To match the
 			// policy, a user cannot meet any of the Exclude rules.
@@ -1100,6 +1103,11 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
@@ -1229,7 +1237,15 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			})]])
+
+			// The UUID of the policy
+			id?: string
 
 			// Rules evaluated with an OR logical operator. A user needs to
 			// meet only one of the Include rules.
@@ -1362,6 +1378,11 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
@@ -1491,22 +1512,43 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			})]])
+
+			// Require this application to be served in an isolated browser
+			// for users matching this policy. 'Client Web Isolation' must be
+			// on for the account in order to use this feature.
+			isolation_required?: bool
 
 			// Configures multi-factor authentication (MFA) settings.
 			mfa_config?: close({
 				// Lists the MFA methods that users can authenticate with.
 				allowed_authenticators?: [...string]
 
-				// Indicates whether to bypass MFA for this resource. This option
+				// Indicates whether to disable MFA for this resource. This option
 				// is available at the application and policy level.
-				mfa_bypass?: bool
+				mfa_disabled?: bool
 
 				// Defines the duration of an MFA session. Must be in minutes (m)
 				// or hours (h). Minimum: 0m. Maximum: 720h (30 days).
 				// Examples:`5m` or `24h`.
 				session_duration?: string
 			})
+
+			// The name of the Access policy.
+			name?: string
+
+			// A custom message that will appear on the purpose justification
+			// screen.
+			purpose_justification_prompt?: string
+
+			// Require users to enter a justification when they log in to the
+			// application.
+			purpose_justification_required?: bool
 
 			// Rules evaluated with an AND logical operator. To match the
 			// policy, a user must meet all of the Require rules.
@@ -1639,6 +1681,11 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
@@ -1768,7 +1815,20 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			})]])
+
+			// The amount of time that tokens issued for the application will
+			// be valid. Must be in the format `300ms` or `2h45m`. Valid time
+			// units are: ns, us (or µs), ms, s, m, h.
+			session_duration?: string
+			created_at?:       string
+			reusable?:         bool
+			updated_at?:       string
 		})]])
 	})
 }

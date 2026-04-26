@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_stream_live_input")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// The date and time the live input was created.
 		created?: string

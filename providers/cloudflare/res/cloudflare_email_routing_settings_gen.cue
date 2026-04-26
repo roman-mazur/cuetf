@@ -29,6 +29,6 @@ package res
 		status?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 	})
 }

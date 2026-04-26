@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_address_map")
 	close({
 		// Identifier of a Cloudflare account.
-		account_id!: string
+		account_id?: string
 
 		// If set to false, then the Address Map cannot be deleted via
 		// API. This is true for Cloudflare-managed maps.

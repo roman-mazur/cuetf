@@ -32,6 +32,6 @@ package data
 		target?: string
 
 		// Specify the identifier of the hostname.
-		zone_id!: string
+		zone_id?: string
 	})
 }

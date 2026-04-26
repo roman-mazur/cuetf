@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_pages_domain")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Available values: "google", "lets_encrypt".
 		certificate_authority?: string

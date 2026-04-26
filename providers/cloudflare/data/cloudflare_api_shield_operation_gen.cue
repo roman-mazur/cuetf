@@ -33,7 +33,7 @@ package data
 		operation_id?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 		features?: close({
 			// API Routing settings on endpoint.
 			api_routing?: close({

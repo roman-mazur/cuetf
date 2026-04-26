@@ -18,6 +18,6 @@ package data
 		script?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 	})
 }

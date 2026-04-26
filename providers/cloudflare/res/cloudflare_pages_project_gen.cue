@@ -4,6 +4,43 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_pages_project")
 	close({
+		// Identifier.
+		account_id?: string
+
+		// When the project was created.
+		created_on?: string
+
+		// A list of associated custom domains for the project.
+		domains?: [...string]
+
+		// Framework the project is using.
+		framework?: string
+
+		// Version of the framework the project is using.
+		framework_version?: string
+
+		// Name of the project.
+		id?: string
+
+		// Name of the project.
+		name!: string
+
+		// Name of the preview script.
+		preview_script_name?: string
+
+		// Production branch of the project. Used to identify production
+		// deployments.
+		production_branch!: string
+
+		// Name of the production script.
+		production_script_name?: string
+
+		// The Cloudflare subdomain associated with the project.
+		subdomain?: string
+
+		// Whether the project uses functions.
+		uses_functions?: bool
+
 		// Configs for the project build process.
 		build_config?: close({
 			// Enable build caching for the project.
@@ -25,44 +62,10 @@ package res
 			web_analytics_token?: string
 		})
 
-		// Identifier.
-		account_id!: string
-
 		// Most recent production deployment of the project.
 		canonical_deployment?: close({
 			// A list of alias URLs pointing to this deployment.
 			aliases?: [...string]
-
-			// When the deployment was created.
-			created_on?: string
-
-			// Type of deploy.
-			// Available values: "preview", "production".
-			environment?: string
-
-			// Id of the deployment.
-			id?: string
-
-			// If the deployment has been skipped.
-			is_skipped?: bool
-
-			// When the deployment was last modified.
-			modified_on?: string
-
-			// Id of the project.
-			project_id?: string
-
-			// Name of the project.
-			project_name?: string
-
-			// Short Id (8 character) of the deployment.
-			short_id?: string
-
-			// The live URL to view this deployment.
-			url?: string
-
-			// Whether the deployment uses functions.
-			uses_functions?: bool
 
 			// Configs for the project build process.
 			build_config?: close({
@@ -84,6 +87,9 @@ package res
 				// The auth token for analytics.
 				web_analytics_token?: string
 			})
+
+			// When the deployment was created.
+			created_on?: string
 
 			// Info about what caused the deployment.
 			deployment_trigger?: close({
@@ -116,6 +122,16 @@ package res
 				value?: string
 			})
 
+			// Type of deploy.
+			// Available values: "preview", "production".
+			environment?: string
+
+			// Id of the deployment.
+			id?: string
+
+			// If the deployment has been skipped.
+			is_skipped?: bool
+
 			// The status of the deployment.
 			latest_stage?: close({
 				// When the stage ended.
@@ -134,6 +150,18 @@ package res
 				// "canceled".
 				status?: string
 			})
+
+			// When the deployment was last modified.
+			modified_on?: string
+
+			// Id of the project.
+			project_id?: string
+
+			// Name of the project.
+			project_name?: string
+
+			// Short Id (8 character) of the deployment.
+			short_id?: string
 
 			// Configs for the project source control.
 			source?: close({
@@ -223,10 +251,13 @@ package res
 				// "canceled".
 				status?: string
 			})]])
-		})
 
-		// When the project was created.
-		created_on?: string
+			// The live URL to view this deployment.
+			url?: string
+
+			// Whether the deployment uses functions.
+			uses_functions?: bool
+		})
 
 		// Configs for deployments in a project.
 		deployment_configs?: close({
@@ -237,6 +268,10 @@ package res
 					project_id!: string
 				})
 
+				// Whether to always use the latest compatibility date for Pages
+				// Functions.
+				always_use_latest_compatibility_date?: bool
+
 				// Analytics Engine bindings used for Pages Functions.
 				analytics_engine_datasets?: [string]: close({
 					// Name of the dataset.
@@ -245,6 +280,16 @@ package res
 
 				// Browser bindings used for Pages Functions.
 				browsers?: [string]: close({})
+
+				// The major version of the build image to use for Pages
+				// Functions.
+				build_image_major_version?: number
+
+				// Compatibility date used for Pages Functions.
+				compatibility_date?: string
+
+				// Compatibility flags used for Pages Functions.
+				compatibility_flags?: [...string]
 
 				// D1 databases used for Pages Functions.
 				d1_databases?: [string]: close({
@@ -257,20 +302,6 @@ package res
 					// ID of the Durable Object namespace.
 					namespace_id!: string
 				})
-
-				// Whether to always use the latest compatibility date for Pages
-				// Functions.
-				always_use_latest_compatibility_date?: bool
-
-				// The major version of the build image to use for Pages
-				// Functions.
-				build_image_major_version?: number
-
-				// Compatibility date used for Pages Functions.
-				compatibility_date?: string
-
-				// Compatibility flags used for Pages Functions.
-				compatibility_flags?: [...string]
 
 				// Environment variables used for builds and Pages Functions.
 				env_vars?: [string]: close({
@@ -356,6 +387,10 @@ package res
 					project_id!: string
 				})
 
+				// Whether to always use the latest compatibility date for Pages
+				// Functions.
+				always_use_latest_compatibility_date?: bool
+
 				// Analytics Engine bindings used for Pages Functions.
 				analytics_engine_datasets?: [string]: close({
 					// Name of the dataset.
@@ -364,6 +399,16 @@ package res
 
 				// Browser bindings used for Pages Functions.
 				browsers?: [string]: close({})
+
+				// The major version of the build image to use for Pages
+				// Functions.
+				build_image_major_version?: number
+
+				// Compatibility date used for Pages Functions.
+				compatibility_date?: string
+
+				// Compatibility flags used for Pages Functions.
+				compatibility_flags?: [...string]
 
 				// D1 databases used for Pages Functions.
 				d1_databases?: [string]: close({
@@ -376,20 +421,6 @@ package res
 					// ID of the Durable Object namespace.
 					namespace_id!: string
 				})
-
-				// Whether to always use the latest compatibility date for Pages
-				// Functions.
-				always_use_latest_compatibility_date?: bool
-
-				// The major version of the build image to use for Pages
-				// Functions.
-				build_image_major_version?: number
-
-				// Compatibility date used for Pages Functions.
-				compatibility_date?: string
-
-				// Compatibility flags used for Pages Functions.
-				compatibility_flags?: [...string]
 
 				// Environment variables used for builds and Pages Functions.
 				env_vars?: [string]: close({
@@ -469,53 +500,10 @@ package res
 			})
 		})
 
-		// A list of associated custom domains for the project.
-		domains?: [...string]
-
-		// Framework the project is using.
-		framework?: string
-
-		// Version of the framework the project is using.
-		framework_version?: string
-
-		// Name of the project.
-		id?: string
-
 		// Most recent deployment of the project.
 		latest_deployment?: close({
 			// A list of alias URLs pointing to this deployment.
 			aliases?: [...string]
-
-			// When the deployment was created.
-			created_on?: string
-
-			// Type of deploy.
-			// Available values: "preview", "production".
-			environment?: string
-
-			// Id of the deployment.
-			id?: string
-
-			// If the deployment has been skipped.
-			is_skipped?: bool
-
-			// When the deployment was last modified.
-			modified_on?: string
-
-			// Id of the project.
-			project_id?: string
-
-			// Name of the project.
-			project_name?: string
-
-			// Short Id (8 character) of the deployment.
-			short_id?: string
-
-			// The live URL to view this deployment.
-			url?: string
-
-			// Whether the deployment uses functions.
-			uses_functions?: bool
 
 			// Configs for the project build process.
 			build_config?: close({
@@ -537,6 +525,9 @@ package res
 				// The auth token for analytics.
 				web_analytics_token?: string
 			})
+
+			// When the deployment was created.
+			created_on?: string
 
 			// Info about what caused the deployment.
 			deployment_trigger?: close({
@@ -569,6 +560,16 @@ package res
 				value?: string
 			})
 
+			// Type of deploy.
+			// Available values: "preview", "production".
+			environment?: string
+
+			// Id of the deployment.
+			id?: string
+
+			// If the deployment has been skipped.
+			is_skipped?: bool
+
 			// The status of the deployment.
 			latest_stage?: close({
 				// When the stage ended.
@@ -587,6 +588,18 @@ package res
 				// "canceled".
 				status?: string
 			})
+
+			// When the deployment was last modified.
+			modified_on?: string
+
+			// Id of the project.
+			project_id?: string
+
+			// Name of the project.
+			project_name?: string
+
+			// Short Id (8 character) of the deployment.
+			short_id?: string
 
 			// Configs for the project source control.
 			source?: close({
@@ -676,20 +689,13 @@ package res
 				// "canceled".
 				status?: string
 			})]])
+
+			// The live URL to view this deployment.
+			url?: string
+
+			// Whether the deployment uses functions.
+			uses_functions?: bool
 		})
-
-		// Name of the project.
-		name!: string
-
-		// Name of the preview script.
-		preview_script_name?: string
-
-		// Production branch of the project. Used to identify production
-		// deployments.
-		production_branch!: string
-
-		// Name of the production script.
-		production_script_name?: string
 
 		// Configs for the project source control.
 		source?: close({
@@ -744,11 +750,5 @@ package res
 			// Available values: "github", "gitlab".
 			type!: string
 		})
-
-		// The Cloudflare subdomain associated with the project.
-		subdomain?: string
-
-		// Whether the project uses functions.
-		uses_functions?: bool
 	})
 }

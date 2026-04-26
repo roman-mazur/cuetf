@@ -8,7 +8,7 @@ package data
 		id?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 		rules?: matchN(1, [close({
 			description?: string
 			enabled?:     bool

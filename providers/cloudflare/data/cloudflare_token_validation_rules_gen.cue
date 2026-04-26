@@ -35,7 +35,7 @@ package data
 		title?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// Select operations covered by this rule.
 		//

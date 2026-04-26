@@ -78,17 +78,14 @@ package data
 		urls?: string
 
 		// Identifier
-		zone_id!: string
+		zone_id?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			added_at?: string
 
 			// The cryptomining score of the JavaScript content.
-			cryptomining_score?: number
-
-			// The dataflow score of the JavaScript content.
-			dataflow_score?:            number
+			cryptomining_score?:        number
 			domain_reported_malicious?: bool
 
 			// The timestamp of when the script was last fetched.
@@ -114,9 +111,6 @@ package data
 
 			// The malware score of the JavaScript content.
 			malware_score?: number
-
-			// The obfuscation score of the JavaScript content.
-			obfuscation_score?: number
 			page_urls?: [...string]
 			url?:                       string
 			url_contains_cdn_cgi_path?: bool
@@ -125,10 +119,7 @@ package data
 			added_at?: string
 
 			// The cryptomining score of the JavaScript content.
-			cryptomining_score?: number
-
-			// The dataflow score of the JavaScript content.
-			dataflow_score?:            number
+			cryptomining_score?:        number
 			domain_reported_malicious?: bool
 
 			// The timestamp of when the script was last fetched.
@@ -154,9 +145,6 @@ package data
 
 			// The malware score of the JavaScript content.
 			malware_score?: number
-
-			// The obfuscation score of the JavaScript content.
-			obfuscation_score?: number
 			page_urls?: [...string]
 			url?:                       string
 			url_contains_cdn_cgi_path?: bool

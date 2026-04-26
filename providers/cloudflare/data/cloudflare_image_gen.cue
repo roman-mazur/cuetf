@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_image")
 	close({
 		// Account identifier tag.
-		account_id!: string
+		account_id?: string
 
 		// Can set the creator field with an internal user ID.
 		creator?: string

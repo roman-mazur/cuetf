@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_image_variant")
 	close({
 		// Account identifier tag.
-		account_id!: string
+		account_id?: string
 		id!:         string
 
 		// Indicates whether the variant can access an image without a

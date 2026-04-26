@@ -23,6 +23,6 @@ package data
 		validity_period?: number
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 	})
 }
