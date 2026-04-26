@@ -14,6 +14,7 @@ import "list"
 		retention_yearly?: matchN(1, [#retention_yearly, list.MaxItems(1) & [...#retention_yearly]])
 		tiering_policy?: matchN(1, [#tiering_policy, list.MaxItems(1) & [...#tiering_policy]])
 		timeouts?:                       #timeouts
+		consistency_type?:               string
 		id?:                             string
 		instant_restore_retention_days?: number
 		name!:                           string
