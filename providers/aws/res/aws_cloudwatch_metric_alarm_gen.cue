@@ -6,17 +6,19 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudwatch_metric_alarm")
 	close({
+		evaluation_criteria?: matchN(1, [#evaluation_criteria, list.MaxItems(1) & [...#evaluation_criteria]])
 		metric_query?: matchN(1, [#metric_query, [...#metric_query]])
 		actions_enabled?: bool
 		alarm_actions?: [...string]
 		alarm_description?:   string
 		alarm_name!:          string
 		arn?:                 string
-		comparison_operator!: string
+		comparison_operator?: string
 		datapoints_to_alarm?: number
 		dimensions?: [string]: string
 		evaluate_low_sample_count_percentiles?: string
-		evaluation_periods!:                    number
+		evaluation_interval?:                   number
+		evaluation_periods?:                    number
 		extended_statistic?:                    string
 		id?:                                    string
 		insufficient_data_actions?: [...string]
@@ -39,6 +41,10 @@ import "list"
 		unit?:                string
 	})
 
+	#evaluation_criteria: close({
+		promql_criteria!: matchN(1, [_#defs."/$defs/evaluation_criteria/$defs/promql_criteria", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/evaluation_criteria/$defs/promql_criteria"]])
+	})
+
 	#metric_query: close({
 		metric?: matchN(1, [_#defs."/$defs/metric_query/$defs/metric", list.MaxItems(1) & [..._#defs."/$defs/metric_query/$defs/metric"]])
 		account_id?:  string
@@ -47,6 +53,12 @@ import "list"
 		label?:       string
 		period?:      number
 		return_data?: bool
+	})
+
+	_#defs: "/$defs/evaluation_criteria/$defs/promql_criteria": close({
+		pending_period?:  number
+		query!:           string
+		recovery_period?: number
 	})
 
 	_#defs: "/$defs/metric_query/$defs/metric": close({

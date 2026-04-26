@@ -291,6 +291,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_cloudwatch_log_transformer": res.#aws_cloudwatch_log_transformer
 	_#res: "\(#awsPrefix)_cloudwatch_metric_alarm": res.#aws_cloudwatch_metric_alarm
 	_#res: "\(#awsPrefix)_cloudwatch_metric_stream": res.#aws_cloudwatch_metric_stream
+	_#res: "\(#awsPrefix)_cloudwatch_otel_enrichment": res.#aws_cloudwatch_otel_enrichment
 	_#res: "\(#awsPrefix)_cloudwatch_query_definition": res.#aws_cloudwatch_query_definition
 	_#res: "\(#awsPrefix)_codeartifact_domain": res.#aws_codeartifact_domain
 	_#res: "\(#awsPrefix)_codeartifact_domain_permissions_policy": res.#aws_codeartifact_domain_permissions_policy
@@ -512,6 +513,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_ebs_snapshot_copy": res.#aws_ebs_snapshot_copy
 	_#res: "\(#awsPrefix)_ebs_snapshot": res.#aws_ebs_snapshot
 	_#res: "\(#awsPrefix)_ebs_snapshot_import": res.#aws_ebs_snapshot_import
+	_#res: "\(#awsPrefix)_ebs_volume_copy": res.#aws_ebs_volume_copy
 	_#res: "\(#awsPrefix)_ebs_volume": res.#aws_ebs_volume
 	_#res: "\(#awsPrefix)_ec2_allowed_images_settings": res.#aws_ec2_allowed_images_settings
 	_#res: "\(#awsPrefix)_ec2_availability_zone_group": res.#aws_ec2_availability_zone_group
@@ -1296,6 +1298,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_sagemaker_flow_definition": res.#aws_sagemaker_flow_definition
 	_#res: "\(#awsPrefix)_sagemaker_hub": res.#aws_sagemaker_hub
 	_#res: "\(#awsPrefix)_sagemaker_human_task_ui": res.#aws_sagemaker_human_task_ui
+	_#res: "\(#awsPrefix)_sagemaker_hyper_parameter_tuning_job": res.#aws_sagemaker_hyper_parameter_tuning_job
 	_#res: "\(#awsPrefix)_sagemaker_image": res.#aws_sagemaker_image
 	_#res: "\(#awsPrefix)_sagemaker_image_version": res.#aws_sagemaker_image_version
 	_#res: "\(#awsPrefix)_sagemaker_labeling_job": res.#aws_sagemaker_labeling_job

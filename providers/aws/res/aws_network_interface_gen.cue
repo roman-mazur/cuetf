@@ -1,10 +1,13 @@
 package res
 
+import "list"
+
 #aws_network_interface: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_network_interface")
 	close({
 		attachment?: matchN(1, [#attachment, [...#attachment]])
+		ena_srd_specification?: matchN(1, [#ena_srd_specification, list.MaxItems(1) & [...#ena_srd_specification]])
 		arn?:                 string
 		description?:         string
 		enable_primary_ipv6?: bool
@@ -45,5 +48,14 @@ package res
 		device_index!:       number
 		instance!:           string
 		network_card_index?: number
+	})
+
+	#ena_srd_specification: close({
+		ena_srd_udp_specification?: matchN(1, [_#defs."/$defs/ena_srd_specification/$defs/ena_srd_udp_specification", list.MaxItems(1) & [..._#defs."/$defs/ena_srd_specification/$defs/ena_srd_udp_specification"]])
+		ena_srd_enabled?: bool
+	})
+
+	_#defs: "/$defs/ena_srd_specification/$defs/ena_srd_udp_specification": close({
+		ena_srd_udp_enabled?: bool
 	})
 }

@@ -1,9 +1,12 @@
 package res
 
+import "list"
+
 #aws_eks_addon: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_eks_addon")
 	close({
+		namespace_config?: matchN(1, [#namespace_config, list.MaxItems(1) & [...#namespace_config]])
 		pod_identity_association?: matchN(1, [#pod_identity_association, [...#pod_identity_association]])
 		timeouts?:             #timeouts
 		addon_name!:           string
@@ -26,6 +29,10 @@ package res
 		service_account_role_arn?:    string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+	})
+
+	#namespace_config: close({
+		namespace?: string
 	})
 
 	#pod_identity_association: close({

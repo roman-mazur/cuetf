@@ -7,10 +7,11 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_eks_identity_provider_config")
 	close({
 		oidc!: matchN(1, [#oidc, list.MaxItems(1) & [_, ...] & [...#oidc]])
-		timeouts?:     #timeouts
-		arn?:          string
-		cluster_name!: string
-		id?:           string
+		timeouts?:                      #timeouts
+		arn?:                           string
+		cluster_name!:                  string
+		id?:                            string
+		identity_provider_config_name?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

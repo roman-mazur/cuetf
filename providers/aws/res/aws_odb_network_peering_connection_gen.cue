@@ -30,6 +30,9 @@ package res
 		// ARN of the peer network peering connection.
 		peer_network_arn?: string
 
+		// List of peered network cidrs.
+		peer_network_cidrs?: [...string]
+
 		// Required field. The unique identifier of the ODB peering
 		// connection. Changing this will force terraform to create new
 		// resource

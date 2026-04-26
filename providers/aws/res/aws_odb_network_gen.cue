@@ -49,6 +49,10 @@ package res
 		// The date and time when the ODB network was created.
 		created_at?: string
 
+		// The list of regions enabled for cross-region restore in the ODB
+		// network.
+		cross_region_s3_restore_sources_access?: [...string]
+
 		// The name of the custom domain that the network is located.
 		// custom_domain_name and default_dns_prefix both can't be given.
 		custom_domain_name?: string
@@ -75,6 +79,11 @@ package res
 
 		// The managed services configuration for the ODB network.
 		managed_services?: [...close({
+			cross_region_s3_restore_sources_access?: [...close({
+				ipv4_addresses?: [...string]
+				region?: string
+				status?: string
+			})]
 			kms_access?: [...close({
 				domain_name?: string
 				ipv4_addresses?: [...string]

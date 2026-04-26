@@ -25,8 +25,14 @@ package data
 		})]
 		availability_zone?: string
 		description?:       string
-		id?:                string
-		interface_type?:    string
+		ena_srd_specification?: [...close({
+			ena_srd_enabled?: bool
+			ena_srd_udp_specification?: [...close({
+				ena_srd_udp_enabled?: bool
+			})]
+		})]
+		id?:             string
+		interface_type?: string
 		ipv6_addresses?: [...string]
 		mac_address?:      string
 		outpost_arn?:      string

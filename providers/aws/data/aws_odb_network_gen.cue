@@ -33,6 +33,11 @@ package data
 
 		// The managed services configuration for the ODB network.
 		managed_services?: [...close({
+			cross_region_s3_restore_sources_access?: [...close({
+				ipv4_addresses?: [...string]
+				region?: string
+				status?: string
+			})]
 			kms_access?: [...close({
 				domain_name?: string
 				ipv4_addresses?: [...string]
