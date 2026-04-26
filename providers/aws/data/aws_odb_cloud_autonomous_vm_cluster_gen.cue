@@ -44,7 +44,7 @@ package data
 		// cluster.
 		cpu_core_count_per_node?: number
 
-		// he percentage of total CPU cores currently in use in the
+		// The percentage of total CPU cores currently in use in the
 		// Autonomous VM cluster.
 		cpu_percentage?: number
 

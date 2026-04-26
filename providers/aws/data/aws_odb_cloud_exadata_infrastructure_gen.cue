@@ -15,7 +15,7 @@ package data
 		// The Amazon Resource Name (ARN) for the Exadata infrastructure.
 		arn?: string
 
-		// he name of the Availability Zone (AZ) where the Exadata
+		// The name of the Availability Zone (AZ) where the Exadata
 		// infrastructure is located.
 		availability_zone?: string
 
@@ -163,8 +163,8 @@ package data
 		// infrastructure.
 		status_reason?: string
 
-		// he number of storage servers that are activated for the Exadata
-		// infrastructure.
+		// The number of storage servers that are activated for the
+		// Exadata infrastructure.
 		storage_count?: number
 
 		// The storage server model type of the Exadata infrastructure.

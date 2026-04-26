@@ -24,6 +24,9 @@ package data
 		// ARN of the peer network peering connection.
 		peer_network_arn?: string
 
+		// List of peered network cidrs.
+		peer_network_cidrs?: [...string]
+
 		// Progress of the odb network peering connection.
 		percent_progress?: number
 

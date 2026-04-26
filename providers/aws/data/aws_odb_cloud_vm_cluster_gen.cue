@@ -62,7 +62,7 @@ package data
 		// The domain name of the VM cluster.
 		domain?: string
 
-		// he software version of the Oracle Grid Infrastructure (GI) for
+		// The software version of the Oracle Grid Infrastructure (GI) for
 		// the VM cluster.
 		gi_version?: string
 
@@ -151,7 +151,7 @@ package data
 		// running the VM cluster.
 		shape?: string
 
-		// he public key portion of one or more key pairs used for SSH
+		// The public key portion of one or more key pairs used for SSH
 		// access to the VM cluster.
 		ssh_public_keys?: [...string]
 

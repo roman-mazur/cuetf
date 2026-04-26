@@ -4,8 +4,9 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_s3files_file_system")
 	close({
-		timeouts?: #timeouts
-		arn?:      string
+		timeouts?:              #timeouts
+		accept_bucket_warning?: bool
+		arn?:                   string
 
 		// S3 bucket ARN
 		bucket!: string

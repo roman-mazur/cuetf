@@ -199,6 +199,8 @@ import "github.com/roman-mazur/cuetf/providers/aws/data"
 	_#ds: "\(#awsPrefix)_ec2_public_ipv4_pool": data.#aws_ec2_public_ipv4_pool
 	_#ds: "\(#awsPrefix)_ec2_public_ipv4_pools": data.#aws_ec2_public_ipv4_pools
 	_#ds: "\(#awsPrefix)_ec2_serial_console_access": data.#aws_ec2_serial_console_access
+	_#ds: "\(#awsPrefix)_ec2_service_link_virtual_interface": data.#aws_ec2_service_link_virtual_interface
+	_#ds: "\(#awsPrefix)_ec2_service_link_virtual_interfaces": data.#aws_ec2_service_link_virtual_interfaces
 	_#ds: "\(#awsPrefix)_ec2_spot_price": data.#aws_ec2_spot_price
 	_#ds: "\(#awsPrefix)_ec2_transit_gateway_attachment": data.#aws_ec2_transit_gateway_attachment
 	_#ds: "\(#awsPrefix)_ec2_transit_gateway_attachments": data.#aws_ec2_transit_gateway_attachments

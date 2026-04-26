@@ -26,8 +26,10 @@ import "list"
 		aws_org?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/aws_org", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/aws_org"]])
 		data_export?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/data_export", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/data_export"]])
 		exclude?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/exclude", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/exclude"]])
+		expanded_prefixes_data_export?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export"]])
 		include?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/include", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/include"]])
-		enabled!: bool
+		enabled!:          bool
+		prefix_delimiter?: string
 	})
 
 	_#defs: "/$defs/storage_lens_configuration/$defs/account_level": close({
@@ -157,6 +159,47 @@ import "list"
 		buckets?: [...string]
 		regions?: [...string]
 	})
+
+	_#defs: "/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export": close({
+		s3_bucket_destination?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/s3_bucket_destination", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/s3_bucket_destination"]])
+		storage_lens_table_destination?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/storage_lens_table_destination", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/storage_lens_table_destination"]])
+	})
+
+	_#defs: "/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/s3_bucket_destination": close({
+		encryption?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/s3_bucket_destination/$defs/encryption", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/s3_bucket_destination/$defs/encryption"]])
+		account_id!:            string
+		arn!:                   string
+		format!:                string
+		output_schema_version!: string
+		prefix?:                string
+	})
+
+	_#defs: "/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/s3_bucket_destination/$defs/encryption": close({
+		sse_kms?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/s3_bucket_destination/$defs/encryption/$defs/sse_kms", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/s3_bucket_destination/$defs/encryption/$defs/sse_kms"]])
+		sse_s3?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/s3_bucket_destination/$defs/encryption/$defs/sse_s3", [..._#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/s3_bucket_destination/$defs/encryption/$defs/sse_s3"]])
+	})
+
+	_#defs: "/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/s3_bucket_destination/$defs/encryption/$defs/sse_kms": close({
+		key_id!: string
+	})
+
+	_#defs: "/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/s3_bucket_destination/$defs/encryption/$defs/sse_s3": close({})
+
+	_#defs: "/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/storage_lens_table_destination": close({
+		encryption?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/storage_lens_table_destination/$defs/encryption", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/storage_lens_table_destination/$defs/encryption"]])
+		enabled!: bool
+	})
+
+	_#defs: "/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/storage_lens_table_destination/$defs/encryption": close({
+		sse_kms?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/storage_lens_table_destination/$defs/encryption/$defs/sse_kms", list.MaxItems(1) & [..._#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/storage_lens_table_destination/$defs/encryption/$defs/sse_kms"]])
+		sse_s3?: matchN(1, [_#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/storage_lens_table_destination/$defs/encryption/$defs/sse_s3", [..._#defs."/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/storage_lens_table_destination/$defs/encryption/$defs/sse_s3"]])
+	})
+
+	_#defs: "/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/storage_lens_table_destination/$defs/encryption/$defs/sse_kms": close({
+		key_id!: string
+	})
+
+	_#defs: "/$defs/storage_lens_configuration/$defs/expanded_prefixes_data_export/$defs/storage_lens_table_destination/$defs/encryption/$defs/sse_s3": close({})
 
 	_#defs: "/$defs/storage_lens_configuration/$defs/include": close({
 		buckets?: [...string]
