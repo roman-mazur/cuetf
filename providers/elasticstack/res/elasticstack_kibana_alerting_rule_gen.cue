@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_alerting_rule")
 	close({
 		actions?: matchN(1, [#actions, [...#actions]])
+		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
 		// A number that indicates how many consecutive runs need to meet
 		// the rule conditions for an alert to occur.
@@ -82,6 +83,31 @@ package res
 		// if you update the rule in Kibana, it is automatically changed
 		// to use action-specific `throttle` values.
 		throttle?: string
+
+		// Rule-level [flapping
+		// detection](https://www.elastic.co/guide/en/kibana/master/alerting-settings.html)
+		// (Kibana **8.16** or higher). When this object is set in
+		// configuration, `look_back_window` and
+		// `status_change_threshold` are required. The optional `enabled`
+		// attribute is supported only from **Elastic Stack 9.3** onward;
+		// configuring it against an older stack returns an error. When
+		// `flapping` is omitted from configuration on update, Terraform
+		// retains the previous value, so existing server-side flapping
+		// settings are not cleared by that omission.
+		flapping?: close({
+			// Whether the rule may enter the flapping state. When unset, the
+			// Kibana default applies. Supported only from Elastic Stack 9.3
+			// onward.
+			enabled?: bool
+
+			// Minimum number of rule runs in which the status change
+			// threshold must be met.
+			look_back_window?: number
+
+			// Minimum number of times an alert must switch between active and
+			// recovered within the look-back window.
+			status_change_threshold?: number
+		})
 	})
 
 	#actions: close({
@@ -99,6 +125,32 @@ package res
 
 		// The parameters for the action, which are sent to the connector.
 		params!: string
+	})
+
+	#kibana_connection: close({
+		// API Key to use for authentication to Kibana
+		api_key?: string
+
+		// Bearer Token to use for authentication to Kibana
+		bearer_token?: string
+
+		// A list of paths to CA certificates to validate the certificate
+		// presented by the Kibana server.
+		ca_certs?: [...string]
+
+		// A comma-separated list of endpoints where the terraform
+		// provider will point to, this must include the http(s) schema
+		// and port number.
+		endpoints?: [...string]
+
+		// Disable TLS certificate validation
+		insecure?: bool
+
+		// Password to use for API authentication to Kibana.
+		password?: string
+
+		// Username to use for API authentication to Kibana.
+		username?: string
 	})
 
 	_#defs: "/$defs/actions/$defs/alerts_filter": close({

@@ -102,7 +102,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. "
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
 					}
 					max_items: 1
@@ -259,6 +259,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description:      "Creates or updates an APM agent configuration. See https://www.elastic.co/docs/solutions/observability/apm/apm-agent-central-configuration."
 				description_kind: "plain"
 			}
@@ -369,9 +424,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+							description:      "Elasticsearch connection configuration block."
 							description_kind: "markdown"
-							deprecated:       true
 						}
 						max_items: 1
 					}
@@ -581,9 +635,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+							description:      "Elasticsearch connection configuration block."
 							description_kind: "markdown"
-							deprecated:       true
 						}
 						max_items: 1
 					}
@@ -854,9 +907,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 					max_items: 1
 				}
@@ -1022,9 +1074,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. "
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 				}
 				description:      "Configures the data stream lifecycle for the targeted data streams, see: https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-apis.html"
@@ -1181,9 +1232,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. "
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 				}
 				description:      "Managing Elasticsearch enrich policies. See the [enrich API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-apis.html) for more details."
@@ -1333,6 +1383,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						optional:         true
 					}
+					concrete_name: {
+						type:             "string"
+						description:      "The concrete Elasticsearch index name managed by this resource. For static index names this equals `name`. For date math index names this is the resolved concrete index name returned by Elasticsearch after creation."
+						description_kind: "plain"
+						computed:         true
+					}
 					default_pipeline: {
 						type:             "string"
 						description:      "The default ingest node pipeline for this index. Index requests will fail if the default pipeline is set and the pipeline does not exist."
@@ -1372,7 +1428,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource in the format <cluster_uuid>/<concrete_index_name>."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -1781,9 +1837,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "Elasticsearch connection configuration block. "
+							description:      "Elasticsearch connection configuration block."
 							description_kind: "markdown"
-							deprecated:       true
 						}
 					}
 					settings: {
@@ -1936,105 +1991,206 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description:      "Manages an Elasticsearch alias. See the [alias documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html) for more details."
 				description_kind: "plain"
 			}
 		}
 		elasticstack_elasticsearch_index_lifecycle: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					id: {
 						type:             "string"
 						description:      "Internal identifier of the resource"
-						description_kind: "markdown"
+						description_kind: "plain"
 						computed:         true
 					}
 					metadata: {
 						type:             "string"
 						description:      "Optional user metadata about the ilm policy. Must be valid JSON document."
-						description_kind: "markdown"
+						description_kind: "plain"
 						optional:         true
 					}
 					modified_date: {
 						type:             "string"
 						description:      "The DateTime of the last modification."
-						description_kind: "markdown"
+						description_kind: "plain"
 						computed:         true
 					}
 					name: {
 						type:             "string"
 						description:      "Identifier for the policy."
-						description_kind: "markdown"
+						description_kind: "plain"
 						required:         true
 					}
 				}
 				block_types: {
 					cold: {
-						nesting_mode: "list"
+						nesting_mode: "single"
 						block: {
 							attributes: min_age: {
 								type:             "string"
 								description:      "ILM moves indices through the lifecycle according to their age. To control the timing of these transitions, you set a minimum age for each phase."
-								description_kind: "markdown"
+								description_kind: "plain"
 								optional:         true
 								computed:         true
 							}
 							block_types: {
 								allocate: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: {
 											exclude: {
 												type:             "string"
 												description:      "Assigns an index to nodes that have none of the specified custom attributes. Must be valid JSON document."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											include: {
 												type:             "string"
 												description:      "Assigns an index to nodes that have at least one of the specified custom attributes. Must be valid JSON document."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											number_of_replicas: {
 												type:             "number"
 												description:      "Number of replicas to assign to the index. Default: `0`"
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
+												computed:         true
 											}
 											require: {
 												type:             "string"
 												description:      "Assigns an index to nodes that have all of the specified custom attributes. Must be valid JSON document."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											total_shards_per_node: {
 												type:             "number"
 												description:      "The maximum number of shards for the index on a single Elasticsearch node. Defaults to `-1` (unlimited). Supported from Elasticsearch version **7.16**"
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
+												computed:         true
 											}
 										}
 										description:      "Updates the index settings to change which nodes are allowed to host the index shards and change the number of replicas."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								downsample: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: {
 											fixed_interval: {
 												type:             "string"
-												description:      "Downsampling interval"
-												description_kind: "markdown"
-												required:         true
+												description:      "Downsampling interval. Required when the `downsample` action is configured."
+												description_kind: "plain"
+												optional:         true
 											}
 											wait_timeout: {
 												type:             "string"
-												description:      "Downsampling interval"
-												description_kind: "markdown"
+												description:      "Maximum time to wait for the downsample operation to complete before timing out."
+												description_kind: "plain"
 												optional:         true
 												computed:         true
 											}
@@ -2042,80 +2198,79 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										description:      "Roll up documents within a fixed interval to a single summary document. Reduces the index footprint by storing time series data at reduced granularity."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								freeze: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: enabled: {
 											type:             "bool"
 											description:      "Controls whether ILM freezes the index."
-											description_kind: "markdown"
+											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										description:      "Freeze the index to minimize its memory footprint."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								migrate: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: enabled: {
 											type:             "bool"
 											description:      "Controls whether ILM automatically migrates the index during this phase."
-											description_kind: "markdown"
+											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										description:      "Moves the index to the data tier that corresponds to the current phase by updating the \"index.routing.allocation.include._tier_preference\" index setting."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								readonly: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: enabled: {
 											type:             "bool"
 											description:      "Controls whether ILM makes the index read-only."
-											description_kind: "markdown"
+											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										description:      "Makes the index read-only."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								searchable_snapshot: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: {
 											force_merge_index: {
 												type:             "bool"
 												description:      "Force merges the managed index to one segment."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
+												computed:         true
 											}
 											snapshot_repository: {
 												type:             "string"
-												description:      "Repository used to store the snapshot."
-												description_kind: "markdown"
-												required:         true
+												description:      "Repository used to store the snapshot. Required when the `searchable_snapshot` action is configured."
+												description_kind: "plain"
+												optional:         true
 											}
 										}
 										description:      "Takes a snapshot of the managed index in the configured repository and mounts it as a searchable snapshot."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								set_priority: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: priority: {
 											type:             "number"
-											description:      "The priority for the index. Must be 0 or greater."
-											description_kind: "markdown"
-											required:         true
+											description:      "The priority for the index. Must be 0 or greater. Required when the `set_priority` action is configured."
+											description_kind: "plain"
+											optional:         true
 										}
 										description: """
 													Sets the priority of the index as soon as the policy enters the hot, warm, or cold phase. Higher priority indices are recovered before indices with lower priorities following a node restart. Default priority is 1.
@@ -2123,72 +2278,68 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													"""
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								unfollow: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: enabled: {
 											type:             "bool"
 											description:      "Controls whether ILM makes the follower index a regular one."
-											description_kind: "markdown"
+											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										description:      "Convert a follower index to a regular index. Performed automatically before a rollover, shrink, or searchable snapshot action."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 							}
-							description:      "The index is no longer being updated and is queried infrequently. The information still needs to be searchable, but it’s okay if those queries are slower."
+							description:      "The index is no longer being updated and is queried infrequently. The information still needs to be searchable, but it's okay if those queries are slower."
 							description_kind: "markdown"
 						}
-						max_items: 1
 					}
 					delete: {
-						nesting_mode: "list"
+						nesting_mode: "single"
 						block: {
 							attributes: min_age: {
 								type:             "string"
 								description:      "ILM moves indices through the lifecycle according to their age. To control the timing of these transitions, you set a minimum age for each phase."
-								description_kind: "markdown"
+								description_kind: "plain"
 								optional:         true
 								computed:         true
 							}
 							block_types: {
 								delete: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: delete_searchable_snapshot: {
 											type:             "bool"
 											description:      "Deletes the searchable snapshot created in a previous phase."
-											description_kind: "markdown"
+											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										description:      "Permanently removes the index."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								wait_for_snapshot: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: policy: {
 											type:             "string"
-											description:      "Name of the SLM policy that the delete action should wait for."
-											description_kind: "markdown"
-											required:         true
+											description:      "Name of the SLM policy that the delete action should wait for. Required when the `wait_for_snapshot` action is configured."
+											description_kind: "plain"
+											optional:         true
 										}
 										description:      "Waits for the specified SLM policy to be executed before removing the index. This ensures that a snapshot of the deleted index is available."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 							}
 							description:      "The index is no longer needed and can safely be removed."
 							description_kind: "markdown"
 						}
-						max_items: 1
 					}
 					elasticsearch_connection: {
 						nesting_mode: "list"
@@ -2286,74 +2437,71 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+							description:      "Elasticsearch connection configuration block."
 							description_kind: "markdown"
-							deprecated:       true
 						}
-						max_items: 1
 					}
 					frozen: {
-						nesting_mode: "list"
+						nesting_mode: "single"
 						block: {
 							attributes: min_age: {
 								type:             "string"
 								description:      "ILM moves indices through the lifecycle according to their age. To control the timing of these transitions, you set a minimum age for each phase."
-								description_kind: "markdown"
+								description_kind: "plain"
 								optional:         true
 								computed:         true
 							}
 							block_types: searchable_snapshot: {
-								nesting_mode: "list"
+								nesting_mode: "single"
 								block: {
 									attributes: {
 										force_merge_index: {
 											type:             "bool"
 											description:      "Force merges the managed index to one segment."
-											description_kind: "markdown"
+											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										snapshot_repository: {
 											type:             "string"
-											description:      "Repository used to store the snapshot."
-											description_kind: "markdown"
-											required:         true
+											description:      "Repository used to store the snapshot. Required when the `searchable_snapshot` action is configured."
+											description_kind: "plain"
+											optional:         true
 										}
 									}
-									description:      "Takes a snapshot of the managed index in the configured repository and mounts it as a searchable snapshot."
+									description:      "Required in the `frozen` phase. Takes a snapshot of the managed index in the configured repository and mounts it as a searchable snapshot."
 									description_kind: "markdown"
 								}
-								max_items: 1
 							}
-							description:      "The index is no longer being updated and is queried rarely. The information still needs to be searchable, but it’s okay if those queries are extremely slow."
+							description:      "The index is no longer being updated and is queried rarely. The information still needs to be searchable, but it's okay if those queries are extremely slow."
 							description_kind: "markdown"
 						}
-						max_items: 1
 					}
 					hot: {
-						nesting_mode: "list"
+						nesting_mode: "single"
 						block: {
 							attributes: min_age: {
 								type:             "string"
 								description:      "ILM moves indices through the lifecycle according to their age. To control the timing of these transitions, you set a minimum age for each phase."
-								description_kind: "markdown"
+								description_kind: "plain"
 								optional:         true
 								computed:         true
 							}
 							block_types: {
 								downsample: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: {
 											fixed_interval: {
 												type:             "string"
-												description:      "Downsampling interval"
-												description_kind: "markdown"
-												required:         true
+												description:      "Downsampling interval. Required when the `downsample` action is configured."
+												description_kind: "plain"
+												optional:         true
 											}
 											wait_timeout: {
 												type:             "string"
-												description:      "Downsampling interval"
-												description_kind: "markdown"
+												description:      "Maximum time to wait for the downsample operation to complete before timing out."
+												description_kind: "plain"
 												optional:         true
 												computed:         true
 											}
@@ -2361,144 +2509,141 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										description:      "Roll up documents within a fixed interval to a single summary document. Reduces the index footprint by storing time series data at reduced granularity."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								forcemerge: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: {
 											index_codec: {
 												type:             "string"
 												description:      "Codec used to compress the document store."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											max_num_segments: {
 												type:             "number"
-												description:      "Number of segments to merge to. To fully merge the index, set to 1."
-												description_kind: "markdown"
-												required:         true
+												description:      "Number of segments to merge to. To fully merge the index, set to 1. Required when the `forcemerge` action is configured."
+												description_kind: "plain"
+												optional:         true
 											}
 										}
 										description:      "Force merges the index into the specified maximum number of segments. This action makes the index read-only."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								readonly: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: enabled: {
 											type:             "bool"
 											description:      "Controls whether ILM makes the index read-only."
-											description_kind: "markdown"
+											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										description:      "Makes the index read-only."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								rollover: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: {
 											max_age: {
 												type:             "string"
 												description:      "Triggers rollover after the maximum elapsed time from index creation is reached."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											max_docs: {
 												type:             "number"
 												description:      "Triggers rollover after the specified maximum number of documents is reached."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											max_primary_shard_docs: {
 												type:             "number"
 												description:      "Triggers rollover when the largest primary shard in the index reaches a certain number of documents. Supported from Elasticsearch version **8.2**"
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											max_primary_shard_size: {
 												type:             "string"
 												description:      "Triggers rollover when the largest primary shard in the index reaches a certain size."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											max_size: {
 												type:             "string"
 												description:      "Triggers rollover when the index reaches a certain size."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											min_age: {
 												type:             "string"
 												description:      "Prevents rollover until after the minimum elapsed time from index creation is reached. Supported from Elasticsearch version **8.4**"
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											min_docs: {
 												type:             "number"
 												description:      "Prevents rollover until after the specified minimum number of documents is reached. Supported from Elasticsearch version **8.4**"
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											min_primary_shard_docs: {
 												type:             "number"
 												description:      "Prevents rollover until the largest primary shard in the index reaches a certain number of documents. Supported from Elasticsearch version **8.4**"
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											min_primary_shard_size: {
 												type:             "string"
 												description:      "Prevents rollover until the largest primary shard in the index reaches a certain size. Supported from Elasticsearch version **8.4**"
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											min_size: {
 												type:             "string"
 												description:      "Prevents rollover until the index reaches a certain size."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 										}
 										description:      "Rolls over a target to a new index when the existing index meets one or more of the rollover conditions."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								searchable_snapshot: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: {
 											force_merge_index: {
 												type:             "bool"
 												description:      "Force merges the managed index to one segment."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
+												computed:         true
 											}
 											snapshot_repository: {
 												type:             "string"
-												description:      "Repository used to store the snapshot."
-												description_kind: "markdown"
-												required:         true
+												description:      "Repository used to store the snapshot. Required when the `searchable_snapshot` action is configured."
+												description_kind: "plain"
+												optional:         true
 											}
 										}
 										description:      "Takes a snapshot of the managed index in the configured repository and mounts it as a searchable snapshot."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								set_priority: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: priority: {
 											type:             "number"
-											description:      "The priority for the index. Must be 0 or greater."
-											description_kind: "markdown"
-											required:         true
+											description:      "The priority for the index. Must be 0 or greater. Required when the `set_priority` action is configured."
+											description_kind: "plain"
+											optional:         true
 										}
 										description: """
 													Sets the priority of the index as soon as the policy enters the hot, warm, or cold phase. Higher priority indices are recovered before indices with lower priorities following a node restart. Default priority is 1.
@@ -2506,121 +2651,120 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													"""
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								shrink: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: {
 											allow_write_after_shrink: {
 												type:             "bool"
 												description:      "If true, the shrunken index is made writable by removing the write block."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
+												computed:         true
 											}
 											max_primary_shard_size: {
 												type:             "string"
 												description:      "The max primary shard size for the target index."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											number_of_shards: {
 												type:             "number"
 												description:      "Number of shards to shrink to."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 										}
 										description:      "Sets a source index to read-only and shrinks it into a new index with fewer primary shards."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								unfollow: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: enabled: {
 											type:             "bool"
 											description:      "Controls whether ILM makes the follower index a regular one."
-											description_kind: "markdown"
+											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										description:      "Convert a follower index to a regular index. Performed automatically before a rollover, shrink, or searchable snapshot action."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 							}
 							description:      "The index is actively being updated and queried."
 							description_kind: "markdown"
 						}
-						max_items: 1
 					}
 					warm: {
-						nesting_mode: "list"
+						nesting_mode: "single"
 						block: {
 							attributes: min_age: {
 								type:             "string"
 								description:      "ILM moves indices through the lifecycle according to their age. To control the timing of these transitions, you set a minimum age for each phase."
-								description_kind: "markdown"
+								description_kind: "plain"
 								optional:         true
 								computed:         true
 							}
 							block_types: {
 								allocate: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: {
 											exclude: {
 												type:             "string"
 												description:      "Assigns an index to nodes that have none of the specified custom attributes. Must be valid JSON document."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											include: {
 												type:             "string"
 												description:      "Assigns an index to nodes that have at least one of the specified custom attributes. Must be valid JSON document."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											number_of_replicas: {
 												type:             "number"
 												description:      "Number of replicas to assign to the index. Default: `0`"
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
+												computed:         true
 											}
 											require: {
 												type:             "string"
 												description:      "Assigns an index to nodes that have all of the specified custom attributes. Must be valid JSON document."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											total_shards_per_node: {
 												type:             "number"
 												description:      "The maximum number of shards for the index on a single Elasticsearch node. Defaults to `-1` (unlimited). Supported from Elasticsearch version **7.16**"
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
+												computed:         true
 											}
 										}
 										description:      "Updates the index settings to change which nodes are allowed to host the index shards and change the number of replicas."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								downsample: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: {
 											fixed_interval: {
 												type:             "string"
-												description:      "Downsampling interval"
-												description_kind: "markdown"
-												required:         true
+												description:      "Downsampling interval. Required when the `downsample` action is configured."
+												description_kind: "plain"
+												optional:         true
 											}
 											wait_timeout: {
 												type:             "string"
-												description:      "Downsampling interval"
-												description_kind: "markdown"
+												description:      "Maximum time to wait for the downsample operation to complete before timing out."
+												description_kind: "plain"
 												optional:         true
 												computed:         true
 											}
@@ -2628,66 +2772,64 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										description:      "Roll up documents within a fixed interval to a single summary document. Reduces the index footprint by storing time series data at reduced granularity."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								forcemerge: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: {
 											index_codec: {
 												type:             "string"
 												description:      "Codec used to compress the document store."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											max_num_segments: {
 												type:             "number"
-												description:      "Number of segments to merge to. To fully merge the index, set to 1."
-												description_kind: "markdown"
-												required:         true
+												description:      "Number of segments to merge to. To fully merge the index, set to 1. Required when the `forcemerge` action is configured."
+												description_kind: "plain"
+												optional:         true
 											}
 										}
 										description:      "Force merges the index into the specified maximum number of segments. This action makes the index read-only."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								migrate: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: enabled: {
 											type:             "bool"
 											description:      "Controls whether ILM automatically migrates the index during this phase."
-											description_kind: "markdown"
+											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										description:      "Moves the index to the data tier that corresponds to the current phase by updating the \"index.routing.allocation.include._tier_preference\" index setting."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								readonly: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: enabled: {
 											type:             "bool"
 											description:      "Controls whether ILM makes the index read-only."
-											description_kind: "markdown"
+											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										description:      "Makes the index read-only."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								set_priority: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: priority: {
 											type:             "number"
-											description:      "The priority for the index. Must be 0 or greater."
-											description_kind: "markdown"
-											required:         true
+											description:      "The priority for the index. Must be 0 or greater. Required when the `set_priority` action is configured."
+											description_kind: "plain"
+											optional:         true
 										}
 										description: """
 													Sets the priority of the index as soon as the policy enters the hot, warm, or cold phase. Higher priority indices are recovered before indices with lower priorities following a node restart. Default priority is 1.
@@ -2695,55 +2837,53 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													"""
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								shrink: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: {
 											allow_write_after_shrink: {
 												type:             "bool"
 												description:      "If true, the shrunken index is made writable by removing the write block."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
+												computed:         true
 											}
 											max_primary_shard_size: {
 												type:             "string"
 												description:      "The max primary shard size for the target index."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 											number_of_shards: {
 												type:             "number"
 												description:      "Number of shards to shrink to."
-												description_kind: "markdown"
+												description_kind: "plain"
 												optional:         true
 											}
 										}
 										description:      "Sets a source index to read-only and shrinks it into a new index with fewer primary shards."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 								unfollow: {
-									nesting_mode: "list"
+									nesting_mode: "single"
 									block: {
 										attributes: enabled: {
 											type:             "bool"
 											description:      "Controls whether ILM makes the follower index a regular one."
-											description_kind: "markdown"
+											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										description:      "Convert a follower index to a regular index. Performed automatically before a rollover, shrink, or searchable snapshot action."
 										description_kind: "markdown"
 									}
-									max_items: 1
 								}
 							}
 							description:      "The index is no longer being updated but is still being queried."
 							description_kind: "markdown"
 						}
-						max_items: 1
 					}
 				}
 				description: """
@@ -2927,9 +3067,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+							description:      "Elasticsearch connection configuration block."
 							description_kind: "markdown"
-							deprecated:       true
 						}
 						max_items: 1
 					}
@@ -2969,6 +3108,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												description:      "Value used to route indexing operations to a specific shard. If specified, this overwrites the `routing` value for indexing operations."
 												description_kind: "markdown"
 												optional:         true
+												computed:         true
 											}
 											is_hidden: {
 												type:             "bool"
@@ -2999,6 +3139,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												description:      "Value used to route search operations to a specific shard. If specified, this overwrites the routing value for search operations."
 												description_kind: "markdown"
 												optional:         true
+												computed:         true
 											}
 										}
 										description:      "Alias to add."
@@ -3056,6 +3197,106 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description: """
 					Attaches an ILM policy to a Fleet-managed or externally-managed index template by creating/updating the `@custom` component template with the lifecycle setting.
 
@@ -3103,6 +3344,159 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					Use `elasticstack_elasticsearch_component_template` if you want full control over the `@custom` template. Use this resource if you only want to manage the ILM setting and preserve any other customizations.
 
 					"""
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_inference_endpoint: {
+			version: 0
+			block: {
+				attributes: {
+					chunking_settings: {
+						type:             "string"
+						description:      "Configuration for chunking input text, as a JSON object. Applicable only for embedding task types."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					inference_id: {
+						type:             "string"
+						description:      "The unique identifier of the inference endpoint."
+						description_kind: "markdown"
+						required:         true
+					}
+					service: {
+						type:             "string"
+						description:      "The service type for the inference endpoint (e.g. `openai`, `cohere`, `elasticsearch`)."
+						description_kind: "markdown"
+						required:         true
+					}
+					service_settings: {
+						type:             "string"
+						description:      "Settings specific to the service provider, as a JSON object. May include credentials and model identifiers."
+						description_kind: "markdown"
+						required:         true
+						sensitive:        true
+					}
+					task_settings: {
+						type:             "string"
+						description:      "Task-specific settings, as a JSON object. Optional and service-dependent. Only keys explicitly set here are tracked; server-applied defaults returned by the API are ignored to avoid perpetual drift."
+						description_kind: "markdown"
+						optional:         true
+					}
+					task_type: {
+						type:             "string"
+						description:      "must be one of [`sparse_embedding`, `text_embedding`, `rerank`, `completion`, `chat_completion`, `embedding`]"
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Creates or updates an inference endpoint.See the [inference endpoint API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-1) for more details."
 				description_kind: "markdown"
 			}
 		}
@@ -3249,9 +3643,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 					max_items: 1
 				}
@@ -3492,9 +3885,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 					max_items: 1
 				}
@@ -3992,9 +4384,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. "
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 				}
 				description: """
@@ -4310,9 +4701,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. "
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 				}
 				description: """
@@ -4489,9 +4879,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. "
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 				}
 				description: """
@@ -4656,9 +5045,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. "
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 				}
 				description: """
@@ -4819,9 +5207,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. "
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 				}
 				description: """
@@ -5055,9 +5442,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. "
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 				}
 				description: """
@@ -5241,9 +5627,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "Elasticsearch connection configuration block. "
+							description:      "Elasticsearch connection configuration block."
 							description_kind: "markdown"
-							deprecated:       true
 						}
 					}
 					indices: {
@@ -5513,9 +5898,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. "
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 				}
 				description: """
@@ -5662,9 +6046,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. "
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 				}
 				description: """
@@ -5863,9 +6246,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. "
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 				}
 				description: """
@@ -6069,9 +6451,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 					max_items: 1
 				}
@@ -6273,9 +6654,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 								}
 							}
-							description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+							description:      "Elasticsearch connection configuration block."
 							description_kind: "markdown"
-							deprecated:       true
 						}
 						max_items: 1
 					}
@@ -6787,6 +7167,107 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						min_items: 1
 						max_items: 1
 					}
+					elasticsearch_connection: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								api_key: {
+									type:             "string"
+									description:      "API Key to use for authentication to Elasticsearch"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								bearer_token: {
+									type:             "string"
+									description:      "Bearer Token to use for authentication to Elasticsearch"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								ca_data: {
+									type:             "string"
+									description:      "PEM-encoded custom Certificate Authority certificate"
+									description_kind: "markdown"
+									optional:         true
+								}
+								ca_file: {
+									type:             "string"
+									description:      "Path to a custom Certificate Authority certificate"
+									description_kind: "markdown"
+									optional:         true
+								}
+								cert_data: {
+									type:             "string"
+									description:      "PEM encoded certificate for client auth"
+									description_kind: "markdown"
+									optional:         true
+								}
+								cert_file: {
+									type:             "string"
+									description:      "Path to a file containing the PEM encoded certificate for client auth"
+									description_kind: "markdown"
+									optional:         true
+								}
+								endpoints: {
+									type: ["list", "string"]
+									description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								es_client_authentication: {
+									type:             "string"
+									description:      "ES Client Authentication field to be used with the JWT token"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								headers: {
+									type: ["map", "string"]
+									description:      "A list of headers to be sent with each request to Elasticsearch."
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								insecure: {
+									type:             "bool"
+									description:      "Disable TLS certificate validation"
+									description_kind: "markdown"
+									optional:         true
+								}
+								key_data: {
+									type:             "string"
+									description:      "PEM encoded private key for client auth"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								key_file: {
+									type:             "string"
+									description:      "Path to a file containing the PEM encoded private key for client auth"
+									description_kind: "markdown"
+									optional:         true
+								}
+								password: {
+									type:             "string"
+									description:      "Password to use for API authentication to Elasticsearch."
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								username: {
+									type:             "string"
+									description:      "Username to use for API authentication to Elasticsearch."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							description:      "Elasticsearch connection configuration block."
+							description_kind: "markdown"
+						}
+						max_items: 1
+					}
 					retention_policy: {
 						nesting_mode: "list"
 						block: {
@@ -6897,18 +7378,21 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "The list of actions that will be run if the condition matches."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					active: {
 						type:             "bool"
 						description:      "Defines whether the watch is active or inactive by default. The default value is true, which means the watch is active by default."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					condition: {
 						type:             "string"
 						description:      "The condition that defines if the actions should be run."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					id: {
 						type:             "string"
@@ -6921,18 +7405,21 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "The input that defines the input that loads the data for the watch."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					metadata: {
 						type:             "string"
 						description:      "Metadata json that will be copied into the history entries."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					throttle_period_in_millis: {
 						type:             "number"
 						description:      "Minimum time in milliseconds between actions being run. Defaults to 5000."
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					transform: {
 						type:             "string"
@@ -6953,8 +7440,217 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description:      "Manage Watches. See the [Watcher API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api.html) for more details."
 				description_kind: "markdown"
+			}
+		}
+		elasticstack_fleet_agent_download_source: {
+			version: 0
+			block: {
+				attributes: {
+					default: {
+						type:             "bool"
+						description:      "Set this download source as the default for agents."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					host: {
+						type:             "string"
+						description:      "The base URL from which Elastic Agents will download binaries."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of this resource."
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the Fleet agent download source."
+						description_kind: "plain"
+						required:         true
+					}
+					proxy_id: {
+						type:             "string"
+						description:      "The ID of the proxy to use for this download source."
+						description_kind: "plain"
+						optional:         true
+					}
+					source_id: {
+						type:             "string"
+						description:      "Unique identifier of the Fleet agent download source."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					space_ids: {
+						type: ["set", "string"]
+						description:      "The Kibana space IDs where this download source is available. When set, the download source will be created and managed within the specified space. Note: The order of space IDs does not matter as this is a set."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Creates a new Fleet Agent Binary Download Source."
+				description_kind: "plain"
 			}
 		}
 		elasticstack_fleet_agent_policy: {
@@ -7322,7 +8018,1010 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description:      "Creates a new Fleet Agent Policy. See https://www.elastic.co/guide/en/fleet/current/agent-policy.html"
+				description_kind: "plain"
+			}
+		}
+		elasticstack_fleet_elastic_defend_integration_policy: {
+			version: 0
+			block: {
+				attributes: {
+					agent_policy_id: {
+						type:             "string"
+						description:      "ID of the agent policy."
+						description_kind: "plain"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The description of the integration policy."
+						description_kind: "plain"
+						optional:         true
+					}
+					enabled: {
+						type:             "bool"
+						description:      "Enable the integration policy."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					force: {
+						type:             "bool"
+						description:      "Force operations, such as creation and deletion, to occur."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of this resource."
+						description_kind: "plain"
+						computed:         true
+					}
+					integration_version: {
+						type:             "string"
+						description:      "The version of the Elastic Defend integration package."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the integration policy."
+						description_kind: "plain"
+						required:         true
+					}
+					namespace: {
+						type:             "string"
+						description:      "The namespace of the integration policy."
+						description_kind: "plain"
+						required:         true
+					}
+					policy: {
+						nested_type: {
+							attributes: {
+								linux: {
+									nested_type: {
+										attributes: {
+											behavior_protection: {
+												nested_type: {
+													attributes: {
+														mode: {
+															type:             "string"
+															description:      "Protection mode. Valid values: `\"off\"`, `\"detect\"`, `\"prevent\"`."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														reputation_service: {
+															type:             "bool"
+															description:      "Whether reputation service is enabled."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														supported: {
+															type:             "bool"
+															description:      "Whether this protection is supported on the platform."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Linux behavior protection settings."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											events: {
+												nested_type: {
+													attributes: {
+														file: {
+															type:             "bool"
+															description:      "Collect file events."
+															description_kind: "plain"
+															optional:         true
+														}
+														network: {
+															type:             "bool"
+															description:      "Collect network events."
+															description_kind: "plain"
+															optional:         true
+														}
+														process: {
+															type:             "bool"
+															description:      "Collect process events."
+															description_kind: "plain"
+															optional:         true
+														}
+														session_data: {
+															type:             "bool"
+															description:      "Collect session data events."
+															description_kind: "plain"
+															optional:         true
+														}
+														tty_io: {
+															type:             "bool"
+															description:      "Collect TTY I/O events."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Linux event collection settings."
+												description_kind: "plain"
+												optional:         true
+											}
+											logging: {
+												nested_type: {
+													attributes: file: {
+														type:             "string"
+														description:      "Log level for file logging. Valid values: `\"info\"`, `\"debug\"`, `\"warning\"`, `\"error\"`, `\"critical\"`."
+														description_kind: "plain"
+														optional:         true
+													}
+													nesting_mode: "single"
+												}
+												description:      "Linux logging settings."
+												description_kind: "plain"
+												optional:         true
+											}
+											malware: {
+												nested_type: {
+													attributes: {
+														blocklist: {
+															type:             "bool"
+															description:      "Whether blocklist is enabled."
+															description_kind: "plain"
+															optional:         true
+														}
+														mode: {
+															type:             "string"
+															description:      "Malware protection mode. Valid values: `\"off\"`, `\"detect\"`, `\"prevent\"`."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Linux malware protection settings."
+												description_kind: "plain"
+												optional:         true
+											}
+											memory_protection: {
+												nested_type: {
+													attributes: {
+														mode: {
+															type:             "string"
+															description:      "Protection mode. Valid values: `\"off\"`, `\"detect\"`, `\"prevent\"`."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														supported: {
+															type:             "bool"
+															description:      "Whether this protection is supported on the platform."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Linux memory protection settings."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											popup: {
+												nested_type: {
+													attributes: {
+														behavior_protection: {
+															nested_type: {
+																attributes: {
+																	enabled: {
+																		type:             "bool"
+																		description:      "Whether the popup notification is enabled."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																	message: {
+																		type:             "string"
+																		description:      "The popup message text."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														malware: {
+															nested_type: {
+																attributes: {
+																	enabled: {
+																		type:             "bool"
+																		description:      "Whether the popup notification is enabled."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																	message: {
+																		type:             "string"
+																		description:      "The popup message text."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														memory_protection: {
+															nested_type: {
+																attributes: {
+																	enabled: {
+																		type:             "bool"
+																		description:      "Whether the popup notification is enabled."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																	message: {
+																		type:             "string"
+																		description:      "The popup message text."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Linux popup notification settings."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Linux-specific Elastic Defend policy settings."
+									description_kind: "plain"
+									optional:         true
+								}
+								mac: {
+									nested_type: {
+										attributes: {
+											behavior_protection: {
+												nested_type: {
+													attributes: {
+														mode: {
+															type:             "string"
+															description:      "Protection mode. Valid values: `\"off\"`, `\"detect\"`, `\"prevent\"`."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														reputation_service: {
+															type:             "bool"
+															description:      "Whether reputation service is enabled."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														supported: {
+															type:             "bool"
+															description:      "Whether this protection is supported on the platform."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "macOS behavior protection settings."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											events: {
+												nested_type: {
+													attributes: {
+														file: {
+															type:             "bool"
+															description:      "Collect file events."
+															description_kind: "plain"
+															optional:         true
+														}
+														network: {
+															type:             "bool"
+															description:      "Collect network events."
+															description_kind: "plain"
+															optional:         true
+														}
+														process: {
+															type:             "bool"
+															description:      "Collect process events."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "macOS event collection settings."
+												description_kind: "plain"
+												optional:         true
+											}
+											logging: {
+												nested_type: {
+													attributes: file: {
+														type:             "string"
+														description:      "Log level for file logging. Valid values: `\"info\"`, `\"debug\"`, `\"warning\"`, `\"error\"`, `\"critical\"`."
+														description_kind: "plain"
+														optional:         true
+													}
+													nesting_mode: "single"
+												}
+												description:      "macOS logging settings."
+												description_kind: "plain"
+												optional:         true
+											}
+											malware: {
+												nested_type: {
+													attributes: {
+														blocklist: {
+															type:             "bool"
+															description:      "Whether blocklist is enabled."
+															description_kind: "plain"
+															optional:         true
+														}
+														mode: {
+															type:             "string"
+															description:      "Malware protection mode. Valid values: `\"off\"`, `\"detect\"`, `\"prevent\"`."
+															description_kind: "plain"
+															optional:         true
+														}
+														notify_user: {
+															type:             "bool"
+															description:      "Whether to notify the user on malware detection."
+															description_kind: "plain"
+															optional:         true
+														}
+														on_write_scan: {
+															type:             "bool"
+															description:      "Whether on-write scan is enabled."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "macOS malware protection settings."
+												description_kind: "plain"
+												optional:         true
+											}
+											memory_protection: {
+												nested_type: {
+													attributes: {
+														mode: {
+															type:             "string"
+															description:      "Protection mode. Valid values: `\"off\"`, `\"detect\"`, `\"prevent\"`."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														supported: {
+															type:             "bool"
+															description:      "Whether this protection is supported on the platform."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "macOS memory protection settings."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											popup: {
+												nested_type: {
+													attributes: {
+														behavior_protection: {
+															nested_type: {
+																attributes: {
+																	enabled: {
+																		type:             "bool"
+																		description:      "Whether the popup notification is enabled."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																	message: {
+																		type:             "string"
+																		description:      "The popup message text."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														malware: {
+															nested_type: {
+																attributes: {
+																	enabled: {
+																		type:             "bool"
+																		description:      "Whether the popup notification is enabled."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																	message: {
+																		type:             "string"
+																		description:      "The popup message text."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														memory_protection: {
+															nested_type: {
+																attributes: {
+																	enabled: {
+																		type:             "bool"
+																		description:      "Whether the popup notification is enabled."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																	message: {
+																		type:             "string"
+																		description:      "The popup message text."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "macOS popup notification settings."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "macOS-specific Elastic Defend policy settings."
+									description_kind: "plain"
+									optional:         true
+								}
+								windows: {
+									nested_type: {
+										attributes: {
+											antivirus_registration: {
+												nested_type: {
+													attributes: {
+														enabled: {
+															type:             "bool"
+															description:      "Whether antivirus registration is enabled."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														mode: {
+															type:             "string"
+															description:      "Antivirus registration mode. Valid values: `\"enabled\"`, `\"disabled\"`, `\"sync_with_malware_prevent\"`."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Windows antivirus registration settings."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											attack_surface_reduction: {
+												nested_type: {
+													attributes: credential_hardening: {
+														nested_type: {
+															attributes: enabled: {
+																type:             "bool"
+																description:      "Whether credential hardening is enabled."
+																description_kind: "plain"
+																optional:         true
+																computed:         true
+															}
+															nesting_mode: "single"
+														}
+														description:      "Credential hardening settings."
+														description_kind: "plain"
+														optional:         true
+														computed:         true
+													}
+													nesting_mode: "single"
+												}
+												description:      "Windows attack surface reduction settings."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											behavior_protection: {
+												nested_type: {
+													attributes: {
+														mode: {
+															type:             "string"
+															description:      "Protection mode. Valid values: `\"off\"`, `\"detect\"`, `\"prevent\"`."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														reputation_service: {
+															type:             "bool"
+															description:      "Whether reputation service is enabled."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														supported: {
+															type:             "bool"
+															description:      "Whether this protection is supported on the platform."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Windows behavior protection settings."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											events: {
+												nested_type: {
+													attributes: {
+														authentication: {
+															type:             "bool"
+															description:      "Collect authentication events."
+															description_kind: "plain"
+															optional:         true
+														}
+														dll_and_driver_load: {
+															type:             "bool"
+															description:      "Collect DLL and driver load events."
+															description_kind: "plain"
+															optional:         true
+														}
+														dns: {
+															type:             "bool"
+															description:      "Collect DNS events."
+															description_kind: "plain"
+															optional:         true
+														}
+														file: {
+															type:             "bool"
+															description:      "Collect file events."
+															description_kind: "plain"
+															optional:         true
+														}
+														network: {
+															type:             "bool"
+															description:      "Collect network events."
+															description_kind: "plain"
+															optional:         true
+														}
+														process: {
+															type:             "bool"
+															description:      "Collect process events."
+															description_kind: "plain"
+															optional:         true
+														}
+														registry: {
+															type:             "bool"
+															description:      "Collect registry events."
+															description_kind: "plain"
+															optional:         true
+														}
+														security: {
+															type:             "bool"
+															description:      "Collect security events."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Windows event collection settings."
+												description_kind: "plain"
+												optional:         true
+											}
+											logging: {
+												nested_type: {
+													attributes: file: {
+														type:             "string"
+														description:      "Log level for file logging. Valid values: `\"info\"`, `\"debug\"`, `\"warning\"`, `\"error\"`, `\"critical\"`."
+														description_kind: "plain"
+														optional:         true
+													}
+													nesting_mode: "single"
+												}
+												description:      "Windows logging settings."
+												description_kind: "plain"
+												optional:         true
+											}
+											malware: {
+												nested_type: {
+													attributes: {
+														blocklist: {
+															type:             "bool"
+															description:      "Whether blocklist is enabled."
+															description_kind: "plain"
+															optional:         true
+														}
+														mode: {
+															type:             "string"
+															description:      "Malware protection mode. Valid values: `\"off\"`, `\"detect\"`, `\"prevent\"`."
+															description_kind: "plain"
+															optional:         true
+														}
+														notify_user: {
+															type:             "bool"
+															description:      "Whether to notify the user on malware detection."
+															description_kind: "plain"
+															optional:         true
+														}
+														on_write_scan: {
+															type:             "bool"
+															description:      "Whether on-write scan is enabled."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Windows malware protection settings."
+												description_kind: "plain"
+												optional:         true
+											}
+											memory_protection: {
+												nested_type: {
+													attributes: {
+														mode: {
+															type:             "string"
+															description:      "Protection mode. Valid values: `\"off\"`, `\"detect\"`, `\"prevent\"`."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														supported: {
+															type:             "bool"
+															description:      "Whether this protection is supported on the platform."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Windows memory protection settings."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											popup: {
+												nested_type: {
+													attributes: {
+														behavior_protection: {
+															nested_type: {
+																attributes: {
+																	enabled: {
+																		type:             "bool"
+																		description:      "Whether the popup notification is enabled."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																	message: {
+																		type:             "string"
+																		description:      "The popup message text."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														malware: {
+															nested_type: {
+																attributes: {
+																	enabled: {
+																		type:             "bool"
+																		description:      "Whether the popup notification is enabled."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																	message: {
+																		type:             "string"
+																		description:      "The popup message text."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														memory_protection: {
+															nested_type: {
+																attributes: {
+																	enabled: {
+																		type:             "bool"
+																		description:      "Whether the popup notification is enabled."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																	message: {
+																		type:             "string"
+																		description:      "The popup message text."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														ransomware: {
+															nested_type: {
+																attributes: {
+																	enabled: {
+																		type:             "bool"
+																		description:      "Whether the popup notification is enabled."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																	message: {
+																		type:             "string"
+																		description:      "The popup message text."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Windows popup notification settings."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											ransomware: {
+												nested_type: {
+													attributes: {
+														mode: {
+															type:             "string"
+															description:      "Protection mode. Valid values: `\"off\"`, `\"detect\"`, `\"prevent\"`."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														supported: {
+															type:             "bool"
+															description:      "Whether this protection is supported on the platform."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Windows ransomware protection settings."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Windows-specific Elastic Defend policy settings."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Elastic Defend policy configuration."
+						description_kind: "plain"
+						required:         true
+					}
+					policy_id: {
+						type:             "string"
+						description:      "Unique identifier of the Elastic Defend integration policy. Used as the import key."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					preset: {
+						type:             "string"
+						description:      "Elastic Defend preset configuration. Maps to `endpointConfig.preset` in the Defend API. Common values include `\"NGAv1\"`, `\"NGAV\"`, `\"dataCollection\"`, `\"EDRComplete\"`, `\"EDREssential\"`."
+						description_kind: "plain"
+						optional:         true
+					}
+					space_ids: {
+						type: ["set", "string"]
+						description:      "The Kibana space IDs where this integration policy is available. When set, must match the space_ids of the referenced agent policy. If not set, will be inherited from the agent policy."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages an Elastic Defend Fleet integration policy (package policy for the `endpoint` package). Uses a two-phase create (bootstrap then finalize) and preserves server-managed payloads such as `artifact_manifest` and the package policy `version` in private state."
 				description_kind: "plain"
 			}
 		}
@@ -7390,6 +9089,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "The integration package version."
 						description_kind: "plain"
 						required:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description: """
@@ -7571,7 +9325,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_ids: {
 						type: ["set", "string"]
 						description: """
-									The Kibana space IDs where this integration policy is available. When set, must match the space_ids of the referenced agent policy. If not set, will be inherited from the agent policy. Note: The order of space IDs does not matter as this is a set.
+									The Kibana space IDs where this integration policy is available. When set, must match the space_ids of the referenced agent policy. Note: The order of space IDs does not matter as this is a set.
 
 									"""
 						description_kind: "plain"
@@ -7589,6 +9343,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 						sensitive:        true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description: """
@@ -7852,6 +9661,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					service_token: {
+						type:             "string"
+						description:      "Service token for remote Elasticsearch outputs."
+						description_kind: "plain"
+						optional:         true
+						sensitive:        true
+					}
 					space_ids: {
 						type: ["set", "string"]
 						description: """
@@ -7869,7 +9685,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									type:             "string"
 									description:      "Client SSL certificate."
 									description_kind: "plain"
-									required:         true
+									optional:         true
 								}
 								certificate_authorities: {
 									type: ["list", "string"]
@@ -7881,7 +9697,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									type:             "string"
 									description:      "Client SSL certificate key."
 									description_kind: "plain"
-									required:         true
+									optional:         true
 									sensitive:        true
 								}
 							}
@@ -7891,11 +9707,84 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						optional:         true
 					}
+					sync_integrations: {
+						type:             "bool"
+						description:      "When type is remote_elasticsearch, whether Fleet synchronizes integration assets to the remote cluster. Subscription and version requirements apply per Elastic documentation."
+						description_kind: "plain"
+						optional:         true
+					}
+					sync_uninstalled_integrations: {
+						type:             "bool"
+						description:      "When type is remote_elasticsearch, whether to sync uninstalled integrations. Only meaningful when sync_integrations is enabled."
+						description_kind: "plain"
+						optional:         true
+					}
 					type: {
 						type:             "string"
 						description:      "The output type."
 						description_kind: "plain"
 						required:         true
+					}
+					write_to_logs_streams: {
+						type:             "bool"
+						description:      "When type is remote_elasticsearch, whether agents using this output send data to wired logs streams (preview in newer stacks)."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description:      "Creates a new Fleet Output."
@@ -7946,6 +9835,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description:      "Creates a new Fleet Server Host."
@@ -8084,6 +10028,352 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "plain"
 			}
 		}
+		elasticstack_kibana_agentbuilder_agent: {
+			version: 0
+			block: {
+				attributes: {
+					agent_id: {
+						type:             "string"
+						description:      "The agent ID."
+						description_kind: "markdown"
+						required:         true
+					}
+					avatar_color: {
+						type:             "string"
+						description:      "Hex color code for the agent avatar (e.g., `#BFDBFF`)."
+						description_kind: "markdown"
+						optional:         true
+					}
+					avatar_symbol: {
+						type:             "string"
+						description:      "Symbol or initials for the agent avatar (e.g., `SI`)."
+						description_kind: "markdown"
+						optional:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The agent description."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The composite ID of the agent: `<space_id>/<agent_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					instructions: {
+						type:             "string"
+						description:      "Optional system instructions that define the agent behavior."
+						description_kind: "markdown"
+						optional:         true
+					}
+					labels: {
+						type: ["set", "string"]
+						description:      "Set of labels for the agent."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The agent name."
+						description_kind: "markdown"
+						required:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					tools: {
+						type: ["set", "string"]
+						description:      "Set of tool IDs that the agent can use."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages Kibana Agent Builder agents. See the [Agent Builder API documentation](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder) for more information."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_agentbuilder_tool: {
+			version: 0
+			block: {
+				attributes: {
+					configuration: {
+						type:             "string"
+						description:      "The tool configuration as a JSON-encoded string. Use `jsonencode()` to pass a configuration object."
+						description_kind: "markdown"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The tool description."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The composite ID of the tool: `<tool_id>/<space_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the Kibana space. If not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					tags: {
+						type: ["set", "string"]
+						description:      "List of tags for the tool."
+						description_kind: "markdown"
+						optional:         true
+					}
+					tool_id: {
+						type:             "string"
+						description:      "The tool ID."
+						description_kind: "markdown"
+						required:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The tool type. Must be one of: [esql index_search workflow mcp]."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages Kibana Agent Builder tools. Tools can be of type `esql`, `index_search`, or `workflow`. See the [Agent Builder API documentation](https://www.elastic.co/guide/en/kibana/current/agent-builder-api.html)."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_agentbuilder_workflow: {
+			version: 0
+			block: {
+				attributes: {
+					configuration_yaml: {
+						type:             "string"
+						description:      "The YAML configuration for the workflow."
+						description_kind: "markdown"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The workflow description (extracted from YAML configuration)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					enabled: {
+						type:             "bool"
+						description:      "Whether the workflow is enabled (extracted from YAML configuration)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The composite ID of the workflow: `<workflow_id>/<space_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The workflow name (extracted from YAML configuration)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the Kibana space. If not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					valid: {
+						type:             "bool"
+						description:      "Whether the workflow configuration is valid."
+						description_kind: "markdown"
+						computed:         true
+					}
+					workflow_id: {
+						type:             "string"
+						description:      "The workflow ID. If not provided, it will be auto-generated. IDs are `workflow-<UUIDv4>`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages Kibana Agent Builder workflows. See the [Workflows documentation](https://www.elastic.co/docs/explore-analyze/workflows) for more information."
+				description_kind: "markdown"
+			}
+		}
 		elasticstack_kibana_alerting_rule: {
 			version: 1
 			block: {
@@ -8105,6 +10395,38 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						type:             "bool"
 						description:      "Indicates if you want to run the rule on an interval basis."
 						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					flapping: {
+						nested_type: {
+							attributes: {
+								enabled: {
+									type:             "bool"
+									description:      "Whether the rule may enter the flapping state. When unset, the Kibana default applies. Supported only from Elastic Stack 9.3 onward."
+									description_kind: "plain"
+									optional:         true
+								}
+								look_back_window: {
+									type:             "number"
+									description:      "Minimum number of rule runs in which the status change threshold must be met."
+									description_kind: "plain"
+									optional:         true
+								}
+								status_change_threshold: {
+									type:             "number"
+									description:      "Minimum number of times an alert must switch between active and recovered within the look-back window."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description: """
+									Rule-level [flapping detection](https://www.elastic.co/guide/en/kibana/master/alerting-settings.html) (Kibana **8.16** or higher). When this object is set in configuration, `look_back_window` and `status_change_threshold` are required. The optional `enabled` attribute is supported only from **Elastic Stack 9.3** onward; configuring it against an older stack returns an error. When `flapping` is omitted from configuration on update, Terraform retains the previous value, so existing server-side flapping settings are not cleared by that omission.
+
+									"""
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -8199,127 +10521,184 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
-				block_types: actions: {
-					nesting_mode: "list"
-					block: {
-						attributes: {
-							group: {
-								type: "string"
-								description: """
+				block_types: {
+					actions: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								group: {
+									type: "string"
+									description: """
 												The group name, which affects when the action runs (for example, when the threshold is met or when the alert is recovered). Each rule type has a list of valid action group names.
 
 												"""
-								description_kind: "plain"
-								optional:         true
-								computed:         true
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								id: {
+									type:             "string"
+									description:      "The identifier for the connector saved object."
+									description_kind: "plain"
+									required:         true
+								}
+								params: {
+									type:             "string"
+									description:      "The parameters for the action, which are sent to the connector."
+									description_kind: "plain"
+									required:         true
+								}
 							}
-							id: {
-								type:             "string"
-								description:      "The identifier for the connector saved object."
-								description_kind: "plain"
-								required:         true
-							}
-							params: {
-								type:             "string"
-								description:      "The parameters for the action, which are sent to the connector."
-								description_kind: "plain"
-								required:         true
-							}
-						}
-						block_types: {
-							alerts_filter: {
-								nesting_mode: "single"
-								block: {
-									attributes: kql: {
-										type:             "string"
-										description:      "Defines a query filter that determines whether the action runs. Written in Kibana Query Language (KQL)."
-										description_kind: "plain"
-										optional:         true
-									}
-									block_types: timeframe: {
-										nesting_mode: "single"
-										block: {
-											attributes: {
-												days: {
-													type: ["list", "number"]
-													description: """
+							block_types: {
+								alerts_filter: {
+									nesting_mode: "single"
+									block: {
+										attributes: kql: {
+											type:             "string"
+											description:      "Defines a query filter that determines whether the action runs. Written in Kibana Query Language (KQL)."
+											description_kind: "plain"
+											optional:         true
+										}
+										block_types: timeframe: {
+											nesting_mode: "single"
+											block: {
+												attributes: {
+													days: {
+														type: ["list", "number"]
+														description: """
 																		Defines the days of the week that the action can run, represented as an array of numbers. For example, 1 represents Monday. An empty array is equivalent to specifying all the days of the week.
 
 																		"""
-													description_kind: "plain"
-													optional:         true
+														description_kind: "plain"
+														optional:         true
+													}
+													hours_end: {
+														type:             "string"
+														description:      "Defines the range of time in a day that the action can run. The end of the time frame in 24-hour notation (hh:mm)."
+														description_kind: "plain"
+														optional:         true
+													}
+													hours_start: {
+														type:             "string"
+														description:      "Defines the range of time in a day that the action can run. The start of the time frame in 24-hour notation (hh:mm)."
+														description_kind: "plain"
+														optional:         true
+													}
+													timezone: {
+														type:             "string"
+														description:      "The ISO time zone for the hours values. Values such as UTC and UTC+1 also work but lack built-in daylight savings time support and are not recommended."
+														description_kind: "plain"
+														optional:         true
+													}
 												}
-												hours_end: {
-													type:             "string"
-													description:      "Defines the range of time in a day that the action can run. The end of the time frame in 24-hour notation (hh:mm)."
-													description_kind: "plain"
-													optional:         true
-												}
-												hours_start: {
-													type:             "string"
-													description:      "Defines the range of time in a day that the action can run. The start of the time frame in 24-hour notation (hh:mm)."
-													description_kind: "plain"
-													optional:         true
-												}
-												timezone: {
-													type:             "string"
-													description:      "The ISO time zone for the hours values. Values such as UTC and UTC+1 also work but lack built-in daylight savings time support and are not recommended."
-													description_kind: "plain"
-													optional:         true
-												}
+												description:      "Defines a period that limits whether the action runs."
+												description_kind: "plain"
 											}
-											description:      "Defines a period that limits whether the action runs."
-											description_kind: "plain"
 										}
-									}
-									description: """
+										description: """
 													Conditions that affect whether the action runs. If you specify multiple conditions, all conditions must be met for the action to run. For example, if an alert occurs within the specified time frame and matches the query, the action runs.
 
 													"""
-									description_kind: "plain"
+										description_kind: "plain"
+									}
 								}
-							}
-							frequency: {
-								nesting_mode: "single"
-								block: {
-									attributes: {
-										notify_when: {
-											type: "string"
-											description: """
+								frequency: {
+									nesting_mode: "single"
+									block: {
+										attributes: {
+											notify_when: {
+												type: "string"
+												description: """
 															Defines how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met.
 
 															"""
-											description_kind: "plain"
-											optional:         true
-											computed:         true
-										}
-										summary: {
-											type:             "bool"
-											description:      "Indicates whether the action is a summary."
-											description_kind: "plain"
-											optional:         true
-											computed:         true
-										}
-										throttle: {
-											type: "string"
-											description: """
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											summary: {
+												type:             "bool"
+												description:      "Indicates whether the action is a summary."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											throttle: {
+												type: "string"
+												description: """
 															Defines how often an alert generates repeated actions. This custom action interval must be specified in seconds, minutes, hours, or days. For example, 10m or 1h. This property is applicable only if `notify_when` is `onThrottleInterval`.
 
 															"""
-											description_kind: "plain"
-											optional:         true
+												description_kind: "plain"
+												optional:         true
+											}
 										}
-									}
-									description: """
+										description: """
 													The properties that affect how often actions are generated. If the rule type supports setting summary to true, the action can be a summary of alerts at the specified notification interval. Otherwise, an action runs for each alert at the specified notification interval. NOTE: You cannot specify these parameters when `notify_when` or `throttle` are defined at the rule level.
 
 													"""
-									description_kind: "plain"
+										description_kind: "plain"
+									}
 								}
 							}
+							description:      "An action that runs under defined conditions."
+							description_kind: "plain"
 						}
-						description:      "An action that runs under defined conditions."
-						description_kind: "plain"
+					}
+					kibana_connection: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								api_key: {
+									type:             "string"
+									description:      "API Key to use for authentication to Kibana"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								bearer_token: {
+									type:             "string"
+									description:      "Bearer Token to use for authentication to Kibana"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								ca_certs: {
+									type: ["list", "string"]
+									description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+									description_kind: "markdown"
+									optional:         true
+								}
+								endpoints: {
+									type: ["list", "string"]
+									description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								insecure: {
+									type:             "bool"
+									description:      "Disable TLS certificate validation"
+									description_kind: "markdown"
+									optional:         true
+								}
+								password: {
+									type:             "string"
+									description:      "Password to use for API authentication to Kibana."
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								username: {
+									type:             "string"
+									description:      "Username to use for API authentication to Kibana."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							description:      "Kibana connection configuration block."
+							description_kind: "markdown"
+						}
 					}
 				}
 				description: """
@@ -8640,6 +11019,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description:      "Manages Kibana [data views](https://www.elastic.co/guide/en/kibana/current/data-views-api.html)"
 				description_kind: "markdown"
 			}
@@ -8684,6 +11118,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description: """
 					Manages the default Kibana data view. See the [Kibana Data Views API documentation](https://www.elastic.co/docs/api/doc/kibana/v8/operation/operation-setdefaultdatailviewdefault) for more information.
 
@@ -8695,6 +11184,18 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			version: 0
 			block: {
 				attributes: {
+					compatibility_mode: {
+						type:             "bool"
+						description:      "Applies various adjustments to the saved objects that are being imported to maintain compatibility between different Kibana versions. Use this option only if you encounter issues with imported saved objects. Cannot be used with create_new_copies."
+						description_kind: "plain"
+						optional:         true
+					}
+					create_new_copies: {
+						type:             "bool"
+						description:      "Creates copies of saved objects, regenerates each object ID, and resets the origin. When used, potential conflict errors are avoided. Cannot be used with overwrite or compatibility_mode."
+						description_kind: "plain"
+						optional:         true
+					}
 					errors: {
 						type: ["list", ["object", {
 							error: ["object", {
@@ -8770,6 +11271,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description:      "Create sets of Kibana saved objects from a file created by the export API. See https://www.elastic.co/guide/en/kibana/current/saved-objects-api-import.html"
 				description_kind: "plain"
 			}
@@ -8826,6 +11382,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "Number of prebuilt timelines that have updates available."
 						description_kind: "plain"
 						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description: """
@@ -8967,6 +11578,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "The name of the maintenance window."
 						description_kind: "plain"
 						required:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description:      "Creates and manages Kibana [maintenance windows](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-maintenance-window)"
@@ -9897,6 +12563,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description: """
 					Creates or updates a Kibana security detection rule. See the [rules API documentation](https://www.elastic.co/guide/en/security/current/rules-api-create.html) for more details.
 
@@ -9945,6 +12666,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "The tag value to filter rules by (e.g., 'Windows')."
 						description_kind: "plain"
 						required:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description: """
@@ -10194,6 +12970,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description: """
 					Manages a Kibana Exception Item. Exception items define the specific query conditions used to prevent rules from generating alerts.
 
@@ -10307,6 +13138,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description: """
 					Manages a Kibana Exception List. Exception lists are containers for exception items used to prevent security rules from generating alerts.
 
@@ -10418,6 +13304,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description: """
 					Manages Kibana security lists (also known as value lists). Security lists are used by exception items to define sets of values for matching or excluding in security rules.
 
@@ -10462,6 +13403,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description: """
@@ -10543,6 +13539,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "The version id, normally returned by the API when the document is retrieved. Used to ensure updates are done against the latest version."
 						description_kind: "markdown"
 						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description: """
@@ -10759,6 +13810,62 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							description:      "The list of objects that specify the Kibana privileges for the role."
 							description_kind: "markdown"
 						}
+					}
+					kibana_connection: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								api_key: {
+									type:             "string"
+									description:      "API Key to use for authentication to Kibana"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								bearer_token: {
+									type:             "string"
+									description:      "Bearer Token to use for authentication to Kibana"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								ca_certs: {
+									type: ["list", "string"]
+									description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+									description_kind: "markdown"
+									optional:         true
+								}
+								endpoints: {
+									type: ["list", "string"]
+									description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								insecure: {
+									type:             "bool"
+									description:      "Disable TLS certificate validation"
+									description_kind: "markdown"
+									optional:         true
+								}
+								password: {
+									type:             "string"
+									description:      "Password to use for API authentication to Kibana."
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								username: {
+									type:             "string"
+									description:      "Username to use for API authentication to Kibana."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							description:      "Kibana connection configuration block."
+							description_kind: "markdown"
+						}
+						max_items: 1
 					}
 				}
 				description: """
@@ -11011,6 +14118,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							description_kind: "plain"
 						}
 					}
+					kibana_connection: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								api_key: {
+									type:             "string"
+									description:      "API Key to use for authentication to Kibana"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								bearer_token: {
+									type:             "string"
+									description:      "Bearer Token to use for authentication to Kibana"
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								ca_certs: {
+									type: ["list", "string"]
+									description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+									description_kind: "markdown"
+									optional:         true
+								}
+								endpoints: {
+									type: ["list", "string"]
+									description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								insecure: {
+									type:             "bool"
+									description:      "Disable TLS certificate validation"
+									description_kind: "markdown"
+									optional:         true
+								}
+								password: {
+									type:             "string"
+									description:      "Password to use for API authentication to Kibana."
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								username: {
+									type:             "string"
+									description:      "Username to use for API authentication to Kibana."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							description:      "Kibana connection configuration block."
+							description_kind: "markdown"
+						}
+					}
 					kql_custom_indicator: {
 						nesting_mode: "list"
 						block: {
@@ -11100,8 +14262,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													field: {
 														type:             "string"
+														description:      "Field to aggregate. Required for all aggregations except doc_count. Must NOT be set for doc_count."
 														description_kind: "plain"
-														required:         true
+														optional:         true
 													}
 													filter: {
 														type:             "string"
@@ -11139,8 +14302,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													field: {
 														type:             "string"
+														description:      "Field to aggregate. Required for all aggregations except doc_count. Must NOT be set for doc_count."
 														description_kind: "plain"
-														required:         true
+														optional:         true
 													}
 													filter: {
 														type:             "string"
@@ -11403,6 +14567,62 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+					max_items: 1
 				}
 				description:      "Creates a Kibana space. See the [spaces API documentation](https://www.elastic.co/guide/en/kibana/master/spaces-api-post.html) for more details."
 				description_kind: "markdown"
@@ -11829,6 +15049,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description: """
 					Creates or updates a Kibana synthetics monitor. See [API docs](https://www.elastic.co/guide/en/kibana/current/add-monitor-api.html)
 
@@ -11891,6 +15166,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						sensitive:        true
 					}
 				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description: """
 					Creates or updates a Kibana synthetics parameter.
 
@@ -11948,11 +15278,78 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+					space_id: {
+						type: "string"
+						description: """
+									Kibana space. The space ID that is part of the Kibana URL when inside the space. Space IDs are limited to lowercase alphanumeric, underscore, and hyphen characters (a-z, 0-9, _, and -). You cannot change the ID using the update operation.
+
+									Using a **non-default** space (any non-empty `space_id`) requires **Elastic Stack 9.4.0-SNAPSHOT** or later. Leave unset or empty to use the default space on older stacks.
+
+									"""
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "An array of tags to categorize the private location."
 						description_kind: "markdown"
 						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description: """
@@ -12110,9 +15507,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. "
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 				}
 				description: """
@@ -12301,9 +15697,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 					max_items: 1
 				}
@@ -12826,6 +16221,106 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description:      "Retrieves information about existing Elasticsearch indices. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-index.html"
 				description_kind: "plain"
 			}
@@ -12880,6 +16375,107 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						computed:         true
 					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+					max_items: 1
 				}
 				description:      "Gets information about the Elastic cluster."
 				description_kind: "markdown"
@@ -14477,6 +18073,100 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				}
 				description: """
 					Helper data source which can be used to create the configuration for an HTML strip processor. This processor removes HTML tags from the field. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/htmlstrip-processor.html
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_ingest_processor_inference: {
+			version: 0
+			block: {
+				attributes: {
+					description: {
+						type:             "string"
+						description:      "Description of the processor."
+						description_kind: "markdown"
+						optional:         true
+					}
+					field_map: {
+						type: ["map", "string"]
+						description:      "Maps the document field names to the known field names of the model. Maps the document fields to the model's expected input fields."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource"
+						description_kind: "markdown"
+						computed:         true
+					}
+					if: {
+						type:             "string"
+						description:      "Conditionally execute the processor."
+						description_kind: "markdown"
+						optional:         true
+					}
+					ignore_failure: {
+						type:             "bool"
+						description:      "Ignore failures for the processor."
+						description_kind: "markdown"
+						optional:         true
+					}
+					json: {
+						type:             "string"
+						description:      "JSON representation of this data source."
+						description_kind: "markdown"
+						computed:         true
+					}
+					model_id: {
+						type:             "string"
+						description:      "The ID or alias for the trained model, or the ID of the deployment."
+						description_kind: "markdown"
+						required:         true
+					}
+					on_failure: {
+						type: ["list", "string"]
+						description:      "Handle failures for the processor."
+						description_kind: "markdown"
+						optional:         true
+					}
+					tag: {
+						type:             "string"
+						description:      "Identifier for the processor."
+						description_kind: "markdown"
+						optional:         true
+					}
+					target_field: {
+						type:             "string"
+						description:      "Field added to incoming documents to contain results objects."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				block_types: input_output: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							input_field: {
+								type:             "string"
+								description:      "The field name from which the inference processor reads its input value."
+								description_kind: "markdown"
+								required:         true
+							}
+							output_field: {
+								type:             "string"
+								description:      "The field name to which the inference processor writes its output."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Input and output field mappings for the inference processor."
+						description_kind: "markdown"
+					}
+					max_items: 1
+				}
+				description: """
+					Helper data source which can be used to create the configuration for an inference ingest processor. The inference processor uses a pre-trained data frame analytics model or a model deployed for natural language processing tasks to infer against the data that is being ingested in the pipeline. See: https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline
 
 					"""
 				description_kind: "markdown"
@@ -16214,9 +19904,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 					max_items: 1
 				}
@@ -16367,9 +20056,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. "
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 				}
 				description:      "Retrieves role mappings. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role-mapping.html"
@@ -16519,9 +20207,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 					max_items: 1
 				}
@@ -16749,9 +20436,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 							}
 						}
-						description:      "Elasticsearch connection configuration block. This property will be removed in a future provider version. Configure the Elasticsearch connection via the provider configuration instead."
+						description:      "Elasticsearch connection configuration block."
 						description_kind: "markdown"
-						deprecated:       true
 					}
 					max_items: 1
 				}
@@ -16841,6 +20527,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						computed:         true
 					}
 				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
 				description: """
 					Retrieves Elasticsearch API keys used to enroll Elastic Agents in Fleet. See the [Fleet enrollment tokens documentation](https://www.elastic.co/guide/en/fleet/current/fleet-enrollment-tokens.html) for more details.
 
@@ -16870,11 +20611,72 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						optional:         true
 					}
+					space_id: {
+						type:             "string"
+						description:      "The Kibana space ID to scope the request to. When not specified, the default space is used."
+						description_kind: "plain"
+						optional:         true
+					}
 					version: {
 						type:             "string"
 						description:      "The integration package version."
 						description_kind: "plain"
 						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description: """
@@ -16889,6 +20691,147 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					a new 1.5.1-beta version available), then the `prerelease` parameter in the plan
 					should be set to `true`.
 					"""
+				description_kind: "plain"
+			}
+		}
+		elasticstack_fleet_output: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "Generated ID for the outputs."
+						description_kind: "plain"
+						computed:         true
+					}
+					outputs: {
+						nested_type: {
+							attributes: {
+								ca_sha256: {
+									type:             "string"
+									description:      "Fingerprint of the Elasticsearch CA certificate."
+									description_kind: "plain"
+									computed:         true
+								}
+								ca_trusted_fingerprint: {
+									type:             "string"
+									description:      "Fingerprint of trusted CA."
+									description_kind: "plain"
+									computed:         true
+								}
+								config_yaml: {
+									type:             "string"
+									description:      "Advanced YAML configuration."
+									description_kind: "plain"
+									computed:         true
+									sensitive:        true
+								}
+								default_integrations: {
+									type:             "bool"
+									description:      "This output is the default for agent integrations."
+									description_kind: "plain"
+									computed:         true
+								}
+								default_monitoring: {
+									type:             "bool"
+									description:      "This output is the default for agent monitoring."
+									description_kind: "plain"
+									computed:         true
+								}
+								hosts: {
+									type: ["list", "string"]
+									description:      "A list of hosts."
+									description_kind: "plain"
+									computed:         true
+								}
+								id: {
+									type:             "string"
+									description:      "Unique identifier of the output."
+									description_kind: "plain"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "The name of the output."
+									description_kind: "plain"
+									computed:         true
+								}
+								type: {
+									type:             "string"
+									description:      "The output type."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "The list of outputs"
+						description_kind: "plain"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "The Kibana space ID where this output is available."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Returns information about a Fleet output. See the [Fleet output API documentation](https://www.elastic.co/docs/api/doc/kibana/v9/group/endpoint-fleet-outputs) for more details."
 				description_kind: "plain"
 			}
 		}
@@ -16951,8 +20894,477 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+					max_items: 1
+				}
 				description:      "Search for a connector by name, space id, and type. Note, that this data source will fail if more than one connector shares the same name."
 				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_agentbuilder_agent: {
+			version: 0
+			block: {
+				attributes: {
+					agent_id: {
+						type:             "string"
+						description:      "The agent ID."
+						description_kind: "markdown"
+						required:         true
+					}
+					avatar_color: {
+						type:             "string"
+						description:      "Hex color code for the agent avatar (e.g., `#BFDBFF`)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					avatar_symbol: {
+						type:             "string"
+						description:      "Symbol or initials for the agent avatar (e.g., `SI`)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The agent description."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The composite ID of the agent: `<space_id>/<agent_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					include_dependencies: {
+						type:             "bool"
+						description:      "If `true`, exports the agent along with its tools and workflows. If omitted, `false` is used (tool rows only list `id`, `space_id`, and `tool_id` unless this is `true`)."
+						description_kind: "markdown"
+						optional:         true
+					}
+					instructions: {
+						type:             "string"
+						description:      "Optional system instructions that define the agent behavior."
+						description_kind: "markdown"
+						computed:         true
+					}
+					labels: {
+						type: ["set", "string"]
+						description:      "List of labels for the agent."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The agent name."
+						description_kind: "markdown"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "plain"
+						optional:         true
+					}
+					tools: {
+						nested_type: {
+							attributes: {
+								configuration: {
+									type:             "string"
+									description:      "The tool configuration in JSON format."
+									description_kind: "plain"
+									computed:         true
+								}
+								description: {
+									type:             "string"
+									description:      "Description of what the tool does."
+									description_kind: "plain"
+									computed:         true
+								}
+								id: {
+									type:             "string"
+									description:      "The tool ID to look up."
+									description_kind: "plain"
+									computed:         true
+								}
+								readonly: {
+									type:             "bool"
+									description:      "Whether the tool is read-only."
+									description_kind: "plain"
+									computed:         true
+								}
+								space_id: {
+									type:             "string"
+									description:      "An identifier for the space. If space_id is not provided, the default space is used."
+									description_kind: "plain"
+									computed:         true
+								}
+								tags: {
+									type: ["set", "string"]
+									description:      "Tags for categorizing and organizing tools."
+									description_kind: "plain"
+									computed:         true
+								}
+								tool_id: {
+									type:             "string"
+									description:      "The ID of the tool."
+									description_kind: "plain"
+									computed:         true
+								}
+								type: {
+									type:             "string"
+									description:      "The type of the tool (esql, index_search, workflow, mcp)."
+									description_kind: "plain"
+									computed:         true
+								}
+								workflow_configuration_yaml: {
+									type:             "string"
+									description:      "The YAML configuration of the referenced workflow. Only populated for workflow-type tools. Requires Elastic Stack v9.4.0 or later."
+									description_kind: "plain"
+									computed:         true
+								}
+								workflow_id: {
+									type:             "string"
+									description:      "The ID of the referenced workflow. Only populated for workflow-type tools. Requires Elastic Stack v9.4.0 or later."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Tools attached to the agent. When include_dependencies is true, each entry includes full tool data and workflow YAML for workflow-type tools. When false, only id (composite space/tool), space_id, and tool_id are set."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Export an Agent Builder agent by ID, optionally including its tools and workflows. See the [Agent Builder API documentation](https://www.elastic.co/guide/en/kibana/current/agent-builder-api.html)."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_agentbuilder_tool: {
+			version: 0
+			block: {
+				attributes: {
+					configuration: {
+						type:             "string"
+						description:      "The tool configuration in JSON format."
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of what the tool does."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The tool ID to look up."
+						description_kind: "plain"
+						required:         true
+					}
+					include_workflow: {
+						type:             "bool"
+						description:      "When true, the workflow referenced by this tool will also be included. Only valid when the tool type is `workflow`. Requires Kibana 9.4.0 or above. Defaults to false."
+						description_kind: "plain"
+						optional:         true
+					}
+					readonly: {
+						type:             "bool"
+						description:      "Whether the tool is read-only."
+						description_kind: "plain"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "plain"
+						optional:         true
+					}
+					tags: {
+						type: ["set", "string"]
+						description:      "Tags for categorizing and organizing tools."
+						description_kind: "plain"
+						computed:         true
+					}
+					tool_id: {
+						type:             "string"
+						description:      "The ID of the tool."
+						description_kind: "plain"
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The type of the tool (esql, index_search, workflow, mcp)."
+						description_kind: "plain"
+						computed:         true
+					}
+					workflow_configuration_yaml: {
+						type:             "string"
+						description:      "The YAML configuration of the referenced workflow. Only populated when `include_workflow` is true."
+						description_kind: "plain"
+						computed:         true
+					}
+					workflow_id: {
+						type:             "string"
+						description:      "The ID of the referenced workflow. Only populated when `include_workflow` is true."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Reads an Agent Builder tool by ID. See https://www.elastic.co/guide/en/kibana/current/agent-builder-api.html"
+				description_kind: "plain"
+			}
+		}
+		elasticstack_kibana_agentbuilder_workflow: {
+			version: 0
+			block: {
+				attributes: {
+					configuration_yaml: {
+						type:             "string"
+						description:      "The workflow definition in YAML format."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The workflow ID to look up."
+						description_kind: "plain"
+						required:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					workflow_id: {
+						type:             "string"
+						description:      "The ID of the workflow."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Reads an Agent Builder workflow by ID. See https://www.elastic.co/guide/en/kibana/current/agent-builder-api.html"
+				description_kind: "plain"
 			}
 		}
 		elasticstack_kibana_export_saved_objects: {
@@ -17010,6 +21422,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
 						description_kind: "plain"
 						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description:      "Export Kibana saved objects. This data source allows you to export saved objects from Kibana and store the result in the Terraform state."
@@ -17087,6 +21554,62 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+					max_items: 1
+				}
 				description:      "Retrieve a specific role. See the [role management API documentation](https://www.elastic.co/guide/en/kibana/current/role-management-specific-api-get.html) for more details."
 				description_kind: "markdown"
 			}
@@ -17158,6 +21681,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "The list of spaces."
 						description_kind: "plain"
 						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description:      "Use this data source to retrieve and get information about all existing Kibana spaces. See https://www.elastic.co/guide/en/kibana/master/spaces-api-get-all.html"

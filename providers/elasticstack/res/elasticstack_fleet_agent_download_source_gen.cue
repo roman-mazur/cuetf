@@ -1,28 +1,34 @@
 package res
 
-#elasticstack_kibana_synthetics_parameter: {
+#elasticstack_fleet_agent_download_source: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_synthetics_parameter")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_fleet_agent_download_source")
 	close({
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
-		// A description of the parameter.
-		description?: string
+		// Set this download source as the default for agents.
+		default?: bool
 
-		// Generated id for the parameter.
+		// The base URL from which Elastic Agents will download binaries.
+		host!: string
+
+		// The ID of this resource.
 		id?: string
 
-		// The key of the parameter.
-		key!: string
+		// The name of the Fleet agent download source.
+		name!: string
 
-		// Whether the parameter should be shared across spaces.
-		share_across_spaces?: bool
+		// The ID of the proxy to use for this download source.
+		proxy_id?: string
 
-		// An array of tags to categorize the parameter.
-		tags?: [...string]
+		// Unique identifier of the Fleet agent download source.
+		source_id?: string
 
-		// The value associated with the parameter.
-		value!: string
+		// The Kibana space IDs where this download source is available.
+		// When set, the download source will be created and managed
+		// within the specified space. Note: The order of space IDs does
+		// not matter as this is a set.
+		space_ids?: [...string]
 	})
 
 	#kibana_connection: close({

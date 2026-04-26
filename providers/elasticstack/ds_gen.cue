@@ -27,6 +27,7 @@ import "github.com/roman-mazur/cuetf/providers/elasticstack/data"
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_ingest_processor_grok": data.#elasticstack_elasticsearch_ingest_processor_grok
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_ingest_processor_gsub": data.#elasticstack_elasticsearch_ingest_processor_gsub
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_ingest_processor_html_strip": data.#elasticstack_elasticsearch_ingest_processor_html_strip
+	_#ds: "\(#elasticstackPrefix)_elasticsearch_ingest_processor_inference": data.#elasticstack_elasticsearch_ingest_processor_inference
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_ingest_processor_join": data.#elasticstack_elasticsearch_ingest_processor_join
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_ingest_processor_json": data.#elasticstack_elasticsearch_ingest_processor_json
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_ingest_processor_kv": data.#elasticstack_elasticsearch_ingest_processor_kv
@@ -53,7 +54,11 @@ import "github.com/roman-mazur/cuetf/providers/elasticstack/data"
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_snapshot_repository": data.#elasticstack_elasticsearch_snapshot_repository
 	_#ds: "\(#elasticstackPrefix)_fleet_enrollment_tokens": data.#elasticstack_fleet_enrollment_tokens
 	_#ds: "\(#elasticstackPrefix)_fleet_integration": data.#elasticstack_fleet_integration
+	_#ds: "\(#elasticstackPrefix)_fleet_output": data.#elasticstack_fleet_output
 	_#ds: "\(#elasticstackPrefix)_kibana_action_connector": data.#elasticstack_kibana_action_connector
+	_#ds: "\(#elasticstackPrefix)_kibana_agentbuilder_agent": data.#elasticstack_kibana_agentbuilder_agent
+	_#ds: "\(#elasticstackPrefix)_kibana_agentbuilder_tool": data.#elasticstack_kibana_agentbuilder_tool
+	_#ds: "\(#elasticstackPrefix)_kibana_agentbuilder_workflow": data.#elasticstack_kibana_agentbuilder_workflow
 	_#ds: "\(#elasticstackPrefix)_kibana_export_saved_objects": data.#elasticstack_kibana_export_saved_objects
 	_#ds: "\(#elasticstackPrefix)_kibana_security_role": data.#elasticstack_kibana_security_role
 	_#ds: "\(#elasticstackPrefix)_kibana_spaces": data.#elasticstack_kibana_spaces

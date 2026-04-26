@@ -1,17 +1,15 @@
 package res
 
-import "list"
-
 #elasticstack_elasticsearch_index_lifecycle: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_index_lifecycle")
 	close({
-		cold?: matchN(1, [#cold, list.MaxItems(1) & [...#cold]])
-		delete?: matchN(1, [#delete, list.MaxItems(1) & [...#delete]])
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
-		frozen?: matchN(1, [#frozen, list.MaxItems(1) & [...#frozen]])
-		hot?: matchN(1, [#hot, list.MaxItems(1) & [...#hot]])
-		warm?: matchN(1, [#warm, list.MaxItems(1) & [...#warm]])
+		cold?:   #cold
+		delete?: #delete
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+		frozen?: #frozen
+		hot?:    #hot
+		warm?:   #warm
 
 		// Internal identifier of the resource
 		id?: string
@@ -28,14 +26,14 @@ import "list"
 	})
 
 	#cold: close({
-		allocate?: matchN(1, [_#defs."/$defs/cold/$defs/allocate", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/allocate"]])
-		downsample?: matchN(1, [_#defs."/$defs/cold/$defs/downsample", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/downsample"]])
-		freeze?: matchN(1, [_#defs."/$defs/cold/$defs/freeze", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/freeze"]])
-		migrate?: matchN(1, [_#defs."/$defs/cold/$defs/migrate", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/migrate"]])
-		readonly?: matchN(1, [_#defs."/$defs/cold/$defs/readonly", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/readonly"]])
-		searchable_snapshot?: matchN(1, [_#defs."/$defs/cold/$defs/searchable_snapshot", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/searchable_snapshot"]])
-		set_priority?: matchN(1, [_#defs."/$defs/cold/$defs/set_priority", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/set_priority"]])
-		unfollow?: matchN(1, [_#defs."/$defs/cold/$defs/unfollow", list.MaxItems(1) & [..._#defs."/$defs/cold/$defs/unfollow"]])
+		allocate?:            _#defs."/$defs/cold/$defs/allocate"
+		downsample?:          _#defs."/$defs/cold/$defs/downsample"
+		freeze?:              _#defs."/$defs/cold/$defs/freeze"
+		migrate?:             _#defs."/$defs/cold/$defs/migrate"
+		readonly?:            _#defs."/$defs/cold/$defs/readonly"
+		searchable_snapshot?: _#defs."/$defs/cold/$defs/searchable_snapshot"
+		set_priority?:        _#defs."/$defs/cold/$defs/set_priority"
+		unfollow?:            _#defs."/$defs/cold/$defs/unfollow"
 
 		// ILM moves indices through the lifecycle according to their age.
 		// To control the timing of these transitions, you set a minimum
@@ -44,8 +42,8 @@ import "list"
 	})
 
 	#delete: close({
-		delete?: matchN(1, [_#defs."/$defs/delete/$defs/delete", list.MaxItems(1) & [..._#defs."/$defs/delete/$defs/delete"]])
-		wait_for_snapshot?: matchN(1, [_#defs."/$defs/delete/$defs/wait_for_snapshot", list.MaxItems(1) & [..._#defs."/$defs/delete/$defs/wait_for_snapshot"]])
+		delete?:            _#defs."/$defs/delete/$defs/delete"
+		wait_for_snapshot?: _#defs."/$defs/delete/$defs/wait_for_snapshot"
 
 		// ILM moves indices through the lifecycle according to their age.
 		// To control the timing of these transitions, you set a minimum
@@ -102,7 +100,7 @@ import "list"
 	})
 
 	#frozen: close({
-		searchable_snapshot?: matchN(1, [_#defs."/$defs/frozen/$defs/searchable_snapshot", list.MaxItems(1) & [..._#defs."/$defs/frozen/$defs/searchable_snapshot"]])
+		searchable_snapshot?: _#defs."/$defs/frozen/$defs/searchable_snapshot"
 
 		// ILM moves indices through the lifecycle according to their age.
 		// To control the timing of these transitions, you set a minimum
@@ -111,14 +109,14 @@ import "list"
 	})
 
 	#hot: close({
-		downsample?: matchN(1, [_#defs."/$defs/hot/$defs/downsample", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/downsample"]])
-		forcemerge?: matchN(1, [_#defs."/$defs/hot/$defs/forcemerge", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/forcemerge"]])
-		readonly?: matchN(1, [_#defs."/$defs/hot/$defs/readonly", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/readonly"]])
-		rollover?: matchN(1, [_#defs."/$defs/hot/$defs/rollover", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/rollover"]])
-		searchable_snapshot?: matchN(1, [_#defs."/$defs/hot/$defs/searchable_snapshot", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/searchable_snapshot"]])
-		set_priority?: matchN(1, [_#defs."/$defs/hot/$defs/set_priority", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/set_priority"]])
-		shrink?: matchN(1, [_#defs."/$defs/hot/$defs/shrink", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/shrink"]])
-		unfollow?: matchN(1, [_#defs."/$defs/hot/$defs/unfollow", list.MaxItems(1) & [..._#defs."/$defs/hot/$defs/unfollow"]])
+		downsample?:          _#defs."/$defs/hot/$defs/downsample"
+		forcemerge?:          _#defs."/$defs/hot/$defs/forcemerge"
+		readonly?:            _#defs."/$defs/hot/$defs/readonly"
+		rollover?:            _#defs."/$defs/hot/$defs/rollover"
+		searchable_snapshot?: _#defs."/$defs/hot/$defs/searchable_snapshot"
+		set_priority?:        _#defs."/$defs/hot/$defs/set_priority"
+		shrink?:              _#defs."/$defs/hot/$defs/shrink"
+		unfollow?:            _#defs."/$defs/hot/$defs/unfollow"
 
 		// ILM moves indices through the lifecycle according to their age.
 		// To control the timing of these transitions, you set a minimum
@@ -127,14 +125,14 @@ import "list"
 	})
 
 	#warm: close({
-		allocate?: matchN(1, [_#defs."/$defs/warm/$defs/allocate", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/allocate"]])
-		downsample?: matchN(1, [_#defs."/$defs/warm/$defs/downsample", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/downsample"]])
-		forcemerge?: matchN(1, [_#defs."/$defs/warm/$defs/forcemerge", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/forcemerge"]])
-		migrate?: matchN(1, [_#defs."/$defs/warm/$defs/migrate", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/migrate"]])
-		readonly?: matchN(1, [_#defs."/$defs/warm/$defs/readonly", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/readonly"]])
-		set_priority?: matchN(1, [_#defs."/$defs/warm/$defs/set_priority", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/set_priority"]])
-		shrink?: matchN(1, [_#defs."/$defs/warm/$defs/shrink", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/shrink"]])
-		unfollow?: matchN(1, [_#defs."/$defs/warm/$defs/unfollow", list.MaxItems(1) & [..._#defs."/$defs/warm/$defs/unfollow"]])
+		allocate?:     _#defs."/$defs/warm/$defs/allocate"
+		downsample?:   _#defs."/$defs/warm/$defs/downsample"
+		forcemerge?:   _#defs."/$defs/warm/$defs/forcemerge"
+		migrate?:      _#defs."/$defs/warm/$defs/migrate"
+		readonly?:     _#defs."/$defs/warm/$defs/readonly"
+		set_priority?: _#defs."/$defs/warm/$defs/set_priority"
+		shrink?:       _#defs."/$defs/warm/$defs/shrink"
+		unfollow?:     _#defs."/$defs/warm/$defs/unfollow"
 
 		// ILM moves indices through the lifecycle according to their age.
 		// To control the timing of these transitions, you set a minimum
@@ -165,10 +163,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/cold/$defs/downsample": close({
-		// Downsampling interval
-		fixed_interval!: string
+		// Downsampling interval. Required when the `downsample` action is
+		// configured.
+		fixed_interval?: string
 
-		// Downsampling interval
+		// Maximum time to wait for the downsample operation to complete
+		// before timing out.
 		wait_timeout?: string
 	})
 
@@ -192,13 +192,15 @@ import "list"
 		// Force merges the managed index to one segment.
 		force_merge_index?: bool
 
-		// Repository used to store the snapshot.
-		snapshot_repository!: string
+		// Repository used to store the snapshot. Required when the
+		// `searchable_snapshot` action is configured.
+		snapshot_repository?: string
 	})
 
 	_#defs: "/$defs/cold/$defs/set_priority": close({
-		// The priority for the index. Must be 0 or greater.
-		priority!: number
+		// The priority for the index. Must be 0 or greater. Required when
+		// the `set_priority` action is configured.
+		priority?: number
 	})
 
 	_#defs: "/$defs/cold/$defs/unfollow": close({
@@ -213,22 +215,26 @@ import "list"
 
 	_#defs: "/$defs/delete/$defs/wait_for_snapshot": close({
 		// Name of the SLM policy that the delete action should wait for.
-		policy!: string
+		// Required when the `wait_for_snapshot` action is configured.
+		policy?: string
 	})
 
 	_#defs: "/$defs/frozen/$defs/searchable_snapshot": close({
 		// Force merges the managed index to one segment.
 		force_merge_index?: bool
 
-		// Repository used to store the snapshot.
-		snapshot_repository!: string
+		// Repository used to store the snapshot. Required when the
+		// `searchable_snapshot` action is configured.
+		snapshot_repository?: string
 	})
 
 	_#defs: "/$defs/hot/$defs/downsample": close({
-		// Downsampling interval
-		fixed_interval!: string
+		// Downsampling interval. Required when the `downsample` action is
+		// configured.
+		fixed_interval?: string
 
-		// Downsampling interval
+		// Maximum time to wait for the downsample operation to complete
+		// before timing out.
 		wait_timeout?: string
 	})
 
@@ -237,8 +243,8 @@ import "list"
 		index_codec?: string
 
 		// Number of segments to merge to. To fully merge the index, set
-		// to 1.
-		max_num_segments!: number
+		// to 1. Required when the `forcemerge` action is configured.
+		max_num_segments?: number
 	})
 
 	_#defs: "/$defs/hot/$defs/readonly": close({
@@ -295,13 +301,15 @@ import "list"
 		// Force merges the managed index to one segment.
 		force_merge_index?: bool
 
-		// Repository used to store the snapshot.
-		snapshot_repository!: string
+		// Repository used to store the snapshot. Required when the
+		// `searchable_snapshot` action is configured.
+		snapshot_repository?: string
 	})
 
 	_#defs: "/$defs/hot/$defs/set_priority": close({
-		// The priority for the index. Must be 0 or greater.
-		priority!: number
+		// The priority for the index. Must be 0 or greater. Required when
+		// the `set_priority` action is configured.
+		priority?: number
 	})
 
 	_#defs: "/$defs/hot/$defs/shrink": close({
@@ -344,10 +352,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/warm/$defs/downsample": close({
-		// Downsampling interval
-		fixed_interval!: string
+		// Downsampling interval. Required when the `downsample` action is
+		// configured.
+		fixed_interval?: string
 
-		// Downsampling interval
+		// Maximum time to wait for the downsample operation to complete
+		// before timing out.
 		wait_timeout?: string
 	})
 
@@ -356,8 +366,8 @@ import "list"
 		index_codec?: string
 
 		// Number of segments to merge to. To fully merge the index, set
-		// to 1.
-		max_num_segments!: number
+		// to 1. Required when the `forcemerge` action is configured.
+		max_num_segments?: number
 	})
 
 	_#defs: "/$defs/warm/$defs/migrate": close({
@@ -372,8 +382,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/warm/$defs/set_priority": close({
-		// The priority for the index. Must be 0 or greater.
-		priority!: number
+		// The priority for the index. Must be 0 or greater. Required when
+		// the `set_priority` action is configured.
+		priority?: number
 	})
 
 	_#defs: "/$defs/warm/$defs/shrink": close({

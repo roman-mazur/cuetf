@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_ml_anomaly_detection_job")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+
 		// Advanced configuration option. Specifies whether this job can
 		// open when there is insufficient machine learning node capacity
 		// for it to be immediately assigned to a node.
@@ -65,7 +67,6 @@ package res
 		// Advanced configuration option. The period of time (in days)
 		// that results are retained.
 		results_retention_days?: number
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
 		// Specifies how to analyze the data. After you create a job, you
 		// cannot change the analysis configuration; all the properties

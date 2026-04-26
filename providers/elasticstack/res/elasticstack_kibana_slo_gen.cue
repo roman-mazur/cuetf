@@ -7,6 +7,7 @@ package res
 		apm_availability_indicator?: matchN(1, [#apm_availability_indicator, [...#apm_availability_indicator]])
 		apm_latency_indicator?: matchN(1, [#apm_latency_indicator, [...#apm_latency_indicator]])
 		histogram_custom_indicator?: matchN(1, [#histogram_custom_indicator, [...#histogram_custom_indicator]])
+		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 		kql_custom_indicator?: matchN(1, [#kql_custom_indicator, [...#kql_custom_indicator]])
 		metric_custom_indicator?: matchN(1, [#metric_custom_indicator, [...#metric_custom_indicator]])
 		objective?: matchN(1, [#objective, [...#objective]])
@@ -79,6 +80,32 @@ package res
 		filter?:          string
 		index!:           string
 		timestamp_field?: string
+	})
+
+	#kibana_connection: close({
+		// API Key to use for authentication to Kibana
+		api_key?: string
+
+		// Bearer Token to use for authentication to Kibana
+		bearer_token?: string
+
+		// A list of paths to CA certificates to validate the certificate
+		// presented by the Kibana server.
+		ca_certs?: [...string]
+
+		// A comma-separated list of endpoints where the terraform
+		// provider will point to, this must include the http(s) schema
+		// and port number.
+		endpoints?: [...string]
+
+		// Disable TLS certificate validation
+		insecure?: bool
+
+		// Password to use for API authentication to Kibana.
+		password?: string
+
+		// Username to use for API authentication to Kibana.
+		username?: string
 	})
 
 	#kql_custom_indicator: close({
@@ -156,9 +183,12 @@ package res
 
 	_#defs: "/$defs/metric_custom_indicator/$defs/good/$defs/metrics": close({
 		aggregation!: string
-		field!:       string
-		filter?:      string
-		name!:        string
+
+		// Field to aggregate. Required for all aggregations except
+		// doc_count. Must NOT be set for doc_count.
+		field?:  string
+		filter?: string
+		name!:   string
 	})
 
 	_#defs: "/$defs/metric_custom_indicator/$defs/total": close({
@@ -168,9 +198,12 @@ package res
 
 	_#defs: "/$defs/metric_custom_indicator/$defs/total/$defs/metrics": close({
 		aggregation!: string
-		field!:       string
-		filter?:      string
-		name!:        string
+
+		// Field to aggregate. Required for all aggregations except
+		// doc_count. Must NOT be set for doc_count.
+		field?:  string
+		filter?: string
+		name!:   string
 	})
 
 	_#defs: "/$defs/timeslice_metric_indicator/$defs/metric": close({

@@ -4,54 +4,19 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_ml_datafeed")
 	close({
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+
 		// If set, the datafeed performs aggregation searches. Support for
 		// aggregations is limited and should be used only with low
 		// cardinality data. This should be a JSON object representing
 		// the aggregations to be performed.
 		aggregations?: string
 
-		// Datafeeds might search over long time periods, for several
-		// months or years. This search is split into time chunks in
-		// order to ensure the load on Elasticsearch is managed. Chunking
-		// configuration controls how the size of these time chunks are
-		// calculated; it is an advanced configuration option.
-		chunking_config?: close({
-			// The chunking mode. Can be `auto`, `manual`, or `off`. In `auto`
-			// mode, the chunk size is dynamically calculated. In `manual`
-			// mode, chunking is applied according to the specified
-			// `time_span`. In `off` mode, no chunking is applied.
-			mode!: string
-
-			// The time span for each chunk. Only applicable and required when
-			// mode is `manual`. Must be a valid duration.
-			time_span?: string
-		})
-
 		// A numerical character string that uniquely identifies the
 		// datafeed. This identifier can contain lowercase alphanumeric
 		// characters (a-z and 0-9), hyphens, and underscores. It must
 		// start and end with alphanumeric characters.
 		datafeed_id!: string
-
-		// Specifies whether the datafeed checks for missing data and the
-		// size of the window. The datafeed can optionally search over
-		// indices that have already been read in an effort to determine
-		// whether any data has subsequently been added to the index. If
-		// missing data is found, it is a good indication that the
-		// `query_delay` is set too low and the data is being indexed
-		// after the datafeed has passed that moment in time. This check
-		// runs only on real-time datafeeds.
-		delayed_data_check_config?: close({
-			// The window of time that is searched for late data. This window
-			// of time ends with the latest finalized bucket. It defaults to
-			// null, which causes an appropriate `check_window` to be
-			// calculated when the real-time datafeed runs.
-			check_window?: string
-
-			// Specifies whether the datafeed periodically checks for delayed
-			// data.
-			enabled!: bool
-		})
 
 		// The interval at which scheduled queries are made while the
 		// datafeed runs in real time. The default value is either the
@@ -71,23 +36,6 @@ package res
 		// indices are in remote clusters, the machine learning nodes
 		// must have the `remote_cluster_client` role.
 		indices!: [...string]
-
-		// Specifies index expansion options that are used during search.
-		indices_options?: close({
-			// If true, wildcard indices expressions that resolve into no
-			// concrete indices are ignored. This includes the `_all` string
-			// or when no indices are specified.
-			allow_no_indices?: bool
-
-			// Type of index that wildcard patterns can match. If the request
-			// can target data streams, this argument determines whether
-			// wildcard expressions match hidden data streams. Supports
-			// comma-separated values.
-			expand_wildcards?: [...string]
-
-			// If true, unavailable indices (missing or closed) are ignored.
-			ignore_unavailable?: bool
-		})
 
 		// Identifier for the anomaly detection job. The job must exist
 		// before creating the datafeed.
@@ -134,7 +82,60 @@ package res
 		// the value of `index.max_result_window`, which is 10,000 by
 		// default.
 		scroll_size?: number
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+
+		// Datafeeds might search over long time periods, for several
+		// months or years. This search is split into time chunks in
+		// order to ensure the load on Elasticsearch is managed. Chunking
+		// configuration controls how the size of these time chunks are
+		// calculated; it is an advanced configuration option.
+		chunking_config?: close({
+			// The chunking mode. Can be `auto`, `manual`, or `off`. In `auto`
+			// mode, the chunk size is dynamically calculated. In `manual`
+			// mode, chunking is applied according to the specified
+			// `time_span`. In `off` mode, no chunking is applied.
+			mode!: string
+
+			// The time span for each chunk. Only applicable and required when
+			// mode is `manual`. Must be a valid duration.
+			time_span?: string
+		})
+
+		// Specifies whether the datafeed checks for missing data and the
+		// size of the window. The datafeed can optionally search over
+		// indices that have already been read in an effort to determine
+		// whether any data has subsequently been added to the index. If
+		// missing data is found, it is a good indication that the
+		// `query_delay` is set too low and the data is being indexed
+		// after the datafeed has passed that moment in time. This check
+		// runs only on real-time datafeeds.
+		delayed_data_check_config?: close({
+			// The window of time that is searched for late data. This window
+			// of time ends with the latest finalized bucket. It defaults to
+			// null, which causes an appropriate `check_window` to be
+			// calculated when the real-time datafeed runs.
+			check_window?: string
+
+			// Specifies whether the datafeed periodically checks for delayed
+			// data.
+			enabled!: bool
+		})
+
+		// Specifies index expansion options that are used during search.
+		indices_options?: close({
+			// If true, wildcard indices expressions that resolve into no
+			// concrete indices are ignored. This includes the `_all` string
+			// or when no indices are specified.
+			allow_no_indices?: bool
+
+			// Type of index that wildcard patterns can match. If the request
+			// can target data streams, this argument determines whether
+			// wildcard expressions match hidden data streams. Supports
+			// comma-separated values.
+			expand_wildcards?: [...string]
+
+			// If true, unavailable indices (missing or closed) are ignored.
+			ignore_unavailable?: bool
+		})
 	})
 
 	#elasticsearch_connection: close({

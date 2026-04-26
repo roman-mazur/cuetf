@@ -98,56 +98,6 @@ package res
 			missing_fields_strategy?: string
 		})
 
-		// Array of exception containers to prevent the rule from
-		// generating alerts.
-		exceptions_list?: matchN(1, [close({
-			// The exception container ID.
-			id!: string
-
-			// The exception container's list ID.
-			list_id!: string
-
-			// The namespace type for the exception container.
-			namespace_type!: string
-
-			// The type of exception container.
-			type!: string
-		}), [...close({
-			// The exception container ID.
-			id!: string
-
-			// The exception container's list ID.
-			list_id!: string
-
-			// The namespace type for the exception container.
-			namespace_type!: string
-
-			// The type of exception container.
-			type!: string
-		})]])
-
-		// Array of related integrations that provide additional context
-		// for the rule.
-		related_integrations?: matchN(1, [close({
-			// Name of the specific integration.
-			integration?: string
-
-			// Name of the integration package.
-			package!: string
-
-			// Version of the integration package.
-			version!: string
-		}), [...close({
-			// Name of the specific integration.
-			integration?: string
-
-			// Name of the integration package.
-			package!: string
-
-			// Version of the integration package.
-			version!: string
-		})]])
-
 		// Anomaly score threshold above which the rule creates an alert.
 		// Valid values are from 0 to 100. Required for machine_learning
 		// rules.
@@ -181,6 +131,34 @@ package res
 
 		// Determines whether the rule is enabled.
 		enabled?: bool
+
+		// Array of exception containers to prevent the rule from
+		// generating alerts.
+		exceptions_list?: matchN(1, [close({
+			// The exception container ID.
+			id!: string
+
+			// The exception container's list ID.
+			list_id!: string
+
+			// The namespace type for the exception container.
+			namespace_type!: string
+
+			// The type of exception container.
+			type!: string
+		}), [...close({
+			// The exception container ID.
+			id!: string
+
+			// The exception container's list ID.
+			list_id!: string
+
+			// The namespace type for the exception container.
+			namespace_type!: string
+
+			// The type of exception container.
+			type!: string
+		})]])
 
 		// String array used to describe common reasons why the rule may
 		// issue false-positive alerts.
@@ -251,6 +229,28 @@ package res
 		// String array containing references and URLs to sources of
 		// additional information.
 		references?: [...string]
+
+		// Array of related integrations that provide additional context
+		// for the rule.
+		related_integrations?: matchN(1, [close({
+			// Name of the specific integration.
+			integration?: string
+
+			// Name of the integration package.
+			package!: string
+
+			// Version of the integration package.
+			version!: string
+		}), [...close({
+			// Name of the specific integration.
+			integration?: string
+
+			// Name of the integration package.
+			package!: string
+
+			// Version of the integration package.
+			version!: string
+		})]])
 
 		// Array of Elasticsearch fields and types that must be present in
 		// source indices for the rule to function properly.
@@ -823,5 +823,32 @@ package res
 
 		// The rule's version number.
 		version?: number
+		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
+	})
+
+	#kibana_connection: close({
+		// API Key to use for authentication to Kibana
+		api_key?: string
+
+		// Bearer Token to use for authentication to Kibana
+		bearer_token?: string
+
+		// A list of paths to CA certificates to validate the certificate
+		// presented by the Kibana server.
+		ca_certs?: [...string]
+
+		// A comma-separated list of endpoints where the terraform
+		// provider will point to, this must include the http(s) schema
+		// and port number.
+		endpoints?: [...string]
+
+		// Disable TLS certificate validation
+		insecure?: bool
+
+		// Password to use for API authentication to Kibana.
+		password?: string
+
+		// Username to use for API authentication to Kibana.
+		username?: string
 	})
 }

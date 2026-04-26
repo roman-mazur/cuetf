@@ -1,42 +1,23 @@
 package data
 
-#elasticstack_kibana_export_saved_objects: {
+#elasticstack_kibana_agentbuilder_workflow: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_kibana_export_saved_objects")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_kibana_agentbuilder_workflow")
 	close({
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
-		// Do not add export details. Defaults to true.
-		exclude_export_details?: bool
+		// The workflow definition in YAML format.
+		configuration_yaml?: string
 
-		// The exported objects in NDJSON format.
-		exported_objects?: string
-
-		// Generated ID for the export.
-		id?: string
-
-		// Include references to other saved objects recursively. Defaults
-		// to true.
-		include_references_deep?: bool
+		// The workflow ID to look up.
+		id!: string
 
 		// An identifier for the space. If space_id is not provided, the
 		// default space is used.
 		space_id?: string
 
-		// List of objects to export.
-		objects!: matchN(1, [close({
-			// The ID of the saved object.
-			id!: string
-
-			// The type of the saved object.
-			type!: string
-		}), [...close({
-			// The ID of the saved object.
-			id!: string
-
-			// The type of the saved object.
-			type!: string
-		})]])
+		// The ID of the workflow.
+		workflow_id?: string
 	})
 
 	#kibana_connection: close({
