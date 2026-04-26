@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_calls_turn_app")
 	close({
 		// The account identifier tag.
-		account_id!: string
+		account_id?: string
 
 		// The date and time the item was created.
 		created?: string

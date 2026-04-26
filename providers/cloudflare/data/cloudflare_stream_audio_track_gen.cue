@@ -5,24 +5,42 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_stream_audio_track")
 	close({
 		// The account identifier tag.
-		account_id!: string
-
-		// Denotes whether the audio track will be played by default in a
-		// player.
-		default?: bool
+		account_id?: string
 
 		// A Cloudflare-generated unique identifier for a media item.
 		identifier!: string
 
-		// A string to uniquely identify the track amongst other audio
-		// track labels for the specified video.
-		label?: string
+		// Array of audio tracks for the video.
+		audio?: matchN(1, [close({
+			// Denotes whether the audio track will be played by default in a
+			// player.
+			default?: bool
 
-		// Specifies the processing status of the video.
-		// Available values: "queued", "ready", "error".
-		status?: string
+			// A string to uniquely identify the track amongst other audio
+			// track labels for the specified video.
+			label?: string
 
-		// A Cloudflare-generated unique identifier for a media item.
-		uid?: string
+			// Specifies the processing status of the video.
+			// Available values: "queued", "ready", "error".
+			status?: string
+
+			// A Cloudflare-generated unique identifier for a media item.
+			uid?: string
+		}), [...close({
+			// Denotes whether the audio track will be played by default in a
+			// player.
+			default?: bool
+
+			// A string to uniquely identify the track amongst other audio
+			// track labels for the specified video.
+			label?: string
+
+			// Specifies the processing status of the video.
+			// Available values: "queued", "ready", "error".
+			status?: string
+
+			// A Cloudflare-generated unique identifier for a media item.
+			uid?: string
+		})]])
 	})
 }

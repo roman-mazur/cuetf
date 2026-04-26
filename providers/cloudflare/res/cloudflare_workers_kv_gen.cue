@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_workers_kv")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// A key's name. The name may be at most 512 bytes. All printable,
 		// non-whitespace characters are valid. Use percent-encoding to

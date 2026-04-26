@@ -9,7 +9,7 @@ package res
 		waiting_room_id!: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 		rules!: matchN(1, [close({
 			// The action to take when the expression matches.
 			// Available values: "bypass_waiting_room".

@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_d1_database")
 	close({
 		// Account identifier tag.
-		account_id!: string
+		account_id?: string
 
 		// Specifies the timestamp the resource was created as an ISO8601
 		// string.
@@ -19,6 +19,12 @@ package data
 
 		// D1 database identifier (UUID).
 		id?: string
+
+		// Specify the location to restrict the D1 database to run and
+		// store data. If this option is present, the location hint is
+		// ignored.
+		// Available values: "eu", "fedramp".
+		jurisdiction?: string
 
 		// D1 database name.
 		name?:       string

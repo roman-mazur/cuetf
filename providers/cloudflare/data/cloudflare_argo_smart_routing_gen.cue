@@ -18,6 +18,6 @@ package data
 		value?: string
 
 		// Specifies the zone associated with the API call.
-		zone_id!: string
+		zone_id?: string
 	})
 }

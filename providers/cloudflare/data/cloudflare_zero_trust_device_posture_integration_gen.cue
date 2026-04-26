@@ -4,7 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_device_posture_integration")
 	close({
-		account_id!: string
+		account_id?: string
 
 		// API UUID.
 		id?: string

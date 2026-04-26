@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_r2_bucket")
 	close({
 		// Account ID.
-		account_id!: string
+		account_id?: string
 
 		// Name of the bucket.
 		bucket_name!: string

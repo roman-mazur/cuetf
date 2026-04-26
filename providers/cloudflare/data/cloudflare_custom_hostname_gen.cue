@@ -45,7 +45,7 @@ package data
 		verification_errors?: [...string]
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// This is a record which can be placed to activate a hostname.
 		ownership_verification?: close({
@@ -71,13 +71,25 @@ package data
 			http_url?: string
 		})
 		filter?: close({
+			// Filter by the certificate authority that issued the SSL
+			// certificate.
+			// Available values: "google", "lets_encrypt", "ssl_com".
+			certificate_authority?: string
+
+			// Filter by custom origin server name.
+			custom_origin_server?: string
+
 			// Direction to order hostnames.
 			// Available values: "asc", "desc".
 			direction?: string
 
-			// Fully qualified domain name to match against. This parameter
-			// cannot be used with the 'id' parameter.
-			hostname?: string
+			// Filter by the hostname's activation status.
+			// Available values: "active", "pending", "active_redeploying",
+			// "moved", "pending_deletion", "deleted", "pending_blocked",
+			// "pending_migration", "pending_provisioned", "test_pending",
+			// "test_active", "test_active_apex", "test_blocked",
+			// "test_failed", "provisioned", "blocked".
+			hostname_status?: string
 
 			// Hostname ID to match against. This ID was generated and
 			// returned during the initial custom_hostname creation. This
@@ -91,6 +103,25 @@ package data
 			// Whether to filter hostnames based on if they have SSL enabled.
 			// Available values: 0, 1.
 			ssl?: number
+
+			// Filter by SSL certificate status.
+			// Available values: "initializing", "pending_validation",
+			// "deleted", "pending_issuance", "pending_deployment",
+			// "pending_deletion", "pending_expiration", "expired", "active",
+			// "initializing_timed_out", "validation_timed_out",
+			// "issuance_timed_out", "deployment_timed_out",
+			// "deletion_timed_out", "pending_cleanup", "staging_deployment",
+			// "staging_active", "deactivating", "inactive", "backup_issued",
+			// "holding_deployment".
+			ssl_status?: string
+
+			// Filter by whether the custom hostname is a wildcard hostname.
+			wildcard?: bool
+			hostname?: close({
+				// Filters hostnames by a substring match on the hostname value.
+				// This parameter cannot be used with the 'id' parameter.
+				contain?: string
+			})
 		})
 		ssl?: close({
 			// A ubiquitous bundle has the highest probability of being
@@ -114,6 +145,50 @@ package data
 
 			// The key for a custom uploaded certificate.
 			custom_key?: string
+
+			// The time the custom certificate expires on.
+			expires_on?: string
+
+			// A list of Hostnames on a custom uploaded certificate.
+			hosts?: [...string]
+
+			// Custom hostname SSL identifier tag.
+			id?: string
+
+			// The issuer on a custom uploaded certificate.
+			issuer?: string
+
+			// Domain control validation (DCV) method used for this hostname.
+			// Available values: "http", "txt", "email".
+			method?: string
+
+			// The serial number on a custom uploaded certificate.
+			serial_number?: string
+
+			// The signature on a custom uploaded certificate.
+			signature?: string
+
+			// Status of the hostname's SSL certificates.
+			// Available values: "initializing", "pending_validation",
+			// "deleted", "pending_issuance", "pending_deployment",
+			// "pending_deletion", "pending_expiration", "expired", "active",
+			// "initializing_timed_out", "validation_timed_out",
+			// "issuance_timed_out", "deployment_timed_out",
+			// "deletion_timed_out", "pending_cleanup", "staging_deployment",
+			// "staging_active", "deactivating", "inactive", "backup_issued",
+			// "holding_deployment".
+			status?: string
+
+			// Level of validation to be used for this hostname. Domain
+			// validation (dv) must be used.
+			// Available values: "dv".
+			type?: string
+
+			// The time the custom certificate was uploaded.
+			uploaded_on?: string
+
+			// Indicates whether the certificate covers a wildcard.
+			wildcard?: bool
 
 			// DCV Delegation records for domain validation.
 			dcv_delegation_records?: matchN(1, [close({
@@ -174,47 +249,6 @@ package data
 				txt_value?: string
 			})]])
 
-			// The time the custom certificate expires on.
-			expires_on?: string
-
-			// A list of Hostnames on a custom uploaded certificate.
-			hosts?: [...string]
-
-			// Custom hostname SSL identifier tag.
-			id?: string
-
-			// The issuer on a custom uploaded certificate.
-			issuer?: string
-
-			// Domain control validation (DCV) method used for this hostname.
-			// Available values: "http", "txt", "email".
-			method?: string
-
-			// The serial number on a custom uploaded certificate.
-			serial_number?: string
-
-			// The signature on a custom uploaded certificate.
-			signature?: string
-
-			// Status of the hostname's SSL certificates.
-			// Available values: "initializing", "pending_validation",
-			// "deleted", "pending_issuance", "pending_deployment",
-			// "pending_deletion", "pending_expiration", "expired", "active",
-			// "initializing_timed_out", "validation_timed_out",
-			// "issuance_timed_out", "deployment_timed_out",
-			// "deletion_timed_out", "pending_cleanup", "staging_deployment",
-			// "staging_active", "deactivating", "inactive", "backup_issued",
-			// "holding_deployment".
-			status?: string
-
-			// Level of validation to be used for this hostname. Domain
-			// validation (dv) must be used.
-			// Available values: "dv".
-			type?: string
-
-			// The time the custom certificate was uploaded.
-			uploaded_on?: string
-
 			// Domain validation errors that have been received by the
 			// certificate authority (CA).
 			validation_errors?: matchN(1, [close({
@@ -224,9 +258,6 @@ package data
 				// A domain validation error.
 				message?: string
 			})]])
-
-			// Indicates whether the certificate covers a wildcard.
-			wildcard?: bool
 			settings?: close({
 				// An allowlist of ciphers for TLS termination. These ciphers must
 				// be in the BoringSSL format.

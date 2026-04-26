@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_device_custom_profile_local_domain_fallback")
 	close({
-		account_id!: string
+		account_id?: string
 		id?:         string
 		policy_id!:  string
 		domains!: matchN(1, [close({

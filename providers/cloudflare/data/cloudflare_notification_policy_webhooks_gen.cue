@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_notification_policy_webhooks")
 	close({
 		// The account id
-		account_id!: string
+		account_id?: string
 
 		// Timestamp of when the webhook destination was created.
 		created_at?: string

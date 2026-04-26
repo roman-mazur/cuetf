@@ -50,6 +50,7 @@ package res
 		// The size of the subnet for the local access network. Note that
 		// this field is omitted from the response if null or unset.
 		lan_allow_subnet_size?: number
+		policy_id?:             string
 
 		// Determines if the operating system will register WARP's local
 		// interface IP with your on-premises DNS server.

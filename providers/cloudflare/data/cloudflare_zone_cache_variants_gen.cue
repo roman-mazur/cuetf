@@ -14,7 +14,7 @@ package data
 		modified_on?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// Value of the zone setting.
 		value?: close({

@@ -4,8 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_observatory_scheduled_test")
 	close({
-		// The frequency of the test.
-		// Available values: "DAILY", "WEEKLY".
+		// The frequency of the scheduled test. Defaults to WEEKLY for
+		// free plans, DAILY for paid plans.
 		frequency?: string
 
 		// A URL.
@@ -25,7 +25,7 @@ package res
 		url!: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// The test schedule.
 		schedule?: close({

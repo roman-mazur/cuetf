@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_load_balancer_pool")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// A list of regions from which to run health checks. Null means
 		// every Cloudflare data center.
@@ -163,6 +163,14 @@ package res
 			// current pool.
 			enabled?: bool
 
+			// Whether to flatten CNAME records for this origin, resolving
+			// them to A/AAAA records before returning to the client. When
+			// true (the default), the director resolves CNAME addresses to
+			// their underlying A/AAAA records. When false, the origin
+			// address is returned as a raw CNAME record without resolution.
+			// This setting mirrors the DNS API record flatten_cname setting.
+			flatten_cname?: bool
+
 			// A human-identifiable name for the origin.
 			name?: string
 
@@ -208,6 +216,14 @@ package res
 			// from health checks. The origin will only be disabled for the
 			// current pool.
 			enabled?: bool
+
+			// Whether to flatten CNAME records for this origin, resolving
+			// them to A/AAAA records before returning to the client. When
+			// true (the default), the director resolves CNAME addresses to
+			// their underlying A/AAAA records. When false, the origin
+			// address is returned as a raw CNAME record without resolution.
+			// This setting mirrors the DNS API record flatten_cname setting.
+			flatten_cname?: bool
 
 			// A human-identifiable name for the origin.
 			name?: string

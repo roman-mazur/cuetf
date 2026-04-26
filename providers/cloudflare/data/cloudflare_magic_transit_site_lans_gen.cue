@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_magic_transit_site_lans")
 	close({
 		// Identifier
-		account_id!: string
+		account_id?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number
@@ -22,9 +22,15 @@ package data
 			ha_link?: bool
 
 			// Identifier
-			id?:       string
-			name?:     string
-			physport?: number
+			id?: string
+
+			// mark true to use this LAN for source-based breakout traffic
+			is_breakout?: bool
+
+			// mark true to use this LAN for source-based prioritized traffic
+			is_prioritized?: bool
+			name?:           string
+			physport?:       number
 
 			// Identifier
 			site_id?: string
@@ -99,9 +105,15 @@ package data
 			ha_link?: bool
 
 			// Identifier
-			id?:       string
-			name?:     string
-			physport?: number
+			id?: string
+
+			// mark true to use this LAN for source-based breakout traffic
+			is_breakout?: bool
+
+			// mark true to use this LAN for source-based prioritized traffic
+			is_prioritized?: bool
+			name?:           string
+			physport?:       number
 
 			// Identifier
 			site_id?: string

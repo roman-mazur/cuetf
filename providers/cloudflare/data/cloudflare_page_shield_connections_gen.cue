@@ -24,6 +24,6 @@ package data
 		url_reported_malicious?:    bool
 
 		// Identifier
-		zone_id!: string
+		zone_id?: string
 	})
 }

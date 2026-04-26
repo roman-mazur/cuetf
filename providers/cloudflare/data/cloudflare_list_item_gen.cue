@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_list_item")
 	close({
 		// The Account ID for this resource.
-		account_id!: string
+		account_id?: string
 
 		// Defines a non-negative 32 bit integer.
 		asn?: number

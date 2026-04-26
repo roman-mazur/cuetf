@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_hyperdrive_config")
 	close({
 		// Define configurations using a unique string identifier.
-		account_id!: string
+		account_id?: string
 
 		// Defines the creation time of the Hyperdrive configuration.
 		created_on?: string
@@ -25,7 +25,29 @@ package data
 
 		// The (soft) maximum number of connections the Hyperdrive is
 		// allowed to make to the origin database.
+		//
+		// Maximum allowed: 20 for free tier accounts, 100 for paid tier
+		// accounts.
+		// If not specified, defaults to 20 for free tier and 60 for paid
+		// tier.
+		// Contact Cloudflare if you need a higher limit.
 		origin_connection_limit?: number
+
+		// mTLS configuration for the origin connection. Cannot be used
+		// with VPC Service origins; TLS must be managed on the VPC
+		// Service.
+		mtls?: close({
+			// Define CA certificate ID obtained after uploading CA cert.
+			ca_certificate_id?: string
+
+			// Define mTLS certificate ID obtained after uploading client
+			// cert.
+			mtls_certificate_id?: string
+
+			// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to
+			// verify the CA.
+			sslmode?: string
+		})
 		caching?: close({
 			// Set to true to disable caching of SQL responses. Default is
 			// false.
@@ -38,18 +60,6 @@ package data
 			// Specify the number of seconds the cache may serve a stale
 			// response. Defaults to 15 seconds if not specified.
 			stale_while_revalidate?: number
-		})
-		mtls?: close({
-			// Define CA certificate ID obtained after uploading CA cert.
-			ca_certificate_id?: string
-
-			// Define mTLS certificate ID obtained after uploading client
-			// cert.
-			mtls_certificate_id?: string
-
-			// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to
-			// verify the CA.
-			sslmode?: string
 		})
 		origin?: close({
 			// Defines the Client ID of the Access token to use when
@@ -79,6 +89,11 @@ package data
 			// database.
 			// Available values: "postgres", "postgresql", "mysql".
 			scheme?: string
+
+			// The identifier of the Workers VPC Service to connect through.
+			// Hyperdrive will egress through the specified VPC Service to
+			// reach the origin database.
+			service_id?: string
 
 			// Set the user of your origin database.
 			user?: string

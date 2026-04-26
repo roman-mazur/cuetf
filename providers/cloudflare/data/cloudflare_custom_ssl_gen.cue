@@ -15,6 +15,9 @@ package data
 		// Identifier.
 		custom_certificate_id?: string
 
+		// The identifier for the Custom CSR that was used.
+		custom_csr_id?: string
+
 		// When the certificate from the authority expires.
 		expires_on?: string
 		hosts?: [...string]
@@ -58,7 +61,7 @@ package data
 		uploaded_on?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// Specify the region where your private key can be held locally
 		// for optimal TLS performance. HTTPS connections to any excluded

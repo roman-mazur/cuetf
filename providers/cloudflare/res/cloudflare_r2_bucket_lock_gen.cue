@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_r2_bucket_lock")
 	close({
 		// Account ID.
-		account_id!: string
+		account_id?: string
 
 		// Name of the bucket.
 		bucket_name!: string

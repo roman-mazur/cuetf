@@ -4,14 +4,14 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_lists")
 	close({
-		account_id!: string
+		account_id?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number
 
 		// Specify the list type.
 		// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP",
-		// "CATEGORY", "LOCATION", "DEVICE".
+		// "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 		type?: string
 
 		// The items returned by the data source
@@ -32,7 +32,7 @@ package data
 
 			// Specify the list type.
 			// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP",
-			// "CATEGORY", "LOCATION", "DEVICE".
+			// "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 			type?:       string
 			updated_at?: string
 
@@ -71,7 +71,7 @@ package data
 
 			// Specify the list type.
 			// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP",
-			// "CATEGORY", "LOCATION", "DEVICE".
+			// "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 			type?:       string
 			updated_at?: string
 

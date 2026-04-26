@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_calls_sfu_app")
 	close({
 		// The account identifier tag.
-		account_id!: string
+		account_id?: string
 
 		// A Cloudflare-generated unique identifier for a item.
 		app_id!: string

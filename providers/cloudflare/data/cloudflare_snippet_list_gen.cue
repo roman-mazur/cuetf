@@ -8,7 +8,7 @@ package data
 		max_items?: number
 
 		// Use this field to specify the unique ID of the zone.
-		zone_id!: string
+		zone_id?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({

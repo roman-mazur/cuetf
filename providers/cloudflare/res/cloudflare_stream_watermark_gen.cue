@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_stream_watermark")
 	close({
 		// The account identifier tag.
-		account_id!: string
+		account_id?: string
 
 		// The date and a time a watermark profile was created.
 		created?: string
@@ -13,9 +13,6 @@ package res
 		// The source URL for a downloaded image. If the watermark profile
 		// was created via direct upload, this field is null.
 		downloaded_from?: string
-
-		// The image file to upload.
-		file!: string
 
 		// The height of the image in pixels.
 		height?: number
@@ -55,6 +52,9 @@ package res
 
 		// The unique identifier for a watermark profile.
 		uid?: string
+
+		// URL of the watermark image to copy.
+		url?: string
 
 		// The width of the image in pixels.
 		width?: number

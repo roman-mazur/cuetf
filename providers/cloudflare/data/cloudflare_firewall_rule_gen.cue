@@ -35,6 +35,6 @@ package data
 		rule_id?: string
 
 		// Defines an identifier.
-		zone_id!: string
+		zone_id?: string
 	})
 }

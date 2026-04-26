@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_sso_connector")
 	close({
 		// Account identifier tag.
-		account_id!: string
+		account_id?: string
 
 		// Timestamp for the creation of the SSO connector
 		created_on?:   string

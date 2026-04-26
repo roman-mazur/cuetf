@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_dex_test")
 	close({
-		account_id!: string
+		account_id?: string
 
 		// Additional details about the test.
 		description?: string

@@ -33,9 +33,14 @@ package data
 		// Complete DNS record name, including the zone name, in Punycode.
 		name?: string
 
-		// Required for MX, SRV and URI records; unused by other record
-		// types. Records with lower priorities are preferred.
+		// Required for MX and URI records; ignored for other record types
+		// (but may still be returned by the API). Records with lower
+		// priorities are preferred. This field is to be deprecated in
+		// favor of the priority field within the data map.
 		priority?: number
+
+		// Enables private network routing to the origin.
+		private_routing?: bool
 
 		// Whether the record can be proxied by Cloudflare or not.
 		proxiable?: bool
@@ -65,7 +70,7 @@ package data
 		type?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// Components of a CAA record.
 		data?: close({

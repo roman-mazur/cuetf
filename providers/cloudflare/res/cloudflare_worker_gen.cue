@@ -5,10 +5,14 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_worker")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// When the Worker was created.
 		created_on?: string
+
+		// When the Worker's most recent deployment was created. `null` if
+		// the Worker has never been deployed.
+		deployed_on?: string
 
 		// Immutable ID of the Worker.
 		id?: string
@@ -36,6 +40,9 @@ package res
 
 			// Log settings for the Worker.
 			logs?: close({
+				// A list of destinations where logs will be exported to.
+				destinations?: [...string]
+
 				// Whether logs are enabled for the Worker.
 				enabled?: bool
 
@@ -46,6 +53,25 @@ package res
 				// logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs)
 				// are enabled for the Worker.
 				invocation_logs?: bool
+
+				// Whether log persistence is enabled for the Worker.
+				persist?: bool
+			})
+
+			// Trace settings for the Worker.
+			traces?: close({
+				// A list of destinations where traces will be exported to.
+				destinations?: [...string]
+
+				// Whether traces are enabled for the Worker.
+				enabled?: bool
+
+				// The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 =
+				// 10%).
+				head_sampling_rate?: number
+
+				// Whether trace persistence is enabled for the Worker.
+				persist?: bool
 			})
 		})
 

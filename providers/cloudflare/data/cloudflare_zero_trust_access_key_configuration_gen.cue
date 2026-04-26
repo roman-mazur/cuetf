@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_access_key_configuration")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// The number of days until the next key rotation.
 		days_until_next_rotation?: number

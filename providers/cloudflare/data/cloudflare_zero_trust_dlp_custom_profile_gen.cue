@@ -4,7 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dlp_custom_profile")
 	close({
-		account_id!:         string
+		account_id?:         string
 		ai_context_enabled?: bool
 
 		// Related DLP policies will trigger when the match count exceeds
@@ -16,6 +16,12 @@ package data
 
 		// When the profile was created.
 		created_at?: string
+
+		// Data classes associated with this profile.
+		data_classes?: [...string]
+
+		// Data tags associated with this profile.
+		data_tags?: [...string]
 
 		// The description of the profile.
 		description?: string
@@ -34,6 +40,15 @@ package data
 
 		// When the profile was lasted updated.
 		updated_at?: string
+
+		// Sensitivity levels associated with this profile.
+		sensitivity_levels?: matchN(1, [close({
+			group_id?: string
+			level_id?: string
+		}), [...close({
+			group_id?: string
+			level_id?: string
+		})]])
 		shared_entries?: matchN(1, [close({
 			// Only applies to custom word lists.
 			// Determines if the words should be matched in a case-sensitive

@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_stream_caption_language")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// The WebVTT file containing the caption or subtitle content.
 		file?: string

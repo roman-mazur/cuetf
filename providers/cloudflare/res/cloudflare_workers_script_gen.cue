@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_workers_script")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Name of the uploaded file that contains the script (e.g. the
 		// file adding a listener to the `fetch` event). Indicates a
@@ -92,6 +92,20 @@ package res
 		// Available values: "standard", "bundled", "unbound".
 		usage_model?: string
 
+		// Annotations for the version created by this upload.
+		annotations?: close({
+			// Human-readable message about the version. Truncated to 1000
+			// bytes if longer.
+			workers_message?: string
+
+			// User-provided identifier for the version. Maximum 100 bytes.
+			workers_tag?: string
+
+			// Indicates the trigger that created this version. Server-set
+			// value.
+			workers_triggered_by?: string
+		})
+
 		// Configuration for assets within a Worker.
 		assets?: close({
 			// The SHA-256 hash of the asset manifest of files to upload.
@@ -152,6 +166,9 @@ package res
 			// List of allowed sender addresses.
 			allowed_sender_addresses?: [...string]
 
+			// ID of the Flagship app to bind to for feature flag evaluation.
+			app_id?: string
+
 			// R2 bucket to bind to.
 			bucket_name?: string
 
@@ -161,11 +178,20 @@ package res
 			// The exported class name of the Durable Object.
 			class_name?: string
 
+			// Identifier of the D1 database to bind to.
+			database_id?: string
+
 			// The name of the dataset to bind to.
 			dataset?: string
 
 			// Destination address for the email.
 			destination_address?: string
+
+			// The dispatch namespace the Durable Object script belongs to.
+			dispatch_namespace?: string
+
+			// Entrypoint to invoke on the target Worker.
+			entrypoint?: string
 
 			// The environment of the script_name to bind to.
 			environment?: string
@@ -181,13 +207,18 @@ package res
 			// Name of the Vectorize index to bind to.
 			index_name?: string
 
+			// The user-chosen instance name. Must exist at deploy time. The
+			// worker can search, chat, update, and manage items/jobs on this
+			// instance.
+			instance_name?: string
+
 			// JSON data to use.
 			json?: string
 
 			// The
 			// [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
 			// of the R2 bucket.
-			// Available values: "eu", "fedramp".
+			// Available values: "eu", "fedramp", "fedramp-high".
 			jurisdiction?: string
 
 			// Base64-encoded key data. Required if `format` is "raw",
@@ -202,11 +233,17 @@ package res
 			// A JavaScript variable name for the binding.
 			name!: string
 
-			// The name of the dispatch namespace.
+			// The namespace the instance belongs to. Defaults to "default" if
+			// omitted. Customers who don't use namespaces can simply omit
+			// this field.
 			namespace?: string
 
 			// Namespace identifier tag.
 			namespace_id?: string
+
+			// Identifier of the network to bind to. Only "cf1:network" is
+			// currently supported. Mutually exclusive with tunnel_id.
+			network_id?: string
 
 			// The old name of the inherited binding. If set, the binding will
 			// be renamed from `old_name` to `name` in the new version. If
@@ -233,21 +270,29 @@ package res
 			// Name of Worker to bind to.
 			service?: string
 
+			// Identifier of the VPC service to bind to.
+			service_id?: string
+
 			// ID of the store containing the secret.
 			store_id?: string
 
 			// The text value to use.
 			text?: string
 
+			// UUID of the Cloudflare Tunnel to bind to. Mutually exclusive
+			// with network_id.
+			tunnel_id?: string
+
 			// The kind of resource that the binding provides.
-			// Available values: "ai", "analytics_engine", "assets",
-			// "browser", "d1", "data_blob", "dispatch_namespace",
-			// "durable_object_namespace", "hyperdrive", "inherit", "images",
-			// "json", "kv_namespace", "mtls_certificate", "plain_text",
-			// "pipelines", "queue", "r2_bucket", "secret_text",
-			// "send_email", "service", "tail_consumer", "text_blob",
-			// "vectorize", "version_metadata", "secrets_store_secret",
-			// "secret_key", "workflow", "wasm_module".
+			// Available values: "ai", "ai_search", "ai_search_namespace",
+			// "analytics_engine", "assets", "browser", "d1", "data_blob",
+			// "dispatch_namespace", "durable_object_namespace",
+			// "hyperdrive", "inherit", "images", "json", "kv_namespace",
+			// "media", "mtls_certificate", "plain_text", "pipelines",
+			// "queue", "ratelimit", "r2_bucket", "secret_text",
+			// "send_email", "service", "text_blob", "vectorize",
+			// "version_metadata", "secrets_store_secret", "secret_key",
+			// "workflow", "wasm_module", "vpc_service", "vpc_network".
 			type!: string
 
 			// Allowed operations with the key. [Learn
@@ -298,6 +343,9 @@ package res
 			// List of allowed sender addresses.
 			allowed_sender_addresses?: [...string]
 
+			// ID of the Flagship app to bind to for feature flag evaluation.
+			app_id?: string
+
 			// R2 bucket to bind to.
 			bucket_name?: string
 
@@ -307,11 +355,20 @@ package res
 			// The exported class name of the Durable Object.
 			class_name?: string
 
+			// Identifier of the D1 database to bind to.
+			database_id?: string
+
 			// The name of the dataset to bind to.
 			dataset?: string
 
 			// Destination address for the email.
 			destination_address?: string
+
+			// The dispatch namespace the Durable Object script belongs to.
+			dispatch_namespace?: string
+
+			// Entrypoint to invoke on the target Worker.
+			entrypoint?: string
 
 			// The environment of the script_name to bind to.
 			environment?: string
@@ -327,13 +384,18 @@ package res
 			// Name of the Vectorize index to bind to.
 			index_name?: string
 
+			// The user-chosen instance name. Must exist at deploy time. The
+			// worker can search, chat, update, and manage items/jobs on this
+			// instance.
+			instance_name?: string
+
 			// JSON data to use.
 			json?: string
 
 			// The
 			// [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
 			// of the R2 bucket.
-			// Available values: "eu", "fedramp".
+			// Available values: "eu", "fedramp", "fedramp-high".
 			jurisdiction?: string
 
 			// Base64-encoded key data. Required if `format` is "raw",
@@ -348,11 +410,17 @@ package res
 			// A JavaScript variable name for the binding.
 			name!: string
 
-			// The name of the dispatch namespace.
+			// The namespace the instance belongs to. Defaults to "default" if
+			// omitted. Customers who don't use namespaces can simply omit
+			// this field.
 			namespace?: string
 
 			// Namespace identifier tag.
 			namespace_id?: string
+
+			// Identifier of the network to bind to. Only "cf1:network" is
+			// currently supported. Mutually exclusive with tunnel_id.
+			network_id?: string
 
 			// The old name of the inherited binding. If set, the binding will
 			// be renamed from `old_name` to `name` in the new version. If
@@ -379,21 +447,29 @@ package res
 			// Name of Worker to bind to.
 			service?: string
 
+			// Identifier of the VPC service to bind to.
+			service_id?: string
+
 			// ID of the store containing the secret.
 			store_id?: string
 
 			// The text value to use.
 			text?: string
 
+			// UUID of the Cloudflare Tunnel to bind to. Mutually exclusive
+			// with network_id.
+			tunnel_id?: string
+
 			// The kind of resource that the binding provides.
-			// Available values: "ai", "analytics_engine", "assets",
-			// "browser", "d1", "data_blob", "dispatch_namespace",
-			// "durable_object_namespace", "hyperdrive", "inherit", "images",
-			// "json", "kv_namespace", "mtls_certificate", "plain_text",
-			// "pipelines", "queue", "r2_bucket", "secret_text",
-			// "send_email", "service", "tail_consumer", "text_blob",
-			// "vectorize", "version_metadata", "secrets_store_secret",
-			// "secret_key", "workflow", "wasm_module".
+			// Available values: "ai", "ai_search", "ai_search_namespace",
+			// "analytics_engine", "assets", "browser", "d1", "data_blob",
+			// "dispatch_namespace", "durable_object_namespace",
+			// "hyperdrive", "inherit", "images", "json", "kv_namespace",
+			// "media", "mtls_certificate", "plain_text", "pipelines",
+			// "queue", "ratelimit", "r2_bucket", "secret_text",
+			// "send_email", "service", "text_blob", "vectorize",
+			// "version_metadata", "secrets_store_secret", "secret_key",
+			// "workflow", "wasm_module", "vpc_service", "vpc_network".
 			type!: string
 
 			// Allowed operations with the key. [Learn
@@ -439,6 +515,9 @@ package res
 		limits?: close({
 			// The amount of CPU time this Worker can use in milliseconds.
 			cpu_ms?: number
+
+			// The number of subrequests this Worker can make per request.
+			subrequests?: number
 		})
 
 		// Migrations to apply for Durable Objects associated with this
@@ -594,6 +673,22 @@ package res
 				invocation_logs!: bool
 
 				// Whether log persistence is enabled for the Worker.
+				persist?: bool
+			})
+
+			// Trace settings for the Worker.
+			traces?: close({
+				// A list of destinations where traces will be exported to.
+				destinations?: [...string]
+
+				// Whether traces are enabled for the Worker.
+				enabled?: bool
+
+				// The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 =
+				// 10%). Default is 1.
+				head_sampling_rate?: number
+
+				// Whether trace persistence is enabled for the Worker.
 				persist?: bool
 			})
 		})

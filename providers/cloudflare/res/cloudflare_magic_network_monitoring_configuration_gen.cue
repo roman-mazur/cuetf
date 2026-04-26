@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_magic_network_monitoring_configuration")
 	close({
-		account_id!: string
+		account_id?: string
 
 		// Fallback sampling rate of flow messages being sent in packets
 		// per second. This should match the packet sampling rate

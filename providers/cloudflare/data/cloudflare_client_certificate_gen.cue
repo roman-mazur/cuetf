@@ -65,7 +65,7 @@ package data
 		validity_days?: number
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// Certificate Authority used to issue the Client Certificate
 		certificate_authority?: close({

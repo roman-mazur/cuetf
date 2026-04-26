@@ -67,7 +67,7 @@ package data
 		type?: string
 
 		// Identifier
-		zone_id!: string
+		zone_id?: string
 
 		// Parameters specific to an HTTP or HTTPS health check.
 		http_config?: close({

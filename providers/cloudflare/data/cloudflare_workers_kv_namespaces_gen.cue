@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workers_kv_namespaces")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Direction to order namespaces.
 		// Available values: "asc", "desc".

@@ -58,7 +58,7 @@ package data
 		rule_identifier?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 		filter?: close({
 			// Filter by enabled routing rules.
 			enabled?: bool

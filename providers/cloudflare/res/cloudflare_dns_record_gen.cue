@@ -34,6 +34,9 @@ package res
 		// types. Records with lower priorities are preferred.
 		priority?: number
 
+		// Enables private network routing to the origin.
+		private_routing?: bool
+
 		// Whether the record can be proxied by Cloudflare or not.
 		proxiable?: bool
 
@@ -62,7 +65,7 @@ package res
 		type!: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// Components of a CAA record.
 		data?: close({

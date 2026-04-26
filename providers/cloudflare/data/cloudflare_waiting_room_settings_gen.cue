@@ -15,6 +15,6 @@ package data
 		search_engine_crawler_bypass?: bool
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 	})
 }

@@ -65,7 +65,7 @@ package data
 		traffic_type?: string
 
 		// Zone identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// The name and type of DNS record for the Spectrum application.
 		dns?: close({

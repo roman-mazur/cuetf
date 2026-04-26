@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_access_policy")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Number of access applications currently using this policy.
 		app_count?: number
@@ -219,6 +219,11 @@ package data
 				// The ID of a Service Token.
 				token_id?: string
 			})
+			user_risk_score?: close({
+				// A list of risk score levels to match. Values can be low,
+				// medium, high, or unscored.
+				user_risk_score?: [...string]
+			})
 		}), [...close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
@@ -347,6 +352,11 @@ package data
 			service_token?: close({
 				// The ID of a Service Token.
 				token_id?: string
+			})
+			user_risk_score?: close({
+				// A list of risk score levels to match. Values can be low,
+				// medium, high, or unscored.
+				user_risk_score?: [...string]
 			})
 		})]])
 
@@ -481,6 +491,11 @@ package data
 				// The ID of a Service Token.
 				token_id?: string
 			})
+			user_risk_score?: close({
+				// A list of risk score levels to match. Values can be low,
+				// medium, high, or unscored.
+				user_risk_score?: [...string]
+			})
 		}), [...close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
@@ -610,6 +625,11 @@ package data
 				// The ID of a Service Token.
 				token_id?: string
 			})
+			user_risk_score?: close({
+				// A list of risk score levels to match. Values can be low,
+				// medium, high, or unscored.
+				user_risk_score?: [...string]
+			})
 		})]])
 
 		// Configures multi-factor authentication (MFA) settings.
@@ -617,9 +637,9 @@ package data
 			// Lists the MFA methods that users can authenticate with.
 			allowed_authenticators?: [...string]
 
-			// Indicates whether to bypass MFA for this resource. This option
+			// Indicates whether to disable MFA for this resource. This option
 			// is available at the application and policy level.
-			mfa_bypass?: bool
+			mfa_disabled?: bool
 
 			// Defines the duration of an MFA session. Must be in minutes (m)
 			// or hours (h). Minimum: 0m. Maximum: 720h (30 days).
@@ -758,6 +778,11 @@ package data
 				// The ID of a Service Token.
 				token_id?: string
 			})
+			user_risk_score?: close({
+				// A list of risk score levels to match. Values can be low,
+				// medium, high, or unscored.
+				user_risk_score?: [...string]
+			})
 		}), [...close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
@@ -886,6 +911,11 @@ package data
 			service_token?: close({
 				// The ID of a Service Token.
 				token_id?: string
+			})
+			user_risk_score?: close({
+				// A list of risk score levels to match. Values can be low,
+				// medium, high, or unscored.
+				user_risk_score?: [...string]
 			})
 		})]])
 	})

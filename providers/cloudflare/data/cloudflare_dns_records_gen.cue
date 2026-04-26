@@ -4,6 +4,49 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_dns_records")
 	close({
+		comment?: close({
+			// If this parameter is present, only records *without* a comment
+			// are returned.
+			absent?: string
+
+			// Substring of the DNS record comment. Comment filters are
+			// case-insensitive.
+			contains?: string
+
+			// Suffix of the DNS record comment. Comment filters are
+			// case-insensitive.
+			endswith?: string
+
+			// Exact value of the DNS record comment. Comment filters are
+			// case-insensitive.
+			exact?: string
+
+			// If this parameter is present, only records *with* a comment are
+			// returned.
+			present?: string
+
+			// Prefix of the DNS record comment. Comment filters are
+			// case-insensitive.
+			startswith?: string
+		})
+		content?: close({
+			// Substring of the DNS record content. Content filters are
+			// case-insensitive.
+			contains?: string
+
+			// Suffix of the DNS record content. Content filters are
+			// case-insensitive.
+			endswith?: string
+
+			// Exact value of the DNS record content. Content filters are
+			// case-insensitive.
+			exact?: string
+
+			// Prefix of the DNS record content. Content filters are
+			// case-insensitive.
+			startswith?: string
+		})
+
 		// Direction to order DNS records in.
 		// Available values: "asc", "desc".
 		direction?: string
@@ -52,49 +95,7 @@ package data
 		type?: string
 
 		// Identifier.
-		zone_id!: string
-		comment?: close({
-			// If this parameter is present, only records *without* a comment
-			// are returned.
-			absent?: string
-
-			// Substring of the DNS record comment. Comment filters are
-			// case-insensitive.
-			contains?: string
-
-			// Suffix of the DNS record comment. Comment filters are
-			// case-insensitive.
-			endswith?: string
-
-			// Exact value of the DNS record comment. Comment filters are
-			// case-insensitive.
-			exact?: string
-
-			// If this parameter is present, only records *with* a comment are
-			// returned.
-			present?: string
-
-			// Prefix of the DNS record comment. Comment filters are
-			// case-insensitive.
-			startswith?: string
-		})
-		content?: close({
-			// Substring of the DNS record content. Content filters are
-			// case-insensitive.
-			contains?: string
-
-			// Suffix of the DNS record content. Content filters are
-			// case-insensitive.
-			endswith?: string
-
-			// Exact value of the DNS record content. Content filters are
-			// case-insensitive.
-			exact?: string
-
-			// Prefix of the DNS record content. Content filters are
-			// case-insensitive.
-			startswith?: string
-		})
+		zone_id?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -124,9 +125,14 @@ package data
 			// Complete DNS record name, including the zone name, in Punycode.
 			name?: string
 
-			// Required for MX, SRV and URI records; unused by other record
-			// types. Records with lower priorities are preferred.
+			// Required for MX and URI records; ignored for other record types
+			// (but may still be returned by the API). Records with lower
+			// priorities are preferred. This field is to be deprecated in
+			// favor of the priority field within the data map.
 			priority?: number
+
+			// Enables private network routing to the origin.
+			private_routing?: bool
 
 			// Whether the record can be proxied by Cloudflare or not.
 			proxiable?: bool
@@ -320,9 +326,14 @@ package data
 			// Complete DNS record name, including the zone name, in Punycode.
 			name?: string
 
-			// Required for MX, SRV and URI records; unused by other record
-			// types. Records with lower priorities are preferred.
+			// Required for MX and URI records; ignored for other record types
+			// (but may still be returned by the API). Records with lower
+			// priorities are preferred. This field is to be deprecated in
+			// favor of the priority field within the data map.
 			priority?: number
+
+			// Enables private network routing to the origin.
+			private_routing?: bool
 
 			// Whether the record can be proxied by Cloudflare or not.
 			proxiable?: bool

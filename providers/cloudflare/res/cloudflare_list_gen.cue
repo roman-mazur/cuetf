@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_list")
 	close({
 		// The Account ID for this resource.
-		account_id!: string
+		account_id?: string
 
 		// The RFC 3339 timestamp of when the list was created.
 		created_on?: string

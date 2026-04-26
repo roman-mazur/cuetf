@@ -27,6 +27,6 @@ package res
 		validation_enabled!: bool
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 	})
 }

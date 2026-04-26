@@ -16,6 +16,6 @@ package data
 		type?: string
 
 		// The unique ID of the zone.
-		zone_id!: string
+		zone_id?: string
 	})
 }

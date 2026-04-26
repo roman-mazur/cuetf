@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_account_dns_settings_internal_views")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Direction to order DNS views in.
 		// Available values: "asc", "desc".

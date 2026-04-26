@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_workers_cron_trigger")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Name of the script, used in URLs and route configuration.
 		id?: string

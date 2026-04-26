@@ -154,6 +154,11 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
@@ -282,6 +287,11 @@ package data
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
 				})
 			})]])
 
@@ -419,6 +429,11 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
@@ -547,6 +562,11 @@ package data
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
 				})
 			})]])
 
@@ -681,6 +701,11 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
@@ -809,6 +834,11 @@ package data
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
 				})
 			})]])
 
@@ -946,6 +976,11 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
@@ -1074,6 +1109,11 @@ package data
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
 				})
 			})]])
 		}), [...close({
@@ -1208,6 +1248,11 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
@@ -1336,6 +1381,11 @@ package data
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
 				})
 			})]])
 
@@ -1473,6 +1523,11 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
@@ -1601,6 +1656,11 @@ package data
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
 				})
 			})]])
 
@@ -1735,6 +1795,11 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
@@ -1863,6 +1928,11 @@ package data
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
 				})
 			})]])
 
@@ -2000,6 +2070,11 @@ package data
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
+				})
 			}), [...close({
 				// An empty object which matches on all service tokens.
 				any_valid_service_token?: close({})
@@ -2128,6 +2203,11 @@ package data
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				user_risk_score?: close({
+					// A list of risk score levels to match. Values can be low,
+					// medium, high, or unscored.
+					user_risk_score?: [...string]
 				})
 			})]])
 		})]])

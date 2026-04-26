@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_tunnel_cloudflared_token")
 	close({
 		// Cloudflare account ID
-		account_id!: string
+		account_id?: string
 
 		// The Tunnel Token is used as a mechanism to authenticate the
 		// operation of a tunnel.

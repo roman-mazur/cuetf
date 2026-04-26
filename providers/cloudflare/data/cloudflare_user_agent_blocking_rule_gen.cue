@@ -33,7 +33,7 @@ package data
 		ua_rule_id?: string
 
 		// Defines an identifier.
-		zone_id!: string
+		zone_id?: string
 		filter?: close({
 			// A string to search for in the description of existing rules.
 			description?: string

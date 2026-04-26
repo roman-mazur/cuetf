@@ -24,6 +24,6 @@ package data
 		waiting_room_id!: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 	})
 }

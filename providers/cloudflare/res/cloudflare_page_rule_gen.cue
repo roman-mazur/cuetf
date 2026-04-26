@@ -92,6 +92,6 @@ package res
 		target!: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 	})
 }

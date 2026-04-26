@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_dns_firewalls")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number

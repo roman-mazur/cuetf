@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_tunnel_cloudflared_virtual_network")
 	close({
 		// Cloudflare account ID
-		account_id!: string
+		account_id?: string
 
 		// Optional remark describing the virtual network.
 		comment?: string

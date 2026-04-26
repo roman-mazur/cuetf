@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_account_role")
 	close({
 		// Account identifier tag.
-		account_id!: string
+		account_id?: string
 
 		// Description of role's permissions.
 		description?: string

@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_email_security_trusted_domains")
 	close({
 		// Account Identifier
-		account_id!: string
+		account_id?: string
 		comments?:   string
 		created_at?: string
 

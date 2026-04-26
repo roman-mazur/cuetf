@@ -4,6 +4,11 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zone")
 	close({
+		account!: close({
+			// Identifier
+			id?: string
+		})
+
 		// The last time proof of ownership was detected and the zone was
 		// made
 		// active.
@@ -24,28 +29,6 @@ package res
 
 		// Identifier
 		id?: string
-
-		// Metadata about the zone.
-		meta?: close({
-			// The zone is only configured for CDN.
-			cdn_only?: bool
-
-			// Number of Custom Certificates the zone can have.
-			custom_certificate_quota?: number
-
-			// The zone is only configured for DNS.
-			dns_only?: bool
-
-			// The zone is setup with Foundation DNS.
-			foundation_dns?: bool
-
-			// Number of Page Rules a zone can have.
-			page_rule_quota?: number
-
-			// The zone has been flagged for phishing.
-			phishing_detected?: bool
-			step?:              number
-		})
 
 		// When the zone was last modified.
 		modified_on?: string
@@ -69,6 +52,52 @@ package res
 		// Cloudflare.
 		original_registrar?: string
 
+		// Indicates whether the zone is only using Cloudflare DNS
+		// services. A
+		// true value means the zone will not receive security or
+		// performance
+		// benefits.
+		paused?: bool
+
+		// The zone status on Cloudflare.
+		// Available values: "initializing", "pending", "active", "moved".
+		status?: string
+
+		// A full zone implies that DNS is hosted with Cloudflare. A
+		// partial zone is
+		// typically a partner-hosted zone or a CNAME setup.
+		// Available values: "full", "partial", "secondary", "internal".
+		type?: string
+
+		// An array of domains used for custom name servers. This is only
+		// available for Business and Enterprise plans.
+		vanity_name_servers?: [...string]
+
+		// Verification key for partial zone setup.
+		verification_key?: string
+
+		// Metadata about the zone.
+		meta?: close({
+			// The zone is only configured for CDN.
+			cdn_only?: bool
+
+			// Number of Custom Certificates the zone can have.
+			custom_certificate_quota?: number
+
+			// The zone is only configured for DNS.
+			dns_only?: bool
+
+			// The zone is setup with Foundation DNS.
+			foundation_dns?: bool
+
+			// Number of Page Rules a zone can have.
+			page_rule_quota?: number
+
+			// The zone has been flagged for phishing.
+			phishing_detected?: bool
+			step?:              number
+		})
+
 		// The owner of the zone.
 		owner?: close({
 			// Identifier
@@ -80,17 +109,6 @@ package res
 			// The type of owner.
 			type?: string
 		})
-
-		// Indicates whether the zone is only using Cloudflare DNS
-		// services. A
-		// true value means the zone will not receive security or
-		// performance
-		// benefits.
-		paused?: bool
-
-		// The zone status on Cloudflare.
-		// Available values: "initializing", "pending", "active", "moved".
-		status?: string
 
 		// The root organizational unit that this zone belongs to (such as
 		// a tenant or organization).
@@ -105,23 +123,6 @@ package res
 		// The immediate parent organizational unit that this zone belongs
 		// to (such as under a tenant or sub-organization).
 		tenant_unit?: close({
-			// Identifier
-			id?: string
-		})
-
-		// A full zone implies that DNS is hosted with Cloudflare. A
-		// partial zone is
-		// typically a partner-hosted zone or a CNAME setup.
-		// Available values: "full", "partial", "secondary", "internal".
-		type?: string
-
-		// An array of domains used for custom name servers. This is only
-		// available for Business and Enterprise plans.
-		vanity_name_servers?: [...string]
-
-		// Verification key for partial zone setup.
-		verification_key?: string
-		account!: close({
 			// Identifier
 			id?: string
 		})

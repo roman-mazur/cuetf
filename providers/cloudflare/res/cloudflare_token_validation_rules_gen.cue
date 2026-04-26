@@ -32,7 +32,7 @@ package res
 		title!: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 
 		// Update rule order among zone rules.
 		position?: close({

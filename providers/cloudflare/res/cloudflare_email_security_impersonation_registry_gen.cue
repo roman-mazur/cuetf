@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_email_security_impersonation_registry")
 	close({
 		// Account Identifier
-		account_id!:        string
+		account_id?:        string
 		comments?:          string
 		created_at?:        string
 		directory_id?:      number

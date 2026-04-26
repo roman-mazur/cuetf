@@ -245,6 +245,46 @@ package res
 			title?: string
 		})
 
+		// Optional configuration for managing an OAuth authorization flow
+		// controlled by Access. When set, Access will act as the OAuth
+		// authorization server for this application. This feature is
+		// currently in beta.
+		oauth_configuration?: close({
+			// Settings for OAuth dynamic client registration.
+			dynamic_client_registration?: close({
+				// Allows any client with redirect URIs on localhost.
+				allow_any_on_localhost?: bool
+
+				// Allows any client with redirect URIs on 127.0.0.1.
+				allow_any_on_loopback?: bool
+
+				// The URIs that are allowed as redirect URIs for dynamically
+				// registered clients. Must use the `https` protocol. Paths may
+				// end in `/*` to match all sub-paths.
+				allowed_uris?: [...string]
+
+				// Whether dynamic client registration is enabled.
+				enabled?: bool
+			})
+
+			// Whether the OAuth configuration is enabled for this
+			// application. When set to `false`, Access will not handle OAuth
+			// for this application. Defaults to `true` if omitted.
+			enabled?: bool
+
+			// Settings for OAuth grant behavior.
+			grant?: close({
+				// The lifetime of the access token. Must be in the format `300ms`
+				// or `2h45m`. Valid time units are ns, us (or µs), ms, s, m, h.
+				access_token_lifetime?: string
+
+				// The duration of the OAuth session. Must be in the format
+				// `300ms` or `2h45m`. Valid time units are ns, us (or µs), ms,
+				// s, m, h.
+				session_duration?: string
+			})
+		})
+
 		// The policies that Access applies to the application, in
 		// ascending order of precedence. Items can reference existing
 		// policies or create new policies exclusive to the application.

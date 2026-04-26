@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_magic_transit_site_lan")
 	close({
 		// Identifier
-		account_id!: string
+		account_id?: string
 		bond_id?:    number
 
 		// mark true to use this LAN for HA probing. only works for site
@@ -14,6 +14,12 @@ package data
 
 		// Identifier
 		id?: string
+
+		// mark true to use this LAN for source-based breakout traffic
+		is_breakout?: bool
+
+		// mark true to use this LAN for source-based prioritized traffic
+		is_prioritized?: bool
 
 		// Identifier
 		lan_id!:   string

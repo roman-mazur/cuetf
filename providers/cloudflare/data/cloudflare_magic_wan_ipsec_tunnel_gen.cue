@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_magic_wan_ipsec_tunnel")
 	close({
 		// Identifier
-		account_id!: string
+		account_id?: string
 
 		// Identifier
 		id?: string

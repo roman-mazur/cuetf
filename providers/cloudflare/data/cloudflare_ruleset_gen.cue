@@ -57,6 +57,24 @@ package data
 			// "set_cache_tags", "set_config", "skip".
 			action?: string
 
+			// The categories of the rule.
+			categories?: [...string]
+
+			// An informative description of the rule.
+			description?: string
+
+			// Whether the rule should be executed.
+			enabled?: bool
+
+			// The expression defining which traffic will match the rule.
+			expression?: string
+
+			// The unique ID of the rule.
+			id?: string
+
+			// The reference of the rule (the rule's ID by default).
+			ref?: string
+
 			// The parameters configuring the rule's action.
 			action_parameters?: close({
 				// A list of additional ports that caching should be enabled on.
@@ -78,6 +96,9 @@ package data
 
 				// The response content.
 				content?: string
+
+				// Whether to enable content conversion (e.g., HTML to Markdown).
+				content_converter?: bool
 
 				// The content type header to set with the error response.
 				// Available values: "application/json", "text/html",
@@ -166,6 +187,10 @@ package data
 				// errors because of timeouts from an origin server, try
 				// increasing this timeout value.
 				read_timeout?: number
+
+				// Whether to redirect verified AI training crawlers to canonical
+				// URLs.
+				redirects_for_ai_training?: bool
 
 				// The request body buffering mode to configure.
 				// Available values: "none", "standard", "full".
@@ -825,15 +850,6 @@ package data
 				})
 			})
 
-			// The categories of the rule.
-			categories?: [...string]
-
-			// An informative description of the rule.
-			description?: string
-
-			// Whether the rule should be executed.
-			enabled?: bool
-
 			// Configuration for exposed credential checking.
 			exposed_credential_check?: close({
 				// An expression that selects the password used in the credentials
@@ -844,12 +860,6 @@ package data
 				// check.
 				username_expression?: string
 			})
-
-			// The expression defining which traffic will match the rule.
-			expression?: string
-
-			// The unique ID of the rule.
-			id?: string
 
 			// An object configuring the rule's logging behavior.
 			logging?: close({
@@ -890,9 +900,6 @@ package data
 				// the score to increment rate limit counter with.
 				score_response_header_name?: string
 			})
-
-			// The reference of the rule (the rule's ID by default).
-			ref?: string
 		}), [...close({
 			// The action to perform when the rule matches.
 			// Available values: "block", "challenge", "compress_response",
@@ -903,6 +910,24 @@ package data
 			// "set_cache_tags", "set_config", "skip".
 			action?: string
 
+			// The categories of the rule.
+			categories?: [...string]
+
+			// An informative description of the rule.
+			description?: string
+
+			// Whether the rule should be executed.
+			enabled?: bool
+
+			// The expression defining which traffic will match the rule.
+			expression?: string
+
+			// The unique ID of the rule.
+			id?: string
+
+			// The reference of the rule (the rule's ID by default).
+			ref?: string
+
 			// The parameters configuring the rule's action.
 			action_parameters?: close({
 				// A list of additional ports that caching should be enabled on.
@@ -924,6 +949,9 @@ package data
 
 				// The response content.
 				content?: string
+
+				// Whether to enable content conversion (e.g., HTML to Markdown).
+				content_converter?: bool
 
 				// The content type header to set with the error response.
 				// Available values: "application/json", "text/html",
@@ -1012,6 +1040,10 @@ package data
 				// errors because of timeouts from an origin server, try
 				// increasing this timeout value.
 				read_timeout?: number
+
+				// Whether to redirect verified AI training crawlers to canonical
+				// URLs.
+				redirects_for_ai_training?: bool
 
 				// The request body buffering mode to configure.
 				// Available values: "none", "standard", "full".
@@ -1671,15 +1703,6 @@ package data
 				})
 			})
 
-			// The categories of the rule.
-			categories?: [...string]
-
-			// An informative description of the rule.
-			description?: string
-
-			// Whether the rule should be executed.
-			enabled?: bool
-
 			// Configuration for exposed credential checking.
 			exposed_credential_check?: close({
 				// An expression that selects the password used in the credentials
@@ -1690,12 +1713,6 @@ package data
 				// check.
 				username_expression?: string
 			})
-
-			// The expression defining which traffic will match the rule.
-			expression?: string
-
-			// The unique ID of the rule.
-			id?: string
 
 			// An object configuring the rule's logging behavior.
 			logging?: close({
@@ -1736,9 +1753,6 @@ package data
 				// the score to increment rate limit counter with.
 				score_response_header_name?: string
 			})
-
-			// The reference of the rule (the rule's ID by default).
-			ref?: string
 		})]])
 	})
 }

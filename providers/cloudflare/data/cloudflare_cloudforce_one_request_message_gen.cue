@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_cloudforce_one_request_message")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Retrieve mes ges created after this time.
 		after?: string

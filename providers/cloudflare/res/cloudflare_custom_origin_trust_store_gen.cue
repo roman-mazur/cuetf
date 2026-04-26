@@ -32,6 +32,6 @@ package res
 		uploaded_on?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 	})
 }

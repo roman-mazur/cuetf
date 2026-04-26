@@ -28,6 +28,6 @@ package data
 		updated_at?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 	})
 }

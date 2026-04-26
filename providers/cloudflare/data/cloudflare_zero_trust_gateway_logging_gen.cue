@@ -4,7 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_gateway_logging")
 	close({
-		account_id!: string
+		account_id?: string
+		id?:         string
 
 		// Indicate whether to redact personally identifiable information
 		// from activity logging (PII fields include source IP, user

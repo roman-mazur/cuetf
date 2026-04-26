@@ -4,22 +4,28 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_workers_custom_domain")
 	close({
-		// Identifer of the account.
-		account_id!: string
+		// Identifier.
+		account_id?: string
 
-		// Hostname of the Worker Domain.
+		// ID of the TLS certificate issued for the domain.
+		cert_id?: string
+
+		// Hostname of the domain. Can be either the zone apex or a
+		// subdomain of the zone. Requests to this hostname will be
+		// routed to the configured Worker.
 		hostname!: string
 
-		// Identifer of the Worker Domain.
+		// Immutable ID of the domain.
 		id?: string
 
-		// Worker service associated with the zone and hostname.
+		// Name of the Worker associated with the domain. Requests to the
+		// configured hostname will be routed to this Worker.
 		service!: string
 
-		// Identifier of the zone.
-		zone_id!: string
+		// ID of the zone containing the domain hostname.
+		zone_id?: string
 
-		// Name of the zone.
+		// Name of the zone containing the domain hostname.
 		zone_name?: string
 	})
 }

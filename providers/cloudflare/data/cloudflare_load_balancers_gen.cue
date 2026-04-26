@@ -6,7 +6,7 @@ package data
 	close({
 		// Max items to fetch, default: 1000
 		max_items?: number
-		zone_id!:   string
+		zone_id?:   string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({

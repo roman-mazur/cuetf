@@ -408,7 +408,7 @@ package data
 		turnstile_mode?: string
 
 		// Identifier.
-		zone_id!:         string
+		zone_id?:         string
 		created_on?:      string
 		id?:              string
 		modified_on?:     string

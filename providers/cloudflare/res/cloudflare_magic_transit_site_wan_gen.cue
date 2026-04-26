@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_magic_transit_site_wan")
 	close({
 		// Identifier
-		account_id!: string
+		account_id?: string
 
 		// Magic WAN health check rate for tunnels created on this link.
 		// The default value is `mid`.

@@ -35,7 +35,7 @@ package data
 		uploaded_on?: string
 
 		// Identifier.
-		zone_id!: string
+		zone_id?: string
 		filter?: close({
 			// Limit to the number of records returned.
 			limit?: number

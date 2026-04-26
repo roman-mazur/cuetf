@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workers_scripts")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number
@@ -111,6 +111,22 @@ package data
 					invocation_logs?: bool
 
 					// Whether log persistence is enabled for the Worker.
+					persist?: bool
+				})
+
+				// Trace settings for the Worker.
+				traces?: close({
+					// A list of destinations where traces will be exported to.
+					destinations?: [...string]
+
+					// Whether traces are enabled for the Worker.
+					enabled?: bool
+
+					// The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 =
+					// 10%). Default is 1.
+					head_sampling_rate?: number
+
+					// Whether trace persistence is enabled for the Worker.
 					persist?: bool
 				})
 			})
@@ -308,6 +324,22 @@ package data
 					invocation_logs?: bool
 
 					// Whether log persistence is enabled for the Worker.
+					persist?: bool
+				})
+
+				// Trace settings for the Worker.
+				traces?: close({
+					// A list of destinations where traces will be exported to.
+					destinations?: [...string]
+
+					// Whether traces are enabled for the Worker.
+					enabled?: bool
+
+					// The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 =
+					// 10%). Default is 1.
+					head_sampling_rate?: number
+
+					// Whether trace persistence is enabled for the Worker.
 					persist?: bool
 				})
 			})

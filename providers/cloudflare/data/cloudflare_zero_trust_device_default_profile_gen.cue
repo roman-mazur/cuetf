@@ -4,7 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_device_default_profile")
 	close({
-		account_id!: string
+		account_id?: string
 
 		// Whether to allow the user to switch WARP between modes.
 		allow_mode_switch?: bool
@@ -39,6 +39,7 @@ package data
 		exclude_office_ips?: bool
 		gateway_unique_id?:  string
 		id?:                 string
+		policy_id?:          string
 
 		// Determines if the operating system will register WARP's local
 		// interface IP with your on-premises DNS server.

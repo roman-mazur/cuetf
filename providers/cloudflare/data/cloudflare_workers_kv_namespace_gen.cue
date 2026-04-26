@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workers_kv_namespace")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Namespace identifier tag.
 		id?: string

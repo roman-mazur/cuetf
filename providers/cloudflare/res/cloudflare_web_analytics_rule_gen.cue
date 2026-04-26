@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_web_analytics_rule")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 		created?:    string
 		host?:       string
 

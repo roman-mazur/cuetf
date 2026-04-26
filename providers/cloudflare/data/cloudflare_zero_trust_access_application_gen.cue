@@ -4,139 +4,6 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_access_application")
 	close({
-		cors_headers?: close({
-			// Allows all HTTP request headers.
-			allow_all_headers?: bool
-
-			// Allows all HTTP request methods.
-			allow_all_methods?: bool
-
-			// Allows all origins.
-			allow_all_origins?: bool
-
-			// When set to `true`, includes credentials (cookies,
-			// authorization headers, or TLS client certificates) with
-			// requests.
-			allow_credentials?: bool
-
-			// Allowed HTTP request headers.
-			allowed_headers?: [...string]
-
-			// Allowed HTTP request methods.
-			allowed_methods?: [...string]
-
-			// Allowed origins.
-			allowed_origins?: [...string]
-
-			// The maximum number of seconds the results of a preflight
-			// request can be cached.
-			max_age?: number
-		})
-
-		// List of destinations secured by Access. This supersedes
-		// `self_hosted_domains` to allow for more flexibility in
-		// defining different types of domains. If `destinations` are
-		// provided, then `self_hosted_domains` will be ignored.
-		destinations?: matchN(1, [close({
-			// The CIDR range of the destination. Single IPs will be computed
-			// as /32.
-			cidr?: string
-
-			// The hostname of the destination. Matches a valid SNI served by
-			// an HTTPS origin.
-			hostname?: string
-
-			// The L4 protocol of the destination. When omitted, both UDP and
-			// TCP traffic will match.
-			// Available values: "tcp", "udp".
-			l4_protocol?: string
-
-			// A MCP server id configured in ai-controls. Access will secure
-			// the MCP server if accessed through a MCP portal.
-			mcp_server_id?: string
-
-			// The port range of the destination. Can be a single port or a
-			// range of ports. When omitted, all ports will match.
-			port_range?: string
-
-			// Available values: "public", "private".
-			type?: string
-
-			// The URI of the destination. Public destinations' URIs can
-			// include a domain and path with
-			// [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
-			uri?: string
-
-			// The VNET ID to match the destination. When omitted, all VNETs
-			// will match.
-			vnet_id?: string
-		}), [...close({
-			// The CIDR range of the destination. Single IPs will be computed
-			// as /32.
-			cidr?: string
-
-			// The hostname of the destination. Matches a valid SNI served by
-			// an HTTPS origin.
-			hostname?: string
-
-			// The L4 protocol of the destination. When omitted, both UDP and
-			// TCP traffic will match.
-			// Available values: "tcp", "udp".
-			l4_protocol?: string
-
-			// A MCP server id configured in ai-controls. Access will secure
-			// the MCP server if accessed through a MCP portal.
-			mcp_server_id?: string
-
-			// The port range of the destination. Can be a single port or a
-			// range of ports. When omitted, all ports will match.
-			port_range?: string
-
-			// Available values: "public", "private".
-			type?: string
-
-			// The URI of the destination. Public destinations' URIs can
-			// include a domain and path with
-			// [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
-			uri?: string
-
-			// The VNET ID to match the destination. When omitted, all VNETs
-			// will match.
-			vnet_id?: string
-		})]])
-		filter?: close({
-			// The aud of the app.
-			aud?: string
-
-			// The domain of the app.
-			domain?: string
-
-			// True for only exact string matches against passed name/domain
-			// query parameters.
-			exact?: bool
-
-			// The name of the app.
-			name?: string
-
-			// Search for apps by other listed query parameters.
-			search?: string
-		})
-
-		// The links in the App Launcher footer.
-		footer_links?: matchN(1, [close({
-			// The hypertext in the footer link.
-			name?: string
-
-			// the hyperlink in the footer link.
-			url?: string
-		}), [...close({
-			// The hypertext in the footer link.
-			name?: string
-
-			// the hyperlink in the footer link.
-			url?: string
-		})]])
-
 		// The Account ID to use for this endpoint. Mutually exclusive
 		// with the Zone ID.
 		account_id?: string
@@ -210,25 +77,6 @@ package data
 		// Identifier.
 		id?: string
 
-		// The design of the App Launcher landing page shown to users when
-		// they log in.
-		landing_page_design?: close({
-			// The background color of the log in button on the landing page.
-			button_color?: string
-
-			// The color of the text in the log in button on the landing page.
-			button_text_color?: string
-
-			// The URL of the image shown on the landing page.
-			image_url?: string
-
-			// The message shown on the landing page.
-			message?: string
-
-			// The title shown on the landing page.
-			title?: string
-		})
-
 		// The image URL for the logo shown in the App Launcher dashboard.
 		logo_url?: string
 
@@ -262,6 +110,142 @@ package data
 		// Sets the SameSite cookie setting, which provides increased
 		// security against CSRF attacks.
 		same_site_cookie_attribute?: string
+
+		// Returns a 401 status code when the request is blocked by a
+		// Service Auth policy.
+		service_auth_401_redirect?: bool
+
+		// The amount of time that tokens issued for this application will
+		// be valid. Must be in the format `300ms` or `2h45m`. Valid time
+		// units are: ns, us (or µs), ms, s, m, h. Note: unsupported for
+		// infrastructure type applications.
+		session_duration?: string
+
+		// Determines when to skip the App Launcher landing page.
+		skip_app_launcher_login_page?: bool
+
+		// Enables automatic authentication through cloudflared.
+		skip_interstitial?: bool
+
+		// The tags you want assigned to an application. Tags are used to
+		// filter applications in the App Launcher dashboard.
+		tags?: [...string]
+
+		// The application type.
+		// Available values: "self_hosted", "saas", "ssh", "vnc",
+		// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
+		// "infrastructure", "rdp", "mcp", "mcp_portal".
+		type?: string
+
+		// The Zone ID to use for this endpoint. Mutually exclusive with
+		// the Account ID.
+		zone_id?: string
+
+		// List of destinations secured by Access. This supersedes
+		// `self_hosted_domains` to allow for more flexibility in
+		// defining different types of domains. If `destinations` are
+		// provided, then `self_hosted_domains` will be ignored.
+		destinations?: matchN(1, [close({
+			// The CIDR range of the destination. Single IPs will be computed
+			// as /32.
+			cidr?: string
+
+			// The hostname of the destination. Matches a valid SNI served by
+			// an HTTPS origin.
+			hostname?: string
+
+			// The L4 protocol of the destination. When omitted, both UDP and
+			// TCP traffic will match.
+			// Available values: "tcp", "udp".
+			l4_protocol?: string
+
+			// A MCP server id configured in ai-controls. Access will secure
+			// the MCP server if accessed through a MCP portal.
+			mcp_server_id?: string
+
+			// The port range of the destination. Can be a single port or a
+			// range of ports. When omitted, all ports will match.
+			port_range?: string
+
+			// Available values: "public", "private".
+			type?: string
+
+			// The URI of the destination. Public destinations' URIs can
+			// include a domain and path with
+			// [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
+			uri?: string
+
+			// The VNET ID to match the destination. When omitted, all VNETs
+			// will match.
+			vnet_id?: string
+		}), [...close({
+			// The CIDR range of the destination. Single IPs will be computed
+			// as /32.
+			cidr?: string
+
+			// The hostname of the destination. Matches a valid SNI served by
+			// an HTTPS origin.
+			hostname?: string
+
+			// The L4 protocol of the destination. When omitted, both UDP and
+			// TCP traffic will match.
+			// Available values: "tcp", "udp".
+			l4_protocol?: string
+
+			// A MCP server id configured in ai-controls. Access will secure
+			// the MCP server if accessed through a MCP portal.
+			mcp_server_id?: string
+
+			// The port range of the destination. Can be a single port or a
+			// range of ports. When omitted, all ports will match.
+			port_range?: string
+
+			// Available values: "public", "private".
+			type?: string
+
+			// The URI of the destination. Public destinations' URIs can
+			// include a domain and path with
+			// [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
+			uri?: string
+
+			// The VNET ID to match the destination. When omitted, all VNETs
+			// will match.
+			vnet_id?: string
+		})]])
+
+		// The links in the App Launcher footer.
+		footer_links?: matchN(1, [close({
+			// The hypertext in the footer link.
+			name?: string
+
+			// the hyperlink in the footer link.
+			url?: string
+		}), [...close({
+			// The hypertext in the footer link.
+			name?: string
+
+			// the hyperlink in the footer link.
+			url?: string
+		})]])
+
+		// The design of the App Launcher landing page shown to users when
+		// they log in.
+		landing_page_design?: close({
+			// The background color of the log in button on the landing page.
+			button_color?: string
+
+			// The color of the text in the log in button on the landing page.
+			button_text_color?: string
+
+			// The URL of the image shown on the landing page.
+			image_url?: string
+
+			// The message shown on the landing page.
+			message?: string
+
+			// The title shown on the landing page.
+			title?: string
+		})
 
 		// Configuration for provisioning to this application via SCIM.
 		// This is currently in closed beta.
@@ -400,36 +384,51 @@ package data
 			// The base URI for the application's SCIM-compatible API.
 			remote_uri?: string
 		})
+		cors_headers?: close({
+			// Allows all HTTP request headers.
+			allow_all_headers?: bool
 
-		// Returns a 401 status code when the request is blocked by a
-		// Service Auth policy.
-		service_auth_401_redirect?: bool
+			// Allows all HTTP request methods.
+			allow_all_methods?: bool
 
-		// The amount of time that tokens issued for this application will
-		// be valid. Must be in the format `300ms` or `2h45m`. Valid time
-		// units are: ns, us (or µs), ms, s, m, h. Note: unsupported for
-		// infrastructure type applications.
-		session_duration?: string
+			// Allows all origins.
+			allow_all_origins?: bool
 
-		// Determines when to skip the App Launcher landing page.
-		skip_app_launcher_login_page?: bool
+			// When set to `true`, includes credentials (cookies,
+			// authorization headers, or TLS client certificates) with
+			// requests.
+			allow_credentials?: bool
 
-		// Enables automatic authentication through cloudflared.
-		skip_interstitial?: bool
+			// Allowed HTTP request headers.
+			allowed_headers?: [...string]
 
-		// The tags you want assigned to an application. Tags are used to
-		// filter applications in the App Launcher dashboard.
-		tags?: [...string]
+			// Allowed HTTP request methods.
+			allowed_methods?: [...string]
 
-		// The application type.
-		// Available values: "self_hosted", "saas", "ssh", "vnc",
-		// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
-		// "infrastructure", "rdp", "mcp", "mcp_portal".
-		type?: string
+			// Allowed origins.
+			allowed_origins?: [...string]
 
-		// The Zone ID to use for this endpoint. Mutually exclusive with
-		// the Account ID.
-		zone_id?: string
+			// The maximum number of seconds the results of a preflight
+			// request can be cached.
+			max_age?: number
+		})
+		filter?: close({
+			// The aud of the app.
+			aud?: string
+
+			// The domain of the app.
+			domain?: string
+
+			// True for only exact string matches against passed name/domain
+			// query parameters.
+			exact?: bool
+
+			// The name of the app.
+			name?: string
+
+			// Search for apps by other listed query parameters.
+			search?: string
+		})
 		policies?: matchN(1, [close({
 			// Administrators who can approve a temporary authentication
 			// request.

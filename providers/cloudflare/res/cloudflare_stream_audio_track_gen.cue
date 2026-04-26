@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_stream_audio_track")
 	close({
 		// The account identifier tag.
-		account_id!: string
+		account_id?: string
 
 		// The unique identifier for an additional audio track.
 		audio_identifier?: string
@@ -27,5 +27,38 @@ package res
 
 		// A Cloudflare-generated unique identifier for a media item.
 		uid?: string
+
+		// Array of audio tracks for the video.
+		audio?: matchN(1, [close({
+			// Denotes whether the audio track will be played by default in a
+			// player.
+			default?: bool
+
+			// A string to uniquely identify the track amongst other audio
+			// track labels for the specified video.
+			label?: string
+
+			// Specifies the processing status of the video.
+			// Available values: "queued", "ready", "error".
+			status?: string
+
+			// A Cloudflare-generated unique identifier for a media item.
+			uid?: string
+		}), [...close({
+			// Denotes whether the audio track will be played by default in a
+			// player.
+			default?: bool
+
+			// A string to uniquely identify the track amongst other audio
+			// track labels for the specified video.
+			label?: string
+
+			// Specifies the processing status of the video.
+			// Available values: "queued", "ready", "error".
+			status?: string
+
+			// A Cloudflare-generated unique identifier for a media item.
+			uid?: string
+		})]])
 	})
 }

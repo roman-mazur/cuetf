@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_resource_group")
 	close({
 		// Account identifier tag.
-		account_id!: string
+		account_id?: string
 
 		// Identifier of the resource group.
 		id?: string

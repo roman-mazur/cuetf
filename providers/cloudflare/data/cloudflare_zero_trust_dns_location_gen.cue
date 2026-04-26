@@ -4,7 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dns_location")
 	close({
-		account_id!: string
+		account_id?: string
 
 		// Indicate whether this location is the default location.
 		client_default?: bool

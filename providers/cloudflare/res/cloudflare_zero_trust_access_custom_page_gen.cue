@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_access_custom_page")
 	close({
 		// Identifier.
-		account_id!: string
+		account_id?: string
 
 		// Custom page HTML.
 		custom_html!: string

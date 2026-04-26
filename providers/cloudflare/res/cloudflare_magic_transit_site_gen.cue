@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_magic_transit_site")
 	close({
 		// Identifier
-		account_id!: string
+		account_id?: string
 
 		// Magic Connector identifier tag.
 		connector_id?: string

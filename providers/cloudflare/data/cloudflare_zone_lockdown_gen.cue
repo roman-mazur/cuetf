@@ -51,7 +51,7 @@ package data
 		urls?: [...string]
 
 		// Defines an identifier.
-		zone_id!: string
+		zone_id?: string
 		filter?: close({
 			// The timestamp of when the rule was created.
 			created_on?: string
