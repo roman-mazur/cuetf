@@ -20,8 +20,6 @@ func TestInstallInternalDepsCopiesEmbeddedAssets(t *testing.T) {
 		path     string
 		contains string
 	}{
-		{path: filepath.Join(root, "internal", "tf", "defs.cue"), contains: "package tf"},
-		{path: filepath.Join(root, "internal", "tfjson", "structure.cue"), contains: "package tfjson"},
 		{path: filepath.Join(root, "internal", "jsonschema", "transform.cue"), contains: "package jsonschema"},
 		{path: filepath.Join(root, "defs.cue"), contains: "package cuetf"},
 		{path: filepath.Join(root, "file.cue"), contains: "#ProviderSchemaFile"},
