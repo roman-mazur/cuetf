@@ -1,6 +1,7 @@
 # Agent Context: cuetf
 
-This repository manages the generation of CUE schemas for Terraform providers. It uses a Go-based transformation engine and CUE-driven CI to keep provider definitions synchronized with upstream Terraform provider releases.
+This repository manages the generation of CUE schemas for Terraform providers. It uses an approach of transforming Terraform providers 
+schema into JSON schema and leverages CUE-driven CI to keep provider definitions synchronized with upstream Terraform provider releases.
 
 ## 🛠 Directory Guide
 
