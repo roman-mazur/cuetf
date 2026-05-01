@@ -18757,206 +18757,6 @@ InstanceTypes: [{
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
 }, {
-    InstanceType:      "f1.2xlarge"
-    CurrentGeneration: true
-    FreeTierEligible:  false
-    SupportedUsageClasses: ["on-demand", "spot"]
-    SupportedRootDeviceTypes: ["ebs"]
-    SupportedVirtualizationTypes: ["hvm"]
-    BareMetal:  false
-    Hypervisor: "xen"
-    ProcessorInfo: {
-        SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.3
-        Manufacturer:             "Intel"
-    }
-    VCpuInfo: {
-        DefaultVCpus:          8
-        DefaultCores:          4
-        DefaultThreadsPerCore: 2
-        ValidCores: [1, 2, 3, 4]
-        ValidThreadsPerCore: [1, 2]
-    }
-    MemoryInfo: {
-        SizeInMiB: 124928
-    }
-    InstanceStorageSupported: true
-    InstanceStorageInfo: {
-        TotalSizeInGB: 470
-        Disks: [{
-            SizeInGB: 470
-            Count:    1
-            Type:     "ssd"
-        }]
-        NvmeSupport:       "required"
-        EncryptionSupport: "required"
-    }
-    EbsInfo: {
-        EbsOptimizedSupport: "default"
-        EncryptionSupport:   "supported"
-        EbsOptimizedInfo: {
-            BaselineBandwidthInMbps:  1700
-            BaselineThroughputInMBps: 212.5
-            BaselineIops:             12000
-            MaximumBandwidthInMbps:   1700
-            MaximumThroughputInMBps:  212.5
-            MaximumIops:              12000
-        }
-        NvmeSupport:           "supported"
-        MaximumEbsAttachments: 26
-        AttachmentLimitType:   "shared"
-    }
-    NetworkInfo: {
-        NetworkPerformance:       "Up to 10 Gigabit"
-        MaximumNetworkInterfaces: 4
-        MaximumNetworkCards:      1
-        DefaultNetworkCardIndex:  0
-        NetworkCards: [{
-            NetworkCardIndex:         0
-            NetworkPerformance:       "Up to 10 Gigabit"
-            MaximumNetworkInterfaces: 4
-            BaselineBandwidthInGbps:  2.5
-            PeakBandwidthInGbps:      10.0
-        }]
-        Ipv4AddressesPerInterface:    15
-        Ipv6AddressesPerInterface:    15
-        Ipv6Supported:                true
-        EnaSupport:                   "supported"
-        EfaSupported:                 false
-        EncryptionInTransitSupported: false
-        EnaSrdSupported:              false
-        FlexibleEnaQueuesSupport:     "unsupported"
-        ConnectionTrackingConfiguration: {
-            DefaultTcpEstablishedTimeout: 432000
-            DefaultUdpTimeout:            30
-            DefaultUdpStreamTimeout:      180
-        }
-        SecondaryNetworkSupported: false
-    }
-    FpgaInfo: {
-        Fpgas: [{
-            Name:         "Virtex UltraScale (VU9P)"
-            Manufacturer: "Xilinx"
-            Count:        1
-            MemoryInfo: {
-                SizeInMiB: 65536
-            }
-        }]
-        TotalFpgaMemoryInMiB: 65536
-    }
-    PlacementGroupInfo: {
-        SupportedStrategies: ["cluster", "partition", "spread"]
-    }
-    HibernationSupported:          false
-    BurstablePerformanceSupported: false
-    DedicatedHostsSupported:       true
-    AutoRecoverySupported:         false
-    SupportedBootModes: ["legacy-bios"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
-    RebootMigrationSupport: "unsupported"
-}, {
-    InstanceType:      "f1.4xlarge"
-    CurrentGeneration: true
-    FreeTierEligible:  false
-    SupportedUsageClasses: ["on-demand", "spot"]
-    SupportedRootDeviceTypes: ["ebs"]
-    SupportedVirtualizationTypes: ["hvm"]
-    BareMetal:  false
-    Hypervisor: "xen"
-    ProcessorInfo: {
-        SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.3
-        Manufacturer:             "Intel"
-    }
-    VCpuInfo: {
-        DefaultVCpus:          16
-        DefaultCores:          8
-        DefaultThreadsPerCore: 2
-        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8]
-        ValidThreadsPerCore: [1, 2]
-    }
-    MemoryInfo: {
-        SizeInMiB: 249856
-    }
-    InstanceStorageSupported: true
-    InstanceStorageInfo: {
-        TotalSizeInGB: 940
-        Disks: [{
-            SizeInGB: 940
-            Count:    1
-            Type:     "ssd"
-        }]
-        NvmeSupport:       "required"
-        EncryptionSupport: "required"
-    }
-    EbsInfo: {
-        EbsOptimizedSupport: "default"
-        EncryptionSupport:   "supported"
-        EbsOptimizedInfo: {
-            BaselineBandwidthInMbps:  3500
-            BaselineThroughputInMBps: 437.5
-            BaselineIops:             44000
-            MaximumBandwidthInMbps:   3500
-            MaximumThroughputInMBps:  437.5
-            MaximumIops:              44000
-        }
-        NvmeSupport:           "supported"
-        MaximumEbsAttachments: 25
-        AttachmentLimitType:   "shared"
-    }
-    NetworkInfo: {
-        NetworkPerformance:       "Up to 10 Gigabit"
-        MaximumNetworkInterfaces: 8
-        MaximumNetworkCards:      1
-        DefaultNetworkCardIndex:  0
-        NetworkCards: [{
-            NetworkCardIndex:         0
-            NetworkPerformance:       "Up to 10 Gigabit"
-            MaximumNetworkInterfaces: 8
-            BaselineBandwidthInGbps:  5.0
-            PeakBandwidthInGbps:      10.0
-        }]
-        Ipv4AddressesPerInterface:    30
-        Ipv6AddressesPerInterface:    30
-        Ipv6Supported:                true
-        EnaSupport:                   "supported"
-        EfaSupported:                 false
-        EncryptionInTransitSupported: false
-        EnaSrdSupported:              false
-        FlexibleEnaQueuesSupport:     "unsupported"
-        ConnectionTrackingConfiguration: {
-            DefaultTcpEstablishedTimeout: 432000
-            DefaultUdpTimeout:            30
-            DefaultUdpStreamTimeout:      180
-        }
-        SecondaryNetworkSupported: false
-    }
-    FpgaInfo: {
-        Fpgas: [{
-            Name:         "Virtex UltraScale (VU9P)"
-            Manufacturer: "Xilinx"
-            Count:        2
-            MemoryInfo: {
-                SizeInMiB: 65536
-            }
-        }]
-        TotalFpgaMemoryInMiB: 131072
-    }
-    PlacementGroupInfo: {
-        SupportedStrategies: ["cluster", "partition", "spread"]
-    }
-    HibernationSupported:          false
-    BurstablePerformanceSupported: false
-    DedicatedHostsSupported:       true
-    AutoRecoverySupported:         false
-    SupportedBootModes: ["legacy-bios"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
-    RebootMigrationSupport: "unsupported"
-}, {
     InstanceType:      "f2.12xlarge"
     CurrentGeneration: true
     FreeTierEligible:  false
@@ -19463,7 +19263,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -19567,7 +19367,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -19671,7 +19471,7 @@ InstanceTypes: [{
             Count:            2
             LogicalGpuCount:  2
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -19775,7 +19575,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -19882,7 +19682,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20099,7 +19899,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20206,7 +20006,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20316,7 +20116,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20423,7 +20223,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20527,7 +20327,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20635,7 +20435,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -20743,7 +20543,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -20851,7 +20651,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -20956,7 +20756,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21064,7 +20864,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21169,7 +20969,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21277,7 +21077,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21715,7 +21515,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21823,7 +21623,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21934,7 +21734,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22042,7 +21842,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22153,7 +21953,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22261,7 +22061,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22369,7 +22169,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.25
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 5722
             }
@@ -22693,7 +22493,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.125
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 2861
             }
@@ -22801,7 +22601,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22912,7 +22712,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -23020,7 +22820,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.5
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 11444
             }
@@ -47130,285 +46930,6 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
-}, {
-    InstanceType:      "p3.16xlarge"
-    CurrentGeneration: true
-    FreeTierEligible:  false
-    SupportedUsageClasses: ["on-demand", "spot"]
-    SupportedRootDeviceTypes: ["ebs"]
-    SupportedVirtualizationTypes: ["hvm"]
-    BareMetal:  false
-    Hypervisor: "xen"
-    ProcessorInfo: {
-        SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.7
-        Manufacturer:             "Intel"
-    }
-    VCpuInfo: {
-        DefaultVCpus:          64
-        DefaultCores:          32
-        DefaultThreadsPerCore: 2
-        ValidCores: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32]
-        ValidThreadsPerCore: [1, 2]
-    }
-    MemoryInfo: {
-        SizeInMiB: 499712
-    }
-    InstanceStorageSupported: false
-    EbsInfo: {
-        EbsOptimizedSupport: "default"
-        EncryptionSupport:   "supported"
-        EbsOptimizedInfo: {
-            BaselineBandwidthInMbps:  14000
-            BaselineThroughputInMBps: 1750.0
-            BaselineIops:             80000
-            MaximumBandwidthInMbps:   14000
-            MaximumThroughputInMBps:  1750.0
-            MaximumIops:              80000
-        }
-        NvmeSupport:           "unsupported"
-        MaximumEbsAttachments: 19
-        AttachmentLimitType:   "shared"
-    }
-    NetworkInfo: {
-        NetworkPerformance:       "25 Gigabit"
-        MaximumNetworkInterfaces: 8
-        MaximumNetworkCards:      1
-        DefaultNetworkCardIndex:  0
-        NetworkCards: [{
-            NetworkCardIndex:         0
-            NetworkPerformance:       "25 Gigabit"
-            MaximumNetworkInterfaces: 8
-            BaselineBandwidthInGbps:  5.0
-            PeakBandwidthInGbps:      10.0
-        }]
-        Ipv4AddressesPerInterface:    30
-        Ipv6AddressesPerInterface:    30
-        Ipv6Supported:                true
-        EnaSupport:                   "supported"
-        EfaSupported:                 false
-        EncryptionInTransitSupported: false
-        EnaSrdSupported:              false
-        FlexibleEnaQueuesSupport:     "unsupported"
-        ConnectionTrackingConfiguration: {
-            DefaultTcpEstablishedTimeout: 432000
-            DefaultUdpTimeout:            30
-            DefaultUdpStreamTimeout:      180
-        }
-        SecondaryNetworkSupported: false
-    }
-    GpuInfo: {
-        Gpus: [{
-            Name:             "V100"
-            Manufacturer:     "NVIDIA"
-            Count:            8
-            LogicalGpuCount:  8
-            GpuPartitionSize: 1.0
-            Workloads: ["ml-ai"]
-            MemoryInfo: {
-                SizeInMiB: 16384
-            }
-        }]
-        TotalGpuMemoryInMiB: 131072
-    }
-    PlacementGroupInfo: {
-        SupportedStrategies: ["cluster", "partition", "spread"]
-    }
-    HibernationSupported:          false
-    BurstablePerformanceSupported: false
-    DedicatedHostsSupported:       true
-    AutoRecoverySupported:         true
-    SupportedBootModes: ["legacy-bios"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
-    RebootMigrationSupport: "supported"
-}, {
-    InstanceType:      "p3.2xlarge"
-    CurrentGeneration: true
-    FreeTierEligible:  false
-    SupportedUsageClasses: ["on-demand", "spot"]
-    SupportedRootDeviceTypes: ["ebs"]
-    SupportedVirtualizationTypes: ["hvm"]
-    BareMetal:  false
-    Hypervisor: "xen"
-    ProcessorInfo: {
-        SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.7
-        Manufacturer:             "Intel"
-    }
-    VCpuInfo: {
-        DefaultVCpus:          8
-        DefaultCores:          4
-        DefaultThreadsPerCore: 2
-        ValidCores: [1, 2, 3, 4]
-        ValidThreadsPerCore: [1, 2]
-    }
-    MemoryInfo: {
-        SizeInMiB: 62464
-    }
-    InstanceStorageSupported: false
-    EbsInfo: {
-        EbsOptimizedSupport: "default"
-        EncryptionSupport:   "supported"
-        EbsOptimizedInfo: {
-            BaselineBandwidthInMbps:  1750
-            BaselineThroughputInMBps: 218.75
-            BaselineIops:             10000
-            MaximumBandwidthInMbps:   1750
-            MaximumThroughputInMBps:  218.75
-            MaximumIops:              10000
-        }
-        NvmeSupport:           "unsupported"
-        MaximumEbsAttachments: 26
-        AttachmentLimitType:   "shared"
-    }
-    NetworkInfo: {
-        NetworkPerformance:       "Up to 10 Gigabit"
-        MaximumNetworkInterfaces: 4
-        MaximumNetworkCards:      1
-        DefaultNetworkCardIndex:  0
-        NetworkCards: [{
-            NetworkCardIndex:         0
-            NetworkPerformance:       "Up to 10 Gigabit"
-            MaximumNetworkInterfaces: 4
-            BaselineBandwidthInGbps:  2.5
-            PeakBandwidthInGbps:      10.0
-        }]
-        Ipv4AddressesPerInterface:    15
-        Ipv6AddressesPerInterface:    15
-        Ipv6Supported:                true
-        EnaSupport:                   "supported"
-        EfaSupported:                 false
-        EncryptionInTransitSupported: false
-        EnaSrdSupported:              false
-        FlexibleEnaQueuesSupport:     "unsupported"
-        ConnectionTrackingConfiguration: {
-            DefaultTcpEstablishedTimeout: 432000
-            DefaultUdpTimeout:            30
-            DefaultUdpStreamTimeout:      180
-        }
-        SecondaryNetworkSupported: false
-    }
-    GpuInfo: {
-        Gpus: [{
-            Name:             "V100"
-            Manufacturer:     "NVIDIA"
-            Count:            1
-            LogicalGpuCount:  1
-            GpuPartitionSize: 1.0
-            Workloads: ["ml-ai"]
-            MemoryInfo: {
-                SizeInMiB: 16384
-            }
-        }]
-        TotalGpuMemoryInMiB: 16384
-    }
-    PlacementGroupInfo: {
-        SupportedStrategies: ["cluster", "partition", "spread"]
-    }
-    HibernationSupported:          false
-    BurstablePerformanceSupported: false
-    DedicatedHostsSupported:       true
-    AutoRecoverySupported:         true
-    SupportedBootModes: ["legacy-bios"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
-    RebootMigrationSupport: "supported"
-}, {
-    InstanceType:      "p3.8xlarge"
-    CurrentGeneration: true
-    FreeTierEligible:  false
-    SupportedUsageClasses: ["on-demand", "spot"]
-    SupportedRootDeviceTypes: ["ebs"]
-    SupportedVirtualizationTypes: ["hvm"]
-    BareMetal:  false
-    Hypervisor: "xen"
-    ProcessorInfo: {
-        SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.7
-        Manufacturer:             "Intel"
-    }
-    VCpuInfo: {
-        DefaultVCpus:          32
-        DefaultCores:          16
-        DefaultThreadsPerCore: 2
-        ValidCores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-        ValidThreadsPerCore: [1, 2]
-    }
-    MemoryInfo: {
-        SizeInMiB: 249856
-    }
-    InstanceStorageSupported: false
-    EbsInfo: {
-        EbsOptimizedSupport: "default"
-        EncryptionSupport:   "supported"
-        EbsOptimizedInfo: {
-            BaselineBandwidthInMbps:  7000
-            BaselineThroughputInMBps: 875.0
-            BaselineIops:             40000
-            MaximumBandwidthInMbps:   7000
-            MaximumThroughputInMBps:  875.0
-            MaximumIops:              40000
-        }
-        NvmeSupport:           "unsupported"
-        MaximumEbsAttachments: 23
-        AttachmentLimitType:   "shared"
-    }
-    NetworkInfo: {
-        NetworkPerformance:       "10 Gigabit"
-        MaximumNetworkInterfaces: 8
-        MaximumNetworkCards:      1
-        DefaultNetworkCardIndex:  0
-        NetworkCards: [{
-            NetworkCardIndex:         0
-            NetworkPerformance:       "10 Gigabit"
-            MaximumNetworkInterfaces: 8
-            BaselineBandwidthInGbps:  5.0
-            PeakBandwidthInGbps:      10.0
-        }]
-        Ipv4AddressesPerInterface:    30
-        Ipv6AddressesPerInterface:    30
-        Ipv6Supported:                true
-        EnaSupport:                   "supported"
-        EfaSupported:                 false
-        EncryptionInTransitSupported: false
-        EnaSrdSupported:              false
-        FlexibleEnaQueuesSupport:     "unsupported"
-        ConnectionTrackingConfiguration: {
-            DefaultTcpEstablishedTimeout: 432000
-            DefaultUdpTimeout:            30
-            DefaultUdpStreamTimeout:      180
-        }
-        SecondaryNetworkSupported: false
-    }
-    GpuInfo: {
-        Gpus: [{
-            Name:             "V100"
-            Manufacturer:     "NVIDIA"
-            Count:            4
-            LogicalGpuCount:  4
-            GpuPartitionSize: 1.0
-            Workloads: ["ml-ai"]
-            MemoryInfo: {
-                SizeInMiB: 16384
-            }
-        }]
-        TotalGpuMemoryInMiB: 65536
-    }
-    PlacementGroupInfo: {
-        SupportedStrategies: ["cluster", "partition", "spread"]
-    }
-    HibernationSupported:          false
-    BurstablePerformanceSupported: false
-    DedicatedHostsSupported:       true
-    AutoRecoverySupported:         true
-    SupportedBootModes: ["legacy-bios"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
-    RebootMigrationSupport: "supported"
 }, {
     InstanceType:      "p4d.24xlarge"
     CurrentGeneration: true
