@@ -554,6 +554,8 @@ import "github.com/roman-mazur/cuetf/providers/aws/data"
 	_#ds: "\(#awsPrefix)_secretsmanager_secrets": data.#aws_secretsmanager_secrets
 	_#ds: "\(#awsPrefix)_security_group": data.#aws_security_group
 	_#ds: "\(#awsPrefix)_security_groups": data.#aws_security_groups
+	_#ds: "\(#awsPrefix)_securityhub_enabled_standards": data.#aws_securityhub_enabled_standards
+	_#ds: "\(#awsPrefix)_securityhub_security_controls": data.#aws_securityhub_security_controls
 	_#ds: "\(#awsPrefix)_securityhub_standards_control_associations": data.#aws_securityhub_standards_control_associations
 	_#ds: "\(#awsPrefix)_serverlessapplicationrepository_application": data.#aws_serverlessapplicationrepository_application
 	_#ds: "\(#awsPrefix)_service_discovery_dns_namespace": data.#aws_service_discovery_dns_namespace

@@ -128,6 +128,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_appsync_source_api_association": res.#aws_appsync_source_api_association
 	_#res: "\(#awsPrefix)_appsync_type": res.#aws_appsync_type
 	_#res: "\(#awsPrefix)_arcregionswitch_plan": res.#aws_arcregionswitch_plan
+	_#res: "\(#awsPrefix)_arczonalshift_autoshift_observer_notification_status": res.#aws_arczonalshift_autoshift_observer_notification_status
 	_#res: "\(#awsPrefix)_athena_capacity_reservation": res.#aws_athena_capacity_reservation
 	_#res: "\(#awsPrefix)_athena_data_catalog": res.#aws_athena_data_catalog
 	_#res: "\(#awsPrefix)_athena_database": res.#aws_athena_database
@@ -535,6 +536,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_ec2_local_gateway_route_table_vpc_association": res.#aws_ec2_local_gateway_route_table_vpc_association
 	_#res: "\(#awsPrefix)_ec2_managed_prefix_list_entry": res.#aws_ec2_managed_prefix_list_entry
 	_#res: "\(#awsPrefix)_ec2_managed_prefix_list": res.#aws_ec2_managed_prefix_list
+	_#res: "\(#awsPrefix)_ec2_network_insights_access_scope": res.#aws_ec2_network_insights_access_scope
 	_#res: "\(#awsPrefix)_ec2_network_insights_analysis": res.#aws_ec2_network_insights_analysis
 	_#res: "\(#awsPrefix)_ec2_network_insights_path": res.#aws_ec2_network_insights_path
 	_#res: "\(#awsPrefix)_ec2_secondary_network": res.#aws_ec2_secondary_network
@@ -1336,6 +1338,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_security_group": res.#aws_security_group
 	_#res: "\(#awsPrefix)_security_group_rule": res.#aws_security_group_rule
 	_#res: "\(#awsPrefix)_securityhub_account": res.#aws_securityhub_account
+	_#res: "\(#awsPrefix)_securityhub_account_v2": res.#aws_securityhub_account_v2
 	_#res: "\(#awsPrefix)_securityhub_action_target": res.#aws_securityhub_action_target
 	_#res: "\(#awsPrefix)_securityhub_automation_rule": res.#aws_securityhub_automation_rule
 	_#res: "\(#awsPrefix)_securityhub_configuration_policy_association": res.#aws_securityhub_configuration_policy_association

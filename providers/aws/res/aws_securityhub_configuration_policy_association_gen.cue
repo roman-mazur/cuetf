@@ -8,7 +8,8 @@ package res
 		id?:       string
 
 		// The universally unique identifier (UUID) of the configuration
-		// policy.
+		// policy, or SELF_MANAGED_SECURITY_HUB for a self-managed
+		// configuration.
 		policy_id!: string
 
 		// Region where this resource will be

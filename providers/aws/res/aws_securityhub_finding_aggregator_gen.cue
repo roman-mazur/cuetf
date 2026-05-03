@@ -4,6 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_securityhub_finding_aggregator")
 	close({
+		arn?:          string
 		id?:           string
 		linking_mode!: string
 
