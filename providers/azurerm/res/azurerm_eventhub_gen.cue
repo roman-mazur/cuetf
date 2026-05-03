@@ -41,9 +41,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/capture_description/$defs/destination": close({
-		archive_name_format!: string
-		blob_container_name!: string
-		name!:                string
-		storage_account_id!:  string
+		archive_name_format!:         string
+		blob_container_name!:         string
+		name!:                        string
+		storage_account_id!:          string
+		storage_authentication_id?:   string
+		storage_authentication_type?: string
 	})
 }

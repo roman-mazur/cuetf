@@ -60,6 +60,7 @@ import "github.com/roman-mazur/cuetf/providers/azurerm/data"
 	_#ds: "\(#azurermPrefix)_cdn_frontdoor_profile": data.#azurerm_cdn_frontdoor_profile
 	_#ds: "\(#azurermPrefix)_cdn_frontdoor_rule_set": data.#azurerm_cdn_frontdoor_rule_set
 	_#ds: "\(#azurermPrefix)_cdn_frontdoor_secret": data.#azurerm_cdn_frontdoor_secret
+	_#ds: "\(#azurermPrefix)_cdn_frontdoor_security_policy": data.#azurerm_cdn_frontdoor_security_policy
 	_#ds: "\(#azurermPrefix)_cdn_profile": data.#azurerm_cdn_profile
 	_#ds: "\(#azurermPrefix)_client_config": data.#azurerm_client_config
 	_#ds: "\(#azurermPrefix)_cognitive_account": data.#azurerm_cognitive_account
