@@ -11,6 +11,7 @@ import "list"
 		cloud_resource?: matchN(1, [#cloud_resource, list.MaxItems(1) & [...#cloud_resource]])
 		cloud_spanner?: matchN(1, [#cloud_spanner, list.MaxItems(1) & [...#cloud_spanner]])
 		cloud_sql?: matchN(1, [#cloud_sql, list.MaxItems(1) & [...#cloud_sql]])
+		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
 		spark?: matchN(1, [#spark, list.MaxItems(1) & [...#spark]])
 		timeouts?: #timeouts
 
@@ -138,6 +139,19 @@ import "list"
 		type!: string
 	})
 
+	#configuration: close({
+		asset!: matchN(1, [_#defs."/$defs/configuration/$defs/asset", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/configuration/$defs/asset"]])
+		authentication?: matchN(1, [_#defs."/$defs/configuration/$defs/authentication", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/authentication"]])
+		endpoint?: matchN(1, [_#defs."/$defs/configuration/$defs/endpoint", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/endpoint"]])
+		network?: matchN(1, [_#defs."/$defs/configuration/$defs/network", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/network"]])
+
+		// The ID of the connector. Possible values include
+		// 'google-alloydb', 'google-cloudsql-mysql',
+		// 'google-cloudsql-postgres', and other connector IDs supported
+		// by the BigQuery Connector framework.
+		connector_id!: string
+	})
+
 	#spark: close({
 		metastore_service_config?: matchN(1, [_#defs."/$defs/spark/$defs/metastore_service_config", list.MaxItems(1) & [..._#defs."/$defs/spark/$defs/metastore_service_config"]])
 		spark_history_server_config?: matchN(1, [_#defs."/$defs/spark/$defs/spark_history_server_config", list.MaxItems(1) & [..._#defs."/$defs/spark/$defs/spark_history_server_config"]])
@@ -170,6 +184,55 @@ import "list"
 
 		// Username for database.
 		username!: string
+	})
+
+	_#defs: "/$defs/configuration/$defs/asset": close({
+		// The name of the database.
+		database?: string
+
+		// The full resource name of the Google Cloud resource.
+		// For AlloyDB, this is in the format of
+		// '//alloydb.googleapis.com/projects/{project}/locations/{region}/clusters/{cluster}/instances/{instance}'.
+		google_cloud_resource?: string
+	})
+
+	_#defs: "/$defs/configuration/$defs/authentication": close({
+		username_password?: matchN(1, [_#defs."/$defs/configuration/$defs/authentication/$defs/username_password", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/authentication/$defs/username_password"]])
+
+		// Output only. The service account used for authenticating with
+		// the connector.
+		service_account?: string
+	})
+
+	_#defs: "/$defs/configuration/$defs/authentication/$defs/username_password": close({
+		password!: matchN(1, [_#defs."/$defs/configuration/$defs/authentication/$defs/username_password/$defs/password", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/configuration/$defs/authentication/$defs/username_password/$defs/password"]])
+
+		// Username for the connector.
+		username!: string
+	})
+
+	_#defs: "/$defs/configuration/$defs/authentication/$defs/username_password/$defs/password": close({
+		// The plaintext password.
+		plaintext!: string
+
+		// Output only. The type of the secret.
+		secret_type?: string
+	})
+
+	_#defs: "/$defs/configuration/$defs/endpoint": close({
+		// Host and port in the format of 'host:port' for the connector
+		// endpoint.
+		host_port?: string
+	})
+
+	_#defs: "/$defs/configuration/$defs/network": close({
+		private_service_connect?: matchN(1, [_#defs."/$defs/configuration/$defs/network/$defs/private_service_connect", list.MaxItems(1) & [..._#defs."/$defs/configuration/$defs/network/$defs/private_service_connect"]])
+	})
+
+	_#defs: "/$defs/configuration/$defs/network/$defs/private_service_connect": close({
+		// The resource name of a network attachment in the format of
+		// 'projects/{project}/regions/{region}/networkAttachments/{networkAttachment}'.
+		network_attachment!: string
 	})
 
 	_#defs: "/$defs/spark/$defs/metastore_service_config": close({

@@ -1,9 +1,12 @@
 package res
 
+import "list"
+
 #google_compute_storage_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_storage_pool")
 	close({
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 		timeouts?: #timeouts
 
 		// Provisioning type of the byte capacity of the pool. Possible
@@ -126,6 +129,24 @@ package res
 
 		// A reference to the zone where the storage pool resides.
 		zone?: string
+	})
+
+	#params: close({
+		// Resource manager tags to be bound to the storage pool. Tag keys
+		// and values have the
+		// same definition as resource manager tags. Keys and values can
+		// be either in numeric format,
+		// such as tagKeys/{tag_key_id} and tagValues/{tag_value_id} or in
+		// namespaced format such as
+		// {org_id|projectId}/{tag_key_short_name} and
+		// {tag_value_short_name}. The field is ignored when empty.
+		// The field is immutable and causes resource replacement when
+		// mutated. This field is only
+		// set at create time and modifying this field after creation will
+		// trigger recreation.
+		// To apply tags to an existing resource, see the
+		// google_tags_tag_binding resource.
+		resource_manager_tags?: [string]: string
 	})
 
 	#timeouts: close({

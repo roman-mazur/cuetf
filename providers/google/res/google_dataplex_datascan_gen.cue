@@ -11,6 +11,7 @@ import "list"
 		data_documentation_spec?: matchN(1, [#data_documentation_spec, list.MaxItems(1) & [...#data_documentation_spec]])
 		data_profile_spec?: matchN(1, [#data_profile_spec, list.MaxItems(1) & [...#data_profile_spec]])
 		data_quality_spec?: matchN(1, [#data_quality_spec, list.MaxItems(1) & [...#data_quality_spec]])
+		execution_identity?: matchN(1, [#execution_identity, list.MaxItems(1) & [...#execution_identity]])
 		execution_spec!: matchN(1, [#execution_spec, list.MaxItems(1) & [_, ...] & [...#execution_spec]])
 		timeouts?: #timeouts
 
@@ -145,6 +146,12 @@ import "list"
 		// Sampling is not applied if 'sampling_percent' is not specified,
 		// 0 or 100.
 		sampling_percent?: number
+	})
+
+	#execution_identity: close({
+		dataplex_service_agent?: matchN(1, [_#defs."/$defs/execution_identity/$defs/dataplex_service_agent", list.MaxItems(1) & [..._#defs."/$defs/execution_identity/$defs/dataplex_service_agent"]])
+		service_account?: matchN(1, [_#defs."/$defs/execution_identity/$defs/service_account", list.MaxItems(1) & [..._#defs."/$defs/execution_identity/$defs/service_account"]])
+		user_credential?: matchN(1, [_#defs."/$defs/execution_identity/$defs/user_credential", list.MaxItems(1) & [..._#defs."/$defs/execution_identity/$defs/user_credential"]])
 	})
 
 	#execution_spec: close({
@@ -420,6 +427,15 @@ import "list"
 	})
 
 	_#defs: "/$defs/data_quality_spec/$defs/rules/$defs/uniqueness_expectation": close({})
+
+	_#defs: "/$defs/execution_identity/$defs/dataplex_service_agent": close({})
+
+	_#defs: "/$defs/execution_identity/$defs/service_account": close({
+		// Service account email.
+		email!: string
+	})
+
+	_#defs: "/$defs/execution_identity/$defs/user_credential": close({})
 
 	_#defs: "/$defs/execution_spec/$defs/trigger": close({
 		on_demand?: matchN(1, [_#defs."/$defs/execution_spec/$defs/trigger/$defs/on_demand", list.MaxItems(1) & [..._#defs."/$defs/execution_spec/$defs/trigger/$defs/on_demand"]])

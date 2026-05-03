@@ -13,6 +13,15 @@ import "list"
 		// If set to true, will skip validations.
 		create_without_validation?: bool
 
+		// The deletion policy for the private connection. Setting 'FORCE'
+		// will also delete any child
+		// routes that belong to this private connection. Setting
+		// 'DEFAULT' will fail the delete if
+		// child routes exist. Defaults to 'FORCE' for backwards
+		// compatibility.
+		// Possible values: 'DEFAULT', 'FORCE'.
+		deletion_policy?: string
+
 		// Display name.
 		display_name!: string
 

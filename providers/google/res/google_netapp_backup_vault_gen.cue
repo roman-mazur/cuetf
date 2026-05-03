@@ -17,6 +17,11 @@ import "list"
 		// "IN_REGION", "CROSS_REGION"]
 		backup_vault_type?: string
 
+		// The crypto key version used to encrypt the backup vault.
+		// Format:
+		// 'projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}'
+		backups_crypto_key_version?: string
+
 		// Create time of the backup vault. A timestamp in RFC3339 UTC
 		// "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 		create_time?: string
@@ -31,7 +36,17 @@ import "list"
 		// including the labels configured through Terraform, other
 		// clients and services.
 		effective_labels?: [string]: string
-		id?: string
+
+		// Encryption state of customer-managed encryption keys (CMEK)
+		// backups.
+		encryption_state?: string
+		id?:               string
+
+		// Specifies the Key Management System (KMS) configuration to be
+		// used for
+		// backup encryption. Format:
+		// 'projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}'
+		kms_config?: string
 
 		// Labels as key value pairs. Example: '{ "owner": "Bob",
 		// "department": "finance", "purpose": "testing" }'.

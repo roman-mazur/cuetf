@@ -162,8 +162,9 @@ import "list"
 		// Optional. Type of this accelerator. Possible values:
 		// ["NVIDIA_TESLA_P100", "NVIDIA_TESLA_V100", "NVIDIA_TESLA_P4",
 		// "NVIDIA_TESLA_T4", "NVIDIA_TESLA_A100", "NVIDIA_A100_80GB",
-		// "NVIDIA_L4", "NVIDIA_TESLA_T4_VWS", "NVIDIA_TESLA_P100_VWS",
-		// "NVIDIA_TESLA_P4_VWS"]
+		// "NVIDIA_L4", "NVIDIA_H100_80GB", "NVIDIA_H100_MEGA_80GB",
+		// "NVIDIA_H200_141GB", "NVIDIA_B200", "NVIDIA_TESLA_T4_VWS",
+		// "NVIDIA_TESLA_P100_VWS", "NVIDIA_TESLA_P4_VWS"]
 		type?: string
 	})
 
@@ -181,7 +182,9 @@ import "list"
 		disk_size_gb?: string
 
 		// Optional. Indicates the type of the disk. Possible values:
-		// ["PD_STANDARD", "PD_SSD", "PD_BALANCED", "PD_EXTREME"]
+		// ["PD_STANDARD", "PD_SSD", "PD_BALANCED", "PD_EXTREME",
+		// "HYPERDISK_BALANCED", "HYPERDISK_BALANCED_HIGH_AVAILABILITY",
+		// "HYPERDISK_ML"]
 		disk_type?: string
 
 		// 'Optional. The KMS key used to encrypt the disks, only
@@ -221,7 +224,10 @@ import "list"
 		disk_size_gb?: string
 
 		// Optional. Input only. Indicates the type of the disk. Possible
-		// values: ["PD_STANDARD", "PD_SSD", "PD_BALANCED", "PD_EXTREME"]
+		// values: ["PD_STANDARD", "PD_SSD", "PD_BALANCED", "PD_EXTREME",
+		// "HYPERDISK_BALANCED", "HYPERDISK_EXTREME",
+		// "HYPERDISK_THROUGHPUT",
+		// "HYPERDISK_BALANCED_HIGH_AVAILABILITY", "HYPERDISK_ML"]
 		disk_type?: string
 
 		// 'Optional. The KMS key used to encrypt the disks,

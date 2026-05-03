@@ -55,7 +55,8 @@ package data
 				trust_anchors?: [...close({
 					pem_certificate?: string
 				})]
-				trust_domain?: string
+				trust_default_shared_ca?: bool
+				trust_domain?:            string
 			})]
 		})]
 

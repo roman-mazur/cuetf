@@ -70,9 +70,60 @@ import "list"
 		// Timestamp when the DataConnector was created.
 		create_time?: string
 
-		// The name of the data source.
-		// Supported values: 'salesforce', 'jira', 'confluence',
-		// 'bigquery'.
+		// The identifier for the data source.
+		// This is a partial list of supported connectors. Please refer to
+		// the
+		// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+		// for the full list of connectors.
+		//
+		// Supported first-party connectors include:
+		//
+		// * 'bigquery'
+		// * 'gcp_fhir'
+		// * 'google_mail'
+		// * 'google_drive'
+		// * 'google_calendar'
+		// * 'google_chat'
+		//
+		// Supported third-party connectors include:
+		// Generally available (GA) connectors:
+		//
+		// * 'onedrive'
+		// * 'outlook'
+		// * 'confluence'
+		// * 'jira'
+		// * 'servicenow'
+		// * 'sharepoint'
+		//
+		// Preview connectors:
+		//
+		// * 'asana'
+		// * 'azure_active_directory'
+		// * 'box'
+		// * 'canva'
+		// * 'confluence_server'
+		// * 'custom_connector'
+		// * 'docusign'
+		// * 'dropbox'
+		// * 'dynamics365'
+		// * 'github'
+		// * 'gitlab'
+		// * 'hubspot'
+		// * 'jira_server'
+		// * 'linear'
+		// * 'native_cloud_identity'
+		// * 'notion'
+		// * 'okta'
+		// * 'pagerduty'
+		// * 'peoplesoft'
+		// * 'salesforce'
+		// * 'shopify'
+		// * 'slack'
+		// * 'snowflake'
+		// * 'teams'
+		// * 'trello'
+		// * 'workday'
+		// * 'zendesk'
 		data_source!: string
 
 		// The version of the data source. For example, '3' for Jira v3.
@@ -224,6 +275,10 @@ import "list"
 
 		// The key of the destination configuration, for example 'url'.
 		key?: string
+
+		// Additional parameters for this destination config in structured
+		// json format.
+		params?: string
 	})
 
 	#entities: close({
@@ -270,5 +325,8 @@ import "list"
 		// The host of the destination, for example
 		// 'https://example.atlassian.net'.
 		host?: string
+
+		// Target port number accepted by the destination.
+		port?: number
 	})
 }

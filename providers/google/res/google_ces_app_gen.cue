@@ -430,9 +430,9 @@ import "list"
 		// typed value
 		// which can be either null, a number, a string, a boolean, a
 		// struct,
-		// or a list of values. The provided default value must be
-		// compatible
-		// with the defined 'type' and other schema constraints.
+		// or a list of values. The provided default value must be encoded
+		// as a JSON string.
+		// Use 'jsonencode' in Terraform HCL to encode the default value.
 		default?: string
 
 		// A map of definitions for use by ref. Only allowed at the root

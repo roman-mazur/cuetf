@@ -253,6 +253,10 @@ package data
 			effective_availability_type?:  string
 			enable_dataplex_integration?:  bool
 			enable_google_ml_integration?: bool
+			entraid_config?: [...close({
+				application_id?: string
+				tenant_id?:      string
+			})]
 			final_backup_config?: [...close({
 				enabled?:        bool
 				retention_days?: number

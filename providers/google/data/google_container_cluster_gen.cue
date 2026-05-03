@@ -652,6 +652,9 @@ package data
 			})]
 			labels?: [string]: string
 			linux_node_config?: [...close({
+				accurate_time_config?: [...close({
+					enable_ptp_kvm_time_sync?: bool
+				})]
 				cgroup_mode?: string
 				hugepages_config?: [...close({
 					hugepage_size_1g?: number
@@ -659,6 +662,23 @@ package data
 				})]
 				node_kernel_module_loading?: [...close({
 					policy?: string
+				})]
+				swap_config?: [...close({
+					boot_disk_profile?: [...close({
+						swap_size_gib?:     number
+						swap_size_percent?: number
+					})]
+					dedicated_local_ssd_profile?: [...close({
+						disk_count?: number
+					})]
+					enabled?: bool
+					encryption_config?: [...close({
+						disabled?: bool
+					})]
+					ephemeral_local_ssd_profile?: [...close({
+						swap_size_gib?:     number
+						swap_size_percent?: number
+					})]
 				})]
 				sysctls?: [string]: string
 				transparent_hugepage_defrag?:  string
@@ -918,6 +938,9 @@ package data
 				})]
 				labels?: [string]: string
 				linux_node_config?: [...close({
+					accurate_time_config?: [...close({
+						enable_ptp_kvm_time_sync?: bool
+					})]
 					cgroup_mode?: string
 					hugepages_config?: [...close({
 						hugepage_size_1g?: number
@@ -925,6 +948,23 @@ package data
 					})]
 					node_kernel_module_loading?: [...close({
 						policy?: string
+					})]
+					swap_config?: [...close({
+						boot_disk_profile?: [...close({
+							swap_size_gib?:     number
+							swap_size_percent?: number
+						})]
+						dedicated_local_ssd_profile?: [...close({
+							disk_count?: number
+						})]
+						enabled?: bool
+						encryption_config?: [...close({
+							disabled?: bool
+						})]
+						ephemeral_local_ssd_profile?: [...close({
+							swap_size_gib?:     number
+							swap_size_percent?: number
+						})]
 					})]
 					sysctls?: [string]: string
 					transparent_hugepage_defrag?:  string

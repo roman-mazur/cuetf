@@ -62,6 +62,12 @@ package data
 		// except the last character, which cannot be a dash.
 		name!: string
 
+		// Additional params passed with the request, but not persisted as
+		// part of resource payload
+		params?: [...close({
+			resource_manager_tags?: [string]: string
+		})]
+
 		// Provisioning type of the performance-related parameters of the
 		// pool, such as throughput and IOPS. Possible values:
 		// ["STANDARD", "ADVANCED"]
