@@ -247,6 +247,21 @@ package data
 			title?: string
 		})
 
+		// Configures multi-factor authentication (MFA) settings for the
+		// application. Only valid for self_hosted, ssh, vnc, and rdp
+		// application types.
+		mfa_config?: close({
+			// The authenticators allowed for MFA.
+			// Available values: "totp", "biometrics", "security_key".
+			allowed_authenticators?: [...string]
+
+			// Whether MFA is disabled for this application.
+			mfa_disabled?: bool
+
+			// How often a user will be forced to re-authenticate with MFA.
+			session_duration?: string
+		})
+
 		// Configuration for provisioning to this application via SCIM.
 		// This is currently in closed beta.
 		scim_config?: close({
@@ -1008,6 +1023,21 @@ package data
 			// for users matching this policy. 'Client Web Isolation' must be
 			// on for the account in order to use this feature.
 			isolation_required?: bool
+
+			// Configures multi-factor authentication (MFA) settings for this
+			// policy.
+			mfa_config?: close({
+				// The authenticators allowed for MFA.
+				// Available values: "totp", "biometrics", "security_key",
+				// "ssh_piv_key".
+				allowed_authenticators?: [...string]
+
+				// Whether MFA is disabled for this policy.
+				mfa_disabled?: bool
+
+				// How often a user will be forced to re-authenticate with MFA.
+				session_duration?: string
+			})
 
 			// The name of the Access policy.
 			name?: string
@@ -1871,6 +1901,21 @@ package data
 			// for users matching this policy. 'Client Web Isolation' must be
 			// on for the account in order to use this feature.
 			isolation_required?: bool
+
+			// Configures multi-factor authentication (MFA) settings for this
+			// policy.
+			mfa_config?: close({
+				// The authenticators allowed for MFA.
+				// Available values: "totp", "biometrics", "security_key",
+				// "ssh_piv_key".
+				allowed_authenticators?: [...string]
+
+				// Whether MFA is disabled for this policy.
+				mfa_disabled?: bool
+
+				// How often a user will be forced to re-authenticate with MFA.
+				session_duration?: string
+			})
 
 			// The name of the Access policy.
 			name?: string
