@@ -81,6 +81,84 @@ package data
 			// this application
 			custom_pages?: [...string]
 
+			// The primary hostname and path secured by Access. This domain
+			// will be displayed if the app is visible in the App Launcher.
+			domain?: string
+
+			// Enables the binding cookie, which increases security against
+			// compromised authorization tokens and CSRF attacks.
+			enable_binding_cookie?: bool
+
+			// The background color of the App Launcher header.
+			header_bg_color?: string
+
+			// Enables the HttpOnly cookie attribute, which increases security
+			// against XSS attacks.
+			http_only_cookie_attribute?: bool
+
+			// UUID.
+			id?: string
+
+			// The image URL for the logo shown in the App Launcher dashboard.
+			logo_url?: string
+
+			// The name of the application.
+			name?: string
+
+			// Allows options preflight requests to bypass Access
+			// authentication and go directly to the origin. Cannot turn on
+			// if cors_headers is set.
+			options_preflight_bypass?: bool
+
+			// Enables cookie paths to scope an application's JWT to the
+			// application path. If disabled, the JWT will scope to the
+			// hostname by default
+			path_cookie_attribute?: bool
+
+			// Allows matching Access Service Tokens passed HTTP in a single
+			// header with this name.
+			// This works as an alternative to the (CF-Access-Client-Id,
+			// CF-Access-Client-Secret) pair of headers.
+			// The header value will be interpreted as a json object similar
+			// to:
+			// {
+			// "cf-access-client-id":
+			// "88bf3b6d86161464f6509f7219099e57.access.example.com",
+			// "cf-access-client-secret":
+			// "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+			// }
+			read_service_tokens_from_header?: string
+
+			// Sets the SameSite cookie setting, which provides increased
+			// security against CSRF attacks.
+			same_site_cookie_attribute?: string
+
+			// Returns a 401 status code when the request is blocked by a
+			// Service Auth policy.
+			service_auth_401_redirect?: bool
+
+			// The amount of time that tokens issued for this application will
+			// be valid. Must be in the format `300ms` or `2h45m`. Valid time
+			// units are: ns, us (or µs), ms, s, m, h. Note: unsupported for
+			// infrastructure type applications.
+			session_duration?: string
+
+			// Determines when to skip the App Launcher landing page.
+			skip_app_launcher_login_page?: bool
+
+			// Enables automatic authentication through cloudflared.
+			skip_interstitial?: bool
+
+			// The tags you want assigned to an application. Tags are used to
+			// filter applications in the App Launcher dashboard.
+			tags?: [...string]
+
+			// The application type.
+			// Available values: "self_hosted", "saas", "ssh", "vnc",
+			// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
+			// "infrastructure", "rdp", "mcp", "mcp_portal".
+			type?: string
+
 			// List of destinations secured by Access. This supersedes
 			// `self_hosted_domains` to allow for more flexibility in
 			// defining different types of domains. If `destinations` are
@@ -153,14 +231,6 @@ package data
 				vnet_id?: string
 			})]])
 
-			// The primary hostname and path secured by Access. This domain
-			// will be displayed if the app is visible in the App Launcher.
-			domain?: string
-
-			// Enables the binding cookie, which increases security against
-			// compromised authorization tokens and CSRF attacks.
-			enable_binding_cookie?: bool
-
 			// The links in the App Launcher footer.
 			footer_links?: matchN(1, [close({
 				// The hypertext in the footer link.
@@ -175,16 +245,6 @@ package data
 				// the hyperlink in the footer link.
 				url?: string
 			})]])
-
-			// The background color of the App Launcher header.
-			header_bg_color?: string
-
-			// Enables the HttpOnly cookie attribute, which increases security
-			// against XSS attacks.
-			http_only_cookie_attribute?: bool
-
-			// UUID.
-			id?: string
 
 			// The design of the App Launcher landing page shown to users when
 			// they log in.
@@ -205,39 +265,20 @@ package data
 				title?: string
 			})
 
-			// The image URL for the logo shown in the App Launcher dashboard.
-			logo_url?: string
+			// Configures multi-factor authentication (MFA) settings for the
+			// application. Only valid for self_hosted, ssh, vnc, and rdp
+			// application types.
+			mfa_config?: close({
+				// The authenticators allowed for MFA.
+				// Available values: "totp", "biometrics", "security_key".
+				allowed_authenticators?: [...string]
 
-			// The name of the application.
-			name?: string
+				// Whether MFA is disabled for this application.
+				mfa_disabled?: bool
 
-			// Allows options preflight requests to bypass Access
-			// authentication and go directly to the origin. Cannot turn on
-			// if cors_headers is set.
-			options_preflight_bypass?: bool
-
-			// Enables cookie paths to scope an application's JWT to the
-			// application path. If disabled, the JWT will scope to the
-			// hostname by default
-			path_cookie_attribute?: bool
-
-			// Allows matching Access Service Tokens passed HTTP in a single
-			// header with this name.
-			// This works as an alternative to the (CF-Access-Client-Id,
-			// CF-Access-Client-Secret) pair of headers.
-			// The header value will be interpreted as a json object similar
-			// to:
-			// {
-			// "cf-access-client-id":
-			// "88bf3b6d86161464f6509f7219099e57.access.example.com",
-			// "cf-access-client-secret":
-			// "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
-			// }
-			read_service_tokens_from_header?: string
-
-			// Sets the SameSite cookie setting, which provides increased
-			// security against CSRF attacks.
-			same_site_cookie_attribute?: string
+				// How often a user will be forced to re-authenticate with MFA.
+				session_duration?: string
+			})
 
 			// Configuration for provisioning to this application via SCIM.
 			// This is currently in closed beta.
@@ -376,32 +417,6 @@ package data
 				// The base URI for the application's SCIM-compatible API.
 				remote_uri?: string
 			})
-
-			// Returns a 401 status code when the request is blocked by a
-			// Service Auth policy.
-			service_auth_401_redirect?: bool
-
-			// The amount of time that tokens issued for this application will
-			// be valid. Must be in the format `300ms` or `2h45m`. Valid time
-			// units are: ns, us (or µs), ms, s, m, h. Note: unsupported for
-			// infrastructure type applications.
-			session_duration?: string
-
-			// Determines when to skip the App Launcher landing page.
-			skip_app_launcher_login_page?: bool
-
-			// Enables automatic authentication through cloudflared.
-			skip_interstitial?: bool
-
-			// The tags you want assigned to an application. Tags are used to
-			// filter applications in the App Launcher dashboard.
-			tags?: [...string]
-
-			// The application type.
-			// Available values: "self_hosted", "saas", "ssh", "vnc",
-			// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
-			// "infrastructure", "rdp", "mcp", "mcp_portal".
-			type?: string
 			cors_headers?: close({
 				// Allows all HTTP request headers.
 				allow_all_headers?: bool
@@ -1009,6 +1024,21 @@ package data
 				// for users matching this policy. 'Client Web Isolation' must be
 				// on for the account in order to use this feature.
 				isolation_required?: bool
+
+				// Configures multi-factor authentication (MFA) settings for this
+				// policy.
+				mfa_config?: close({
+					// The authenticators allowed for MFA.
+					// Available values: "totp", "biometrics", "security_key",
+					// "ssh_piv_key".
+					allowed_authenticators?: [...string]
+
+					// Whether MFA is disabled for this policy.
+					mfa_disabled?: bool
+
+					// How often a user will be forced to re-authenticate with MFA.
+					session_duration?: string
+				})
 
 				// The name of the Access policy.
 				name?: string
@@ -1872,6 +1902,21 @@ package data
 				// for users matching this policy. 'Client Web Isolation' must be
 				// on for the account in order to use this feature.
 				isolation_required?: bool
+
+				// Configures multi-factor authentication (MFA) settings for this
+				// policy.
+				mfa_config?: close({
+					// The authenticators allowed for MFA.
+					// Available values: "totp", "biometrics", "security_key",
+					// "ssh_piv_key".
+					allowed_authenticators?: [...string]
+
+					// Whether MFA is disabled for this policy.
+					mfa_disabled?: bool
+
+					// How often a user will be forced to re-authenticate with MFA.
+					session_duration?: string
+				})
 
 				// The name of the Access policy.
 				name?: string
@@ -2434,6 +2479,84 @@ package data
 			// this application
 			custom_pages?: [...string]
 
+			// The primary hostname and path secured by Access. This domain
+			// will be displayed if the app is visible in the App Launcher.
+			domain?: string
+
+			// Enables the binding cookie, which increases security against
+			// compromised authorization tokens and CSRF attacks.
+			enable_binding_cookie?: bool
+
+			// The background color of the App Launcher header.
+			header_bg_color?: string
+
+			// Enables the HttpOnly cookie attribute, which increases security
+			// against XSS attacks.
+			http_only_cookie_attribute?: bool
+
+			// UUID.
+			id?: string
+
+			// The image URL for the logo shown in the App Launcher dashboard.
+			logo_url?: string
+
+			// The name of the application.
+			name?: string
+
+			// Allows options preflight requests to bypass Access
+			// authentication and go directly to the origin. Cannot turn on
+			// if cors_headers is set.
+			options_preflight_bypass?: bool
+
+			// Enables cookie paths to scope an application's JWT to the
+			// application path. If disabled, the JWT will scope to the
+			// hostname by default
+			path_cookie_attribute?: bool
+
+			// Allows matching Access Service Tokens passed HTTP in a single
+			// header with this name.
+			// This works as an alternative to the (CF-Access-Client-Id,
+			// CF-Access-Client-Secret) pair of headers.
+			// The header value will be interpreted as a json object similar
+			// to:
+			// {
+			// "cf-access-client-id":
+			// "88bf3b6d86161464f6509f7219099e57.access.example.com",
+			// "cf-access-client-secret":
+			// "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+			// }
+			read_service_tokens_from_header?: string
+
+			// Sets the SameSite cookie setting, which provides increased
+			// security against CSRF attacks.
+			same_site_cookie_attribute?: string
+
+			// Returns a 401 status code when the request is blocked by a
+			// Service Auth policy.
+			service_auth_401_redirect?: bool
+
+			// The amount of time that tokens issued for this application will
+			// be valid. Must be in the format `300ms` or `2h45m`. Valid time
+			// units are: ns, us (or µs), ms, s, m, h. Note: unsupported for
+			// infrastructure type applications.
+			session_duration?: string
+
+			// Determines when to skip the App Launcher landing page.
+			skip_app_launcher_login_page?: bool
+
+			// Enables automatic authentication through cloudflared.
+			skip_interstitial?: bool
+
+			// The tags you want assigned to an application. Tags are used to
+			// filter applications in the App Launcher dashboard.
+			tags?: [...string]
+
+			// The application type.
+			// Available values: "self_hosted", "saas", "ssh", "vnc",
+			// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
+			// "infrastructure", "rdp", "mcp", "mcp_portal".
+			type?: string
+
 			// List of destinations secured by Access. This supersedes
 			// `self_hosted_domains` to allow for more flexibility in
 			// defining different types of domains. If `destinations` are
@@ -2506,14 +2629,6 @@ package data
 				vnet_id?: string
 			})]])
 
-			// The primary hostname and path secured by Access. This domain
-			// will be displayed if the app is visible in the App Launcher.
-			domain?: string
-
-			// Enables the binding cookie, which increases security against
-			// compromised authorization tokens and CSRF attacks.
-			enable_binding_cookie?: bool
-
 			// The links in the App Launcher footer.
 			footer_links?: matchN(1, [close({
 				// The hypertext in the footer link.
@@ -2528,16 +2643,6 @@ package data
 				// the hyperlink in the footer link.
 				url?: string
 			})]])
-
-			// The background color of the App Launcher header.
-			header_bg_color?: string
-
-			// Enables the HttpOnly cookie attribute, which increases security
-			// against XSS attacks.
-			http_only_cookie_attribute?: bool
-
-			// UUID.
-			id?: string
 
 			// The design of the App Launcher landing page shown to users when
 			// they log in.
@@ -2558,39 +2663,20 @@ package data
 				title?: string
 			})
 
-			// The image URL for the logo shown in the App Launcher dashboard.
-			logo_url?: string
+			// Configures multi-factor authentication (MFA) settings for the
+			// application. Only valid for self_hosted, ssh, vnc, and rdp
+			// application types.
+			mfa_config?: close({
+				// The authenticators allowed for MFA.
+				// Available values: "totp", "biometrics", "security_key".
+				allowed_authenticators?: [...string]
 
-			// The name of the application.
-			name?: string
+				// Whether MFA is disabled for this application.
+				mfa_disabled?: bool
 
-			// Allows options preflight requests to bypass Access
-			// authentication and go directly to the origin. Cannot turn on
-			// if cors_headers is set.
-			options_preflight_bypass?: bool
-
-			// Enables cookie paths to scope an application's JWT to the
-			// application path. If disabled, the JWT will scope to the
-			// hostname by default
-			path_cookie_attribute?: bool
-
-			// Allows matching Access Service Tokens passed HTTP in a single
-			// header with this name.
-			// This works as an alternative to the (CF-Access-Client-Id,
-			// CF-Access-Client-Secret) pair of headers.
-			// The header value will be interpreted as a json object similar
-			// to:
-			// {
-			// "cf-access-client-id":
-			// "88bf3b6d86161464f6509f7219099e57.access.example.com",
-			// "cf-access-client-secret":
-			// "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
-			// }
-			read_service_tokens_from_header?: string
-
-			// Sets the SameSite cookie setting, which provides increased
-			// security against CSRF attacks.
-			same_site_cookie_attribute?: string
+				// How often a user will be forced to re-authenticate with MFA.
+				session_duration?: string
+			})
 
 			// Configuration for provisioning to this application via SCIM.
 			// This is currently in closed beta.
@@ -2729,32 +2815,6 @@ package data
 				// The base URI for the application's SCIM-compatible API.
 				remote_uri?: string
 			})
-
-			// Returns a 401 status code when the request is blocked by a
-			// Service Auth policy.
-			service_auth_401_redirect?: bool
-
-			// The amount of time that tokens issued for this application will
-			// be valid. Must be in the format `300ms` or `2h45m`. Valid time
-			// units are: ns, us (or µs), ms, s, m, h. Note: unsupported for
-			// infrastructure type applications.
-			session_duration?: string
-
-			// Determines when to skip the App Launcher landing page.
-			skip_app_launcher_login_page?: bool
-
-			// Enables automatic authentication through cloudflared.
-			skip_interstitial?: bool
-
-			// The tags you want assigned to an application. Tags are used to
-			// filter applications in the App Launcher dashboard.
-			tags?: [...string]
-
-			// The application type.
-			// Available values: "self_hosted", "saas", "ssh", "vnc",
-			// "app_launcher", "warp", "biso", "bookmark", "dash_sso",
-			// "infrastructure", "rdp", "mcp", "mcp_portal".
-			type?: string
 			cors_headers?: close({
 				// Allows all HTTP request headers.
 				allow_all_headers?: bool
@@ -3362,6 +3422,21 @@ package data
 				// for users matching this policy. 'Client Web Isolation' must be
 				// on for the account in order to use this feature.
 				isolation_required?: bool
+
+				// Configures multi-factor authentication (MFA) settings for this
+				// policy.
+				mfa_config?: close({
+					// The authenticators allowed for MFA.
+					// Available values: "totp", "biometrics", "security_key",
+					// "ssh_piv_key".
+					allowed_authenticators?: [...string]
+
+					// Whether MFA is disabled for this policy.
+					mfa_disabled?: bool
+
+					// How often a user will be forced to re-authenticate with MFA.
+					session_duration?: string
+				})
 
 				// The name of the Access policy.
 				name?: string
@@ -4225,6 +4300,21 @@ package data
 				// for users matching this policy. 'Client Web Isolation' must be
 				// on for the account in order to use this feature.
 				isolation_required?: bool
+
+				// Configures multi-factor authentication (MFA) settings for this
+				// policy.
+				mfa_config?: close({
+					// The authenticators allowed for MFA.
+					// Available values: "totp", "biometrics", "security_key",
+					// "ssh_piv_key".
+					allowed_authenticators?: [...string]
+
+					// Whether MFA is disabled for this policy.
+					mfa_disabled?: bool
+
+					// How often a user will be forced to re-authenticate with MFA.
+					session_duration?: string
+				})
 
 				// The name of the Access policy.
 				name?: string

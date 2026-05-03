@@ -84,6 +84,8 @@ package res
 		// organization.
 		mfa_config?: close({
 			// Lists the MFA methods that users can authenticate with.
+			// `ssh_piv_key` is only relevant for infrastructure
+			// applications.
 			allowed_authenticators?: [...string]
 
 			// Allows a user to skip MFA via Authentication Method Reference

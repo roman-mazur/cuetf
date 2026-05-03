@@ -26913,6 +26913,37 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						optional:         true
 					}
+					mfa_config: {
+						nested_type: {
+							attributes: {
+								allowed_authenticators: {
+									type: ["list", "string"]
+									description: """
+												The authenticators allowed for MFA.
+												Available values: "totp", "biometrics", "security_key".
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								mfa_disabled: {
+									type:             "bool"
+									description:      "Whether MFA is disabled for this application."
+									description_kind: "plain"
+									optional:         true
+								}
+								session_duration: {
+									type:             "string"
+									description:      "How often a user will be forced to re-authenticate with MFA."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Configures multi-factor authentication (MFA) settings for the application. Only valid for self_hosted, ssh, vnc, and rdp application types."
+						description_kind: "plain"
+						optional:         true
+					}
 					name: {
 						type:             "string"
 						description:      "The name of the application."
@@ -27849,6 +27880,37 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										nesting_mode: "set"
 									}
 									description:      "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules."
+									description_kind: "plain"
+									optional:         true
+								}
+								mfa_config: {
+									nested_type: {
+										attributes: {
+											allowed_authenticators: {
+												type: ["list", "string"]
+												description: """
+															The authenticators allowed for MFA.
+															Available values: "totp", "biometrics", "security_key", "ssh_piv_key".
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											mfa_disabled: {
+												type:             "bool"
+												description:      "Whether MFA is disabled for this policy."
+												description_kind: "plain"
+												optional:         true
+											}
+											session_duration: {
+												type:             "string"
+												description:      "How often a user will be forced to re-authenticate with MFA."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `ssh_piv_key` is a supported authenticator; for other application types use `totp`, `biometrics`, or `security_key`."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -37366,7 +37428,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							attributes: {
 								allowed_authenticators: {
 									type: ["list", "string"]
-									description:      "Lists the MFA methods that users can authenticate with."
+									description:      "Lists the MFA methods that users can authenticate with. `ssh_piv_key` is only relevant for infrastructure applications."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -81647,12 +81709,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						optional:         true
 						computed:         true
 					}
-					email: {
-						type:             "string"
-						description:      "The contact email address of the user."
-						description_kind: "plain"
-						computed:         true
-					}
 					fuzzy_email: {
 						type:             "string"
 						description:      "A string used for filtering members by partial email match."
@@ -81665,12 +81721,34 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
-					status: {
-						type: "string"
-						description: """
-									The member's status in the account.
-									Available values: "accepted", "pending".
-									"""
+					members: {
+						nested_type: {
+							attributes: {
+								email: {
+									type:             "string"
+									description:      "The contact email address of the user."
+									description_kind: "plain"
+									computed:         true
+								}
+								id: {
+									type:             "string"
+									description:      "Account member identifier."
+									description_kind: "plain"
+									computed:         true
+								}
+								status: {
+									type: "string"
+									description: """
+												The member's status in the account.
+												Available values: "accepted", "pending".
+												"""
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "List of members in the user group."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -89067,6 +89145,37 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					mfa_config: {
+						nested_type: {
+							attributes: {
+								allowed_authenticators: {
+									type: ["list", "string"]
+									description: """
+												The authenticators allowed for MFA.
+												Available values: "totp", "biometrics", "security_key".
+												"""
+									description_kind: "plain"
+									computed:         true
+								}
+								mfa_disabled: {
+									type:             "bool"
+									description:      "Whether MFA is disabled for this application."
+									description_kind: "plain"
+									computed:         true
+								}
+								session_duration: {
+									type:             "string"
+									description:      "How often a user will be forced to re-authenticate with MFA."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Configures multi-factor authentication (MFA) settings for the application. Only valid for self_hosted, ssh, vnc, and rdp application types."
+						description_kind: "plain"
+						computed:         true
+					}
 					name: {
 						type:             "string"
 						description:      "The name of the application."
@@ -89951,6 +90060,37 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								isolation_required: {
 									type:             "bool"
 									description:      "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature."
+									description_kind: "plain"
+									computed:         true
+								}
+								mfa_config: {
+									nested_type: {
+										attributes: {
+											allowed_authenticators: {
+												type: ["list", "string"]
+												description: """
+															The authenticators allowed for MFA.
+															Available values: "totp", "biometrics", "security_key", "ssh_piv_key".
+															"""
+												description_kind: "plain"
+												computed:         true
+											}
+											mfa_disabled: {
+												type:             "bool"
+												description:      "Whether MFA is disabled for this policy."
+												description_kind: "plain"
+												computed:         true
+											}
+											session_duration: {
+												type:             "string"
+												description:      "How often a user will be forced to re-authenticate with MFA."
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Configures multi-factor authentication (MFA) settings for this policy."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -91282,6 +91422,37 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									computed:         true
 								}
+								mfa_config: {
+									nested_type: {
+										attributes: {
+											allowed_authenticators: {
+												type: ["list", "string"]
+												description: """
+															The authenticators allowed for MFA.
+															Available values: "totp", "biometrics", "security_key".
+															"""
+												description_kind: "plain"
+												computed:         true
+											}
+											mfa_disabled: {
+												type:             "bool"
+												description:      "Whether MFA is disabled for this application."
+												description_kind: "plain"
+												computed:         true
+											}
+											session_duration: {
+												type:             "string"
+												description:      "How often a user will be forced to re-authenticate with MFA."
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Configures multi-factor authentication (MFA) settings for the application. Only valid for self_hosted, ssh, vnc, and rdp application types."
+									description_kind: "plain"
+									computed:         true
+								}
 								name: {
 									type:             "string"
 									description:      "The name of the application."
@@ -92166,6 +92337,37 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											isolation_required: {
 												type:             "bool"
 												description:      "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature."
+												description_kind: "plain"
+												computed:         true
+											}
+											mfa_config: {
+												nested_type: {
+													attributes: {
+														allowed_authenticators: {
+															type: ["list", "string"]
+															description: """
+																		The authenticators allowed for MFA.
+																		Available values: "totp", "biometrics", "security_key", "ssh_piv_key".
+																		"""
+															description_kind: "plain"
+															computed:         true
+														}
+														mfa_disabled: {
+															type:             "bool"
+															description:      "Whether MFA is disabled for this policy."
+															description_kind: "plain"
+															computed:         true
+														}
+														session_duration: {
+															type:             "string"
+															description:      "How often a user will be forced to re-authenticate with MFA."
+															description_kind: "plain"
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Configures multi-factor authentication (MFA) settings for this policy."
 												description_kind: "plain"
 												computed:         true
 											}

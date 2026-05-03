@@ -11,20 +11,36 @@ package data
 		// Available values: "asc", "desc".
 		direction?: string
 
-		// The contact email address of the user.
-		email?: string
-
 		// A string used for filtering members by partial email match.
 		fuzzy_email?: string
 
 		// User Group identifier tag.
 		id?: string
 
-		// The member's status in the account.
-		// Available values: "accepted", "pending".
-		status?: string
-
 		// User Group identifier tag.
 		user_group_id!: string
+
+		// List of members in the user group.
+		members?: matchN(1, [close({
+			// The contact email address of the user.
+			email?: string
+
+			// Account member identifier.
+			id?: string
+
+			// The member's status in the account.
+			// Available values: "accepted", "pending".
+			status?: string
+		}), [...close({
+			// The contact email address of the user.
+			email?: string
+
+			// Account member identifier.
+			id?: string
+
+			// The member's status in the account.
+			// Available values: "accepted", "pending".
+			status?: string
+		})]])
 	})
 }

@@ -245,6 +245,21 @@ package res
 			title?: string
 		})
 
+		// Configures multi-factor authentication (MFA) settings for the
+		// application. Only valid for self_hosted, ssh, vnc, and rdp
+		// application types.
+		mfa_config?: close({
+			// The authenticators allowed for MFA.
+			// Available values: "totp", "biometrics", "security_key".
+			allowed_authenticators?: [...string]
+
+			// Whether MFA is disabled for this application.
+			mfa_disabled?: bool
+
+			// How often a user will be forced to re-authenticate with MFA.
+			session_duration?: string
+		})
+
 		// Optional configuration for managing an OAuth authorization flow
 		// controlled by Access. When set, Access will act as the OAuth
 		// authorization server for this application. This feature is
@@ -848,6 +863,23 @@ package res
 					token_id!: string
 				})
 			})]])
+
+			// Configures multi-factor authentication (MFA) settings for this
+			// policy. For infrastructure applications only `ssh_piv_key` is
+			// a supported authenticator; for other application types use
+			// `totp`, `biometrics`, or `security_key`.
+			mfa_config?: close({
+				// The authenticators allowed for MFA.
+				// Available values: "totp", "biometrics", "security_key",
+				// "ssh_piv_key".
+				allowed_authenticators?: [...string]
+
+				// Whether MFA is disabled for this policy.
+				mfa_disabled?: bool
+
+				// How often a user will be forced to re-authenticate with MFA.
+				session_duration?: string
+			})
 
 			// The name of the Access policy.
 			name?: string
@@ -1677,6 +1709,23 @@ package res
 					token_id!: string
 				})
 			})]])
+
+			// Configures multi-factor authentication (MFA) settings for this
+			// policy. For infrastructure applications only `ssh_piv_key` is
+			// a supported authenticator; for other application types use
+			// `totp`, `biometrics`, or `security_key`.
+			mfa_config?: close({
+				// The authenticators allowed for MFA.
+				// Available values: "totp", "biometrics", "security_key",
+				// "ssh_piv_key".
+				allowed_authenticators?: [...string]
+
+				// Whether MFA is disabled for this policy.
+				mfa_disabled?: bool
+
+				// How often a user will be forced to re-authenticate with MFA.
+				session_duration?: string
+			})
 
 			// The name of the Access policy.
 			name?: string
