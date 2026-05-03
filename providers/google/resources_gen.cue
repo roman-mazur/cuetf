@@ -91,6 +91,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_artifact_registry_repository_iam_binding": res.#google_artifact_registry_repository_iam_binding
 	_#res: "\(#googlePrefix)_artifact_registry_repository_iam_member": res.#google_artifact_registry_repository_iam_member
 	_#res: "\(#googlePrefix)_artifact_registry_repository_iam_policy": res.#google_artifact_registry_repository_iam_policy
+	_#res: "\(#googlePrefix)_artifact_registry_rule": res.#google_artifact_registry_rule
 	_#res: "\(#googlePrefix)_assured_workloads_workload": res.#google_assured_workloads_workload
 	_#res: "\(#googlePrefix)_backup_dr_backup_plan_association": res.#google_backup_dr_backup_plan_association
 	_#res: "\(#googlePrefix)_backup_dr_backup_plan": res.#google_backup_dr_backup_plan
@@ -205,6 +206,8 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_ces_toolset": res.#google_ces_toolset
 	_#res: "\(#googlePrefix)_chronicle_data_access_label": res.#google_chronicle_data_access_label
 	_#res: "\(#googlePrefix)_chronicle_data_access_scope": res.#google_chronicle_data_access_scope
+	_#res: "\(#googlePrefix)_chronicle_data_table": res.#google_chronicle_data_table
+	_#res: "\(#googlePrefix)_chronicle_data_table_row": res.#google_chronicle_data_table_row
 	_#res: "\(#googlePrefix)_chronicle_reference_list": res.#google_chronicle_reference_list
 	_#res: "\(#googlePrefix)_chronicle_retrohunt": res.#google_chronicle_retrohunt
 	_#res: "\(#googlePrefix)_chronicle_rule_deployment": res.#google_chronicle_rule_deployment
@@ -476,6 +479,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_data_fusion_instance_iam_binding": res.#google_data_fusion_instance_iam_binding
 	_#res: "\(#googlePrefix)_data_fusion_instance_iam_member": res.#google_data_fusion_instance_iam_member
 	_#res: "\(#googlePrefix)_data_fusion_instance_iam_policy": res.#google_data_fusion_instance_iam_policy
+	_#res: "\(#googlePrefix)_data_lineage_config": res.#google_data_lineage_config
 	_#res: "\(#googlePrefix)_data_loss_prevention_deidentify_template": res.#google_data_loss_prevention_deidentify_template
 	_#res: "\(#googlePrefix)_data_loss_prevention_discovery_config": res.#google_data_loss_prevention_discovery_config
 	_#res: "\(#googlePrefix)_data_loss_prevention_inspect_template": res.#google_data_loss_prevention_inspect_template
@@ -486,6 +490,8 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_database_migration_service_migration_job": res.#google_database_migration_service_migration_job
 	_#res: "\(#googlePrefix)_database_migration_service_private_connection": res.#google_database_migration_service_private_connection
 	_#res: "\(#googlePrefix)_dataflow_job": res.#google_dataflow_job
+	_#res: "\(#googlePrefix)_dataform_folder": res.#google_dataform_folder
+	_#res: "\(#googlePrefix)_dataform_team_folder": res.#google_dataform_team_folder
 	_#res: "\(#googlePrefix)_dataplex_aspect_type": res.#google_dataplex_aspect_type
 	_#res: "\(#googlePrefix)_dataplex_aspect_type_iam_binding": res.#google_dataplex_aspect_type_iam_binding
 	_#res: "\(#googlePrefix)_dataplex_aspect_type_iam_member": res.#google_dataplex_aspect_type_iam_member
@@ -616,6 +622,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_dns_response_policy_rule": res.#google_dns_response_policy_rule
 	_#res: "\(#googlePrefix)_document_ai_processor_default_version": res.#google_document_ai_processor_default_version
 	_#res: "\(#googlePrefix)_document_ai_processor": res.#google_document_ai_processor
+	_#res: "\(#googlePrefix)_document_ai_schema": res.#google_document_ai_schema
 	_#res: "\(#googlePrefix)_document_ai_warehouse_document_schema": res.#google_document_ai_warehouse_document_schema
 	_#res: "\(#googlePrefix)_document_ai_warehouse_location": res.#google_document_ai_warehouse_location
 	_#res: "\(#googlePrefix)_edgecontainer_cluster": res.#google_edgecontainer_cluster
@@ -655,6 +662,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_firebase_app_hosting_domain": res.#google_firebase_app_hosting_domain
 	_#res: "\(#googlePrefix)_firebase_app_hosting_traffic": res.#google_firebase_app_hosting_traffic
 	_#res: "\(#googlePrefix)_firebase_data_connect_service": res.#google_firebase_data_connect_service
+	_#res: "\(#googlePrefix)_firebase_remote_config_remote_config": res.#google_firebase_remote_config_remote_config
 	_#res: "\(#googlePrefix)_firebaserules_release": res.#google_firebaserules_release
 	_#res: "\(#googlePrefix)_firebaserules_ruleset": res.#google_firebaserules_ruleset
 	_#res: "\(#googlePrefix)_firestore_backup_schedule": res.#google_firestore_backup_schedule
@@ -899,6 +907,9 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_network_connectivity_destination": res.#google_network_connectivity_destination
 	_#res: "\(#googlePrefix)_network_connectivity_group": res.#google_network_connectivity_group
 	_#res: "\(#googlePrefix)_network_connectivity_hub": res.#google_network_connectivity_hub
+	_#res: "\(#googlePrefix)_network_connectivity_hub_iam_binding": res.#google_network_connectivity_hub_iam_binding
+	_#res: "\(#googlePrefix)_network_connectivity_hub_iam_member": res.#google_network_connectivity_hub_iam_member
+	_#res: "\(#googlePrefix)_network_connectivity_hub_iam_policy": res.#google_network_connectivity_hub_iam_policy
 	_#res: "\(#googlePrefix)_network_connectivity_internal_range": res.#google_network_connectivity_internal_range
 	_#res: "\(#googlePrefix)_network_connectivity_multicloud_data_transfer_config": res.#google_network_connectivity_multicloud_data_transfer_config
 	_#res: "\(#googlePrefix)_network_connectivity_policy_based_route": res.#google_network_connectivity_policy_based_route

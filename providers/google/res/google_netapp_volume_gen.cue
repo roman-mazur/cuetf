@@ -11,6 +11,7 @@ import "list"
 		cache_parameters?: matchN(1, [#cache_parameters, list.MaxItems(1) & [...#cache_parameters]])
 		export_policy?: matchN(1, [#export_policy, list.MaxItems(1) & [...#export_policy]])
 		hybrid_replication_parameters?: matchN(1, [#hybrid_replication_parameters, list.MaxItems(1) & [...#hybrid_replication_parameters]])
+		large_capacity_config?: matchN(1, [#large_capacity_config, list.MaxItems(1) & [...#large_capacity_config]])
 		restore_parameters?: matchN(1, [#restore_parameters, list.MaxItems(1) & [...#restore_parameters]])
 		snapshot_policy?: matchN(1, [#snapshot_policy, list.MaxItems(1) & [...#snapshot_policy]])
 		tiering_policy?: matchN(1, [#tiering_policy, list.MaxItems(1) & [...#tiering_policy]])
@@ -339,6 +340,13 @@ import "list"
 		// Optional. Replication Schedule for the replication created.
 		// Possible values: ["EVERY_10_MINUTES", "HOURLY", "DAILY"]
 		replication_schedule?: string
+	})
+
+	#large_capacity_config: close({
+		// The number of internal constituents (e.g., FlexVols) for this
+		// large volume.
+		// The minimum number of constituents is 2.
+		constituent_count?: number
 	})
 
 	#restore_parameters: close({

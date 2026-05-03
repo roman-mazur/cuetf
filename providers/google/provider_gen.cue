@@ -31,6 +31,7 @@ package google
 		bigquery_datapolicyv2_custom_endpoint?:      string
 		bigquery_reservation_custom_endpoint?:       string
 		bigtable_custom_endpoint?:                   string
+		billing_budgets_custom_endpoint?:            string
 		billing_custom_endpoint?:                    string
 		billing_project?:                            string
 		binary_authorization_custom_endpoint?:       string
@@ -68,50 +69,53 @@ package google
 		credentials?:                                string
 		data_catalog_custom_endpoint?:               string
 		data_fusion_custom_endpoint?:                string
+		data_lineage_custom_endpoint?:               string
 		data_loss_prevention_custom_endpoint?:       string
 		data_pipeline_custom_endpoint?:              string
 		database_migration_service_custom_endpoint?: string
 		dataflow_custom_endpoint?:                   string
+		dataform_custom_endpoint?:                   string
 		dataplex_custom_endpoint?:                   string
 		dataproc_custom_endpoint?:                   string
 		dataproc_gdc_custom_endpoint?:               string
 		dataproc_metastore_custom_endpoint?:         string
 		datastream_custom_endpoint?:                 string
 		default_labels?: [string]: string
-		deployment_manager_custom_endpoint?:    string
-		developer_connect_custom_endpoint?:     string
-		dialogflow_custom_endpoint?:            string
-		dialogflow_cx_custom_endpoint?:         string
-		discovery_engine_custom_endpoint?:      string
-		dns_custom_endpoint?:                   string
-		document_ai_custom_endpoint?:           string
-		document_ai_warehouse_custom_endpoint?: string
-		edgecontainer_custom_endpoint?:         string
-		edgenetwork_custom_endpoint?:           string
-		essential_contacts_custom_endpoint?:    string
-		eventarc_custom_endpoint?:              string
-		filestore_custom_endpoint?:             string
-		firebase_app_check_custom_endpoint?:    string
-		firebase_app_hosting_custom_endpoint?:  string
-		firebase_data_connect_custom_endpoint?: string
-		firebaserules_custom_endpoint?:         string
-		firestore_custom_endpoint?:             string
-		gemini_custom_endpoint?:                string
-		gke_backup_custom_endpoint?:            string
-		gke_hub2_custom_endpoint?:              string
-		gke_hub_custom_endpoint?:               string
-		gkeonprem_custom_endpoint?:             string
-		healthcare_custom_endpoint?:            string
-		hypercomputecluster_custom_endpoint?:   string
-		iam2_custom_endpoint?:                  string
-		iam3_custom_endpoint?:                  string
-		iam_beta_custom_endpoint?:              string
-		iam_credentials_custom_endpoint?:       string
-		iam_custom_endpoint?:                   string
-		iam_workforce_pool_custom_endpoint?:    string
-		iap_custom_endpoint?:                   string
-		identity_platform_custom_endpoint?:     string
-		impersonate_service_account?:           string
+		deployment_manager_custom_endpoint?:     string
+		developer_connect_custom_endpoint?:      string
+		dialogflow_custom_endpoint?:             string
+		dialogflow_cx_custom_endpoint?:          string
+		discovery_engine_custom_endpoint?:       string
+		dns_custom_endpoint?:                    string
+		document_ai_custom_endpoint?:            string
+		document_ai_warehouse_custom_endpoint?:  string
+		edgecontainer_custom_endpoint?:          string
+		edgenetwork_custom_endpoint?:            string
+		essential_contacts_custom_endpoint?:     string
+		eventarc_custom_endpoint?:               string
+		filestore_custom_endpoint?:              string
+		firebase_app_check_custom_endpoint?:     string
+		firebase_app_hosting_custom_endpoint?:   string
+		firebase_data_connect_custom_endpoint?:  string
+		firebase_remote_config_custom_endpoint?: string
+		firebaserules_custom_endpoint?:          string
+		firestore_custom_endpoint?:              string
+		gemini_custom_endpoint?:                 string
+		gke_backup_custom_endpoint?:             string
+		gke_hub2_custom_endpoint?:               string
+		gke_hub_custom_endpoint?:                string
+		gkeonprem_custom_endpoint?:              string
+		healthcare_custom_endpoint?:             string
+		hypercomputecluster_custom_endpoint?:    string
+		iam2_custom_endpoint?:                   string
+		iam3_custom_endpoint?:                   string
+		iam_beta_custom_endpoint?:               string
+		iam_credentials_custom_endpoint?:        string
+		iam_custom_endpoint?:                    string
+		iam_workforce_pool_custom_endpoint?:     string
+		iap_custom_endpoint?:                    string
+		identity_platform_custom_endpoint?:      string
+		impersonate_service_account?:            string
 		impersonate_service_account_delegates?: [...string]
 		integration_connectors_custom_endpoint?:     string
 		integrations_custom_endpoint?:               string
@@ -144,6 +148,8 @@ package google
 		parameter_manager_custom_endpoint?:          string
 		parameter_manager_regional_custom_endpoint?: string
 		poll_interval?:                              string
+		prefer_global_endpoints?:                    bool
+		prefer_regional_endpoints?:                  bool
 		privateca_custom_endpoint?:                  string
 		privileged_access_manager_custom_endpoint?:  string
 		project?:                                    string

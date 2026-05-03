@@ -129,10 +129,6 @@ import "list"
 		// The tool description.
 		description?: string
 
-		// Number of search results to return per query.
-		// The default value is 10. The maximum allowed value is 10.
-		max_results?: number
-
 		// The data store tool name.
 		name!: string
 	})

@@ -12,6 +12,12 @@ package data
 		})]
 		id?:       string
 		location!: string
-		project?:  string
+
+		// The parent of the Address Group. Use
+		// "organizations/{organization_id}" for organization-level
+		// address groups or "projects/{project_id}" for project-level
+		// address groups.
+		parent?:  string
+		project?: string
 	})
 }

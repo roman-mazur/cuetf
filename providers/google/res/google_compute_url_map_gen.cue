@@ -74,6 +74,7 @@ import "list"
 	})
 
 	#default_route_action: close({
+		cache_policy?: matchN(1, [_#defs."/$defs/default_route_action/$defs/cache_policy", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/cache_policy"]])
 		cors_policy?: matchN(1, [_#defs."/$defs/default_route_action/$defs/cors_policy", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/cors_policy"]])
 		fault_injection_policy?: matchN(1, [_#defs."/$defs/default_route_action/$defs/fault_injection_policy", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/fault_injection_policy"]])
 		max_stream_duration?: matchN(1, [_#defs."/$defs/default_route_action/$defs/max_stream_duration", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/max_stream_duration"]])
@@ -290,6 +291,219 @@ import "list"
 		// Error is returned to the client.
 		// The value must be from 1 to 1024 characters.
 		path?: string
+	})
+
+	_#defs: "/$defs/default_route_action/$defs/cache_policy": close({
+		cache_key_policy?: matchN(1, [_#defs."/$defs/default_route_action/$defs/cache_policy/$defs/cache_key_policy", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/cache_policy/$defs/cache_key_policy"]])
+		client_ttl?: matchN(1, [_#defs."/$defs/default_route_action/$defs/cache_policy/$defs/client_ttl", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/cache_policy/$defs/client_ttl"]])
+		default_ttl?: matchN(1, [_#defs."/$defs/default_route_action/$defs/cache_policy/$defs/default_ttl", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/cache_policy/$defs/default_ttl"]])
+		max_ttl?: matchN(1, [_#defs."/$defs/default_route_action/$defs/cache_policy/$defs/max_ttl", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/cache_policy/$defs/max_ttl"]])
+		negative_caching_policy?: matchN(1, [_#defs."/$defs/default_route_action/$defs/cache_policy/$defs/negative_caching_policy", [..._#defs."/$defs/default_route_action/$defs/cache_policy/$defs/negative_caching_policy"]])
+		serve_while_stale?: matchN(1, [_#defs."/$defs/default_route_action/$defs/cache_policy/$defs/serve_while_stale", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/cache_policy/$defs/serve_while_stale"]])
+
+		// Bypass the cache when the specified request headers are matched
+		// by name,
+		// e.g. Pragma or Authorization headers. Values are
+		// case-insensitive. Up to 5
+		// header names can be specified. The cache is bypassed for all
+		// cacheMode
+		// values.
+		cache_bypass_request_header_names?: [...string]
+
+		// Specifies the cache setting for all responses from this route.
+		// If not
+		// specified, Cloud CDN uses CACHE_ALL_STATIC mode. Possible
+		// values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL",
+		// "CACHE_ALL_STATIC"]
+		cache_mode?: string
+
+		// Negative caching allows per-status code TTLs to be set, in
+		// order to apply
+		// fine-grained caching for common errors or redirects. This can
+		// reduce the
+		// load on your origin and improve end-user experience by reducing
+		// response
+		// latency. When the cacheMode is set to CACHE_ALL_STATIC or
+		// USE_ORIGIN_HEADERS, negative caching applies to responses with
+		// the
+		// specified response code that lack any Cache-Control, Expires,
+		// or
+		// Pragma: no-cache directives. When the cacheMode is set to
+		// FORCE_CACHE_ALL, negative caching applies to all responses with
+		// the
+		// specified response code, and overrides any caching headers. By
+		// default,
+		// Cloud CDN applies the following TTLs to these HTTP status
+		// codes:
+		// * 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
+		// * 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal
+		// Reasons): 120s
+		// * 405 (Method Not Found), 501 (Not Implemented): 60s
+		// These defaults can be overridden in negativeCachingPolicy. If
+		// not
+		// specified, Cloud CDN applies negative caching by default.
+		negative_caching?: bool
+
+		// If true then Cloud CDN will combine multiple concurrent cache
+		// fill
+		// requests into a small number of requests to the origin. If not
+		// specified,
+		// Cloud CDN applies request coalescing by default.
+		request_coalescing?: bool
+	})
+
+	_#defs: "/$defs/default_route_action/$defs/cache_policy/$defs/cache_key_policy": close({
+		// Names of query string parameters to exclude in cache keys. All
+		// other
+		// parameters will be included. Either specify
+		// excludedQueryParameters
+		// or includedQueryParameters, not both. '&' and '=' will be
+		// percent
+		// encoded and not treated as delimiters. Note: This field applies
+		// to
+		// routes that use backend services. Attempting to set it on a
+		// route that
+		// points exclusively to Backend Buckets will result in a
+		// configuration
+		// error. For routes that point to a Backend Bucket, use
+		// includedQueryParameters to define which parameters should be
+		// part of
+		// the cache key.
+		excluded_query_parameters?: [...string]
+
+		// If true, requests to different hosts will be cached separately.
+		// Note:
+		// This setting is only applicable to routes that use a Backend
+		// Service.
+		// It does not affect requests served by a Backend Bucket, as the
+		// host is
+		// never included in a Backend Bucket's cache key. Attempting to
+		// set it on
+		// a route that points exclusively to Backend Buckets will result
+		// in a
+		// configuration error.
+		include_host?: bool
+
+		// If true, http and https requests will be cached separately.
+		// Note: This
+		// setting is only applicable to routes that use a Backend
+		// Service. It
+		// does not affect requests served by a Backend Bucket, as the
+		// protocol is
+		// never included in a Backend Bucket's cache key. Attempting to
+		// set on a
+		// route that points exclusively to Backend Buckets will result in
+		// a
+		// configuration error.
+		include_protocol?: bool
+
+		// If true, include query string parameters in the cache key
+		// according to
+		// includedQueryParameters and excludedQueryParameters. If neither
+		// is
+		// set, the entire query string will be included. If false, the
+		// query
+		// string will be excluded from the cache key entirely. Note: This
+		// field
+		// applies to routes that use backend services. Attempting to set
+		// it on a
+		// route that points exclusively to Backend Buckets will result in
+		// a
+		// configuration error. For routes that point to a Backend Bucket,
+		// use
+		// includedQueryParameters to define which parameters should be
+		// part of
+		// the cache key.
+		include_query_string?: bool
+
+		// Allows HTTP cookies (by name) to be used in the cache key. The
+		// name=value pair will be used in the cache key Cloud CDN
+		// generates.
+		// Note: This setting is only applicable to routes that use a
+		// Backend
+		// Service. It does not affect requests served by a Backend
+		// Bucket.
+		// Attempting to set it on a route that points exclusively to
+		// Backend
+		// Buckets will result in a configuration error. Up to 5 cookie
+		// names can
+		// be specified.
+		included_cookie_names?: [...string]
+
+		// Allows HTTP request headers (by name) to be used in the cache
+		// key.
+		included_header_names?: [...string]
+
+		// Names of query string parameters to include in cache keys. All
+		// other
+		// parameters will be excluded. Either specify
+		// includedQueryParameters
+		// or excludedQueryParameters, not both. '&' and '=' will be
+		// percent
+		// encoded and not treated as delimiters.
+		included_query_parameters?: [...string]
+	})
+
+	_#defs: "/$defs/default_route_action/$defs/cache_policy/$defs/client_ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/default_route_action/$defs/cache_policy/$defs/default_ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/default_route_action/$defs/cache_policy/$defs/max_ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/default_route_action/$defs/cache_policy/$defs/negative_caching_policy": close({
+		ttl?: matchN(1, [_#defs."/$defs/default_route_action/$defs/cache_policy/$defs/negative_caching_policy/$defs/ttl", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/cache_policy/$defs/negative_caching_policy/$defs/ttl"]])
+
+		// The HTTP status code to define a TTL against. Only HTTP status
+		// codes
+		// 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 can be
+		// specified as values, and you cannot specify a status code more
+		// than
+		// once.
+		code?: number
+	})
+
+	_#defs: "/$defs/default_route_action/$defs/cache_policy/$defs/negative_caching_policy/$defs/ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/default_route_action/$defs/cache_policy/$defs/serve_while_stale": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
 	})
 
 	_#defs: "/$defs/default_route_action/$defs/cors_policy": close({
@@ -627,6 +841,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/default_route_action": close({
+		cache_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy"]])
 		cors_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cors_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cors_policy"]])
 		fault_injection_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/fault_injection_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/fault_injection_policy"]])
 		max_stream_duration?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/max_stream_duration", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/max_stream_duration"]])
@@ -635,6 +850,219 @@ import "list"
 		timeout?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/timeout", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/timeout"]])
 		url_rewrite?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/url_rewrite", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/url_rewrite"]])
 		weighted_backend_services?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/weighted_backend_services", [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/weighted_backend_services"]])
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy": close({
+		cache_key_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/cache_key_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/cache_key_policy"]])
+		client_ttl?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/client_ttl", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/client_ttl"]])
+		default_ttl?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/default_ttl", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/default_ttl"]])
+		max_ttl?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/max_ttl", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/max_ttl"]])
+		negative_caching_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/negative_caching_policy", [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/negative_caching_policy"]])
+		serve_while_stale?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/serve_while_stale", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/serve_while_stale"]])
+
+		// Bypass the cache when the specified request headers are matched
+		// by name,
+		// e.g. Pragma or Authorization headers. Values are
+		// case-insensitive. Up to 5
+		// header names can be specified. The cache is bypassed for all
+		// cacheMode
+		// values.
+		cache_bypass_request_header_names?: [...string]
+
+		// Specifies the cache setting for all responses from this route.
+		// If not
+		// specified, Cloud CDN uses CACHE_ALL_STATIC mode. Possible
+		// values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL",
+		// "CACHE_ALL_STATIC"]
+		cache_mode?: string
+
+		// Negative caching allows per-status code TTLs to be set, in
+		// order to apply
+		// fine-grained caching for common errors or redirects. This can
+		// reduce the
+		// load on your origin and improve end-user experience by reducing
+		// response
+		// latency. When the cacheMode is set to CACHE_ALL_STATIC or
+		// USE_ORIGIN_HEADERS, negative caching applies to responses with
+		// the
+		// specified response code that lack any Cache-Control, Expires,
+		// or
+		// Pragma: no-cache directives. When the cacheMode is set to
+		// FORCE_CACHE_ALL, negative caching applies to all responses with
+		// the
+		// specified response code, and overrides any caching headers. By
+		// default,
+		// Cloud CDN applies the following TTLs to these HTTP status
+		// codes:
+		// * 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
+		// * 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal
+		// Reasons): 120s
+		// * 405 (Method Not Found), 501 (Not Implemented): 60s
+		// These defaults can be overridden in negativeCachingPolicy. If
+		// not
+		// specified, Cloud CDN applies negative caching by default.
+		negative_caching?: bool
+
+		// If true then Cloud CDN will combine multiple concurrent cache
+		// fill
+		// requests into a small number of requests to the origin. If not
+		// specified,
+		// Cloud CDN applies request coalescing by default.
+		request_coalescing?: bool
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/cache_key_policy": close({
+		// Names of query string parameters to exclude in cache keys. All
+		// other
+		// parameters will be included. Either specify
+		// excludedQueryParameters
+		// or includedQueryParameters, not both. '&' and '=' will be
+		// percent
+		// encoded and not treated as delimiters. Note: This field applies
+		// to
+		// routes that use backend services. Attempting to set it on a
+		// route that
+		// points exclusively to Backend Buckets will result in a
+		// configuration
+		// error. For routes that point to a Backend Bucket, use
+		// includedQueryParameters to define which parameters should be
+		// part of
+		// the cache key.
+		excluded_query_parameters?: [...string]
+
+		// If true, requests to different hosts will be cached separately.
+		// Note:
+		// This setting is only applicable to routes that use a Backend
+		// Service.
+		// It does not affect requests served by a Backend Bucket, as the
+		// host is
+		// never included in a Backend Bucket's cache key. Attempting to
+		// set it on
+		// a route that points exclusively to Backend Buckets will result
+		// in a
+		// configuration error.
+		include_host?: bool
+
+		// If true, http and https requests will be cached separately.
+		// Note: This
+		// setting is only applicable to routes that use a Backend
+		// Service. It
+		// does not affect requests served by a Backend Bucket, as the
+		// protocol is
+		// never included in a Backend Bucket's cache key. Attempting to
+		// set on a
+		// route that points exclusively to Backend Buckets will result in
+		// a
+		// configuration error.
+		include_protocol?: bool
+
+		// If true, include query string parameters in the cache key
+		// according to
+		// includedQueryParameters and excludedQueryParameters. If neither
+		// is
+		// set, the entire query string will be included. If false, the
+		// query
+		// string will be excluded from the cache key entirely. Note: This
+		// field
+		// applies to routes that use backend services. Attempting to set
+		// it on a
+		// route that points exclusively to Backend Buckets will result in
+		// a
+		// configuration error. For routes that point to a Backend Bucket,
+		// use
+		// includedQueryParameters to define which parameters should be
+		// part of
+		// the cache key.
+		include_query_string?: bool
+
+		// Allows HTTP cookies (by name) to be used in the cache key. The
+		// name=value pair will be used in the cache key Cloud CDN
+		// generates.
+		// Note: This setting is only applicable to routes that use a
+		// Backend
+		// Service. It does not affect requests served by a Backend
+		// Bucket.
+		// Attempting to set it on a route that points exclusively to
+		// Backend
+		// Buckets will result in a configuration error. Up to 5 cookie
+		// names can
+		// be specified.
+		included_cookie_names?: [...string]
+
+		// Allows HTTP request headers (by name) to be used in the cache
+		// key.
+		included_header_names?: [...string]
+
+		// Names of query string parameters to include in cache keys. All
+		// other
+		// parameters will be excluded. Either specify
+		// includedQueryParameters
+		// or excludedQueryParameters, not both. '&' and '=' will be
+		// percent
+		// encoded and not treated as delimiters.
+		included_query_parameters?: [...string]
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/client_ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/default_ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/max_ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/negative_caching_policy": close({
+		ttl?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/negative_caching_policy/$defs/ttl", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/negative_caching_policy/$defs/ttl"]])
+
+		// The HTTP status code to define a TTL against. Only HTTP status
+		// codes
+		// 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 can be
+		// specified as values, and you cannot specify a status code more
+		// than
+		// once.
+		code?: number
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/negative_caching_policy/$defs/ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy/$defs/serve_while_stale": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/default_route_action/$defs/cors_policy": close({
@@ -1079,6 +1507,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action": close({
+		cache_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy"]])
 		cors_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cors_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cors_policy"]])
 		fault_injection_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/fault_injection_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/fault_injection_policy"]])
 		max_stream_duration?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/max_stream_duration", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/max_stream_duration"]])
@@ -1087,6 +1516,219 @@ import "list"
 		timeout?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/timeout", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/timeout"]])
 		url_rewrite?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/url_rewrite", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/url_rewrite"]])
 		weighted_backend_services?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/weighted_backend_services", [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/weighted_backend_services"]])
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy": close({
+		cache_key_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/cache_key_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/cache_key_policy"]])
+		client_ttl?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/client_ttl", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/client_ttl"]])
+		default_ttl?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/default_ttl", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/default_ttl"]])
+		max_ttl?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/max_ttl", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/max_ttl"]])
+		negative_caching_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/negative_caching_policy", [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/negative_caching_policy"]])
+		serve_while_stale?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/serve_while_stale", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/serve_while_stale"]])
+
+		// Bypass the cache when the specified request headers are matched
+		// by name,
+		// e.g. Pragma or Authorization headers. Values are
+		// case-insensitive. Up to 5
+		// header names can be specified. The cache is bypassed for all
+		// cacheMode
+		// values.
+		cache_bypass_request_header_names?: [...string]
+
+		// Specifies the cache setting for all responses from this route.
+		// If not
+		// specified, Cloud CDN uses CACHE_ALL_STATIC mode. Possible
+		// values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL",
+		// "CACHE_ALL_STATIC"]
+		cache_mode?: string
+
+		// Negative caching allows per-status code TTLs to be set, in
+		// order to apply
+		// fine-grained caching for common errors or redirects. This can
+		// reduce the
+		// load on your origin and improve end-user experience by reducing
+		// response
+		// latency. When the cacheMode is set to CACHE_ALL_STATIC or
+		// USE_ORIGIN_HEADERS, negative caching applies to responses with
+		// the
+		// specified response code that lack any Cache-Control, Expires,
+		// or
+		// Pragma: no-cache directives. When the cacheMode is set to
+		// FORCE_CACHE_ALL, negative caching applies to all responses with
+		// the
+		// specified response code, and overrides any caching headers. By
+		// default,
+		// Cloud CDN applies the following TTLs to these HTTP status
+		// codes:
+		// * 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
+		// * 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal
+		// Reasons): 120s
+		// * 405 (Method Not Found), 501 (Not Implemented): 60s
+		// These defaults can be overridden in negativeCachingPolicy. If
+		// not
+		// specified, Cloud CDN applies negative caching by default.
+		negative_caching?: bool
+
+		// If true then Cloud CDN will combine multiple concurrent cache
+		// fill
+		// requests into a small number of requests to the origin. If not
+		// specified,
+		// Cloud CDN applies request coalescing by default.
+		request_coalescing?: bool
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/cache_key_policy": close({
+		// Names of query string parameters to exclude in cache keys. All
+		// other
+		// parameters will be included. Either specify
+		// excludedQueryParameters
+		// or includedQueryParameters, not both. '&' and '=' will be
+		// percent
+		// encoded and not treated as delimiters. Note: This field applies
+		// to
+		// routes that use backend services. Attempting to set it on a
+		// route that
+		// points exclusively to Backend Buckets will result in a
+		// configuration
+		// error. For routes that point to a Backend Bucket, use
+		// includedQueryParameters to define which parameters should be
+		// part of
+		// the cache key.
+		excluded_query_parameters?: [...string]
+
+		// If true, requests to different hosts will be cached separately.
+		// Note:
+		// This setting is only applicable to routes that use a Backend
+		// Service.
+		// It does not affect requests served by a Backend Bucket, as the
+		// host is
+		// never included in a Backend Bucket's cache key. Attempting to
+		// set it on
+		// a route that points exclusively to Backend Buckets will result
+		// in a
+		// configuration error.
+		include_host?: bool
+
+		// If true, http and https requests will be cached separately.
+		// Note: This
+		// setting is only applicable to routes that use a Backend
+		// Service. It
+		// does not affect requests served by a Backend Bucket, as the
+		// protocol is
+		// never included in a Backend Bucket's cache key. Attempting to
+		// set on a
+		// route that points exclusively to Backend Buckets will result in
+		// a
+		// configuration error.
+		include_protocol?: bool
+
+		// If true, include query string parameters in the cache key
+		// according to
+		// includedQueryParameters and excludedQueryParameters. If neither
+		// is
+		// set, the entire query string will be included. If false, the
+		// query
+		// string will be excluded from the cache key entirely. Note: This
+		// field
+		// applies to routes that use backend services. Attempting to set
+		// it on a
+		// route that points exclusively to Backend Buckets will result in
+		// a
+		// configuration error. For routes that point to a Backend Bucket,
+		// use
+		// includedQueryParameters to define which parameters should be
+		// part of
+		// the cache key.
+		include_query_string?: bool
+
+		// Allows HTTP cookies (by name) to be used in the cache key. The
+		// name=value pair will be used in the cache key Cloud CDN
+		// generates.
+		// Note: This setting is only applicable to routes that use a
+		// Backend
+		// Service. It does not affect requests served by a Backend
+		// Bucket.
+		// Attempting to set it on a route that points exclusively to
+		// Backend
+		// Buckets will result in a configuration error. Up to 5 cookie
+		// names can
+		// be specified.
+		included_cookie_names?: [...string]
+
+		// Allows HTTP request headers (by name) to be used in the cache
+		// key.
+		included_header_names?: [...string]
+
+		// Names of query string parameters to include in cache keys. All
+		// other
+		// parameters will be excluded. Either specify
+		// includedQueryParameters
+		// or excludedQueryParameters, not both. '&' and '=' will be
+		// percent
+		// encoded and not treated as delimiters.
+		included_query_parameters?: [...string]
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/client_ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/default_ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/max_ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/negative_caching_policy": close({
+		ttl?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/negative_caching_policy/$defs/ttl", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/negative_caching_policy/$defs/ttl"]])
+
+		// The HTTP status code to define a TTL against. Only HTTP status
+		// codes
+		// 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 can be
+		// specified as values, and you cannot specify a status code more
+		// than
+		// once.
+		code?: number
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/negative_caching_policy/$defs/ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy/$defs/serve_while_stale": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cors_policy": close({
@@ -1752,6 +2394,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action": close({
+		cache_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy"]])
 		cors_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cors_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cors_policy"]])
 		fault_injection_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/fault_injection_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/fault_injection_policy"]])
 		max_stream_duration?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/max_stream_duration", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/max_stream_duration"]])
@@ -1760,6 +2403,219 @@ import "list"
 		timeout?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/timeout", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/timeout"]])
 		url_rewrite?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/url_rewrite", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/url_rewrite"]])
 		weighted_backend_services?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/weighted_backend_services", [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/weighted_backend_services"]])
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy": close({
+		cache_key_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/cache_key_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/cache_key_policy"]])
+		client_ttl?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/client_ttl", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/client_ttl"]])
+		default_ttl?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/default_ttl", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/default_ttl"]])
+		max_ttl?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/max_ttl", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/max_ttl"]])
+		negative_caching_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/negative_caching_policy", [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/negative_caching_policy"]])
+		serve_while_stale?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/serve_while_stale", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/serve_while_stale"]])
+
+		// Bypass the cache when the specified request headers are matched
+		// by name,
+		// e.g. Pragma or Authorization headers. Values are
+		// case-insensitive. Up to 5
+		// header names can be specified. The cache is bypassed for all
+		// cacheMode
+		// values.
+		cache_bypass_request_header_names?: [...string]
+
+		// Specifies the cache setting for all responses from this route.
+		// If not
+		// specified, Cloud CDN uses CACHE_ALL_STATIC mode. Possible
+		// values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL",
+		// "CACHE_ALL_STATIC"]
+		cache_mode?: string
+
+		// Negative caching allows per-status code TTLs to be set, in
+		// order to apply
+		// fine-grained caching for common errors or redirects. This can
+		// reduce the
+		// load on your origin and improve end-user experience by reducing
+		// response
+		// latency. When the cacheMode is set to CACHE_ALL_STATIC or
+		// USE_ORIGIN_HEADERS, negative caching applies to responses with
+		// the
+		// specified response code that lack any Cache-Control, Expires,
+		// or
+		// Pragma: no-cache directives. When the cacheMode is set to
+		// FORCE_CACHE_ALL, negative caching applies to all responses with
+		// the
+		// specified response code, and overrides any caching headers. By
+		// default,
+		// Cloud CDN applies the following TTLs to these HTTP status
+		// codes:
+		// * 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
+		// * 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal
+		// Reasons): 120s
+		// * 405 (Method Not Found), 501 (Not Implemented): 60s
+		// These defaults can be overridden in negativeCachingPolicy. If
+		// not
+		// specified, Cloud CDN applies negative caching by default.
+		negative_caching?: bool
+
+		// If true then Cloud CDN will combine multiple concurrent cache
+		// fill
+		// requests into a small number of requests to the origin. If not
+		// specified,
+		// Cloud CDN applies request coalescing by default.
+		request_coalescing?: bool
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/cache_key_policy": close({
+		// Names of query string parameters to exclude in cache keys. All
+		// other
+		// parameters will be included. Either specify
+		// excludedQueryParameters
+		// or includedQueryParameters, not both. '&' and '=' will be
+		// percent
+		// encoded and not treated as delimiters. Note: This field applies
+		// to
+		// routes that use backend services. Attempting to set it on a
+		// route that
+		// points exclusively to Backend Buckets will result in a
+		// configuration
+		// error. For routes that point to a Backend Bucket, use
+		// includedQueryParameters to define which parameters should be
+		// part of
+		// the cache key.
+		excluded_query_parameters?: [...string]
+
+		// If true, requests to different hosts will be cached separately.
+		// Note:
+		// This setting is only applicable to routes that use a Backend
+		// Service.
+		// It does not affect requests served by a Backend Bucket, as the
+		// host is
+		// never included in a Backend Bucket's cache key. Attempting to
+		// set it on
+		// a route that points exclusively to Backend Buckets will result
+		// in a
+		// configuration error.
+		include_host?: bool
+
+		// If true, http and https requests will be cached separately.
+		// Note: This
+		// setting is only applicable to routes that use a Backend
+		// Service. It
+		// does not affect requests served by a Backend Bucket, as the
+		// protocol is
+		// never included in a Backend Bucket's cache key. Attempting to
+		// set on a
+		// route that points exclusively to Backend Buckets will result in
+		// a
+		// configuration error.
+		include_protocol?: bool
+
+		// If true, include query string parameters in the cache key
+		// according to
+		// includedQueryParameters and excludedQueryParameters. If neither
+		// is
+		// set, the entire query string will be included. If false, the
+		// query
+		// string will be excluded from the cache key entirely. Note: This
+		// field
+		// applies to routes that use backend services. Attempting to set
+		// it on a
+		// route that points exclusively to Backend Buckets will result in
+		// a
+		// configuration error. For routes that point to a Backend Bucket,
+		// use
+		// includedQueryParameters to define which parameters should be
+		// part of
+		// the cache key.
+		include_query_string?: bool
+
+		// Allows HTTP cookies (by name) to be used in the cache key. The
+		// name=value pair will be used in the cache key Cloud CDN
+		// generates.
+		// Note: This setting is only applicable to routes that use a
+		// Backend
+		// Service. It does not affect requests served by a Backend
+		// Bucket.
+		// Attempting to set it on a route that points exclusively to
+		// Backend
+		// Buckets will result in a configuration error. Up to 5 cookie
+		// names can
+		// be specified.
+		included_cookie_names?: [...string]
+
+		// Allows HTTP request headers (by name) to be used in the cache
+		// key.
+		included_header_names?: [...string]
+
+		// Names of query string parameters to include in cache keys. All
+		// other
+		// parameters will be excluded. Either specify
+		// includedQueryParameters
+		// or excludedQueryParameters, not both. '&' and '=' will be
+		// percent
+		// encoded and not treated as delimiters.
+		included_query_parameters?: [...string]
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/client_ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/default_ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/max_ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/negative_caching_policy": close({
+		ttl?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/negative_caching_policy/$defs/ttl", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/negative_caching_policy/$defs/ttl"]])
+
+		// The HTTP status code to define a TTL against. Only HTTP status
+		// codes
+		// 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 can be
+		// specified as values, and you cannot specify a status code more
+		// than
+		// once.
+		code?: number
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/negative_caching_policy/$defs/ttl": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy/$defs/serve_while_stale": close({
+		// Span of time that's a fraction of a second at nanosecond
+		// resolution.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to
+		// 315,576,000,000 inclusive.
+		seconds!: string
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cors_policy": close({

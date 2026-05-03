@@ -381,7 +381,7 @@ import "list"
 		// The key to use to encrypt/decrypt secrets.
 		key_name?: string
 
-		// ENCRYPTED or DECRYPTED.
+		// ENCRYPTED, ALL_OBJECTS_ENCRYPTION_ENABLED or DECRYPTED.
 		state!: string
 	})
 
@@ -1620,8 +1620,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_config/$defs/linux_node_config": close({
+		accurate_time_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config"]])
 		hugepages_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config"]])
 		node_kernel_module_loading?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading"]])
+		swap_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/swap_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/swap_config"]])
 
 		// cgroupMode specifies the cgroup mode to be used on the node.
 		cgroup_mode?: string
@@ -1637,6 +1639,11 @@ import "list"
 		transparent_hugepage_enabled?: string
 	})
 
+	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config": close({
+		// Whether to enable accurate time synchronization with PTP-KVM.
+		enable_ptp_kvm_time_sync?: bool
+	})
+
 	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config": close({
 		// Amount of 1G hugepages.
 		hugepage_size_1g?: number
@@ -1648,6 +1655,45 @@ import "list"
 	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading": close({
 		// The policy for kernel module loading.
 		policy?: string
+	})
+
+	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/swap_config": close({
+		boot_disk_profile?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/boot_disk_profile", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/boot_disk_profile"]])
+		dedicated_local_ssd_profile?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/dedicated_local_ssd_profile", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/dedicated_local_ssd_profile"]])
+		encryption_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/encryption_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/encryption_config"]])
+		ephemeral_local_ssd_profile?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/ephemeral_local_ssd_profile", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/ephemeral_local_ssd_profile"]])
+
+		// Enables or disables swap for the node pool.
+		enabled?: bool
+	})
+
+	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/boot_disk_profile": close({
+		// Specifies the size of the swap space in gibibytes (GiB).
+		swap_size_gib?: number
+
+		// Specifies the size of the swap space as a percentage of the
+		// boot disk size.
+		swap_size_percent?: number
+	})
+
+	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/dedicated_local_ssd_profile": close({
+		// The number of physical local NVMe SSD disks to attach.
+		disk_count?: number
+	})
+
+	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/encryption_config": close({
+		// If true, swap space will not be encrypted. Defaults to false
+		// (encrypted).
+		disabled?: bool
+	})
+
+	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/ephemeral_local_ssd_profile": close({
+		// Specifies the size of the swap space in gibibytes (GiB).
+		swap_size_gib?: number
+
+		// Specifies the size of the swap space as a percentage of the
+		// ephemeral local SSD capacity.
+		swap_size_percent?: number
 	})
 
 	_#defs: "/$defs/node_config/$defs/local_nvme_ssd_block_config": close({
@@ -2313,8 +2359,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/linux_node_config": close({
+		accurate_time_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config"]])
 		hugepages_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config"]])
 		node_kernel_module_loading?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading"]])
+		swap_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config"]])
 
 		// cgroupMode specifies the cgroup mode to be used on the node.
 		cgroup_mode?: string
@@ -2330,6 +2378,11 @@ import "list"
 		transparent_hugepage_enabled?: string
 	})
 
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config": close({
+		// Whether to enable accurate time synchronization with PTP-KVM.
+		enable_ptp_kvm_time_sync?: bool
+	})
+
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config": close({
 		// Amount of 1G hugepages.
 		hugepage_size_1g?: number
@@ -2341,6 +2394,45 @@ import "list"
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading": close({
 		// The policy for kernel module loading.
 		policy?: string
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config": close({
+		boot_disk_profile?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/boot_disk_profile", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/boot_disk_profile"]])
+		dedicated_local_ssd_profile?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/dedicated_local_ssd_profile", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/dedicated_local_ssd_profile"]])
+		encryption_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/encryption_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/encryption_config"]])
+		ephemeral_local_ssd_profile?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/ephemeral_local_ssd_profile", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/ephemeral_local_ssd_profile"]])
+
+		// Enables or disables swap for the node pool.
+		enabled?: bool
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/boot_disk_profile": close({
+		// Specifies the size of the swap space in gibibytes (GiB).
+		swap_size_gib?: number
+
+		// Specifies the size of the swap space as a percentage of the
+		// boot disk size.
+		swap_size_percent?: number
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/dedicated_local_ssd_profile": close({
+		// The number of physical local NVMe SSD disks to attach.
+		disk_count?: number
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/encryption_config": close({
+		// If true, swap space will not be encrypted. Defaults to false
+		// (encrypted).
+		disabled?: bool
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config/$defs/ephemeral_local_ssd_profile": close({
+		// Specifies the size of the swap space in gibibytes (GiB).
+		swap_size_gib?: number
+
+		// Specifies the size of the swap space as a percentage of the
+		// ephemeral local SSD capacity.
+		swap_size_percent?: number
 	})
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/local_nvme_ssd_block_config": close({

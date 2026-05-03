@@ -184,7 +184,17 @@ import "list"
 
 	_#defs: "/$defs/inline_trust_config/$defs/additional_trust_bundles": close({
 		trust_anchors!: matchN(1, [_#defs."/$defs/inline_trust_config/$defs/additional_trust_bundles/$defs/trust_anchors", [_, ...] & [..._#defs."/$defs/inline_trust_config/$defs/additional_trust_bundles/$defs/trust_anchors"]])
-		trust_domain!: string
+
+		// If set to True, the trust bundle will include the private ca
+		// managed identity regional root
+		// public certificates.
+		//
+		//
+		// ~> **Note** 'trust_default_shared_ca' is only supported for
+		// managed identity trust domain
+		// resource.
+		trust_default_shared_ca?: bool
+		trust_domain!:            string
 	})
 
 	_#defs: "/$defs/inline_trust_config/$defs/additional_trust_bundles/$defs/trust_anchors": close({

@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vector_search_collection")
 	close({
+		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
 		timeouts?: #timeouts
 		vector_schema?: matchN(1, [#vector_schema, [...#vector_schema]])
 
@@ -60,6 +61,17 @@ import "list"
 
 		// [Output only] Update time stamp
 		update_time?: string
+	})
+
+	#encryption_spec: close({
+		// Resource name of the Cloud KMS key used to protect the
+		// resource.
+		//
+		// The Cloud KMS key must be in the same region as the resource.
+		// It must have
+		// the format
+		// 'projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}'.
+		crypto_key_name!: string
 	})
 
 	#timeouts: close({

@@ -74,6 +74,9 @@ import "list"
 		// The type of the cluster.
 		cluster_type?: string
 
+		// Specifies the engine of the cluster created.
+		engine?: string
+
 		// The Cloud Storage staging bucket used to stage files, such as
 		// Hadoop jars, between client machines and the cluster. Note: If
 		// you don't explicitly specify a staging_bucket then GCP will

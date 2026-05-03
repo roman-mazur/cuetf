@@ -46,6 +46,13 @@ import "list"
 		// not provided, the provider project is used.
 		project?: string
 
+		// A map of Resource Manager Tags. Keys can be either the numeric
+		// tag key ID (tagKeys/123) or the namespaced name
+		// (project/tag-key). Values can be the numeric tag value ID
+		// (tagValues/456) or the namespaced value
+		// (project/tag-key/tag-value). The field is ignored when empty.
+		tags?: [string]: string
+
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string

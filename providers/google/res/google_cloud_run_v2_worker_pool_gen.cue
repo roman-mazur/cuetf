@@ -629,7 +629,7 @@ import "list"
 
 	_#defs: "/$defs/template/$defs/volumes/$defs/empty_dir": close({
 		// The different types of medium supported for EmptyDir. Default
-		// value: "MEMORY" Possible values: ["MEMORY"]
+		// value: "MEMORY" Possible values: ["MEMORY", "DISK"]
 		medium?: string
 
 		// Limit on the storage usable by this EmptyDir volume. The size

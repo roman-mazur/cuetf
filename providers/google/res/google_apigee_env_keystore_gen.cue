@@ -17,7 +17,7 @@ package res
 		id?:     string
 
 		// The name of the newly created keystore.
-		name?: string
+		name!: string
 	})
 
 	#timeouts: close({

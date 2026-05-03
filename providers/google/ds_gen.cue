@@ -195,6 +195,7 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_data_catalog_tag_template_iam_policy": data.#google_data_catalog_tag_template_iam_policy
 	_#ds: "\(#googlePrefix)_data_catalog_taxonomy_iam_policy": data.#google_data_catalog_taxonomy_iam_policy
 	_#ds: "\(#googlePrefix)_data_fusion_instance_iam_policy": data.#google_data_fusion_instance_iam_policy
+	_#ds: "\(#googlePrefix)_data_lineage_config": data.#google_data_lineage_config
 	_#ds: "\(#googlePrefix)_dataplex_aspect_type_iam_policy": data.#google_dataplex_aspect_type_iam_policy
 	_#ds: "\(#googlePrefix)_dataplex_asset_iam_policy": data.#google_dataplex_asset_iam_policy
 	_#ds: "\(#googlePrefix)_dataplex_data_quality_rules": data.#google_dataplex_data_quality_rules
@@ -297,6 +298,7 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_monitoring_notification_channel": data.#google_monitoring_notification_channel
 	_#ds: "\(#googlePrefix)_monitoring_uptime_check_ips": data.#google_monitoring_uptime_check_ips
 	_#ds: "\(#googlePrefix)_netblock_ip_ranges": data.#google_netblock_ip_ranges
+	_#ds: "\(#googlePrefix)_network_connectivity_hub_iam_policy": data.#google_network_connectivity_hub_iam_policy
 	_#ds: "\(#googlePrefix)_network_management_connectivity_test_run": data.#google_network_management_connectivity_test_run
 	_#ds: "\(#googlePrefix)_network_management_connectivity_tests": data.#google_network_management_connectivity_tests
 	_#ds: "\(#googlePrefix)_network_security_address_group_iam_policy": data.#google_network_security_address_group_iam_policy

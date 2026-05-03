@@ -310,6 +310,7 @@ import "list"
 		data_cache_config?: matchN(1, [_#defs."/$defs/settings/$defs/data_cache_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/data_cache_config"]])
 		database_flags?: matchN(1, [_#defs."/$defs/settings/$defs/database_flags", [..._#defs."/$defs/settings/$defs/database_flags"]])
 		deny_maintenance_period?: matchN(1, [_#defs."/$defs/settings/$defs/deny_maintenance_period", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/deny_maintenance_period"]])
+		entraid_config?: matchN(1, [_#defs."/$defs/settings/$defs/entraid_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/entraid_config"]])
 		final_backup_config?: matchN(1, [_#defs."/$defs/settings/$defs/final_backup_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/final_backup_config"]])
 		insights_config?: matchN(1, [_#defs."/$defs/settings/$defs/insights_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/insights_config"]])
 		ip_configuration?: matchN(1, [_#defs."/$defs/settings/$defs/ip_configuration", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/ip_configuration"]])
@@ -518,6 +519,14 @@ import "list"
 		// start_date and ends on end_date. The time is in format:
 		// HH:mm:SS, i.e., 00:00:00
 		time!: string
+	})
+
+	_#defs: "/$defs/settings/$defs/entraid_config": close({
+		// The application ID for the Entra ID configuration.
+		application_id?: string
+
+		// The tenant ID for the Entra ID configuration.
+		tenant_id?: string
 	})
 
 	_#defs: "/$defs/settings/$defs/final_backup_config": close({

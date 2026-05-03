@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_clouddeploy_custom_target_type")
 	close({
 		custom_actions?: matchN(1, [#custom_actions, list.MaxItems(1) & [...#custom_actions]])
+		tasks?: matchN(1, [#tasks, list.MaxItems(1) & [...#tasks]])
 		timeouts?: #timeouts
 
 		// User annotations. These attributes can only be set and used by
@@ -93,6 +94,11 @@ import "list"
 		render_action?: string
 	})
 
+	#tasks: close({
+		deploy!: matchN(1, [_#defs."/$defs/tasks/$defs/deploy", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/tasks/$defs/deploy"]])
+		render?: matchN(1, [_#defs."/$defs/tasks/$defs/render", list.MaxItems(1) & [..._#defs."/$defs/tasks/$defs/render"]])
+	})
+
 	#timeouts: close({
 		create?: string
 		delete?: string
@@ -140,5 +146,45 @@ import "list"
 		// Skaffold copying all files within the 'dir/configs' directory
 		// in the bucket 'my-bucket'.
 		source!: string
+	})
+
+	_#defs: "/$defs/tasks/$defs/deploy": close({
+		container?: matchN(1, [_#defs."/$defs/tasks/$defs/deploy/$defs/container", list.MaxItems(1) & [..._#defs."/$defs/tasks/$defs/deploy/$defs/container"]])
+	})
+
+	_#defs: "/$defs/tasks/$defs/deploy/$defs/container": close({
+		// Args is the container arguments to use. This overrides the
+		// default arguments defined in the container image.
+		args?: [...string]
+
+		// Command is the container entrypoint to use. This overrides the
+		// default entrypoint defined in the container image.
+		command?: [...string]
+
+		// Environment variables that are set in the container.
+		env?: [string]: string
+
+		// Image is the container image to use.
+		image!: string
+	})
+
+	_#defs: "/$defs/tasks/$defs/render": close({
+		container?: matchN(1, [_#defs."/$defs/tasks/$defs/render/$defs/container", list.MaxItems(1) & [..._#defs."/$defs/tasks/$defs/render/$defs/container"]])
+	})
+
+	_#defs: "/$defs/tasks/$defs/render/$defs/container": close({
+		// Args is the container arguments to use. This overrides the
+		// default arguments defined in the container image.
+		args?: [...string]
+
+		// Command is the container entrypoint to use. This overrides the
+		// default entrypoint defined in the container image.
+		command?: [...string]
+
+		// Environment variables that are set in the container.
+		env?: [string]: string
+
+		// Image is the container image to use.
+		image!: string
 	})
 }

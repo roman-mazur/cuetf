@@ -39,7 +39,8 @@ import "list"
 		match!: matchN(1, [_#defs."/$defs/terms/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/terms/$defs/match"]])
 
 		// The evaluation priority for this term, which must be between 0
-		// (inclusive) and 231 (exclusive), and unique within the list.
+		// (inclusive) and 2147483648 (exclusive), and unique within the
+		// list.
 		priority!: number
 	})
 
