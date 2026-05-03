@@ -17,11 +17,10 @@ import "list"
 	})
 
 	#long_term_retention_policy: close({
-		immutable_backups_enabled?: bool
-		monthly_retention?:         string
-		week_of_year?:              number
-		weekly_retention?:          string
-		yearly_retention?:          string
+		monthly_retention?: string
+		week_of_year?:      number
+		weekly_retention?:  string
+		yearly_retention?:  string
 	})
 
 	#point_in_time_restore: close({

@@ -7,8 +7,8 @@ package res
 		timeouts?:                     #timeouts
 		bot_name!:                     string
 		cognitive_account_id?:         string
-		cognitive_service_access_key!: string
-		cognitive_service_location!:   string
+		cognitive_service_access_key?: string
+		cognitive_service_location?:   string
 		custom_speech_model_id?:       string
 		custom_voice_deployment_id?:   string
 		id?:                           string

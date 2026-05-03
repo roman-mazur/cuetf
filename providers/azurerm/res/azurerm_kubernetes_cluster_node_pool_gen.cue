@@ -56,7 +56,7 @@ import "list"
 
 	#kubelet_config: close({
 		allowed_unsafe_sysctls?: [...string]
-		container_log_max_line?:    number
+		container_log_max_files?:   number
 		container_log_max_size_mb?: number
 		cpu_cfs_quota_enabled?:     bool
 		cpu_cfs_quota_period?:      string

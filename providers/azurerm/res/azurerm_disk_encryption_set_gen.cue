@@ -15,7 +15,6 @@ import "list"
 		key_vault_key_id?:          string
 		key_vault_key_url?:         string
 		location!:                  string
-		managed_hsm_key_id?:        string
 		name!:                      string
 		resource_group_name!:       string
 		tags?: [string]: string
