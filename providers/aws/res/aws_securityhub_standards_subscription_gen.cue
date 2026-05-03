@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_securityhub_standards_subscription")
 	close({
 		timeouts?: #timeouts
+		arn?:      string
 		id?:       string
 
 		// Region where this resource will be

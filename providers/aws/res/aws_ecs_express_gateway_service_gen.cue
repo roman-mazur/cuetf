@@ -8,7 +8,6 @@ package res
 		timeouts?:                #timeouts
 		cluster?:                 string
 		cpu?:                     string
-		current_deployment?:      string
 		execution_role_arn!:      string
 		health_check_path?:       string
 		infrastructure_role_arn!: string
