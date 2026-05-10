@@ -25,7 +25,19 @@ import "list"
 	})
 
 	#tls: close({
+		cipher_suite?: matchN(1, [_#defs."/$defs/tls/$defs/cipher_suite", list.MaxItems(1) & [..._#defs."/$defs/tls/$defs/cipher_suite"]])
 		cdn_frontdoor_secret_id?: string
 		certificate_type?:        string
+		minimum_version?:         string
+	})
+
+	_#defs: "/$defs/tls/$defs/cipher_suite": close({
+		custom_ciphers?: matchN(1, [_#defs."/$defs/tls/$defs/cipher_suite/$defs/custom_ciphers", list.MaxItems(1) & [..._#defs."/$defs/tls/$defs/cipher_suite/$defs/custom_ciphers"]])
+		type!: string
+	})
+
+	_#defs: "/$defs/tls/$defs/cipher_suite/$defs/custom_ciphers": close({
+		tls12?: [...string]
+		tls13?: [...string]
 	})
 }

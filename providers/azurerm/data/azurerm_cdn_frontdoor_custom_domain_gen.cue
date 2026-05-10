@@ -16,7 +16,15 @@ package data
 		tls?: [...close({
 			cdn_frontdoor_secret_id?: string
 			certificate_type?:        string
-			minimum_tls_version?:     string
+			cipher_suite?: [...close({
+				custom_ciphers?: [...close({
+					tls12?: [...string]
+					tls13?: [...string]
+				})]
+				type?: string
+			})]
+			minimum_tls_version?: string
+			minimum_version?:     string
 		})]
 		validation_token?: string
 	})

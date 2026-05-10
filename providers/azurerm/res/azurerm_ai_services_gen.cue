@@ -30,7 +30,6 @@ import "list"
 	#customer_managed_key: close({
 		identity_client_id?: string
 		key_vault_key_id?:   string
-		managed_hsm_key_id?: string
 	})
 
 	#identity: close({
