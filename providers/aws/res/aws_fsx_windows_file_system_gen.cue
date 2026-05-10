@@ -63,6 +63,8 @@ import "list"
 		file_system_administrators_group?:       string
 		organizational_unit_distinguished_name?: string
 		password?:                               string
+		password_wo?:                            string
+		password_wo_version?:                    number
 		username?:                               string
 	})
 

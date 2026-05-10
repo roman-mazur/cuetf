@@ -51,9 +51,15 @@ package data
 		split_tunnel?:            bool
 		tags?: [string]: string
 		traffic_ip_address_type?: string
-		transport_protocol?:      string
-		vpc_id?:                  string
-		vpn_port?:                number
+		transit_gateway_configuration?: [...close({
+			availability_zone_ids?: [...string]
+			availability_zones?: [...string]
+			transit_gateway_attachment_id?: string
+			transit_gateway_id?:            string
+		})]
+		transport_protocol?: string
+		vpc_id?:             string
+		vpn_port?:           number
 	})
 
 	#filter: close({
