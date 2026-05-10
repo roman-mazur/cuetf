@@ -97,6 +97,11 @@ package data
 		// The region where the managed instance group resides.
 		region?: string
 
+		// Resource policies for this managed instance group.
+		resource_policies?: [...close({
+			workload_policy?: string
+		})]
+
 		// The URL of the created resource.
 		self_link?: string
 

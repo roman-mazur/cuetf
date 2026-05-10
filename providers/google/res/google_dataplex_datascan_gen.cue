@@ -133,6 +133,13 @@ import "list"
 		// Dataplex Catalog.
 		catalog_publishing_enabled?: bool
 
+		// If set to true, the scan will retrieve rules defined in Data
+		// Catalog for the resource.
+		enable_catalog_based_rules?: bool
+
+		// A filter to selectively run a subset of rules.
+		filter?: string
+
 		// A filter applied to all rows in a single DataScan job. The
 		// filter needs to be a valid SQL expression for a WHERE clause
 		// in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 <
@@ -315,7 +322,11 @@ import "list"
 		sql_assertion?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/sql_assertion", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/sql_assertion"]])
 		statistic_range_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/statistic_range_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/statistic_range_expectation"]])
 		table_condition_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/table_condition_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/table_condition_expectation"]])
+		template_reference?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/template_reference", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/template_reference"]])
 		uniqueness_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/uniqueness_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/uniqueness_expectation"]])
+
+		// Map of attribute name and value linked to the rule.
+		attributes?: [string]: string
 
 		// The unnested column which this rule is evaluated against.
 		column?: string
@@ -424,6 +435,20 @@ import "list"
 	_#defs: "/$defs/data_quality_spec/$defs/rules/$defs/table_condition_expectation": close({
 		// The SQL expression.
 		sql_expression!: string
+	})
+
+	_#defs: "/$defs/data_quality_spec/$defs/rules/$defs/template_reference": close({
+		values?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/template_reference/$defs/values", [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/template_reference/$defs/values"]])
+
+		// The resource name of the template entry.
+		name!: string
+	})
+
+	_#defs: "/$defs/data_quality_spec/$defs/rules/$defs/template_reference/$defs/values": close({
+		name!: string
+
+		// The string representation of the parameter value.
+		value!: string
 	})
 
 	_#defs: "/$defs/data_quality_spec/$defs/rules/$defs/uniqueness_expectation": close({})

@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_commitment")
 	close({
 		license_resource?: matchN(1, [#license_resource, list.MaxItems(1) & [...#license_resource]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 		resources?: matchN(1, [#resources, [...#resources]])
 		timeouts?: #timeouts
 
@@ -100,6 +101,15 @@ import "list"
 
 		// Any applicable license URI.
 		license!: string
+	})
+
+	#params: close({
+		// Resource manager tags to be bound to the commitment. Tag keys
+		// and values have the
+		// same definition as resource manager tags. Keys must be in the
+		// format tagKeys/{tag_key_id},
+		// and values are in the format tagValues/456.
+		resource_manager_tags?: [string]: string
 	})
 
 	#resources: close({

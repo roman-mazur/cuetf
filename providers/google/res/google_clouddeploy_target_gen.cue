@@ -120,6 +120,9 @@ import "list"
 	})
 
 	#execution_configs: close({
+		default_pool?: matchN(1, [_#defs."/$defs/execution_configs/$defs/default_pool", list.MaxItems(1) & [..._#defs."/$defs/execution_configs/$defs/default_pool"]])
+		private_pool?: matchN(1, [_#defs."/$defs/execution_configs/$defs/private_pool", list.MaxItems(1) & [..._#defs."/$defs/execution_configs/$defs/private_pool"]])
+
 		// Optional. Cloud Storage location in which to store execution
 		// outputs. This can either be a bucket ("gs://my-bucket") or a
 		// path within a bucket ("gs://my-bucket/my-dir"). If
@@ -219,5 +222,38 @@ import "list"
 		// [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy)
 		// to the Kubernetes server.
 		proxy_url?: string
+	})
+
+	_#defs: "/$defs/execution_configs/$defs/default_pool": close({
+		// Optional. Cloud Storage location where execution outputs should
+		// be stored. This can either be a bucket ("gs://my-bucket") or a
+		// path within a bucket ("gs://my-bucket/my-dir"). If
+		// unspecified, a default bucket located in the same region will
+		// be used.
+		artifact_storage?: string
+
+		// Optional. Google service account to use for execution. If
+		// unspecified, the project execution service account
+		// (-compute@developer.gserviceaccount.com) will be used.
+		service_account?: string
+	})
+
+	_#defs: "/$defs/execution_configs/$defs/private_pool": close({
+		// Optional. Cloud Storage location where execution outputs should
+		// be stored. This can either be a bucket ("gs://my-bucket") or a
+		// path within a bucket ("gs://my-bucket/my-dir"). If
+		// unspecified, a default bucket located in the same region will
+		// be used.
+		artifact_storage?: string
+
+		// Optional. Google service account to use for execution. If
+		// unspecified, the project execution service account
+		// (-compute@developer.gserviceaccount.com) will be used.
+		service_account?: string
+
+		// Required. Resource name of the Cloud Build worker pool to use.
+		// The format is
+		// `projects/{project}/locations/{location}/workerPools/{pool}`.
+		worker_pool!: string
 	})
 }

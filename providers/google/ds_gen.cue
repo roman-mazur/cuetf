@@ -23,6 +23,7 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_apphub_discovered_workload": data.#google_apphub_discovered_workload
 	_#ds: "\(#googlePrefix)_artifact_registry_docker_image": data.#google_artifact_registry_docker_image
 	_#ds: "\(#googlePrefix)_artifact_registry_docker_images": data.#google_artifact_registry_docker_images
+	_#ds: "\(#googlePrefix)_artifact_registry_file": data.#google_artifact_registry_file
 	_#ds: "\(#googlePrefix)_artifact_registry_locations": data.#google_artifact_registry_locations
 	_#ds: "\(#googlePrefix)_artifact_registry_maven_artifact": data.#google_artifact_registry_maven_artifact
 	_#ds: "\(#googlePrefix)_artifact_registry_maven_artifacts": data.#google_artifact_registry_maven_artifacts

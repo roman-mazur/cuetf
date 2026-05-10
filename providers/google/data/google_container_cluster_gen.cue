@@ -774,6 +774,7 @@ package data
 			name?:              string
 			name_prefix?:       string
 			network_config?: [...close({
+				accelerator_network_profile?: string
 				additional_node_network_configs?: [...close({
 					network?:    string
 					subnetwork?: string

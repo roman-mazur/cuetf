@@ -11,6 +11,7 @@ import "list"
 		instance_flexibility_policy?: matchN(1, [#instance_flexibility_policy, list.MaxItems(1) & [...#instance_flexibility_policy]])
 		instance_lifecycle_policy?: matchN(1, [#instance_lifecycle_policy, list.MaxItems(1) & [...#instance_lifecycle_policy]])
 		named_port?: matchN(1, [#named_port, [...#named_port]])
+		resource_policies?: matchN(1, [#resource_policies, list.MaxItems(1) & [...#resource_policies]])
 		standby_policy?: matchN(1, [#standby_policy, list.MaxItems(1) & [...#standby_policy]])
 		stateful_disk?: matchN(1, [#stateful_disk, [...#stateful_disk]])
 		stateful_external_ip?: matchN(1, [#stateful_external_ip, [...#stateful_external_ip]])
@@ -175,6 +176,12 @@ import "list"
 
 		// The port number.
 		port!: number
+	})
+
+	#resource_policies: close({
+		// The URL of the workload policy that is specified for this
+		// managed instance group. It can be a full or partial URL.
+		workload_policy?: string
 	})
 
 	#standby_policy: close({
