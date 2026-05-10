@@ -152,8 +152,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment": close({
+		analysis?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis"]])
 		postdeploy?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/postdeploy", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/postdeploy"]])
 		predeploy?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/predeploy", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/predeploy"]])
+		verify_config?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/verify_config", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/verify_config"]])
 
 		// Required. The percentage based deployments that will occur as a
 		// part of a `Rollout`. List is expected in ascending order and
@@ -162,6 +164,62 @@ import "list"
 
 		// Whether to run verify tests after each percentage deployment.
 		verify?: bool
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis": close({
+		custom_checks?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/custom_checks", [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/custom_checks"]])
+		google_cloud?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/google_cloud", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/google_cloud"]])
+
+		// Required. Duration of the analysis.
+		duration!: string
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/custom_checks": close({
+		task?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/custom_checks/$defs/task", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/custom_checks/$defs/task"]])
+
+		// Optional. Frequency of the custom check.
+		frequency?: string
+
+		// Required. Unique identifier for the custom check.
+		id!: string
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/custom_checks/$defs/task": close({
+		container?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/custom_checks/$defs/task/$defs/container", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/custom_checks/$defs/task/$defs/container"]])
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/custom_checks/$defs/task/$defs/container": close({
+		// Optional. Args is the container arguments to use. This
+		// overrides the default arguments defined in the container
+		// image.
+		args?: [...string]
+
+		// Optional. Command is the container entrypoint to use. This
+		// overrides the default entrypoint defined in the container
+		// image.
+		command?: [...string]
+
+		// Optional. Environment variables that are set in the container.
+		env?: [string]: string
+
+		// Required. Image is the container image to use.
+		image!: string
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/google_cloud": close({
+		alert_policy_checks?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/google_cloud/$defs/alert_policy_checks", [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/google_cloud/$defs/alert_policy_checks"]])
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/analysis/$defs/google_cloud/$defs/alert_policy_checks": close({
+		// Required. The list of alert policy names to check. Format:
+		// `projects/{project}/alertPolicies/{alert_policy}`.
+		alert_policies!: [...string]
+
+		// Required. Unique identifier for the alert policy check.
+		id!: string
+
+		// Optional. Labels to filter the alert policies.
+		labels?: [string]: string
 	})
 
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/postdeploy": close({
@@ -176,13 +234,41 @@ import "list"
 		actions?: [...string]
 	})
 
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/verify_config": close({
+		tasks?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/verify_config/$defs/tasks", [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/verify_config/$defs/tasks"]])
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/verify_config/$defs/tasks": close({
+		container?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/verify_config/$defs/tasks/$defs/container", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/verify_config/$defs/tasks/$defs/container"]])
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/canary_deployment/$defs/verify_config/$defs/tasks/$defs/container": close({
+		// Optional. Args is the container arguments to use. This
+		// overrides the default arguments defined in the container
+		// image.
+		args?: [...string]
+
+		// Optional. Command is the container entrypoint to use. This
+		// overrides the default entrypoint defined in the container
+		// image.
+		command?: [...string]
+
+		// Optional. Environment variables that are set in the container.
+		env?: [string]: string
+
+		// Required. Image is the container image to use.
+		image!: string
+	})
+
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment": close({
 		phase_configs!: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs", [_, ...] & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs"]])
 	})
 
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs": close({
+		analysis?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis"]])
 		postdeploy?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/postdeploy", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/postdeploy"]])
 		predeploy?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/predeploy", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/predeploy"]])
+		verify_config?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/verify_config", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/verify_config"]])
 
 		// Required. Percentage deployment for the phase.
 		percentage!: number
@@ -204,6 +290,62 @@ import "list"
 		verify?: bool
 	})
 
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis": close({
+		custom_checks?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/custom_checks", [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/custom_checks"]])
+		google_cloud?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/google_cloud", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/google_cloud"]])
+
+		// Required. Duration of the analysis.
+		duration!: string
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/custom_checks": close({
+		task?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/custom_checks/$defs/task", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/custom_checks/$defs/task"]])
+
+		// Optional. Frequency of the custom check.
+		frequency?: string
+
+		// Required. Unique identifier for the custom check.
+		id!: string
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/custom_checks/$defs/task": close({
+		container?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/custom_checks/$defs/task/$defs/container", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/custom_checks/$defs/task/$defs/container"]])
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/custom_checks/$defs/task/$defs/container": close({
+		// Optional. Args is the container arguments to use. This
+		// overrides the default arguments defined in the container
+		// image.
+		args?: [...string]
+
+		// Optional. Command is the container entrypoint to use. This
+		// overrides the default entrypoint defined in the container
+		// image.
+		command?: [...string]
+
+		// Optional. Environment variables that are set in the container.
+		env?: [string]: string
+
+		// Required. Image is the container image to use.
+		image!: string
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/google_cloud": close({
+		alert_policy_checks?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/google_cloud/$defs/alert_policy_checks", [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/google_cloud/$defs/alert_policy_checks"]])
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/analysis/$defs/google_cloud/$defs/alert_policy_checks": close({
+		// Required. The list of alert policy names to check. Format:
+		// `projects/{project}/alertPolicies/{alert_policy}`.
+		alert_policies!: [...string]
+
+		// Required. Unique identifier for the alert policy check.
+		id!: string
+
+		// Optional. Labels to filter the alert policies.
+		labels?: [string]: string
+	})
+
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/postdeploy": close({
 		// Optional. A sequence of skaffold custom actions to invoke
 		// during execution of the postdeploy job.
@@ -214,6 +356,32 @@ import "list"
 		// Optional. A sequence of skaffold custom actions to invoke
 		// during execution of the predeploy job.
 		actions?: [...string]
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/verify_config": close({
+		tasks?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/verify_config/$defs/tasks", [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/verify_config/$defs/tasks"]])
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/verify_config/$defs/tasks": close({
+		container?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/verify_config/$defs/tasks/$defs/container", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/verify_config/$defs/tasks/$defs/container"]])
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/custom_canary_deployment/$defs/phase_configs/$defs/verify_config/$defs/tasks/$defs/container": close({
+		// Optional. Args is the container arguments to use. This
+		// overrides the default arguments defined in the container
+		// image.
+		args?: [...string]
+
+		// Optional. Command is the container entrypoint to use. This
+		// overrides the default entrypoint defined in the container
+		// image.
+		command?: [...string]
+
+		// Optional. Environment variables that are set in the container.
+		env?: [string]: string
+
+		// Required. Image is the container image to use.
+		image!: string
 	})
 
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/canary/$defs/runtime_config": close({
@@ -313,22 +481,154 @@ import "list"
 	})
 
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard": close({
+		analysis?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis"]])
 		postdeploy?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/postdeploy", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/postdeploy"]])
 		predeploy?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/predeploy", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/predeploy"]])
+		verify_config?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/verify_config", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/verify_config"]])
 
 		// Whether to verify a deployment.
 		verify?: bool
 	})
 
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis": close({
+		custom_checks?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/custom_checks", [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/custom_checks"]])
+		google_cloud?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/google_cloud", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/google_cloud"]])
+
+		// Required. Duration of the analysis.
+		duration!: string
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/custom_checks": close({
+		task?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/custom_checks/$defs/task", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/custom_checks/$defs/task"]])
+
+		// Optional. Frequency of the custom check.
+		frequency?: string
+
+		// Required. Unique identifier for the custom check.
+		id!: string
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/custom_checks/$defs/task": close({
+		container?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/custom_checks/$defs/task/$defs/container", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/custom_checks/$defs/task/$defs/container"]])
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/custom_checks/$defs/task/$defs/container": close({
+		// Optional. Args is the container arguments to use. This
+		// overrides the default arguments defined in the container
+		// image.
+		args?: [...string]
+
+		// Optional. Command is the container entrypoint to use. This
+		// overrides the default entrypoint defined in the container
+		// image.
+		command?: [...string]
+
+		// Optional. Environment variables that are set in the container.
+		env?: [string]: string
+
+		// Required. Image is the container image to use.
+		image!: string
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/google_cloud": close({
+		alert_policy_checks?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/google_cloud/$defs/alert_policy_checks", [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/google_cloud/$defs/alert_policy_checks"]])
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/analysis/$defs/google_cloud/$defs/alert_policy_checks": close({
+		// Required. The list of alert policy names to check. Format:
+		// `projects/{project}/alertPolicies/{alert_policy}`.
+		alert_policies!: [...string]
+
+		// Required. Unique identifier for the alert policy check.
+		id!: string
+
+		// Optional. Labels to filter the alert policies.
+		labels?: [string]: string
+	})
+
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/postdeploy": close({
+		tasks?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/postdeploy/$defs/tasks", [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/postdeploy/$defs/tasks"]])
+
 		// Optional. A sequence of skaffold custom actions to invoke
 		// during execution of the postdeploy job.
 		actions?: [...string]
 	})
 
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/postdeploy/$defs/tasks": close({
+		container?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/postdeploy/$defs/tasks/$defs/container", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/postdeploy/$defs/tasks/$defs/container"]])
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/postdeploy/$defs/tasks/$defs/container": close({
+		// Optional. Args is the container arguments to use. This
+		// overrides the default arguments defined in the container
+		// image.
+		args?: [...string]
+
+		// Optional. Command is the container entrypoint to use. This
+		// overrides the default entrypoint defined in the container
+		// image.
+		command?: [...string]
+
+		// Optional. Environment variables that are set in the container.
+		env?: [string]: string
+
+		// Required. Image is the container image to use.
+		image!: string
+	})
+
 	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/predeploy": close({
+		tasks?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/predeploy/$defs/tasks", [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/predeploy/$defs/tasks"]])
+
 		// Optional. A sequence of skaffold custom actions to invoke
 		// during execution of the predeploy job.
 		actions?: [...string]
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/predeploy/$defs/tasks": close({
+		container?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/predeploy/$defs/tasks/$defs/container", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/predeploy/$defs/tasks/$defs/container"]])
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/predeploy/$defs/tasks/$defs/container": close({
+		// Optional. Args is the container arguments to use. This
+		// overrides the default arguments defined in the container
+		// image.
+		args?: [...string]
+
+		// Optional. Command is the container entrypoint to use. This
+		// overrides the default entrypoint defined in the container
+		// image.
+		command?: [...string]
+
+		// Optional. Environment variables that are set in the container.
+		env?: [string]: string
+
+		// Required. Image is the container image to use.
+		image!: string
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/verify_config": close({
+		tasks?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/verify_config/$defs/tasks", [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/verify_config/$defs/tasks"]])
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/verify_config/$defs/tasks": close({
+		container?: matchN(1, [_#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/verify_config/$defs/tasks/$defs/container", list.MaxItems(1) & [..._#defs."/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/verify_config/$defs/tasks/$defs/container"]])
+	})
+
+	_#defs: "/$defs/serial_pipeline/$defs/stages/$defs/strategy/$defs/standard/$defs/verify_config/$defs/tasks/$defs/container": close({
+		// Optional. Args is the container arguments to use. This
+		// overrides the default arguments defined in the container
+		// image.
+		args?: [...string]
+
+		// Optional. Command is the container entrypoint to use. This
+		// overrides the default entrypoint defined in the container
+		// image.
+		command?: [...string]
+
+		// Optional. Environment variables that are set in the container.
+		env?: [string]: string
+
+		// Required. Image is the container image to use.
+		image!: string
 	})
 }

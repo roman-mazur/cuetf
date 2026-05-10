@@ -64,10 +64,11 @@ import "list"
 	})
 
 	#fields: close({
+		search_config?: matchN(1, [_#defs."/$defs/fields/$defs/search_config", list.MaxItems(1) & [..._#defs."/$defs/fields/$defs/search_config"]])
 		vector_config?: matchN(1, [_#defs."/$defs/fields/$defs/vector_config", list.MaxItems(1) & [..._#defs."/$defs/fields/$defs/vector_config"]])
 
 		// Indicates that this field supports operations on arrayValues.
-		// Only one of 'order', 'arrayConfig', and
+		// Only one of 'order', 'arrayConfig', 'searchConfig' and
 		// 'vectorConfig' can be specified. Possible values: ["CONTAINS"]
 		array_config?: string
 
@@ -76,8 +77,9 @@ import "list"
 
 		// Indicates that this field supports ordering by the specified
 		// order or comparing using =, <, <=, >, >=.
-		// Only one of 'order', 'arrayConfig', and 'vectorConfig' can be
-		// specified. Possible values: ["ASCENDING", "DESCENDING"]
+		// Only one of 'order', 'arrayConfig', 'searchConfig' and
+		// 'vectorConfig' can be specified. Possible values:
+		// ["ASCENDING", "DESCENDING"]
 		order?: string
 	})
 
@@ -85,6 +87,31 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/fields/$defs/search_config": close({
+		geo_spec?: matchN(1, [_#defs."/$defs/fields/$defs/search_config/$defs/geo_spec", list.MaxItems(1) & [..._#defs."/$defs/fields/$defs/search_config/$defs/geo_spec"]])
+		text_spec?: matchN(1, [_#defs."/$defs/fields/$defs/search_config/$defs/text_spec", list.MaxItems(1) & [..._#defs."/$defs/fields/$defs/search_config/$defs/text_spec"]])
+	})
+
+	_#defs: "/$defs/fields/$defs/search_config/$defs/geo_spec": close({
+		// If true, disables GeoJSON indexing for the field. By default,
+		// GeoJSON points are indexed.
+		// Firestore GeoPoints are indexed regardless of the value of this
+		// field.
+		geo_json_indexing_disabled!: bool
+	})
+
+	_#defs: "/$defs/fields/$defs/search_config/$defs/text_spec": close({
+		index_specs!: matchN(1, [_#defs."/$defs/fields/$defs/search_config/$defs/text_spec/$defs/index_specs", [_, ...] & [..._#defs."/$defs/fields/$defs/search_config/$defs/text_spec/$defs/index_specs"]])
+	})
+
+	_#defs: "/$defs/fields/$defs/search_config/$defs/text_spec/$defs/index_specs": close({
+		// Ways to index the text field value.
+		index_type?: string
+
+		// How to match the text field value.
+		match_type?: string
 	})
 
 	_#defs: "/$defs/fields/$defs/vector_config": close({

@@ -198,6 +198,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_certificate_manager_trust_config": res.#google_certificate_manager_trust_config
 	_#res: "\(#googlePrefix)_ces_agent": res.#google_ces_agent
 	_#res: "\(#googlePrefix)_ces_app": res.#google_ces_app
+	_#res: "\(#googlePrefix)_ces_app_root_agent_association": res.#google_ces_app_root_agent_association
 	_#res: "\(#googlePrefix)_ces_app_version": res.#google_ces_app_version
 	_#res: "\(#googlePrefix)_ces_deployment": res.#google_ces_deployment
 	_#res: "\(#googlePrefix)_ces_example": res.#google_ces_example
@@ -442,6 +443,9 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_contact_center_insights_analysis_rule": res.#google_contact_center_insights_analysis_rule
 	_#res: "\(#googlePrefix)_contact_center_insights_assessment_rule": res.#google_contact_center_insights_assessment_rule
 	_#res: "\(#googlePrefix)_contact_center_insights_auto_labeling_rule": res.#google_contact_center_insights_auto_labeling_rule
+	_#res: "\(#googlePrefix)_contact_center_insights_qa_question": res.#google_contact_center_insights_qa_question
+	_#res: "\(#googlePrefix)_contact_center_insights_qa_scorecard": res.#google_contact_center_insights_qa_scorecard
+	_#res: "\(#googlePrefix)_contact_center_insights_qa_scorecard_revision": res.#google_contact_center_insights_qa_scorecard_revision
 	_#res: "\(#googlePrefix)_contact_center_insights_view": res.#google_contact_center_insights_view
 	_#res: "\(#googlePrefix)_container_analysis_note": res.#google_container_analysis_note
 	_#res: "\(#googlePrefix)_container_analysis_note_iam_binding": res.#google_container_analysis_note_iam_binding
@@ -655,6 +659,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_firebase_app_check_play_integrity_config": res.#google_firebase_app_check_play_integrity_config
 	_#res: "\(#googlePrefix)_firebase_app_check_recaptcha_enterprise_config": res.#google_firebase_app_check_recaptcha_enterprise_config
 	_#res: "\(#googlePrefix)_firebase_app_check_recaptcha_v3_config": res.#google_firebase_app_check_recaptcha_v3_config
+	_#res: "\(#googlePrefix)_firebase_app_check_resource_policy": res.#google_firebase_app_check_resource_policy
 	_#res: "\(#googlePrefix)_firebase_app_check_service_config": res.#google_firebase_app_check_service_config
 	_#res: "\(#googlePrefix)_firebase_app_hosting_backend": res.#google_firebase_app_hosting_backend
 	_#res: "\(#googlePrefix)_firebase_app_hosting_build": res.#google_firebase_app_hosting_build

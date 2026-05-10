@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_database_migration_service_migration_job")
 	close({
 		dump_flags?: matchN(1, [#dump_flags, list.MaxItems(1) & [...#dump_flags]])
+		objects_config?: matchN(1, [#objects_config, list.MaxItems(1) & [...#objects_config]])
 		performance_config?: matchN(1, [#performance_config, list.MaxItems(1) & [...#performance_config]])
 		reverse_ssh_connectivity?: matchN(1, [#reverse_ssh_connectivity, list.MaxItems(1) & [...#reverse_ssh_connectivity]])
 		static_ip_connectivity?: matchN(1, [#static_ip_connectivity, list.MaxItems(1) & [...#static_ip_connectivity]])
@@ -96,6 +97,10 @@ import "list"
 		dump_flags?: matchN(1, [_#defs."/$defs/dump_flags/$defs/dump_flags", [..._#defs."/$defs/dump_flags/$defs/dump_flags"]])
 	})
 
+	#objects_config: close({
+		source_objects_config?: matchN(1, [_#defs."/$defs/objects_config/$defs/source_objects_config", list.MaxItems(1) & [..._#defs."/$defs/objects_config/$defs/source_objects_config"]])
+	})
+
 	#performance_config: close({
 		// Initial dump parallelism level. Possible values: ["MIN",
 		// "OPTIMAL", "MAX"]
@@ -142,5 +147,41 @@ import "list"
 
 		// The vale of the flag
 		value?: string
+	})
+
+	_#defs: "/$defs/objects_config/$defs/source_objects_config": close({
+		object_configs?: matchN(1, [_#defs."/$defs/objects_config/$defs/source_objects_config/$defs/object_configs", [..._#defs."/$defs/objects_config/$defs/source_objects_config/$defs/object_configs"]])
+
+		// The objects selection type of the migration job. When set to
+		// 'SPECIFIED_OBJECTS', only the objects listed in 'objectConfigs'
+		// are
+		// migrated. When set to 'ALL_OBJECTS', all objects available on
+		// the
+		// source are migrated. Possible values: ["ALL_OBJECTS",
+		// "SPECIFIED_OBJECTS"]
+		objects_selection_type?: string
+	})
+
+	_#defs: "/$defs/objects_config/$defs/source_objects_config/$defs/object_configs": close({
+		object_identifier?: matchN(1, [_#defs."/$defs/objects_config/$defs/source_objects_config/$defs/object_configs/$defs/object_identifier", list.MaxItems(1) & [..._#defs."/$defs/objects_config/$defs/source_objects_config/$defs/object_configs/$defs/object_identifier"]])
+	})
+
+	_#defs: "/$defs/objects_config/$defs/source_objects_config/$defs/object_configs/$defs/object_identifier": close({
+		// The database name. Required only if the object uses
+		// a database name as part of its unique identifier.
+		database?: string
+
+		// The schema name. Required only if the object uses
+		// a schema name as part of its unique identifier.
+		schema?: string
+
+		// The table name. Required only if the object is a level
+		// below database or schema.
+		table?: string
+
+		// The category of the migration job object: 'DATABASE',
+		// 'SCHEMA', or 'TABLE'. Possible values: ["DATABASE", "SCHEMA",
+		// "TABLE"]
+		type!: string
 	})
 }

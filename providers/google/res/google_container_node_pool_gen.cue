@@ -121,6 +121,9 @@ import "list"
 		network_performance_config?: matchN(1, [_#defs."/$defs/network_config/$defs/network_performance_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/network_performance_config"]])
 		pod_cidr_overprovision_config?: matchN(1, [_#defs."/$defs/network_config/$defs/pod_cidr_overprovision_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/pod_cidr_overprovision_config"]])
 
+		// The accelerator network profile to use for this node pool.
+		accelerator_network_profile?: string
+
 		// Whether to create a new range for pod IPs in this node pool.
 		// Defaults are provided for pod_range and pod_ipv4_cidr_block if
 		// they are not specified.

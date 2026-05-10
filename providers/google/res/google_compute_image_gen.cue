@@ -8,6 +8,7 @@ import "list"
 	close({
 		guest_os_features?: matchN(1, [#guest_os_features, [...#guest_os_features]])
 		image_encryption_key?: matchN(1, [#image_encryption_key, list.MaxItems(1) & [...#image_encryption_key]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 		raw_disk?: matchN(1, [#raw_disk, list.MaxItems(1) & [...#raw_disk]])
 		shielded_instance_initial_state?: matchN(1, [#shielded_instance_initial_state, list.MaxItems(1) & [...#shielded_instance_initial_state]])
 		source_disk_encryption_key?: matchN(1, [#source_disk_encryption_key, list.MaxItems(1) & [...#source_disk_encryption_key]])
@@ -151,6 +152,24 @@ import "list"
 		// in
 		// RFC 4648 base64 to either encrypt or decrypt this resource.
 		rsa_encrypted_key?: string
+	})
+
+	#params: close({
+		// Resource manager tags to be bound to the image. Tag keys and
+		// values have the
+		// same definition as resource manager tags. Keys and values can
+		// be either in numeric format,
+		// such as tagKeys/{tag_key_id} and tagValues/{tag_value_id} or in
+		// namespaced format such as
+		// {org_id|projectId}/{tag_key_short_name} and
+		// {tag_value_short_name}. The field is ignored when empty.
+		// The field is immutable and causes resource replacement when
+		// mutated. This field is only
+		// set at create time and modifying this field after creation will
+		// trigger recreation.
+		// To apply tags to an existing resource, see the
+		// google_tags_tag_binding resource.
+		resource_manager_tags?: [string]: string
 	})
 
 	#raw_disk: close({

@@ -353,7 +353,7 @@ import "list"
 
 		// The duration to keep the cluster alive while idling (no jobs
 		// running). After this TTL, the cluster will be deleted. Valid
-		// range: [10m, 14d].
+		// range: [300s, 1209600s].
 		idle_delete_ttl?: string
 
 		// Time when the cluster became idle (most recent job finished)

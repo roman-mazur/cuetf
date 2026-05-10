@@ -252,6 +252,15 @@ import "list"
 		// FAILED_DISABLING
 		ops_insights_status?: string
 
+		// The ID of the pluggable database associated with Database. The
+		// ID must be unique within the project and location.
+		pluggable_database_id?: string
+
+		// The pluggable dataabse associated with the Database. The name
+		// must begin with an alphabetic character and can contain a
+		// maximum of thirty alphanumeric characters.
+		pluggable_database_name?: string
+
 		// The TDE wallet password for the database.
 		tde_wallet_password?: string
 	})
