@@ -8182,9 +8182,9 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					enable_route_propagation: {
 						type:             "bool"
-						description:      "Defines whether route propagation is enabled or not"
+						description:      "Defines whether route propagation is enabled or not. Defaults to false"
 						description_kind: "plain"
-						computed:         true
+						optional:         true
 					}
 					id: {
 						type:             "string"
@@ -8305,9 +8305,9 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					vpc_id: {
 						type:             "string"
-						description:      "ID of the Scaleway VPC attached to the link"
+						description:      "ID of the Scaleway VPC to attach to the link"
 						description_kind: "plain"
-						computed:         true
+						optional:         true
 					}
 				}
 				block_types: timeouts: {
@@ -23154,6 +23154,114 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_interlink_dedicated_connection: {
+			version: 0
+			block: {
+				attributes: {
+					available_link_bandwidths: {
+						type: ["list", "number"]
+						description:      "Sizes of the links supported on this dedicated connection"
+						description_kind: "plain"
+						computed:         true
+					}
+					bandwidth_mbps: {
+						type:             "number"
+						description:      "Bandwidth size of the dedicated connection in Mbps"
+						description_kind: "plain"
+						computed:         true
+					}
+					connection_id: {
+						type:             "string"
+						description:      "The ID of the dedicated connection"
+						description_kind: "plain"
+						optional:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "Creation date of the dedicated connection"
+						description_kind: "plain"
+						computed:         true
+					}
+					demarcation_info: {
+						type:             "string"
+						description:      "Demarcation details required by the data center to set up the Cross Connect"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the dedicated connection to filter for"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID"
+						description_kind: "plain"
+						computed:         true
+					}
+					pop_id: {
+						type:             "string"
+						description:      "ID of the PoP where the dedicated connection is located"
+						description_kind: "plain"
+						computed:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The ID of the project the dedicated connection belongs to"
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Status of the dedicated connection"
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "List of tags associated with the dedicated connection"
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "Last modification date of the dedicated connection"
+						description_kind: "plain"
+						computed:         true
+					}
+					vlan_range: {
+						type: ["list", ["object", {
+							end:   "number"
+							start: "number"
+						}]]
+						description:      "VLAN range for self-hosted links on this dedicated connection"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description: """
+					Gets information about an Interlink Dedicated Connection.
+
+					A dedicated connection is a physical connection owned by the user at a PoP, used to create self-hosted links between your infrastructure and Scaleway.
+
+					"""
+				description_kind: "plain"
+			}
+		}
 		scaleway_interlink_link: {
 			version: 0
 			block: {
@@ -23190,7 +23298,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					enable_route_propagation: {
 						type:             "bool"
-						description:      "Defines whether route propagation is enabled or not"
+						description:      "Defines whether route propagation is enabled or not. Defaults to false"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -23312,7 +23420,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					vpc_id: {
 						type:             "string"
-						description:      "ID of the Scaleway VPC attached to the link"
+						description:      "ID of the Scaleway VPC to attach to the link"
 						description_kind: "plain"
 						computed:         true
 					}

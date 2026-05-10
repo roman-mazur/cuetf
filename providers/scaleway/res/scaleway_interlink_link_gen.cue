@@ -24,7 +24,8 @@ package res
 		// Creation date of the link
 		created_at?: string
 
-		// Defines whether route propagation is enabled or not
+		// Defines whether route propagation is enabled or not. Defaults
+		// to false
 		enable_route_propagation?: bool
 		id?:                       string
 
@@ -92,7 +93,7 @@ package res
 		// returned
 		vlan?: number
 
-		// ID of the Scaleway VPC attached to the link
+		// ID of the Scaleway VPC to attach to the link
 		vpc_id?: string
 	})
 
