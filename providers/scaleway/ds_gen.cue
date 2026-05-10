@@ -64,6 +64,7 @@ import "github.com/roman-mazur/cuetf/providers/scaleway/data"
 	_#ds: "\(#scalewayPrefix)_instance_servers": data.#scaleway_instance_servers
 	_#ds: "\(#scalewayPrefix)_instance_snapshot": data.#scaleway_instance_snapshot
 	_#ds: "\(#scalewayPrefix)_instance_volume": data.#scaleway_instance_volume
+	_#ds: "\(#scalewayPrefix)_interlink_dedicated_connection": data.#scaleway_interlink_dedicated_connection
 	_#ds: "\(#scalewayPrefix)_interlink_link": data.#scaleway_interlink_link
 	_#ds: "\(#scalewayPrefix)_interlink_partner": data.#scaleway_interlink_partner
 	_#ds: "\(#scalewayPrefix)_interlink_partners": data.#scaleway_interlink_partners
