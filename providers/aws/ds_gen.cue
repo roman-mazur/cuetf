@@ -274,6 +274,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/data"
 	_#ds: "\(#awsPrefix)_fsx_windows_file_system": data.#aws_fsx_windows_file_system
 	_#ds: "\(#awsPrefix)_globalaccelerator_accelerator": data.#aws_globalaccelerator_accelerator
 	_#ds: "\(#awsPrefix)_globalaccelerator_custom_routing_accelerator": data.#aws_globalaccelerator_custom_routing_accelerator
+	_#ds: "\(#awsPrefix)_glue_catalog": data.#aws_glue_catalog
 	_#ds: "\(#awsPrefix)_glue_catalog_table": data.#aws_glue_catalog_table
 	_#ds: "\(#awsPrefix)_glue_connection": data.#aws_glue_connection
 	_#ds: "\(#awsPrefix)_glue_data_catalog_encryption_settings": data.#aws_glue_data_catalog_encryption_settings

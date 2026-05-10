@@ -129,6 +129,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_appsync_type": res.#aws_appsync_type
 	_#res: "\(#awsPrefix)_arcregionswitch_plan": res.#aws_arcregionswitch_plan
 	_#res: "\(#awsPrefix)_arczonalshift_autoshift_observer_notification_status": res.#aws_arczonalshift_autoshift_observer_notification_status
+	_#res: "\(#awsPrefix)_arczonalshift_zonal_autoshift_configuration": res.#aws_arczonalshift_zonal_autoshift_configuration
 	_#res: "\(#awsPrefix)_athena_capacity_reservation": res.#aws_athena_capacity_reservation
 	_#res: "\(#awsPrefix)_athena_data_catalog": res.#aws_athena_data_catalog
 	_#res: "\(#awsPrefix)_athena_database": res.#aws_athena_database
@@ -688,6 +689,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_globalaccelerator_endpoint_group": res.#aws_globalaccelerator_endpoint_group
 	_#res: "\(#awsPrefix)_globalaccelerator_listener": res.#aws_globalaccelerator_listener
 	_#res: "\(#awsPrefix)_glue_catalog_database": res.#aws_glue_catalog_database
+	_#res: "\(#awsPrefix)_glue_catalog": res.#aws_glue_catalog
 	_#res: "\(#awsPrefix)_glue_catalog_table": res.#aws_glue_catalog_table
 	_#res: "\(#awsPrefix)_glue_catalog_table_optimizer": res.#aws_glue_catalog_table_optimizer
 	_#res: "\(#awsPrefix)_glue_classifier": res.#aws_glue_classifier
@@ -1063,6 +1065,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_organizations_resource_policy": res.#aws_organizations_resource_policy
 	_#res: "\(#awsPrefix)_organizations_tag": res.#aws_organizations_tag
 	_#res: "\(#awsPrefix)_osis_pipeline": res.#aws_osis_pipeline
+	_#res: "\(#awsPrefix)_outposts_capacity_task": res.#aws_outposts_capacity_task
 	_#res: "\(#awsPrefix)_paymentcryptography_key_alias": res.#aws_paymentcryptography_key_alias
 	_#res: "\(#awsPrefix)_paymentcryptography_key": res.#aws_paymentcryptography_key
 	_#res: "\(#awsPrefix)_pinpoint_adm_channel": res.#aws_pinpoint_adm_channel
@@ -1155,6 +1158,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_redshift_idc_application": res.#aws_redshift_idc_application
 	_#res: "\(#awsPrefix)_redshift_integration": res.#aws_redshift_integration
 	_#res: "\(#awsPrefix)_redshift_logging": res.#aws_redshift_logging
+	_#res: "\(#awsPrefix)_redshift_namespace_registration": res.#aws_redshift_namespace_registration
 	_#res: "\(#awsPrefix)_redshift_parameter_group": res.#aws_redshift_parameter_group
 	_#res: "\(#awsPrefix)_redshift_partner": res.#aws_redshift_partner
 	_#res: "\(#awsPrefix)_redshift_resource_policy": res.#aws_redshift_resource_policy

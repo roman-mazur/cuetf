@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_timestreaminfluxdb_db_cluster")
 	close({
 		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, [...#log_delivery_configuration]])
+		maintenance_schedule?: matchN(1, [#maintenance_schedule, [...#maintenance_schedule]])
 		timeouts?: #timeouts
 
 		// The amount of storage to allocate for your DB storage type in
@@ -162,6 +163,19 @@ package res
 
 	#log_delivery_configuration: close({
 		s3_configuration?: matchN(1, [_#defs."/$defs/log_delivery_configuration/$defs/s3_configuration", [..._#defs."/$defs/log_delivery_configuration/$defs/s3_configuration"]])
+	})
+
+	#maintenance_schedule: close({
+		// The preferred maintenance window in the format
+		// ddd:HH:MM-ddd:HH:MM.
+		// Day must be one of Mon, Tue, Wed, Thu, Fri, Sat, or Sun.
+		// Provide an empty
+		// string to let the system choose a window.
+		preferred_maintenance_window!: string
+
+		// The IANA timezone identifier for the maintenance window. For
+		// example, America/New_York or UTC.
+		timezone!: string
 	})
 
 	#timeouts: close({

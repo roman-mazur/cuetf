@@ -6,6 +6,35 @@ package data
 	close({
 		arn?: string
 		athena_properties?: [string]: string
+		authentication_configuration?: [...close({
+			authentication_type?: string
+			basic_authentication_credentials?: [...close({
+				password?: string
+				username?: string
+			})]
+			custom_authentication_credentials?: [string]: string
+			kms_key_arn?: string
+			oauth2_properties?: [...close({
+				authorization_code_properties?: [...close({
+					authorization_code?: string
+					redirect_uri?:       string
+				})]
+				oauth2_client_application?: [...close({
+					aws_managed_client_application_reference?:  string
+					user_managed_client_application_client_id?: string
+				})]
+				oauth2_credentials?: [...close({
+					access_token?:                                  string
+					jwt_token?:                                     string
+					refresh_token?:                                 string
+					user_managed_client_application_client_secret?: string
+				})]
+				oauth2_grant_type?: string
+				token_url?:         string
+				token_url_parameters_map?: [string]: string
+			})]
+			secret_arn?: string
+		})]
 		catalog_id?: string
 		connection_properties?: [string]: string
 		connection_type?: string

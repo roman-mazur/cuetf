@@ -11,6 +11,7 @@ import "list"
 		client_login_banner_options?: matchN(1, [#client_login_banner_options, list.MaxItems(1) & [...#client_login_banner_options]])
 		client_route_enforcement_options?: matchN(1, [#client_route_enforcement_options, list.MaxItems(1) & [...#client_route_enforcement_options]])
 		connection_log_options!: matchN(1, [#connection_log_options, list.MaxItems(1) & [_, ...] & [...#connection_log_options]])
+		transit_gateway_configuration?: matchN(1, [#transit_gateway_configuration, list.MaxItems(1) & [...#transit_gateway_configuration]])
 		arn?:                           string
 		client_cidr_block?:             string
 		description?:                   string
@@ -65,5 +66,12 @@ import "list"
 		cloudwatch_log_group?:  string
 		cloudwatch_log_stream?: string
 		enabled!:               bool
+	})
+
+	#transit_gateway_configuration: close({
+		availability_zone_ids?: [...string]
+		availability_zones?: [...string]
+		transit_gateway_attachment_id?: string
+		transit_gateway_id?:            string
 	})
 }
