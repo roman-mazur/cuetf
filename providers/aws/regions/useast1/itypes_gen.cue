@@ -23011,7 +23011,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -23098,7 +23098,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -23272,7 +23272,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -23536,7 +23536,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -23623,7 +23623,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -23828,7 +23828,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -24111,7 +24111,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -25472,7 +25472,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -25559,7 +25559,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -25733,7 +25733,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -25997,7 +25997,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -26084,7 +26084,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -26289,7 +26289,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -26572,7 +26572,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -29031,7 +29031,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -29343,7 +29343,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -29450,7 +29450,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -29667,7 +29667,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -29774,7 +29774,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -29884,7 +29884,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -30419,7 +30419,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -30524,7 +30524,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -30632,7 +30632,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -30737,7 +30737,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -30845,7 +30845,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -30950,7 +30950,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -31141,7 +31141,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -31235,7 +31235,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -31514,7 +31514,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -31622,7 +31622,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -31733,7 +31733,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -32063,7 +32063,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -32612,7 +32612,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -32730,7 +32730,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -32970,7 +32970,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -33405,7 +33405,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.25
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 5722
             }
@@ -33621,7 +33621,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.125
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 2861
             }
@@ -33729,7 +33729,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.125
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 2861
             }
@@ -33840,7 +33840,7 @@ InstanceTypes: [{
             Count:            2
             LogicalGpuCount:  2
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -33958,7 +33958,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -34744,7 +34744,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.5
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 11444
             }
@@ -69741,7 +69741,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -70005,7 +70005,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -70092,7 +70092,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -70297,7 +70297,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -70384,7 +70384,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -72046,7 +72046,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -72340,7 +72340,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -72437,7 +72437,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -72662,7 +72662,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -72759,7 +72759,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -73147,7 +73147,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -73441,7 +73441,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -73538,7 +73538,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -73763,7 +73763,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -73860,7 +73860,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -74208,7 +74208,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -74472,7 +74472,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -74559,7 +74559,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -74764,7 +74764,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -74851,7 +74851,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -75385,6 +75385,84 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+}, {
+    InstanceType:      "mac-m3ultra.metal"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal: true
+    ProcessorInfo: {
+        SupportedArchitectures: ["arm64_mac"]
+        SustainedClockSpeedInGhz: 4.0
+        Manufacturer:             "Apple"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          28
+        DefaultCores:          28
+        DefaultThreadsPerCore: 1
+    }
+    MemoryInfo: {
+        SizeInMiB: 262144
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  10000
+            BaselineThroughputInMBps: 1250.0
+            BaselineIops:             55000
+            MaximumBandwidthInMbps:   10000
+            MaximumThroughputInMBps:  1250.0
+            MaximumIops:              55000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 10
+        AttachmentLimitType:   "shared"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "10 Gigabit"
+        MaximumNetworkInterfaces: 8
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "10 Gigabit"
+            MaximumNetworkInterfaces:         8
+            BaselineBandwidthInGbps:          10.0
+            PeakBandwidthInGbps:              10.0
+            DefaultEnaQueueCountPerInterface: 8
+        }]
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: false
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported:          false
+        Ipv4AddressesPerSecondaryInterface: 0
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["legacy-bios"]
+    NitroEnclavesSupport:   "unsupported"
+    NitroTpmSupport:        "unsupported"
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "unsupported"
 }, {
     InstanceType:      "mac-m4.metal"
     CurrentGeneration: true
@@ -101694,7 +101772,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -101958,7 +102036,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -102250,7 +102328,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -102337,7 +102415,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -103999,7 +104077,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -104293,7 +104371,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -104615,7 +104693,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -104712,7 +104790,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -105100,7 +105178,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -105394,7 +105472,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -105716,7 +105794,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -105813,7 +105891,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         false
@@ -106161,7 +106239,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -106425,7 +106503,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -106717,7 +106795,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
@@ -106804,7 +106882,7 @@ InstanceTypes: [{
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
     }
-    HibernationSupported:          false
+    HibernationSupported:          true
     BurstablePerformanceSupported: false
     DedicatedHostsSupported:       true
     AutoRecoverySupported:         true
