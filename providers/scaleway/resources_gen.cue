@@ -57,6 +57,7 @@ import "github.com/roman-mazur/cuetf/providers/scaleway/res"
 	_#res: "\(#scalewayPrefix)_iam_policy": res.#scaleway_iam_policy
 	_#res: "\(#scalewayPrefix)_iam_saml_certificate": res.#scaleway_iam_saml_certificate
 	_#res: "\(#scalewayPrefix)_iam_saml": res.#scaleway_iam_saml
+	_#res: "\(#scalewayPrefix)_iam_scim": res.#scaleway_iam_scim
 	_#res: "\(#scalewayPrefix)_iam_ssh_key": res.#scaleway_iam_ssh_key
 	_#res: "\(#scalewayPrefix)_iam_user": res.#scaleway_iam_user
 	_#res: "\(#scalewayPrefix)_inference_deployment": res.#scaleway_inference_deployment

@@ -25,12 +25,6 @@ package res
 		// The region you want to attach the resource to
 		region?: string
 
-		// The endpoint reachable by docker
-		registry_endpoint?: string
-
-		// The ID of the registry namespace
-		registry_namespace_id?: string
-
 		// The secret environment variables of the container namespace
 		secret_environment_variables?: [string]: string
 

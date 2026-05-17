@@ -4,9 +4,6 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_function_namespace")
 	close({
-		// Activate VPC integration for the namespace
-		activate_vpc_integration?: bool
-
 		// The description of the function namespace
 		description?: string
 
