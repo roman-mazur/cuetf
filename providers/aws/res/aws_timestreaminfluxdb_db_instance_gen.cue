@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_timestreaminfluxdb_db_instance")
 	close({
 		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, [...#log_delivery_configuration]])
+		maintenance_schedule?: matchN(1, [#maintenance_schedule, [...#maintenance_schedule]])
 		timeouts?: #timeouts
 
 		// The amount of storage to allocate for your DB storage type in
@@ -135,6 +136,11 @@ package res
 
 	#log_delivery_configuration: close({
 		s3_configuration?: matchN(1, [_#defs."/$defs/log_delivery_configuration/$defs/s3_configuration", [..._#defs."/$defs/log_delivery_configuration/$defs/s3_configuration"]])
+	})
+
+	#maintenance_schedule: close({
+		preferred_maintenance_window!: string
+		timezone!:                     string
 	})
 
 	#timeouts: close({
