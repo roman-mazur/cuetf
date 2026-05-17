@@ -98,6 +98,8 @@ import "list"
 	})
 
 	#web_settings: close({
+		challenge_settings?: matchN(1, [_#defs."/$defs/web_settings/$defs/challenge_settings", list.MaxItems(1) & [..._#defs."/$defs/web_settings/$defs/challenge_settings"]])
+
 		// If set to true, it means allowed_domains will not be enforced.
 		allow_all_domains?: bool
 
@@ -121,7 +123,28 @@ import "list"
 		challenge_security_preference?: string
 
 		// Required. Describes how this key is integrated with the
-		// website. Possible values: SCORE, CHECKBOX, INVISIBLE
+		// website. Possible values: SCORE, CHECKBOX, INVISIBLE,
+		// POLICY_BASED_CHALLENGE
 		integration_type!: string
+	})
+
+	_#defs: "/$defs/web_settings/$defs/challenge_settings": close({
+		action_settings?: matchN(1, [_#defs."/$defs/web_settings/$defs/challenge_settings/$defs/action_settings", [..._#defs."/$defs/web_settings/$defs/challenge_settings/$defs/action_settings"]])
+		default_settings!: matchN(1, [_#defs."/$defs/web_settings/$defs/challenge_settings/$defs/default_settings", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/web_settings/$defs/challenge_settings/$defs/default_settings"]])
+	})
+
+	_#defs: "/$defs/web_settings/$defs/challenge_settings/$defs/action_settings": close({
+		// The action name.
+		action!: string
+
+		// A challenge is triggered if the end-user score is below that
+		// threshold. Value must be between 0 and 1 (inclusive).
+		score_threshold!: number
+	})
+
+	_#defs: "/$defs/web_settings/$defs/challenge_settings/$defs/default_settings": close({
+		// A challenge is triggered if the end-user score is below that
+		// threshold. Value must be between 0 and 1 (inclusive).
+		score_threshold!: number
 	})
 }

@@ -22,6 +22,10 @@ package res
 		create_time?: string
 		id?:          string
 
+		// Whether or not the cache ingests data as the data is written to
+		// the bucket.
+		ingest_on_write?: bool
+
 		// True if the cache instance has an active Update long-running
 		// operation.
 		pending_update?: bool

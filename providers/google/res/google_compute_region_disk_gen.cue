@@ -9,6 +9,7 @@ import "list"
 		async_primary_disk?: matchN(1, [#async_primary_disk, list.MaxItems(1) & [...#async_primary_disk]])
 		disk_encryption_key?: matchN(1, [#disk_encryption_key, list.MaxItems(1) & [...#disk_encryption_key]])
 		guest_os_features?: matchN(1, [#guest_os_features, [...#guest_os_features]])
+		source_image_encryption_key?: matchN(1, [#source_image_encryption_key, list.MaxItems(1) & [...#source_image_encryption_key]])
 		source_snapshot_encryption_key?: matchN(1, [#source_snapshot_encryption_key, list.MaxItems(1) & [...#source_snapshot_encryption_key]])
 		timeouts?: #timeouts
 
@@ -52,6 +53,24 @@ import "list"
 		// clients and services.
 		effective_labels?: [string]: string
 		id?: string
+
+		// The image from which to initialize this disk. This can be
+		// one of: the image's 'self_link',
+		// 'projects/{project}/global/images/{image}',
+		// 'projects/{project}/global/images/family/{family}',
+		// 'global/images/{image}',
+		// 'global/images/family/{family}', 'family/{family}',
+		// '{project}/{family}',
+		// '{project}/{image}', '{family}', or '{image}'. If referred by
+		// family, the
+		// images names must include the family name. If they don't, use
+		// the
+		// [google_compute_image data
+		// source](/docs/providers/google/d/compute_image.html).
+		// For instance, the image 'centos-6-v20180104' includes its
+		// family name 'centos-6'.
+		// These images can be referred by family name here.
+		image?: string
 
 		// The fingerprint used for optimistic locking of this resource.
 		// Used
@@ -169,6 +188,17 @@ import "list"
 		// or a previous instance of a given disk name.
 		source_disk_id?: string
 
+		// The ID value of the image used to create this disk. This value
+		// identifies the exact image that was used to create this
+		// persistent
+		// disk. For example, if you created the persistent disk from an
+		// image
+		// that was later deleted and recreated under the same name, the
+		// source
+		// image ID would identify the exact version of the image that was
+		// used.
+		source_image_id?: string
+
 		// The unique ID of the snapshot used to create this disk. This
 		// value
 		// identifies the exact snapshot that was used to create this
@@ -234,6 +264,34 @@ import "list"
 		// "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE",
 		// "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE"]
 		type!: string
+	})
+
+	#source_image_encryption_key: close({
+		// The name of the encryption key that is stored in Google Cloud
+		// KMS.
+		kms_key_name?: string
+
+		// The service account used for the encryption request for the
+		// given KMS key.
+		// If absent, the Compute Engine Service Agent service account is
+		// used.
+		kms_key_service_account?: string
+
+		// Specifies a 256-bit customer-supplied encryption key, encoded
+		// in
+		// RFC 4648 base64 to either encrypt or decrypt this resource.
+		raw_key?: string
+
+		// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+		// customer-supplied encryption key to either encrypt or decrypt
+		// this resource. You can provide either the rawKey or the
+		// rsaEncryptedKey.
+		rsa_encrypted_key?: string
+
+		// The RFC 4648 base64 encoded SHA-256 hash of the
+		// customer-supplied
+		// encryption key that protects this resource.
+		sha256?: string
 	})
 
 	#source_snapshot_encryption_key: close({

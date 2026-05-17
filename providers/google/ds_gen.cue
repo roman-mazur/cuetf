@@ -156,6 +156,7 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_compute_region_instance_group": data.#google_compute_region_instance_group
 	_#ds: "\(#googlePrefix)_compute_region_instance_group_manager": data.#google_compute_region_instance_group_manager
 	_#ds: "\(#googlePrefix)_compute_region_instance_template": data.#google_compute_region_instance_template
+	_#ds: "\(#googlePrefix)_compute_region_instant_snapshot_iam_policy": data.#google_compute_region_instant_snapshot_iam_policy
 	_#ds: "\(#googlePrefix)_compute_region_network_endpoint_group": data.#google_compute_region_network_endpoint_group
 	_#ds: "\(#googlePrefix)_compute_region_security_policy": data.#google_compute_region_security_policy
 	_#ds: "\(#googlePrefix)_compute_region_ssl_certificate": data.#google_compute_region_ssl_certificate

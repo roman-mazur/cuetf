@@ -193,6 +193,7 @@ import "list"
 	})
 
 	#persistent_directories: close({
+		gce_hd?: matchN(1, [_#defs."/$defs/persistent_directories/$defs/gce_hd", list.MaxItems(1) & [..._#defs."/$defs/persistent_directories/$defs/gce_hd"]])
 		gce_pd?: matchN(1, [_#defs."/$defs/persistent_directories/$defs/gce_pd", list.MaxItems(1) & [..._#defs."/$defs/persistent_directories/$defs/gce_pd"]])
 
 		// Location of this directory in the running workstation.
@@ -352,6 +353,22 @@ import "list"
 
 		// Whether the instance has the vTPM enabled.
 		enable_vtpm?: bool
+	})
+
+	_#defs: "/$defs/persistent_directories/$defs/gce_hd": close({
+		// How long to wait before converting the disk into a snapshot.
+		archive_timeout?: string
+
+		// Whether the persistent disk should be deleted when the
+		// workstation is deleted. Possible values: ["DELETE", "RETAIN"]
+		reclaim_policy?: string
+
+		// The GB capacity of a persistent home directory. Defaults to
+		// '200'.
+		size_gb?: number
+
+		// Name of the snapshot to use as the source for the disk.
+		source_snapshot?: string
 	})
 
 	_#defs: "/$defs/persistent_directories/$defs/gce_pd": close({

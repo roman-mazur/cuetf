@@ -323,7 +323,7 @@ import "list"
 		network_ip?: string
 
 		// The type of vNIC to be used on this interface. Possible
-		// values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
+		// values:GVNIC, VIRTIO_NET, MRDMA, IRDMA and IDPF
 		nic_type?: string
 
 		// Name of the parent network interface of a dynamic network

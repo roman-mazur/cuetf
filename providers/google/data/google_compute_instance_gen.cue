@@ -50,6 +50,7 @@ package data
 				labels?: [string]: string
 				provisioned_iops?:       number
 				provisioned_throughput?: number
+				replica_zones?: [...string]
 				resource_manager_tags?: [string]: string
 				resource_policies?: [...string]
 				size?:     number

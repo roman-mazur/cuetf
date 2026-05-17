@@ -205,6 +205,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_ces_guardrail": res.#google_ces_guardrail
 	_#res: "\(#googlePrefix)_ces_tool": res.#google_ces_tool
 	_#res: "\(#googlePrefix)_ces_toolset": res.#google_ces_toolset
+	_#res: "\(#googlePrefix)_chronicle_dashboard_chart": res.#google_chronicle_dashboard_chart
 	_#res: "\(#googlePrefix)_chronicle_data_access_label": res.#google_chronicle_data_access_label
 	_#res: "\(#googlePrefix)_chronicle_data_access_scope": res.#google_chronicle_data_access_scope
 	_#res: "\(#googlePrefix)_chronicle_data_table": res.#google_chronicle_data_table
@@ -383,6 +384,10 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_compute_region_health_source": res.#google_compute_region_health_source
 	_#res: "\(#googlePrefix)_compute_region_instance_group_manager": res.#google_compute_region_instance_group_manager
 	_#res: "\(#googlePrefix)_compute_region_instance_template": res.#google_compute_region_instance_template
+	_#res: "\(#googlePrefix)_compute_region_instant_snapshot": res.#google_compute_region_instant_snapshot
+	_#res: "\(#googlePrefix)_compute_region_instant_snapshot_iam_binding": res.#google_compute_region_instant_snapshot_iam_binding
+	_#res: "\(#googlePrefix)_compute_region_instant_snapshot_iam_member": res.#google_compute_region_instant_snapshot_iam_member
+	_#res: "\(#googlePrefix)_compute_region_instant_snapshot_iam_policy": res.#google_compute_region_instant_snapshot_iam_policy
 	_#res: "\(#googlePrefix)_compute_region_network_endpoint": res.#google_compute_region_network_endpoint
 	_#res: "\(#googlePrefix)_compute_region_network_endpoint_group": res.#google_compute_region_network_endpoint_group
 	_#res: "\(#googlePrefix)_compute_region_network_firewall_policy_association": res.#google_compute_region_network_firewall_policy_association
