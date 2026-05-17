@@ -508,6 +508,9 @@ package aws
 		devicefarm?: string
 
 		// Use this to override the default service endpoint URL
+		devopsagent?: string
+
+		// Use this to override the default service endpoint URL
 		devopsguru?: string
 
 		// Use this to override the default service endpoint URL

@@ -1032,7 +1032,10 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_oam_sink_policy": res.#aws_oam_sink_policy
 	_#res: "\(#awsPrefix)_observabilityadmin_centralization_rule_for_organization": res.#aws_observabilityadmin_centralization_rule_for_organization
 	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_enrichment": res.#aws_observabilityadmin_telemetry_enrichment
+	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_evaluation_for_organization": res.#aws_observabilityadmin_telemetry_evaluation_for_organization
+	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_evaluation": res.#aws_observabilityadmin_telemetry_evaluation
 	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_pipeline": res.#aws_observabilityadmin_telemetry_pipeline
+	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_rule": res.#aws_observabilityadmin_telemetry_rule
 	_#res: "\(#awsPrefix)_odb_cloud_autonomous_vm_cluster": res.#aws_odb_cloud_autonomous_vm_cluster
 	_#res: "\(#awsPrefix)_odb_cloud_exadata_infrastructure": res.#aws_odb_cloud_exadata_infrastructure
 	_#res: "\(#awsPrefix)_odb_cloud_vm_cluster": res.#aws_odb_cloud_vm_cluster
@@ -1344,9 +1347,11 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_securityhub_account": res.#aws_securityhub_account
 	_#res: "\(#awsPrefix)_securityhub_account_v2": res.#aws_securityhub_account_v2
 	_#res: "\(#awsPrefix)_securityhub_action_target": res.#aws_securityhub_action_target
+	_#res: "\(#awsPrefix)_securityhub_aggregator_v2": res.#aws_securityhub_aggregator_v2
 	_#res: "\(#awsPrefix)_securityhub_automation_rule": res.#aws_securityhub_automation_rule
 	_#res: "\(#awsPrefix)_securityhub_configuration_policy_association": res.#aws_securityhub_configuration_policy_association
 	_#res: "\(#awsPrefix)_securityhub_configuration_policy": res.#aws_securityhub_configuration_policy
+	_#res: "\(#awsPrefix)_securityhub_connector_v2": res.#aws_securityhub_connector_v2
 	_#res: "\(#awsPrefix)_securityhub_finding_aggregator": res.#aws_securityhub_finding_aggregator
 	_#res: "\(#awsPrefix)_securityhub_insight": res.#aws_securityhub_insight
 	_#res: "\(#awsPrefix)_securityhub_invite_accepter": res.#aws_securityhub_invite_accepter
