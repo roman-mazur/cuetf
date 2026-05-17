@@ -49,7 +49,8 @@ import "list"
 		name!: string
 
 		// The name of the parent this security profile belongs to.
-		// Format: organizations/{organization_id}.
+		// Format: 'organizations/{organization_id}' or
+		// 'projects/{project_id}'.
 		parent?: string
 
 		// Server-defined URL of this resource.

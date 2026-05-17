@@ -357,7 +357,7 @@ import "list"
 		network_ip?: string
 
 		// The type of vNIC to be used on this interface. Possible
-		// values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
+		// values:GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA and IDPF
 		nic_type?: string
 
 		// Name of the parent network interface of a dynamic network
@@ -507,6 +507,10 @@ import "list"
 		// sets the number of throughput mb per second that the disk can
 		// handle.
 		provisioned_throughput?: number
+
+		// A list of short names or self_links of zones in which to create
+		// a regional disk.
+		replica_zones?: [...string]
 
 		// A map of resource manager tags. Resource manager tag keys and
 		// values have the same definition as resource manager tags. Keys

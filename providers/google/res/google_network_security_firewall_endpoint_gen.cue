@@ -19,8 +19,11 @@ import "list"
 		// projects/{project}/global/networks/{name}.
 		associated_networks?: [...string]
 
-		// Project to bill on endpoint uptime usage.
-		billing_project_id!: string
+		// Project to charge for the deployed firewall endpoint.
+		// This field is required for organization-scoped endpoints.
+		// For project-scoped endpoints, it is optional but must match the
+		// endpoint's project if specified.
+		billing_project_id?: string
 
 		// Time the firewall endpoint was created in UTC.
 		create_time?: string
@@ -47,7 +50,8 @@ import "list"
 		name!: string
 
 		// The name of the parent this firewall endpoint belongs to.
-		// Format: organizations/{organization_id}.
+		// Format: 'organizations/{organization_id}' or
+		// 'projects/{project_id}'.
 		parent!: string
 
 		// Whether reconciling is in progress, recommended per

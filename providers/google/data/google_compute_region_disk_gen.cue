@@ -80,6 +80,24 @@ package data
 		})]
 		id?: string
 
+		// The image from which to initialize this disk. This can be
+		// one of: the image's 'self_link',
+		// 'projects/{project}/global/images/{image}',
+		// 'projects/{project}/global/images/family/{family}',
+		// 'global/images/{image}',
+		// 'global/images/family/{family}', 'family/{family}',
+		// '{project}/{family}',
+		// '{project}/{image}', '{family}', or '{image}'. If referred by
+		// family, the
+		// images names must include the family name. If they don't, use
+		// the
+		// [google_compute_image data
+		// source](/docs/providers/google/d/compute_image.html).
+		// For instance, the image 'centos-6-v20180104' includes its
+		// family name 'centos-6'.
+		// These images can be referred by family name here.
+		image?: string
+
 		// The fingerprint used for optimistic locking of this resource.
 		// Used
 		// internally during updates.
@@ -195,6 +213,29 @@ package data
 		// current
 		// or a previous instance of a given disk name.
 		source_disk_id?: string
+
+		// The customer-supplied encryption key of the source image.
+		// Required if
+		// the source image is protected by a customer-supplied encryption
+		// key.
+		source_image_encryption_key?: [...close({
+			kms_key_name?:            string
+			kms_key_service_account?: string
+			raw_key?:                 string
+			rsa_encrypted_key?:       string
+			sha256?:                  string
+		})]
+
+		// The ID value of the image used to create this disk. This value
+		// identifies the exact image that was used to create this
+		// persistent
+		// disk. For example, if you created the persistent disk from an
+		// image
+		// that was later deleted and recreated under the same name, the
+		// source
+		// image ID would identify the exact version of the image that was
+		// used.
+		source_image_id?: string
 
 		// The customer-supplied encryption key of the source snapshot.
 		// Required

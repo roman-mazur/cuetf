@@ -15,6 +15,9 @@ import "list"
 		// The collection ID.
 		collection_id?: string
 
+		// Output only. Unique obfuscated identifier of a WidgetConfig.
+		config_id?: string
+
 		// The engine ID.
 		engine_id!: string
 		id?:        string

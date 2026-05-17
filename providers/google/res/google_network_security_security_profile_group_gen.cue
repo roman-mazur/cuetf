@@ -51,7 +51,8 @@ package res
 		name!: string
 
 		// The name of the parent this security profile group belongs to.
-		// Format: organizations/{organization_id}.
+		// Format: 'organizations/{organization_id}' or
+		// 'projects/{project_id}'.
 		parent?: string
 
 		// The combination of labels configured directly on the resource

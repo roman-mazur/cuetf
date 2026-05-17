@@ -11,6 +11,10 @@ package res
 		// if any. Set by the API if undefined.
 		address?: string
 
+		// The unique numeric identifier for the resource. This identifier
+		// is defined by the server.
+		address_id?: string
+
 		// The type of address to reserve.
 		// Note: if you set this argument's value as 'INTERNAL' you need
 		// to leave the 'network_tier' argument unset in that resource
