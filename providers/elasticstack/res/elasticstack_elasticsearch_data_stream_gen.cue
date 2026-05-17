@@ -1,12 +1,10 @@
 package res
 
-import "list"
-
 #elasticstack_elasticsearch_data_stream: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_data_stream")
 	close({
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
 		// Current generation for the data stream.
 		generation?: number
@@ -17,20 +15,12 @@ import "list"
 		// Internal identifier of the resource
 		id?: string
 
-		// Name of the current ILM lifecycle policy in the stream’s
+		// Name of the current ILM lifecycle policy in the stream's
 		// matching index template.
 		ilm_policy?: string
 
-		// Array of objects containing information about the data stream’s
-		// backing indices. The last item in this array contains
-		// information about the stream’s current write index.
-		indices?: [...close({
-			index_name?: string
-			index_uuid?: string
-		})]
-
 		// Custom metadata for the stream, copied from the _meta object of
-		// the stream’s matching index template.
+		// the stream's matching index template.
 		metadata?: string
 
 		// Name of the data stream to create.
@@ -49,12 +39,29 @@ import "list"
 		// interaction.
 		system?: bool
 
-		// Name of the index template used to create the data stream’s
+		// Name of the index template used to create the data stream's
 		// backing indices.
 		template?: string
 
-		// Contains information about the data stream’s @timestamp field.
+		// Contains information about the data stream's @timestamp field.
 		timestamp_field?: string
+
+		// Array of objects containing information about the data stream's
+		// backing indices. The last item in this array contains
+		// information about the stream's current write index.
+		indices?: matchN(1, [close({
+			// Name of the backing index.
+			index_name?: string
+
+			// Universally unique identifier (UUID) for the index.
+			index_uuid?: string
+		}), [...close({
+			// Name of the backing index.
+			index_name?: string
+
+			// Universally unique identifier (UUID) for the index.
+			index_uuid?: string
+		})]])
 	})
 
 	#elasticsearch_connection: close({

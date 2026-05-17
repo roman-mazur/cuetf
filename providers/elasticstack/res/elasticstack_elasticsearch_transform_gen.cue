@@ -1,16 +1,14 @@
 package res
 
-import "list"
-
 #elasticstack_elasticsearch_transform: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_transform")
 	close({
-		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
-		retention_policy?: matchN(1, [#retention_policy, list.MaxItems(1) & [...#retention_policy]])
-		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
-		sync?: matchN(1, [#sync, list.MaxItems(1) & [...#sync]])
+		destination?: #destination
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+		retention_policy?: #retention_policy
+		source?:           #source
+		sync?:             #sync
 
 		// Specifies whether the transform checkpoint ranges should be
 		// optimized for performance.
@@ -143,7 +141,7 @@ import "list"
 	})
 
 	#retention_policy: close({
-		time!: matchN(1, [_#defs."/$defs/retention_policy/$defs/time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/retention_policy/$defs/time"]])
+		time?: _#defs."/$defs/retention_policy/$defs/time"
 	})
 
 	#source: close({
@@ -160,7 +158,7 @@ import "list"
 	})
 
 	#sync: close({
-		time!: matchN(1, [_#defs."/$defs/sync/$defs/time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/sync/$defs/time"]])
+		time?: _#defs."/$defs/sync/$defs/time"
 	})
 
 	_#defs: "/$defs/destination/$defs/aliases": close({
@@ -175,11 +173,11 @@ import "list"
 	_#defs: "/$defs/retention_policy/$defs/time": close({
 		// The date field that is used to calculate the age of the
 		// document.
-		field!: string
+		field?: string
 
 		// Specifies the maximum age of a document in the destination
 		// index.
-		max_age!: string
+		max_age?: string
 	})
 
 	_#defs: "/$defs/sync/$defs/time": close({
@@ -189,6 +187,6 @@ import "list"
 
 		// The date field that is used to identify new documents in the
 		// source.
-		field!: string
+		field?: string
 	})
 }

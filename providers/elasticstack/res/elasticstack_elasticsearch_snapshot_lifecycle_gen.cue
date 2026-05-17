@@ -1,12 +1,10 @@
 package res
 
-import "list"
-
 #elasticstack_elasticsearch_snapshot_lifecycle: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_snapshot_lifecycle")
 	close({
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
 		// Determines how wildcard patterns in the `indices` parameter
 		// match data streams and indices. Supports comma-separated
@@ -31,8 +29,7 @@ import "list"
 		// If `true`, include the cluster state in the snapshot.
 		include_global_state?: bool
 
-		// Comma-separated list of data streams and indices to include in
-		// the snapshot.
+		// List of data streams and indices to include in the snapshot.
 		indices?: [...string]
 
 		// Maximum number of snapshots to retain, even if the snapshots

@@ -32,8 +32,8 @@ package data
 		// parameter is required.
 		script_id?: string
 
-		// Inline script. If no id is specified, this parameter is
-		// required.
+		// Inline script. If no `script_id` is specified, this parameter
+		// is required.
 		source?: string
 
 		// Identifier for the processor.

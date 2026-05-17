@@ -1,39 +1,82 @@
 package data
 
-import "list"
-
 #elasticstack_elasticsearch_info: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_info")
 	close({
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
-		// Name of the cluster, based on the Cluster name setting setting.
+		// Name of the cluster, based on the `cluster.name` setting.
 		cluster_name?: string
 
 		// Unique identifier for the cluster.
 		cluster_uuid?: string
-		id?:           string
+
+		// Internal identifier of the resource.
+		id?: string
 
 		// Name of the node.
 		name?: string
 
-		// Elasticsearh tag line.
+		// Elasticsearch tag line.
 		tagline?: string
 
-		// Contains statistics about the number of nodes selected by the
-		// request's node filters.
-		version?: [...close({
-			build_date?:                          string
-			build_flavor?:                        string
-			build_hash?:                          string
-			build_snapshot?:                      bool
-			build_type?:                          string
-			lucene_version?:                      string
+		// Contains version information for the Elasticsearch cluster.
+		version?: matchN(1, [close({
+			// Build date.
+			build_date?: string
+
+			// Build Flavor.
+			build_flavor?: string
+
+			// Short hash of the last git commit in this release.
+			build_hash?: string
+
+			// Build Snapshot.
+			build_snapshot?: bool
+
+			// Build Type.
+			build_type?: string
+
+			// Lucene Version.
+			lucene_version?: string
+
+			// Minimum index compatibility version.
 			minimum_index_compatibility_version?: string
-			minimum_wire_compatibility_version?:  string
-			number?:                              string
-		})]
+
+			// Minimum wire compatibility version.
+			minimum_wire_compatibility_version?: string
+
+			// Elasticsearch version number.
+			number?: string
+		}), [...close({
+			// Build date.
+			build_date?: string
+
+			// Build Flavor.
+			build_flavor?: string
+
+			// Short hash of the last git commit in this release.
+			build_hash?: string
+
+			// Build Snapshot.
+			build_snapshot?: bool
+
+			// Build Type.
+			build_type?: string
+
+			// Lucene Version.
+			lucene_version?: string
+
+			// Minimum index compatibility version.
+			minimum_index_compatibility_version?: string
+
+			// Minimum wire compatibility version.
+			minimum_wire_compatibility_version?: string
+
+			// Elasticsearch version number.
+			number?: string
+		})]])
 	})
 
 	#elasticsearch_connection: close({

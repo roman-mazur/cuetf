@@ -21,9 +21,10 @@ package res
 			// The connector ID.
 			id!: string
 
-			// Object containing the allowed connector fields, which varies
-			// according to the connector type.
-			params!: [string]: string
+			// JSON-encoded object containing the allowed connector fields,
+			// which varies according to the connector type. Use
+			// `jsonencode({...})` to set this value.
+			params!: string
 
 			// A unique identifier for the action.
 			uuid?: string
@@ -58,9 +59,10 @@ package res
 			// The connector ID.
 			id!: string
 
-			// Object containing the allowed connector fields, which varies
-			// according to the connector type.
-			params!: [string]: string
+			// JSON-encoded object containing the allowed connector fields,
+			// which varies according to the connector type. Use
+			// `jsonencode({...})` to set this value.
+			params!: string
 
 			// A unique identifier for the action.
 			uuid?: string

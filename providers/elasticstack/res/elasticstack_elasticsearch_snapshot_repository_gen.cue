@@ -1,18 +1,16 @@
 package res
 
-import "list"
-
 #elasticstack_elasticsearch_snapshot_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_snapshot_repository")
 	close({
-		azure?: matchN(1, [#azure, list.MaxItems(1) & [...#azure]])
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
-		fs?: matchN(1, [#fs, list.MaxItems(1) & [...#fs]])
-		gcs?: matchN(1, [#gcs, list.MaxItems(1) & [...#gcs]])
-		hdfs?: matchN(1, [#hdfs, list.MaxItems(1) & [...#hdfs]])
-		s3?: matchN(1, [#s3, list.MaxItems(1) & [...#s3]])
-		url?: matchN(1, [#url, list.MaxItems(1) & [...#url]])
+		azure?: #azure
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+		fs?:   #fs
+		gcs?:  #gcs
+		hdfs?: #hdfs
+		s3?:   #s3
+		url?:  #url
 
 		// Internal identifier of the resource
 		id?: string
@@ -41,10 +39,10 @@ import "list"
 
 		// Container name. You must create the Azure container before
 		// creating the repository.
-		container!: string
+		container?: string
 
-		// Location mode. `primary_only` or `secondary_only`. See the
-		// [Azure storage redundancy
+		// Location mode for the Azure repository. `primary_only` or
+		// `secondary_only`. See the [Azure storage redundancy
 		// documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy)
 		// for more details.
 		location_mode?: string
@@ -117,7 +115,7 @@ import "list"
 
 		// Location of the shared filesystem used to store and retrieve
 		// snapshots.
-		location!: string
+		location?: string
 
 		// Maximum number of snapshots the repository can contain.
 		max_number_of_snapshots?: number
@@ -138,7 +136,7 @@ import "list"
 		base_path?: string
 
 		// The name of the bucket to be used for snapshots.
-		bucket!: string
+		bucket?: string
 
 		// Maximum size of files in snapshots.
 		chunk_size?: string
@@ -180,13 +178,13 @@ import "list"
 
 		// The file path within the filesystem where data is
 		// stored/loaded.
-		path!: string
+		path?: string
 
 		// If true, the repository is read-only.
 		readonly?: bool
 
 		// The uri address for hdfs. ex: "hdfs://<host>:<port>/".
-		uri!: string
+		uri?: string
 	})
 
 	#s3: close({
@@ -194,7 +192,7 @@ import "list"
 		base_path?: string
 
 		// Name of the S3 bucket to use for snapshots.
-		bucket!: string
+		bucket?: string
 
 		// Minimum threshold below which the chunk is uploaded using a
 		// single request.
@@ -265,6 +263,6 @@ import "list"
 		readonly?: bool
 
 		// URL location of the root of the shared filesystem repository.
-		url!: string
+		url?: string
 	})
 }

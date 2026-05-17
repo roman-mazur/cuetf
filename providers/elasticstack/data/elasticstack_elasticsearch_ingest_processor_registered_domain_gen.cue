@@ -10,7 +10,7 @@ package data
 		// Field containing the source FQDN.
 		field!: string
 
-		// Internal identifier of the resource.
+		// Internal identifier of the resource
 		id?: string
 
 		// Conditionally execute the processor
@@ -34,7 +34,7 @@ package data
 
 		// Object field containing extracted domain components. If an
 		// `<empty string>`, the processor adds components to the
-		// document’s root.
+		// document's root.
 		target_field?: string
 	})
 }

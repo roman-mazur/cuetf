@@ -15,6 +15,19 @@ package res
 		time_window?: matchN(1, [#time_window, [...#time_window]])
 		timeslice_metric_indicator?: matchN(1, [#timeslice_metric_indicator, [...#timeslice_metric_indicator]])
 
+		// Links to related assets (for example dashboards) returned and
+		// managed with the SLO.
+		artifacts?: close({
+			// Dashboard references attached to the SLO.
+			dashboards?: matchN(1, [close({
+				// Dashboard saved object id.
+				id!: string
+			}), [...close({
+				// Dashboard saved object id.
+				id!: string
+			})]])
+		})
+
 		// An `occurrences` budgeting method uses the number of good and
 		// total events during the time window. A `timeslices` budgeting
 		// method uses the number of good slices and total slices during
@@ -28,6 +41,9 @@ package res
 
 		// A description for the SLO.
 		description!: string
+
+		// Whether the SLO is enabled in Kibana.
+		enabled?: bool
 
 		// Optional group by fields to use to generate an SLO per distinct
 		// value.
@@ -116,6 +132,64 @@ package res
 		index!:           string
 		timestamp_field?: string
 		total?:           string
+
+		// Object-form KQL (kqlQuery and filters). Mutually exclusive with
+		// the legacy string attribute for the same logical field. Use
+		// the attribute form in Terraform (e.g. `filter_kql = {
+		// kql_query = "..." }`), not a nested `filter_kql { ... }`
+		// block.
+		filter_kql?: close({
+			// Optional Kibana filter objects (query JSON) accompanying the
+			// KQL object form.
+			filters?: matchN(1, [close({
+				// Filter query as a JSON object.
+				query?: string
+			}), [...close({
+				// Filter query as a JSON object.
+				query?: string
+			})]])
+
+			// KQL query string when using the object form.
+			kql_query?: string
+		})
+
+		// Object-form KQL (kqlQuery and filters). Mutually exclusive with
+		// the legacy string attribute for the same logical field. Use
+		// the attribute form in Terraform (e.g. `good_kql = { kql_query
+		// = "..." }`), not a nested `good_kql { ... }` block.
+		good_kql?: close({
+			// Optional Kibana filter objects (query JSON) accompanying the
+			// KQL object form.
+			filters?: matchN(1, [close({
+				// Filter query as a JSON object.
+				query?: string
+			}), [...close({
+				// Filter query as a JSON object.
+				query?: string
+			})]])
+
+			// KQL query string when using the object form.
+			kql_query?: string
+		})
+
+		// Object-form KQL (kqlQuery and filters). Mutually exclusive with
+		// the legacy string attribute for the same logical field. Use
+		// the attribute form in Terraform (e.g. `total_kql = { kql_query
+		// = "..." }`), not a nested `total_kql { ... }` block.
+		total_kql?: close({
+			// Optional Kibana filter objects (query JSON) accompanying the
+			// KQL object form.
+			filters?: matchN(1, [close({
+				// Filter query as a JSON object.
+				query?: string
+			}), [...close({
+				// Filter query as a JSON object.
+				query?: string
+			})]])
+
+			// KQL query string when using the object form.
+			kql_query?: string
+		})
 	})
 
 	#metric_custom_indicator: close({
@@ -143,6 +217,10 @@ package res
 		// resource-intensive or time-consuming and unnecessary
 		prevent_initial_backfill?: bool
 		sync_delay?:               string
+
+		// The date field used to identify new documents in the source.
+		// When unspecified, the indicator timestamp field is used.
+		sync_field?: string
 	})
 
 	#time_window: close({
@@ -214,23 +292,24 @@ package res
 	})
 
 	_#defs: "/$defs/timeslice_metric_indicator/$defs/metric/$defs/metrics": close({
-		// The aggregation type for this metric. One of: sum, avg, min,
-		// max, value_count, last_value, cardinality, std_deviation,
-		// percentile, doc_count. Determines which other fields are
-		// required.
+		// The aggregation type for this metric (kbapi timeslice metric
+		// union: no value_count). One of: sum, avg, min, max,
+		// last_value, cardinality, std_deviation, percentile, doc_count.
+		// Determines which other fields are required.
 		aggregation!: string
 
 		// Field to aggregate. Required for sum, avg, min, max,
-		// value_count, last_value, cardinality, std_deviation,
-		// percentile. Must NOT be set for doc_count.
+		// last_value, cardinality, std_deviation, percentile. Must NOT
+		// be set for doc_count.
 		field?: string
 
 		// Optional KQL filter for this metric. Supported for all
-		// aggregations except doc_count.
+		// timeslice metric aggregation kinds, including doc_count, per
+		// the Kibana SLO API.
 		filter?: string
 
 		// The unique name for this metric. Used as a variable in the
-		// equation field.
+		// equation field. Must be a single letter A–Z.
 		name!: string
 
 		// Percentile value (e.g., 99). Required if aggregation is

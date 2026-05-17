@@ -1,22 +1,15 @@
 package data
 
-import "list"
-
 #elasticstack_elasticsearch_index_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_index_template")
 	close({
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+		data_stream?: #data_stream
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+		template?: #template
 
 		// An ordered list of component template names.
 		composed_of?: [...string]
-
-		// If this object is included, the template is used to create data
-		// streams and their backing indices. Supports an empty object.
-		data_stream?: [...close({
-			allow_custom_routing?: bool
-			hidden?:               bool
-		})]
 
 		// Internal identifier of the resource
 		id?: string
@@ -38,27 +31,17 @@ import "list"
 		// stream or index is created.
 		priority?: number
 
-		// Template to be applied. It may optionally include an aliases,
-		// mappings, lifecycle, or settings configuration.
-		template?: [...close({
-			alias?: [...close({
-				filter?:         string
-				index_routing?:  string
-				is_hidden?:      bool
-				is_write_index?: bool
-				name?:           string
-				routing?:        string
-				search_routing?: string
-			})]
-			lifecycle?: [...close({
-				data_retention?: string
-			})]
-			mappings?: string
-			settings?: string
-		})]
-
 		// Version number used to manage index templates externally.
 		version?: number
+	})
+
+	#data_stream: close({
+		// If `true`, the data stream supports custom routing. Defaults to
+		// `false`. Available only in **8.x**
+		allow_custom_routing?: bool
+
+		// If true, the data stream is hidden.
+		hidden?: bool
 	})
 
 	#elasticsearch_connection: close({
@@ -107,5 +90,71 @@ import "list"
 
 		// Username to use for API authentication to Elasticsearch.
 		username?: string
+	})
+
+	#template: close({
+		alias?: matchN(1, [_#defs."/$defs/template/$defs/alias", [..._#defs."/$defs/template/$defs/alias"]])
+		data_stream_options?: _#defs."/$defs/template/$defs/data_stream_options"
+		lifecycle?:           _#defs."/$defs/template/$defs/lifecycle"
+
+		// Mapping for fields in the index. Should be specified as a JSON
+		// object of field mappings. See the documentation
+		// (https://www.elastic.co/guide/en/elasticsearch/reference/current/explicit-mapping.html)
+		// for more details
+		mappings?: string
+
+		// Configuration options for the index. See,
+		// https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings
+		settings?: string
+	})
+
+	_#defs: "/$defs/template/$defs/alias": close({
+		// Query used to limit documents the alias can access.
+		filter?: string
+
+		// Value used to route indexing operations to a specific shard. If
+		// specified, this overwrites the `routing` value for indexing
+		// operations.
+		index_routing?: string
+
+		// If true, the alias is hidden.
+		is_hidden?: bool
+
+		// If true, the index is the write index for the alias.
+		is_write_index?: bool
+
+		// The alias name.
+		name?: string
+
+		// Value used to route indexing and search operations to a
+		// specific shard.
+		routing?: string
+
+		// Value used to route search operations to a specific shard. If
+		// specified, this overwrites the routing value for search
+		// operations.
+		search_routing?: string
+	})
+
+	_#defs: "/$defs/template/$defs/data_stream_options": close({
+		failure_store?: _#defs."/$defs/template/$defs/data_stream_options/$defs/failure_store"
+	})
+
+	_#defs: "/$defs/template/$defs/data_stream_options/$defs/failure_store": close({
+		lifecycle?: _#defs."/$defs/template/$defs/data_stream_options/$defs/failure_store/$defs/lifecycle"
+
+		// If true, document redirection to the failure store is enabled
+		// for new matching data streams.
+		enabled?: bool
+	})
+
+	_#defs: "/$defs/template/$defs/data_stream_options/$defs/failure_store/$defs/lifecycle": close({
+		// The retention period for failure store documents (e.g. "30d").
+		data_retention?: string
+	})
+
+	_#defs: "/$defs/template/$defs/lifecycle": close({
+		// The retention period of the data indexed in this data stream.
+		data_retention?: string
 	})
 }

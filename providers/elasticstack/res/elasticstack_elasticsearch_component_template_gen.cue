@@ -1,13 +1,11 @@
 package res
 
-import "list"
-
 #elasticstack_elasticsearch_component_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_component_template")
 	close({
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
-		template!: matchN(1, [#template, list.MaxItems(1) & [_, ...] & [...#template]])
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+		template?: #template
 
 		// Internal identifier of the resource
 		id?: string
@@ -74,9 +72,9 @@ import "list"
 		alias?: matchN(1, [_#defs."/$defs/template/$defs/alias", [..._#defs."/$defs/template/$defs/alias"]])
 
 		// Mapping for fields in the index. Should be specified as a JSON
-		// object of field mappings. See the documentation
-		// (https://www.elastic.co/guide/en/elasticsearch/reference/current/explicit-mapping.html)
-		// for more details
+		// object of field mappings. See the [explicit mapping
+		// documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/explicit-mapping.html)
+		// for more details.
 		mappings?: string
 
 		// Configuration options for the index. See the [index modules

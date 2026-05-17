@@ -329,11 +329,37 @@ package res
 		// shard from being opened. Accepts `false`, `true`, `checksum`.
 		shard_check_on_startup?: string
 
-		// The field to sort shards in this index by.
-		sort_field?: [...string]
+		// Sort configuration for documents within each shard segment.
+		// Replaces the deprecated sort_field and sort_order attributes.
+		sort?: matchN(1, [close({
+			// The index field to sort by.
+			field!: string
 
-		// The direction to sort shards in. Accepts `asc`, `desc`.
-		sort_order?: [...string]
+			// How to treat documents missing the sort field. Valid values:
+			// _last, _first.
+			missing?: string
+
+			// Which value to use when the sort field has multiple values.
+			// Valid values: min, max.
+			mode?: string
+
+			// The sort direction. Valid values: asc, desc.
+			order?: string
+		}), [...close({
+			// The index field to sort by.
+			field!: string
+
+			// How to treat documents missing the sort field. Valid values:
+			// _last, _first.
+			missing?: string
+
+			// Which value to use when the sort field has multiple values.
+			// Valid values: min, max.
+			mode?: string
+
+			// The sort direction. Valid values: asc, desc.
+			order?: string
+		})]])
 
 		// Period to wait for a response. If no response is received
 		// before the timeout expires, the request fails and returns an
@@ -343,6 +369,34 @@ package res
 		// Time to delay the allocation of replica shards which become
 		// unassigned because a node has left, in time units, e.g. `10s`
 		unassigned_node_left_delayed_timeout?: string
+
+		// Opt-in flag for **create-time** adoption of an index that
+		// already exists when Terraform runs create (for example after a
+		// replacement race or when managing an index created
+		// out-of-band).
+		//
+		// When `false` or unset (the default), the resource behaves as
+		// before and create always attempts a new index.
+		//
+		// After a resource is already in state, this attribute has **no
+		// create-time effect**: toggling it only changes configuration;
+		// apply does not re-run create, so it is effectively a planning
+		// no-op for lifecycle behavior.
+		//
+		// The adoption path runs only for **static** index `name` values.
+		// For date math index names, the provider emits a warning that
+		// `use_existing` does not apply and proceeds with the normal
+		// create flow.
+		//
+		// When adoption runs, every **static** index setting you
+		// **explicitly** set in configuration must match the existing
+		// index; any mismatch returns an error and the provider does not
+		// change the cluster.
+		//
+		// After a successful adopt, Terraform fully manages the index:
+		// subsequent reads, updates, and destroys follow the normal
+		// resource behavior.
+		use_existing?: bool
 
 		// The number of shard copies that must be active before
 		// proceeding with the operation. Set to `all` or any positive

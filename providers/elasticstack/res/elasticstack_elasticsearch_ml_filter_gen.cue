@@ -1,33 +1,24 @@
-package data
+package res
 
-#elasticstack_elasticsearch_security_user: {
+#elasticstack_elasticsearch_ml_filter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_security_user")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_ml_filter")
 	close({
 		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
-		// The email of the user.
-		email?: string
+		// A description of the filter.
+		description?: string
 
-		// Specifies whether the user is enabled. The default value is
-		// true.
-		enabled?: bool
+		// A string that uniquely identifies a filter.
+		filter_id!: string
 
-		// The full name of the user.
-		full_name?: string
-
-		// Internal identifier of the resource
+		// Internal identifier of the resource.
 		id?: string
 
-		// Arbitrary metadata that you want to associate with the user.
-		metadata?: string
-
-		// A set of roles the user has. The roles determine the user's
-		// access permissions. Default is [].
-		roles?: [...string]
-
-		// An identifier for the user
-		username!: string
+		// The items of the filter. A wildcard `*` can be used at the
+		// beginning or the end of an item. Up to 10000 items are allowed
+		// in each filter.
+		items?: [...string]
 	})
 
 	#elasticsearch_connection: close({

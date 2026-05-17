@@ -158,6 +158,10 @@ package res
 
 			// Client SSL certificate key.
 			key?: string
+
+			// The SSL verification mode. One of `certificate`, `full`,
+			// `none`, `strict`.
+			verification_mode?: string
 		})
 	})
 

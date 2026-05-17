@@ -1,14 +1,12 @@
 package res
 
-import "list"
-
 #elasticstack_elasticsearch_index_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_index_template")
 	close({
-		data_stream?: matchN(1, [#data_stream, list.MaxItems(1) & [...#data_stream]])
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
-		template?: matchN(1, [#template, list.MaxItems(1) & [...#template]])
+		data_stream?: #data_stream
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+		template?: #template
 
 		// An ordered list of component template names.
 		composed_of?: [...string]
@@ -96,7 +94,8 @@ import "list"
 
 	#template: close({
 		alias?: matchN(1, [_#defs."/$defs/template/$defs/alias", [..._#defs."/$defs/template/$defs/alias"]])
-		lifecycle?: matchN(1, [_#defs."/$defs/template/$defs/lifecycle", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/lifecycle"]])
+		data_stream_options?: _#defs."/$defs/template/$defs/data_stream_options"
+		lifecycle?:           _#defs."/$defs/template/$defs/lifecycle"
 
 		// Mapping for fields in the index. Should be specified as a JSON
 		// object of field mappings. See the documentation
@@ -137,8 +136,25 @@ import "list"
 		search_routing?: string
 	})
 
+	_#defs: "/$defs/template/$defs/data_stream_options": close({
+		failure_store?: _#defs."/$defs/template/$defs/data_stream_options/$defs/failure_store"
+	})
+
+	_#defs: "/$defs/template/$defs/data_stream_options/$defs/failure_store": close({
+		lifecycle?: _#defs."/$defs/template/$defs/data_stream_options/$defs/failure_store/$defs/lifecycle"
+
+		// If true, document redirection to the failure store is enabled
+		// for new matching data streams.
+		enabled?: bool
+	})
+
+	_#defs: "/$defs/template/$defs/data_stream_options/$defs/failure_store/$defs/lifecycle": close({
+		// The retention period for failure store documents (e.g. "30d").
+		data_retention?: string
+	})
+
 	_#defs: "/$defs/template/$defs/lifecycle": close({
 		// The retention period of the data indexed in this data stream.
-		data_retention!: string
+		data_retention?: string
 	})
 }

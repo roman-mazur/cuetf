@@ -1,12 +1,10 @@
 package data
 
-import "list"
-
 #elasticstack_elasticsearch_ingest_processor_inference: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_ingest_processor_inference")
 	close({
-		input_output?: matchN(1, [#input_output, list.MaxItems(1) & [...#input_output]])
+		input_output?: #input_output
 
 		// Description of the processor.
 		description?: string
@@ -19,7 +17,7 @@ import "list"
 		// Internal identifier of the resource
 		id?: string
 
-		// Conditionally execute the processor.
+		// Conditionally execute the processor
 		if?: string
 
 		// Ignore failures for the processor.
