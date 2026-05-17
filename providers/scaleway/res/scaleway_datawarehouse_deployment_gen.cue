@@ -66,6 +66,10 @@ import "list"
 		// Number of replicas
 		replica_count!: number
 
+		// Number of shards for the deployment. This value is immutable
+		// and cannot be changed after creation.
+		shard_count?: number
+
 		// Whether the deployment should be running (`true`) or stopped
 		// (`false`). Maps to the Start deployment and Stop deployment
 		// API actions.

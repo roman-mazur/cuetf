@@ -15,9 +15,6 @@ package res
 
 		// The region you want to attach the resource to
 		region?: string
-
-		// URL used to query the container
-		url?: string
 	})
 
 	#timeouts: close({
