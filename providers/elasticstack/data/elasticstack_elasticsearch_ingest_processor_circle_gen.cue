@@ -8,11 +8,11 @@ package data
 		description?: string
 
 		// The difference between the resulting inscribed distance from
-		// center to side and the circle’s radius (measured in meters for
+		// center to side and the circle's radius (measured in meters for
 		// `geo_shape`, unit-less for `shape`)
 		error_distance!: number
 
-		// The string-valued field to trim whitespace from.
+		// The field containing the circle geometry to convert.
 		field!: string
 
 		// Internal identifier of the resource

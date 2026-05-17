@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_ml_anomaly_detection_job")
 	close({
 		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+		timeouts?: #timeouts
 
 		// Advanced configuration option. Specifies whether this job can
 		// open when there is insufficient machine learning node capacity
@@ -61,7 +62,8 @@ package res
 		renormalization_window_days?: number
 
 		// A text string that affects the name of the machine learning
-		// results index.
+		// results index. Do not start the value with `custom-`;
+		// Elasticsearch automatically adds this prefix.
 		results_index_name?: string
 
 		// Advanced configuration option. The period of time (in days)
@@ -159,13 +161,22 @@ package res
 				use_null?: bool
 
 				// Custom rules enable you to customize the way detectors operate.
+				// Each rule must either have a non-empty `scope` or at least one
+				// `conditions` entry. Multiple conditions are combined together
+				// with a logical AND. A non-empty `scope` and one or more
+				// `conditions` may both be set on the same rule; they are not
+				// mutually exclusive.
 				custom_rules?: matchN(1, [close({
 					// The set of actions to be triggered when the rule applies. If
 					// more than one action is specified the effects of all actions
 					// are combined.
 					actions?: [...string]
 
-					// An array of numeric conditions when the rule applies.
+					// An array of numeric conditions when the rule applies. If you
+					// specify more than one condition, Elasticsearch combines them
+					// together with a logical AND. A rule must either have a
+					// non-empty `scope` or at least one condition. You may set
+					// `scope` on the same rule.
 					conditions?: matchN(1, [close({
 						// Specifies the result property to which the condition applies.
 						applies_to!: string
@@ -187,13 +198,33 @@ package res
 						// the operator.
 						value!: number
 					})]])
+
+					// Maps an analysis field name (typically matching
+					// `by_field_name`, `over_field_name`, or `partition_field_name`
+					// on the detector) to an ML filter reference. Each `filter_id`
+					// must identify an ML filter that already exists in the cluster
+					// (for example, created using the Elasticsearch ML filter APIs).
+					// A rule must either have a non-empty `scope` or at least one
+					// condition. You may set `conditions` on the same rule.
+					scope?: [string]: close({
+						// The ML filter identifier (`filter_id`) to apply.
+						filter_id!: string
+
+						// `include` applies the rule to values in the filter; `exclude`
+						// applies it to values not in the filter.
+						filter_type?: string
+					})
 				}), [...close({
 					// The set of actions to be triggered when the rule applies. If
 					// more than one action is specified the effects of all actions
 					// are combined.
 					actions?: [...string]
 
-					// An array of numeric conditions when the rule applies.
+					// An array of numeric conditions when the rule applies. If you
+					// specify more than one condition, Elasticsearch combines them
+					// together with a logical AND. A rule must either have a
+					// non-empty `scope` or at least one condition. You may set
+					// `scope` on the same rule.
 					conditions?: matchN(1, [close({
 						// Specifies the result property to which the condition applies.
 						applies_to!: string
@@ -215,6 +246,22 @@ package res
 						// the operator.
 						value!: number
 					})]])
+
+					// Maps an analysis field name (typically matching
+					// `by_field_name`, `over_field_name`, or `partition_field_name`
+					// on the detector) to an ML filter reference. Each `filter_id`
+					// must identify an ML filter that already exists in the cluster
+					// (for example, created using the Elasticsearch ML filter APIs).
+					// A rule must either have a non-empty `scope` or at least one
+					// condition. You may set `conditions` on the same rule.
+					scope?: [string]: close({
+						// The ML filter identifier (`filter_id`) to apply.
+						filter_id!: string
+
+						// `include` applies the rule to values in the filter; `exclude`
+						// applies it to values not in the filter.
+						filter_type?: string
+					})
 				})]])
 			}), [...close({
 				// The field used to split the data.
@@ -256,13 +303,22 @@ package res
 				use_null?: bool
 
 				// Custom rules enable you to customize the way detectors operate.
+				// Each rule must either have a non-empty `scope` or at least one
+				// `conditions` entry. Multiple conditions are combined together
+				// with a logical AND. A non-empty `scope` and one or more
+				// `conditions` may both be set on the same rule; they are not
+				// mutually exclusive.
 				custom_rules?: matchN(1, [close({
 					// The set of actions to be triggered when the rule applies. If
 					// more than one action is specified the effects of all actions
 					// are combined.
 					actions?: [...string]
 
-					// An array of numeric conditions when the rule applies.
+					// An array of numeric conditions when the rule applies. If you
+					// specify more than one condition, Elasticsearch combines them
+					// together with a logical AND. A rule must either have a
+					// non-empty `scope` or at least one condition. You may set
+					// `scope` on the same rule.
 					conditions?: matchN(1, [close({
 						// Specifies the result property to which the condition applies.
 						applies_to!: string
@@ -284,13 +340,33 @@ package res
 						// the operator.
 						value!: number
 					})]])
+
+					// Maps an analysis field name (typically matching
+					// `by_field_name`, `over_field_name`, or `partition_field_name`
+					// on the detector) to an ML filter reference. Each `filter_id`
+					// must identify an ML filter that already exists in the cluster
+					// (for example, created using the Elasticsearch ML filter APIs).
+					// A rule must either have a non-empty `scope` or at least one
+					// condition. You may set `conditions` on the same rule.
+					scope?: [string]: close({
+						// The ML filter identifier (`filter_id`) to apply.
+						filter_id!: string
+
+						// `include` applies the rule to values in the filter; `exclude`
+						// applies it to values not in the filter.
+						filter_type?: string
+					})
 				}), [...close({
 					// The set of actions to be triggered when the rule applies. If
 					// more than one action is specified the effects of all actions
 					// are combined.
 					actions?: [...string]
 
-					// An array of numeric conditions when the rule applies.
+					// An array of numeric conditions when the rule applies. If you
+					// specify more than one condition, Elasticsearch combines them
+					// together with a logical AND. A rule must either have a
+					// non-empty `scope` or at least one condition. You may set
+					// `scope` on the same rule.
 					conditions?: matchN(1, [close({
 						// Specifies the result property to which the condition applies.
 						applies_to!: string
@@ -312,6 +388,22 @@ package res
 						// the operator.
 						value!: number
 					})]])
+
+					// Maps an analysis field name (typically matching
+					// `by_field_name`, `over_field_name`, or `partition_field_name`
+					// on the detector) to an ML filter reference. Each `filter_id`
+					// must identify an ML filter that already exists in the cluster
+					// (for example, created using the Elasticsearch ML filter APIs).
+					// A rule must either have a non-empty `scope` or at least one
+					// condition. You may set `conditions` on the same rule.
+					scope?: [string]: close({
+						// The ML filter identifier (`filter_id`) to apply.
+						filter_id!: string
+
+						// `include` applies the rule to values in the filter; `exclude`
+						// applies it to values not in the filter.
+						filter_type?: string
+					})
 				})]])
 			})]])
 
@@ -419,5 +511,16 @@ package res
 
 		// Username to use for API authentication to Elasticsearch.
 		username?: string
+	})
+
+	#timeouts: close({
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
+		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
+		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// Setting a timeout for a Delete operation is only applicable if
+		// changes are saved into state before the destroy operation
+		// occurs.
+		delete?: string
 	})
 }

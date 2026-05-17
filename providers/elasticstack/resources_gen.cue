@@ -5,6 +5,7 @@ import "github.com/roman-mazur/cuetf/providers/elasticstack/res"
 #Terraform: {
 	#elasticstackPrefix: string
 	_#res: "\(#elasticstackPrefix)_apm_agent_configuration": res.#elasticstack_apm_agent_configuration
+	_#res: "\(#elasticstackPrefix)_apm_source_map": res.#elasticstack_apm_source_map
 	_#res: "\(#elasticstackPrefix)_elasticsearch_cluster_settings": res.#elasticstack_elasticsearch_cluster_settings
 	_#res: "\(#elasticstackPrefix)_elasticsearch_component_template": res.#elasticstack_elasticsearch_component_template
 	_#res: "\(#elasticstackPrefix)_elasticsearch_data_stream": res.#elasticstack_elasticsearch_data_stream
@@ -21,6 +22,7 @@ import "github.com/roman-mazur/cuetf/providers/elasticstack/res"
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_anomaly_detection_job": res.#elasticstack_elasticsearch_ml_anomaly_detection_job
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_datafeed": res.#elasticstack_elasticsearch_ml_datafeed
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_datafeed_state": res.#elasticstack_elasticsearch_ml_datafeed_state
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_filter": res.#elasticstack_elasticsearch_ml_filter
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_job_state": res.#elasticstack_elasticsearch_ml_job_state
 	_#res: "\(#elasticstackPrefix)_elasticsearch_script": res.#elasticstack_elasticsearch_script
 	_#res: "\(#elasticstackPrefix)_elasticsearch_security_api_key": res.#elasticstack_elasticsearch_security_api_key
@@ -34,16 +36,19 @@ import "github.com/roman-mazur/cuetf/providers/elasticstack/res"
 	_#res: "\(#elasticstackPrefix)_elasticsearch_watch": res.#elasticstack_elasticsearch_watch
 	_#res: "\(#elasticstackPrefix)_fleet_agent_download_source": res.#elasticstack_fleet_agent_download_source
 	_#res: "\(#elasticstackPrefix)_fleet_agent_policy": res.#elasticstack_fleet_agent_policy
+	_#res: "\(#elasticstackPrefix)_fleet_custom_integration": res.#elasticstack_fleet_custom_integration
 	_#res: "\(#elasticstackPrefix)_fleet_elastic_defend_integration_policy": res.#elasticstack_fleet_elastic_defend_integration_policy
 	_#res: "\(#elasticstackPrefix)_fleet_integration": res.#elasticstack_fleet_integration
 	_#res: "\(#elasticstackPrefix)_fleet_integration_policy": res.#elasticstack_fleet_integration_policy
 	_#res: "\(#elasticstackPrefix)_fleet_output": res.#elasticstack_fleet_output
+	_#res: "\(#elasticstackPrefix)_fleet_proxy": res.#elasticstack_fleet_proxy
 	_#res: "\(#elasticstackPrefix)_fleet_server_host": res.#elasticstack_fleet_server_host
 	_#res: "\(#elasticstackPrefix)_kibana_action_connector": res.#elasticstack_kibana_action_connector
 	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_agent": res.#elasticstack_kibana_agentbuilder_agent
 	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_tool": res.#elasticstack_kibana_agentbuilder_tool
 	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_workflow": res.#elasticstack_kibana_agentbuilder_workflow
 	_#res: "\(#elasticstackPrefix)_kibana_alerting_rule": res.#elasticstack_kibana_alerting_rule
+	_#res: "\(#elasticstackPrefix)_kibana_dashboard": res.#elasticstack_kibana_dashboard
 	_#res: "\(#elasticstackPrefix)_kibana_data_view": res.#elasticstack_kibana_data_view
 	_#res: "\(#elasticstackPrefix)_kibana_default_data_view": res.#elasticstack_kibana_default_data_view
 	_#res: "\(#elasticstackPrefix)_kibana_import_saved_objects": res.#elasticstack_kibana_import_saved_objects

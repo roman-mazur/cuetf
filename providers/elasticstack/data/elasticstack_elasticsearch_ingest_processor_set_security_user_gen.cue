@@ -10,7 +10,7 @@ package data
 		// The field to store the user information into.
 		field!: string
 
-		// Internal identifier of the resource.
+		// Internal identifier of the resource
 		id?: string
 
 		// Conditionally execute the processor

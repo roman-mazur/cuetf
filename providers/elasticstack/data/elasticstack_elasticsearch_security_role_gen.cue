@@ -1,19 +1,33 @@
 package data
 
-import "list"
-
 #elasticstack_elasticsearch_security_role: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_security_role")
 	close({
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
 		// A list of application privilege entries.
-		applications?: [...close({
+		applications?: matchN(1, [close({
+			// The name of the application to which this entry applies.
 			application?: string
+
+			// A list of strings, where each element is the name of an
+			// application privilege or action.
 			privileges?: [...string]
+
+			// A list resources to which the privileges are applied.
 			resources?: [...string]
-		})]
+		}), [...close({
+			// The name of the application to which this entry applies.
+			application?: string
+
+			// A list of strings, where each element is the name of an
+			// application privilege or action.
+			privileges?: [...string]
+
+			// A list resources to which the privileges are applied.
+			resources?: [...string]
+		})]])
 
 		// A list of cluster privileges. These privileges define the
 		// cluster level actions that users with this role are able to
@@ -30,16 +44,77 @@ import "list"
 		id?: string
 
 		// A list of indices permissions entries.
-		indices?: [...close({
+		indices?: matchN(1, [close({
+			// Include matching restricted indices in names parameter.
+			//
+			// Usage is strongly discouraged as it can grant unrestricted
+			// operations on critical data, make the entire system unstable
+			// or leak sensitive information.
 			allow_restricted_indices?: bool
-			field_security?: [...close({
-				except?: [...string]
-				grant?: [...string]
-			})]
+
+			// A list of indices (or index name patterns) to which the
+			// permissions in this entry apply.
 			names?: [...string]
+
+			// The index level privileges that the owners of the role have on
+			// the specified indices.
 			privileges?: [...string]
+
+			// A search query that defines the documents the owners of the
+			// role have read access to.
 			query?: string
-		})]
+
+			// The document fields that the owners of the role have read
+			// access to.
+			field_security?: matchN(1, [close({
+				// List of the fields to which the grants will not be applied.
+				except?: [...string]
+
+				// List of the fields to grant the access to.
+				grant?: [...string]
+			}), [...close({
+				// List of the fields to which the grants will not be applied.
+				except?: [...string]
+
+				// List of the fields to grant the access to.
+				grant?: [...string]
+			})]])
+		}), [...close({
+			// Include matching restricted indices in names parameter.
+			//
+			// Usage is strongly discouraged as it can grant unrestricted
+			// operations on critical data, make the entire system unstable
+			// or leak sensitive information.
+			allow_restricted_indices?: bool
+
+			// A list of indices (or index name patterns) to which the
+			// permissions in this entry apply.
+			names?: [...string]
+
+			// The index level privileges that the owners of the role have on
+			// the specified indices.
+			privileges?: [...string]
+
+			// A search query that defines the documents the owners of the
+			// role have read access to.
+			query?: string
+
+			// The document fields that the owners of the role have read
+			// access to.
+			field_security?: matchN(1, [close({
+				// List of the fields to which the grants will not be applied.
+				except?: [...string]
+
+				// List of the fields to grant the access to.
+				grant?: [...string]
+			}), [...close({
+				// List of the fields to which the grants will not be applied.
+				except?: [...string]
+
+				// List of the fields to grant the access to.
+				grant?: [...string]
+			})]])
+		})]])
 
 		// Optional meta-data.
 		metadata?: string
@@ -52,16 +127,71 @@ import "list"
 		// Remote indices are effective for remote clusters configured
 		// with the API key based model. They have no effect for remote
 		// clusters configured with the certificate based model.
-		remote_indices?: [...close({
+		remote_indices?: matchN(1, [close({
+			// A list of cluster aliases to which the permissions in this
+			// entry apply.
 			clusters?: [...string]
-			field_security?: [...close({
-				except?: [...string]
-				grant?: [...string]
-			})]
+
+			// A list of indices (or index name patterns) to which the
+			// permissions in this entry apply.
 			names?: [...string]
+
+			// The index level privileges that the owners of the role have on
+			// the specified indices.
 			privileges?: [...string]
+
+			// A search query that defines the documents the owners of the
+			// role have read access to.
 			query?: string
-		})]
+
+			// The document fields that the owners of the role have read
+			// access to.
+			field_security?: matchN(1, [close({
+				// List of the fields to which the grants will not be applied.
+				except?: [...string]
+
+				// List of the fields to grant the access to.
+				grant?: [...string]
+			}), [...close({
+				// List of the fields to which the grants will not be applied.
+				except?: [...string]
+
+				// List of the fields to grant the access to.
+				grant?: [...string]
+			})]])
+		}), [...close({
+			// A list of cluster aliases to which the permissions in this
+			// entry apply.
+			clusters?: [...string]
+
+			// A list of indices (or index name patterns) to which the
+			// permissions in this entry apply.
+			names?: [...string]
+
+			// The index level privileges that the owners of the role have on
+			// the specified indices.
+			privileges?: [...string]
+
+			// A search query that defines the documents the owners of the
+			// role have read access to.
+			query?: string
+
+			// The document fields that the owners of the role have read
+			// access to.
+			field_security?: matchN(1, [close({
+				// List of the fields to which the grants will not be applied.
+				except?: [...string]
+
+				// List of the fields to grant the access to.
+				grant?: [...string]
+			}), [...close({
+				// List of the fields to which the grants will not be applied.
+				except?: [...string]
+
+				// List of the fields to grant the access to.
+				grant?: [...string]
+			})]])
+		})]])
 
 		// A list of users that the owners of this role can impersonate.
 		run_as?: [...string]

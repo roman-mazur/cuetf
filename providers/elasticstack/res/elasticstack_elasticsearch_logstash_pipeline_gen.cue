@@ -1,17 +1,15 @@
 package res
 
-import "list"
-
 #elasticstack_elasticsearch_logstash_pipeline: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_logstash_pipeline")
 	close({
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
 		// Description of the pipeline.
 		description?: string
 
-		// Internal identifier of the resource
+		// Internal identifier of the resource.
 		id?: string
 
 		// Date the pipeline was last updated.

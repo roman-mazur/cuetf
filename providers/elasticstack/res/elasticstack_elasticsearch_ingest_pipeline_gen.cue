@@ -1,12 +1,10 @@
 package res
 
-import "list"
-
 #elasticstack_elasticsearch_ingest_pipeline: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_ingest_pipeline")
 	close({
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, list.MaxItems(1) & [...#elasticsearch_connection]])
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
 		// Description of the ingest pipeline.
 		description?: string
@@ -14,7 +12,7 @@ import "list"
 		// Internal identifier of the resource
 		id?: string
 
-		// Optional user metadata about the index template.
+		// Optional user metadata about the ingest pipeline.
 		metadata?: string
 
 		// The name of the ingest pipeline.

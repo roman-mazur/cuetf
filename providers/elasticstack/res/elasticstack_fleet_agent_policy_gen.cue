@@ -138,6 +138,11 @@ package res
 		// inactive. Supports duration strings (e.g., '30s', '2m', '1h').
 		inactivity_timeout?: string
 
+		// Enable tamper protection for this agent policy (Fleet API
+		// `is_protected`). When true, agents use uninstall tokens.
+		// Requires Elastic Stack 8.10.0 or later.
+		is_protected?: bool
+
 		// Enable collection of agent logs.
 		monitor_logs?: bool
 

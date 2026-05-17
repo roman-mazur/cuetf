@@ -15,9 +15,6 @@ package res
 		// The description of the integration policy.
 		description?: string
 
-		// Enable the integration policy.
-		enabled?: bool
-
 		// Force operations, such as creation and deletion, to occur.
 		force?: bool
 

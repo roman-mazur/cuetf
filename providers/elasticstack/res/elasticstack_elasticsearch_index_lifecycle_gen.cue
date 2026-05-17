@@ -11,6 +11,11 @@ package res
 		hot?:    #hot
 		warm?:   #warm
 
+		// When true, the provider will clear index.lifecycle.name from
+		// any indices that reference this policy before deleting the
+		// policy.
+		force_destroy?: bool
+
 		// Internal identifier of the resource
 		id?: string
 
@@ -157,8 +162,7 @@ package res
 		require?: string
 
 		// The maximum number of shards for the index on a single
-		// Elasticsearch node. Defaults to `-1` (unlimited). Supported
-		// from Elasticsearch version **7.16**
+		// Elasticsearch node. Defaults to `-1` (unlimited).
 		total_shards_per_node?: number
 	})
 
@@ -346,8 +350,7 @@ package res
 		require?: string
 
 		// The maximum number of shards for the index on a single
-		// Elasticsearch node. Defaults to `-1` (unlimited). Supported
-		// from Elasticsearch version **7.16**
+		// Elasticsearch node. Defaults to `-1` (unlimited).
 		total_shards_per_node?: number
 	})
 

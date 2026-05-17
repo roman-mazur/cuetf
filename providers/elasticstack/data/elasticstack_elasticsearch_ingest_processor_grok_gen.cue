@@ -8,8 +8,7 @@ package data
 		description?: string
 
 		// Must be disabled or v1. If v1, the processor uses patterns with
-		// Elastic Common Schema (ECS) field names. **NOTE:** Supported
-		// only starting from version of Elasticsearch **7.16.x**.
+		// Elastic Common Schema (ECS) field names.
 		ecs_compatibility?: string
 
 		// The field to use for grok expression parsing
@@ -49,7 +48,7 @@ package data
 		tag?: string
 
 		// when true, `_ingest._grok_match_index` will be inserted into
-		// your matched document’s metadata with the index into the
+		// your matched document's metadata with the index into the
 		// pattern found in `patterns` that matched.
 		trace_match?: bool
 	})
