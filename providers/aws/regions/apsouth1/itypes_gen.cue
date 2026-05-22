@@ -78,6 +78,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "a1.4xlarge"
     CurrentGeneration: false
@@ -156,6 +157,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "a1.large"
     CurrentGeneration: false
@@ -234,6 +236,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "a1.medium"
     CurrentGeneration: false
@@ -312,6 +315,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "a1.metal"
     CurrentGeneration: false
@@ -389,6 +393,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "a1.xlarge"
     CurrentGeneration: false
@@ -467,6 +472,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c4.2xlarge"
     CurrentGeneration: false
@@ -547,6 +553,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c4.4xlarge"
     CurrentGeneration: false
@@ -627,6 +634,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c4.8xlarge"
     CurrentGeneration: false
@@ -707,6 +715,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c4.large"
     CurrentGeneration: false
@@ -787,6 +796,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c4.xlarge"
     CurrentGeneration: false
@@ -867,6 +877,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5.12xlarge"
     CurrentGeneration: false
@@ -950,6 +961,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5.18xlarge"
     CurrentGeneration: false
@@ -1033,6 +1045,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5.24xlarge"
     CurrentGeneration: false
@@ -1116,6 +1129,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5.2xlarge"
     CurrentGeneration: false
@@ -1199,6 +1213,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5.4xlarge"
     CurrentGeneration: false
@@ -1282,6 +1297,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5.9xlarge"
     CurrentGeneration: false
@@ -1365,6 +1381,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5.large"
     CurrentGeneration: false
@@ -1448,6 +1465,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5.metal"
     CurrentGeneration: false
@@ -1525,6 +1543,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5.xlarge"
     CurrentGeneration: false
@@ -1608,6 +1627,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5a.12xlarge"
     CurrentGeneration: true
@@ -1691,6 +1711,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5a.16xlarge"
     CurrentGeneration: true
@@ -1774,6 +1795,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5a.24xlarge"
     CurrentGeneration: true
@@ -1857,6 +1879,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5a.2xlarge"
     CurrentGeneration: true
@@ -1940,6 +1963,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5a.4xlarge"
     CurrentGeneration: true
@@ -2023,6 +2047,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5a.8xlarge"
     CurrentGeneration: true
@@ -2106,6 +2131,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5a.large"
     CurrentGeneration: true
@@ -2189,6 +2215,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5a.xlarge"
     CurrentGeneration: true
@@ -2272,6 +2299,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5d.12xlarge"
     CurrentGeneration: true
@@ -2365,6 +2393,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5d.18xlarge"
     CurrentGeneration: true
@@ -2458,6 +2487,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5d.24xlarge"
     CurrentGeneration: true
@@ -2551,6 +2581,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5d.2xlarge"
     CurrentGeneration: true
@@ -2644,6 +2675,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5d.4xlarge"
     CurrentGeneration: true
@@ -2737,6 +2769,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5d.9xlarge"
     CurrentGeneration: true
@@ -2830,6 +2863,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5d.large"
     CurrentGeneration: true
@@ -2923,6 +2957,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5d.metal"
     CurrentGeneration: true
@@ -3010,6 +3045,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5d.xlarge"
     CurrentGeneration: true
@@ -3103,6 +3139,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5n.18xlarge"
     CurrentGeneration: true
@@ -3189,6 +3226,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5n.2xlarge"
     CurrentGeneration: true
@@ -3272,6 +3310,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5n.4xlarge"
     CurrentGeneration: true
@@ -3355,6 +3394,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5n.9xlarge"
     CurrentGeneration: true
@@ -3441,6 +3481,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5n.large"
     CurrentGeneration: true
@@ -3524,6 +3565,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5n.metal"
     CurrentGeneration: true
@@ -3604,6 +3646,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c5n.xlarge"
     CurrentGeneration: true
@@ -3687,6 +3730,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6a.12xlarge"
     CurrentGeneration: true
@@ -3771,6 +3815,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6a.16xlarge"
     CurrentGeneration: true
@@ -3855,6 +3900,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6a.24xlarge"
     CurrentGeneration: true
@@ -3938,6 +3984,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6a.2xlarge"
     CurrentGeneration: true
@@ -4022,6 +4069,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6a.32xlarge"
     CurrentGeneration: true
@@ -4105,6 +4153,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6a.48xlarge"
     CurrentGeneration: true
@@ -4191,6 +4240,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6a.4xlarge"
     CurrentGeneration: true
@@ -4275,6 +4325,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6a.8xlarge"
     CurrentGeneration: true
@@ -4359,6 +4410,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6a.large"
     CurrentGeneration: true
@@ -4443,6 +4495,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6a.metal"
     CurrentGeneration: true
@@ -4523,6 +4576,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6a.xlarge"
     CurrentGeneration: true
@@ -4607,6 +4661,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6g.12xlarge"
     CurrentGeneration: true
@@ -4690,6 +4745,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6g.16xlarge"
     CurrentGeneration: true
@@ -4773,6 +4829,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6g.2xlarge"
     CurrentGeneration: true
@@ -4856,6 +4913,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6g.4xlarge"
     CurrentGeneration: true
@@ -4939,6 +4997,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6g.8xlarge"
     CurrentGeneration: true
@@ -5022,6 +5081,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6g.large"
     CurrentGeneration: true
@@ -5105,6 +5165,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6g.medium"
     CurrentGeneration: true
@@ -5186,6 +5247,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6g.metal"
     CurrentGeneration: true
@@ -5263,6 +5325,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6g.xlarge"
     CurrentGeneration: true
@@ -5346,6 +5409,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gd.12xlarge"
     CurrentGeneration: true
@@ -5439,6 +5503,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gd.16xlarge"
     CurrentGeneration: true
@@ -5532,6 +5597,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gd.2xlarge"
     CurrentGeneration: true
@@ -5625,6 +5691,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gd.4xlarge"
     CurrentGeneration: true
@@ -5718,6 +5785,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gd.8xlarge"
     CurrentGeneration: true
@@ -5811,6 +5879,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gd.large"
     CurrentGeneration: true
@@ -5904,6 +5973,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gd.medium"
     CurrentGeneration: true
@@ -5995,6 +6065,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gd.metal"
     CurrentGeneration: true
@@ -6082,6 +6153,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gd.xlarge"
     CurrentGeneration: true
@@ -6175,6 +6247,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gn.12xlarge"
     CurrentGeneration: false
@@ -6258,6 +6331,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gn.16xlarge"
     CurrentGeneration: false
@@ -6344,6 +6418,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gn.2xlarge"
     CurrentGeneration: false
@@ -6427,6 +6502,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gn.4xlarge"
     CurrentGeneration: false
@@ -6510,6 +6586,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gn.8xlarge"
     CurrentGeneration: false
@@ -6593,6 +6670,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gn.large"
     CurrentGeneration: false
@@ -6676,6 +6754,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gn.medium"
     CurrentGeneration: false
@@ -6759,6 +6838,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6gn.xlarge"
     CurrentGeneration: false
@@ -6842,6 +6922,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6i.12xlarge"
     CurrentGeneration: true
@@ -6928,6 +7009,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6i.16xlarge"
     CurrentGeneration: true
@@ -7014,6 +7096,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6i.24xlarge"
     CurrentGeneration: true
@@ -7100,6 +7183,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6i.2xlarge"
     CurrentGeneration: true
@@ -7186,6 +7270,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6i.32xlarge"
     CurrentGeneration: true
@@ -7275,6 +7360,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6i.4xlarge"
     CurrentGeneration: true
@@ -7361,6 +7447,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6i.8xlarge"
     CurrentGeneration: true
@@ -7447,6 +7534,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6i.large"
     CurrentGeneration: true
@@ -7533,6 +7621,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6i.metal"
     CurrentGeneration: true
@@ -7614,6 +7703,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6i.xlarge"
     CurrentGeneration: true
@@ -7700,6 +7790,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6in.12xlarge"
     CurrentGeneration: true
@@ -7787,6 +7878,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6in.16xlarge"
     CurrentGeneration: true
@@ -7874,6 +7966,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6in.24xlarge"
     CurrentGeneration: true
@@ -7961,6 +8054,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6in.2xlarge"
     CurrentGeneration: true
@@ -8048,6 +8142,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6in.32xlarge"
     CurrentGeneration: true
@@ -8148,6 +8243,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6in.4xlarge"
     CurrentGeneration: true
@@ -8235,6 +8331,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6in.8xlarge"
     CurrentGeneration: true
@@ -8322,6 +8419,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6in.large"
     CurrentGeneration: true
@@ -8409,6 +8507,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6in.metal"
     CurrentGeneration: true
@@ -8497,6 +8596,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c6in.xlarge"
     CurrentGeneration: true
@@ -8584,6 +8684,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7g.12xlarge"
     CurrentGeneration: true
@@ -8668,6 +8769,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7g.16xlarge"
     CurrentGeneration: true
@@ -8755,6 +8857,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7g.2xlarge"
     CurrentGeneration: true
@@ -8839,6 +8942,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7g.4xlarge"
     CurrentGeneration: true
@@ -8923,6 +9027,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7g.8xlarge"
     CurrentGeneration: true
@@ -9007,6 +9112,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7g.large"
     CurrentGeneration: true
@@ -9091,6 +9197,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7g.medium"
     CurrentGeneration: true
@@ -9173,6 +9280,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7g.metal"
     CurrentGeneration: true
@@ -9254,6 +9362,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7g.xlarge"
     CurrentGeneration: true
@@ -9338,6 +9447,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7gd.12xlarge"
     CurrentGeneration: true
@@ -9432,6 +9542,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7gd.16xlarge"
     CurrentGeneration: true
@@ -9529,6 +9640,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7gd.2xlarge"
     CurrentGeneration: true
@@ -9623,6 +9735,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7gd.4xlarge"
     CurrentGeneration: true
@@ -9717,6 +9830,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7gd.8xlarge"
     CurrentGeneration: true
@@ -9811,6 +9925,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7gd.large"
     CurrentGeneration: true
@@ -9905,6 +10020,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7gd.medium"
     CurrentGeneration: true
@@ -9997,6 +10113,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7gd.metal"
     CurrentGeneration: true
@@ -10088,6 +10205,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7gd.xlarge"
     CurrentGeneration: true
@@ -10182,6 +10300,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i-flex.12xlarge"
     CurrentGeneration: true
@@ -10266,6 +10385,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i-flex.16xlarge"
     CurrentGeneration: true
@@ -10350,6 +10470,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i-flex.2xlarge"
     CurrentGeneration: true
@@ -10434,6 +10555,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i-flex.4xlarge"
     CurrentGeneration: true
@@ -10518,6 +10640,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i-flex.8xlarge"
     CurrentGeneration: true
@@ -10602,6 +10725,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i-flex.large"
     CurrentGeneration: true
@@ -10686,6 +10810,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i-flex.xlarge"
     CurrentGeneration: true
@@ -10770,6 +10895,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i.12xlarge"
     CurrentGeneration: true
@@ -10854,6 +10980,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i.16xlarge"
     CurrentGeneration: true
@@ -10938,6 +11065,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i.24xlarge"
     CurrentGeneration: true
@@ -11022,6 +11150,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i.2xlarge"
     CurrentGeneration: true
@@ -11106,6 +11235,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i.48xlarge"
     CurrentGeneration: true
@@ -11193,6 +11323,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i.4xlarge"
     CurrentGeneration: true
@@ -11277,6 +11408,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i.8xlarge"
     CurrentGeneration: true
@@ -11361,6 +11493,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i.large"
     CurrentGeneration: true
@@ -11445,6 +11578,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i.metal-24xl"
     CurrentGeneration: true
@@ -11523,6 +11657,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i.metal-48xl"
     CurrentGeneration: true
@@ -11604,6 +11739,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c7i.xlarge"
     CurrentGeneration: true
@@ -11688,6 +11824,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8g.12xlarge"
     CurrentGeneration: true
@@ -11773,6 +11910,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8g.16xlarge"
     CurrentGeneration: true
@@ -11858,6 +11996,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8g.24xlarge"
     CurrentGeneration: true
@@ -11946,6 +12085,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8g.2xlarge"
     CurrentGeneration: true
@@ -12031,6 +12171,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8g.48xlarge"
     CurrentGeneration: true
@@ -12119,6 +12260,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8g.4xlarge"
     CurrentGeneration: true
@@ -12204,6 +12346,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8g.8xlarge"
     CurrentGeneration: true
@@ -12289,6 +12432,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8g.large"
     CurrentGeneration: true
@@ -12374,6 +12518,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8g.medium"
     CurrentGeneration: true
@@ -12457,6 +12602,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8g.metal-24xl"
     CurrentGeneration: true
@@ -12539,6 +12685,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8g.metal-48xl"
     CurrentGeneration: true
@@ -12621,6 +12768,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8g.xlarge"
     CurrentGeneration: true
@@ -12706,6 +12854,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8gn.12xlarge"
     CurrentGeneration: true
@@ -12793,6 +12942,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8gn.16xlarge"
     CurrentGeneration: true
@@ -12883,6 +13033,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8gn.24xlarge"
     CurrentGeneration: true
@@ -12973,6 +13124,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8gn.2xlarge"
     CurrentGeneration: true
@@ -13060,6 +13212,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8gn.48xlarge"
     CurrentGeneration: true
@@ -13178,6 +13331,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8gn.4xlarge"
     CurrentGeneration: true
@@ -13265,6 +13419,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8gn.8xlarge"
     CurrentGeneration: true
@@ -13352,6 +13507,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8gn.large"
     CurrentGeneration: true
@@ -13439,6 +13595,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8gn.medium"
     CurrentGeneration: true
@@ -13524,6 +13681,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8gn.xlarge"
     CurrentGeneration: true
@@ -13611,6 +13769,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i-flex.12xlarge"
     CurrentGeneration: true
@@ -13700,6 +13859,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i-flex.16xlarge"
     CurrentGeneration: true
@@ -13789,6 +13949,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i-flex.2xlarge"
     CurrentGeneration: true
@@ -13878,6 +14039,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i-flex.4xlarge"
     CurrentGeneration: true
@@ -13967,6 +14129,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i-flex.8xlarge"
     CurrentGeneration: true
@@ -14056,6 +14219,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i-flex.large"
     CurrentGeneration: true
@@ -14145,6 +14309,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i-flex.xlarge"
     CurrentGeneration: true
@@ -14234,6 +14399,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i.12xlarge"
     CurrentGeneration: true
@@ -14323,6 +14489,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i.16xlarge"
     CurrentGeneration: true
@@ -14412,6 +14579,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i.24xlarge"
     CurrentGeneration: true
@@ -14501,6 +14669,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i.2xlarge"
     CurrentGeneration: true
@@ -14590,6 +14759,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i.32xlarge"
     CurrentGeneration: true
@@ -14679,6 +14849,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i.48xlarge"
     CurrentGeneration: true
@@ -14771,6 +14942,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i.4xlarge"
     CurrentGeneration: true
@@ -14860,6 +15032,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i.8xlarge"
     CurrentGeneration: true
@@ -14949,6 +15122,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i.96xlarge"
     CurrentGeneration: true
@@ -15041,6 +15215,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i.large"
     CurrentGeneration: true
@@ -15130,6 +15305,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i.metal-48xl"
     CurrentGeneration: true
@@ -15215,6 +15391,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i.metal-96xl"
     CurrentGeneration: true
@@ -15300,6 +15477,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "c8i.xlarge"
     CurrentGeneration: true
@@ -15389,6 +15567,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "d2.2xlarge"
     CurrentGeneration: false
@@ -15479,6 +15658,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "d2.4xlarge"
     CurrentGeneration: false
@@ -15569,6 +15749,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "d2.8xlarge"
     CurrentGeneration: false
@@ -15659,6 +15840,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "d2.xlarge"
     CurrentGeneration: false
@@ -15749,6 +15931,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "d3.2xlarge"
     CurrentGeneration: true
@@ -15842,6 +16025,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "d3.4xlarge"
     CurrentGeneration: true
@@ -15935,6 +16119,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "d3.8xlarge"
     CurrentGeneration: true
@@ -16028,6 +16213,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "d3.xlarge"
     CurrentGeneration: true
@@ -16121,6 +16307,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g4dn.12xlarge"
     CurrentGeneration: true
@@ -16231,6 +16418,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g4dn.16xlarge"
     CurrentGeneration: true
@@ -16319,7 +16507,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -16341,6 +16529,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g4dn.2xlarge"
     CurrentGeneration: true
@@ -16448,6 +16637,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g4dn.4xlarge"
     CurrentGeneration: true
@@ -16555,6 +16745,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g4dn.8xlarge"
     CurrentGeneration: true
@@ -16665,6 +16856,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g4dn.metal"
     CurrentGeneration: true
@@ -16750,7 +16942,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -16769,6 +16961,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g4dn.xlarge"
     CurrentGeneration: true
@@ -16876,6 +17069,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g5.12xlarge"
     CurrentGeneration: true
@@ -16962,7 +17156,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -16984,6 +17178,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g5.16xlarge"
     CurrentGeneration: true
@@ -17092,6 +17287,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g5.24xlarge"
     CurrentGeneration: true
@@ -17200,6 +17396,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g5.2xlarge"
     CurrentGeneration: true
@@ -17305,6 +17502,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g5.48xlarge"
     CurrentGeneration: true
@@ -17391,7 +17589,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -17413,6 +17611,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g5.4xlarge"
     CurrentGeneration: true
@@ -17518,6 +17717,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g5.8xlarge"
     CurrentGeneration: true
@@ -17604,7 +17804,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -17626,6 +17826,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g5.xlarge"
     CurrentGeneration: true
@@ -17709,7 +17910,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -17731,6 +17932,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6.12xlarge"
     CurrentGeneration: true
@@ -17820,7 +18022,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -17842,6 +18044,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6.16xlarge"
     CurrentGeneration: true
@@ -17931,7 +18134,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -17953,6 +18156,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6.24xlarge"
     CurrentGeneration: true
@@ -18064,6 +18268,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6.2xlarge"
     CurrentGeneration: true
@@ -18172,6 +18377,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6.48xlarge"
     CurrentGeneration: true
@@ -18283,6 +18489,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6.4xlarge"
     CurrentGeneration: true
@@ -18369,7 +18576,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -18391,6 +18598,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6.8xlarge"
     CurrentGeneration: true
@@ -18480,7 +18688,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -18502,6 +18710,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6.xlarge"
     CurrentGeneration: true
@@ -18610,6 +18819,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6e.12xlarge"
     CurrentGeneration: true
@@ -18699,7 +18909,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -18721,6 +18931,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6e.16xlarge"
     CurrentGeneration: true
@@ -18832,6 +19043,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6e.24xlarge"
     CurrentGeneration: true
@@ -18950,6 +19162,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6e.2xlarge"
     CurrentGeneration: true
@@ -19036,7 +19249,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -19058,6 +19271,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6e.48xlarge"
     CurrentGeneration: true
@@ -19190,6 +19404,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6e.4xlarge"
     CurrentGeneration: true
@@ -19276,7 +19491,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -19298,6 +19513,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6e.8xlarge"
     CurrentGeneration: true
@@ -19409,6 +19625,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6e.xlarge"
     CurrentGeneration: true
@@ -19495,7 +19712,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -19517,6 +19734,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6f.2xlarge"
     CurrentGeneration: true
@@ -19625,6 +19843,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6f.4xlarge"
     CurrentGeneration: true
@@ -19711,7 +19930,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.5
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 11444
             }
@@ -19733,6 +19952,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6f.large"
     CurrentGeneration: true
@@ -19819,7 +20039,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.125
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 2861
             }
@@ -19841,6 +20061,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "g6f.xlarge"
     CurrentGeneration: true
@@ -19927,7 +20148,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.125
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 2861
             }
@@ -19949,6 +20170,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "gr6.4xlarge"
     CurrentGeneration: true
@@ -20035,7 +20257,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -20057,6 +20279,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "gr6.8xlarge"
     CurrentGeneration: true
@@ -20146,7 +20369,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -20168,6 +20391,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "gr6f.4xlarge"
     CurrentGeneration: true
@@ -20254,7 +20478,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.5
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 11444
             }
@@ -20276,6 +20500,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i2.2xlarge"
     CurrentGeneration: false
@@ -20366,6 +20591,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i2.4xlarge"
     CurrentGeneration: false
@@ -20456,6 +20682,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i2.8xlarge"
     CurrentGeneration: false
@@ -20538,6 +20765,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i2.xlarge"
     CurrentGeneration: false
@@ -20628,6 +20856,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i3.16xlarge"
     CurrentGeneration: true
@@ -20718,6 +20947,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i3.2xlarge"
     CurrentGeneration: true
@@ -20808,6 +21038,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i3.4xlarge"
     CurrentGeneration: true
@@ -20898,6 +21129,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i3.8xlarge"
     CurrentGeneration: true
@@ -20988,6 +21220,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i3.large"
     CurrentGeneration: true
@@ -21078,6 +21311,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i3.xlarge"
     CurrentGeneration: true
@@ -21168,6 +21402,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i3en.12xlarge"
     CurrentGeneration: true
@@ -21264,6 +21499,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i3en.24xlarge"
     CurrentGeneration: true
@@ -21360,6 +21596,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i3en.2xlarge"
     CurrentGeneration: true
@@ -21453,6 +21690,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i3en.3xlarge"
     CurrentGeneration: true
@@ -21546,6 +21784,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i3en.6xlarge"
     CurrentGeneration: true
@@ -21639,6 +21878,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i3en.large"
     CurrentGeneration: true
@@ -21732,6 +21972,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i3en.metal"
     CurrentGeneration: true
@@ -21822,6 +22063,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i3en.xlarge"
     CurrentGeneration: true
@@ -21915,6 +22157,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i4i.12xlarge"
     CurrentGeneration: true
@@ -22008,6 +22251,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i4i.16xlarge"
     CurrentGeneration: true
@@ -22101,6 +22345,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i4i.24xlarge"
     CurrentGeneration: true
@@ -22194,6 +22439,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i4i.2xlarge"
     CurrentGeneration: true
@@ -22287,6 +22533,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i4i.32xlarge"
     CurrentGeneration: true
@@ -22383,6 +22630,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i4i.4xlarge"
     CurrentGeneration: true
@@ -22476,6 +22724,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i4i.8xlarge"
     CurrentGeneration: true
@@ -22569,6 +22818,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i4i.large"
     CurrentGeneration: true
@@ -22662,6 +22912,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i4i.metal"
     CurrentGeneration: true
@@ -22752,6 +23003,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i4i.xlarge"
     CurrentGeneration: true
@@ -22845,6 +23097,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7i.12xlarge"
     CurrentGeneration: true
@@ -22939,6 +23192,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7i.16xlarge"
     CurrentGeneration: true
@@ -23033,6 +23287,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7i.24xlarge"
     CurrentGeneration: true
@@ -23130,6 +23385,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7i.2xlarge"
     CurrentGeneration: true
@@ -23224,6 +23480,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7i.48xlarge"
     CurrentGeneration: true
@@ -23321,6 +23578,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7i.4xlarge"
     CurrentGeneration: true
@@ -23415,6 +23673,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7i.8xlarge"
     CurrentGeneration: true
@@ -23509,6 +23768,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7i.large"
     CurrentGeneration: true
@@ -23603,6 +23863,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7i.metal-24xl"
     CurrentGeneration: true
@@ -23691,6 +23952,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7i.metal-48xl"
     CurrentGeneration: true
@@ -23782,6 +24044,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7i.xlarge"
     CurrentGeneration: true
@@ -23876,6 +24139,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7ie.12xlarge"
     CurrentGeneration: true
@@ -23970,6 +24234,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7ie.18xlarge"
     CurrentGeneration: true
@@ -24064,6 +24329,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7ie.24xlarge"
     CurrentGeneration: true
@@ -24158,6 +24424,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7ie.2xlarge"
     CurrentGeneration: true
@@ -24252,6 +24519,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7ie.3xlarge"
     CurrentGeneration: true
@@ -24346,6 +24614,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7ie.48xlarge"
     CurrentGeneration: true
@@ -24443,6 +24712,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7ie.6xlarge"
     CurrentGeneration: true
@@ -24537,6 +24807,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7ie.large"
     CurrentGeneration: true
@@ -24631,6 +24902,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7ie.metal-24xl"
     CurrentGeneration: true
@@ -24719,6 +24991,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7ie.metal-48xl"
     CurrentGeneration: true
@@ -24810,6 +25083,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i7ie.xlarge"
     CurrentGeneration: true
@@ -24904,6 +25178,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8g.12xlarge"
     CurrentGeneration: true
@@ -24998,6 +25273,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8g.16xlarge"
     CurrentGeneration: true
@@ -25092,6 +25368,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8g.24xlarge"
     CurrentGeneration: true
@@ -25186,6 +25463,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8g.2xlarge"
     CurrentGeneration: true
@@ -25280,6 +25558,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8g.48xlarge"
     CurrentGeneration: true
@@ -25377,6 +25656,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8g.4xlarge"
     CurrentGeneration: true
@@ -25471,6 +25751,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8g.8xlarge"
     CurrentGeneration: true
@@ -25565,6 +25846,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8g.large"
     CurrentGeneration: true
@@ -25659,6 +25941,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8g.metal-24xl"
     CurrentGeneration: true
@@ -25747,6 +26030,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8g.metal-48xl"
     CurrentGeneration: true
@@ -25838,6 +26122,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8g.xlarge"
     CurrentGeneration: true
@@ -25932,6 +26217,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8ge.12xlarge"
     CurrentGeneration: true
@@ -26029,6 +26315,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8ge.18xlarge"
     CurrentGeneration: true
@@ -26126,6 +26413,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8ge.24xlarge"
     CurrentGeneration: true
@@ -26223,6 +26511,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8ge.2xlarge"
     CurrentGeneration: true
@@ -26320,6 +26609,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8ge.3xlarge"
     CurrentGeneration: true
@@ -26417,6 +26707,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8ge.48xlarge"
     CurrentGeneration: true
@@ -26517,6 +26808,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8ge.6xlarge"
     CurrentGeneration: true
@@ -26614,6 +26906,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8ge.large"
     CurrentGeneration: true
@@ -26711,6 +27004,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8ge.metal-24xl"
     CurrentGeneration: true
@@ -26801,6 +27095,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8ge.metal-48xl"
     CurrentGeneration: true
@@ -26894,6 +27189,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "i8ge.xlarge"
     CurrentGeneration: true
@@ -26991,6 +27287,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "im4gn.16xlarge"
     CurrentGeneration: true
@@ -27087,6 +27384,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "im4gn.2xlarge"
     CurrentGeneration: true
@@ -27180,6 +27478,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "im4gn.4xlarge"
     CurrentGeneration: true
@@ -27273,6 +27572,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "im4gn.8xlarge"
     CurrentGeneration: true
@@ -27366,6 +27666,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "im4gn.large"
     CurrentGeneration: true
@@ -27459,6 +27760,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "im4gn.xlarge"
     CurrentGeneration: true
@@ -27552,6 +27854,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "inf1.24xlarge"
     CurrentGeneration: true
@@ -27663,6 +27966,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "inf1.2xlarge"
     CurrentGeneration: true
@@ -27771,6 +28075,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "inf1.6xlarge"
     CurrentGeneration: true
@@ -27879,6 +28184,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "inf1.xlarge"
     CurrentGeneration: true
@@ -27987,6 +28293,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "inf2.24xlarge"
     CurrentGeneration: true
@@ -28095,6 +28402,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "inf2.48xlarge"
     CurrentGeneration: true
@@ -28203,6 +28511,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "inf2.8xlarge"
     CurrentGeneration: true
@@ -28311,6 +28620,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "inf2.xlarge"
     CurrentGeneration: true
@@ -28419,6 +28729,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "is4gen.2xlarge"
     CurrentGeneration: true
@@ -28509,6 +28820,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "is4gen.4xlarge"
     CurrentGeneration: true
@@ -28599,6 +28911,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "is4gen.8xlarge"
     CurrentGeneration: true
@@ -28689,6 +29002,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "is4gen.large"
     CurrentGeneration: true
@@ -28779,6 +29093,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "is4gen.medium"
     CurrentGeneration: true
@@ -28869,6 +29184,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "is4gen.xlarge"
     CurrentGeneration: true
@@ -28959,6 +29275,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m4.10xlarge"
     CurrentGeneration: false
@@ -29039,6 +29356,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m4.16xlarge"
     CurrentGeneration: false
@@ -29119,6 +29437,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m4.2xlarge"
     CurrentGeneration: false
@@ -29199,6 +29518,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m4.4xlarge"
     CurrentGeneration: false
@@ -29279,6 +29599,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m4.large"
     CurrentGeneration: false
@@ -29359,6 +29680,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m4.xlarge"
     CurrentGeneration: false
@@ -29439,6 +29761,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5.12xlarge"
     CurrentGeneration: false
@@ -29522,6 +29845,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5.16xlarge"
     CurrentGeneration: false
@@ -29605,6 +29929,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5.24xlarge"
     CurrentGeneration: false
@@ -29688,6 +30013,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5.2xlarge"
     CurrentGeneration: false
@@ -29771,6 +30097,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5.4xlarge"
     CurrentGeneration: false
@@ -29854,6 +30181,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5.8xlarge"
     CurrentGeneration: false
@@ -29937,6 +30265,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5.large"
     CurrentGeneration: false
@@ -30020,6 +30349,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5.metal"
     CurrentGeneration: false
@@ -30097,6 +30427,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5.xlarge"
     CurrentGeneration: false
@@ -30180,6 +30511,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5a.12xlarge"
     CurrentGeneration: true
@@ -30263,6 +30595,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5a.16xlarge"
     CurrentGeneration: true
@@ -30346,6 +30679,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5a.24xlarge"
     CurrentGeneration: true
@@ -30429,6 +30763,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5a.2xlarge"
     CurrentGeneration: true
@@ -30512,6 +30847,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5a.4xlarge"
     CurrentGeneration: true
@@ -30595,6 +30931,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5a.8xlarge"
     CurrentGeneration: true
@@ -30678,6 +31015,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5a.large"
     CurrentGeneration: true
@@ -30761,6 +31099,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5a.xlarge"
     CurrentGeneration: true
@@ -30844,6 +31183,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5ad.12xlarge"
     CurrentGeneration: true
@@ -30937,6 +31277,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5ad.16xlarge"
     CurrentGeneration: true
@@ -31030,6 +31371,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5ad.24xlarge"
     CurrentGeneration: true
@@ -31123,6 +31465,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5ad.2xlarge"
     CurrentGeneration: true
@@ -31216,6 +31559,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5ad.4xlarge"
     CurrentGeneration: true
@@ -31309,6 +31653,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5ad.8xlarge"
     CurrentGeneration: true
@@ -31402,6 +31747,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5ad.large"
     CurrentGeneration: true
@@ -31495,6 +31841,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5ad.xlarge"
     CurrentGeneration: true
@@ -31588,6 +31935,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5d.12xlarge"
     CurrentGeneration: true
@@ -31681,6 +32029,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5d.16xlarge"
     CurrentGeneration: true
@@ -31774,6 +32123,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5d.24xlarge"
     CurrentGeneration: true
@@ -31867,6 +32217,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5d.2xlarge"
     CurrentGeneration: true
@@ -31960,6 +32311,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5d.4xlarge"
     CurrentGeneration: true
@@ -32053,6 +32405,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5d.8xlarge"
     CurrentGeneration: true
@@ -32146,6 +32499,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5d.large"
     CurrentGeneration: true
@@ -32239,6 +32593,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5d.metal"
     CurrentGeneration: true
@@ -32326,6 +32681,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m5d.xlarge"
     CurrentGeneration: true
@@ -32419,6 +32775,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6a.12xlarge"
     CurrentGeneration: true
@@ -32502,6 +32859,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6a.16xlarge"
     CurrentGeneration: true
@@ -32585,6 +32943,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6a.24xlarge"
     CurrentGeneration: true
@@ -32668,6 +33027,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6a.2xlarge"
     CurrentGeneration: true
@@ -32752,6 +33112,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6a.32xlarge"
     CurrentGeneration: true
@@ -32835,6 +33196,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6a.48xlarge"
     CurrentGeneration: true
@@ -32921,6 +33283,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6a.4xlarge"
     CurrentGeneration: true
@@ -33005,6 +33368,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6a.8xlarge"
     CurrentGeneration: true
@@ -33089,6 +33453,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6a.large"
     CurrentGeneration: true
@@ -33173,6 +33538,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6a.metal"
     CurrentGeneration: true
@@ -33253,6 +33619,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6a.xlarge"
     CurrentGeneration: true
@@ -33337,6 +33704,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6g.12xlarge"
     CurrentGeneration: true
@@ -33420,6 +33788,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6g.16xlarge"
     CurrentGeneration: true
@@ -33503,6 +33872,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6g.2xlarge"
     CurrentGeneration: true
@@ -33586,6 +33956,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6g.4xlarge"
     CurrentGeneration: true
@@ -33669,6 +34040,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6g.8xlarge"
     CurrentGeneration: true
@@ -33752,6 +34124,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6g.large"
     CurrentGeneration: true
@@ -33835,6 +34208,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6g.medium"
     CurrentGeneration: true
@@ -33916,6 +34290,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6g.metal"
     CurrentGeneration: true
@@ -33993,6 +34368,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6g.xlarge"
     CurrentGeneration: true
@@ -34076,6 +34452,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6gd.12xlarge"
     CurrentGeneration: true
@@ -34169,6 +34546,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6gd.16xlarge"
     CurrentGeneration: true
@@ -34262,6 +34640,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6gd.2xlarge"
     CurrentGeneration: true
@@ -34355,6 +34734,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6gd.4xlarge"
     CurrentGeneration: true
@@ -34448,6 +34828,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6gd.8xlarge"
     CurrentGeneration: true
@@ -34541,6 +34922,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6gd.large"
     CurrentGeneration: true
@@ -34634,6 +35016,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6gd.medium"
     CurrentGeneration: true
@@ -34725,6 +35108,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6gd.metal"
     CurrentGeneration: true
@@ -34812,6 +35196,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6gd.xlarge"
     CurrentGeneration: true
@@ -34905,6 +35290,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6i.12xlarge"
     CurrentGeneration: false
@@ -34991,6 +35377,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6i.16xlarge"
     CurrentGeneration: false
@@ -35077,6 +35464,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6i.24xlarge"
     CurrentGeneration: false
@@ -35163,6 +35551,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6i.2xlarge"
     CurrentGeneration: false
@@ -35249,6 +35638,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6i.32xlarge"
     CurrentGeneration: false
@@ -35338,6 +35728,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6i.4xlarge"
     CurrentGeneration: false
@@ -35424,6 +35815,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6i.8xlarge"
     CurrentGeneration: false
@@ -35510,6 +35902,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6i.large"
     CurrentGeneration: false
@@ -35596,6 +35989,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6i.metal"
     CurrentGeneration: false
@@ -35677,6 +36071,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6i.xlarge"
     CurrentGeneration: false
@@ -35763,6 +36158,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6id.12xlarge"
     CurrentGeneration: true
@@ -35859,6 +36255,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6id.16xlarge"
     CurrentGeneration: true
@@ -35955,6 +36352,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6id.24xlarge"
     CurrentGeneration: true
@@ -36051,6 +36449,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6id.2xlarge"
     CurrentGeneration: true
@@ -36147,6 +36546,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6id.32xlarge"
     CurrentGeneration: true
@@ -36246,6 +36646,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6id.4xlarge"
     CurrentGeneration: true
@@ -36342,6 +36743,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6id.8xlarge"
     CurrentGeneration: true
@@ -36438,6 +36840,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6id.large"
     CurrentGeneration: true
@@ -36534,6 +36937,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6id.metal"
     CurrentGeneration: true
@@ -36625,6 +37029,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6id.xlarge"
     CurrentGeneration: true
@@ -36721,6 +37126,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6idn.12xlarge"
     CurrentGeneration: true
@@ -36818,6 +37224,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6idn.16xlarge"
     CurrentGeneration: true
@@ -36915,6 +37322,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6idn.24xlarge"
     CurrentGeneration: true
@@ -37012,6 +37420,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6idn.2xlarge"
     CurrentGeneration: true
@@ -37109,6 +37518,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6idn.32xlarge"
     CurrentGeneration: true
@@ -37219,6 +37629,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6idn.4xlarge"
     CurrentGeneration: true
@@ -37316,6 +37727,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6idn.8xlarge"
     CurrentGeneration: true
@@ -37413,6 +37825,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6idn.large"
     CurrentGeneration: true
@@ -37510,6 +37923,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6idn.metal"
     CurrentGeneration: true
@@ -37608,6 +38022,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6idn.xlarge"
     CurrentGeneration: true
@@ -37705,6 +38120,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6in.12xlarge"
     CurrentGeneration: true
@@ -37792,6 +38208,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6in.16xlarge"
     CurrentGeneration: true
@@ -37879,6 +38296,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6in.24xlarge"
     CurrentGeneration: true
@@ -37966,6 +38384,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6in.2xlarge"
     CurrentGeneration: true
@@ -38053,6 +38472,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6in.32xlarge"
     CurrentGeneration: true
@@ -38153,6 +38573,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6in.4xlarge"
     CurrentGeneration: true
@@ -38240,6 +38661,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6in.8xlarge"
     CurrentGeneration: true
@@ -38327,6 +38749,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6in.large"
     CurrentGeneration: true
@@ -38414,6 +38837,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6in.metal"
     CurrentGeneration: true
@@ -38502,6 +38926,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m6in.xlarge"
     CurrentGeneration: true
@@ -38589,6 +39014,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7g.12xlarge"
     CurrentGeneration: true
@@ -38673,6 +39099,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7g.16xlarge"
     CurrentGeneration: true
@@ -38760,6 +39187,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7g.2xlarge"
     CurrentGeneration: true
@@ -38844,6 +39272,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7g.4xlarge"
     CurrentGeneration: true
@@ -38928,6 +39357,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7g.8xlarge"
     CurrentGeneration: true
@@ -39012,6 +39442,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7g.large"
     CurrentGeneration: true
@@ -39096,6 +39527,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7g.medium"
     CurrentGeneration: true
@@ -39178,6 +39610,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7g.metal"
     CurrentGeneration: true
@@ -39259,6 +39692,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7g.xlarge"
     CurrentGeneration: true
@@ -39343,6 +39777,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7gd.12xlarge"
     CurrentGeneration: true
@@ -39437,6 +39872,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7gd.16xlarge"
     CurrentGeneration: true
@@ -39534,6 +39970,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7gd.2xlarge"
     CurrentGeneration: true
@@ -39628,6 +40065,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7gd.4xlarge"
     CurrentGeneration: true
@@ -39722,6 +40160,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7gd.8xlarge"
     CurrentGeneration: true
@@ -39816,6 +40255,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7gd.large"
     CurrentGeneration: true
@@ -39910,6 +40350,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7gd.medium"
     CurrentGeneration: true
@@ -40002,6 +40443,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7gd.metal"
     CurrentGeneration: true
@@ -40093,6 +40535,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7gd.xlarge"
     CurrentGeneration: true
@@ -40187,6 +40630,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i-flex.12xlarge"
     CurrentGeneration: true
@@ -40271,6 +40715,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i-flex.16xlarge"
     CurrentGeneration: true
@@ -40355,6 +40800,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i-flex.2xlarge"
     CurrentGeneration: true
@@ -40439,6 +40885,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i-flex.4xlarge"
     CurrentGeneration: true
@@ -40523,6 +40970,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i-flex.8xlarge"
     CurrentGeneration: true
@@ -40607,6 +41055,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i-flex.large"
     CurrentGeneration: true
@@ -40691,6 +41140,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i-flex.xlarge"
     CurrentGeneration: true
@@ -40775,6 +41225,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i.12xlarge"
     CurrentGeneration: true
@@ -40859,6 +41310,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i.16xlarge"
     CurrentGeneration: true
@@ -40943,6 +41395,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i.24xlarge"
     CurrentGeneration: true
@@ -41027,6 +41480,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i.2xlarge"
     CurrentGeneration: true
@@ -41111,6 +41565,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i.48xlarge"
     CurrentGeneration: true
@@ -41198,6 +41653,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i.4xlarge"
     CurrentGeneration: true
@@ -41282,6 +41738,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i.8xlarge"
     CurrentGeneration: true
@@ -41366,6 +41823,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i.large"
     CurrentGeneration: true
@@ -41450,6 +41908,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i.metal-24xl"
     CurrentGeneration: true
@@ -41528,6 +41987,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i.metal-48xl"
     CurrentGeneration: true
@@ -41609,6 +42069,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m7i.xlarge"
     CurrentGeneration: true
@@ -41693,6 +42154,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8g.12xlarge"
     CurrentGeneration: true
@@ -41778,6 +42240,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8g.16xlarge"
     CurrentGeneration: true
@@ -41863,6 +42326,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8g.24xlarge"
     CurrentGeneration: true
@@ -41951,6 +42415,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8g.2xlarge"
     CurrentGeneration: true
@@ -42036,6 +42501,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8g.48xlarge"
     CurrentGeneration: true
@@ -42124,6 +42590,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8g.4xlarge"
     CurrentGeneration: true
@@ -42209,6 +42676,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8g.8xlarge"
     CurrentGeneration: true
@@ -42294,6 +42762,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8g.large"
     CurrentGeneration: true
@@ -42379,6 +42848,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8g.medium"
     CurrentGeneration: true
@@ -42462,6 +42932,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8g.metal-24xl"
     CurrentGeneration: true
@@ -42544,6 +43015,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8g.metal-48xl"
     CurrentGeneration: true
@@ -42626,6 +43098,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8g.xlarge"
     CurrentGeneration: true
@@ -42711,6 +43184,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i-flex.12xlarge"
     CurrentGeneration: true
@@ -42800,6 +43274,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i-flex.16xlarge"
     CurrentGeneration: true
@@ -42889,6 +43364,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i-flex.2xlarge"
     CurrentGeneration: true
@@ -42978,6 +43454,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i-flex.4xlarge"
     CurrentGeneration: true
@@ -43067,6 +43544,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i-flex.8xlarge"
     CurrentGeneration: true
@@ -43156,6 +43634,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i-flex.large"
     CurrentGeneration: true
@@ -43245,6 +43724,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i-flex.xlarge"
     CurrentGeneration: true
@@ -43334,6 +43814,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i.12xlarge"
     CurrentGeneration: true
@@ -43423,6 +43904,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i.16xlarge"
     CurrentGeneration: true
@@ -43512,6 +43994,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i.24xlarge"
     CurrentGeneration: true
@@ -43601,6 +44084,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i.2xlarge"
     CurrentGeneration: true
@@ -43690,6 +44174,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i.32xlarge"
     CurrentGeneration: true
@@ -43779,6 +44264,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i.48xlarge"
     CurrentGeneration: true
@@ -43871,6 +44357,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i.4xlarge"
     CurrentGeneration: true
@@ -43960,6 +44447,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i.8xlarge"
     CurrentGeneration: true
@@ -44049,6 +44537,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i.96xlarge"
     CurrentGeneration: true
@@ -44141,6 +44630,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i.large"
     CurrentGeneration: true
@@ -44230,6 +44720,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i.metal-48xl"
     CurrentGeneration: true
@@ -44315,6 +44806,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i.metal-96xl"
     CurrentGeneration: true
@@ -44400,6 +44892,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "m8i.xlarge"
     CurrentGeneration: true
@@ -44489,6 +44982,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "mac1.metal"
     CurrentGeneration: true
@@ -44566,6 +45060,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "p4d.24xlarge"
     CurrentGeneration: true
@@ -44694,6 +45189,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "p5.48xlarge"
     CurrentGeneration: true
@@ -45022,6 +45518,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "p5.4xlarge"
     CurrentGeneration: true
@@ -45133,6 +45630,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "p5en.48xlarge"
     CurrentGeneration: true
@@ -45349,6 +45847,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r3.2xlarge"
     CurrentGeneration: false
@@ -45439,6 +45938,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r3.4xlarge"
     CurrentGeneration: false
@@ -45529,6 +46029,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r3.8xlarge"
     CurrentGeneration: false
@@ -45611,6 +46112,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r3.large"
     CurrentGeneration: false
@@ -45693,6 +46195,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r3.xlarge"
     CurrentGeneration: false
@@ -45783,6 +46286,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r4.16xlarge"
     CurrentGeneration: false
@@ -45863,6 +46367,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r4.2xlarge"
     CurrentGeneration: false
@@ -45943,6 +46448,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r4.4xlarge"
     CurrentGeneration: false
@@ -46023,6 +46529,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r4.8xlarge"
     CurrentGeneration: false
@@ -46103,6 +46610,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r4.large"
     CurrentGeneration: false
@@ -46183,6 +46691,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r4.xlarge"
     CurrentGeneration: false
@@ -46263,6 +46772,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5.12xlarge"
     CurrentGeneration: false
@@ -46346,6 +46856,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5.16xlarge"
     CurrentGeneration: false
@@ -46429,6 +46940,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5.24xlarge"
     CurrentGeneration: false
@@ -46512,6 +47024,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5.2xlarge"
     CurrentGeneration: false
@@ -46595,6 +47108,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5.4xlarge"
     CurrentGeneration: false
@@ -46678,6 +47192,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5.8xlarge"
     CurrentGeneration: false
@@ -46761,6 +47276,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5.large"
     CurrentGeneration: false
@@ -46844,6 +47360,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5.metal"
     CurrentGeneration: false
@@ -46921,6 +47438,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5.xlarge"
     CurrentGeneration: false
@@ -47004,6 +47522,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5a.12xlarge"
     CurrentGeneration: true
@@ -47087,6 +47606,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5a.16xlarge"
     CurrentGeneration: true
@@ -47170,6 +47690,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5a.24xlarge"
     CurrentGeneration: true
@@ -47253,6 +47774,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5a.2xlarge"
     CurrentGeneration: true
@@ -47336,6 +47858,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5a.4xlarge"
     CurrentGeneration: true
@@ -47419,6 +47942,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5a.8xlarge"
     CurrentGeneration: true
@@ -47502,6 +48026,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5a.large"
     CurrentGeneration: true
@@ -47585,6 +48110,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5a.xlarge"
     CurrentGeneration: true
@@ -47668,6 +48194,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5ad.12xlarge"
     CurrentGeneration: true
@@ -47761,6 +48288,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5ad.16xlarge"
     CurrentGeneration: true
@@ -47854,6 +48382,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5ad.24xlarge"
     CurrentGeneration: true
@@ -47947,6 +48476,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5ad.2xlarge"
     CurrentGeneration: true
@@ -48040,6 +48570,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5ad.4xlarge"
     CurrentGeneration: true
@@ -48133,6 +48664,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5ad.8xlarge"
     CurrentGeneration: true
@@ -48226,6 +48758,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5ad.large"
     CurrentGeneration: true
@@ -48319,6 +48852,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5ad.xlarge"
     CurrentGeneration: true
@@ -48412,6 +48946,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5d.12xlarge"
     CurrentGeneration: true
@@ -48505,6 +49040,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5d.16xlarge"
     CurrentGeneration: true
@@ -48598,6 +49134,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5d.24xlarge"
     CurrentGeneration: true
@@ -48691,6 +49228,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5d.2xlarge"
     CurrentGeneration: true
@@ -48784,6 +49322,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5d.4xlarge"
     CurrentGeneration: true
@@ -48877,6 +49416,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5d.8xlarge"
     CurrentGeneration: true
@@ -48970,6 +49510,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5d.large"
     CurrentGeneration: true
@@ -49063,6 +49604,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5d.metal"
     CurrentGeneration: true
@@ -49150,6 +49692,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5d.xlarge"
     CurrentGeneration: true
@@ -49243,6 +49786,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5n.12xlarge"
     CurrentGeneration: true
@@ -49326,6 +49870,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5n.16xlarge"
     CurrentGeneration: true
@@ -49409,6 +49954,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5n.24xlarge"
     CurrentGeneration: true
@@ -49495,6 +50041,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5n.2xlarge"
     CurrentGeneration: true
@@ -49578,6 +50125,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5n.4xlarge"
     CurrentGeneration: true
@@ -49661,6 +50209,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5n.8xlarge"
     CurrentGeneration: true
@@ -49744,6 +50293,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5n.large"
     CurrentGeneration: true
@@ -49827,6 +50377,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5n.metal"
     CurrentGeneration: true
@@ -49907,6 +50458,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r5n.xlarge"
     CurrentGeneration: true
@@ -49990,6 +50542,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6a.12xlarge"
     CurrentGeneration: true
@@ -50073,6 +50626,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6a.16xlarge"
     CurrentGeneration: true
@@ -50156,6 +50710,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6a.24xlarge"
     CurrentGeneration: true
@@ -50239,6 +50794,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6a.2xlarge"
     CurrentGeneration: true
@@ -50323,6 +50879,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6a.32xlarge"
     CurrentGeneration: true
@@ -50406,6 +50963,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6a.48xlarge"
     CurrentGeneration: true
@@ -50492,6 +51050,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6a.4xlarge"
     CurrentGeneration: true
@@ -50576,6 +51135,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6a.8xlarge"
     CurrentGeneration: true
@@ -50659,6 +51219,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6a.large"
     CurrentGeneration: true
@@ -50743,6 +51304,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6a.metal"
     CurrentGeneration: true
@@ -50823,6 +51385,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6a.xlarge"
     CurrentGeneration: true
@@ -50907,6 +51470,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6g.12xlarge"
     CurrentGeneration: true
@@ -50990,6 +51554,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6g.16xlarge"
     CurrentGeneration: true
@@ -51073,6 +51638,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6g.2xlarge"
     CurrentGeneration: true
@@ -51156,6 +51722,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6g.4xlarge"
     CurrentGeneration: true
@@ -51239,6 +51806,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6g.8xlarge"
     CurrentGeneration: true
@@ -51322,6 +51890,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6g.large"
     CurrentGeneration: true
@@ -51405,6 +51974,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6g.medium"
     CurrentGeneration: true
@@ -51486,6 +52056,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6g.metal"
     CurrentGeneration: true
@@ -51563,6 +52134,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6g.xlarge"
     CurrentGeneration: true
@@ -51646,6 +52218,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6gd.12xlarge"
     CurrentGeneration: true
@@ -51739,6 +52312,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6gd.16xlarge"
     CurrentGeneration: true
@@ -51832,6 +52406,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6gd.2xlarge"
     CurrentGeneration: true
@@ -51925,6 +52500,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6gd.4xlarge"
     CurrentGeneration: true
@@ -52018,6 +52594,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6gd.8xlarge"
     CurrentGeneration: true
@@ -52111,6 +52688,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6gd.large"
     CurrentGeneration: true
@@ -52204,6 +52782,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6gd.medium"
     CurrentGeneration: true
@@ -52295,6 +52874,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6gd.metal"
     CurrentGeneration: true
@@ -52382,6 +52962,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6gd.xlarge"
     CurrentGeneration: true
@@ -52475,6 +53056,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6i.12xlarge"
     CurrentGeneration: false
@@ -52561,6 +53143,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6i.16xlarge"
     CurrentGeneration: false
@@ -52647,6 +53230,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6i.24xlarge"
     CurrentGeneration: false
@@ -52733,6 +53317,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6i.2xlarge"
     CurrentGeneration: false
@@ -52819,6 +53404,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6i.32xlarge"
     CurrentGeneration: false
@@ -52908,6 +53494,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6i.4xlarge"
     CurrentGeneration: false
@@ -52994,6 +53581,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6i.8xlarge"
     CurrentGeneration: false
@@ -53080,6 +53668,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6i.large"
     CurrentGeneration: false
@@ -53166,6 +53755,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6i.metal"
     CurrentGeneration: false
@@ -53247,6 +53837,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6i.xlarge"
     CurrentGeneration: false
@@ -53333,6 +53924,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6id.12xlarge"
     CurrentGeneration: true
@@ -53429,6 +54021,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6id.16xlarge"
     CurrentGeneration: true
@@ -53525,6 +54118,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6id.24xlarge"
     CurrentGeneration: true
@@ -53621,6 +54215,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6id.2xlarge"
     CurrentGeneration: true
@@ -53717,6 +54312,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6id.32xlarge"
     CurrentGeneration: true
@@ -53816,6 +54412,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6id.4xlarge"
     CurrentGeneration: true
@@ -53912,6 +54509,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6id.8xlarge"
     CurrentGeneration: true
@@ -54008,6 +54606,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6id.large"
     CurrentGeneration: true
@@ -54104,6 +54703,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6id.metal"
     CurrentGeneration: true
@@ -54195,6 +54795,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r6id.xlarge"
     CurrentGeneration: true
@@ -54291,6 +54892,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.12xlarge"
     CurrentGeneration: true
@@ -54375,6 +54977,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.16xlarge"
     CurrentGeneration: true
@@ -54462,6 +55065,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.2xlarge"
     CurrentGeneration: true
@@ -54546,6 +55150,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.4xlarge"
     CurrentGeneration: true
@@ -54630,6 +55235,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.8xlarge"
     CurrentGeneration: true
@@ -54714,6 +55320,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.large"
     CurrentGeneration: true
@@ -54798,6 +55405,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.medium"
     CurrentGeneration: true
@@ -54880,6 +55488,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.metal"
     CurrentGeneration: true
@@ -54961,6 +55570,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.xlarge"
     CurrentGeneration: true
@@ -55045,6 +55655,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.12xlarge"
     CurrentGeneration: true
@@ -55139,6 +55750,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.16xlarge"
     CurrentGeneration: true
@@ -55236,6 +55848,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.2xlarge"
     CurrentGeneration: true
@@ -55330,6 +55943,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.4xlarge"
     CurrentGeneration: true
@@ -55424,6 +56038,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.8xlarge"
     CurrentGeneration: true
@@ -55518,6 +56133,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.large"
     CurrentGeneration: true
@@ -55612,6 +56228,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.medium"
     CurrentGeneration: true
@@ -55704,6 +56321,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.metal"
     CurrentGeneration: true
@@ -55795,6 +56413,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.xlarge"
     CurrentGeneration: true
@@ -55889,6 +56508,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7i.12xlarge"
     CurrentGeneration: true
@@ -55973,6 +56593,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7i.16xlarge"
     CurrentGeneration: true
@@ -56057,6 +56678,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7i.24xlarge"
     CurrentGeneration: true
@@ -56141,6 +56763,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7i.2xlarge"
     CurrentGeneration: true
@@ -56225,6 +56848,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7i.48xlarge"
     CurrentGeneration: true
@@ -56312,6 +56936,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7i.4xlarge"
     CurrentGeneration: true
@@ -56396,6 +57021,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7i.8xlarge"
     CurrentGeneration: true
@@ -56480,6 +57106,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7i.large"
     CurrentGeneration: true
@@ -56564,6 +57191,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7i.metal-24xl"
     CurrentGeneration: true
@@ -56642,6 +57270,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7i.metal-48xl"
     CurrentGeneration: true
@@ -56723,6 +57352,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r7i.xlarge"
     CurrentGeneration: true
@@ -56807,6 +57437,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8g.12xlarge"
     CurrentGeneration: true
@@ -56892,6 +57523,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8g.16xlarge"
     CurrentGeneration: true
@@ -56977,6 +57609,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8g.24xlarge"
     CurrentGeneration: true
@@ -57065,6 +57698,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8g.2xlarge"
     CurrentGeneration: true
@@ -57150,6 +57784,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8g.48xlarge"
     CurrentGeneration: true
@@ -57238,6 +57873,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8g.4xlarge"
     CurrentGeneration: true
@@ -57323,6 +57959,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8g.8xlarge"
     CurrentGeneration: true
@@ -57408,6 +58045,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8g.large"
     CurrentGeneration: true
@@ -57493,6 +58131,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8g.medium"
     CurrentGeneration: true
@@ -57576,6 +58215,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8g.metal-24xl"
     CurrentGeneration: true
@@ -57658,6 +58298,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8g.metal-48xl"
     CurrentGeneration: true
@@ -57740,6 +58381,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8g.xlarge"
     CurrentGeneration: true
@@ -57825,6 +58467,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i-flex.12xlarge"
     CurrentGeneration: true
@@ -57914,6 +58557,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i-flex.16xlarge"
     CurrentGeneration: true
@@ -58003,6 +58647,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i-flex.2xlarge"
     CurrentGeneration: true
@@ -58092,6 +58737,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i-flex.4xlarge"
     CurrentGeneration: true
@@ -58181,6 +58827,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i-flex.8xlarge"
     CurrentGeneration: true
@@ -58270,6 +58917,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i-flex.large"
     CurrentGeneration: true
@@ -58359,6 +59007,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i-flex.xlarge"
     CurrentGeneration: true
@@ -58448,6 +59097,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i.12xlarge"
     CurrentGeneration: true
@@ -58537,6 +59187,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i.16xlarge"
     CurrentGeneration: true
@@ -58626,6 +59277,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i.24xlarge"
     CurrentGeneration: true
@@ -58715,6 +59367,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i.2xlarge"
     CurrentGeneration: true
@@ -58804,6 +59457,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i.32xlarge"
     CurrentGeneration: true
@@ -58893,6 +59547,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i.48xlarge"
     CurrentGeneration: true
@@ -58985,6 +59640,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i.4xlarge"
     CurrentGeneration: true
@@ -59074,6 +59730,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i.8xlarge"
     CurrentGeneration: true
@@ -59163,6 +59820,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i.96xlarge"
     CurrentGeneration: true
@@ -59255,6 +59913,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i.large"
     CurrentGeneration: true
@@ -59344,6 +60003,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i.metal-48xl"
     CurrentGeneration: true
@@ -59429,6 +60089,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i.metal-96xl"
     CurrentGeneration: true
@@ -59514,6 +60175,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "r8i.xlarge"
     CurrentGeneration: true
@@ -59603,6 +60265,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t2.2xlarge"
     CurrentGeneration: true
@@ -59673,6 +60336,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t2.large"
     CurrentGeneration: true
@@ -59743,6 +60407,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t2.medium"
     CurrentGeneration: true
@@ -59813,6 +60478,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t2.micro"
     CurrentGeneration: true
@@ -59883,6 +60549,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t2.nano"
     CurrentGeneration: true
@@ -59953,6 +60620,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t2.small"
     CurrentGeneration: true
@@ -60023,6 +60691,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t2.xlarge"
     CurrentGeneration: true
@@ -60093,6 +60762,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t3.2xlarge"
     CurrentGeneration: true
@@ -60176,6 +60846,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t3.large"
     CurrentGeneration: true
@@ -60259,6 +60930,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t3.medium"
     CurrentGeneration: true
@@ -60342,6 +61014,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t3.micro"
     CurrentGeneration: true
@@ -60425,6 +61098,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t3.nano"
     CurrentGeneration: true
@@ -60508,6 +61182,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t3.small"
     CurrentGeneration: true
@@ -60591,6 +61266,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t3.xlarge"
     CurrentGeneration: true
@@ -60674,6 +61350,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t3a.2xlarge"
     CurrentGeneration: true
@@ -60757,6 +61434,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t3a.large"
     CurrentGeneration: true
@@ -60840,6 +61518,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t3a.medium"
     CurrentGeneration: true
@@ -60923,6 +61602,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t3a.micro"
     CurrentGeneration: true
@@ -61006,6 +61686,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t3a.nano"
     CurrentGeneration: true
@@ -61089,6 +61770,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t3a.small"
     CurrentGeneration: true
@@ -61172,6 +61854,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t3a.xlarge"
     CurrentGeneration: true
@@ -61255,6 +61938,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t4g.2xlarge"
     CurrentGeneration: true
@@ -61338,6 +62022,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t4g.large"
     CurrentGeneration: true
@@ -61421,6 +62106,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t4g.medium"
     CurrentGeneration: true
@@ -61504,6 +62190,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t4g.micro"
     CurrentGeneration: true
@@ -61587,6 +62274,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t4g.nano"
     CurrentGeneration: true
@@ -61670,6 +62358,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t4g.small"
     CurrentGeneration: true
@@ -61753,6 +62442,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "t4g.xlarge"
     CurrentGeneration: true
@@ -61836,6 +62526,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "trn1.32xlarge"
     CurrentGeneration: true
@@ -61992,6 +62683,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "u-6tb1.112xlarge"
     CurrentGeneration: true
@@ -62072,6 +62764,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "u-6tb1.56xlarge"
     CurrentGeneration: true
@@ -62152,6 +62845,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "u7i-12tb.224xlarge"
     CurrentGeneration: true
@@ -62239,6 +62933,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "u7i-6tb.112xlarge"
     CurrentGeneration: true
@@ -62326,6 +63021,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "u7i-8tb.112xlarge"
     CurrentGeneration: true
@@ -62413,6 +63109,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "u7in-16tb.224xlarge"
     CurrentGeneration: true
@@ -62507,6 +63204,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x1.16xlarge"
     CurrentGeneration: true
@@ -62597,6 +63295,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x1.32xlarge"
     CurrentGeneration: true
@@ -62687,6 +63386,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x1e.16xlarge"
     CurrentGeneration: true
@@ -62777,6 +63477,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x1e.2xlarge"
     CurrentGeneration: true
@@ -62867,6 +63568,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x1e.32xlarge"
     CurrentGeneration: true
@@ -62957,6 +63659,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x1e.4xlarge"
     CurrentGeneration: true
@@ -63047,6 +63750,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x1e.8xlarge"
     CurrentGeneration: true
@@ -63137,6 +63841,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x1e.xlarge"
     CurrentGeneration: true
@@ -63227,6 +63932,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x2idn.16xlarge"
     CurrentGeneration: true
@@ -63320,6 +64026,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x2idn.24xlarge"
     CurrentGeneration: true
@@ -63413,6 +64120,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x2idn.32xlarge"
     CurrentGeneration: true
@@ -63509,6 +64217,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x2idn.metal"
     CurrentGeneration: true
@@ -63599,6 +64308,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x2iedn.16xlarge"
     CurrentGeneration: true
@@ -63692,6 +64402,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x2iedn.24xlarge"
     CurrentGeneration: true
@@ -63785,6 +64496,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x2iedn.2xlarge"
     CurrentGeneration: true
@@ -63878,6 +64590,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x2iedn.32xlarge"
     CurrentGeneration: true
@@ -63974,6 +64687,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x2iedn.4xlarge"
     CurrentGeneration: true
@@ -64067,6 +64781,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x2iedn.8xlarge"
     CurrentGeneration: true
@@ -64160,6 +64875,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x2iedn.metal"
     CurrentGeneration: true
@@ -64250,6 +64966,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x2iedn.xlarge"
     CurrentGeneration: true
@@ -64343,6 +65060,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8aedz.12xlarge"
     CurrentGeneration: true
@@ -64441,6 +65159,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8aedz.24xlarge"
     CurrentGeneration: true
@@ -64542,6 +65261,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8aedz.3xlarge"
     CurrentGeneration: true
@@ -64640,6 +65360,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8aedz.6xlarge"
     CurrentGeneration: true
@@ -64738,6 +65459,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8aedz.large"
     CurrentGeneration: true
@@ -64836,6 +65558,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8aedz.metal-12xl"
     CurrentGeneration: true
@@ -64928,6 +65651,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8aedz.metal-24xl"
     CurrentGeneration: true
@@ -65023,6 +65747,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8aedz.xlarge"
     CurrentGeneration: true
@@ -65121,6 +65846,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8i.12xlarge"
     CurrentGeneration: true
@@ -65209,6 +65935,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8i.16xlarge"
     CurrentGeneration: true
@@ -65297,6 +66024,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8i.24xlarge"
     CurrentGeneration: true
@@ -65385,6 +66113,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8i.2xlarge"
     CurrentGeneration: true
@@ -65473,6 +66202,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8i.32xlarge"
     CurrentGeneration: true
@@ -65561,6 +66291,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8i.48xlarge"
     CurrentGeneration: true
@@ -65652,6 +66383,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8i.4xlarge"
     CurrentGeneration: true
@@ -65740,6 +66472,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8i.64xlarge"
     CurrentGeneration: true
@@ -65831,6 +66564,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8i.8xlarge"
     CurrentGeneration: true
@@ -65919,6 +66653,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8i.96xlarge"
     CurrentGeneration: true
@@ -66010,6 +66745,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8i.large"
     CurrentGeneration: true
@@ -66098,6 +66834,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8i.metal-48xl"
     CurrentGeneration: true
@@ -66183,6 +66920,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8i.metal-96xl"
     CurrentGeneration: true
@@ -66268,6 +67006,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "supported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "x8i.xlarge"
     CurrentGeneration: true
@@ -66356,6 +67095,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "z1d.12xlarge"
     CurrentGeneration: true
@@ -66449,6 +67189,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "z1d.2xlarge"
     CurrentGeneration: true
@@ -66542,6 +67283,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "z1d.3xlarge"
     CurrentGeneration: true
@@ -66635,6 +67377,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "z1d.6xlarge"
     CurrentGeneration: true
@@ -66728,6 +67471,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "z1d.large"
     CurrentGeneration: true
@@ -66821,6 +67565,7 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "z1d.metal"
     CurrentGeneration: true
@@ -66908,6 +67653,7 @@ InstanceTypes: [{
     NitroTpmSupport:        "unsupported"
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }, {
     InstanceType:      "z1d.xlarge"
     CurrentGeneration: true
@@ -67001,4 +67747,5 @@ InstanceTypes: [{
     }
     PhcSupport:             "unsupported"
     RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
 }]
