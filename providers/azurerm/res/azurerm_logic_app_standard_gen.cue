@@ -21,6 +21,7 @@ import "list"
 		ftp_publish_basic_authentication_enabled?: bool
 		https_only?:                               bool
 		id?:                                       string
+		key_vault_reference_identity_id?:          string
 		kind?:                                     string
 		location!:                                 string
 		name!:                                     string

@@ -4,17 +4,18 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_integration_runtime_azure")
 	close({
-		timeouts?:                #timeouts
-		cleanup_enabled?:         bool
-		compute_type?:            string
-		core_count?:              number
-		data_factory_id!:         string
-		description?:             string
-		id?:                      string
-		location!:                string
-		name!:                    string
-		time_to_live_min?:        number
-		virtual_network_enabled?: bool
+		timeouts?:                                      #timeouts
+		cleanup_enabled?:                               bool
+		compute_type?:                                  string
+		core_count?:                                    number
+		data_factory_id!:                               string
+		description?:                                   string
+		id?:                                            string
+		interactive_authoring_time_to_live_in_minutes?: number
+		location!:                                      string
+		name!:                                          string
+		time_to_live_min?:                              number
+		virtual_network_enabled?:                       bool
 	})
 
 	#timeouts: close({

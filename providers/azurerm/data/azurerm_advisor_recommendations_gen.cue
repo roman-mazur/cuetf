@@ -6,11 +6,14 @@ package data
 	close({
 		timeouts?: #timeouts
 		filter_by_category?: [...string]
+		filter_by_recommendation_type_guids?: [...string]
 		filter_by_resource_groups?: [...string]
+		filter_by_resource_ids?: [...string]
 		id?: string
 		recommendations?: [...close({
 			category?:               string
 			description?:            string
+			id?:                     string
 			impact?:                 string
 			recommendation_name?:    string
 			recommendation_type_id?: string
