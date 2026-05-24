@@ -10,6 +10,7 @@ package data
 			cidr?:                string
 			cloud_vm_cluster_id?: string
 			create_time?:         string
+			deletion_policy?:     string
 			deletion_protection?: bool
 			display_name?:        string
 			effective_labels?: [string]: string

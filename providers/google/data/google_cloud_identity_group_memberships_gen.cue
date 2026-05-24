@@ -12,6 +12,7 @@ package data
 		memberships?: [...close({
 			create_ignore_already_exists?: bool
 			create_time?:                  string
+			deletion_policy?:              string
 			group?:                        string
 			name?:                         string
 			preferred_member_key?: [...close({

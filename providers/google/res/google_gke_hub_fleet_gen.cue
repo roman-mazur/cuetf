@@ -15,6 +15,19 @@ import "list"
 		// The time the fleet was deleted, in RFC3339 text format.
 		delete_time?: string
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// A user-assigned display name of the Fleet. When present, it
 		// must be between 4 to 30 characters.
 		// Allowed characters are: lowercase and uppercase letters,

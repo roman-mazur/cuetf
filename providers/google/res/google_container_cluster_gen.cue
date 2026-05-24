@@ -44,6 +44,7 @@ import "list"
 		release_channel?: matchN(1, [#release_channel, list.MaxItems(1) & [...#release_channel]])
 		resource_usage_export_config?: matchN(1, [#resource_usage_export_config, list.MaxItems(1) & [...#resource_usage_export_config]])
 		secret_manager_config?: matchN(1, [#secret_manager_config, list.MaxItems(1) & [...#secret_manager_config]])
+		secret_sync_config?: matchN(1, [#secret_sync_config, list.MaxItems(1) & [...#secret_sync_config]])
 		security_posture_config?: matchN(1, [#security_posture_config, list.MaxItems(1) & [...#security_posture_config]])
 		service_external_ips_config?: matchN(1, [#service_external_ips_config, list.MaxItems(1) & [...#service_external_ips_config]])
 		timeouts?: #timeouts
@@ -77,6 +78,19 @@ import "list"
 		// This doesn't work on "routes-based" clusters, clusters that
 		// don't have IP Aliasing enabled.
 		default_max_pods_per_node?: number
+
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
 
 		// When the field is set to true or unset in Terraform state, a
 		// terraform apply or terraform destroy that would delete the
@@ -285,6 +299,7 @@ import "list"
 		lustre_csi_driver_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/lustre_csi_driver_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/lustre_csi_driver_config"]])
 		network_policy_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/network_policy_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/network_policy_config"]])
 		parallelstore_csi_driver_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/parallelstore_csi_driver_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/parallelstore_csi_driver_config"]])
+		pod_snapshot_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/pod_snapshot_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/pod_snapshot_config"]])
 		ray_operator_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/ray_operator_config", list.MaxItems(3) & [..._#defs."/$defs/addons_config/$defs/ray_operator_config"]])
 		slice_controller_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/slice_controller_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/slice_controller_config"]])
 		stateful_ha_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/stateful_ha_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/stateful_ha_config"]])
@@ -867,6 +882,13 @@ import "list"
 		enabled!: bool
 	})
 
+	#secret_sync_config: close({
+		rotation_config?: matchN(1, [_#defs."/$defs/secret_sync_config/$defs/rotation_config", list.MaxItems(1) & [..._#defs."/$defs/secret_sync_config/$defs/rotation_config"]])
+
+		// Enable the Sync as k8s secret add-on.
+		enabled!: bool
+	})
+
 	#security_posture_config: close({
 		// Sets the mode of the Kubernetes security posture API's
 		// off-cluster features. Available options include DISABLED,
@@ -1003,6 +1025,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/addons_config/$defs/parallelstore_csi_driver_config": close({
+		enabled!: bool
+	})
+
+	_#defs: "/$defs/addons_config/$defs/pod_snapshot_config": close({
+		// Whether the Pod Snapshot feature is enabled for this cluster.
 		enabled!: bool
 	})
 
@@ -2750,6 +2777,15 @@ import "list"
 
 	_#defs: "/$defs/secret_manager_config/$defs/rotation_config": close({
 		// Enable the Secret manager auto rotation.
+		enabled!: bool
+
+		// The interval between two consecutive rotations. Default
+		// rotation interval is 2 minutes
+		rotation_interval?: string
+	})
+
+	_#defs: "/$defs/secret_sync_config/$defs/rotation_config": close({
+		// Enable the Secret sync auto rotation.
 		enabled!: bool
 
 		// The interval between two consecutive rotations. Default

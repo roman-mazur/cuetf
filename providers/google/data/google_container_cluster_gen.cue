@@ -45,6 +45,9 @@ package data
 			parallelstore_csi_driver_config?: [...close({
 				enabled?: bool
 			})]
+			pod_snapshot_config?: [...close({
+				enabled?: bool
+			})]
 			ray_operator_config?: [...close({
 				enabled?: bool
 				ray_cluster_logging_config?: [...close({
@@ -210,6 +213,19 @@ package data
 		default_snat_status?: [...close({
 			disabled?: bool
 		})]
+
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
 
 		// When the field is set to true or unset in Terraform state, a
 		// terraform apply or terraform destroy that would delete the
@@ -1220,6 +1236,15 @@ package data
 
 		// Configuration for the Secret Manager feature.
 		secret_manager_config?: [...close({
+			enabled?: bool
+			rotation_config?: [...close({
+				enabled?:           bool
+				rotation_interval?: string
+			})]
+		})]
+
+		// Configuration for the Sync as k8s secrets feature.
+		secret_sync_config?: [...close({
 			enabled?: bool
 			rotation_config?: [...close({
 				enabled?:           bool

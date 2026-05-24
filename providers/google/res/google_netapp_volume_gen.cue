@@ -31,12 +31,10 @@ import "list"
 		// format. Examples: "2023-06-22T09:13:01.617Z".
 		create_time?: string
 
-		// Policy to determine if the volume should be deleted forcefully.
-		// Volumes may have nested snapshot resources. Deleting such a
-		// volume will fail.
-		// Setting this parameter to FORCE will delete volumes including
-		// nested snapshots.
-		// Possible values: DEFAULT, FORCE.
+		// This field uses a custom implementation please refer to
+		// documentation under
+		// /hashicorp/terraform-provider-google-beta/website/docs/r/netapp_volume.html.markdown
+		// for specifics
 		deletion_policy?: string
 
 		// An optional description of this resource.

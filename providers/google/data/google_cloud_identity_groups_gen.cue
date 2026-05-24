@@ -10,9 +10,10 @@ package data
 				id?:        string
 				namespace?: string
 			})]
-			create_time?:  string
-			description?:  string
-			display_name?: string
+			create_time?:     string
+			deletion_policy?: string
+			description?:     string
+			display_name?:    string
 			group_key?: [...close({
 				id?:        string
 				namespace?: string

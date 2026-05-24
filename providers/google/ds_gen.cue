@@ -285,6 +285,7 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_kms_secret_ciphertext": data.#google_kms_secret_ciphertext
 	_#ds: "\(#googlePrefix)_kms_secret": data.#google_kms_secret
 	_#ds: "\(#googlePrefix)_logging_folder_settings": data.#google_logging_folder_settings
+	_#ds: "\(#googlePrefix)_logging_log_view": data.#google_logging_log_view
 	_#ds: "\(#googlePrefix)_logging_log_view_iam_policy": data.#google_logging_log_view_iam_policy
 	_#ds: "\(#googlePrefix)_logging_organization_settings": data.#google_logging_organization_settings
 	_#ds: "\(#googlePrefix)_logging_project_cmek_settings": data.#google_logging_project_cmek_settings

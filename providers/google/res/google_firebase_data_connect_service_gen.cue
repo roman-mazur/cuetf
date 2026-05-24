@@ -17,14 +17,10 @@ package res
 		// Output only. [Output only] Create time stamp.
 		create_time?: string
 
-		// The deletion policy for the database. Setting the field to
-		// FORCE allows the
-		// Service to be deleted even if a Schema or Connector is present.
-		// By default,
-		// the Service deletion will only succeed when no Schema or
-		// Connectors are
-		// present.
-		// Possible values: DEFAULT, FORCE
+		// This field uses a custom implementation please refer to
+		// documentation under
+		// /hashicorp/terraform-provider-google-beta/website/docs/r/firebase_data_connect_service.html.markdown
+		// for specifics
 		deletion_policy?: string
 
 		// Optional. Mutable human-readable name. 63 character limit.

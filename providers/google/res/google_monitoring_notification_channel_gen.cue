@@ -9,6 +9,19 @@ import "list"
 		sensitive_labels?: matchN(1, [#sensitive_labels, list.MaxItems(1) & [...#sensitive_labels]])
 		timeouts?: #timeouts
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// An optional human-readable description of this notification
 		// channel. This description may provide additional details,
 		// beyond the display name, for the channel. This may not exceed

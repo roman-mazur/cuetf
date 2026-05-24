@@ -81,6 +81,7 @@ package google
 		dataproc_metastore_custom_endpoint?:         string
 		datastream_custom_endpoint?:                 string
 		default_labels?: [string]: string
+		deletion_policy?:                        string
 		deployment_manager_custom_endpoint?:     string
 		developer_connect_custom_endpoint?:      string
 		dialogflow_custom_endpoint?:             string

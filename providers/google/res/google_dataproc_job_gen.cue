@@ -18,6 +18,19 @@ import "list"
 		sparksql_config?: matchN(1, [#sparksql_config, list.MaxItems(1) & [...#sparksql_config]])
 		timeouts?: #timeouts
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// Output-only. If present, the location of miscellaneous control
 		// files which may be used as part of job setup and handling. If
 		// not present, control files may be placed in the same location

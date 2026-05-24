@@ -38,15 +38,17 @@ import "list"
 		// "DELETE_PROTECTION_ENABLED", "DELETE_PROTECTION_DISABLED"]
 		delete_protection_state?: string
 
-		// Deletion behavior for this database.
-		// If the deletion policy is 'ABANDON', the database will be
-		// removed from Terraform state but not deleted from Google Cloud
-		// upon destruction.
-		// If the deletion policy is 'DELETE', the database will both be
-		// removed from Terraform state and deleted from Google Cloud
-		// upon destruction.
-		// The default value is 'ABANDON'.
-		// See also 'delete_protection'.
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "ABANDON".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// Output only. The earliest timestamp at which older versions of

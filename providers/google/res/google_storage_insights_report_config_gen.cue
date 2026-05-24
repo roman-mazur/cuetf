@@ -12,6 +12,19 @@ import "list"
 		parquet_options?: matchN(1, [#parquet_options, list.MaxItems(1) & [...#parquet_options]])
 		timeouts?: #timeouts
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// The editable display name of the inventory report
 		// configuration. Has a limit of 256 characters. Can be empty.
 		display_name?: string

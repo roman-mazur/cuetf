@@ -22,6 +22,19 @@ import "list"
 		// key provisioned through KMS.
 		customer_managed_encryption_key?: string
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// Desired state of the Stream. Set this field to 'RUNNING' to
 		// start the stream,
 		// 'NOT_STARTED' to create the stream without starting and

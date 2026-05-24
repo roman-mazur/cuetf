@@ -10,10 +10,16 @@ package data
 		backups?: [...close({
 			backup_id?:       string
 			backup_vault_id?: string
-			create_time?:     string
-			data_source_id?:  string
-			location?:        string
-			name?:            string
+			compute_instance_backup_properties?: [...close({
+				guest_flush?: bool
+			})]
+			create_time?:    string
+			data_source_id?: string
+			disk_backup_properties?: [...close({
+				guest_flush?: bool
+			})]
+			location?: string
+			name?:     string
 		})]
 
 		// The time when the backup was created.

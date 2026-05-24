@@ -13,17 +13,17 @@ import "list"
 		// Time the Instance was created in UTC.
 		create_time?: string
 
-		// The deletion policy for the instance. Setting 'ABANDON' allows
-		// the resource
-		// to be abandoned, rather than deleted. Setting 'DELETE' deletes
-		// the resource
-		// and all its contents. Setting 'PREVENT' prevents the resource
-		// from accidental
-		// deletion by erroring out during plan.
-		// Default is 'PREVENT'. Possible values are:
-		// * DELETE
-		// * PREVENT
-		// * ABANDON
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "PREVENT".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// All of labels (key/value pairs) present on the resource in GCP,

@@ -27,12 +27,10 @@ import "list"
 		// Data table unique id
 		data_table_uuid?: string
 
-		// The policy governing the deletion of the data table.
-		// If set to 'FORCE', allows the deletion of the data table even
-		// if it contains rows.
-		// If set to 'DEFAULT',or if the field is omitted, the data table
-		// must be empty before it can be deleted.
-		// Possible values: DEFAULT, FORCE
+		// This field uses a custom implementation please refer to
+		// documentation under
+		// /hashicorp/terraform-provider-google-beta/website/docs/r/chronicle_data_table.html.markdown
+		// for specifics
 		deletion_policy?: string
 
 		// A user-provided description of the data table.

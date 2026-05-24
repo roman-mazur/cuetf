@@ -21,6 +21,19 @@ import "list"
 		// Time that the cluster was originally created.
 		create_time?: string
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// User-provided description of the cluster.
 		description?: string
 
@@ -454,6 +467,12 @@ import "list"
 	_#defs: "/$defs/storage_resources/$defs/config/$defs/new_bucket/$defs/autoclass": close({
 		// Enables Auto-class feature.
 		enabled!: bool
+
+		// Terminal storage class of the autoclass bucket
+		// Possible values:
+		// NEARLINE
+		// ARCHIVE
+		terminal_storage_class?: string
 	})
 
 	_#defs: "/$defs/storage_resources/$defs/config/$defs/new_bucket/$defs/hierarchical_namespace": close({
@@ -519,5 +538,12 @@ import "list"
 		// Name of the Managed Lustre instance to create, in the format
 		// 'projects/{project}/locations/{location}/instances/{instance}'
 		lustre!: string
+
+		// Throughput of the instance in MB/s/TiB. Valid values are 125,
+		// 250,
+		// 500, 1000. See [Performance tiers and maximum storage
+		// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+		// for more information.
+		per_unit_storage_throughput?: string
 	})
 }

@@ -27,6 +27,19 @@ import "list"
 		// Timestamp when the app was created.
 		create_time?: string
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// Number of deployments in the app.
 		deployment_count?: number
 
@@ -77,6 +90,12 @@ import "list"
 		// Format:
 		// 'projects/{project}/locations/{location}/apps/{app}/agents/{agent}'
 		root_agent?: string
+
+		// The tool execution mode for the app.
+		// See the [API
+		// reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode)
+		// for more details.
+		tool_execution_mode?: string
 
 		// Timestamp when the app was last updated.
 		update_time?: string

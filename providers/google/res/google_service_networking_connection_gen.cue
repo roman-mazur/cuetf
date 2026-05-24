@@ -6,9 +6,17 @@ package res
 	close({
 		timeouts?: #timeouts
 
-		// When set to ABANDON, terraform will abandon management of the
-		// resource instead of deleting it. Prevents terraform apply
-		// failures with CloudSQL. Note: The resource will still exist.
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
 

@@ -9,15 +9,10 @@ package res
 		// The time at which the Secret was created.
 		create_time?: string
 
-		// The deletion policy for the secret version. Setting 'ABANDON'
-		// allows the resource
-		// to be abandoned rather than deleted. Setting 'DISABLE' allows
-		// the resource to be
-		// disabled rather than deleted. Default is 'DELETE'. Possible
-		// values are:
-		// * DELETE
-		// * DISABLE
-		// * ABANDON
+		// This field uses a custom implementation please refer to
+		// documentation under
+		// /hashicorp/terraform-provider-google-beta/website/docs/r/secret_manager_secret_version.html.markdown
+		// for specifics
 		deletion_policy?: string
 
 		// The time at which the Secret was destroyed. Only present if

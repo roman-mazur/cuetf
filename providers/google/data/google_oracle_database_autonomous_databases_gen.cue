@@ -10,6 +10,7 @@ package data
 			cidr?:                   string
 			create_time?:            string
 			database?:               string
+			deletion_policy?:        string
 			deletion_protection?:    bool
 			disaster_recovery_supported_locations?: [...string]
 			display_name?: string

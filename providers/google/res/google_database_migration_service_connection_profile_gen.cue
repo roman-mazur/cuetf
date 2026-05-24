@@ -24,6 +24,19 @@ import "list"
 		// The database provider.
 		dbprovider?: string
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// The connection profile display name.
 		display_name?: string
 
@@ -60,6 +73,10 @@ import "list"
 		name?:    string
 		project?: string
 
+		// The connection profile role. Possible values: ["SOURCE",
+		// "DESTINATION"]
+		role?: string
+
 		// The current connection profile state.
 		state?: string
 
@@ -93,8 +110,8 @@ import "list"
 	#mysql: close({
 		ssl?: matchN(1, [_#defs."/$defs/mysql/$defs/ssl", list.MaxItems(1) & [..._#defs."/$defs/mysql/$defs/ssl"]])
 
-		// If the source is a Cloud SQL database, use this field to
-		// provide the Cloud SQL instance ID of the source.
+		// If the connection profile is a Cloud SQL database, use this
+		// field to provide the Cloud SQL instance ID.
 		cloud_sql_id?: string
 
 		// The IP or hostname of the source MySQL database.
@@ -151,15 +168,19 @@ import "list"
 	})
 
 	#postgresql: close({
+		private_connectivity?: matchN(1, [_#defs."/$defs/postgresql/$defs/private_connectivity", list.MaxItems(1) & [..._#defs."/$defs/postgresql/$defs/private_connectivity"]])
 		ssl?: matchN(1, [_#defs."/$defs/postgresql/$defs/ssl", list.MaxItems(1) & [..._#defs."/$defs/postgresql/$defs/ssl"]])
 
-		// If the connected database is an AlloyDB instance, use this
+		// If the connection profile is an AlloyDB instance, use this
 		// field to provide the AlloyDB cluster ID.
 		alloydb_cluster_id?: string
 
-		// If the source is a Cloud SQL database, use this field to
-		// provide the Cloud SQL instance ID of the source.
+		// If the connection profile is a Cloud SQL database, use this
+		// field to provide the Cloud SQL instance ID.
 		cloud_sql_id?: string
+
+		// The name of the specific database within the host.
+		database?: string
 
 		// The IP or hostname of the source MySQL database.
 		host?: string
@@ -425,6 +446,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/oracle/$defs/static_service_ip_connectivity": close({})
+
+	_#defs: "/$defs/postgresql/$defs/private_connectivity": close({
+		// Required. The resource name (URI) of the private connection.
+		private_connection!: string
+	})
 
 	_#defs: "/$defs/postgresql/$defs/ssl": close({
 		// Input only. The x509 PEM-encoded certificate of the CA that

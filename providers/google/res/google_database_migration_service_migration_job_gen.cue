@@ -9,6 +9,7 @@ import "list"
 		dump_flags?: matchN(1, [#dump_flags, list.MaxItems(1) & [...#dump_flags]])
 		objects_config?: matchN(1, [#objects_config, list.MaxItems(1) & [...#objects_config]])
 		performance_config?: matchN(1, [#performance_config, list.MaxItems(1) & [...#performance_config]])
+		postgres_homogeneous_config?: matchN(1, [#postgres_homogeneous_config, list.MaxItems(1) & [...#postgres_homogeneous_config]])
 		reverse_ssh_connectivity?: matchN(1, [#reverse_ssh_connectivity, list.MaxItems(1) & [...#reverse_ssh_connectivity]])
 		static_ip_connectivity?: matchN(1, [#static_ip_connectivity, list.MaxItems(1) & [...#static_ip_connectivity]])
 		timeouts?: #timeouts
@@ -18,6 +19,19 @@ import "list"
 		// timestamp in RFC3339 UTC 'Zulu' format, accurate to
 		// nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
 		create_time?: string
+
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
 
 		// The name of the destination connection profile resource in the
 		// form of
@@ -105,6 +119,15 @@ import "list"
 		// Initial dump parallelism level. Possible values: ["MIN",
 		// "OPTIMAL", "MAX"]
 		dump_parallel_level?: string
+	})
+
+	#postgres_homogeneous_config: close({
+		// Whether the migration uses native logical replication.
+		is_native_logical!: bool
+
+		// Maximum number of additional subscriptions to use for the
+		// migration job.
+		max_additional_subscriptions?: number
 	})
 
 	#reverse_ssh_connectivity: close({

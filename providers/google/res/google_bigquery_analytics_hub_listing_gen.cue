@@ -39,6 +39,19 @@ import "list"
 		// guard to avoid deleting commercial listings accidentally.
 		delete_commercial?: bool
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// Short description of the listing. The description must not
 		// contain Unicode non-characters and C0 and C1 control codes
 		// except tabs (HT), new lines (LF), carriage returns (CR), and

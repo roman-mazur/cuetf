@@ -8,6 +8,7 @@ package data
 		parent!: string
 		values?: [...close({
 			create_time?:     string
+			deletion_policy?: string
 			description?:     string
 			name?:            string
 			namespaced_name?: string

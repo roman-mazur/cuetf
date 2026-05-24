@@ -8,6 +8,7 @@ package data
 		id?:     string
 		network_endpoint_groups?: [...close({
 			default_port?:          number
+			deletion_policy?:       string
 			description?:           string
 			generated_id?:          number
 			name?:                  string

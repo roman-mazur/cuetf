@@ -24,6 +24,19 @@ import "list"
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// An optional description of this resource. Provide this property
 		// when
 		// you create the resource. This field can be set only at resource
@@ -154,7 +167,9 @@ import "list"
 		reserved_internal_range?: string
 
 		// 'Configures subnet mask resolution for this subnetwork.'
-		// Possible values: ["ARP_ALL_RANGES", "ARP_PRIMARY_RANGE"]
+		// Possible values: ["ARP_ALL_RANGES", "ARP_PRIMARY_RANGE",
+		// "ARP_BROADCAST_PRIMARY_RANGE",
+		// "ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING"]
 		resolve_subnet_mask?: string
 
 		// The role of subnetwork.

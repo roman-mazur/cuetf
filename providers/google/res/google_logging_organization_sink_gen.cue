@@ -9,6 +9,19 @@ import "list"
 		bigquery_options?: matchN(1, [#bigquery_options, list.MaxItems(1) & [...#bigquery_options]])
 		exclusions?: matchN(1, [#exclusions, [...#exclusions]])
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// A description of this sink. The maximum length of the
 		// description is 8000 characters.
 		description?: string

@@ -11,6 +11,7 @@ package data
 				path_segment_type?: string
 			})]
 			creation_timestamp?:         string
+			deletion_policy?:            string
 			description?:                string
 			dest_range?:                 string
 			name?:                       string
@@ -53,6 +54,7 @@ package data
 				path_segment_type?: string
 			})]
 			creation_timestamp?:         string
+			deletion_policy?:            string
 			description?:                string
 			dest_range?:                 string
 			name?:                       string

@@ -13,9 +13,22 @@ import "list"
 		// as the source for Restores created via this RestorePlan.
 		backup_plan!: string
 
-		// The source cluster from which Restores will be created via this
-		// RestorePlan.
+		// The name of the target cluster to which you want to Restore via
+		// this RestorePlan.
 		cluster!: string
+
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
 
 		// User specified descriptive string for this RestorePlan.
 		description?: string

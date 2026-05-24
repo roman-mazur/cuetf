@@ -35,6 +35,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_apigee_api_product": res.#google_apigee_api_product
 	_#res: "\(#googlePrefix)_apigee_app_group": res.#google_apigee_app_group
 	_#res: "\(#googlePrefix)_apigee_control_plane_access": res.#google_apigee_control_plane_access
+	_#res: "\(#googlePrefix)_apigee_data_collector": res.#google_apigee_data_collector
 	_#res: "\(#googlePrefix)_apigee_developer_app": res.#google_apigee_developer_app
 	_#res: "\(#googlePrefix)_apigee_developer": res.#google_apigee_developer
 	_#res: "\(#googlePrefix)_apigee_dns_zone": res.#google_apigee_dns_zone
@@ -210,6 +211,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_chronicle_data_access_scope": res.#google_chronicle_data_access_scope
 	_#res: "\(#googlePrefix)_chronicle_data_table": res.#google_chronicle_data_table
 	_#res: "\(#googlePrefix)_chronicle_data_table_row": res.#google_chronicle_data_table_row
+	_#res: "\(#googlePrefix)_chronicle_native_dashboard": res.#google_chronicle_native_dashboard
 	_#res: "\(#googlePrefix)_chronicle_reference_list": res.#google_chronicle_reference_list
 	_#res: "\(#googlePrefix)_chronicle_retrohunt": res.#google_chronicle_retrohunt
 	_#res: "\(#googlePrefix)_chronicle_rule_deployment": res.#google_chronicle_rule_deployment
@@ -448,6 +450,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_contact_center_insights_analysis_rule": res.#google_contact_center_insights_analysis_rule
 	_#res: "\(#googlePrefix)_contact_center_insights_assessment_rule": res.#google_contact_center_insights_assessment_rule
 	_#res: "\(#googlePrefix)_contact_center_insights_auto_labeling_rule": res.#google_contact_center_insights_auto_labeling_rule
+	_#res: "\(#googlePrefix)_contact_center_insights_encryption_spec": res.#google_contact_center_insights_encryption_spec
 	_#res: "\(#googlePrefix)_contact_center_insights_qa_question": res.#google_contact_center_insights_qa_question
 	_#res: "\(#googlePrefix)_contact_center_insights_qa_scorecard": res.#google_contact_center_insights_qa_scorecard
 	_#res: "\(#googlePrefix)_contact_center_insights_qa_scorecard_revision": res.#google_contact_center_insights_qa_scorecard_revision

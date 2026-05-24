@@ -8,6 +8,7 @@ package data
 		keys?: [...close({
 			allowed_values_regex?: string
 			create_time?:          string
+			deletion_policy?:      string
 			description?:          string
 			name?:                 string
 			namespaced_name?:      string
