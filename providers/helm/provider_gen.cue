@@ -11,18 +11,31 @@ package helm
 		// Debug indicates whether or not Helm is running in Debug mode.
 		debug?: bool
 
-		// Enable and disable experimental features.
-		experiments?: close({
-			// Enable full diff by storing the rendered manifest in the state.
-			manifest?: bool
-		})
-
 		// The backend storage driver. Values are: configmap, secret,
 		// memory, sql
 		helm_driver?: string
 
 		// The path to the helm plugins directory
 		plugins_path?: string
+
+		// Queries per second used when communicating with the Kubernetes
+		// API. Can be used to avoid throttling.
+		qps?: number
+
+		// The path to the registry config file
+		registry_config_path?: string
+
+		// The path to the file containing cached repository indexes
+		repository_cache?: string
+
+		// The path to the file containing repository names and URLs
+		repository_config_path?: string
+
+		// Enable and disable experimental features.
+		experiments?: close({
+			// Enable full diff by storing the rendered manifest in the state.
+			manifest?: bool
+		})
 
 		// Kubernetes Configuration
 		kubernetes?: close({
@@ -56,21 +69,6 @@ package helm
 			// KUBE_CONFIG_PATHS environment variable.
 			config_paths?: [...string]
 
-			// Exec configuration for Kubernetes authentication
-			exec?: close({
-				// API version for the exec plugin.
-				api_version!: string
-
-				// Arguments for the exec plugin
-				args?: [...string]
-
-				// Command to run for Kubernetes exec plugin
-				command!: string
-
-				// Environment variables for the exec plugin
-				env?: [string]: string
-			})
-
 			// The hostname (in form of URI) of kubernetes master
 			host?: string
 
@@ -95,14 +93,22 @@ package helm
 			// The username to use for HTTP basic authentication when
 			// accessing the Kubernetes master endpoint
 			username?: string
+
+			// Exec configuration for Kubernetes authentication
+			exec?: close({
+				// API version for the exec plugin.
+				api_version!: string
+
+				// Arguments for the exec plugin
+				args?: [...string]
+
+				// Command to run for Kubernetes exec plugin
+				command!: string
+
+				// Environment variables for the exec plugin
+				env?: [string]: string
+			})
 		})
-
-		// Queries per second used when communicating with the Kubernetes
-		// API. Can be used to avoid throttling.
-		qps?: number
-
-		// The path to the registry config file
-		registry_config_path?: string
 
 		// RegistryClient configuration.
 		registries?: matchN(1, [close({
@@ -128,11 +134,5 @@ package helm
 			// accessing the Kubernetes master endpoint.
 			username!: string
 		})]])
-
-		// The path to the file containing cached repository indexes
-		repository_cache?: string
-
-		// The path to the file containing repository names and URLs
-		repository_config_path?: string
 	})
 }

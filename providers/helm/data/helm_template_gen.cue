@@ -26,15 +26,6 @@ package data
 		// Add a custom description.
 		description?: string
 
-		// Postrender command config
-		postrender?: close({
-			// An argument to the post-renderer (can specify multiple)
-			args?: [...string]
-
-			// The common binary path
-			binary_path!: string
-		})
-
 		// Use chart development versions, too. Equivalent to version
 		// '>0.0.0-0'. If `version` is set, this is ignored.
 		devel?: bool
@@ -45,6 +36,7 @@ package data
 
 		// Prevent hooks from running.
 		disable_webhooks?: bool
+		id?:               string
 
 		// Include CRDs in the templated output.
 		include_crds?: bool
@@ -52,65 +44,22 @@ package data
 		// Set .Release.IsUpgrade instead of .Release.IsInstall.
 		is_upgrade?: bool
 
-		// Custom values to be merged with the values
-		set?: matchN(1, [close({
-			name!:  string
-			type?:  string
-			value?: string
-		}), [...close({
-			name!:  string
-			type?:  string
-			value?: string
-		})]])
-
 		// Location of public keys used for verification. Used only if
 		// `verify` is true.
 		keyring?: string
 
-		// Custom sensitive values to be merged with the values
-		set_list?: matchN(1, [close({
-			name?: string
-			value!: [...string]
-		}), [...close({
-			name?: string
-			value!: [...string]
-		})]])
-
 		// Kubernetes version used for Capabilities.KubeVersion.
 		kube_version?: string
-
-		// Custom sensitive values to be merged with the values
-		set_sensitive?: matchN(1, [close({
-			name!:  string
-			type?:  string
-			value!: string
-		}), [...close({
-			name!:  string
-			type?:  string
-			value!: string
-		})]])
 
 		// Concatenated rendered chart templates. This corresponds to the
 		// output of the `helm template` command.
 		manifest?: string
-
-		// Write-only custom values to be merged with the values.
-		set_wo?: matchN(1, [close({
-			name!:  string
-			type?:  string
-			value!: string
-		}), [...close({
-			name!:  string
-			type?:  string
-			value!: string
-		})]])
 
 		// Map of rendered chart templates indexed by the template name.
 		manifests?: [string]: string
 
 		// Release name
 		name!: string
-		id?:   string
 
 		// Namespace to install the release into.
 		namespace?: string
@@ -189,6 +138,57 @@ package data
 		// Will wait until all resources are in a ready state before
 		// marking the release as successful.
 		wait?: bool
+
+		// Postrender command config
+		postrender?: close({
+			// An argument to the post-renderer (can specify multiple)
+			args?: [...string]
+
+			// The common binary path
+			binary_path!: string
+		})
+
+		// Custom values to be merged with the values
+		set?: matchN(1, [close({
+			name!:  string
+			type?:  string
+			value?: string
+		}), [...close({
+			name!:  string
+			type?:  string
+			value?: string
+		})]])
+
+		// Custom sensitive values to be merged with the values
+		set_list?: matchN(1, [close({
+			name?: string
+			value!: [...string]
+		}), [...close({
+			name?: string
+			value!: [...string]
+		})]])
+
+		// Custom sensitive values to be merged with the values
+		set_sensitive?: matchN(1, [close({
+			name!:  string
+			type?:  string
+			value!: string
+		}), [...close({
+			name!:  string
+			type?:  string
+			value!: string
+		})]])
+
+		// Write-only custom values to be merged with the values.
+		set_wo?: matchN(1, [close({
+			name!:  string
+			type?:  string
+			value!: string
+		}), [...close({
+			name!:  string
+			type?:  string
+			value!: string
+		})]])
 		timeouts?: close({
 			// A string that can be [parsed as a
 			// duration](https://pkg.go.dev/time#ParseDuration) consisting of

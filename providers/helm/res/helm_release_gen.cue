@@ -32,43 +32,6 @@ package res
 		// install --no-crd-hook
 		disable_crd_hooks?: bool
 
-		// Status of the deployed release.
-		metadata?: close({
-			// The version number of the application being deployed
-			app_version?: string
-
-			// The name of the chart
-			chart?: string
-
-			// FirstDeployed is an int64 which represents timestamp when the
-			// release was first deployed.
-			first_deployed?: number
-
-			// LastDeployed is an int64 which represents timestamp when the
-			// release was last deployed.
-			last_deployed?: number
-
-			// Name is the name of the release
-			name?: string
-
-			// Namespace is the kubernetes namespace of the release
-			namespace?: string
-
-			// Notes is the description of the deployed release, rendered from
-			// templates.
-			notes?: string
-
-			// Version is an int32 which represents the version of the release
-			revision?: number
-
-			// Set of extra values. added to the chart. The sensitive data is
-			// cloaked. JSON encoded.
-			values?: string
-
-			// A SemVer 2 conformant version string of the chart
-			version?: string
-		})
-
 		// If set, the installation process will not validate rendered
 		// templates against the Kubernetes OpenAPI Schema
 		disable_openapi_validation?: bool
@@ -78,6 +41,7 @@ package res
 
 		// Force resource update through delete/recreate if needed.
 		force_update?: bool
+		id?:           string
 
 		// Location of public keys used for verification, Used only if
 		// 'verify is true'
@@ -88,57 +52,16 @@ package res
 
 		// The rendered manifest as JSON.
 		manifest?: string
-		id?:       string
 
 		// Limit the maximum number of revisions saved per release. Use 0
 		// for no limit
 		max_history?: number
 
-		// Postrender command config
-		postrender?: close({
-			// An argument to the post-renderer (can specify multiple)
-			args?: [...string]
-
-			// The common binary path
-			binary_path!: string
-		})
-
-		// Custom values to be merged with the values
-		set?: matchN(1, [close({
-			name!:  string
-			type?:  string
-			value?: string
-		}), [...close({
-			name!:  string
-			type?:  string
-			value?: string
-		})]])
-
 		// Release name. The length must not be longer than 53 characters
 		name!: string
 
-		// Custom sensitive values to be merged with the values
-		set_list?: matchN(1, [close({
-			name!: string
-			value!: [...string]
-		}), [...close({
-			name!: string
-			value!: [...string]
-		})]])
-
 		// Namespace to install the release into
 		namespace?: string
-
-		// Custom sensitive values to be merged with the values
-		set_sensitive?: matchN(1, [close({
-			name!:  string
-			type?:  string
-			value!: string
-		}), [...close({
-			name!:  string
-			type?:  string
-			value!: string
-		})]])
 
 		// Pass credentials to all domains
 		pass_credentials?: bool
@@ -195,17 +118,6 @@ package res
 		// Status of the release
 		status?: string
 
-		// Custom values to be merged with the values
-		set_wo?: matchN(1, [close({
-			name!:  string
-			type?:  string
-			value!: string
-		}), [...close({
-			name!:  string
-			type?:  string
-			value!: string
-		})]])
-
 		// If set, Helm will take ownership of resources not already
 		// annotated by this release. Useful for migrations or recovery.
 		take_ownership?: bool
@@ -230,6 +142,102 @@ package res
 		// Specify the exact chart version to install. If this is not
 		// specified, the latest version is installed
 		version?: string
+
+		// Will wait until all resources are in a ready state before
+		// marking the release as successful.
+		wait?: bool
+
+		// If wait is enabled, will wait until all Jobs have been
+		// completed before marking the release as successful.
+		wait_for_jobs?: bool
+
+		// Status of the deployed release.
+		metadata?: close({
+			// The version number of the application being deployed
+			app_version?: string
+
+			// The name of the chart
+			chart?: string
+
+			// FirstDeployed is an int64 which represents timestamp when the
+			// release was first deployed.
+			first_deployed?: number
+
+			// LastDeployed is an int64 which represents timestamp when the
+			// release was last deployed.
+			last_deployed?: number
+
+			// Name is the name of the release
+			name?: string
+
+			// Namespace is the kubernetes namespace of the release
+			namespace?: string
+
+			// Notes is the description of the deployed release, rendered from
+			// templates.
+			notes?: string
+
+			// Version is an int32 which represents the version of the release
+			revision?: number
+
+			// Set of extra values. added to the chart. The sensitive data is
+			// cloaked. JSON encoded.
+			values?: string
+
+			// A SemVer 2 conformant version string of the chart
+			version?: string
+		})
+
+		// Postrender command config
+		postrender?: close({
+			// An argument to the post-renderer (can specify multiple)
+			args?: [...string]
+
+			// The common binary path
+			binary_path!: string
+		})
+
+		// Custom values to be merged with the values
+		set?: matchN(1, [close({
+			name!:  string
+			type?:  string
+			value?: string
+		}), [...close({
+			name!:  string
+			type?:  string
+			value?: string
+		})]])
+
+		// Custom sensitive values to be merged with the values
+		set_list?: matchN(1, [close({
+			name!: string
+			value!: [...string]
+		}), [...close({
+			name!: string
+			value!: [...string]
+		})]])
+
+		// Custom sensitive values to be merged with the values
+		set_sensitive?: matchN(1, [close({
+			name!:  string
+			type?:  string
+			value!: string
+		}), [...close({
+			name!:  string
+			type?:  string
+			value!: string
+		})]])
+
+		// Custom values to be merged with the values
+		set_wo?: matchN(1, [close({
+			name!:  string
+			type?:  string
+			value!: string
+		}), [...close({
+			name!:  string
+			type?:  string
+			value!: string
+		})]])
 		timeouts?: close({
 			// A string that can be [parsed as a
 			// duration](https://pkg.go.dev/time#ParseDuration) consisting of
@@ -260,13 +268,5 @@ package res
 			// time units are "s" (seconds), "m" (minutes), "h" (hours).
 			update?: string
 		})
-
-		// Will wait until all resources are in a ready state before
-		// marking the release as successful.
-		wait?: bool
-
-		// If wait is enabled, will wait until all Jobs have been
-		// completed before marking the release as successful.
-		wait_for_jobs?: bool
 	})
 }
