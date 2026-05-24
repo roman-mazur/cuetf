@@ -1,12 +1,10 @@
 package data
 
-import "list"
-
 #elasticstack_kibana_action_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_kibana_action_connector")
 	close({
-		kibana_connection?: matchN(1, [#kibana_connection, list.MaxItems(1) & [...#kibana_connection]])
+		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
 		// The configuration for the connector. Configuration properties
 		// vary depending on the connector type.
@@ -17,7 +15,9 @@ import "list"
 
 		// The ID of the connector type, e.g. `.index`.
 		connector_type_id?: string
-		id?:                string
+
+		// Internal identifier of the resource.
+		id?: string
 
 		// Indicates whether the connector type is deprecated.
 		is_deprecated?: bool

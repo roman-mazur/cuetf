@@ -1,18 +1,18 @@
 package res
 
-import "list"
-
 #elasticstack_kibana_security_role: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_security_role")
 	close({
-		elasticsearch!: matchN(1, [#elasticsearch, list.MaxItems(1) & [_, ...] & [...#elasticsearch]])
+		elasticsearch?: #elasticsearch
 		kibana?: matchN(1, [#kibana, [...#kibana]])
-		kibana_connection?: matchN(1, [#kibana_connection, list.MaxItems(1) & [...#kibana_connection]])
+		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
 		// Optional description for the role
 		description?: string
-		id?:          string
+
+		// Internal identifier (same as name).
+		id?: string
 
 		// Optional meta-data.
 		metadata?: string
@@ -72,7 +72,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/elasticsearch/$defs/indices": close({
-		field_security?: matchN(1, [_#defs."/$defs/elasticsearch/$defs/indices/$defs/field_security", list.MaxItems(1) & [..._#defs."/$defs/elasticsearch/$defs/indices/$defs/field_security"]])
+		field_security?: _#defs."/$defs/elasticsearch/$defs/indices/$defs/field_security"
 
 		// A list of indices (or index name patterns) to which the
 		// permissions in this entry apply.
@@ -96,7 +96,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/elasticsearch/$defs/remote_indices": close({
-		field_security?: matchN(1, [_#defs."/$defs/elasticsearch/$defs/remote_indices/$defs/field_security", list.MaxItems(1) & [..._#defs."/$defs/elasticsearch/$defs/remote_indices/$defs/field_security"]])
+		field_security?: _#defs."/$defs/elasticsearch/$defs/remote_indices/$defs/field_security"
 
 		// A list of cluster aliases to which the permissions in this
 		// entry apply.
