@@ -10,6 +10,12 @@ package data
 			anonymous_auth_enabled?:         bool
 			enabled?:                        bool
 			internal_user_database_enabled?: bool
+			jwt_options?: [...close({
+				enabled?:     bool
+				public_key?:  string
+				roles_key?:   string
+				subject_key?: string
+			})]
 		})]
 		arn?: string
 		auto_tune_options?: [...close({
