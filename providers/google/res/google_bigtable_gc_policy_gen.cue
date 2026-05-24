@@ -13,11 +13,17 @@ import "list"
 		// The name of the column family.
 		column_family!: string
 
-		// The deletion policy for the GC policy. Setting ABANDON allows
-		// the resource
-		// to be abandoned rather than deleted. This is useful for GC
-		// policy as it cannot be deleted
-		// in a replicated instance. Possible values are: "ABANDON".
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// Serialized JSON string for garbage collection policy. Conflicts

@@ -10,6 +10,19 @@ import "list"
 		spec?: matchN(1, [#spec, list.MaxItems(1) & [...#spec]])
 		timeouts?: #timeouts
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// Optional. An opaque tag indicating the current state of the
 		// policy, used for concurrency control. This 'etag' is computed
 		// by the server based on the value of other fields, and may be

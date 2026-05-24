@@ -12,7 +12,8 @@ package data
 		id?:       string
 		location!: string
 		parameters?: [...close({
-			create_time?: string
+			create_time?:     string
+			deletion_policy?: string
 			effective_labels?: [string]: string
 			format?:  string
 			kms_key?: string

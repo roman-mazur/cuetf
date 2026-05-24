@@ -22,6 +22,19 @@ import "list"
 		// Timestamp when this deployment was created.
 		create_time?: string
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// Display name of the deployment.
 		display_name!: string
 
@@ -60,6 +73,8 @@ import "list"
 		// TWILIO
 		// GOOGLE_TELEPHONY_PLATFORM
 		// CONTACT_CENTER_AS_A_SERVICE
+		// FIVE9
+		// CONTACT_CENTER_INTEGRATION
 		channel_type?: string
 
 		// Whether to disable user barge-in control in the conversation.
@@ -93,22 +108,50 @@ import "list"
 	})
 
 	_#defs: "/$defs/channel_profile/$defs/web_widget_config": close({
+		security_settings?: matchN(1, [_#defs."/$defs/channel_profile/$defs/web_widget_config/$defs/security_settings", list.MaxItems(1) & [..._#defs."/$defs/channel_profile/$defs/web_widget_config/$defs/security_settings"]])
+
 		// The modality of the web widget.
 		// Possible values:
-		// UNKNOWN_MODALITY
+		// MODALITY_UNSPECIFIED
 		// CHAT_AND_VOICE
 		// VOICE_ONLY
 		// CHAT_ONLY
+		// CHAT_VOICE_AND_VIDEO
 		modality?: string
 
 		// The theme of the web widget.
 		// Possible values:
-		// UNKNOWN_THEME
+		// THEME_UNSPECIFIED
 		// LIGHT
 		// DARK
 		theme?: string
 
 		// The title of the web widget.
 		web_widget_title?: string
+	})
+
+	_#defs: "/$defs/channel_profile/$defs/web_widget_config/$defs/security_settings": close({
+		// The origins that are allowed to host the web widget. An origin
+		// is defined by RFC 6454. If empty, all origins are allowed. A
+		// maximum of 100 origins is allowed. Example:
+		// "https://example.com"
+		allowed_origins?: [...string]
+
+		// Indicates whether origin check for the web widget is enabled.
+		// If true, the web widget will check the origin of the website
+		// that loads the web widget and only allow it to be loaded in
+		// the same origin or any of the allowed origins.
+		enable_origin_check?: bool
+
+		// Indicates whether public access to the web widget is enabled.
+		// If true, the web widget will be publicly accessible. If false,
+		// the web widget must be integrated with your own authentication
+		// and authorization system to return valid credentials for
+		// accessing the CES agent.
+		enable_public_access?: bool
+
+		// Indicates whether reCAPTCHA verification for the web widget is
+		// enabled.
+		enable_recaptcha?: bool
 	})
 }

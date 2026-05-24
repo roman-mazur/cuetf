@@ -20,6 +20,19 @@ import "list"
 		// ["STATIC_IP_CHECKERS", "VPC_CHECKERS"]
 		checker_type?: string
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// A human-friendly name for the uptime check configuration. The
 		// display name should be unique within a Stackdriver Workspace
 		// in order to make it easier to identify; however, uniqueness is

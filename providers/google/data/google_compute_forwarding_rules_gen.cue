@@ -14,6 +14,7 @@ package data
 			backend_service?:         string
 			base_forwarding_rule?:    string
 			creation_timestamp?:      string
+			deletion_policy?:         string
 			description?:             string
 			effective_labels?: [string]: string
 			forwarding_rule_id?:     number

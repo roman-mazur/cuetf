@@ -22,6 +22,7 @@ package data
 			})]
 			connection_name?:     string
 			database_version?:    string
+			deletion_policy?:     string
 			deletion_protection?: bool
 			dns_name?:            string
 			dns_names?: [...close({

@@ -28,6 +28,7 @@ package data
 		// A list of all the retrieved keys from the provided key ring
 		keys?: [...close({
 			crypto_key_backend?:         string
+			deletion_policy?:            string
 			destroy_scheduled_duration?: string
 			effective_labels?: [string]: string
 			id?:          string

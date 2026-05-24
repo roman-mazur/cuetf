@@ -10,7 +10,20 @@ import "list"
 		secondary_worker_config?: matchN(1, [#secondary_worker_config, list.MaxItems(1) & [...#secondary_worker_config]])
 		timeouts?: #timeouts
 		worker_config?: matchN(1, [#worker_config, list.MaxItems(1) & [...#worker_config]])
-		id?: string
+
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+		id?:              string
 
 		// The location where the autoscaling policy should reside.
 		// The default value is 'global'.

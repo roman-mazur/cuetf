@@ -13,6 +13,19 @@ import "list"
 		timeouts?: #timeouts
 		transition_routes?: matchN(1, [#transition_routes, [...#transition_routes]])
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// The description of the flow. The maximum length is 500
 		// characters. If exceeded, the request is rejected.
 		description?: string

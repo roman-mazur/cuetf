@@ -32,14 +32,10 @@ import "list"
 		// accurate to nanoseconds.
 		create_time?: string
 
-		// Policy to determine if the cluster should be deleted
-		// forcefully.
-		// If setting deletion_policy = "FORCE", the Looker instance will
-		// be deleted regardless
-		// of its nested resources. If set to "DEFAULT", Looker instances
-		// that still have
-		// nested resources will return an error. Possible values:
-		// DEFAULT, FORCE
+		// This field uses a custom implementation please refer to
+		// documentation under
+		// /hashicorp/terraform-provider-google-beta/website/docs/r/looker_instance.html.markdown
+		// for specifics
 		deletion_policy?: string
 
 		// Public Egress IP (IPv4).

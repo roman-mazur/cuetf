@@ -5,7 +5,8 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_certificate_manager_certificates")
 	close({
 		certificates?: [...close({
-			description?: string
+			deletion_policy?: string
+			description?:     string
 			effective_labels?: [string]: string
 			labels?: [string]:           string
 			location?: string

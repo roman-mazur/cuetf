@@ -11,6 +11,19 @@ package res
 		// network endpoint.
 		default_port?: number
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// An optional description of this resource. Provide this property
 		// when
 		// you create the resource.
@@ -56,7 +69,7 @@ package res
 		// "GCE_VM_IP_PORT" Possible values: ["GCE_VM_IP",
 		// "GCE_VM_IP_PORT", "NON_GCP_PRIVATE_IP_PORT",
 		// "INTERNET_IP_PORT", "INTERNET_FQDN_PORT", "SERVERLESS",
-		// "PRIVATE_SERVICE_CONNECT"]
+		// "PRIVATE_SERVICE_CONNECT", "GCE_VM_IP_DEDICATED_BACKEND"]
 		network_endpoint_type?: string
 		project?:               string
 		self_link?:             string

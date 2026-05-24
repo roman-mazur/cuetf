@@ -41,6 +41,19 @@ import "list"
 		// handling=strict or Prefer: handling=lenient.
 		default_search_handling_strict?: bool
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// Whether to disable referential integrity in this FHIR store.
 		// This field is immutable after FHIR store
 		// creation. The default value is false, meaning that the API will

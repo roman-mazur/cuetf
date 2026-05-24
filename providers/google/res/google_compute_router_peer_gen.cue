@@ -51,6 +51,19 @@ import "list"
 		// assigns a priority of 100 to the ranges.
 		custom_learned_route_priority?: number
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// The status of the BGP peer connection. If set to false, any
 		// active session
 		// with the peer is terminated and all associated routing

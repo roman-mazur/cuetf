@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_backup_dr_backup_plan")
 	close({
 		backup_rules?: matchN(1, [#backup_rules, [...#backup_rules]])
+		compute_instance_backup_plan_properties?: matchN(1, [#compute_instance_backup_plan_properties, list.MaxItems(1) & [...#compute_instance_backup_plan_properties]])
 		disk_backup_plan_properties?: matchN(1, [#disk_backup_plan_properties, list.MaxItems(1) & [...#disk_backup_plan_properties]])
 		timeouts?: #timeouts
 
@@ -23,6 +24,19 @@ import "list"
 
 		// When the 'BackupPlan' was created.
 		create_time?: string
+
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
 
 		// The description allows for additional details about
 		// 'BackupPlan' and its use cases to be provided.
@@ -74,6 +88,15 @@ import "list"
 		// The unique ID of this 'BackupRule'. The 'rule_id' is unique per
 		// 'BackupPlan'.
 		rule_id!: string
+	})
+
+	#compute_instance_backup_plan_properties: close({
+		// Indicates whether to perform a guest flush operation before
+		// taking a
+		// compute instance backup. When set to true, the system will
+		// attempt
+		// to ensure application-consistent backups.
+		guest_flush!: bool
 	})
 
 	#disk_backup_plan_properties: close({

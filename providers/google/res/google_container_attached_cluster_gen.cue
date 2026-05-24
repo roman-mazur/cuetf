@@ -44,8 +44,10 @@ import "list"
 		// Output only. The time at which this cluster was created.
 		create_time?: string
 
-		// Policy to determine what flags to send on delete. Possible
-		// values: DELETE, DELETE_IGNORE_ERRORS
+		// This field uses a custom implementation please refer to
+		// documentation under
+		// /hashicorp/terraform-provider-google-beta/website/docs/r/container_attached_cluster.html.markdown
+		// for specifics
 		deletion_policy?: string
 
 		// A human readable description of this attached cluster. Cannot

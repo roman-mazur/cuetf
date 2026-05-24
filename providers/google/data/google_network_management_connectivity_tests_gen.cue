@@ -6,6 +6,7 @@ package data
 	close({
 		connectivity_tests?: [...close({
 			bypass_firewall_checks?: bool
+			deletion_policy?:        string
 			description?:            string
 			destination?: [...close({
 				cloud_sql_instance?: string

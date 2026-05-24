@@ -12,6 +12,19 @@ import "list"
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// An optional description of this resource.
 		description?: string
 		id?:          string
@@ -75,6 +88,17 @@ import "list"
 
 		// Defines operating mode for this policy.
 		mode?: string
+
+		// The number of seconds that the autoscaler waits for load
+		// stabilization
+		// before making scale-in decisions.
+		//
+		// This might appear as a delay in scaling in but it is an
+		// important mechanism
+		// for your application to not have fluctuating size due to short
+		// term load
+		// fluctuations.
+		stabilization_period?: number
 	})
 
 	#timeouts: close({

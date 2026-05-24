@@ -6,6 +6,7 @@ package data
 	close({
 		configured_capabilities?: [...string]
 		create_time?:         string
+		deletion_policy?:     string
 		deletion_protection?: bool
 		display_name?:        string
 		folder!:              string

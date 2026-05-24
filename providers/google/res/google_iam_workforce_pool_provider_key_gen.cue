@@ -9,6 +9,19 @@ import "list"
 		key_data!: matchN(1, [#key_data, list.MaxItems(1) & [_, ...] & [...#key_data]])
 		timeouts?: #timeouts
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// The time after which the key will be permanently deleted and
 		// cannot be recovered.
 		// Note that the key may get purged before this time if the total

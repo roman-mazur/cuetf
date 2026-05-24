@@ -42,6 +42,19 @@ import "list"
 		// Details can be found in the conditions field.
 		degraded?: bool
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// Human-readable name for this resource.
 		display_name?: string
 
@@ -102,8 +115,27 @@ import "list"
 		// The system-generated UID of the resource.
 		uid?: string
 
+		// Specifies the redirect URL for unauthorized requests received
+		// by workstation VMs in this cluster.
+		// Redirects to this endpoint will send a base64 encoded 'state'
+		// query param containing the target workstation name and
+		// original request hostname. The endpoint is responsible for
+		// retrieving a token using 'GenerateAccessToken' and redirecting
+		// back to the original hostname with the token.
+		workstation_authorization_url?: string
+
 		// ID to use for the workstation cluster.
 		workstation_cluster_id!: string
+
+		// Specifies the launch URL for workstations in this cluster.
+		// Requests sent to unstarted workstations will be redirected to
+		// this URL.
+		// Requests redirected to the launch endpoint will be sent with a
+		// 'workstation' query parameter containing the full workstation
+		// resource. The launch endpoint is responsible for starting the
+		// workstation, polling it until it reaches 'STATE_RUNNING', and
+		// then issuing a redirect to the workstation's host URL.
+		workstation_launch_url?: string
 	})
 
 	#domain_config: close({

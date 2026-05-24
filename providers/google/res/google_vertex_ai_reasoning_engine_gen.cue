@@ -15,10 +15,10 @@ import "list"
 		// with nanosecond resolution and up to nine fractional digits.
 		create_time?: string
 
-		// Optional. The deletion policy for the reasoning engine. Setting
-		// this to FORCE allows the reasoning engine to be deleted
-		// regardless of child undeleted resources. Possible values:
-		// ["FORCE"]
+		// This field uses a custom implementation please refer to
+		// documentation under
+		// /hashicorp/terraform-provider-google-beta/website/docs/r/vertex_ai_reasoning_engine.html.markdown
+		// for specifics
 		deletion_policy?: string
 
 		// The description of the ReasoningEngine.

@@ -40,9 +40,17 @@ import "list"
 		// Base 64 CRC32 hash of the uploaded data.
 		crc32c?: string
 
-		// The deletion policy for the object. Setting ABANDON allows the
-		// resource to be abandoned rather than deleted when removed from
-		// your Terraform configuration.
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		detect_md5hash?:  string
 

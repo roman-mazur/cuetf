@@ -19,6 +19,7 @@ package data
 			customer_managed_encryption?: [...close({
 				kms_key_name?: string
 			})]
+			deletion_policy?:     string
 			deletion_protection?: bool
 			effective_annotations?: [string]: string
 			effective_labels?: [string]:      string

@@ -8,6 +8,19 @@ package res
 		timeouts?: #timeouts
 		training_phrases?: matchN(1, [#training_phrases, [...#training_phrases]])
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// Human readable description for better understanding an intent
 		// like its scope, content, result etc. Maximum character limit:
 		// 140 characters.

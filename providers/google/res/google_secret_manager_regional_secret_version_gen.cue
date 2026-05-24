@@ -15,15 +15,10 @@ package res
 			kms_key_version_name?: string
 		})]
 
-		// The deletion policy for the regional secret version. Setting
-		// 'ABANDON' allows the resource
-		// to be abandoned rather than deleted. Setting 'DISABLE' allows
-		// the resource to be
-		// disabled rather than deleted. Default is 'DELETE'. Possible
-		// values are:
-		// * DELETE
-		// * DISABLE
-		// * ABANDON
+		// This field uses a custom implementation please refer to
+		// documentation under
+		// /hashicorp/terraform-provider-google-beta/website/docs/r/secret_manager_regional_regional_secret_version.html.markdown
+		// for specifics
 		deletion_policy?: string
 
 		// The time at which the regional secret version was destroyed.

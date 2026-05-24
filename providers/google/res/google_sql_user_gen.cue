@@ -13,11 +13,17 @@ import "list"
 		// option is only available for MySQL and PostgreSQL instances.
 		database_roles?: [...string]
 
-		// The deletion policy for the user. Setting ABANDON allows the
-		// resource
-		// to be abandoned rather than deleted. This is useful for
-		// Postgres, where users cannot be deleted from the API if they
-		// have been granted SQL roles. Possible values are: "ABANDON".
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// The host the user can connect from. This is only supported for

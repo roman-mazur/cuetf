@@ -10,7 +10,20 @@ package res
 		// If set to true, skip repository creation if a repository with
 		// the same name already exists.
 		create_ignore_already_exists?: bool
-		id?:                           string
+
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+		id?:              string
 
 		// Resource name of the repository, of the form '{{repo}}'.
 		// The repo name may contain slashes. eg, 'name/with/slash'

@@ -15,6 +15,7 @@ package data
 		secrets?: [...close({
 			annotations?: [string]: string
 			create_time?:         string
+			deletion_policy?:     string
 			deletion_protection?: bool
 			effective_annotations?: [string]: string
 			effective_labels?: [string]:      string

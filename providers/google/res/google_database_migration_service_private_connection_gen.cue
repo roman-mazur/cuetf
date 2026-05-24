@@ -6,11 +6,25 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_database_migration_service_private_connection")
 	close({
+		psc_interface_config?: matchN(1, [#psc_interface_config, list.MaxItems(1) & [...#psc_interface_config]])
 		timeouts?: #timeouts
-		vpc_peering_config!: matchN(1, [#vpc_peering_config, list.MaxItems(1) & [_, ...] & [...#vpc_peering_config]])
+		vpc_peering_config?: matchN(1, [#vpc_peering_config, list.MaxItems(1) & [...#vpc_peering_config]])
 
 		// If set to true, will skip validations.
 		create_without_validation?: bool
+
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
 
 		// Display name.
 		display_name?: string
@@ -51,6 +65,14 @@ import "list"
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+	})
+
+	#psc_interface_config: close({
+		// Fully qualified name of the Network Attachment that DMS will
+		// connect to.
+		// Format:
+		// projects/{project}/regions/{region}/networkAttachments/{name}
+		network_attachment!: string
 	})
 
 	#timeouts: close({

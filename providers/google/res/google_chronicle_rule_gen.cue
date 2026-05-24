@@ -47,17 +47,10 @@ package res
 		// rule.
 		data_tables?: [...string]
 
-		// Policy to determine if the rule should be deleted forcefully.
-		// If deletion_policy = "FORCE", any retrohunts and any detections
-		// associated with the rule
-		// will also be deleted. If deletion_policy = "DEFAULT", the call
-		// will only succeed if the
-		// rule has no associated retrohunts, including completed
-		// retrohunts, and no
-		// associated detections. Regardless of this field's value, the
-		// rule
-		// deployment associated with this rule will also be deleted.
-		// Possible values: DEFAULT, FORCE
+		// This field uses a custom implementation please refer to
+		// documentation under
+		// /hashicorp/terraform-provider-google-beta/website/docs/r/chronicle_rule.html.markdown
+		// for specifics
 		deletion_policy?: string
 
 		// Output only. Display name of the rule.

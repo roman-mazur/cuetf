@@ -9,6 +9,19 @@ package res
 		// Resource names of child policy tags of this policy tag.
 		child_policy_tags?: [...string]
 
+		// Whether Terraform will be prevented from destroying the
+		// instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete
+		// the instance,
+		// the command will fail if this field is set to "PREVENT" in
+		// Terraform state.
+		// When set to "ABANDON", the command will remove the resource
+		// from Terraform
+		// management without updating or deleting the resource in the
+		// API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
 		// Description of this policy tag. It must: contain only unicode
 		// characters, tabs,
 		// newlines, carriage returns and page breaks; and be at most 2000
