@@ -252,6 +252,7 @@ package data
 			linux_fx_version?:                 string
 			load_balancing_mode?:              string
 			managed_pipeline_mode?:            string
+			minimum_tls_cipher_suite?:         string
 			minimum_tls_version?:              string
 			pre_warmed_instance_count?:        number
 			remote_debugging_enabled?:         bool

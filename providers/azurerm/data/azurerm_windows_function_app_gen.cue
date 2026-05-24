@@ -240,6 +240,7 @@ package data
 			ip_restriction_default_action?:    string
 			load_balancing_mode?:              string
 			managed_pipeline_mode?:            string
+			minimum_tls_cipher_suite?:         string
 			minimum_tls_version?:              string
 			pre_warmed_instance_count?:        number
 			remote_debugging_enabled?:         bool
