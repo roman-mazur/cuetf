@@ -193,6 +193,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_bedrockagentcore_code_interpreter": res.#aws_bedrockagentcore_code_interpreter
 	_#res: "\(#awsPrefix)_bedrockagentcore_gateway": res.#aws_bedrockagentcore_gateway
 	_#res: "\(#awsPrefix)_bedrockagentcore_gateway_target": res.#aws_bedrockagentcore_gateway_target
+	_#res: "\(#awsPrefix)_bedrockagentcore_harness": res.#aws_bedrockagentcore_harness
 	_#res: "\(#awsPrefix)_bedrockagentcore_memory": res.#aws_bedrockagentcore_memory
 	_#res: "\(#awsPrefix)_bedrockagentcore_memory_strategy": res.#aws_bedrockagentcore_memory_strategy
 	_#res: "\(#awsPrefix)_bedrockagentcore_oauth2_credential_provider": res.#aws_bedrockagentcore_oauth2_credential_provider
@@ -1035,6 +1036,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_evaluation_for_organization": res.#aws_observabilityadmin_telemetry_evaluation_for_organization
 	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_evaluation": res.#aws_observabilityadmin_telemetry_evaluation
 	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_pipeline": res.#aws_observabilityadmin_telemetry_pipeline
+	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_rule_for_organization": res.#aws_observabilityadmin_telemetry_rule_for_organization
 	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_rule": res.#aws_observabilityadmin_telemetry_rule
 	_#res: "\(#awsPrefix)_odb_cloud_autonomous_vm_cluster": res.#aws_odb_cloud_autonomous_vm_cluster
 	_#res: "\(#awsPrefix)_odb_cloud_exadata_infrastructure": res.#aws_odb_cloud_exadata_infrastructure
@@ -1349,6 +1351,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_securityhub_action_target": res.#aws_securityhub_action_target
 	_#res: "\(#awsPrefix)_securityhub_aggregator_v2": res.#aws_securityhub_aggregator_v2
 	_#res: "\(#awsPrefix)_securityhub_automation_rule": res.#aws_securityhub_automation_rule
+	_#res: "\(#awsPrefix)_securityhub_automation_rule_v2": res.#aws_securityhub_automation_rule_v2
 	_#res: "\(#awsPrefix)_securityhub_configuration_policy_association": res.#aws_securityhub_configuration_policy_association
 	_#res: "\(#awsPrefix)_securityhub_configuration_policy": res.#aws_securityhub_configuration_policy
 	_#res: "\(#awsPrefix)_securityhub_connector_v2": res.#aws_securityhub_connector_v2
@@ -1656,7 +1659,9 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_workspacesweb_user_settings": res.#aws_workspacesweb_user_settings
 	_#res: "\(#awsPrefix)_xray_encryption_config": res.#aws_xray_encryption_config
 	_#res: "\(#awsPrefix)_xray_group": res.#aws_xray_group
+	_#res: "\(#awsPrefix)_xray_indexing_rule": res.#aws_xray_indexing_rule
 	_#res: "\(#awsPrefix)_xray_resource_policy": res.#aws_xray_resource_policy
 	_#res: "\(#awsPrefix)_xray_sampling_rule": res.#aws_xray_sampling_rule
+	_#res: "\(#awsPrefix)_xray_trace_segment_destination": res.#aws_xray_trace_segment_destination
 
 }

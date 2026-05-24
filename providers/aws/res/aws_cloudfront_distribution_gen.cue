@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_distribution")
 	close({
+		cache_tag_config?: matchN(1, [#cache_tag_config, list.MaxItems(1) & [...#cache_tag_config]])
 		connection_function_association?: matchN(1, [#connection_function_association, list.MaxItems(1) & [...#connection_function_association]])
 		custom_error_response?: matchN(1, [#custom_error_response, [...#custom_error_response]])
 		default_cache_behavior!: matchN(1, [#default_cache_behavior, list.MaxItems(1) & [_, ...] & [...#default_cache_behavior]])
@@ -55,6 +56,10 @@ import "list"
 		})]
 		wait_for_deployment?: bool
 		web_acl_id?:          string
+	})
+
+	#cache_tag_config: close({
+		header_name!: string
 	})
 
 	#connection_function_association: close({

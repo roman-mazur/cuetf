@@ -5,14 +5,16 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ec2_local_gateway_virtual_interface")
 	close({
 		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?:         #timeouts
-		id?:               string
-		local_address?:    string
-		local_bgp_asn?:    number
-		local_gateway_id?: string
+		timeouts?:                                 #timeouts
+		id?:                                       string
+		local_address?:                            string
+		local_bgp_asn?:                            number
+		local_gateway_id?:                         string
+		local_gateway_virtual_interface_group_id?: string
 		local_gateway_virtual_interface_ids?: [...string]
-		peer_address?: string
-		peer_bgp_asn?: number
+		outpost_lag_id?: string
+		peer_address?:   string
+		peer_bgp_asn?:   number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

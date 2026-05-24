@@ -6,6 +6,7 @@ package res
 	close({
 		agent_runtime_artifact?: matchN(1, [#agent_runtime_artifact, [...#agent_runtime_artifact]])
 		authorizer_configuration?: matchN(1, [#authorizer_configuration, [...#authorizer_configuration]])
+		filesystem_configuration?: matchN(1, [#filesystem_configuration, [...#filesystem_configuration]])
 		network_configuration?: matchN(1, [#network_configuration, [...#network_configuration]])
 		protocol_configuration?: matchN(1, [#protocol_configuration, [...#protocol_configuration]])
 		request_header_configuration?: matchN(1, [#request_header_configuration, [...#request_header_configuration]])
@@ -41,6 +42,12 @@ package res
 
 	#authorizer_configuration: close({
 		custom_jwt_authorizer?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer"]])
+	})
+
+	#filesystem_configuration: close({
+		efs_access_point?: matchN(1, [_#defs."/$defs/filesystem_configuration/$defs/efs_access_point", [..._#defs."/$defs/filesystem_configuration/$defs/efs_access_point"]])
+		s3_files_access_point?: matchN(1, [_#defs."/$defs/filesystem_configuration/$defs/s3_files_access_point", [..._#defs."/$defs/filesystem_configuration/$defs/s3_files_access_point"]])
+		session_storage?: matchN(1, [_#defs."/$defs/filesystem_configuration/$defs/session_storage", [..._#defs."/$defs/filesystem_configuration/$defs/session_storage"]])
 	})
 
 	#network_configuration: close({
@@ -121,6 +128,20 @@ package res
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/custom_claim/$defs/authorizing_claim_match_value/$defs/claim_match_value": close({
 		match_value_string?: string
 		match_value_string_list?: [...string]
+	})
+
+	_#defs: "/$defs/filesystem_configuration/$defs/efs_access_point": close({
+		access_point_arn!: string
+		mount_path!:       string
+	})
+
+	_#defs: "/$defs/filesystem_configuration/$defs/s3_files_access_point": close({
+		access_point_arn!: string
+		mount_path!:       string
+	})
+
+	_#defs: "/$defs/filesystem_configuration/$defs/session_storage": close({
+		mount_path!: string
 	})
 
 	_#defs: "/$defs/network_configuration/$defs/network_mode_config": close({

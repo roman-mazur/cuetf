@@ -14,7 +14,7 @@ package res
 		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		template_name!: string
+		template_name!: _
 	})
 
 	#email_template: close({
