@@ -3,7 +3,7 @@ terraform {
   required_providers {
     elasticstack = {
       source = "elastic/elasticstack"
-      version = "0.15.1"
+      version = "0.15.2"
     }
   }
 }

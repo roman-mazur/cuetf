@@ -8,6 +8,12 @@ package data
 		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 		template?: #template
 
+		// If true, index auto-creation is allowed for matching indices.
+		// If false, auto-creation is disabled for matching indices. When
+		// unset, the cluster-level `action.auto_create_index` setting
+		// applies.
+		allow_auto_create?: bool
+
 		// An ordered list of component template names.
 		composed_of?: [...string]
 

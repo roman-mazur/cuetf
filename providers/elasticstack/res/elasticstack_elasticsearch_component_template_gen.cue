@@ -70,6 +70,7 @@ package res
 
 	#template: close({
 		alias?: matchN(1, [_#defs."/$defs/template/$defs/alias", [..._#defs."/$defs/template/$defs/alias"]])
+		data_stream_options?: _#defs."/$defs/template/$defs/data_stream_options"
 
 		// Mapping for fields in the index. Should be specified as a JSON
 		// object of field mappings. See the [explicit mapping
@@ -113,5 +114,22 @@ package res
 		// specified, this overwrites the routing value for search
 		// operations.
 		search_routing?: string
+	})
+
+	_#defs: "/$defs/template/$defs/data_stream_options": close({
+		failure_store?: _#defs."/$defs/template/$defs/data_stream_options/$defs/failure_store"
+	})
+
+	_#defs: "/$defs/template/$defs/data_stream_options/$defs/failure_store": close({
+		lifecycle?: _#defs."/$defs/template/$defs/data_stream_options/$defs/failure_store/$defs/lifecycle"
+
+		// If true, document redirection to the failure store is enabled
+		// for new matching data streams.
+		enabled?: bool
+	})
+
+	_#defs: "/$defs/template/$defs/data_stream_options/$defs/failure_store/$defs/lifecycle": close({
+		// The retention period for failure store documents (e.g. "30d").
+		data_retention?: string
 	})
 }

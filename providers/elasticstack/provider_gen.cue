@@ -1,14 +1,12 @@
 package elasticstack
 
-import "list"
-
 #provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack/provider")
 	close({
-		elasticsearch?: matchN(1, [#elasticsearch, list.MaxItems(1) & [...#elasticsearch]])
-		fleet?: matchN(1, [#fleet, list.MaxItems(1) & [...#fleet]])
-		kibana?: matchN(1, [#kibana, list.MaxItems(1) & [...#kibana]])
+		elasticsearch?: matchN(1, [#elasticsearch, [...#elasticsearch]])
+		fleet?: matchN(1, [#fleet, [...#fleet]])
+		kibana?: matchN(1, [#kibana, [...#kibana]])
 	})
 
 	#elasticsearch: close({
