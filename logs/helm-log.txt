@@ -1,8 +1,8 @@
-1 provider at helm
-DONE: provider at helm
-defs count for helm/data: 1
-1 helm_template at helm/data
-DONE: helm_template at helm/data
-defs count for helm/res: 1
-1 helm_release at helm/res
-DONE: helm_release at helm/res
+1 provider at providers/helm
+DONE: provider at providers/helm
+defs count for providers/helm/data: 1
+1 helm_template at providers/helm/data
+DONE: helm_template at providers/helm/data
+defs count for providers/helm/res: 1
+1 helm_release at providers/helm/res
+DONE: helm_release at providers/helm/res
