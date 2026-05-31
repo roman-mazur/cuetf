@@ -154,7 +154,7 @@ package res
 		// specified custom attributes. Must be valid JSON document.
 		include?: string
 
-		// Number of replicas to assign to the index. Default: `0`
+		// Number of replicas to assign to the index.
 		number_of_replicas?: number
 
 		// Assigns an index to nodes that have all of the specified custom
@@ -162,7 +162,8 @@ package res
 		require?: string
 
 		// The maximum number of shards for the index on a single
-		// Elasticsearch node. Defaults to `-1` (unlimited).
+		// Elasticsearch node. When omitted, the existing index setting
+		// is left unchanged.
 		total_shards_per_node?: number
 	})
 
@@ -342,7 +343,7 @@ package res
 		// specified custom attributes. Must be valid JSON document.
 		include?: string
 
-		// Number of replicas to assign to the index. Default: `0`
+		// Number of replicas to assign to the index.
 		number_of_replicas?: number
 
 		// Assigns an index to nodes that have all of the specified custom
@@ -350,7 +351,8 @@ package res
 		require?: string
 
 		// The maximum number of shards for the index on a single
-		// Elasticsearch node. Defaults to `-1` (unlimited).
+		// Elasticsearch node. When omitted, the existing index setting
+		// is left unchanged.
 		total_shards_per_node?: number
 	})
 

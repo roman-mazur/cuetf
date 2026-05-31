@@ -2388,7 +2388,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											}
 											number_of_replicas: {
 												type:             "number"
-												description:      "Number of replicas to assign to the index. Default: `0`"
+												description:      "Number of replicas to assign to the index."
 												description_kind: "plain"
 												optional:         true
 												computed:         true
@@ -2401,7 +2401,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											}
 											total_shards_per_node: {
 												type:             "number"
-												description:      "The maximum number of shards for the index on a single Elasticsearch node. Defaults to `-1` (unlimited)."
+												description:      "The maximum number of shards for the index on a single Elasticsearch node. When omitted, the existing index setting is left unchanged."
 												description_kind: "plain"
 												optional:         true
 												computed:         true
@@ -2962,7 +2962,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											}
 											number_of_replicas: {
 												type:             "number"
-												description:      "Number of replicas to assign to the index. Default: `0`"
+												description:      "Number of replicas to assign to the index."
 												description_kind: "plain"
 												optional:         true
 												computed:         true
@@ -2975,7 +2975,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											}
 											total_shards_per_node: {
 												type:             "number"
-												description:      "The maximum number of shards for the index on a single Elasticsearch node. Defaults to `-1` (unlimited)."
+												description:      "The maximum number of shards for the index on a single Elasticsearch node. When omitted, the existing index setting is left unchanged."
 												description_kind: "plain"
 												optional:         true
 												computed:         true
@@ -3125,6 +3125,133 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 
 					"""
 				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_index_mappings: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "Generated ID in the form `<cluster_uuid>/<index_name>`."
+						description_kind: "plain"
+						computed:         true
+					}
+					index: {
+						type:             "string"
+						description:      "Name of the target Elasticsearch index."
+						description_kind: "plain"
+						required:         true
+					}
+					mappings: {
+						type:             "string"
+						description:      "JSON mappings object to manage on the index. All top-level keys (`properties`, `dynamic`, `_source`, `dynamic_templates`, `runtime`, etc.) are supported. Only the keys and fields declared here are tracked; dynamic extras added by Elasticsearch are ignored. Destroying this resource does not remove mappings from the index (a no-op)."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manage a user-declared subset of index mappings on an existing Elasticsearch index. Destroy is a no-op — field mappings are not removed."
+				description_kind: "plain"
 			}
 		}
 		elasticstack_elasticsearch_index_template: {
@@ -4717,6 +4844,426 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "markdown"
 			}
 		}
+		elasticstack_elasticsearch_ml_calendar: {
+			version: 0
+			block: {
+				attributes: {
+					calendar_id: {
+						type:             "string"
+						description:      "A string that uniquely identifies a calendar. Must contain lowercase alphanumeric characters (a-z and 0-9), hyphens, or underscores. Must start and end with an alphanumeric character."
+						description_kind: "markdown"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "A description of the calendar."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages Machine Learning calendars (the calendar definition only). To attach anomaly detection jobs to a calendar, use `elasticstack_elasticsearch_ml_calendar_job`. See the [ML put calendar API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar.html) for more details. **Import** id format: `<cluster_uuid>/<calendar_id>` (the same value as the computed `id` attribute)."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_ml_calendar_event: {
+			version: 0
+			block: {
+				attributes: {
+					calendar_id: {
+						type:             "string"
+						description:      "The identifier for the calendar that owns the event. Must contain lowercase alphanumeric characters (a-z and 0-9), hyphens, or underscores. Must start and end with an alphanumeric character."
+						description_kind: "markdown"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "A description of the scheduled event."
+						description_kind: "markdown"
+						required:         true
+					}
+					end_time: {
+						type:             "string"
+						description:      "The end time of the scheduled event in RFC 3339 format."
+						description_kind: "markdown"
+						required:         true
+					}
+					event_id: {
+						type:             "string"
+						description:      "The server-generated identifier for the event."
+						description_kind: "markdown"
+						computed:         true
+					}
+					force_time_shift: {
+						type:             "string"
+						description:      "When set, changes the duration of the event to the specified value in seconds (decimal digits as a string; the API uses a JSON number). Requires Elasticsearch **8.16** or newer. Maps to `force_time_shift` in the Elasticsearch API."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal composite identifier of the resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					skip_model_update: {
+						type:             "bool"
+						description:      "If true, model updates are not generated for buckets that fall inside the event period. When omitted, the request does not send this field and Elasticsearch applies its default behavior. Explicit values require Elasticsearch **8.16** or newer. Maps to `skip_model_update` in the Elasticsearch API."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					skip_result: {
+						type:             "bool"
+						description:      "If true, results are not generated for buckets that fall inside the event period. When omitted, the request does not send this field and Elasticsearch applies its default behavior. Explicit values require Elasticsearch **8.16** or newer. Maps to `skip_result` in the Elasticsearch API."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					start_time: {
+						type:             "string"
+						description:      "The start time of the scheduled event in RFC 3339 format."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages scheduled events for a Machine Learning calendar. See the [ML post calendar events API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-post-calendar-events) for more details. **Import** id format: `<cluster_uuid>/<calendar_id>/<event_id>` (the same value as the computed `id` attribute)."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_ml_calendar_job: {
+			version: 0
+			block: {
+				attributes: {
+					calendar_id: {
+						type:             "string"
+						description:      "Identifier of the ML calendar. Must contain lowercase alphanumeric characters (a-z and 0-9), dots, hyphens, or underscores. Must start and end with an alphanumeric character."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal composite identifier of the resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					job_id: {
+						type:             "string"
+						description:      "Anomaly detection **job identifier** or **job group name** to attach to the calendar, matching Elasticsearch `PUT .../jobs/{job_id}` (one value per resource; not a comma-separated list)."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Assigns a single anomaly detection job or job group to an ML calendar using `PUT _ml/calendars/{calendar_id}/jobs/{job_id}` and removes that assignment on destroy. The `job_id` attribute is the same path parameter Elasticsearch accepts: a job identifier or a job group name (Elasticsearch operation `ml.put_calendar_job`). This resource models one identifier per instance (comma-separated lists in the API are not valid for the Terraform `job_id` attribute). The computed `id` is `<cluster_uuid>/<calendar_id>/<job_id>`. Import writes `calendar_id`, `job_id`, and `id` from the import ID only and does not call Elasticsearch to verify the assignment; the next refresh or apply may fail if the ID is wrong or the assignment does not exist. API reference: https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-calendar-job"
+				description_kind: "markdown"
+			}
+		}
 		elasticstack_elasticsearch_ml_datafeed: {
 			version: 0
 			block: {
@@ -5049,9 +5596,21 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					effective_search_end: {
+						type:             "string"
+						description:      "The effective search end time reported by Elasticsearch for a started datafeed (`running_state.search_interval.end_ms`). Null when the datafeed is stopped, when `running_state.real_time_configured` is true, or when `running_state` / `search_interval` is absent."
+						description_kind: "markdown"
+						computed:         true
+					}
+					effective_search_start: {
+						type:             "string"
+						description:      "The effective search start time reported by Elasticsearch for a started datafeed (`running_state.search_interval.start_ms`). Null when the datafeed is stopped or when `running_state` / `search_interval` is absent."
+						description_kind: "markdown"
+						computed:         true
+					}
 					end: {
 						type:             "string"
-						description:      "The time that the datafeed should end collecting data. When not specified, the datafeed continues in real-time. This property must be specified in RFC 3339 format."
+						description:      "The time that the datafeed should end collecting data. When not specified, the datafeed continues in real-time. This value is preserved verbatim in state and is passed to the Start Datafeed API; Elasticsearch may use a different effective search end, which is reported in `effective_search_end`. This property must be specified in RFC 3339 format."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -5070,10 +5629,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					start: {
 						type:             "string"
-						description:      "The time that the datafeed should start collecting data. When not specified, the datafeed starts in real-time. This property must be specified in RFC 3339 format."
+						description:      "The time that the datafeed should start collecting data. When not specified, the datafeed starts in real-time. This value is preserved verbatim in state and is passed to the Start Datafeed API; Elasticsearch may use a different effective search start, which is reported in `effective_search_start`. This property must be specified in RFC 3339 format."
 						description_kind: "markdown"
 						optional:         true
-						computed:         true
 					}
 					state: {
 						type:             "string"
@@ -5206,7 +5764,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description: """
 					Manages the state of an existing Elasticsearch ML datafeed by starting or stopping it. This resource does not create or configure a datafeed, but instead manages the operational state of an existing datafeed.
 
-					Note: Starting a non-realtime datafeed (i.e with an absolute end time) will result in the datafeed automatically stopping once all available data has been processed. By default, Terraform will restart the datafeed from the configured start time and reprocess all data again. It's recommended to ignore changes to the `state` attribute via the [resource lifecycle](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#ignore-changes) for non-realtime datafeeds.  
+					The `start` and `end` attributes are user inputs: values you set in configuration are preserved verbatim in Terraform state and are passed to the Start Datafeed API. Elasticsearch may adjust the effective search interval (for example, bucket alignment or snapping to the first matching document). The computed `effective_search_start` and `effective_search_end` attributes report what Elasticsearch is actually using (`running_state.search_interval.start_ms` / `end_ms` from the Get Datafeed Stats API). Both are null when the datafeed is `stopped` or when `running_state` or `search_interval` is absent. When `running_state.real_time_configured` is true, only `effective_search_end` is null; `effective_search_start` may still reflect `running_state.search_interval.start_ms`.
+
+					See [issue #2353](https://github.com/elastic/terraform-provider-elasticstack/issues/2353) for background on preserving explicit `start` / `end` values.
+
+					Note: Starting a non-realtime datafeed (i.e with an absolute end time) will result in the datafeed automatically stopping once all available data has been processed. By default, Terraform will restart the datafeed from the configured start time and reprocess all data again. It's recommended to ignore changes to the `state` attribute via the [resource lifecycle](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#ignore-changes) for non-realtime datafeeds.
+
 					"""
 				description_kind: "markdown"
 			}
@@ -10845,6 +11408,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+					skill_ids: {
+						type: ["set", "string"]
+						description:      "Set of skill IDs to assign to the agent. Requires Elastic Stack 9.4.0 or later."
+						description_kind: "markdown"
+						optional:         true
+					}
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If not provided, the default space is used."
@@ -10918,6 +11487,141 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "markdown"
 			}
 		}
+		elasticstack_kibana_agentbuilder_skill: {
+			version: 0
+			block: {
+				attributes: {
+					content: {
+						type:             "string"
+						description:      "Skill instructions content as markdown."
+						description_kind: "markdown"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of what the skill does."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The composite ID of the skill: `<space_id>/<skill_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Human-readable name for the skill."
+						description_kind: "markdown"
+						required:         true
+					}
+					referenced_content: {
+						nested_type: {
+							attributes: {
+								content: {
+									type:             "string"
+									description:      "Content of the reference."
+									description_kind: "markdown"
+									required:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the referenced content."
+									description_kind: "markdown"
+									required:         true
+								}
+								relative_path: {
+									type:             "string"
+									description:      "Relative path of the referenced content. Must start with `./` (e.g., `./runbooks/standard.md`). Sent to and received from the API as `relativePath`."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Ordered list of referenced-content entries. Up to 100 entries; order is preserved."
+						description_kind: "markdown"
+						optional:         true
+					}
+					skill_id: {
+						type:             "string"
+						description:      "The skill ID. Required; the API does not auto-generate skill IDs."
+						description_kind: "markdown"
+						required:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the Kibana space. If not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					tool_ids: {
+						type: ["set", "string"]
+						description:      "Set of tool IDs from the tool registry that this skill references."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages Kibana Agent Builder skills. Skills are reusable markdown instructions that agents can reference. See the [Agent Builder Skills API documentation](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-skills) for more information."
+				description_kind: "markdown"
+			}
+		}
 		elasticstack_kibana_agentbuilder_tool: {
 			version: 0
 			block: {
@@ -10936,7 +11640,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "The composite ID of the tool: `<tool_id>/<space_id>`."
+						description:      "The composite ID of the tool: `<space_id>/<tool_id>`."
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -11049,7 +11753,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "The composite ID of the workflow: `<workflow_id>/<space_id>`."
+						description:      "The composite ID of the workflow: `<space_id>/<workflow_id>`."
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -11592,7 +12296,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							attributes: {
 								config_json: {
 									type:             "string"
-									description:      "The configuration of the panel as a JSON string. Practitioner-authored panel-level `config_json` is valid only when `type` is `markdown` or `vis`. Typed panel kinds such as `lens-dashboard-app`, `image`, `slo_alerts`, and `discover_session` use their dedicated blocks (`lens_dashboard_app_config`, `image_config`, `slo_alerts_config`, `discover_session_config`), not panel-level `config_json`. Mutually exclusive with `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+									description:      "The configuration of the panel as a JSON string. Practitioner-authored panel-level `config_json` is valid only when `type` is `markdown` or `vis`. Typed panel kinds such as `image`, `slo_alerts`, and `discover_session` use their dedicated blocks (`image_config`, `slo_alerts_config`, `discover_session_config`), not panel-level `config_json`. Mutually exclusive with `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 									computed:         true
@@ -12074,7 +12778,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a `discover_session` panel (`kbn-dashboard-panel-type-discover_session`). Set exactly one of `by_value` or `by_reference`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`."
+									description:      "Configuration for a `discover_session` panel (`kbn-dashboard-panel-type-discover_session`). Set exactly one of `by_value` or `by_reference`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -12172,7 +12876,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for an ES|QL control panel. Use this to manage ES|QL variable controls on a dashboard. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for an ES|QL control panel. Use this to manage ES|QL variable controls on a dashboard. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -12410,5334 +13114,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for an `image` panel (`kbn-dashboard-panel-type-image`). Required when `type` is `image`. References the Kibana Dashboard API image embeddable `config` shape. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
-									description_kind: "markdown"
-									optional:         true
-								}
-								lens_dashboard_app_config: {
-									nested_type: {
-										attributes: {
-											by_reference: {
-												nested_type: {
-													attributes: {
-														description: {
-															type:             "string"
-															description:      "Optional panel description."
-															description_kind: "markdown"
-															optional:         true
-														}
-														drilldowns: {
-															nested_type: {
-																attributes: {
-																	dashboard: {
-																		nested_type: {
-																			attributes: {
-																				dashboard_id: {
-																					type:             "string"
-																					description:      "Target dashboard ID."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				label: {
-																					type:             "string"
-																					description:      "Display label."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				open_in_new_tab: {
-																					type:             "bool"
-																					description:      "Open in a new browser tab when set."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				use_filters: {
-																					type:             "bool"
-																					description:      "Pass filters to the target dashboard when set."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				use_time_range: {
-																					type:             "bool"
-																					description:      "Pass the current time range to the target dashboard when set."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Open another dashboard (`dashboard_drilldown`). `dashboard_id` and `label` are required; remaining fields mirror optional API knobs."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	discover: {
-																		nested_type: {
-																			attributes: {
-																				label: {
-																					type:             "string"
-																					description:      "Display label."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				open_in_new_tab: {
-																					type:             "bool"
-																					description:      "Open in a new browser tab when set."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Open in Discover (`discover_drilldown`). Requires `label`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	url: {
-																		nested_type: {
-																			attributes: {
-																				encode_url: {
-																					type:             "bool"
-																					description:      "Escape the URL via percent-encoding when set."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				label: {
-																					type:             "string"
-																					description:      "Display label."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				open_in_new_tab: {
-																					type:             "bool"
-																					description:      "Open in a new browser tab when set."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				trigger: {
-																					type:             "string"
-																					description:      "Trigger that activates the drilldown. Required; the Kibana dashboard API rejects URL drilldowns when this field is omitted."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				url: {
-																					type:             "string"
-																					description:      "URL template with variables documented in Kibana URL drilldown documentation."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Custom URL drilldown (`url_drilldown`). Requires `url`, `label`, and `trigger` (one of `on_click_row`, `on_click_value`, `on_open_panel_menu`, `on_select_range`). The Kibana dashboard API rejects URL drilldowns without `trigger`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "list"
-															}
-															description:      "Structured dashboard, Discover, or URL drilldown entries for by-reference panels — shared by `vis_config.by_reference` (`vis` panels) and `lens_dashboard_app_config.by_reference` (`lens-dashboard-app` panels). Each element must contain exactly one of `dashboard`, `discover`, or `url`; the provider sets API `type` and (for dashboard/discover) `trigger` automatically."
-															description_kind: "markdown"
-															optional:         true
-														}
-														hide_border: {
-															type:             "bool"
-															description:      "When true, suppresses the panel border."
-															description_kind: "markdown"
-															optional:         true
-														}
-														hide_title: {
-															type:             "bool"
-															description:      "When true, suppresses the panel title."
-															description_kind: "markdown"
-															optional:         true
-														}
-														ref_id: {
-															type:             "string"
-															description:      "Reference name in the API `ref_id` field. When `references_json` is set, `ref_id` typically should match a `name` in that list so the link resolves as expected."
-															description_kind: "markdown"
-															required:         true
-														}
-														references_json: {
-															type:             "string"
-															description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the API `references` list (for example wiring a `lens` saved object to `ref_id`)."
-															description_kind: "markdown"
-															optional:         true
-														}
-														time_range: {
-															nested_type: {
-																attributes: {
-																	from: {
-																		type:             "string"
-																		description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	mode: {
-																		type:             "string"
-																		description:      "Optional time range mode. When set, must be `absolute` or `relative`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	to: {
-																		type:             "string"
-																		description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Required time range for the by-reference panel config (used by both `lens_dashboard_app_config.by_reference` and `vis_config.by_reference`)."
-															description_kind: "markdown"
-															required:         true
-														}
-														title: {
-															type:             "string"
-															description:      "Optional panel title."
-															description_kind: "markdown"
-															optional:         true
-														}
-													}
-													nesting_mode: "single"
-												}
-												description:      "By-reference `lens-dashboard-app` configuration: structured `drilldowns`, `ref_id`, optional `references_json`, and required `time_range`."
-												description_kind: "markdown"
-												optional:         true
-											}
-											by_value: {
-												nested_type: {
-													attributes: {
-														config_json: {
-															type:             "string"
-															description:      "Optional raw normalized JSON for the by-value Lens chart `config` (full API shape, including chart `type` and `time_range` where the API requires them). Use as the single `by_value` source, or use one supported typed chart block instead (not both). Distinct from panel-level `config_json` on the panel."
-															description_kind: "markdown"
-															optional:         true
-														}
-														datatable_config: {
-															nested_type: {
-																attributes: {
-																	esql: {
-																		nested_type: {
-																			attributes: {
-																				data_source_json: {
-																					type:             "string"
-																					description:      "Dataset configuration as JSON. For ES|QL, this specifies the ES|QL query."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				description: {
-																					type:             "string"
-																					description:      "The description of the chart."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				drilldowns: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_id: {
-																											type:             "string"
-																											description:      "Target dashboard id."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the target dashboard in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																										use_filters: {
-																											type:             "bool"
-																											description:      "When true, forwards filter context."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										use_time_range: {
-																											type:             "bool"
-																											description:      "When true, forwards the time range."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Navigate to another dashboard using current filters/time range."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							discover_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens Discover in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open Discover with contextual filters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							url_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										encode_url: {
-																											type:             "bool"
-																											description:      "When true, encodes interpolated URL parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the URL in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "Trigger that fires this drilldown."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										url: {
-																											type:             "string"
-																											description:      "Destination URL."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open a URL drilldown configured with explicit trigger semantics."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				filters: {
-																					nested_type: {
-																						attributes: filter_json: {
-																							type:             "string"
-																							description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Additional filters to apply to the chart data (maximum 100)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_border: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart panel border."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_title: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart title."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				ignore_global_filters: {
-																					type:             "bool"
-																					description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				metrics: {
-																					nested_type: {
-																						attributes: config_json: {
-																							type:             "string"
-																							description:      "Metric configuration as JSON."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Array of metric configurations as JSON. Each entry defines a datatable metric column."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				references_json: {
-																					type:             "string"
-																					description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				rows: {
-																					nested_type: {
-																						attributes: config_json: {
-																							type:             "string"
-																							description:      "Row configuration as JSON."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Array of row configurations as JSON. Each entry defines a row split operation."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				sampling: {
-																					type:             "number"
-																					description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				split_metrics_by: {
-																					nested_type: {
-																						attributes: config_json: {
-																							type:             "string"
-																							description:      "Split metrics configuration as JSON."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Array of split-metrics configurations as JSON. Each entry defines a split operation for metric columns."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				styling: {
-																					nested_type: {
-																						attributes: {
-																							density: {
-																								nested_type: {
-																									attributes: {
-																										height: {
-																											nested_type: {
-																												attributes: {
-																													header: {
-																														nested_type: {
-																															attributes: {
-																																max_lines: {
-																																	type:             "number"
-																																	description:      "Maximum number of lines to use before header is truncated (for custom header height)."
-																																	description_kind: "markdown"
-																																	optional:         true
-																																}
-																																type: {
-																																	type:             "string"
-																																	description:      "Header height type. Valid values: 'auto', 'custom'."
-																																	description_kind: "markdown"
-																																	optional:         true
-																																}
-																															}
-																															nesting_mode: "single"
-																														}
-																														description:      "Header height configuration."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													value: {
-																														nested_type: {
-																															attributes: {
-																																lines: {
-																																	type:             "number"
-																																	description:      "Number of lines to display per table body cell (for custom value height)."
-																																	description_kind: "markdown"
-																																	optional:         true
-																																}
-																																type: {
-																																	type:             "string"
-																																	description:      "Value height type. Valid values: 'auto', 'custom'."
-																																	description_kind: "markdown"
-																																	optional:         true
-																																}
-																															}
-																															nesting_mode: "single"
-																														}
-																														description:      "Value height configuration."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Header and value height configuration."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										mode: {
-																											type:             "string"
-																											description:      "Density mode. Valid values: 'compact', 'default', 'expanded'."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Density configuration for the datatable."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							paging: {
-																								type:             "number"
-																								description:      "Enables pagination and sets the number of rows to display per page."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							sort_by_json: {
-																								type:             "string"
-																								description:      "Sort configuration as JSON. Only one column can be sorted at a time."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Datatable styling and display configuration."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				time_range: {
-																					nested_type: {
-																						attributes: {
-																							from: {
-																								type:             "string"
-																								description:      "Start of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							mode: {
-																								type:             "string"
-																								description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							to: {
-																								type:             "string"
-																								description:      "End of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				title: {
-																					type:             "string"
-																					description:      "The title of the chart displayed in the panel."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Datatable configuration for ES|QL queries."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	no_esql: {
-																		nested_type: {
-																			attributes: {
-																				data_source_json: {
-																					type:             "string"
-																					description:      "Dataset configuration as JSON. For standard datatables, this specifies the data view and query."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				description: {
-																					type:             "string"
-																					description:      "The description of the chart."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				drilldowns: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_id: {
-																											type:             "string"
-																											description:      "Target dashboard id."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the target dashboard in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																										use_filters: {
-																											type:             "bool"
-																											description:      "When true, forwards filter context."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										use_time_range: {
-																											type:             "bool"
-																											description:      "When true, forwards the time range."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Navigate to another dashboard using current filters/time range."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							discover_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens Discover in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open Discover with contextual filters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							url_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										encode_url: {
-																											type:             "bool"
-																											description:      "When true, encodes interpolated URL parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the URL in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "Trigger that fires this drilldown."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										url: {
-																											type:             "string"
-																											description:      "Destination URL."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open a URL drilldown configured with explicit trigger semantics."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				filters: {
-																					nested_type: {
-																						attributes: filter_json: {
-																							type:             "string"
-																							description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Additional filters to apply to the chart data (maximum 100)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_border: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart panel border."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_title: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart title."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				ignore_global_filters: {
-																					type:             "bool"
-																					description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				metrics: {
-																					nested_type: {
-																						attributes: config_json: {
-																							type:             "string"
-																							description:      "Metric configuration as JSON."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Array of metric configurations as JSON. Each entry defines a datatable metric column."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				query: {
-																					nested_type: {
-																						attributes: {
-																							expression: {
-																								type:             "string"
-																								description:      "Filter expression string."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							language: {
-																								type:             "string"
-																								description:      "Query language (default: 'kql')."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Query configuration for filtering data."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				references_json: {
-																					type:             "string"
-																					description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				rows: {
-																					nested_type: {
-																						attributes: config_json: {
-																							type:             "string"
-																							description:      "Row configuration as JSON."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Array of row configurations as JSON. Each entry defines a row split operation."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				sampling: {
-																					type:             "number"
-																					description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				split_metrics_by: {
-																					nested_type: {
-																						attributes: config_json: {
-																							type:             "string"
-																							description:      "Split metrics configuration as JSON."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Array of split-metrics configurations as JSON. Each entry defines a split operation for metric columns."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				styling: {
-																					nested_type: {
-																						attributes: {
-																							density: {
-																								nested_type: {
-																									attributes: {
-																										height: {
-																											nested_type: {
-																												attributes: {
-																													header: {
-																														nested_type: {
-																															attributes: {
-																																max_lines: {
-																																	type:             "number"
-																																	description:      "Maximum number of lines to use before header is truncated (for custom header height)."
-																																	description_kind: "markdown"
-																																	optional:         true
-																																}
-																																type: {
-																																	type:             "string"
-																																	description:      "Header height type. Valid values: 'auto', 'custom'."
-																																	description_kind: "markdown"
-																																	optional:         true
-																																}
-																															}
-																															nesting_mode: "single"
-																														}
-																														description:      "Header height configuration."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													value: {
-																														nested_type: {
-																															attributes: {
-																																lines: {
-																																	type:             "number"
-																																	description:      "Number of lines to display per table body cell (for custom value height)."
-																																	description_kind: "markdown"
-																																	optional:         true
-																																}
-																																type: {
-																																	type:             "string"
-																																	description:      "Value height type. Valid values: 'auto', 'custom'."
-																																	description_kind: "markdown"
-																																	optional:         true
-																																}
-																															}
-																															nesting_mode: "single"
-																														}
-																														description:      "Value height configuration."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Header and value height configuration."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										mode: {
-																											type:             "string"
-																											description:      "Density mode. Valid values: 'compact', 'default', 'expanded'."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Density configuration for the datatable."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							paging: {
-																								type:             "number"
-																								description:      "Enables pagination and sets the number of rows to display per page."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							sort_by_json: {
-																								type:             "string"
-																								description:      "Sort configuration as JSON. Only one column can be sorted at a time."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Datatable styling and display configuration."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				time_range: {
-																					nested_type: {
-																						attributes: {
-																							from: {
-																								type:             "string"
-																								description:      "Start of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							mode: {
-																								type:             "string"
-																								description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							to: {
-																								type:             "string"
-																								description:      "End of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				title: {
-																					type:             "string"
-																					description:      "The title of the chart displayed in the panel."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Datatable configuration for standard (non-ES|QL) queries."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.datatable_config`."
-															description_kind: "markdown"
-															optional:         true
-														}
-														gauge_config: {
-															nested_type: {
-																attributes: {
-																	data_source_json: {
-																		type:             "string"
-																		description:      "Dataset configuration as JSON. For standard layers, this specifies the data view and query."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	description: {
-																		type:             "string"
-																		description:      "The description of the chart."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	drilldowns: {
-																		nested_type: {
-																			attributes: {
-																				dashboard_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_id: {
-																								type:             "string"
-																								description:      "Target dashboard id."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the target dashboard in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																							use_filters: {
-																								type:             "bool"
-																								description:      "When true, forwards filter context."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							use_time_range: {
-																								type:             "bool"
-																								description:      "When true, forwards the time range."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Navigate to another dashboard using current filters/time range."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				discover_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens Discover in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open Discover with contextual filters."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				url_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							encode_url: {
-																								type:             "bool"
-																								description:      "When true, encodes interpolated URL parameters."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the URL in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "Trigger that fires this drilldown."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							url: {
-																								type:             "string"
-																								description:      "Destination URL."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open a URL drilldown configured with explicit trigger semantics."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	esql_metric: {
-																		nested_type: {
-																			attributes: {
-																				color_json: {
-																					type:             "string"
-																					description:      "Gauge fill color configuration as JSON (`colorByValue`, `noColor`, or `autoColor` union)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				column: {
-																					type:             "string"
-																					description:      "ES|QL column name for the metric."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				format_json: {
-																					type:             "string"
-																					description:      "Number or other format configuration as JSON (`formatType` union)."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				goal: {
-																					nested_type: {
-																						attributes: {
-																							column: {
-																								type:             "string"
-																								description:      "ES|QL column name."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Optional label for the operation."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Goal column reference."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				label: {
-																					type:             "string"
-																					description:      "Optional label for the metric."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				max: {
-																					nested_type: {
-																						attributes: {
-																							column: {
-																								type:             "string"
-																								description:      "ES|QL column name."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Optional label for the operation."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Max column reference."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				min: {
-																					nested_type: {
-																						attributes: {
-																							column: {
-																								type:             "string"
-																								description:      "ES|QL column name."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Optional label for the operation."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Min column reference."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				subtitle: {
-																					type:             "string"
-																					description:      "Subtitle text rendered below the gauge value."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				ticks: {
-																					nested_type: {
-																						attributes: {
-																							mode: {
-																								type:             "string"
-																								description:      "Tick placement mode."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							visible: {
-																								type:             "bool"
-																								description:      "Whether tick marks are displayed."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Tick configuration."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				title: {
-																					nested_type: {
-																						attributes: {
-																							text: {
-																								type:             "string"
-																								description:      "Title text."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							visible: {
-																								type:             "bool"
-																								description:      "Whether the title is displayed."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Title configuration."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed metric column for ES|QL gauges. Mutually exclusive with `metric_json`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	filters: {
-																		nested_type: {
-																			attributes: filter_json: {
-																				type:             "string"
-																				description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Additional filters to apply to the chart data (maximum 100)."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_border: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart panel border."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_title: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart title."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	ignore_global_filters: {
-																		type:             "bool"
-																		description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	metric_json: {
-																		type:             "string"
-																		description:      "Metric configuration as JSON. Supports metric operations such as count, unique count, min, max, average, median, standard deviation, sum, last value, percentile, percentile ranks, or formula. Required for non-ES|QL gauges; mutually exclusive with `esql_metric`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	query: {
-																		nested_type: {
-																			attributes: {
-																				expression: {
-																					type:             "string"
-																					description:      "Filter expression string."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				language: {
-																					type:             "string"
-																					description:      "Query language (default: 'kql')."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Query configuration for filtering data. Required for non-ES|QL gauges; omit for ES|QL mode."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	references_json: {
-																		type:             "string"
-																		description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	sampling: {
-																		type:             "number"
-																		description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	styling: {
-																		nested_type: {
-																			attributes: shape_json: {
-																				type:             "string"
-																				description:      "Gauge shape configuration as JSON. Supports bullet and circular gauges."
-																				description_kind: "markdown"
-																				optional:         true
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Gauge styling configuration."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	time_range: {
-																		nested_type: {
-																			attributes: {
-																				from: {
-																					type:             "string"
-																					description:      "Start of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				mode: {
-																					type:             "string"
-																					description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				to: {
-																					type:             "string"
-																					description:      "End of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	title: {
-																		type:             "string"
-																		description:      "The title of the chart displayed in the panel."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.gauge_config`."
-															description_kind: "markdown"
-															optional:         true
-														}
-														heatmap_config: {
-															nested_type: {
-																attributes: {
-																	axis: {
-																		nested_type: {
-																			attributes: {
-																				x: {
-																					nested_type: {
-																						attributes: {
-																							labels: {
-																								nested_type: {
-																									attributes: {
-																										orientation: {
-																											type:             "string"
-																											description:      "Orientation of the axis labels."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										visible: {
-																											type:             "bool"
-																											description:      "Whether to show axis labels."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "X-axis label configuration."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							title: {
-																								nested_type: {
-																									attributes: {
-																										value: {
-																											type:             "string"
-																											description:      "Axis title text."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										visible: {
-																											type:             "bool"
-																											description:      "Whether to show the title."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Axis title configuration."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "X-axis configuration."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				y: {
-																					nested_type: {
-																						attributes: {
-																							labels: {
-																								nested_type: {
-																									attributes: visible: {
-																										type:             "bool"
-																										description:      "Whether to show axis labels."
-																										description_kind: "markdown"
-																										optional:         true
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Y-axis label configuration."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							title: {
-																								nested_type: {
-																									attributes: {
-																										value: {
-																											type:             "string"
-																											description:      "Axis title text."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										visible: {
-																											type:             "bool"
-																											description:      "Whether to show the title."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Axis title configuration."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Y-axis configuration."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Axis configuration for X and Y axes."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	data_source_json: {
-																		type:             "string"
-																		description:      "Dataset configuration as JSON. For standard heatmaps, this specifies the data view or index; for ES|QL, this specifies the ES|QL query dataset."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	description: {
-																		type:             "string"
-																		description:      "The description of the chart."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	drilldowns: {
-																		nested_type: {
-																			attributes: {
-																				dashboard_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_id: {
-																								type:             "string"
-																								description:      "Target dashboard id."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the target dashboard in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																							use_filters: {
-																								type:             "bool"
-																								description:      "When true, forwards filter context."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							use_time_range: {
-																								type:             "bool"
-																								description:      "When true, forwards the time range."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Navigate to another dashboard using current filters/time range."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				discover_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens Discover in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open Discover with contextual filters."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				url_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							encode_url: {
-																								type:             "bool"
-																								description:      "When true, encodes interpolated URL parameters."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the URL in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "Trigger that fires this drilldown."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							url: {
-																								type:             "string"
-																								description:      "Destination URL."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open a URL drilldown configured with explicit trigger semantics."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	filters: {
-																		nested_type: {
-																			attributes: filter_json: {
-																				type:             "string"
-																				description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Additional filters to apply to the chart data (maximum 100)."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_border: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart panel border."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_title: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart title."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	ignore_global_filters: {
-																		type:             "bool"
-																		description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	legend: {
-																		nested_type: {
-																			attributes: {
-																				size: {
-																					type:             "string"
-																					description:      "Legend size: auto, s, m, l, or xl."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				truncate_after_lines: {
-																					type:             "number"
-																					description:      "Maximum lines before truncating legend items (1-10)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				visibility: {
-																					type:             "string"
-																					description:      "Legend visibility. Valid values are `visible` or `hidden`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Legend configuration for the heatmap."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	metric_json: {
-																		type:             "string"
-																		description:      "Metric configuration as JSON. For non-ES|QL, this can be a field metric, pipeline metric, or formula. For ES|QL, this is the metric column/operation/color configuration."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	query: {
-																		nested_type: {
-																			attributes: {
-																				expression: {
-																					type:             "string"
-																					description:      "Filter expression string."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				language: {
-																					type:             "string"
-																					description:      "Query language (default: 'kql')."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Query configuration for filtering data. Required for non-ES|QL heatmaps."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	references_json: {
-																		type:             "string"
-																		description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	sampling: {
-																		type:             "number"
-																		description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	styling: {
-																		nested_type: {
-																			attributes: cells: {
-																				nested_type: {
-																					attributes: labels: {
-																						nested_type: {
-																							attributes: visible: {
-																								type:             "bool"
-																								description:      "Whether to show cell labels."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							nesting_mode: "single"
-																						}
-																						description:      "Cell label configuration."
-																						description_kind: "markdown"
-																						optional:         true
-																					}
-																					nesting_mode: "single"
-																				}
-																				description:      "Cells configuration for the heatmap."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Heatmap styling configuration."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	time_range: {
-																		nested_type: {
-																			attributes: {
-																				from: {
-																					type:             "string"
-																					description:      "Start of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				mode: {
-																					type:             "string"
-																					description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				to: {
-																					type:             "string"
-																					description:      "End of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	title: {
-																		type:             "string"
-																		description:      "The title of the chart displayed in the panel."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	x_axis_json: {
-																		type:             "string"
-																		description:      "Breakdown dimension configuration for the X axis as JSON. This specifies the operation (e.g., `terms`, `date_histogram`, `histogram`, `range`, `filters`) and its parameters."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	y_axis_json: {
-																		type:             "string"
-																		description:      "Breakdown dimension configuration for the Y axis as JSON. When omitted, the heatmap renders without a Y breakdown."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.heatmap_config`."
-															description_kind: "markdown"
-															optional:         true
-														}
-														legacy_metric_config: {
-															nested_type: {
-																attributes: {
-																	data_source_json: {
-																		type:             "string"
-																		description:      "Dataset configuration as JSON. Use `dataView` or `index` for standard data sources, and `esql` or `table` for ES|QL sources."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	description: {
-																		type:             "string"
-																		description:      "The description of the chart."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	drilldowns: {
-																		nested_type: {
-																			attributes: {
-																				dashboard_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_id: {
-																								type:             "string"
-																								description:      "Target dashboard id."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the target dashboard in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																							use_filters: {
-																								type:             "bool"
-																								description:      "When true, forwards filter context."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							use_time_range: {
-																								type:             "bool"
-																								description:      "When true, forwards the time range."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Navigate to another dashboard using current filters/time range."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				discover_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens Discover in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open Discover with contextual filters."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				url_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							encode_url: {
-																								type:             "bool"
-																								description:      "When true, encodes interpolated URL parameters."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the URL in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "Trigger that fires this drilldown."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							url: {
-																								type:             "string"
-																								description:      "Destination URL."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open a URL drilldown configured with explicit trigger semantics."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	filters: {
-																		nested_type: {
-																			attributes: filter_json: {
-																				type:             "string"
-																				description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Additional filters to apply to the chart data (maximum 100)."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_border: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart panel border."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_title: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart title."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	ignore_global_filters: {
-																		type:             "bool"
-																		description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	metric_json: {
-																		type:             "string"
-																		description:      "Metric configuration as JSON. For standard datasets, use a metric operation or formula. For ES|QL datasets, include format, operation, column, and color configuration."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	query: {
-																		nested_type: {
-																			attributes: {
-																				expression: {
-																					type:             "string"
-																					description:      "Filter expression string."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				language: {
-																					type:             "string"
-																					description:      "Query language (default: 'kql')."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Query configuration for filtering data. Required for non-ES|QL datasets."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	references_json: {
-																		type:             "string"
-																		description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	sampling: {
-																		type:             "number"
-																		description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	time_range: {
-																		nested_type: {
-																			attributes: {
-																				from: {
-																					type:             "string"
-																					description:      "Start of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				mode: {
-																					type:             "string"
-																					description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				to: {
-																					type:             "string"
-																					description:      "End of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	title: {
-																		type:             "string"
-																		description:      "The title of the chart displayed in the panel."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.legacy_metric_config`."
-															description_kind: "markdown"
-															optional:         true
-														}
-														metric_chart_config: {
-															nested_type: {
-																attributes: {
-																	breakdown_by_json: {
-																		type:             "string"
-																		description:      "Breakdown configuration as JSON. Groups metrics by a dimension. Can use operations like date histogram, terms, histogram, range, filters, or for ES|QL datasets, value operations with columns. Includes optional columns count and collapse_by configuration."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	data_source_json: {
-																		type:             "string"
-																		description:      "Dataset configuration as JSON. Can be a data view dataset (`type: 'dataview'`), index dataset (`type: 'index'`), ES|QL dataset (`type: 'esql'`), or table ES|QL dataset (`type: 'tableESQLDatasetType`)."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	description: {
-																		type:             "string"
-																		description:      "The description of the chart."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	drilldowns: {
-																		nested_type: {
-																			attributes: {
-																				dashboard_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_id: {
-																								type:             "string"
-																								description:      "Target dashboard id."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the target dashboard in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																							use_filters: {
-																								type:             "bool"
-																								description:      "When true, forwards filter context."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							use_time_range: {
-																								type:             "bool"
-																								description:      "When true, forwards the time range."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Navigate to another dashboard using current filters/time range."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				discover_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens Discover in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open Discover with contextual filters."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				url_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							encode_url: {
-																								type:             "bool"
-																								description:      "When true, encodes interpolated URL parameters."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the URL in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "Trigger that fires this drilldown."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							url: {
-																								type:             "string"
-																								description:      "Destination URL."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open a URL drilldown configured with explicit trigger semantics."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	filters: {
-																		nested_type: {
-																			attributes: filter_json: {
-																				type:             "string"
-																				description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Additional filters to apply to the chart data (maximum 100)."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_border: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart panel border."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_title: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart title."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	ignore_global_filters: {
-																		type:             "bool"
-																		description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	metrics: {
-																		nested_type: {
-																			attributes: config_json: {
-																				type:             "string"
-																				description:      "Metric configuration as JSON. For primary metrics: includes type ('primary'), operation, format, alignments, icon, and optional fields like sub_label, fit, color, apply_color_to, and background_chart. For secondary metrics: includes type ('secondary'), operation, format, and optional fields like label, prefix, compare, and color."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Array of metrics to display (1-2 items). Each metric can be a primary metric (displays prominently) or secondary metric (displays as comparison). Metrics can use field operations (count, unique count, min, max, avg, median, std dev, sum, last value, percentile, percentile ranks), pipeline operations (differences, moving average, cumulative sum, counter rate), formula operations, or for ES|QL datasets, column-based value operations."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	query: {
-																		nested_type: {
-																			attributes: {
-																				expression: {
-																					type:             "string"
-																					description:      "Filter expression string."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				language: {
-																					type:             "string"
-																					description:      "Query language (default: 'kql')."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Query configuration for filtering data. Required for non-ES|QL datasets."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	references_json: {
-																		type:             "string"
-																		description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	sampling: {
-																		type:             "number"
-																		description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	time_range: {
-																		nested_type: {
-																			attributes: {
-																				from: {
-																					type:             "string"
-																					description:      "Start of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				mode: {
-																					type:             "string"
-																					description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				to: {
-																					type:             "string"
-																					description:      "End of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	title: {
-																		type:             "string"
-																		description:      "The title of the chart displayed in the panel."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.metric_chart_config`."
-															description_kind: "markdown"
-															optional:         true
-														}
-														mosaic_config: {
-															nested_type: {
-																attributes: {
-																	data_source_json: {
-																		type:             "string"
-																		description:      "Dataset configuration as JSON. For non-ES|QL, this specifies the data view or index; for ES|QL, this specifies the ES|QL query dataset."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	description: {
-																		type:             "string"
-																		description:      "The description of the chart."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	drilldowns: {
-																		nested_type: {
-																			attributes: {
-																				dashboard_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_id: {
-																								type:             "string"
-																								description:      "Target dashboard id."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the target dashboard in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																							use_filters: {
-																								type:             "bool"
-																								description:      "When true, forwards filter context."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							use_time_range: {
-																								type:             "bool"
-																								description:      "When true, forwards the time range."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Navigate to another dashboard using current filters/time range."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				discover_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens Discover in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open Discover with contextual filters."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				url_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							encode_url: {
-																								type:             "bool"
-																								description:      "When true, encodes interpolated URL parameters."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the URL in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "Trigger that fires this drilldown."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							url: {
-																								type:             "string"
-																								description:      "Destination URL."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open a URL drilldown configured with explicit trigger semantics."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	esql_group_by: {
-																		nested_type: {
-																			attributes: {
-																				collapse_by: {
-																					type:             "string"
-																					description:      "Collapse function when multiple rows map to the same bucket."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				color_json: {
-																					type:             "string"
-																					description:      "Color mapping as JSON (`colorMapping` union)."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				column: {
-																					type:             "string"
-																					description:      "ES|QL column for the breakdown."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				format_json: {
-																					type:             "string"
-																					description:      "Column format as JSON (e.g. `{\"type\":\"number\"}`). Defaults to numeric format when omitted."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				label: {
-																					type:             "string"
-																					description:      "Optional label for the group-by column."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Breakdown columns for ES|QL mosaics. Mutually exclusive with `group_by_json`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	esql_metrics: {
-																		nested_type: {
-																			attributes: {
-																				column: {
-																					type:             "string"
-																					description:      "ES|QL column name for the metric."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				format_json: {
-																					type:             "string"
-																					description:      "Number or other format configuration as JSON (`formatType` union)."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				label: {
-																					type:             "string"
-																					description:      "Optional label for the metric."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Metric columns for ES|QL mosaics (exactly 1). Mutually exclusive with `metrics_json`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	filters: {
-																		nested_type: {
-																			attributes: filter_json: {
-																				type:             "string"
-																				description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Additional filters to apply to the chart data (maximum 100)."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	group_breakdown_by_json: {
-																		type:             "string"
-																		description:      "Array of secondary breakdown dimensions as JSON (minimum 1). Mosaic charts require both group_by and group_breakdown_by. For non-ES|QL, each item can be date histogram, terms, histogram, range, or filters operations; for ES|QL, each item is the column/operation/color configuration."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	group_by_json: {
-																		type:             "string"
-																		description:      "Array of primary breakdown dimensions as JSON (minimum 1). For non-ES|QL, each item can be date histogram, terms, histogram, range, or filters operations; for ES|QL, each item is the column/operation/color configuration."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_border: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart panel border."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_title: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart title."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	ignore_global_filters: {
-																		type:             "bool"
-																		description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	legend: {
-																		nested_type: {
-																			attributes: {
-																				nested: {
-																					type:             "bool"
-																					description:      "Show nested legend with hierarchical breakdown levels."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				size: {
-																					type:             "string"
-																					description:      "Legend size: auto, s, m, l, or xl."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				truncate_after_lines: {
-																					type:             "number"
-																					description:      "Maximum lines before truncating legend items (1-10)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				visible: {
-																					type:             "string"
-																					description:      "Legend visibility: auto, visible, or hidden."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Legend configuration for the mosaic chart."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	metrics_json: {
-																		type:             "string"
-																		description:      "Array of metric configurations as JSON (exactly 1 required). For non-ES|QL, each item can be a field metric, pipeline metric, or formula; for ES|QL, each item is the column/operation/color/format configuration."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	query: {
-																		nested_type: {
-																			attributes: {
-																				expression: {
-																					type:             "string"
-																					description:      "Filter expression string."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				language: {
-																					type:             "string"
-																					description:      "Query language (default: 'kql')."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Query configuration for filtering data. Required for non-ES|QL partition charts."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	references_json: {
-																		type:             "string"
-																		description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	sampling: {
-																		type:             "number"
-																		description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	time_range: {
-																		nested_type: {
-																			attributes: {
-																				from: {
-																					type:             "string"
-																					description:      "Start of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				mode: {
-																					type:             "string"
-																					description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				to: {
-																					type:             "string"
-																					description:      "End of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	title: {
-																		type:             "string"
-																		description:      "The title of the chart displayed in the panel."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	value_display: {
-																		nested_type: {
-																			attributes: {
-																				mode: {
-																					type:             "string"
-																					description:      "Value display mode: hidden, absolute, or percentage."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				percent_decimals: {
-																					type:             "number"
-																					description:      "Decimal places for percentage display (0-10)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Configuration for displaying values in chart cells."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.mosaic_config`."
-															description_kind: "markdown"
-															optional:         true
-														}
-														pie_chart_config: {
-															nested_type: {
-																attributes: {
-																	data_source_json: {
-																		type:             "string"
-																		description:      "Dataset configuration as JSON. For standard layers, this specifies the data view and query."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	description: {
-																		type:             "string"
-																		description:      "The description of the chart."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	donut_hole: {
-																		type:             "string"
-																		description:      "Donut hole size: none (pie), s, m, or l."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	drilldowns: {
-																		nested_type: {
-																			attributes: {
-																				dashboard_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_id: {
-																								type:             "string"
-																								description:      "Target dashboard id."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the target dashboard in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																							use_filters: {
-																								type:             "bool"
-																								description:      "When true, forwards filter context."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							use_time_range: {
-																								type:             "bool"
-																								description:      "When true, forwards the time range."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Navigate to another dashboard using current filters/time range."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				discover_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens Discover in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open Discover with contextual filters."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				url_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							encode_url: {
-																								type:             "bool"
-																								description:      "When true, encodes interpolated URL parameters."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the URL in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "Trigger that fires this drilldown."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							url: {
-																								type:             "string"
-																								description:      "Destination URL."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open a URL drilldown configured with explicit trigger semantics."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	filters: {
-																		nested_type: {
-																			attributes: filter_json: {
-																				type:             "string"
-																				description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Additional filters to apply to the chart data (maximum 100)."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	group_by: {
-																		nested_type: {
-																			attributes: config_json: {
-																				type:             "string"
-																				description:      "Group by configuration as JSON."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Array of breakdown dimensions (minimum 1)."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_border: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart panel border."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_title: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart title."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	ignore_global_filters: {
-																		type:             "bool"
-																		description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	label_position: {
-																		type:             "string"
-																		description:      "Position of slice labels: hidden, inside, or outside."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	legend: {
-																		nested_type: {
-																			attributes: {
-																				nested: {
-																					type:             "bool"
-																					description:      "Show nested legend with hierarchical breakdown levels."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				size: {
-																					type:             "string"
-																					description:      "Legend size: auto, s, m, l, or xl."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				truncate_after_lines: {
-																					type:             "number"
-																					description:      "Maximum lines before truncating legend items (1-10)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				visible: {
-																					type:             "string"
-																					description:      "Legend visibility: auto, visible, or hidden."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Optional legend configuration for the pie chart. Same shape as treemap and mosaic legends; Terraform `visible` maps to API `visibility`. When omitted, the schema default matches typical Kibana legend defaults (size and visibility `auto`) so apply/read stay consistent."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	metrics: {
-																		nested_type: {
-																			attributes: config_json: {
-																				type:             "string"
-																				description:      "Metric configuration as JSON."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Array of metric configurations (minimum 1)."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	query: {
-																		nested_type: {
-																			attributes: {
-																				expression: {
-																					type:             "string"
-																					description:      "Filter expression string."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				language: {
-																					type:             "string"
-																					description:      "Query language (default: 'kql')."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Query configuration for filtering data."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	references_json: {
-																		type:             "string"
-																		description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	sampling: {
-																		type:             "number"
-																		description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	time_range: {
-																		nested_type: {
-																			attributes: {
-																				from: {
-																					type:             "string"
-																					description:      "Start of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				mode: {
-																					type:             "string"
-																					description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				to: {
-																					type:             "string"
-																					description:      "End of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	title: {
-																		type:             "string"
-																		description:      "The title of the chart displayed in the panel."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.pie_chart_config`."
-															description_kind: "markdown"
-															optional:         true
-														}
-														region_map_config: {
-															nested_type: {
-																attributes: {
-																	data_source_json: {
-																		type:             "string"
-																		description:      "Dataset configuration as JSON. For ES|QL, this specifies the ES|QL query. For standard layers, this specifies the data view and query."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	description: {
-																		type:             "string"
-																		description:      "The description of the chart."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	drilldowns: {
-																		nested_type: {
-																			attributes: {
-																				dashboard_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_id: {
-																								type:             "string"
-																								description:      "Target dashboard id."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the target dashboard in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																							use_filters: {
-																								type:             "bool"
-																								description:      "When true, forwards filter context."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							use_time_range: {
-																								type:             "bool"
-																								description:      "When true, forwards the time range."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Navigate to another dashboard using current filters/time range."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				discover_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens Discover in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open Discover with contextual filters."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				url_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							encode_url: {
-																								type:             "bool"
-																								description:      "When true, encodes interpolated URL parameters."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the URL in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "Trigger that fires this drilldown."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							url: {
-																								type:             "string"
-																								description:      "Destination URL."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open a URL drilldown configured with explicit trigger semantics."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	filters: {
-																		nested_type: {
-																			attributes: filter_json: {
-																				type:             "string"
-																				description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Additional filters to apply to the chart data (maximum 100)."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_border: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart panel border."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_title: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart title."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	ignore_global_filters: {
-																		type:             "bool"
-																		description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	metric_json: {
-																		type:             "string"
-																		description:      "Metric configuration as JSON. For ES|QL, this defines the metric column and format. For standard mode, this defines the metric operation or formula."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	query: {
-																		nested_type: {
-																			attributes: {
-																				expression: {
-																					type:             "string"
-																					description:      "Filter expression string."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				language: {
-																					type:             "string"
-																					description:      "Query language (default: 'kql')."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Query configuration for filtering data. Required for non-ES|QL region map configurations."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	references_json: {
-																		type:             "string"
-																		description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	region_json: {
-																		type:             "string"
-																		description:      "Region configuration as JSON. For ES|QL, this defines the region column and EMS join. For standard mode, this defines the bucket operation (terms, histogram, range, filters) and optional EMS settings."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	sampling: {
-																		type:             "number"
-																		description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	time_range: {
-																		nested_type: {
-																			attributes: {
-																				from: {
-																					type:             "string"
-																					description:      "Start of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				mode: {
-																					type:             "string"
-																					description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				to: {
-																					type:             "string"
-																					description:      "End of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	title: {
-																		type:             "string"
-																		description:      "The title of the chart displayed in the panel."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.region_map_config`."
-															description_kind: "markdown"
-															optional:         true
-														}
-														tagcloud_config: {
-															nested_type: {
-																attributes: {
-																	data_source_json: {
-																		type:             "string"
-																		description:      "Dataset configuration as JSON. For standard layers, this specifies the data view and query."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	description: {
-																		type:             "string"
-																		description:      "The description of the chart."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	drilldowns: {
-																		nested_type: {
-																			attributes: {
-																				dashboard_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_id: {
-																								type:             "string"
-																								description:      "Target dashboard id."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the target dashboard in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																							use_filters: {
-																								type:             "bool"
-																								description:      "When true, forwards filter context."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							use_time_range: {
-																								type:             "bool"
-																								description:      "When true, forwards the time range."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Navigate to another dashboard using current filters/time range."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				discover_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens Discover in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open Discover with contextual filters."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				url_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							encode_url: {
-																								type:             "bool"
-																								description:      "When true, encodes interpolated URL parameters."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the URL in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "Trigger that fires this drilldown."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							url: {
-																								type:             "string"
-																								description:      "Destination URL."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open a URL drilldown configured with explicit trigger semantics."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	esql_metric: {
-																		nested_type: {
-																			attributes: {
-																				column: {
-																					type:             "string"
-																					description:      "ES|QL column name for the metric."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				format_json: {
-																					type:             "string"
-																					description:      "Number or other format configuration as JSON (`formatType` union)."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				label: {
-																					type:             "string"
-																					description:      "Optional label for the metric."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed metric column for ES|QL tagclouds. Mutually exclusive with `metric_json`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	esql_tag_by: {
-																		nested_type: {
-																			attributes: {
-																				color_json: {
-																					type:             "string"
-																					description:      "Color mapping as JSON (`colorMapping` union)."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				column: {
-																					type:             "string"
-																					description:      "ES|QL column for the tag dimension."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				format_json: {
-																					type:             "string"
-																					description:      "Column format as JSON (`formatType` union)."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				label: {
-																					type:             "string"
-																					description:      "Optional label for the tag-by column."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed tag-by column for ES|QL tagclouds. Mutually exclusive with `tag_by_json`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	filters: {
-																		nested_type: {
-																			attributes: filter_json: {
-																				type:             "string"
-																				description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Additional filters to apply to the chart data (maximum 100)."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	font_size: {
-																		nested_type: {
-																			attributes: {
-																				max: {
-																					type:             "number"
-																					description:      "Maximum font size (default: 72, maximum: 120)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				min: {
-																					type:             "number"
-																					description:      "Minimum font size (default: 18, minimum: 1)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Minimum and maximum font size for the tags."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_border: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart panel border."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_title: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart title."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	ignore_global_filters: {
-																		type:             "bool"
-																		description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	metric_json: {
-																		type:             "string"
-																		description:      "Metric configuration as JSON. Can be a field metric operation (count, unique count, min, max, avg, median, std dev, sum, last value, percentile, percentile ranks), a pipeline operation (differences, moving average, cumulative sum, counter rate), or a formula operation. Required for non-ES|QL tagclouds; mutually exclusive with `esql_metric`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	orientation: {
-																		type:             "string"
-																		description:      "Orientation of the tagcloud. Valid values: 'horizontal', 'vertical', 'angled'."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	query: {
-																		nested_type: {
-																			attributes: {
-																				expression: {
-																					type:             "string"
-																					description:      "Filter expression string."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				language: {
-																					type:             "string"
-																					description:      "Query language (default: 'kql')."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Query configuration for filtering data. Required for non-ES|QL tagclouds; omit for ES|QL mode."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	references_json: {
-																		type:             "string"
-																		description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	sampling: {
-																		type:             "number"
-																		description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	tag_by_json: {
-																		type:             "string"
-																		description:      "Tag grouping configuration as JSON. Can be a date histogram, terms, histogram, range, or filters operation. This determines how tags are grouped and displayed. Required for non-ES|QL tagclouds; mutually exclusive with `esql_tag_by`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	time_range: {
-																		nested_type: {
-																			attributes: {
-																				from: {
-																					type:             "string"
-																					description:      "Start of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				mode: {
-																					type:             "string"
-																					description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				to: {
-																					type:             "string"
-																					description:      "End of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	title: {
-																		type:             "string"
-																		description:      "The title of the chart displayed in the panel."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.tagcloud_config`."
-															description_kind: "markdown"
-															optional:         true
-														}
-														treemap_config: {
-															nested_type: {
-																attributes: {
-																	data_source_json: {
-																		type:             "string"
-																		description:      "Dataset configuration as JSON. For non-ES|QL, this specifies the data view or index; for ES|QL, this specifies the ES|QL query dataset."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	description: {
-																		type:             "string"
-																		description:      "The description of the chart."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	drilldowns: {
-																		nested_type: {
-																			attributes: {
-																				dashboard_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_id: {
-																								type:             "string"
-																								description:      "Target dashboard id."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the target dashboard in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																							use_filters: {
-																								type:             "bool"
-																								description:      "When true, forwards filter context."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							use_time_range: {
-																								type:             "bool"
-																								description:      "When true, forwards the time range."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Navigate to another dashboard using current filters/time range."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				discover_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens Discover in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open Discover with contextual filters."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				url_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							encode_url: {
-																								type:             "bool"
-																								description:      "When true, encodes interpolated URL parameters."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the URL in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "Trigger that fires this drilldown."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							url: {
-																								type:             "string"
-																								description:      "Destination URL."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open a URL drilldown configured with explicit trigger semantics."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	esql_group_by: {
-																		nested_type: {
-																			attributes: {
-																				collapse_by: {
-																					type:             "string"
-																					description:      "Collapse function when multiple rows map to the same bucket."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				color_json: {
-																					type:             "string"
-																					description:      "Color mapping as JSON (`colorMapping` union)."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				column: {
-																					type:             "string"
-																					description:      "ES|QL column for the breakdown."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				format_json: {
-																					type:             "string"
-																					description:      "Column format as JSON (e.g. `{\"type\":\"number\"}`). Defaults to numeric format when omitted."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				label: {
-																					type:             "string"
-																					description:      "Optional label for the group-by column."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Breakdown columns for ES|QL treemaps. Mutually exclusive with `group_by_json`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	esql_metrics: {
-																		nested_type: {
-																			attributes: {
-																				color: {
-																					nested_type: {
-																						attributes: {
-																							color: {
-																								type:             "string"
-																								description:      "Color value (e.g. hex)."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							type: {
-																								type:             "string"
-																								description:      "Color type; use `static` for partition chart ES|QL metrics."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Static color for the metric."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				column: {
-																					type:             "string"
-																					description:      "ES|QL column name for the metric."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				format_json: {
-																					type:             "string"
-																					description:      "Number or other format configuration as JSON (`formatType` union)."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				label: {
-																					type:             "string"
-																					description:      "Optional label for the metric."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Metric columns for ES|QL treemaps. Mutually exclusive with `metrics_json`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	filters: {
-																		nested_type: {
-																			attributes: filter_json: {
-																				type:             "string"
-																				description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Additional filters to apply to the chart data (maximum 100)."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	group_by_json: {
-																		type:             "string"
-																		description:      "Array of breakdown dimensions as JSON (minimum 1). For non-ES|QL, each item can be date histogram, terms, histogram, range, or filters operations; for ES|QL, each item is the column/operation/color configuration."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_border: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart panel border."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_title: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart title."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	ignore_global_filters: {
-																		type:             "bool"
-																		description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	legend: {
-																		nested_type: {
-																			attributes: {
-																				nested: {
-																					type:             "bool"
-																					description:      "Show nested legend with hierarchical breakdown levels."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				size: {
-																					type:             "string"
-																					description:      "Legend size: auto, s, m, l, or xl."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				truncate_after_lines: {
-																					type:             "number"
-																					description:      "Maximum lines before truncating legend items (1-10)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				visible: {
-																					type:             "string"
-																					description:      "Legend visibility: auto, visible, or hidden."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Legend configuration for the treemap chart."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	metrics_json: {
-																		type:             "string"
-																		description:      "Array of metric configurations as JSON (minimum 1). For non-ES|QL, each item can be a field metric, pipeline metric, or formula; for ES|QL, each item is the column/operation/color/format configuration."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	query: {
-																		nested_type: {
-																			attributes: {
-																				expression: {
-																					type:             "string"
-																					description:      "Filter expression string."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				language: {
-																					type:             "string"
-																					description:      "Query language (default: 'kql')."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Query configuration for filtering data. Required for non-ES|QL partition charts."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	references_json: {
-																		type:             "string"
-																		description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	sampling: {
-																		type:             "number"
-																		description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	time_range: {
-																		nested_type: {
-																			attributes: {
-																				from: {
-																					type:             "string"
-																					description:      "Start of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				mode: {
-																					type:             "string"
-																					description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				to: {
-																					type:             "string"
-																					description:      "End of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	title: {
-																		type:             "string"
-																		description:      "The title of the chart displayed in the panel."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	value_display: {
-																		nested_type: {
-																			attributes: {
-																				mode: {
-																					type:             "string"
-																					description:      "Value display mode: hidden, absolute, or percentage."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				percent_decimals: {
-																					type:             "number"
-																					description:      "Decimal places for percentage display (0-10)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Configuration for displaying values in chart cells."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.treemap_config`."
-															description_kind: "markdown"
-															optional:         true
-														}
-														waffle_config: {
-															nested_type: {
-																attributes: {
-																	data_source_json: {
-																		type:             "string"
-																		description:      "Dataset configuration as JSON. For non-ES|QL, this specifies the data view or index; for ES|QL, this specifies the ES|QL query dataset."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	description: {
-																		type:             "string"
-																		description:      "The description of the chart."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	drilldowns: {
-																		nested_type: {
-																			attributes: {
-																				dashboard_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_id: {
-																								type:             "string"
-																								description:      "Target dashboard id."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the target dashboard in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																							use_filters: {
-																								type:             "bool"
-																								description:      "When true, forwards filter context."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							use_time_range: {
-																								type:             "bool"
-																								description:      "When true, forwards the time range."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Navigate to another dashboard using current filters/time range."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				discover_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens Discover in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open Discover with contextual filters."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				url_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							encode_url: {
-																								type:             "bool"
-																								description:      "When true, encodes interpolated URL parameters."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the URL in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "Trigger that fires this drilldown."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							url: {
-																								type:             "string"
-																								description:      "Destination URL."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open a URL drilldown configured with explicit trigger semantics."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	esql_group_by: {
-																		nested_type: {
-																			attributes: {
-																				collapse_by: {
-																					type:             "string"
-																					description:      "Collapse function when multiple rows map to the same bucket."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				color_json: {
-																					type:             "string"
-																					description:      "Color mapping as JSON (`colorMapping` union)."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				column: {
-																					type:             "string"
-																					description:      "ES|QL column for the breakdown."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				format_json: {
-																					type:             "string"
-																					description:      "Column format as JSON (e.g. `{\"type\":\"number\"}`). Defaults to numeric format when omitted."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				label: {
-																					type:             "string"
-																					description:      "Optional label for the group-by column."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Breakdown columns for ES|QL waffles. Mutually exclusive with `group_by`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	esql_metrics: {
-																		nested_type: {
-																			attributes: {
-																				color: {
-																					nested_type: {
-																						attributes: {
-																							color: {
-																								type:             "string"
-																								description:      "Color value (e.g. hex)."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							type: {
-																								type:             "string"
-																								description:      "Color type; use `static` for partition chart ES|QL metrics."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Static color for the metric."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				column: {
-																					type:             "string"
-																					description:      "ES|QL column name for the metric."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				format_json: {
-																					type:             "string"
-																					description:      "Number or other format configuration as JSON (`formatType` union)."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				label: {
-																					type:             "string"
-																					description:      "Optional label for the metric."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Metric columns for ES|QL waffles (minimum 1). Mutually exclusive with `metrics`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	filters: {
-																		nested_type: {
-																			attributes: filter_json: {
-																				type:             "string"
-																				description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Additional filters to apply to the chart data (maximum 100)."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	group_by: {
-																		nested_type: {
-																			attributes: config_json: {
-																				type:             "string"
-																				description:      "Group-by operation as JSON."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Breakdown dimensions for non-ES|QL waffles. Each `config_json` is a JSON object (terms, date_histogram, etc.) matching the Kibana Lens waffle schema."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_border: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart panel border."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_title: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart title."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	ignore_global_filters: {
-																		type:             "bool"
-																		description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	legend: {
-																		nested_type: {
-																			attributes: {
-																				size: {
-																					type:             "string"
-																					description:      "Legend size: auto, s, m, l, or xl."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				truncate_after_lines: {
-																					type:             "number"
-																					description:      "Maximum lines before truncating legend items (1-10)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				values: {
-																					type: ["list", "string"]
-																					description:      "Legend value display modes. For example `absolute` shows raw metric values in the legend."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				visible: {
-																					type:             "string"
-																					description:      "Legend visibility: auto, visible, or hidden."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Legend configuration for the waffle chart."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	metrics: {
-																		nested_type: {
-																			attributes: config_json: {
-																				type:             "string"
-																				description:      "Metric operation as JSON."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Metric configurations for non-ES|QL waffles (minimum 1). Each `config_json` is a JSON object (e.g. count, sum, or formula) matching the Kibana Lens waffle schema."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	query: {
-																		nested_type: {
-																			attributes: {
-																				expression: {
-																					type:             "string"
-																					description:      "Filter expression string."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				language: {
-																					type:             "string"
-																					description:      "Query language (default: 'kql')."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Query configuration for filtering data. Required for non-ES|QL partition charts."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	references_json: {
-																		type:             "string"
-																		description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	sampling: {
-																		type:             "number"
-																		description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																		description_kind: "markdown"
-																		optional:         true
-																		computed:         true
-																	}
-																	time_range: {
-																		nested_type: {
-																			attributes: {
-																				from: {
-																					type:             "string"
-																					description:      "Start of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				mode: {
-																					type:             "string"
-																					description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				to: {
-																					type:             "string"
-																					description:      "End of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	title: {
-																		type:             "string"
-																		description:      "The title of the chart displayed in the panel."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	value_display: {
-																		nested_type: {
-																			attributes: {
-																				mode: {
-																					type:             "string"
-																					description:      "Value display mode: hidden, absolute, or percentage."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				percent_decimals: {
-																					type:             "number"
-																					description:      "Decimal places for percentage display (0-10)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Configuration for displaying values in chart cells."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.waffle_config`."
-															description_kind: "markdown"
-															optional:         true
-														}
-														xy_chart_config: {
-															nested_type: {
-																attributes: {
-																	axis: {
-																		nested_type: {
-																			attributes: {
-																				x: {
-																					nested_type: {
-																						attributes: {
-																							domain_json: {
-																								type:             "string"
-																								description:      "Axis domain configuration as JSON. Can be 'fit' mode or 'custom' mode with min, max, and optional fit flags."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							grid: {
-																								type:             "bool"
-																								description:      "Whether to show grid lines for this axis."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							label_orientation: {
-																								type:             "string"
-																								description:      "Orientation of the axis labels."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							scale: {
-																								type:             "string"
-																								description:      "X-axis scale: linear (numeric), ordinal (categorical), or temporal (dates)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							ticks: {
-																								type:             "bool"
-																								description:      "Whether to show tick marks on the axis."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							title: {
-																								nested_type: {
-																									attributes: {
-																										value: {
-																											type:             "string"
-																											description:      "Axis title text."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										visible: {
-																											type:             "bool"
-																											description:      "Whether to show the title."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Axis title configuration."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "X-axis (horizontal) configuration."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				y: {
-																					nested_type: {
-																						attributes: {
-																							domain_json: {
-																								type:             "string"
-																								description:      "Y-axis domain configuration as JSON. Can be 'fit' mode or 'custom' mode with min, max, and optional fit flags."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							grid: {
-																								type:             "bool"
-																								description:      "Whether to show grid lines for this axis."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							label_orientation: {
-																								type:             "string"
-																								description:      "Orientation of the axis labels."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							scale: {
-																								type:             "string"
-																								description:      "Y-axis scale type for data transformation."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							ticks: {
-																								type:             "bool"
-																								description:      "Whether to show tick marks on the axis."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							title: {
-																								nested_type: {
-																									attributes: {
-																										value: {
-																											type:             "string"
-																											description:      "Axis title text."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										visible: {
-																											type:             "bool"
-																											description:      "Whether to show the title."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Axis title configuration."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Primary Y-axis configuration with scale and bounds."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				y2: {
-																					nested_type: {
-																						attributes: {
-																							domain_json: {
-																								type:             "string"
-																								description:      "Y-axis domain configuration as JSON. Can be 'fit' mode or 'custom' mode with min, max, and optional fit flags."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							grid: {
-																								type:             "bool"
-																								description:      "Whether to show grid lines for this axis."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							label_orientation: {
-																								type:             "string"
-																								description:      "Orientation of the axis labels."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							scale: {
-																								type:             "string"
-																								description:      "Y-axis scale type for data transformation."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							ticks: {
-																								type:             "bool"
-																								description:      "Whether to show tick marks on the axis."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							title: {
-																								nested_type: {
-																									attributes: {
-																										value: {
-																											type:             "string"
-																											description:      "Axis title text."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										visible: {
-																											type:             "bool"
-																											description:      "Whether to show the title."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Axis title configuration."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Secondary Y-axis configuration with scale and bounds."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Axis configuration for X, Y, and secondary Y axes."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	decorations: {
-																		nested_type: {
-																			attributes: {
-																				fill_opacity: {
-																					type:             "number"
-																					description:      "Area chart fill opacity (0-1 typical, max 2 for legacy)."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				line_interpolation: {
-																					type:             "string"
-																					description:      "Line interpolation method."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				minimum_bar_height: {
-																					type:             "number"
-																					description:      "Minimum bar height in pixels."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				point_visibility: {
-																					type:             "string"
-																					description:      "Show data points on lines. Valid values are: auto, always, never."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				show_current_time_marker: {
-																					type:             "bool"
-																					description:      "Show current time marker line."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				show_end_zones: {
-																					type:             "bool"
-																					description:      "Show end zones for partial buckets."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				show_value_labels: {
-																					type:             "bool"
-																					description:      "Display value labels on data points."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Visual enhancements and styling options for the chart."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	description: {
-																		type:             "string"
-																		description:      "The description of the chart."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	drilldowns: {
-																		nested_type: {
-																			attributes: {
-																				dashboard_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_id: {
-																								type:             "string"
-																								description:      "Target dashboard id."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the target dashboard in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																							use_filters: {
-																								type:             "bool"
-																								description:      "When true, forwards filter context."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							use_time_range: {
-																								type:             "bool"
-																								description:      "When true, forwards the time range."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Navigate to another dashboard using current filters/time range."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				discover_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens Discover in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																								description_kind: "markdown"
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open Discover with contextual filters."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				url_drilldown: {
-																					nested_type: {
-																						attributes: {
-																							encode_url: {
-																								type:             "bool"
-																								description:      "When true, encodes interpolated URL parameters."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Human-readable drilldown label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "When true, opens the URL in a new browser tab."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "Trigger that fires this drilldown."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							url: {
-																								type:             "string"
-																								description:      "Destination URL."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open a URL drilldown configured with explicit trigger semantics."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	filters: {
-																		nested_type: {
-																			attributes: filter_json: {
-																				type:             "string"
-																				description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																				description_kind: "markdown"
-																				required:         true
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Additional filters to apply to the chart data (maximum 100)."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	fitting: {
-																		nested_type: {
-																			attributes: {
-																				dotted: {
-																					type:             "bool"
-																					description:      "Show fitted values as dotted lines."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				end_value: {
-																					type:             "string"
-																					description:      "How to handle the end value for fitting."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				type: {
-																					type:             "string"
-																					description:      "Fitting function type for missing data."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Missing data interpolation configuration. Only valid fitting types are applied per chart type."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	hide_border: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart panel border."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_title: {
-																		type:             "bool"
-																		description:      "When true, suppresses the chart title."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	layers: {
-																		nested_type: {
-																			attributes: {
-																				data_layer: {
-																					nested_type: {
-																						attributes: {
-																							breakdown_by_json: {
-																								type:             "string"
-																								description:      "Split series configuration as JSON. For ES|QL: column, operation, optional collapse_by, and color mapping. For standard: field, operation, and optional parameters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							data_source_json: {
-																								type:             "string"
-																								description:      "Dataset configuration as JSON. For ES|QL layers, this specifies the ES|QL query. For standard layers, this specifies the data view and query."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							ignore_global_filters: {
-																								type:             "bool"
-																								description:      "If true, ignore global filters when fetching data for this layer. Default is false."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							sampling: {
-																								type:             "number"
-																								description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							x_json: {
-																								type:             "string"
-																								description:      "X-axis configuration as JSON. For ES|QL: column and operation. For standard: field, operation, and optional parameters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							y: {
-																								nested_type: {
-																									attributes: config_json: {
-																										type:             "string"
-																										description:      "Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and operation. For standard: axis, color, and metric definition."
-																										description_kind: "markdown"
-																										required:         true
-																									}
-																									nesting_mode: "list"
-																								}
-																								description:      "Array of Y-axis metrics. Each entry defines a metric to display on the Y-axis."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Configuration for data layers (area, line, bar charts). Mutually exclusive with `reference_line_layer`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				reference_line_layer: {
-																					nested_type: {
-																						attributes: {
-																							data_source_json: {
-																								type:             "string"
-																								description:      "Dataset configuration as JSON. For ES|QL layers, this specifies the ES|QL query. For standard layers, this specifies the data view and query."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							ignore_global_filters: {
-																								type:             "bool"
-																								description:      "If true, ignore global filters when fetching data for this layer. Default is false."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							sampling: {
-																								type:             "number"
-																								description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							thresholds: {
-																								nested_type: {
-																									attributes: {
-																										axis: {
-																											type:             "string"
-																											description:      "Which axis the reference line applies to. Valid values: 'left', 'right'."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										color_json: {
-																											type:             "string"
-																											description:      "Color for the reference line. Can be a static color string or dynamic color configuration as JSON."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										column: {
-																											type:             "string"
-																											description:      "Column to use (for ES|QL layers)."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										fill: {
-																											type:             "string"
-																											description:      "Fill direction for reference line. Valid values: 'none', 'above', 'below'."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										icon: {
-																											type:             "string"
-																											description:      "Icon to display on the reference line. Valid values: 'alert', 'asterisk', 'bell', 'bolt', 'bug', 'circle', 'editorComment', 'flag', 'heart', 'mapMarker', 'pinFilled', 'starEmpty', 'starFilled', 'tag', 'triangle'."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										operation: {
-																											type:             "string"
-																											description:      "Operation to apply (for ES|QL: aggregation function; for standard: metric calculation type)."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										stroke_dash: {
-																											type:             "string"
-																											description:      "Line style. Valid values: 'solid', 'dashed', 'dotted'."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										stroke_width: {
-																											type:             "number"
-																											description:      "Line width in pixels."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										text: {
-																											type:             "string"
-																											description:      "Text display option for the reference line. Valid values include: 'auto', 'name', 'none', 'label'."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										value_json: {
-																											type:             "string"
-																											description:      "Metric configuration as JSON (for standard layers). Defines the calculation for the threshold value."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "list"
-																								}
-																								description:      "Array of reference line thresholds."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Configuration for reference line layers. Mutually exclusive with `data_layer`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				type: {
-																					type:             "string"
-																					description:      "The type of layer. Valid values: 'area', 'line', 'bar', 'horizontal_bar', 'reference_lines' for NoESQL layers; 'area_chart', 'line_chart', 'bar_chart', 'horizontal_bar_chart', 'reference_lines' for ESQL layers."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Chart layers configuration. Minimum 1 layer required. Each layer can be a data layer or reference line layer."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	legend: {
-																		nested_type: {
-																			attributes: {
-																				alignment: {
-																					type:             "string"
-																					description:      "Legend alignment when positioned inside the chart. Valid when 'inside' is true."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				columns: {
-																					type:             "number"
-																					description:      "Number of legend columns when positioned inside the chart (1-5). Valid when 'inside' is true."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				inside: {
-																					type:             "bool"
-																					description:      "Position legend inside the chart. When true, use 'columns' and 'alignment'. When false or omitted, use 'position' and 'size'."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				position: {
-																					type:             "string"
-																					description:      "Legend position when positioned outside the chart. Valid when 'inside' is false or omitted."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				size: {
-																					type:             "string"
-																					description:      "Legend size when positioned outside the chart. Valid for left/right outside legends. Values use the Kibana API enum: auto, s, m, l, xl."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				statistics: {
-																					type: ["list", "string"]
-																					description:      "Statistics to display in legend (maximum 17)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				truncate_after_lines: {
-																					type:             "number"
-																					description:      "Maximum lines before truncating legend items (1-10)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				visibility: {
-																					type:             "string"
-																					description:      "Legend visibility (auto, visible, hidden)."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Legend configuration for the XY chart."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	query: {
-																		nested_type: {
-																			attributes: {
-																				expression: {
-																					type:             "string"
-																					description:      "Filter expression string."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				language: {
-																					type:             "string"
-																					description:      "Query language (default: 'kql')."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Query configuration for filtering data."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	references_json: {
-																		type:             "string"
-																		description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	time_range: {
-																		nested_type: {
-																			attributes: {
-																				from: {
-																					type:             "string"
-																					description:      "Start of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				mode: {
-																					type:             "string"
-																					description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				to: {
-																					type:             "string"
-																					description:      "End of the chart time range."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	title: {
-																		type:             "string"
-																		description:      "The title of the chart displayed in the panel."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.xy_chart_config`."
-															description_kind: "markdown"
-															optional:         true
-														}
-													}
-													nesting_mode: "single"
-												}
-												description:      "Inline by-value `lens-dashboard-app` configuration. Set exactly one of `config_json` (raw JSON) or one supported typed Lens chart block, not both."
-												description_kind: "markdown"
-												optional:         true
-											}
-										}
-										nesting_mode: "single"
-									}
-									description:      "Configuration for a `lens-dashboard-app` panel (the Kibana Dashboard API `lens-dashboard-app` panel type). Set exactly one of `by_value` or `by_reference`. With `by_value`, set exactly one of `config_json` or one supported typed Lens chart block. With `by_reference`, use `ref_id` and `references_json` to map the API `references` list. Supported typed by-value blocks are sent as the `lens-dashboard-app` API `config` and do not create `type = \"vis\"` panels. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for an `image` panel (`kbn-dashboard-panel-type-image`). Required when `type` is `image`. References the Kibana Dashboard API image embeddable `config` shape. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -17841,7 +13218,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a `markdown` panel (the Kibana Dashboard API `kbn-dashboard-panel-type-markdown` shape). Set exactly one of `by_value` (inline `content` with required nested `settings`) or `by_reference` (existing library item via `ref_id`). Presentation fields (`description`, `hide_title`, `title`, `hide_border`) are supported in both branches. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for a `markdown` panel (the Kibana Dashboard API `kbn-dashboard-panel-type-markdown` shape). Set exactly one of `by_value` (inline `content` with required nested `settings`) or `by_reference` (existing library item via `ref_id`). Presentation fields (`description`, `hide_title`, `title`, `hide_border`) are supported in both branches. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -17979,7 +13356,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for an options list control panel. Provides a dropdown or multi-select filter based on a field in a data view. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for an options list control panel. Provides a dropdown or multi-select filter based on a field in a data view. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -18031,7 +13408,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a range slider control panel. Provides a min/max range filter tied to a data view field. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for a range slider control panel. Provides a min/max range filter tied to a data view field. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -18127,7 +13504,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for an `slo_alerts` panel (`kbn-dashboard-panel-type-slo_alerts`). Required when `type` is `slo_alerts`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for an `slo_alerts` panel (`kbn-dashboard-panel-type-slo_alerts`). Required when `type` is `slo_alerts`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `vis_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -18213,7 +13590,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for an SLO burn rate panel. Use this for panels that visualize the burn rate of an SLO over a configurable look-back window. Mutually exclusive with `config_json`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for an SLO burn rate panel. Use this for panels that visualize the burn rate of an SLO over a configurable look-back window. Mutually exclusive with `config_json`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -18293,7 +13670,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for an SLO error budget panel. Displays the burn chart of remaining error budget for a specific SLO. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for an SLO error budget panel. Displays the burn chart of remaining error budget for a specific SLO. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -18491,7 +13868,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for an SLO overview panel. Use either `single` (for a single SLO) or `groups` (for grouped SLO overview). Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for an SLO overview panel. Use either `single` (for a single SLO) or `groups` (for grouped SLO overview). Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -18651,7 +14028,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a Synthetics monitors panel. Displays a table of Elastic Synthetics monitors and their current status. All fields are optional — omit the block entirely for a bare panel with no filtering. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for a Synthetics monitors panel. Displays a table of Elastic Synthetics monitors and their current status. All fields are optional — omit the block entirely for a bare panel with no filtering. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -18839,7 +14216,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a Synthetics stats overview panel. All fields are optional; an absent or empty block shows statistics for all monitors visible within the space. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for a Synthetics stats overview panel. All fields are optional; an absent or empty block shows statistics for all monitors visible within the space. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -18867,7 +14244,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a time slider control panel. Controls the visible time window within the dashboard's global time range. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for a time slider control panel. Controls the visible time window within the dashboard's global time range. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -18997,7 +14374,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "list"
 															}
-															description:      "Structured dashboard, Discover, or URL drilldown entries for by-reference panels — shared by `vis_config.by_reference` (`vis` panels) and `lens_dashboard_app_config.by_reference` (`lens-dashboard-app` panels). Each element must contain exactly one of `dashboard`, `discover`, or `url`; the provider sets API `type` and (for dashboard/discover) `trigger` automatically."
+															description:      "Structured dashboard, Discover, or URL drilldown entries for by-reference panels — shared by `vis_config.by_reference` (`vis` panels). Each element must contain exactly one of `dashboard`, `discover`, or `url`; the provider sets API `type` and (for dashboard/discover) `trigger` automatically."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -19049,7 +14426,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "Required time range for the by-reference panel config (used by both `lens_dashboard_app_config.by_reference` and `vis_config.by_reference`)."
+															description:      "Required time range for the by-reference panel config (`vis_config.by_reference`)."
 															description_kind: "markdown"
 															required:         true
 														}
@@ -19830,7 +15207,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.datatable_config`."
+															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.datatable_config`."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -20255,7 +15632,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.gauge_config`."
+															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.gauge_config`."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -20696,7 +16073,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.heatmap_config`."
+															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.heatmap_config`."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -20957,7 +16334,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.legacy_metric_config`."
+															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.legacy_metric_config`."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -21232,7 +16609,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.metric_chart_config`."
+															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.metric_chart_config`."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -21629,7 +17006,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.mosaic_config`."
+															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.mosaic_config`."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -21959,7 +17336,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.pie_chart_config`."
+															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.pie_chart_config`."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -22226,7 +17603,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.region_map_config`."
+															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.region_map_config`."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -22583,7 +17960,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.tagcloud_config`."
+															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.tagcloud_config`."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -22996,7 +18373,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.treemap_config`."
+															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.treemap_config`."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -23425,7 +18802,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.waffle_config`."
+															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.waffle_config`."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -24180,7 +19557,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.xy_chart_config`."
+															description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.xy_chart_config`."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -24194,7 +19571,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a `vis` panel (`type = \"vis\"`). Typed alternative to panel-level `config_json`: set exactly one of `by_value` (exactly one of 12 Lens chart kinds) or `by_reference`. With `by_reference`, use structured `drilldowns` and required `time_range` like `lens_dashboard_app_config.by_reference`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `discover_session_config`."
+									description:      "Configuration for a `vis` panel (`type = \"vis\"`). Typed alternative to panel-level `config_json`: set exactly one of `by_value` (exactly one of 12 Lens chart kinds) or `by_reference`. With `by_reference`, use structured `drilldowns` and required `time_range`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -24642,7 +20019,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										attributes: {
 											config_json: {
 												type:             "string"
-												description:      "The configuration of the panel as a JSON string. Practitioner-authored panel-level `config_json` is valid only when `type` is `markdown` or `vis`. Typed panel kinds such as `lens-dashboard-app`, `image`, `slo_alerts`, and `discover_session` use their dedicated blocks (`lens_dashboard_app_config`, `image_config`, `slo_alerts_config`, `discover_session_config`), not panel-level `config_json`. Mutually exclusive with `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+												description:      "The configuration of the panel as a JSON string. Practitioner-authored panel-level `config_json` is valid only when `type` is `markdown` or `vis`. Typed panel kinds such as `image`, `slo_alerts`, and `discover_session` use their dedicated blocks (`image_config`, `slo_alerts_config`, `discover_session_config`), not panel-level `config_json`. Mutually exclusive with `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 												computed:         true
@@ -25124,7 +20501,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a `discover_session` panel (`kbn-dashboard-panel-type-discover_session`). Set exactly one of `by_value` or `by_reference`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`."
+												description:      "Configuration for a `discover_session` panel (`kbn-dashboard-panel-type-discover_session`). Set exactly one of `by_value` or `by_reference`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -25222,7 +20599,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for an ES|QL control panel. Use this to manage ES|QL variable controls on a dashboard. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for an ES|QL control panel. Use this to manage ES|QL variable controls on a dashboard. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -25460,5334 +20837,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for an `image` panel (`kbn-dashboard-panel-type-image`). Required when `type` is `image`. References the Kibana Dashboard API image embeddable `config` shape. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
-												description_kind: "markdown"
-												optional:         true
-											}
-											lens_dashboard_app_config: {
-												nested_type: {
-													attributes: {
-														by_reference: {
-															nested_type: {
-																attributes: {
-																	description: {
-																		type:             "string"
-																		description:      "Optional panel description."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	drilldowns: {
-																		nested_type: {
-																			attributes: {
-																				dashboard: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_id: {
-																								type:             "string"
-																								description:      "Target dashboard ID."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Display label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "Open in a new browser tab when set."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							use_filters: {
-																								type:             "bool"
-																								description:      "Pass filters to the target dashboard when set."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							use_time_range: {
-																								type:             "bool"
-																								description:      "Pass the current time range to the target dashboard when set."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open another dashboard (`dashboard_drilldown`). `dashboard_id` and `label` are required; remaining fields mirror optional API knobs."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				discover: {
-																					nested_type: {
-																						attributes: {
-																							label: {
-																								type:             "string"
-																								description:      "Display label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "Open in a new browser tab when set."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Open in Discover (`discover_drilldown`). Requires `label`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				url: {
-																					nested_type: {
-																						attributes: {
-																							encode_url: {
-																								type:             "bool"
-																								description:      "Escape the URL via percent-encoding when set."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Display label."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							open_in_new_tab: {
-																								type:             "bool"
-																								description:      "Open in a new browser tab when set."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							trigger: {
-																								type:             "string"
-																								description:      "Trigger that activates the drilldown. Required; the Kibana dashboard API rejects URL drilldowns when this field is omitted."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							url: {
-																								type:             "string"
-																								description:      "URL template with variables documented in Kibana URL drilldown documentation."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Custom URL drilldown (`url_drilldown`). Requires `url`, `label`, and `trigger` (one of `on_click_row`, `on_click_value`, `on_open_panel_menu`, `on_select_range`). The Kibana dashboard API rejects URL drilldowns without `trigger`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "list"
-																		}
-																		description:      "Structured dashboard, Discover, or URL drilldown entries for by-reference panels — shared by `vis_config.by_reference` (`vis` panels) and `lens_dashboard_app_config.by_reference` (`lens-dashboard-app` panels). Each element must contain exactly one of `dashboard`, `discover`, or `url`; the provider sets API `type` and (for dashboard/discover) `trigger` automatically."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_border: {
-																		type:             "bool"
-																		description:      "When true, suppresses the panel border."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_title: {
-																		type:             "bool"
-																		description:      "When true, suppresses the panel title."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	ref_id: {
-																		type:             "string"
-																		description:      "Reference name in the API `ref_id` field. When `references_json` is set, `ref_id` typically should match a `name` in that list so the link resolves as expected."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	references_json: {
-																		type:             "string"
-																		description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the API `references` list (for example wiring a `lens` saved object to `ref_id`)."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	time_range: {
-																		nested_type: {
-																			attributes: {
-																				from: {
-																					type:             "string"
-																					description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				mode: {
-																					type:             "string"
-																					description:      "Optional time range mode. When set, must be `absolute` or `relative`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				to: {
-																					type:             "string"
-																					description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Required time range for the by-reference panel config (used by both `lens_dashboard_app_config.by_reference` and `vis_config.by_reference`)."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	title: {
-																		type:             "string"
-																		description:      "Optional panel title."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "By-reference `lens-dashboard-app` configuration: structured `drilldowns`, `ref_id`, optional `references_json`, and required `time_range`."
-															description_kind: "markdown"
-															optional:         true
-														}
-														by_value: {
-															nested_type: {
-																attributes: {
-																	config_json: {
-																		type:             "string"
-																		description:      "Optional raw normalized JSON for the by-value Lens chart `config` (full API shape, including chart `type` and `time_range` where the API requires them). Use as the single `by_value` source, or use one supported typed chart block instead (not both). Distinct from panel-level `config_json` on the panel."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	datatable_config: {
-																		nested_type: {
-																			attributes: {
-																				esql: {
-																					nested_type: {
-																						attributes: {
-																							data_source_json: {
-																								type:             "string"
-																								description:      "Dataset configuration as JSON. For ES|QL, this specifies the ES|QL query."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							description: {
-																								type:             "string"
-																								description:      "The description of the chart."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							drilldowns: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_drilldown: {
-																											nested_type: {
-																												attributes: {
-																													dashboard_id: {
-																														type:             "string"
-																														description:      "Target dashboard id."
-																														description_kind: "markdown"
-																														required:         true
-																													}
-																													label: {
-																														type:             "string"
-																														description:      "Human-readable drilldown label."
-																														description_kind: "markdown"
-																														required:         true
-																													}
-																													open_in_new_tab: {
-																														type:             "bool"
-																														description:      "When true, opens the target dashboard in a new browser tab."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																													trigger: {
-																														type:             "string"
-																														description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																														description_kind: "markdown"
-																														computed:         true
-																													}
-																													use_filters: {
-																														type:             "bool"
-																														description:      "When true, forwards filter context."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																													use_time_range: {
-																														type:             "bool"
-																														description:      "When true, forwards the time range."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Navigate to another dashboard using current filters/time range."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										discover_drilldown: {
-																											nested_type: {
-																												attributes: {
-																													label: {
-																														type:             "string"
-																														description:      "Human-readable drilldown label."
-																														description_kind: "markdown"
-																														required:         true
-																													}
-																													open_in_new_tab: {
-																														type:             "bool"
-																														description:      "When true, opens Discover in a new browser tab."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																													trigger: {
-																														type:             "string"
-																														description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																														description_kind: "markdown"
-																														computed:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Open Discover with contextual filters."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										url_drilldown: {
-																											nested_type: {
-																												attributes: {
-																													encode_url: {
-																														type:             "bool"
-																														description:      "When true, encodes interpolated URL parameters."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																													label: {
-																														type:             "string"
-																														description:      "Human-readable drilldown label."
-																														description_kind: "markdown"
-																														required:         true
-																													}
-																													open_in_new_tab: {
-																														type:             "bool"
-																														description:      "When true, opens the URL in a new browser tab."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																													trigger: {
-																														type:             "string"
-																														description:      "Trigger that fires this drilldown."
-																														description_kind: "markdown"
-																														required:         true
-																													}
-																													url: {
-																														type:             "string"
-																														description:      "Destination URL."
-																														description_kind: "markdown"
-																														required:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Open a URL drilldown configured with explicit trigger semantics."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "list"
-																								}
-																								description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							filters: {
-																								nested_type: {
-																									attributes: filter_json: {
-																										type:             "string"
-																										description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																										description_kind: "markdown"
-																										required:         true
-																									}
-																									nesting_mode: "list"
-																								}
-																								description:      "Additional filters to apply to the chart data (maximum 100)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							hide_border: {
-																								type:             "bool"
-																								description:      "When true, suppresses the chart panel border."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							hide_title: {
-																								type:             "bool"
-																								description:      "When true, suppresses the chart title."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							ignore_global_filters: {
-																								type:             "bool"
-																								description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							metrics: {
-																								nested_type: {
-																									attributes: config_json: {
-																										type:             "string"
-																										description:      "Metric configuration as JSON."
-																										description_kind: "markdown"
-																										required:         true
-																									}
-																									nesting_mode: "list"
-																								}
-																								description:      "Array of metric configurations as JSON. Each entry defines a datatable metric column."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							references_json: {
-																								type:             "string"
-																								description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							rows: {
-																								nested_type: {
-																									attributes: config_json: {
-																										type:             "string"
-																										description:      "Row configuration as JSON."
-																										description_kind: "markdown"
-																										required:         true
-																									}
-																									nesting_mode: "list"
-																								}
-																								description:      "Array of row configurations as JSON. Each entry defines a row split operation."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							sampling: {
-																								type:             "number"
-																								description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							split_metrics_by: {
-																								nested_type: {
-																									attributes: config_json: {
-																										type:             "string"
-																										description:      "Split metrics configuration as JSON."
-																										description_kind: "markdown"
-																										required:         true
-																									}
-																									nesting_mode: "list"
-																								}
-																								description:      "Array of split-metrics configurations as JSON. Each entry defines a split operation for metric columns."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							styling: {
-																								nested_type: {
-																									attributes: {
-																										density: {
-																											nested_type: {
-																												attributes: {
-																													height: {
-																														nested_type: {
-																															attributes: {
-																																header: {
-																																	nested_type: {
-																																		attributes: {
-																																			max_lines: {
-																																				type:             "number"
-																																				description:      "Maximum number of lines to use before header is truncated (for custom header height)."
-																																				description_kind: "markdown"
-																																				optional:         true
-																																			}
-																																			type: {
-																																				type:             "string"
-																																				description:      "Header height type. Valid values: 'auto', 'custom'."
-																																				description_kind: "markdown"
-																																				optional:         true
-																																			}
-																																		}
-																																		nesting_mode: "single"
-																																	}
-																																	description:      "Header height configuration."
-																																	description_kind: "markdown"
-																																	optional:         true
-																																}
-																																value: {
-																																	nested_type: {
-																																		attributes: {
-																																			lines: {
-																																				type:             "number"
-																																				description:      "Number of lines to display per table body cell (for custom value height)."
-																																				description_kind: "markdown"
-																																				optional:         true
-																																			}
-																																			type: {
-																																				type:             "string"
-																																				description:      "Value height type. Valid values: 'auto', 'custom'."
-																																				description_kind: "markdown"
-																																				optional:         true
-																																			}
-																																		}
-																																		nesting_mode: "single"
-																																	}
-																																	description:      "Value height configuration."
-																																	description_kind: "markdown"
-																																	optional:         true
-																																}
-																															}
-																															nesting_mode: "single"
-																														}
-																														description:      "Header and value height configuration."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													mode: {
-																														type:             "string"
-																														description:      "Density mode. Valid values: 'compact', 'default', 'expanded'."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Density configuration for the datatable."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										paging: {
-																											type:             "number"
-																											description:      "Enables pagination and sets the number of rows to display per page."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										sort_by_json: {
-																											type:             "string"
-																											description:      "Sort configuration as JSON. Only one column can be sorted at a time."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Datatable styling and display configuration."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							time_range: {
-																								nested_type: {
-																									attributes: {
-																										from: {
-																											type:             "string"
-																											description:      "Start of the chart time range."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										mode: {
-																											type:             "string"
-																											description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										to: {
-																											type:             "string"
-																											description:      "End of the chart time range."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							title: {
-																								type:             "string"
-																								description:      "The title of the chart displayed in the panel."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Datatable configuration for ES|QL queries."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				no_esql: {
-																					nested_type: {
-																						attributes: {
-																							data_source_json: {
-																								type:             "string"
-																								description:      "Dataset configuration as JSON. For standard datatables, this specifies the data view and query."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							description: {
-																								type:             "string"
-																								description:      "The description of the chart."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							drilldowns: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_drilldown: {
-																											nested_type: {
-																												attributes: {
-																													dashboard_id: {
-																														type:             "string"
-																														description:      "Target dashboard id."
-																														description_kind: "markdown"
-																														required:         true
-																													}
-																													label: {
-																														type:             "string"
-																														description:      "Human-readable drilldown label."
-																														description_kind: "markdown"
-																														required:         true
-																													}
-																													open_in_new_tab: {
-																														type:             "bool"
-																														description:      "When true, opens the target dashboard in a new browser tab."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																													trigger: {
-																														type:             "string"
-																														description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																														description_kind: "markdown"
-																														computed:         true
-																													}
-																													use_filters: {
-																														type:             "bool"
-																														description:      "When true, forwards filter context."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																													use_time_range: {
-																														type:             "bool"
-																														description:      "When true, forwards the time range."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Navigate to another dashboard using current filters/time range."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										discover_drilldown: {
-																											nested_type: {
-																												attributes: {
-																													label: {
-																														type:             "string"
-																														description:      "Human-readable drilldown label."
-																														description_kind: "markdown"
-																														required:         true
-																													}
-																													open_in_new_tab: {
-																														type:             "bool"
-																														description:      "When true, opens Discover in a new browser tab."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																													trigger: {
-																														type:             "string"
-																														description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																														description_kind: "markdown"
-																														computed:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Open Discover with contextual filters."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										url_drilldown: {
-																											nested_type: {
-																												attributes: {
-																													encode_url: {
-																														type:             "bool"
-																														description:      "When true, encodes interpolated URL parameters."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																													label: {
-																														type:             "string"
-																														description:      "Human-readable drilldown label."
-																														description_kind: "markdown"
-																														required:         true
-																													}
-																													open_in_new_tab: {
-																														type:             "bool"
-																														description:      "When true, opens the URL in a new browser tab."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																													trigger: {
-																														type:             "string"
-																														description:      "Trigger that fires this drilldown."
-																														description_kind: "markdown"
-																														required:         true
-																													}
-																													url: {
-																														type:             "string"
-																														description:      "Destination URL."
-																														description_kind: "markdown"
-																														required:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Open a URL drilldown configured with explicit trigger semantics."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "list"
-																								}
-																								description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							filters: {
-																								nested_type: {
-																									attributes: filter_json: {
-																										type:             "string"
-																										description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																										description_kind: "markdown"
-																										required:         true
-																									}
-																									nesting_mode: "list"
-																								}
-																								description:      "Additional filters to apply to the chart data (maximum 100)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							hide_border: {
-																								type:             "bool"
-																								description:      "When true, suppresses the chart panel border."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							hide_title: {
-																								type:             "bool"
-																								description:      "When true, suppresses the chart title."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							ignore_global_filters: {
-																								type:             "bool"
-																								description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							metrics: {
-																								nested_type: {
-																									attributes: config_json: {
-																										type:             "string"
-																										description:      "Metric configuration as JSON."
-																										description_kind: "markdown"
-																										required:         true
-																									}
-																									nesting_mode: "list"
-																								}
-																								description:      "Array of metric configurations as JSON. Each entry defines a datatable metric column."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							query: {
-																								nested_type: {
-																									attributes: {
-																										expression: {
-																											type:             "string"
-																											description:      "Filter expression string."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										language: {
-																											type:             "string"
-																											description:      "Query language (default: 'kql')."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Query configuration for filtering data."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							references_json: {
-																								type:             "string"
-																								description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							rows: {
-																								nested_type: {
-																									attributes: config_json: {
-																										type:             "string"
-																										description:      "Row configuration as JSON."
-																										description_kind: "markdown"
-																										required:         true
-																									}
-																									nesting_mode: "list"
-																								}
-																								description:      "Array of row configurations as JSON. Each entry defines a row split operation."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							sampling: {
-																								type:             "number"
-																								description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							split_metrics_by: {
-																								nested_type: {
-																									attributes: config_json: {
-																										type:             "string"
-																										description:      "Split metrics configuration as JSON."
-																										description_kind: "markdown"
-																										required:         true
-																									}
-																									nesting_mode: "list"
-																								}
-																								description:      "Array of split-metrics configurations as JSON. Each entry defines a split operation for metric columns."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							styling: {
-																								nested_type: {
-																									attributes: {
-																										density: {
-																											nested_type: {
-																												attributes: {
-																													height: {
-																														nested_type: {
-																															attributes: {
-																																header: {
-																																	nested_type: {
-																																		attributes: {
-																																			max_lines: {
-																																				type:             "number"
-																																				description:      "Maximum number of lines to use before header is truncated (for custom header height)."
-																																				description_kind: "markdown"
-																																				optional:         true
-																																			}
-																																			type: {
-																																				type:             "string"
-																																				description:      "Header height type. Valid values: 'auto', 'custom'."
-																																				description_kind: "markdown"
-																																				optional:         true
-																																			}
-																																		}
-																																		nesting_mode: "single"
-																																	}
-																																	description:      "Header height configuration."
-																																	description_kind: "markdown"
-																																	optional:         true
-																																}
-																																value: {
-																																	nested_type: {
-																																		attributes: {
-																																			lines: {
-																																				type:             "number"
-																																				description:      "Number of lines to display per table body cell (for custom value height)."
-																																				description_kind: "markdown"
-																																				optional:         true
-																																			}
-																																			type: {
-																																				type:             "string"
-																																				description:      "Value height type. Valid values: 'auto', 'custom'."
-																																				description_kind: "markdown"
-																																				optional:         true
-																																			}
-																																		}
-																																		nesting_mode: "single"
-																																	}
-																																	description:      "Value height configuration."
-																																	description_kind: "markdown"
-																																	optional:         true
-																																}
-																															}
-																															nesting_mode: "single"
-																														}
-																														description:      "Header and value height configuration."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													mode: {
-																														type:             "string"
-																														description:      "Density mode. Valid values: 'compact', 'default', 'expanded'."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Density configuration for the datatable."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										paging: {
-																											type:             "number"
-																											description:      "Enables pagination and sets the number of rows to display per page."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										sort_by_json: {
-																											type:             "string"
-																											description:      "Sort configuration as JSON. Only one column can be sorted at a time."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Datatable styling and display configuration."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							time_range: {
-																								nested_type: {
-																									attributes: {
-																										from: {
-																											type:             "string"
-																											description:      "Start of the chart time range."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										mode: {
-																											type:             "string"
-																											description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										to: {
-																											type:             "string"
-																											description:      "End of the chart time range."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							title: {
-																								type:             "string"
-																								description:      "The title of the chart displayed in the panel."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Datatable configuration for standard (non-ES|QL) queries."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.datatable_config`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	gauge_config: {
-																		nested_type: {
-																			attributes: {
-																				data_source_json: {
-																					type:             "string"
-																					description:      "Dataset configuration as JSON. For standard layers, this specifies the data view and query."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				description: {
-																					type:             "string"
-																					description:      "The description of the chart."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				drilldowns: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_id: {
-																											type:             "string"
-																											description:      "Target dashboard id."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the target dashboard in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																										use_filters: {
-																											type:             "bool"
-																											description:      "When true, forwards filter context."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										use_time_range: {
-																											type:             "bool"
-																											description:      "When true, forwards the time range."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Navigate to another dashboard using current filters/time range."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							discover_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens Discover in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open Discover with contextual filters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							url_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										encode_url: {
-																											type:             "bool"
-																											description:      "When true, encodes interpolated URL parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the URL in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "Trigger that fires this drilldown."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										url: {
-																											type:             "string"
-																											description:      "Destination URL."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open a URL drilldown configured with explicit trigger semantics."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				esql_metric: {
-																					nested_type: {
-																						attributes: {
-																							color_json: {
-																								type:             "string"
-																								description:      "Gauge fill color configuration as JSON (`colorByValue`, `noColor`, or `autoColor` union)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							column: {
-																								type:             "string"
-																								description:      "ES|QL column name for the metric."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							format_json: {
-																								type:             "string"
-																								description:      "Number or other format configuration as JSON (`formatType` union)."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							goal: {
-																								nested_type: {
-																									attributes: {
-																										column: {
-																											type:             "string"
-																											description:      "ES|QL column name."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Optional label for the operation."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Goal column reference."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Optional label for the metric."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							max: {
-																								nested_type: {
-																									attributes: {
-																										column: {
-																											type:             "string"
-																											description:      "ES|QL column name."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Optional label for the operation."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Max column reference."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							min: {
-																								nested_type: {
-																									attributes: {
-																										column: {
-																											type:             "string"
-																											description:      "ES|QL column name."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Optional label for the operation."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Min column reference."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							subtitle: {
-																								type:             "string"
-																								description:      "Subtitle text rendered below the gauge value."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							ticks: {
-																								nested_type: {
-																									attributes: {
-																										mode: {
-																											type:             "string"
-																											description:      "Tick placement mode."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										visible: {
-																											type:             "bool"
-																											description:      "Whether tick marks are displayed."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Tick configuration."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							title: {
-																								nested_type: {
-																									attributes: {
-																										text: {
-																											type:             "string"
-																											description:      "Title text."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										visible: {
-																											type:             "bool"
-																											description:      "Whether the title is displayed."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Title configuration."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Typed metric column for ES|QL gauges. Mutually exclusive with `metric_json`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				filters: {
-																					nested_type: {
-																						attributes: filter_json: {
-																							type:             "string"
-																							description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Additional filters to apply to the chart data (maximum 100)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_border: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart panel border."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_title: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart title."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				ignore_global_filters: {
-																					type:             "bool"
-																					description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				metric_json: {
-																					type:             "string"
-																					description:      "Metric configuration as JSON. Supports metric operations such as count, unique count, min, max, average, median, standard deviation, sum, last value, percentile, percentile ranks, or formula. Required for non-ES|QL gauges; mutually exclusive with `esql_metric`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				query: {
-																					nested_type: {
-																						attributes: {
-																							expression: {
-																								type:             "string"
-																								description:      "Filter expression string."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							language: {
-																								type:             "string"
-																								description:      "Query language (default: 'kql')."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Query configuration for filtering data. Required for non-ES|QL gauges; omit for ES|QL mode."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				references_json: {
-																					type:             "string"
-																					description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				sampling: {
-																					type:             "number"
-																					description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				styling: {
-																					nested_type: {
-																						attributes: shape_json: {
-																							type:             "string"
-																							description:      "Gauge shape configuration as JSON. Supports bullet and circular gauges."
-																							description_kind: "markdown"
-																							optional:         true
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Gauge styling configuration."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				time_range: {
-																					nested_type: {
-																						attributes: {
-																							from: {
-																								type:             "string"
-																								description:      "Start of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							mode: {
-																								type:             "string"
-																								description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							to: {
-																								type:             "string"
-																								description:      "End of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				title: {
-																					type:             "string"
-																					description:      "The title of the chart displayed in the panel."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.gauge_config`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	heatmap_config: {
-																		nested_type: {
-																			attributes: {
-																				axis: {
-																					nested_type: {
-																						attributes: {
-																							x: {
-																								nested_type: {
-																									attributes: {
-																										labels: {
-																											nested_type: {
-																												attributes: {
-																													orientation: {
-																														type:             "string"
-																														description:      "Orientation of the axis labels."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													visible: {
-																														type:             "bool"
-																														description:      "Whether to show axis labels."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "X-axis label configuration."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										title: {
-																											nested_type: {
-																												attributes: {
-																													value: {
-																														type:             "string"
-																														description:      "Axis title text."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													visible: {
-																														type:             "bool"
-																														description:      "Whether to show the title."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Axis title configuration."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "X-axis configuration."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							y: {
-																								nested_type: {
-																									attributes: {
-																										labels: {
-																											nested_type: {
-																												attributes: visible: {
-																													type:             "bool"
-																													description:      "Whether to show axis labels."
-																													description_kind: "markdown"
-																													optional:         true
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Y-axis label configuration."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										title: {
-																											nested_type: {
-																												attributes: {
-																													value: {
-																														type:             "string"
-																														description:      "Axis title text."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													visible: {
-																														type:             "bool"
-																														description:      "Whether to show the title."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Axis title configuration."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Y-axis configuration."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Axis configuration for X and Y axes."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				data_source_json: {
-																					type:             "string"
-																					description:      "Dataset configuration as JSON. For standard heatmaps, this specifies the data view or index; for ES|QL, this specifies the ES|QL query dataset."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				description: {
-																					type:             "string"
-																					description:      "The description of the chart."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				drilldowns: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_id: {
-																											type:             "string"
-																											description:      "Target dashboard id."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the target dashboard in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																										use_filters: {
-																											type:             "bool"
-																											description:      "When true, forwards filter context."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										use_time_range: {
-																											type:             "bool"
-																											description:      "When true, forwards the time range."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Navigate to another dashboard using current filters/time range."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							discover_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens Discover in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open Discover with contextual filters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							url_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										encode_url: {
-																											type:             "bool"
-																											description:      "When true, encodes interpolated URL parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the URL in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "Trigger that fires this drilldown."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										url: {
-																											type:             "string"
-																											description:      "Destination URL."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open a URL drilldown configured with explicit trigger semantics."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				filters: {
-																					nested_type: {
-																						attributes: filter_json: {
-																							type:             "string"
-																							description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Additional filters to apply to the chart data (maximum 100)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_border: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart panel border."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_title: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart title."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				ignore_global_filters: {
-																					type:             "bool"
-																					description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				legend: {
-																					nested_type: {
-																						attributes: {
-																							size: {
-																								type:             "string"
-																								description:      "Legend size: auto, s, m, l, or xl."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							truncate_after_lines: {
-																								type:             "number"
-																								description:      "Maximum lines before truncating legend items (1-10)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							visibility: {
-																								type:             "string"
-																								description:      "Legend visibility. Valid values are `visible` or `hidden`."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Legend configuration for the heatmap."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				metric_json: {
-																					type:             "string"
-																					description:      "Metric configuration as JSON. For non-ES|QL, this can be a field metric, pipeline metric, or formula. For ES|QL, this is the metric column/operation/color configuration."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				query: {
-																					nested_type: {
-																						attributes: {
-																							expression: {
-																								type:             "string"
-																								description:      "Filter expression string."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							language: {
-																								type:             "string"
-																								description:      "Query language (default: 'kql')."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Query configuration for filtering data. Required for non-ES|QL heatmaps."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				references_json: {
-																					type:             "string"
-																					description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				sampling: {
-																					type:             "number"
-																					description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				styling: {
-																					nested_type: {
-																						attributes: cells: {
-																							nested_type: {
-																								attributes: labels: {
-																									nested_type: {
-																										attributes: visible: {
-																											type:             "bool"
-																											description:      "Whether to show cell labels."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										nesting_mode: "single"
-																									}
-																									description:      "Cell label configuration."
-																									description_kind: "markdown"
-																									optional:         true
-																								}
-																								nesting_mode: "single"
-																							}
-																							description:      "Cells configuration for the heatmap."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Heatmap styling configuration."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				time_range: {
-																					nested_type: {
-																						attributes: {
-																							from: {
-																								type:             "string"
-																								description:      "Start of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							mode: {
-																								type:             "string"
-																								description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							to: {
-																								type:             "string"
-																								description:      "End of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				title: {
-																					type:             "string"
-																					description:      "The title of the chart displayed in the panel."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				x_axis_json: {
-																					type:             "string"
-																					description:      "Breakdown dimension configuration for the X axis as JSON. This specifies the operation (e.g., `terms`, `date_histogram`, `histogram`, `range`, `filters`) and its parameters."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				y_axis_json: {
-																					type:             "string"
-																					description:      "Breakdown dimension configuration for the Y axis as JSON. When omitted, the heatmap renders without a Y breakdown."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.heatmap_config`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	legacy_metric_config: {
-																		nested_type: {
-																			attributes: {
-																				data_source_json: {
-																					type:             "string"
-																					description:      "Dataset configuration as JSON. Use `dataView` or `index` for standard data sources, and `esql` or `table` for ES|QL sources."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				description: {
-																					type:             "string"
-																					description:      "The description of the chart."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				drilldowns: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_id: {
-																											type:             "string"
-																											description:      "Target dashboard id."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the target dashboard in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																										use_filters: {
-																											type:             "bool"
-																											description:      "When true, forwards filter context."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										use_time_range: {
-																											type:             "bool"
-																											description:      "When true, forwards the time range."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Navigate to another dashboard using current filters/time range."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							discover_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens Discover in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open Discover with contextual filters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							url_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										encode_url: {
-																											type:             "bool"
-																											description:      "When true, encodes interpolated URL parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the URL in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "Trigger that fires this drilldown."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										url: {
-																											type:             "string"
-																											description:      "Destination URL."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open a URL drilldown configured with explicit trigger semantics."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				filters: {
-																					nested_type: {
-																						attributes: filter_json: {
-																							type:             "string"
-																							description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Additional filters to apply to the chart data (maximum 100)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_border: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart panel border."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_title: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart title."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				ignore_global_filters: {
-																					type:             "bool"
-																					description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				metric_json: {
-																					type:             "string"
-																					description:      "Metric configuration as JSON. For standard datasets, use a metric operation or formula. For ES|QL datasets, include format, operation, column, and color configuration."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				query: {
-																					nested_type: {
-																						attributes: {
-																							expression: {
-																								type:             "string"
-																								description:      "Filter expression string."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							language: {
-																								type:             "string"
-																								description:      "Query language (default: 'kql')."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Query configuration for filtering data. Required for non-ES|QL datasets."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				references_json: {
-																					type:             "string"
-																					description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				sampling: {
-																					type:             "number"
-																					description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				time_range: {
-																					nested_type: {
-																						attributes: {
-																							from: {
-																								type:             "string"
-																								description:      "Start of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							mode: {
-																								type:             "string"
-																								description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							to: {
-																								type:             "string"
-																								description:      "End of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				title: {
-																					type:             "string"
-																					description:      "The title of the chart displayed in the panel."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.legacy_metric_config`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	metric_chart_config: {
-																		nested_type: {
-																			attributes: {
-																				breakdown_by_json: {
-																					type:             "string"
-																					description:      "Breakdown configuration as JSON. Groups metrics by a dimension. Can use operations like date histogram, terms, histogram, range, filters, or for ES|QL datasets, value operations with columns. Includes optional columns count and collapse_by configuration."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				data_source_json: {
-																					type:             "string"
-																					description:      "Dataset configuration as JSON. Can be a data view dataset (`type: 'dataview'`), index dataset (`type: 'index'`), ES|QL dataset (`type: 'esql'`), or table ES|QL dataset (`type: 'tableESQLDatasetType`)."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				description: {
-																					type:             "string"
-																					description:      "The description of the chart."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				drilldowns: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_id: {
-																											type:             "string"
-																											description:      "Target dashboard id."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the target dashboard in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																										use_filters: {
-																											type:             "bool"
-																											description:      "When true, forwards filter context."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										use_time_range: {
-																											type:             "bool"
-																											description:      "When true, forwards the time range."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Navigate to another dashboard using current filters/time range."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							discover_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens Discover in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open Discover with contextual filters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							url_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										encode_url: {
-																											type:             "bool"
-																											description:      "When true, encodes interpolated URL parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the URL in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "Trigger that fires this drilldown."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										url: {
-																											type:             "string"
-																											description:      "Destination URL."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open a URL drilldown configured with explicit trigger semantics."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				filters: {
-																					nested_type: {
-																						attributes: filter_json: {
-																							type:             "string"
-																							description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Additional filters to apply to the chart data (maximum 100)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_border: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart panel border."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_title: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart title."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				ignore_global_filters: {
-																					type:             "bool"
-																					description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				metrics: {
-																					nested_type: {
-																						attributes: config_json: {
-																							type:             "string"
-																							description:      "Metric configuration as JSON. For primary metrics: includes type ('primary'), operation, format, alignments, icon, and optional fields like sub_label, fit, color, apply_color_to, and background_chart. For secondary metrics: includes type ('secondary'), operation, format, and optional fields like label, prefix, compare, and color."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Array of metrics to display (1-2 items). Each metric can be a primary metric (displays prominently) or secondary metric (displays as comparison). Metrics can use field operations (count, unique count, min, max, avg, median, std dev, sum, last value, percentile, percentile ranks), pipeline operations (differences, moving average, cumulative sum, counter rate), formula operations, or for ES|QL datasets, column-based value operations."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				query: {
-																					nested_type: {
-																						attributes: {
-																							expression: {
-																								type:             "string"
-																								description:      "Filter expression string."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							language: {
-																								type:             "string"
-																								description:      "Query language (default: 'kql')."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Query configuration for filtering data. Required for non-ES|QL datasets."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				references_json: {
-																					type:             "string"
-																					description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				sampling: {
-																					type:             "number"
-																					description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				time_range: {
-																					nested_type: {
-																						attributes: {
-																							from: {
-																								type:             "string"
-																								description:      "Start of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							mode: {
-																								type:             "string"
-																								description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							to: {
-																								type:             "string"
-																								description:      "End of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				title: {
-																					type:             "string"
-																					description:      "The title of the chart displayed in the panel."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.metric_chart_config`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	mosaic_config: {
-																		nested_type: {
-																			attributes: {
-																				data_source_json: {
-																					type:             "string"
-																					description:      "Dataset configuration as JSON. For non-ES|QL, this specifies the data view or index; for ES|QL, this specifies the ES|QL query dataset."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				description: {
-																					type:             "string"
-																					description:      "The description of the chart."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				drilldowns: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_id: {
-																											type:             "string"
-																											description:      "Target dashboard id."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the target dashboard in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																										use_filters: {
-																											type:             "bool"
-																											description:      "When true, forwards filter context."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										use_time_range: {
-																											type:             "bool"
-																											description:      "When true, forwards the time range."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Navigate to another dashboard using current filters/time range."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							discover_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens Discover in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open Discover with contextual filters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							url_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										encode_url: {
-																											type:             "bool"
-																											description:      "When true, encodes interpolated URL parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the URL in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "Trigger that fires this drilldown."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										url: {
-																											type:             "string"
-																											description:      "Destination URL."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open a URL drilldown configured with explicit trigger semantics."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				esql_group_by: {
-																					nested_type: {
-																						attributes: {
-																							collapse_by: {
-																								type:             "string"
-																								description:      "Collapse function when multiple rows map to the same bucket."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							color_json: {
-																								type:             "string"
-																								description:      "Color mapping as JSON (`colorMapping` union)."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							column: {
-																								type:             "string"
-																								description:      "ES|QL column for the breakdown."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							format_json: {
-																								type:             "string"
-																								description:      "Column format as JSON (e.g. `{\"type\":\"number\"}`). Defaults to numeric format when omitted."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Optional label for the group-by column."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Breakdown columns for ES|QL mosaics. Mutually exclusive with `group_by_json`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				esql_metrics: {
-																					nested_type: {
-																						attributes: {
-																							column: {
-																								type:             "string"
-																								description:      "ES|QL column name for the metric."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							format_json: {
-																								type:             "string"
-																								description:      "Number or other format configuration as JSON (`formatType` union)."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Optional label for the metric."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Metric columns for ES|QL mosaics (exactly 1). Mutually exclusive with `metrics_json`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				filters: {
-																					nested_type: {
-																						attributes: filter_json: {
-																							type:             "string"
-																							description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Additional filters to apply to the chart data (maximum 100)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				group_breakdown_by_json: {
-																					type:             "string"
-																					description:      "Array of secondary breakdown dimensions as JSON (minimum 1). Mosaic charts require both group_by and group_breakdown_by. For non-ES|QL, each item can be date histogram, terms, histogram, range, or filters operations; for ES|QL, each item is the column/operation/color configuration."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				group_by_json: {
-																					type:             "string"
-																					description:      "Array of primary breakdown dimensions as JSON (minimum 1). For non-ES|QL, each item can be date histogram, terms, histogram, range, or filters operations; for ES|QL, each item is the column/operation/color configuration."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_border: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart panel border."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_title: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart title."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				ignore_global_filters: {
-																					type:             "bool"
-																					description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				legend: {
-																					nested_type: {
-																						attributes: {
-																							nested: {
-																								type:             "bool"
-																								description:      "Show nested legend with hierarchical breakdown levels."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							size: {
-																								type:             "string"
-																								description:      "Legend size: auto, s, m, l, or xl."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							truncate_after_lines: {
-																								type:             "number"
-																								description:      "Maximum lines before truncating legend items (1-10)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							visible: {
-																								type:             "string"
-																								description:      "Legend visibility: auto, visible, or hidden."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Legend configuration for the mosaic chart."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				metrics_json: {
-																					type:             "string"
-																					description:      "Array of metric configurations as JSON (exactly 1 required). For non-ES|QL, each item can be a field metric, pipeline metric, or formula; for ES|QL, each item is the column/operation/color/format configuration."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				query: {
-																					nested_type: {
-																						attributes: {
-																							expression: {
-																								type:             "string"
-																								description:      "Filter expression string."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							language: {
-																								type:             "string"
-																								description:      "Query language (default: 'kql')."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Query configuration for filtering data. Required for non-ES|QL partition charts."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				references_json: {
-																					type:             "string"
-																					description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				sampling: {
-																					type:             "number"
-																					description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				time_range: {
-																					nested_type: {
-																						attributes: {
-																							from: {
-																								type:             "string"
-																								description:      "Start of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							mode: {
-																								type:             "string"
-																								description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							to: {
-																								type:             "string"
-																								description:      "End of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				title: {
-																					type:             "string"
-																					description:      "The title of the chart displayed in the panel."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				value_display: {
-																					nested_type: {
-																						attributes: {
-																							mode: {
-																								type:             "string"
-																								description:      "Value display mode: hidden, absolute, or percentage."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							percent_decimals: {
-																								type:             "number"
-																								description:      "Decimal places for percentage display (0-10)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Configuration for displaying values in chart cells."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.mosaic_config`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	pie_chart_config: {
-																		nested_type: {
-																			attributes: {
-																				data_source_json: {
-																					type:             "string"
-																					description:      "Dataset configuration as JSON. For standard layers, this specifies the data view and query."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				description: {
-																					type:             "string"
-																					description:      "The description of the chart."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				donut_hole: {
-																					type:             "string"
-																					description:      "Donut hole size: none (pie), s, m, or l."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				drilldowns: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_id: {
-																											type:             "string"
-																											description:      "Target dashboard id."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the target dashboard in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																										use_filters: {
-																											type:             "bool"
-																											description:      "When true, forwards filter context."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										use_time_range: {
-																											type:             "bool"
-																											description:      "When true, forwards the time range."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Navigate to another dashboard using current filters/time range."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							discover_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens Discover in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open Discover with contextual filters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							url_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										encode_url: {
-																											type:             "bool"
-																											description:      "When true, encodes interpolated URL parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the URL in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "Trigger that fires this drilldown."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										url: {
-																											type:             "string"
-																											description:      "Destination URL."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open a URL drilldown configured with explicit trigger semantics."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				filters: {
-																					nested_type: {
-																						attributes: filter_json: {
-																							type:             "string"
-																							description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Additional filters to apply to the chart data (maximum 100)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				group_by: {
-																					nested_type: {
-																						attributes: config_json: {
-																							type:             "string"
-																							description:      "Group by configuration as JSON."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Array of breakdown dimensions (minimum 1)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_border: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart panel border."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_title: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart title."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				ignore_global_filters: {
-																					type:             "bool"
-																					description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				label_position: {
-																					type:             "string"
-																					description:      "Position of slice labels: hidden, inside, or outside."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				legend: {
-																					nested_type: {
-																						attributes: {
-																							nested: {
-																								type:             "bool"
-																								description:      "Show nested legend with hierarchical breakdown levels."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							size: {
-																								type:             "string"
-																								description:      "Legend size: auto, s, m, l, or xl."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							truncate_after_lines: {
-																								type:             "number"
-																								description:      "Maximum lines before truncating legend items (1-10)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							visible: {
-																								type:             "string"
-																								description:      "Legend visibility: auto, visible, or hidden."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Optional legend configuration for the pie chart. Same shape as treemap and mosaic legends; Terraform `visible` maps to API `visibility`. When omitted, the schema default matches typical Kibana legend defaults (size and visibility `auto`) so apply/read stay consistent."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				metrics: {
-																					nested_type: {
-																						attributes: config_json: {
-																							type:             "string"
-																							description:      "Metric configuration as JSON."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Array of metric configurations (minimum 1)."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				query: {
-																					nested_type: {
-																						attributes: {
-																							expression: {
-																								type:             "string"
-																								description:      "Filter expression string."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							language: {
-																								type:             "string"
-																								description:      "Query language (default: 'kql')."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Query configuration for filtering data."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				references_json: {
-																					type:             "string"
-																					description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				sampling: {
-																					type:             "number"
-																					description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				time_range: {
-																					nested_type: {
-																						attributes: {
-																							from: {
-																								type:             "string"
-																								description:      "Start of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							mode: {
-																								type:             "string"
-																								description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							to: {
-																								type:             "string"
-																								description:      "End of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				title: {
-																					type:             "string"
-																					description:      "The title of the chart displayed in the panel."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.pie_chart_config`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	region_map_config: {
-																		nested_type: {
-																			attributes: {
-																				data_source_json: {
-																					type:             "string"
-																					description:      "Dataset configuration as JSON. For ES|QL, this specifies the ES|QL query. For standard layers, this specifies the data view and query."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				description: {
-																					type:             "string"
-																					description:      "The description of the chart."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				drilldowns: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_id: {
-																											type:             "string"
-																											description:      "Target dashboard id."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the target dashboard in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																										use_filters: {
-																											type:             "bool"
-																											description:      "When true, forwards filter context."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										use_time_range: {
-																											type:             "bool"
-																											description:      "When true, forwards the time range."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Navigate to another dashboard using current filters/time range."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							discover_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens Discover in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open Discover with contextual filters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							url_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										encode_url: {
-																											type:             "bool"
-																											description:      "When true, encodes interpolated URL parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the URL in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "Trigger that fires this drilldown."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										url: {
-																											type:             "string"
-																											description:      "Destination URL."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open a URL drilldown configured with explicit trigger semantics."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				filters: {
-																					nested_type: {
-																						attributes: filter_json: {
-																							type:             "string"
-																							description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Additional filters to apply to the chart data (maximum 100)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_border: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart panel border."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_title: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart title."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				ignore_global_filters: {
-																					type:             "bool"
-																					description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				metric_json: {
-																					type:             "string"
-																					description:      "Metric configuration as JSON. For ES|QL, this defines the metric column and format. For standard mode, this defines the metric operation or formula."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				query: {
-																					nested_type: {
-																						attributes: {
-																							expression: {
-																								type:             "string"
-																								description:      "Filter expression string."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							language: {
-																								type:             "string"
-																								description:      "Query language (default: 'kql')."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Query configuration for filtering data. Required for non-ES|QL region map configurations."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				references_json: {
-																					type:             "string"
-																					description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				region_json: {
-																					type:             "string"
-																					description:      "Region configuration as JSON. For ES|QL, this defines the region column and EMS join. For standard mode, this defines the bucket operation (terms, histogram, range, filters) and optional EMS settings."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				sampling: {
-																					type:             "number"
-																					description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				time_range: {
-																					nested_type: {
-																						attributes: {
-																							from: {
-																								type:             "string"
-																								description:      "Start of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							mode: {
-																								type:             "string"
-																								description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							to: {
-																								type:             "string"
-																								description:      "End of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				title: {
-																					type:             "string"
-																					description:      "The title of the chart displayed in the panel."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.region_map_config`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	tagcloud_config: {
-																		nested_type: {
-																			attributes: {
-																				data_source_json: {
-																					type:             "string"
-																					description:      "Dataset configuration as JSON. For standard layers, this specifies the data view and query."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				description: {
-																					type:             "string"
-																					description:      "The description of the chart."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				drilldowns: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_id: {
-																											type:             "string"
-																											description:      "Target dashboard id."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the target dashboard in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																										use_filters: {
-																											type:             "bool"
-																											description:      "When true, forwards filter context."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										use_time_range: {
-																											type:             "bool"
-																											description:      "When true, forwards the time range."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Navigate to another dashboard using current filters/time range."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							discover_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens Discover in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open Discover with contextual filters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							url_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										encode_url: {
-																											type:             "bool"
-																											description:      "When true, encodes interpolated URL parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the URL in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "Trigger that fires this drilldown."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										url: {
-																											type:             "string"
-																											description:      "Destination URL."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open a URL drilldown configured with explicit trigger semantics."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				esql_metric: {
-																					nested_type: {
-																						attributes: {
-																							column: {
-																								type:             "string"
-																								description:      "ES|QL column name for the metric."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							format_json: {
-																								type:             "string"
-																								description:      "Number or other format configuration as JSON (`formatType` union)."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Optional label for the metric."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Typed metric column for ES|QL tagclouds. Mutually exclusive with `metric_json`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				esql_tag_by: {
-																					nested_type: {
-																						attributes: {
-																							color_json: {
-																								type:             "string"
-																								description:      "Color mapping as JSON (`colorMapping` union)."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							column: {
-																								type:             "string"
-																								description:      "ES|QL column for the tag dimension."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							format_json: {
-																								type:             "string"
-																								description:      "Column format as JSON (`formatType` union)."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Optional label for the tag-by column."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Typed tag-by column for ES|QL tagclouds. Mutually exclusive with `tag_by_json`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				filters: {
-																					nested_type: {
-																						attributes: filter_json: {
-																							type:             "string"
-																							description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Additional filters to apply to the chart data (maximum 100)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				font_size: {
-																					nested_type: {
-																						attributes: {
-																							max: {
-																								type:             "number"
-																								description:      "Maximum font size (default: 72, maximum: 120)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							min: {
-																								type:             "number"
-																								description:      "Minimum font size (default: 18, minimum: 1)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Minimum and maximum font size for the tags."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_border: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart panel border."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_title: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart title."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				ignore_global_filters: {
-																					type:             "bool"
-																					description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				metric_json: {
-																					type:             "string"
-																					description:      "Metric configuration as JSON. Can be a field metric operation (count, unique count, min, max, avg, median, std dev, sum, last value, percentile, percentile ranks), a pipeline operation (differences, moving average, cumulative sum, counter rate), or a formula operation. Required for non-ES|QL tagclouds; mutually exclusive with `esql_metric`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				orientation: {
-																					type:             "string"
-																					description:      "Orientation of the tagcloud. Valid values: 'horizontal', 'vertical', 'angled'."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				query: {
-																					nested_type: {
-																						attributes: {
-																							expression: {
-																								type:             "string"
-																								description:      "Filter expression string."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							language: {
-																								type:             "string"
-																								description:      "Query language (default: 'kql')."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Query configuration for filtering data. Required for non-ES|QL tagclouds; omit for ES|QL mode."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				references_json: {
-																					type:             "string"
-																					description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				sampling: {
-																					type:             "number"
-																					description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				tag_by_json: {
-																					type:             "string"
-																					description:      "Tag grouping configuration as JSON. Can be a date histogram, terms, histogram, range, or filters operation. This determines how tags are grouped and displayed. Required for non-ES|QL tagclouds; mutually exclusive with `esql_tag_by`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				time_range: {
-																					nested_type: {
-																						attributes: {
-																							from: {
-																								type:             "string"
-																								description:      "Start of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							mode: {
-																								type:             "string"
-																								description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							to: {
-																								type:             "string"
-																								description:      "End of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				title: {
-																					type:             "string"
-																					description:      "The title of the chart displayed in the panel."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.tagcloud_config`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	treemap_config: {
-																		nested_type: {
-																			attributes: {
-																				data_source_json: {
-																					type:             "string"
-																					description:      "Dataset configuration as JSON. For non-ES|QL, this specifies the data view or index; for ES|QL, this specifies the ES|QL query dataset."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				description: {
-																					type:             "string"
-																					description:      "The description of the chart."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				drilldowns: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_id: {
-																											type:             "string"
-																											description:      "Target dashboard id."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the target dashboard in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																										use_filters: {
-																											type:             "bool"
-																											description:      "When true, forwards filter context."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										use_time_range: {
-																											type:             "bool"
-																											description:      "When true, forwards the time range."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Navigate to another dashboard using current filters/time range."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							discover_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens Discover in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open Discover with contextual filters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							url_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										encode_url: {
-																											type:             "bool"
-																											description:      "When true, encodes interpolated URL parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the URL in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "Trigger that fires this drilldown."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										url: {
-																											type:             "string"
-																											description:      "Destination URL."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open a URL drilldown configured with explicit trigger semantics."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				esql_group_by: {
-																					nested_type: {
-																						attributes: {
-																							collapse_by: {
-																								type:             "string"
-																								description:      "Collapse function when multiple rows map to the same bucket."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							color_json: {
-																								type:             "string"
-																								description:      "Color mapping as JSON (`colorMapping` union)."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							column: {
-																								type:             "string"
-																								description:      "ES|QL column for the breakdown."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							format_json: {
-																								type:             "string"
-																								description:      "Column format as JSON (e.g. `{\"type\":\"number\"}`). Defaults to numeric format when omitted."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Optional label for the group-by column."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Breakdown columns for ES|QL treemaps. Mutually exclusive with `group_by_json`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				esql_metrics: {
-																					nested_type: {
-																						attributes: {
-																							color: {
-																								nested_type: {
-																									attributes: {
-																										color: {
-																											type:             "string"
-																											description:      "Color value (e.g. hex)."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										type: {
-																											type:             "string"
-																											description:      "Color type; use `static` for partition chart ES|QL metrics."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Static color for the metric."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							column: {
-																								type:             "string"
-																								description:      "ES|QL column name for the metric."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							format_json: {
-																								type:             "string"
-																								description:      "Number or other format configuration as JSON (`formatType` union)."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Optional label for the metric."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Metric columns for ES|QL treemaps. Mutually exclusive with `metrics_json`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				filters: {
-																					nested_type: {
-																						attributes: filter_json: {
-																							type:             "string"
-																							description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Additional filters to apply to the chart data (maximum 100)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				group_by_json: {
-																					type:             "string"
-																					description:      "Array of breakdown dimensions as JSON (minimum 1). For non-ES|QL, each item can be date histogram, terms, histogram, range, or filters operations; for ES|QL, each item is the column/operation/color configuration."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_border: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart panel border."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_title: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart title."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				ignore_global_filters: {
-																					type:             "bool"
-																					description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				legend: {
-																					nested_type: {
-																						attributes: {
-																							nested: {
-																								type:             "bool"
-																								description:      "Show nested legend with hierarchical breakdown levels."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							size: {
-																								type:             "string"
-																								description:      "Legend size: auto, s, m, l, or xl."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							truncate_after_lines: {
-																								type:             "number"
-																								description:      "Maximum lines before truncating legend items (1-10)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							visible: {
-																								type:             "string"
-																								description:      "Legend visibility: auto, visible, or hidden."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Legend configuration for the treemap chart."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				metrics_json: {
-																					type:             "string"
-																					description:      "Array of metric configurations as JSON (minimum 1). For non-ES|QL, each item can be a field metric, pipeline metric, or formula; for ES|QL, each item is the column/operation/color/format configuration."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				query: {
-																					nested_type: {
-																						attributes: {
-																							expression: {
-																								type:             "string"
-																								description:      "Filter expression string."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							language: {
-																								type:             "string"
-																								description:      "Query language (default: 'kql')."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Query configuration for filtering data. Required for non-ES|QL partition charts."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				references_json: {
-																					type:             "string"
-																					description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				sampling: {
-																					type:             "number"
-																					description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				time_range: {
-																					nested_type: {
-																						attributes: {
-																							from: {
-																								type:             "string"
-																								description:      "Start of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							mode: {
-																								type:             "string"
-																								description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							to: {
-																								type:             "string"
-																								description:      "End of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				title: {
-																					type:             "string"
-																					description:      "The title of the chart displayed in the panel."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				value_display: {
-																					nested_type: {
-																						attributes: {
-																							mode: {
-																								type:             "string"
-																								description:      "Value display mode: hidden, absolute, or percentage."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							percent_decimals: {
-																								type:             "number"
-																								description:      "Decimal places for percentage display (0-10)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Configuration for displaying values in chart cells."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.treemap_config`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	waffle_config: {
-																		nested_type: {
-																			attributes: {
-																				data_source_json: {
-																					type:             "string"
-																					description:      "Dataset configuration as JSON. For non-ES|QL, this specifies the data view or index; for ES|QL, this specifies the ES|QL query dataset."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				description: {
-																					type:             "string"
-																					description:      "The description of the chart."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				drilldowns: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_id: {
-																											type:             "string"
-																											description:      "Target dashboard id."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the target dashboard in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																										use_filters: {
-																											type:             "bool"
-																											description:      "When true, forwards filter context."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										use_time_range: {
-																											type:             "bool"
-																											description:      "When true, forwards the time range."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Navigate to another dashboard using current filters/time range."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							discover_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens Discover in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open Discover with contextual filters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							url_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										encode_url: {
-																											type:             "bool"
-																											description:      "When true, encodes interpolated URL parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the URL in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "Trigger that fires this drilldown."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										url: {
-																											type:             "string"
-																											description:      "Destination URL."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open a URL drilldown configured with explicit trigger semantics."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				esql_group_by: {
-																					nested_type: {
-																						attributes: {
-																							collapse_by: {
-																								type:             "string"
-																								description:      "Collapse function when multiple rows map to the same bucket."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							color_json: {
-																								type:             "string"
-																								description:      "Color mapping as JSON (`colorMapping` union)."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							column: {
-																								type:             "string"
-																								description:      "ES|QL column for the breakdown."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							format_json: {
-																								type:             "string"
-																								description:      "Column format as JSON (e.g. `{\"type\":\"number\"}`). Defaults to numeric format when omitted."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Optional label for the group-by column."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Breakdown columns for ES|QL waffles. Mutually exclusive with `group_by`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				esql_metrics: {
-																					nested_type: {
-																						attributes: {
-																							color: {
-																								nested_type: {
-																									attributes: {
-																										color: {
-																											type:             "string"
-																											description:      "Color value (e.g. hex)."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										type: {
-																											type:             "string"
-																											description:      "Color type; use `static` for partition chart ES|QL metrics."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Static color for the metric."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							column: {
-																								type:             "string"
-																								description:      "ES|QL column name for the metric."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							format_json: {
-																								type:             "string"
-																								description:      "Number or other format configuration as JSON (`formatType` union)."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							label: {
-																								type:             "string"
-																								description:      "Optional label for the metric."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Metric columns for ES|QL waffles (minimum 1). Mutually exclusive with `metrics`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				filters: {
-																					nested_type: {
-																						attributes: filter_json: {
-																							type:             "string"
-																							description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Additional filters to apply to the chart data (maximum 100)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				group_by: {
-																					nested_type: {
-																						attributes: config_json: {
-																							type:             "string"
-																							description:      "Group-by operation as JSON."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Breakdown dimensions for non-ES|QL waffles. Each `config_json` is a JSON object (terms, date_histogram, etc.) matching the Kibana Lens waffle schema."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_border: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart panel border."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_title: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart title."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				ignore_global_filters: {
-																					type:             "bool"
-																					description:      "If true, ignore global filters when fetching data for this chart. Default is false."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				legend: {
-																					nested_type: {
-																						attributes: {
-																							size: {
-																								type:             "string"
-																								description:      "Legend size: auto, s, m, l, or xl."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							truncate_after_lines: {
-																								type:             "number"
-																								description:      "Maximum lines before truncating legend items (1-10)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							values: {
-																								type: ["list", "string"]
-																								description:      "Legend value display modes. For example `absolute` shows raw metric values in the legend."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							visible: {
-																								type:             "string"
-																								description:      "Legend visibility: auto, visible, or hidden."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Legend configuration for the waffle chart."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				metrics: {
-																					nested_type: {
-																						attributes: config_json: {
-																							type:             "string"
-																							description:      "Metric operation as JSON."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Metric configurations for non-ES|QL waffles (minimum 1). Each `config_json` is a JSON object (e.g. count, sum, or formula) matching the Kibana Lens waffle schema."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				query: {
-																					nested_type: {
-																						attributes: {
-																							expression: {
-																								type:             "string"
-																								description:      "Filter expression string."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							language: {
-																								type:             "string"
-																								description:      "Query language (default: 'kql')."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Query configuration for filtering data. Required for non-ES|QL partition charts."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				references_json: {
-																					type:             "string"
-																					description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				sampling: {
-																					type:             "number"
-																					description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																					description_kind: "markdown"
-																					optional:         true
-																					computed:         true
-																				}
-																				time_range: {
-																					nested_type: {
-																						attributes: {
-																							from: {
-																								type:             "string"
-																								description:      "Start of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							mode: {
-																								type:             "string"
-																								description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							to: {
-																								type:             "string"
-																								description:      "End of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				title: {
-																					type:             "string"
-																					description:      "The title of the chart displayed in the panel."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				value_display: {
-																					nested_type: {
-																						attributes: {
-																							mode: {
-																								type:             "string"
-																								description:      "Value display mode: hidden, absolute, or percentage."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							percent_decimals: {
-																								type:             "number"
-																								description:      "Decimal places for percentage display (0-10)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Configuration for displaying values in chart cells."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.waffle_config`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	xy_chart_config: {
-																		nested_type: {
-																			attributes: {
-																				axis: {
-																					nested_type: {
-																						attributes: {
-																							x: {
-																								nested_type: {
-																									attributes: {
-																										domain_json: {
-																											type:             "string"
-																											description:      "Axis domain configuration as JSON. Can be 'fit' mode or 'custom' mode with min, max, and optional fit flags."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										grid: {
-																											type:             "bool"
-																											description:      "Whether to show grid lines for this axis."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										label_orientation: {
-																											type:             "string"
-																											description:      "Orientation of the axis labels."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										scale: {
-																											type:             "string"
-																											description:      "X-axis scale: linear (numeric), ordinal (categorical), or temporal (dates)."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										ticks: {
-																											type:             "bool"
-																											description:      "Whether to show tick marks on the axis."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										title: {
-																											nested_type: {
-																												attributes: {
-																													value: {
-																														type:             "string"
-																														description:      "Axis title text."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													visible: {
-																														type:             "bool"
-																														description:      "Whether to show the title."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Axis title configuration."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "X-axis (horizontal) configuration."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							y: {
-																								nested_type: {
-																									attributes: {
-																										domain_json: {
-																											type:             "string"
-																											description:      "Y-axis domain configuration as JSON. Can be 'fit' mode or 'custom' mode with min, max, and optional fit flags."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										grid: {
-																											type:             "bool"
-																											description:      "Whether to show grid lines for this axis."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										label_orientation: {
-																											type:             "string"
-																											description:      "Orientation of the axis labels."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										scale: {
-																											type:             "string"
-																											description:      "Y-axis scale type for data transformation."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										ticks: {
-																											type:             "bool"
-																											description:      "Whether to show tick marks on the axis."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										title: {
-																											nested_type: {
-																												attributes: {
-																													value: {
-																														type:             "string"
-																														description:      "Axis title text."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													visible: {
-																														type:             "bool"
-																														description:      "Whether to show the title."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Axis title configuration."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Primary Y-axis configuration with scale and bounds."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							y2: {
-																								nested_type: {
-																									attributes: {
-																										domain_json: {
-																											type:             "string"
-																											description:      "Y-axis domain configuration as JSON. Can be 'fit' mode or 'custom' mode with min, max, and optional fit flags."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										grid: {
-																											type:             "bool"
-																											description:      "Whether to show grid lines for this axis."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										label_orientation: {
-																											type:             "string"
-																											description:      "Orientation of the axis labels."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										scale: {
-																											type:             "string"
-																											description:      "Y-axis scale type for data transformation."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										ticks: {
-																											type:             "bool"
-																											description:      "Whether to show tick marks on the axis."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										title: {
-																											nested_type: {
-																												attributes: {
-																													value: {
-																														type:             "string"
-																														description:      "Axis title text."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													visible: {
-																														type:             "bool"
-																														description:      "Whether to show the title."
-																														description_kind: "markdown"
-																														optional:         true
-																														computed:         true
-																													}
-																												}
-																												nesting_mode: "single"
-																											}
-																											description:      "Axis title configuration."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Secondary Y-axis configuration with scale and bounds."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Axis configuration for X, Y, and secondary Y axes."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				decorations: {
-																					nested_type: {
-																						attributes: {
-																							fill_opacity: {
-																								type:             "number"
-																								description:      "Area chart fill opacity (0-1 typical, max 2 for legacy)."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							line_interpolation: {
-																								type:             "string"
-																								description:      "Line interpolation method."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							minimum_bar_height: {
-																								type:             "number"
-																								description:      "Minimum bar height in pixels."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							point_visibility: {
-																								type:             "string"
-																								description:      "Show data points on lines. Valid values are: auto, always, never."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							show_current_time_marker: {
-																								type:             "bool"
-																								description:      "Show current time marker line."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							show_end_zones: {
-																								type:             "bool"
-																								description:      "Show end zones for partial buckets."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							show_value_labels: {
-																								type:             "bool"
-																								description:      "Display value labels on data points."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Visual enhancements and styling options for the chart."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				description: {
-																					type:             "string"
-																					description:      "The description of the chart."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				drilldowns: {
-																					nested_type: {
-																						attributes: {
-																							dashboard_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										dashboard_id: {
-																											type:             "string"
-																											description:      "Target dashboard id."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the target dashboard in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																										use_filters: {
-																											type:             "bool"
-																											description:      "When true, forwards filter context."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										use_time_range: {
-																											type:             "bool"
-																											description:      "When true, forwards the time range."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Navigate to another dashboard using current filters/time range."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							discover_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens Discover in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "**Computed** — Kibana fixes this to `on_apply_filter`; reflected in state after apply. Do not set in configuration."
-																											description_kind: "markdown"
-																											computed:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open Discover with contextual filters."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							url_drilldown: {
-																								nested_type: {
-																									attributes: {
-																										encode_url: {
-																											type:             "bool"
-																											description:      "When true, encodes interpolated URL parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										label: {
-																											type:             "string"
-																											description:      "Human-readable drilldown label."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										open_in_new_tab: {
-																											type:             "bool"
-																											description:      "When true, opens the URL in a new browser tab."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										trigger: {
-																											type:             "string"
-																											description:      "Trigger that fires this drilldown."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										url: {
-																											type:             "string"
-																											description:      "Destination URL."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Open a URL drilldown configured with explicit trigger semantics."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Optional drilldowns for this chart (max 100 per Kibana API). Each entry sets exactly one of `dashboard_drilldown`, `discover_drilldown`, or `url_drilldown`."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				filters: {
-																					nested_type: {
-																						attributes: filter_json: {
-																							type:             "string"
-																							description:      "Chart filter as normalized JSON. Must match the Kibana dashboard API for this chart: one of the filter union members (condition, group, DSL, or spatial) described in the dashboards OpenAPI specification."
-																							description_kind: "markdown"
-																							required:         true
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Additional filters to apply to the chart data (maximum 100)."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				fitting: {
-																					nested_type: {
-																						attributes: {
-																							dotted: {
-																								type:             "bool"
-																								description:      "Show fitted values as dotted lines."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							end_value: {
-																								type:             "string"
-																								description:      "How to handle the end value for fitting."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							type: {
-																								type:             "string"
-																								description:      "Fitting function type for missing data."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Missing data interpolation configuration. Only valid fitting types are applied per chart type."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				hide_border: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart panel border."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				hide_title: {
-																					type:             "bool"
-																					description:      "When true, suppresses the chart title."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				layers: {
-																					nested_type: {
-																						attributes: {
-																							data_layer: {
-																								nested_type: {
-																									attributes: {
-																										breakdown_by_json: {
-																											type:             "string"
-																											description:      "Split series configuration as JSON. For ES|QL: column, operation, optional collapse_by, and color mapping. For standard: field, operation, and optional parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										data_source_json: {
-																											type:             "string"
-																											description:      "Dataset configuration as JSON. For ES|QL layers, this specifies the ES|QL query. For standard layers, this specifies the data view and query."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										ignore_global_filters: {
-																											type:             "bool"
-																											description:      "If true, ignore global filters when fetching data for this layer. Default is false."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										sampling: {
-																											type:             "number"
-																											description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										x_json: {
-																											type:             "string"
-																											description:      "X-axis configuration as JSON. For ES|QL: column and operation. For standard: field, operation, and optional parameters."
-																											description_kind: "markdown"
-																											optional:         true
-																										}
-																										y: {
-																											nested_type: {
-																												attributes: config_json: {
-																													type:             "string"
-																													description:      "Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and operation. For standard: axis, color, and metric definition."
-																													description_kind: "markdown"
-																													required:         true
-																												}
-																												nesting_mode: "list"
-																											}
-																											description:      "Array of Y-axis metrics. Each entry defines a metric to display on the Y-axis."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Configuration for data layers (area, line, bar charts). Mutually exclusive with `reference_line_layer`."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							reference_line_layer: {
-																								nested_type: {
-																									attributes: {
-																										data_source_json: {
-																											type:             "string"
-																											description:      "Dataset configuration as JSON. For ES|QL layers, this specifies the ES|QL query. For standard layers, this specifies the data view and query."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																										ignore_global_filters: {
-																											type:             "bool"
-																											description:      "If true, ignore global filters when fetching data for this layer. Default is false."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										sampling: {
-																											type:             "number"
-																											description:      "Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1."
-																											description_kind: "markdown"
-																											optional:         true
-																											computed:         true
-																										}
-																										thresholds: {
-																											nested_type: {
-																												attributes: {
-																													axis: {
-																														type:             "string"
-																														description:      "Which axis the reference line applies to. Valid values: 'left', 'right'."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													color_json: {
-																														type:             "string"
-																														description:      "Color for the reference line. Can be a static color string or dynamic color configuration as JSON."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													column: {
-																														type:             "string"
-																														description:      "Column to use (for ES|QL layers)."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													fill: {
-																														type:             "string"
-																														description:      "Fill direction for reference line. Valid values: 'none', 'above', 'below'."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													icon: {
-																														type:             "string"
-																														description:      "Icon to display on the reference line. Valid values: 'alert', 'asterisk', 'bell', 'bolt', 'bug', 'circle', 'editorComment', 'flag', 'heart', 'mapMarker', 'pinFilled', 'starEmpty', 'starFilled', 'tag', 'triangle'."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													operation: {
-																														type:             "string"
-																														description:      "Operation to apply (for ES|QL: aggregation function; for standard: metric calculation type)."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													stroke_dash: {
-																														type:             "string"
-																														description:      "Line style. Valid values: 'solid', 'dashed', 'dotted'."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													stroke_width: {
-																														type:             "number"
-																														description:      "Line width in pixels."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													text: {
-																														type:             "string"
-																														description:      "Text display option for the reference line. Valid values include: 'auto', 'name', 'none', 'label'."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																													value_json: {
-																														type:             "string"
-																														description:      "Metric configuration as JSON (for standard layers). Defines the calculation for the threshold value."
-																														description_kind: "markdown"
-																														optional:         true
-																													}
-																												}
-																												nesting_mode: "list"
-																											}
-																											description:      "Array of reference line thresholds."
-																											description_kind: "markdown"
-																											required:         true
-																										}
-																									}
-																									nesting_mode: "single"
-																								}
-																								description:      "Configuration for reference line layers. Mutually exclusive with `data_layer`."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							type: {
-																								type:             "string"
-																								description:      "The type of layer. Valid values: 'area', 'line', 'bar', 'horizontal_bar', 'reference_lines' for NoESQL layers; 'area_chart', 'line_chart', 'bar_chart', 'horizontal_bar_chart', 'reference_lines' for ESQL layers."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "list"
-																					}
-																					description:      "Chart layers configuration. Minimum 1 layer required. Each layer can be a data layer or reference line layer."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				legend: {
-																					nested_type: {
-																						attributes: {
-																							alignment: {
-																								type:             "string"
-																								description:      "Legend alignment when positioned inside the chart. Valid when 'inside' is true."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							columns: {
-																								type:             "number"
-																								description:      "Number of legend columns when positioned inside the chart (1-5). Valid when 'inside' is true."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							inside: {
-																								type:             "bool"
-																								description:      "Position legend inside the chart. When true, use 'columns' and 'alignment'. When false or omitted, use 'position' and 'size'."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							position: {
-																								type:             "string"
-																								description:      "Legend position when positioned outside the chart. Valid when 'inside' is false or omitted."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							size: {
-																								type:             "string"
-																								description:      "Legend size when positioned outside the chart. Valid for left/right outside legends. Values use the Kibana API enum: auto, s, m, l, xl."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																							statistics: {
-																								type: ["list", "string"]
-																								description:      "Statistics to display in legend (maximum 17)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							truncate_after_lines: {
-																								type:             "number"
-																								description:      "Maximum lines before truncating legend items (1-10)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							visibility: {
-																								type:             "string"
-																								description:      "Legend visibility (auto, visible, hidden)."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Legend configuration for the XY chart."
-																					description_kind: "markdown"
-																					required:         true
-																				}
-																				query: {
-																					nested_type: {
-																						attributes: {
-																							expression: {
-																								type:             "string"
-																								description:      "Filter expression string."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							language: {
-																								type:             "string"
-																								description:      "Query language (default: 'kql')."
-																								description_kind: "markdown"
-																								optional:         true
-																								computed:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Query configuration for filtering data."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				references_json: {
-																					type:             "string"
-																					description:      "Optional normalized JSON array of `{ id, name, type }` saved-object references, matching the chart root API `references` list."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				time_range: {
-																					nested_type: {
-																						attributes: {
-																							from: {
-																								type:             "string"
-																								description:      "Start of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																							mode: {
-																								type:             "string"
-																								description:      "Optional time range mode. Valid values are `absolute` or `relative`. When the GET API omits `mode`, the provider preserves the prior chart `time_range.mode` from configuration or state (same pattern as REQ-009 on the dashboard `time_range`)."
-																								description_kind: "markdown"
-																								optional:         true
-																							}
-																							to: {
-																								type:             "string"
-																								description:      "End of the chart time range."
-																								description_kind: "markdown"
-																								required:         true
-																							}
-																						}
-																						nesting_mode: "single"
-																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																				title: {
-																					type:             "string"
-																					description:      "The title of the chart displayed in the panel."
-																					description_kind: "markdown"
-																					optional:         true
-																				}
-																			}
-																			nesting_mode: "single"
-																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.xy_chart_config`."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Inline by-value `lens-dashboard-app` configuration. Set exactly one of `config_json` (raw JSON) or one supported typed Lens chart block, not both."
-															description_kind: "markdown"
-															optional:         true
-														}
-													}
-													nesting_mode: "single"
-												}
-												description:      "Configuration for a `lens-dashboard-app` panel (the Kibana Dashboard API `lens-dashboard-app` panel type). Set exactly one of `by_value` or `by_reference`. With `by_value`, set exactly one of `config_json` or one supported typed Lens chart block. With `by_reference`, use `ref_id` and `references_json` to map the API `references` list. Supported typed by-value blocks are sent as the `lens-dashboard-app` API `config` and do not create `type = \"vis\"` panels. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for an `image` panel (`kbn-dashboard-panel-type-image`). Required when `type` is `image`. References the Kibana Dashboard API image embeddable `config` shape. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -30891,7 +20941,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a `markdown` panel (the Kibana Dashboard API `kbn-dashboard-panel-type-markdown` shape). Set exactly one of `by_value` (inline `content` with required nested `settings`) or `by_reference` (existing library item via `ref_id`). Presentation fields (`description`, `hide_title`, `title`, `hide_border`) are supported in both branches. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for a `markdown` panel (the Kibana Dashboard API `kbn-dashboard-panel-type-markdown` shape). Set exactly one of `by_value` (inline `content` with required nested `settings`) or `by_reference` (existing library item via `ref_id`). Presentation fields (`description`, `hide_title`, `title`, `hide_border`) are supported in both branches. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -31029,7 +21079,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for an options list control panel. Provides a dropdown or multi-select filter based on a field in a data view. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for an options list control panel. Provides a dropdown or multi-select filter based on a field in a data view. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -31081,7 +21131,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a range slider control panel. Provides a min/max range filter tied to a data view field. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for a range slider control panel. Provides a min/max range filter tied to a data view field. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -31177,7 +21227,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for an `slo_alerts` panel (`kbn-dashboard-panel-type-slo_alerts`). Required when `type` is `slo_alerts`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for an `slo_alerts` panel (`kbn-dashboard-panel-type-slo_alerts`). Required when `type` is `slo_alerts`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `vis_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -31263,7 +21313,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for an SLO burn rate panel. Use this for panels that visualize the burn rate of an SLO over a configurable look-back window. Mutually exclusive with `config_json`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for an SLO burn rate panel. Use this for panels that visualize the burn rate of an SLO over a configurable look-back window. Mutually exclusive with `config_json`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -31343,7 +21393,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for an SLO error budget panel. Displays the burn chart of remaining error budget for a specific SLO. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for an SLO error budget panel. Displays the burn chart of remaining error budget for a specific SLO. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -31541,7 +21591,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for an SLO overview panel. Use either `single` (for a single SLO) or `groups` (for grouped SLO overview). Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for an SLO overview panel. Use either `single` (for a single SLO) or `groups` (for grouped SLO overview). Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -31701,7 +21751,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a Synthetics monitors panel. Displays a table of Elastic Synthetics monitors and their current status. All fields are optional — omit the block entirely for a bare panel with no filtering. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for a Synthetics monitors panel. Displays a table of Elastic Synthetics monitors and their current status. All fields are optional — omit the block entirely for a bare panel with no filtering. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -31889,7 +21939,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a Synthetics stats overview panel. All fields are optional; an absent or empty block shows statistics for all monitors visible within the space. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for a Synthetics stats overview panel. All fields are optional; an absent or empty block shows statistics for all monitors visible within the space. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -31917,7 +21967,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a time slider control panel. Controls the visible time window within the dashboard's global time range. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for a time slider control panel. Controls the visible time window within the dashboard's global time range. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -32047,7 +22097,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "list"
 																		}
-																		description:      "Structured dashboard, Discover, or URL drilldown entries for by-reference panels — shared by `vis_config.by_reference` (`vis` panels) and `lens_dashboard_app_config.by_reference` (`lens-dashboard-app` panels). Each element must contain exactly one of `dashboard`, `discover`, or `url`; the provider sets API `type` and (for dashboard/discover) `trigger` automatically."
+																		description:      "Structured dashboard, Discover, or URL drilldown entries for by-reference panels — shared by `vis_config.by_reference` (`vis` panels). Each element must contain exactly one of `dashboard`, `discover`, or `url`; the provider sets API `type` and (for dashboard/discover) `trigger` automatically."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -32099,7 +22149,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Required time range for the by-reference panel config (used by both `lens_dashboard_app_config.by_reference` and `vis_config.by_reference`)."
+																		description:      "Required time range for the by-reference panel config (`vis_config.by_reference`)."
 																		description_kind: "markdown"
 																		required:         true
 																	}
@@ -32880,7 +22930,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.datatable_config`."
+																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.datatable_config`."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -33305,7 +23355,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.gauge_config`."
+																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.gauge_config`."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -33746,7 +23796,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.heatmap_config`."
+																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.heatmap_config`."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -34007,7 +24057,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.legacy_metric_config`."
+																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.legacy_metric_config`."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -34282,7 +24332,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.metric_chart_config`."
+																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.metric_chart_config`."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -34679,7 +24729,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.mosaic_config`."
+																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.mosaic_config`."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -35009,7 +25059,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.pie_chart_config`."
+																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.pie_chart_config`."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -35276,7 +25326,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.region_map_config`."
+																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.region_map_config`."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -35633,7 +25683,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.tagcloud_config`."
+																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.tagcloud_config`."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -36046,7 +26096,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.treemap_config`."
+																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.treemap_config`."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -36475,7 +26525,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.waffle_config`."
+																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.waffle_config`."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -37230,7 +27280,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `lens_dashboard_app_config.by_value.xy_chart_config`."
+																		description:      "Typed Lens visualization inside `vis_config.by_value`. Mutually exclusive with the other chart blocks in the same `by_value` block. Shares the attribute shape with `vis_config.by_value.xy_chart_config`."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -37244,7 +27294,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a `vis` panel (`type = \"vis\"`). Typed alternative to panel-level `config_json`: set exactly one of `by_value` (exactly one of 12 Lens chart kinds) or `by_reference`. With `by_reference`, use structured `drilldowns` and required `time_range` like `lens_dashboard_app_config.by_reference`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `lens_dashboard_app_config`, `discover_session_config`."
+												description:      "Configuration for a `vis` panel (`type = \"vis\"`). Typed alternative to panel-level `config_json`: set exactly one of `by_value` (exactly one of 12 Lens chart kinds) or `by_reference`. With `by_reference`, use structured `drilldowns` and required `time_range`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -38312,7 +28362,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			}
 		}
 		elasticstack_kibana_security_detection_rule: {
-			version: 1
+			version: 2
 			block: {
 				attributes: {
 					actions: {
@@ -38325,8 +28375,77 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									required:         true
 								}
 								alerts_filter: {
-									type: ["map", "string"]
-									description:      "Object containing an action's conditional filters."
+									nested_type: {
+										attributes: {
+											query: {
+												nested_type: {
+													attributes: {
+														filters_json: {
+															type:             "string"
+															description:      "JSON-encoded array of Kibana filter DSL objects. Use `jsonencode([])` for an empty filter list."
+															description_kind: "markdown"
+															optional:         true
+															computed:         true
+														}
+														kql: {
+															type:             "string"
+															description:      "Defines a KQL query filter that determines whether the action runs. Written in Kibana Query Language (KQL)."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "KQL query and Kibana filter DSL conditions that determine whether the action runs."
+												description_kind: "markdown"
+												optional:         true
+											}
+											timeframe: {
+												nested_type: {
+													attributes: {
+														days: {
+															type: ["list", "number"]
+															description: """
+																		Defines the days of the week that the action can run, represented as an array of numbers. For example, 1 represents Monday. An empty array is equivalent to specifying all the days of the week.
+
+																		"""
+															description_kind: "markdown"
+															optional:         true
+														}
+														hours_end: {
+															type:             "string"
+															description:      "The end of the time frame in 24-hour notation (hh:mm)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hours_start: {
+															type:             "string"
+															description:      "The start of the time frame in 24-hour notation (hh:mm)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														timezone: {
+															type:             "string"
+															description:      "The ISO time zone for the hours values. Values such as UTC and UTC+1 also work but lack built-in daylight savings time support and are not recommended."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Defines a period that limits whether the action runs."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description: """
+												Conditions that affect whether the action runs. If you specify multiple conditions, all conditions must be met for the action to run.
+
+												The `query` attribute accepts a KQL string and a JSON array of Kibana filter objects. Use `filters_json = jsonencode([])` when no filters are required. Example: `alerts_filter = { query = { kql = "event.action : \\"test\\"" filters_json = jsonencode([]) } }`.
+
+												"""
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -38504,7 +28623,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								type: {
 									type:             "string"
-									description:      "The type of exception container."
+									description:      "The type of exception container. Valid values are `detection`, `endpoint`, `endpoint_events`, `endpoint_host_isolation_exceptions`, `endpoint_blocklists`, `endpoint_trusted_apps`, `endpoint_trusted_devices`, and `rule_default`."
 									description_kind: "markdown"
 									required:         true
 								}
@@ -48529,6 +38648,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						computed:         true
 					}
+					skill_ids: {
+						type: ["set", "string"]
+						description:      "Set of skill IDs assigned to the agent. Requires Elastic Stack 9.4.0 or later."
+						description_kind: "markdown"
+						computed:         true
+					}
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
@@ -48662,6 +38787,141 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 				}
 				description:      "Export an Agent Builder agent by ID, optionally including its tools and workflows. See the [Agent Builder API documentation](https://www.elastic.co/guide/en/kibana/current/agent-builder-api.html)."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_agentbuilder_skill: {
+			version: 0
+			block: {
+				attributes: {
+					content: {
+						type:             "string"
+						description:      "Skill instructions content as markdown."
+						description_kind: "markdown"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of what the skill does."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The composite ID of the skill: `<space_id>/<skill_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Human-readable name for the skill."
+						description_kind: "markdown"
+						computed:         true
+					}
+					referenced_content: {
+						nested_type: {
+							attributes: {
+								content: {
+									type:             "string"
+									description:      "Content of the reference."
+									description_kind: "markdown"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the referenced content."
+									description_kind: "markdown"
+									computed:         true
+								}
+								relative_path: {
+									type:             "string"
+									description:      "Relative path of the referenced content."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Ordered list of referenced-content entries. Order is preserved as returned by the API."
+						description_kind: "markdown"
+						computed:         true
+					}
+					skill_id: {
+						type:             "string"
+						description:      "The skill ID to look up. Accepts either a bare skill id or a composite `<space_id>/<skill_id>` string."
+						description_kind: "markdown"
+						required:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the Kibana space. If not provided, the default space is used unless the `skill_id` argument supplies a composite space."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					tool_ids: {
+						type: ["set", "string"]
+						description:      "Set of tool IDs from the tool registry that this skill references."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Export an Agent Builder skill by ID. See the [Agent Builder API documentation](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder)."
 				description_kind: "markdown"
 			}
 		}
@@ -49386,6 +39646,242 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description:      "Use this data source to retrieve and get information about all existing Kibana spaces. See https://www.elastic.co/guide/en/kibana/master/spaces-api-get-all.html"
 				description_kind: "plain"
 			}
+		}
+	}
+	ephemeral_resource_schemas: elasticstack_elasticsearch_security_api_key: {
+		version: 0
+		block: {
+			attributes: {
+				access: {
+					nested_type: {
+						attributes: {
+							replication: {
+								nested_type: {
+									attributes: names: {
+										type: ["list", "string"]
+										description:      "A list of index patterns for replication."
+										description_kind: "plain"
+										required:         true
+									}
+									nesting_mode: "list"
+								}
+								description:      "A list of replication configurations for which the cross-cluster API key will have replication privileges."
+								description_kind: "plain"
+								optional:         true
+							}
+							search: {
+								nested_type: {
+									attributes: {
+										allow_restricted_indices: {
+											type:             "bool"
+											description:      "Whether to allow access to restricted indices."
+											description_kind: "plain"
+											optional:         true
+										}
+										field_security: {
+											type:             "string"
+											description:      "Field-level security configuration in JSON format."
+											description_kind: "plain"
+											optional:         true
+										}
+										names: {
+											type: ["list", "string"]
+											description:      "A list of index patterns for search."
+											description_kind: "plain"
+											required:         true
+										}
+										query: {
+											type:             "string"
+											description:      "Query to filter documents for search operations in JSON format."
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									nesting_mode: "list"
+								}
+								description:      "A list of search configurations for which the cross-cluster API key will have search privileges."
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						nesting_mode: "single"
+					}
+					description:      "Access configuration for cross-cluster API keys. Only applicable when type is 'cross_cluster'."
+					description_kind: "plain"
+					optional:         true
+				}
+				api_key: {
+					type:             "string"
+					description:      "Generated API Key."
+					description_kind: "plain"
+					computed:         true
+					sensitive:        true
+				}
+				encoded: {
+					type:             "string"
+					description:      "API key credentials which is the Base64-encoding of the UTF-8 representation of the id and api_key joined by a colon (:)."
+					description_kind: "plain"
+					computed:         true
+					sensitive:        true
+				}
+				expiration: {
+					type:             "string"
+					description:      "Expiration time for the API key. By default, API keys never expire. Strongly recommended when invalidate_on_close is false."
+					description_kind: "plain"
+					optional:         true
+				}
+				expiration_timestamp: {
+					type:             "number"
+					description:      "Expiration time in milliseconds for the API key. By default, API keys never expire."
+					description_kind: "plain"
+					computed:         true
+				}
+				invalidate_on_close: {
+					type:             "bool"
+					description:      "When true, invalidates the API key after the Terraform run completes. Defaults to false."
+					description_kind: "plain"
+					optional:         true
+				}
+				key_id: {
+					type:             "string"
+					description:      "Unique id for this API key."
+					description_kind: "plain"
+					computed:         true
+				}
+				metadata: {
+					type:             "string"
+					description:      "Arbitrary metadata that you want to associate with the API key."
+					description_kind: "plain"
+					optional:         true
+				}
+				name: {
+					type:             "string"
+					description:      "Specifies the name for this API key."
+					description_kind: "plain"
+					required:         true
+				}
+				role_descriptors: {
+					type:             "string"
+					description:      "Role descriptors for this API key."
+					description_kind: "plain"
+					optional:         true
+				}
+				type: {
+					type:             "string"
+					description:      "The type of API key. Valid values are 'rest' (default) and 'cross_cluster'. Cross-cluster API keys are used for cross-cluster search and replication."
+					description_kind: "plain"
+					optional:         true
+				}
+			}
+			block_types: elasticsearch_connection: {
+				nesting_mode: "list"
+				block: {
+					attributes: {
+						api_key: {
+							type:             "string"
+							description:      "API Key to use for authentication to Elasticsearch"
+							description_kind: "markdown"
+							optional:         true
+							sensitive:        true
+						}
+						bearer_token: {
+							type:             "string"
+							description:      "Bearer Token to use for authentication to Elasticsearch"
+							description_kind: "markdown"
+							optional:         true
+							sensitive:        true
+						}
+						ca_data: {
+							type:             "string"
+							description:      "PEM-encoded custom Certificate Authority certificate"
+							description_kind: "markdown"
+							optional:         true
+						}
+						ca_file: {
+							type:             "string"
+							description:      "Path to a custom Certificate Authority certificate"
+							description_kind: "markdown"
+							optional:         true
+						}
+						cert_data: {
+							type:             "string"
+							description:      "PEM encoded certificate for client auth"
+							description_kind: "markdown"
+							optional:         true
+						}
+						cert_file: {
+							type:             "string"
+							description:      "Path to a file containing the PEM encoded certificate for client auth"
+							description_kind: "markdown"
+							optional:         true
+						}
+						endpoints: {
+							type: ["list", "string"]
+							description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+							description_kind: "markdown"
+							optional:         true
+							sensitive:        true
+						}
+						es_client_authentication: {
+							type:             "string"
+							description:      "ES Client Authentication field to be used with the JWT token"
+							description_kind: "markdown"
+							optional:         true
+							sensitive:        true
+						}
+						headers: {
+							type: ["map", "string"]
+							description:      "A list of headers to be sent with each request to Elasticsearch."
+							description_kind: "markdown"
+							optional:         true
+							sensitive:        true
+						}
+						insecure: {
+							type:             "bool"
+							description:      "Disable TLS certificate validation"
+							description_kind: "markdown"
+							optional:         true
+						}
+						key_data: {
+							type:             "string"
+							description:      "PEM encoded private key for client auth"
+							description_kind: "markdown"
+							optional:         true
+							sensitive:        true
+						}
+						key_file: {
+							type:             "string"
+							description:      "Path to a file containing the PEM encoded private key for client auth"
+							description_kind: "markdown"
+							optional:         true
+						}
+						password: {
+							type:             "string"
+							description:      "Password to use for API authentication to Elasticsearch."
+							description_kind: "markdown"
+							optional:         true
+							sensitive:        true
+						}
+						username: {
+							type:             "string"
+							description:      "Username to use for API authentication to Elasticsearch."
+							description_kind: "markdown"
+							optional:         true
+						}
+					}
+					description:      "Elasticsearch connection configuration block."
+					description_kind: "markdown"
+				}
+			}
+			description: """
+				Creates an Elasticsearch API key during each Terraform plan and apply without persisting credentials to state.
+
+				See the [security API create API key documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) and [create cross-cluster API key documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) for more details.
+
+				Use the managed [`elasticstack_elasticsearch_security_api_key`](/docs/resources/elasticsearch_security_api_key) resource when credentials should remain in Terraform state.
+
+				"""
+			description_kind: "markdown"
 		}
 	}
 }

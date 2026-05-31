@@ -13,7 +13,7 @@ package res
 		// The tool description.
 		description?: string
 
-		// The composite ID of the tool: `<tool_id>/<space_id>`.
+		// The composite ID of the tool: `<space_id>/<tool_id>`.
 		id?: string
 
 		// An identifier for the Kibana space. If not provided, the

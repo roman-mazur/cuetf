@@ -57,6 +57,7 @@ import "github.com/roman-mazur/cuetf/providers/elasticstack/data"
 	_#ds: "\(#elasticstackPrefix)_fleet_output": data.#elasticstack_fleet_output
 	_#ds: "\(#elasticstackPrefix)_kibana_action_connector": data.#elasticstack_kibana_action_connector
 	_#ds: "\(#elasticstackPrefix)_kibana_agentbuilder_agent": data.#elasticstack_kibana_agentbuilder_agent
+	_#ds: "\(#elasticstackPrefix)_kibana_agentbuilder_skill": data.#elasticstack_kibana_agentbuilder_skill
 	_#ds: "\(#elasticstackPrefix)_kibana_agentbuilder_tool": data.#elasticstack_kibana_agentbuilder_tool
 	_#ds: "\(#elasticstackPrefix)_kibana_agentbuilder_workflow": data.#elasticstack_kibana_agentbuilder_workflow
 	_#ds: "\(#elasticstackPrefix)_kibana_export_saved_objects": data.#elasticstack_kibana_export_saved_objects

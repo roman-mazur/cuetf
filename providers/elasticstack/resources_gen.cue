@@ -14,12 +14,16 @@ import "github.com/roman-mazur/cuetf/providers/elasticstack/res"
 	_#res: "\(#elasticstackPrefix)_elasticsearch_index_alias": res.#elasticstack_elasticsearch_index_alias
 	_#res: "\(#elasticstackPrefix)_elasticsearch_index": res.#elasticstack_elasticsearch_index
 	_#res: "\(#elasticstackPrefix)_elasticsearch_index_lifecycle": res.#elasticstack_elasticsearch_index_lifecycle
+	_#res: "\(#elasticstackPrefix)_elasticsearch_index_mappings": res.#elasticstack_elasticsearch_index_mappings
 	_#res: "\(#elasticstackPrefix)_elasticsearch_index_template": res.#elasticstack_elasticsearch_index_template
 	_#res: "\(#elasticstackPrefix)_elasticsearch_index_template_ilm_attachment": res.#elasticstack_elasticsearch_index_template_ilm_attachment
 	_#res: "\(#elasticstackPrefix)_elasticsearch_inference_endpoint": res.#elasticstack_elasticsearch_inference_endpoint
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ingest_pipeline": res.#elasticstack_elasticsearch_ingest_pipeline
 	_#res: "\(#elasticstackPrefix)_elasticsearch_logstash_pipeline": res.#elasticstack_elasticsearch_logstash_pipeline
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_anomaly_detection_job": res.#elasticstack_elasticsearch_ml_anomaly_detection_job
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_calendar_event": res.#elasticstack_elasticsearch_ml_calendar_event
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_calendar": res.#elasticstack_elasticsearch_ml_calendar
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_calendar_job": res.#elasticstack_elasticsearch_ml_calendar_job
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_datafeed": res.#elasticstack_elasticsearch_ml_datafeed
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_datafeed_state": res.#elasticstack_elasticsearch_ml_datafeed_state
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_filter": res.#elasticstack_elasticsearch_ml_filter
@@ -45,6 +49,7 @@ import "github.com/roman-mazur/cuetf/providers/elasticstack/res"
 	_#res: "\(#elasticstackPrefix)_fleet_server_host": res.#elasticstack_fleet_server_host
 	_#res: "\(#elasticstackPrefix)_kibana_action_connector": res.#elasticstack_kibana_action_connector
 	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_agent": res.#elasticstack_kibana_agentbuilder_agent
+	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_skill": res.#elasticstack_kibana_agentbuilder_skill
 	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_tool": res.#elasticstack_kibana_agentbuilder_tool
 	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_workflow": res.#elasticstack_kibana_agentbuilder_workflow
 	_#res: "\(#elasticstackPrefix)_kibana_alerting_rule": res.#elasticstack_kibana_alerting_rule
