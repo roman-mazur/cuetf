@@ -5,6 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_arcregionswitch_plan")
 	close({
 		associated_alarms?: matchN(1, [#associated_alarms, [...#associated_alarms]])
+		report_configuration?: matchN(1, [#report_configuration, [...#report_configuration]])
 		timeouts?: #timeouts
 		triggers?: matchN(1, [#triggers, [...#triggers]])
 		workflow?: matchN(1, [#workflow, [...#workflow]])
@@ -26,6 +27,10 @@ package res
 		external_id?:         string
 		map_block_key!:       string
 		resource_identifier!: string
+	})
+
+	#report_configuration: close({
+		report_output?: matchN(1, [_#defs."/$defs/report_configuration/$defs/report_output", [..._#defs."/$defs/report_configuration/$defs/report_output"]])
 	})
 
 	#timeouts: close({
@@ -66,6 +71,15 @@ package res
 		workflow_target_region?: string
 	})
 
+	_#defs: "/$defs/report_configuration/$defs/report_output": close({
+		s3_configuration?: matchN(1, [_#defs."/$defs/report_configuration/$defs/report_output/$defs/s3_configuration", [..._#defs."/$defs/report_configuration/$defs/report_output/$defs/s3_configuration"]])
+	})
+
+	_#defs: "/$defs/report_configuration/$defs/report_output/$defs/s3_configuration": close({
+		bucket_owner!: string
+		bucket_path!:  string
+	})
+
 	_#defs: "/$defs/triggers/$defs/conditions": close({
 		associated_alarm_name!: string
 		condition!:             string
@@ -81,6 +95,8 @@ package res
 		execution_approval_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/execution_approval_config", [..._#defs."/$defs/workflow/$defs/step/$defs/execution_approval_config"]])
 		global_aurora_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/global_aurora_config", [..._#defs."/$defs/workflow/$defs/step/$defs/global_aurora_config"]])
 		parallel_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config"]])
+		rds_create_cross_region_read_replica_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/rds_create_cross_region_read_replica_config", [..._#defs."/$defs/workflow/$defs/step/$defs/rds_create_cross_region_read_replica_config"]])
+		rds_promote_read_replica_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/rds_promote_read_replica_config", [..._#defs."/$defs/workflow/$defs/step/$defs/rds_promote_read_replica_config"]])
 		region_switch_plan_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/region_switch_plan_config", [..._#defs."/$defs/workflow/$defs/step/$defs/region_switch_plan_config"]])
 		route53_health_check_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/route53_health_check_config", [..._#defs."/$defs/workflow/$defs/step/$defs/route53_health_check_config"]])
 		description?:          string
@@ -243,6 +259,8 @@ package res
 		eks_resource_scaling_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/eks_resource_scaling_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/eks_resource_scaling_config"]])
 		execution_approval_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/execution_approval_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/execution_approval_config"]])
 		global_aurora_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/global_aurora_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/global_aurora_config"]])
+		rds_create_cross_region_read_replica_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_create_cross_region_read_replica_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_create_cross_region_read_replica_config"]])
+		rds_promote_read_replica_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_promote_read_replica_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_promote_read_replica_config"]])
 		region_switch_plan_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/region_switch_plan_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/region_switch_plan_config"]])
 		route53_health_check_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/route53_health_check_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/route53_health_check_config"]])
 		description?:          string
@@ -392,6 +410,20 @@ package res
 		ungraceful!: string
 	})
 
+	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_create_cross_region_read_replica_config": close({
+		cross_account_role?: string
+		db_instance_arn_map!: [string]: string
+		external_id?:     string
+		timeout_minutes?: number
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_promote_read_replica_config": close({
+		cross_account_role?: string
+		db_instance_arn_map!: [string]: string
+		external_id?:     string
+		timeout_minutes?: number
+	})
+
 	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/region_switch_plan_config": close({
 		arn!:                string
 		cross_account_role?: string
@@ -410,6 +442,20 @@ package res
 	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/route53_health_check_config/$defs/record_set": close({
 		record_set_identifier!: string
 		region!:                string
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/rds_create_cross_region_read_replica_config": close({
+		cross_account_role?: string
+		db_instance_arn_map!: [string]: string
+		external_id?:     string
+		timeout_minutes?: number
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/rds_promote_read_replica_config": close({
+		cross_account_role?: string
+		db_instance_arn_map!: [string]: string
+		external_id?:     string
+		timeout_minutes?: number
 	})
 
 	_#defs: "/$defs/workflow/$defs/step/$defs/region_switch_plan_config": close({

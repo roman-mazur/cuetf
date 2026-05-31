@@ -197,6 +197,9 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_bedrockagentcore_memory": res.#aws_bedrockagentcore_memory
 	_#res: "\(#awsPrefix)_bedrockagentcore_memory_strategy": res.#aws_bedrockagentcore_memory_strategy
 	_#res: "\(#awsPrefix)_bedrockagentcore_oauth2_credential_provider": res.#aws_bedrockagentcore_oauth2_credential_provider
+	_#res: "\(#awsPrefix)_bedrockagentcore_online_evaluation_config": res.#aws_bedrockagentcore_online_evaluation_config
+	_#res: "\(#awsPrefix)_bedrockagentcore_policy_engine": res.#aws_bedrockagentcore_policy_engine
+	_#res: "\(#awsPrefix)_bedrockagentcore_resource_policy": res.#aws_bedrockagentcore_resource_policy
 	_#res: "\(#awsPrefix)_bedrockagentcore_token_vault_cmk": res.#aws_bedrockagentcore_token_vault_cmk
 	_#res: "\(#awsPrefix)_bedrockagentcore_workload_identity": res.#aws_bedrockagentcore_workload_identity
 	_#res: "\(#awsPrefix)_billing_view": res.#aws_billing_view
@@ -1276,6 +1279,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_s3control_directory_bucket_access_point_scope": res.#aws_s3control_directory_bucket_access_point_scope
 	_#res: "\(#awsPrefix)_s3control_multi_region_access_point": res.#aws_s3control_multi_region_access_point
 	_#res: "\(#awsPrefix)_s3control_multi_region_access_point_policy": res.#aws_s3control_multi_region_access_point_policy
+	_#res: "\(#awsPrefix)_s3control_multi_region_access_point_routes": res.#aws_s3control_multi_region_access_point_routes
 	_#res: "\(#awsPrefix)_s3control_object_lambda_access_point": res.#aws_s3control_object_lambda_access_point
 	_#res: "\(#awsPrefix)_s3control_object_lambda_access_point_policy": res.#aws_s3control_object_lambda_access_point_policy
 	_#res: "\(#awsPrefix)_s3control_storage_lens_configuration": res.#aws_s3control_storage_lens_configuration

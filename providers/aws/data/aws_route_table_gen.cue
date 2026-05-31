@@ -36,6 +36,7 @@ package data
 			local_gateway_id?:           string
 			nat_gateway_id?:             string
 			network_interface_id?:       string
+			odb_network_arn?:            string
 			transit_gateway_id?:         string
 			vpc_endpoint_id?:            string
 			vpc_peering_connection_id?:  string

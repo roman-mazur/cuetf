@@ -5,7 +5,6 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_service")
 	close({
 		dns_name?:  string
-		id?:        string
 		partition?: string
 
 		// Region where this resource will be

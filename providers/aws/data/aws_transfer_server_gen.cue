@@ -12,6 +12,7 @@ package data
 		id?:                     string
 		identity_provider_type?: string
 		invocation_role?:        string
+		ip_address_type?:        string
 		logging_role?:           string
 		protocols?: [...string]
 

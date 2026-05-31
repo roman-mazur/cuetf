@@ -6,7 +6,6 @@ package data
 	close({
 		filter?: matchN(1, [#filter, [...#filter]])
 		all_regions?: bool
-		id?:          string
 		names?: [...string]
 	})
 
