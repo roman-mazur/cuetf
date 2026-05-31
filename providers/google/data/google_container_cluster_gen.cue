@@ -599,6 +599,7 @@ package data
 			gcfs_config?: [...close({
 				enabled?: bool
 			})]
+			gpudirect_strategy?: string
 			guest_accelerator?: [...close({
 				count?: number
 				gpu_driver_installation_config?: [...close({
@@ -886,6 +887,7 @@ package data
 				gcfs_config?: [...close({
 					enabled?: bool
 				})]
+				gpudirect_strategy?: string
 				guest_accelerator?: [...close({
 					count?: number
 					gpu_driver_installation_config?: [...close({

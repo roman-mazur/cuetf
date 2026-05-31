@@ -16,6 +16,10 @@ package data
 			effective_labels?: [string]: string
 			exadata_infrastructure?: string
 			gcp_oracle_zone?:        string
+			identity_connector?: [...close({
+				connection_state?:    string
+				service_agent_email?: string
+			})]
 			labels?: [string]: string
 			location?:    string
 			name?:        string

@@ -9,6 +9,7 @@ import "list"
 		accelerators?: matchN(1, [#accelerators, [...#accelerators]])
 		crypto_key_config?: matchN(1, [#crypto_key_config, list.MaxItems(1) & [...#crypto_key_config]])
 		event_publish_config?: matchN(1, [#event_publish_config, list.MaxItems(1) & [...#event_publish_config]])
+		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
 		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
 		timeouts?: #timeouts
 
@@ -71,6 +72,13 @@ import "list"
 		// Please refer to the field 'effective_labels' for all of the
 		// labels present on the resource.
 		labels?: [string]: string
+
+		// The maintenance events for this instance.
+		maintenance_events?: [...close({
+			end_time?:   string
+			start_time?: string
+			state?:      string
+		})]
 
 		// The ID of the instance or a fully qualified identifier for the
 		// instance.
@@ -188,6 +196,10 @@ import "list"
 		topic!: string
 	})
 
+	#maintenance_policy: close({
+		maintenance_window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/maintenance_window", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/maintenance_window"]])
+	})
+
 	#network_config: close({
 		private_service_connect_config?: matchN(1, [_#defs."/$defs/network_config/$defs/private_service_connect_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/private_service_connect_config"]])
 
@@ -219,6 +231,28 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/maintenance_policy/$defs/maintenance_window": close({
+		recurring_time_window!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/maintenance_window/$defs/recurring_time_window", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/maintenance_window/$defs/recurring_time_window"]])
+	})
+
+	_#defs: "/$defs/maintenance_policy/$defs/maintenance_window/$defs/recurring_time_window": close({
+		window!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/maintenance_window/$defs/recurring_time_window/$defs/window", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/maintenance_window/$defs/recurring_time_window/$defs/window"]])
+
+		// An RRULE with format RFC-5545 for how this window reccurs. They
+		// go on for the span of time between the start and end time. The
+		// only supported FREQ value is "WEEKLY". To have something
+		// repeat every weekday, use: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR".
+		recurrence!: string
+	})
+
+	_#defs: "/$defs/maintenance_policy/$defs/maintenance_window/$defs/recurring_time_window/$defs/window": close({
+		// The end time of the time window provided in RFC 3339 format.
+		end_time!: string
+
+		// The start time of the time window provided in RFC 3339 format.
+		start_time!: string
 	})
 
 	_#defs: "/$defs/network_config/$defs/private_service_connect_config": close({

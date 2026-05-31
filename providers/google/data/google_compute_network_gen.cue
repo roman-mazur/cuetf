@@ -8,7 +8,7 @@ package data
 		gateway_ipv4?:        string
 		id?:                  string
 		internal_ipv6_range?: string
-		name!:                string
+		name?:                string
 		network_id?:          number
 		network_profile?:     string
 		project?:             string

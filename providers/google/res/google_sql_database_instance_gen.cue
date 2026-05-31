@@ -369,6 +369,16 @@ import "list"
 		// Disallowed when unspecified.
 		data_api_access?: string
 
+		// Provisioned number of I/O operations per second for the data
+		// disk. This field is only used for HYPERDISK_BALANCED disk
+		// types.
+		data_disk_provisioned_iops?: number
+
+		// Provisioned throughput measured in MiB per second for the data
+		// disk. This field is only used for HYPERDISK_BALANCED disk
+		// types.
+		data_disk_provisioned_throughput?: number
+
 		// Configuration to protect against accidental instance deletion.
 		deletion_protection_enabled?: bool
 

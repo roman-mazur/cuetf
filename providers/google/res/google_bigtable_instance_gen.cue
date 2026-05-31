@@ -32,6 +32,10 @@ import "list"
 		// Defaults to the instance name.
 		display_name?: string
 
+		// The edition of the instance. One of "ENTERPRISE" or
+		// "ENTERPRISE_PLUS". Defaults to "ENTERPRISE".
+		edition?: string
+
 		// All of labels (key/value pairs) present on the resource in GCP,
 		// including the labels configured through Terraform, other
 		// clients and services.

@@ -72,6 +72,23 @@ package res
 		// character, which cannot be a dash.
 		name!: string
 
+		// One of 'DEFAULT', 'ENABLED', or 'DEFERRED'. Controls whether
+		// the load balancer
+		// negotiates X25519MLKEM768 key exchange when clients advertise
+		// support for it.
+		// When set to 'DEFAULT', or if no SSL Policy is attached to
+		// the target proxy, the load balancer disallows X25519MLKEM768
+		// key
+		// exchange before October 2026, and allows it afterward. When set
+		// to
+		// 'ENABLED', the load balancer allows X25519MLKEM768 key
+		// exchange. When set to 'DEFERRED', the load balancer
+		// disallows X25519MLKEM768 key exchange until October 2027, and
+		// allows
+		// it afterward. Possible values: ["DEFAULT", "ENABLED",
+		// "DEFERRED"]
+		post_quantum_key_exchange?: string
+
 		// Profile specifies the set of SSL features that can be used by
 		// the
 		// load balancer when negotiating SSL with clients. If using
