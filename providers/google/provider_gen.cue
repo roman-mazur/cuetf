@@ -59,6 +59,7 @@ package google
 		colab_custom_endpoint?:                      string
 		composer_custom_endpoint?:                   string
 		compute_custom_endpoint?:                    string
+		config_custom_endpoint?:                     string
 		contact_center_insights_custom_endpoint?:    string
 		container_analysis_custom_endpoint?:         string
 		container_attached_custom_endpoint?:         string

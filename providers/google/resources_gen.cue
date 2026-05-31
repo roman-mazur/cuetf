@@ -447,6 +447,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_compute_vpn_gateway": res.#google_compute_vpn_gateway
 	_#res: "\(#googlePrefix)_compute_vpn_tunnel": res.#google_compute_vpn_tunnel
 	_#res: "\(#googlePrefix)_compute_wire_group": res.#google_compute_wire_group
+	_#res: "\(#googlePrefix)_config_deployment": res.#google_config_deployment
 	_#res: "\(#googlePrefix)_contact_center_insights_analysis_rule": res.#google_contact_center_insights_analysis_rule
 	_#res: "\(#googlePrefix)_contact_center_insights_assessment_rule": res.#google_contact_center_insights_assessment_rule
 	_#res: "\(#googlePrefix)_contact_center_insights_auto_labeling_rule": res.#google_contact_center_insights_auto_labeling_rule
@@ -607,6 +608,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_dialogflow_fulfillment": res.#google_dialogflow_fulfillment
 	_#res: "\(#googlePrefix)_dialogflow_generator": res.#google_dialogflow_generator
 	_#res: "\(#googlePrefix)_dialogflow_intent": res.#google_dialogflow_intent
+	_#res: "\(#googlePrefix)_dialogflow_sip_trunk": res.#google_dialogflow_sip_trunk
 	_#res: "\(#googlePrefix)_dialogflow_version": res.#google_dialogflow_version
 	_#res: "\(#googlePrefix)_discovery_engine_acl_config": res.#google_discovery_engine_acl_config
 	_#res: "\(#googlePrefix)_discovery_engine_assistant": res.#google_discovery_engine_assistant
@@ -891,8 +893,12 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_memcache_instance": res.#google_memcache_instance
 	_#res: "\(#googlePrefix)_memorystore_instance_desired_user_created_endpoints": res.#google_memorystore_instance_desired_user_created_endpoints
 	_#res: "\(#googlePrefix)_memorystore_instance": res.#google_memorystore_instance
+	_#res: "\(#googlePrefix)_migration_center_assets_export_job": res.#google_migration_center_assets_export_job
 	_#res: "\(#googlePrefix)_migration_center_group": res.#google_migration_center_group
 	_#res: "\(#googlePrefix)_migration_center_preference_set": res.#google_migration_center_preference_set
+	_#res: "\(#googlePrefix)_migration_center_report_config": res.#google_migration_center_report_config
+	_#res: "\(#googlePrefix)_migration_center_settings": res.#google_migration_center_settings
+	_#res: "\(#googlePrefix)_migration_center_source": res.#google_migration_center_source
 	_#res: "\(#googlePrefix)_ml_engine_model": res.#google_ml_engine_model
 	_#res: "\(#googlePrefix)_model_armor_floorsetting": res.#google_model_armor_floorsetting
 	_#res: "\(#googlePrefix)_model_armor_template": res.#google_model_armor_template
@@ -929,6 +935,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_network_connectivity_regional_endpoint": res.#google_network_connectivity_regional_endpoint
 	_#res: "\(#googlePrefix)_network_connectivity_service_connection_policy": res.#google_network_connectivity_service_connection_policy
 	_#res: "\(#googlePrefix)_network_connectivity_spoke": res.#google_network_connectivity_spoke
+	_#res: "\(#googlePrefix)_network_connectivity_transport": res.#google_network_connectivity_transport
 	_#res: "\(#googlePrefix)_network_management_connectivity_test": res.#google_network_management_connectivity_test
 	_#res: "\(#googlePrefix)_network_management_organization_vpc_flow_logs_config": res.#google_network_management_organization_vpc_flow_logs_config
 	_#res: "\(#googlePrefix)_network_management_vpc_flow_logs_config": res.#google_network_management_vpc_flow_logs_config

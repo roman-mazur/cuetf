@@ -361,6 +361,7 @@ package res
 					default_settings?: [...close({
 						default_prompt_template?: string
 					})]
+					fail_open?: bool
 				})]
 				model_safety?: [...close({
 					safety_settings?: [...close({

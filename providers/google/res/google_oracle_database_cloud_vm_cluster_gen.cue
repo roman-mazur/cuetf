@@ -71,6 +71,14 @@ import "list"
 		gcp_oracle_zone?: string
 		id?:              string
 
+		// The identity connector details which will allow OCI to securely
+		// access
+		// the resources in the customer project.
+		identity_connector?: [...close({
+			connection_state?:    string
+			service_agent_email?: string
+		})]
+
 		// Labels or tags associated with the VM Cluster.
 		//
 		// **Note**: This field is non-authoritative, and will only manage

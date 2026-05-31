@@ -248,6 +248,8 @@ package data
 			data_cache_config?: [...close({
 				data_cache_enabled?: bool
 			})]
+			data_disk_provisioned_iops?:       number
+			data_disk_provisioned_throughput?: number
 			database_flags?: [...close({
 				name?:  string
 				value?: string

@@ -171,6 +171,7 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_compute_router_status": data.#google_compute_router_status
 	_#ds: "\(#googlePrefix)_compute_routers": data.#google_compute_routers
 	_#ds: "\(#googlePrefix)_compute_security_policy": data.#google_compute_security_policy
+	_#ds: "\(#googlePrefix)_compute_service_attachment": data.#google_compute_service_attachment
 	_#ds: "\(#googlePrefix)_compute_snapshot": data.#google_compute_snapshot
 	_#ds: "\(#googlePrefix)_compute_snapshot_iam_policy": data.#google_compute_snapshot_iam_policy
 	_#ds: "\(#googlePrefix)_compute_ssl_certificate": data.#google_compute_ssl_certificate
@@ -316,6 +317,7 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_oracle_database_cloud_vm_clusters": data.#google_oracle_database_cloud_vm_clusters
 	_#ds: "\(#googlePrefix)_oracle_database_db_nodes": data.#google_oracle_database_db_nodes
 	_#ds: "\(#googlePrefix)_oracle_database_db_servers": data.#google_oracle_database_db_servers
+	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_environments": data.#google_oracle_database_goldengate_deployment_environments
 	_#ds: "\(#googlePrefix)_oracle_database_odb_network": data.#google_oracle_database_odb_network
 	_#ds: "\(#googlePrefix)_oracle_database_odb_subnet": data.#google_oracle_database_odb_subnet
 	_#ds: "\(#googlePrefix)_organization": data.#google_organization

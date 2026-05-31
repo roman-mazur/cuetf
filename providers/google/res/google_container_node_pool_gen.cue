@@ -218,6 +218,9 @@ import "list"
 		// Enables Flex Start provisioning model for the node pool
 		flex_start?: bool
 
+		// The type of GPUDirect strategy to enable on the node.
+		gpudirect_strategy?: string
+
 		// The image type to use for this node. Note that for a given
 		// image type, the latest version of it will be used.
 		image_type?: string

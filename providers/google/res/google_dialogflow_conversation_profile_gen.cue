@@ -39,10 +39,10 @@ import "list"
 		// BCP-47 language tag.
 		language_code?: string
 
-		// desc
+		// The location of the conversation profile.
 		location!: string
 
-		// name
+		// Identifier. The unique identifier of this conversation profile.
 		name?:    string
 		project?: string
 
@@ -123,7 +123,7 @@ import "list"
 		// "AUDIO_ENCODING_LINEAR_16", "AUDIO_ENCODING_FLAC",
 		// "AUDIO_ENCODING_MULAW", "AUDIO_ENCODING_AMR",
 		// "AUDIO_ENCODING_AMR_WB", "AUDIO_ENCODING_OGG_OPUS",
-		// "AUDIOENCODING_SPEEX_WITH_HEADER_BYTE"]
+		// "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE"]
 		audio_encoding?: string
 
 		// If true, Dialogflow returns SpeechWordInfo in
@@ -148,7 +148,7 @@ import "list"
 		speech_model_variant?: string
 
 		// Use timeout based endpointing, interpreting endpointer
-		// sensitivy as seconds of timeout value.
+		// sensitivity as seconds of timeout value.
 		use_timeout_based_endpointing?: bool
 	})
 
@@ -292,7 +292,7 @@ import "list"
 	_#defs: "/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source": close({
 		human_agent_side_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source/$defs/human_agent_side_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source/$defs/human_agent_side_config"]])
 
-		// he name of a Dialogflow virtual agent used for end user side
+		// The name of a Dialogflow virtual agent used for end user side
 		// intent detection and suggestion. Format: projects/<Project
 		// ID>/locations/<Location ID>/agent.
 		agent!: string
@@ -455,7 +455,7 @@ import "list"
 	_#defs: "/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source": close({
 		human_agent_side_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source/$defs/human_agent_side_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source/$defs/human_agent_side_config"]])
 
-		// he name of a Dialogflow virtual agent used for end user side
+		// The name of a Dialogflow virtual agent used for end user side
 		// intent detection and suggestion. Format: projects/<Project
 		// ID>/locations/<Location ID>/agent.
 		agent!: string

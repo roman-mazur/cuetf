@@ -151,6 +151,15 @@ import "list"
 	#llm_prompt_security: close({
 		custom_policy?: matchN(1, [_#defs."/$defs/llm_prompt_security/$defs/custom_policy", list.MaxItems(1) & [..._#defs."/$defs/llm_prompt_security/$defs/custom_policy"]])
 		default_settings?: matchN(1, [_#defs."/$defs/llm_prompt_security/$defs/default_settings", list.MaxItems(1) & [..._#defs."/$defs/llm_prompt_security/$defs/default_settings"]])
+
+		// Determines the behavior when the guardrail encounters an LLM
+		// error.
+		// - If true: the guardrail is bypassed.
+		// - If false (default): the guardrail triggers/blocks.
+		// Note: If a custom policy is provided, this field is ignored in
+		// favor of
+		// the policy's 'failOpen' configuration.
+		fail_open?: bool
 	})
 
 	#model_safety: close({
