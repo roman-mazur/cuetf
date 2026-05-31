@@ -80,6 +80,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/parameters/$defs/athena": close({
+		role_arn?:   string
 		work_group?: string
 	})
 

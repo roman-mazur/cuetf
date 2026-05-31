@@ -84,7 +84,7 @@ import "list"
 	})
 
 	#remote_network_config: close({
-		remote_node_networks!: matchN(1, [_#defs."/$defs/remote_network_config/$defs/remote_node_networks", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/remote_network_config/$defs/remote_node_networks"]])
+		remote_node_networks?: matchN(1, [_#defs."/$defs/remote_network_config/$defs/remote_node_networks", list.MaxItems(1) & [..._#defs."/$defs/remote_network_config/$defs/remote_node_networks"]])
 		remote_pod_networks?: matchN(1, [_#defs."/$defs/remote_network_config/$defs/remote_pod_networks", list.MaxItems(1) & [..._#defs."/$defs/remote_network_config/$defs/remote_pod_networks"]])
 	})
 

@@ -13,6 +13,7 @@ import "list"
 		arn?:         string
 		domain_name?: string
 		id?:          string
+		name?:        string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

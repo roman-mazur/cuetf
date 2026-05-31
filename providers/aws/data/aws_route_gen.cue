@@ -17,6 +17,7 @@ package data
 		local_gateway_id?:            string
 		nat_gateway_id?:              string
 		network_interface_id?:        string
+		odb_network_arn?:             string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

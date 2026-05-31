@@ -18,10 +18,15 @@ import "list"
 	})
 
 	#s3_destination: close({
+		destination_data_sharing?: matchN(1, [_#defs."/$defs/s3_destination/$defs/destination_data_sharing", list.MaxItems(1) & [..._#defs."/$defs/s3_destination/$defs/destination_data_sharing"]])
 		bucket_name!: string
 		kms_key_arn?: string
 		prefix?:      string
 		region!:      string
 		sync_format?: string
+	})
+
+	_#defs: "/$defs/s3_destination/$defs/destination_data_sharing": close({
+		destination_data_sharing_type?: string
 	})
 }

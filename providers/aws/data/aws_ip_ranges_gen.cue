@@ -6,7 +6,6 @@ package data
 	close({
 		cidr_blocks?: [...string]
 		create_date?: string
-		id?:          string
 		ipv6_cidr_blocks?: [...string]
 		regions?: [...string]
 		services!: [...string]

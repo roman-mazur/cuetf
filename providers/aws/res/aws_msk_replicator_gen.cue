@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_msk_replicator")
 	close({
 		kafka_cluster!: matchN(1, [#kafka_cluster, list.MaxItems(2) & [_, _, ...] & [...#kafka_cluster]])
+		log_delivery?: matchN(1, [#log_delivery, list.MaxItems(1) & [...#log_delivery]])
 		replication_info_list!: matchN(1, [#replication_info_list, list.MaxItems(1) & [_, ...] & [...#replication_info_list]])
 		timeouts?:        #timeouts
 		arn?:             string
@@ -28,6 +29,10 @@ import "list"
 	#kafka_cluster: close({
 		amazon_msk_cluster!: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/amazon_msk_cluster", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/kafka_cluster/$defs/amazon_msk_cluster"]])
 		vpc_config!: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/vpc_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/kafka_cluster/$defs/vpc_config"]])
+	})
+
+	#log_delivery: close({
+		replicator_log_delivery?: matchN(1, [_#defs."/$defs/log_delivery/$defs/replicator_log_delivery", list.MaxItems(1) & [..._#defs."/$defs/log_delivery/$defs/replicator_log_delivery"]])
 	})
 
 	#replication_info_list: close({
@@ -53,6 +58,28 @@ import "list"
 	_#defs: "/$defs/kafka_cluster/$defs/vpc_config": close({
 		security_groups_ids?: [...string]
 		subnet_ids!: [...string]
+	})
+
+	_#defs: "/$defs/log_delivery/$defs/replicator_log_delivery": close({
+		cloudwatch_logs?: matchN(1, [_#defs."/$defs/log_delivery/$defs/replicator_log_delivery/$defs/cloudwatch_logs", list.MaxItems(1) & [..._#defs."/$defs/log_delivery/$defs/replicator_log_delivery/$defs/cloudwatch_logs"]])
+		firehose?: matchN(1, [_#defs."/$defs/log_delivery/$defs/replicator_log_delivery/$defs/firehose", list.MaxItems(1) & [..._#defs."/$defs/log_delivery/$defs/replicator_log_delivery/$defs/firehose"]])
+		s3?: matchN(1, [_#defs."/$defs/log_delivery/$defs/replicator_log_delivery/$defs/s3", list.MaxItems(1) & [..._#defs."/$defs/log_delivery/$defs/replicator_log_delivery/$defs/s3"]])
+	})
+
+	_#defs: "/$defs/log_delivery/$defs/replicator_log_delivery/$defs/cloudwatch_logs": close({
+		enabled!:   bool
+		log_group?: string
+	})
+
+	_#defs: "/$defs/log_delivery/$defs/replicator_log_delivery/$defs/firehose": close({
+		delivery_stream?: string
+		enabled!:         bool
+	})
+
+	_#defs: "/$defs/log_delivery/$defs/replicator_log_delivery/$defs/s3": close({
+		bucket?:  string
+		enabled!: bool
+		prefix?:  string
 	})
 
 	_#defs: "/$defs/replication_info_list/$defs/consumer_group_replication": close({

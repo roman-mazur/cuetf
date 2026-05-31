@@ -5,7 +5,6 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_partition")
 	close({
 		dns_suffix?:         string
-		id?:                 string
 		partition?:          string
 		reverse_dns_prefix?: string
 	})

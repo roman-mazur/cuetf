@@ -23,6 +23,7 @@ import "list"
 		id?:                               string
 		identity_provider_type?:           string
 		invocation_role?:                  string
+		ip_address_type?:                  string
 		logging_role?:                     string
 		post_authentication_login_banner?: string
 		pre_authentication_login_banner?:  string

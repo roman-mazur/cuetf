@@ -4,7 +4,6 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_secretsmanager_secret_version")
 	close({
-		arn?:          string
 		created_date?: string
 		id?:           string
 
@@ -13,6 +12,7 @@ package data
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:        string
+		secret_arn?:    string
 		secret_binary?: string
 		secret_id!:     string
 		secret_string?: string

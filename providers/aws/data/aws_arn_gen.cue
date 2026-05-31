@@ -6,7 +6,6 @@ package data
 	close({
 		account?:   string
 		arn!:       string
-		id?:        string
 		partition?: string
 		region?:    string
 		resource?:  string

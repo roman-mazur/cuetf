@@ -26,6 +26,8 @@ import "list"
 		not_before?:             string
 		pending_renewal?:        bool
 		private_key?:            string
+		private_key_wo?:         string
+		private_key_wo_version?: number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
