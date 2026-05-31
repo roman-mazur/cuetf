@@ -35,6 +35,10 @@ package data
 		// The agent name.
 		name?: string
 
+		// Set of skill IDs assigned to the agent. Requires Elastic Stack
+		// 9.4.0 or later.
+		skill_ids?: [...string]
+
 		// An identifier for the space. If space_id is not provided, the
 		// default space is used.
 		space_id?: string

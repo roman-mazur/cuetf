@@ -11,9 +11,6 @@ package res
 			// .email, .webhook, .pagerduty, etc.).
 			action_type_id!: string
 
-			// Object containing an action's conditional filters.
-			alerts_filter?: [string]: string
-
 			// Optionally groups actions by use cases. Use 'default' for alert
 			// notifications.
 			group?: string
@@ -28,6 +25,49 @@ package res
 
 			// A unique identifier for the action.
 			uuid?: string
+
+			// Conditions that affect whether the action runs. If you specify
+			// multiple conditions, all conditions must be met for the action
+			// to run.
+			//
+			// The `query` attribute accepts a KQL string and a JSON array of
+			// Kibana filter objects. Use `filters_json = jsonencode([])`
+			// when no filters are required. Example: `alerts_filter = {
+			// query = { kql = "event.action : \"test\"" filters_json =
+			// jsonencode([]) } }`.
+			alerts_filter?: close({
+				// KQL query and Kibana filter DSL conditions that determine
+				// whether the action runs.
+				query?: close({
+					// JSON-encoded array of Kibana filter DSL objects. Use
+					// `jsonencode([])` for an empty filter list.
+					filters_json?: string
+
+					// Defines a KQL query filter that determines whether the action
+					// runs. Written in Kibana Query Language (KQL).
+					kql?: string
+				})
+
+				// Defines a period that limits whether the action runs.
+				timeframe?: close({
+					// Defines the days of the week that the action can run,
+					// represented as an array of numbers. For example, 1 represents
+					// Monday. An empty array is equivalent to specifying all the
+					// days of the week.
+					days?: [...number]
+
+					// The end of the time frame in 24-hour notation (hh:mm).
+					hours_end?: string
+
+					// The start of the time frame in 24-hour notation (hh:mm).
+					hours_start?: string
+
+					// The ISO time zone for the hours values. Values such as UTC and
+					// UTC+1 also work but lack built-in daylight savings time
+					// support and are not recommended.
+					timezone?: string
+				})
+			})
 
 			// The action frequency defines when the action runs.
 			frequency?: close({
@@ -49,9 +89,6 @@ package res
 			// .email, .webhook, .pagerduty, etc.).
 			action_type_id!: string
 
-			// Object containing an action's conditional filters.
-			alerts_filter?: [string]: string
-
 			// Optionally groups actions by use cases. Use 'default' for alert
 			// notifications.
 			group?: string
@@ -66,6 +103,49 @@ package res
 
 			// A unique identifier for the action.
 			uuid?: string
+
+			// Conditions that affect whether the action runs. If you specify
+			// multiple conditions, all conditions must be met for the action
+			// to run.
+			//
+			// The `query` attribute accepts a KQL string and a JSON array of
+			// Kibana filter objects. Use `filters_json = jsonencode([])`
+			// when no filters are required. Example: `alerts_filter = {
+			// query = { kql = "event.action : \"test\"" filters_json =
+			// jsonencode([]) } }`.
+			alerts_filter?: close({
+				// KQL query and Kibana filter DSL conditions that determine
+				// whether the action runs.
+				query?: close({
+					// JSON-encoded array of Kibana filter DSL objects. Use
+					// `jsonencode([])` for an empty filter list.
+					filters_json?: string
+
+					// Defines a KQL query filter that determines whether the action
+					// runs. Written in Kibana Query Language (KQL).
+					kql?: string
+				})
+
+				// Defines a period that limits whether the action runs.
+				timeframe?: close({
+					// Defines the days of the week that the action can run,
+					// represented as an array of numbers. For example, 1 represents
+					// Monday. An empty array is equivalent to specifying all the
+					// days of the week.
+					days?: [...number]
+
+					// The end of the time frame in 24-hour notation (hh:mm).
+					hours_end?: string
+
+					// The start of the time frame in 24-hour notation (hh:mm).
+					hours_start?: string
+
+					// The ISO time zone for the hours values. Values such as UTC and
+					// UTC+1 also work but lack built-in daylight savings time
+					// support and are not recommended.
+					timezone?: string
+				})
+			})
 
 			// The action frequency defines when the action runs.
 			frequency?: close({
@@ -146,7 +226,11 @@ package res
 			// The namespace type for the exception container.
 			namespace_type!: string
 
-			// The type of exception container.
+			// The type of exception container. Valid values are `detection`,
+			// `endpoint`, `endpoint_events`,
+			// `endpoint_host_isolation_exceptions`, `endpoint_blocklists`,
+			// `endpoint_trusted_apps`, `endpoint_trusted_devices`, and
+			// `rule_default`.
 			type!: string
 		}), [...close({
 			// The exception container ID.
@@ -158,7 +242,11 @@ package res
 			// The namespace type for the exception container.
 			namespace_type!: string
 
-			// The type of exception container.
+			// The type of exception container. Valid values are `detection`,
+			// `endpoint`, `endpoint_events`,
+			// `endpoint_host_isolation_exceptions`, `endpoint_blocklists`,
+			// `endpoint_trusted_apps`, `endpoint_trusted_devices`, and
+			// `rule_default`.
 			type!: string
 		})]])
 

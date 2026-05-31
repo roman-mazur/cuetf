@@ -13,9 +13,25 @@ package res
 		// is `30s`.
 		datafeed_timeout?: string
 
+		// The effective search end time reported by Elasticsearch for a
+		// started datafeed (`running_state.search_interval.end_ms`).
+		// Null when the datafeed is stopped, when
+		// `running_state.real_time_configured` is true, or when
+		// `running_state` / `search_interval` is absent.
+		effective_search_end?: string
+
+		// The effective search start time reported by Elasticsearch for a
+		// started datafeed (`running_state.search_interval.start_ms`).
+		// Null when the datafeed is stopped or when `running_state` /
+		// `search_interval` is absent.
+		effective_search_start?: string
+
 		// The time that the datafeed should end collecting data. When not
-		// specified, the datafeed continues in real-time. This property
-		// must be specified in RFC 3339 format.
+		// specified, the datafeed continues in real-time. This value is
+		// preserved verbatim in state and is passed to the Start
+		// Datafeed API; Elasticsearch may use a different effective
+		// search end, which is reported in `effective_search_end`. This
+		// property must be specified in RFC 3339 format.
 		end?: string
 
 		// When stopping a datafeed, use to forcefully stop it.
@@ -25,8 +41,11 @@ package res
 		id?: string
 
 		// The time that the datafeed should start collecting data. When
-		// not specified, the datafeed starts in real-time. This property
-		// must be specified in RFC 3339 format.
+		// not specified, the datafeed starts in real-time. This value is
+		// preserved verbatim in state and is passed to the Start
+		// Datafeed API; Elasticsearch may use a different effective
+		// search start, which is reported in `effective_search_start`.
+		// This property must be specified in RFC 3339 format.
 		start?: string
 
 		// The desired state for the ML datafeed. Valid values are

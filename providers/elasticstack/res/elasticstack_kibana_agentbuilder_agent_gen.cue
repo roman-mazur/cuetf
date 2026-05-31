@@ -30,6 +30,10 @@ package res
 		// The agent name.
 		name!: string
 
+		// Set of skill IDs to assign to the agent. Requires Elastic Stack
+		// 9.4.0 or later.
+		skill_ids?: [...string]
+
 		// An identifier for the space. If not provided, the default space
 		// is used.
 		space_id?: string

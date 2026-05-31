@@ -16,7 +16,7 @@ package res
 		// configuration).
 		enabled?: bool
 
-		// The composite ID of the workflow: `<workflow_id>/<space_id>`.
+		// The composite ID of the workflow: `<space_id>/<workflow_id>`.
 		id?: string
 
 		// The workflow name (extracted from YAML configuration).
