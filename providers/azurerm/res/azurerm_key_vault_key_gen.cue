@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_key_vault_key")
 	close({
+		release_policy?: matchN(1, [#release_policy, list.MaxItems(1) & [...#release_policy]])
 		rotation_policy?: matchN(1, [#rotation_policy, list.MaxItems(1) & [...#rotation_policy]])
 		timeouts?:        #timeouts
 		curve?:           string
@@ -28,6 +29,11 @@ import "list"
 		versionless_id?: string
 		x?:              string
 		y?:              string
+	})
+
+	#release_policy: close({
+		immutable?: bool
+		json!:      string
 	})
 
 	#rotation_policy: close({

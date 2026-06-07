@@ -156,6 +156,15 @@ package azurerm
 		template_deployment?: matchN(1, [_#defs."/$defs/features/$defs/template_deployment", [..._#defs."/$defs/features/$defs/template_deployment"]])
 		virtual_machine?: matchN(1, [_#defs."/$defs/features/$defs/virtual_machine", [..._#defs."/$defs/features/$defs/virtual_machine"]])
 		virtual_machine_scale_set?: matchN(1, [_#defs."/$defs/features/$defs/virtual_machine_scale_set", [..._#defs."/$defs/features/$defs/virtual_machine_scale_set"]])
+
+		// Whether to set the resource ID into state before polling
+		// asynchronous operations for completion. Defaults to `false`.
+		persist_id_on_create_before_polling_for_completion?: bool
+
+		// Whether to skip the import check and allow the provider to
+		// overwrite existing remote resources if present. Defaults to
+		// `false`.
+		skip_import_check_on_create_and_allow_overwriting_existing_resources?: bool
 	})
 
 	_#defs: "/$defs/features/$defs/api_management": close({

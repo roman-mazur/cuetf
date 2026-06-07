@@ -38,8 +38,11 @@ import "list"
 	})
 
 	#monitoring: close({
+		alerts_for_all_failover_issues_enabled?:         bool
 		alerts_for_all_job_failures_enabled?:            bool
+		alerts_for_all_replication_issues_enabled?:      bool
 		alerts_for_critical_operation_failures_enabled?: bool
+		email_notifications_for_site_recovery_enabled?:  bool
 	})
 
 	#timeouts: close({
