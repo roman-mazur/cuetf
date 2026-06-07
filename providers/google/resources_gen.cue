@@ -513,6 +513,8 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_dataplex_asset_iam_binding": res.#google_dataplex_asset_iam_binding
 	_#res: "\(#googlePrefix)_dataplex_asset_iam_member": res.#google_dataplex_asset_iam_member
 	_#res: "\(#googlePrefix)_dataplex_asset_iam_policy": res.#google_dataplex_asset_iam_policy
+	_#res: "\(#googlePrefix)_dataplex_data_product_data_asset": res.#google_dataplex_data_product_data_asset
+	_#res: "\(#googlePrefix)_dataplex_data_product": res.#google_dataplex_data_product
 	_#res: "\(#googlePrefix)_dataplex_datascan": res.#google_dataplex_datascan
 	_#res: "\(#googlePrefix)_dataplex_datascan_iam_binding": res.#google_dataplex_datascan_iam_binding
 	_#res: "\(#googlePrefix)_dataplex_datascan_iam_member": res.#google_dataplex_datascan_iam_member
@@ -894,9 +896,11 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_memorystore_instance_desired_user_created_endpoints": res.#google_memorystore_instance_desired_user_created_endpoints
 	_#res: "\(#googlePrefix)_memorystore_instance": res.#google_memorystore_instance
 	_#res: "\(#googlePrefix)_migration_center_assets_export_job": res.#google_migration_center_assets_export_job
+	_#res: "\(#googlePrefix)_migration_center_discovery_client": res.#google_migration_center_discovery_client
 	_#res: "\(#googlePrefix)_migration_center_group": res.#google_migration_center_group
 	_#res: "\(#googlePrefix)_migration_center_preference_set": res.#google_migration_center_preference_set
 	_#res: "\(#googlePrefix)_migration_center_report_config": res.#google_migration_center_report_config
+	_#res: "\(#googlePrefix)_migration_center_report": res.#google_migration_center_report
 	_#res: "\(#googlePrefix)_migration_center_settings": res.#google_migration_center_settings
 	_#res: "\(#googlePrefix)_migration_center_source": res.#google_migration_center_source
 	_#res: "\(#googlePrefix)_ml_engine_model": res.#google_ml_engine_model
@@ -1006,6 +1010,9 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_oracle_database_db_system": res.#google_oracle_database_db_system
 	_#res: "\(#googlePrefix)_oracle_database_exadb_vm_cluster": res.#google_oracle_database_exadb_vm_cluster
 	_#res: "\(#googlePrefix)_oracle_database_exascale_db_storage_vault": res.#google_oracle_database_exascale_db_storage_vault
+	_#res: "\(#googlePrefix)_oracle_database_goldengate_connection_assignment": res.#google_oracle_database_goldengate_connection_assignment
+	_#res: "\(#googlePrefix)_oracle_database_goldengate_connection": res.#google_oracle_database_goldengate_connection
+	_#res: "\(#googlePrefix)_oracle_database_goldengate_deployment": res.#google_oracle_database_goldengate_deployment
 	_#res: "\(#googlePrefix)_oracle_database_odb_network": res.#google_oracle_database_odb_network
 	_#res: "\(#googlePrefix)_oracle_database_odb_subnet": res.#google_oracle_database_odb_subnet
 	_#res: "\(#googlePrefix)_org_policy_custom_constraint": res.#google_org_policy_custom_constraint

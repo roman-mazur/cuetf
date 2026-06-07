@@ -88,6 +88,11 @@ import "list"
 		// plane.
 		gke_master_cluster?: string
 
+		// A [GKE
+		// Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod)
+		// URI.
+		gke_pod?: string
+
 		// A Compute Engine instance URI.
 		instance?: string
 
@@ -97,6 +102,11 @@ import "list"
 
 		// A VPC network URI.
 		network?: string
+
+		// For source endpoints, type of the network where the endpoint is
+		// located. Not relevant for destination endpoints. Possible
+		// values: ["GCP_NETWORK", "NON_GCP_NETWORK", "INTERNET"]
+		network_type?: string
 
 		// The IP protocol port of the endpoint. Only applicable when
 		// protocol is

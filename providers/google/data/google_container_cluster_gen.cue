@@ -621,11 +621,14 @@ package data
 			image_type?: string
 			kubelet_config?: [...close({
 				allowed_unsafe_sysctls?: [...string]
-				container_log_max_files?:               number
-				container_log_max_size?:                string
-				cpu_cfs_quota?:                         bool
-				cpu_cfs_quota_period?:                  string
-				cpu_manager_policy?:                    string
+				container_log_max_files?: number
+				container_log_max_size?:  string
+				cpu_cfs_quota?:           bool
+				cpu_cfs_quota_period?:    string
+				cpu_manager_policy?:      string
+				crash_loop_back_off?: [...close({
+					max_container_restart_period?: string
+				})]
 				eviction_max_pod_grace_period_seconds?: number
 				eviction_minimum_reclaim?: [...close({
 					imagefs_available?:   string
@@ -909,11 +912,14 @@ package data
 				image_type?: string
 				kubelet_config?: [...close({
 					allowed_unsafe_sysctls?: [...string]
-					container_log_max_files?:               number
-					container_log_max_size?:                string
-					cpu_cfs_quota?:                         bool
-					cpu_cfs_quota_period?:                  string
-					cpu_manager_policy?:                    string
+					container_log_max_files?: number
+					container_log_max_size?:  string
+					cpu_cfs_quota?:           bool
+					cpu_cfs_quota_period?:    string
+					cpu_manager_policy?:      string
+					crash_loop_back_off?: [...close({
+						max_container_restart_period?: string
+					})]
 					eviction_max_pod_grace_period_seconds?: number
 					eviction_minimum_reclaim?: [...close({
 						imagefs_available?:   string

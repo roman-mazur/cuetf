@@ -1,9 +1,12 @@
 package res
 
+import "list"
+
 #google_netapp_backup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_backup")
 	close({
+		ontap_source?: matchN(1, [#ontap_source, list.MaxItems(1) & [...#ontap_source]])
 		timeouts?: #timeouts
 
 		// Region in which backup is stored.
@@ -95,6 +98,20 @@ package res
 		// creating a new volume from the backup, the volume capacity
 		// will have to be at least as big.
 		volume_usage_bytes?: string
+	})
+
+	#ontap_source: close({
+		// The UUID of the ONTAP source snapshot.
+		snapshot_uuid?: string
+
+		// Name of the storage pool. This must be specified for creating
+		// backups for ONTAP mode volumes.
+		// Format:
+		// 'projects/{{project}}/locations/{{location}}/storagePools/{{storage_pool_id}}'
+		storage_pool!: string
+
+		// The UUID of the ONTAP source volume.
+		volume_uuid!: string
 	})
 
 	#timeouts: close({
