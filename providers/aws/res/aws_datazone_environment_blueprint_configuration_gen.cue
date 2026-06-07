@@ -7,8 +7,9 @@ package res
 		domain_id!: string
 		enabled_regions!: [...string]
 		environment_blueprint_id!: string
-		manage_access_role_arn?:   string
-		provisioning_role_arn?:    string
+		global_parameters?: [string]: string
+		manage_access_role_arn?: string
+		provisioning_role_arn?:  string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

@@ -181,6 +181,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/data"
 	_#ds: "\(#awsPrefix)_ec2_coip_pool": data.#aws_ec2_coip_pool
 	_#ds: "\(#awsPrefix)_ec2_coip_pools": data.#aws_ec2_coip_pools
 	_#ds: "\(#awsPrefix)_ec2_host": data.#aws_ec2_host
+	_#ds: "\(#awsPrefix)_ec2_hosts": data.#aws_ec2_hosts
 	_#ds: "\(#awsPrefix)_ec2_instance_type": data.#aws_ec2_instance_type
 	_#ds: "\(#awsPrefix)_ec2_instance_type_offering": data.#aws_ec2_instance_type_offering
 	_#ds: "\(#awsPrefix)_ec2_instance_type_offerings": data.#aws_ec2_instance_type_offerings

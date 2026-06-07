@@ -676,6 +676,9 @@ package aws
 		inspectorv2?: string
 
 		// Use this to override the default service endpoint URL
+		interconnect?: string
+
+		// Use this to override the default service endpoint URL
 		internetmonitor?: string
 
 		// Use this to override the default service endpoint URL

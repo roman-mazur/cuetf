@@ -17,7 +17,10 @@ package res
 
 		// Description of the collection group.
 		description?: string
-		id?:          string
+
+		// Generation of the collection group.
+		generation?: string
+		id?:         string
 
 		// Name of the collection group.
 		name!: string

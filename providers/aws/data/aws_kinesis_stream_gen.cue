@@ -26,5 +26,9 @@ package data
 			stream_mode?: string
 		})]
 		tags?: [string]: string
+		warm_throughput?: [...close({
+			current_mib_ps?: number
+			target_mib_ps?:  number
+		})]
 	})
 }

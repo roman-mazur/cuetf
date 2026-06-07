@@ -24,6 +24,7 @@ import "list"
 		enable_cross_zone_load_balancing?:                             bool
 		enable_deletion_protection?:                                   bool
 		enable_http2?:                                                 bool
+		enable_prefix_for_ipv6_source_nat?:                            string
 		enable_tls_version_and_cipher_suite_headers?:                  bool
 		enable_waf_fail_open?:                                         bool
 		enable_xff_client_port?:                                       bool

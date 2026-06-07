@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lambda_alias")
 	close({
 		routing_config?: matchN(1, [#routing_config, list.MaxItems(1) & [...#routing_config]])
+		timeouts?:         #timeouts
 		arn?:              string
 		description?:      string
 		function_name!:    string
@@ -24,5 +25,9 @@ import "list"
 
 	#routing_config: close({
 		additional_version_weights?: [string]: number
+	})
+
+	#timeouts: close({
+		update?: string
 	})
 }

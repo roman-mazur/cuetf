@@ -538,6 +538,8 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_ec2_instance_metadata_defaults": res.#aws_ec2_instance_metadata_defaults
 	_#res: "\(#awsPrefix)_ec2_instance_state": res.#aws_ec2_instance_state
 	_#res: "\(#awsPrefix)_ec2_local_gateway_route": res.#aws_ec2_local_gateway_route
+	_#res: "\(#awsPrefix)_ec2_local_gateway_route_table": res.#aws_ec2_local_gateway_route_table
+	_#res: "\(#awsPrefix)_ec2_local_gateway_route_table_virtual_interface_group_association": res.#aws_ec2_local_gateway_route_table_virtual_interface_group_association
 	_#res: "\(#awsPrefix)_ec2_local_gateway_route_table_vpc_association": res.#aws_ec2_local_gateway_route_table_vpc_association
 	_#res: "\(#awsPrefix)_ec2_managed_prefix_list_entry": res.#aws_ec2_managed_prefix_list_entry
 	_#res: "\(#awsPrefix)_ec2_managed_prefix_list": res.#aws_ec2_managed_prefix_list
@@ -826,6 +828,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_key_pair": res.#aws_key_pair
 	_#res: "\(#awsPrefix)_keyspaces_keyspace": res.#aws_keyspaces_keyspace
 	_#res: "\(#awsPrefix)_keyspaces_table": res.#aws_keyspaces_table
+	_#res: "\(#awsPrefix)_kinesis_account_settings": res.#aws_kinesis_account_settings
 	_#res: "\(#awsPrefix)_kinesis_analytics_application": res.#aws_kinesis_analytics_application
 	_#res: "\(#awsPrefix)_kinesis_firehose_delivery_stream": res.#aws_kinesis_firehose_delivery_stream
 	_#res: "\(#awsPrefix)_kinesis_resource_policy": res.#aws_kinesis_resource_policy
@@ -1089,6 +1092,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_pinpoint_gcm_channel": res.#aws_pinpoint_gcm_channel
 	_#res: "\(#awsPrefix)_pinpoint_sms_channel": res.#aws_pinpoint_sms_channel
 	_#res: "\(#awsPrefix)_pinpointsmsvoicev2_configuration_set": res.#aws_pinpointsmsvoicev2_configuration_set
+	_#res: "\(#awsPrefix)_pinpointsmsvoicev2_event_destination": res.#aws_pinpointsmsvoicev2_event_destination
 	_#res: "\(#awsPrefix)_pinpointsmsvoicev2_opt_out_list": res.#aws_pinpointsmsvoicev2_opt_out_list
 	_#res: "\(#awsPrefix)_pinpointsmsvoicev2_phone_number": res.#aws_pinpointsmsvoicev2_phone_number
 	_#res: "\(#awsPrefix)_pipes_pipe": res.#aws_pipes_pipe

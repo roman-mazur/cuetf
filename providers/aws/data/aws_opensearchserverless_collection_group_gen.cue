@@ -18,6 +18,9 @@ package data
 		// Description of the collection group.
 		description?: string
 
+		// Generation of the collection group.
+		generation?: string
+
 		// ID of the collection group.
 		id?: string
 

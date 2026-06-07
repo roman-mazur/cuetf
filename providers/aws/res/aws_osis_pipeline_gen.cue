@@ -9,7 +9,6 @@ package res
 		log_publishing_options?: matchN(1, [#log_publishing_options, [...#log_publishing_options]])
 		timeouts?: #timeouts
 		vpc_options?: matchN(1, [#vpc_options, [...#vpc_options]])
-		id?: string
 		ingest_endpoint_urls?: [...string]
 		max_units!:                   number
 		min_units!:                   number
