@@ -44,6 +44,13 @@ package data
 			primary?:                   bool
 		})]
 		resource_group_name!: string
+		sku_profile?: [...close({
+			allocation_strategy?: string
+			virtual_machine_size?: [...close({
+				name?: string
+				rank?: number
+			})]
+		})]
 	})
 
 	#timeouts: close({

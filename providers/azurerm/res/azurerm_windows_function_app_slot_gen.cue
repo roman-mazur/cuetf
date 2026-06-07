@@ -803,7 +803,7 @@ import "list"
 		node_version?: string
 
 		// The PowerShell Core version to use. Possible values are `7`,
-		// `7.2`, and `7.4`
+		// `7.2`, `7.4`, and `7.6`
 		powershell_core_version?: string
 
 		// Does the Function App use a custom Application Stack?

@@ -143,8 +143,8 @@ import "list"
 	})
 
 	#sku_profile: close({
+		virtual_machine_size?: matchN(1, [_#defs."/$defs/sku_profile/$defs/virtual_machine_size", list.MaxItems(5) & [..._#defs."/$defs/sku_profile/$defs/virtual_machine_size"]])
 		allocation_strategy!: string
-		vm_sizes!: [...string]
 	})
 
 	#source_image_reference: close({
@@ -261,5 +261,10 @@ import "list"
 	_#defs: "/$defs/os_profile/$defs/windows_configuration/$defs/winrm_listener": close({
 		certificate_url?: string
 		protocol!:        string
+	})
+
+	_#defs: "/$defs/sku_profile/$defs/virtual_machine_size": close({
+		name!: string
+		rank?: number
 	})
 }

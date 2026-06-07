@@ -85,6 +85,7 @@ import "list"
 		authentication_certificate?: matchN(1, [_#defs."/$defs/backend_http_settings/$defs/authentication_certificate", [..._#defs."/$defs/backend_http_settings/$defs/authentication_certificate"]])
 		connection_draining?: matchN(1, [_#defs."/$defs/backend_http_settings/$defs/connection_draining", list.MaxItems(1) & [..._#defs."/$defs/backend_http_settings/$defs/connection_draining"]])
 		affinity_cookie_name?:                 string
+		certificate_chain_validation_enabled?: bool
 		cookie_based_affinity!:                string
 		dedicated_backend_connection_enabled?: bool
 		host_name?:                            string
@@ -97,6 +98,8 @@ import "list"
 		probe_name?:                           string
 		protocol!:                             string
 		request_timeout?:                      number
+		sni_name?:                             string
+		sni_validation_enabled?:               bool
 		trusted_root_certificate_names?: [...string]
 	})
 

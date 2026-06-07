@@ -40,7 +40,7 @@ import "list"
 	#proxy: close({
 		password?: string
 		url!:      string
-		username!: string
+		username?: string
 	})
 
 	#service_fabric_cluster: close({

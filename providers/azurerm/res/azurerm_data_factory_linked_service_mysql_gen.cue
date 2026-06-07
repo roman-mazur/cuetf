@@ -10,6 +10,7 @@ package res
 		connection_string!:        string
 		data_factory_id!:          string
 		description?:              string
+		driver_version?:           string
 		id?:                       string
 		integration_runtime_name?: string
 		name!:                     string
