@@ -20,5 +20,7 @@ package res
 		resource_id?:    string
 		resource_owner?: string
 		resource_type?:  string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 	})
 }

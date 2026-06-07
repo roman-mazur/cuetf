@@ -67,7 +67,11 @@ package res
 		// The user-friendly name for the odb network. Changing this will
 		// force terraform to create a new resource.
 		display_name!: string
-		id?:           string
+
+		// A list of EC2 placement group IDs associated with the ODB
+		// network.
+		ec2_placement_group_ids?: [...string]
+		id?: string
 
 		// Specifies the configuration for Amazon KMS access from the ODB
 		// network.

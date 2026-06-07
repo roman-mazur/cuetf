@@ -22,7 +22,9 @@ package res
 
 	#credential_provider_configuration: close({
 		api_key?: matchN(1, [_#defs."/$defs/credential_provider_configuration/$defs/api_key", [..._#defs."/$defs/credential_provider_configuration/$defs/api_key"]])
+		caller_iam_credentials?: matchN(1, [_#defs."/$defs/credential_provider_configuration/$defs/caller_iam_credentials", [..._#defs."/$defs/credential_provider_configuration/$defs/caller_iam_credentials"]])
 		gateway_iam_role?: matchN(1, [_#defs."/$defs/credential_provider_configuration/$defs/gateway_iam_role", [..._#defs."/$defs/credential_provider_configuration/$defs/gateway_iam_role"]])
+		jwt_passthrough?: matchN(1, [_#defs."/$defs/credential_provider_configuration/$defs/jwt_passthrough", [..._#defs."/$defs/credential_provider_configuration/$defs/jwt_passthrough"]])
 		oauth?: matchN(1, [_#defs."/$defs/credential_provider_configuration/$defs/oauth", [..._#defs."/$defs/credential_provider_configuration/$defs/oauth"]])
 	})
 
@@ -41,6 +43,7 @@ package res
 	})
 
 	#target_configuration: close({
+		http?: matchN(1, [_#defs."/$defs/target_configuration/$defs/http", [..._#defs."/$defs/target_configuration/$defs/http"]])
 		mcp?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp", [..._#defs."/$defs/target_configuration/$defs/mcp"]])
 	})
 
@@ -74,7 +77,26 @@ package res
 		provider_arn!:              string
 	})
 
-	_#defs: "/$defs/credential_provider_configuration/$defs/gateway_iam_role": close({})
+	_#defs: "/$defs/credential_provider_configuration/$defs/caller_iam_credentials": close({
+		region?:  string
+		service!: string
+	})
+
+	_#defs: "/$defs/credential_provider_configuration/$defs/gateway_iam_role": close({
+		// AWS Region used for SigV4 signing of upstream requests.
+		// Defaults to the gateway's Region when omitted. Only meaningful
+		// when `service` is set.
+		region?: string
+
+		// The target AWS service name used for SigV4 signing of upstream
+		// requests. Required when calling SigV4-protected endpoints such
+		// as another Bedrock AgentCore Runtime (use
+		// `bedrock-agentcore`). Omit for non-SigV4 IAM-role-based
+		// authentication.
+		service?: string
+	})
+
+	_#defs: "/$defs/credential_provider_configuration/$defs/jwt_passthrough": close({})
 
 	_#defs: "/$defs/credential_provider_configuration/$defs/oauth": close({
 		custom_parameters?: [string]: string
@@ -89,6 +111,15 @@ package res
 		grant_type?:   string
 		provider_arn!: string
 		scopes!: [...string]
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/http": close({
+		agentcore_runtime?: matchN(1, [_#defs."/$defs/target_configuration/$defs/http/$defs/agentcore_runtime", [..._#defs."/$defs/target_configuration/$defs/http/$defs/agentcore_runtime"]])
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/http/$defs/agentcore_runtime": close({
+		arn!:       string
+		qualifier?: string
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/mcp": close({

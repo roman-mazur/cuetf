@@ -16,7 +16,7 @@ package res
 		gateway_url?:     string
 		kms_key_arn?:     string
 		name!:            string
-		protocol_type!:   string
+		protocol_type?:   string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -105,8 +105,18 @@ package res
 	})
 
 	_#defs: "/$defs/protocol_configuration/$defs/mcp": close({
+		session_configuration?: matchN(1, [_#defs."/$defs/protocol_configuration/$defs/mcp/$defs/session_configuration", [..._#defs."/$defs/protocol_configuration/$defs/mcp/$defs/session_configuration"]])
+		streaming_configuration?: matchN(1, [_#defs."/$defs/protocol_configuration/$defs/mcp/$defs/streaming_configuration", [..._#defs."/$defs/protocol_configuration/$defs/mcp/$defs/streaming_configuration"]])
 		instructions?: string
 		search_type?:  string
 		supported_versions?: [...string]
+	})
+
+	_#defs: "/$defs/protocol_configuration/$defs/mcp/$defs/session_configuration": close({
+		session_timeout_in_seconds?: number
+	})
+
+	_#defs: "/$defs/protocol_configuration/$defs/mcp/$defs/streaming_configuration": close({
+		enable_response_streaming?: bool
 	})
 }

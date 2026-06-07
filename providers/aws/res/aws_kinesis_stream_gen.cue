@@ -26,6 +26,7 @@ import "list"
 		shard_level_metrics?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		warm_throughput_mib_ps?: number
 	})
 
 	#stream_mode_details: close({

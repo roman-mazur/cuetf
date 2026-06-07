@@ -160,6 +160,7 @@ import "list"
 
 	_#defs: "/$defs/advanced_security_options/$defs/jwt_options": close({
 		enabled?:     bool
+		jwks_url?:    string
 		public_key?:  string
 		roles_key?:   string
 		subject_key?: string

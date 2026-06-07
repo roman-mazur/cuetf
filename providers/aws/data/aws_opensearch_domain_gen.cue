@@ -12,6 +12,7 @@ package data
 			internal_user_database_enabled?: bool
 			jwt_options?: [...close({
 				enabled?:     bool
+				jwks_url?:    string
 				public_key?:  string
 				roles_key?:   string
 				subject_key?: string

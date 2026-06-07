@@ -15,5 +15,7 @@ package res
 		publish?:         bool
 		runtime!:         string
 		status?:          string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 	})
 }

@@ -29,7 +29,11 @@ package data
 
 		// Display name for the network resource.
 		display_name?: string
-		id!:           string
+
+		// A list of EC2 placement group IDs associated with the ODB
+		// network.
+		ec2_placement_group_ids?: [...string]
+		id!: string
 
 		// The managed services configuration for the ODB network.
 		managed_services?: [...close({
