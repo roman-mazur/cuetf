@@ -509,7 +509,8 @@ import "list"
 	#logging_config: close({
 		// GKE components exposing logs. Valid values include
 		// SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER,
-		// KCP_CONNECTION, KCP_SSHD, KCP_HPA, SCHEDULER, and WORKLOADS.
+		// KCP_CONNECTION, KCP_SSHD, KCP_HPA, KCP_VPA, SCHEDULER, and
+		// WORKLOADS.
 		enable_components!: [...string]
 	})
 
@@ -1492,6 +1493,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_config/$defs/kubelet_config": close({
+		crash_loop_back_off?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config/$defs/crash_loop_back_off", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config/$defs/crash_loop_back_off"]])
 		eviction_minimum_reclaim?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_minimum_reclaim", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_minimum_reclaim"]])
 		eviction_soft?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft"]])
 		eviction_soft_grace_period?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft_grace_period", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft_grace_period"]])
@@ -1556,6 +1558,12 @@ import "list"
 
 		// Defines whether to enable single process OOM killer.
 		single_process_oom_kill?: bool
+	})
+
+	_#defs: "/$defs/node_config/$defs/kubelet_config/$defs/crash_loop_back_off": close({
+		// The maximum duration the backoff delay can accrue to for
+		// container restarts.
+		max_container_restart_period?: string
 	})
 
 	_#defs: "/$defs/node_config/$defs/kubelet_config/$defs/eviction_minimum_reclaim": close({
@@ -2237,6 +2245,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/kubelet_config": close({
+		crash_loop_back_off?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/kubelet_config/$defs/crash_loop_back_off", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/kubelet_config/$defs/crash_loop_back_off"]])
 		eviction_minimum_reclaim?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/kubelet_config/$defs/eviction_minimum_reclaim", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/kubelet_config/$defs/eviction_minimum_reclaim"]])
 		eviction_soft?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft"]])
 		eviction_soft_grace_period?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft_grace_period", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/kubelet_config/$defs/eviction_soft_grace_period"]])
@@ -2301,6 +2310,12 @@ import "list"
 
 		// Defines whether to enable single process OOM killer.
 		single_process_oom_kill?: bool
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/kubelet_config/$defs/crash_loop_back_off": close({
+		// The maximum duration the backoff delay can accrue to for
+		// container restarts.
+		max_container_restart_period?: string
 	})
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/kubelet_config/$defs/eviction_minimum_reclaim": close({

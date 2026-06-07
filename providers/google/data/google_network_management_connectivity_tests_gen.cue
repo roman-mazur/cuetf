@@ -13,9 +13,11 @@ package data
 				forwarding_rule?:    string
 				fqdn?:               string
 				gke_master_cluster?: string
+				gke_pod?:            string
 				instance?:           string
 				ip_address?:         string
 				network?:            string
+				network_type?:       string
 				port?:               number
 				project_id?:         string
 				redis_cluster?:      string
