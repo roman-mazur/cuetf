@@ -55,7 +55,8 @@ package res
 
 		// The type of exception list. Can be one of: `detection`,
 		// `endpoint`, `endpoint_trusted_apps`, `endpoint_events`,
-		// `endpoint_host_isolation_exceptions`, `endpoint_blocklists`.
+		// `endpoint_host_isolation_exceptions`, `endpoint_blocklists`,
+		// `rule_default`.
 		type!: string
 
 		// The timestamp of when the exception list was last updated.

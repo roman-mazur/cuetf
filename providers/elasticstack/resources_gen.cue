@@ -8,6 +8,7 @@ import "github.com/roman-mazur/cuetf/providers/elasticstack/res"
 	_#res: "\(#elasticstackPrefix)_apm_source_map": res.#elasticstack_apm_source_map
 	_#res: "\(#elasticstackPrefix)_elasticsearch_cluster_settings": res.#elasticstack_elasticsearch_cluster_settings
 	_#res: "\(#elasticstackPrefix)_elasticsearch_component_template": res.#elasticstack_elasticsearch_component_template
+	_#res: "\(#elasticstackPrefix)_elasticsearch_connector": res.#elasticstack_elasticsearch_connector
 	_#res: "\(#elasticstackPrefix)_elasticsearch_data_stream": res.#elasticstack_elasticsearch_data_stream
 	_#res: "\(#elasticstackPrefix)_elasticsearch_data_stream_lifecycle": res.#elasticstack_elasticsearch_data_stream_lifecycle
 	_#res: "\(#elasticstackPrefix)_elasticsearch_enrich_policy": res.#elasticstack_elasticsearch_enrich_policy
@@ -28,6 +29,7 @@ import "github.com/roman-mazur/cuetf/providers/elasticstack/res"
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_datafeed_state": res.#elasticstack_elasticsearch_ml_datafeed_state
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_filter": res.#elasticstack_elasticsearch_ml_filter
 	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_job_state": res.#elasticstack_elasticsearch_ml_job_state
+	_#res: "\(#elasticstackPrefix)_elasticsearch_query_ruleset": res.#elasticstack_elasticsearch_query_ruleset
 	_#res: "\(#elasticstackPrefix)_elasticsearch_script": res.#elasticstack_elasticsearch_script
 	_#res: "\(#elasticstackPrefix)_elasticsearch_security_api_key": res.#elasticstack_elasticsearch_security_api_key
 	_#res: "\(#elasticstackPrefix)_elasticsearch_security_role": res.#elasticstack_elasticsearch_security_role
@@ -36,6 +38,7 @@ import "github.com/roman-mazur/cuetf/providers/elasticstack/res"
 	_#res: "\(#elasticstackPrefix)_elasticsearch_security_user": res.#elasticstack_elasticsearch_security_user
 	_#res: "\(#elasticstackPrefix)_elasticsearch_snapshot_lifecycle": res.#elasticstack_elasticsearch_snapshot_lifecycle
 	_#res: "\(#elasticstackPrefix)_elasticsearch_snapshot_repository": res.#elasticstack_elasticsearch_snapshot_repository
+	_#res: "\(#elasticstackPrefix)_elasticsearch_synonym_set": res.#elasticstack_elasticsearch_synonym_set
 	_#res: "\(#elasticstackPrefix)_elasticsearch_transform": res.#elasticstack_elasticsearch_transform
 	_#res: "\(#elasticstackPrefix)_elasticsearch_watch": res.#elasticstack_elasticsearch_watch
 	_#res: "\(#elasticstackPrefix)_fleet_agent_download_source": res.#elasticstack_fleet_agent_download_source

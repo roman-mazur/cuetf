@@ -142,10 +142,14 @@ package res
 			// Optional Kibana filter objects (query JSON) accompanying the
 			// KQL object form.
 			filters?: matchN(1, [close({
-				// Filter query as a JSON object.
+				// Filter query as a JSON-encoded ES Query DSL object. Accepts any
+				// valid ES Query DSL (regexp, wildcard, bool, range, etc.). Use
+				// jsonencode({...}) to construct the value.
 				query?: string
 			}), [...close({
-				// Filter query as a JSON object.
+				// Filter query as a JSON-encoded ES Query DSL object. Accepts any
+				// valid ES Query DSL (regexp, wildcard, bool, range, etc.). Use
+				// jsonencode({...}) to construct the value.
 				query?: string
 			})]])
 
@@ -161,10 +165,14 @@ package res
 			// Optional Kibana filter objects (query JSON) accompanying the
 			// KQL object form.
 			filters?: matchN(1, [close({
-				// Filter query as a JSON object.
+				// Filter query as a JSON-encoded ES Query DSL object. Accepts any
+				// valid ES Query DSL (regexp, wildcard, bool, range, etc.). Use
+				// jsonencode({...}) to construct the value.
 				query?: string
 			}), [...close({
-				// Filter query as a JSON object.
+				// Filter query as a JSON-encoded ES Query DSL object. Accepts any
+				// valid ES Query DSL (regexp, wildcard, bool, range, etc.). Use
+				// jsonencode({...}) to construct the value.
 				query?: string
 			})]])
 
@@ -180,10 +188,14 @@ package res
 			// Optional Kibana filter objects (query JSON) accompanying the
 			// KQL object form.
 			filters?: matchN(1, [close({
-				// Filter query as a JSON object.
+				// Filter query as a JSON-encoded ES Query DSL object. Accepts any
+				// valid ES Query DSL (regexp, wildcard, bool, range, etc.). Use
+				// jsonencode({...}) to construct the value.
 				query?: string
 			}), [...close({
-				// Filter query as a JSON object.
+				// Filter query as a JSON-encoded ES Query DSL object. Accepts any
+				// valid ES Query DSL (regexp, wildcard, bool, range, etc.). Use
+				// jsonencode({...}) to construct the value.
 				query?: string
 			})]])
 

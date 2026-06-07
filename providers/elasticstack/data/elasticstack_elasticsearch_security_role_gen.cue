@@ -45,9 +45,8 @@ package data
 
 		// A list of indices permissions entries.
 		indices?: matchN(1, [close({
-			// Include matching restricted indices in names parameter.
-			//
-			// Usage is strongly discouraged as it can grant unrestricted
+			// Include matching restricted indices in names parameter. Usage
+			// is strongly discouraged as it can grant unrestricted
 			// operations on critical data, make the entire system unstable
 			// or leak sensitive information.
 			allow_restricted_indices?: bool
@@ -80,9 +79,8 @@ package data
 				grant?: [...string]
 			})]])
 		}), [...close({
-			// Include matching restricted indices in names parameter.
-			//
-			// Usage is strongly discouraged as it can grant unrestricted
+			// Include matching restricted indices in names parameter. Usage
+			// is strongly discouraged as it can grant unrestricted
 			// operations on critical data, make the entire system unstable
 			// or leak sensitive information.
 			allow_restricted_indices?: bool
@@ -122,11 +120,10 @@ package data
 		// The name of the role.
 		name!: string
 
-		// A list of remote indices permissions entries.
-		//
-		// Remote indices are effective for remote clusters configured
-		// with the API key based model. They have no effect for remote
-		// clusters configured with the certificate based model.
+		// A list of remote indices permissions entries. Remote indices
+		// are effective for remote clusters configured with the API key
+		// based model. They have no effect for remote clusters
+		// configured with the certificate based model.
 		remote_indices?: matchN(1, [close({
 			// A list of cluster aliases to which the permissions in this
 			// entry apply.

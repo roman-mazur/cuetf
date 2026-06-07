@@ -13,7 +13,10 @@ package res
 		ca_trusted_fingerprint?: string
 
 		// Advanced YAML configuration. YAML settings here will be added
-		// to the output section of each agent policy.
+		// to the output section of each agent policy. Note: the Fleet
+		// API treats an omitted `config_yaml` in an update request as
+		// "no change" and does not clear the stored value. To clear a
+		// previously stored value, delete and re-create the output.
 		config_yaml?: string
 
 		// Make this output the default for agent integrations.

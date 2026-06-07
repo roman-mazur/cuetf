@@ -1459,7 +1459,7 @@ package res
 			// alternative to panel-level `config_json`: set exactly one of
 			// `by_value` (exactly one of 12 Lens chart kinds) or
 			// `by_reference`. With `by_reference`, use structured
-			// `drilldowns` and required `time_range`. Mutually exclusive
+			// `drilldowns` and optional `time_range`. Mutually exclusive
 			// with `config_json`, `slo_burn_rate_config`,
 			// `slo_error_budget_config`, `slo_overview_config`,
 			// `synthetics_monitors_config`,
@@ -1470,7 +1470,7 @@ package res
 			// `discover_session_config`.
 			vis_config?: close({
 				// By-reference `vis` configuration: structured `drilldowns`,
-				// `ref_id`, optional `references_json`, and required
+				// `ref_id`, optional `references_json`, and optional
 				// `time_range`.
 				by_reference?: close({
 					// Optional panel description.
@@ -1610,9 +1610,10 @@ package res
 						})
 					})]])
 
-					// Required time range for the by-reference panel config
-					// (`vis_config.by_reference`).
-					time_range!: close({
+					// Optional time range for the by-reference panel config
+					// (`vis_config.by_reference`). Omitted from the API payload when
+					// unset.
+					time_range?: close({
 						// Start of the time range (e.g., 'now-15m',
 						// '2023-01-01T00:00:00Z').
 						from!: string
@@ -1867,9 +1868,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -2123,9 +2124,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -2397,9 +2398,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -2662,9 +2663,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -2873,9 +2874,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -3101,9 +3102,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -3386,9 +3387,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -3633,9 +3634,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -3838,9 +3839,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -4088,9 +4089,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -4384,9 +4385,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -4703,9 +4704,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -5343,9 +5344,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -6757,7 +6758,7 @@ package res
 			// alternative to panel-level `config_json`: set exactly one of
 			// `by_value` (exactly one of 12 Lens chart kinds) or
 			// `by_reference`. With `by_reference`, use structured
-			// `drilldowns` and required `time_range`. Mutually exclusive
+			// `drilldowns` and optional `time_range`. Mutually exclusive
 			// with `config_json`, `slo_burn_rate_config`,
 			// `slo_error_budget_config`, `slo_overview_config`,
 			// `synthetics_monitors_config`,
@@ -6768,7 +6769,7 @@ package res
 			// `discover_session_config`.
 			vis_config?: close({
 				// By-reference `vis` configuration: structured `drilldowns`,
-				// `ref_id`, optional `references_json`, and required
+				// `ref_id`, optional `references_json`, and optional
 				// `time_range`.
 				by_reference?: close({
 					// Optional panel description.
@@ -6908,9 +6909,10 @@ package res
 						})
 					})]])
 
-					// Required time range for the by-reference panel config
-					// (`vis_config.by_reference`).
-					time_range!: close({
+					// Optional time range for the by-reference panel config
+					// (`vis_config.by_reference`). Omitted from the API payload when
+					// unset.
+					time_range?: close({
 						// Start of the time range (e.g., 'now-15m',
 						// '2023-01-01T00:00:00Z').
 						from!: string
@@ -7165,9 +7167,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -7421,9 +7423,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -7695,9 +7697,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -7960,9 +7962,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -8171,9 +8173,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -8399,9 +8401,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -8684,9 +8686,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -8931,9 +8933,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -9136,9 +9138,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -9386,9 +9388,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -9682,9 +9684,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -10001,9 +10003,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -10641,9 +10643,9 @@ package res
 
 						// Chart-level time selection (`from`, `to`, optional `mode`),
 						// same shape as the dashboard root `time_range`. When omitted
-						// (null), the provider inherits the dashboard-level `time_range`
-						// on write and preserves null in state when the API echoes the
-						// inherited value on read.
+						// (null), the provider omits `time_range` from the API payload
+						// on write and preserves null in state when the API returns no
+						// panel-level `time_range` on read.
 						time_range?: close({
 							// Start of the chart time range.
 							from!: string
@@ -12517,7 +12519,7 @@ package res
 				// alternative to panel-level `config_json`: set exactly one of
 				// `by_value` (exactly one of 12 Lens chart kinds) or
 				// `by_reference`. With `by_reference`, use structured
-				// `drilldowns` and required `time_range`. Mutually exclusive
+				// `drilldowns` and optional `time_range`. Mutually exclusive
 				// with `config_json`, `slo_burn_rate_config`,
 				// `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`,
@@ -12528,7 +12530,7 @@ package res
 				// `discover_session_config`.
 				vis_config?: close({
 					// By-reference `vis` configuration: structured `drilldowns`,
-					// `ref_id`, optional `references_json`, and required
+					// `ref_id`, optional `references_json`, and optional
 					// `time_range`.
 					by_reference?: close({
 						// Optional panel description.
@@ -12668,9 +12670,10 @@ package res
 							})
 						})]])
 
-						// Required time range for the by-reference panel config
-						// (`vis_config.by_reference`).
-						time_range!: close({
+						// Optional time range for the by-reference panel config
+						// (`vis_config.by_reference`). Omitted from the API payload when
+						// unset.
+						time_range?: close({
 							// Start of the time range (e.g., 'now-15m',
 							// '2023-01-01T00:00:00Z').
 							from!: string
@@ -12925,9 +12928,9 @@ package res
 
 								// Chart-level time selection (`from`, `to`, optional `mode`),
 								// same shape as the dashboard root `time_range`. When omitted
-								// (null), the provider inherits the dashboard-level `time_range`
-								// on write and preserves null in state when the API echoes the
-								// inherited value on read.
+								// (null), the provider omits `time_range` from the API payload
+								// on write and preserves null in state when the API returns no
+								// panel-level `time_range` on read.
 								time_range?: close({
 									// Start of the chart time range.
 									from!: string
@@ -13181,9 +13184,9 @@ package res
 
 								// Chart-level time selection (`from`, `to`, optional `mode`),
 								// same shape as the dashboard root `time_range`. When omitted
-								// (null), the provider inherits the dashboard-level `time_range`
-								// on write and preserves null in state when the API echoes the
-								// inherited value on read.
+								// (null), the provider omits `time_range` from the API payload
+								// on write and preserves null in state when the API returns no
+								// panel-level `time_range` on read.
 								time_range?: close({
 									// Start of the chart time range.
 									from!: string
@@ -13455,9 +13458,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -13720,9 +13723,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -13931,9 +13934,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -14159,9 +14162,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -14444,9 +14447,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -14691,9 +14694,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -14896,9 +14899,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -15146,9 +15149,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -15442,9 +15445,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -15761,9 +15764,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -16401,9 +16404,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -17815,7 +17818,7 @@ package res
 				// alternative to panel-level `config_json`: set exactly one of
 				// `by_value` (exactly one of 12 Lens chart kinds) or
 				// `by_reference`. With `by_reference`, use structured
-				// `drilldowns` and required `time_range`. Mutually exclusive
+				// `drilldowns` and optional `time_range`. Mutually exclusive
 				// with `config_json`, `slo_burn_rate_config`,
 				// `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`,
@@ -17826,7 +17829,7 @@ package res
 				// `discover_session_config`.
 				vis_config?: close({
 					// By-reference `vis` configuration: structured `drilldowns`,
-					// `ref_id`, optional `references_json`, and required
+					// `ref_id`, optional `references_json`, and optional
 					// `time_range`.
 					by_reference?: close({
 						// Optional panel description.
@@ -17966,9 +17969,10 @@ package res
 							})
 						})]])
 
-						// Required time range for the by-reference panel config
-						// (`vis_config.by_reference`).
-						time_range!: close({
+						// Optional time range for the by-reference panel config
+						// (`vis_config.by_reference`). Omitted from the API payload when
+						// unset.
+						time_range?: close({
 							// Start of the time range (e.g., 'now-15m',
 							// '2023-01-01T00:00:00Z').
 							from!: string
@@ -18223,9 +18227,9 @@ package res
 
 								// Chart-level time selection (`from`, `to`, optional `mode`),
 								// same shape as the dashboard root `time_range`. When omitted
-								// (null), the provider inherits the dashboard-level `time_range`
-								// on write and preserves null in state when the API echoes the
-								// inherited value on read.
+								// (null), the provider omits `time_range` from the API payload
+								// on write and preserves null in state when the API returns no
+								// panel-level `time_range` on read.
 								time_range?: close({
 									// Start of the chart time range.
 									from!: string
@@ -18479,9 +18483,9 @@ package res
 
 								// Chart-level time selection (`from`, `to`, optional `mode`),
 								// same shape as the dashboard root `time_range`. When omitted
-								// (null), the provider inherits the dashboard-level `time_range`
-								// on write and preserves null in state when the API echoes the
-								// inherited value on read.
+								// (null), the provider omits `time_range` from the API payload
+								// on write and preserves null in state when the API returns no
+								// panel-level `time_range` on read.
 								time_range?: close({
 									// Start of the chart time range.
 									from!: string
@@ -18753,9 +18757,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -19018,9 +19022,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -19229,9 +19233,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -19457,9 +19461,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -19742,9 +19746,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -19989,9 +19993,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -20194,9 +20198,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -20444,9 +20448,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -20740,9 +20744,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -21059,9 +21063,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -21699,9 +21703,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -23131,7 +23135,7 @@ package res
 				// alternative to panel-level `config_json`: set exactly one of
 				// `by_value` (exactly one of 12 Lens chart kinds) or
 				// `by_reference`. With `by_reference`, use structured
-				// `drilldowns` and required `time_range`. Mutually exclusive
+				// `drilldowns` and optional `time_range`. Mutually exclusive
 				// with `config_json`, `slo_burn_rate_config`,
 				// `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`,
@@ -23142,7 +23146,7 @@ package res
 				// `discover_session_config`.
 				vis_config?: close({
 					// By-reference `vis` configuration: structured `drilldowns`,
-					// `ref_id`, optional `references_json`, and required
+					// `ref_id`, optional `references_json`, and optional
 					// `time_range`.
 					by_reference?: close({
 						// Optional panel description.
@@ -23282,9 +23286,10 @@ package res
 							})
 						})]])
 
-						// Required time range for the by-reference panel config
-						// (`vis_config.by_reference`).
-						time_range!: close({
+						// Optional time range for the by-reference panel config
+						// (`vis_config.by_reference`). Omitted from the API payload when
+						// unset.
+						time_range?: close({
 							// Start of the time range (e.g., 'now-15m',
 							// '2023-01-01T00:00:00Z').
 							from!: string
@@ -23539,9 +23544,9 @@ package res
 
 								// Chart-level time selection (`from`, `to`, optional `mode`),
 								// same shape as the dashboard root `time_range`. When omitted
-								// (null), the provider inherits the dashboard-level `time_range`
-								// on write and preserves null in state when the API echoes the
-								// inherited value on read.
+								// (null), the provider omits `time_range` from the API payload
+								// on write and preserves null in state when the API returns no
+								// panel-level `time_range` on read.
 								time_range?: close({
 									// Start of the chart time range.
 									from!: string
@@ -23795,9 +23800,9 @@ package res
 
 								// Chart-level time selection (`from`, `to`, optional `mode`),
 								// same shape as the dashboard root `time_range`. When omitted
-								// (null), the provider inherits the dashboard-level `time_range`
-								// on write and preserves null in state when the API echoes the
-								// inherited value on read.
+								// (null), the provider omits `time_range` from the API payload
+								// on write and preserves null in state when the API returns no
+								// panel-level `time_range` on read.
 								time_range?: close({
 									// Start of the chart time range.
 									from!: string
@@ -24069,9 +24074,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -24334,9 +24339,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -24545,9 +24550,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -24773,9 +24778,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -25058,9 +25063,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -25305,9 +25310,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -25510,9 +25515,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -25760,9 +25765,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -26056,9 +26061,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -26375,9 +26380,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -27015,9 +27020,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -28429,7 +28434,7 @@ package res
 				// alternative to panel-level `config_json`: set exactly one of
 				// `by_value` (exactly one of 12 Lens chart kinds) or
 				// `by_reference`. With `by_reference`, use structured
-				// `drilldowns` and required `time_range`. Mutually exclusive
+				// `drilldowns` and optional `time_range`. Mutually exclusive
 				// with `config_json`, `slo_burn_rate_config`,
 				// `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`,
@@ -28440,7 +28445,7 @@ package res
 				// `discover_session_config`.
 				vis_config?: close({
 					// By-reference `vis` configuration: structured `drilldowns`,
-					// `ref_id`, optional `references_json`, and required
+					// `ref_id`, optional `references_json`, and optional
 					// `time_range`.
 					by_reference?: close({
 						// Optional panel description.
@@ -28580,9 +28585,10 @@ package res
 							})
 						})]])
 
-						// Required time range for the by-reference panel config
-						// (`vis_config.by_reference`).
-						time_range!: close({
+						// Optional time range for the by-reference panel config
+						// (`vis_config.by_reference`). Omitted from the API payload when
+						// unset.
+						time_range?: close({
 							// Start of the time range (e.g., 'now-15m',
 							// '2023-01-01T00:00:00Z').
 							from!: string
@@ -28837,9 +28843,9 @@ package res
 
 								// Chart-level time selection (`from`, `to`, optional `mode`),
 								// same shape as the dashboard root `time_range`. When omitted
-								// (null), the provider inherits the dashboard-level `time_range`
-								// on write and preserves null in state when the API echoes the
-								// inherited value on read.
+								// (null), the provider omits `time_range` from the API payload
+								// on write and preserves null in state when the API returns no
+								// panel-level `time_range` on read.
 								time_range?: close({
 									// Start of the chart time range.
 									from!: string
@@ -29093,9 +29099,9 @@ package res
 
 								// Chart-level time selection (`from`, `to`, optional `mode`),
 								// same shape as the dashboard root `time_range`. When omitted
-								// (null), the provider inherits the dashboard-level `time_range`
-								// on write and preserves null in state when the API echoes the
-								// inherited value on read.
+								// (null), the provider omits `time_range` from the API payload
+								// on write and preserves null in state when the API returns no
+								// panel-level `time_range` on read.
 								time_range?: close({
 									// Start of the chart time range.
 									from!: string
@@ -29367,9 +29373,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -29632,9 +29638,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -29843,9 +29849,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -30071,9 +30077,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -30356,9 +30362,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -30603,9 +30609,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -30808,9 +30814,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -31058,9 +31064,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -31354,9 +31360,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -31673,9 +31679,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string
@@ -32313,9 +32319,9 @@ package res
 
 							// Chart-level time selection (`from`, `to`, optional `mode`),
 							// same shape as the dashboard root `time_range`. When omitted
-							// (null), the provider inherits the dashboard-level `time_range`
-							// on write and preserves null in state when the API echoes the
-							// inherited value on read.
+							// (null), the provider omits `time_range` from the API payload
+							// on write and preserves null in state when the API returns no
+							// panel-level `time_range` on read.
 							time_range?: close({
 								// Start of the chart time range.
 								from!: string

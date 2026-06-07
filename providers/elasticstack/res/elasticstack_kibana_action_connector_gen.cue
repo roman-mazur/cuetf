@@ -43,7 +43,18 @@ package res
 
 		// The secrets configuration for the connector. Secrets
 		// configuration properties vary depending on the connector type.
+		// Consider using `secrets_wo` when sourcing secrets from
+		// ephemeral providers so values are not persisted to state.
 		secrets?: string
+
+		// Write-only secrets configuration for the connector. Accepts the
+		// same JSON content as `secrets` but is never persisted to
+		// state; use with ephemeral secret sources (for example Vault).
+		secrets_wo?: string
+
+		// Optional version string for `secrets_wo`. Bump this value when
+		// the secret rotates to trigger a re-send on the next apply.
+		secrets_wo_version?: string
 
 		// An identifier for the space. If space_id is not provided, the
 		// default space is used.
