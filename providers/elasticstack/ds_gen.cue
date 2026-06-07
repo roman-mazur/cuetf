@@ -4,6 +4,7 @@ import "github.com/roman-mazur/cuetf/providers/elasticstack/data"
 
 #Terraform: {
 	#elasticstackPrefix: string
+	_#ds: "\(#elasticstackPrefix)_elasticsearch_connector": data.#elasticstack_elasticsearch_connector
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_enrich_policy": data.#elasticstack_elasticsearch_enrich_policy
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_index_template": data.#elasticstack_elasticsearch_index_template
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_indices": data.#elasticstack_elasticsearch_indices
@@ -48,10 +49,12 @@ import "github.com/roman-mazur/cuetf/providers/elasticstack/data"
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_ingest_processor_uri_parts": data.#elasticstack_elasticsearch_ingest_processor_uri_parts
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_ingest_processor_urldecode": data.#elasticstack_elasticsearch_ingest_processor_urldecode
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_ingest_processor_user_agent": data.#elasticstack_elasticsearch_ingest_processor_user_agent
+	_#ds: "\(#elasticstackPrefix)_elasticsearch_query_ruleset": data.#elasticstack_elasticsearch_query_ruleset
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_security_role": data.#elasticstack_elasticsearch_security_role
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_security_role_mapping": data.#elasticstack_elasticsearch_security_role_mapping
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_security_user": data.#elasticstack_elasticsearch_security_user
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_snapshot_repository": data.#elasticstack_elasticsearch_snapshot_repository
+	_#ds: "\(#elasticstackPrefix)_elasticsearch_synonym_set": data.#elasticstack_elasticsearch_synonym_set
 	_#ds: "\(#elasticstackPrefix)_fleet_enrollment_tokens": data.#elasticstack_fleet_enrollment_tokens
 	_#ds: "\(#elasticstackPrefix)_fleet_integration": data.#elasticstack_fleet_integration
 	_#ds: "\(#elasticstackPrefix)_fleet_output": data.#elasticstack_fleet_output

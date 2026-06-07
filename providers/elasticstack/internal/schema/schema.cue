@@ -885,6 +885,442 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "markdown"
 			}
 		}
+		elasticstack_elasticsearch_connector: {
+			version: 0
+			block: {
+				attributes: {
+					api_key_id: {
+						type:             "string"
+						description:      "ID of the API key used by the connector service for authorization."
+						description_kind: "markdown"
+						optional:         true
+					}
+					api_key_secret_id: {
+						type:             "string"
+						description:      "ID of the connector secret holding the API key (Elastic-managed connectors only)."
+						description_kind: "markdown"
+						optional:         true
+					}
+					configuration_values: {
+						nested_type: {
+							attributes: {
+								bool: {
+									type:             "bool"
+									description:      "Boolean configuration value."
+									description_kind: "markdown"
+									optional:         true
+								}
+								json: {
+									type:             "string"
+									description:      "JSON-encoded object or array configuration value."
+									description_kind: "markdown"
+									optional:         true
+								}
+								number: {
+									type:             "number"
+									description:      "Numeric configuration value (integer or float)."
+									description_kind: "markdown"
+									optional:         true
+								}
+								secret_value: {
+									type:             "string"
+									description:      "Write-only secret configuration value. Drift is detected via private-state hashing (see resource documentation)."
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+									write_only:       true
+								}
+								string: {
+									type:             "string"
+									description:      "String configuration value."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "map"
+						}
+						description:      "User-supplied connector configuration values keyed by field name. Each element must set exactly one of `string`, `number`, `bool`, `json`, or `secret_value`. Removing a key stops managing it but does not unset the value server-side."
+						description_kind: "markdown"
+						optional:         true
+					}
+					connector_id: {
+						type:             "string"
+						description:      "Unique connector identifier. When omitted, Elasticsearch auto-generates an ID on create."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Connector description."
+						description_kind: "markdown"
+						optional:         true
+					}
+					features: {
+						nested_type: {
+							attributes: {
+								document_level_security: {
+									nested_type: {
+										attributes: enabled: {
+											type:             "bool"
+											description:      "Whether the feature is enabled."
+											description_kind: "markdown"
+											required:         true
+										}
+										nesting_mode: "single"
+									}
+									description:      "Feature flag for `document_level_security`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								incremental_sync: {
+									nested_type: {
+										attributes: enabled: {
+											type:             "bool"
+											description:      "Whether the feature is enabled."
+											description_kind: "markdown"
+											required:         true
+										}
+										nesting_mode: "single"
+									}
+									description:      "Feature flag for `incremental_sync`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								native_connector_api_keys: {
+									nested_type: {
+										attributes: enabled: {
+											type:             "bool"
+											description:      "Whether the feature is enabled."
+											description_kind: "markdown"
+											required:         true
+										}
+										nesting_mode: "single"
+									}
+									description:      "Feature flag for `native_connector_api_keys`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								sync_rules: {
+									nested_type: {
+										attributes: {
+											advanced: {
+												nested_type: {
+													attributes: enabled: {
+														type:             "bool"
+														description:      "Whether the feature is enabled."
+														description_kind: "markdown"
+														required:         true
+													}
+													nesting_mode: "single"
+												}
+												description:      "Feature flag for `advanced`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											basic: {
+												nested_type: {
+													attributes: enabled: {
+														type:             "bool"
+														description:      "Whether the feature is enabled."
+														description_kind: "markdown"
+														required:         true
+													}
+													nesting_mode: "single"
+												}
+												description:      "Feature flag for `basic`."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Sync rules feature flags."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Connector feature flags. Changes trigger `PUT /_connector/{id}/_features`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Composite identifier in the form `<cluster_uuid>/<connector_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					index_name: {
+						type:             "string"
+						description:      "Destination Elasticsearch index name. When omitted, Elasticsearch may assign a default on create."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					is_native: {
+						type:             "bool"
+						description:      "Whether this is an Elastic-managed connector (`true`) or self-managed (`false`). Defaults to `false` on the Elasticsearch side when omitted."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					language: {
+						type:             "string"
+						description:      "Analyzer language for the connector index."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Human-readable connector name."
+						description_kind: "markdown"
+						optional:         true
+					}
+					pipeline: {
+						nested_type: {
+							attributes: {
+								extract_binary_content: {
+									type:             "bool"
+									description:      "Whether to extract binary content during ingestion."
+									description_kind: "markdown"
+									required:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Ingest pipeline name."
+									description_kind: "markdown"
+									required:         true
+								}
+								reduce_whitespace: {
+									type:             "bool"
+									description:      "Whether to reduce whitespace in extracted text."
+									description_kind: "markdown"
+									required:         true
+								}
+								run_ml_inference: {
+									type:             "bool"
+									description:      "Whether to run ML inference during ingestion."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Ingest pipeline settings applied to synced documents. Changes trigger `PUT /_connector/{id}/_pipeline`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					scheduling: {
+						nested_type: {
+							attributes: {
+								access_control: {
+									nested_type: {
+										attributes: {
+											enabled: {
+												type:             "bool"
+												description:      "Whether this scheduled job type is enabled."
+												description_kind: "markdown"
+												required:         true
+											}
+											interval: {
+												type:             "string"
+												description:      "Cron expression accepted by the Elasticsearch scheduler."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Schedule for the `access_control` sync job type."
+									description_kind: "markdown"
+									optional:         true
+								}
+								full: {
+									nested_type: {
+										attributes: {
+											enabled: {
+												type:             "bool"
+												description:      "Whether this scheduled job type is enabled."
+												description_kind: "markdown"
+												required:         true
+											}
+											interval: {
+												type:             "string"
+												description:      "Cron expression accepted by the Elasticsearch scheduler."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Schedule for the `full` sync job type."
+									description_kind: "markdown"
+									optional:         true
+								}
+								incremental: {
+									nested_type: {
+										attributes: {
+											enabled: {
+												type:             "bool"
+												description:      "Whether this scheduled job type is enabled."
+												description_kind: "markdown"
+												required:         true
+											}
+											interval: {
+												type:             "string"
+												description:      "Cron expression accepted by the Elasticsearch scheduler."
+												description_kind: "markdown"
+												required:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Schedule for the `incremental` sync job type."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Sync scheduling for full, incremental, and access-control jobs. Changes trigger `PUT /_connector/{id}/_scheduling`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					service_type: {
+						type:             "string"
+						description:      "Connector service type (for example `postgresql`, `mysql`, `github`). New service types may be added over time; the provider does not validate against a fixed enum."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					Manages an [Elasticsearch content connector](https://www.elastic.co/docs/reference/search-connectors) via the [connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector). Requires Elasticsearch **8.16.0** or later (the connector APIs are GA from 8.12.0, but the request body shapes the provider sends only stabilized in 8.16.0) and the `manage_connector` cluster privilege for write operations (`monitor_connector` or `manage_connector` for read-only access).
+
+					## Lifecycle
+
+					Create and update use a narrow `POST /_connector` or `PUT /_connector/{connector_id}` envelope for identity fields, then fan out to per-aspect partial-update endpoints (`_pipeline`, `_scheduling`, `_features`, `_configuration`, `_name`, `_index_name`, `_service_type`, `_native`, `_api_key_id`) for everything else, and finish with `GET /_connector/{connector_id}` to refresh state. Delete calls `DELETE /_connector/{connector_id}` (404 is treated as success).
+
+					## Configuration values
+
+					`configuration_values` is written with `PUT /_connector/{connector_id}/_configuration`. The connector **service** must be running and have registered its per-`service_type` configuration schema before values can be applied—if `GET` returns an empty `configuration` object, the provider returns a structured error and does not call `_configuration`.
+
+					Removing a key from `configuration_values` stops Terraform from managing that field but does **not** unset it on the server.
+
+					Use `secret_value` (write-only, sensitive) for credentials. Drift is detected via a bcrypt hash in resource private state; after `terraform import`, the first refresh does not signal drift, and the first apply baselines the hash.
+
+					## Runtime telemetry
+
+					This resource omits read-only runtime fields (`status`, `last_synced`, filtering, and so on). Use the companion `data.elasticstack_elasticsearch_connector` data source to inspect live connector state.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		elasticstack_elasticsearch_data_stream: {
 			version: 0
 			block: {
@@ -6086,6 +6522,224 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "markdown"
 			}
 		}
+		elasticstack_elasticsearch_query_ruleset: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "Internal identifier in the form `<cluster_uuid>/<ruleset_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					rules: {
+						nested_type: {
+							attributes: {
+								actions: {
+									nested_type: {
+										attributes: {
+											docs: {
+												nested_type: {
+													attributes: {
+														"_id": {
+															type:             "string"
+															description:      "Unique document ID."
+															description_kind: "markdown"
+															required:         true
+														}
+														"_index": {
+															type:             "string"
+															description:      "Index containing the document."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "list"
+												}
+												description:      "Documents to pin or exclude, specified by index and ID."
+												description_kind: "markdown"
+												optional:         true
+											}
+											ids: {
+												type: ["list", "string"]
+												description:      "Document IDs to pin or exclude."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Actions to take when the rule matches; exactly one of `ids` or `docs` must be set."
+									description_kind: "markdown"
+									required:         true
+								}
+								criteria: {
+									nested_type: {
+										attributes: {
+											metadata: {
+												type:             "string"
+												description:      "Metadata field to match against; omitted from the API when null."
+												description_kind: "markdown"
+												optional:         true
+											}
+											type: {
+												type:             "string"
+												description:      "Criteria type (for example `exact`, `always`, `gt`)."
+												description_kind: "markdown"
+												required:         true
+											}
+											values: {
+												type:             "string"
+												description:      "JSON-encoded array of string or numeric values; required unless `type` is `always`. Empty arrays are not allowed."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "Match criteria for the rule; all criteria must match for the rule to apply."
+									description_kind: "markdown"
+									required:         true
+								}
+								priority: {
+									type:             "number"
+									description:      "Relative priority within the ruleset; omitted from the API when null."
+									description_kind: "markdown"
+									optional:         true
+								}
+								rule_id: {
+									type:             "string"
+									description:      "Unique identifier for the rule within the ruleset."
+									description_kind: "markdown"
+									required:         true
+								}
+								type: {
+									type:             "string"
+									description:      "Rule type: `pinned` or `exclude`."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Ordered list of query rules for this ruleset."
+						description_kind: "markdown"
+						required:         true
+					}
+					ruleset_id: {
+						type:             "string"
+						description:      "Unique identifier for the query ruleset."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					Manages an Elasticsearch query ruleset via the [Query Rules API](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-rules-apis.html). Requires the `manage_search_query_rules` cluster privilege and Elasticsearch **8.16.0** or later (the Query Rules API is GA in 8.12, but the `priority` field and the `exclude` rule type exposed by this resource only stabilized in 8.16).
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		elasticstack_elasticsearch_script: {
 			version: 0
 			block: {
@@ -8049,6 +8703,153 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 				}
 				description:      "Registers or updates a snapshot repository. See the [put snapshot repository API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-snapshot-repo-api.html) and [register repository documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html) for more details."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_synonym_set: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					synonym_set_id: {
+						type:             "string"
+						description:      "The name of the synonym set. Must be unique within the Elasticsearch cluster."
+						description_kind: "markdown"
+						required:         true
+					}
+					synonyms_set: {
+						nested_type: {
+							attributes: {
+								id: {
+									type:             "string"
+									description:      "The identifier for this synonym rule. When omitted, the provider generates a UUID."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								synonyms: {
+									type:             "string"
+									description:      "The synonym rule in Solr format (e.g. `\"i-pod, i pod => ipod\"` or `\"universe, cosmos\"`)."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "The list of synonym rules for this synonym set."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					Manages an Elasticsearch synonym set. See the [synonym set API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/synonyms-apis.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -10616,7 +11417,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					config_yaml: {
 						type:             "string"
-						description:      "Advanced YAML configuration. YAML settings here will be added to the output section of each agent policy."
+						description:      "Advanced YAML configuration. YAML settings here will be added to the output section of each agent policy. Note: the Fleet API treats an omitted `config_yaml` in an update request as \"no change\" and does not clear the stored value. To clear a previously stored value, delete and re-create the output."
 						description_kind: "plain"
 						optional:         true
 						sensitive:        true
@@ -11282,10 +12083,24 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					secrets: {
 						type:             "string"
-						description:      "The secrets configuration for the connector. Secrets configuration properties vary depending on the connector type."
+						description:      "The secrets configuration for the connector. Secrets configuration properties vary depending on the connector type. Consider using `secrets_wo` when sourcing secrets from ephemeral providers so values are not persisted to state."
 						description_kind: "plain"
 						optional:         true
 						sensitive:        true
+					}
+					secrets_wo: {
+						type:             "string"
+						description:      "Write-only secrets configuration for the connector. Accepts the same JSON content as `secrets` but is never persisted to state; use with ephemeral secret sources (for example Vault)."
+						description_kind: "plain"
+						optional:         true
+						sensitive:        true
+						write_only:       true
+					}
+					secrets_wo_version: {
+						type:             "string"
+						description:      "Optional version string for `secrets_wo`. Bump this value when the secret rotates to trigger a re-send on the next apply."
+						description_kind: "plain"
+						optional:         true
 					}
 					space_id: {
 						type:             "string"
@@ -11985,9 +12800,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description: """
 									Deprecated in 8.13.0. Defines how often an alert generates repeated actions. This custom action interval must be specified in seconds, minutes, hours, or days. For example, 10m or 1h. This property is applicable only if `notify_when` is `onThrottleInterval`. NOTE: This is a rule level property; if you update the rule in Kibana, it is automatically changed to use action-specific `throttle` values.
 
+									Kibana cannot clear this deprecated rule-level value via the update API: once set, omitting or sending `null` in a subsequent PUT is preserved server-side. The provider therefore marks `throttle` as Computed with `UseStateForUnknown` so removing it from configuration does not surface a provider inconsistency error; the value persists in state until the rule is recreated. If you switch the rule to use per-action `frequency` instead, the provider plans `throttle` as unknown (via the shared `StringSetUnknownIf` plan modifier) so the stale value is not sent alongside per-action frequency; state will then reflect whatever Kibana returns. To fully drop a rule-level `throttle`, recreate the resource (for example with `terraform taint`).
+
 									"""
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -14426,9 +15244,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "Required time range for the by-reference panel config (`vis_config.by_reference`)."
+															description:      "Optional time range for the by-reference panel config (`vis_config.by_reference`). Omitted from the API payload when unset."
 															description_kind: "markdown"
-															required:         true
+															optional:         true
 														}
 														title: {
 															type:             "string"
@@ -14439,7 +15257,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "By-reference `vis` configuration: structured `drilldowns`, `ref_id`, optional `references_json`, and required `time_range`."
+												description:      "By-reference `vis` configuration: structured `drilldowns`, `ref_id`, optional `references_json`, and optional `time_range`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -14798,7 +15616,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																						}
 																						nesting_mode: "single"
 																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																					description_kind: "markdown"
 																					optional:         true
 																				}
@@ -15187,7 +16005,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																						}
 																						nesting_mode: "single"
 																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																					description_kind: "markdown"
 																					optional:         true
 																				}
@@ -15619,7 +16437,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -16048,7 +16866,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -16321,7 +17139,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -16596,7 +17414,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -16971,7 +17789,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -17323,7 +18141,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -17590,7 +18408,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -17947,7 +18765,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -18338,7 +19156,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -18767,7 +19585,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -19544,7 +20362,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																		description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -19571,7 +20389,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a `vis` panel (`type = \"vis\"`). Typed alternative to panel-level `config_json`: set exactly one of `by_value` (exactly one of 12 Lens chart kinds) or `by_reference`. With `by_reference`, use structured `drilldowns` and required `time_range`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `discover_session_config`."
+									description:      "Configuration for a `vis` panel (`type = \"vis\"`). Typed alternative to panel-level `config_json`: set exactly one of `by_value` (exactly one of 12 Lens chart kinds) or `by_reference`. With `by_reference`, use structured `drilldowns` and optional `time_range`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `discover_session_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -22149,9 +22967,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																			}
 																			nesting_mode: "single"
 																		}
-																		description:      "Required time range for the by-reference panel config (`vis_config.by_reference`)."
+																		description:      "Optional time range for the by-reference panel config (`vis_config.by_reference`). Omitted from the API payload when unset."
 																		description_kind: "markdown"
-																		required:         true
+																		optional:         true
 																	}
 																	title: {
 																		type:             "string"
@@ -22162,7 +22980,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "single"
 															}
-															description:      "By-reference `vis` configuration: structured `drilldowns`, `ref_id`, optional `references_json`, and required `time_range`."
+															description:      "By-reference `vis` configuration: structured `drilldowns`, `ref_id`, optional `references_json`, and optional `time_range`."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -22521,7 +23339,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																									}
 																									nesting_mode: "single"
 																								}
-																								description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																								description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																								description_kind: "markdown"
 																								optional:         true
 																							}
@@ -22910,7 +23728,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																									}
 																									nesting_mode: "single"
 																								}
-																								description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																								description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																								description_kind: "markdown"
 																								optional:         true
 																							}
@@ -23342,7 +24160,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																						}
 																						nesting_mode: "single"
 																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																					description_kind: "markdown"
 																					optional:         true
 																				}
@@ -23771,7 +24589,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																						}
 																						nesting_mode: "single"
 																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																					description_kind: "markdown"
 																					optional:         true
 																				}
@@ -24044,7 +24862,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																						}
 																						nesting_mode: "single"
 																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																					description_kind: "markdown"
 																					optional:         true
 																				}
@@ -24319,7 +25137,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																						}
 																						nesting_mode: "single"
 																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																					description_kind: "markdown"
 																					optional:         true
 																				}
@@ -24694,7 +25512,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																						}
 																						nesting_mode: "single"
 																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																					description_kind: "markdown"
 																					optional:         true
 																				}
@@ -25046,7 +25864,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																						}
 																						nesting_mode: "single"
 																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																					description_kind: "markdown"
 																					optional:         true
 																				}
@@ -25313,7 +26131,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																						}
 																						nesting_mode: "single"
 																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																					description_kind: "markdown"
 																					optional:         true
 																				}
@@ -25670,7 +26488,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																						}
 																						nesting_mode: "single"
 																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																					description_kind: "markdown"
 																					optional:         true
 																				}
@@ -26061,7 +26879,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																						}
 																						nesting_mode: "single"
 																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																					description_kind: "markdown"
 																					optional:         true
 																				}
@@ -26490,7 +27308,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																						}
 																						nesting_mode: "single"
 																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																					description_kind: "markdown"
 																					optional:         true
 																				}
@@ -27267,7 +28085,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																						}
 																						nesting_mode: "single"
 																					}
-																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider inherits the dashboard-level `time_range` on write and preserves null in state when the API echoes the inherited value on read."
+																					description:      "Chart-level time selection (`from`, `to`, optional `mode`), same shape as the dashboard root `time_range`. When omitted (null), the provider omits `time_range` from the API payload on write and preserves null in state when the API returns no panel-level `time_range` on read."
 																					description_kind: "markdown"
 																					optional:         true
 																				}
@@ -27294,7 +28112,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a `vis` panel (`type = \"vis\"`). Typed alternative to panel-level `config_json`: set exactly one of `by_value` (exactly one of 12 Lens chart kinds) or `by_reference`. With `by_reference`, use structured `drilldowns` and required `time_range`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `discover_session_config`."
+												description:      "Configuration for a `vis` panel (`type = \"vis\"`). Typed alternative to panel-level `config_json`: set exactly one of `by_value` (exactly one of 12 Lens chart kinds) or `by_reference`. With `by_reference`, use structured `drilldowns` and optional `time_range`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `discover_session_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -29912,7 +30730,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					type: {
 						type:             "string"
-						description:      "The type of exception list. Can be one of: `detection`, `endpoint`, `endpoint_trusted_apps`, `endpoint_events`, `endpoint_host_isolation_exceptions`, `endpoint_blocklists`."
+						description:      "The type of exception list. Can be one of: `detection`, `endpoint`, `endpoint_trusted_apps`, `endpoint_events`, `endpoint_host_isolation_exceptions`, `endpoint_blocklists`, `rule_default`."
 						description_kind: "markdown"
 						required:         true
 					}
@@ -31012,7 +31830,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												nested_type: {
 													attributes: query: {
 														type:             "string"
-														description:      "Filter query as a JSON object."
+														description:      "Filter query as a JSON-encoded ES Query DSL object. Accepts any valid ES Query DSL (regexp, wildcard, bool, range, etc.). Use jsonencode({...}) to construct the value."
 														description_kind: "plain"
 														optional:         true
 														computed:         true
@@ -31052,7 +31870,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												nested_type: {
 													attributes: query: {
 														type:             "string"
-														description:      "Filter query as a JSON object."
+														description:      "Filter query as a JSON-encoded ES Query DSL object. Accepts any valid ES Query DSL (regexp, wildcard, bool, range, etc.). Use jsonencode({...}) to construct the value."
 														description_kind: "plain"
 														optional:         true
 														computed:         true
@@ -31103,7 +31921,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												nested_type: {
 													attributes: query: {
 														type:             "string"
-														description:      "Filter query as a JSON object."
+														description:      "Filter query as a JSON-encoded ES Query DSL object. Accepts any valid ES Query DSL (regexp, wildcard, bool, range, etc.). Use jsonencode({...}) to construct the value."
 														description_kind: "plain"
 														optional:         true
 														computed:         true
@@ -32289,6 +33107,486 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 		}
 	}
 	data_source_schemas: {
+		elasticstack_elasticsearch_connector: {
+			version: 0
+			block: {
+				attributes: {
+					api_key_id: {
+						type:             "string"
+						description:      "ID of the API key used by the connector service for authorization."
+						description_kind: "markdown"
+						computed:         true
+					}
+					api_key_secret_id: {
+						type:             "string"
+						description:      "ID of the connector secret holding the API key (Elastic-managed connectors only)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					configuration: {
+						type:             "string"
+						description:      "Full registered configuration schema document from the connector service. JSON-encoded; use `jsondecode()` to inspect."
+						description_kind: "markdown"
+						computed:         true
+					}
+					connector_id: {
+						type:             "string"
+						description:      "Unique connector identifier to look up."
+						description_kind: "markdown"
+						required:         true
+					}
+					custom_scheduling: {
+						type:             "string"
+						description:      "Custom per-job-type scheduling overrides. JSON-encoded object; use `jsondecode()` to inspect."
+						description_kind: "markdown"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Connector description."
+						description_kind: "markdown"
+						computed:         true
+					}
+					error: {
+						type:             "string"
+						description:      "Connector-level error message, if any."
+						description_kind: "markdown"
+						computed:         true
+					}
+					features: {
+						nested_type: {
+							attributes: {
+								document_level_security: {
+									nested_type: {
+										attributes: enabled: {
+											type:             "bool"
+											description:      "Whether the feature is enabled."
+											description_kind: "markdown"
+											computed:         true
+										}
+										nesting_mode: "single"
+									}
+									description:      "Feature flag for `document_level_security`."
+									description_kind: "markdown"
+									computed:         true
+								}
+								incremental_sync: {
+									nested_type: {
+										attributes: enabled: {
+											type:             "bool"
+											description:      "Whether the feature is enabled."
+											description_kind: "markdown"
+											computed:         true
+										}
+										nesting_mode: "single"
+									}
+									description:      "Feature flag for `incremental_sync`."
+									description_kind: "markdown"
+									computed:         true
+								}
+								native_connector_api_keys: {
+									nested_type: {
+										attributes: enabled: {
+											type:             "bool"
+											description:      "Whether the feature is enabled."
+											description_kind: "markdown"
+											computed:         true
+										}
+										nesting_mode: "single"
+									}
+									description:      "Feature flag for `native_connector_api_keys`."
+									description_kind: "markdown"
+									computed:         true
+								}
+								sync_rules: {
+									nested_type: {
+										attributes: {
+											advanced: {
+												nested_type: {
+													attributes: enabled: {
+														type:             "bool"
+														description:      "Whether the feature is enabled."
+														description_kind: "markdown"
+														computed:         true
+													}
+													nesting_mode: "single"
+												}
+												description:      "Feature flag for `advanced`."
+												description_kind: "markdown"
+												computed:         true
+											}
+											basic: {
+												nested_type: {
+													attributes: enabled: {
+														type:             "bool"
+														description:      "Whether the feature is enabled."
+														description_kind: "markdown"
+														computed:         true
+													}
+													nesting_mode: "single"
+												}
+												description:      "Feature flag for `basic`."
+												description_kind: "markdown"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Sync rules feature flags."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Connector feature flags."
+						description_kind: "markdown"
+						computed:         true
+					}
+					filtering: {
+						type:             "string"
+						description:      "Connector filtering rules. JSON-encoded array; use `jsondecode()` to inspect."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Composite identifier in the form `<cluster_uuid>/<connector_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					index_name: {
+						type:             "string"
+						description:      "Destination Elasticsearch index name."
+						description_kind: "markdown"
+						computed:         true
+					}
+					is_native: {
+						type:             "bool"
+						description:      "Whether this is an Elastic-managed connector (`true`) or self-managed (`false`)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					language: {
+						type:             "string"
+						description:      "Analyzer language for the connector index."
+						description_kind: "markdown"
+						computed:         true
+					}
+					last_access_control_sync_error: {
+						type:             "string"
+						description:      "Error message from the last access-control sync job, if any."
+						description_kind: "markdown"
+						computed:         true
+					}
+					last_access_control_sync_scheduled_at: {
+						type:             "string"
+						description:      "ISO 8601 timestamp when the last access-control sync was scheduled."
+						description_kind: "markdown"
+						computed:         true
+					}
+					last_access_control_sync_status: {
+						type:             "string"
+						description:      "Status of the last access-control sync job."
+						description_kind: "markdown"
+						computed:         true
+					}
+					last_deleted_document_count: {
+						type:             "number"
+						description:      "Number of documents deleted during the last sync job."
+						description_kind: "markdown"
+						computed:         true
+					}
+					last_incremental_sync_scheduled_at: {
+						type:             "string"
+						description:      "ISO 8601 timestamp when the last incremental sync was scheduled."
+						description_kind: "markdown"
+						computed:         true
+					}
+					last_indexed_document_count: {
+						type:             "number"
+						description:      "Number of documents indexed during the last sync job."
+						description_kind: "markdown"
+						computed:         true
+					}
+					last_seen: {
+						type:             "string"
+						description:      "ISO 8601 timestamp when the connector service last reported in."
+						description_kind: "markdown"
+						computed:         true
+					}
+					last_sync_error: {
+						type:             "string"
+						description:      "Error message from the last sync job, if any."
+						description_kind: "markdown"
+						computed:         true
+					}
+					last_sync_scheduled_at: {
+						type:             "string"
+						description:      "ISO 8601 timestamp when the last sync job was scheduled."
+						description_kind: "markdown"
+						computed:         true
+					}
+					last_sync_status: {
+						type:             "string"
+						description:      "Status of the last sync job."
+						description_kind: "markdown"
+						computed:         true
+					}
+					last_synced: {
+						type:             "string"
+						description:      "ISO 8601 timestamp of the last completed sync."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Human-readable connector name."
+						description_kind: "markdown"
+						computed:         true
+					}
+					pipeline: {
+						nested_type: {
+							attributes: {
+								extract_binary_content: {
+									type:             "bool"
+									description:      "Whether to extract binary content during ingestion."
+									description_kind: "markdown"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Ingest pipeline name."
+									description_kind: "markdown"
+									computed:         true
+								}
+								reduce_whitespace: {
+									type:             "bool"
+									description:      "Whether to reduce whitespace in extracted text."
+									description_kind: "markdown"
+									computed:         true
+								}
+								run_ml_inference: {
+									type:             "bool"
+									description:      "Whether to run ML inference during ingestion."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Ingest pipeline settings applied to synced documents."
+						description_kind: "markdown"
+						computed:         true
+					}
+					scheduling: {
+						nested_type: {
+							attributes: {
+								access_control: {
+									nested_type: {
+										attributes: {
+											enabled: {
+												type:             "bool"
+												description:      "Whether this scheduled job type is enabled."
+												description_kind: "markdown"
+												computed:         true
+											}
+											interval: {
+												type:             "string"
+												description:      "Cron expression accepted by the Elasticsearch scheduler."
+												description_kind: "markdown"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Schedule for the `access_control` sync job type."
+									description_kind: "markdown"
+									computed:         true
+								}
+								full: {
+									nested_type: {
+										attributes: {
+											enabled: {
+												type:             "bool"
+												description:      "Whether this scheduled job type is enabled."
+												description_kind: "markdown"
+												computed:         true
+											}
+											interval: {
+												type:             "string"
+												description:      "Cron expression accepted by the Elasticsearch scheduler."
+												description_kind: "markdown"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Schedule for the `full` sync job type."
+									description_kind: "markdown"
+									computed:         true
+								}
+								incremental: {
+									nested_type: {
+										attributes: {
+											enabled: {
+												type:             "bool"
+												description:      "Whether this scheduled job type is enabled."
+												description_kind: "markdown"
+												computed:         true
+											}
+											interval: {
+												type:             "string"
+												description:      "Cron expression accepted by the Elasticsearch scheduler."
+												description_kind: "markdown"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Schedule for the `incremental` sync job type."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Sync scheduling for full, incremental, and access-control jobs."
+						description_kind: "markdown"
+						computed:         true
+					}
+					service_type: {
+						type:             "string"
+						description:      "Connector service type (for example `postgresql`, `mysql`, `github`)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Connector lifecycle status (for example `created`, `connected`, `error`)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					sync_cursor: {
+						type:             "string"
+						description:      "Opaque connector sync cursor state. JSON-encoded; use `jsondecode()` to inspect."
+						description_kind: "markdown"
+						computed:         true
+					}
+					sync_now: {
+						type:             "bool"
+						description:      "Whether a sync job is queued to run immediately."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					Reads an Elasticsearch content connector by `connector_id` via `GET /_connector/{connector_id}`. Requires Elasticsearch **8.16.0** or later (the connector APIs are GA from 8.12.0, but the request body shapes the provider sends only stabilized in 8.16.0).
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		elasticstack_elasticsearch_enrich_policy: {
 			version: 0
 			block: {
@@ -36958,6 +38256,224 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "plain"
 			}
 		}
+		elasticstack_elasticsearch_query_ruleset: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "Internal identifier in the form `<cluster_uuid>/<ruleset_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					rules: {
+						nested_type: {
+							attributes: {
+								actions: {
+									nested_type: {
+										attributes: {
+											docs: {
+												nested_type: {
+													attributes: {
+														"_id": {
+															type:             "string"
+															description:      "Unique document ID."
+															description_kind: "markdown"
+															computed:         true
+														}
+														"_index": {
+															type:             "string"
+															description:      "Index containing the document."
+															description_kind: "markdown"
+															computed:         true
+														}
+													}
+													nesting_mode: "list"
+												}
+												description:      "Documents pinned or excluded."
+												description_kind: "markdown"
+												computed:         true
+											}
+											ids: {
+												type: ["list", "string"]
+												description:      "Document IDs pinned or excluded."
+												description_kind: "markdown"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Actions taken when the rule matches."
+									description_kind: "markdown"
+									computed:         true
+								}
+								criteria: {
+									nested_type: {
+										attributes: {
+											metadata: {
+												type:             "string"
+												description:      "Metadata field matched against."
+												description_kind: "markdown"
+												computed:         true
+											}
+											type: {
+												type:             "string"
+												description:      "Criteria type."
+												description_kind: "markdown"
+												computed:         true
+											}
+											values: {
+												type:             "string"
+												description:      "JSON-encoded array of string or numeric values."
+												description_kind: "markdown"
+												computed:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "Match criteria for the rule."
+									description_kind: "markdown"
+									computed:         true
+								}
+								priority: {
+									type:             "number"
+									description:      "Relative priority within the ruleset."
+									description_kind: "markdown"
+									computed:         true
+								}
+								rule_id: {
+									type:             "string"
+									description:      "Unique identifier for the rule within the ruleset."
+									description_kind: "markdown"
+									computed:         true
+								}
+								type: {
+									type:             "string"
+									description:      "Rule type: `pinned` or `exclude`."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Ordered list of query rules for this ruleset."
+						description_kind: "markdown"
+						computed:         true
+					}
+					ruleset_id: {
+						type:             "string"
+						description:      "Unique identifier of the query ruleset to look up."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					Reads an Elasticsearch query ruleset via the [Query Rules API](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-rules-apis.html). Requires the `manage_search_query_rules` cluster privilege and Elasticsearch **8.16.0** or later (the Query Rules API is GA in 8.12, but the `priority` field and the `exclude` rule type exposed by this resource only stabilized in 8.16).
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		elasticstack_elasticsearch_security_role: {
 			version: 0
 			block: {
@@ -37020,9 +38536,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								allow_restricted_indices: {
 									type: "bool"
 									description: """
-												Include matching restricted indices in names parameter.
-
-												Usage is strongly discouraged as it can grant unrestricted operations on critical data, make the entire system unstable or leak sensitive information.
+												Include matching restricted indices in names parameter. Usage is strongly discouraged as it can grant unrestricted operations on critical data, make the entire system unstable or leak sensitive information.
 
 												"""
 									description_kind: "markdown"
@@ -37140,9 +38654,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							nesting_mode: "set"
 						}
 						description: """
-									A list of remote indices permissions entries.
-
-									Remote indices are effective for remote clusters configured with the API key based model. They have no effect for remote clusters configured with the certificate based model.
+									A list of remote indices permissions entries. Remote indices are effective for remote clusters configured with the API key based model. They have no effect for remote clusters configured with the certificate based model.
 
 									"""
 						description_kind: "markdown"
@@ -38077,6 +39589,152 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 				}
 				description:      "Gets information about the registered snapshot repositories."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_synonym_set: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					synonym_set_id: {
+						type:             "string"
+						description:      "The name of the synonym set to look up."
+						description_kind: "markdown"
+						required:         true
+					}
+					synonyms_set: {
+						nested_type: {
+							attributes: {
+								id: {
+									type:             "string"
+									description:      "The identifier for this synonym rule."
+									description_kind: "markdown"
+									computed:         true
+								}
+								synonyms: {
+									type:             "string"
+									description:      "The synonym rule in Solr format (e.g. `\"i-pod, i pod => ipod\"` or `\"universe, cosmos\"`)."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "The list of synonym rules for this synonym set."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					Reads an Elasticsearch synonym set. See the [synonym set API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/synonyms-apis.html) for more details.
+
+					"""
 				description_kind: "markdown"
 			}
 		}
@@ -39880,6 +41538,539 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 
 				Use the managed [`elasticstack_elasticsearch_security_api_key`](/docs/resources/elasticsearch_security_api_key) resource when credentials should remain in Terraform state.
 
+				"""
+			description_kind: "markdown"
+		}
+	}
+	action_schemas: {
+		elasticstack_elasticsearch_connector_sync_job_create: block: {
+			attributes: {
+				connector_id: {
+					type:             "string"
+					description:      "The id of the connector to sync."
+					description_kind: "markdown"
+					required:         true
+				}
+				job_type: {
+					type:             "string"
+					description:      "Sync job type: `full`, `incremental`, or `access_control`. Defaults to `full` when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+				trigger_method: {
+					type:             "string"
+					description:      "How the sync job was triggered: `on_demand` or `scheduled`. Defaults to `on_demand` when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+				wait_for_completion: {
+					type:             "bool"
+					description:      "When `true`, blocks until the sync job reaches a terminal status (`completed`, `cancelled`, `error`, or `suspended`). Defaults to `false` when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+			}
+			block_types: {
+				elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: invoke: {
+							type:             "string"
+							description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+							description_kind: "plain"
+							optional:         true
+						}
+						description_kind: "plain"
+					}
+				}
+			}
+			description: """
+				Creates an Elasticsearch connector sync job on demand. **Requires Terraform 1.14+** (provider-defined actions) and **Elasticsearch 8.16.0+** (the on-wire body shape stabilized in 8.16; the underlying API is available from 8.12 but rejects the field name the typed client produces).
+
+				Invokes `POST /_connector/_sync_job` for an existing connector. When `wait_for_completion` is `true`, polls `GET /_connector/_sync_job/{id}` until the job reaches a terminal status or the invoke timeout elapses. Sync job documents are retained after the action completes.
+				"""
+			description_kind: "markdown"
+		}
+		elasticstack_elasticsearch_snapshot_create: block: {
+			attributes: {
+				expand_wildcards: {
+					type:             "string"
+					description:      "Wildcard expansion for `indices`: `open`, `closed`, `hidden`, `none`, or `all`. Elasticsearch defaults to `open` when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+				feature_states: {
+					type: ["list", "string"]
+					description:      "Feature states to include in the snapshot."
+					description_kind: "markdown"
+					optional:         true
+				}
+				ignore_unavailable: {
+					type:             "bool"
+					description:      "Whether to ignore missing or closed indices. Elasticsearch defaults to `false` when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+				include_global_state: {
+					type:             "bool"
+					description:      "Whether to include cluster state. Elasticsearch defaults to `false` when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+				indices: {
+					type: ["list", "string"]
+					description:      "Index patterns to include in the snapshot. All indices are included when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+				metadata: {
+					type:             "string"
+					description:      "JSON-encoded metadata attached to the snapshot."
+					description_kind: "markdown"
+					optional:         true
+				}
+				partial: {
+					type:             "bool"
+					description:      "Whether to allow a partial snapshot when some shards are unavailable. Elasticsearch defaults to `false` when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+				repository: {
+					type:             "string"
+					description:      "Name of the snapshot repository."
+					description_kind: "markdown"
+					required:         true
+				}
+				snapshot: {
+					type:             "string"
+					description:      "Name to assign to the snapshot."
+					description_kind: "markdown"
+					required:         true
+				}
+				wait_for_completion: {
+					type:             "bool"
+					description:      "When `true`, waits until snapshot creation completes. Defaults to `true` when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+			}
+			block_types: {
+				elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: invoke: {
+							type:             "string"
+							description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+							description_kind: "plain"
+							optional:         true
+						}
+						description_kind: "plain"
+					}
+				}
+			}
+			description: """
+				Creates an Elasticsearch snapshot on demand. **Requires Terraform 1.14+** (provider-defined actions).
+
+				Invokes `POST /_snapshot/{repository}/{snapshot}`. See the [create snapshot API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create).
+				"""
+			description_kind: "markdown"
+		}
+		elasticstack_elasticsearch_snapshot_restore: block: {
+			attributes: {
+				feature_states: {
+					type: ["list", "string"]
+					description:      "Feature states to restore."
+					description_kind: "markdown"
+					optional:         true
+				}
+				ignore_index_settings: {
+					type: ["list", "string"]
+					description:      "Index settings to ignore during restore."
+					description_kind: "markdown"
+					optional:         true
+				}
+				ignore_unavailable: {
+					type:             "bool"
+					description:      "Whether to ignore missing or closed indices. Elasticsearch defaults to `false` when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+				include_aliases: {
+					type:             "bool"
+					description:      "Whether to restore index aliases. Elasticsearch defaults to `true` when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+				include_global_state: {
+					type:             "bool"
+					description:      "Whether to restore cluster state. Elasticsearch defaults to `false` when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+				index_settings: {
+					type:             "string"
+					description:      "JSON-encoded index settings overrides applied during restore."
+					description_kind: "markdown"
+					optional:         true
+				}
+				indices: {
+					type: ["list", "string"]
+					description:      "Index patterns to restore. All indices in the snapshot are restored when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+				partial: {
+					type:             "bool"
+					description:      "Whether to allow a partial restore when some shards are unavailable. Elasticsearch defaults to `false` when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+				rename_pattern: {
+					type:             "string"
+					description:      "Regular expression pattern used to rename restored indices."
+					description_kind: "markdown"
+					optional:         true
+				}
+				rename_replacement: {
+					type:             "string"
+					description:      "Replacement string applied with `rename_pattern`."
+					description_kind: "markdown"
+					optional:         true
+				}
+				repository: {
+					type:             "string"
+					description:      "Name of the snapshot repository."
+					description_kind: "markdown"
+					required:         true
+				}
+				snapshot: {
+					type:             "string"
+					description:      "Name of the snapshot to restore."
+					description_kind: "markdown"
+					required:         true
+				}
+				wait_for_completion: {
+					type:             "bool"
+					description:      "When `true`, waits until the restore completes. Defaults to `true` when omitted."
+					description_kind: "markdown"
+					optional:         true
+				}
+			}
+			block_types: {
+				elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								write_only:       true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: invoke: {
+							type:             "string"
+							description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+							description_kind: "plain"
+							optional:         true
+						}
+						description_kind: "plain"
+					}
+				}
+			}
+			description: """
+				Restores an Elasticsearch snapshot. **Requires Terraform 1.14+** (provider-defined actions).
+
+				Invokes `POST /_snapshot/{repository}/{snapshot}/_restore`. See the [restore snapshot API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore).
 				"""
 			description_kind: "markdown"
 		}
