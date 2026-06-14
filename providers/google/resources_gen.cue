@@ -36,6 +36,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_apigee_app_group": res.#google_apigee_app_group
 	_#res: "\(#googlePrefix)_apigee_control_plane_access": res.#google_apigee_control_plane_access
 	_#res: "\(#googlePrefix)_apigee_data_collector": res.#google_apigee_data_collector
+	_#res: "\(#googlePrefix)_apigee_datastore": res.#google_apigee_datastore
 	_#res: "\(#googlePrefix)_apigee_developer_app": res.#google_apigee_developer_app
 	_#res: "\(#googlePrefix)_apigee_developer": res.#google_apigee_developer
 	_#res: "\(#googlePrefix)_apigee_dns_zone": res.#google_apigee_dns_zone
@@ -160,6 +161,9 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_bigquery_reservation": res.#google_bigquery_reservation
 	_#res: "\(#googlePrefix)_bigquery_reservation_group": res.#google_bigquery_reservation_group
 	_#res: "\(#googlePrefix)_bigquery_routine": res.#google_bigquery_routine
+	_#res: "\(#googlePrefix)_bigquery_routine_iam_binding": res.#google_bigquery_routine_iam_binding
+	_#res: "\(#googlePrefix)_bigquery_routine_iam_member": res.#google_bigquery_routine_iam_member
+	_#res: "\(#googlePrefix)_bigquery_routine_iam_policy": res.#google_bigquery_routine_iam_policy
 	_#res: "\(#googlePrefix)_bigquery_row_access_policy": res.#google_bigquery_row_access_policy
 	_#res: "\(#googlePrefix)_bigquery_table": res.#google_bigquery_table
 	_#res: "\(#googlePrefix)_bigquery_table_iam_binding": res.#google_bigquery_table_iam_binding
@@ -206,6 +210,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_ces_guardrail": res.#google_ces_guardrail
 	_#res: "\(#googlePrefix)_ces_tool": res.#google_ces_tool
 	_#res: "\(#googlePrefix)_ces_toolset": res.#google_ces_toolset
+	_#res: "\(#googlePrefix)_chronicle_custom_list": res.#google_chronicle_custom_list
 	_#res: "\(#googlePrefix)_chronicle_dashboard_chart": res.#google_chronicle_dashboard_chart
 	_#res: "\(#googlePrefix)_chronicle_data_access_label": res.#google_chronicle_data_access_label
 	_#res: "\(#googlePrefix)_chronicle_data_access_scope": res.#google_chronicle_data_access_scope
@@ -515,6 +520,9 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_dataplex_asset_iam_policy": res.#google_dataplex_asset_iam_policy
 	_#res: "\(#googlePrefix)_dataplex_data_product_data_asset": res.#google_dataplex_data_product_data_asset
 	_#res: "\(#googlePrefix)_dataplex_data_product": res.#google_dataplex_data_product
+	_#res: "\(#googlePrefix)_dataplex_data_product_iam_binding": res.#google_dataplex_data_product_iam_binding
+	_#res: "\(#googlePrefix)_dataplex_data_product_iam_member": res.#google_dataplex_data_product_iam_member
+	_#res: "\(#googlePrefix)_dataplex_data_product_iam_policy": res.#google_dataplex_data_product_iam_policy
 	_#res: "\(#googlePrefix)_dataplex_datascan": res.#google_dataplex_datascan
 	_#res: "\(#googlePrefix)_dataplex_datascan_iam_binding": res.#google_dataplex_datascan_iam_binding
 	_#res: "\(#googlePrefix)_dataplex_datascan_iam_member": res.#google_dataplex_datascan_iam_member
@@ -623,6 +631,9 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_discovery_engine_recommendation_engine": res.#google_discovery_engine_recommendation_engine
 	_#res: "\(#googlePrefix)_discovery_engine_schema": res.#google_discovery_engine_schema
 	_#res: "\(#googlePrefix)_discovery_engine_search_engine": res.#google_discovery_engine_search_engine
+	_#res: "\(#googlePrefix)_discovery_engine_search_engine_iam_binding": res.#google_discovery_engine_search_engine_iam_binding
+	_#res: "\(#googlePrefix)_discovery_engine_search_engine_iam_member": res.#google_discovery_engine_search_engine_iam_member
+	_#res: "\(#googlePrefix)_discovery_engine_search_engine_iam_policy": res.#google_discovery_engine_search_engine_iam_policy
 	_#res: "\(#googlePrefix)_discovery_engine_serving_config": res.#google_discovery_engine_serving_config
 	_#res: "\(#googlePrefix)_discovery_engine_sitemap": res.#google_discovery_engine_sitemap
 	_#res: "\(#googlePrefix)_discovery_engine_target_site": res.#google_discovery_engine_target_site
@@ -863,6 +874,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_kms_key_ring_import_job": res.#google_kms_key_ring_import_job
 	_#res: "\(#googlePrefix)_kms_project_autokey_config": res.#google_kms_project_autokey_config
 	_#res: "\(#googlePrefix)_kms_secret_ciphertext": res.#google_kms_secret_ciphertext
+	_#res: "\(#googlePrefix)_license_manager_configuration": res.#google_license_manager_configuration
 	_#res: "\(#googlePrefix)_logging_billing_account_bucket_config": res.#google_logging_billing_account_bucket_config
 	_#res: "\(#googlePrefix)_logging_billing_account_exclusion": res.#google_logging_billing_account_exclusion
 	_#res: "\(#googlePrefix)_logging_billing_account_sink": res.#google_logging_billing_account_sink
@@ -898,6 +910,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_migration_center_assets_export_job": res.#google_migration_center_assets_export_job
 	_#res: "\(#googlePrefix)_migration_center_discovery_client": res.#google_migration_center_discovery_client
 	_#res: "\(#googlePrefix)_migration_center_group": res.#google_migration_center_group
+	_#res: "\(#googlePrefix)_migration_center_import_job": res.#google_migration_center_import_job
 	_#res: "\(#googlePrefix)_migration_center_preference_set": res.#google_migration_center_preference_set
 	_#res: "\(#googlePrefix)_migration_center_report_config": res.#google_migration_center_report_config
 	_#res: "\(#googlePrefix)_migration_center_report": res.#google_migration_center_report
@@ -968,6 +981,9 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_network_security_security_profile_group": res.#google_network_security_security_profile_group
 	_#res: "\(#googlePrefix)_network_security_server_tls_policy": res.#google_network_security_server_tls_policy
 	_#res: "\(#googlePrefix)_network_security_tls_inspection_policy": res.#google_network_security_tls_inspection_policy
+	_#res: "\(#googlePrefix)_network_security_ull_mirroring_collector": res.#google_network_security_ull_mirroring_collector
+	_#res: "\(#googlePrefix)_network_security_ull_mirroring_collector_rule": res.#google_network_security_ull_mirroring_collector_rule
+	_#res: "\(#googlePrefix)_network_security_ull_mirroring_engine": res.#google_network_security_ull_mirroring_engine
 	_#res: "\(#googlePrefix)_network_security_url_lists": res.#google_network_security_url_lists
 	_#res: "\(#googlePrefix)_network_services_authz_extension": res.#google_network_services_authz_extension
 	_#res: "\(#googlePrefix)_network_services_edge_cache_keyset": res.#google_network_services_edge_cache_keyset

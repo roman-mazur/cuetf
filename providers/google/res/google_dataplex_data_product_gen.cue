@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_data_product")
 	close({
+		access_approval_config?: matchN(1, [#access_approval_config, list.MaxItems(1) & [...#access_approval_config]])
 		access_groups?: matchN(1, [#access_groups, [...#access_groups]])
 		timeouts?: #timeouts
 
@@ -57,6 +58,9 @@ import "list"
 		// The location for the data product.
 		location!: string
 
+		// The relative resource name of the data product.
+		name?: string
+
 		// Emails of the owners.
 		owner_emails!: [...string]
 		project?: string
@@ -70,6 +74,12 @@ import "list"
 
 		// Last update timestamp.
 		update_time?: string
+	})
+
+	#access_approval_config: close({
+		// Specifies the email addresses of users who are potential
+		// approvers.
+		approver_emails?: [...string]
 	})
 
 	#access_groups: close({

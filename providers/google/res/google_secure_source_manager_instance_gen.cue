@@ -91,6 +91,12 @@ import "list"
 		// 'Indicate if it's private instance.'
 		is_private!: bool
 
+		// Optional. Additional allowed projects for setting up PSC
+		// connections.
+		// Instance host project is automatically allowed and does not
+		// need to be included in this list.
+		psc_allowed_projects?: [...string]
+
 		// Service Attachment for SSH, resource is in the format of
 		// 'projects/{project}/regions/{region}/serviceAttachments/{service_attachment}'.
 		ssh_service_attachment?: string

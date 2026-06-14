@@ -7,7 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_hypercomputecluster_cluster")
 	close({
 		compute_resources?: matchN(1, [#compute_resources, [...#compute_resources]])
-		network_resources?: matchN(1, [#network_resources, [...#network_resources]])
+		network_resources!: matchN(1, [#network_resources, [_, ...] & [...#network_resources]])
 		orchestrator?: matchN(1, [#orchestrator, list.MaxItems(1) & [...#orchestrator]])
 		storage_resources?: matchN(1, [#storage_resources, [...#storage_resources]])
 		timeouts?: #timeouts
