@@ -6,6 +6,7 @@ package res
 	close({
 		credential_provider_configuration?: matchN(1, [#credential_provider_configuration, [...#credential_provider_configuration]])
 		metadata_configuration?: matchN(1, [#metadata_configuration, [...#metadata_configuration]])
+		private_endpoint?: matchN(1, [#private_endpoint, [...#private_endpoint]])
 		target_configuration?: matchN(1, [#target_configuration, [...#target_configuration]])
 		timeouts?:           #timeouts
 		description?:        string
@@ -40,6 +41,11 @@ package res
 		// A list of HTTP headers that are allowed to be propagated from
 		// the target response back to the client.
 		allowed_response_headers?: [...string]
+	})
+
+	#private_endpoint: close({
+		managed_vpc_resource?: matchN(1, [_#defs."/$defs/private_endpoint/$defs/managed_vpc_resource", [..._#defs."/$defs/private_endpoint/$defs/managed_vpc_resource"]])
+		self_managed_lattice_resource?: matchN(1, [_#defs."/$defs/private_endpoint/$defs/self_managed_lattice_resource", [..._#defs."/$defs/private_endpoint/$defs/self_managed_lattice_resource"]])
 	})
 
 	#target_configuration: close({
@@ -111,6 +117,19 @@ package res
 		grant_type?:   string
 		provider_arn!: string
 		scopes!: [...string]
+	})
+
+	_#defs: "/$defs/private_endpoint/$defs/managed_vpc_resource": close({
+		endpoint_ip_address_type!: string
+		routing_domain?:           string
+		security_group_ids?: [...string]
+		subnet_ids!: [...string]
+		tags?: [string]: string
+		vpc_identifier!: string
+	})
+
+	_#defs: "/$defs/private_endpoint/$defs/self_managed_lattice_resource": close({
+		resource_configuration_identifier!: string
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/http": close({
@@ -318,7 +337,8 @@ package res
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/mcp_server": close({
-		endpoint!: string
+		endpoint!:     string
+		listing_mode?: string
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/open_api_schema": close({

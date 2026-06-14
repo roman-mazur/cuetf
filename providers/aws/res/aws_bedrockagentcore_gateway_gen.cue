@@ -6,6 +6,7 @@ package res
 	close({
 		authorizer_configuration?: matchN(1, [#authorizer_configuration, [...#authorizer_configuration]])
 		interceptor_configuration?: matchN(1, [#interceptor_configuration, [...#interceptor_configuration]])
+		policy_engine_configuration?: matchN(1, [#policy_engine_configuration, [...#policy_engine_configuration]])
 		protocol_configuration?: matchN(1, [#protocol_configuration, [...#protocol_configuration]])
 		timeouts?:        #timeouts
 		authorizer_type!: string
@@ -39,6 +40,11 @@ package res
 		input_configuration?: matchN(1, [_#defs."/$defs/interceptor_configuration/$defs/input_configuration", [..._#defs."/$defs/interceptor_configuration/$defs/input_configuration"]])
 		interceptor?: matchN(1, [_#defs."/$defs/interceptor_configuration/$defs/interceptor", [..._#defs."/$defs/interceptor_configuration/$defs/interceptor"]])
 		interception_points!: [...string]
+	})
+
+	#policy_engine_configuration: close({
+		arn!:  string
+		mode!: string
 	})
 
 	#protocol_configuration: close({

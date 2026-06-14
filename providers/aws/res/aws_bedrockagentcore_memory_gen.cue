@@ -4,6 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_memory")
 	close({
+		indexed_key?: matchN(1, [#indexed_key, [...#indexed_key]])
+		stream_delivery_resources?: matchN(1, [#stream_delivery_resources, [...#stream_delivery_resources]])
 		timeouts?:                  #timeouts
 		arn?:                       string
 		description?:               string
@@ -22,6 +24,15 @@ package res
 		tags_all?: [string]: string
 	})
 
+	#indexed_key: close({
+		key!:  string
+		type!: string
+	})
+
+	#stream_delivery_resources: close({
+		resource?: matchN(1, [_#defs."/$defs/stream_delivery_resources/$defs/resource", [..._#defs."/$defs/stream_delivery_resources/$defs/resource"]])
+	})
+
 	#timeouts: close({
 		// A string that can be [parsed as a
 		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
@@ -37,5 +48,19 @@ package res
 		// changes are saved into state before the destroy operation
 		// occurs.
 		delete?: string
+	})
+
+	_#defs: "/$defs/stream_delivery_resources/$defs/resource": close({
+		kinesis?: matchN(1, [_#defs."/$defs/stream_delivery_resources/$defs/resource/$defs/kinesis", [..._#defs."/$defs/stream_delivery_resources/$defs/resource/$defs/kinesis"]])
+	})
+
+	_#defs: "/$defs/stream_delivery_resources/$defs/resource/$defs/kinesis": close({
+		content_configuration?: matchN(1, [_#defs."/$defs/stream_delivery_resources/$defs/resource/$defs/kinesis/$defs/content_configuration", [..._#defs."/$defs/stream_delivery_resources/$defs/resource/$defs/kinesis/$defs/content_configuration"]])
+		data_stream_arn!: string
+	})
+
+	_#defs: "/$defs/stream_delivery_resources/$defs/resource/$defs/kinesis/$defs/content_configuration": close({
+		level?: string
+		type!:  string
 	})
 }

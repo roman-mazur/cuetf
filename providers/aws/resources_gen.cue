@@ -199,6 +199,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_bedrockagentcore_oauth2_credential_provider": res.#aws_bedrockagentcore_oauth2_credential_provider
 	_#res: "\(#awsPrefix)_bedrockagentcore_online_evaluation_config": res.#aws_bedrockagentcore_online_evaluation_config
 	_#res: "\(#awsPrefix)_bedrockagentcore_policy_engine": res.#aws_bedrockagentcore_policy_engine
+	_#res: "\(#awsPrefix)_bedrockagentcore_policy": res.#aws_bedrockagentcore_policy
 	_#res: "\(#awsPrefix)_bedrockagentcore_resource_policy": res.#aws_bedrockagentcore_resource_policy
 	_#res: "\(#awsPrefix)_bedrockagentcore_token_vault_cmk": res.#aws_bedrockagentcore_token_vault_cmk
 	_#res: "\(#awsPrefix)_bedrockagentcore_workload_identity": res.#aws_bedrockagentcore_workload_identity
@@ -292,6 +293,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_cloudwatch_log_index_policy": res.#aws_cloudwatch_log_index_policy
 	_#res: "\(#awsPrefix)_cloudwatch_log_metric_filter": res.#aws_cloudwatch_log_metric_filter
 	_#res: "\(#awsPrefix)_cloudwatch_log_resource_policy": res.#aws_cloudwatch_log_resource_policy
+	_#res: "\(#awsPrefix)_cloudwatch_log_s3_table_integration_source": res.#aws_cloudwatch_log_s3_table_integration_source
 	_#res: "\(#awsPrefix)_cloudwatch_log_stream": res.#aws_cloudwatch_log_stream
 	_#res: "\(#awsPrefix)_cloudwatch_log_subscription_filter": res.#aws_cloudwatch_log_subscription_filter
 	_#res: "\(#awsPrefix)_cloudwatch_log_transformer": res.#aws_cloudwatch_log_transformer
@@ -593,6 +595,8 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_ecs_capacity_provider": res.#aws_ecs_capacity_provider
 	_#res: "\(#awsPrefix)_ecs_cluster_capacity_providers": res.#aws_ecs_cluster_capacity_providers
 	_#res: "\(#awsPrefix)_ecs_cluster": res.#aws_ecs_cluster
+	_#res: "\(#awsPrefix)_ecs_daemon": res.#aws_ecs_daemon
+	_#res: "\(#awsPrefix)_ecs_daemon_task_definition": res.#aws_ecs_daemon_task_definition
 	_#res: "\(#awsPrefix)_ecs_express_gateway_service": res.#aws_ecs_express_gateway_service
 	_#res: "\(#awsPrefix)_ecs_service": res.#aws_ecs_service
 	_#res: "\(#awsPrefix)_ecs_tag": res.#aws_ecs_tag
@@ -1038,6 +1042,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_oam_sink": res.#aws_oam_sink
 	_#res: "\(#awsPrefix)_oam_sink_policy": res.#aws_oam_sink_policy
 	_#res: "\(#awsPrefix)_observabilityadmin_centralization_rule_for_organization": res.#aws_observabilityadmin_centralization_rule_for_organization
+	_#res: "\(#awsPrefix)_observabilityadmin_s3_table_integration": res.#aws_observabilityadmin_s3_table_integration
 	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_enrichment": res.#aws_observabilityadmin_telemetry_enrichment
 	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_evaluation_for_organization": res.#aws_observabilityadmin_telemetry_evaluation_for_organization
 	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_evaluation": res.#aws_observabilityadmin_telemetry_evaluation
