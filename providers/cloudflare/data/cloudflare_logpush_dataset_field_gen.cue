@@ -19,9 +19,11 @@ package data
 		// "email_security_post_delivery_events", "firewall_events",
 		// "gateway_dns", "gateway_http", "gateway_network",
 		// "http_requests", "ipsec_logs", "magic_ids_detections",
-		// "mcp_portal_logs", "nel_reports", "network_analytics_logs",
-		// "page_shield_events", "sinkhole_http_logs", "spectrum_events",
-		// "ssh_logs", "warp_config_changes", "warp_toggle_changes",
+		// "mcp_portal_logs", "mnm_flow_logs", "nel_reports",
+		// "network_analytics_logs", "page_shield_events",
+		// "sinkhole_http_logs", "spectrum_events", "ssh_logs",
+		// "turnstile_events", "warp_config_changes",
+		// "warp_toggle_changes", "websocket_analytics",
 		// "workers_trace_events", "zaraz_events",
 		// "zero_trust_network_sessions".
 		dataset_id?: string

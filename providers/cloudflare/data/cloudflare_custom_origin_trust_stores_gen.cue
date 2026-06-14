@@ -10,7 +10,7 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
-		// Offset the results
+		// Offset the results.
 		offset?: number
 
 		// Identifier.
@@ -18,8 +18,9 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// The zone's SSL certificate or certificate and the
-			// intermediate(s).
+			// The root CA certificate in PEM format. Only root CA
+			// certificates are accepted; intermediate and leaf certificates
+			// are not supported.
 			certificate?: string
 
 			// When the certificate expires.
@@ -45,8 +46,9 @@ package data
 			// When the certificate was uploaded to Cloudflare.
 			uploaded_on?: string
 		}), [...close({
-			// The zone's SSL certificate or certificate and the
-			// intermediate(s).
+			// The root CA certificate in PEM format. Only root CA
+			// certificates are accepted; intermediate and leaf certificates
+			// are not supported.
 			certificate?: string
 
 			// When the certificate expires.

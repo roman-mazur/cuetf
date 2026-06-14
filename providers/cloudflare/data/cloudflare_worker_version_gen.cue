@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_worker_version")
 	close({
 		// Identifier.
-		account_id?: string
+		account_id!: string
 
 		// Date indicating targeted support in the Workers runtime.
 		// Backwards incompatible fixes to the runtime following this
@@ -303,6 +303,12 @@ package data
 				// The limit (requests per period).
 				limit?: number
 
+				// Duration in seconds to apply the mitigation action after the
+				// rate limit is exceeded. Valid values are 0 (disabled), 10, or
+				// multiples of 60 up to 86400. Must be greater than or equal to
+				// the period when non-zero.
+				mitigation_timeout?: number
+
 				// The period in seconds.
 				period?: number
 			})
@@ -489,6 +495,12 @@ package data
 			simple?: close({
 				// The limit (requests per period).
 				limit?: number
+
+				// Duration in seconds to apply the mitigation action after the
+				// rate limit is exceeded. Valid values are 0 (disabled), 10, or
+				// multiples of 60 up to 86400. Must be greater than or equal to
+				// the period when non-zero.
+				mitigation_timeout?: number
 
 				// The period in seconds.
 				period?: number

@@ -10,6 +10,9 @@ package res
 		// The country in which the user lives.
 		country?: string
 
+		// Current email address of the user.
+		email?: string
+
 		// User's first name
 		first_name?: string
 

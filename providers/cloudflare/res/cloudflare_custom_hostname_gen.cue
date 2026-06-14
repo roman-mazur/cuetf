@@ -78,14 +78,14 @@ package res
 			// Available values: "ubiquitous", "optimal", "force".
 			bundle_method?: string
 
-			// The Certificate Authority that will issue the certificate
+			// The Certificate Authority that will issue the certificate.
 			// Available values: "digicert", "google", "lets_encrypt",
 			// "ssl_com".
 			certificate_authority?: string
 
 			// Whether or not to add Cloudflare Branding for the order. This
 			// will add a subdomain of sni.cloudflaressl.com as the Common
-			// Name if set to true
+			// Name if set to true.
 			cloudflare_branding?: bool
 
 			// If a custom uploaded certificate is used.
@@ -110,7 +110,7 @@ package res
 			wildcard?: bool
 
 			// Array of custom certificate and key pairs (1 or 2 pairs
-			// allowed)
+			// allowed).
 			custom_cert_bundle?: matchN(1, [close({
 				// If a custom uploaded certificate is used.
 				custom_certificate!: string

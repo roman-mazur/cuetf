@@ -61,6 +61,10 @@ package res
 		// Available values: "direct", "http", "https".
 		traffic_type?: string
 
+		// Optional UUID of a virtual network for routing origin traffic
+		// through tunnel virtual networks.
+		virtual_network_id?: string
+
 		// Zone identifier.
 		zone_id?: string
 

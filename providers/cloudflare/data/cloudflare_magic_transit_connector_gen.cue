@@ -7,7 +7,7 @@ package data
 		// Account identifier
 		account_id?:   string
 		activated?:    bool
-		connector_id!: string
+		connector_id?: string
 		id?:           string
 
 		// Allowed days of the week for upgrades. Default is all days.
@@ -26,6 +26,14 @@ package data
 		device?: close({
 			id?:            string
 			serial_number?: string
+
+			// Available values: "MANAGED", "LICENSED".
+			type?: string
+		})
+		filter?: close({
+			// Filter connectors by device type.
+			// Available values: "MANAGED", "LICENSED".
+			device_type?: string
 		})
 	})
 }

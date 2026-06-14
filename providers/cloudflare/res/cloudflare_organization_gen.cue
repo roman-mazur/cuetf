@@ -16,6 +16,19 @@ package res
 				account_mobility?:  string
 				sub_org_creation?:  string
 			})
+
+			// Ordered chain of organization tags from the root organization
+			// down to
+			// (and including) this organization itself. Root organizations
+			// return a
+			// single-element array containing their own tag;
+			// sub-organizations return
+			// `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful
+			// for
+			// constructing authorization scopes that need to cover every
+			// ancestor
+			// in the hierarchy.
+			hierarchy_tags?: [...string]
 			managed_by?: string
 		})
 		parent?: close({

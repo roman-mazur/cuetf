@@ -14,7 +14,8 @@ package res
 		// value will have
 		// no effect on an existing, enabled hold. Providing an empty
 		// string will set its value
-		// to the current time.
+		// to the current time. Providing `null` will disable the hold
+		// indefinitely.
 		hold_after?: string
 
 		// Identifier.

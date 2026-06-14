@@ -10,7 +10,7 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
-		// Offset the results
+		// Offset the results.
 		offset?: number
 
 		// Identifier.

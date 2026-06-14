@@ -8,7 +8,10 @@ package data
 		account_id?: string
 
 		// Max items to fetch, default: 1000
-		max_items?:   number
+		max_items?: number
+
+		// Filters sinks by name (case-insensitive substring).
+		name?:        string
 		pipeline_id?: string
 
 		// The items returned by the data source

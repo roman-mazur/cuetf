@@ -18,7 +18,9 @@ package data
 			allow_null_cipher?: bool
 
 			// True if automatic stateful return routing should be enabled for
-			// a tunnel, false otherwise.
+			// a tunnel, false otherwise. Requires the `coupler_integration`
+			// account flag to be enabled; requests setting this to `true`
+			// without that flag will be rejected.
 			automatic_return_routing?: bool
 
 			// The IP address assigned to the Cloudflare side of the IPsec

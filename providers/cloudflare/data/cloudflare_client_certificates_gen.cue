@@ -10,7 +10,7 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
-		// Offset the results
+		// Offset the results.
 		offset?: number
 
 		// Client Certitifcate Status to filter results by.
@@ -23,38 +23,38 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// The Client Certificate PEM
+			// The Client Certificate PEM.
 			certificate?: string
 
-			// Common Name of the Client Certificate
+			// Common Name of the Client Certificate.
 			common_name?: string
 
-			// Country, provided by the CSR
+			// Country, provided by the CSR.
 			country?: string
 
 			// The Certificate Signing Request (CSR). Must be newline-encoded.
 			csr?: string
 
-			// Date that the Client Certificate expires
+			// Date that the Client Certificate expires.
 			expires_on?: string
 
-			// Unique identifier of the Client Certificate
+			// Unique identifier of the Client Certificate.
 			fingerprint_sha256?: string
 
 			// Identifier.
 			id?: string
 
 			// Date that the Client Certificate was issued by the Certificate
-			// Authority
+			// Authority.
 			issued_on?: string
 
-			// Location, provided by the CSR
+			// Location, provided by the CSR.
 			location?: string
 
-			// Organization, provided by the CSR
+			// Organization, provided by the CSR.
 			organization?: string
 
-			// Organizational Unit, provided by the CSR
+			// Organizational Unit, provided by the CSR.
 			organizational_unit?: string
 
 			// The serial number on the created Client Certificate.
@@ -63,61 +63,61 @@ package data
 			// The type of hash used for the Client Certificate..
 			signature?: string
 
-			// Subject Key Identifier
+			// Subject Key Identifier.
 			ski?: string
 
-			// State, provided by the CSR
+			// State, provided by the CSR.
 			state?: string
 
 			// Client Certificates may be active or revoked, and the
 			// pending_reactivation or pending_revocation represent
-			// in-progress asynchronous transitions
+			// in-progress asynchronous transitions.
 			// Available values: "active", "pending_reactivation",
 			// "pending_revocation", "revoked".
 			status?: string
 
 			// The number of days the Client Certificate will be valid after
-			// the issued_on date
+			// the issued_on date.
 			validity_days?: number
 
-			// Certificate Authority used to issue the Client Certificate
+			// Certificate Authority used to issue the Client Certificate.
 			certificate_authority?: close({
 				id?:   string
 				name?: string
 			})
 		}), [...close({
-			// The Client Certificate PEM
+			// The Client Certificate PEM.
 			certificate?: string
 
-			// Common Name of the Client Certificate
+			// Common Name of the Client Certificate.
 			common_name?: string
 
-			// Country, provided by the CSR
+			// Country, provided by the CSR.
 			country?: string
 
 			// The Certificate Signing Request (CSR). Must be newline-encoded.
 			csr?: string
 
-			// Date that the Client Certificate expires
+			// Date that the Client Certificate expires.
 			expires_on?: string
 
-			// Unique identifier of the Client Certificate
+			// Unique identifier of the Client Certificate.
 			fingerprint_sha256?: string
 
 			// Identifier.
 			id?: string
 
 			// Date that the Client Certificate was issued by the Certificate
-			// Authority
+			// Authority.
 			issued_on?: string
 
-			// Location, provided by the CSR
+			// Location, provided by the CSR.
 			location?: string
 
-			// Organization, provided by the CSR
+			// Organization, provided by the CSR.
 			organization?: string
 
-			// Organizational Unit, provided by the CSR
+			// Organizational Unit, provided by the CSR.
 			organizational_unit?: string
 
 			// The serial number on the created Client Certificate.
@@ -126,24 +126,24 @@ package data
 			// The type of hash used for the Client Certificate..
 			signature?: string
 
-			// Subject Key Identifier
+			// Subject Key Identifier.
 			ski?: string
 
-			// State, provided by the CSR
+			// State, provided by the CSR.
 			state?: string
 
 			// Client Certificates may be active or revoked, and the
 			// pending_reactivation or pending_revocation represent
-			// in-progress asynchronous transitions
+			// in-progress asynchronous transitions.
 			// Available values: "active", "pending_reactivation",
 			// "pending_revocation", "revoked".
 			status?: string
 
 			// The number of days the Client Certificate will be valid after
-			// the issued_on date
+			// the issued_on date.
 			validity_days?: number
 
-			// Certificate Authority used to issue the Client Certificate
+			// Certificate Authority used to issue the Client Certificate.
 			certificate_authority?: close({
 				id?:   string
 				name?: string

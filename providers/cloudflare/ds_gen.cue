@@ -29,6 +29,8 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_ai_gateways": data.#cloudflare_ai_gateways
 	_#ds: "\(#cloudflarePrefix)_ai_search_instance": data.#cloudflare_ai_search_instance
 	_#ds: "\(#cloudflarePrefix)_ai_search_instances": data.#cloudflare_ai_search_instances
+	_#ds: "\(#cloudflarePrefix)_ai_search_namespace": data.#cloudflare_ai_search_namespace
+	_#ds: "\(#cloudflarePrefix)_ai_search_namespaces": data.#cloudflare_ai_search_namespaces
 	_#ds: "\(#cloudflarePrefix)_ai_search_token": data.#cloudflare_ai_search_token
 	_#ds: "\(#cloudflarePrefix)_ai_search_tokens": data.#cloudflare_ai_search_tokens
 	_#ds: "\(#cloudflarePrefix)_api_shield_discovery_operations": data.#cloudflare_api_shield_discovery_operations
@@ -73,6 +75,8 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_connectivity_directory_services": data.#cloudflare_connectivity_directory_services
 	_#ds: "\(#cloudflarePrefix)_content_scanning_expressions": data.#cloudflare_content_scanning_expressions
 	_#ds: "\(#cloudflarePrefix)_content_scanning": data.#cloudflare_content_scanning
+	_#ds: "\(#cloudflarePrefix)_custom_csr": data.#cloudflare_custom_csr
+	_#ds: "\(#cloudflarePrefix)_custom_csrs": data.#cloudflare_custom_csrs
 	_#ds: "\(#cloudflarePrefix)_custom_hostname_fallback_origin": data.#cloudflare_custom_hostname_fallback_origin
 	_#ds: "\(#cloudflarePrefix)_custom_hostname": data.#cloudflare_custom_hostname
 	_#ds: "\(#cloudflarePrefix)_custom_hostnames": data.#cloudflare_custom_hostnames
@@ -87,6 +91,8 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_d1_database": data.#cloudflare_d1_database
 	_#ds: "\(#cloudflarePrefix)_d1_databases": data.#cloudflare_d1_databases
 	_#ds: "\(#cloudflarePrefix)_dcv_delegation": data.#cloudflare_dcv_delegation
+	_#ds: "\(#cloudflarePrefix)_dls_prefix_binding": data.#cloudflare_dls_prefix_binding
+	_#ds: "\(#cloudflarePrefix)_dls_prefix_bindings": data.#cloudflare_dls_prefix_bindings
 	_#ds: "\(#cloudflarePrefix)_dns_firewall": data.#cloudflare_dns_firewall
 	_#ds: "\(#cloudflarePrefix)_dns_firewalls": data.#cloudflare_dns_firewalls
 	_#ds: "\(#cloudflarePrefix)_dns_record": data.#cloudflare_dns_record
@@ -116,6 +122,11 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_filters": data.#cloudflare_filters
 	_#ds: "\(#cloudflarePrefix)_firewall_rule": data.#cloudflare_firewall_rule
 	_#ds: "\(#cloudflarePrefix)_firewall_rules": data.#cloudflare_firewall_rules
+	_#ds: "\(#cloudflarePrefix)_flagship_app": data.#cloudflare_flagship_app
+	_#ds: "\(#cloudflarePrefix)_flagship_apps": data.#cloudflare_flagship_apps
+	_#ds: "\(#cloudflarePrefix)_flagship_flag": data.#cloudflare_flagship_flag
+	_#ds: "\(#cloudflarePrefix)_flagship_flags": data.#cloudflare_flagship_flags
+	_#ds: "\(#cloudflarePrefix)_google_tag_gateway": data.#cloudflare_google_tag_gateway
 	_#ds: "\(#cloudflarePrefix)_healthcheck": data.#cloudflare_healthcheck
 	_#ds: "\(#cloudflarePrefix)_healthchecks": data.#cloudflare_healthchecks
 	_#ds: "\(#cloudflarePrefix)_hostname_tls_setting": data.#cloudflare_hostname_tls_setting
@@ -136,6 +147,8 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_lists": data.#cloudflare_lists
 	_#ds: "\(#cloudflarePrefix)_load_balancer": data.#cloudflare_load_balancer
 	_#ds: "\(#cloudflarePrefix)_load_balancer_monitor": data.#cloudflare_load_balancer_monitor
+	_#ds: "\(#cloudflarePrefix)_load_balancer_monitor_group": data.#cloudflare_load_balancer_monitor_group
+	_#ds: "\(#cloudflarePrefix)_load_balancer_monitor_groups": data.#cloudflare_load_balancer_monitor_groups
 	_#ds: "\(#cloudflarePrefix)_load_balancer_monitors": data.#cloudflare_load_balancer_monitors
 	_#ds: "\(#cloudflarePrefix)_load_balancer_pool": data.#cloudflare_load_balancer_pool
 	_#ds: "\(#cloudflarePrefix)_load_balancer_pools": data.#cloudflare_load_balancer_pools
@@ -169,12 +182,17 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_notification_policy": data.#cloudflare_notification_policy
 	_#ds: "\(#cloudflarePrefix)_notification_policy_webhooks": data.#cloudflare_notification_policy_webhooks
 	_#ds: "\(#cloudflarePrefix)_notification_policy_webhooks_list": data.#cloudflare_notification_policy_webhooks_list
+	_#ds: "\(#cloudflarePrefix)_oauth_client": data.#cloudflare_oauth_client
+	_#ds: "\(#cloudflarePrefix)_oauth_clients": data.#cloudflare_oauth_clients
+	_#ds: "\(#cloudflarePrefix)_oauth_scopes": data.#cloudflare_oauth_scopes
 	_#ds: "\(#cloudflarePrefix)_observatory_scheduled_test": data.#cloudflare_observatory_scheduled_test
 	_#ds: "\(#cloudflarePrefix)_organization": data.#cloudflare_organization
 	_#ds: "\(#cloudflarePrefix)_organization_profile": data.#cloudflare_organization_profile
 	_#ds: "\(#cloudflarePrefix)_organizations": data.#cloudflare_organizations
 	_#ds: "\(#cloudflarePrefix)_origin_ca_certificate": data.#cloudflare_origin_ca_certificate
 	_#ds: "\(#cloudflarePrefix)_origin_ca_certificates": data.#cloudflare_origin_ca_certificates
+	_#ds: "\(#cloudflarePrefix)_origin_cloud_region": data.#cloudflare_origin_cloud_region
+	_#ds: "\(#cloudflarePrefix)_origin_cloud_regions": data.#cloudflare_origin_cloud_regions
 	_#ds: "\(#cloudflarePrefix)_page_rule": data.#cloudflare_page_rule
 	_#ds: "\(#cloudflarePrefix)_page_shield_connections": data.#cloudflare_page_shield_connections
 	_#ds: "\(#cloudflarePrefix)_page_shield_connections_list": data.#cloudflare_page_shield_connections_list
@@ -221,6 +239,16 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_schema_validation_schemas": data.#cloudflare_schema_validation_schemas
 	_#ds: "\(#cloudflarePrefix)_schema_validation_schemas_list": data.#cloudflare_schema_validation_schemas_list
 	_#ds: "\(#cloudflarePrefix)_schema_validation_settings": data.#cloudflare_schema_validation_settings
+	_#ds: "\(#cloudflarePrefix)_secrets_store": data.#cloudflare_secrets_store
+	_#ds: "\(#cloudflarePrefix)_secrets_store_secret": data.#cloudflare_secrets_store_secret
+	_#ds: "\(#cloudflarePrefix)_secrets_store_secrets": data.#cloudflare_secrets_store_secrets
+	_#ds: "\(#cloudflarePrefix)_secrets_stores": data.#cloudflare_secrets_stores
+	_#ds: "\(#cloudflarePrefix)_share": data.#cloudflare_share
+	_#ds: "\(#cloudflarePrefix)_share_recipient": data.#cloudflare_share_recipient
+	_#ds: "\(#cloudflarePrefix)_share_recipients": data.#cloudflare_share_recipients
+	_#ds: "\(#cloudflarePrefix)_share_resource": data.#cloudflare_share_resource
+	_#ds: "\(#cloudflarePrefix)_share_resources": data.#cloudflare_share_resources
+	_#ds: "\(#cloudflarePrefix)_shares": data.#cloudflare_shares
 	_#ds: "\(#cloudflarePrefix)_snippet": data.#cloudflare_snippet
 	_#ds: "\(#cloudflarePrefix)_snippet_list": data.#cloudflare_snippet_list
 	_#ds: "\(#cloudflarePrefix)_snippet_rules_list": data.#cloudflare_snippet_rules_list
@@ -324,6 +352,8 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_zero_trust_device_default_profile_certificates": data.#cloudflare_zero_trust_device_default_profile_certificates
 	_#ds: "\(#cloudflarePrefix)_zero_trust_device_default_profile": data.#cloudflare_zero_trust_device_default_profile
 	_#ds: "\(#cloudflarePrefix)_zero_trust_device_default_profile_local_domain_fallback": data.#cloudflare_zero_trust_device_default_profile_local_domain_fallback
+	_#ds: "\(#cloudflarePrefix)_zero_trust_device_deployment_groups": data.#cloudflare_zero_trust_device_deployment_groups
+	_#ds: "\(#cloudflarePrefix)_zero_trust_device_deployment_groups_list": data.#cloudflare_zero_trust_device_deployment_groups_list
 	_#ds: "\(#cloudflarePrefix)_zero_trust_device_ip_profile": data.#cloudflare_zero_trust_device_ip_profile
 	_#ds: "\(#cloudflarePrefix)_zero_trust_device_ip_profiles": data.#cloudflare_zero_trust_device_ip_profiles
 	_#ds: "\(#cloudflarePrefix)_zero_trust_device_managed_networks": data.#cloudflare_zero_trust_device_managed_networks
@@ -341,6 +371,12 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_custom_entries": data.#cloudflare_zero_trust_dlp_custom_entries
 	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_custom_entry": data.#cloudflare_zero_trust_dlp_custom_entry
 	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_custom_profile": data.#cloudflare_zero_trust_dlp_custom_profile
+	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_data_class": data.#cloudflare_zero_trust_dlp_data_class
+	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_data_classes": data.#cloudflare_zero_trust_dlp_data_classes
+	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_data_tag_categories": data.#cloudflare_zero_trust_dlp_data_tag_categories
+	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_data_tag_category": data.#cloudflare_zero_trust_dlp_data_tag_category
+	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_data_tag": data.#cloudflare_zero_trust_dlp_data_tag
+	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_data_tags": data.#cloudflare_zero_trust_dlp_data_tags
 	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_dataset": data.#cloudflare_zero_trust_dlp_dataset
 	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_datasets": data.#cloudflare_zero_trust_dlp_datasets
 	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_entries": data.#cloudflare_zero_trust_dlp_entries
@@ -350,6 +386,11 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_predefined_entries": data.#cloudflare_zero_trust_dlp_predefined_entries
 	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_predefined_entry": data.#cloudflare_zero_trust_dlp_predefined_entry
 	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_predefined_profile": data.#cloudflare_zero_trust_dlp_predefined_profile
+	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_sensitivity_group": data.#cloudflare_zero_trust_dlp_sensitivity_group
+	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_sensitivity_groups": data.#cloudflare_zero_trust_dlp_sensitivity_groups
+	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_sensitivity_level": data.#cloudflare_zero_trust_dlp_sensitivity_level
+	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_sensitivity_level_order": data.#cloudflare_zero_trust_dlp_sensitivity_level_order
+	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_sensitivity_levels": data.#cloudflare_zero_trust_dlp_sensitivity_levels
 	_#ds: "\(#cloudflarePrefix)_zero_trust_dlp_settings": data.#cloudflare_zero_trust_dlp_settings
 	_#ds: "\(#cloudflarePrefix)_zero_trust_dns_location": data.#cloudflare_zero_trust_dns_location
 	_#ds: "\(#cloudflarePrefix)_zero_trust_dns_locations": data.#cloudflare_zero_trust_dns_locations
@@ -370,6 +411,10 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_zero_trust_network_hostname_route": data.#cloudflare_zero_trust_network_hostname_route
 	_#ds: "\(#cloudflarePrefix)_zero_trust_network_hostname_routes": data.#cloudflare_zero_trust_network_hostname_routes
 	_#ds: "\(#cloudflarePrefix)_zero_trust_organization": data.#cloudflare_zero_trust_organization
+	_#ds: "\(#cloudflarePrefix)_zero_trust_resource_library_application": data.#cloudflare_zero_trust_resource_library_application
+	_#ds: "\(#cloudflarePrefix)_zero_trust_resource_library_applications": data.#cloudflare_zero_trust_resource_library_applications
+	_#ds: "\(#cloudflarePrefix)_zero_trust_resource_library_categories": data.#cloudflare_zero_trust_resource_library_categories
+	_#ds: "\(#cloudflarePrefix)_zero_trust_resource_library_category": data.#cloudflare_zero_trust_resource_library_category
 	_#ds: "\(#cloudflarePrefix)_zero_trust_risk_behavior": data.#cloudflare_zero_trust_risk_behavior
 	_#ds: "\(#cloudflarePrefix)_zero_trust_risk_scoring_integration": data.#cloudflare_zero_trust_risk_scoring_integration
 	_#ds: "\(#cloudflarePrefix)_zero_trust_risk_scoring_integrations": data.#cloudflare_zero_trust_risk_scoring_integrations
@@ -381,6 +426,7 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_zero_trust_tunnel_cloudflared_virtual_network": data.#cloudflare_zero_trust_tunnel_cloudflared_virtual_network
 	_#ds: "\(#cloudflarePrefix)_zero_trust_tunnel_cloudflared_virtual_networks": data.#cloudflare_zero_trust_tunnel_cloudflared_virtual_networks
 	_#ds: "\(#cloudflarePrefix)_zero_trust_tunnel_cloudflareds": data.#cloudflare_zero_trust_tunnel_cloudflareds
+	_#ds: "\(#cloudflarePrefix)_zero_trust_tunnel_warp_connector_config": data.#cloudflare_zero_trust_tunnel_warp_connector_config
 	_#ds: "\(#cloudflarePrefix)_zero_trust_tunnel_warp_connector": data.#cloudflare_zero_trust_tunnel_warp_connector
 	_#ds: "\(#cloudflarePrefix)_zero_trust_tunnel_warp_connector_token": data.#cloudflare_zero_trust_tunnel_warp_connector_token
 	_#ds: "\(#cloudflarePrefix)_zero_trust_tunnel_warp_connectors": data.#cloudflare_zero_trust_tunnel_warp_connectors

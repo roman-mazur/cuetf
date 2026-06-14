@@ -13,6 +13,9 @@ package res
 			name?:    string
 		})]
 
+		// Identify the snippet.
+		id?: string
+
 		// Indicates when the snippet was last modified.
 		modified_on?: string
 

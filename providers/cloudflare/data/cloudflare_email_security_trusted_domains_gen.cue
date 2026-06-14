@@ -4,13 +4,13 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_email_security_trusted_domains")
 	close({
-		// Account Identifier
+		// Identifier.
 		account_id?: string
 		comments?:   string
 		created_at?: string
 
-		// The unique identifier for the trusted domain.
-		id?: number
+		// Trusted domain identifier
+		id?: string
 
 		// Select to prevent recently registered domains from triggering a
 		// Suspicious or Malicious disposition.
@@ -19,33 +19,34 @@ package data
 
 		// Select for partner or other approved domains that have similar
 		// spelling to your connected domains. Prevents listed domains
-		// from
-		// triggering a Spoof disposition.
+		// from triggering a Spoof disposition.
 		is_similarity?: bool
-		last_modified?: string
+		modified_at?:   string
 		pattern?:       string
 
-		// The unique identifier for the trusted domain.
-		trusted_domain_id?: number
+		// Trusted domain identifier
+		trusted_domain_id?: string
 		filter?: close({
 			// The sorting direction.
 			// Available values: "asc", "desc".
-			direction?:     string
-			is_recent?:     bool
+			direction?: string
+
+			// Filter to show only recently registered domains that are
+			// trusted to prevent triggering Suspicious or Malicious
+			// dispositions.
+			is_recent?: bool
+
+			// Filter to show only proximity domains (partner or approved
+			// domains with similar spelling to connected domains) that
+			// prevent Spoof dispositions.
 			is_similarity?: bool
 
-			// The field to sort by.
+			// Field to sort by.
 			// Available values: "pattern", "created_at".
 			order?:   string
 			pattern?: string
 
-			// Allows searching in multiple properties of a record
-			// simultaneously.
-			// This parameter is intended for human users, not automation. Its
-			// exact
-			// behavior is intentionally left unspecified and is subject to
-			// change
-			// in the future.
+			// Search term for filtering records. Behavior may change.
 			search?: string
 		})
 	})

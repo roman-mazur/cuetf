@@ -183,6 +183,7 @@ package res
 				active?:     string
 				created_at?: string
 				data?:       string
+				is_valid?:   bool
 				version_id?: string
 			})
 		})
@@ -191,6 +192,7 @@ package res
 			active?:     string
 			created_at?: string
 			data?:       string
+			is_valid?:   bool
 			version_id?: string
 		})
 	})

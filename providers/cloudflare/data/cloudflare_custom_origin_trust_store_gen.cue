@@ -4,8 +4,9 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_custom_origin_trust_store")
 	close({
-		// The zone's SSL certificate or certificate and the
-		// intermediate(s).
+		// The root CA certificate in PEM format. Only root CA
+		// certificates are accepted; intermediate and leaf certificates
+		// are not supported.
 		certificate?: string
 
 		// Identifier.
@@ -40,7 +41,7 @@ package data
 			// Limit to the number of records returned.
 			limit?: number
 
-			// Offset the results
+			// Offset the results.
 			offset?: number
 		})
 	})

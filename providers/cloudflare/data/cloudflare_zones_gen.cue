@@ -53,6 +53,12 @@ package data
 		// Available values: "initializing", "pending", "active", "moved".
 		status?: string
 
+		// Zone types to filter by. Multiple types can be specified as a
+		// comma-separated list (e.g., ?type=full,partial,secondary).
+		// When this parameter is not provided, zones with type
+		// "internal" are excluded from the results.
+		type?: [...string]
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// The account the zone belongs to.

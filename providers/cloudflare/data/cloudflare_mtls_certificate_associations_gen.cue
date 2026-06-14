@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_mtls_certificate_associations")
 	close({
 		// Identifier.
-		account_id?: string
+		account_id!: string
 
 		// Identifier.
 		mtls_certificate_id!: string

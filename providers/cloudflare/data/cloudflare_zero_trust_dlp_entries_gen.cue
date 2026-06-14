@@ -24,8 +24,9 @@ package data
 			profile_id?:     string
 			secret?:         bool
 
-			// Available values: "custom", "predefined", "integration",
-			// "exact_data", "document_fingerprint", "word_list".
+			// Available values: "custom", "custom_prompt_topic",
+			// "predefined", "integration", "exact_data",
+			// "document_fingerprint", "word_list".
 			type?:       string
 			updated_at?: string
 
@@ -33,6 +34,19 @@ package data
 			// "processing", "failed", "complete".
 			upload_status?: string
 			word_list?:     string
+
+			// A Predefined AI prompt classification topic entry.
+			variant?: close({
+				// A customer-facing explanation of what this predefined AI prompt
+				// topic represents.
+				description?: string
+
+				// Available values: "Intent", "Content".
+				topic_type?: string
+
+				// Available values: "PromptTopic", "General".
+				type?: string
+			})
 			confidence?: close({
 				// Indicates whether this entry has AI remote service validation.
 				ai_context_available?: bool
@@ -43,15 +57,6 @@ package data
 			})
 			pattern?: close({
 				regex?: string
-			})
-			variant?: close({
-				description?: string
-
-				// Available values: "Intent", "Content".
-				topic_type?: string
-
-				// Available values: "PromptTopic".
-				type?: string
 			})
 		}), [...close({
 			// Only applies to custom word lists.
@@ -67,8 +72,9 @@ package data
 			profile_id?:     string
 			secret?:         bool
 
-			// Available values: "custom", "predefined", "integration",
-			// "exact_data", "document_fingerprint", "word_list".
+			// Available values: "custom", "custom_prompt_topic",
+			// "predefined", "integration", "exact_data",
+			// "document_fingerprint", "word_list".
 			type?:       string
 			updated_at?: string
 
@@ -76,6 +82,19 @@ package data
 			// "processing", "failed", "complete".
 			upload_status?: string
 			word_list?:     string
+
+			// A Predefined AI prompt classification topic entry.
+			variant?: close({
+				// A customer-facing explanation of what this predefined AI prompt
+				// topic represents.
+				description?: string
+
+				// Available values: "Intent", "Content".
+				topic_type?: string
+
+				// Available values: "PromptTopic", "General".
+				type?: string
+			})
 			confidence?: close({
 				// Indicates whether this entry has AI remote service validation.
 				ai_context_available?: bool
@@ -86,15 +105,6 @@ package data
 			})
 			pattern?: close({
 				regex?: string
-			})
-			variant?: close({
-				description?: string
-
-				// Available values: "Intent", "Content".
-				topic_type?: string
-
-				// Available values: "PromptTopic".
-				type?: string
 			})
 		})]])
 	})

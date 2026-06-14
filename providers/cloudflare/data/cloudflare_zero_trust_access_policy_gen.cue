@@ -119,6 +119,10 @@ package data
 				identity_provider_id?: string
 			})
 			certificate?: close({})
+			cloudflare_account_member?: close({
+				// Identifier.
+				account_id?: string
+			})
 			common_name?: close({
 				// The common name to match.
 				common_name?: string
@@ -253,6 +257,10 @@ package data
 				identity_provider_id?: string
 			})
 			certificate?: close({})
+			cloudflare_account_member?: close({
+				// Identifier.
+				account_id?: string
+			})
 			common_name?: close({
 				// The common name to match.
 				common_name?: string
@@ -391,6 +399,10 @@ package data
 				identity_provider_id?: string
 			})
 			certificate?: close({})
+			cloudflare_account_member?: close({
+				// Identifier.
+				account_id?: string
+			})
 			common_name?: close({
 				// The common name to match.
 				common_name?: string
@@ -525,6 +537,10 @@ package data
 				identity_provider_id?: string
 			})
 			certificate?: close({})
+			cloudflare_account_member?: close({
+				// Identifier.
+				account_id?: string
+			})
 			common_name?: close({
 				// The common name to match.
 				common_name?: string
@@ -678,6 +694,10 @@ package data
 				identity_provider_id?: string
 			})
 			certificate?: close({})
+			cloudflare_account_member?: close({
+				// Identifier.
+				account_id?: string
+			})
 			common_name?: close({
 				// The common name to match.
 				common_name?: string
@@ -812,6 +832,10 @@ package data
 				identity_provider_id?: string
 			})
 			certificate?: close({})
+			cloudflare_account_member?: close({
+				// Identifier.
+				account_id?: string
+			})
 			common_name?: close({
 				// The common name to match.
 				common_name?: string

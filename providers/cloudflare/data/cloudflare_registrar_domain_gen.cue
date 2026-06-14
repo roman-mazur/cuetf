@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_registrar_domain")
 	close({
 		// Identifier
-		account_id?: string
+		account_id!: string
 
 		// Fully qualified domain name (FQDN) including the extension
 		// (e.g., `example.com`, `mybrand.app`). The domain name uniquely

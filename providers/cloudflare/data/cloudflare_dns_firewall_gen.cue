@@ -72,9 +72,13 @@ package data
 		// value received from upstream nameservers.
 		negative_cache_ttl?: number
 
-		// Ratelimit in queries per second per datacenter (applies to DNS
-		// queries sent to the upstream nameservers configured on the
-		// cluster)
+		// Maximum number of DNS queries per second that will be forwarded
+		// to your upstream nameservers. The limit is enforced per
+		// server, where each server receives a fraction of the
+		// configured value. The actual aggregate rate for a data center
+		// may vary depending on how many servers are present. Responses
+		// served from cache do not count toward this limit. Set to null
+		// to disable rate limiting.
 		ratelimit?: number
 
 		// Number of retries for fetching DNS responses from upstream

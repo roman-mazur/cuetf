@@ -21,6 +21,7 @@ package res
 			errored?:           number
 			paused?:            number
 			queued?:            number
+			rolling_back?:      number
 			running?:           number
 			terminated?:        number
 			waiting?:           number
@@ -29,5 +30,10 @@ package res
 		limits?: close({
 			steps?: number
 		})
+		schedules?: matchN(1, [close({
+			cron!: string
+		}), [...close({
+			cron!: string
+		})]])
 	})
 }

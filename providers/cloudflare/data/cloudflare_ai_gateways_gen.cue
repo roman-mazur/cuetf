@@ -73,6 +73,94 @@ package data
 					profiles?: [...string]
 				})]])
 			})
+			guardrails?: close({
+				prompt?: close({
+					// Available values: "FLAG", "BLOCK".
+					p1?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s1?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s10?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s11?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s12?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s13?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s2?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s3?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s4?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s5?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s6?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s7?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s8?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s9?: string
+				})
+				response?: close({
+					// Available values: "FLAG", "BLOCK".
+					p1?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s1?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s10?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s11?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s12?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s13?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s2?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s3?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s4?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s5?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s6?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s7?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s8?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s9?: string
+				})
+			})
 			otel?: matchN(1, [close({
 				authorization?: string
 
@@ -88,6 +176,62 @@ package data
 				headers?: [string]: string
 				url?: string
 			})]])
+			spend_limits?: close({
+				enabled?: bool
+				rules?: matchN(1, [close({
+					ai_gateway_provider?: close({
+						// Available values: "filter".
+						mode?: string
+						values?: [...string]
+					})
+					enabled?: bool
+					id?:      string
+					limit?:   number
+
+					// Available values: "cost".
+					limit_type?: string
+
+					// Available values: "fixed", "sliding".
+					technique?: string
+					window?:    number
+					metadata?: [string]: close({
+						// Available values: "partition", "filter".
+						mode?: string
+						values?: [...string]
+					})
+					model?: close({
+						// Available values: "filter".
+						mode?: string
+						values?: [...string]
+					})
+				}), [...close({
+					ai_gateway_provider?: close({
+						// Available values: "filter".
+						mode?: string
+						values?: [...string]
+					})
+					enabled?: bool
+					id?:      string
+					limit?:   number
+
+					// Available values: "cost".
+					limit_type?: string
+
+					// Available values: "fixed", "sliding".
+					technique?: string
+					window?:    number
+					metadata?: [string]: close({
+						// Available values: "partition", "filter".
+						mode?: string
+						values?: [...string]
+					})
+					model?: close({
+						// Available values: "filter".
+						mode?: string
+						values?: [...string]
+					})
+				})]])
+			})
 			stripe?: close({
 				authorization?: string
 				usage_events?: matchN(1, [close({
@@ -156,6 +300,94 @@ package data
 					profiles?: [...string]
 				})]])
 			})
+			guardrails?: close({
+				prompt?: close({
+					// Available values: "FLAG", "BLOCK".
+					p1?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s1?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s10?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s11?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s12?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s13?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s2?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s3?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s4?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s5?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s6?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s7?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s8?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s9?: string
+				})
+				response?: close({
+					// Available values: "FLAG", "BLOCK".
+					p1?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s1?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s10?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s11?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s12?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s13?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s2?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s3?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s4?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s5?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s6?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s7?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s8?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s9?: string
+				})
+			})
 			otel?: matchN(1, [close({
 				authorization?: string
 
@@ -171,6 +403,62 @@ package data
 				headers?: [string]: string
 				url?: string
 			})]])
+			spend_limits?: close({
+				enabled?: bool
+				rules?: matchN(1, [close({
+					ai_gateway_provider?: close({
+						// Available values: "filter".
+						mode?: string
+						values?: [...string]
+					})
+					enabled?: bool
+					id?:      string
+					limit?:   number
+
+					// Available values: "cost".
+					limit_type?: string
+
+					// Available values: "fixed", "sliding".
+					technique?: string
+					window?:    number
+					metadata?: [string]: close({
+						// Available values: "partition", "filter".
+						mode?: string
+						values?: [...string]
+					})
+					model?: close({
+						// Available values: "filter".
+						mode?: string
+						values?: [...string]
+					})
+				}), [...close({
+					ai_gateway_provider?: close({
+						// Available values: "filter".
+						mode?: string
+						values?: [...string]
+					})
+					enabled?: bool
+					id?:      string
+					limit?:   number
+
+					// Available values: "cost".
+					limit_type?: string
+
+					// Available values: "fixed", "sliding".
+					technique?: string
+					window?:    number
+					metadata?: [string]: close({
+						// Available values: "partition", "filter".
+						mode?: string
+						values?: [...string]
+					})
+					model?: close({
+						// Available values: "filter".
+						mode?: string
+						values?: [...string]
+					})
+				})]])
+			})
 			stripe?: close({
 				authorization?: string
 				usage_events?: matchN(1, [close({
