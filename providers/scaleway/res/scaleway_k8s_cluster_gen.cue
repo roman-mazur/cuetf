@@ -127,6 +127,10 @@ import "list"
 		// scaling down
 		ignore_daemonsets_utilization?: bool
 
+		// Autoscaler logging level expressed from 0 to 4 (4 being the
+		// more verbose), defaults to 2.
+		log_level?: number
+
 		// Maximum number of seconds the cluster autoscaler waits for pod
 		// termination when trying to scale down a node
 		max_graceful_termination_sec?: number
@@ -142,6 +146,10 @@ import "list"
 		// divided by capacity, below which a node can be considered for
 		// scale down
 		scale_down_utilization_threshold?: number
+
+		// If true, the autoscaler will never delete nodes with pods with
+		// local storage, e.g. EmptyDir or HostPath, defaults to true.
+		skip_nodes_with_local_storage?: bool
 	})
 
 	#open_id_connect_config: close({

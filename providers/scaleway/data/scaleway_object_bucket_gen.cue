@@ -33,12 +33,26 @@ package data
 			abort_incomplete_multipart_upload_days?: number
 			enabled?:                                bool
 			expiration?: [...close({
-				days?: number
+				date?:                         string
+				days?:                         number
+				expired_object_delete_marker?: bool
 			})]
-			id?:     string
-			prefix?: string
+			id?: string
+			noncurrent_version_expiration?: [...close({
+				newer_noncurrent_versions?: number
+				noncurrent_days?:           number
+			})]
+			noncurrent_version_transition?: [...close({
+				newer_noncurrent_versions?: number
+				noncurrent_days?:           number
+				storage_class?:             string
+			})]
+			object_size_greater_than?: number
+			object_size_less_than?:    number
+			prefix?:                   string
 			tags?: [string]: string
 			transition?: [...close({
+				date?:          string
 				days?:          number
 				storage_class?: string
 			})]

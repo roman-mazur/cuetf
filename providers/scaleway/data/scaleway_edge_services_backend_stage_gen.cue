@@ -13,9 +13,23 @@ package data
 		// Filter by S3 bucket region
 		bucket_region?: string
 
+		// The Scaleway Serverless Container backend linked to the backend
+		// stage
+		container_backend_config?: [...close({
+			container_id?: string
+			region?:       string
+		})]
+
 		// The date and time of the creation of the backend stage
 		created_at?: string
-		id?:         string
+
+		// The Scaleway Serverless Function backend linked to the backend
+		// stage
+		function_backend_config?: [...close({
+			function_id?: string
+			region?:      string
+		})]
+		id?: string
 
 		// The Scaleway Load Balancer origin linked to the backend stage
 		lb_backend_config?: [...close({

@@ -29,10 +29,12 @@ package data
 			expander?:                         string
 			expendable_pods_priority_cutoff?:  number
 			ignore_daemonsets_utilization?:    bool
+			log_level?:                        number
 			max_graceful_termination_sec?:     number
 			scale_down_delay_after_add?:       string
 			scale_down_unneeded_time?:         string
 			scale_down_utilization_threshold?: number
+			skip_nodes_with_local_storage?:    bool
 		})]
 
 		// The ID of the cluster

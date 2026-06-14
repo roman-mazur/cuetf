@@ -11,11 +11,16 @@ package data
 		bucket_server_side_encryption_configuration_id?: string
 		id?:                                             string
 
+		// The region you want to attach the resource to
+		region?: string
+
 		// Set of server-side encryption configuration rules
 		rule?: [...close({
 			apply_server_side_encryption_by_default?: [...close({
-				sse_algorithm?: string
+				kms_master_key_id?: string
+				sse_algorithm?:     string
 			})]
+			bucket_key_enabled?: bool
 		})]
 	})
 }

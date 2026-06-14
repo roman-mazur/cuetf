@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_k8s_pool")
 	close({
+		startup_taints?: matchN(1, [#startup_taints, [...#startup_taints]])
+		taints?: matchN(1, [#taints, [...#taints]])
 		timeouts?: #timeouts
 		upgrade_policy?: matchN(1, [#upgrade_policy, list.MaxItems(1) & [...#upgrade_policy]])
 
@@ -30,6 +32,9 @@ import "list"
 
 		// The Kubelet arguments to be used by this pool
 		kubelet_args?: [string]: string
+
+		// Kubernetes labels applied and reconciled on the nodes.
+		labels?: [string]: string
 
 		// Maximum size of the pool
 		max_size?: number
@@ -94,6 +99,28 @@ import "list"
 
 		// The zone you want to attach the resource to
 		zone?: string
+	})
+
+	#startup_taints: close({
+		// Effect of the taint
+		effect!: string
+
+		// Key of the taint
+		key!: string
+
+		// Value of the taint
+		value!: string
+	})
+
+	#taints: close({
+		// Effect of the taint
+		effect!: string
+
+		// Key of the taint
+		key!: string
+
+		// Value of the taint
+		value!: string
 	})
 
 	#timeouts: close({
