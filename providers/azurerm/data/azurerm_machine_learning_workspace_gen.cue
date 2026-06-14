@@ -12,9 +12,10 @@ package data
 			tenant_id?:    string
 			type?:         string
 		})]
-		location?:            string
-		name!:                string
-		resource_group_name!: string
+		location?:                    string
+		name!:                        string
+		resource_group_name!:         string
+		storage_account_access_type?: string
 		tags?: [string]: string
 	})
 

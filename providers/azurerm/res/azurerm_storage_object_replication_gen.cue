@@ -9,6 +9,7 @@ package res
 		destination_object_replication_id?: string
 		destination_storage_account_id!:    string
 		id?:                                string
+		metrics_enabled?:                   bool
 		source_object_replication_id?:      string
 		source_storage_account_id!:         string
 	})

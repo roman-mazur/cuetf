@@ -11,11 +11,10 @@ package data
 		encryption_scope?: string
 		id?:               string
 		metadata?: [string]: string
-		name!:                   string
-		storage_account_name!:   string
-		storage_container_name!: string
-		type?:                   string
-		url?:                    string
+		name!:                 string
+		storage_container_id?: string
+		type?:                 string
+		url?:                  string
 	})
 
 	#timeouts: close({
