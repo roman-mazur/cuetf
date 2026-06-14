@@ -29,6 +29,7 @@ import "list"
 		resource_group_name!:             string
 		service_side_encryption_enabled?: bool
 		sku_name?:                        string
+		storage_account_access_type?:     string
 		storage_account_id!:              string
 		tags?: [string]: string
 		v1_legacy_mode_enabled?: bool

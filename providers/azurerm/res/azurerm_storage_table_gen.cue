@@ -10,8 +10,8 @@ package res
 		name!:     string
 
 		// The Resource Manager ID of this Storage Table.
-		resource_manager_id?:  string
-		storage_account_name!: string
+		resource_manager_id?: string
+		storage_account_id?:  string
 	})
 
 	#acl: close({
