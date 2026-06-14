@@ -26,6 +26,9 @@ package data
 		// The Kubelet arguments to be used by this pool
 		kubelet_args?: [string]: string
 
+		// Kubernetes labels applied and reconciled on the nodes.
+		labels?: [string]: string
+
 		// Maximum size of the pool
 		max_size?: number
 
@@ -75,11 +78,26 @@ package data
 		// Size of the pool
 		size?: number
 
+		// Kubernetes taints applied at node creation but not reconciled
+		// afterwards.
+		startup_taints?: [...close({
+			effect?: string
+			key?:    string
+			value?:  string
+		})]
+
 		// The status of the pool
 		status?: string
 
 		// The tags associated with the pool
 		tags?: [...string]
+
+		// Kubernetes taints applied and reconciled on the nodes.
+		taints?: [...close({
+			effect?: string
+			key?:    string
+			value?:  string
+		})]
 
 		// The date and time of the last update of the pool
 		updated_at?: string

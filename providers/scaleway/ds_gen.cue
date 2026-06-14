@@ -21,6 +21,7 @@ import "github.com/roman-mazur/cuetf/providers/scaleway/data"
 	_#ds: "\(#scalewayPrefix)_billing_invoices": data.#scaleway_billing_invoices
 	_#ds: "\(#scalewayPrefix)_block_snapshot": data.#scaleway_block_snapshot
 	_#ds: "\(#scalewayPrefix)_block_volume": data.#scaleway_block_volume
+	_#ds: "\(#scalewayPrefix)_cockpit_config": data.#scaleway_cockpit_config
 	_#ds: "\(#scalewayPrefix)_cockpit_exporter": data.#scaleway_cockpit_exporter
 	_#ds: "\(#scalewayPrefix)_cockpit": data.#scaleway_cockpit
 	_#ds: "\(#scalewayPrefix)_cockpit_grafana": data.#scaleway_cockpit_grafana
@@ -97,6 +98,7 @@ import "github.com/roman-mazur/cuetf/providers/scaleway/data"
 	_#ds: "\(#scalewayPrefix)_marketplace_image": data.#scaleway_marketplace_image
 	_#ds: "\(#scalewayPrefix)_mnq_sns": data.#scaleway_mnq_sns
 	_#ds: "\(#scalewayPrefix)_mnq_sqs": data.#scaleway_mnq_sqs
+	_#ds: "\(#scalewayPrefix)_mongodb_databases": data.#scaleway_mongodb_databases
 	_#ds: "\(#scalewayPrefix)_mongodb_instance": data.#scaleway_mongodb_instance
 	_#ds: "\(#scalewayPrefix)_object_bucket": data.#scaleway_object_bucket
 	_#ds: "\(#scalewayPrefix)_object_bucket_policy": data.#scaleway_object_bucket_policy

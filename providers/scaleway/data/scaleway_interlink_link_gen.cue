@@ -45,7 +45,7 @@ package data
 		partner_id?: string
 
 		// For self-hosted links, the peer AS Number to establish BGP
-		// session. If not given, a default one will be assigned
+		// session. Required when `connection_id` is set
 		peer_asn?: number
 
 		// BGP configuration on peer's side (on-premises or other hosting

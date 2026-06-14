@@ -1872,7 +1872,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					retention_days: {
 						type:             "number"
-						description:      "The number of days to retain data, must be between 1 and 365."
+						description:      "The number of days to retain data. Use scaleway_cockpit_config data source to read allowed min, max, and default values for each data source type."
 						description_kind: "plain"
 						required:         true
 					}
@@ -4168,6 +4168,50 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 				}
 				block_types: {
+					container_backend_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								container_id: {
+									type:             "string"
+									description:      "ID of the Serverless Container"
+									description_kind: "plain"
+									required:         true
+								}
+								region: {
+									type:             "string"
+									description:      "The region you want to attach the resource to"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "The Scaleway Serverless Container backend linked to the backend stage"
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					function_backend_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								function_id: {
+									type:             "string"
+									description:      "ID of the Serverless Function"
+									description_kind: "plain"
+									required:         true
+								}
+								region: {
+									type:             "string"
+									description:      "The region you want to attach the resource to"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "The Scaleway Serverless Function backend linked to the backend stage"
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					lb_backend_config: {
 						nesting_mode: "list"
 						block: {
@@ -8485,7 +8529,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					peer_asn: {
 						type:             "number"
-						description:      "For self-hosted links, the peer AS Number to establish BGP session. If not given, a default one will be assigned"
+						description:      "For self-hosted links, the peer AS Number to establish BGP session. Required when `connection_id` is set"
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -9963,6 +10007,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									description_kind: "plain"
 									optional:         true
 								}
+								log_level: {
+									type:             "number"
+									description:      "Autoscaler logging level expressed from 0 to 4 (4 being the more verbose), defaults to 2."
+									description_kind: "plain"
+									optional:         true
+								}
 								max_graceful_termination_sec: {
 									type:             "number"
 									description:      "Maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node"
@@ -9984,6 +10034,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 								scale_down_utilization_threshold: {
 									type:             "number"
 									description:      "Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down"
+									description_kind: "plain"
+									optional:         true
+								}
+								skip_nodes_with_local_storage: {
+									type:             "bool"
+									description:      "If true, the autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath, defaults to true."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -10140,6 +10196,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					labels: {
+						type: ["map", "string"]
+						description:      "Kubernetes labels applied and reconciled on the nodes."
+						description_kind: "plain"
+						optional:         true
+					}
 					max_size: {
 						type:             "number"
 						description:      "Maximum size of the pool"
@@ -10265,6 +10327,60 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 				}
 				block_types: {
+					startup_taints: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								effect: {
+									type:             "string"
+									description:      "Effect of the taint"
+									description_kind: "plain"
+									required:         true
+								}
+								key: {
+									type:             "string"
+									description:      "Key of the taint"
+									description_kind: "plain"
+									required:         true
+								}
+								value: {
+									type:             "string"
+									description:      "Value of the taint"
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description:      "Kubernetes taints applied at node creation but not reconciled afterwards."
+							description_kind: "plain"
+						}
+					}
+					taints: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								effect: {
+									type:             "string"
+									description:      "Effect of the taint"
+									description_kind: "plain"
+									required:         true
+								}
+								key: {
+									type:             "string"
+									description:      "Key of the taint"
+									description_kind: "plain"
+									required:         true
+								}
+								value: {
+									type:             "string"
+									description:      "Value of the taint"
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description:      "Kubernetes taints applied and reconciled on the nodes."
+							description_kind: "plain"
+						}
+					}
 					timeouts: {
 						nesting_mode: "single"
 						block: {
@@ -13344,6 +13460,18 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									optional:         true
 									computed:         true
 								}
+								object_size_greater_than: {
+									type:             "number"
+									description:      "Minimum object size (in bytes) to which the rule applies"
+									description_kind: "plain"
+									optional:         true
+								}
+								object_size_less_than: {
+									type:             "number"
+									description:      "Maximum object size (in bytes) to which the rule applies"
+									description_kind: "plain"
+									optional:         true
+								}
 								prefix: {
 									type:             "string"
 									description:      "The prefix identifying one or more objects to which the rule applies"
@@ -13361,21 +13489,90 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 								expiration: {
 									nesting_mode: "list"
 									block: {
-										attributes: days: {
-											type:             "number"
-											description:      "Specifies the number of days after object creation when the specific rule action takes effect"
-											description_kind: "plain"
-											required:         true
+										attributes: {
+											date: {
+												type:             "string"
+												description:      "Specifies the date the object is to be moved or deleted. The date value must be in RFC3339 full-date format e.g. `2023-08-22`"
+												description_kind: "plain"
+												optional:         true
+											}
+											days: {
+												type:             "number"
+												description:      "Specifies the number of days after object creation when the specific rule action takes effect"
+												description_kind: "plain"
+												optional:         true
+											}
+											expired_object_delete_marker: {
+												type:             "bool"
+												description:      "Specifies whether Scaleway Object will remove a delete marker with no noncurrent versions. If set to `true`, the delete marker will be expired; if set to `false` the policy takes no action"
+												description_kind: "plain"
+												optional:         true
+											}
 										}
 										description:      "Specifies a period in the object's expire"
 										description_kind: "plain"
 									}
 									max_items: 1
 								}
+								noncurrent_version_expiration: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											newer_noncurrent_versions: {
+												type:             "number"
+												description:      "Number of noncurrent versions Scaleway Object Storage will retain. Must be a non-zero positive integer"
+												description_kind: "plain"
+												optional:         true
+											}
+											noncurrent_days: {
+												type:             "number"
+												description:      "Number of days an object is noncurrent before Scaleway Object Storage can perform the associated action. Must be a positive integer"
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Configuration block that specifies when noncurrent object versions expire"
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								noncurrent_version_transition: {
+									nesting_mode: "set"
+									block: {
+										attributes: {
+											newer_noncurrent_versions: {
+												type:             "number"
+												description:      "Number of noncurrent versions Scaleway Object Storage will retain. Must be a non-zero positive integer"
+												description_kind: "plain"
+												optional:         true
+											}
+											noncurrent_days: {
+												type:             "number"
+												description:      "Number of days an object is noncurrent before Scaleway Object Storage can perform the associated action"
+												description_kind: "plain"
+												required:         true
+											}
+											storage_class: {
+												type:             "string"
+												description:      "Specifies the Scaleway Object Storage class to which you want the object to transition"
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Set of configuration blocks that specify the transition rule for the lifecycle rule that describes when noncurrent objects transition to a specific storage class"
+										description_kind: "plain"
+									}
+								}
 								transition: {
 									nesting_mode: "set"
 									block: {
 										attributes: {
+											date: {
+												type:             "string"
+												description:      "Specifies the date objects are transitioned to the specified storage class. The date value must be in RFC3339 full-date format e.g. `2023-08-22`"
+												description_kind: "plain"
+												optional:         true
+											}
 											days: {
 												type:             "number"
 												description:      "Specifies the number of days after object creation when the specific rule action takes effect"
@@ -13691,18 +13888,40 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: rule: {
 					nesting_mode: "set"
 					block: {
+						attributes: bucket_key_enabled: {
+							type:             "bool"
+							description:      "Whether or not to use Scaleway Object Bucket Keys for SSE-KMS."
+							description_kind: "plain"
+							optional:         true
+							computed:         true
+						}
 						block_types: apply_server_side_encryption_by_default: {
 							nesting_mode: "list"
 							block: {
-								attributes: sse_algorithm: {
-									type:             "string"
-									description:      "Server-side encryption algorithm to use. Valid values are AES256"
-									description_kind: "plain"
-									required:         true
+								attributes: {
+									kms_master_key_id: {
+										type:             "string"
+										description:      "Scaleway KMS master key ID used for the SSE-KMS encryption. This can only be used when you set the value of sse_algorithm as aws:kms. Will return an error if not this element is absent while the sse_algorithm is aws:kms."
+										description_kind: "plain"
+										optional:         true
+										computed:         true
+									}
+									sse_algorithm: {
+										type:             "string"
+										description:      "Server-side encryption algorithm to use. Valid values are 'AES256', 'aws:kms'"
+										description_kind: "plain"
+										required:         true
+									}
 								}
 								description:      "Single object for setting server-side encryption by default."
 								description_kind: "plain"
@@ -18020,6 +18239,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The route description"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					destination: {
 						type:             "string"
@@ -19597,6 +19817,76 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				deprecated:       true
 			}
 		}
+		scaleway_cockpit_config: {
+			version: 0
+			block: {
+				attributes: {
+					custom_logs_retention: {
+						type: ["list", ["object", {
+							default_days: "number"
+							max_days:     "number"
+							min_days:     "number"
+						}]]
+						description:      "Retention limits and default for custom logs data sources."
+						description_kind: "plain"
+						computed:         true
+					}
+					custom_metrics_retention: {
+						type: ["list", ["object", {
+							default_days: "number"
+							max_days:     "number"
+							min_days:     "number"
+						}]]
+						description:      "Retention limits and default for custom metrics data sources."
+						description_kind: "plain"
+						computed:         true
+					}
+					custom_traces_retention: {
+						type: ["list", ["object", {
+							default_days: "number"
+							max_days:     "number"
+							min_days:     "number"
+						}]]
+						description:      "Retention limits and default for custom traces data sources."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					product_logs_retention: {
+						type: ["list", ["object", {
+							default_days: "number"
+							max_days:     "number"
+							min_days:     "number"
+						}]]
+						description:      "Retention limits and default for Scaleway product logs data sources."
+						description_kind: "plain"
+						computed:         true
+					}
+					product_metrics_retention: {
+						type: ["list", ["object", {
+							default_days: "number"
+							max_days:     "number"
+							min_days:     "number"
+						}]]
+						description:      "Retention limits and default for Scaleway product metrics data sources."
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		scaleway_cockpit_exporter: {
 			version: 0
 			block: {
@@ -19852,7 +20142,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					retention_days: {
 						type:             "number"
-						description:      "The number of days to retain data, must be between 1 and 365."
+						description:      "The number of days to retain data. Use scaleway_cockpit_config data source to read allowed min, max, and default values for each data source type."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -19932,7 +20222,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					retention_days: {
 						type:             "number"
-						description:      "The number of days to retain data, must be between 1 and 365."
+						description:      "The number of days to retain data. Use scaleway_cockpit_config data source to read allowed min, max, and default values for each data source type."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -20868,9 +21158,27 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					container_backend_config: {
+						type: ["list", ["object", {
+							container_id: "string"
+							region:       "string"
+						}]]
+						description:      "The Scaleway Serverless Container backend linked to the backend stage"
+						description_kind: "plain"
+						computed:         true
+					}
 					created_at: {
 						type:             "string"
 						description:      "The date and time of the creation of the backend stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					function_backend_config: {
+						type: ["list", ["object", {
+							function_id: "string"
+							region:      "string"
+						}]]
+						description:      "The Scaleway Serverless Function backend linked to the backend stage"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -20928,7 +21236,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description: """
 					Gets information about an Edge Services backend stage.
 
-					A backend stage defines the origin (Scaleway Object Storage bucket or Load Balancer) that Edge Services forwards requests to.
+					A backend stage defines the origin (Scaleway Object Storage bucket, Load Balancer, Serverless Container or Serverless Function) that Edge Services forwards requests to.
 
 					"""
 				description_kind: "plain"
@@ -22358,16 +22666,70 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			version: 0
 			block: {
 				attributes: {
+					account_root_user_id: {
+						type:             "string"
+						description:      "The ID of the account root user associated with the iam user"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of the creation of the iam user"
+						description_kind: "plain"
+						computed:         true
+					}
+					deletable: {
+						type:             "bool"
+						description:      "Whether or not the iam user is editable"
+						description_kind: "plain"
+						computed:         true
+					}
 					email: {
 						type:             "string"
 						description:      "The email address of the IAM user"
 						description_kind: "plain"
 						optional:         true
 					}
+					first_name: {
+						type:             "string"
+						description:      "The member's first name"
+						description_kind: "plain"
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					last_login_at: {
+						type:             "string"
+						description:      "The date and time of last login of the iam user"
+						description_kind: "plain"
+						computed:         true
+					}
+					last_name: {
+						type:             "string"
+						description:      "The member's last name"
+						description_kind: "plain"
+						computed:         true
+					}
+					locale: {
+						type:             "string"
+						description:      "The member's locale"
+						description_kind: "plain"
+						computed:         true
+					}
+					locked: {
+						type:             "bool"
+						description:      "Defines whether the user is locked"
+						description_kind: "plain"
+						computed:         true
+					}
+					mfa: {
+						type:             "bool"
+						description:      "Whether or not the MFA is enabled"
+						description_kind: "plain"
 						computed:         true
 					}
 					organization_id: {
@@ -22376,17 +22738,77 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					password: {
+						type:             "string"
+						description:      "The member's password for first access. Only one of `password` or `password_wo` should be specified."
+						description_kind: "plain"
+						computed:         true
+					}
+					password_wo: {
+						type:             "string"
+						description:      "The member's password for first access in [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) mode. Only one of `password` or `password_wo` should be specified. `password_wo` will not be set in the Terraform state. To update the `password_wo`, you must also update the `password_wo_version`."
+						description_kind: "plain"
+						computed:         true
+					}
+					password_wo_version: {
+						type:             "number"
+						description:      "The version of the [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) password. To update the `password_wo`, you must also update the `password_wo_version`."
+						description_kind: "plain"
+						computed:         true
+					}
+					phone_number: {
+						type:             "string"
+						description:      "The member's phone number"
+						description_kind: "plain"
+						computed:         true
+					}
+					send_password_email: {
+						type:             "bool"
+						description:      "Whether or not to send an email containing the member's password"
+						description_kind: "plain"
+						computed:         true
+					}
+					send_welcome_email: {
+						type:             "bool"
+						description:      "Whether or not to send a welcome email that includes onboarding information"
+						description_kind: "plain"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "The status of user invitation"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the user"
 						description_kind: "plain"
 						optional:         true
 					}
+					type: {
+						type:             "string"
+						description:      "The type of the iam user"
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time of the last update of the iam user"
+						description_kind: "plain"
+						computed:         true
+					}
 					user_id: {
 						type:             "string"
 						description:      "The ID of the IAM user"
 						description_kind: "plain"
 						optional:         true
+					}
+					username: {
+						type:             "string"
+						description:      "The member's username"
+						description_kind: "plain"
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -23679,7 +24101,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					peer_asn: {
 						type:             "number"
-						description:      "For self-hosted links, the peer AS Number to establish BGP session. If not given, a default one will be assigned"
+						description:      "For self-hosted links, the peer AS Number to establish BGP session. Required when `connection_id` is set"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -24639,10 +25061,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							expander:                         "string"
 							expendable_pods_priority_cutoff:  "number"
 							ignore_daemonsets_utilization:    "bool"
+							log_level:                        "number"
 							max_graceful_termination_sec:     "number"
 							scale_down_delay_after_add:       "string"
 							scale_down_unneeded_time:         "string"
 							scale_down_utilization_threshold: "number"
+							skip_nodes_with_local_storage:    "bool"
 						}]]
 						description:      "The autoscaler configuration for the cluster"
 						description_kind: "plain"
@@ -24861,6 +25285,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					labels: {
+						type: ["map", "string"]
+						description:      "Kubernetes labels applied and reconciled on the nodes."
+						description_kind: "plain"
+						computed:         true
+					}
 					max_size: {
 						type:             "number"
 						description:      "Maximum size of the pool"
@@ -24949,6 +25379,16 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					startup_taints: {
+						type: ["set", ["object", {
+							effect: "string"
+							key:    "string"
+							value:  "string"
+						}]]
+						description:      "Kubernetes taints applied at node creation but not reconciled afterwards."
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "The status of the pool"
@@ -24958,6 +25398,16 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the pool"
+						description_kind: "plain"
+						computed:         true
+					}
+					taints: {
+						type: ["set", ["object", {
+							effect: "string"
+							key:    "string"
+							value:  "string"
+						}]]
+						description:      "Kubernetes taints applied and reconciled on the nodes."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -26609,6 +27059,46 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_mongodb_databases: {
+			version: 0
+			block: {
+				attributes: {
+					databases: {
+						type: ["list", ["object", {
+							name: "string"
+						}]]
+						description:      "List of databases on the MongoDB instance."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					instance_id: {
+						type:             "string"
+						description:      "MongoDB instance ID. Can be a plain UUID or a regional ID."
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description: """
+					Gets information about databases on a MongoDB® instance.
+
+					For further information refer to the Managed Databases for MongoDB® [API documentation](https://developers.scaleway.com/en/products/mongodb/api/)
+
+					"""
+				description_kind: "plain"
+			}
+		}
 		scaleway_mongodb_instance: {
 			version: 0
 			block: {
@@ -26935,12 +27425,26 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							abort_incomplete_multipart_upload_days: "number"
 							enabled:                                "bool"
 							expiration: ["list", ["object", {
-								days: "number"
+								date:                         "string"
+								days:                         "number"
+								expired_object_delete_marker: "bool"
 							}]]
-							id:     "string"
-							prefix: "string"
+							id: "string"
+							noncurrent_version_expiration: ["list", ["object", {
+								newer_noncurrent_versions: "number"
+								noncurrent_days:           "number"
+							}]]
+							noncurrent_version_transition: ["set", ["object", {
+								newer_noncurrent_versions: "number"
+								noncurrent_days:           "number"
+								storage_class:             "string"
+							}]]
+							object_size_greater_than: "number"
+							object_size_less_than:    "number"
+							prefix:                   "string"
 							tags: ["map", "string"]
 							transition: ["set", ["object", {
+								date:          "string"
 								days:          "number"
 								storage_class: "string"
 							}]]
@@ -27051,11 +27555,19 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						computed:         true
+					}
 					rule: {
 						type: ["set", ["object", {
 							apply_server_side_encryption_by_default: ["list", ["object", {
-								sse_algorithm: "string"
+								kms_master_key_id: "string"
+								sse_algorithm:     "string"
 							}]]
+							bucket_key_enabled: "bool"
 						}]]
 						description:      "Set of server-side encryption configuration rules"
 						description_kind: "plain"
@@ -30859,6 +31371,196 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 		}
 	}
 	list_resource_schemas: {
+		scaleway_domain_zone: {
+			version: 0
+			block: {
+				attributes: {
+					created_after: {
+						type:             "string"
+						description:      "Only list DNS zones created after this date (RFC3339)."
+						description_kind: "plain"
+						optional:         true
+					}
+					created_before: {
+						type:             "string"
+						description:      "Only list DNS zones created before this date (RFC3339)."
+						description_kind: "plain"
+						optional:         true
+					}
+					dns_zones: {
+						type: ["list", "string"]
+						description:      "Filter by DNS zone FQDNs (for example subdomain.example.com or example.com for a root zone)."
+						description_kind: "plain"
+						optional:         true
+					}
+					domains: {
+						type: ["list", "string"]
+						description:      "Domain apex names to list DNS zones for. Use [\"*\"] to list zones across all domains. Must contain at least one value."
+						description_kind: "plain"
+						required:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs to filter DNS zones on Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+					updated_after: {
+						type:             "string"
+						description:      "Only list DNS zones updated after this date (RFC3339)."
+						description_kind: "plain"
+						optional:         true
+					}
+					updated_before: {
+						type:             "string"
+						description:      "Only list DNS zones updated before this date (RFC3339)."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_iam_application: {
+			version: 0
+			block: {
+				attributes: {
+					application_ids: {
+						type: ["list", "string"]
+						description:      "Filter applications by application IDs"
+						description_kind: "plain"
+						optional:         true
+					}
+					editable: {
+						type:             "bool"
+						description:      "Filter by editable status"
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the application to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					tag: {
+						type:             "string"
+						description:      "Filter by tags containing a given string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_iam_group: {
+			version: 0
+			block: {
+				attributes: {
+					application_ids: {
+						type: ["list", "string"]
+						description:      "Filter groups by application IDs"
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the group to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					tag: {
+						type:             "string"
+						description:      "Filter by tags containing a given string"
+						description_kind: "plain"
+						optional:         true
+					}
+					user_ids: {
+						type: ["list", "string"]
+						description:      "Filter groups by user IDs"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_iam_ssh_key: {
+			version: 0
+			block: {
+				attributes: {
+					disabled: {
+						type:             "bool"
+						description:      "Filter SSH keys by disabled status"
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the SSH key to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs to filter for Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_iam_user: {
+			version: 0
+			block: {
+				attributes: {
+					mfa: {
+						type:             "bool"
+						description:      "Filter by MFA status"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					tag: {
+						type:             "string"
+						description:      "Filter by tags containing a given string"
+						description_kind: "plain"
+						optional:         true
+					}
+					type: {
+						type:             "string"
+						description:      "Filter by user type"
+						description_kind: "plain"
+						optional:         true
+					}
+					user_ids: {
+						type: ["list", "string"]
+						description:      "Filter users by user IDs"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		scaleway_ipam_ip: {
 			version: 0
 			block: {
@@ -31097,6 +31799,132 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_opensearch_deployment: {
+			version: 0
+			block: {
+				attributes: {
+					name: {
+						type:             "string"
+						description:      "Name of the OpenSearch deployment to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID of the OpenSearch deployment to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs of the OpenSearch deployment to filter on Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+					regions: {
+						type: ["list", "string"]
+						description:      "Regions of the OpenSearch deployment to filter on Use '*' to list from all regions"
+						description_kind: "plain"
+						optional:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "Tags of the OpenSearch deployment to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					version: {
+						type:             "string"
+						description:      "OpenSearch engine version to filter on (same value as the deployment `version` attribute, e.g. \"2.15\")"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_rdb_database: {
+			version: 0
+			block: {
+				attributes: {
+					instance_ids: {
+						type: ["list", "string"]
+						description:      "Database Instance IDs to list databases from. Use [\"*\"] only to include all instances in each selected region and project. Otherwise each value must be a regional ID (`region/uuid`) or a bare instance UUID."
+						description_kind: "plain"
+						required:         true
+					}
+					managed: {
+						type:             "bool"
+						description:      "Whether to only list managed databases"
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the database to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID of the RDB Database Instance to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					owner: {
+						type:             "string"
+						description:      "Owner user name to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs of the RDB Database Instance to filter on Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+					regions: {
+						type: ["list", "string"]
+						description:      "Regions of the RDB Database Instance to filter on Use '*' to list from all regions"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_rdb_database_backup: {
+			version: 0
+			block: {
+				attributes: {
+					instance_ids: {
+						type: ["list", "string"]
+						description:      "Database Instance IDs to list backups from. Use [\"*\"] only to include all instances in each selected region and project. Otherwise each value must be a regional ID (`region/uuid`) or a bare instance UUID."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the database backup to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs of the RDB Database Instance to filter backups on Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+					regions: {
+						type: ["list", "string"]
+						description:      "Regions of the RDB Database Instance to filter backups on Use '*' to list from all regions"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		scaleway_rdb_instance: {
 			version: 0
 			block: {
@@ -31134,6 +31962,38 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					tags: {
 						type: ["list", "string"]
 						description:      "Tags of the RDB instance to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_rdb_snapshot: {
+			version: 0
+			block: {
+				attributes: {
+					instance_ids: {
+						type: ["list", "string"]
+						description:      "Database Instance IDs to list snapshots from. Use [\"*\"] only to include all instances in each selected region and project. Otherwise each value must be a regional ID (`region/uuid`) or a bare instance UUID."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the snapshot to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs of the RDB Database Instance to filter snapshots on Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+					regions: {
+						type: ["list", "string"]
+						description:      "Regions of the RDB Database Instance to filter snapshots on Use '*' to list from all regions"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -31185,6 +32045,68 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_secret: {
+			version: 0
+			block: {
+				attributes: {
+					ephemeral: {
+						type:             "bool"
+						description:      "Filter by ephemeral / not ephemeral"
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Filter by secret name"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					path: {
+						type:             "string"
+						description:      "Filter by exact path"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs to filter for. Use '*' to list across all projects Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+					regions: {
+						type: ["list", "string"]
+						description:      "Regions to target. Use '*' to list from all regions Use '*' to list from all regions"
+						description_kind: "plain"
+						optional:         true
+					}
+					scheduled_for_deletion: {
+						type:             "bool"
+						description:      "Filter by whether the secret was scheduled for deletion / not scheduled for deletion"
+						description_kind: "plain"
+						optional:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "Filter by tags"
+						description_kind: "plain"
+						optional:         true
+					}
+					type: {
+						type:             "string"
+						description:      "Filter by secret type"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		scaleway_vpc: {
 			version: 0
 			block: {
@@ -31228,6 +32150,56 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					tags: {
 						type: ["list", "string"]
 						description:      "Tags of the VPC to list for"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_vpc_connector: {
+			version: 0
+			block: {
+				attributes: {
+					name: {
+						type:             "string"
+						description:      "Name of the VPC connector to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs to filter for. Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+					regions: {
+						type: ["list", "string"]
+						description:      "Regions to filter for. Use '*' to list from all regions"
+						description_kind: "plain"
+						optional:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "Tags of the VPC connector to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					target_vpc_id: {
+						type:             "string"
+						description:      "Filter for connectors attached to this target VPC (regional ID or plain UUID)."
+						description_kind: "plain"
+						optional:         true
+					}
+					vpc_id: {
+						type:             "string"
+						description:      "Filter for connectors attached to this source VPC (regional ID or plain UUID)."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -31329,6 +32301,112 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_vpc_public_gateway_ip: {
+			version: 0
+			block: {
+				attributes: {
+					is_free: {
+						type:             "bool"
+						description:      "Filter based on whether the IP is attached to a gateway or not"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID to filter for."
+						description_kind: "plain"
+						optional:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs to filter for. Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+					reverse: {
+						type:             "string"
+						description:      "Filter for IPs whose reverse DNS contains this substring"
+						description_kind: "plain"
+						optional:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "Tags to filter for."
+						description_kind: "plain"
+						optional:         true
+					}
+					zones: {
+						type: ["list", "string"]
+						description:      "Zones to filter for. Use '*' to list from all zones"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_vpc_route: {
+			version: 0
+			block: {
+				attributes: {
+					contains: {
+						type:             "string"
+						description:      "Filter for routes whose destination is contained in this subnet (CIDR notation)."
+						description_kind: "plain"
+						optional:         true
+					}
+					is_ipv6: {
+						type:             "bool"
+						description:      "Filter for routes with an IPv6 destination."
+						description_kind: "plain"
+						optional:         true
+					}
+					nexthop_private_network_id: {
+						type:             "string"
+						description:      "Filter for routes with this nexthop private network ID (regional ID or plain UUID)."
+						description_kind: "plain"
+						optional:         true
+					}
+					nexthop_resource_id: {
+						type:             "string"
+						description:      "Filter for routes with this nexthop resource ID (regional ID or plain UUID)."
+						description_kind: "plain"
+						optional:         true
+					}
+					nexthop_resource_type: {
+						type:             "string"
+						description:      "Filter for routes with this nexthop resource type."
+						description_kind: "plain"
+						optional:         true
+					}
+					nexthop_vpc_connector_id: {
+						type:             "string"
+						description:      "Filter for routes with this nexthop VPC connector ID (regional ID or plain UUID)."
+						description_kind: "plain"
+						optional:         true
+					}
+					regions: {
+						type: ["list", "string"]
+						description:      "Regions to filter for. Use '*' to list from all regions"
+						description_kind: "plain"
+						optional:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "Tags of the VPC route to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					vpc_id: {
+						type:             "string"
+						description:      "Filter for routes belonging to this VPC (regional ID or plain UUID)."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 	}
 	functions: region_from_id: {
 		description: "Given an ID string value, returns the region contained in the ID."
@@ -31346,6 +32424,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 		}]
 	}
 	resource_identity_schemas: {
+		scaleway_account_ssh_key: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				description:         "The id of the resource (UUID format)"
+				required_for_import: true
+			}
+		}
 		scaleway_apple_silicon_runner: {
 			version: 0
 			attributes: {
@@ -31666,6 +32752,38 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 			}
 		}
+		scaleway_iam_application: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				description:         "The id of the resource (UUID format)"
+				required_for_import: true
+			}
+		}
+		scaleway_iam_group: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				description:         "The id of the resource (UUID format)"
+				required_for_import: true
+			}
+		}
+		scaleway_iam_ssh_key: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				description:         "The id of the resource (UUID format)"
+				required_for_import: true
+			}
+		}
+		scaleway_iam_user: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				description:         "The id of the resource (UUID format)"
+				required_for_import: true
+			}
+		}
 		scaleway_instance_image: {
 			version: 0
 			attributes: {
@@ -31737,6 +32855,36 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				server_id: {
 					type:                "string"
 					description:         "The ID of the server"
+					required_for_import: true
+				}
+				zone: {
+					type:                "string"
+					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_instance_security_group: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				zone: {
+					type:                "string"
+					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_instance_security_group_rules: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
 					required_for_import: true
 				}
 				zone: {
@@ -32452,6 +33600,21 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			}
 		}
 		scaleway_s2s_vpn_routing_policy: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_secret: {
 			version: 0
 			attributes: {
 				id: {
@@ -33267,6 +34430,35 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_rdb_instance_renew_certificate`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/rdb_instance_renew_certificate) action is helpful to renew the TLS certificate of an RDB instance.
 
 				Refer to the RDB [documentation](https://www.scaleway.com/en/docs/managed-databases-for-postgresql-and-mysql/) and [API documentation](https://www.scaleway.com/en/developers/api/managed-databases-for-postgresql-and-mysql/) for more information.
+				"""
+			description_kind: "markdown"
+		}
+		scaleway_rdb_instance_restart: block: {
+			attributes: {
+				instance_id: {
+					type:             "string"
+					description:      "RDB instance ID to restart. Can be a plain UUID or a regional ID."
+					description_kind: "plain"
+					required:         true
+				}
+				region: {
+					type:             "string"
+					description:      "The region you want to attach the resource to"
+					description_kind: "plain"
+					optional:         true
+				}
+				wait: {
+					type:             "bool"
+					description:      "Wait for the instance restart to complete before returning."
+					description_kind: "plain"
+					optional:         true
+				}
+			}
+			description: """
+				The [`scaleway_rdb_instance_restart`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/rdb_instance_restart) action is helpful to restart an RDB instance.
+
+				Refer to the RDB [documentation](https://www.scaleway.com/en/docs/managed-databases-for-postgresql-and-mysql/) and [API documentation](https://www.scaleway.com/en/developers/api/managed-databases-for-postgresql-and-mysql/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}

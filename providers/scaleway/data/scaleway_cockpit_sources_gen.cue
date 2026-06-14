@@ -24,7 +24,9 @@ package data
 		// The region you want to attach the resource to
 		region?: string
 
-		// The number of days to retain data, must be between 1 and 365.
+		// The number of days to retain data. Use scaleway_cockpit_config
+		// data source to read allowed min, max, and default values for
+		// each data source type.
 		retention_days?: number
 
 		// List of cockpit sources.

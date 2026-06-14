@@ -6,6 +6,8 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_edge_services_backend_stage")
 	close({
+		container_backend_config?: matchN(1, [#container_backend_config, list.MaxItems(1) & [...#container_backend_config]])
+		function_backend_config?: matchN(1, [#function_backend_config, list.MaxItems(1) & [...#function_backend_config]])
 		lb_backend_config?: matchN(1, [#lb_backend_config, [...#lb_backend_config]])
 		s3_backend_config?: matchN(1, [#s3_backend_config, list.MaxItems(1) & [...#s3_backend_config]])
 
@@ -21,6 +23,22 @@ import "list"
 
 		// The date and time of the last update of the backend stage
 		updated_at?: string
+	})
+
+	#container_backend_config: close({
+		// ID of the Serverless Container
+		container_id!: string
+
+		// The region you want to attach the resource to
+		region?: string
+	})
+
+	#function_backend_config: close({
+		// ID of the Serverless Function
+		function_id!: string
+
+		// The region you want to attach the resource to
+		region?: string
 	})
 
 	#lb_backend_config: close({
