@@ -1,3 +1,3 @@
 package cloudflare
 
-#Version: "5.19.1"
+#Version: "5.20.0"

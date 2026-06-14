@@ -27,6 +27,19 @@ package res
 		// "processing", "failed", "complete".
 		upload_status?: string
 		word_list?:     string
+
+		// A Predefined AI prompt classification topic entry.
+		variant?: close({
+			// A customer-facing explanation of what this predefined AI prompt
+			// topic represents.
+			description?: string
+
+			// Available values: "Intent", "Content".
+			topic_type?: string
+
+			// Available values: "PromptTopic", "General".
+			type?: string
+		})
 		confidence?: close({
 			// Indicates whether this entry has AI remote service validation.
 			ai_context_available?: bool
@@ -45,14 +58,5 @@ package res
 			id?:   string
 			name?: string
 		})]])
-		variant?: close({
-			description?: string
-
-			// Available values: "Intent", "Content".
-			topic_type?: string
-
-			// Available values: "PromptTopic".
-			type?: string
-		})
 	})
 }

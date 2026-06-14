@@ -32,8 +32,50 @@ package data
 		// UUID.
 		operation_id?: string
 
+		// When true, includes OpenAPI schemas (both uploaded and learned)
+		// for the operation in the response. Due to the conversion
+		// overhead, this parameter is only supported on single-operation
+		// retrieval.
+		with_schemas?: bool
+
 		// Identifier.
 		zone_id?: string
+
+		// OpenAPI JSON schemas for an operation, including both
+		// user-uploaded and Cloudflare-learned schemas.
+		schemas?: close({
+			// An OpenAPI operation object fragment containing schema
+			// information for an operation. May include parameter
+			// definitions, request body specifications, and a component
+			// schema extension.
+			learned?: close({
+				// OpenAPI parameter objects describing path, query, header, or
+				// cookie parameters.
+				parameters?: [...{
+					[string]: string
+				}]
+
+				// OpenAPI request body object describing the expected request
+				// payload.
+				request_body?: [string]: string
+			})
+
+			// An OpenAPI operation object fragment containing schema
+			// information for an operation. May include parameter
+			// definitions, request body specifications, and a component
+			// schema extension.
+			uploaded?: close({
+				// OpenAPI parameter objects describing path, query, header, or
+				// cookie parameters.
+				parameters?: [...{
+					[string]: string
+				}]
+
+				// OpenAPI request body object describing the expected request
+				// payload.
+				request_body?: [string]: string
+			})
+		})
 		features?: close({
 			// API Routing settings on endpoint.
 			api_routing?: close({

@@ -26,11 +26,19 @@ package data
 				errored?:           number
 				paused?:            number
 				queued?:            number
+				rolling_back?:      number
 				running?:           number
 				terminated?:        number
 				waiting?:           number
 				waiting_for_pause?: number
 			})
+			schedules?: matchN(1, [close({
+				cron?:          string
+				next_instance?: string
+			}), [...close({
+				cron?:          string
+				next_instance?: string
+			})]])
 		}), [...close({
 			class_name?:   string
 			created_on?:   string
@@ -44,11 +52,19 @@ package data
 				errored?:           number
 				paused?:            number
 				queued?:            number
+				rolling_back?:      number
 				running?:           number
 				terminated?:        number
 				waiting?:           number
 				waiting_for_pause?: number
 			})
+			schedules?: matchN(1, [close({
+				cron?:          string
+				next_instance?: string
+			}), [...close({
+				cron?:          string
+				next_instance?: string
+			})]])
 		})]])
 	})
 }

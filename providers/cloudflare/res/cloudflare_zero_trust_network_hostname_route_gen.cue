@@ -23,6 +23,11 @@ package res
 		// The hostname route ID.
 		id?: string
 
+		// The type of tunnel.
+		// Available values: "cfd_tunnel", "warp_connector", "warp",
+		// "magic", "ip_sec", "gre", "cni".
+		tun_type?: string
+
 		// UUID of the tunnel.
 		tunnel_id?: string
 

@@ -93,6 +93,22 @@ package data
 			// Determines which tunnel protocol to use.
 			tunnel_protocol?: string
 
+			// List of DNS search suffixes to apply to clients. Suffixes are
+			// evaluated in order. Use an empty array to clear.
+			dns_search_suffixes?: matchN(1, [close({
+				// A description of the DNS search suffix.
+				description?: string
+
+				// The DNS search suffix to append when resolving short hostnames.
+				suffix?: string
+			}), [...close({
+				// A description of the DNS search suffix.
+				description?: string
+
+				// The DNS search suffix to append when resolving short hostnames.
+				suffix?: string
+			})]])
+
 			// List of routes excluded in the WARP client's tunnel.
 			exclude?: matchN(1, [close({
 				// The address in CIDR format to exclude from the tunnel. If
@@ -146,6 +162,17 @@ package data
 				// `address` must not be present.
 				host?: string
 			})]])
+
+			// Virtual network access settings for the device.
+			virtual_networks?: close({
+				// List of virtual network IDs the device is allowed to access.
+				// When virtual_networks is set, at least one entry is required.
+				allowed?: [...string]
+
+				// The default virtual network ID. Must be included in the
+				// `allowed` list.
+				default?: string
+			})
 			fallback_domains?: matchN(1, [close({
 				// A description of the fallback domain, displayed in the client
 				// UI.
@@ -270,6 +297,22 @@ package data
 			// Determines which tunnel protocol to use.
 			tunnel_protocol?: string
 
+			// List of DNS search suffixes to apply to clients. Suffixes are
+			// evaluated in order. Use an empty array to clear.
+			dns_search_suffixes?: matchN(1, [close({
+				// A description of the DNS search suffix.
+				description?: string
+
+				// The DNS search suffix to append when resolving short hostnames.
+				suffix?: string
+			}), [...close({
+				// A description of the DNS search suffix.
+				description?: string
+
+				// The DNS search suffix to append when resolving short hostnames.
+				suffix?: string
+			})]])
+
 			// List of routes excluded in the WARP client's tunnel.
 			exclude?: matchN(1, [close({
 				// The address in CIDR format to exclude from the tunnel. If
@@ -323,6 +366,17 @@ package data
 				// `address` must not be present.
 				host?: string
 			})]])
+
+			// Virtual network access settings for the device.
+			virtual_networks?: close({
+				// List of virtual network IDs the device is allowed to access.
+				// When virtual_networks is set, at least one entry is required.
+				allowed?: [...string]
+
+				// The default virtual network ID. Must be included in the
+				// `allowed` list.
+				default?: string
+			})
 			fallback_domains?: matchN(1, [close({
 				// A description of the fallback domain, displayed in the client
 				// UI.

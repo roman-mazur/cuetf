@@ -132,7 +132,7 @@ package data
 			// Available values: "ubiquitous", "optimal", "force".
 			bundle_method?: string
 
-			// The Certificate Authority that will issue the certificate
+			// The Certificate Authority that will issue the certificate.
 			// Available values: "digicert", "google", "lets_encrypt",
 			// "ssl_com".
 			certificate_authority?: string

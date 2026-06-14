@@ -77,6 +77,8 @@ package data
 			})
 		})
 		filter?: close({
+			// Filters sinks by name (case-insensitive substring).
+			name?:        string
 			pipeline_id?: string
 		})
 		format?: close({

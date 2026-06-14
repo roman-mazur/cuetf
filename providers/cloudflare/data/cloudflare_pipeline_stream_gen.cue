@@ -24,6 +24,9 @@ package data
 		// Indicates the current version of this stream.
 		version?: number
 		filter?: close({
+			// Filters streams by name (case-insensitive substring).
+			name?: string
+
 			// Specifies the public ID of the pipeline.
 			pipeline_id?: string
 		})

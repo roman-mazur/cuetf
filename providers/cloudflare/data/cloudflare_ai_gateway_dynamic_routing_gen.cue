@@ -95,6 +95,7 @@ package data
 			active?:     string
 			created_at?: string
 			data?:       string
+			is_valid?:   bool
 			version_id?: string
 		})
 	})

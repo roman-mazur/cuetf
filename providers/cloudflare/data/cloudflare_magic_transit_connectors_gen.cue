@@ -7,6 +7,10 @@ package data
 		// Account identifier
 		account_id?: string
 
+		// Filter connectors by device type.
+		// Available values: "MANAGED", "LICENSED".
+		device_type?: string
+
 		// Max items to fetch, default: 1000
 		max_items?: number
 
@@ -31,6 +35,9 @@ package data
 			device?: close({
 				id?:            string
 				serial_number?: string
+
+				// Available values: "MANAGED", "LICENSED".
+				type?: string
 			})
 		}), [...close({
 			activated?: bool
@@ -52,6 +59,9 @@ package data
 			device?: close({
 				id?:            string
 				serial_number?: string
+
+				// Available values: "MANAGED", "LICENSED".
+				type?: string
 			})
 		})]])
 	})

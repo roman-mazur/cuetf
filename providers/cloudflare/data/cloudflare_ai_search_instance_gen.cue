@@ -34,10 +34,17 @@ package data
 		// Available values: "super_strict_match", "close_enough",
 		// "flexible_friend", "anything_goes".
 		cache_threshold?: string
-		chunk_overlap?:   number
-		chunk_size?:      number
-		created_at?:      string
-		created_by?:      string
+
+		// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800
+		// (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400
+		// (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+		// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400,
+		// 172800, 259200, 518400.
+		cache_ttl?:     number
+		chunk_overlap?: number
+		chunk_size?:    number
+		created_at?:    string
+		created_by?:    string
 
 		// Available values: "@cf/qwen/qwen3-embedding-0.6b",
 		// "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5",
@@ -51,10 +58,7 @@ package data
 		engine_version?:  number
 
 		// Available values: "max", "rrf".
-		fusion_method?: string
-
-		// AI Search instance ID. Lowercase alphanumeric, hyphens, and
-		// underscores.
+		fusion_method?:      string
 		id?:                 string
 		last_activity?:      string
 		max_num_results?:    number
@@ -125,17 +129,19 @@ package data
 			field_name?: string
 		})]])
 		filter?: close({
+			// Filter by namespace.
 			namespace?: string
 
-			// Order By Column Name
+			// Field to order results by.
 			// Available values: "created_at".
 			order_by?: string
 
-			// Order By Direction
+			// Order direction.
 			// Available values: "asc", "desc".
 			order_by_direction?: string
 
-			// Search by id
+			// Filter instances whose id contains this string
+			// (case-insensitive).
 			search?: string
 		})
 		indexing_options?: close({
@@ -150,11 +156,6 @@ package data
 		metadata?: close({
 			created_from_aisearch_wizard?: bool
 			worker_domain?:                string
-			search_for_agents?: close({
-				hostname?:  string
-				zone_id?:   string
-				zone_name?: string
-			})
 		})
 		public_endpoint_params?: close({
 			authorized_hosts?: [...string]
@@ -184,36 +185,38 @@ package data
 		retrieval_options?: close({
 			// Metadata fields to boost search results by. Each entry
 			// specifies a metadata field and an optional direction.
-			// Direction defaults to 'asc' for numeric fields and 'exists'
-			// for text/boolean fields. Fields must match 'timestamp' or a
-			// defined custom_metadata field.
+			// Direction defaults to 'asc' for numeric/datetime fields and
+			// 'exists' for text/boolean fields. Fields must match
+			// 'timestamp' or a defined custom_metadata field.
 			boost_by?: matchN(1, [close({
 				// Boost direction. 'desc' = higher values rank higher (e.g. newer
 				// timestamps). 'asc' = lower values rank higher. 'exists' =
 				// boost chunks that have the field. 'not_exists' = boost chunks
-				// that lack the field. Optional ��� defaults to 'asc' for
+				// that lack the field. Optional — defaults to 'asc' for
 				// numeric/datetime fields, 'exists' for text/boolean fields.
 				// Available values: "asc", "desc", "exists", "not_exists".
 				direction?: string
 
 				// Metadata field name to boost by. Use 'timestamp' for document
 				// freshness, or any custom_metadata field. Numeric and datetime
-				// fields support asc/desc directions; text/boolean fields
-				// support exists/not_exists.
+				// fields support all four directions (asc, desc, exists,
+				// not_exists); text/boolean fields only support
+				// exists/not_exists.
 				field?: string
 			}), [...close({
 				// Boost direction. 'desc' = higher values rank higher (e.g. newer
 				// timestamps). 'asc' = lower values rank higher. 'exists' =
 				// boost chunks that have the field. 'not_exists' = boost chunks
-				// that lack the field. Optional ��� defaults to 'asc' for
+				// that lack the field. Optional — defaults to 'asc' for
 				// numeric/datetime fields, 'exists' for text/boolean fields.
 				// Available values: "asc", "desc", "exists", "not_exists".
 				direction?: string
 
 				// Metadata field name to boost by. Use 'timestamp' for document
 				// freshness, or any custom_metadata field. Numeric and datetime
-				// fields support asc/desc directions; text/boolean fields
-				// support exists/not_exists.
+				// fields support all four directions (asc, desc, exists,
+				// not_exists); text/boolean fields only support
+				// exists/not_exists.
 				field?: string
 			})]])
 
@@ -252,7 +255,9 @@ package data
 					// List of path-to-selector mappings for extracting specific
 					// content from crawled pages. Each entry pairs a URL glob
 					// pattern with a CSS selector. The first matching path wins.
-					// Only the matched HTML fragment is stored and indexed.
+					// Only the matched HTML fragment is stored and indexed. Omit the
+					// field to disable content selection — empty arrays are
+					// rejected.
 					content_selector?: matchN(1, [close({
 						// Glob pattern to match against the page URL path. Uses standard
 						// glob syntax: * matches within a segment, ** crosses
@@ -260,8 +265,9 @@ package data
 						path?: string
 
 						// CSS selector to extract content from pages matching the path
-						// pattern. Supports standard CSS selectors including class, ID,
-						// element, and attribute selectors.
+						// pattern. Must not contain disallowed characters (;, `, $, {,
+						// }, \). Must target a single element; if multiple elements
+						// match, the selector is ignored and the full page is used.
 						selector?: string
 					}), [...close({
 						// Glob pattern to match against the page URL path. Uses standard
@@ -270,15 +276,21 @@ package data
 						path?: string
 
 						// CSS selector to extract content from pages matching the path
-						// pattern. Supports standard CSS selectors including class, ID,
-						// element, and attribute selectors.
+						// pattern. Must not contain disallowed characters (;, `, $, {,
+						// }, \). Must target a single element; if multiple elements
+						// match, the selector is ignored and the full page is used.
 						selector?: string
 					})]])
+
+					// Up to 5 custom HTTP headers sent with each crawl request. Names
+					// must be RFC-7230 token characters (no spaces, colons, or
+					// control characters); values must be HTAB + printable ASCII (no
+					// CR/LF).
+					include_headers?: [string]: string
 
 					// List of specific sitemap URLs to use for crawling. Only valid
 					// when parse_type is 'sitemap'.
 					specific_sitemaps?: [...string]
-					include_headers?: [string]: string
 					include_images?:        bool
 					use_browser_rendering?: bool
 				})

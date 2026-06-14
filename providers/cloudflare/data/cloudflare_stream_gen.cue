@@ -5,7 +5,7 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_stream")
 	close({
 		// The account identifier tag.
-		account_id?: string
+		account_id!: string
 
 		// Lists the origins allowed to display the video. Enter allowed
 		// origin domains in an array and use `*` for wildcard

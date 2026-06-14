@@ -72,6 +72,22 @@ package data
 				// The claim name for email in the id_token response.
 				email_claim_name?: string
 
+				// Enable SAML assertion encryption. When enabled, the Identity
+				// Provider will encrypt
+				// SAML assertions using the certificate from the assigned
+				// certificate set.
+				//
+				// To enable encryption:
+				// 1. Create a certificate set via POST to
+				// `/identity_providers/{id}/saml_certificate`
+				// 2. Set this field to `true` and include
+				// `saml_certificate_set_id` in the PUT request
+				// 3. Configure the public certificate in your external Identity
+				// Provider
+				//
+				// Note: Requires `saml_certificate_set_id` to be set when `true`.
+				enable_encryption?: bool
+
 				// X509 certificate to verify the signature in the SAML
 				// authentication response
 				idp_public_certs?: [...string]
@@ -103,7 +119,14 @@ package data
 				// remembered account or an option to choose to use a different
 				// account altogether.
 				// Available values: "login", "select_account", "none".
-				prompt?: string
+				prompt?:       string
+				redirect_url?: string
+
+				// When enabled, only users who are members of your Cloudflare
+				// account can authenticate through this identity provider. When
+				// disabled, any user with a Cloudflare account can authenticate,
+				// subject to your Access policies.
+				restrict_to_account_members?: bool
 
 				// OAuth scopes
 				scopes?: [...string]
@@ -145,6 +168,58 @@ package data
 			// The name of the identity provider, shown to users on the login
 			// page.
 			name?: string
+
+			// Indicates that the identity provider is immutable and cannot be
+			// updated or deleted via the API.
+			read_only?: bool
+
+			// The SAML encryption certificate set details, including current
+			// and previous certificates.
+			// Only present for SAML identity providers with a certificate set
+			// assigned.
+			saml_certificate_set?: close({
+				// Timestamp when the certificate set was created
+				created_at?: string
+
+				// The previous certificate, maintained during rotation to ensure
+				// continuity. Null if no rotation has occurred. Mirrors the
+				// structure of `saml_certificate`.
+				previous_certificate?: string
+
+				// Unique identifier for the certificate set
+				uid?: string
+
+				// Timestamp when the certificate set was last updated (e.g.,
+				// during rotation)
+				updated_at?: string
+
+				// The currently active certificate used for encrypting SAML
+				// assertions
+				current_certificate?: close({
+					// Indicates whether this is the currently active certificate
+					is_current?: bool
+
+					// Certificate expiration date. Certificates are automatically
+					// rotated 30 days before expiration.
+					not_after?: string
+
+					// PEM-encoded X.509 certificate containing the public key.
+					// Configure this certificate in your external SAML Identity
+					// Provider to enable encryption.
+					public_certificate?: string
+
+					// Unique identifier for the certificate
+					uid?: string
+				})
+			})
+
+			// The UID of the SAML encryption certificate set assigned to this
+			// Identity Provider.
+			// Only present for SAML identity providers with encryption
+			// configured.
+			// Create a certificate set via POST to
+			// `/identity_providers/{id}/saml_certificate`.
+			saml_certificate_set_id?: string
 
 			// The configuration settings for enabling a System for
 			// Cross-Domain Identity Management (SCIM) with the identity
@@ -190,7 +265,7 @@ package data
 			// documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
 			// Available values: "onetimepin", "azureAD", "saml", "centrify",
 			// "facebook", "github", "google-apps", "google", "linkedin",
-			// "oidc", "okta", "onelogin", "pingone", "yandex".
+			// "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
 			type?: string
 		}), [...close({
 			// The configuration parameters for the identity provider. To view
@@ -243,6 +318,22 @@ package data
 				// The claim name for email in the id_token response.
 				email_claim_name?: string
 
+				// Enable SAML assertion encryption. When enabled, the Identity
+				// Provider will encrypt
+				// SAML assertions using the certificate from the assigned
+				// certificate set.
+				//
+				// To enable encryption:
+				// 1. Create a certificate set via POST to
+				// `/identity_providers/{id}/saml_certificate`
+				// 2. Set this field to `true` and include
+				// `saml_certificate_set_id` in the PUT request
+				// 3. Configure the public certificate in your external Identity
+				// Provider
+				//
+				// Note: Requires `saml_certificate_set_id` to be set when `true`.
+				enable_encryption?: bool
+
 				// X509 certificate to verify the signature in the SAML
 				// authentication response
 				idp_public_certs?: [...string]
@@ -274,7 +365,14 @@ package data
 				// remembered account or an option to choose to use a different
 				// account altogether.
 				// Available values: "login", "select_account", "none".
-				prompt?: string
+				prompt?:       string
+				redirect_url?: string
+
+				// When enabled, only users who are members of your Cloudflare
+				// account can authenticate through this identity provider. When
+				// disabled, any user with a Cloudflare account can authenticate,
+				// subject to your Access policies.
+				restrict_to_account_members?: bool
 
 				// OAuth scopes
 				scopes?: [...string]
@@ -316,6 +414,58 @@ package data
 			// The name of the identity provider, shown to users on the login
 			// page.
 			name?: string
+
+			// Indicates that the identity provider is immutable and cannot be
+			// updated or deleted via the API.
+			read_only?: bool
+
+			// The SAML encryption certificate set details, including current
+			// and previous certificates.
+			// Only present for SAML identity providers with a certificate set
+			// assigned.
+			saml_certificate_set?: close({
+				// Timestamp when the certificate set was created
+				created_at?: string
+
+				// The previous certificate, maintained during rotation to ensure
+				// continuity. Null if no rotation has occurred. Mirrors the
+				// structure of `saml_certificate`.
+				previous_certificate?: string
+
+				// Unique identifier for the certificate set
+				uid?: string
+
+				// Timestamp when the certificate set was last updated (e.g.,
+				// during rotation)
+				updated_at?: string
+
+				// The currently active certificate used for encrypting SAML
+				// assertions
+				current_certificate?: close({
+					// Indicates whether this is the currently active certificate
+					is_current?: bool
+
+					// Certificate expiration date. Certificates are automatically
+					// rotated 30 days before expiration.
+					not_after?: string
+
+					// PEM-encoded X.509 certificate containing the public key.
+					// Configure this certificate in your external SAML Identity
+					// Provider to enable encryption.
+					public_certificate?: string
+
+					// Unique identifier for the certificate
+					uid?: string
+				})
+			})
+
+			// The UID of the SAML encryption certificate set assigned to this
+			// Identity Provider.
+			// Only present for SAML identity providers with encryption
+			// configured.
+			// Create a certificate set via POST to
+			// `/identity_providers/{id}/saml_certificate`.
+			saml_certificate_set_id?: string
 
 			// The configuration settings for enabling a System for
 			// Cross-Domain Identity Management (SCIM) with the identity
@@ -361,7 +511,7 @@ package data
 			// documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
 			// Available values: "onetimepin", "azureAD", "saml", "centrify",
 			// "facebook", "github", "google-apps", "google", "linkedin",
-			// "oidc", "okta", "onelogin", "pingone", "yandex".
+			// "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
 			type?: string
 		})]])
 	})

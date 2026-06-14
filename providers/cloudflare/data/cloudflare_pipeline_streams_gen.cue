@@ -10,6 +10,9 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Filters streams by name (case-insensitive substring).
+		name?: string
+
 		// Specifies the public ID of the pipeline.
 		pipeline_id?: string
 

@@ -45,7 +45,7 @@ package data
 			// Limit to the number of records returned.
 			limit?: number
 
-			// Offset the results
+			// Offset the results.
 			offset?: number
 
 			// Identifier.

@@ -15,6 +15,9 @@ package data
 			// Indicates when the snippet was created.
 			created_on?: string
 
+			// Identify the snippet.
+			id?: string
+
 			// Indicates when the snippet was last modified.
 			modified_on?: string
 
@@ -23,6 +26,9 @@ package data
 		}), [...close({
 			// Indicates when the snippet was created.
 			created_on?: string
+
+			// Identify the snippet.
+			id?: string
 
 			// Indicates when the snippet was last modified.
 			modified_on?: string
