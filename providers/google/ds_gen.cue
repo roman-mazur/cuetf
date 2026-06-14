@@ -17,6 +17,7 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_alloydb_locations": data.#google_alloydb_locations
 	_#ds: "\(#googlePrefix)_alloydb_supported_database_flags": data.#google_alloydb_supported_database_flags
 	_#ds: "\(#googlePrefix)_apigee_environment_iam_policy": data.#google_apigee_environment_iam_policy
+	_#ds: "\(#googlePrefix)_apigee_instance": data.#google_apigee_instance
 	_#ds: "\(#googlePrefix)_app_engine_default_service_account": data.#google_app_engine_default_service_account
 	_#ds: "\(#googlePrefix)_apphub_application": data.#google_apphub_application
 	_#ds: "\(#googlePrefix)_apphub_discovered_service": data.#google_apphub_discovered_service
@@ -68,6 +69,7 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_bigquery_dataset_iam_policy": data.#google_bigquery_dataset_iam_policy
 	_#ds: "\(#googlePrefix)_bigquery_datasets": data.#google_bigquery_datasets
 	_#ds: "\(#googlePrefix)_bigquery_default_service_account": data.#google_bigquery_default_service_account
+	_#ds: "\(#googlePrefix)_bigquery_routine_iam_policy": data.#google_bigquery_routine_iam_policy
 	_#ds: "\(#googlePrefix)_bigquery_table": data.#google_bigquery_table
 	_#ds: "\(#googlePrefix)_bigquery_table_iam_policy": data.#google_bigquery_table_iam_policy
 	_#ds: "\(#googlePrefix)_bigquery_tables": data.#google_bigquery_tables
@@ -201,6 +203,7 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_data_lineage_config": data.#google_data_lineage_config
 	_#ds: "\(#googlePrefix)_dataplex_aspect_type_iam_policy": data.#google_dataplex_aspect_type_iam_policy
 	_#ds: "\(#googlePrefix)_dataplex_asset_iam_policy": data.#google_dataplex_asset_iam_policy
+	_#ds: "\(#googlePrefix)_dataplex_data_product_iam_policy": data.#google_dataplex_data_product_iam_policy
 	_#ds: "\(#googlePrefix)_dataplex_data_quality_rules": data.#google_dataplex_data_quality_rules
 	_#ds: "\(#googlePrefix)_dataplex_datascan_iam_policy": data.#google_dataplex_datascan_iam_policy
 	_#ds: "\(#googlePrefix)_dataplex_entry_group_iam_policy": data.#google_dataplex_entry_group_iam_policy
@@ -220,6 +223,7 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_datastream_static_ips": data.#google_datastream_static_ips
 	_#ds: "\(#googlePrefix)_discovery_engine_data_store": data.#google_discovery_engine_data_store
 	_#ds: "\(#googlePrefix)_discovery_engine_data_stores": data.#google_discovery_engine_data_stores
+	_#ds: "\(#googlePrefix)_discovery_engine_search_engine_iam_policy": data.#google_discovery_engine_search_engine_iam_policy
 	_#ds: "\(#googlePrefix)_dns_keys": data.#google_dns_keys
 	_#ds: "\(#googlePrefix)_dns_managed_zone": data.#google_dns_managed_zone
 	_#ds: "\(#googlePrefix)_dns_managed_zone_iam_policy": data.#google_dns_managed_zone_iam_policy
@@ -319,6 +323,7 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_oracle_database_db_servers": data.#google_oracle_database_db_servers
 	_#ds: "\(#googlePrefix)_oracle_database_goldengate_connection_types": data.#google_oracle_database_goldengate_connection_types
 	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_environments": data.#google_oracle_database_goldengate_deployment_environments
+	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_types": data.#google_oracle_database_goldengate_deployment_types
 	_#ds: "\(#googlePrefix)_oracle_database_odb_network": data.#google_oracle_database_odb_network
 	_#ds: "\(#googlePrefix)_oracle_database_odb_subnet": data.#google_oracle_database_odb_subnet
 	_#ds: "\(#googlePrefix)_organization": data.#google_organization

@@ -34,6 +34,7 @@ import "list"
 		network_performance_config?: matchN(1, [#network_performance_config, list.MaxItems(1) & [...#network_performance_config]])
 		network_policy?: matchN(1, [#network_policy, list.MaxItems(1) & [...#network_policy]])
 		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
+		node_creation_config?: matchN(1, [#node_creation_config, list.MaxItems(1) & [...#node_creation_config]])
 		node_pool?: matchN(1, [#node_pool, [...#node_pool]])
 		node_pool_auto_config?: matchN(1, [#node_pool_auto_config, list.MaxItems(1) & [...#node_pool_auto_config]])
 		node_pool_defaults?: matchN(1, [#node_pool_defaults, list.MaxItems(1) & [...#node_pool_defaults]])
@@ -702,6 +703,15 @@ import "list"
 
 		// The list of instance tags applied to all nodes.
 		tags?: [...string]
+	})
+
+	#node_creation_config: close({
+		// NodeCreationMode defines the settings of node creation mode.
+		// Accepted values are:
+		// * VIA_KUBELET: Kubelet registers itself.
+		// * VIA_CONTROL_PLANE: gcp-controller-manager automatically
+		// creates the node object after CSR approval.
+		node_creation_mode!: string
 	})
 
 	#node_pool: close({
@@ -2569,6 +2579,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/node_pool/$defs/node_drain_config": close({
+		// The duration of the grace termination period for node drain.
+		grace_termination_duration?: string
+
+		// The duration of the PDB timeout period for node drain.
+		pdb_timeout_duration?: string
+
 		// Whether to respect PodDisruptionBudget policy during node pool
 		// deletion.
 		respect_pdb_during_node_pool_deletion?: bool

@@ -295,6 +295,12 @@ import "list"
 	})
 
 	#node_drain_config: close({
+		// The duration of the grace termination period for node drain.
+		grace_termination_duration?: string
+
+		// The duration of the PDB timeout period for node drain.
+		pdb_timeout_duration?: string
+
 		// Whether to respect PodDisruptionBudget policy during node pool
 		// deletion.
 		respect_pdb_during_node_pool_deletion?: bool

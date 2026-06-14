@@ -760,6 +760,11 @@ package data
 			})]
 		})]
 
+		// NodeCreationConfig defines the settings of node creation mode.
+		node_creation_config?: [...close({
+			node_creation_mode?: string
+		})]
+
 		// The list of zones in which the cluster's nodes are located.
 		// Nodes must be in the region of their regional cluster or in
 		// the same region as their cluster's zone for zonal clusters. If
@@ -1052,6 +1057,8 @@ package data
 			})]
 			node_count?: number
 			node_drain_config?: [...close({
+				grace_termination_duration?:            string
+				pdb_timeout_duration?:                  string
 				respect_pdb_during_node_pool_deletion?: bool
 			})]
 			node_locations?: [...string]

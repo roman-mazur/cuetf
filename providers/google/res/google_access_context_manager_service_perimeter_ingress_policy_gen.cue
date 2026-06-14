@@ -90,6 +90,7 @@ import "list"
 	#timeouts: close({
 		create?: string
 		delete?: string
+		update?: string
 	})
 
 	_#defs: "/$defs/ingress_from/$defs/sources": close({

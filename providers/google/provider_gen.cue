@@ -122,6 +122,7 @@ package google
 		integration_connectors_custom_endpoint?:     string
 		integrations_custom_endpoint?:               string
 		kms_custom_endpoint?:                        string
+		license_manager_custom_endpoint?:            string
 		logging_custom_endpoint?:                    string
 		looker_custom_endpoint?:                     string
 		lustre_custom_endpoint?:                     string

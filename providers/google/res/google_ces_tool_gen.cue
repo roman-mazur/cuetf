@@ -6,16 +6,36 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_tool")
 	close({
+		agent_tool?: matchN(1, [#agent_tool, list.MaxItems(1) & [...#agent_tool]])
 		client_function?: matchN(1, [#client_function, list.MaxItems(1) & [...#client_function]])
 		data_store_tool?: matchN(1, [#data_store_tool, list.MaxItems(1) & [...#data_store_tool]])
+		file_search_tool?: matchN(1, [#file_search_tool, list.MaxItems(1) & [...#file_search_tool]])
 		google_search_tool?: matchN(1, [#google_search_tool, list.MaxItems(1) & [...#google_search_tool]])
 		python_function?: matchN(1, [#python_function, list.MaxItems(1) & [...#python_function]])
 		timeouts?: #timeouts
+		widget_tool?: matchN(1, [#widget_tool, list.MaxItems(1) & [...#widget_tool]])
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
 		app!: string
+
+		// A ConnectorTool allows connections to different integrations.
+		connector_tool?: [...close({
+			action?: [...close({
+				connection_action_id?: string
+				entity_operation?: [...close({
+					entity_id?: string
+					operation?: string
+				})]
+				input_fields?: [...string]
+				output_fields?: [...string]
+			})]
+			auth_config?: string
+			connection?:  string
+			description?: string
+			name?:        string
+		})]
 
 		// Timestamp when the tool was created.
 		create_time?: string
@@ -62,6 +82,48 @@ import "list"
 		// https://google.aip.dev/122.
 		location!: string
 
+		// An MCP tool.
+		mcp_tool?: [...close({
+			api_authentication?: [...close({
+				api_key_config?: [...close({
+					api_key_secret_version?: string
+					key_name?:               string
+					request_location?:       string
+				})]
+				bearer_token_config?: [...close({
+					token?: string
+				})]
+				oauth_config?: [...close({
+					client_id?:             string
+					client_secret_version?: string
+					oauth_grant_type?:      string
+					scopes?: [...string]
+					token_endpoint?: string
+				})]
+				service_account_auth_config?: [...close({
+					service_account?: string
+				})]
+				service_agent_id_token_auth_config?: [...close({})]
+			})]
+			custom_headers?: [string]: string
+			description?:    string
+			input_schema?:   string
+			name?:           string
+			name_override?:  string
+			output_schema?:  string
+			server_address?: string
+			service_directory_config?: [...close({
+				service?: string
+			})]
+			state?: string
+			tls_config?: [...close({
+				ca_certs?: [...close({
+					cert?:         string
+					display_name?: string
+				})]
+			})]
+		})]
+
 		// Identifier. The unique identifier of the tool.
 		// Format:
 		// 'projects/{project}/locations/{location}/apps/{app}/tools/{tool}'
@@ -107,6 +169,33 @@ import "list"
 		})]
 		project?: string
 
+		// Represents a tool that allows the agent to call another remote
+		// agent.
+		remote_agent_tool?: [...close({
+			agent_card?: [...close({
+				description?: string
+				name?:        string
+				skills?: [...close({
+					description?: string
+					examples?: [...string]
+					id?: string
+					input_modes?: [...string]
+					name?: string
+					output_modes?: [...string]
+					tags?: [...string]
+				})]
+				supported_interfaces?: [...close({
+					protocol_binding?: string
+					protocol_version?: string
+					tenant?:           string
+					url?:              string
+				})]
+				version?: string
+			})]
+			description?: string
+			name?:        string
+		})]
+
 		// The system tool.
 		system_tool?: [...close({
 			description?: string
@@ -123,6 +212,19 @@ import "list"
 		update_time?: string
 	})
 
+	#agent_tool: close({
+		// Optional. The resource name of the agent that is the entry
+		// point of the tool.
+		// Format: projects/{project}/locations/{location}/agents/{agent}
+		agent?: string
+
+		// Optional. Description of the tool's purpose.
+		description?: string
+
+		// Required. The name of the agent tool.
+		name!: string
+	})
+
 	#client_function: close({
 		parameters?: matchN(1, [_#defs."/$defs/client_function/$defs/parameters", list.MaxItems(1) & [..._#defs."/$defs/client_function/$defs/parameters"]])
 		response?: matchN(1, [_#defs."/$defs/client_function/$defs/response", list.MaxItems(1) & [..._#defs."/$defs/client_function/$defs/response"]])
@@ -136,17 +238,50 @@ import "list"
 
 	#data_store_tool: close({
 		boost_specs?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/boost_specs", [..._#defs."/$defs/data_store_tool/$defs/boost_specs"]])
+		data_store_source?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/data_store_source", list.MaxItems(1) & [..._#defs."/$defs/data_store_tool/$defs/data_store_source"]])
 		engine_source?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/engine_source", list.MaxItems(1) & [..._#defs."/$defs/data_store_tool/$defs/engine_source"]])
 		modality_configs?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/modality_configs", [..._#defs."/$defs/data_store_tool/$defs/modality_configs"]])
 
 		// The tool description.
 		description?: string
 
+		// Optional. The filter parameter behavior.
+		// Possible values:
+		// FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED
+		// ALWAYS_INCLUDE
+		// NEVER_INCLUDE Possible values:
+		// ["FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED", "ALWAYS_INCLUDE",
+		// "NEVER_INCLUDE"]
+		filter_parameter_behavior?: string
+
 		// The data store tool name.
 		name!: string
 	})
 
+	#file_search_tool: close({
+		// Optional. The type of the corpus. Default is FULLY_MANAGED.
+		// Possible values:
+		// CORPUS_TYPE_UNSPECIFIED
+		// USER_OWNED
+		// FULLY_MANAGED Possible values: ["CORPUS_TYPE_UNSPECIFIED",
+		// "USER_OWNED", "FULLY_MANAGED"]
+		corpus_type?: string
+
+		// Optional. The tool description.
+		description?: string
+
+		// Optional. The corpus where files are stored.
+		// Format:
+		// projects/{project}/locations/{location}/ragCorpora/{rag_corpus}
+		file_corpus?: string
+
+		// Required. The tool name.
+		name!: string
+	})
+
 	#google_search_tool: close({
+		prompt_config?: matchN(1, [_#defs."/$defs/google_search_tool/$defs/prompt_config", list.MaxItems(1) & [..._#defs."/$defs/google_search_tool/$defs/prompt_config"]])
+
 		// Content will be fetched directly from these URLs for context
 		// and grounding.
 		// More details:
@@ -198,6 +333,46 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	#widget_tool: close({
+		data_mapping?: matchN(1, [_#defs."/$defs/widget_tool/$defs/data_mapping", list.MaxItems(1) & [..._#defs."/$defs/widget_tool/$defs/data_mapping"]])
+		parameters?: matchN(1, [_#defs."/$defs/widget_tool/$defs/parameters", list.MaxItems(1) & [..._#defs."/$defs/widget_tool/$defs/parameters"]])
+		text_response_config?: matchN(1, [_#defs."/$defs/widget_tool/$defs/text_response_config", list.MaxItems(1) & [..._#defs."/$defs/widget_tool/$defs/text_response_config"]])
+
+		// Optional. The description of the widget tool.
+		description?: string
+
+		// Required. The display name of the widget tool.
+		name!: string
+
+		// Optional. Configuration for rendering the widget. Represents a
+		// JSON object.
+		ui_config?: string
+
+		// Optional. The type of the widget tool. If not specified, the
+		// default type will be CUSTOMIZED.
+		// Possible values:
+		// WIDGET_TYPE_UNSPECIFIED
+		// CUSTOM
+		// PRODUCT_CAROUSEL
+		// PRODUCT_DETAILS
+		// QUICK_ACTIONS
+		// PRODUCT_COMPARISON
+		// ADVANCED_PRODUCT_DETAILS
+		// SHORT_FORM
+		// OVERALL_SATISFACTION
+		// ORDER_SUMMARY
+		// APPOINTMENT_DETAILS
+		// APPOINTMENT_SCHEDULER
+		// CONTACT_FORM Possible values: ["WIDGET_TYPE_UNSPECIFIED",
+		// "CUSTOM", "PRODUCT_CAROUSEL", "PRODUCT_DETAILS",
+		// "QUICK_ACTIONS", "PRODUCT_COMPARISON",
+		// "ADVANCED_PRODUCT_DETAILS", "SHORT_FORM",
+		// "OVERALL_SATISFACTION", "ORDER_SUMMARY",
+		// "APPOINTMENT_DETAILS", "APPOINTMENT_SCHEDULER",
+		// "CONTACT_FORM"]
+		widget_type?: string
 	})
 
 	_#defs: "/$defs/client_function/$defs/parameters": close({
@@ -498,6 +673,52 @@ import "list"
 		boost_amount?: number
 	})
 
+	_#defs: "/$defs/data_store_tool/$defs/data_store_source": close({
+		data_store?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/data_store_source/$defs/data_store", list.MaxItems(1) & [..._#defs."/$defs/data_store_tool/$defs/data_store_source/$defs/data_store"]])
+
+		// Optional. Filter specification for the DataStore.
+		// See:
+		// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
+		filter?: string
+	})
+
+	_#defs: "/$defs/data_store_tool/$defs/data_store_source/$defs/data_store": close({
+		// The connector config for the data store connection.
+		connector_config?: [...close({
+			collection?:              string
+			collection_display_name?: string
+			data_source?:             string
+		})]
+
+		// Timestamp when the data store was created.
+		create_time?: string
+
+		// The display name of the data store.
+		display_name?: string
+
+		// The document processing mode for the data store connection.
+		// Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
+		// Possible values:
+		// DOCUMENTS
+		// CHUNKS
+		document_processing_mode?: string
+
+		// Full resource name of the DataStore.
+		// Format:
+		// projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}
+		name!: string
+
+		// The type of the data store. This field is readonly and
+		// populated by the
+		// server.
+		// Possible values:
+		// PUBLIC_WEB
+		// UNSTRUCTURED
+		// FAQ
+		// CONNECTOR
+		type?: string
+	})
+
 	_#defs: "/$defs/data_store_tool/$defs/engine_source": close({
 		data_store_sources?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/engine_source/$defs/data_store_sources", [..._#defs."/$defs/data_store_tool/$defs/engine_source/$defs/data_store_sources"]])
 
@@ -641,5 +862,188 @@ import "list"
 		// temperatures produce
 		// responses that are more creative.
 		temperature?: number
+	})
+
+	_#defs: "/$defs/google_search_tool/$defs/prompt_config": close({
+		// Optional. Defines the prompt used for the system instructions
+		// when interacting with the
+		// agent in chat conversations. If not set, default prompt will be
+		// used.
+		text_prompt?: string
+
+		// Optional. Defines the prompt used for the system instructions
+		// when interacting with the
+		// agent in voice conversations. If not set, default prompt will
+		// be used.
+		voice_prompt?: string
+	})
+
+	_#defs: "/$defs/widget_tool/$defs/data_mapping": close({
+		python_function?: matchN(1, [_#defs."/$defs/widget_tool/$defs/data_mapping/$defs/python_function", list.MaxItems(1) & [..._#defs."/$defs/widget_tool/$defs/data_mapping/$defs/python_function"]])
+
+		// Optional. A map of widget input parameter fields to the
+		// corresponding output fields of the source tool.
+		// An object containing a list of "key": value pairs. Example: {
+		// "name": "wrench", "mass": "1.3kg", "count": "3" }.
+		field_mappings?: [string]: string
+
+		// Optional. The mode of the data mapping.
+		// Possible values:
+		// MODE_UNSPECIFIED
+		// FIELD_MAPPING
+		// PYTHON_SCRIPT Possible values: ["MODE_UNSPECIFIED",
+		// "FIELD_MAPPING", "PYTHON_SCRIPT"]
+		mode?: string
+
+		// Optional. The resource name of the tool that provides the data
+		// for the widget (e.g., a search tool or a custom function).
+		// Format:
+		// projects/{project}/locations/{location}/agents/{agent}/tools/{tool}
+		source_tool_name?: string
+	})
+
+	_#defs: "/$defs/widget_tool/$defs/data_mapping/$defs/python_function": close({
+		// The description of the Python function, parsed from the python
+		// code's
+		// docstring.
+		description?: string
+
+		// Optional. The name of the Python function to execute. Must
+		// match a Python function
+		// name defined in the python code. Case sensitive. If the name is
+		// not
+		// provided, the first function defined in the python code will be
+		// used.
+		name?: string
+
+		// Optional. The Python code to execute for the tool.
+		python_code?: string
+	})
+
+	_#defs: "/$defs/widget_tool/$defs/parameters": close({
+		// Defines the schema for additional properties allowed in an
+		// object.
+		// The value must be a valid JSON string representing the Schema
+		// object.
+		// (Note: OpenAPI also allows a boolean, this definition expects a
+		// Schema JSON).
+		additional_properties?: string
+
+		// The instance value should be valid against at least one of the
+		// schemas in this list.
+		any_of?: string
+
+		// Default value of the data. Represents a dynamically typed value
+		// which can be either null, a number, a string, a boolean, a
+		// struct,
+		// or a list of values. The provided default value must be
+		// compatible
+		// with the defined 'type' and other schema constraints.
+		default?: string
+
+		// A map of definitions for use by ref. Only allowed at the root
+		// of the schema.
+		defs?: string
+
+		// The description of the data.
+		description?: string
+
+		// Possible values of the element of primitive type with enum
+		// format.
+		// Examples:
+		// 1. We can define direction as :
+		// {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH",
+		// "WEST"]}
+		// 2. We can define apartment number as :
+		// {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+		enum?: [...string]
+
+		// Schema of the elements of Type.ARRAY.
+		items?: string
+
+		// Maximum number of the elements for Type.ARRAY. (int64 format)
+		max_items?: number
+
+		// Maximum value for Type.INTEGER and Type.NUMBER.
+		maximum?: number
+
+		// Minimum number of the elements for Type.ARRAY. (int64 format)
+		min_items?: number
+
+		// Minimum value for Type.INTEGER and Type.NUMBER.
+		minimum?: number
+
+		// Indicates if the value may be null.
+		nullable?: bool
+
+		// Schemas of initial elements of Type.ARRAY.
+		prefix_items?: string
+
+		// Properties of Type.OBJECT.
+		properties?: string
+
+		// Allows indirect references between schema nodes. The value
+		// should be a
+		// valid reference to a child of the root 'defs'.
+		// For example, the following schema defines a reference to a
+		// schema node
+		// named "Pet":
+		// type: object
+		// properties:
+		// pet:
+		// ref: #/defs/Pet
+		// defs:
+		// Pet:
+		// type: object
+		// properties:
+		// name:
+		// type: string
+		// The value of the "pet" property is a reference to the schema
+		// node
+		// named "Pet".
+		// See details in
+		// https://json-schema.org/understanding-json-schema/structuring.
+		ref?: string
+
+		// Required properties of Type.OBJECT.
+		required?: [...string]
+
+		// The title of the schema.
+		title?: string
+
+		// The type of the data.
+		// Possible values:
+		// STRING
+		// INTEGER
+		// NUMBER
+		// BOOLEAN
+		// OBJECT
+		// ARRAY
+		type!: string
+
+		// Indicate the items in the array must be unique. Only applies to
+		// TYPE.ARRAY.
+		unique_items?: bool
+	})
+
+	_#defs: "/$defs/widget_tool/$defs/text_response_config": close({
+		// Optional. The static text response to return when type is
+		// STATIC.
+		static_text?: string
+
+		// Optional. Instruction for the LLM on how to generate the text
+		// response. Used as
+		// the description for the text response parameter if type is
+		// LLM_GENERATED.
+		text_response_instruction?: string
+
+		// Optional. The strategy for providing the text response.
+		// Possible values:
+		// TYPE_UNSPECIFIED
+		// NONE
+		// LLM_GENERATED
+		// STATIC Possible values: ["TYPE_UNSPECIFIED", "NONE",
+		// "LLM_GENERATED", "STATIC"]
+		type?: string
 	})
 }
