@@ -141,8 +141,10 @@ package data
 
 		// Settings for validating messages published against a schema.
 		schema_settings?: [...close({
-			encoding?: string
-			schema?:   string
+			encoding?:          string
+			first_revision_id?: string
+			last_revision_id?:  string
+			schema?:            string
 		})]
 
 		// Input only. Resource manager tags to be bound to the topic. Tag

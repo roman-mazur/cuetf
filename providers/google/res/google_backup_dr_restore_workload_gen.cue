@@ -130,6 +130,10 @@ import "list"
 		// Required. Target project for the Compute Engine instance.
 		project!: string
 
+		// If true, use the BackupDR P4SA credentials for same-project
+		// restores. Default is false.
+		use_project_service_account?: bool
+
 		// Required. The zone of the Compute Engine instance.
 		zone!: string
 	})
@@ -190,6 +194,10 @@ import "list"
 		// Required. Target project for the disk.
 		project!: string
 
+		// If true, use the BackupDR P4SA credentials for same-project
+		// restores. Default is false.
+		use_project_service_account?: bool
+
 		// Required. Target zone for the disk.
 		zone!: string
 	})
@@ -203,6 +211,10 @@ import "list"
 
 		// Required. Target URLs of the replica zones for the disk.
 		replica_zones!: [...string]
+
+		// If true, use the BackupDR P4SA credentials for same-project
+		// restores. Default is false.
+		use_project_service_account?: bool
 	})
 
 	#timeouts: close({

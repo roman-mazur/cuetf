@@ -163,6 +163,8 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_compute_region_security_policy": data.#google_compute_region_security_policy
 	_#ds: "\(#googlePrefix)_compute_region_ssl_certificate": data.#google_compute_region_ssl_certificate
 	_#ds: "\(#googlePrefix)_compute_region_ssl_policy": data.#google_compute_region_ssl_policy
+	_#ds: "\(#googlePrefix)_compute_region_target_http_proxy": data.#google_compute_region_target_http_proxy
+	_#ds: "\(#googlePrefix)_compute_region_target_https_proxy": data.#google_compute_region_target_https_proxy
 	_#ds: "\(#googlePrefix)_compute_regions": data.#google_compute_regions
 	_#ds: "\(#googlePrefix)_compute_reservation_block": data.#google_compute_reservation_block
 	_#ds: "\(#googlePrefix)_compute_reservation": data.#google_compute_reservation
@@ -184,6 +186,8 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_compute_subnetwork": data.#google_compute_subnetwork
 	_#ds: "\(#googlePrefix)_compute_subnetwork_iam_policy": data.#google_compute_subnetwork_iam_policy
 	_#ds: "\(#googlePrefix)_compute_subnetworks": data.#google_compute_subnetworks
+	_#ds: "\(#googlePrefix)_compute_target_http_proxy": data.#google_compute_target_http_proxy
+	_#ds: "\(#googlePrefix)_compute_target_https_proxy": data.#google_compute_target_https_proxy
 	_#ds: "\(#googlePrefix)_compute_vpn_gateway": data.#google_compute_vpn_gateway
 	_#ds: "\(#googlePrefix)_compute_zones": data.#google_compute_zones
 	_#ds: "\(#googlePrefix)_container_analysis_note_iam_policy": data.#google_container_analysis_note_iam_policy
@@ -324,6 +328,7 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_oracle_database_goldengate_connection_types": data.#google_oracle_database_goldengate_connection_types
 	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_environments": data.#google_oracle_database_goldengate_deployment_environments
 	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_types": data.#google_oracle_database_goldengate_deployment_types
+	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_versions": data.#google_oracle_database_goldengate_deployment_versions
 	_#ds: "\(#googlePrefix)_oracle_database_odb_network": data.#google_oracle_database_odb_network
 	_#ds: "\(#googlePrefix)_oracle_database_odb_subnet": data.#google_oracle_database_odb_subnet
 	_#ds: "\(#googlePrefix)_organization": data.#google_organization
@@ -407,6 +412,8 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_storage_control_folder_intelligence_config": data.#google_storage_control_folder_intelligence_config
 	_#ds: "\(#googlePrefix)_storage_control_organization_intelligence_config": data.#google_storage_control_organization_intelligence_config
 	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_config": data.#google_storage_control_project_intelligence_config
+	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_finding": data.#google_storage_control_project_intelligence_finding
+	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_findings": data.#google_storage_control_project_intelligence_findings
 	_#ds: "\(#googlePrefix)_storage_insights_dataset_config": data.#google_storage_insights_dataset_config
 	_#ds: "\(#googlePrefix)_storage_managed_folder_iam_policy": data.#google_storage_managed_folder_iam_policy
 	_#ds: "\(#googlePrefix)_storage_object_signed_url": data.#google_storage_object_signed_url

@@ -143,6 +143,18 @@ import "list"
 		// ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
 		encoding?: string
 
+		// The minimum (inclusive) revision allowed for validating
+		// messages. If empty or not present, allow any revision to be
+		// validated against last_revision or any revision created
+		// before.
+		first_revision_id?: string
+
+		// The maximum (inclusive) revision allowed for validating
+		// messages. If empty or not present, allow any revision to be
+		// validated against first_revision or any revision created
+		// after.
+		last_revision_id?: string
+
 		// The name of the schema that messages published should be
 		// validated against. Format is
 		// projects/{project}/schemas/{schema}.

@@ -184,6 +184,7 @@ import "list"
 		kubelet_config?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config"]])
 		linux_node_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config"]])
 		local_nvme_ssd_block_config?: matchN(1, [_#defs."/$defs/node_config/$defs/local_nvme_ssd_block_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/local_nvme_ssd_block_config"]])
+		node_image_config?: matchN(1, [_#defs."/$defs/node_config/$defs/node_image_config", [..._#defs."/$defs/node_config/$defs/node_image_config"]])
 		reservation_affinity?: matchN(1, [_#defs."/$defs/node_config/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/reservation_affinity"]])
 		sandbox_config?: matchN(1, [_#defs."/$defs/node_config/$defs/sandbox_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/sandbox_config"]])
 		secondary_boot_disks?: matchN(1, [_#defs."/$defs/node_config/$defs/secondary_boot_disks", list.MaxItems(127) & [..._#defs."/$defs/node_config/$defs/secondary_boot_disks"]])
@@ -825,6 +826,14 @@ import "list"
 		// Number of raw-block local NVMe SSD disks to be attached to the
 		// node. Each local SSD is 375 GB in size.
 		local_ssd_count!: number
+	})
+
+	_#defs: "/$defs/node_config/$defs/node_image_config": close({
+		// The name of the image to use for this node.
+		image?: string
+
+		// The project containing the image to use for this node.
+		image_project?: string
 	})
 
 	_#defs: "/$defs/node_config/$defs/reservation_affinity": close({

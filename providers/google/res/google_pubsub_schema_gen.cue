@@ -40,6 +40,9 @@ package res
 		name!:    string
 		project?: string
 
+		// Output only. The revision ID of the schema.
+		revision_id?: string
+
 		// The type of the schema definition Default value:
 		// "TYPE_UNSPECIFIED" Possible values: ["TYPE_UNSPECIFIED",
 		// "PROTOCOL_BUFFER", "AVRO"]

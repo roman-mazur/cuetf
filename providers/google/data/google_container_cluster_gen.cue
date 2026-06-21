@@ -60,6 +60,9 @@ package data
 			slice_controller_config?: [...close({
 				enabled?: bool
 			})]
+			slurm_operator_config?: [...close({
+				enabled?: bool
+			})]
 			stateful_ha_config?: [...close({
 				enabled?: bool
 			})]
@@ -715,6 +718,10 @@ package data
 			metadata?: [string]: string
 			min_cpu_platform?: string
 			node_group?:       string
+			node_image_config?: [...close({
+				image?:         string
+				image_project?: string
+			})]
 			oauth_scopes?: [...string]
 			preemptible?: bool
 			reservation_affinity?: [...close({
@@ -1011,6 +1018,10 @@ package data
 				metadata?: [string]: string
 				min_cpu_platform?: string
 				node_group?:       string
+				node_image_config?: [...close({
+					image?:         string
+					image_project?: string
+				})]
 				oauth_scopes?: [...string]
 				preemptible?: bool
 				reservation_affinity?: [...close({

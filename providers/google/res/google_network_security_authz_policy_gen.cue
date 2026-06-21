@@ -8,6 +8,7 @@ import "list"
 	close({
 		custom_provider?: matchN(1, [#custom_provider, list.MaxItems(1) & [...#custom_provider]])
 		http_rules?: matchN(1, [#http_rules, [...#http_rules]])
+		network_rules?: matchN(1, [#network_rules, [...#network_rules]])
 		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
 		timeouts?: #timeouts
 
@@ -111,6 +112,11 @@ import "list"
 		// the from and to. Refer to the CEL language reference for a
 		// list of available attributes.
 		when?: string
+	})
+
+	#network_rules: close({
+		from?: matchN(1, [_#defs."/$defs/network_rules/$defs/from", list.MaxItems(1) & [..._#defs."/$defs/network_rules/$defs/from"]])
+		to?: matchN(1, [_#defs."/$defs/network_rules/$defs/to", list.MaxItems(1) & [..._#defs."/$defs/network_rules/$defs/to"]])
 	})
 
 	#target: close({
@@ -625,5 +631,86 @@ import "list"
 		// Examples:
 		// * abc matches the value xyz.abc
 		suffix?: string
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from": close({
+		not_sources?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/not_sources", [..._#defs."/$defs/network_rules/$defs/from/$defs/not_sources"]])
+		sources?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/sources", [..._#defs."/$defs/network_rules/$defs/from/$defs/sources"]])
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from/$defs/not_sources": close({
+		ip_blocks?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/ip_blocks", [..._#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/ip_blocks"]])
+		principals?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/principals", [..._#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/principals"]])
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from/$defs/not_sources/$defs/ip_blocks": close({
+		// The length of the address range.
+		length!: number
+
+		// The address prefix.
+		prefix!: string
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from/$defs/not_sources/$defs/principals": close({
+		principal?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/principals/$defs/principal", list.MaxItems(1) & [..._#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/principals/$defs/principal"]])
+
+		// An enum to decide what principal value the principal rule will
+		// match against. If not specified, the PrincipalSelector is
+		// CLIENT_CERT_URI_SAN. Default value: "CLIENT_CERT_URI_SAN"
+		// Possible values: ["PRINCIPAL_SELECTOR_UNSPECIFIED",
+		// "CLIENT_CERT_URI_SAN", "CLIENT_CERT_DNS_NAME_SAN",
+		// "CLIENT_CERT_COMMON_NAME"]
+		principal_selector?: string
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from/$defs/not_sources/$defs/principals/$defs/principal": close({
+		// The input string must match exactly the string specified here.
+		// Examples:
+		// * abc only matches the value abc.
+		exact?: string
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from/$defs/sources": close({
+		ip_blocks?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/ip_blocks", [..._#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/ip_blocks"]])
+		principals?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/principals", [..._#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/principals"]])
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from/$defs/sources/$defs/ip_blocks": close({
+		// The length of the address range.
+		length!: number
+
+		// The address prefix.
+		prefix!: string
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from/$defs/sources/$defs/principals": close({
+		principal?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/principals/$defs/principal", list.MaxItems(1) & [..._#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/principals/$defs/principal"]])
+
+		// An enum to decide what principal value the principal rule will
+		// match against. If not specified, the PrincipalSelector is
+		// CLIENT_CERT_URI_SAN. Default value: "CLIENT_CERT_URI_SAN"
+		// Possible values: ["PRINCIPAL_SELECTOR_UNSPECIFIED",
+		// "CLIENT_CERT_URI_SAN", "CLIENT_CERT_DNS_NAME_SAN",
+		// "CLIENT_CERT_COMMON_NAME"]
+		principal_selector?: string
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from/$defs/sources/$defs/principals/$defs/principal": close({
+		// The input string must match exactly the string specified here.
+		// Examples:
+		// * abc only matches the value abc.
+		exact?: string
+	})
+
+	_#defs: "/$defs/network_rules/$defs/to": close({
+		operations?: matchN(1, [_#defs."/$defs/network_rules/$defs/to/$defs/operations", [..._#defs."/$defs/network_rules/$defs/to/$defs/operations"]])
+	})
+
+	_#defs: "/$defs/network_rules/$defs/to/$defs/operations": close({
+		snis?: matchN(1, [_#defs."/$defs/network_rules/$defs/to/$defs/operations/$defs/snis", [..._#defs."/$defs/network_rules/$defs/to/$defs/operations/$defs/snis"]])
+	})
+
+	_#defs: "/$defs/network_rules/$defs/to/$defs/operations/$defs/snis": close({
+		exact?: string
 	})
 }
