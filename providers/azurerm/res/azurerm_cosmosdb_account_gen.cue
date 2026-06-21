@@ -30,7 +30,7 @@ import "list"
 		is_virtual_network_filter_enabled?:     bool
 		key_vault_key_id?:                      string
 		kind?:                                  string
-		local_authentication_disabled?:         bool
+		local_authentication_enabled?:          bool
 		location!:                              string
 		minimal_tls_version?:                   string
 		mongo_server_version?:                  string

@@ -11,17 +11,20 @@ package data
 			network_group_id?:    string
 			use_hub_gateway?:     bool
 		})]
-		connectivity_topology?:           string
-		delete_existing_peering_enabled?: bool
-		description?:                     string
-		global_mesh_enabled?:             bool
+		connected_group_address_overlap_enabled?: bool
+		connected_group_private_endpoints_scale?: string
+		connectivity_topology?:                   string
+		delete_existing_peering_enabled?:         bool
+		description?:                             string
+		global_mesh_enabled?:                     bool
 		hub?: [...close({
 			resource_id?:   string
 			resource_type?: string
 		})]
-		id?:                 string
-		name!:               string
-		network_manager_id!: string
+		id?:                          string
+		name!:                        string
+		network_manager_id!:          string
+		peering_enforcement_enabled?: bool
 	})
 
 	#timeouts: close({

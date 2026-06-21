@@ -15,6 +15,7 @@ package data
 		name!:                 string
 		storage_account_id?:   string
 		storage_account_name?: string
+		url?:                  string
 	})
 
 	#timeouts: close({

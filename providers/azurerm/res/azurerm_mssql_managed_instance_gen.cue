@@ -30,6 +30,7 @@ import "list"
 		service_principal_type?:         string
 		sku_name!:                       string
 		storage_account_type?:           string
+		storage_iops?:                   number
 		storage_size_in_gb!:             number
 		subnet_id!:                      string
 		tags?: [string]: string
