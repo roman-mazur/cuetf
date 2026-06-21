@@ -186,6 +186,7 @@ package res
 	})
 
 	_#defs: "/$defs/origin/$defs/custom_origin_config": close({
+		origin_mtls_config?: matchN(1, [_#defs."/$defs/origin/$defs/custom_origin_config/$defs/origin_mtls_config", [..._#defs."/$defs/origin/$defs/custom_origin_config/$defs/origin_mtls_config"]])
 		http_port!:                number
 		https_port!:               number
 		ip_address_type?:          string
@@ -193,6 +194,10 @@ package res
 		origin_protocol_policy!:   string
 		origin_read_timeout?:      number
 		origin_ssl_protocols!: [...string]
+	})
+
+	_#defs: "/$defs/origin/$defs/custom_origin_config/$defs/origin_mtls_config": close({
+		client_certificate_arn!: string
 	})
 
 	_#defs: "/$defs/origin/$defs/origin_shield": close({

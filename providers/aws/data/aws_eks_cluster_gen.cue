@@ -43,7 +43,12 @@ package data
 		outpost_config?: [...close({
 			control_plane_instance_type?: string
 			control_plane_placement?: [...close({
-				group_name?: string
+				group_name?:   string
+				spread_level?: string
+			})]
+			etcd_instance_type?: string
+			etcd_placement?: [...close({
+				spread_level?: string
 			})]
 			outpost_arns?: [...string]
 		})]

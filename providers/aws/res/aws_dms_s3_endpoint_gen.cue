@@ -43,7 +43,6 @@ package res
 		id?:                                          string
 		ignore_header_rows?:                          number
 		include_op_for_full_load?:                    bool
-		kms_key_arn?:                                 string
 		max_file_size?:                               number
 		parquet_timestamp_in_millisecond?:            bool
 		parquet_version?:                             string

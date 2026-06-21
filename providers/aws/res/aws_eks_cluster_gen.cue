@@ -79,7 +79,9 @@ import "list"
 
 	#outpost_config: close({
 		control_plane_placement?: matchN(1, [_#defs."/$defs/outpost_config/$defs/control_plane_placement", list.MaxItems(1) & [..._#defs."/$defs/outpost_config/$defs/control_plane_placement"]])
+		etcd_placement?: matchN(1, [_#defs."/$defs/outpost_config/$defs/etcd_placement", list.MaxItems(1) & [..._#defs."/$defs/outpost_config/$defs/etcd_placement"]])
 		control_plane_instance_type!: string
+		etcd_instance_type?:          string
 		outpost_arns!: [...string]
 	})
 
@@ -125,7 +127,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/outpost_config/$defs/control_plane_placement": close({
-		group_name!: string
+		group_name?:   string
+		spread_level?: string
+	})
+
+	_#defs: "/$defs/outpost_config/$defs/etcd_placement": close({
+		spread_level?: string
 	})
 
 	_#defs: "/$defs/remote_network_config/$defs/remote_node_networks": close({
