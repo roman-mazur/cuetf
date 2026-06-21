@@ -191,6 +191,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_bedrockagentcore_api_key_credential_provider": res.#aws_bedrockagentcore_api_key_credential_provider
 	_#res: "\(#awsPrefix)_bedrockagentcore_browser": res.#aws_bedrockagentcore_browser
 	_#res: "\(#awsPrefix)_bedrockagentcore_code_interpreter": res.#aws_bedrockagentcore_code_interpreter
+	_#res: "\(#awsPrefix)_bedrockagentcore_evaluator": res.#aws_bedrockagentcore_evaluator
 	_#res: "\(#awsPrefix)_bedrockagentcore_gateway": res.#aws_bedrockagentcore_gateway
 	_#res: "\(#awsPrefix)_bedrockagentcore_gateway_target": res.#aws_bedrockagentcore_gateway_target
 	_#res: "\(#awsPrefix)_bedrockagentcore_harness": res.#aws_bedrockagentcore_harness
@@ -1320,6 +1321,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_sagemaker_endpoint": res.#aws_sagemaker_endpoint
 	_#res: "\(#awsPrefix)_sagemaker_feature_group": res.#aws_sagemaker_feature_group
 	_#res: "\(#awsPrefix)_sagemaker_flow_definition": res.#aws_sagemaker_flow_definition
+	_#res: "\(#awsPrefix)_sagemaker_hub_content_reference": res.#aws_sagemaker_hub_content_reference
 	_#res: "\(#awsPrefix)_sagemaker_hub": res.#aws_sagemaker_hub
 	_#res: "\(#awsPrefix)_sagemaker_human_task_ui": res.#aws_sagemaker_human_task_ui
 	_#res: "\(#awsPrefix)_sagemaker_hyper_parameter_tuning_job": res.#aws_sagemaker_hyper_parameter_tuning_job

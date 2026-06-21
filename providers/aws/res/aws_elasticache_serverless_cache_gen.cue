@@ -20,6 +20,7 @@ package res
 		kms_key_id?:           string
 		major_engine_version?: string
 		name!:                 string
+		network_type?:         string
 		reader_endpoint?: [...close({
 			address?: string
 			port?:    number

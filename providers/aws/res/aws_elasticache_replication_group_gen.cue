@@ -21,6 +21,7 @@ import "list"
 		configuration_endpoint_address?: string
 		data_tiering_enabled?:           bool
 		description!:                    string
+		durability?:                     string
 		engine?:                         string
 		engine_version?:                 string
 		engine_version_actual?:          string

@@ -49,6 +49,9 @@ package res
 		// Type of collection. One of `SEARCH`, `TIMESERIES`, or
 		// `VECTORSEARCH`. Defaults to `TIMESERIES`.
 		type?: string
+		vector_options?: [...close({
+			serverless_vector_acceleration?: string
+		})]
 	})
 
 	#timeouts: close({

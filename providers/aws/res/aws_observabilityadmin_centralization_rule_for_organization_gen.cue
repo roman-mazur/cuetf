@@ -39,6 +39,7 @@ package res
 
 	_#defs: "/$defs/rule/$defs/destination": close({
 		destination_logs_configuration?: matchN(1, [_#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration", [..._#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration"]])
+		destination_metrics_configuration?: matchN(1, [_#defs."/$defs/rule/$defs/destination/$defs/destination_metrics_configuration", [..._#defs."/$defs/rule/$defs/destination/$defs/destination_metrics_configuration"]])
 		account!: string
 		region!:  string
 	})
@@ -64,8 +65,17 @@ package res
 		kms_key_arn?:                             string
 	})
 
+	_#defs: "/$defs/rule/$defs/destination/$defs/destination_metrics_configuration": close({
+		backup_configuration?: matchN(1, [_#defs."/$defs/rule/$defs/destination/$defs/destination_metrics_configuration/$defs/backup_configuration", [..._#defs."/$defs/rule/$defs/destination/$defs/destination_metrics_configuration/$defs/backup_configuration"]])
+	})
+
+	_#defs: "/$defs/rule/$defs/destination/$defs/destination_metrics_configuration/$defs/backup_configuration": close({
+		region!: string
+	})
+
 	_#defs: "/$defs/rule/$defs/source": close({
 		source_logs_configuration?: matchN(1, [_#defs."/$defs/rule/$defs/source/$defs/source_logs_configuration", [..._#defs."/$defs/rule/$defs/source/$defs/source_logs_configuration"]])
+		source_metrics_configuration?: matchN(1, [_#defs."/$defs/rule/$defs/source/$defs/source_metrics_configuration", [..._#defs."/$defs/rule/$defs/source/$defs/source_metrics_configuration"]])
 		regions!: [...string]
 		scope!: string
 	})
@@ -74,5 +84,9 @@ package res
 		data_source_selection_criteria?: string
 		encrypted_log_group_strategy!:   string
 		log_group_selection_criteria?:   string
+	})
+
+	_#defs: "/$defs/rule/$defs/source/$defs/source_metrics_configuration": close({
+		metrics_selection_criteria!: string
 	})
 }
