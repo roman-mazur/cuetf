@@ -14,6 +14,7 @@ package res
 		metadata?: [string]: string
 		name!:               string
 		storage_account_id?: string
+		url?:                string
 	})
 
 	#timeouts: close({

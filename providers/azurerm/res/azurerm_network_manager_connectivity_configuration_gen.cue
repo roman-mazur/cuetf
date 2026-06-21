@@ -8,14 +8,17 @@ import "list"
 	close({
 		applies_to_group!: matchN(1, [#applies_to_group, [_, ...] & [...#applies_to_group]])
 		hub?: matchN(1, [#hub, list.MaxItems(1) & [...#hub]])
-		timeouts?:                        #timeouts
-		connectivity_topology!:           string
-		delete_existing_peering_enabled?: bool
-		description?:                     string
-		global_mesh_enabled?:             bool
-		id?:                              string
-		name!:                            string
-		network_manager_id!:              string
+		timeouts?:                                #timeouts
+		connected_group_address_overlap_enabled?: bool
+		connected_group_private_endpoints_scale?: string
+		connectivity_topology!:                   string
+		delete_existing_peering_enabled?:         bool
+		description?:                             string
+		global_mesh_enabled?:                     bool
+		id?:                                      string
+		name!:                                    string
+		network_manager_id!:                      string
+		peering_enforcement_enabled?:             bool
 	})
 
 	#applies_to_group: close({
