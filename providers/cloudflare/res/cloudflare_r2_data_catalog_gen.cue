@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_r2_data_catalog")
 	close({
 		// Use this to identify the account.
-		account_id?: string
+		account_id!: string
 
 		// Specifies the associated R2 bucket name.
 		bucket?: string

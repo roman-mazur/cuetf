@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_load_balancer_pool")
 	close({
 		// Identifier.
-		account_id?: string
+		account_id!: string
 
 		// A list of regions from which to run health checks. Null means
 		// every Cloudflare data center.

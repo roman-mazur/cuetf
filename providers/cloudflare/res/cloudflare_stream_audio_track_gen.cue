@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_stream_audio_track")
 	close({
 		// The account identifier tag.
-		account_id?: string
+		account_id!: string
 
 		// The unique identifier for an additional audio track.
 		audio_identifier?: string

@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_pages_project")
 	close({
 		// Identifier.
-		account_id?: string
+		account_id!: string
 
 		// When the project was created.
 		created_on?: string

@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_workers_deployment")
 	close({
 		// Identifier.
-		account_id?:   string
+		account_id!:   string
 		author_email?: string
 		created_on?:   string
 		id?:           string

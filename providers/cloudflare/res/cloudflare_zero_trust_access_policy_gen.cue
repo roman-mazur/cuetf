@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_access_policy")
 	close({
 		// Identifier.
-		account_id?: string
+		account_id!: string
 
 		// Requires the user to request access from an administrator at
 		// the start of each session.

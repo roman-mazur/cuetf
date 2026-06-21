@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_workers_custom_domain")
 	close({
 		// Identifier.
-		account_id?: string
+		account_id!: string
 
 		// ID of the TLS certificate issued for the domain.
 		cert_id?: string

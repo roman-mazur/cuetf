@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_hyperdrive_config")
 	close({
 		// Define configurations using a unique string identifier.
-		account_id?: string
+		account_id!: string
 
 		// Defines the creation time of the Hyperdrive configuration.
 		created_on?: string

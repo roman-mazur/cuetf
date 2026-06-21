@@ -65,7 +65,7 @@ package res
 		type!: string
 
 		// Identifier.
-		zone_id?: string
+		zone_id!: string
 
 		// Components of a CAA record.
 		data?: close({

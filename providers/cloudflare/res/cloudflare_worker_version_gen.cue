@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_worker_version")
 	close({
 		// Identifier.
-		account_id?: string
+		account_id!: string
 
 		// Date indicating targeted support in the Workers runtime.
 		// Backwards incompatible fixes to the runtime following this

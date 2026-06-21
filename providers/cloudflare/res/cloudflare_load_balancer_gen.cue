@@ -782,7 +782,7 @@ package res
 		created_on?:  string
 		id?:          string
 		modified_on?: string
-		zone_id?:     string
+		zone_id!:     string
 		zone_name?:   string
 	})
 }

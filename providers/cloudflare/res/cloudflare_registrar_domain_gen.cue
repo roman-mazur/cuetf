@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_registrar_domain")
 	close({
 		// Identifier
-		account_id?: string
+		account_id!: string
 
 		// Auto-renew controls whether subscription is automatically
 		// renewed upon domain expiration.

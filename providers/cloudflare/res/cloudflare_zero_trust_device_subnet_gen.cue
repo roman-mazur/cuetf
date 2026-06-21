@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_device_subnet")
 	close({
 		// Cloudflare account ID
-		account_id?: string
+		account_id!: string
 
 		// An optional description of the subnet.
 		comment?: string
