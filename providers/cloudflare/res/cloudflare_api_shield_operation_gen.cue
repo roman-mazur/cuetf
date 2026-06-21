@@ -27,7 +27,7 @@ package res
 		operation_id?: string
 
 		// Identifier.
-		zone_id?: string
+		zone_id!: string
 
 		// OpenAPI JSON schemas for an operation, including both
 		// user-uploaded and Cloudflare-learned schemas.

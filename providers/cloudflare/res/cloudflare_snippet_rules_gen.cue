@@ -8,7 +8,7 @@ package res
 		id?: string
 
 		// Use this field to specify the unique ID of the zone.
-		zone_id?: string
+		zone_id!: string
 
 		// Lists snippet rules.
 		rules!: matchN(1, [close({

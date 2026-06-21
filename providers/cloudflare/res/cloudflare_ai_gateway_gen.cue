@@ -4,7 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_ai_gateway")
 	close({
-		account_id?:                 string
+		account_id!:                 string
 		authentication?:             bool
 		cache_invalidate_on_update!: bool
 		cache_ttl!:                  number

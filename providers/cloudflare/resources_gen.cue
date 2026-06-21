@@ -93,6 +93,7 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/res"
 	_#res: "\(#cloudflarePrefix)_logpush_ownership_challenge": res.#cloudflare_logpush_ownership_challenge
 	_#res: "\(#cloudflarePrefix)_magic_network_monitoring_configuration": res.#cloudflare_magic_network_monitoring_configuration
 	_#res: "\(#cloudflarePrefix)_magic_network_monitoring_rule": res.#cloudflare_magic_network_monitoring_rule
+	_#res: "\(#cloudflarePrefix)_magic_transit_cf1_site": res.#cloudflare_magic_transit_cf1_site
 	_#res: "\(#cloudflarePrefix)_magic_transit_connector": res.#cloudflare_magic_transit_connector
 	_#res: "\(#cloudflarePrefix)_magic_transit_site_acl": res.#cloudflare_magic_transit_site_acl
 	_#res: "\(#cloudflarePrefix)_magic_transit_site": res.#cloudflare_magic_transit_site
@@ -111,6 +112,7 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/res"
 	_#res: "\(#cloudflarePrefix)_organization_profile": res.#cloudflare_organization_profile
 	_#res: "\(#cloudflarePrefix)_origin_ca_certificate": res.#cloudflare_origin_ca_certificate
 	_#res: "\(#cloudflarePrefix)_origin_cloud_region": res.#cloudflare_origin_cloud_region
+	_#res: "\(#cloudflarePrefix)_origin_tls_compliance_modes": res.#cloudflare_origin_tls_compliance_modes
 	_#res: "\(#cloudflarePrefix)_page_rule": res.#cloudflare_page_rule
 	_#res: "\(#cloudflarePrefix)_page_shield_policy": res.#cloudflare_page_shield_policy
 	_#res: "\(#cloudflarePrefix)_pages_domain": res.#cloudflare_pages_domain
@@ -248,6 +250,7 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/res"
 	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_cloudflared_virtual_network": res.#cloudflare_zero_trust_tunnel_cloudflared_virtual_network
 	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_warp_connector_config": res.#cloudflare_zero_trust_tunnel_warp_connector_config
 	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_warp_connector": res.#cloudflare_zero_trust_tunnel_warp_connector
+	_#res: "\(#cloudflarePrefix)_zone_auto_origin_tls_kex": res.#cloudflare_zone_auto_origin_tls_kex
 	_#res: "\(#cloudflarePrefix)_zone_cache_reserve": res.#cloudflare_zone_cache_reserve
 	_#res: "\(#cloudflarePrefix)_zone_cache_variants": res.#cloudflare_zone_cache_variants
 	_#res: "\(#cloudflarePrefix)_zone_dns_settings": res.#cloudflare_zone_dns_settings

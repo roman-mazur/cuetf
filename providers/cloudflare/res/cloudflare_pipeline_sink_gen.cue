@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_pipeline_sink")
 	close({
 		// Specifies the public ID of the account.
-		account_id?: string
+		account_id!: string
 		created_at?: string
 
 		// Indicates a unique identifier for this sink.

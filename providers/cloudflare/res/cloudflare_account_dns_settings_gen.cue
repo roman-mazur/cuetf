@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_account_dns_settings")
 	close({
 		// Identifier.
-		account_id?: string
+		account_id!: string
 
 		// When enabled, forces all proxied DNS records in the account to
 		// behave as DNS-only at the edge, regardless of each record's

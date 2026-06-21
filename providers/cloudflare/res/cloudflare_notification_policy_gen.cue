@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_notification_policy")
 	close({
 		// The account id
-		account_id?: string
+		account_id!: string
 
 		// Optional specification of how often to re-alert from the same
 		// incident, not support on all alert types.

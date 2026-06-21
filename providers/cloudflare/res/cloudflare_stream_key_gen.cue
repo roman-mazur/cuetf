@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_stream_key")
 	close({
 		// Identifier.
-		account_id?: string
+		account_id!: string
 
 		// The date and time a signing key was created.
 		created?: string

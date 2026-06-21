@@ -90,7 +90,7 @@ package res
 		uploaded_on?: string
 
 		// Identifier.
-		zone_id?: string
+		zone_id!: string
 
 		// Specify the region where your private key can be held locally
 		// for optimal TLS performance. HTTPS connections to any excluded

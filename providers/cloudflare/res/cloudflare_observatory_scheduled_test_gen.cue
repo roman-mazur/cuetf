@@ -25,7 +25,7 @@ package res
 		url!: string
 
 		// Identifier.
-		zone_id?: string
+		zone_id!: string
 
 		// The test schedule.
 		schedule?: close({

@@ -51,6 +51,6 @@ package res
 		value!: _
 
 		// Identifier.
-		zone_id?: string
+		zone_id!: string
 	})
 }

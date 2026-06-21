@@ -161,6 +161,8 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_magic_network_monitoring_configuration": data.#cloudflare_magic_network_monitoring_configuration
 	_#ds: "\(#cloudflarePrefix)_magic_network_monitoring_rule": data.#cloudflare_magic_network_monitoring_rule
 	_#ds: "\(#cloudflarePrefix)_magic_network_monitoring_rules": data.#cloudflare_magic_network_monitoring_rules
+	_#ds: "\(#cloudflarePrefix)_magic_transit_cf1_site": data.#cloudflare_magic_transit_cf1_site
+	_#ds: "\(#cloudflarePrefix)_magic_transit_cf1_sites": data.#cloudflare_magic_transit_cf1_sites
 	_#ds: "\(#cloudflarePrefix)_magic_transit_connector": data.#cloudflare_magic_transit_connector
 	_#ds: "\(#cloudflarePrefix)_magic_transit_connectors": data.#cloudflare_magic_transit_connectors
 	_#ds: "\(#cloudflarePrefix)_magic_transit_site_acl": data.#cloudflare_magic_transit_site_acl
@@ -193,6 +195,7 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_origin_ca_certificates": data.#cloudflare_origin_ca_certificates
 	_#ds: "\(#cloudflarePrefix)_origin_cloud_region": data.#cloudflare_origin_cloud_region
 	_#ds: "\(#cloudflarePrefix)_origin_cloud_regions": data.#cloudflare_origin_cloud_regions
+	_#ds: "\(#cloudflarePrefix)_origin_tls_compliance_modes": data.#cloudflare_origin_tls_compliance_modes
 	_#ds: "\(#cloudflarePrefix)_page_rule": data.#cloudflare_page_rule
 	_#ds: "\(#cloudflarePrefix)_page_shield_connections": data.#cloudflare_page_shield_connections
 	_#ds: "\(#cloudflarePrefix)_page_shield_connections_list": data.#cloudflare_page_shield_connections_list
@@ -430,6 +433,7 @@ import "github.com/roman-mazur/cuetf/providers/cloudflare/data"
 	_#ds: "\(#cloudflarePrefix)_zero_trust_tunnel_warp_connector": data.#cloudflare_zero_trust_tunnel_warp_connector
 	_#ds: "\(#cloudflarePrefix)_zero_trust_tunnel_warp_connector_token": data.#cloudflare_zero_trust_tunnel_warp_connector_token
 	_#ds: "\(#cloudflarePrefix)_zero_trust_tunnel_warp_connectors": data.#cloudflare_zero_trust_tunnel_warp_connectors
+	_#ds: "\(#cloudflarePrefix)_zone_auto_origin_tls_kex": data.#cloudflare_zone_auto_origin_tls_kex
 	_#ds: "\(#cloudflarePrefix)_zone_cache_reserve": data.#cloudflare_zone_cache_reserve
 	_#ds: "\(#cloudflarePrefix)_zone_cache_variants": data.#cloudflare_zone_cache_variants
 	_#ds: "\(#cloudflarePrefix)_zone_dns_settings": data.#cloudflare_zone_dns_settings

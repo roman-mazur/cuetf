@@ -5,7 +5,7 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_connectivity_directory_service")
 	close({
 		// Account identifier
-		account_id?: string
+		account_id!: string
 
 		// Available values: "postgresql", "mysql".
 		app_protocol?: string

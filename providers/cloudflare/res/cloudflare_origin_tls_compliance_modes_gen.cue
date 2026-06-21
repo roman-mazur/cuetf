@@ -1,0 +1,30 @@
+package res
+
+#cloudflare_origin_tls_compliance_modes: {
+	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_origin_tls_compliance_modes")
+	close({
+		// Whether the setting is editable.
+		editable?: bool
+
+		// Identifier.
+		id?: string
+
+		// Last time this setting was modified.
+		modified_on?: string
+
+		// List of TLS compliance modes that constrain the key-exchange
+		// algorithms Cloudflare may use when establishing the TLS
+		// connection to the zone's origin. Currently supported values
+		// are `fips` (FIPS-approved curves) and `pqh` (post-quantum
+		// hybrid). Future modes (e.g. `cnsa2`) may be added; clients
+		// should treat unknown values as opaque strings. Multiple modes
+		// are combined as the intersection of their permitted algorithm
+		// lists; selections whose intersection is empty are rejected. An
+		// empty list clears the constraint.
+		value!: [...string]
+
+		// Identifier.
+		zone_id!: string
+	})
+}

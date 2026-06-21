@@ -42,7 +42,7 @@ package res
 		verification_errors?: [...string]
 
 		// Identifier.
-		zone_id?: string
+		zone_id!: string
 
 		// This is a record which can be placed to activate a hostname.
 		ownership_verification?: close({
