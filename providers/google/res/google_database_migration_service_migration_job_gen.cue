@@ -33,6 +33,11 @@ import "list"
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
+		// The desired state of the migration job. If set to 'RUNNING',
+		// the migration job will be started. Possible values:
+		// ["NOT_STARTED", "RUNNING"]
+		desired_state?: string
+
 		// The name of the destination connection profile resource in the
 		// form of
 		// projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
@@ -97,6 +102,10 @@ import "list"
 
 		// The current migration job state.
 		state?: string
+
+		// If set to true, will stop the Terraform apply if there are
+		// validation warnings.
+		stop_on_warnings?: bool
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

@@ -305,7 +305,9 @@ package data
 						ip_address?:                  string
 						status?:                      string
 					})]
-					psc_enabled?: bool
+					psc_auto_dns_enabled?:           bool
+					psc_enabled?:                    bool
+					psc_write_endpoint_dns_enabled?: bool
 				})]
 				server_ca_mode?:                   string
 				server_ca_pool?:                   string

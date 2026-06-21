@@ -87,16 +87,17 @@ import "list"
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
 		// https://google.aip.dev/122.
-		location!: string
+		location?: string
 
 		// Identifier. FrameworkDeployment name in the following format:
-		// organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
+		// {parent}/locations/{location}/frameworkDeployments/{framework_deployment_id}
 		name?: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
-		organization!: string
+		// The parent resource in which to create the resource.
+		// Must be in one of the following formats:
+		// * 'projects/{{project}}'
+		// * 'organizations/{{organization}}'
+		parent?: string
 
 		// The display name of the target resource.
 		target_resource_display_name?: string
@@ -118,7 +119,7 @@ import "list"
 
 	#framework: close({
 		// In the format:
-		// organizations/{org}/locations/{location}/frameworks/{framework}
+		// {parent}/locations/{location}/frameworks/{framework}
 		framework!: string
 
 		// Major revision id of the framework.
@@ -146,8 +147,7 @@ import "list"
 		major_revision_id!: string
 
 		// The name of the CloudControl in the format:
-		// “organizations/{organization}/locations/{location}/
-		// cloudControls/{cloud-control}”
+		// "{parent}/locations/{location}/cloudControls/{cloud-control}"
 		name!: string
 	})
 

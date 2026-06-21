@@ -664,8 +664,14 @@ import "list"
 		// instance.
 		network_attachment_uri?: string
 
+		// Whether PSC auto DNS is enabled for this instance.
+		psc_auto_dns_enabled?: bool
+
 		// Whether PSC connectivity is enabled for this instance.
 		psc_enabled?: bool
+
+		// Whether PSC write endpoint DNS is enabled for this instance.
+		psc_write_endpoint_dns_enabled?: bool
 	})
 
 	_#defs: "/$defs/settings/$defs/ip_configuration/$defs/psc_config/$defs/psc_auto_connections": close({

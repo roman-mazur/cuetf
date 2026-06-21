@@ -245,6 +245,8 @@ package data
 		// The template used to create revisions for this WorkerPool.
 		template?: [...close({
 			annotations?: [string]: string
+			client?:         string
+			client_version?: string
 			containers?: [...close({
 				args?: [...string]
 				command?: [...string]
@@ -268,6 +270,7 @@ package data
 					})]
 					http_get?: [...close({
 						http_headers?: [...close({
+							name?:  string
 							port?:  number
 							value?: string
 						})]
@@ -293,6 +296,7 @@ package data
 					})]
 					http_get?: [...close({
 						http_headers?: [...close({
+							name?:  string
 							port?:  number
 							value?: string
 						})]

@@ -47,6 +47,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_apigee_envgroup": res.#google_apigee_envgroup
 	_#res: "\(#googlePrefix)_apigee_environment_addons_config": res.#google_apigee_environment_addons_config
 	_#res: "\(#googlePrefix)_apigee_environment_api_revision_deployment": res.#google_apigee_environment_api_revision_deployment
+	_#res: "\(#googlePrefix)_apigee_environment_debugmask": res.#google_apigee_environment_debugmask
 	_#res: "\(#googlePrefix)_apigee_environment": res.#google_apigee_environment
 	_#res: "\(#googlePrefix)_apigee_environment_iam_binding": res.#google_apigee_environment_iam_binding
 	_#res: "\(#googlePrefix)_apigee_environment_iam_member": res.#google_apigee_environment_iam_member
@@ -217,6 +218,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_chronicle_data_table": res.#google_chronicle_data_table
 	_#res: "\(#googlePrefix)_chronicle_data_table_row": res.#google_chronicle_data_table_row
 	_#res: "\(#googlePrefix)_chronicle_native_dashboard": res.#google_chronicle_native_dashboard
+	_#res: "\(#googlePrefix)_chronicle_parser": res.#google_chronicle_parser
 	_#res: "\(#googlePrefix)_chronicle_reference_list": res.#google_chronicle_reference_list
 	_#res: "\(#googlePrefix)_chronicle_retrohunt": res.#google_chronicle_retrohunt
 	_#res: "\(#googlePrefix)_chronicle_rule_deployment": res.#google_chronicle_rule_deployment
@@ -910,6 +912,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_migration_center_assets_export_job": res.#google_migration_center_assets_export_job
 	_#res: "\(#googlePrefix)_migration_center_discovery_client": res.#google_migration_center_discovery_client
 	_#res: "\(#googlePrefix)_migration_center_group": res.#google_migration_center_group
+	_#res: "\(#googlePrefix)_migration_center_import_data_file": res.#google_migration_center_import_data_file
 	_#res: "\(#googlePrefix)_migration_center_import_job": res.#google_migration_center_import_job
 	_#res: "\(#googlePrefix)_migration_center_preference_set": res.#google_migration_center_preference_set
 	_#res: "\(#googlePrefix)_migration_center_report_config": res.#google_migration_center_report_config
@@ -985,6 +988,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_network_security_ull_mirroring_collector_rule": res.#google_network_security_ull_mirroring_collector_rule
 	_#res: "\(#googlePrefix)_network_security_ull_mirroring_engine": res.#google_network_security_ull_mirroring_engine
 	_#res: "\(#googlePrefix)_network_security_url_lists": res.#google_network_security_url_lists
+	_#res: "\(#googlePrefix)_network_services_agent_gateway": res.#google_network_services_agent_gateway
 	_#res: "\(#googlePrefix)_network_services_authz_extension": res.#google_network_services_authz_extension
 	_#res: "\(#googlePrefix)_network_services_edge_cache_keyset": res.#google_network_services_edge_cache_keyset
 	_#res: "\(#googlePrefix)_network_services_edge_cache_origin": res.#google_network_services_edge_cache_origin
@@ -1251,6 +1255,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_vertex_ai_reasoning_engine_iam_binding": res.#google_vertex_ai_reasoning_engine_iam_binding
 	_#res: "\(#googlePrefix)_vertex_ai_reasoning_engine_iam_member": res.#google_vertex_ai_reasoning_engine_iam_member
 	_#res: "\(#googlePrefix)_vertex_ai_reasoning_engine_iam_policy": res.#google_vertex_ai_reasoning_engine_iam_policy
+	_#res: "\(#googlePrefix)_vertex_ai_tensorboard_experiment": res.#google_vertex_ai_tensorboard_experiment
 	_#res: "\(#googlePrefix)_vertex_ai_tensorboard": res.#google_vertex_ai_tensorboard
 	_#res: "\(#googlePrefix)_vmwareengine_cluster": res.#google_vmwareengine_cluster
 	_#res: "\(#googlePrefix)_vmwareengine_datastore": res.#google_vmwareengine_datastore

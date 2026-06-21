@@ -315,6 +315,12 @@ import "list"
 		// and rules.
 		annotations?: [string]: string
 
+		// Arbitrary identifier for the API client.
+		client?: string
+
+		// Arbitrary version identifier for the API client.
+		client_version?: string
+
 		// A reference to a customer managed encryption key (CMEK) to use
 		// to encrypt this container image. For more information, go to
 		// https://cloud.google.com/run/docs/securing/using-cmek
@@ -483,7 +489,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get": close({
-		http_headers?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get/$defs/http_headers", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get/$defs/http_headers"]])
+		http_headers?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get/$defs/http_headers", [..._#defs."/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get/$defs/http_headers"]])
 
 		// Optional. Path to access on the HTTP server. Defaults to '/'.
 		path?: string
@@ -497,7 +503,7 @@ import "list"
 
 	_#defs: "/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get/$defs/http_headers": close({
 		// Required. The header field name
-		port!: number
+		name?: string
 
 		// Optional. The header field value
 		value?: string
@@ -567,7 +573,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get": close({
-		http_headers?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get/$defs/http_headers", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get/$defs/http_headers"]])
+		http_headers?: matchN(1, [_#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get/$defs/http_headers", [..._#defs."/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get/$defs/http_headers"]])
 
 		// Optional. Path to access on the HTTP server. Defaults to '/'.
 		path?: string
@@ -581,7 +587,7 @@ import "list"
 
 	_#defs: "/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get/$defs/http_headers": close({
 		// Required. The header field name
-		port!: number
+		name?: string
 
 		// Optional. The header field value
 		value?: string

@@ -67,7 +67,13 @@ package data
 		// characters must be a dash, lowercase letter, or digit, except
 		// the last
 		// character, which cannot be a dash.
-		name!:    string
+		name!: string
+
+		// Additional params passed with the request, but not persisted as
+		// part of resource payload
+		params?: [...close({
+			resource_manager_tags?: [string]: string
+		})]
 		project?: string
 
 		// The number of reservation blocks associated with this

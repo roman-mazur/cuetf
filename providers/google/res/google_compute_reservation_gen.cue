@@ -7,6 +7,7 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_reservation")
 	close({
 		delete_after_duration?: matchN(1, [#delete_after_duration, list.MaxItems(1) & [...#delete_after_duration]])
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 		reservation_sharing_policy?: matchN(1, [#reservation_sharing_policy, list.MaxItems(1) & [...#reservation_sharing_policy]])
 		share_settings?: matchN(1, [#share_settings, list.MaxItems(1) & [...#share_settings]])
 		specific_reservation!: matchN(1, [#specific_reservation, list.MaxItems(1) & [_, ...] & [...#specific_reservation]])
@@ -132,6 +133,15 @@ import "list"
 
 		// Number of seconds for the auto-delete duration.
 		seconds?: string
+	})
+
+	#params: close({
+		// Resource manager tags to be bound to the reservation. Tag keys
+		// and values have the
+		// same definition as resource manager tags. Keys must be in the
+		// format tagKeys/{tag_key_id},
+		// and values are in the format tagValues/456.
+		resource_manager_tags?: [string]: string
 	})
 
 	#reservation_sharing_policy: close({
