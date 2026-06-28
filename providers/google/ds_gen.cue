@@ -413,6 +413,8 @@ import "github.com/roman-mazur/cuetf/providers/google/data"
 	_#ds: "\(#googlePrefix)_storage_control_organization_intelligence_config": data.#google_storage_control_organization_intelligence_config
 	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_config": data.#google_storage_control_project_intelligence_config
 	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_finding": data.#google_storage_control_project_intelligence_finding
+	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_finding_revision": data.#google_storage_control_project_intelligence_finding_revision
+	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_finding_revisions": data.#google_storage_control_project_intelligence_finding_revisions
 	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_findings": data.#google_storage_control_project_intelligence_findings
 	_#ds: "\(#googlePrefix)_storage_insights_dataset_config": data.#google_storage_insights_dataset_config
 	_#ds: "\(#googlePrefix)_storage_managed_folder_iam_policy": data.#google_storage_managed_folder_iam_policy

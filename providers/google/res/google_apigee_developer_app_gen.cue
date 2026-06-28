@@ -22,6 +22,34 @@ package res
 		// authorization codes back to developer apps.
 		callback_url!: string
 
+		// Optionally specify a static consumer key for the developer
+		// app's credential.
+		// If not set, the API auto-generates a key. The consumer key must
+		// be unique
+		// across all developer apps in an organization. Changing this
+		// field forces the
+		// resource to be recreated.
+		//
+		// This is a write-only input used at create time: the provider
+		// creates the
+		// credential with this key via the keys API and removes the
+		// auto-generated
+		// one. The effective key is exposed in the 'credentials' output.
+		consumer_key?: string
+
+		// Optionally specify a static consumer secret for the developer
+		// app's
+		// credential. Required if 'consumer_key' is specified. If not
+		// set, the API
+		// auto-generates a secret. Changing this field forces the
+		// resource to be
+		// recreated.
+		//
+		// This is a write-only input used at create time; the effective
+		// secret is
+		// exposed in the 'credentials' output.
+		consumer_secret?: string
+
 		// Time at which the developer was created in milliseconds since
 		// epoch.
 		created_at?: string

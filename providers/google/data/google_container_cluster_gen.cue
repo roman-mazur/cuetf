@@ -205,6 +205,9 @@ package data
 		// uses the IPTables-based kube-proxy implementation.
 		datapath_provider?: string
 
+		// The desired dataplane optimization mode.
+		dataplane_optimization_mode?: string
+
 		// The default maximum number of pods per node in this cluster.
 		// This doesn't work on "routes-based" clusters, clusters that
 		// don't have IP Aliasing enabled.
@@ -337,6 +340,14 @@ package data
 		identity_service_config?: [...close({
 			enabled?: bool
 		})]
+
+		// When true, the provider ignores external changes (drift) to the
+		// node count by skipping GCE API queries to the Instance Group
+		// Managers. This is a performance optimization for large
+		// clusters that saves API quota. Setting this to true will
+		// result in missing managed_instance_group_urls in the state for
+		// all node pools in the cluster.
+		ignore_node_count_changes?: bool
 
 		// Defines the config of in-transit encryption
 		in_transit_encryption_config?: string
@@ -759,6 +770,9 @@ package data
 				key?:    string
 				value?:  string
 			})]
+			taint_config?: [...close({
+				architecture_taint_behavior?: string
+			})]
 			windows_node_config?: [...close({
 				osversion?: string
 			})]
@@ -795,7 +809,8 @@ package data
 				total_max_node_count?: number
 				total_min_node_count?: number
 			})]
-			initial_node_count?: number
+			ignore_node_count_changes?: bool
+			initial_node_count?:        number
 			instance_group_urls?: [...string]
 			managed_instance_group_urls?: [...string]
 			management?: [...close({
@@ -1059,6 +1074,9 @@ package data
 					key?:    string
 					value?:  string
 				})]
+				taint_config?: [...close({
+					architecture_taint_behavior?: string
+				})]
 				windows_node_config?: [...close({
 					osversion?: string
 				})]
@@ -1298,6 +1316,15 @@ package data
 		// cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses
 		// are typically put in the last /16 from the container CIDR.
 		services_ipv4_cidr?: string
+
+		// If true, the provider will not refresh the inline node_pool
+		// state from the API during cluster reads. Set this to true only
+		// when all node pools are managed via separate
+		// google_container_node_pool resources; it substantially
+		// improves plan/apply performance on clusters with a high node
+		// pool count. Must not be set to true when inline node_pool
+		// blocks are defined on this resource.
+		skip_node_pool_refresh?: bool
 
 		// The name or self_link of the Google Compute Engine subnetwork
 		// in which the cluster's instances are launched.

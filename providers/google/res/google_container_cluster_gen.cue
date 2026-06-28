@@ -75,6 +75,9 @@ import "list"
 		// uses the IPTables-based kube-proxy implementation.
 		datapath_provider?: string
 
+		// The desired dataplane optimization mode.
+		dataplane_optimization_mode?: string
+
 		// The default maximum number of pods per node in this cluster.
 		// This doesn't work on "routes-based" clusters, clusters that
 		// don't have IP Aliasing enabled.
@@ -153,6 +156,14 @@ import "list"
 		// The IP address of this cluster's Kubernetes master.
 		endpoint?: string
 		id?:       string
+
+		// When true, the provider ignores external changes (drift) to the
+		// node count by skipping GCE API queries to the Instance Group
+		// Managers. This is a performance optimization for large
+		// clusters that saves API quota. Setting this to true will
+		// result in missing managed_instance_group_urls in the state for
+		// all node pools in the cluster.
+		ignore_node_count_changes?: bool
 
 		// Defines the config of in-transit encryption
 		in_transit_encryption_config?: string
@@ -273,6 +284,15 @@ import "list"
 		// cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses
 		// are typically put in the last /16 from the container CIDR.
 		services_ipv4_cidr?: string
+
+		// If true, the provider will not refresh the inline node_pool
+		// state from the API during cluster reads. Set this to true only
+		// when all node pools are managed via separate
+		// google_container_node_pool resources; it substantially
+		// improves plan/apply performance on clusters with a high node
+		// pool count. Must not be set to true when inline node_pool
+		// blocks are defined on this resource.
+		skip_node_pool_refresh?: bool
 
 		// The name or self_link of the Google Compute Engine subnetwork
 		// in which the cluster's instances are launched.
@@ -603,6 +623,7 @@ import "list"
 		shielded_instance_config?: matchN(1, [_#defs."/$defs/node_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/shielded_instance_config"]])
 		sole_tenant_config?: matchN(1, [_#defs."/$defs/node_config/$defs/sole_tenant_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/sole_tenant_config"]])
 		taint?: matchN(1, [_#defs."/$defs/node_config/$defs/taint", [..._#defs."/$defs/node_config/$defs/taint"]])
+		taint_config?: matchN(1, [_#defs."/$defs/node_config/$defs/taint_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/taint_config"]])
 		windows_node_config?: matchN(1, [_#defs."/$defs/node_config/$defs/windows_node_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/windows_node_config"]])
 		workload_metadata_config?: matchN(1, [_#defs."/$defs/node_config/$defs/workload_metadata_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/workload_metadata_config"]])
 
@@ -725,6 +746,13 @@ import "list"
 		placement_policy?: matchN(1, [_#defs."/$defs/node_pool/$defs/placement_policy", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/placement_policy"]])
 		queued_provisioning?: matchN(1, [_#defs."/$defs/node_pool/$defs/queued_provisioning", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/queued_provisioning"]])
 		upgrade_settings?: matchN(1, [_#defs."/$defs/node_pool/$defs/upgrade_settings", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/upgrade_settings"]])
+
+		// When true, the provider ignores external changes (drift) to the
+		// node count by skipping GCE API queries to the Instance Group
+		// Managers. This is a performance optimization for large
+		// clusters that saves API quota. Setting this to true will
+		// result in missing managed_instance_group_urls in the state.
+		ignore_node_count_changes?: bool
 
 		// The initial number of nodes for the pool. In regional or
 		// multi-zonal clusters, this is the number of nodes per zone.
@@ -1827,6 +1855,12 @@ import "list"
 		value!: string
 	})
 
+	_#defs: "/$defs/node_config/$defs/taint_config": close({
+		// Architecture taint behavior. Controls, how we apply taints
+		// based on the node architecture.
+		architecture_taint_behavior!: string
+	})
+
 	_#defs: "/$defs/node_config/$defs/windows_node_config": close({
 		// The OS Version of the windows nodepool.Values are
 		// OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and
@@ -1971,6 +2005,7 @@ import "list"
 		shielded_instance_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/shielded_instance_config"]])
 		sole_tenant_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/sole_tenant_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/sole_tenant_config"]])
 		taint?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/taint", [..._#defs."/$defs/node_pool/$defs/node_config/$defs/taint"]])
+		taint_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/taint_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/taint_config"]])
 		windows_node_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/windows_node_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/windows_node_config"]])
 		workload_metadata_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/workload_metadata_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/workload_metadata_config"]])
 
@@ -2586,6 +2621,12 @@ import "list"
 
 		// Value for taint.
 		value!: string
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/taint_config": close({
+		// Architecture taint behavior. Controls, how we apply taints
+		// based on the node architecture.
+		architecture_taint_behavior!: string
 	})
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/windows_node_config": close({

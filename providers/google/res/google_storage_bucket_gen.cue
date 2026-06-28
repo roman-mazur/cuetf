@@ -381,6 +381,14 @@ import "list"
 		// can be used alone or together with num_newer_versions.
 		send_num_newer_versions_if_zero?: bool
 
+		// Objects having a size greater than this value in bytes will be
+		// matched.
+		size_above_bytes?: number
+
+		// Objects having a size less than this value in bytes will be
+		// matched.
+		size_below_bytes?: number
+
 		// Match to live and/or archived objects. Unversioned buckets have
 		// only live objects. Supported values include: "LIVE",
 		// "ARCHIVED", "ANY".

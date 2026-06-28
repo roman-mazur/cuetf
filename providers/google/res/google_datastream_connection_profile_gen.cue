@@ -98,6 +98,12 @@ import "list"
 		ssl_config?: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/ssl_config", list.MaxItems(1) & [..._#defs."/$defs/mongodb_profile/$defs/ssl_config"]])
 		standard_connection_format?: matchN(1, [_#defs."/$defs/mongodb_profile/$defs/standard_connection_format", list.MaxItems(1) & [..._#defs."/$defs/mongodb_profile/$defs/standard_connection_format"]])
 
+		// A map of additional options for the MongoDB connection.
+		// Keys are case-sensitive and should match the official
+		// MongoDB connection string options:
+		// https://www.mongodb.com/docs/manual/reference/connection-string-options/
+		additional_options?: [string]: string
+
 		// Password for the MongoDB connection. Mutually exclusive with
 		// secretManagerStoredPassword.
 		password?: string

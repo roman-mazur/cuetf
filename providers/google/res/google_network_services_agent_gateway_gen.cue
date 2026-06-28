@@ -91,6 +91,7 @@ import "list"
 	})
 
 	#network_config: close({
+		dns_peering_config?: matchN(1, [_#defs."/$defs/network_config/$defs/dns_peering_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/dns_peering_config"]])
 		egress!: matchN(1, [_#defs."/$defs/network_config/$defs/egress", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/network_config/$defs/egress"]])
 	})
 
@@ -104,6 +105,22 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/network_config/$defs/dns_peering_config": close({
+		// The list of domain names to peer for DNS resolution. Each entry
+		// must be a fully qualified domain name ending with a dot
+		// (for example, 'example.com.').
+		domains!: [...string]
+
+		// The URI of the target VPC network for DNS peering. Must be of
+		// the
+		// form 'projects/{project}/global/networks/{network}'.
+		target_network!: string
+
+		// The ID of the project that hosts the target VPC network for DNS
+		// peering.
+		target_project!: string
 	})
 
 	_#defs: "/$defs/network_config/$defs/egress": close({

@@ -34,6 +34,13 @@ import "list"
 		deletion_policy?: string
 		id?:              string
 
+		// When true, the provider ignores external changes (drift) to the
+		// node count by skipping GCE API queries to the Instance Group
+		// Managers. This is a performance optimization for large
+		// clusters that saves API quota. Setting this to true will
+		// result in missing managed_instance_group_urls in the state.
+		ignore_node_count_changes?: bool
+
 		// The initial number of nodes for the pool. In regional or
 		// multi-zonal clusters, this is the number of nodes per zone.
 		// Changing this will force recreation of the resource.
@@ -191,6 +198,7 @@ import "list"
 		shielded_instance_config?: matchN(1, [_#defs."/$defs/node_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/shielded_instance_config"]])
 		sole_tenant_config?: matchN(1, [_#defs."/$defs/node_config/$defs/sole_tenant_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/sole_tenant_config"]])
 		taint?: matchN(1, [_#defs."/$defs/node_config/$defs/taint", [..._#defs."/$defs/node_config/$defs/taint"]])
+		taint_config?: matchN(1, [_#defs."/$defs/node_config/$defs/taint_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/taint_config"]])
 		windows_node_config?: matchN(1, [_#defs."/$defs/node_config/$defs/windows_node_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/windows_node_config"]])
 		workload_metadata_config?: matchN(1, [_#defs."/$defs/node_config/$defs/workload_metadata_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/workload_metadata_config"]])
 
@@ -897,6 +905,12 @@ import "list"
 
 		// Value for taint.
 		value!: string
+	})
+
+	_#defs: "/$defs/node_config/$defs/taint_config": close({
+		// Architecture taint behavior. Controls, how we apply taints
+		// based on the node architecture.
+		architecture_taint_behavior!: string
 	})
 
 	_#defs: "/$defs/node_config/$defs/windows_node_config": close({

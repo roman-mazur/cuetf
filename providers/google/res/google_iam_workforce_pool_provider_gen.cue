@@ -365,7 +365,16 @@ import "list"
 
 	_#defs: "/$defs/extended_attributes_oauth2_client/$defs/client_secret/$defs/value": close({
 		// The plain text of the client secret value.
-		plain_text!: string
+		plain_text?: string
+
+		// The plain text of the client secret value.
+		plain_text_wo?: string
+
+		// Triggers update of 'plain_text_wo' write-only. Increment this
+		// value when an update to 'plain_text_wo' is needed. For more
+		// info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		plain_text_wo_version?: string
 
 		// A thumbprint to represent the current client secret value.
 		thumbprint?: string
@@ -389,7 +398,16 @@ import "list"
 
 	_#defs: "/$defs/extra_attributes_oauth2_client/$defs/client_secret/$defs/value": close({
 		// The plain text of the client secret value.
-		plain_text!: string
+		plain_text?: string
+
+		// The plain text of the client secret value.
+		plain_text_wo?: string
+
+		// Triggers update of 'plain_text_wo' write-only. Increment this
+		// value when an update to 'plain_text_wo' is needed. For more
+		// info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		plain_text_wo_version?: string
 
 		// A thumbprint to represent the current client secret value.
 		thumbprint?: string
@@ -415,7 +433,16 @@ import "list"
 
 	_#defs: "/$defs/oidc/$defs/client_secret/$defs/value": close({
 		// The plain text of the client secret value.
-		plain_text!: string
+		plain_text?: string
+
+		// The plain text of the client secret value.
+		plain_text_wo?: string
+
+		// Triggers update of 'plain_text_wo' write-only. Increment this
+		// value when an update to 'plain_text_wo' is needed. For more
+		// info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		plain_text_wo_version?: string
 
 		// A thumbprint to represent the current client secret value.
 		thumbprint?: string
