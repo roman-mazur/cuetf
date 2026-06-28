@@ -85,6 +85,10 @@ import "list"
 		// True if an upgrade is available
 		upgrade_available?: bool
 
+		// Whether the pools should be automatically upgraded alongside
+		// the cluster, or have to be upgraded separately.
+		upgrade_pools?: bool
+
 		// The version of the cluster
 		version!: string
 
@@ -128,7 +132,7 @@ import "list"
 		ignore_daemonsets_utilization?: bool
 
 		// Autoscaler logging level expressed from 0 to 4 (4 being the
-		// more verbose), defaults to 2.
+		// more verbose).
 		log_level?: number
 
 		// Maximum number of seconds the cluster autoscaler waits for pod
@@ -148,7 +152,7 @@ import "list"
 		scale_down_utilization_threshold?: number
 
 		// If true, the autoscaler will never delete nodes with pods with
-		// local storage, e.g. EmptyDir or HostPath, defaults to true.
+		// local storage, e.g. EmptyDir or HostPath.
 		skip_nodes_with_local_storage?: bool
 	})
 

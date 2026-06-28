@@ -111,6 +111,10 @@ package data
 		// True if an upgrade is available
 		upgrade_available?: bool
 
+		// Whether the pools should be automatically upgraded alongside
+		// the cluster, or have to be upgraded separately.
+		upgrade_pools?: bool
+
 		// The version of the cluster
 		version?: string
 

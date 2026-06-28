@@ -24,9 +24,6 @@ import "list"
 		// container. Defaults to 70.
 		cpu_limit?: number
 
-		// The cron status
-		cron_status?: string
-
 		// The container description
 		description?: string
 

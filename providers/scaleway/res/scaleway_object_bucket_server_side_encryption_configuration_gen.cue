@@ -12,6 +12,9 @@ import "list"
 		bucket!: string
 		id?:     string
 
+		// The project_id you want to attach the resource to
+		project_id?: string
+
 		// The region you want to attach the resource to
 		region?: string
 	})
@@ -26,8 +29,8 @@ import "list"
 	_#defs: "/$defs/rule/$defs/apply_server_side_encryption_by_default": close({
 		// Scaleway KMS master key ID used for the SSE-KMS encryption.
 		// This can only be used when you set the value of sse_algorithm
-		// as aws:kms. Will return an error if not this element is absent
-		// while the sse_algorithm is aws:kms.
+		// as 'aws:kms'. Will return an error if this element is absent
+		// while the sse_algorithm is 'aws:kms'.
 		kms_master_key_id?: string
 
 		// Server-side encryption algorithm to use. Valid values are

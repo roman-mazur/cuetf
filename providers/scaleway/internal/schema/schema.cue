@@ -106,6 +106,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					The [`scaleway_account_project`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/account_project) resource allows you to create and manage the Projects of a Scaleway Organization.
 
 					Refer to the Organizations and Projects [documentation](https://www.scaleway.com/en/docs/organizations-and-projects/) and [API documentation](https://www.scaleway.com/en/developers/api/account/project-api/) for more information.
+
 					"""
 				description_kind: "plain"
 			}
@@ -264,6 +265,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					The [`scaleway_apple_silicon_runner`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/apple_silicon_runner) resource creates and manages Scaleway Apple silicon runner.
 
 					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/apple-silicon/).
+
 					"""
 				description_kind: "plain"
 			}
@@ -489,6 +491,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					The [`scaleway_apple_silicon_server`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/apple_silicon_server) resource creates and manages Scaleway Apple silicon servers.
 
 					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/apple-silicon/).
+
 					"""
 				description_kind: "plain"
 			}
@@ -1264,6 +1267,58 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 				}
 				description_kind: "plain"
+			}
+		}
+		scaleway_billing_budget: {
+			version: 0
+			block: {
+				attributes: {
+					consumption_limit: {
+						type:             "number"
+						description:      "Cost limit for the budget in cents."
+						description_kind: "markdown"
+						required:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of budget creation"
+						description_kind: "markdown"
+						computed:         true
+					}
+					enabled: {
+						type:             "bool"
+						description:      "Whether the budget is enabled or not."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the budget"
+						description_kind: "markdown"
+						computed:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The organization ID. If not provided, the default organization configured in the provider is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time when the budget was last updated"
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Creates and manages Scaleway Budgets.
+
+					A Budget allows you to track and control spending across your Scaleway resources.
+
+					"""
+				description_kind: "markdown"
 			}
 		}
 		scaleway_block_snapshot: {
@@ -2105,6 +2160,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						type:             "string"
 						description:      "The cron status"
 						description_kind: "plain"
+						deprecated:       true
 						computed:         true
 					}
 					deploy: {
@@ -3083,6 +3139,225 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_datalab: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The creation timestamp of the Datalab instance."
+						description_kind: "markdown"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "A description for the Datalab instance."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					has_notebook: {
+						type:             "bool"
+						description:      "Whether a JupyterLab notebook is associated with the Datalab."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the Datalab instance, in the `{region}/{id}` format."
+						description_kind: "markdown"
+						computed:         true
+					}
+					main: {
+						nested_type: {
+							attributes: {
+								node_type: {
+									type:             "string"
+									description:      "The node type for the main node."
+									description_kind: "markdown"
+									required:         true
+								}
+								root_volume: {
+									nested_type: {
+										attributes: {
+											size: {
+												type:             "number"
+												description:      "The volume size in bytes."
+												description_kind: "markdown"
+												computed:         true
+											}
+											type: {
+												type:             "string"
+												description:      "The volume type."
+												description_kind: "markdown"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Volume details for the main node."
+									description_kind: "markdown"
+									computed:         true
+								}
+								spark_master_url: {
+									type:             "string"
+									description:      "The Spark master URL within the VPC."
+									description_kind: "markdown"
+									computed:         true
+								}
+								spark_ui_url: {
+									type:             "string"
+									description:      "The Spark UI URL."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "The Spark main node configuration."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the Datalab instance. If not provided, a random name is generated."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					notebook_master_url: {
+						type:             "string"
+						description:      "The URL used to reach the cluster from the notebook."
+						description_kind: "markdown"
+						computed:         true
+					}
+					notebook_url: {
+						type:             "string"
+						description:      "The URL of the JupyterLab notebook, if available."
+						description_kind: "markdown"
+						computed:         true
+					}
+					private_network_id: {
+						type:             "string"
+						description:      "The ID of the private network to attach the Datalab to."
+						description_kind: "markdown"
+						required:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project ID the Datalab belongs to. Defaults to the provider's project ID."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region the Datalab is in. Only `fr-par` is currently supported."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					spark_version: {
+						type:             "string"
+						description:      "The Spark version to use for the Datalab instance. Available versions can be retrieved from `ListClusterVersions`."
+						description_kind: "markdown"
+						required:         true
+					}
+					status: {
+						type:             "string"
+						description:      "The current status of the Datalab instance."
+						description_kind: "markdown"
+						computed:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "Tags associated with the Datalab instance."
+						description_kind: "markdown"
+						optional:         true
+					}
+					total_storage: {
+						nested_type: {
+							attributes: {
+								size: {
+									type:             "number"
+									description:      "The volume size in bytes."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								type: {
+									type:             "string"
+									description:      "The volume type. Defaults to `sbs_5k`."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Persistent volume storage configuration."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The last update timestamp of the Datalab instance."
+						description_kind: "markdown"
+						computed:         true
+					}
+					worker: {
+						nested_type: {
+							attributes: {
+								node_count: {
+									type:             "number"
+									description:      "The number of worker nodes."
+									description_kind: "markdown"
+									required:         true
+								}
+								node_type: {
+									type:             "string"
+									description:      "The node type for worker nodes."
+									description_kind: "markdown"
+									required:         true
+								}
+								root_volume: {
+									nested_type: {
+										attributes: {
+											size: {
+												type:             "number"
+												description:      "The volume size in bytes."
+												description_kind: "markdown"
+												computed:         true
+											}
+											type: {
+												type:             "string"
+												description:      "The volume type."
+												description_kind: "markdown"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Volume details for worker nodes."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "The Spark worker nodes configuration."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				description:      "Manages a Scaleway Datalab instance."
+				description_kind: "markdown"
+			}
+		}
 		scaleway_datawarehouse_database: {
 			version: 0
 			block: {
@@ -3639,7 +3914,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							whois_opt_in:            "bool"
 							zip:                     "string"
 						}]]
-						description:      "Details of the administrative contact."
+						description:      "Details of the administrative contact (read-only, set by the API)."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -3758,7 +4033,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							whois_opt_in:            "bool"
 							zip:                     "string"
 						}]]
-						description:      "Details of the technical contact."
+						description:      "Details of the technical contact (read-only, set by the API)."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -3790,7 +4065,8 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									type:             "string"
 									description:      "Company identification code (e.g., SIREN/SIRET in France) for the contact."
 									description_kind: "plain"
-									required:         true
+									optional:         true
+									computed:         true
 								}
 								company_name: {
 									type:             "string"
@@ -3876,7 +4152,8 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									type:             "string"
 									description:      "VAT identification code of the contact, if applicable."
 									description_kind: "plain"
-									required:         true
+									optional:         true
+									computed:         true
 								}
 								whois_opt_in: {
 									type:             "bool"
@@ -6389,6 +6666,60 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					SCIM (System for Cross-domain Identity Management) resource allows you to enable or disable SCIM for an organization.
 
 					SCIM is a standard for automating the exchange of user identity information between identity domains, or IT systems. When enabled, it allows for automated provisioning and deprovisioning of user accounts.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		scaleway_iam_scim_token: {
+			version: 0
+			block: {
+				attributes: {
+					bearer_token: {
+						type:             "string"
+						description:      "The Bearer Token to use to authenticate to SCIM endpoints."
+						description_kind: "markdown"
+						computed:         true
+						sensitive:        true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of SCIM token creation"
+						description_kind: "markdown"
+						computed:         true
+					}
+					expires_at: {
+						type:             "string"
+						description:      "The date and time when the SCIM token expires"
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the SCIM token"
+						description_kind: "markdown"
+						computed:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The organization ID. If not provided, the default organization configured in the provider is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					scim_id: {
+						type:             "string"
+						description:      "The SCIM configuration ID for which to create the token."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					SCIM Token resource allows you to create and manage SCIM tokens for SCIM configurations.
+
+					SCIM tokens are used to authenticate to SCIM endpoints for automated user provisioning and management. Each token is associated with a specific SCIM configuration and has an expiration time.
+
+					> **Note:** The bearer token is only available at creation time and is marked as sensitive. It cannot be retrieved after creation. If you lose the token, you will need to create a new one.
 
 					"""
 				description_kind: "markdown"
@@ -9925,6 +10256,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					upgrade_pools: {
+						type:             "bool"
+						description:      "Whether the pools should be automatically upgraded alongside the cluster, or have to be upgraded separately."
+						description_kind: "plain"
+						optional:         true
+					}
 					version: {
 						type:             "string"
 						description:      "The version of the cluster"
@@ -10009,7 +10346,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 								}
 								log_level: {
 									type:             "number"
-									description:      "Autoscaler logging level expressed from 0 to 4 (4 being the more verbose), defaults to 2."
+									description:      "Autoscaler logging level expressed from 0 to 4 (4 being the more verbose)."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -10039,7 +10376,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 								}
 								skip_nodes_with_local_storage: {
 									type:             "bool"
-									description:      "If true, the autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath, defaults to true."
+									description:      "If true, the autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -10311,6 +10648,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						type:             "string"
 						description:      "The Kubernetes version of the pool"
 						description_kind: "plain"
+						optional:         true
 						computed:         true
 					}
 					wait_for_pool_ready: {
@@ -13888,6 +14226,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					region: {
 						type:             "string"
 						description:      "The region you want to attach the resource to"
@@ -13911,7 +14256,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 								attributes: {
 									kms_master_key_id: {
 										type:             "string"
-										description:      "Scaleway KMS master key ID used for the SSE-KMS encryption. This can only be used when you set the value of sse_algorithm as aws:kms. Will return an error if not this element is absent while the sse_algorithm is aws:kms."
+										description:      "Scaleway KMS master key ID used for the SSE-KMS encryption. This can only be used when you set the value of sse_algorithm as 'aws:kms'. Will return an error if this element is absent while the sse_algorithm is 'aws:kms'."
 										description_kind: "plain"
 										optional:         true
 										computed:         true
@@ -14054,7 +14399,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						type:             "number"
 						description:      "Number of nodes"
 						description_kind: "plain"
-						required:         true
+						deprecated:       true
+						optional:         true
+					}
+					node_count: {
+						type:             "number"
+						description:      "Number of nodes"
+						description_kind: "plain"
+						optional:         true
 					}
 					node_type: {
 						type:             "string"
@@ -17015,6 +17367,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					enable_transitivity: {
+						type:             "bool"
+						description:      "Enable packets from peered VPCs to transit through this VPC"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
@@ -17420,6 +17779,89 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_vpc_ingress_rule: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The date and time of the creation of the ingress rule"
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The ingress rule description"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_ipv6: {
+						type:             "bool"
+						description:      "Whether the ingress rule is for IPv6 traffic"
+						description_kind: "plain"
+						computed:         true
+					}
+					nexthop_private_network_id: {
+						type:             "string"
+						description:      "The ID of the nexthop private network"
+						description_kind: "plain"
+						required:         true
+					}
+					nexthop_resource_ip: {
+						type:             "string"
+						description:      "IP of the nexthop resource for the ingress rule"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					source: {
+						type:             "string"
+						description:      "Source IP range to which this rule applies (CIDR notation with subnet mask)"
+						description_kind: "plain"
+						required:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "The tags associated with the ingress rule"
+						description_kind: "plain"
+						optional:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time of the last update of the ingress rule"
+						description_kind: "plain"
+						computed:         true
+					}
+					vpc_id: {
+						type:             "string"
+						description:      "The ID of the VPC the ingress rule belongs to"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description: """
+					Creates and manages Scaleway VPC Ingress Rules.
+
+					An ingress routing rule routes incoming traffic from a peered VPC to a specific private IP address within a destination VPC's Private Network.
+
+					For more information, see [the main documentation](https://www.scaleway.com/en/docs/vpc/concepts/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -18535,6 +18977,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					The [`scaleway_account_project`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/data-sources/account_project) data source is used to retrieve information about a Scaleway project.
 
 					Refer to the Organizations and Projects [documentation](https://www.scaleway.com/en/docs/organizations-and-projects/) and [API documentation](https://www.scaleway.com/en/developers/api/account/project-api/) for more information.
+
 					"""
 				description_kind: "plain"
 			}
@@ -18598,6 +19041,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					The [`scaleway_account_projects`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/data-sources/account_projects) data source is used to list all Scaleway projects in an Organization.
 
 					Refer to the Organizations and Projects [documentation](https://www.scaleway.com/en/docs/organizations-and-projects/) and [API documentation](https://www.scaleway.com/en/developers/api/account/project-api/) for more information.
+
 					"""
 				description_kind: "plain"
 			}
@@ -18835,6 +19279,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					The [`scaleway_audit_trail_event`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/data-sources/audit_trail_event) data source is used to retrieve information about existing Audit Trail events.
 
 					Refer to the Audit Trail [documentation](https://www.scaleway.com/en/docs/audit-trail/) and [API documentation](https://www.scaleway.com/en/developers/api/audit-trail/) for more information.
+
 					"""
 				description_kind: "plain"
 			}
@@ -19516,6 +19961,63 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 				}
 				description_kind: "plain"
+			}
+		}
+		scaleway_billing_budget: {
+			version: 0
+			block: {
+				attributes: {
+					budget_id: {
+						type:             "string"
+						description:      "The ID of the budget to retrieve."
+						description_kind: "markdown"
+						required:         true
+					}
+					consumption_limit: {
+						type:             "number"
+						description:      "Cost limit for the budget in cents."
+						description_kind: "markdown"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of budget creation"
+						description_kind: "markdown"
+						computed:         true
+					}
+					enabled: {
+						type:             "bool"
+						description:      "Whether the budget is enabled or not."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the budget"
+						description_kind: "markdown"
+						computed:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The organization ID. If not provided, the default organization configured in the provider is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time when the budget was last updated"
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Retrieves information about a Scaleway Budget.
+
+					Use this data source to get details of an existing budget by its ID.
+
+					"""
+				description_kind: "markdown"
 			}
 		}
 		scaleway_billing_consumptions: {
@@ -20721,6 +21223,333 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_datalab: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The creation timestamp of the Datalab instance."
+						description_kind: "markdown"
+						computed:         true
+					}
+					datalab_id: {
+						type:             "string"
+						description:      "The ID of the Datalab instance to look up."
+						description_kind: "markdown"
+						optional:         true
+					}
+					description: {
+						type:             "string"
+						description:      "A description for the Datalab instance."
+						description_kind: "markdown"
+						computed:         true
+					}
+					has_notebook: {
+						type:             "bool"
+						description:      "Whether a JupyterLab notebook is associated with the Datalab."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the Datalab instance, in the `{region}/{id}` format."
+						description_kind: "markdown"
+						computed:         true
+					}
+					main: {
+						nested_type: {
+							attributes: {
+								node_type: {
+									type:             "string"
+									description:      "The node type for the main node."
+									description_kind: "markdown"
+									computed:         true
+								}
+								root_volume: {
+									nested_type: {
+										attributes: {
+											size: {
+												type:             "number"
+												description_kind: "plain"
+												computed:         true
+											}
+											type: {
+												type:             "string"
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Volume details for the main node."
+									description_kind: "markdown"
+									computed:         true
+								}
+								spark_master_url: {
+									type:             "string"
+									description:      "The Spark master URL within the VPC."
+									description_kind: "markdown"
+									computed:         true
+								}
+								spark_ui_url: {
+									type:             "string"
+									description:      "The Spark UI URL."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "The Spark main node configuration."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the Datalab instance to look up."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					notebook_master_url: {
+						type:             "string"
+						description:      "The URL used to reach the cluster from the notebook."
+						description_kind: "markdown"
+						computed:         true
+					}
+					notebook_url: {
+						type:             "string"
+						description:      "The URL of the JupyterLab notebook, if available."
+						description_kind: "markdown"
+						computed:         true
+					}
+					private_network_id: {
+						type:             "string"
+						description:      "The ID of the private network attached to the Datalab."
+						description_kind: "markdown"
+						computed:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project ID the Datalab belongs to."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region the Datalab is in."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					spark_version: {
+						type:             "string"
+						description:      "The Spark version used by the Datalab instance."
+						description_kind: "markdown"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "The current status of the Datalab instance."
+						description_kind: "markdown"
+						computed:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "Tags associated with the Datalab instance."
+						description_kind: "markdown"
+						computed:         true
+					}
+					total_storage: {
+						nested_type: {
+							attributes: {
+								size: {
+									type:             "number"
+									description_kind: "plain"
+									computed:         true
+								}
+								type: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Persistent volume storage configuration."
+						description_kind: "markdown"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The last update timestamp of the Datalab instance."
+						description_kind: "markdown"
+						computed:         true
+					}
+					worker: {
+						nested_type: {
+							attributes: {
+								node_count: {
+									type:             "number"
+									description:      "The number of worker nodes."
+									description_kind: "markdown"
+									computed:         true
+								}
+								node_type: {
+									type:             "string"
+									description:      "The node type for worker nodes."
+									description_kind: "markdown"
+									computed:         true
+								}
+								root_volume: {
+									nested_type: {
+										attributes: {
+											size: {
+												type:             "number"
+												description_kind: "plain"
+												computed:         true
+											}
+											type: {
+												type:             "string"
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Volume details for worker nodes."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "The Spark worker nodes configuration."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description:      "Retrieves information about a Scaleway Datalab instance."
+				description_kind: "markdown"
+			}
+		}
+		scaleway_datalabs: {
+			version: 0
+			block: {
+				attributes: {
+					datalabs: {
+						nested_type: {
+							attributes: {
+								created_at: {
+									type:             "string"
+									description:      "The creation timestamp of the Datalab instance."
+									description_kind: "markdown"
+									computed:         true
+								}
+								description: {
+									type:             "string"
+									description:      "The description of the Datalab instance."
+									description_kind: "markdown"
+									computed:         true
+								}
+								has_notebook: {
+									type:             "bool"
+									description:      "Whether a JupyterLab notebook is associated with the Datalab."
+									description_kind: "markdown"
+									computed:         true
+								}
+								id: {
+									type:             "string"
+									description:      "The unique identifier of the Datalab instance."
+									description_kind: "markdown"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "The name of the Datalab instance."
+									description_kind: "markdown"
+									computed:         true
+								}
+								project_id: {
+									type:             "string"
+									description:      "The project ID of the Datalab instance."
+									description_kind: "markdown"
+									computed:         true
+								}
+								region: {
+									type:             "string"
+									description:      "The region of the Datalab instance."
+									description_kind: "markdown"
+									computed:         true
+								}
+								spark_version: {
+									type:             "string"
+									description:      "The Spark version of the Datalab instance."
+									description_kind: "markdown"
+									computed:         true
+								}
+								status: {
+									type:             "string"
+									description:      "The current status of the Datalab instance."
+									description_kind: "markdown"
+									computed:         true
+								}
+								tags: {
+									type: ["list", "string"]
+									description:      "Tags associated with the Datalab instance."
+									description_kind: "markdown"
+									computed:         true
+								}
+								updated_at: {
+									type:             "string"
+									description:      "The last update timestamp of the Datalab instance."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "The list of Datalab instances."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name to filter Datalabs by."
+						description_kind: "markdown"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The organization ID to filter Datalabs by."
+						description_kind: "markdown"
+						optional:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project ID to filter Datalabs by."
+						description_kind: "markdown"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region to list Datalabs from."
+						description_kind: "markdown"
+						optional:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "The tags to filter Datalabs by."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				description:      "Lists Scaleway Datalab instances."
+				description_kind: "markdown"
+			}
+		}
 		scaleway_domain_record: {
 			version: 0
 			block: {
@@ -20887,7 +21716,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							whois_opt_in:            "bool"
 							zip:                     "string"
 						}]]
-						description:      "Details of the administrative contact."
+						description:      "Details of the administrative contact (read-only, set by the API)."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -21060,7 +21889,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							whois_opt_in:            "bool"
 							zip:                     "string"
 						}]]
-						description:      "Details of the technical contact."
+						description:      "Details of the technical contact (read-only, set by the API)."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -22589,6 +23418,60 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					Retrieves SCIM configuration for an organization. This data source enables you to retrieve the SCIM (System for Cross-domain Identity Management) configuration for your Scaleway organization.
 
 					SCIM is a standard for automating the exchange of user identity information between identity domains, or IT systems. This data source allows you to check if SCIM is enabled and retrieve its configuration details.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		scaleway_iam_scim_token: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The date and time of SCIM token creation"
+						description_kind: "markdown"
+						computed:         true
+					}
+					expires_at: {
+						type:             "string"
+						description:      "The date and time when the SCIM token expires"
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the SCIM token"
+						description_kind: "markdown"
+						computed:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The organization ID. If not provided, the default organization configured in the provider is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					scim_id: {
+						type:             "string"
+						description:      "The SCIM configuration ID. If not provided, the SCIM configuration for the organization is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					token_id: {
+						type:             "string"
+						description:      "The ID of the SCIM token to retrieve."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					Get information about a SCIM token.
+
+					SCIM (System for Cross-domain Identity Management) tokens are used to authenticate API requests to SCIM endpoints for user provisioning and management.
+
+					This data source allows you to retrieve information about an existing SCIM token, including its creation and expiration dates. Note that the bearer token is only available at creation time and cannot be retrieved through this data source.
 
 					"""
 				description_kind: "markdown"
@@ -25211,6 +26094,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					upgrade_pools: {
+						type:             "bool"
+						description:      "Whether the pools should be automatically upgraded alongside the cluster, or have to be upgraded separately."
+						description_kind: "plain"
+						computed:         true
+					}
 					version: {
 						type:             "string"
 						description:      "The version of the cluster"
@@ -25807,6 +26696,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					The [`scaleway_key_manager_verify`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/ephemeral-resource/key_manager_verify) data source is used to verify a message signature against a message digest with a given key. The key must have its usage set to asymmetric_signing. The message digest must be generated using the same digest algorithm that is defined in the key's algorithm configuration, and encoded as a base64 string.
 
 					Refer to the Key Manager [documentation](https://www.scaleway.com/en/docs/key-manager/) and [API documentation](https://www.scaleway.com/en/developers/api/key-manager/) for more information.
+
 					"""
 				description_kind: "plain"
 			}
@@ -27555,6 +28445,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
 					region: {
 						type:             "string"
 						description:      "The region you want to attach the resource to"
@@ -27625,6 +28521,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 					node_amount: {
+						type:             "number"
+						description:      "Number of nodes"
+						description_kind: "plain"
+						computed:         true
+					}
+					node_count: {
 						type:             "number"
 						description:      "Number of nodes"
 						description_kind: "plain"
@@ -29546,6 +30448,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					enable_transitivity: {
+						type:             "bool"
+						description:      "Enable packets from peered VPCs to transit through this VPC"
+						description_kind: "plain"
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
@@ -29852,6 +30760,93 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_vpc_ingress_rule: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The date and time of the creation of the ingress rule"
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The ingress rule description"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					ingress_rule_id: {
+						type:             "string"
+						description:      "The ID of the VPC ingress rule"
+						description_kind: "plain"
+						optional:         true
+					}
+					is_ipv6: {
+						type:             "bool"
+						description:      "Only ingress rules with the matching IP version will be returned"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					nexthop_private_network_id: {
+						type:             "string"
+						description:      "The ID of the nexthop private network"
+						description_kind: "plain"
+						optional:         true
+					}
+					nexthop_resource_ip: {
+						type:             "string"
+						description:      "IP of the nexthop resource for the ingress rule"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+					}
+					source: {
+						type:             "string"
+						description:      "Source IP range to which this rule applies (CIDR notation with subnet mask)"
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "The tags associated with the ingress rule"
+						description_kind: "plain"
+						optional:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time of the last update of the ingress rule"
+						description_kind: "plain"
+						computed:         true
+					}
+					vpc_id: {
+						type:             "string"
+						description:      "The ID of the VPC the ingress rule belongs to"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description: """
+					Gets information about a VPC ingress rule.
+
+					An ingress routing rule routes incoming traffic from a peered VPC to a specific private IP address within a destination VPC's Private Network.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -31085,6 +32080,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					~> **Important:** This ephemeral resource is currently experimental and may evolve as we refine its functionality. Unlike the regular [`scaleway_iam_api_key` Resource](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/iam_api_key), this ephemeral resource is not stored in Terraform state and is not managed by Terraform after creation. Each `terraform apply` will generate a new API key. For automatic cleanup, you can set the `expires_at` attribute to specify when the key should be deleted.
 
 					For more information, see [our guide to using Ephemeral Resources](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-ephemeral-resources), the [IAM documentation](https://www.scaleway.com/en/docs/iam/), and the [API documentation](https://www.scaleway.com/en/developers/api/iam/).
+
 					"""
 				description_kind: "markdown"
 			}
@@ -31339,7 +32335,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					secret_name: {
 						type:             "string"
-						description:      "The name of the secret.  Either secret_id or secret_name must be specified."
+						description:      "The name of the secret. Either secret_id or secret_name must be specified."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -31371,6 +32367,64 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 		}
 	}
 	list_resource_schemas: {
+		scaleway_account_project: {
+			version: 0
+			block: {
+				attributes: {
+					name: {
+						type:             "string"
+						description:      "Filter by project name containing a given string"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Filter projects by project IDs"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_domain_record: {
+			version: 0
+			block: {
+				attributes: {
+					dns_zones: {
+						type: ["list", "string"]
+						description:      "DNS zone FQDNs to list records from. Use [\"*\"] to list records across all zones in each selected project. Must contain at least one value."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the DNS zone record to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs to filter DNS zone records on Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+					type: {
+						type:             "string"
+						description:      "Type of the DNS zone record to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		scaleway_domain_zone: {
 			version: 0
 			block: {
@@ -31414,6 +32468,56 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					updated_before: {
 						type:             "string"
 						description:      "Only list DNS zones updated before this date (RFC3339)."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_iam_api_key: {
+			version: 0
+			block: {
+				attributes: {
+					access_keys: {
+						type: ["list", "string"]
+						description:      "Filter by a list of access keys"
+						description_kind: "plain"
+						optional:         true
+					}
+					bearer_id: {
+						type:             "string"
+						description:      "Filter by bearer ID"
+						description_kind: "plain"
+						optional:         true
+					}
+					bearer_type: {
+						type:             "string"
+						description:      "Filter by type of bearer (user or application)"
+						description_kind: "plain"
+						optional:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Filter by description"
+						description_kind: "plain"
+						optional:         true
+					}
+					editable: {
+						type:             "bool"
+						description:      "Filter by editable status"
+						description_kind: "plain"
+						optional:         true
+					}
+					expired: {
+						type:             "bool"
+						description:      "Filter by expired status"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID to filter for"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -31490,6 +32594,68 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					user_ids: {
 						type: ["list", "string"]
 						description:      "Filter groups by user IDs"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					application_ids: {
+						type: ["list", "string"]
+						description:      "Filter policies by application IDs"
+						description_kind: "plain"
+						optional:         true
+					}
+					editable: {
+						type:             "bool"
+						description:      "Filter by editable status"
+						description_kind: "plain"
+						optional:         true
+					}
+					group_ids: {
+						type: ["list", "string"]
+						description:      "Filter policies by group IDs"
+						description_kind: "plain"
+						optional:         true
+					}
+					no_principal: {
+						type:             "bool"
+						description:      "Filter by policies with no principal"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					policy_ids: {
+						type: ["list", "string"]
+						description:      "Filter policies by policy IDs"
+						description_kind: "plain"
+						optional:         true
+					}
+					policy_name: {
+						type:             "string"
+						description:      "Filter by policy name"
+						description_kind: "plain"
+						optional:         true
+					}
+					tag: {
+						type:             "string"
+						description:      "Filter by tags containing a given string"
+						description_kind: "plain"
+						optional:         true
+					}
+					user_ids: {
+						type: ["list", "string"]
+						description:      "Filter policies by user IDs"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -31664,6 +32830,50 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					zonal: {
 						type:             "string"
 						description:      "Zone to filter for. Only zonal IPs in this zone will be returned. Mutually exclusive with private_network_id, subnet_id, source_vpc_id"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		scaleway_key_manager_key: {
+			version: 0
+			block: {
+				attributes: {
+					name: {
+						type:             "string"
+						description:      "Name of the key to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs to filter for Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+					regions: {
+						type: ["list", "string"]
+						description:      "Regions to filter for Use '*' to list from all regions"
+						description_kind: "plain"
+						optional:         true
+					}
+					scheduled_for_deletion: {
+						type:             "bool"
+						description:      "Filter keys by deletion status"
+						description_kind: "plain"
+						optional:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "Tags to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					usage: {
+						type:             "string"
+						description:      "Usage of the key to filter for (symmetric_encryption, asymmetric_encryption, asymmetric_signing)"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -32107,6 +33317,44 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_secret_version: {
+			version: 0
+			block: {
+				attributes: {
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID to filter for"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs to filter for. Use '*' to list across all projects Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+					regions: {
+						type: ["list", "string"]
+						description:      "Regions to target. Use '*' to list from all regions Use '*' to list from all regions"
+						description_kind: "plain"
+						optional:         true
+					}
+					secret_ids: {
+						type: ["list", "string"]
+						description:      "IDs of the secrets to list versions for. Use '*' to list versions from all secrets. If empty, returns an error."
+						description_kind: "plain"
+						required:         true
+					}
+					status: {
+						type: ["list", "string"]
+						description:      "Filter by status"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		scaleway_vpc: {
 			version: 0
 			block: {
@@ -32424,6 +33672,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 		}]
 	}
 	resource_identity_schemas: {
+		scaleway_account_project: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				description:         "The id of the resource (UUID format)"
+				required_for_import: true
+			}
+		}
 		scaleway_account_ssh_key: {
 			version: 0
 			attributes: id: {
@@ -32493,6 +33749,36 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			}
 		}
 		scaleway_autoscaling_instance_template: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				zone: {
+					type:                "string"
+					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_block_snapshot: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				zone: {
+					type:                "string"
+					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_block_volume: {
 			version: 0
 			attributes: {
 				id: {
@@ -32752,6 +34038,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 			}
 		}
+		scaleway_iam_api_key: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				description:         "The id of the resource (UUID format)"
+				required_for_import: true
+			}
+		}
 		scaleway_iam_application: {
 			version: 0
 			attributes: id: {
@@ -32761,6 +34055,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			}
 		}
 		scaleway_iam_group: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				description:         "The id of the resource (UUID format)"
+				required_for_import: true
+			}
+		}
+		scaleway_iam_policy: {
 			version: 0
 			attributes: id: {
 				type:                "string"
@@ -33045,6 +34347,21 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			}
 		}
 		scaleway_kafka_cluster: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_key_manager_key: {
 			version: 0
 			attributes: {
 				id: {
@@ -33629,6 +34946,26 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 			}
 		}
+		scaleway_secret_version: {
+			version: 0
+			attributes: {
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+				revision: {
+					type:                "string"
+					description:         "The revision of the secret version"
+					required_for_import: true
+				}
+				secret_id: {
+					type:                "string"
+					description:         "The secret ID"
+					required_for_import: true
+				}
+			}
+		}
 		scaleway_tem_blocked_list: {
 			version: 0
 			attributes: {
@@ -33745,6 +35082,21 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				zone: {
 					type:                "string"
 					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_vpc_ingress_rule: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
 					required_for_import: true
 				}
 			}
@@ -33881,6 +35233,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_apple_silicon_reboot_server_action`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/apple_silicon_reboot_server_action) action is helpful to trigger a reboot action on your Apple silicon server.
 
 				For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/apple-silicon/).
+
 				"""
 			description_kind: "markdown"
 		}
@@ -33921,6 +35274,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_baremetal_server_action`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/instance_server_action) action is helpful to trigger a server action on your baremetal.
 
 				Refer to the Baremetal [documentation](https://www.scaleway.com/en/docs/elastic-metal/)) and [API documentation](https://www.scaleway.com/en/developers/api/elastic-metal/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -33992,6 +35346,24 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				- `bucket` - (Required) The name of the bucket where the snapshot will be exported.
 				- `key` - (Required) The object key (path) where the snapshot will be saved in the bucket.
 				- `wait` - (Optional) Whether to wait for the export operation to complete. Defaults to `false`.
+
+				"""
+			description_kind: "markdown"
+		}
+		scaleway_cockpit_grafana_sync_data_sources: block: {
+			attributes: project_id: {
+				type:             "string"
+				description:      "ID of the Project"
+				description_kind: "plain"
+				required:         true
+			}
+			description: """
+				The [`scaleway_cockpit_grafana_sync_data_sources`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/cockpit_grafana_sync_data_sources) action triggers the synchronization of all Cockpit data sources and the alert manager across regions into Grafana.
+
+				Grafana must be provisioned for the project before running this action. With IAM authentication, access Grafana at least once for the project; the legacy `scaleway_cockpit_grafana_user` resource also provisions Grafana.
+
+				Refer to the Cockpit [documentation](https://www.scaleway.com/en/docs/managed-services/cockpit/) and [API documentation](https://www.scaleway.com/en/docs/observability/cockpit/api-cli/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34014,6 +35386,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_cockpit_trigger_test_alert`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/cockpit_trigger_test_alert) action is helpful to ensure that your alerts are properly triggered.
 
 				Refer to the Cockpit [documentation](https://www.scaleway.com/en/docs/managed-services/cockpit/) and [API documentation](https://www.scaleway.com/en/developers/api/cockpit/regional-api/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34083,6 +35456,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_instance_create_snapshot`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/instance_create_snapshot) action is helpful to create a snapshot of an instance.
 
 				Refer to the Instances [documentation](https://www.scaleway.com/en/docs/compute/instances/) and [API documentation](https://www.scaleway.com/en/developers/api/instance/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34123,6 +35497,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_instance_export_snapshot`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/instance_export_snapshot) action is helpful to export snapshot coming from instance to an object storage.
 
 				Refer to the Instances [documentation](https://www.scaleway.com/en/docs/compute/instances/) and [API documentation](https://www.scaleway.com/en/developers/api/instance/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34157,6 +35532,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_instance_server_action`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/instance_server_action) action is helpful to trigger a server action on your instance.
 
 				Refer to the Instances [documentation](https://www.scaleway.com/en/docs/compute/instances/) and [API documentation](https://www.scaleway.com/en/developers/api/instance/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34210,6 +35586,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_job_definition_start`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/job_definition_start) action is helpful to start a job that is already defined.
 
 				Refer to the Jobs [documentation](https://www.scaleway.com/en/docs/serverless/jobs/) and [API documentation](https://www.scaleway.com/en/developers/api/serverless-jobs/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34232,6 +35609,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_key_manager_rotate_key`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/key_manager_rotate_key) action is helpful to trigger a rotate key action on your key.
 
 				Refer to the Key Manager [documentation](https://www.scaleway.com/en/docs/key-manager/) and [API documentation](https://www.scaleway.com/en/developers/api/key-manager/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34272,6 +35650,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_mongodb_instance_snapshot`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/mongodb_instance_snapshot) action is helpful to trigger a snapshot of your MongoDB instance.
 
 				Refer to the MongoDB [documentation](https://www.scaleway.com/en/docs/managed-databases/mongodb/) and [API documentation](https://www.scaleway.com/en/developers/api/managed-mongodb-databases/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34300,6 +35679,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_rdb_database_export_backup`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/rdb_database_export_backup) action is helpful to perform a database backup export action.
 
 				Refer to the RDB [documentation](https://www.scaleway.com/en/docs/managed-databases-for-postgresql-and-mysql/) and [API documentation](https://www.scaleway.com/en/developers/api/managed-databases-for-postgresql-and-mysql/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34340,6 +35720,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_rdb_database_restore_backup`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/rdb_database_restore_backup) action restores a backup to an instance.
 
 				Refer to the RDB [documentation](https://www.scaleway.com/en/docs/managed-databases-for-postgresql-and-mysql/) and [API documentation](https://www.scaleway.com/en/developers/api/managed-databases-for-postgresql-and-mysql/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34380,6 +35761,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_rdb_instance_prepare_logs`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/rdb_instance_prepare_logs) action is helpful to prepare the logs of an instance to export them later on.
 
 				Refer to the RDB [documentation](https://www.scaleway.com/en/docs/managed-databases-for-postgresql-and-mysql/) and [API documentation](https://www.scaleway.com/en/developers/api/managed-databases-for-postgresql-and-mysql/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34402,6 +35784,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_rdb_instance_purge_logs`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/rdb_instance_purge_logs) action is helpful to purge action logs of your instance.
 
 				Refer to the RDB [documentation](https://www.scaleway.com/en/docs/managed-databases-for-postgresql-and-mysql/) and [API documentation](https://www.scaleway.com/en/developers/api/managed-databases-for-postgresql-and-mysql/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34430,6 +35813,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_rdb_instance_renew_certificate`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/rdb_instance_renew_certificate) action is helpful to renew the TLS certificate of an RDB instance.
 
 				Refer to the RDB [documentation](https://www.scaleway.com/en/docs/managed-databases-for-postgresql-and-mysql/) and [API documentation](https://www.scaleway.com/en/developers/api/managed-databases-for-postgresql-and-mysql/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34499,6 +35883,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_rdb_instance_snapshot`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/rdb_instance_snapshot) action is helpful to perform a snapshot of your RDB instance.
 
 				Refer to the RDB [documentation](https://www.scaleway.com/en/docs/managed-databases-for-postgresql-and-mysql/) and [API documentation](https://www.scaleway.com/en/developers/api/managed-databases-for-postgresql-and-mysql/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34527,6 +35912,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_rdb_read_replica_promote`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/rdb_read_replica_promote) action triggers a read replica to be promoted to become an instance.
 
 				Refer to the RDB [documentation](https://www.scaleway.com/en/docs/managed-databases-for-postgresql-and-mysql/) and [API documentation](https://www.scaleway.com/en/developers/api/managed-databases-for-postgresql-and-mysql/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}
@@ -34555,6 +35941,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				The [`scaleway_rdb_read_replica_reset`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/rdb_read_replica_reset) action is helpful to reset a read replica.
 
 				Refer to the RDB [documentation](https://www.scaleway.com/en/docs/managed-databases-for-postgresql-and-mysql/) and [API documentation](https://www.scaleway.com/en/developers/api/managed-databases-for-postgresql-and-mysql/) for more information.
+
 				"""
 			description_kind: "markdown"
 		}

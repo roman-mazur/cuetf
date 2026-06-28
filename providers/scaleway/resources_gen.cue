@@ -12,6 +12,7 @@ import "github.com/roman-mazur/cuetf/providers/scaleway/res"
 	_#res: "\(#scalewayPrefix)_autoscaling_instance_policy": res.#scaleway_autoscaling_instance_policy
 	_#res: "\(#scalewayPrefix)_autoscaling_instance_template": res.#scaleway_autoscaling_instance_template
 	_#res: "\(#scalewayPrefix)_baremetal_server": res.#scaleway_baremetal_server
+	_#res: "\(#scalewayPrefix)_billing_budget": res.#scaleway_billing_budget
 	_#res: "\(#scalewayPrefix)_block_snapshot": res.#scaleway_block_snapshot
 	_#res: "\(#scalewayPrefix)_block_volume": res.#scaleway_block_volume
 	_#res: "\(#scalewayPrefix)_cockpit_alert_manager": res.#scaleway_cockpit_alert_manager
@@ -26,6 +27,7 @@ import "github.com/roman-mazur/cuetf/providers/scaleway/res"
 	_#res: "\(#scalewayPrefix)_container_namespace": res.#scaleway_container_namespace
 	_#res: "\(#scalewayPrefix)_container_token": res.#scaleway_container_token
 	_#res: "\(#scalewayPrefix)_container_trigger": res.#scaleway_container_trigger
+	_#res: "\(#scalewayPrefix)_datalab": res.#scaleway_datalab
 	_#res: "\(#scalewayPrefix)_datawarehouse_database": res.#scaleway_datawarehouse_database
 	_#res: "\(#scalewayPrefix)_datawarehouse_deployment": res.#scaleway_datawarehouse_deployment
 	_#res: "\(#scalewayPrefix)_datawarehouse_user": res.#scaleway_datawarehouse_user
@@ -58,6 +60,7 @@ import "github.com/roman-mazur/cuetf/providers/scaleway/res"
 	_#res: "\(#scalewayPrefix)_iam_saml_certificate": res.#scaleway_iam_saml_certificate
 	_#res: "\(#scalewayPrefix)_iam_saml": res.#scaleway_iam_saml
 	_#res: "\(#scalewayPrefix)_iam_scim": res.#scaleway_iam_scim
+	_#res: "\(#scalewayPrefix)_iam_scim_token": res.#scaleway_iam_scim_token
 	_#res: "\(#scalewayPrefix)_iam_ssh_key": res.#scaleway_iam_ssh_key
 	_#res: "\(#scalewayPrefix)_iam_user": res.#scaleway_iam_user
 	_#res: "\(#scalewayPrefix)_inference_deployment": res.#scaleway_inference_deployment
@@ -140,6 +143,7 @@ import "github.com/roman-mazur/cuetf/providers/scaleway/res"
 	_#res: "\(#scalewayPrefix)_vpc_connector": res.#scaleway_vpc_connector
 	_#res: "\(#scalewayPrefix)_vpc_gateway_network": res.#scaleway_vpc_gateway_network
 	_#res: "\(#scalewayPrefix)_vpc": res.#scaleway_vpc
+	_#res: "\(#scalewayPrefix)_vpc_ingress_rule": res.#scaleway_vpc_ingress_rule
 	_#res: "\(#scalewayPrefix)_vpc_private_network": res.#scaleway_vpc_private_network
 	_#res: "\(#scalewayPrefix)_vpc_public_gateway_dhcp": res.#scaleway_vpc_public_gateway_dhcp
 	_#res: "\(#scalewayPrefix)_vpc_public_gateway_dhcp_reservation": res.#scaleway_vpc_public_gateway_dhcp_reservation

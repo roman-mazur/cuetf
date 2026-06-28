@@ -29,6 +29,9 @@ package data
 		// Number of nodes
 		node_amount?: number
 
+		// Number of nodes
+		node_count?: number
+
 		// Type of node
 		node_type?: string
 
