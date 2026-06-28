@@ -22,6 +22,8 @@ import "list"
 		id?:                                    string
 		ip_sec_replay_protection_enabled?:      bool
 		location!:                              string
+		maximum_scale_unit?:                    number
+		minimum_scale_unit?:                    number
 		name!:                                  string
 		private_ip_address_enabled?:            bool
 		remote_vnet_traffic_enabled?:           bool
