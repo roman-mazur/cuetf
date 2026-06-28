@@ -842,6 +842,35 @@ package res
 						value?: string
 					})
 				})
+
+				// Controls how cached responses vary based on request headers.
+				// `default` is required and applies to any Vary response header
+				// that does not have a per-header override.
+				vary?: close({
+					// Controls how response Vary headers without a per-header
+					// override contribute to the cache key.
+					default!: close({
+						// How the header value is treated when building the cache key.
+						// Available values: "bypass", "passthrough", "normalize".
+						action!: string
+					})
+
+					// A mapping of lowercase request header names to their vary
+					// configuration.
+					headers?: [string]: close({
+						// How the header value is treated when building the cache key.
+						// Available values: "bypass", "passthrough", "normalize".
+						action!: string
+
+						// The set of languages to normalize against. Only valid for the
+						// `accept-language` header.
+						languages?: [...string]
+
+						// The set of media types to normalize against. Only valid for the
+						// `accept` header.
+						media_types?: [...string]
+					})
+				})
 			})
 
 			// Configuration for exposed credential checking.
@@ -1687,6 +1716,35 @@ package res
 
 						// A value to rewrite the URI query to.
 						value?: string
+					})
+				})
+
+				// Controls how cached responses vary based on request headers.
+				// `default` is required and applies to any Vary response header
+				// that does not have a per-header override.
+				vary?: close({
+					// Controls how response Vary headers without a per-header
+					// override contribute to the cache key.
+					default!: close({
+						// How the header value is treated when building the cache key.
+						// Available values: "bypass", "passthrough", "normalize".
+						action!: string
+					})
+
+					// A mapping of lowercase request header names to their vary
+					// configuration.
+					headers?: [string]: close({
+						// How the header value is treated when building the cache key.
+						// Available values: "bypass", "passthrough", "normalize".
+						action!: string
+
+						// The set of languages to normalize against. Only valid for the
+						// `accept-language` header.
+						languages?: [...string]
+
+						// The set of media types to normalize against. Only valid for the
+						// `accept` header.
+						media_types?: [...string]
 					})
 				})
 			})
