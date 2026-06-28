@@ -4,7 +4,8 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudwatch_query_definition")
 	close({
-		id?: string
+		arn?: string
+		id?:  string
 		log_group_names?: [...string]
 		name!:                string
 		query_definition_id?: string

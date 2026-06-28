@@ -4,10 +4,12 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dynamodb_table_item")
 	close({
-		hash_key!:  string
-		id?:        string
-		item!:      string
-		range_key?: string
+		hash_key!:        string
+		hash_key_value?:  string
+		id?:              string
+		item!:            string
+		range_key?:       string
+		range_key_value?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

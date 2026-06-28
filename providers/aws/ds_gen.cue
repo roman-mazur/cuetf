@@ -530,6 +530,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/data"
 	_#ds: "\(#awsPrefix)_s3_access_point": data.#aws_s3_access_point
 	_#ds: "\(#awsPrefix)_s3_account_public_access_block": data.#aws_s3_account_public_access_block
 	_#ds: "\(#awsPrefix)_s3_bucket": data.#aws_s3_bucket
+	_#ds: "\(#awsPrefix)_s3_bucket_notification": data.#aws_s3_bucket_notification
 	_#ds: "\(#awsPrefix)_s3_bucket_object": data.#aws_s3_bucket_object
 	_#ds: "\(#awsPrefix)_s3_bucket_object_lock_configuration": data.#aws_s3_bucket_object_lock_configuration
 	_#ds: "\(#awsPrefix)_s3_bucket_objects": data.#aws_s3_bucket_objects
