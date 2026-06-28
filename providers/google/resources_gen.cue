@@ -217,7 +217,9 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_chronicle_data_access_scope": res.#google_chronicle_data_access_scope
 	_#res: "\(#googlePrefix)_chronicle_data_table": res.#google_chronicle_data_table
 	_#res: "\(#googlePrefix)_chronicle_data_table_row": res.#google_chronicle_data_table_row
+	_#res: "\(#googlePrefix)_chronicle_feed": res.#google_chronicle_feed
 	_#res: "\(#googlePrefix)_chronicle_native_dashboard": res.#google_chronicle_native_dashboard
+	_#res: "\(#googlePrefix)_chronicle_parser_extension": res.#google_chronicle_parser_extension
 	_#res: "\(#googlePrefix)_chronicle_parser": res.#google_chronicle_parser
 	_#res: "\(#googlePrefix)_chronicle_reference_list": res.#google_chronicle_reference_list
 	_#res: "\(#googlePrefix)_chronicle_retrohunt": res.#google_chronicle_retrohunt
@@ -549,6 +551,7 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_dataplex_lake_iam_binding": res.#google_dataplex_lake_iam_binding
 	_#res: "\(#googlePrefix)_dataplex_lake_iam_member": res.#google_dataplex_lake_iam_member
 	_#res: "\(#googlePrefix)_dataplex_lake_iam_policy": res.#google_dataplex_lake_iam_policy
+	_#res: "\(#googlePrefix)_dataplex_metadata_feed": res.#google_dataplex_metadata_feed
 	_#res: "\(#googlePrefix)_dataplex_task": res.#google_dataplex_task
 	_#res: "\(#googlePrefix)_dataplex_task_iam_binding": res.#google_dataplex_task_iam_binding
 	_#res: "\(#googlePrefix)_dataplex_task_iam_member": res.#google_dataplex_task_iam_member
@@ -1255,8 +1258,10 @@ import "github.com/roman-mazur/cuetf/providers/google/res"
 	_#res: "\(#googlePrefix)_vertex_ai_reasoning_engine_iam_binding": res.#google_vertex_ai_reasoning_engine_iam_binding
 	_#res: "\(#googlePrefix)_vertex_ai_reasoning_engine_iam_member": res.#google_vertex_ai_reasoning_engine_iam_member
 	_#res: "\(#googlePrefix)_vertex_ai_reasoning_engine_iam_policy": res.#google_vertex_ai_reasoning_engine_iam_policy
+	_#res: "\(#googlePrefix)_vertex_ai_schedule": res.#google_vertex_ai_schedule
 	_#res: "\(#googlePrefix)_vertex_ai_tensorboard_experiment": res.#google_vertex_ai_tensorboard_experiment
 	_#res: "\(#googlePrefix)_vertex_ai_tensorboard": res.#google_vertex_ai_tensorboard
+	_#res: "\(#googlePrefix)_vertex_ai_tensorboard_run": res.#google_vertex_ai_tensorboard_run
 	_#res: "\(#googlePrefix)_vmwareengine_cluster": res.#google_vmwareengine_cluster
 	_#res: "\(#googlePrefix)_vmwareengine_datastore": res.#google_vmwareengine_datastore
 	_#res: "\(#googlePrefix)_vmwareengine_external_access_rule": res.#google_vmwareengine_external_access_rule

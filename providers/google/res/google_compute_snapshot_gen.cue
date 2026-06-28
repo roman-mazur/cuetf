@@ -6,6 +6,7 @@ import "list"
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_snapshot")
 	close({
+		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 		snapshot_encryption_key?: matchN(1, [#snapshot_encryption_key, list.MaxItems(1) & [...#snapshot_encryption_key]])
 		source_disk_encryption_key?: matchN(1, [#source_disk_encryption_key, list.MaxItems(1) & [...#source_disk_encryption_key]])
 		timeouts?: #timeouts
@@ -116,6 +117,15 @@ import "list"
 
 		// A reference to the zone where the disk is hosted.
 		zone?: string
+	})
+
+	#params: close({
+		// Resource manager tags to be bound to the snapshot. Tag keys and
+		// values have the
+		// same definition as resource manager tags. Keys must be in the
+		// format tagKeys/{tag_key_id},
+		// and values are in the format tagValues/456.
+		resource_manager_tags?: [string]: string
 	})
 
 	#snapshot_encryption_key: close({

@@ -9,6 +9,7 @@ import "list"
 		mcp_toolset?: matchN(1, [#mcp_toolset, list.MaxItems(1) & [...#mcp_toolset]])
 		open_api_toolset?: matchN(1, [#open_api_toolset, list.MaxItems(1) & [...#open_api_toolset]])
 		timeouts?: #timeouts
+		tool_fake_config?: matchN(1, [#tool_fake_config, list.MaxItems(1) & [...#tool_fake_config]])
 
 		// Resource ID segment making up resource 'name'. It identifies
 		// the resource within its parent collection as described in
@@ -126,6 +127,13 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	#tool_fake_config: close({
+		code_block?: matchN(1, [_#defs."/$defs/tool_fake_config/$defs/code_block", list.MaxItems(1) & [..._#defs."/$defs/tool_fake_config/$defs/code_block"]])
+
+		// Whether the tool is using fake mode.
+		enable_fake_mode?: bool
 	})
 
 	_#defs: "/$defs/mcp_toolset/$defs/api_authentication": close({
@@ -364,5 +372,10 @@ import "list"
 		// The name of the allowed custom CA certificates. This
 		// can be used to disambiguate the custom CA certificates.
 		display_name!: string
+	})
+
+	_#defs: "/$defs/tool_fake_config/$defs/code_block": close({
+		// Python code which will be invoked in tool fake mode.
+		python_code!: string
 	})
 }

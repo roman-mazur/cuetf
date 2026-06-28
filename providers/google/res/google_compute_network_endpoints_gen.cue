@@ -41,7 +41,10 @@ package res
 		// to a VM in GCE (either the primary IP or as part of an aliased
 		// IP
 		// range).
-		ip_address!: string
+		// **Note** 'ip_address' is required unless the Network Endpoint
+		// Group is created with the type of
+		// 'GCE_VM_IP_DEDICATED_BACKEND'
+		ip_address?: string
 
 		// Port number of network endpoint.
 		// **Note** 'port' is required unless the Network Endpoint Group

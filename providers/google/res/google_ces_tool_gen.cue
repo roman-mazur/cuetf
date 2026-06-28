@@ -13,6 +13,7 @@ import "list"
 		google_search_tool?: matchN(1, [#google_search_tool, list.MaxItems(1) & [...#google_search_tool]])
 		python_function?: matchN(1, [#python_function, list.MaxItems(1) & [...#python_function]])
 		timeouts?: #timeouts
+		tool_fake_config?: matchN(1, [#tool_fake_config, list.MaxItems(1) & [...#tool_fake_config]])
 		widget_tool?: matchN(1, [#widget_tool, list.MaxItems(1) & [...#widget_tool]])
 
 		// Resource ID segment making up resource 'name'. It identifies
@@ -202,6 +203,12 @@ import "list"
 			name?:        string
 		})]
 
+		// The timeout for the tool execution. If not set, the default
+		// timeout is 30
+		// seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS
+		// tools.
+		timeout?: string
+
 		// The ID to use for the tool, which will become the final
 		// component of
 		// the tool's resource name. If not provided, a unique ID will be
@@ -333,6 +340,13 @@ import "list"
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	#tool_fake_config: close({
+		code_block?: matchN(1, [_#defs."/$defs/tool_fake_config/$defs/code_block", list.MaxItems(1) & [..._#defs."/$defs/tool_fake_config/$defs/code_block"]])
+
+		// Whether the tool is using fake mode.
+		enable_fake_mode?: bool
 	})
 
 	#widget_tool: close({
@@ -876,6 +890,11 @@ import "list"
 		// agent in voice conversations. If not set, default prompt will
 		// be used.
 		voice_prompt?: string
+	})
+
+	_#defs: "/$defs/tool_fake_config/$defs/code_block": close({
+		// Python code which will be invoked in tool fake mode.
+		python_code!: string
 	})
 
 	_#defs: "/$defs/widget_tool/$defs/data_mapping": close({

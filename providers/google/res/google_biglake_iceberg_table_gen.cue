@@ -8,6 +8,7 @@ import "list"
 	close({
 		partition_spec?: matchN(1, [#partition_spec, list.MaxItems(1) & [...#partition_spec]])
 		schema!: matchN(1, [#schema, list.MaxItems(1) & [_, ...] & [...#schema]])
+		sort_order?: matchN(1, [#sort_order, list.MaxItems(1) & [...#sort_order]])
 		timeouts?: #timeouts
 
 		// The name of the IcebergCatalog.
@@ -61,6 +62,13 @@ import "list"
 		type?: string
 	})
 
+	#sort_order: close({
+		fields!: matchN(1, [_#defs."/$defs/sort_order/$defs/fields", [_, ...] & [..._#defs."/$defs/sort_order/$defs/fields"]])
+
+		// The unique identifier of the sort order.
+		order_id?: number
+	})
+
 	#timeouts: close({
 		create?: string
 		delete?: string
@@ -96,5 +104,21 @@ import "list"
 
 		// The type of the field.
 		type!: string
+	})
+
+	_#defs: "/$defs/sort_order/$defs/fields": close({
+		// The sort direction for the sort field. Possible values: "asc",
+		// "desc".
+		direction!: string
+
+		// The null ordering for the sort field. Possible values:
+		// "nulls-first", "nulls-last".
+		null_order!: string
+
+		// The source field ID for the sort field.
+		source_id!: number
+
+		// The transform to apply to the source field.
+		transform!: string
 	})
 }

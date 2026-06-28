@@ -1,9 +1,12 @@
 package res
 
+import "list"
+
 #google_biglake_iceberg_catalog: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_biglake_iceberg_catalog")
 	close({
+		restricted_locations_config?: matchN(1, [#restricted_locations_config, list.MaxItems(1) & [...#restricted_locations_config]])
 		timeouts?: #timeouts
 
 		// Output only. The service account used for credential vending.
@@ -11,9 +14,8 @@ package res
 		// the catalog.
 		biglake_service_account?: string
 
-		// The catalog type of the IcebergCatalog. Currently only supports
-		// the type for Google Cloud Storage Buckets. Possible values:
-		// ["CATALOG_TYPE_GCS_BUCKET"]
+		// The catalog type of the IcebergCatalog. Possible values:
+		// ["CATALOG_TYPE_GCS_BUCKET", "CATALOG_TYPE_BIGLAKE"]
 		catalog_type!: string
 
 		// Output only. The creation time of the IcebergCatalog.
@@ -36,8 +38,10 @@ package res
 		// "CREDENTIAL_MODE_VENDED_CREDENTIALS"]
 		credential_mode?: string
 
-		// Output only. The default storage location for the catalog,
-		// e.g., 'gs://my-bucket'.
+		// The default storage location for the catalog, e.g.,
+		// 'gs://my-bucket'.
+		// Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
+		// Required when the catalog type is CATALOG_TYPE_BIGLAKE.
 		default_location?: string
 
 		// Whether Terraform will be prevented from destroying the
@@ -86,6 +90,15 @@ package res
 
 		// Output only. The last modification time of the IcebergCatalog.
 		update_time?: string
+	})
+
+	#restricted_locations_config: close({
+		// A list of GCS locations (e.g., 'gs://my-other-bucket/...') that
+		// are
+		// permitted for use by resources within this catalog. Each entry
+		// can be
+		// either a GCS bucket or a path within it.
+		restricted_locations?: [...string]
 	})
 
 	#timeouts: close({

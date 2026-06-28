@@ -23,6 +23,7 @@ package google
 		beyondcorp_custom_endpoint?:                 string
 		big_query_custom_endpoint?:                  string
 		biglake_custom_endpoint?:                    string
+		biglake_hive_custom_endpoint?:               string
 		biglake_iceberg_custom_endpoint?:            string
 		bigquery_analytics_hub_custom_endpoint?:     string
 		bigquery_connection_custom_endpoint?:        string

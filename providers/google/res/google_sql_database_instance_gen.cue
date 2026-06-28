@@ -452,9 +452,25 @@ import "list"
 	})
 
 	_#defs: "/$defs/settings/$defs/active_directory_config": close({
+		// The secret manager key storing the administrator credential.
+		// (e.g., projects/{project}/secrets/{secret}).
+		admin_credential_secret_name?: string
+
+		// Domain controller IPv4 addresses used to bootstrap Active
+		// Directory.
+		dns_servers?: [...string]
+
 		// Domain name of the Active Directory for SQL Server (e.g.,
 		// mydomain.com).
 		domain!: string
+
+		// The mode of the Active Directory configuration. Can be
+		// MANAGED_ACTIVE_DIRECTORY or CUSTOMER_MANAGED_ACTIVE_DIRECTORY.
+		mode?: string
+
+		// The organizational unit distinguished name. This is the full
+		// hierarchical path to the organizational unit.
+		organizational_unit?: string
 	})
 
 	_#defs: "/$defs/settings/$defs/advanced_machine_features": close({

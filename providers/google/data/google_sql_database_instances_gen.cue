@@ -96,7 +96,11 @@ package data
 			settings?: [...close({
 				activation_policy?: string
 				active_directory_config?: [...close({
-					domain?: string
+					admin_credential_secret_name?: string
+					dns_servers?: [...string]
+					domain?:              string
+					mode?:                string
+					organizational_unit?: string
 				})]
 				advanced_machine_features?: [...close({
 					threads_per_core?: number

@@ -128,6 +128,8 @@ package data
 				send_days_since_custom_time_if_zero?:     bool
 				send_days_since_noncurrent_time_if_zero?: bool
 				send_num_newer_versions_if_zero?:         bool
+				size_above_bytes?:                        number
+				size_below_bytes?:                        number
 				with_state?:                              string
 			})]
 		})]
