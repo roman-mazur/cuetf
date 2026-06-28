@@ -6,7 +6,7 @@ package res
 	close({
 		timeouts?:       #timeouts
 		application_id!: string
-		capabilities!: [...string]
+		capabilities?: [...string]
 		id?:   string
 		name!: string
 		outputs?: [string]:    string

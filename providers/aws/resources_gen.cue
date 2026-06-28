@@ -201,6 +201,7 @@ import "github.com/roman-mazur/cuetf/providers/aws/res"
 	_#res: "\(#awsPrefix)_bedrockagentcore_online_evaluation_config": res.#aws_bedrockagentcore_online_evaluation_config
 	_#res: "\(#awsPrefix)_bedrockagentcore_policy_engine": res.#aws_bedrockagentcore_policy_engine
 	_#res: "\(#awsPrefix)_bedrockagentcore_policy": res.#aws_bedrockagentcore_policy
+	_#res: "\(#awsPrefix)_bedrockagentcore_registry": res.#aws_bedrockagentcore_registry
 	_#res: "\(#awsPrefix)_bedrockagentcore_resource_policy": res.#aws_bedrockagentcore_resource_policy
 	_#res: "\(#awsPrefix)_bedrockagentcore_token_vault_cmk": res.#aws_bedrockagentcore_token_vault_cmk
 	_#res: "\(#awsPrefix)_bedrockagentcore_workload_identity": res.#aws_bedrockagentcore_workload_identity
