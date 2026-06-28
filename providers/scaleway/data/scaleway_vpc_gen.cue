@@ -13,7 +13,10 @@ package data
 
 		// Enable routing between Private Networks in the VPC
 		enable_routing?: bool
-		id?:             string
+
+		// Enable packets from peered VPCs to transit through this VPC
+		enable_transitivity?: bool
+		id?:                  string
 
 		// Defines whether the VPC is the default one for its Project
 		is_default?: bool

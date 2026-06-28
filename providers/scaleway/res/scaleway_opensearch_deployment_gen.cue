@@ -30,7 +30,7 @@ import "list"
 		name?: string
 
 		// Number of nodes
-		node_amount!: number
+		node_count?: number
 
 		// Type of node
 		node_type!: string

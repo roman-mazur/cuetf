@@ -9,7 +9,8 @@ import "list"
 		owner_contact?: matchN(1, [#owner_contact, list.MaxItems(1) & [...#owner_contact]])
 		timeouts?: #timeouts
 
-		// Details of the administrative contact.
+		// Details of the administrative contact (read-only, set by the
+		// API).
 		administrative_contact?: [...close({
 			address_line_1?:              string
 			address_line_2?:              string
@@ -95,7 +96,7 @@ import "list"
 		// ID of the task that created the domain.
 		task_id?: string
 
-		// Details of the technical contact.
+		// Details of the technical contact (read-only, set by the API).
 		technical_contact?: [...close({
 			address_line_1?:              string
 			address_line_2?:              string
@@ -158,7 +159,7 @@ import "list"
 
 		// Company identification code (e.g., SIREN/SIRET in France) for
 		// the contact.
-		company_identification_code!: string
+		company_identification_code?: string
 
 		// Name of the company associated with the contact (if
 		// applicable).
@@ -202,7 +203,7 @@ import "list"
 		state?: string
 
 		// VAT identification code of the contact, if applicable.
-		vat_identification_code!: string
+		vat_identification_code?: string
 
 		// Indicates whether the contact has opted into WHOIS publishing.
 		whois_opt_in?: bool

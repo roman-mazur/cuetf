@@ -17,6 +17,7 @@ import "github.com/roman-mazur/cuetf/providers/scaleway/data"
 	_#ds: "\(#scalewayPrefix)_baremetal_os": data.#scaleway_baremetal_os
 	_#ds: "\(#scalewayPrefix)_baremetal_partition_schema": data.#scaleway_baremetal_partition_schema
 	_#ds: "\(#scalewayPrefix)_baremetal_server": data.#scaleway_baremetal_server
+	_#ds: "\(#scalewayPrefix)_billing_budget": data.#scaleway_billing_budget
 	_#ds: "\(#scalewayPrefix)_billing_consumptions": data.#scaleway_billing_consumptions
 	_#ds: "\(#scalewayPrefix)_billing_invoices": data.#scaleway_billing_invoices
 	_#ds: "\(#scalewayPrefix)_block_snapshot": data.#scaleway_block_snapshot
@@ -32,6 +33,8 @@ import "github.com/roman-mazur/cuetf/providers/scaleway/data"
 	_#ds: "\(#scalewayPrefix)_config": data.#scaleway_config
 	_#ds: "\(#scalewayPrefix)_container": data.#scaleway_container
 	_#ds: "\(#scalewayPrefix)_container_namespace": data.#scaleway_container_namespace
+	_#ds: "\(#scalewayPrefix)_datalab": data.#scaleway_datalab
+	_#ds: "\(#scalewayPrefix)_datalabs": data.#scaleway_datalabs
 	_#ds: "\(#scalewayPrefix)_domain_record": data.#scaleway_domain_record
 	_#ds: "\(#scalewayPrefix)_domain_registration": data.#scaleway_domain_registration
 	_#ds: "\(#scalewayPrefix)_domain_zone": data.#scaleway_domain_zone
@@ -53,6 +56,7 @@ import "github.com/roman-mazur/cuetf/providers/scaleway/data"
 	_#ds: "\(#scalewayPrefix)_iam_saml_certificate": data.#scaleway_iam_saml_certificate
 	_#ds: "\(#scalewayPrefix)_iam_saml": data.#scaleway_iam_saml
 	_#ds: "\(#scalewayPrefix)_iam_scim": data.#scaleway_iam_scim
+	_#ds: "\(#scalewayPrefix)_iam_scim_token": data.#scaleway_iam_scim_token
 	_#ds: "\(#scalewayPrefix)_iam_ssh_key": data.#scaleway_iam_ssh_key
 	_#ds: "\(#scalewayPrefix)_iam_user": data.#scaleway_iam_user
 	_#ds: "\(#scalewayPrefix)_inference_model": data.#scaleway_inference_model
@@ -126,6 +130,7 @@ import "github.com/roman-mazur/cuetf/providers/scaleway/data"
 	_#ds: "\(#scalewayPrefix)_vpc_connector": data.#scaleway_vpc_connector
 	_#ds: "\(#scalewayPrefix)_vpc_gateway_network": data.#scaleway_vpc_gateway_network
 	_#ds: "\(#scalewayPrefix)_vpc": data.#scaleway_vpc
+	_#ds: "\(#scalewayPrefix)_vpc_ingress_rule": data.#scaleway_vpc_ingress_rule
 	_#ds: "\(#scalewayPrefix)_vpc_private_network": data.#scaleway_vpc_private_network
 	_#ds: "\(#scalewayPrefix)_vpc_public_gateway_dhcp": data.#scaleway_vpc_public_gateway_dhcp
 	_#ds: "\(#scalewayPrefix)_vpc_public_gateway_dhcp_reservation": data.#scaleway_vpc_public_gateway_dhcp_reservation

@@ -11,6 +11,9 @@ package data
 		bucket_server_side_encryption_configuration_id?: string
 		id?:                                             string
 
+		// The project_id you want to attach the resource to
+		project_id?: string
+
 		// The region you want to attach the resource to
 		region?: string
 

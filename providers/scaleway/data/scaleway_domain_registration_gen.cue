@@ -4,7 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_domain_registration")
 	close({
-		// Details of the administrative contact.
+		// Details of the administrative contact (read-only, set by the
+		// API).
 		administrative_contact?: [...close({
 			address_line_1?:              string
 			address_line_2?:              string
@@ -141,7 +142,7 @@ package data
 		// ID of the task that created the domain.
 		task_id?: string
 
-		// Details of the technical contact.
+		// Details of the technical contact (read-only, set by the API).
 		technical_contact?: [...close({
 			address_line_1?:              string
 			address_line_2?:              string
