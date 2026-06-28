@@ -683,7 +683,6 @@ import "list"
 		node_version?:             string
 		php_version?:              string
 		python_version?:           string
-		ruby_version?:             string
 	})
 
 	_#defs: "/$defs/site_config/$defs/auto_heal_setting": close({

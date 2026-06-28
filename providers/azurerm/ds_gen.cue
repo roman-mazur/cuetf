@@ -249,6 +249,8 @@ import "github.com/roman-mazur/cuetf/providers/azurerm/data"
 	_#ds: "\(#azurermPrefix)_netapp_pool": data.#azurerm_netapp_pool
 	_#ds: "\(#azurermPrefix)_netapp_snapshot": data.#azurerm_netapp_snapshot
 	_#ds: "\(#azurermPrefix)_netapp_snapshot_policy": data.#azurerm_netapp_snapshot_policy
+	_#ds: "\(#azurermPrefix)_netapp_volume_bucket": data.#azurerm_netapp_volume_bucket
+	_#ds: "\(#azurermPrefix)_netapp_volume_bucket_with_server": data.#azurerm_netapp_volume_bucket_with_server
 	_#ds: "\(#azurermPrefix)_netapp_volume": data.#azurerm_netapp_volume
 	_#ds: "\(#azurermPrefix)_netapp_volume_group_oracle": data.#azurerm_netapp_volume_group_oracle
 	_#ds: "\(#azurermPrefix)_netapp_volume_group_sap_hana": data.#azurerm_netapp_volume_group_sap_hana
