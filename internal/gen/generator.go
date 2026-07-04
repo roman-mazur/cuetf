@@ -223,7 +223,7 @@ func mapping(prefix string, typ string, provider string, defs []string) string {
 	var res bytes.Buffer
 	for _, d := range defs {
 		prefixDef := fmt.Sprintf(`"\(#%sPrefix)_%s"`, provider, strings.TrimPrefix(d, provider+"_"))
-		_, _ = fmt.Fprintf(&res, "\t%s: %s: close(%s.%s & cuetf.MetaArgs)\n", prefix, prefixDef, typ, d)
+		_, _ = fmt.Fprintf(&res, "\t%s: %s: close({%s.%s & cuetf.MetaArgs})\n", prefix, prefixDef, typ, d)
 	}
 	return res.String()
 }
