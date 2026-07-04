@@ -10,10 +10,9 @@ github_organization_ruleset: {
 		conditions?: matchN(1, [#conditions, list.MaxItems(1) & [...#conditions]])
 		rules!: matchN(1, [#rules, list.MaxItems(1) & [_, ...] & [...#rules]])
 
-		// The enforcement level of the ruleset. `evaluate` allows admins
-		// to test rules before enforcing them. Possible values are
-		// `disabled`, `active`, and `evaluate`. Note: `evaluate` is only
-		// available for Enterprise plans.
+		// The enforcement level of the ruleset. `evaluate` allows admins to test rules
+		// before enforcing them. Possible values are `disabled`, `active`, and
+		// `evaluate`. Note: `evaluate` is only available for Enterprise plans.
 		enforcement!: string
 
 		// An etag representing the ruleset for caching purposes.
@@ -29,26 +28,23 @@ github_organization_ruleset: {
 		// GitHub ID for the ruleset.
 		ruleset_id?: number
 
-		// The target of the ruleset. Possible values are branch, tag and
-		// push.
+		// The target of the ruleset. Possible values are branch, tag and push.
 		target!: string
 	})
 
 	#bypass_actors: close({
-		// The ID of the actor that can bypass a ruleset. When
-		// `actor_type` is `OrganizationAdmin`, this should be set to
-		// `1`. Some resources such as DeployKey do not have an ID and
-		// this should be omitted.
+		// The ID of the actor that can bypass a ruleset. When `actor_type` is
+		// `OrganizationAdmin`, this should be set to `1`. Some resources such as
+		// DeployKey do not have an ID and this should be omitted.
 		actor_id?: number
 
-		// The type of actor that can bypass a ruleset. Can be one of:
-		// `Integration`, `OrganizationAdmin`, `RepositoryRole`, `Team`,
-		// or `DeployKey`.
+		// The type of actor that can bypass a ruleset. Can be one of: `Integration`,
+		// `OrganizationAdmin`, `RepositoryRole`, `Team`, or `DeployKey`.
 		actor_type!: string
 
-		// When the specified actor can bypass the ruleset. pull_request
-		// means that an actor can only bypass rules on pull requests.
-		// Can be one of: `always`, `pull_request`, `exempt`.
+		// When the specified actor can bypass the ruleset. pull_request means that an
+		// actor can only bypass rules on pull requests. Can be one of: `always`,
+		// `pull_request`, `exempt`.
 		bypass_mode!: string
 	})
 
@@ -57,8 +53,8 @@ github_organization_ruleset: {
 		repository_name?: matchN(1, [_#defs."/$defs/conditions/$defs/repository_name", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/repository_name"]])
 		repository_property?: matchN(1, [_#defs."/$defs/conditions/$defs/repository_property", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/repository_property"]])
 
-		// The repository IDs that the ruleset applies to. One of these
-		// IDs must match for the ruleset to apply.
+		// The repository IDs that the ruleset applies to. One of these IDs must match
+		// for the ruleset to apply.
 		repository_id?: [...number]
 	})
 
@@ -78,12 +74,10 @@ github_organization_ruleset: {
 		required_workflows?: matchN(1, [_#defs."/$defs/rules/$defs/required_workflows", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/required_workflows"]])
 		tag_name_pattern?: matchN(1, [_#defs."/$defs/rules/$defs/tag_name_pattern", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/tag_name_pattern"]])
 
-		// Only allow users with bypass permission to create matching
-		// refs.
+		// Only allow users with bypass permission to create matching refs.
 		creation?: bool
 
-		// Only allow users with bypass permissions to delete matching
-		// refs.
+		// Only allow users with bypass permissions to delete matching refs.
 		deletion?: bool
 
 		// Prevent users with push access from force pushing to refs.
@@ -92,35 +86,32 @@ github_organization_ruleset: {
 		// Prevent merge commits from being pushed to matching branches.
 		required_linear_history?: bool
 
-		// Commits pushed to matching branches must have verified
-		// signatures.
+		// Commits pushed to matching branches must have verified signatures.
 		required_signatures?: bool
 
-		// Only allow users with bypass permission to update matching
-		// refs.
+		// Only allow users with bypass permission to update matching refs.
 		update?: bool
 	})
 
 	_#defs: "/$defs/conditions/$defs/ref_name": close({
-		// Array of ref names or patterns to exclude. The condition will
-		// not pass if any of these patterns match.
+		// Array of ref names or patterns to exclude. The condition will not pass if any
+		// of these patterns match.
 		exclude!: [...string]
 
-		// Array of ref names or patterns to include. One of these
-		// patterns must match for the condition to pass. Also accepts
-		// `~DEFAULT_BRANCH` to include the default branch or `~ALL` to
-		// include all branches.
+		// Array of ref names or patterns to include. One of these patterns must match
+		// for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the
+		// default branch or `~ALL` to include all branches.
 		include!: [...string]
 	})
 
 	_#defs: "/$defs/conditions/$defs/repository_name": close({
-		// Array of repository names or patterns to exclude. The condition
-		// will not pass if any of these patterns match.
+		// Array of repository names or patterns to exclude. The condition will not pass
+		// if any of these patterns match.
 		exclude!: [...string]
 
-		// Array of repository names or patterns to include. One of these
-		// patterns must match for the condition to pass. Also accepts
-		// `~ALL` to include all repositories.
+		// Array of repository names or patterns to include. One of these patterns must
+		// match for the condition to pass. Also accepts `~ALL` to include all
+		// repositories.
 		include!: [...string]
 
 		// Whether renaming of target repositories is prevented.
@@ -128,16 +119,16 @@ github_organization_ruleset: {
 	})
 
 	_#defs: "/$defs/conditions/$defs/repository_property": close({
-		// The repository properties and values to exclude. The ruleset
-		// will not apply if any of these properties match.
+		// The repository properties and values to exclude. The ruleset will not apply
+		// if any of these properties match.
 		exclude?: [...close({
 			name?: string
 			property_values?: [...string]
 			source?: string
 		})]
 
-		// The repository properties and values to include. All of these
-		// properties must match for the condition to pass.
+		// The repository properties and values to include. All of these properties must
+		// match for the condition to pass.
 		include?: [...close({
 			name?: string
 			property_values?: [...string]
@@ -152,8 +143,7 @@ github_organization_ruleset: {
 		// If true, the rule will fail if the pattern matches.
 		negate?: bool
 
-		// The operator to use for matching. Can be one of: `starts_with`,
-		// `ends_with`, `contains`, `regex`.
+		// The operator to use for matching. Can be one of: `starts_with`, `ends_with`, `contains`, `regex`.
 		operator!: string
 
 		// The pattern to match with.
@@ -167,8 +157,7 @@ github_organization_ruleset: {
 		// If true, the rule will fail if the pattern matches.
 		negate?: bool
 
-		// The operator to use for matching. Can be one of: `starts_with`,
-		// `ends_with`, `contains`, `regex`.
+		// The operator to use for matching. Can be one of: `starts_with`, `ends_with`, `contains`, `regex`.
 		operator!: string
 
 		// The pattern to match with.
@@ -182,8 +171,7 @@ github_organization_ruleset: {
 		// If true, the rule will fail if the pattern matches.
 		negate?: bool
 
-		// The operator to use for matching. Can be one of: `starts_with`,
-		// `ends_with`, `contains`, `regex`.
+		// The operator to use for matching. Can be one of: `starts_with`, `ends_with`, `contains`, `regex`.
 		operator!: string
 
 		// The pattern to match with.
@@ -197,8 +185,7 @@ github_organization_ruleset: {
 		// If true, the rule will fail if the pattern matches.
 		negate?: bool
 
-		// The operator to use for matching. Can be one of: `starts_with`,
-		// `ends_with`, `contains`, `regex`.
+		// The operator to use for matching. Can be one of: `starts_with`, `ends_with`, `contains`, `regex`.
 		operator!: string
 
 		// The pattern to match with.
@@ -206,24 +193,21 @@ github_organization_ruleset: {
 	})
 
 	_#defs: "/$defs/rules/$defs/copilot_code_review": close({
-		// Copilot automatically reviews draft pull requests before they
-		// are marked as ready for review. Defaults to `false`.
+		// Copilot automatically reviews draft pull requests before they are marked as
+		// ready for review. Defaults to `false`.
 		review_draft_pull_requests?: bool
 
-		// Copilot automatically reviews each new push to the pull
-		// request. Defaults to `false`.
+		// Copilot automatically reviews each new push to the pull request. Defaults to `false`.
 		review_on_push?: bool
 	})
 
 	_#defs: "/$defs/rules/$defs/file_extension_restriction": close({
-		// The file extensions that are restricted from being pushed to
-		// the commit graph.
+		// The file extensions that are restricted from being pushed to the commit graph.
 		restricted_file_extensions!: [...string]
 	})
 
 	_#defs: "/$defs/rules/$defs/file_path_restriction": close({
-		// The file paths that are restricted from being pushed to the
-		// commit graph.
+		// The file paths that are restricted from being pushed to the commit graph.
 		restricted_file_paths!: [...string]
 	})
 
@@ -233,37 +217,35 @@ github_organization_ruleset: {
 	})
 
 	_#defs: "/$defs/rules/$defs/max_file_size": close({
-		// The maximum allowed size of a file in megabytes (MB). Valid
-		// range is 1-100 MB.
+		// The maximum allowed size of a file in megabytes (MB). Valid range is 1-100 MB.
 		max_file_size!: number
 	})
 
 	_#defs: "/$defs/rules/$defs/pull_request": close({
 		required_reviewers?: matchN(1, [_#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers", [..._#defs."/$defs/rules/$defs/pull_request/$defs/required_reviewers"]])
 
-		// Array of allowed merge methods. Allowed values include `merge`,
-		// `squash`, and `rebase`. At least one option must be enabled.
+		// Array of allowed merge methods. Allowed values include `merge`, `squash`, and
+		// `rebase`. At least one option must be enabled.
 		allowed_merge_methods?: [...string]
 
-		// New, reviewable commits pushed will dismiss previous pull
-		// request review approvals. Defaults to `false`.
+		// New, reviewable commits pushed will dismiss previous pull request review
+		// approvals. Defaults to `false`.
 		dismiss_stale_reviews_on_push?: bool
 
-		// Require an approving review in pull requests that modify files
-		// that have a designated code owner. Defaults to `false`.
+		// Require an approving review in pull requests that modify files that have a
+		// designated code owner. Defaults to `false`.
 		require_code_owner_review?: bool
 
-		// Whether the most recent reviewable push must be approved by
-		// someone other than the person who pushed it. Defaults to
-		// `false`.
+		// Whether the most recent reviewable push must be approved by someone other
+		// than the person who pushed it. Defaults to `false`.
 		require_last_push_approval?: bool
 
-		// The number of approving reviews that are required before a pull
-		// request can be merged. Defaults to `0`.
+		// The number of approving reviews that are required before a pull request can
+		// be merged. Defaults to `0`.
 		required_approving_review_count?: number
 
-		// All conversations on code must be resolved before a pull
-		// request can be merged. Defaults to `false`.
+		// All conversations on code must be resolved before a pull request can be
+		// merged. Defaults to `false`.
 		required_review_thread_resolution?: bool
 	})
 
@@ -273,8 +255,7 @@ github_organization_ruleset: {
 		// File patterns (fnmatch syntax) that this reviewer must approve.
 		file_patterns!: [...string]
 
-		// Minimum number of approvals required from this reviewer. Set to
-		// 0 to make approval optional.
+		// Minimum number of approvals required from this reviewer. Set to 0 to make approval optional.
 		minimum_approvals!: number
 	})
 
@@ -291,15 +272,14 @@ github_organization_ruleset: {
 	})
 
 	_#defs: "/$defs/rules/$defs/required_code_scanning/$defs/required_code_scanning_tool": close({
-		// The severity level at which code scanning results that raise
-		// alerts block a reference update. Can be one of: `none`,
-		// `errors`, `errors_and_warnings`, `all`.
+		// The severity level at which code scanning results that raise alerts block a
+		// reference update. Can be one of: `none`, `errors`, `errors_and_warnings`,
+		// `all`.
 		alerts_threshold!: string
 
-		// The severity level at which code scanning results that raise
-		// security alerts block a reference update. Can be one of:
-		// `none`, `critical`, `high_or_higher`, `medium_or_higher`,
-		// `all`.
+		// The severity level at which code scanning results that raise security alerts
+		// block a reference update. Can be one of: `none`, `critical`,
+		// `high_or_higher`, `medium_or_higher`, `all`.
 		security_alerts_threshold!: string
 
 		// The name of a code scanning tool.
@@ -309,32 +289,27 @@ github_organization_ruleset: {
 	_#defs: "/$defs/rules/$defs/required_status_checks": close({
 		required_check!: matchN(1, [_#defs."/$defs/rules/$defs/required_status_checks/$defs/required_check", [_, ...] & [..._#defs."/$defs/rules/$defs/required_status_checks/$defs/required_check"]])
 
-		// Allow repositories and branches to be created if a check would
-		// otherwise prohibit it.
+		// Allow repositories and branches to be created if a check would otherwise prohibit it.
 		do_not_enforce_on_create?: bool
 
-		// Whether pull requests targeting a matching branch must be
-		// tested with the latest code. This setting will not take effect
-		// unless at least one status check is enabled. Defaults to
-		// `false`.
+		// Whether pull requests targeting a matching branch must be tested with the
+		// latest code. This setting will not take effect unless at least one status
+		// check is enabled. Defaults to `false`.
 		strict_required_status_checks_policy?: bool
 	})
 
 	_#defs: "/$defs/rules/$defs/required_status_checks/$defs/required_check": close({
-		// The status check context name that must be present on the
-		// commit.
+		// The status check context name that must be present on the commit.
 		context!: string
 
-		// The optional integration ID that this status check must
-		// originate from.
+		// The optional integration ID that this status check must originate from.
 		integration_id?: number
 	})
 
 	_#defs: "/$defs/rules/$defs/required_workflows": close({
 		required_workflow!: matchN(1, [_#defs."/$defs/rules/$defs/required_workflows/$defs/required_workflow", [_, ...] & [..._#defs."/$defs/rules/$defs/required_workflows/$defs/required_workflow"]])
 
-		// Allow repositories and branches to be created if a check would
-		// otherwise prohibit it.
+		// Allow repositories and branches to be created if a check would otherwise prohibit it.
 		do_not_enforce_on_create?: bool
 	})
 
@@ -356,8 +331,7 @@ github_organization_ruleset: {
 		// If true, the rule will fail if the pattern matches.
 		negate?: bool
 
-		// The operator to use for matching. Can be one of: `starts_with`,
-		// `ends_with`, `contains`, `regex`.
+		// The operator to use for matching. Can be one of: `starts_with`, `ends_with`, `contains`, `regex`.
 		operator!: string
 
 		// The pattern to match with.

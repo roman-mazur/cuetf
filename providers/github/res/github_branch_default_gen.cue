@@ -9,8 +9,7 @@ github_branch_default: {
 		etag?:   string
 		id?:     string
 
-		// Indicate if it should rename the branch rather than use an
-		// existing branch. Defaults to 'false'.
+		// Indicate if it should rename the branch rather than use an existing branch. Defaults to 'false'.
 		rename?: bool
 
 		// The GitHub repository.

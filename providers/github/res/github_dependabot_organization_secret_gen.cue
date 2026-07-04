@@ -23,14 +23,12 @@ github_dependabot_organization_secret: {
 		// Plaintext value to be encrypted.
 		value?: string
 
-		// Value encrypted with the GitHub public key, defined by key_id,
-		// in Base64 format.
+		// Value encrypted with the GitHub public key, defined by key_id, in Base64 format.
 		value_encrypted?: string
 
-		// Configures the access that repositories have to the
-		// organization secret. Must be one of 'all', 'private' or
-		// 'selected'. 'selected_repository_ids' is required if set to
-		// 'selected'.
+		// Configures the access that repositories have to the organization secret. Must
+		// be one of 'all', 'private' or 'selected'. 'selected_repository_ids' is
+		// required if set to 'selected'.
 		visibility!: string
 	})
 }

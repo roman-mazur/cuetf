@@ -29,19 +29,16 @@ github_release: {
 		prerelease?:   bool
 		published_at?: string
 
-		// ID of the release to retrieve. Must be specified when
-		// `retrieve_by` = `id`.
+		// ID of the release to retrieve. Must be specified when `retrieve_by` = `id`.
 		release_id?: number
 
-		// ID of the release to retrieve. Must be specified when
-		// `retrieve_by` = `tag`.
+		// ID of the release to retrieve. Must be specified when `retrieve_by` = `tag`.
 		release_tag?: string
 
 		// Name of the repository to retrieve the release from.
 		repository!: string
 
-		// Describes how to fetch the release. Valid values are `id`,
-		// `tag`, `latest`.
+		// Describes how to fetch the release. Valid values are `id`, `tag`, `latest`.
 		retrieve_by!:      string
 		tarball_url?:      string
 		target_commitish?: string

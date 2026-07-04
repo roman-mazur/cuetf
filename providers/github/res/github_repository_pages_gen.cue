@@ -11,12 +11,10 @@ github_repository_pages: {
 		// The API URL of the GitHub Pages resource.
 		api_url?: string
 
-		// The GitHub Pages site's build status e.g. 'building' or
-		// 'built'.
+		// The GitHub Pages site's build status e.g. 'building' or 'built'.
 		build_status?: string
 
-		// The type of GitHub Pages site to build. Can be 'legacy' or
-		// 'workflow'.
+		// The type of GitHub Pages site to build. Can be 'legacy' or 'workflow'.
 		build_type?: string
 
 		// The custom domain for the repository.
@@ -25,20 +23,18 @@ github_repository_pages: {
 		// Whether the rendered GitHub Pages site has a custom 404 page.
 		custom_404?: bool
 
-		// The absolute URL (with scheme) to the rendered GitHub Pages
-		// site.
+		// The absolute URL (with scheme) to the rendered GitHub Pages site.
 		html_url?: string
 
-		// Whether the rendered GitHub Pages site will only be served over
-		// HTTPS. Requires 'cname' to be set.
+		// Whether the rendered GitHub Pages site will only be served over HTTPS.
+		// Requires 'cname' to be set.
 		https_enforced?: bool
 		id?:             string
 
-		// Whether the GitHub Pages site is publicly visible. If set to
-		// `true`, the site is accessible to anyone on the internet. If
-		// set to `false`, the site will only be accessible to users who
-		// have at least `read` access to the repository that published
-		// the site.
+		// Whether the GitHub Pages site is publicly visible. If set to `true`, the site
+		// is accessible to anyone on the internet. If set to `false`, the site will
+		// only be accessible to users who have at least `read` access to the
+		// repository that published the site.
 		public?: bool
 
 		// The repository name to configure GitHub Pages for.
@@ -49,12 +45,10 @@ github_repository_pages: {
 	})
 
 	#source: close({
-		// The repository branch used to publish the site's source files.
-		// (i.e. 'main' or 'gh-pages')
+		// The repository branch used to publish the site's source files. (i.e. 'main' or 'gh-pages')
 		branch!: string
 
-		// The repository directory from which the site publishes
-		// (Default: '/')
+		// The repository directory from which the site publishes (Default: '/')
 		path?: string
 	})
 }

@@ -7,8 +7,7 @@ github_team_membership: {
 		etag?: string
 		id?:   string
 
-		// The role of the user within the team. Must be one of 'member'
-		// or 'maintainer'.
+		// The role of the user within the team. Must be one of 'member' or 'maintainer'.
 		role?: string
 
 		// The GitHub team id or the GitHub team slug.

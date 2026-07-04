@@ -8,26 +8,23 @@ github_repository_webhook: {
 	close({
 		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
 
-		// Indicate if the webhook should receive events. Defaults to
-		// 'true'.
+		// Indicate if the webhook should receive events. Defaults to 'true'.
 		active?: bool
 		etag?:   string
 
 		// A list of events which should trigger the webhook
 		events!: [...string]
-		id?: string
 
-		// The repository name of the webhook, not including the
-		// organization, which will be inferred.
+		// The repository name of the webhook, not including the organization, which will be inferred.
 		repository!: string
+		id?:         string
 
 		// Configuration block for the webhook
 		url?: string
 	})
 
 	#configuration: close({
-		// The content type for the payload. Valid values are either
-		// 'form' or 'json'.
+		// The content type for the payload. Valid values are either 'form' or 'json'.
 		content_type?: string
 
 		// Insecure SSL boolean toggle. Defaults to 'false'.

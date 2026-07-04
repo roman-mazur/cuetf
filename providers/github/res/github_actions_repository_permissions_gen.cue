@@ -8,9 +8,8 @@ github_actions_repository_permissions: {
 	close({
 		allowed_actions_config?: matchN(1, [#allowed_actions_config, list.MaxItems(1) & [...#allowed_actions_config]])
 
-		// The permissions policy that controls the actions that are
-		// allowed to run. Can be one of: 'all', 'local_only', or
-		// 'selected'.
+		// The permissions policy that controls the actions that are allowed to run. Can
+		// be one of: 'all', 'local_only', or 'selected'.
 		allowed_actions?: string
 
 		// Should GitHub actions be enabled on this repository.
@@ -20,8 +19,8 @@ github_actions_repository_permissions: {
 		// The GitHub repository.
 		repository!: string
 
-		// Whether pinning to a specific SHA is required for all actions
-		// and reusable workflows in a repository.
+		// Whether pinning to a specific SHA is required for all actions and reusable
+		// workflows in a repository.
 		sha_pinning_required?: bool
 	})
 
@@ -29,14 +28,13 @@ github_actions_repository_permissions: {
 		// Whether GitHub-owned actions are allowed in the repository.
 		github_owned_allowed!: bool
 
-		// Specifies a list of string-matching patterns to allow specific
-		// action(s). Wildcards, tags, and SHAs are allowed. For example,
-		// 'monalisa/octocat@', 'monalisa/octocat@v2', 'monalisa/'.
+		// Specifies a list of string-matching patterns to allow specific action(s).
+		// Wildcards, tags, and SHAs are allowed. For example, 'monalisa/octocat@',
+		// 'monalisa/octocat@v2', 'monalisa/'.
 		patterns_allowed?: [...string]
 
-		// Whether actions in GitHub Marketplace from verified creators
-		// are allowed. Set to 'true' to allow all GitHub Marketplace
-		// actions by verified creators.
+		// Whether actions in GitHub Marketplace from verified creators are allowed. Set
+		// to 'true' to allow all GitHub Marketplace actions by verified creators.
 		verified_allowed?: bool
 	})
 }

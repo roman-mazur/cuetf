@@ -7,8 +7,7 @@ github_codespaces_user_secret: {
 		// Date of 'codespaces_secret' creation.
 		created_at?: string
 
-		// Encrypted value of the secret using the GitHub public key in
-		// Base64 format.
+		// Encrypted value of the secret using the GitHub public key in Base64 format.
 		encrypted_value?: string
 		id?:              string
 

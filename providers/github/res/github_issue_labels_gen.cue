@@ -12,8 +12,7 @@ github_issue_labels: {
 	})
 
 	#label: close({
-		// A 6 character hex code, without the leading '#', identifying
-		// the color of the label.
+		// A 6 character hex code, without the leading '#', identifying the color of the label.
 		color!: string
 
 		// A short description of the label.

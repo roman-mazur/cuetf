@@ -6,8 +6,7 @@ github_actions_organization_variable_repositories: {
 	close({
 		id?: string
 
-		// An array of repository ids that can access the organization
-		// variable.
+		// An array of repository ids that can access the organization variable.
 		selected_repository_ids!: [...number]
 
 		// Name of the existing variable.

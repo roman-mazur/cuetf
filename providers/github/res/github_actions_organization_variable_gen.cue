@@ -8,8 +8,7 @@ github_actions_organization_variable: {
 		created_at?: string
 		id?:         string
 
-		// An array of repository ids that can access the organization
-		// variable.
+		// An array of repository ids that can access the organization variable.
 		selected_repository_ids?: [...number]
 
 		// Date of 'actions_variable' update.
@@ -21,10 +20,9 @@ github_actions_organization_variable: {
 		// Name of the variable.
 		variable_name!: string
 
-		// Configures the access that repositories have to the
-		// organization variable. Must be one of 'all', 'private', or
-		// 'selected'. 'selected_repository_ids' is required if set to
-		// 'selected'.
+		// Configures the access that repositories have to the organization variable.
+		// Must be one of 'all', 'private', or 'selected'. 'selected_repository_ids' is
+		// required if set to 'selected'.
 		visibility!: string
 	})
 }

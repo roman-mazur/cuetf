@@ -16,12 +16,10 @@ github_release_asset: {
 		// Date the asset was created
 		created_at?: string
 
-		// Whether to download the asset file content into the
-		// `file_contents` attribute
+		// Whether to download the asset file content into the `file_contents` attribute
 		download_file_contents?: bool
 
-		// The base64-encoded release asset file contents (requires
-		// `download_file_contents` to be `true`)
+		// The base64-encoded release asset file contents (requires `download_file_contents` to be `true`)
 		file_contents?: string
 		id?:            string
 

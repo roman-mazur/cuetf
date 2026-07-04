@@ -12,8 +12,7 @@ github_project_column: {
 		// The name of the column.
 		name!: string
 
-		// The ID of an existing project that the column will be created
-		// in.
+		// The ID of an existing project that the column will be created in.
 		project_id!: string
 	})
 }

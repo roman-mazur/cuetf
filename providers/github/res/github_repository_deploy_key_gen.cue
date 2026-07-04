@@ -10,8 +10,7 @@ github_repository_deploy_key: {
 		// A SSH key.
 		key!: string
 
-		// A boolean qualifying the key to be either read only or
-		// read/write.
+		// A boolean qualifying the key to be either read only or read/write.
 		read_only?: bool
 
 		// Name of the GitHub repository.

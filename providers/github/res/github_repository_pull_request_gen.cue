@@ -29,8 +29,7 @@ github_repository_pull_request: {
 		// List of names of labels on the PR
 		labels?: [...string]
 
-		// Controls whether the base repository maintainers can modify the
-		// Pull Request. Default: 'false'.
+		// Controls whether the base repository maintainers can modify the Pull Request. Default: 'false'.
 		maintainer_can_modify?: bool
 
 		// The number of the Pull Request within the repository.
@@ -42,12 +41,10 @@ github_repository_pull_request: {
 		// Username of the PR creator
 		opened_by?: string
 
-		// Owner of the repository. If not provided, the provider's
-		// default owner is used.
+		// Owner of the repository. If not provided, the provider's default owner is used.
 		owner?: string
 
-		// The current Pull Request state - can be 'open', 'closed' or
-		// 'merged'.
+		// The current Pull Request state - can be 'open', 'closed' or 'merged'.
 		state?: string
 
 		// The title of the Pull Request.

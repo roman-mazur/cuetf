@@ -23,10 +23,9 @@ github_organization_custom_properties: {
 		// The type of the custom property
 		value_type?: string
 
-		// Who can edit the values of the custom property. Can be one of
-		// 'org_actors' or 'org_and_repo_actors'. If not specified, the
-		// default is 'org_actors' (only organization owners can edit
-		// values)
+		// Who can edit the values of the custom property. Can be one of 'org_actors' or
+		// 'org_and_repo_actors'. If not specified, the default is 'org_actors' (only
+		// organization owners can edit values)
 		values_editable_by?: string
 	})
 }

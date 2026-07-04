@@ -32,8 +32,7 @@ github_actions_environment_secret: {
 		// Plaintext value to be encrypted.
 		value?: string
 
-		// Value encrypted with the GitHub public key, defined by key_id,
-		// in Base64 format.
+		// Value encrypted with the GitHub public key, defined by key_id, in Base64 format.
 		value_encrypted?: string
 	})
 }

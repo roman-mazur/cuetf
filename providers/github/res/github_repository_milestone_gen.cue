@@ -20,8 +20,7 @@ github_repository_milestone: {
 		// The name of the GitHub Repository.
 		repository!: string
 
-		// The state of the milestone. Either 'open' or 'closed'. Default:
-		// 'open'.
+		// The state of the milestone. Either 'open' or 'closed'. Default: 'open'.
 		state?: string
 
 		// The title of the milestone.
