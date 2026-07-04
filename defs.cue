@@ -24,7 +24,7 @@ package cuetf
 
 #type: {
 	version?: uint
-	block:   #block
+	block:    #block
 }
 
 documented: {
@@ -33,7 +33,7 @@ documented: {
 }
 
 #attr: {
-	#primitive:   "string" | "number" | "bool" | "dynamic"
+	#primitive: "string" | "number" | "bool" | "dynamic"
 	#complexDef: ["object", {[string]: #type}] | ["list" | "map" | "set", #type]
 
 	#type: #primitive | #complexDef
