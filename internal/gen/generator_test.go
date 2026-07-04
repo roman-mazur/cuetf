@@ -46,7 +46,7 @@ func TestExportBigSample(t *testing.T) {
 		t.Skip("for manual usage")
 	}
 	var data terraformData
-	err := parseTerraformData("../../aws/internal/schema/schema.json", &data)
+	err := parseTerraformData("../../providers/aws/internal/schema/schema.json", &data)
 	if err != nil {
 		t.Fatal(err)
 	}
