@@ -1,6 +1,6 @@
 package data
 
-#github_ssh_keys: {
+github_ssh_keys: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/github_ssh_keys")
 	close({

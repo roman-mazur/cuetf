@@ -1,6 +1,6 @@
 package res
 
-#github_issue_labels: {
+github_issue_labels: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_issue_labels")
 	close({

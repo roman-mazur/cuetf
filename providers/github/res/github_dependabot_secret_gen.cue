@@ -1,6 +1,6 @@
 package res
 
-#github_dependabot_secret: {
+github_dependabot_secret: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_dependabot_secret")
 	close({

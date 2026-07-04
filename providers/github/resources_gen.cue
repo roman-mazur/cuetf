@@ -1,97 +1,100 @@
 package github
 
-import "github.com/roman-mazur/cuetf/providers/github/res"
+import (
+	"github.com/roman-mazur/cuetf"
+	"github.com/roman-mazur/cuetf/providers/github/res"
+)
 
 #Terraform: {
 	#githubPrefix: string
-	_#res: "\(#githubPrefix)_actions_environment_secret": res.#github_actions_environment_secret
-	_#res: "\(#githubPrefix)_actions_environment_variable": res.#github_actions_environment_variable
-	_#res: "\(#githubPrefix)_actions_hosted_runner": res.#github_actions_hosted_runner
-	_#res: "\(#githubPrefix)_actions_organization_oidc_subject_claim_customization_template": res.#github_actions_organization_oidc_subject_claim_customization_template
-	_#res: "\(#githubPrefix)_actions_organization_permissions": res.#github_actions_organization_permissions
-	_#res: "\(#githubPrefix)_actions_organization_secret": res.#github_actions_organization_secret
-	_#res: "\(#githubPrefix)_actions_organization_secret_repositories": res.#github_actions_organization_secret_repositories
-	_#res: "\(#githubPrefix)_actions_organization_secret_repository": res.#github_actions_organization_secret_repository
-	_#res: "\(#githubPrefix)_actions_organization_variable": res.#github_actions_organization_variable
-	_#res: "\(#githubPrefix)_actions_organization_variable_repositories": res.#github_actions_organization_variable_repositories
-	_#res: "\(#githubPrefix)_actions_organization_variable_repository": res.#github_actions_organization_variable_repository
-	_#res: "\(#githubPrefix)_actions_organization_workflow_permissions": res.#github_actions_organization_workflow_permissions
-	_#res: "\(#githubPrefix)_actions_repository_access_level": res.#github_actions_repository_access_level
-	_#res: "\(#githubPrefix)_actions_repository_oidc_subject_claim_customization_template": res.#github_actions_repository_oidc_subject_claim_customization_template
-	_#res: "\(#githubPrefix)_actions_repository_permissions": res.#github_actions_repository_permissions
-	_#res: "\(#githubPrefix)_actions_runner_group": res.#github_actions_runner_group
-	_#res: "\(#githubPrefix)_actions_secret": res.#github_actions_secret
-	_#res: "\(#githubPrefix)_actions_variable": res.#github_actions_variable
-	_#res: "\(#githubPrefix)_app_installation_repositories": res.#github_app_installation_repositories
-	_#res: "\(#githubPrefix)_app_installation_repository": res.#github_app_installation_repository
-	_#res: "\(#githubPrefix)_branch_default": res.#github_branch_default
-	_#res: "\(#githubPrefix)_branch": res.#github_branch
-	_#res: "\(#githubPrefix)_branch_protection": res.#github_branch_protection
-	_#res: "\(#githubPrefix)_branch_protection_v3": res.#github_branch_protection_v3
-	_#res: "\(#githubPrefix)_codespaces_organization_secret": res.#github_codespaces_organization_secret
-	_#res: "\(#githubPrefix)_codespaces_organization_secret_repositories": res.#github_codespaces_organization_secret_repositories
-	_#res: "\(#githubPrefix)_codespaces_secret": res.#github_codespaces_secret
-	_#res: "\(#githubPrefix)_codespaces_user_secret": res.#github_codespaces_user_secret
-	_#res: "\(#githubPrefix)_dependabot_organization_secret": res.#github_dependabot_organization_secret
-	_#res: "\(#githubPrefix)_dependabot_organization_secret_repositories": res.#github_dependabot_organization_secret_repositories
-	_#res: "\(#githubPrefix)_dependabot_organization_secret_repository": res.#github_dependabot_organization_secret_repository
-	_#res: "\(#githubPrefix)_dependabot_secret": res.#github_dependabot_secret
-	_#res: "\(#githubPrefix)_emu_group_mapping": res.#github_emu_group_mapping
-	_#res: "\(#githubPrefix)_enterprise_actions_permissions": res.#github_enterprise_actions_permissions
-	_#res: "\(#githubPrefix)_enterprise_actions_runner_group": res.#github_enterprise_actions_runner_group
-	_#res: "\(#githubPrefix)_enterprise_actions_workflow_permissions": res.#github_enterprise_actions_workflow_permissions
-	_#res: "\(#githubPrefix)_enterprise_ip_allow_list_entry": res.#github_enterprise_ip_allow_list_entry
-	_#res: "\(#githubPrefix)_enterprise_organization": res.#github_enterprise_organization
-	_#res: "\(#githubPrefix)_enterprise_security_analysis_settings": res.#github_enterprise_security_analysis_settings
-	_#res: "\(#githubPrefix)_issue": res.#github_issue
-	_#res: "\(#githubPrefix)_issue_label": res.#github_issue_label
-	_#res: "\(#githubPrefix)_issue_labels": res.#github_issue_labels
-	_#res: "\(#githubPrefix)_membership": res.#github_membership
-	_#res: "\(#githubPrefix)_organization_block": res.#github_organization_block
-	_#res: "\(#githubPrefix)_organization_custom_properties": res.#github_organization_custom_properties
-	_#res: "\(#githubPrefix)_organization_custom_role": res.#github_organization_custom_role
-	_#res: "\(#githubPrefix)_organization_project": res.#github_organization_project
-	_#res: "\(#githubPrefix)_organization_repository_role": res.#github_organization_repository_role
-	_#res: "\(#githubPrefix)_organization_role": res.#github_organization_role
-	_#res: "\(#githubPrefix)_organization_role_team_assignment": res.#github_organization_role_team_assignment
-	_#res: "\(#githubPrefix)_organization_role_team": res.#github_organization_role_team
-	_#res: "\(#githubPrefix)_organization_role_user": res.#github_organization_role_user
-	_#res: "\(#githubPrefix)_organization_ruleset": res.#github_organization_ruleset
-	_#res: "\(#githubPrefix)_organization_security_manager": res.#github_organization_security_manager
-	_#res: "\(#githubPrefix)_organization_settings": res.#github_organization_settings
-	_#res: "\(#githubPrefix)_organization_webhook": res.#github_organization_webhook
-	_#res: "\(#githubPrefix)_project_card": res.#github_project_card
-	_#res: "\(#githubPrefix)_project_column": res.#github_project_column
-	_#res: "\(#githubPrefix)_release": res.#github_release
-	_#res: "\(#githubPrefix)_repository_autolink_reference": res.#github_repository_autolink_reference
-	_#res: "\(#githubPrefix)_repository_collaborator": res.#github_repository_collaborator
-	_#res: "\(#githubPrefix)_repository_collaborators": res.#github_repository_collaborators
-	_#res: "\(#githubPrefix)_repository_custom_property": res.#github_repository_custom_property
-	_#res: "\(#githubPrefix)_repository_dependabot_security_updates": res.#github_repository_dependabot_security_updates
-	_#res: "\(#githubPrefix)_repository_deploy_key": res.#github_repository_deploy_key
-	_#res: "\(#githubPrefix)_repository_deployment_branch_policy": res.#github_repository_deployment_branch_policy
-	_#res: "\(#githubPrefix)_repository_environment_deployment_policy": res.#github_repository_environment_deployment_policy
-	_#res: "\(#githubPrefix)_repository_environment": res.#github_repository_environment
-	_#res: "\(#githubPrefix)_repository_file": res.#github_repository_file
-	_#res: "\(#githubPrefix)_repository": res.#github_repository
-	_#res: "\(#githubPrefix)_repository_milestone": res.#github_repository_milestone
-	_#res: "\(#githubPrefix)_repository_pages": res.#github_repository_pages
-	_#res: "\(#githubPrefix)_repository_project": res.#github_repository_project
-	_#res: "\(#githubPrefix)_repository_pull_request": res.#github_repository_pull_request
-	_#res: "\(#githubPrefix)_repository_ruleset": res.#github_repository_ruleset
-	_#res: "\(#githubPrefix)_repository_tag_protection": res.#github_repository_tag_protection
-	_#res: "\(#githubPrefix)_repository_topics": res.#github_repository_topics
-	_#res: "\(#githubPrefix)_repository_vulnerability_alerts": res.#github_repository_vulnerability_alerts
-	_#res: "\(#githubPrefix)_repository_webhook": res.#github_repository_webhook
-	_#res: "\(#githubPrefix)_team": res.#github_team
-	_#res: "\(#githubPrefix)_team_members": res.#github_team_members
-	_#res: "\(#githubPrefix)_team_membership": res.#github_team_membership
-	_#res: "\(#githubPrefix)_team_repository": res.#github_team_repository
-	_#res: "\(#githubPrefix)_team_settings": res.#github_team_settings
-	_#res: "\(#githubPrefix)_team_sync_group_mapping": res.#github_team_sync_group_mapping
-	_#res: "\(#githubPrefix)_user_gpg_key": res.#github_user_gpg_key
-	_#res: "\(#githubPrefix)_user_invitation_accepter": res.#github_user_invitation_accepter
-	_#res: "\(#githubPrefix)_user_ssh_key": res.#github_user_ssh_key
-	_#res: "\(#githubPrefix)_workflow_repository_permissions": res.#github_workflow_repository_permissions
+	_#res: "\(#githubPrefix)_actions_environment_secret": close(res.github_actions_environment_secret & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_environment_variable": close(res.github_actions_environment_variable & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_hosted_runner": close(res.github_actions_hosted_runner & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_organization_oidc_subject_claim_customization_template": close(res.github_actions_organization_oidc_subject_claim_customization_template & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_organization_permissions": close(res.github_actions_organization_permissions & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_organization_secret": close(res.github_actions_organization_secret & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_organization_secret_repositories": close(res.github_actions_organization_secret_repositories & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_organization_secret_repository": close(res.github_actions_organization_secret_repository & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_organization_variable": close(res.github_actions_organization_variable & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_organization_variable_repositories": close(res.github_actions_organization_variable_repositories & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_organization_variable_repository": close(res.github_actions_organization_variable_repository & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_organization_workflow_permissions": close(res.github_actions_organization_workflow_permissions & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_repository_access_level": close(res.github_actions_repository_access_level & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_repository_oidc_subject_claim_customization_template": close(res.github_actions_repository_oidc_subject_claim_customization_template & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_repository_permissions": close(res.github_actions_repository_permissions & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_runner_group": close(res.github_actions_runner_group & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_secret": close(res.github_actions_secret & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_actions_variable": close(res.github_actions_variable & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_app_installation_repositories": close(res.github_app_installation_repositories & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_app_installation_repository": close(res.github_app_installation_repository & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_branch_default": close(res.github_branch_default & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_branch": close(res.github_branch & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_branch_protection": close(res.github_branch_protection & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_branch_protection_v3": close(res.github_branch_protection_v3 & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_codespaces_organization_secret": close(res.github_codespaces_organization_secret & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_codespaces_organization_secret_repositories": close(res.github_codespaces_organization_secret_repositories & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_codespaces_secret": close(res.github_codespaces_secret & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_codespaces_user_secret": close(res.github_codespaces_user_secret & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_dependabot_organization_secret": close(res.github_dependabot_organization_secret & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_dependabot_organization_secret_repositories": close(res.github_dependabot_organization_secret_repositories & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_dependabot_organization_secret_repository": close(res.github_dependabot_organization_secret_repository & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_dependabot_secret": close(res.github_dependabot_secret & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_emu_group_mapping": close(res.github_emu_group_mapping & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_enterprise_actions_permissions": close(res.github_enterprise_actions_permissions & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_enterprise_actions_runner_group": close(res.github_enterprise_actions_runner_group & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_enterprise_actions_workflow_permissions": close(res.github_enterprise_actions_workflow_permissions & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_enterprise_ip_allow_list_entry": close(res.github_enterprise_ip_allow_list_entry & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_enterprise_organization": close(res.github_enterprise_organization & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_enterprise_security_analysis_settings": close(res.github_enterprise_security_analysis_settings & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_issue": close(res.github_issue & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_issue_label": close(res.github_issue_label & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_issue_labels": close(res.github_issue_labels & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_membership": close(res.github_membership & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_organization_block": close(res.github_organization_block & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_organization_custom_properties": close(res.github_organization_custom_properties & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_organization_custom_role": close(res.github_organization_custom_role & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_organization_project": close(res.github_organization_project & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_organization_repository_role": close(res.github_organization_repository_role & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_organization_role": close(res.github_organization_role & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_organization_role_team_assignment": close(res.github_organization_role_team_assignment & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_organization_role_team": close(res.github_organization_role_team & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_organization_role_user": close(res.github_organization_role_user & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_organization_ruleset": close(res.github_organization_ruleset & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_organization_security_manager": close(res.github_organization_security_manager & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_organization_settings": close(res.github_organization_settings & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_organization_webhook": close(res.github_organization_webhook & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_project_card": close(res.github_project_card & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_project_column": close(res.github_project_column & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_release": close(res.github_release & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_autolink_reference": close(res.github_repository_autolink_reference & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_collaborator": close(res.github_repository_collaborator & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_collaborators": close(res.github_repository_collaborators & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_custom_property": close(res.github_repository_custom_property & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_dependabot_security_updates": close(res.github_repository_dependabot_security_updates & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_deploy_key": close(res.github_repository_deploy_key & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_deployment_branch_policy": close(res.github_repository_deployment_branch_policy & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_environment_deployment_policy": close(res.github_repository_environment_deployment_policy & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_environment": close(res.github_repository_environment & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_file": close(res.github_repository_file & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository": close(res.github_repository & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_milestone": close(res.github_repository_milestone & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_pages": close(res.github_repository_pages & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_project": close(res.github_repository_project & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_pull_request": close(res.github_repository_pull_request & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_ruleset": close(res.github_repository_ruleset & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_tag_protection": close(res.github_repository_tag_protection & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_topics": close(res.github_repository_topics & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_vulnerability_alerts": close(res.github_repository_vulnerability_alerts & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_repository_webhook": close(res.github_repository_webhook & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_team": close(res.github_team & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_team_members": close(res.github_team_members & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_team_membership": close(res.github_team_membership & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_team_repository": close(res.github_team_repository & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_team_settings": close(res.github_team_settings & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_team_sync_group_mapping": close(res.github_team_sync_group_mapping & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_user_gpg_key": close(res.github_user_gpg_key & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_user_invitation_accepter": close(res.github_user_invitation_accepter & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_user_ssh_key": close(res.github_user_ssh_key & cuetf.MetaArgs)
+	_#res: "\(#githubPrefix)_workflow_repository_permissions": close(res.github_workflow_repository_permissions & cuetf.MetaArgs)
 
 }

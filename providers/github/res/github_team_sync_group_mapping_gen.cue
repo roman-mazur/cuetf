@@ -1,6 +1,6 @@
 package res
 
-#github_team_sync_group_mapping: {
+github_team_sync_group_mapping: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_team_sync_group_mapping")
 	close({

@@ -1,6 +1,6 @@
 package res
 
-#github_repository_custom_property: {
+github_repository_custom_property: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository_custom_property")
 	close({
