@@ -7,6 +7,7 @@ tool cuelang.org/go/cmd/cue
 require (
 	cuelang.org/go v0.17.0
 	github.com/hashicorp/hcl/v2 v2.24.0
+	github.com/rogpeppe/go-internal v1.15.0
 )
 
 require (
@@ -24,7 +25,6 @@ require (
 	github.com/opencontainers/image-spec v1.1.1 // indirect
 	github.com/pelletier/go-toml/v2 v2.3.1 // indirect
 	github.com/protocolbuffers/txtpbfmt v0.0.0-20260420112717-c39628bde8b5 // indirect
-	github.com/rogpeppe/go-internal v1.15.0 // indirect
 	github.com/spf13/cobra v1.10.2 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/tetratelabs/wazero v1.12.0 // indirect

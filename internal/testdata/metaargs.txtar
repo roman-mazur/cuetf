@@ -1,0 +1,52 @@
+# Because this example uses the github.com/roman-mazur/cuetf@v0 module
+env HOME=$WORK/_home
+
+# This should fail because the lifecycle.prevent_destroy value has a type error
+! exec cue export . -f -o input.tf.json
+
+-- cue.mod/module.cue --
+module: "mod.example"
+language: {
+	version: "v0.17.0"
+}
+deps: {
+	"github.com/roman-mazur/cuetf/providers/github@v0": {
+		v:       "v0.2607.1"
+		default: true
+	}
+}
+-- example.cue --
+package example
+
+import gh "github.com/roman-mazur/cuetf/providers/github"
+
+gh.#Terraform
+
+resource: github_repository: cue: {
+	name: "test"
+	lifecycle: prevent_destroy: "rubbish"
+}
+-- input.tf.json --
+{
+    "terraform": {
+        "required_providers": {
+            "github": {
+                "source": "integrations/github",
+                "version": "6.8.3"
+            }
+        }
+    },
+    "provider": {
+        "github": {}
+    },
+    "resource": {
+        "github_repository": {
+            "cue": {
+                "name": "test",
+                "lifecycle": {
+                    "prevent_destroy": "rubbish"
+                }
+            }
+        }
+    }
+}
