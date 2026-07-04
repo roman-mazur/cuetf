@@ -106,6 +106,12 @@ func TestProviders(t *testing.T) {
 
 func testProvider(t *testing.T, provider string, names []string) {
 	basePath := runGen(t, provider, names)
+	entries, err := os.ReadDir(filepath.Join(basePath, provider))
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Log("provider dir:", entries)
+
 	workDir := filepath.Join(basePath, provider)
 	injectSamples(t, provider, workDir)
 	RunCUE(t, workDir, "vet", "-c")
@@ -118,7 +124,7 @@ func runGen(t *testing.T, provider string, names []string) string {
 	initTestModule(t, moduleDir, provider)
 
 	dst := filepath.Join(moduleDir, "providers")
-	filter := fmt.Sprintf("^(%s)$", strings.Join(names, "|"))
+	filter := fmt.Sprintf("^(%s)$", strings.Join(append(names, gen.ProviderSchemaRef), "|"))
 	g := gen.NewGenerator(t.Logf)
 	err := g.Generate(&gen.Config{
 		SchemaPath:        filepath.Join("../../providers", provider, "internal/schema/schema.json"),

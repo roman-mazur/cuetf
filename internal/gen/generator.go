@@ -21,6 +21,8 @@ import (
 	"rmazur.io/cuetf/internal/clog"
 )
 
+const ProviderSchemaRef = "provider"
+
 type Config struct {
 	SchemaPath      string
 	OutputPath      string
@@ -102,7 +104,7 @@ func (g *Generator) generateDefs(cfg *Config, data providerSchema, providerPath 
 	var wg sync.WaitGroup
 
 	wg.Go(func() {
-		processSchema(cfg, g.lg.LogPart(clog.PartProvider), "provider", data.Provider, providerPath, "1", modulePath)
+		processSchema(cfg, g.lg.LogPart(clog.PartProvider), ProviderSchemaRef, data.Provider, providerPath, "1", modulePath)
 		if cfg.Version != "" {
 			providerName := filepath.Base(providerPath)
 			createFile(
@@ -170,13 +172,15 @@ import "github.com/roman-mazur/cuetf"
 
 	_#profiderDef: {
 		alias?: string
-		#provider
+		_#providerSchema
 	}
 	provider: (prefix): *_#profiderDef | [_#profiderDef, ..._#profiderDef]
 
 	resource?: [type=providerName]: [name=string]: _#res[type]
 	data?: [type=providerName]: [name=string]:     _#ds[type]
 }
+
+_#providerSchema: provider
 `
 
 	var code bytes.Buffer
@@ -202,7 +206,10 @@ import "github.com/roman-mazur/cuetf"
 func wrapWithMappingHeader(pkgName, typ, content string) string {
 	const code = `package %s
 
-import "github.com/roman-mazur/cuetf/providers/%s/%s"
+import (
+	"github.com/roman-mazur/cuetf"
+	"github.com/roman-mazur/cuetf/providers/%s/%s"
+)
 
 #Terraform: {
 	#%sPrefix: string
@@ -216,7 +223,7 @@ func mapping(prefix string, typ string, provider string, defs []string) string {
 	var res bytes.Buffer
 	for _, d := range defs {
 		prefixDef := fmt.Sprintf(`"\(#%sPrefix)_%s"`, provider, strings.TrimPrefix(d, provider+"_"))
-		_, _ = fmt.Fprintf(&res, "\t%s: %s: %s.#%s\n", prefix, prefixDef, typ, d)
+		_, _ = fmt.Fprintf(&res, "\t%s: %s: close(%s.%s & cuetf.MetaArgs)\n", prefix, prefixDef, typ, d)
 	}
 	return res.String()
 }
@@ -358,7 +365,7 @@ mv "$def_name"-transform.cue "$tmp_dir"
 mkdir "$tmp_dir/$pkg_name"
 
 (cd "$tmp_dir" && cue import -p "$tmp_pkg_name" -f && cue export -e jsonSchema > jsonschema.json) && \
-	(cd "$tmp_dir" && cue import -p "$pkg_name" -f -l "#${def_name}:" -o "${pkg_name}/${def_name}_gen.cue" jsonschema: jsonschema.json) && \
+	(cd "$tmp_dir" && cue import -p "$pkg_name" -f -l "${def_name}:" -o "${pkg_name}/${def_name}_gen.cue" jsonschema: jsonschema.json) && \
 	mv ${tmp_dir}/${pkg_name}/${def_name}_gen.cue .
 
 rm -rf "$tmp_dir"
