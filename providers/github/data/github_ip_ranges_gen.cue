@@ -1,6 +1,6 @@
 package data
 
-#github_ip_ranges: {
+github_ip_ranges: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/github_ip_ranges")
 	close({

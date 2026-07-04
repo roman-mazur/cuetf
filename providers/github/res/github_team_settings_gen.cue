@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#github_team_settings: {
+github_team_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_team_settings")
 	close({

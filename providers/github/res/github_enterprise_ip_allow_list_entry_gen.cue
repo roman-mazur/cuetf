@@ -1,6 +1,6 @@
 package res
 
-#github_enterprise_ip_allow_list_entry: {
+github_enterprise_ip_allow_list_entry: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_enterprise_ip_allow_list_entry")
 	close({

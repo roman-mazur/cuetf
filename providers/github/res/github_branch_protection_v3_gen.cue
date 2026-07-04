@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#github_branch_protection_v3: {
+github_branch_protection_v3: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_branch_protection_v3")
 	close({

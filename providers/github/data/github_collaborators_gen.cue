@@ -1,6 +1,6 @@
 package data
 
-#github_collaborators: {
+github_collaborators: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/github_collaborators")
 	close({

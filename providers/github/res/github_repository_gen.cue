@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#github_repository: {
+github_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_repository")
 	close({

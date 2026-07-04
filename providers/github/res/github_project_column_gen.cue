@@ -1,6 +1,6 @@
 package res
 
-#github_project_column: {
+github_project_column: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_project_column")
 	close({
