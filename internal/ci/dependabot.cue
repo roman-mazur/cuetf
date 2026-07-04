@@ -54,7 +54,6 @@ workflows: (#dbot): {
 	}
 
 	jobs: "tf-provider-label": {
-		#depLabels: ["dependencies", "terraform"]
 		"if": "${{ github.event.pull_request.user.login == '\(#dbot)[bot]' }}"
 		steps: [
 			{
@@ -65,6 +64,7 @@ workflows: (#dbot): {
 			},
 			{
 				name: "label"
+				"if": "${{ steps.metadata.outputs.package-ecosystem == 'terraform' }}"
 				env: GH_TOKEN: "${{ secrets.DEPENDABOT_GITHUB }}"
 				run: """
 					export dep_name="${{ steps.metadata.outputs.dependency-names }}"

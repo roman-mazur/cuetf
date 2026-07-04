@@ -17,6 +17,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: label
+        if: ${{ steps.metadata.outputs.package-ecosystem == 'terraform' }}
         env:
           GH_TOKEN: ${{ secrets.DEPENDABOT_GITHUB }}
         run: |-
