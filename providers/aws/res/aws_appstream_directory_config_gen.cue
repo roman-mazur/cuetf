@@ -8,16 +8,16 @@ import "list"
 	close({
 		certificate_based_auth_properties?: matchN(1, [#certificate_based_auth_properties, list.MaxItems(1) & [...#certificate_based_auth_properties]])
 		service_account_credentials!: matchN(1, [#service_account_credentials, list.MaxItems(1) & [_, ...] & [...#service_account_credentials]])
-		created_time?:   string
-		directory_name!: string
-		id?:             string
-		organizational_unit_distinguished_names!: [...string]
+		created_time?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:         string
+		directory_name!: string
+		id?:             string
+		organizational_unit_distinguished_names!: [...string]
 	})
 
 	#certificate_based_auth_properties: close({

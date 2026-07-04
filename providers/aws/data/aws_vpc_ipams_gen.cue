@@ -6,6 +6,12 @@ package data
 	close({
 		filter?: matchN(1, [#filter, [...#filter]])
 		ipam_ids?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		ipams?: [...close({
 			arn?:                                       string
 			default_resource_discovery_association_id?: string
@@ -27,12 +33,6 @@ package data
 			state_message?:                        string
 			tier?:                                 string
 		})]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 	})
 
 	#filter: close({

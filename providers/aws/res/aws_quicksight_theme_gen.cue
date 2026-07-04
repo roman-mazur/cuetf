@@ -8,21 +8,21 @@ import "list"
 	close({
 		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
 		permissions?: matchN(1, [#permissions, list.MaxItems(64) & [...#permissions]])
-		timeouts?:          #timeouts
-		arn?:               string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
 		aws_account_id?:    string
 		base_theme_id!:     string
 		created_time?:      string
 		id?:                string
 		last_updated_time?: string
 		name!:              string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		status?: string
+		status?:            string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		theme_id!:            string

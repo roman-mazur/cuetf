@@ -6,18 +6,18 @@ package res
 	close({
 		timeouts?:               #timeouts
 		client_vpn_endpoint_id!: string
-		description?:            string
-		destination_cidr_block!: string
-		id?:                     string
-		origin?:                 string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:               string
-		target_vpc_subnet_id!: string
-		type?:                 string
+		region?:                 string
+		description?:            string
+		destination_cidr_block!: string
+		id?:                     string
+		origin?:                 string
+		target_vpc_subnet_id!:   string
+		type?:                   string
 	})
 
 	#timeouts: close({

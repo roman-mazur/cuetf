@@ -6,6 +6,12 @@ package res
 	close({
 		timeouts?:          #timeouts
 		allocated_storage?: number
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		availability_zones?: [...string]
 		db_cluster_identifier!:          string
 		db_cluster_snapshot_arn?:        string
@@ -16,12 +22,6 @@ package res
 		kms_key_id?:                     string
 		license_model?:                  string
 		port?:                           number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		shared_accounts?: [...string]
 		snapshot_type?:                  string
 		source_db_cluster_snapshot_arn?: string

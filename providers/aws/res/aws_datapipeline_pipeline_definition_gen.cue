@@ -7,14 +7,14 @@ package res
 		parameter_object?: matchN(1, [#parameter_object, [...#parameter_object]])
 		parameter_value?: matchN(1, [#parameter_value, [...#parameter_value]])
 		pipeline_object!: matchN(1, [#pipeline_object, [_, ...] & [...#pipeline_object]])
-		id?:          string
-		pipeline_id!: string
+		id?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:      string
+		pipeline_id!: string
 	})
 
 	#parameter_object: close({

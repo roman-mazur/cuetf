@@ -8,7 +8,13 @@ import "list"
 	close({
 		options?: matchN(1, [#options, list.MaxItems(1) & [...#options]])
 		validation_option?: matchN(1, [#validation_option, [...#validation_option]])
-		arn?:                       string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                    string
 		certificate_authority_arn?: string
 		certificate_body?:          string
 		certificate_chain?:         string
@@ -28,13 +34,7 @@ import "list"
 		private_key?:            string
 		private_key_wo?:         string
 		private_key_wo_version?: number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
-		renewal_eligibility?: string
+		renewal_eligibility?:    string
 		renewal_summary?: [...close({
 			renewal_status?:        string
 			renewal_status_reason?: string

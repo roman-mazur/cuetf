@@ -7,14 +7,14 @@ package res
 		condition?: matchN(1, [#condition, [...#condition]])
 		principal?: matchN(1, [#principal, [...#principal]])
 		resource_data?: matchN(1, [#resource_data, [...#resource_data]])
-		last_modified?:   string
-		last_updated_by?: string
+		last_modified?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:          string
+		last_updated_by?: string
 	})
 
 	#condition: close({

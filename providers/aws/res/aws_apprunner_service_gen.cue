@@ -12,19 +12,19 @@ import "list"
 		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
 		observability_configuration?: matchN(1, [#observability_configuration, list.MaxItems(1) & [...#observability_configuration]])
 		source_configuration!: matchN(1, [#source_configuration, list.MaxItems(1) & [_, ...] & [...#source_configuration]])
-		arn?:                            string
-		auto_scaling_configuration_arn?: string
-		id?:                             string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:       string
-		service_id?:   string
-		service_name!: string
-		service_url?:  string
-		status?:       string
+		region?:                         string
+		auto_scaling_configuration_arn?: string
+		id?:                             string
+		service_id?:                     string
+		service_name!:                   string
+		service_url?:                    string
+		status?:                         string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

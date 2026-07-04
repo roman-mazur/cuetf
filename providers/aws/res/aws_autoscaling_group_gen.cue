@@ -18,6 +18,12 @@ import "list"
 		traffic_source?: matchN(1, [#traffic_source, [...#traffic_source]])
 		warm_pool?: matchN(1, [#warm_pool, list.MaxItems(1) & [...#warm_pool]])
 		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		availability_zones?: [...string]
 		capacity_rebalance?:      bool
 		context?:                 string
@@ -34,22 +40,16 @@ import "list"
 		ignore_failed_scaling_activities?: bool
 		launch_configuration?:             string
 		load_balancers?: [...string]
-		max_instance_lifetime?: number
-		max_size!:              number
-		metrics_granularity?:   string
-		min_elb_capacity?:      number
-		min_size!:              number
-		name?:                  string
-		name_prefix?:           string
-		placement_group?:       string
-		predicted_capacity?:    number
-		protect_from_scale_in?: bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                  string
+		max_instance_lifetime?:   number
+		max_size!:                number
+		metrics_granularity?:     string
+		min_elb_capacity?:        number
+		min_size!:                number
+		name?:                    string
+		name_prefix?:             string
+		placement_group?:         string
+		predicted_capacity?:      number
+		protect_from_scale_in?:   bool
 		service_linked_role_arn?: string
 		suspended_processes?: [...string]
 		target_group_arns?: [...string]

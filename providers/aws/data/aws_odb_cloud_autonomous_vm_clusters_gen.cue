@@ -4,8 +4,8 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_odb_cloud_autonomous_vm_clusters")
 	close({
-		// List of Cloud Autonomous VM Clusters. The list going to contain
-		// basic information about the cloud autonomous VM clusters.
+		// List of Cloud Autonomous VM Clusters. The list going to contain basic
+		// information about the cloud autonomous VM clusters.
 		cloud_autonomous_vm_clusters?: [...close({
 			arn?:                             string
 			cloud_exadata_infrastructure_id?: string

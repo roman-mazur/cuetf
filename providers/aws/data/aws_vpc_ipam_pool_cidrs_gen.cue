@@ -7,17 +7,17 @@ package data
 		filter?: matchN(1, [#filter, [...#filter]])
 		timeouts?: #timeouts
 		id?:       string
-		ipam_pool_cidrs?: [...close({
-			cidr?:  string
-			state?: string
-		})]
-		ipam_pool_id!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		ipam_pool_cidrs?: [...close({
+			cidr?:  string
+			state?: string
+		})]
+		ipam_pool_id!: string
 	})
 
 	#filter: close({

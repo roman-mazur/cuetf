@@ -13,8 +13,14 @@ import "list"
 		fulfillment_activity!: matchN(1, [#fulfillment_activity, list.MaxItems(1) & [_, ...] & [...#fulfillment_activity]])
 		rejection_statement?: matchN(1, [#rejection_statement, list.MaxItems(1) & [...#rejection_statement]])
 		slot?: matchN(1, [#slot, list.MaxItems(100) & [...#slot]])
-		timeouts?:                #timeouts
-		arn?:                     string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                  string
 		checksum?:                string
 		create_version?:          bool
 		created_date?:            string
@@ -23,12 +29,6 @@ import "list"
 		last_updated_date?:       string
 		name!:                    string
 		parent_intent_signature?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		sample_utterances?: [...string]
 		version?: string
 	})

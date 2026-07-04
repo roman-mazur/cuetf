@@ -11,6 +11,12 @@ import "list"
 		listener!: matchN(1, [#listener, [_, ...] & [...#listener]])
 		timeouts?: #timeouts
 		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		availability_zones?: [...string]
 		connection_draining?:         bool
 		connection_draining_timeout?: number
@@ -23,12 +29,6 @@ import "list"
 		internal?:    bool
 		name?:        string
 		name_prefix?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		security_groups?: [...string]
 		source_security_group?:    string
 		source_security_group_id?: string

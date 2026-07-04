@@ -9,20 +9,20 @@ import "list"
 		flexible_time_window!: matchN(1, [#flexible_time_window, list.MaxItems(1) & [_, ...] & [...#flexible_time_window]])
 		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
 		action_after_completion?: string
-		arn?:                     string
-		description?:             string
-		end_date?:                string
-		group_name?:              string
-		id?:                      string
-		kms_key_arn?:             string
-		name?:                    string
-		name_prefix?:             string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                       string
+		arn?:                          string
+		description?:                  string
+		end_date?:                     string
+		group_name?:                   string
+		id?:                           string
+		kms_key_arn?:                  string
+		name?:                         string
+		name_prefix?:                  string
 		schedule_expression!:          string
 		schedule_expression_timezone?: string
 		start_date?:                   string

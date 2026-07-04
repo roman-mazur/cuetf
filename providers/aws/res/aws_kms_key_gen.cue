@@ -4,8 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_kms_key")
 	close({
-		timeouts?:                           #timeouts
-		arn?:                                string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                             string
 		bypass_policy_lockout_safety_check?: bool
 		custom_key_store_id?:                string
 		customer_master_key_spec?:           string
@@ -18,13 +24,7 @@ package res
 		key_usage?:                          string
 		multi_region?:                       bool
 		policy?:                             string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                  string
-		rotation_period_in_days?: number
+		rotation_period_in_days?:            number
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		xks_key_id?: string

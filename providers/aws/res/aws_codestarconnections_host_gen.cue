@@ -8,18 +8,18 @@ import "list"
 	close({
 		timeouts?: #timeouts
 		vpc_configuration?: matchN(1, [#vpc_configuration, list.MaxItems(1) & [...#vpc_configuration]])
-		arn?:               string
-		id?:                string
-		name!:              string
-		provider_endpoint!: string
-		provider_type!:     string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		status?: string
+		region?:            string
+		id?:                string
+		name!:              string
+		provider_endpoint!: string
+		provider_type!:     string
+		status?:            string
 	})
 
 	#timeouts: close({

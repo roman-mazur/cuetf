@@ -17,7 +17,13 @@ import "list"
 		on_premises_instance_tag_filter?: matchN(1, [#on_premises_instance_tag_filter, [...#on_premises_instance_tag_filter]])
 		trigger_configuration?: matchN(1, [#trigger_configuration, [...#trigger_configuration]])
 		app_name!: string
-		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		arn?:    string
 		autoscaling_groups?: [...string]
 		compute_platform?:            string
 		deployment_config_name?:      string
@@ -25,13 +31,7 @@ import "list"
 		deployment_group_name!:       string
 		id?:                          string
 		outdated_instances_strategy?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:           string
-		service_role_arn!: string
+		service_role_arn!:            string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		termination_hook_enabled?: bool

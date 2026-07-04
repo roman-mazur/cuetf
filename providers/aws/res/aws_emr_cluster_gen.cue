@@ -15,6 +15,12 @@ import "list"
 		master_instance_fleet?: matchN(1, [#master_instance_fleet, list.MaxItems(1) & [...#master_instance_fleet]])
 		master_instance_group?: matchN(1, [#master_instance_group, list.MaxItems(1) & [...#master_instance_group]])
 		additional_info?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		applications?: [...string]
 		arn?:                               string
 		autoscaling_role?:                  string
@@ -35,12 +41,6 @@ import "list"
 			instance_role?:      string
 			placement_strategy?: string
 		})]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                 string
 		release_label!:          string
 		scale_down_behavior?:    string
 		security_configuration?: string

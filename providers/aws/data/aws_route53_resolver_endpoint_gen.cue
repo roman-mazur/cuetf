@@ -5,18 +5,18 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_route53_resolver_endpoint")
 	close({
 		filter?: matchN(1, [#filter, [...#filter]])
-		arn?:       string
-		direction?: string
-		id?:        string
-		ip_addresses?: [...string]
-		name?: string
-		protocols?: [...string]
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                             string
+		region?:    string
+		direction?: string
+		id?:        string
+		ip_addresses?: [...string]
+		name?: string
+		protocols?: [...string]
 		resolver_endpoint_id?:               string
 		resolver_endpoint_type?:             string
 		rni_enhanced_metrics_enabled?:       bool

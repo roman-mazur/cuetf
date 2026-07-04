@@ -8,18 +8,18 @@ import "list"
 	close({
 		dead_letter_config?: matchN(1, [#dead_letter_config, list.MaxItems(1) & [...#dead_letter_config]])
 		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
-		arn?:                string
-		description?:        string
-		event_source_name?:  string
-		id?:                 string
-		kms_key_identifier?: string
-		name!:               string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:             string
+		description?:        string
+		event_source_name?:  string
+		id?:                 string
+		kms_key_identifier?: string
+		name!:               string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

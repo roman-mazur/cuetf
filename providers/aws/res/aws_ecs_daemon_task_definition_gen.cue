@@ -6,19 +6,19 @@ package res
 	close({
 		container_definition?: matchN(1, [#container_definition, [...#container_definition]])
 		volume?: matchN(1, [#volume, [...#volume]])
-		arn?:                string
-		cpu?:                string
-		execution_role_arn?: string
-		family!:             string
-		memory?:             string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		revision?: number
-		status?:   string
+		region?:             string
+		cpu?:                string
+		execution_role_arn?: string
+		family!:             string
+		memory?:             string
+		revision?:           number
+		status?:             string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		task_role_arn?: string

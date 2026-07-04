@@ -11,7 +11,13 @@ import "list"
 		logging_configuration?: matchN(1, [#logging_configuration, list.MaxItems(1) & [...#logging_configuration]])
 		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
 		workflow?: matchN(1, [#workflow, [...#workflow]])
-		arn?:                              string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                           string
 		container_recipe_arn?:             string
 		date_created?:                     string
 		date_last_run?:                    string
@@ -26,13 +32,7 @@ import "list"
 		infrastructure_configuration_arn!: string
 		name!:                             string
 		platform?:                         string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		status?: string
+		status?:                           string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

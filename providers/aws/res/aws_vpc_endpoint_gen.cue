@@ -8,8 +8,14 @@ import "list"
 	close({
 		dns_options?: matchN(1, [#dns_options, list.MaxItems(1) & [...#dns_options]])
 		subnet_configuration?: matchN(1, [#subnet_configuration, [...#subnet_configuration]])
-		timeouts?:    #timeouts
-		arn?:         string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:      string
 		auto_accept?: bool
 		cidr_blocks?: [...string]
 		dns_entry?: [...close({
@@ -19,16 +25,10 @@ import "list"
 		id?:              string
 		ip_address_type?: string
 		network_interface_ids?: [...string]
-		owner_id?:            string
-		policy?:              string
-		prefix_list_id?:      string
-		private_dns_enabled?: bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                     string
+		owner_id?:                   string
+		policy?:                     string
+		prefix_list_id?:             string
+		private_dns_enabled?:        bool
 		requester_managed?:          bool
 		resource_configuration_arn?: string
 		route_table_ids?: [...string]

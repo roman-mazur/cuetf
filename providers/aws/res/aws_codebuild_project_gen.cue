@@ -19,9 +19,14 @@ import "list"
 		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
 		arn?: string
 
-		// Maximum number of additional automatic retries after a failed
-		// build. The default value is 0.
-		auto_retry_limit?:       number
+		// Maximum number of additional automatic retries after a failed build. The default value is 0.
+		auto_retry_limit?: number
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                 string
 		badge_enabled?:          bool
 		badge_url?:              string
 		build_timeout?:          number
@@ -33,15 +38,9 @@ import "list"
 		project_visibility?:     string
 		public_project_alias?:   string
 		queued_timeout?:         number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:               string
-		resource_access_role?: string
-		service_role!:         string
-		source_version?:       string
+		resource_access_role?:   string
+		service_role!:           string
+		source_version?:         string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

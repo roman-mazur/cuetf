@@ -7,8 +7,7 @@ package data
 		// The cloud exadata infrastructure ID. Mandatory field.
 		cloud_exadata_infrastructure_id!: string
 
-		// List of database servers associated with
-		// cloud_exadata_infrastructure_id.
+		// List of database servers associated with cloud_exadata_infrastructure_id.
 		db_servers?: [...close({
 			autonomous_virtual_machine_ids?: [...string]
 			autonomous_vm_cluster_ids?: [...string]

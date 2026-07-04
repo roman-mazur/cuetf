@@ -8,14 +8,14 @@ import "list"
 	close({
 		datasources?: matchN(1, [#datasources, list.MaxItems(1) & [...#datasources]])
 		auto_enable_organization_members!: string
-		detector_id!:                      string
-		id?:                               string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:      string
+		detector_id!: string
+		id?:          string
 	})
 
 	#datasources: close({

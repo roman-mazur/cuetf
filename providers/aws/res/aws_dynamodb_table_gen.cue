@@ -18,7 +18,13 @@ import "list"
 		timeouts?: #timeouts
 		ttl?: matchN(1, [#ttl, list.MaxItems(1) & [...#ttl]])
 		warm_throughput?: matchN(1, [#warm_throughput, list.MaxItems(1) & [...#warm_throughput]])
-		arn?:                         string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                      string
 		billing_mode?:                string
 		deletion_protection_enabled?: bool
 		hash_key?:                    string
@@ -26,22 +32,16 @@ import "list"
 		name!:                        string
 		range_key?:                   string
 		read_capacity?:               number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                   string
-		restore_backup_arn?:       string
-		restore_date_time?:        string
-		restore_source_name?:      string
-		restore_source_table_arn?: string
-		restore_to_latest_time?:   bool
-		stream_arn?:               string
-		stream_enabled?:           bool
-		stream_label?:             string
-		stream_view_type?:         string
-		table_class?:              string
+		restore_backup_arn?:          string
+		restore_date_time?:           string
+		restore_source_name?:         string
+		restore_source_table_arn?:    string
+		restore_to_latest_time?:      bool
+		stream_arn?:                  string
+		stream_enabled?:              bool
+		stream_label?:                string
+		stream_view_type?:            string
+		table_class?:                 string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		write_capacity?: number

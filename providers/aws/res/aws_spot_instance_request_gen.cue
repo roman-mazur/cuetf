@@ -19,8 +19,14 @@ import "list"
 		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
 		root_block_device?: matchN(1, [#root_block_device, list.MaxItems(1) & [...#root_block_device]])
 		secondary_network_interface?: matchN(1, [#secondary_network_interface, [...#secondary_network_interface]])
-		timeouts?:                             #timeouts
-		ami?:                                  string
+		timeouts?: #timeouts
+		ami?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                               string
 		arn?:                                  string
 		associate_public_ip_address?:          bool
 		availability_zone?:                    string
@@ -58,12 +64,6 @@ import "list"
 		private_ip?:                   string
 		public_dns?:                   string
 		public_ip?:                    string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		secondary_private_ips?: [...string]
 		security_groups?: [...string]
 		source_dest_check?:  bool

@@ -12,15 +12,15 @@ import "list"
 		suppression_options?: matchN(1, [#suppression_options, list.MaxItems(1) & [...#suppression_options]])
 		tracking_options?: matchN(1, [#tracking_options, list.MaxItems(1) & [...#tracking_options]])
 		vdm_options?: matchN(1, [#vdm_options, list.MaxItems(1) & [...#vdm_options]])
-		arn?:                    string
-		configuration_set_name!: string
-		id?:                     string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:                 string
+		configuration_set_name!: string
+		id?:                     string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

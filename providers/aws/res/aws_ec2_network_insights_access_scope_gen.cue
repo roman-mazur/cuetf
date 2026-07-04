@@ -7,13 +7,13 @@ package res
 		exclude_paths?: matchN(1, [#exclude_paths, [...#exclude_paths]])
 		match_paths?: matchN(1, [#match_paths, [...#match_paths]])
 		arn?: string
-		id?:  string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		id?:     string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

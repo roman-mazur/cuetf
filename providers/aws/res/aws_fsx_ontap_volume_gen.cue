@@ -9,23 +9,23 @@ import "list"
 		aggregate_configuration?: matchN(1, [#aggregate_configuration, list.MaxItems(1) & [...#aggregate_configuration]])
 		snaplock_configuration?: matchN(1, [#snaplock_configuration, list.MaxItems(1) & [...#snaplock_configuration]])
 		tiering_policy?: matchN(1, [#tiering_policy, list.MaxItems(1) & [...#tiering_policy]])
-		timeouts?:                             #timeouts
-		arn?:                                  string
-		bypass_snaplock_enterprise_retention?: bool
-		copy_tags_to_backups?:                 bool
-		file_system_id?:                       string
-		final_backup_tags?: [string]: string
-		flexcache_endpoint_type?: string
-		id?:                      string
-		junction_path?:           string
-		name!:                    string
-		ontap_volume_type?:       string
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                     string
+		region?:                               string
+		bypass_snaplock_enterprise_retention?: bool
+		copy_tags_to_backups?:                 bool
+		file_system_id?:                       string
+		final_backup_tags?: [string]: string
+		flexcache_endpoint_type?:    string
+		id?:                         string
+		junction_path?:              string
+		name!:                       string
+		ontap_volume_type?:          string
 		security_style?:             string
 		size_in_bytes?:              string
 		size_in_megabytes?:          number

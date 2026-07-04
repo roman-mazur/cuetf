@@ -8,7 +8,13 @@ import "list"
 	close({
 		response_parameters?: matchN(1, [#response_parameters, [...#response_parameters]])
 		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
-		api_id!:                                    string
+		api_id!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                                    string
 		connection_id?:                             string
 		connection_type?:                           string
 		content_handling_strategy?:                 string
@@ -22,12 +28,6 @@ import "list"
 		integration_uri?:                           string
 		passthrough_behavior?:                      string
 		payload_format_version?:                    string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		request_parameters?: [string]: string
 		request_templates?: [string]:  string
 		template_selection_expression?: string

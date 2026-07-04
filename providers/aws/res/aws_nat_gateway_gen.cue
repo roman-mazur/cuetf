@@ -5,8 +5,14 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_nat_gateway")
 	close({
 		availability_zone_address?: matchN(1, [#availability_zone_address, [...#availability_zone_address]])
-		timeouts?:             #timeouts
-		allocation_id?:        string
+		timeouts?:      #timeouts
+		allocation_id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:               string
 		association_id?:       string
 		auto_provision_zones?: string
 		auto_scaling_ips?:     string
@@ -16,12 +22,6 @@ package res
 		network_interface_id?: string
 		private_ip?:           string
 		public_ip?:            string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		regional_nat_gateway_address?: [...close({
 			allocation_id?:        string
 			association_id?:       string

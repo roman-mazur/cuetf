@@ -20,7 +20,13 @@ import "list"
 		timeouts?: #timeouts
 		volume_configuration?: matchN(1, [#volume_configuration, list.MaxItems(1) & [...#volume_configuration]])
 		vpc_lattice_configurations?: matchN(1, [#vpc_lattice_configurations, [...#vpc_lattice_configurations]])
-		arn?:                                string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                             string
 		availability_zone_rebalancing?:      string
 		cluster?:                            string
 		deployment_maximum_percent?:         number
@@ -37,14 +43,8 @@ import "list"
 		name!:                               string
 		platform_version?:                   string
 		propagate_tags?:                     string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
-		scheduling_strategy?: string
-		sigint_rollback?:     bool
+		scheduling_strategy?:                string
+		sigint_rollback?:                    bool
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		task_definition?: string

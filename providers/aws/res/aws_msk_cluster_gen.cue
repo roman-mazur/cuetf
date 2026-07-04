@@ -13,8 +13,14 @@ import "list"
 		logging_info?: matchN(1, [#logging_info, list.MaxItems(1) & [...#logging_info]])
 		open_monitoring?: matchN(1, [#open_monitoring, list.MaxItems(1) & [...#open_monitoring]])
 		rebalancing?: matchN(1, [#rebalancing, list.MaxItems(1) & [...#rebalancing]])
-		timeouts?:                                      #timeouts
-		arn?:                                           string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                                        string
 		bootstrap_brokers?:                             string
 		bootstrap_brokers_public_sasl_iam?:             string
 		bootstrap_brokers_public_sasl_scram?:           string
@@ -32,13 +38,7 @@ import "list"
 		id?:                                            string
 		kafka_version!:                                 string
 		number_of_broker_nodes!:                        number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:       string
-		storage_mode?: string
+		storage_mode?:                                  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		zookeeper_connect_string?:     string

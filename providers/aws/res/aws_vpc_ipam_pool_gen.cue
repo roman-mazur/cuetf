@@ -7,8 +7,14 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_ipam_pool")
 	close({
 		source_resource?: matchN(1, [#source_resource, list.MaxItems(1) & [...#source_resource]])
-		timeouts?:                          #timeouts
-		address_family!:                    string
+		timeouts?:       #timeouts
+		address_family!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                            string
 		allocation_default_netmask_length?: number
 		allocation_max_netmask_length?:     number
 		allocation_min_netmask_length?:     number
@@ -25,14 +31,8 @@ import "list"
 		pool_depth?:            number
 		public_ip_source?:      string
 		publicly_advertisable?: bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
-		source_ipam_pool_id?: string
-		state?:               string
+		source_ipam_pool_id?:   string
+		state?:                 string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

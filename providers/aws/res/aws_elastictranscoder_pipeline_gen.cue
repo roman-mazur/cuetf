@@ -11,19 +11,19 @@ import "list"
 		notifications?: matchN(1, [#notifications, list.MaxItems(1) & [...#notifications]])
 		thumbnail_config?: matchN(1, [#thumbnail_config, list.MaxItems(1) & [...#thumbnail_config]])
 		thumbnail_config_permissions?: matchN(1, [#thumbnail_config_permissions, [...#thumbnail_config_permissions]])
-		arn?:             string
-		aws_kms_key_arn?: string
-		id?:              string
-		input_bucket!:    string
-		name?:            string
-		output_bucket?:   string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		role!:   string
+		region?:          string
+		aws_kms_key_arn?: string
+		id?:              string
+		input_bucket!:    string
+		name?:            string
+		output_bucket?:   string
+		role!:            string
 	})
 
 	#content_config: close({

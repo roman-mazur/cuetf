@@ -9,6 +9,12 @@ import "list"
 		create_database_default_permissions?: matchN(1, [#create_database_default_permissions, list.MaxItems(3) & [...#create_database_default_permissions]])
 		create_table_default_permissions?: matchN(1, [#create_table_default_permissions, list.MaxItems(3) & [...#create_table_default_permissions]])
 		admins?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                                string
 		allow_external_data_filtering?:         bool
 		allow_full_table_external_data_access?: bool
 		authorized_session_tag_value_list?: [...string]
@@ -17,12 +23,6 @@ import "list"
 		id?: string
 		parameters?: [string]: string
 		read_only_admins?: [...string]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		trusted_resource_owners?: [...string]
 	})
 

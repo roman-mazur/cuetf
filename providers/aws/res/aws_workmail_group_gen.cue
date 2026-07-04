@@ -22,8 +22,7 @@ package res
 		// Name of the group.
 		name!: string
 
-		// Identifier of the WorkMail organization where the group is
-		// managed.
+		// Identifier of the WorkMail organization where the group is managed.
 		organization_id!: string
 
 		// Region where this resource will be

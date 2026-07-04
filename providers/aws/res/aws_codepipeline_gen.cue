@@ -10,18 +10,18 @@ import "list"
 		stage!: matchN(1, [#stage, [_, _, ...] & [...#stage]])
 		trigger?: matchN(1, [#trigger, list.MaxItems(50) & [...#trigger]])
 		variable?: matchN(1, [#variable, [...#variable]])
-		arn?:            string
-		execution_mode?: string
-		id?:             string
-		name!:           string
-		pipeline_type?:  string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		role_arn!: string
+		region?:         string
+		execution_mode?: string
+		id?:             string
+		name!:           string
+		pipeline_type?:  string
+		role_arn!:       string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		trigger_all?: [...close({

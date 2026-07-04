@@ -10,16 +10,16 @@ import "list"
 		step_scaling_policy_configuration?: matchN(1, [#step_scaling_policy_configuration, list.MaxItems(1) & [...#step_scaling_policy_configuration]])
 		target_tracking_scaling_policy_configuration?: matchN(1, [#target_tracking_scaling_policy_configuration, list.MaxItems(1) & [...#target_tracking_scaling_policy_configuration]])
 		alarm_arns?: [...string]
-		arn?:         string
-		id?:          string
-		name!:        string
-		policy_type?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:             string
+		arn?:                string
+		id?:                 string
+		name!:               string
+		policy_type?:        string
 		resource_id!:        string
 		scalable_dimension!: string
 		service_namespace!:  string

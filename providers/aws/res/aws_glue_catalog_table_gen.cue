@@ -12,7 +12,13 @@ import "list"
 		storage_descriptor?: matchN(1, [#storage_descriptor, list.MaxItems(1) & [...#storage_descriptor]])
 		target_table?: matchN(1, [#target_table, list.MaxItems(1) & [...#target_table]])
 		view_definition?: matchN(1, [#view_definition, list.MaxItems(1) & [...#view_definition]])
-		arn?:           string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
 		catalog_id?:    string
 		database_name!: string
 		description?:   string
@@ -20,12 +26,6 @@ import "list"
 		name!:          string
 		owner?:         string
 		parameters?: [string]: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:             string
 		retention?:          number
 		table_type?:         string
 		view_expanded_text?: string

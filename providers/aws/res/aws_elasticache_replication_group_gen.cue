@@ -8,8 +8,14 @@ import "list"
 	close({
 		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, list.MaxItems(2) & [...#log_delivery_configuration]])
 		node_group_configuration?: matchN(1, [#node_group_configuration, [...#node_group_configuration]])
-		timeouts?:                       #timeouts
-		apply_immediately?:              bool
+		timeouts?:          #timeouts
+		apply_immediately?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                         string
 		arn?:                            string
 		at_rest_encryption_enabled?:     string
 		auth_token?:                     string
@@ -43,14 +49,8 @@ import "list"
 		preferred_cache_cluster_azs?: [...string]
 		primary_endpoint_address?: string
 		reader_endpoint_address?:  string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                  string
-		replicas_per_node_group?: number
-		replication_group_id!:    string
+		replicas_per_node_group?:  number
+		replication_group_id!:     string
 		security_group_ids?: [...string]
 		security_group_names?: [...string]
 		snapshot_arns?: [...string]

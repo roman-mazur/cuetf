@@ -10,8 +10,14 @@ import "list"
 		log_configuration?: matchN(1, [#log_configuration, list.MaxItems(1) & [...#log_configuration]])
 		source_parameters?: matchN(1, [#source_parameters, list.MaxItems(1) & [...#source_parameters]])
 		target_parameters?: matchN(1, [#target_parameters, list.MaxItems(1) & [...#target_parameters]])
-		timeouts?:           #timeouts
-		arn?:                string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
 		description?:        string
 		desired_state?:      string
 		enrichment?:         string
@@ -19,14 +25,8 @@ import "list"
 		kms_key_identifier?: string
 		name?:               string
 		name_prefix?:        string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		role_arn!: string
-		source!:   string
+		role_arn!:           string
+		source!:             string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		target!: string

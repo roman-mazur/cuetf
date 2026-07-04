@@ -9,8 +9,14 @@ import "list"
 		abort_statement!: matchN(1, [#abort_statement, list.MaxItems(1) & [_, ...] & [...#abort_statement]])
 		clarification_prompt?: matchN(1, [#clarification_prompt, list.MaxItems(1) & [...#clarification_prompt]])
 		intent!: matchN(1, [#intent, list.MaxItems(250) & [_, ...] & [...#intent]])
-		timeouts?:                        #timeouts
-		arn?:                             string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                          string
 		checksum?:                        string
 		child_directed!:                  bool
 		create_version?:                  bool
@@ -26,15 +32,9 @@ import "list"
 		name!:                            string
 		nlu_intent_confidence_threshold?: number
 		process_behavior?:                string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		status?:   string
-		version?:  string
-		voice_id?: string
+		status?:                          string
+		version?:                         string
+		voice_id?:                        string
 	})
 
 	#abort_statement: close({

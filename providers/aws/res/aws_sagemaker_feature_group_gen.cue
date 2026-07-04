@@ -10,19 +10,19 @@ import "list"
 		offline_store_config?: matchN(1, [#offline_store_config, list.MaxItems(1) & [...#offline_store_config]])
 		online_store_config?: matchN(1, [#online_store_config, list.MaxItems(1) & [...#online_store_config]])
 		throughput_config?: matchN(1, [#throughput_config, list.MaxItems(1) & [...#throughput_config]])
-		arn?:                            string
-		description?:                    string
-		event_time_feature_name!:        string
-		feature_group_name!:             string
-		id?:                             string
-		record_identifier_feature_name!: string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		role_arn!: string
+		region?:                         string
+		description?:                    string
+		event_time_feature_name!:        string
+		feature_group_name!:             string
+		id?:                             string
+		record_identifier_feature_name!: string
+		role_arn!:                       string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

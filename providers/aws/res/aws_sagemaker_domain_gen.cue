@@ -10,20 +10,20 @@ import "list"
 		default_user_settings!: matchN(1, [#default_user_settings, list.MaxItems(1) & [_, ...] & [...#default_user_settings]])
 		domain_settings?: matchN(1, [#domain_settings, list.MaxItems(1) & [...#domain_settings]])
 		retention_policy?: matchN(1, [#retention_policy, list.MaxItems(1) & [...#retention_policy]])
-		app_network_access_type?:       string
-		app_security_group_management?: string
-		arn?:                           string
-		auth_mode!:                     string
-		domain_name!:                   string
-		home_efs_file_system_id?:       string
-		id?:                            string
-		kms_key_id?:                    string
+		app_network_access_type?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                                         string
+		app_security_group_management?:                  string
+		arn?:                                            string
+		auth_mode!:                                      string
+		domain_name!:                                    string
+		home_efs_file_system_id?:                        string
+		id?:                                             string
+		kms_key_id?:                                     string
 		security_group_id_for_domain_boundary?:          string
 		single_sign_on_application_arn?:                 string
 		single_sign_on_managed_application_instance_id?: string

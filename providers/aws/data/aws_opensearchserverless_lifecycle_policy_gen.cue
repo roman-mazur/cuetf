@@ -7,8 +7,8 @@ package data
 		// The date the lifecycle policy was created.
 		created_date?: string
 
-		// Description of the policy. Typically used to store information
-		// about the permissions defined in the policy.
+		// Description of the policy. Typically used to store information about the
+		// permissions defined in the policy.
 		description?: string
 		id?:          string
 

@@ -9,8 +9,14 @@ import "list"
 		launch_specification?: matchN(1, [#launch_specification, [...#launch_specification]])
 		launch_template_config?: matchN(1, [#launch_template_config, [...#launch_template_config]])
 		spot_maintenance_strategies?: matchN(1, [#spot_maintenance_strategies, list.MaxItems(1) & [...#spot_maintenance_strategies]])
-		timeouts?:                           #timeouts
-		allocation_strategy?:                string
+		timeouts?:            #timeouts
+		allocation_strategy?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                             string
 		client_token?:                       string
 		context?:                            string
 		excess_capacity_termination_policy?: string
@@ -23,15 +29,9 @@ import "list"
 		on_demand_allocation_strategy?: string
 		on_demand_max_total_price?:     string
 		on_demand_target_capacity?:     number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                      string
-		replace_unhealthy_instances?: bool
-		spot_price?:                  string
-		spot_request_state?:          string
+		replace_unhealthy_instances?:   bool
+		spot_price?:                    string
+		spot_request_state?:            string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		target_capacity!:           number

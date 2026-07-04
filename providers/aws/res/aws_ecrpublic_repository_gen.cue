@@ -7,16 +7,16 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ecrpublic_repository")
 	close({
 		catalog_data?: matchN(1, [#catalog_data, list.MaxItems(1) & [...#catalog_data]])
-		timeouts?:      #timeouts
-		arn?:           string
-		force_destroy?: bool
-		id?:            string
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:          string
+		force_destroy?:   bool
+		id?:              string
 		registry_id?:     string
 		repository_name!: string
 		repository_uri?:  string

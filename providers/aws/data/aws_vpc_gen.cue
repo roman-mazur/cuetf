@@ -5,8 +5,14 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_vpc")
 	close({
 		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?:   #timeouts
-		arn?:        string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:     string
 		cidr_block?: string
 		cidr_block_associations?: [...close({
 			association_id?: string
@@ -24,13 +30,7 @@ package data
 		ipv6_cidr_block?:                      string
 		main_route_table_id?:                  string
 		owner_id?:                             string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		state?:  string
+		state?:                                string
 		tags?: [string]: string
 	})
 

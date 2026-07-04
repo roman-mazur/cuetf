@@ -8,22 +8,22 @@ import "list"
 	close({
 		execution_controls?: matchN(1, [#execution_controls, list.MaxItems(1) & [...#execution_controls]])
 		parameter?: matchN(1, [#parameter, list.MaxItems(25) & [...#parameter]])
-		arn?:                        string
-		automatic?:                  bool
-		config_rule_name!:           string
-		id?:                         string
-		maximum_automatic_attempts?: number
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                string
-		resource_type?:         string
-		retry_attempt_seconds?: number
-		target_id!:             string
-		target_type!:           string
-		target_version?:        string
+		region?:                     string
+		automatic?:                  bool
+		config_rule_name!:           string
+		id?:                         string
+		maximum_automatic_attempts?: number
+		resource_type?:              string
+		retry_attempt_seconds?:      number
+		target_id!:                  string
+		target_type!:                string
+		target_version?:             string
 	})
 
 	#execution_controls: close({

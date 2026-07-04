@@ -6,14 +6,13 @@ package res
 	close({
 		timeouts?: #timeouts
 
-		// The connection string specified for the connection alias. The
-		// connection string must be in the form of a fully qualified
-		// domain name (FQDN), such as www.example.com.
+		// The connection string specified for the connection alias. The connection
+		// string must be in the form of a fully qualified domain name (FQDN), such as
+		// www.example.com.
 		connection_string!: string
 		id?:                string
 
-		// The identifier of the Amazon Web Services account that owns the
-		// connection alias.
+		// The identifier of the Amazon Web Services account that owns the connection alias.
 		owner_account_id?: string
 
 		// Region where this resource will be
@@ -30,17 +29,16 @@ package res
 
 	#timeouts: close({
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
 		create?: string
 
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
-		// Setting a timeout for a Delete operation is only applicable if
-		// changes are saved into state before the destroy operation
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+		// applicable if changes are saved into state before the destroy operation
 		// occurs.
 		delete?: string
 	})

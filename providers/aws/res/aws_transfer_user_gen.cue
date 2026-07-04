@@ -8,20 +8,20 @@ import "list"
 	close({
 		home_directory_mappings?: matchN(1, [#home_directory_mappings, [...#home_directory_mappings]])
 		posix_profile?: matchN(1, [#posix_profile, list.MaxItems(1) & [...#posix_profile]])
-		timeouts?:            #timeouts
-		arn?:                 string
-		home_directory?:      string
-		home_directory_type?: string
-		id?:                  string
-		policy?:              string
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:    string
-		role!:      string
-		server_id!: string
+		region?:              string
+		home_directory?:      string
+		home_directory_type?: string
+		id?:                  string
+		policy?:              string
+		role!:                string
+		server_id!:           string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		user_name!: string

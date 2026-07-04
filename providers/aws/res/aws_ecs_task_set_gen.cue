@@ -11,19 +11,19 @@ import "list"
 		network_configuration?: matchN(1, [#network_configuration, list.MaxItems(1) & [...#network_configuration]])
 		scale?: matchN(1, [#scale, list.MaxItems(1) & [...#scale]])
 		service_registries?: matchN(1, [#service_registries, list.MaxItems(1) & [...#service_registries]])
-		arn?:              string
-		cluster!:          string
-		external_id?:      string
-		force_delete?:     bool
-		id?:               string
-		launch_type?:      string
-		platform_version?: string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:           string
+		cluster!:          string
+		external_id?:      string
+		force_delete?:     bool
+		id?:               string
+		launch_type?:      string
+		platform_version?: string
 		service!:          string
 		stability_status?: string
 		status?:           string

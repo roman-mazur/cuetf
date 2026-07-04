@@ -9,7 +9,13 @@ import "list"
 		exclude_map?: matchN(1, [#exclude_map, list.MaxItems(1) & [...#exclude_map]])
 		include_map?: matchN(1, [#include_map, list.MaxItems(1) & [...#include_map]])
 		security_service_policy_data!: matchN(1, [#security_service_policy_data, list.MaxItems(1) & [_, ...] & [...#security_service_policy_data]])
-		arn?:                                string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                             string
 		delete_all_policy_resources?:        bool
 		delete_unused_fm_managed_resources?: bool
 		description?:                        string
@@ -17,13 +23,7 @@ import "list"
 		id?:                                 string
 		name!:                               string
 		policy_update_token?:                string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
-		remediation_enabled?: bool
+		remediation_enabled?:                bool
 		resource_set_ids?: [...string]
 		resource_tag_logical_operator?: string
 		resource_tags?: [string]: string

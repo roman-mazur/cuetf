@@ -9,7 +9,13 @@ import "list"
 		connect_settings?: matchN(1, [#connect_settings, list.MaxItems(1) & [...#connect_settings]])
 		timeouts?: #timeouts
 		vpc_settings?: matchN(1, [#vpc_settings, list.MaxItems(1) & [...#vpc_settings]])
-		access_url?:                           string
+		access_url?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                               string
 		alias?:                                string
 		description?:                          string
 		desired_number_of_domain_controllers?: number
@@ -20,15 +26,9 @@ import "list"
 		id?:                           string
 		name!:                         string
 		password!:                     string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:            string
-		security_group_id?: string
-		short_name?:        string
-		size?:              string
+		security_group_id?:            string
+		short_name?:                   string
+		size?:                         string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type?: string

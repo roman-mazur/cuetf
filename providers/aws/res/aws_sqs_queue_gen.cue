@@ -4,8 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sqs_queue")
 	close({
-		timeouts?:                          #timeouts
-		arn?:                               string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                            string
 		content_based_deduplication?:       bool
 		deduplication_scope?:               string
 		delay_seconds?:                     number
@@ -22,13 +28,7 @@ package res
 		receive_wait_time_seconds?:         number
 		redrive_allow_policy?:              string
 		redrive_policy?:                    string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                  string
-		sqs_managed_sse_enabled?: bool
+		sqs_managed_sse_enabled?:           bool
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		url?:                        string

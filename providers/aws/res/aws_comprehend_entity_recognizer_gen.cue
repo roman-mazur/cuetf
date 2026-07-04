@@ -9,18 +9,18 @@ import "list"
 		input_data_config!: matchN(1, [#input_data_config, list.MaxItems(1) & [_, ...] & [...#input_data_config]])
 		timeouts?: #timeouts
 		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
-		arn?:                  string
-		data_access_role_arn!: string
-		id?:                   string
-		language_code!:        string
-		model_kms_key_id?:     string
-		name!:                 string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:               string
+		data_access_role_arn!: string
+		id?:                   string
+		language_code!:        string
+		model_kms_key_id?:     string
+		name!:                 string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version_name?:        string

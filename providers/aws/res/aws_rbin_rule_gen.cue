@@ -10,18 +10,18 @@ import "list"
 		lock_configuration?: matchN(1, [#lock_configuration, list.MaxItems(1) & [...#lock_configuration]])
 		resource_tags?: matchN(1, [#resource_tags, list.MaxItems(50) & [...#resource_tags]])
 		retention_period!: matchN(1, [#retention_period, list.MaxItems(1) & [_, ...] & [...#retention_period]])
-		timeouts?:      #timeouts
-		arn?:           string
-		description?:   string
-		id?:            string
-		lock_end_time?: string
-		lock_state?:    string
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:        string
+		description?:   string
+		id?:            string
+		lock_end_time?: string
+		lock_state?:    string
 		resource_type!: string
 		status?:        string
 		tags?: [string]:     string

@@ -9,6 +9,12 @@ import "list"
 		cache_attributes?: matchN(1, [#cache_attributes, list.MaxItems(1) & [...#cache_attributes]])
 		timeouts?:                 #timeouts
 		access_based_enumeration?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		admin_user_list?: [...string]
 		arn?:                     string
 		audit_destination_arn?:   string
@@ -30,15 +36,9 @@ import "list"
 		oplocks_enabled?:     bool
 		path?:                string
 		read_only?:           bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:          string
-		requester_pays?:  bool
-		role_arn!:        string
-		smb_acl_enabled?: bool
+		requester_pays?:      bool
+		role_arn!:            string
+		smb_acl_enabled?:     bool
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		valid_user_list?: [...string]

@@ -12,7 +12,13 @@ import "list"
 		timeouts?: #timeouts
 		user_group_resolution_configuration?: matchN(1, [#user_group_resolution_configuration, list.MaxItems(1) & [...#user_group_resolution_configuration]])
 		user_token_configurations?: matchN(1, [#user_token_configurations, list.MaxItems(1) & [...#user_token_configurations]])
-		arn?:           string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
 		created_at?:    string
 		description?:   string
 		edition?:       string
@@ -27,13 +33,7 @@ import "list"
 				indexed_text_documents_count?: number
 			})]
 		})]
-		name!: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
+		name!:     string
 		role_arn!: string
 		status?:   string
 		tags?: [string]:     string

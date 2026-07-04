@@ -5,18 +5,18 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_route53_resolver_rule")
 	close({
 		target_ip?: matchN(1, [#target_ip, [...#target_ip]])
-		timeouts?:    #timeouts
-		arn?:         string
-		domain_name!: string
-		id?:          string
-		name?:        string
-		owner_id?:    string
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:               string
+		domain_name!:          string
+		id?:                   string
+		name?:                 string
+		owner_id?:             string
 		resolver_endpoint_id?: string
 		rule_type!:            string
 		share_status?:         string

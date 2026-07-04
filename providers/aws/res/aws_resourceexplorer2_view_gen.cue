@@ -6,16 +6,16 @@ package res
 	close({
 		filters?: matchN(1, [#filters, [...#filters]])
 		included_property?: matchN(1, [#included_property, [...#included_property]])
-		arn?:          string
-		default_view?: bool
-		name!:         string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		scope?:  string
+		region?:       string
+		default_view?: bool
+		name!:         string
+		scope?:        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

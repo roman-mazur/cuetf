@@ -11,7 +11,13 @@ import "list"
 		custom_rule?: matchN(1, [#custom_rule, [...#custom_rule]])
 		job_config?: matchN(1, [#job_config, list.MaxItems(1) & [...#job_config]])
 		access_token?: string
-		arn?:          string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		arn?:    string
 		auto_branch_creation_patterns?: [...string]
 		basic_auth_credentials?:      string
 		build_spec?:                  string
@@ -35,12 +41,6 @@ import "list"
 			status?:           string
 			thumbnail_url?:    string
 		})]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:     string
 		repository?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

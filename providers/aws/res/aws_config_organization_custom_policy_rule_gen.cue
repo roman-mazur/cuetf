@@ -6,6 +6,12 @@ package res
 	close({
 		timeouts?: #timeouts
 		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		debug_log_delivery_accounts?: [...string]
 		description?: string
 		excluded_accounts?: [...string]
@@ -15,13 +21,7 @@ package res
 		name!:                        string
 		policy_runtime!:              string
 		policy_text!:                 string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:            string
-		resource_id_scope?: string
+		resource_id_scope?:           string
 		resource_types_scope?: [...string]
 		tag_key_scope?:   string
 		tag_value_scope?: string

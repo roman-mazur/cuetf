@@ -9,16 +9,16 @@ import "list"
 		magnetic_store_write_properties?: matchN(1, [#magnetic_store_write_properties, list.MaxItems(1) & [...#magnetic_store_write_properties]])
 		retention_properties?: matchN(1, [#retention_properties, list.MaxItems(1) & [...#retention_properties]])
 		schema?: matchN(1, [#schema, list.MaxItems(1) & [...#schema]])
-		arn?:           string
-		database_name!: string
-		id?:            string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:     string
-		table_name!: string
+		region?:        string
+		database_name!: string
+		id?:            string
+		table_name!:    string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

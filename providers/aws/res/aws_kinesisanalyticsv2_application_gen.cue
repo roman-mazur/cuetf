@@ -8,21 +8,21 @@ import "list"
 	close({
 		application_configuration?: matchN(1, [#application_configuration, list.MaxItems(1) & [...#application_configuration]])
 		cloudwatch_logging_options?: matchN(1, [#cloudwatch_logging_options, list.MaxItems(1) & [...#cloudwatch_logging_options]])
-		timeouts?:              #timeouts
-		application_mode?:      string
-		arn?:                   string
-		create_timestamp?:      string
-		description?:           string
-		force_stop?:            bool
-		id?:                    string
-		last_update_timestamp?: string
-		name!:                  string
+		timeouts?:         #timeouts
+		application_mode?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                 string
+		arn?:                    string
+		create_timestamp?:       string
+		description?:            string
+		force_stop?:             bool
+		id?:                     string
+		last_update_timestamp?:  string
+		name!:                   string
 		runtime_environment!:    string
 		service_execution_role!: string
 		start_application?:      bool

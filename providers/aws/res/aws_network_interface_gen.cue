@@ -8,7 +8,13 @@ import "list"
 	close({
 		attachment?: matchN(1, [#attachment, [...#attachment]])
 		ena_srd_specification?: matchN(1, [#ena_srd_specification, list.MaxItems(1) & [...#ena_srd_specification]])
-		arn?:                 string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:              string
 		description?:         string
 		enable_primary_ipv6?: bool
 		id?:                  string
@@ -30,12 +36,6 @@ import "list"
 		private_ip_list_enabled?: bool
 		private_ips?: [...string]
 		private_ips_count?: number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		security_groups?: [...string]
 		source_dest_check?: bool
 		subnet_id!:         string

@@ -11,6 +11,12 @@ import "list"
 		notification_property?: matchN(1, [#notification_property, list.MaxItems(1) & [...#notification_property]])
 		source_control_details?: matchN(1, [#source_control_details, list.MaxItems(1) & [...#source_control_details]])
 		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		connections?: [...string]
 		default_arguments?: [string]: string
 		description?:             string
@@ -24,13 +30,7 @@ import "list"
 		max_retries?:             number
 		name!:                    string
 		non_overridable_arguments?: [string]: string
-		number_of_workers?: number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                 string
+		number_of_workers?:      number
 		role_arn!:               string
 		security_configuration?: string
 		tags?: [string]:     string

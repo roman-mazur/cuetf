@@ -8,20 +8,20 @@ import "list"
 	close({
 		kms_key_details?: matchN(1, [#kms_key_details, list.MaxItems(1) & [...#kms_key_details]])
 		repository!: matchN(1, [#repository, list.MaxItems(1) & [_, ...] & [...#repository]])
-		timeouts?:       #timeouts
-		arn?:            string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:         string
 		association_id?: string
 		connection_arn?: string
 		id?:             string
 		name?:           string
 		owner?:          string
 		provider_type?:  string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		s3_repository_details?: [...close({
 			bucket_name?: string
 			code_artifacts?: [...close({

@@ -9,16 +9,16 @@ package res
 		export_artifacts?: [...close({
 			s3_export_artifacts?: string
 		})]
-		model_card_export_job_arn?:  string
-		model_card_export_job_name!: string
-		model_card_name!:            string
-		model_card_version?:         number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:                     string
+		model_card_export_job_arn?:  string
+		model_card_export_job_name!: string
+		model_card_name!:            string
+		model_card_version?:         number
 	})
 
 	#output_config: close({
@@ -27,9 +27,9 @@ package res
 
 	#timeouts: close({
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
 		create?: string
 	})
 }

@@ -10,7 +10,13 @@ import "list"
 		billing_address?: matchN(1, [#billing_address, list.MaxItems(1) & [...#billing_address]])
 		mailing_address?: matchN(1, [#mailing_address, list.MaxItems(1) & [...#mailing_address]])
 		shipping_address?: matchN(1, [#shipping_address, list.MaxItems(1) & [...#shipping_address]])
-		account_number?:         string
+		account_number?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                 string
 		additional_information?: string
 		attributes?: [string]: string
 		birth_date?:             string
@@ -29,12 +35,6 @@ import "list"
 		party_type_string?:      string
 		personal_email_address?: string
 		phone_number?:           string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 	})
 
 	#address: close({

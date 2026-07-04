@@ -9,6 +9,12 @@ import "list"
 		evaluation_criteria?: matchN(1, [#evaluation_criteria, list.MaxItems(1) & [...#evaluation_criteria]])
 		metric_query?: matchN(1, [#metric_query, [...#metric_query]])
 		actions_enabled?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		alarm_actions?: [...string]
 		alarm_description?:   string
 		alarm_name!:          string
@@ -25,13 +31,7 @@ import "list"
 		metric_name?: string
 		namespace?:   string
 		ok_actions?: [...string]
-		period?: number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:    string
+		period?:    number
 		statistic?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

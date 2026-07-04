@@ -10,8 +10,17 @@ import "list"
 		protocol_details?: matchN(1, [#protocol_details, list.MaxItems(1) & [...#protocol_details]])
 		s3_storage_options?: matchN(1, [#s3_storage_options, list.MaxItems(1) & [...#s3_storage_options]])
 		workflow_details?: matchN(1, [#workflow_details, list.MaxItems(1) & [...#workflow_details]])
-		arn?:                              string
-		certificate?:                      string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:      string
+		certificate?: string
+
+		// This is a set of arns of destinations that will receive structured logs from the transfer server
+		structured_log_destinations?: [...string]
 		directory_id?:                     string
 		domain?:                           string
 		endpoint?:                         string
@@ -28,18 +37,8 @@ import "list"
 		post_authentication_login_banner?: string
 		pre_authentication_login_banner?:  string
 		protocols?: [...string]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                      string
 		security_policy_name?:        string
 		sftp_authentication_methods?: string
-
-		// This is a set of arns of destinations that will receive
-		// structured logs from the transfer server
-		structured_log_destinations?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		url?: string

@@ -8,15 +8,15 @@ import "list"
 	close({
 		on_exception_steps?: matchN(1, [#on_exception_steps, list.MaxItems(8) & [...#on_exception_steps]])
 		steps!: matchN(1, [#steps, list.MaxItems(8) & [_, ...] & [...#steps]])
-		arn?:         string
-		description?: string
-		id?:          string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:      string
+		description?: string
+		id?:          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

@@ -7,8 +7,14 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_elasticache_cluster")
 	close({
 		log_delivery_configuration?: matchN(1, [#log_delivery_configuration, list.MaxItems(2) & [...#log_delivery_configuration]])
-		timeouts?:                   #timeouts
-		apply_immediately?:          bool
+		timeouts?:          #timeouts
+		apply_immediately?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                     string
 		arn?:                        string
 		auto_minor_version_upgrade?: string
 		availability_zone?:          string
@@ -39,13 +45,7 @@ import "list"
 		port?:                      number
 		preferred_availability_zones?: [...string]
 		preferred_outpost_arn?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:               string
-		replication_group_id?: string
+		replication_group_id?:  string
 		security_group_ids?: [...string]
 		snapshot_arns?: [...string]
 		snapshot_name?:            string

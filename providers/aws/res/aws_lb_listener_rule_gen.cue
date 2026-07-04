@@ -9,16 +9,16 @@ import "list"
 		action!: matchN(1, [#action, [_, ...] & [...#action]])
 		condition!: matchN(1, [#condition, [_, ...] & [...#condition]])
 		transform?: matchN(1, [#transform, list.MaxItems(2) & [...#transform]])
-		arn?:          string
-		id?:           string
-		listener_arn!: string
-		priority?:     number
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:       string
+		id?:           string
+		listener_arn!: string
+		priority?:     number
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

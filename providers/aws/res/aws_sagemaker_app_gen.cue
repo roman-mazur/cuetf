@@ -7,17 +7,17 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_app")
 	close({
 		resource_spec?: matchN(1, [#resource_spec, list.MaxItems(1) & [...#resource_spec]])
-		app_name!:  string
-		app_type!:  string
-		arn?:       string
-		domain_id!: string
-		id?:        string
+		app_name!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:     string
+		app_type!:   string
+		arn?:        string
+		domain_id!:  string
+		id?:         string
 		space_name?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

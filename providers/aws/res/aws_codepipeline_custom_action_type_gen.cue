@@ -10,17 +10,17 @@ import "list"
 		input_artifact_details!: matchN(1, [#input_artifact_details, list.MaxItems(1) & [_, ...] & [...#input_artifact_details]])
 		output_artifact_details!: matchN(1, [#output_artifact_details, list.MaxItems(1) & [_, ...] & [...#output_artifact_details]])
 		settings?: matchN(1, [#settings, list.MaxItems(1) & [...#settings]])
-		arn?:           string
-		category!:      string
-		id?:            string
-		owner?:         string
-		provider_name!: string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:        string
+		category!:      string
+		id?:            string
+		owner?:         string
+		provider_name!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version!: string

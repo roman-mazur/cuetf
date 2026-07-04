@@ -9,21 +9,21 @@ import "list"
 		create_table_default_permission?: matchN(1, [#create_table_default_permission, [...#create_table_default_permission]])
 		federated_database?: matchN(1, [#federated_database, list.MaxItems(1) & [...#federated_database]])
 		target_database?: matchN(1, [#target_database, list.MaxItems(1) & [...#target_database]])
-		arn?:          string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:       string
 		catalog_id?:   string
 		description?:  string
 		id?:           string
 		location_uri?: string
 		name!:         string
 		parameters?: [string]: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		tags?: [string]:     string
-		tags_all?: [string]: string
+		tags?: [string]:       string
+		tags_all?: [string]:   string
 	})
 
 	#create_table_default_permission: close({

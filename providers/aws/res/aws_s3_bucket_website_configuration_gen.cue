@@ -11,13 +11,13 @@ import "list"
 		redirect_all_requests_to?: matchN(1, [#redirect_all_requests_to, list.MaxItems(1) & [...#redirect_all_requests_to]])
 		routing_rule?: matchN(1, [#routing_rule, [...#routing_rule]])
 		bucket!: string
-		id?:     string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:           string
+		id?:               string
 		routing_rules?:    string
 		website_domain?:   string
 		website_endpoint?: string

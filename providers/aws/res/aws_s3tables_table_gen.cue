@@ -5,7 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_s3tables_table")
 	close({
 		metadata?: matchN(1, [#metadata, [...#metadata]])
-		arn?:        string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:     string
 		created_at?: string
 		created_by?: string
 		encryption_configuration?: close({
@@ -34,13 +40,7 @@ package res
 		name!:              string
 		namespace!:         string
 		owner_account_id?:  string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:           string
-		table_bucket_arn!: string
+		table_bucket_arn!:  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type?:               string
@@ -64,12 +64,11 @@ package res
 		// The name of the field.
 		name!: string
 
-		// A Boolean value that specifies whether values are required for
-		// each row in this field. Default: false.
+		// A Boolean value that specifies whether values are required for each row in
+		// this field. Default: false.
 		required?: bool
 
-		// The field type. S3 Tables supports all Apache Iceberg primitive
-		// types.
+		// The field type. S3 Tables supports all Apache Iceberg primitive types.
 		type!: string
 	})
 }

@@ -23,7 +23,13 @@ import "list"
 		verification_message_template?: matchN(1, [#verification_message_template, list.MaxItems(1) & [...#verification_message_template]])
 		web_authn_configuration?: matchN(1, [#web_authn_configuration, list.MaxItems(1) & [...#web_authn_configuration]])
 		alias_attributes?: [...string]
-		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		arn?:    string
 		auto_verified_attributes?: [...string]
 		creation_date?:              string
 		custom_domain?:              string
@@ -37,12 +43,6 @@ import "list"
 		last_modified_date?:         string
 		mfa_configuration?:          string
 		name!:                       string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                     string
 		sms_authentication_message?: string
 		sms_verification_message?:   string
 		tags?: [string]:     string

@@ -6,8 +6,14 @@ package res
 	close({
 		ebs_block_device?: matchN(1, [#ebs_block_device, [...#ebs_block_device]])
 		ephemeral_block_device?: matchN(1, [#ephemeral_block_device, [...#ephemeral_block_device]])
-		timeouts?:                #timeouts
-		architecture?:            string
+		timeouts?:     #timeouts
+		architecture?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                  string
 		arn?:                     string
 		boot_mode?:               string
 		deprecation_time?:        string
@@ -31,17 +37,11 @@ package res
 		platform_details?:        string
 		public?:                  bool
 		ramdisk_id?:              string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:            string
-		root_device_name?:  string
-		root_snapshot_id?:  string
-		source_ami_id!:     string
-		source_ami_region!: string
-		sriov_net_support?: string
+		root_device_name?:        string
+		root_snapshot_id?:        string
+		source_ami_id!:           string
+		source_ami_region!:       string
+		sriov_net_support?:       string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		tpm_support?:         string

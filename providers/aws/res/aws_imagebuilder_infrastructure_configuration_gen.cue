@@ -9,7 +9,13 @@ import "list"
 		instance_metadata_options?: matchN(1, [#instance_metadata_options, list.MaxItems(1) & [...#instance_metadata_options]])
 		logging?: matchN(1, [#logging, list.MaxItems(1) & [...#logging]])
 		placement?: matchN(1, [#placement, list.MaxItems(1) & [...#placement]])
-		arn?:                   string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                string
 		date_created?:          string
 		date_updated?:          string
 		description?:           string
@@ -18,12 +24,6 @@ import "list"
 		instance_types?: [...string]
 		key_pair?: string
 		name!:     string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		resource_tags?: [string]: string
 		security_group_ids?: [...string]
 		sns_topic_arn?: string

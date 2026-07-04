@@ -9,7 +9,13 @@ package data
 			component_arn?: string
 			component_id?:  string
 		})]
-		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		arn?:    string
 		explanations?: [...close({
 			acl?: [...close({
 				arn?:  string
@@ -337,12 +343,6 @@ package data
 		network_insights_analysis_id?: string
 		network_insights_path_id?:     string
 		path_found?:                   bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		return_path_components?: [...close({
 			acl_rule?: [...close({
 				cidr?:   string

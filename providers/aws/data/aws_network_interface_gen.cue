@@ -7,6 +7,12 @@ package data
 		filter?: matchN(1, [#filter, [...#filter]])
 		timeouts?: #timeouts
 		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		association?: [...close({
 			allocation_id?:     string
 			association_id?:    string
@@ -40,12 +46,6 @@ package data
 		private_dns_name?: string
 		private_ip?:       string
 		private_ips?: [...string]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:       string
 		requester_id?: string
 		security_groups?: [...string]
 		subnet_id?: string

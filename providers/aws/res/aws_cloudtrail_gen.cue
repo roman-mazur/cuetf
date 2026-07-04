@@ -9,7 +9,13 @@ import "list"
 		advanced_event_selector?: matchN(1, [#advanced_event_selector, [...#advanced_event_selector]])
 		event_selector?: matchN(1, [#event_selector, list.MaxItems(5) & [...#event_selector]])
 		insight_selector?: matchN(1, [#insight_selector, [...#insight_selector]])
-		arn?:                           string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                        string
 		cloud_watch_logs_group_arn?:    string
 		cloud_watch_logs_role_arn?:     string
 		enable_log_file_validation?:    bool
@@ -21,16 +27,10 @@ import "list"
 		is_organization_trail?:         bool
 		kms_key_id?:                    string
 		name!:                          string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:         string
-		s3_bucket_name!: string
-		s3_key_prefix?:  string
-		sns_topic_arn?:  string
-		sns_topic_name?: string
+		s3_bucket_name!:                string
+		s3_key_prefix?:                 string
+		sns_topic_arn?:                 string
+		sns_topic_name?:                string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

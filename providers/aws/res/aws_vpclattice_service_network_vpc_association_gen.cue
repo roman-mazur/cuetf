@@ -7,17 +7,17 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpclattice_service_network_vpc_association")
 	close({
 		dns_options?: matchN(1, [#dns_options, list.MaxItems(1) & [...#dns_options]])
-		timeouts?:            #timeouts
-		arn?:                 string
-		created_by?:          string
-		id?:                  string
-		private_dns_enabled?: bool
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:              string
+		created_by?:          string
+		id?:                  string
+		private_dns_enabled?: bool
 		security_group_ids?: [...string]
 		service_network_identifier!: string
 		status?:                     string

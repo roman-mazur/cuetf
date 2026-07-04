@@ -10,8 +10,14 @@ import "list"
 		serverless_v2_scaling_configuration?: matchN(1, [#serverless_v2_scaling_configuration, list.MaxItems(1) & [...#serverless_v2_scaling_configuration]])
 		timeouts?:                    #timeouts
 		allow_major_version_upgrade?: bool
-		apply_immediately?:           bool
-		arn?:                         string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
+		apply_immediately?: bool
+		arn?:               string
 		availability_zones?: [...string]
 		backup_retention_period?:   number
 		cluster_identifier?:        string
@@ -45,16 +51,10 @@ import "list"
 		preferred_backup_window?:      string
 		preferred_maintenance_window?: string
 		reader_endpoint?:              string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
-		skip_final_snapshot?: bool
-		snapshot_identifier?: string
-		storage_encrypted?:   bool
-		storage_type?:        string
+		skip_final_snapshot?:          bool
+		snapshot_identifier?:          string
+		storage_encrypted?:            bool
+		storage_type?:                 string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpc_security_group_ids?: [...string]

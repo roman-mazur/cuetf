@@ -31,8 +31,8 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 
-		// Indicates whether standby replicas should be used for
-		// collections in this group. One of `ENABLED` or `DISABLED`.
+		// Indicates whether standby replicas should be used for collections in this
+		// group. One of `ENABLED` or `DISABLED`.
 		standby_replicas!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

@@ -34,8 +34,7 @@ package res
 		// Whether to hide the user from the global address list.
 		hidden_from_global_address_list?: bool
 
-		// Identity store ID from IAM Identity Center associated with the
-		// user.
+		// Identity store ID from IAM Identity Center associated with the user.
 		identity_provider_identity_store_id?: string
 
 		// User ID from IAM Identity Center associated with the user.
@@ -62,8 +61,7 @@ package res
 		// Office where the user is located.
 		office?: string
 
-		// Identifier of the WorkMail organization where the user is
-		// managed.
+		// Identifier of the WorkMail organization where the user is managed.
 		organization_id!: string
 
 		// Password to set for the user.

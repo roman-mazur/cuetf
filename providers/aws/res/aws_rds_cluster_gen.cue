@@ -10,8 +10,14 @@ import "list"
 		s3_import?: matchN(1, [#s3_import, list.MaxItems(1) & [...#s3_import]])
 		scaling_configuration?: matchN(1, [#scaling_configuration, list.MaxItems(1) & [...#scaling_configuration]])
 		serverlessv2_scaling_configuration?: matchN(1, [#serverlessv2_scaling_configuration, list.MaxItems(1) & [...#serverlessv2_scaling_configuration]])
-		timeouts?:                    #timeouts
-		allocated_storage?:           number
+		timeouts?:          #timeouts
+		allocated_storage?: number
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                      string
 		allow_major_version_upgrade?: bool
 		apply_immediately?:           bool
 		arn?:                         string
@@ -76,18 +82,12 @@ import "list"
 		preferred_backup_window?:               string
 		preferred_maintenance_window?:          string
 		reader_endpoint?:                       string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                        string
-		replication_source_identifier?: string
-		skip_final_snapshot?:           bool
-		snapshot_identifier?:           string
-		source_region?:                 string
-		storage_encrypted?:             bool
-		storage_type?:                  string
+		replication_source_identifier?:         string
+		skip_final_snapshot?:                   bool
+		snapshot_identifier?:                   string
+		source_region?:                         string
+		storage_encrypted?:                     bool
+		storage_type?:                          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		upgrade_rollout_order?: string

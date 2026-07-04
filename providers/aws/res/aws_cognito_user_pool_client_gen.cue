@@ -8,6 +8,12 @@ package res
 		refresh_token_rotation?: matchN(1, [#refresh_token_rotation, [...#refresh_token_rotation]])
 		token_validity_units?: matchN(1, [#token_validity_units, [...#token_validity_units]])
 		access_token_validity?: number
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		allowed_oauth_flows?: [...string]
 		allowed_oauth_flows_user_pool_client?: bool
 		allowed_oauth_scopes?: [...string]
@@ -26,12 +32,6 @@ package res
 		prevent_user_existence_errors?: string
 		read_attributes?: [...string]
 		refresh_token_validity?: number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		supported_identity_providers?: [...string]
 		user_pool_id!: string
 		write_attributes?: [...string]

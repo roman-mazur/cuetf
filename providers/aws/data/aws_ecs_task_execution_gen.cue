@@ -11,7 +11,13 @@ import "list"
 		overrides?: matchN(1, [#overrides, list.MaxItems(1) & [...#overrides]])
 		placement_constraints?: matchN(1, [#placement_constraints, list.MaxItems(10) & [...#placement_constraints]])
 		placement_strategy?: matchN(1, [#placement_strategy, list.MaxItems(5) & [...#placement_strategy]])
-		client_token?:            string
+		client_token?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                  string
 		cluster!:                 string
 		desired_count?:           number
 		enable_ecs_managed_tags?: bool
@@ -22,13 +28,7 @@ import "list"
 		platform_version?:        string
 		propagate_tags?:          string
 		reference_id?:            string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:     string
-		started_by?: string
+		started_by?:              string
 		tags?: [string]: string
 		task_arns?: [...string]
 		task_definition!: string

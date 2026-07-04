@@ -8,17 +8,17 @@ import "list"
 	close({
 		timeouts?: #timeouts
 		workspace_properties?: matchN(1, [#workspace_properties, list.MaxItems(1) & [...#workspace_properties]])
-		bundle_id!:     string
-		computer_name?: string
-		directory_id!:  string
-		id?:            string
-		ip_address?:    string
+		bundle_id!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                         string
+		computer_name?:                  string
+		directory_id!:                   string
+		id?:                             string
+		ip_address?:                     string
 		root_volume_encryption_enabled?: bool
 		state?:                          string
 		tags?: [string]:     string

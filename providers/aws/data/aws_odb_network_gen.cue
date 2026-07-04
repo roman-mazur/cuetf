@@ -30,8 +30,7 @@ package data
 		// Display name for the network resource.
 		display_name?: string
 
-		// A list of EC2 placement group IDs associated with the ODB
-		// network.
+		// A list of EC2 placement group IDs associated with the ODB network.
 		ec2_placement_group_ids?: [...string]
 		id!: string
 
@@ -77,15 +76,13 @@ package data
 			})]
 		})]
 
-		// The DNS resolver endpoint in OCI for forwarding DNS queries for
-		// the ociPrivateZone domain.
+		// The DNS resolver endpoint in OCI for forwarding DNS queries for the ociPrivateZone domain.
 		oci_dns_forwarding_configs?: [...close({
 			domain_name?:         string
 			oci_dns_listener_ip?: string
 		})]
 
-		// The unique identifier of the OCI network anchor for the ODB
-		// network.
+		// The unique identifier of the OCI network anchor for the ODB network.
 		oci_network_anchor_id?: string
 
 		// The URL of the OCI network anchor for the ODB network.
@@ -94,20 +91,18 @@ package data
 		// The name of the OCI resource anchor for the ODB network.
 		oci_resource_anchor_name?: string
 
-		// The unique identifier Oracle Cloud ID (OCID) of the OCI VCN for
-		// the ODB network.
+		// The unique identifier Oracle Cloud ID (OCID) of the OCI VCN for the ODB network.
 		oci_vcn_id?: string
 
 		// The URL of the OCI VCN for the ODB network.
 		oci_vcn_url?: string
 
-		// The list of CIDR ranges from the peered VPC that are allowed
-		// access to the ODB network. Please refer odb network peering
-		// documentation.
+		// The list of CIDR ranges from the peered VPC that are allowed access to the
+		// ODB network. Please refer odb network peering documentation.
 		peered_cidrs?: [...string]
 
-		// The amount of progress made on the current operation on the ODB
-		// network, expressed as a percentage.
+		// The amount of progress made on the current operation on the ODB network,
+		// expressed as a percentage.
 		percent_progress?: number
 
 		// Region where this resource will be
@@ -119,8 +114,7 @@ package data
 		// The status of the network resource.
 		status?: string
 
-		// Additional information about the current status of the ODB
-		// network.
+		// Additional information about the current status of the ODB network.
 		status_reason?: string
 		tags?: [string]: string
 	})

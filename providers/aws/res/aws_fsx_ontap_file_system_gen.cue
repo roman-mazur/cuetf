@@ -7,8 +7,14 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_fsx_ontap_file_system")
 	close({
 		disk_iops_configuration?: matchN(1, [#disk_iops_configuration, list.MaxItems(1) & [...#disk_iops_configuration]])
-		timeouts?:                          #timeouts
-		arn?:                               string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                            string
 		automatic_backup_retention_days?:   number
 		daily_automatic_backup_start_time?: string
 		deployment_type!:                   string
@@ -31,12 +37,6 @@ import "list"
 		network_interface_ids?: [...string]
 		owner_id?:            string
 		preferred_subnet_id!: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		route_table_ids?: [...string]
 		security_group_ids?: [...string]
 		storage_capacity!: number

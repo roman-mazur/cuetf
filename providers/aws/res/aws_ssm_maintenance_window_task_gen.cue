@@ -8,20 +8,20 @@ import "list"
 	close({
 		targets?: matchN(1, [#targets, list.MaxItems(5) & [...#targets]])
 		task_invocation_parameters?: matchN(1, [#task_invocation_parameters, list.MaxItems(1) & [...#task_invocation_parameters]])
-		arn?:             string
-		cutoff_behavior?: string
-		description?:     string
-		id?:              string
-		max_concurrency?: string
-		max_errors?:      string
-		name?:            string
-		priority?:        number
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:           string
+		cutoff_behavior?:  string
+		description?:      string
+		id?:               string
+		max_concurrency?:  string
+		max_errors?:       string
+		name?:             string
+		priority?:         number
 		service_role_arn?: string
 		task_arn!:         string
 		task_type!:        string

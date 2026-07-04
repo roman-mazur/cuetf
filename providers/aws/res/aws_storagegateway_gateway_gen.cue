@@ -8,8 +8,14 @@ import "list"
 	close({
 		maintenance_start_time?: matchN(1, [#maintenance_start_time, list.MaxItems(1) & [...#maintenance_start_time]])
 		smb_active_directory_settings?: matchN(1, [#smb_active_directory_settings, list.MaxItems(1) & [...#smb_active_directory_settings]])
-		timeouts?:                                    #timeouts
-		activation_key?:                              string
+		timeouts?:       #timeouts
+		activation_key?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                                      string
 		arn?:                                         string
 		average_download_rate_limit_in_bits_per_sec?: number
 		average_upload_rate_limit_in_bits_per_sec?:   number
@@ -22,18 +28,12 @@ import "list"
 		gateway_network_interface?: [...close({
 			ipv4_address?: string
 		})]
-		gateway_timezone!:     string
-		gateway_type?:         string
-		gateway_vpc_endpoint?: string
-		host_environment?:     string
-		id?:                   string
-		medium_changer_type?:  string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                    string
+		gateway_timezone!:          string
+		gateway_type?:              string
+		gateway_vpc_endpoint?:      string
+		host_environment?:          string
+		id?:                        string
+		medium_changer_type?:       string
 		smb_file_share_visibility?: bool
 		smb_guest_password?:        string
 		smb_security_strategy?:     string

@@ -7,19 +7,19 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_efs_replication_configuration")
 	close({
 		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
-		timeouts?:                        #timeouts
-		creation_time?:                   string
-		id?:                              string
-		original_source_file_system_arn?: string
+		timeouts?:      #timeouts
+		creation_time?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                    string
-		source_file_system_arn?:    string
-		source_file_system_id!:     string
-		source_file_system_region?: string
+		region?:                          string
+		id?:                              string
+		original_source_file_system_arn?: string
+		source_file_system_arn?:          string
+		source_file_system_id!:           string
+		source_file_system_region?:       string
 	})
 
 	#destination: close({

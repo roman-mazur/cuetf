@@ -6,6 +6,12 @@ package data
 	close({
 		timeouts?:                #timeouts
 		auto_recovery_supported?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		bandwidth_weightings?: [...string]
 		bare_metal?: bool
 		boot_modes?: [...string]
@@ -90,12 +96,6 @@ package data
 		nitro_tpm_support?:      string
 		nitro_tpm_supported_versions?: [...string]
 		phc_support?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		supported_architectures?: [...string]
 		supported_cpu_features?: [...string]
 		supported_placement_strategies?: [...string]

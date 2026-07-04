@@ -9,7 +9,13 @@ import "list"
 		access_endpoint?: matchN(1, [#access_endpoint, list.MaxItems(4) & [...#access_endpoint]])
 		domain_join_info?: matchN(1, [#domain_join_info, list.MaxItems(1) & [...#domain_join_info]])
 		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
-		appstream_agent_version?:        string
+		appstream_agent_version?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                         string
 		arn?:                            string
 		created_time?:                   string
 		description?:                    string
@@ -21,13 +27,7 @@ import "list"
 		image_name?:                     string
 		instance_type!:                  string
 		name!:                           string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		state?:  string
+		state?:                          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

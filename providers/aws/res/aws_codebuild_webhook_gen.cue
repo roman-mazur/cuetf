@@ -9,20 +9,20 @@ import "list"
 		filter_group?: matchN(1, [#filter_group, [...#filter_group]])
 		pull_request_build_policy?: matchN(1, [#pull_request_build_policy, list.MaxItems(1) & [...#pull_request_build_policy]])
 		scope_configuration?: matchN(1, [#scope_configuration, list.MaxItems(1) & [...#scope_configuration]])
-		branch_filter?:   string
-		build_type?:      string
-		id?:              string
-		manual_creation?: bool
-		payload_url?:     string
-		project_name!:    string
+		branch_filter?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		secret?: string
-		url?:    string
+		region?:          string
+		build_type?:      string
+		id?:              string
+		manual_creation?: bool
+		payload_url?:     string
+		project_name!:    string
+		secret?:          string
+		url?:             string
 	})
 
 	#filter_group: close({

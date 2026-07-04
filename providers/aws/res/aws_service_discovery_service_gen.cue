@@ -9,18 +9,18 @@ import "list"
 		dns_config?: matchN(1, [#dns_config, list.MaxItems(1) & [...#dns_config]])
 		health_check_config?: matchN(1, [#health_check_config, list.MaxItems(1) & [...#health_check_config]])
 		health_check_custom_config?: matchN(1, [#health_check_custom_config, list.MaxItems(1) & [...#health_check_custom_config]])
-		arn?:           string
-		description?:   string
-		force_destroy?: bool
-		id?:            string
-		name!:          string
-		namespace_id?:  string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:        string
+		description?:   string
+		force_destroy?: bool
+		id?:            string
+		name!:          string
+		namespace_id?:  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type?: string

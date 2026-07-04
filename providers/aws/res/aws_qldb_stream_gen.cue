@@ -7,20 +7,20 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_qldb_stream")
 	close({
 		kinesis_configuration!: matchN(1, [#kinesis_configuration, list.MaxItems(1) & [_, ...] & [...#kinesis_configuration]])
-		timeouts?:             #timeouts
-		arn?:                  string
-		exclusive_end_time?:   string
-		id?:                   string
-		inclusive_start_time!: string
-		ledger_name!:          string
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		role_arn!:    string
-		stream_name!: string
+		region?:               string
+		exclusive_end_time?:   string
+		id?:                   string
+		inclusive_start_time!: string
+		ledger_name!:          string
+		role_arn!:             string
+		stream_name!:          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

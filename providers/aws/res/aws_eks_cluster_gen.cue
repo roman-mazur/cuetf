@@ -18,7 +18,13 @@ import "list"
 		upgrade_policy?: matchN(1, [#upgrade_policy, list.MaxItems(1) & [...#upgrade_policy]])
 		vpc_config!: matchN(1, [#vpc_config, list.MaxItems(1) & [_, ...] & [...#vpc_config]])
 		zonal_shift_config?: matchN(1, [#zonal_shift_config, list.MaxItems(1) & [...#zonal_shift_config]])
-		arn?:                           string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                        string
 		bootstrap_self_managed_addons?: bool
 		certificate_authority?: [...close({
 			data?: string
@@ -37,14 +43,8 @@ import "list"
 		})]
 		name!:             string
 		platform_version?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		role_arn!: string
-		status?:   string
+		role_arn!:         string
+		status?:           string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version?: string

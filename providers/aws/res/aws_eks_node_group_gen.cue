@@ -13,7 +13,13 @@ import "list"
 		taint?: matchN(1, [#taint, list.MaxItems(50) & [...#taint]])
 		timeouts?: #timeouts
 		update_config?: matchN(1, [#update_config, list.MaxItems(1) & [...#update_config]])
-		ami_type?:             string
+		ami_type?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:               string
 		arn?:                  string
 		capacity_type?:        string
 		cluster_name!:         string
@@ -25,13 +31,7 @@ import "list"
 		node_group_name?:        string
 		node_group_name_prefix?: string
 		node_role_arn!:          string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:          string
-		release_version?: string
+		release_version?:        string
 		resources?: [...close({
 			autoscaling_groups?: [...close({
 				name?: string

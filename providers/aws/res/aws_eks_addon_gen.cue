@@ -8,22 +8,22 @@ import "list"
 	close({
 		namespace_config?: matchN(1, [#namespace_config, list.MaxItems(1) & [...#namespace_config]])
 		pod_identity_association?: matchN(1, [#pod_identity_association, [...#pod_identity_association]])
-		timeouts?:             #timeouts
-		addon_name!:           string
-		addon_version?:        string
-		arn?:                  string
-		cluster_name!:         string
-		configuration_values?: string
-		created_at?:           string
-		id?:                   string
-		modified_at?:          string
-		preserve?:             bool
+		timeouts?:   #timeouts
+		addon_name!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                      string
+		addon_version?:               string
+		arn?:                         string
+		cluster_name!:                string
+		configuration_values?:        string
+		created_at?:                  string
+		id?:                          string
+		modified_at?:                 string
+		preserve?:                    bool
 		resolve_conflicts_on_create?: string
 		resolve_conflicts_on_update?: string
 		service_account_role_arn?:    string

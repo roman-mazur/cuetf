@@ -9,8 +9,14 @@ import "list"
 		availability_zone_mapping?: matchN(1, [#availability_zone_mapping, [...#availability_zone_mapping]])
 		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
 		subnet_mapping?: matchN(1, [#subnet_mapping, [...#subnet_mapping]])
-		timeouts?:                            #timeouts
-		arn?:                                 string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                              string
 		availability_zone_change_protection?: bool
 		delete_protection?:                   bool
 		description?:                         string
@@ -29,14 +35,8 @@ import "list"
 				attachment_id?: string
 			})]
 		})]
-		id?:   string
-		name!: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                   string
+		id?:                       string
+		name!:                     string
 		subnet_change_protection?: bool
 		tags?: [string]:     string
 		tags_all?: [string]: string

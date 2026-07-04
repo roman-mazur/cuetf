@@ -5,16 +5,16 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ram_resource_share")
 	close({
 		filter?: matchN(1, [#filter, [...#filter]])
-		arn?:               string
-		id?:                string
-		name?:              string
-		owning_account_id?: string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:            string
+		id?:                string
+		name?:              string
+		owning_account_id?: string
 		resource_arns?: [...string]
 		resource_owner!:        string
 		resource_share_status?: string

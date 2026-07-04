@@ -11,7 +11,13 @@ import "list"
 		target_failover?: matchN(1, [#target_failover, [...#target_failover]])
 		target_group_health?: matchN(1, [#target_group_health, list.MaxItems(1) & [...#target_group_health]])
 		target_health_state?: matchN(1, [#target_health_state, [...#target_health_state]])
-		arn?:                                string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                             string
 		arn_suffix?:                         string
 		connection_termination?:             bool
 		deregistration_delay?:               string
@@ -29,13 +35,7 @@ import "list"
 		protocol?:                          string
 		protocol_version?:                  string
 		proxy_protocol_v2?:                 bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:     string
-		slow_start?: number
+		slow_start?:                        number
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		target_control_port?: number

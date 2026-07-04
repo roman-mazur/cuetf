@@ -13,6 +13,12 @@ import "list"
 		timeouts?: #timeouts
 		vpc?: matchN(1, [#vpc, list.MaxItems(1) & [...#vpc]])
 		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		attached_channels?: [...string]
 		id?:          string
 		input_class?: string
@@ -20,13 +26,7 @@ import "list"
 		input_security_groups?: [...string]
 		input_source_type?: string
 		name!:              string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		role_arn?: string
+		role_arn?:          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type!: string

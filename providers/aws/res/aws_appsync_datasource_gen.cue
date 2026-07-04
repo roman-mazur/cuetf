@@ -13,17 +13,17 @@ import "list"
 		lambda_config?: matchN(1, [#lambda_config, list.MaxItems(1) & [...#lambda_config]])
 		opensearchservice_config?: matchN(1, [#opensearchservice_config, list.MaxItems(1) & [...#opensearchservice_config]])
 		relational_database_config?: matchN(1, [#relational_database_config, list.MaxItems(1) & [...#relational_database_config]])
-		api_id!:      string
-		arn?:         string
-		description?: string
-		id?:          string
-		name!:        string
+		api_id!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:           string
+		arn?:              string
+		description?:      string
+		id?:               string
+		name!:             string
 		service_role_arn?: string
 		type!:             string
 	})

@@ -11,6 +11,12 @@ import "list"
 		name!: matchN(1, [#name, list.MaxItems(1) & [_, ...] & [...#name]])
 		phone_numbers?: matchN(1, [#phone_numbers, list.MaxItems(1) & [...#phone_numbers]])
 		display_name!: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		external_ids?: [...close({
 			id?:     string
 			issuer?: string
@@ -21,18 +27,12 @@ import "list"
 		nickname?:           string
 		preferred_language?: string
 		profile_url?:        string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		timezone?:    string
-		title?:       string
-		user_id?:     string
-		user_name!:   string
-		user_status?: string
-		user_type?:   string
+		timezone?:           string
+		title?:              string
+		user_id?:            string
+		user_name!:          string
+		user_status?:        string
+		user_type?:          string
 	})
 
 	#addresses: close({

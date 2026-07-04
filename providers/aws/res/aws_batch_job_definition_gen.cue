@@ -9,7 +9,13 @@ import "list"
 		eks_properties?: matchN(1, [#eks_properties, list.MaxItems(1) & [...#eks_properties]])
 		retry_strategy?: matchN(1, [#retry_strategy, list.MaxItems(1) & [...#retry_strategy]])
 		timeout?: matchN(1, [#timeout, list.MaxItems(1) & [...#timeout]])
-		arn?:                        string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                     string
 		arn_prefix?:                 string
 		container_properties?:       string
 		deregister_on_new_revision?: bool
@@ -19,13 +25,7 @@ import "list"
 		node_properties?:            string
 		parameters?: [string]: string
 		platform_capabilities?: [...string]
-		propagate_tags?: bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
+		propagate_tags?:      bool
 		revision?:            number
 		scheduling_priority?: number
 		tags?: [string]:     string

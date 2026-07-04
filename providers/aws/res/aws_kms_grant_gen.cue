@@ -6,6 +6,12 @@ package res
 	close({
 		constraints?: matchN(1, [#constraints, [...#constraints]])
 		grant_creation_tokens?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
 		grant_id?:          string
 		grant_token?:       string
 		grantee_principal!: string
@@ -13,12 +19,6 @@ package res
 		key_id!:            string
 		name?:              string
 		operations!: [...string]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:             string
 		retire_on_delete?:   bool
 		retiring_principal?: string
 	})

@@ -7,8 +7,14 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lex_bot_alias")
 	close({
 		conversation_logs?: matchN(1, [#conversation_logs, list.MaxItems(1) & [...#conversation_logs]])
-		timeouts?:          #timeouts
-		arn?:               string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
 		bot_name!:          string
 		bot_version!:       string
 		checksum?:          string
@@ -17,12 +23,6 @@ import "list"
 		id?:                string
 		last_updated_date?: string
 		name!:              string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 	})
 
 	#conversation_logs: close({

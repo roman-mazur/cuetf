@@ -8,14 +8,14 @@ import "list"
 	close({
 		tag_filter?: matchN(1, [#tag_filter, list.MaxItems(50) & [...#tag_filter]])
 		exclude_compliant_resources?: bool
-		id?:                          string
-		include_compliance_details?:  bool
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:                     string
+		id?:                         string
+		include_compliance_details?: bool
 		resource_arn_list?: [...string]
 		resource_tag_mapping_list?: [...close({
 			compliance_details?: [...close({

@@ -7,14 +7,14 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_connect_user_hierarchy_structure")
 	close({
 		hierarchy_structure!: matchN(1, [#hierarchy_structure, list.MaxItems(1) & [_, ...] & [...#hierarchy_structure]])
-		id?:          string
-		instance_id!: string
+		id?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:      string
+		instance_id!: string
 	})
 
 	#hierarchy_structure: close({

@@ -17,13 +17,11 @@ package data
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 
-		// The IDs of the security groups that define the ports,
-		// protocols, and sources for inbound traffic that you are
-		// authorizing into your endpoint.
+		// The IDs of the security groups that define the ports, protocols, and sources
+		// for inbound traffic that you are authorizing into your endpoint.
 		security_group_ids?: [...string]
 
-		// The IDs of the subnets from which you access OpenSearch
-		// Serverless.
+		// The IDs of the subnets from which you access OpenSearch Serverless.
 		subnet_ids?: [...string]
 
 		// The unique identifier of the endpoint.

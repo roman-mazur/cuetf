@@ -7,17 +7,17 @@ package res
 		assessment_reports_destination?: matchN(1, [#assessment_reports_destination, [...#assessment_reports_destination]])
 		roles?: matchN(1, [#roles, [...#roles]])
 		scope?: matchN(1, [#scope, [...#scope]])
-		arn?:          string
-		description?:  string
-		framework_id!: string
-		id?:           string
-		name!:         string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:       string
+		description?:  string
+		framework_id!: string
+		id?:           string
+		name!:         string
 		roles_all?: [...close({
 			role_arn?:  string
 			role_type?: string

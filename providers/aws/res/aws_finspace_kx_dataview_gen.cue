@@ -5,8 +5,14 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_finspace_kx_dataview")
 	close({
 		segment_configurations?: matchN(1, [#segment_configurations, [...#segment_configurations]])
-		timeouts?:                #timeouts
-		arn?:                     string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                  string
 		auto_update!:             bool
 		availability_zone_id?:    string
 		az_mode!:                 string
@@ -19,13 +25,7 @@ package res
 		last_modified_timestamp?: string
 		name!:                    string
 		read_write?:              bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		status?: string
+		status?:                  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

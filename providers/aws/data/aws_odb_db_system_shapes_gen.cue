@@ -4,15 +4,13 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_odb_db_system_shapes")
 	close({
-		// The physical ID of the AZ, for example, use1-az4. This ID
-		// persists across accounts.
+		// The physical ID of the AZ, for example, use1-az4. This ID persists across accounts.
 		availability_zone_id?: string
 
-		// The list of shapes and their properties. Information about a
-		// hardware system model (shape) that's available for an Exadata
-		// infrastructure.The shape determines resources, such as CPU
-		// cores, memory, and storage, to allocate to the Exadata
-		// infrastructure.
+		// The list of shapes and their properties. Information about a hardware system
+		// model (shape) that's available for an Exadata infrastructure.The shape
+		// determines resources, such as CPU cores, memory, and storage, to allocate to
+		// the Exadata infrastructure.
 		db_system_shapes?: [...close({
 			available_core_count?:                     number
 			available_core_count_per_node?:            number

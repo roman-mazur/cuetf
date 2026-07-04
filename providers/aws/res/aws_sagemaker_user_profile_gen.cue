@@ -7,16 +7,16 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_user_profile")
 	close({
 		user_settings?: matchN(1, [#user_settings, list.MaxItems(1) & [...#user_settings]])
-		arn?:                      string
-		domain_id!:                string
-		home_efs_file_system_uid?: string
-		id?:                       string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                         string
+		domain_id!:                      string
+		home_efs_file_system_uid?:       string
+		id?:                             string
 		single_sign_on_user_identifier?: string
 		single_sign_on_user_value?:      string
 		tags?: [string]:     string

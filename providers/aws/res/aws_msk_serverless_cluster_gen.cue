@@ -9,17 +9,17 @@ import "list"
 		client_authentication!: matchN(1, [#client_authentication, list.MaxItems(1) & [_, ...] & [...#client_authentication]])
 		timeouts?: #timeouts
 		vpc_config!: matchN(1, [#vpc_config, [_, ...] & [...#vpc_config]])
-		arn?:                        string
-		bootstrap_brokers_sasl_iam?: string
-		cluster_name!:               string
-		cluster_uuid?:               string
-		id?:                         string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:                     string
+		bootstrap_brokers_sasl_iam?: string
+		cluster_name!:               string
+		cluster_uuid?:               string
+		id?:                         string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

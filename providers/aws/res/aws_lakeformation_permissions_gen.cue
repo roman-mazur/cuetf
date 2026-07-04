@@ -13,18 +13,18 @@ import "list"
 		lf_tag_policy?: matchN(1, [#lf_tag_policy, list.MaxItems(1) & [...#lf_tag_policy]])
 		table?: matchN(1, [#table, list.MaxItems(1) & [...#table]])
 		table_with_columns?: matchN(1, [#table_with_columns, list.MaxItems(1) & [...#table_with_columns]])
-		catalog_id?:       string
-		catalog_resource?: bool
-		id?:               string
-		permissions!: [...string]
-		permissions_with_grant_option?: [...string]
-		principal!: string
+		catalog_id?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:           string
+		catalog_resource?: bool
+		id?:               string
+		permissions!: [...string]
+		permissions_with_grant_option?: [...string]
+		principal!: string
 	})
 
 	#data_cells_filter: close({

@@ -15,35 +15,31 @@ package aws
 		access_key?: string
 		allowed_account_ids?: [...string]
 
-		// File containing custom root and intermediate certificates. Can
-		// also be configured using the `AWS_CA_BUNDLE` environment
-		// variable. (Setting `ca_bundle` in the shared config file is
-		// not supported.)
+		// File containing custom root and intermediate certificates. Can also be
+		// configured using the `AWS_CA_BUNDLE` environment variable. (Setting
+		// `ca_bundle` in the shared config file is not supported.)
 		custom_ca_bundle?: string
 
-		// Address of the EC2 metadata service endpoint to use. Can also
-		// be configured using the `AWS_EC2_METADATA_SERVICE_ENDPOINT`
-		// environment variable.
+		// Address of the EC2 metadata service endpoint to use. Can also be configured
+		// using the `AWS_EC2_METADATA_SERVICE_ENDPOINT` environment variable.
 		ec2_metadata_service_endpoint?: string
 
-		// Protocol to use with EC2 metadata service endpoint.Valid values
-		// are `IPv4` and `IPv6`. Can also be configured using the
+		// Protocol to use with EC2 metadata service endpoint.Valid values are `IPv4`
+		// and `IPv6`. Can also be configured using the
 		// `AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE` environment variable.
 		ec2_metadata_service_endpoint_mode?: string
+
+		// URL of a proxy to use for HTTP requests when accessing the AWS API. Can also
+		// be set using the `HTTP_PROXY` or `http_proxy` environment variables.
+		http_proxy?: string
 		forbidden_account_ids?: [...string]
 
-		// URL of a proxy to use for HTTP requests when accessing the AWS
-		// API. Can also be set using the `HTTP_PROXY` or `http_proxy`
-		// environment variables.
-		http_proxy?: string
-
-		// URL of a proxy to use for HTTPS requests when accessing the AWS
-		// API. Can also be set using the `HTTPS_PROXY` or `https_proxy`
-		// environment variables.
+		// URL of a proxy to use for HTTPS requests when accessing the AWS API. Can also
+		// be set using the `HTTPS_PROXY` or `https_proxy` environment variables.
 		https_proxy?: string
 
-		// Explicitly allow the provider to perform "insecure" SSL
-		// requests. If omitted, default value is `false`
+		// Explicitly allow the provider to perform "insecure" SSL requests. If omitted,
+		// default value is `false`
 		insecure?: bool
 
 		// The maximum number of times an AWS API request is
@@ -51,9 +47,8 @@ package aws
 		// thrown.
 		max_retries?: number
 
-		// Comma-separated list of hosts that should not use HTTP or HTTPS
-		// proxies. Can also be set using the `NO_PROXY` or `no_proxy`
-		// environment variables.
+		// Comma-separated list of hosts that should not use HTTP or HTTPS proxies. Can
+		// also be set using the `NO_PROXY` or `no_proxy` environment variables.
 		no_proxy?: string
 
 		// The profile for API operations. If not set, the default profile
@@ -64,69 +59,60 @@ package aws
 		// are us-east-1, us-west-2, etc.
 		region?: string
 
-		// Specifies how retries are attempted. Valid values are
-		// `standard` and `adaptive`. Can also be configured using the
-		// `AWS_RETRY_MODE` environment variable.
+		// Specifies how retries are attempted. Valid values are `standard` and
+		// `adaptive`. Can also be configured using the `AWS_RETRY_MODE` environment
+		// variable.
 		retry_mode?: string
 
-		// Specifies whether S3 API calls in the `us-east-1` region use
-		// the legacy global endpoint or a regional endpoint. Valid
-		// values are `legacy` or `regional`. Can also be configured
-		// using the `AWS_S3_US_EAST_1_REGIONAL_ENDPOINT` environment
-		// variable or the `s3_us_east_1_regional_endpoint` shared config
-		// file parameter
+		// Specifies whether S3 API calls in the `us-east-1` region use the legacy
+		// global endpoint or a regional endpoint. Valid values are `legacy` or
+		// `regional`. Can also be configured using the
+		// `AWS_S3_US_EAST_1_REGIONAL_ENDPOINT` environment variable or the
+		// `s3_us_east_1_regional_endpoint` shared config file parameter
 		s3_us_east_1_regional_endpoint?: string
 
-		// Set this to true to enable the request to use path-style
-		// addressing,
-		// i.e., https://s3.amazonaws.com/BUCKET/KEY. By default, the S3
-		// client will
+		// Set this to true to enable the request to use path-style addressing,
+		// i.e., https://s3.amazonaws.com/BUCKET/KEY. By default, the S3 client will
 		// use virtual hosted bucket addressing when possible
-		// (https://BUCKET.s3.amazonaws.com/KEY). Specific to the Amazon
-		// S3 service.
+		// (https://BUCKET.s3.amazonaws.com/KEY). Specific to the Amazon S3 service.
 		s3_use_path_style?: bool
 
 		// The secret key for API operations. You can retrieve this
 		// from the 'Security & Credentials' section of the AWS console.
 		secret_key?: string
 
-		// List of paths to shared config files. If not set, defaults to
-		// [~/.aws/config].
+		// List of paths to shared config files. If not set, defaults to [~/.aws/config].
 		shared_config_files?: [...string]
 
-		// List of paths to shared credentials files. If not set, defaults
-		// to [~/.aws/credentials].
+		// List of paths to shared credentials files. If not set, defaults to [~/.aws/credentials].
 		shared_credentials_files?: [...string]
 
-		// Skip the credentials validation via STS API. Used for AWS API
-		// implementations that do not have STS available/implemented.
+		// Skip the credentials validation via STS API. Used for AWS API implementations
+		// that do not have STS available/implemented.
 		skip_credentials_validation?: bool
 
-		// Skip the AWS Metadata API check. Used for AWS API
-		// implementations that do not have a metadata api endpoint.
+		// Skip the AWS Metadata API check. Used for AWS API implementations that do not
+		// have a metadata api endpoint.
 		skip_metadata_api_check?: string
 
-		// Skip static validation of region name. Used by users of
-		// alternative AWS-like APIs or users w/ access to regions that
-		// are not public (yet).
+		// Skip static validation of region name. Used by users of alternative AWS-like
+		// APIs or users w/ access to regions that are not public (yet).
 		skip_region_validation?: bool
 
-		// Skip requesting the account ID. Used for AWS API
-		// implementations that do not have IAM/STS API and/or metadata
-		// API.
+		// Skip requesting the account ID. Used for AWS API implementations that do not
+		// have IAM/STS API and/or metadata API.
 		skip_requesting_account_id?: bool
 
 		// The region where AWS STS operations will take place. Examples
 		// are us-east-1 and us-west-2.
 		sts_region?: string
 
-		// The severity with which to enforce organizational tagging
-		// policies on resources managed by this provider instance. At
-		// this time this only includes compliance with required tag keys
-		// by resource type. Valid values are "error", "warning", and
-		// "disabled". When unset or "disabled", tag policy compliance
-		// will not be enforced by the provider. Can also be configured
-		// with the TF_AWS_TAG_POLICY_COMPLIANCE environment variable.
+		// The severity with which to enforce organizational tagging policies on
+		// resources managed by this provider instance. At this time this only includes
+		// compliance with required tag keys by resource type. Valid values are
+		// "error", "warning", and "disabled". When unset or "disabled", tag policy
+		// compliance will not be enforced by the provider. Can also be configured with
+		// the TF_AWS_TAG_POLICY_COMPLIANCE environment variable.
 		tag_policy_compliance?: string
 
 		// session token. A session token is only required if you are
@@ -142,30 +128,26 @@ package aws
 		// Resolve an endpoint with FIPS capability
 		use_fips_endpoint?: bool
 
-		// Product details to append to the User-Agent string sent in all
-		// AWS API calls.
+		// Product details to append to the User-Agent string sent in all AWS API calls.
 		user_agent?: [...string]
 	})
 
 	#assume_role: close({
-		// The duration, between 15 minutes and 12 hours, of the role
-		// session. Valid time units are ns, us (or µs), ms, s, h, or m.
+		// The duration, between 15 minutes and 12 hours, of the role session. Valid
+		// time units are ns, us (or µs), ms, s, h, or m.
 		duration?: string
 
-		// A unique identifier that might be required when you assume a
-		// role in another account.
+		// A unique identifier that might be required when you assume a role in another account.
 		external_id?: string
 
-		// IAM Policy JSON describing further restricting permissions for
-		// the IAM Role being assumed.
+		// IAM Policy JSON describing further restricting permissions for the IAM Role being assumed.
 		policy?: string
 
-		// Amazon Resource Names (ARNs) of IAM Policies describing further
-		// restricting permissions for the IAM Role being assumed.
+		// Amazon Resource Names (ARNs) of IAM Policies describing further restricting
+		// permissions for the IAM Role being assumed.
 		policy_arns?: [...string]
 
-		// Amazon Resource Name (ARN) of an IAM Role to assume prior to
-		// making API calls.
+		// Amazon Resource Name (ARN) of an IAM Role to assume prior to making API calls.
 		role_arn?: string
 
 		// An identifier for the assumed role session.
@@ -177,26 +159,23 @@ package aws
 		// Assume role session tags.
 		tags?: [string]: string
 
-		// Assume role session tag keys to pass to any subsequent
-		// sessions.
+		// Assume role session tag keys to pass to any subsequent sessions.
 		transitive_tag_keys?: [...string]
 	})
 
 	#assume_role_with_web_identity: close({
-		// The duration, between 15 minutes and 12 hours, of the role
-		// session. Valid time units are ns, us (or µs), ms, s, h, or m.
+		// The duration, between 15 minutes and 12 hours, of the role session. Valid
+		// time units are ns, us (or µs), ms, s, h, or m.
 		duration?: string
 
-		// IAM Policy JSON describing further restricting permissions for
-		// the IAM Role being assumed.
+		// IAM Policy JSON describing further restricting permissions for the IAM Role being assumed.
 		policy?: string
 
-		// Amazon Resource Names (ARNs) of IAM Policies describing further
-		// restricting permissions for the IAM Role being assumed.
+		// Amazon Resource Names (ARNs) of IAM Policies describing further restricting
+		// permissions for the IAM Role being assumed.
 		policy_arns?: [...string]
 
-		// Amazon Resource Name (ARN) of an IAM Role to assume prior to
-		// making API calls.
+		// Amazon Resource Name (ARN) of an IAM Role to assume prior to making API calls.
 		role_arn?: string
 
 		// An identifier for the assumed role session.
@@ -206,9 +185,8 @@ package aws
 	})
 
 	#default_tags: close({
-		// Resource tags to default across all resources. Can also be
-		// configured with environment variables like
-		// `TF_AWS_DEFAULT_TAGS_<tag_name>`.
+		// Resource tags to default across all resources. Can also be configured with
+		// environment variables like `TF_AWS_DEFAULT_TAGS_<tag_name>`.
 		tags?: [string]: string
 	})
 
@@ -1154,14 +1132,12 @@ package aws
 	})
 
 	#ignore_tags: close({
-		// Resource tag key prefixes to ignore across all resources. Can
-		// also be configured with the TF_AWS_IGNORE_TAGS_KEY_PREFIXES
-		// environment variable.
+		// Resource tag key prefixes to ignore across all resources. Can also be
+		// configured with the TF_AWS_IGNORE_TAGS_KEY_PREFIXES environment variable.
 		key_prefixes?: [...string]
 
-		// Resource tag keys to ignore across all resources. Can also be
-		// configured with the TF_AWS_IGNORE_TAGS_KEYS environment
-		// variable.
+		// Resource tag keys to ignore across all resources. Can also be configured with
+		// the TF_AWS_IGNORE_TAGS_KEYS environment variable.
 		keys?: [...string]
 	})
 }

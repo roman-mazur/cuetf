@@ -7,17 +7,17 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sesv2_email_identity")
 	close({
 		dkim_signing_attributes?: matchN(1, [#dkim_signing_attributes, list.MaxItems(1) & [...#dkim_signing_attributes]])
-		arn?:                    string
-		configuration_set_name?: string
-		email_identity!:         string
-		id?:                     string
-		identity_type?:          string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:                 string
+		configuration_set_name?: string
+		email_identity!:         string
+		id?:                     string
+		identity_type?:          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		verification_status?:         string

@@ -8,19 +8,19 @@ import "list"
 	close({
 		acl_configuration?: matchN(1, [#acl_configuration, list.MaxItems(1) & [...#acl_configuration]])
 		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
-		bucket?:                string
+		bucket?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                string
 		comment?:               string
 		expected_bucket_owner?: string
 		force_destroy?:         bool
 		id?:                    string
 		name!:                  string
 		properties?: [string]: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:    string
 		workgroup?: string
 	})
 

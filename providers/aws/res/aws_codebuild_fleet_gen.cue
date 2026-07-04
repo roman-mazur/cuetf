@@ -9,7 +9,13 @@ import "list"
 		compute_configuration?: matchN(1, [#compute_configuration, list.MaxItems(1) & [...#compute_configuration]])
 		scaling_configuration?: matchN(1, [#scaling_configuration, list.MaxItems(1) & [...#scaling_configuration]])
 		vpc_config?: matchN(1, [#vpc_config, [...#vpc_config]])
-		arn?:                string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
 		base_capacity!:      number
 		compute_type!:       string
 		created?:            string
@@ -20,12 +26,6 @@ import "list"
 		last_modified?:      string
 		name!:               string
 		overflow_behavior?:  string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		status?: [...close({
 			context?:     string
 			message?:     string

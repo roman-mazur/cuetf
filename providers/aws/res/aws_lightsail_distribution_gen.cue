@@ -21,8 +21,7 @@ import "list"
 		// The bundle ID to use for the distribution.
 		bundle_id!: string
 
-		// The name of the SSL/TLS certificate attached to the
-		// distribution, if any.
+		// The name of the SSL/TLS certificate attached to the distribution, if any.
 		certificate_name?: string
 
 		// The timestamp when the distribution was created.
@@ -38,8 +37,8 @@ import "list"
 		// Indicates whether the distribution is enabled.
 		is_enabled?: bool
 
-		// An object that describes the location of the distribution, such
-		// as the AWS Region and Availability Zone.
+		// An object that describes the location of the distribution, such as the AWS
+		// Region and Availability Zone.
 		location?: [...close({
 			availability_zone?: string
 			region_name?:       string
@@ -63,10 +62,9 @@ import "list"
 		// The status of the distribution.
 		status?: string
 
-		// The support code. Include this code in your email to support
-		// when you have questions about your Lightsail distribution.
-		// This code enables our support team to look up your Lightsail
-		// information more easily.
+		// The support code. Include this code in your email to support when you have
+		// questions about your Lightsail distribution. This code enables our support
+		// team to look up your Lightsail information more easily.
 		support_code?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
@@ -76,10 +74,9 @@ import "list"
 		// The cache behavior for the specified path.
 		behavior!: string
 
-		// The path to a directory or file to cached, or not cache. Use an
-		// asterisk symbol to specify wildcard directories
-		// (path/to/assets/*), and file types (*.html, *jpg, *js).
-		// Directories and file paths are case-sensitive.
+		// The path to a directory or file to cached, or not cache. Use an asterisk
+		// symbol to specify wildcard directories (path/to/assets/*), and file types
+		// (*.html, *jpg, *js). Directories and file paths are case-sensitive.
 		path!: string
 	})
 
@@ -88,29 +85,25 @@ import "list"
 		forwarded_headers?: matchN(1, [_#defs."/$defs/cache_behavior_settings/$defs/forwarded_headers", list.MaxItems(1) & [..._#defs."/$defs/cache_behavior_settings/$defs/forwarded_headers"]])
 		forwarded_query_strings?: matchN(1, [_#defs."/$defs/cache_behavior_settings/$defs/forwarded_query_strings", list.MaxItems(1) & [..._#defs."/$defs/cache_behavior_settings/$defs/forwarded_query_strings"]])
 
-		// The HTTP methods that are processed and forwarded to the
-		// distribution's origin.
+		// The HTTP methods that are processed and forwarded to the distribution's origin.
 		allowed_http_methods?: string
 
 		// The HTTP method responses that are cached by your distribution.
 		cached_http_methods?: string
 
-		// The default amount of time that objects stay in the
-		// distribution's cache before the distribution forwards another
-		// request to the origin to determine whether the content has
-		// been updated.
+		// The default amount of time that objects stay in the distribution's cache
+		// before the distribution forwards another request to the origin to determine
+		// whether the content has been updated.
 		default_ttl?: number
 
-		// The maximum amount of time that objects stay in the
-		// distribution's cache before the distribution forwards another
-		// request to the origin to determine whether the object has been
-		// updated.
+		// The maximum amount of time that objects stay in the distribution's cache
+		// before the distribution forwards another request to the origin to determine
+		// whether the object has been updated.
 		maximum_ttl?: number
 
-		// The minimum amount of time that objects stay in the
-		// distribution's cache before the distribution forwards another
-		// request to the origin to determine whether the object has been
-		// updated.
+		// The minimum amount of time that objects stay in the distribution's cache
+		// before the distribution forwards another request to the origin to determine
+		// whether the object has been updated.
 		minimum_ttl?: number
 	})
 
@@ -123,8 +116,8 @@ import "list"
 		// The name of the origin resource.
 		name!: string
 
-		// The protocol that your Amazon Lightsail distribution uses when
-		// establishing a connection with your origin to pull content.
+		// The protocol that your Amazon Lightsail distribution uses when establishing a
+		// connection with your origin to pull content.
 		protocol_policy?: string
 
 		// The AWS Region name of the origin resource.
@@ -144,9 +137,9 @@ import "list"
 		// The specific cookies to forward to your distribution's origin.
 		cookies_allow_list?: [...string]
 
-		// Specifies which cookies to forward to the distribution's origin
-		// for a cache behavior: all, none, or allow-list to forward only
-		// the cookies specified in the cookiesAllowList parameter.
+		// Specifies which cookies to forward to the distribution's origin for a cache
+		// behavior: all, none, or allow-list to forward only the cookies specified in
+		// the cookiesAllowList parameter.
 		option?: string
 	})
 
@@ -154,18 +147,15 @@ import "list"
 		// The specific headers to forward to your distribution's origin.
 		headers_allow_list?: [...string]
 
-		// The headers that you want your distribution to forward to your
-		// origin and base caching on.
+		// The headers that you want your distribution to forward to your origin and base caching on.
 		option?: string
 	})
 
 	_#defs: "/$defs/cache_behavior_settings/$defs/forwarded_query_strings": close({
-		// Indicates whether the distribution forwards and caches based on
-		// query strings.
+		// Indicates whether the distribution forwards and caches based on query strings.
 		option?: bool
 
-		// The specific query strings that the distribution forwards to
-		// the origin.
+		// The specific query strings that the distribution forwards to the origin.
 		query_strings_allowed_list?: [...string]
 	})
 }

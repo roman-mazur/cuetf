@@ -9,7 +9,13 @@ import "list"
 		component!: matchN(1, [#component, [_, ...] & [...#component]])
 		instance_configuration?: matchN(1, [#instance_configuration, list.MaxItems(1) & [...#instance_configuration]])
 		target_repository!: matchN(1, [#target_repository, list.MaxItems(1) & [_, ...] & [...#target_repository]])
-		arn?:                      string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                   string
 		container_type!:           string
 		date_created?:             string
 		description?:              string
@@ -23,12 +29,6 @@ import "list"
 		parent_image!:             string
 		platform?:                 string
 		platform_override?:        string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version!:           string

@@ -11,7 +11,13 @@ import "list"
 		proxy_configuration?: matchN(1, [#proxy_configuration, list.MaxItems(1) & [...#proxy_configuration]])
 		runtime_platform?: matchN(1, [#runtime_platform, list.MaxItems(1) & [...#runtime_platform]])
 		volume?: matchN(1, [#volume, [...#volume]])
-		arn?:                    string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                 string
 		arn_without_revision?:   string
 		container_definitions!:  string
 		cpu?:                    string
@@ -23,12 +29,6 @@ import "list"
 		memory?:                 string
 		network_mode?:           string
 		pid_mode?:               string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		requires_compatibilities?: [...string]
 		revision?:     number
 		skip_destroy?: bool

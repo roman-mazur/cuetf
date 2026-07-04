@@ -11,8 +11,7 @@ package res
 		// ARN of the parent configuration set.
 		configuration_set_arn?: string
 
-		// Name of the configuration set this event destination belongs
-		// to.
+		// Name of the configuration set this event destination belongs to.
 		configuration_set_name!: string
 
 		// Whether the event destination is enabled. Defaults to `true`.
@@ -32,22 +31,18 @@ package res
 	})
 
 	#cloudwatch_logs_destination: close({
-		// ARN of the IAM role that End User Messaging SMS assumes to
-		// write to the log group.
+		// ARN of the IAM role that End User Messaging SMS assumes to write to the log group.
 		iam_role_arn!: string
 
-		// ARN of the Amazon CloudWatch log group that receives the
-		// events.
+		// ARN of the Amazon CloudWatch log group that receives the events.
 		log_group_arn!: string
 	})
 
 	#kinesis_firehose_destination: close({
-		// ARN of the Amazon Data Firehose delivery stream that receives
-		// the events.
+		// ARN of the Amazon Data Firehose delivery stream that receives the events.
 		delivery_stream_arn!: string
 
-		// ARN of the IAM role that End User Messaging SMS assumes to
-		// write to the delivery stream.
+		// ARN of the IAM role that End User Messaging SMS assumes to write to the delivery stream.
 		iam_role_arn!: string
 	})
 

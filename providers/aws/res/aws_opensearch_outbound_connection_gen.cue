@@ -11,16 +11,16 @@ import "list"
 		remote_domain_info!: matchN(1, [#remote_domain_info, list.MaxItems(1) & [_, ...] & [...#remote_domain_info]])
 		timeouts?:          #timeouts
 		accept_connection?: bool
-		connection_alias!:  string
-		connection_mode?:   string
-		connection_status?: string
-		id?:                string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:            string
+		connection_alias!:  string
+		connection_mode?:   string
+		connection_status?: string
+		id?:                string
 	})
 
 	#connection_properties: close({

@@ -8,20 +8,20 @@ import "list"
 	close({
 		default_action!: matchN(1, [#default_action, [_, ...] & [...#default_action]])
 		mutual_authentication?: matchN(1, [#mutual_authentication, list.MaxItems(1) & [...#mutual_authentication]])
-		timeouts?:          #timeouts
-		alpn_policy?:       string
-		arn?:               string
-		certificate_arn?:   string
-		id?:                string
-		load_balancer_arn!: string
-		port?:              number
-		protocol?:          string
+		timeouts?:    #timeouts
+		alpn_policy?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                                                                string
+		arn?:                                                                   string
+		certificate_arn?:                                                       string
+		id?:                                                                    string
+		load_balancer_arn!:                                                     string
+		port?:                                                                  number
+		protocol?:                                                              string
 		routing_http_request_x_amzn_mtls_clientcert_header_name?:               string
 		routing_http_request_x_amzn_mtls_clientcert_issuer_header_name?:        string
 		routing_http_request_x_amzn_mtls_clientcert_leaf_header_name?:          string

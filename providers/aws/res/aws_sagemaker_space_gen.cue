@@ -9,18 +9,18 @@ import "list"
 		ownership_settings?: matchN(1, [#ownership_settings, list.MaxItems(1) & [...#ownership_settings]])
 		space_settings?: matchN(1, [#space_settings, list.MaxItems(1) & [...#space_settings]])
 		space_sharing_settings?: matchN(1, [#space_sharing_settings, list.MaxItems(1) & [...#space_sharing_settings]])
-		arn?:                      string
-		domain_id!:                string
-		home_efs_file_system_uid?: string
-		id?:                       string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:             string
-		space_display_name?: string
-		space_name!:         string
+		region?:                   string
+		domain_id!:                string
+		home_efs_file_system_uid?: string
+		id?:                       string
+		space_display_name?:       string
+		space_name!:               string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		url?: string

@@ -4,8 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_odb_cloud_vm_clusters")
 	close({
-		// List of Cloud VM Clusters. It returns only basic information
-		// about the cloud VM clusters.
+		// List of Cloud VM Clusters. It returns only basic information about the cloud VM clusters.
 		cloud_vm_clusters?: [...close({
 			arn?:                             string
 			cloud_exadata_infrastructure_id?: string

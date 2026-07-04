@@ -6,17 +6,17 @@ package res
 	close({
 		timeouts?:              #timeouts
 		free_trial_expiration?: string
-		grafana_token?:         string
-		id?:                    string
-		license_expiration?:    string
-		license_type!:          string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:       string
-		workspace_id!: string
+		region?:             string
+		grafana_token?:      string
+		id?:                 string
+		license_expiration?: string
+		license_type!:       string
+		workspace_id!:       string
 	})
 
 	#timeouts: close({

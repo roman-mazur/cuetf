@@ -27,24 +27,24 @@ package res
 		vpc_config?: matchN(1, [#vpc_config, [...#vpc_config]])
 		arn?: string
 
-		// Whether to delete model packages in the configured model
-		// package group when destroying the training job.
+		// Whether to delete model packages in the configured model package group when
+		// destroying the training job.
 		delete_model_packages_on_destroy?: bool
 
-		// Whether to delete detached VPC ENIs that SageMaker may leave
-		// behind when destroying the training job.
-		delete_vpc_enis_on_destroy?:                bool
-		enable_inter_container_traffic_encryption?: bool
-		enable_managed_spot_training?:              bool
-		enable_network_isolation?:                  bool
-		environment?: [string]:      string
-		hyper_parameters?: [string]: string
+		// Whether to delete detached VPC ENIs that SageMaker may leave behind when
+		// destroying the training job.
+		delete_vpc_enis_on_destroy?: bool
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
+		region?:                                    string
+		enable_inter_container_traffic_encryption?: bool
+		enable_managed_spot_training?:              bool
+		enable_network_isolation?:                  bool
+		environment?: [string]:      string
+		hyper_parameters?: [string]: string
 		role_arn!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
@@ -59,18 +59,16 @@ package res
 		// `algorithm_name` or `training_image` must be set.
 		algorithm_name?: string
 		container_arguments?: [...string]
+
+		// Whether SageMaker AI should publish time-series metrics. SageMaker enables
+		// this automatically for built-in algorithms, supported prebuilt images, and
+		// jobs with explicit `metric_definitions`.
+		enable_sagemaker_metrics_time_series?: bool
 		container_entrypoint?: [...string]
 
-		// Whether SageMaker AI should publish time-series metrics.
-		// SageMaker enables this automatically for built-in algorithms,
-		// supported prebuilt images, and jobs with explicit
-		// `metric_definitions`.
-		enable_sagemaker_metrics_time_series?: bool
-
-		// Registry path of the training image. Exactly one of
-		// `algorithm_name` or `training_image` must be set. Use
-		// `metric_definitions` only when you need to extract custom
-		// metrics from your own training container logs.
+		// Registry path of the training image. Exactly one of `algorithm_name` or
+		// `training_image` must be set. Use `metric_definitions` only when you need to
+		// extract custom metrics from your own training container logs.
 		training_image?:      string
 		training_input_mode?: string
 	})
@@ -174,8 +172,8 @@ package res
 	#serverless_job_config: close({
 		accept_eula?: bool
 
-		// Base model ARN in SageMaker Public Hub. SageMaker always
-		// selects the latest version of the provided model.
+		// Base model ARN in SageMaker Public Hub. SageMaker always selects the latest
+		// version of the provided model.
 		base_model_arn!:          string
 		customization_technique?: string
 		evaluation_type?:         string
@@ -201,24 +199,23 @@ package res
 
 	#timeouts: close({
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
 		create?: string
 
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
-		// Setting a timeout for a Delete operation is only applicable if
-		// changes are saved into state before the destroy operation
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+		// applicable if changes are saved into state before the destroy operation
 		// occurs.
 		delete?: string
 
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
 		update?: string
 	})
 

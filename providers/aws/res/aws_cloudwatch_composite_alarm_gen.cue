@@ -8,6 +8,12 @@ import "list"
 	close({
 		actions_suppressor?: matchN(1, [#actions_suppressor, list.MaxItems(1) & [...#actions_suppressor]])
 		actions_enabled?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		alarm_actions?: [...string]
 		alarm_description?: string
 		alarm_name!:        string
@@ -16,12 +22,6 @@ import "list"
 		id?:                string
 		insufficient_data_actions?: [...string]
 		ok_actions?: [...string]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

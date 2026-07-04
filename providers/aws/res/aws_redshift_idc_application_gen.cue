@@ -6,7 +6,13 @@ package res
 	close({
 		authorized_token_issuer?: matchN(1, [#authorized_token_issuer, [...#authorized_token_issuer]])
 		service_integration?: matchN(1, [#service_integration, [...#service_integration]])
-		application_type?:              string
+		application_type?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                        string
 		iam_role_arn!:                  string
 		idc_display_name!:              string
 		idc_instance_arn!:              string
@@ -14,12 +20,6 @@ package res
 		identity_namespace?:            string
 		redshift_idc_application_arn?:  string
 		redshift_idc_application_name!: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

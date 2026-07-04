@@ -7,21 +7,21 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudformation_type")
 	close({
 		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
-		arn?:                string
-		default_version_id?: string
-		deprecated_status?:  string
-		description?:        string
-		documentation_url?:  string
-		execution_role_arn?: string
-		id?:                 string
-		is_default_version?: bool
-		provisioning_type?:  string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                 string
+		default_version_id?:     string
+		deprecated_status?:      string
+		description?:            string
+		documentation_url?:      string
+		execution_role_arn?:     string
+		id?:                     string
+		is_default_version?:     bool
+		provisioning_type?:      string
 		schema?:                 string
 		schema_handler_package!: string
 		source_url?:             string

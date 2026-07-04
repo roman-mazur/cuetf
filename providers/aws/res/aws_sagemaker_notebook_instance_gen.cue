@@ -8,6 +8,12 @@ import "list"
 	close({
 		instance_metadata_service_configuration?: matchN(1, [#instance_metadata_service_configuration, list.MaxItems(1) & [...#instance_metadata_service_configuration]])
 		additional_code_repositories?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                  string
 		arn?:                     string
 		default_code_repository?: string
 		direct_internet_access?:  string
@@ -18,14 +24,8 @@ import "list"
 		name!:                    string
 		network_interface_id?:    string
 		platform_identifier?:     string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		role_arn!:    string
-		root_access?: string
+		role_arn!:                string
+		root_access?:             string
 		security_groups?: [...string]
 		subnet_id?: string
 		tags?: [string]:     string

@@ -6,6 +6,12 @@ package data
 	close({
 		parameter_value?: matchN(1, [#parameter_value, [...#parameter_value]])
 		id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		parameter_object?: [...close({
 			attribute?: [...close({
 				key?:          string
@@ -23,12 +29,6 @@ package data
 			id?:   string
 			name?: string
 		})]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 	})
 
 	#parameter_value: close({

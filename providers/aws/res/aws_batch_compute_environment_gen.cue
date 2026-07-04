@@ -9,21 +9,21 @@ import "list"
 		compute_resources?: matchN(1, [#compute_resources, list.MaxItems(1) & [...#compute_resources]])
 		eks_configuration?: matchN(1, [#eks_configuration, list.MaxItems(1) & [...#eks_configuration]])
 		update_policy?: matchN(1, [#update_policy, list.MaxItems(1) & [...#update_policy]])
-		arn?:             string
-		ecs_cluster_arn?: string
-		id?:              string
-		name?:            string
-		name_prefix?:     string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
-		service_role?:  string
-		state?:         string
-		status?:        string
-		status_reason?: string
+		region?:          string
+		ecs_cluster_arn?: string
+		id?:              string
+		name?:            string
+		name_prefix?:     string
+		service_role?:    string
+		state?:           string
+		status?:          string
+		status_reason?:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type!: string

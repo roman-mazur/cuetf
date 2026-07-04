@@ -4,8 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_rds_cluster_instance")
 	close({
-		timeouts?:                              #timeouts
-		apply_immediately?:                     bool
+		timeouts?:          #timeouts
+		apply_immediately?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                                string
 		arn?:                                   string
 		auto_minor_version_upgrade?:            bool
 		availability_zone?:                     string
@@ -37,13 +43,7 @@ package res
 		preferred_maintenance_window?:          string
 		promotion_tier?:                        number
 		publicly_accessible?:                   bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:            string
-		storage_encrypted?: bool
+		storage_encrypted?:                     bool
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		writer?: bool

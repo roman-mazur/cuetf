@@ -15,17 +15,17 @@ import "list"
 		timeouts?: #timeouts
 		worker_configuration?: matchN(1, [#worker_configuration, list.MaxItems(1) & [...#worker_configuration]])
 		arn?: string
-		connector_configuration!: [string]: string
-		description?:          string
-		id?:                   string
-		kafkaconnect_version!: string
-		name!:                 string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                     string
+		region?: string
+		connector_configuration!: [string]: string
+		description?:                string
+		id?:                         string
+		kafkaconnect_version!:       string
+		name!:                       string
 		service_execution_role_arn!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

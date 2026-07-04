@@ -12,8 +12,14 @@ import "list"
 		ipam_pools?: matchN(1, [#ipam_pools, list.MaxItems(1) & [...#ipam_pools]])
 		minimum_load_balancer_capacity?: matchN(1, [#minimum_load_balancer_capacity, list.MaxItems(1) & [...#minimum_load_balancer_capacity]])
 		subnet_mapping?: matchN(1, [#subnet_mapping, [...#subnet_mapping]])
-		timeouts?:                                                     #timeouts
-		arn?:                                                          string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                                                       string
 		arn_suffix?:                                                   string
 		client_keep_alive?:                                            number
 		customer_owned_ipv4_pool?:                                     string
@@ -38,13 +44,7 @@ import "list"
 		name?:                                                         string
 		name_prefix?:                                                  string
 		preserve_host_header?:                                         bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                                 string
-		secondary_ips_auto_assigned_per_subnet?: number
+		secondary_ips_auto_assigned_per_subnet?:                       number
 		security_groups?: [...string]
 		subnets?: [...string]
 		tags?: [string]:     string

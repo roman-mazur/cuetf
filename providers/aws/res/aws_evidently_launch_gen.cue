@@ -9,8 +9,14 @@ import "list"
 		groups!: matchN(1, [#groups, list.MaxItems(5) & [_, ...] & [...#groups]])
 		metric_monitors?: matchN(1, [#metric_monitors, list.MaxItems(3) & [...#metric_monitors]])
 		scheduled_splits_config?: matchN(1, [#scheduled_splits_config, list.MaxItems(1) & [...#scheduled_splits_config]])
-		timeouts?:     #timeouts
-		arn?:          string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:       string
 		created_time?: string
 		description?:  string
 		execution?: [...close({
@@ -22,14 +28,8 @@ import "list"
 		name!:               string
 		project!:            string
 		randomization_salt?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
-		status?:        string
-		status_reason?: string
+		status?:             string
+		status_reason?:      string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type?: string

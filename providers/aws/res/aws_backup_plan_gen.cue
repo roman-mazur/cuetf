@@ -9,15 +9,15 @@ import "list"
 		advanced_backup_setting?: matchN(1, [#advanced_backup_setting, [...#advanced_backup_setting]])
 		rule!: matchN(1, [#rule, [_, ...] & [...#rule]])
 		scan_setting?: matchN(1, [#scan_setting, [...#scan_setting]])
-		arn?:  string
-		id?:   string
-		name!: string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		id?:     string
+		name!:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version?: string
