@@ -8,17 +8,17 @@ import "list"
 	close({
 		target_action!: matchN(1, [#target_action, list.MaxItems(1) & [_, ...] & [...#target_action]])
 		description?: string
-		enable?:      bool
-		end_time?:    string
-		iam_role!:    string
-		id?:          string
-		name!:        string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:     string
+		enable?:     bool
+		end_time?:   string
+		iam_role!:   string
+		id?:         string
+		name!:       string
 		schedule!:   string
 		start_time?: string
 	})

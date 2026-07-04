@@ -8,8 +8,14 @@ import "list"
 	close({
 		client_data?: matchN(1, [#client_data, list.MaxItems(1) & [...#client_data]])
 		disk_container!: matchN(1, [#disk_container, list.MaxItems(1) & [_, ...] & [...#disk_container]])
-		timeouts?:               #timeouts
-		arn?:                    string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                 string
 		data_encryption_key_id?: string
 		description?:            string
 		encrypted?:              bool
@@ -19,14 +25,8 @@ import "list"
 		owner_alias?:            string
 		owner_id?:               string
 		permanent_restore?:      bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:       string
-		role_name?:    string
-		storage_tier?: string
+		role_name?:              string
+		storage_tier?:           string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		temporary_restore_days?: number

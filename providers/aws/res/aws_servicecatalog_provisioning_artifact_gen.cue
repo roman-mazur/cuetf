@@ -4,8 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_servicecatalog_provisioning_artifact")
 	close({
-		timeouts?:                    #timeouts
-		accept_language?:             string
+		timeouts?:        #timeouts
+		accept_language?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                      string
 		active?:                      bool
 		created_time?:                string
 		description?:                 string
@@ -15,15 +21,9 @@ package res
 		name?:                        string
 		product_id!:                  string
 		provisioning_artifact_id?:    string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:               string
-		template_physical_id?: string
-		template_url?:         string
-		type?:                 string
+		template_physical_id?:        string
+		template_url?:                string
+		type?:                        string
 	})
 
 	#timeouts: close({

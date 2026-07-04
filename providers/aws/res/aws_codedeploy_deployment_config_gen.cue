@@ -9,17 +9,17 @@ import "list"
 		minimum_healthy_hosts?: matchN(1, [#minimum_healthy_hosts, list.MaxItems(1) & [...#minimum_healthy_hosts]])
 		traffic_routing_config?: matchN(1, [#traffic_routing_config, list.MaxItems(1) & [...#traffic_routing_config]])
 		zonal_config?: matchN(1, [#zonal_config, list.MaxItems(1) & [...#zonal_config]])
-		arn?:                    string
-		compute_platform?:       string
-		deployment_config_id?:   string
-		deployment_config_name!: string
-		id?:                     string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:                 string
+		compute_platform?:       string
+		deployment_config_id?:   string
+		deployment_config_name!: string
+		id?:                     string
 	})
 
 	#minimum_healthy_hosts: close({

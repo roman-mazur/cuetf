@@ -5,17 +5,17 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ec2_local_gateway")
 	close({
 		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?:    #timeouts
-		id?:          string
-		outpost_arn?: string
-		owner_id?:    string
+		timeouts?: #timeouts
+		id?:       string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		state?:  string
+		region?:      string
+		outpost_arn?: string
+		owner_id?:    string
+		state?:       string
 		tags?: [string]: string
 	})
 

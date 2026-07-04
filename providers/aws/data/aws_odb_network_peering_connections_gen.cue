@@ -4,8 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_odb_network_peering_connections")
 	close({
-		// The list of ODB peering connections. A summary of an ODB
-		// peering connection.
+		// The list of ODB peering connections. A summary of an ODB peering connection.
 		odb_peering_connections?: [...close({
 			arn?:              string
 			display_name?:     string

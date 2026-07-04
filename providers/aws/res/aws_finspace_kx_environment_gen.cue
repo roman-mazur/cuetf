@@ -10,6 +10,12 @@ import "list"
 		timeouts?: #timeouts
 		transit_gateway_configuration?: matchN(1, [#transit_gateway_configuration, list.MaxItems(1) & [...#transit_gateway_configuration]])
 		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		availability_zones?: [...string]
 		created_timestamp?:         string
 		description?:               string
@@ -18,13 +24,7 @@ import "list"
 		kms_key_id!:                string
 		last_modified_timestamp?:   string
 		name!:                      string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		status?: string
+		status?:                    string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

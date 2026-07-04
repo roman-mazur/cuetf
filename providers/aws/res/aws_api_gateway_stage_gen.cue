@@ -8,7 +8,13 @@ import "list"
 	close({
 		access_log_settings?: matchN(1, [#access_log_settings, list.MaxItems(1) & [...#access_log_settings]])
 		canary_settings?: matchN(1, [#canary_settings, list.MaxItems(1) & [...#canary_settings]])
-		arn?:                   string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                string
 		cache_cluster_enabled?: bool
 		cache_cluster_size?:    string
 		client_certificate_id?: string
@@ -18,14 +24,8 @@ import "list"
 		execution_arn?:         string
 		id?:                    string
 		invoke_url?:            string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		rest_api_id!: string
-		stage_name!:  string
+		rest_api_id!:           string
+		stage_name!:            string
 		tags?: [string]:      string
 		tags_all?: [string]:  string
 		variables?: [string]: string

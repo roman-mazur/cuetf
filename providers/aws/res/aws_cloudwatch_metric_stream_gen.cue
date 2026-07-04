@@ -7,8 +7,14 @@ package res
 		exclude_filter?: matchN(1, [#exclude_filter, [...#exclude_filter]])
 		include_filter?: matchN(1, [#include_filter, [...#include_filter]])
 		statistics_configuration?: matchN(1, [#statistics_configuration, [...#statistics_configuration]])
-		timeouts?:                        #timeouts
-		arn?:                             string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                          string
 		creation_date?:                   string
 		firehose_arn!:                    string
 		id?:                              string
@@ -17,14 +23,8 @@ package res
 		name?:                            string
 		name_prefix?:                     string
 		output_format!:                   string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		role_arn!: string
-		state?:    string
+		role_arn!:                        string
+		state?:                           string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

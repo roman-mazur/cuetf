@@ -7,16 +7,16 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_appautoscaling_scheduled_action")
 	close({
 		scalable_target_action!: matchN(1, [#scalable_target_action, list.MaxItems(1) & [_, ...] & [...#scalable_target_action]])
-		arn?:      string
-		end_time?: string
-		id?:       string
-		name!:     string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:             string
+		end_time?:           string
+		id?:                 string
+		name!:               string
 		resource_id!:        string
 		scalable_dimension!: string
 		schedule!:           string

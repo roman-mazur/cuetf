@@ -8,17 +8,17 @@ import "list"
 	close({
 		posix_user?: matchN(1, [#posix_user, list.MaxItems(1) & [...#posix_user]])
 		root_directory?: matchN(1, [#root_directory, list.MaxItems(1) & [...#root_directory]])
-		arn?:             string
-		file_system_arn?: string
-		file_system_id!:  string
-		id?:              string
-		owner_id?:        string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:          string
+		file_system_arn?: string
+		file_system_id!:  string
+		id?:              string
+		owner_id?:        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

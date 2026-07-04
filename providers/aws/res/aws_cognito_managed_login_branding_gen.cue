@@ -5,14 +5,14 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cognito_managed_login_branding")
 	close({
 		asset?: matchN(1, [#asset, [...#asset]])
-		client_id!:                 string
-		managed_login_branding_id?: string
+		client_id!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                      string
+		managed_login_branding_id?:   string
 		settings?:                    string
 		settings_all?:                string
 		use_cognito_provided_values?: bool

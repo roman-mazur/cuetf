@@ -7,8 +7,14 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dynamodb_table_export")
 	close({
 		incremental_export_specification?: matchN(1, [#incremental_export_specification, list.MaxItems(1) & [...#incremental_export_specification]])
-		timeouts?:              #timeouts
-		arn?:                   string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                string
 		billed_size_in_bytes?:  number
 		end_time?:              string
 		export_format?:         string
@@ -18,19 +24,13 @@ import "list"
 		id?:                    string
 		item_count?:            number
 		manifest_files_s3_key?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:            string
-		s3_bucket!:         string
-		s3_bucket_owner?:   string
-		s3_prefix?:         string
-		s3_sse_algorithm?:  string
-		s3_sse_kms_key_id?: string
-		start_time?:        string
-		table_arn!:         string
+		s3_bucket!:             string
+		s3_bucket_owner?:       string
+		s3_prefix?:             string
+		s3_sse_algorithm?:      string
+		s3_sse_kms_key_id?:     string
+		start_time?:            string
+		table_arn!:             string
 	})
 
 	#incremental_export_specification: close({

@@ -9,8 +9,14 @@ import "list"
 		disk_iops_configuration?: matchN(1, [#disk_iops_configuration, list.MaxItems(1) & [...#disk_iops_configuration]])
 		read_cache_configuration?: matchN(1, [#read_cache_configuration, list.MaxItems(1) & [...#read_cache_configuration]])
 		root_volume_configuration?: matchN(1, [#root_volume_configuration, list.MaxItems(1) & [...#root_volume_configuration]])
-		timeouts?:                          #timeouts
-		arn?:                               string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                            string
 		automatic_backup_retention_days?:   number
 		backup_id?:                         string
 		copy_tags_to_backups?:              bool
@@ -27,13 +33,7 @@ import "list"
 		network_interface_ids?: [...string]
 		owner_id?:            string
 		preferred_subnet_id?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:         string
-		root_volume_id?: string
+		root_volume_id?:      string
 		route_table_ids?: [...string]
 		security_group_ids?: [...string]
 		skip_final_backup?: bool

@@ -13,10 +13,9 @@ package res
 		timeouts?: #timeouts
 		arn?:      string
 
-		// The identifier for your AWS Key Management Service key (AWS KMS
-		// key). You can supply the Amazon Resource Name (ARN) of your
-		// KMS key, the ID of your KMS key, an alias for your KMS key, or
-		// an alias ARN.
+		// The identifier for your AWS Key Management Service key (AWS KMS key). You can
+		// supply the Amazon Resource Name (ARN) of your KMS key, the ID of your KMS
+		// key, an alias for your KMS key, or an alias ARN.
 		kms_key_id?: string
 
 		// An identifier you assign to the stream processor.
@@ -28,16 +27,14 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 
-		// The Amazon Resource Number (ARN) of the IAM role that allows
-		// access to the stream processor.
+		// The Amazon Resource Number (ARN) of the IAM role that allows access to the stream processor.
 		role_arn!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
 
 	#data_sharing_preference: close({
-		// Do you want to share data with Rekognition to improve model
-		// performance.
+		// Do you want to share data with Rekognition to improve model performance.
 		opt_in!: bool
 	})
 
@@ -46,9 +43,8 @@ package res
 	})
 
 	#notification_channel: close({
-		// The Amazon Resource Number (ARN) of the Amazon Amazon Simple
-		// Notification Service topic to which Amazon Rekognition posts
-		// the completion status.
+		// The Amazon Resource Number (ARN) of the Amazon Amazon Simple Notification
+		// Service topic to which Amazon Rekognition posts the completion status.
 		sns_topic_arn?: string
 	})
 
@@ -69,30 +65,28 @@ package res
 
 	#timeouts: close({
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
 		create?: string
 
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
-		// Setting a timeout for a Delete operation is only applicable if
-		// changes are saved into state before the destroy operation
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+		// applicable if changes are saved into state before the destroy operation
 		// occurs.
 		delete?: string
 
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
 		update?: string
 	})
 
 	_#defs: "/$defs/input/$defs/kinesis_video_stream": close({
-		// ARN of the Kinesis video stream stream that streams the source
-		// video.
+		// ARN of the Kinesis video stream stream that streams the source video.
 		arn!: string
 	})
 
@@ -102,30 +96,25 @@ package res
 	})
 
 	_#defs: "/$defs/output/$defs/s3_destination": close({
-		// The name of the Amazon S3 bucket you want to associate with the
-		// streaming video project.
+		// The name of the Amazon S3 bucket you want to associate with the streaming video project.
 		bucket?: string
 
-		// The prefix value of the location within the bucket that you
-		// want the information to be published to.
+		// The prefix value of the location within the bucket that you want the
+		// information to be published to.
 		key_prefix?: string
 	})
 
 	_#defs: "/$defs/regions_of_interest/$defs/bounding_box": close({
-		// Height of the bounding box as a ratio of the overall image
-		// height.
+		// Height of the bounding box as a ratio of the overall image height.
 		height?: number
 
-		// Left coordinate of the bounding box as a ratio of overall image
-		// width.
+		// Left coordinate of the bounding box as a ratio of overall image width.
 		left?: number
 
-		// Top coordinate of the bounding box as a ratio of overall image
-		// height.
+		// Top coordinate of the bounding box as a ratio of overall image height.
 		top?: number
 
-		// Width of the bounding box as a ratio of the overall image
-		// width.
+		// Width of the bounding box as a ratio of the overall image width.
 		width?: number
 	})
 
@@ -138,22 +127,18 @@ package res
 	})
 
 	_#defs: "/$defs/settings/$defs/connected_home": close({
-		// Specifies what you want to detect in the video, such as people,
-		// packages, or pets.
+		// Specifies what you want to detect in the video, such as people, packages, or pets.
 		labels?: [...string]
 
-		// The minimum confidence required to label an object in the
-		// video.
+		// The minimum confidence required to label an object in the video.
 		min_confidence?: number
 	})
 
 	_#defs: "/$defs/settings/$defs/face_search": close({
-		// The ID of a collection that contains faces that you want to
-		// search for.
+		// The ID of a collection that contains faces that you want to search for.
 		collection_id!: string
 
-		// Minimum face match confidence score that must be met to return
-		// a result for a recognized face.
+		// Minimum face match confidence score that must be met to return a result for a recognized face.
 		face_match_threshold?: number
 	})
 }

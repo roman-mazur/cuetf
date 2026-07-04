@@ -19,6 +19,12 @@ import "list"
 		timeouts?: #timeouts
 		vpc_options?: matchN(1, [#vpc_options, list.MaxItems(1) & [...#vpc_options]])
 		access_policies?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		advanced_options?: [string]: string
 		arn?:                   string
 		domain_id?:             string
@@ -27,12 +33,6 @@ import "list"
 		endpoint?:              string
 		id?:                    string
 		kibana_endpoint?:       string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

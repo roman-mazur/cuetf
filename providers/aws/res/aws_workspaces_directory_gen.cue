@@ -12,7 +12,13 @@ import "list"
 		self_service_permissions?: matchN(1, [#self_service_permissions, list.MaxItems(1) & [...#self_service_permissions]])
 		workspace_access_properties?: matchN(1, [#workspace_access_properties, list.MaxItems(1) & [...#workspace_access_properties]])
 		workspace_creation_properties?: matchN(1, [#workspace_creation_properties, list.MaxItems(1) & [...#workspace_creation_properties]])
-		alias?:              string
+		alias?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
 		customer_user_name?: string
 		directory_id?:       string
 		directory_name?:     string
@@ -21,12 +27,6 @@ import "list"
 		iam_role_id?: string
 		id?:          string
 		ip_group_ids?: [...string]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:            string
 		registration_code?: string
 		subnet_ids?: [...string]
 		tags?: [string]:     string

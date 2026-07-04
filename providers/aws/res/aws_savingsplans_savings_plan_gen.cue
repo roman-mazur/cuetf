@@ -27,8 +27,7 @@ package res
 		// The product types.
 		product_types?: [...string]
 
-		// The time at which to purchase the Savings Plan, in UTC format
-		// (YYYY-MM-DDTHH:MM:SSZ).
+		// The time at which to purchase the Savings Plan, in UTC format (YYYY-MM-DDTHH:MM:SSZ).
 		purchase_time?: string
 
 		// The recurring payment amount.
@@ -40,10 +39,10 @@ package res
 		// The recurring payment amount.
 		returnable_until?: string
 		savings_plan_arn?: string
-		savings_plan_id?:  string
 
 		// The unique ID of a Savings Plan offering.
 		savings_plan_offering_id!: string
+		savings_plan_id?:          string
 
 		// The type of Savings Plan.
 		savings_plan_type?: string
@@ -53,29 +52,28 @@ package res
 
 		// The current state of the Savings Plan.
 		state?: string
-		tags?: [string]:     string
-		tags_all?: [string]: string
 
 		// The duration of the term, in seconds.
 		term_duration_in_seconds?: number
 
 		// The up-front payment amount.
 		upfront_payment_amount?: string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 	})
 
 	#timeouts: close({
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
 		create?: string
 
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
-		// Setting a timeout for a Delete operation is only applicable if
-		// changes are saved into state before the destroy operation
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+		// applicable if changes are saved into state before the destroy operation
 		// occurs.
 		delete?: string
 	})

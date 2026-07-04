@@ -8,19 +8,19 @@ import "list"
 	close({
 		auth_parameters!: matchN(1, [#auth_parameters, list.MaxItems(1) & [_, ...] & [...#auth_parameters]])
 		invocation_connectivity_parameters?: matchN(1, [#invocation_connectivity_parameters, list.MaxItems(1) & [...#invocation_connectivity_parameters]])
-		arn?:                string
-		authorization_type!: string
-		description?:        string
-		id?:                 string
-		kms_key_identifier?: string
-		name!:               string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:     string
-		secret_arn?: string
+		region?:             string
+		authorization_type!: string
+		description?:        string
+		id?:                 string
+		kms_key_identifier?: string
+		name!:               string
+		secret_arn?:         string
 	})
 
 	#auth_parameters: close({

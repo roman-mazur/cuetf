@@ -8,17 +8,17 @@ package res
 		metadata_configuration?: matchN(1, [#metadata_configuration, [...#metadata_configuration]])
 		private_endpoint?: matchN(1, [#private_endpoint, [...#private_endpoint]])
 		target_configuration?: matchN(1, [#target_configuration, [...#target_configuration]])
-		timeouts?:           #timeouts
-		description?:        string
-		gateway_identifier!: string
-		name!:               string
+		timeouts?:    #timeouts
+		description?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:    string
-		target_id?: string
+		region?:             string
+		gateway_identifier!: string
+		name!:               string
+		target_id?:          string
 	})
 
 	#credential_provider_configuration: close({
@@ -30,16 +30,16 @@ package res
 	})
 
 	#metadata_configuration: close({
-		// A list of URL query parameters that are allowed to be
-		// propagated from incoming gateway URL to the target.
+		// A list of URL query parameters that are allowed to be propagated from
+		// incoming gateway URL to the target.
 		allowed_query_parameters?: [...string]
 
-		// A list of HTTP headers that are allowed to be propagated from
-		// incoming client requests to the target.
+		// A list of HTTP headers that are allowed to be propagated from incoming client
+		// requests to the target.
 		allowed_request_headers?: [...string]
 
-		// A list of HTTP headers that are allowed to be propagated from
-		// the target response back to the client.
+		// A list of HTTP headers that are allowed to be propagated from the target
+		// response back to the client.
 		allowed_response_headers?: [...string]
 	})
 
@@ -55,24 +55,23 @@ package res
 
 	#timeouts: close({
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
 		create?: string
 
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
-		// Setting a timeout for a Delete operation is only applicable if
-		// changes are saved into state before the destroy operation
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+		// applicable if changes are saved into state before the destroy operation
 		// occurs.
 		delete?: string
 
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
 		update?: string
 	})
 
@@ -89,16 +88,14 @@ package res
 	})
 
 	_#defs: "/$defs/credential_provider_configuration/$defs/gateway_iam_role": close({
-		// AWS Region used for SigV4 signing of upstream requests.
-		// Defaults to the gateway's Region when omitted. Only meaningful
-		// when `service` is set.
+		// AWS Region used for SigV4 signing of upstream requests. Defaults to the
+		// gateway's Region when omitted. Only meaningful when `service` is set.
 		region?: string
 
-		// The target AWS service name used for SigV4 signing of upstream
-		// requests. Required when calling SigV4-protected endpoints such
-		// as another Bedrock AgentCore Runtime (use
-		// `bedrock-agentcore`). Omit for non-SigV4 IAM-role-based
-		// authentication.
+		// The target AWS service name used for SigV4 signing of upstream requests.
+		// Required when calling SigV4-protected endpoints such as another Bedrock
+		// AgentCore Runtime (use `bedrock-agentcore`). Omit for non-SigV4
+		// IAM-role-based authentication.
 		service?: string
 	})
 
@@ -107,13 +104,11 @@ package res
 	_#defs: "/$defs/credential_provider_configuration/$defs/oauth": close({
 		custom_parameters?: [string]: string
 
-		// The URL where the end user's browser is redirected after
-		// obtaining the authorization code. Required when grant_type is
-		// AUTHORIZATION_CODE.
+		// The URL where the end user's browser is redirected after obtaining the
+		// authorization code. Required when grant_type is AUTHORIZATION_CODE.
 		default_return_url?: string
 
-		// The OAuth grant type. Valid values are AUTHORIZATION_CODE and
-		// CLIENT_CREDENTIALS.
+		// The OAuth grant type. Valid values are AUTHORIZATION_CODE and CLIENT_CREDENTIALS.
 		grant_type?:   string
 		provider_arn!: string
 		scopes!: [...string]

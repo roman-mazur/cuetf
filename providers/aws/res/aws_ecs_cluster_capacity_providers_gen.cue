@@ -6,14 +6,14 @@ package res
 	close({
 		default_capacity_provider_strategy?: matchN(1, [#default_capacity_provider_strategy, [...#default_capacity_provider_strategy]])
 		capacity_providers?: [...string]
-		cluster_name!: string
-		id?:           string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:       string
+		cluster_name!: string
+		id?:           string
 	})
 
 	#default_capacity_provider_strategy: close({

@@ -15,25 +15,25 @@ import "list"
 		postgres_settings?: matchN(1, [#postgres_settings, list.MaxItems(1) & [...#postgres_settings]])
 		redis_settings?: matchN(1, [#redis_settings, list.MaxItems(1) & [...#redis_settings]])
 		redshift_settings?: matchN(1, [#redshift_settings, list.MaxItems(1) & [...#redshift_settings]])
-		timeouts?:                    #timeouts
-		certificate_arn?:             string
-		database_name?:               string
-		endpoint_arn?:                string
-		endpoint_id!:                 string
-		endpoint_type!:               string
-		engine_name!:                 string
-		extra_connection_attributes?: string
-		id?:                          string
-		kms_key_arn?:                 string
-		password?:                    string
-		pause_replication_tasks?:     bool
-		port?:                        number
+		timeouts?:        #timeouts
+		certificate_arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                          string
+		database_name?:                   string
+		endpoint_arn?:                    string
+		endpoint_id!:                     string
+		endpoint_type!:                   string
+		engine_name!:                     string
+		extra_connection_attributes?:     string
+		id?:                              string
+		kms_key_arn?:                     string
+		password?:                        string
+		pause_replication_tasks?:         bool
+		port?:                            number
 		secrets_manager_access_role_arn?: string
 		secrets_manager_arn?:             string
 		server_name?:                     string

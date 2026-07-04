@@ -7,20 +7,20 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_s3control_multi_region_access_point")
 	close({
 		details!: matchN(1, [#details, list.MaxItems(1) & [_, ...] & [...#details]])
-		timeouts?:    #timeouts
-		account_id?:  string
-		alias?:       string
-		arn?:         string
-		domain_name?: string
-		id?:          string
-		name?:        string
+		timeouts?:   #timeouts
+		account_id?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		status?: string
+		region?:      string
+		alias?:       string
+		arn?:         string
+		domain_name?: string
+		id?:          string
+		name?:        string
+		status?:      string
 	})
 
 	#details: close({

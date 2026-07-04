@@ -10,6 +10,12 @@ import "list"
 		network_configuration!: matchN(1, [#network_configuration, list.MaxItems(1) & [_, ...] & [...#network_configuration]])
 		timeouts?: #timeouts
 		airflow_configuration_options?: [string]: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                        string
 		airflow_version?:               string
 		arn?:                           string
 		created_at?:                    string
@@ -28,19 +34,13 @@ import "list"
 			})]
 			status?: string
 		})]
-		max_webservers?:            number
-		max_workers?:               number
-		min_webservers?:            number
-		min_workers?:               number
-		name!:                      string
-		plugins_s3_object_version?: string
-		plugins_s3_path?:           string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                           string
+		max_webservers?:                   number
+		max_workers?:                      number
+		min_webservers?:                   number
+		min_workers?:                      number
+		name!:                             string
+		plugins_s3_object_version?:        string
+		plugins_s3_path?:                  string
 		requirements_s3_object_version?:   string
 		requirements_s3_path?:             string
 		schedulers?:                       number

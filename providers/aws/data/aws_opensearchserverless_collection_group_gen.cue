@@ -33,8 +33,7 @@ package data
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 
-		// Indicates whether standby replicas should be used for
-		// collections in this group.
+		// Indicates whether standby replicas should be used for collections in this group.
 		standby_replicas?: string
 		tags?: [string]: string
 	})

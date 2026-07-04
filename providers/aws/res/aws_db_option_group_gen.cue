@@ -5,21 +5,21 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_db_option_group")
 	close({
 		option?: matchN(1, [#option, [...#option]])
-		timeouts?:                 #timeouts
-		arn?:                      string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                   string
 		engine_name!:              string
 		id?:                       string
 		major_engine_version!:     string
 		name?:                     string
 		name_prefix?:              string
 		option_group_description?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:       string
-		skip_destroy?: bool
+		skip_destroy?:             bool
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

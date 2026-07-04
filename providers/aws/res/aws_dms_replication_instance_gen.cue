@@ -7,8 +7,14 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dms_replication_instance")
 	close({
 		kerberos_authentication_settings?: matchN(1, [#kerberos_authentication_settings, list.MaxItems(1) & [...#kerberos_authentication_settings]])
-		timeouts?:                     #timeouts
-		allocated_storage?:            number
+		timeouts?:          #timeouts
+		allocated_storage?: number
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                       string
 		allow_major_version_upgrade?:  bool
 		apply_immediately?:            bool
 		auto_minor_version_upgrade?:   bool
@@ -21,15 +27,9 @@ import "list"
 		network_type?:                 string
 		preferred_maintenance_window?: string
 		publicly_accessible?:          bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                     string
-		replication_instance_arn?:   string
-		replication_instance_class!: string
-		replication_instance_id!:    string
+		replication_instance_arn?:     string
+		replication_instance_class!:   string
+		replication_instance_id!:      string
 		replication_instance_private_ips?: [...string]
 		replication_instance_public_ips?: [...string]
 		replication_subnet_group_id?: string

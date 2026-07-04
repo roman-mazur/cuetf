@@ -7,16 +7,16 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sfn_activity")
 	close({
 		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
-		arn?:           string
-		creation_date?: string
-		id?:            string
-		name!:          string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:        string
+		creation_date?: string
+		id?:            string
+		name!:          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

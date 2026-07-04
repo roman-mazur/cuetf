@@ -5,7 +5,13 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_secretsmanager_secret")
 	close({
 		replica?: matchN(1, [#replica, [...#replica]])
-		arn?:                            string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                         string
 		description?:                    string
 		force_overwrite_replica_secret?: bool
 		id?:                             string
@@ -14,12 +20,6 @@ package res
 		name_prefix?:                    string
 		policy?:                         string
 		recovery_window_in_days?:        number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

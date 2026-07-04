@@ -13,15 +13,15 @@ import "list"
 		job_resources!: matchN(1, [#job_resources, list.MaxItems(1) & [_, ...] & [...#job_resources]])
 		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
 		stopping_condition?: matchN(1, [#stopping_condition, list.MaxItems(1) & [...#stopping_condition]])
-		arn?:  string
-		id?:   string
-		name?: string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:   string
+		id?:       string
+		name?:     string
 		role_arn!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

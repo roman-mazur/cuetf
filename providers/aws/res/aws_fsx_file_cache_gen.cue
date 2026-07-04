@@ -8,8 +8,14 @@ import "list"
 	close({
 		data_repository_association?: matchN(1, [#data_repository_association, list.MaxItems(8) & [...#data_repository_association]])
 		lustre_configuration?: matchN(1, [#lustre_configuration, [...#lustre_configuration]])
-		timeouts?:                                  #timeouts
-		arn?:                                       string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                                    string
 		copy_tags_to_data_repository_associations?: bool
 		data_repository_association_ids?: [...string]
 		dns_name?:                string
@@ -20,12 +26,6 @@ import "list"
 		kms_key_id?:              string
 		network_interface_ids?: [...string]
 		owner_id?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		security_group_ids?: [...string]
 		storage_capacity!: number
 		subnet_ids!: [...string]

@@ -14,18 +14,18 @@ import "list"
 		maintenance?: matchN(1, [#maintenance, list.MaxItems(1) & [...#maintenance]])
 		timeouts?: #timeouts
 		vpc?: matchN(1, [#vpc, list.MaxItems(1) & [...#vpc]])
-		arn?:           string
-		channel_class!: string
-		channel_id?:    string
-		id?:            string
-		log_level?:     string
-		name!:          string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:        string
+		channel_class!: string
+		channel_id?:    string
+		id?:            string
+		log_level?:     string
+		name!:          string
 		role_arn?:      string
 		start_channel?: bool
 		tags?: [string]:     string

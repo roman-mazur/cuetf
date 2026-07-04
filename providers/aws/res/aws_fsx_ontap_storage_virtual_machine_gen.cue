@@ -9,6 +9,12 @@ import "list"
 		active_directory_configuration?: matchN(1, [#active_directory_configuration, list.MaxItems(1) & [...#active_directory_configuration]])
 		timeouts?: #timeouts
 		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		endpoints?: [...close({
 			iscsi?: [...close({
 				dns_name?: string
@@ -27,15 +33,9 @@ import "list"
 				ip_addresses?: [...string]
 			})]
 		})]
-		file_system_id!: string
-		id?:             string
-		name!:           string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                     string
+		file_system_id!:             string
+		id?:                         string
+		name!:                       string
 		root_volume_security_style?: string
 		subtype?:                    string
 		svm_admin_password?:         string

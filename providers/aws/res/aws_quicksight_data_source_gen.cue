@@ -11,17 +11,17 @@ import "list"
 		permission?: matchN(1, [#permission, list.MaxItems(64) & [...#permission]])
 		ssl_properties?: matchN(1, [#ssl_properties, list.MaxItems(1) & [...#ssl_properties]])
 		vpc_connection_properties?: matchN(1, [#vpc_connection_properties, list.MaxItems(1) & [...#vpc_connection_properties]])
-		arn?:            string
-		aws_account_id?: string
-		data_source_id!: string
-		id?:             string
-		name!:           string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:         string
+		aws_account_id?: string
+		data_source_id!: string
+		id?:             string
+		name!:           string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type!: string

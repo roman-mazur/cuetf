@@ -7,16 +7,16 @@ package res
 		handler_configs?: matchN(1, [#handler_configs, [...#handler_configs]])
 		publish_auth_mode?: matchN(1, [#publish_auth_mode, [...#publish_auth_mode]])
 		subscribe_auth_mode?: matchN(1, [#subscribe_auth_mode, [...#subscribe_auth_mode]])
-		api_id!:                string
-		channel_namespace_arn?: string
-		code_handlers?:         string
-		name!:                  string
+		api_id!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:                string
+		channel_namespace_arn?: string
+		code_handlers?:         string
+		name!:                  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

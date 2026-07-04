@@ -8,14 +8,14 @@ import "list"
 	close({
 		s3_config!: matchN(1, [#s3_config, list.MaxItems(1) & [_, ...] & [...#s3_config]])
 		agent_arns?: [...string]
-		arn?: string
-		id?:  string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:           string
+		arn?:              string
+		id?:               string
 		s3_bucket_arn!:    string
 		s3_storage_class?: string
 		subdirectory!:     string

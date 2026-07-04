@@ -4,8 +4,7 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_licensemanager_grant")
 	close({
-		// Allowed operations for the grant. This is a subset of the
-		// allowed operations on the license.
+		// Allowed operations for the grant. This is a subset of the allowed operations on the license.
 		allowed_operations!: [...string]
 
 		// Amazon Resource Name (ARN) of the grant.
@@ -24,8 +23,8 @@ package res
 		// Parent ARN.
 		parent_arn?: string
 
-		// The grantee principal ARN. The target account for the grant in
-		// the form of the ARN for an account principal of the root user.
+		// The grantee principal ARN. The target account for the grant in the form of
+		// the ARN for an account principal of the root user.
 		principal!: string
 
 		// Region where this resource will be

@@ -9,7 +9,13 @@ import "list"
 		compute_capacity!: matchN(1, [#compute_capacity, list.MaxItems(1) & [_, ...] & [...#compute_capacity]])
 		domain_join_info?: matchN(1, [#domain_join_info, list.MaxItems(1) & [...#domain_join_info]])
 		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
-		arn?:                                string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                             string
 		created_time?:                       string
 		description?:                        string
 		disconnect_timeout_in_seconds?:      number
@@ -25,14 +31,8 @@ import "list"
 		max_sessions_per_instance?:          number
 		max_user_duration_in_seconds?:       number
 		name!:                               string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		state?:       string
-		stream_view?: string
+		state?:                              string
+		stream_view?:                        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

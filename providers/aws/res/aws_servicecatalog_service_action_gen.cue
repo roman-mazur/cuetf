@@ -9,15 +9,15 @@ import "list"
 		definition!: matchN(1, [#definition, list.MaxItems(1) & [_, ...] & [...#definition]])
 		timeouts?:        #timeouts
 		accept_language?: string
-		description?:     string
-		id?:              string
-		name!:            string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:      string
+		description?: string
+		id?:          string
+		name!:        string
 	})
 
 	#definition: close({

@@ -8,7 +8,13 @@ package res
 		input_config?: matchN(1, [#input_config, [...#input_config]])
 		labeling_job_algorithms_config?: matchN(1, [#labeling_job_algorithms_config, [...#labeling_job_algorithms_config]])
 		output_config?: matchN(1, [#output_config, [...#output_config]])
-		failure_reason?:               string
+		failure_reason?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                       string
 		job_reference_code?:           string
 		label_attribute_name!:         string
 		label_category_config_s3_uri?: string
@@ -22,13 +28,7 @@ package res
 		labeling_job_arn?:    string
 		labeling_job_name!:   string
 		labeling_job_status?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:   string
-		role_arn!: string
+		role_arn!:            string
 		stopping_conditions?: [...close({
 			max_human_labeled_object_count?:          number
 			max_percentage_of_input_dataset_labeled?: number

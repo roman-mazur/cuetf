@@ -7,9 +7,8 @@ package res
 		timeouts?: #timeouts
 		id?:       string
 
-		// The universally unique identifier (UUID) of the configuration
-		// policy, or SELF_MANAGED_SECURITY_HUB for a self-managed
-		// configuration.
+		// The universally unique identifier (UUID) of the configuration policy, or
+		// SELF_MANAGED_SECURITY_HUB for a self-managed configuration.
 		policy_id!: string
 
 		// Region where this resource will be
@@ -18,8 +17,8 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 
-		// The identifier of the target account, organizational unit, or
-		// the root to associate with the specified configuration.
+		// The identifier of the target account, organizational unit, or the root to
+		// associate with the specified configuration.
 		target_id!: string
 	})
 

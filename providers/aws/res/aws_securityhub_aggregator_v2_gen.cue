@@ -17,8 +17,8 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 
-		// Determines how Regions are linked: ALL_REGIONS,
-		// ALL_REGIONS_EXCEPT_SPECIFIED, or SPECIFIED_REGIONS.
+		// Determines how Regions are linked: ALL_REGIONS, ALL_REGIONS_EXCEPT_SPECIFIED,
+		// or SPECIFIED_REGIONS.
 		region_linking_mode!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

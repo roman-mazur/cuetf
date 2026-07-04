@@ -22,9 +22,8 @@ package data
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 
-		// AWS account ID associated with the public registry that
-		// contains the repository. If not specified, the default public
-		// registry is assumed.
+		// AWS account ID associated with the public registry that contains the
+		// repository. If not specified, the default public registry is assumed.
 		registry_id?: string
 
 		// Name of the public repository.

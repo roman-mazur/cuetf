@@ -11,18 +11,18 @@ package res
 		sns_action?: matchN(1, [#sns_action, [...#sns_action]])
 		stop_action?: matchN(1, [#stop_action, [...#stop_action]])
 		workmail_action?: matchN(1, [#workmail_action, [...#workmail_action]])
-		after?:   string
-		arn?:     string
-		enabled?: bool
-		id?:      string
-		name!:    string
-		recipients?: [...string]
+		after?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
+		region?:  string
+		arn?:     string
+		enabled?: bool
+		id?:      string
+		name!:    string
+		recipients?: [...string]
 		rule_set_name!: string
 		scan_enabled?:  bool
 		tls_policy?:    string

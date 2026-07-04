@@ -15,11 +15,11 @@ package res
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:  string
-		rule_id?: string
+		region?: string
 
 		// The name of the automation rule.
 		rule_name!: string
+		rule_id?:   string
 
 		// The priority of the rule (lower values = higher priority).
 		rule_order!: number

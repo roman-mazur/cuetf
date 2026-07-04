@@ -16,7 +16,13 @@ import "list"
 		self_managed_event_source?: matchN(1, [#self_managed_event_source, list.MaxItems(1) & [...#self_managed_event_source]])
 		self_managed_kafka_event_source_config?: matchN(1, [#self_managed_kafka_event_source_config, list.MaxItems(1) & [...#self_managed_kafka_event_source_config]])
 		source_access_configuration?: matchN(1, [#source_access_configuration, list.MaxItems(22) & [...#source_access_configuration]])
-		arn?:                            string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                         string
 		batch_size?:                     number
 		bisect_batch_on_function_error?: bool
 		enabled?:                        bool
@@ -33,12 +39,6 @@ import "list"
 		maximum_retry_attempts?:             number
 		parallelization_factor?:             number
 		queues?: [...string]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                      string
 		starting_position?:           string
 		starting_position_timestamp?: string
 		state?:                       string

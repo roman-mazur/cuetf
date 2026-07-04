@@ -6,6 +6,12 @@ package res
 	close({
 		timeouts?:            #timeouts
 		acceptance_required!: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		allowed_principals?: [...string]
 		arn?: string
 		availability_zones?: [...string]
@@ -21,12 +27,6 @@ package res
 			type?:  string
 			value?: string
 		})]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:       string
 		service_name?: string
 		service_type?: string
 		state?:        string

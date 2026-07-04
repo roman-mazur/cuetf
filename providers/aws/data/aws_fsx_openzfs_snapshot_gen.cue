@@ -5,18 +5,18 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_fsx_openzfs_snapshot")
 	close({
 		filter?: matchN(1, [#filter, [...#filter]])
-		arn?:           string
-		creation_time?: string
-		id?:            string
-		most_recent?:   bool
-		name?:          string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		snapshot_id?: string
+		region?:        string
+		creation_time?: string
+		id?:            string
+		most_recent?:   bool
+		name?:          string
+		snapshot_id?:   string
 		snapshot_ids?: [...string]
 		tags?: [string]: string
 		volume_id?: string

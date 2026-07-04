@@ -7,19 +7,19 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_route53_resolver_endpoint")
 	close({
 		ip_address!: matchN(1, [#ip_address, list.MaxItems(10) & [_, _, ...] & [...#ip_address]])
-		timeouts?:    #timeouts
-		arn?:         string
-		direction!:   string
-		host_vpc_id?: string
-		id?:          string
-		name?:        string
-		protocols?: [...string]
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                       string
+		region?:      string
+		direction!:   string
+		host_vpc_id?: string
+		id?:          string
+		name?:        string
+		protocols?: [...string]
 		resolver_endpoint_type?:       string
 		rni_enhanced_metrics_enabled?: bool
 		security_group_ids!: [...string]

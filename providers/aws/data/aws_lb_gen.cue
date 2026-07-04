@@ -10,6 +10,12 @@ package data
 			enabled?: bool
 			prefix?:  string
 		})]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:            string
 		arn?:               string
 		arn_suffix?:        string
 		client_keep_alive?: number
@@ -44,15 +50,9 @@ package data
 		ipam_pools?: [...close({
 			ipv4_ipam_pool_id?: string
 		})]
-		load_balancer_type?:   string
-		name?:                 string
-		preserve_host_header?: bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                                 string
+		load_balancer_type?:                     string
+		name?:                                   string
+		preserve_host_header?:                   bool
 		secondary_ips_auto_assigned_per_subnet?: number
 		security_groups?: [...string]
 		subnet_mapping?: [...close({

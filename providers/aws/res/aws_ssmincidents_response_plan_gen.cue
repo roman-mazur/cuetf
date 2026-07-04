@@ -10,17 +10,17 @@ import "list"
 		incident_template!: matchN(1, [#incident_template, list.MaxItems(1) & [_, ...] & [...#incident_template]])
 		integration?: matchN(1, [#integration, list.MaxItems(1) & [...#integration]])
 		arn?: string
-		chat_channel?: [...string]
-		display_name?: string
-		engagements?: [...string]
-		id?:   string
-		name!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		chat_channel?: [...string]
+		display_name?: string
+		engagements?: [...string]
+		id?:   string
+		name!: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

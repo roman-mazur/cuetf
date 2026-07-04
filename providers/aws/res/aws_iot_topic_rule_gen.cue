@@ -26,17 +26,17 @@ import "list"
 		sqs?: matchN(1, [#sqs, [...#sqs]])
 		step_functions?: matchN(1, [#step_functions, [...#step_functions]])
 		timestream?: matchN(1, [#timestream, [...#timestream]])
-		arn?:         string
-		description?: string
-		enabled!:     bool
-		id?:          string
-		name!:        string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:      string
+		description?: string
+		enabled!:     bool
+		id?:          string
+		name!:        string
 		sql!:         string
 		sql_version!: string
 		tags?: [string]:     string

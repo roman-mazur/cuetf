@@ -9,18 +9,18 @@ import "list"
 		destination!: matchN(1, [#destination, list.MaxItems(1) & [_, ...] & [...#destination]])
 		filter?: matchN(1, [#filter, list.MaxItems(1) & [...#filter]])
 		schedule!: matchN(1, [#schedule, list.MaxItems(1) & [_, ...] & [...#schedule]])
-		bucket!:                   string
-		enabled?:                  bool
-		id?:                       string
-		included_object_versions!: string
-		name!:                     string
-		optional_fields?: [...string]
+		bucket!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:                   string
+		enabled?:                  bool
+		id?:                       string
+		included_object_versions!: string
+		name!:                     string
+		optional_fields?: [...string]
 	})
 
 	#destination: close({

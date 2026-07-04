@@ -9,18 +9,18 @@ import "list"
 		authorizer_config?: matchN(1, [#authorizer_config, list.MaxItems(1) & [...#authorizer_config]])
 		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
 		application_protocol?: string
-		arn?:                  string
-		authentication_type?:  string
-		domain_name?:          string
-		domain_type?:          string
-		id?:                   string
-		name!:                 string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:              string
+		arn?:                 string
+		authentication_type?: string
+		domain_name?:         string
+		domain_type?:         string
+		id?:                  string
+		name!:                string
 		server_certificate_arns?: [...string]
 		service_type?: string
 		status?:       string

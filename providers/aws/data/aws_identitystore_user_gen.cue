@@ -17,6 +17,12 @@ import "list"
 			street_address?: string
 			type?:           string
 		})]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:       string
 		display_name?: string
 		emails?: [...close({
 			primary?: bool
@@ -46,18 +52,12 @@ import "list"
 		})]
 		preferred_language?: string
 		profile_url?:        string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		timezone?:    string
-		title?:       string
-		user_id?:     string
-		user_name?:   string
-		user_status?: string
-		user_type?:   string
+		timezone?:           string
+		title?:              string
+		user_id?:            string
+		user_name?:          string
+		user_status?:        string
+		user_type?:          string
 	})
 
 	#alternate_identifier: close({

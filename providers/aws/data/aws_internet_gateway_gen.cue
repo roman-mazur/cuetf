@@ -7,6 +7,12 @@ package data
 		filter?: matchN(1, [#filter, [...#filter]])
 		timeouts?: #timeouts
 		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		attachments?: [...close({
 			state?:  string
 			vpc_id?: string
@@ -14,12 +20,6 @@ package data
 		id?:                  string
 		internet_gateway_id?: string
 		owner_id?:            string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		tags?: [string]: string
 	})
 

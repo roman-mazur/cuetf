@@ -7,19 +7,19 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_iot_provisioning_template")
 	close({
 		pre_provisioning_hook?: matchN(1, [#pre_provisioning_hook, list.MaxItems(1) & [...#pre_provisioning_hook]])
-		arn?:                   string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                string
 		default_version_id?:    number
 		description?:           string
 		enabled?:               bool
 		id?:                    string
 		name!:                  string
 		provisioning_role_arn!: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		template_body!: string

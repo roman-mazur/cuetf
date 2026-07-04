@@ -8,16 +8,16 @@ import "list"
 	close({
 		delivery_options?: matchN(1, [#delivery_options, list.MaxItems(1) & [...#delivery_options]])
 		tracking_options?: matchN(1, [#tracking_options, list.MaxItems(1) & [...#tracking_options]])
-		arn?:              string
-		id?:               string
-		last_fresh_start?: string
-		name!:             string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                     string
+		id?:                         string
+		last_fresh_start?:           string
+		name!:                       string
 		reputation_metrics_enabled?: bool
 		sending_enabled?:            bool
 	})

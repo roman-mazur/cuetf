@@ -9,8 +9,14 @@ import "list"
 		blue_green_update?: matchN(1, [#blue_green_update, list.MaxItems(1) & [...#blue_green_update]])
 		restore_to_point_in_time?: matchN(1, [#restore_to_point_in_time, list.MaxItems(1) & [...#restore_to_point_in_time]])
 		s3_import?: matchN(1, [#s3_import, list.MaxItems(1) & [...#s3_import]])
-		timeouts?:                    #timeouts
-		address?:                     string
+		timeouts?: #timeouts
+		address?:  string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                      string
 		allocated_storage?:           number
 		allow_major_version_upgrade?: bool
 		apply_immediately?:           bool
@@ -83,13 +89,7 @@ import "list"
 		performance_insights_retention_period?: number
 		port?:                                  number
 		publicly_accessible?:                   bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:       string
-		replica_mode?: string
+		replica_mode?:                          string
 		replicas?: [...string]
 		replicate_source_db?: string
 		resource_id?:         string

@@ -8,22 +8,22 @@ import "list"
 	close({
 		filter_at_destination?: matchN(1, [#filter_at_destination, list.MaxItems(1) & [...#filter_at_destination]])
 		filter_at_source?: matchN(1, [#filter_at_source, list.MaxItems(1) & [...#filter_at_source]])
-		arn?:              string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:           string
 		destination?:      string
 		destination_arn?:  string
 		destination_ip?:   string
 		destination_port?: number
 		id?:               string
 		protocol!:         string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:     string
-		source!:     string
-		source_arn?: string
-		source_ip?:  string
+		source!:           string
+		source_arn?:       string
+		source_ip?:        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

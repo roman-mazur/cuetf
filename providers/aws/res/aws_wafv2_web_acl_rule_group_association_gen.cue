@@ -9,8 +9,7 @@ package res
 		timeouts?: #timeouts
 		visibility_config?: matchN(1, [#visibility_config, [...#visibility_config]])
 
-		// Override action for the rule group. Valid values are 'none' and
-		// 'count'. Defaults to 'none'.
+		// Override action for the rule group. Valid values are 'none' and 'count'. Defaults to 'none'.
 		override_action?: string
 
 		// Priority of the rule within the Web ACL.
@@ -22,8 +21,7 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 
-		// Name of the rule to create in the Web ACL that references the
-		// rule group.
+		// Name of the rule to create in the Web ACL that references the rule group.
 		rule_name!: string
 
 		// ARN of the Web ACL to associate the Rule Group with.
@@ -40,8 +38,7 @@ package res
 		// Name of the managed rule group vendor.
 		vendor_name!: string
 
-		// Version of the managed rule group. Omit this to use the default
-		// version.
+		// Version of the managed rule group. Omit this to use the default version.
 		version?: string
 	})
 
@@ -54,37 +51,34 @@ package res
 
 	#timeouts: close({
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
 		create?: string
 
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
-		// Setting a timeout for a Delete operation is only applicable if
-		// changes are saved into state before the destroy operation
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+		// applicable if changes are saved into state before the destroy operation
 		// occurs.
 		delete?: string
 
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
 		update?: string
 	})
 
 	#visibility_config: close({
-		// Indicates whether the rule is available for use in the metrics
-		// for the web ACL.
+		// Indicates whether the rule is available for use in the metrics for the web ACL.
 		cloudwatch_metrics_enabled!: bool
 
 		// A name for the metrics for this rule.
 		metric_name!: string
 
-		// Indicates whether to store a sampling of the web requests that
-		// match the rule.
+		// Indicates whether to store a sampling of the web requests that match the rule.
 		sampled_requests_enabled!: bool
 	})
 
@@ -149,48 +143,40 @@ package res
 	})
 
 	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/body_contains": close({
-		// Strings that indicate a failed login or account creation
-		// attempt
+		// Strings that indicate a failed login or account creation attempt
 		failure_strings!: [...string]
 
-		// Strings that indicate a successful login or account creation
-		// attempt
+		// Strings that indicate a successful login or account creation attempt
 		success_strings!: [...string]
 	})
 
 	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/header": close({
-		// Strings that indicate a failed login or account creation
-		// attempt
+		// Strings that indicate a failed login or account creation attempt
 		failure_values!: [...string]
 
 		// Name of the HTTP header to inspect
 		name!: string
 
-		// Strings that indicate a successful login or account creation
-		// attempt
+		// Strings that indicate a successful login or account creation attempt
 		success_values!: [...string]
 	})
 
 	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/json": close({
-		// Strings that indicate a failed login or account creation
-		// attempt
+		// Strings that indicate a failed login or account creation attempt
 		failure_values!: [...string]
 
 		// Identifier of the JSON field to inspect
 		identifier!: string
 
-		// Strings that indicate a successful login or account creation
-		// attempt
+		// Strings that indicate a successful login or account creation attempt
 		success_values!: [...string]
 	})
 
 	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_acfp_rule_set/$defs/response_inspection/$defs/status_code": close({
-		// Status codes that indicate a failed login or account creation
-		// attempt
+		// Status codes that indicate a failed login or account creation attempt
 		failure_codes!: [...number]
 
-		// Status codes that indicate a successful login or account
-		// creation attempt
+		// Status codes that indicate a successful login or account creation attempt
 		success_codes!: [...number]
 	})
 
@@ -246,48 +232,40 @@ package res
 	})
 
 	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/body_contains": close({
-		// Strings that indicate a failed login or account creation
-		// attempt
+		// Strings that indicate a failed login or account creation attempt
 		failure_strings!: [...string]
 
-		// Strings that indicate a successful login or account creation
-		// attempt
+		// Strings that indicate a successful login or account creation attempt
 		success_strings!: [...string]
 	})
 
 	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/header": close({
-		// Strings that indicate a failed login or account creation
-		// attempt
+		// Strings that indicate a failed login or account creation attempt
 		failure_values!: [...string]
 
 		// Name of the HTTP header to inspect
 		name!: string
 
-		// Strings that indicate a successful login or account creation
-		// attempt
+		// Strings that indicate a successful login or account creation attempt
 		success_values!: [...string]
 	})
 
 	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/json": close({
-		// Strings that indicate a failed login or account creation
-		// attempt
+		// Strings that indicate a failed login or account creation attempt
 		failure_values!: [...string]
 
 		// Identifier of the JSON field to inspect
 		identifier!: string
 
-		// Strings that indicate a successful login or account creation
-		// attempt
+		// Strings that indicate a successful login or account creation attempt
 		success_values!: [...string]
 	})
 
 	_#defs: "/$defs/managed_rule_group/$defs/managed_rule_group_configs/$defs/aws_managed_rules_atp_rule_set/$defs/response_inspection/$defs/status_code": close({
-		// Status codes that indicate a failed login or account creation
-		// attempt
+		// Status codes that indicate a failed login or account creation attempt
 		failure_codes!: [...number]
 
-		// Status codes that indicate a successful login or account
-		// creation attempt
+		// Status codes that indicate a successful login or account creation attempt
 		success_codes!: [...number]
 	})
 

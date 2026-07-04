@@ -7,7 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_s3_object")
 	close({
 		override_provider?: matchN(1, [#override_provider, list.MaxItems(1) & [...#override_provider]])
-		acl?:                 string
+		acl?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:              string
 		arn?:                 string
 		bucket!:              string
 		bucket_key_enabled?:  bool
@@ -33,16 +39,10 @@ import "list"
 		object_lock_legal_hold_status?: string
 		object_lock_mode?:              string
 		object_lock_retain_until_date?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                 string
-		server_side_encryption?: string
-		source?:                 string
-		source_hash?:            string
-		storage_class?:          string
+		server_side_encryption?:        string
+		source?:                        string
+		source_hash?:                   string
+		storage_class?:                 string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version_id?:       string

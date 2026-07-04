@@ -7,8 +7,14 @@ package data
 		filter?: matchN(1, [#filter, [...#filter]])
 		timeouts?:            #timeouts
 		allow_unsafe_filter?: bool
-		architecture?:        string
-		arn?:                 string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:       string
+		architecture?: string
+		arn?:          string
 		block_device_mappings?: [...close({
 			device_name?: string
 			ebs?: [string]: string
@@ -42,14 +48,8 @@ package data
 			product_code_id?:   string
 			product_code_type?: string
 		})]
-		public?:     bool
-		ramdisk_id?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:            string
+		public?:            bool
+		ramdisk_id?:        string
 		root_device_name?:  string
 		root_device_type?:  string
 		root_snapshot_id?:  string

@@ -10,18 +10,17 @@ package res
 		// Created time of the odb network peering connection.
 		created_at?: string
 
-		// Display name of the odb network peering connection. Changing
-		// this will force terraform to create new resource
+		// Display name of the odb network peering connection. Changing this will force
+		// terraform to create new resource
 		display_name!: string
-		id?:           string
 
 		// ARN of the odb network peering connection.
 		odb_network_arn?: string
+		id?:              string
 
-		// Required field. The unique identifier of the ODB network that
-		// initiates the peering connection. A sample ID is
-		// odbpcx-abcdefgh12345678. Changing this will force terraform to
-		// create new resource.
+		// Required field. The unique identifier of the ODB network that initiates the
+		// peering connection. A sample ID is odbpcx-abcdefgh12345678. Changing this
+		// will force terraform to create new resource.
 		odb_network_id?: string
 
 		// Type of the odb peering connection.
@@ -33,9 +32,8 @@ package res
 		// List of peered network cidrs.
 		peer_network_cidrs?: [...string]
 
-		// Required field. The unique identifier of the ODB peering
-		// connection. Changing this will force terraform to create new
-		// resource
+		// Required field. The unique identifier of the ODB peering connection. Changing
+		// this will force terraform to create new resource
 		peer_network_id!: string
 
 		// Progress of the odb network peering connection.
@@ -50,8 +48,7 @@ package res
 		// Status of the odb network peering connection.
 		status?: string
 
-		// The reason for the current status of the ODB peering
-		// connection..
+		// The reason for the current status of the ODB peering connection..
 		status_reason?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
@@ -59,24 +56,23 @@ package res
 
 	#timeouts: close({
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
 		create?: string
 
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
-		// Setting a timeout for a Delete operation is only applicable if
-		// changes are saved into state before the destroy operation
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+		// applicable if changes are saved into state before the destroy operation
 		// occurs.
 		delete?: string
 
 		// A string that can be [parsed as a
-		// duration](https://pkg.go.dev/time#ParseDuration) consisting of
-		// numbers and unit suffixes, such as "30s" or "2h45m". Valid
-		// time units are "s" (seconds), "m" (minutes), "h" (hours).
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
 		update?: string
 	})
 }

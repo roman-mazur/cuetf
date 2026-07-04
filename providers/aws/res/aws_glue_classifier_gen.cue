@@ -10,14 +10,14 @@ import "list"
 		grok_classifier?: matchN(1, [#grok_classifier, list.MaxItems(1) & [...#grok_classifier]])
 		json_classifier?: matchN(1, [#json_classifier, list.MaxItems(1) & [...#json_classifier]])
 		xml_classifier?: matchN(1, [#xml_classifier, list.MaxItems(1) & [...#xml_classifier]])
-		id?:   string
-		name!: string
+		id?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		name!:   string
 	})
 
 	#csv_classifier: close({

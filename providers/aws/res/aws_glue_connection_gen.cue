@@ -9,6 +9,12 @@ import "list"
 		authentication_configuration?: matchN(1, [#authentication_configuration, list.MaxItems(1) & [...#authentication_configuration]])
 		physical_connection_requirements?: matchN(1, [#physical_connection_requirements, list.MaxItems(1) & [...#physical_connection_requirements]])
 		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		athena_properties?: [string]: string
 		catalog_id?: string
 		connection_properties?: [string]: string
@@ -17,12 +23,6 @@ import "list"
 		id?:              string
 		match_criteria?: [...string]
 		name!: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

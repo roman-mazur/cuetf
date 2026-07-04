@@ -11,7 +11,13 @@ import "list"
 		storage_connectors?: matchN(1, [#storage_connectors, [...#storage_connectors]])
 		streaming_experience_settings?: matchN(1, [#streaming_experience_settings, list.MaxItems(1) & [...#streaming_experience_settings]])
 		user_settings?: matchN(1, [#user_settings, [...#user_settings]])
-		arn?:          string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:       string
 		created_time?: string
 		description?:  string
 		display_name?: string
@@ -20,12 +26,6 @@ import "list"
 		id?:           string
 		name!:         string
 		redirect_url?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

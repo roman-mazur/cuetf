@@ -7,20 +7,20 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lex_slot_type")
 	close({
 		enumeration_value!: matchN(1, [#enumeration_value, list.MaxItems(10000) & [_, ...] & [...#enumeration_value]])
-		timeouts?:          #timeouts
-		checksum?:          string
-		create_version?:    bool
-		created_date?:      string
-		description?:       string
-		id?:                string
-		last_updated_date?: string
-		name!:              string
+		timeouts?: #timeouts
+		checksum?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                   string
+		create_version?:           bool
+		created_date?:             string
+		description?:              string
+		id?:                       string
+		last_updated_date?:        string
+		name!:                     string
 		value_selection_strategy?: string
 		version?:                  string
 	})

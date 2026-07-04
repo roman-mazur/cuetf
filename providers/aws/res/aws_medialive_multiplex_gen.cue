@@ -9,15 +9,15 @@ import "list"
 		multiplex_settings?: matchN(1, [#multiplex_settings, list.MaxItems(1) & [...#multiplex_settings]])
 		timeouts?: #timeouts
 		arn?:      string
-		availability_zones!: [...string]
-		id?:   string
-		name!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:          string
+		region?: string
+		availability_zones!: [...string]
+		id?:              string
+		name!:            string
 		start_multiplex?: bool
 		tags?: [string]:     string
 		tags_all?: [string]: string

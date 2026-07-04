@@ -8,20 +8,20 @@ import "list"
 	close({
 		action!: matchN(1, [#action, list.MaxItems(1) & [_, ...] & [...#action]])
 		match!: matchN(1, [#match, list.MaxItems(1) & [_, ...] & [...#match]])
-		timeouts?:            #timeouts
-		arn?:                 string
-		id?:                  string
-		listener_identifier!: string
-		name!:                string
-		priority!:            number
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:             string
-		rule_id?:            string
-		service_identifier!: string
+		region?:              string
+		id?:                  string
+		listener_identifier!: string
+		name!:                string
+		priority!:            number
+		rule_id?:             string
+		service_identifier!:  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

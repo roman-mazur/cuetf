@@ -7,13 +7,13 @@ package res
 		endpoint_details?: matchN(1, [#endpoint_details, [...#endpoint_details]])
 		identity_provider_details?: matchN(1, [#identity_provider_details, [...#identity_provider_details]])
 		access_endpoint?: string
-		arn?:             string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		arn?:    string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		web_app_endpoint_policy?: string

@@ -10,14 +10,14 @@ import "list"
 		jupyter_lab_image_config?: matchN(1, [#jupyter_lab_image_config, list.MaxItems(1) & [...#jupyter_lab_image_config]])
 		kernel_gateway_image_config?: matchN(1, [#kernel_gateway_image_config, list.MaxItems(1) & [...#kernel_gateway_image_config]])
 		app_image_config_name!: string
-		arn?:                   string
-		id?:                    string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		arn?:    string
+		id?:     string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

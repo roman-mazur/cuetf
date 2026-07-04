@@ -7,6 +7,12 @@ package res
 		nas1_configuration?: matchN(1, [#nas1_configuration, [...#nas1_configuration]])
 		timeouts?: #timeouts
 		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		attached_clusters?: [...close({
 			cluster_name?:   string
 			cluster_status?: string
@@ -20,14 +26,8 @@ package res
 		id?:                      string
 		last_modified_timestamp?: string
 		name!:                    string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
-		status?:        string
-		status_reason?: string
+		status?:                  string
+		status_reason?:           string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type!: string

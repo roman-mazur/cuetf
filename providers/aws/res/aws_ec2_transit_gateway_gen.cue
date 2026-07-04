@@ -4,8 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ec2_transit_gateway")
 	close({
-		timeouts?:                           #timeouts
-		amazon_side_asn?:                    number
+		timeouts?:        #timeouts
+		amazon_side_asn?: number
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                             string
 		arn?:                                string
 		association_default_route_table_id?: string
 		auto_accept_shared_attachments?:     string
@@ -18,12 +24,6 @@ package res
 		multicast_support?:                  string
 		owner_id?:                           string
 		propagation_default_route_table_id?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                             string
 		security_group_referencing_support?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

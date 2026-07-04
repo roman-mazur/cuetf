@@ -7,16 +7,16 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ssoadmin_permissions_boundary_attachment")
 	close({
 		permissions_boundary!: matchN(1, [#permissions_boundary, list.MaxItems(1) & [_, ...] & [...#permissions_boundary]])
-		timeouts?:           #timeouts
-		id?:                 string
-		instance_arn!:       string
-		permission_set_arn!: string
+		timeouts?: #timeouts
+		id?:       string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:             string
+		instance_arn!:       string
+		permission_set_arn!: string
 	})
 
 	#permissions_boundary: close({

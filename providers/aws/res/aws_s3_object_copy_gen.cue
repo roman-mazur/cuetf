@@ -8,7 +8,13 @@ import "list"
 	close({
 		grant?: matchN(1, [#grant, [...#grant]])
 		override_provider?: matchN(1, [#override_provider, list.MaxItems(1) & [...#override_provider]])
-		acl?:                          string
+		acl?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                       string
 		arn?:                          string
 		bucket!:                       string
 		bucket_key_enabled?:           bool
@@ -46,22 +52,16 @@ import "list"
 		object_lock_legal_hold_status?: string
 		object_lock_mode?:              string
 		object_lock_retain_until_date?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                    string
-		request_charged?:           bool
-		request_payer?:             string
-		server_side_encryption?:    string
-		source!:                    string
-		source_customer_algorithm?: string
-		source_customer_key?:       string
-		source_customer_key_md5?:   string
-		source_version_id?:         string
-		storage_class?:             string
-		tagging_directive?:         string
+		request_charged?:               bool
+		request_payer?:                 string
+		server_side_encryption?:        string
+		source!:                        string
+		source_customer_algorithm?:     string
+		source_customer_key?:           string
+		source_customer_key_md5?:       string
+		source_version_id?:             string
+		storage_class?:                 string
+		tagging_directive?:             string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		version_id?:       string

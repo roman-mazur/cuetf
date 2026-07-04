@@ -9,15 +9,15 @@ import "list"
 		timeouts?: #timeouts
 		vpc_settings!: matchN(1, [#vpc_settings, list.MaxItems(1) & [_, ...] & [...#vpc_settings]])
 		desired_number_of_domain_controllers?: number
-		directory_id!:                         string
-		id?:                                   string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		region_name!: string
+		region?:       string
+		directory_id!: string
+		id?:           string
+		region_name!:  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

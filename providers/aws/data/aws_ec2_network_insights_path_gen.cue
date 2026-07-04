@@ -5,7 +5,13 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ec2_network_insights_path")
 	close({
 		filter?: matchN(1, [#filter, [...#filter]])
-		arn?:              string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:           string
 		destination?:      string
 		destination_arn?:  string
 		destination_ip?:   string
@@ -37,15 +43,9 @@ package data
 		id?:                       string
 		network_insights_path_id?: string
 		protocol?:                 string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:     string
-		source?:     string
-		source_arn?: string
-		source_ip?:  string
+		source?:                   string
+		source_arn?:               string
+		source_ip?:                string
 		tags?: [string]: string
 	})
 

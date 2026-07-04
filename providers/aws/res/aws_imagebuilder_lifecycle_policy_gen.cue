@@ -6,19 +6,19 @@ package res
 	close({
 		policy_detail?: matchN(1, [#policy_detail, [...#policy_detail]])
 		resource_selection?: matchN(1, [#resource_selection, [...#resource_selection]])
-		arn?:            string
-		description?:    string
-		execution_role!: string
-		id?:             string
-		name!:           string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
-		resource_type!: string
-		status?:        string
+		region?:         string
+		description?:    string
+		execution_role!: string
+		id?:             string
+		name!:           string
+		resource_type!:  string
+		status?:         string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

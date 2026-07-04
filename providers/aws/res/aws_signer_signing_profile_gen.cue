@@ -8,18 +8,18 @@ import "list"
 	close({
 		signature_validity_period?: matchN(1, [#signature_validity_period, list.MaxItems(1) & [...#signature_validity_period]])
 		signing_material?: matchN(1, [#signing_material, list.MaxItems(1) & [...#signing_material]])
-		arn?:                   string
-		id?:                    string
-		name?:                  string
-		name_prefix?:           string
-		platform_display_name?: string
-		platform_id!:           string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:                string
+		id?:                    string
+		name?:                  string
+		name_prefix?:           string
+		platform_display_name?: string
+		platform_id!:           string
 		revocation_record?: [...close({
 			revocation_effective_from?: string
 			revoked_at?:                string

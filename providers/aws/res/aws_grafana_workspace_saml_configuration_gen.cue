@@ -6,6 +6,12 @@ package res
 	close({
 		timeouts?: #timeouts
 		admin_role_values?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		allowed_organizations?: [...string]
 		editor_role_values!: [...string]
 		email_assertion?:         string
@@ -17,15 +23,9 @@ package res
 		login_validity_duration?: number
 		name_assertion?:          string
 		org_assertion?:           string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:         string
-		role_assertion?: string
-		status?:         string
-		workspace_id!:   string
+		role_assertion?:          string
+		status?:                  string
+		workspace_id!:            string
 	})
 
 	#timeouts: close({

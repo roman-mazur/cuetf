@@ -7,16 +7,16 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_device")
 	close({
 		device!: matchN(1, [#device, list.MaxItems(1) & [_, ...] & [...#device]])
-		agent_version?:     string
-		arn?:               string
-		device_fleet_name!: string
-		id?:                string
+		agent_version?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:            string
+		arn?:               string
+		device_fleet_name!: string
+		id?:                string
 	})
 
 	#device: close({

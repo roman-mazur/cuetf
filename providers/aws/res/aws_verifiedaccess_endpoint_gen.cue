@@ -11,8 +11,14 @@ import "list"
 		network_interface_options?: matchN(1, [#network_interface_options, list.MaxItems(1) & [...#network_interface_options]])
 		rds_options?: matchN(1, [#rds_options, list.MaxItems(1) & [...#rds_options]])
 		sse_specification?: matchN(1, [#sse_specification, list.MaxItems(1) & [...#sse_specification]])
-		timeouts?:                 #timeouts
-		application_domain?:       string
+		timeouts?:           #timeouts
+		application_domain?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                   string
 		attachment_type!:          string
 		description?:              string
 		device_validation_domain?: string
@@ -22,12 +28,6 @@ import "list"
 		endpoint_type!:            string
 		id?:                       string
 		policy_document?:          string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		security_group_ids?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string

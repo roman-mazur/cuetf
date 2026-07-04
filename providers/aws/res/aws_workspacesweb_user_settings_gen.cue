@@ -7,6 +7,12 @@ package res
 		cookie_synchronization_configuration?: matchN(1, [#cookie_synchronization_configuration, [...#cookie_synchronization_configuration]])
 		toolbar_configuration?: matchN(1, [#toolbar_configuration, [...#toolbar_configuration]])
 		additional_encryption_context?: [string]: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		associated_portal_arns?: [...string]
 		copy_allowed!:                       string
 		customer_managed_key?:               string
@@ -16,12 +22,6 @@ package res
 		idle_disconnect_timeout_in_minutes?: number
 		paste_allowed!:                      string
 		print_allowed!:                      string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		upload_allowed!:    string

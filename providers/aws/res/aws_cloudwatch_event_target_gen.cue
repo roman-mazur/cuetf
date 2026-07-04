@@ -18,21 +18,21 @@ import "list"
 		run_command_targets?: matchN(1, [#run_command_targets, list.MaxItems(5) & [...#run_command_targets]])
 		sagemaker_pipeline_target?: matchN(1, [#sagemaker_pipeline_target, list.MaxItems(1) & [...#sagemaker_pipeline_target]])
 		sqs_target?: matchN(1, [#sqs_target, list.MaxItems(1) & [...#sqs_target]])
-		arn!:            string
-		event_bus_name?: string
-		force_destroy?:  bool
-		id?:             string
-		input?:          string
-		input_path?:     string
+		arn!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:    string
-		role_arn?:  string
-		rule!:      string
-		target_id?: string
+		region?:         string
+		event_bus_name?: string
+		force_destroy?:  bool
+		id?:             string
+		input?:          string
+		input_path?:     string
+		role_arn?:       string
+		rule!:           string
+		target_id?:      string
 	})
 
 	#appsync_target: close({

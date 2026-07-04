@@ -10,21 +10,21 @@ import "list"
 		origin_snapshot?: matchN(1, [#origin_snapshot, list.MaxItems(1) & [...#origin_snapshot]])
 		timeouts?: #timeouts
 		user_and_group_quotas?: matchN(1, [#user_and_group_quotas, [...#user_and_group_quotas]])
-		arn?:                    string
-		copy_tags_to_snapshots?: bool
-		data_compression_type?:  string
-		delete_volume_options?: [...string]
-		id?:               string
-		name!:             string
-		parent_volume_id!: string
-		read_only?:        bool
-		record_size_kib?:  number
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                           string
+		region?:                 string
+		copy_tags_to_snapshots?: bool
+		data_compression_type?:  string
+		delete_volume_options?: [...string]
+		id?:                               string
+		name!:                             string
+		parent_volume_id!:                 string
+		read_only?:                        bool
+		record_size_kib?:                  number
 		storage_capacity_quota_gib?:       number
 		storage_capacity_reservation_gib?: number
 		tags?: [string]:     string

@@ -8,17 +8,17 @@ import "list"
 	close({
 		allowed_publishers!: matchN(1, [#allowed_publishers, list.MaxItems(1) & [_, ...] & [...#allowed_publishers]])
 		policies?: matchN(1, [#policies, list.MaxItems(1) & [...#policies]])
-		arn?:           string
-		config_id?:     string
-		description?:   string
-		id?:            string
-		last_modified?: string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:        string
+		config_id?:     string
+		description?:   string
+		id?:            string
+		last_modified?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

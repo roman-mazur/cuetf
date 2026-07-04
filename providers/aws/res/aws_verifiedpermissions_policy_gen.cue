@@ -5,16 +5,16 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_verifiedpermissions_policy")
 	close({
 		definition?: matchN(1, [#definition, [...#definition]])
-		created_date?:    string
-		id?:              string
-		policy_id?:       string
-		policy_store_id!: string
+		created_date?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:          string
+		id?:              string
+		policy_id?:       string
+		policy_store_id!: string
 	})
 
 	#definition: close({

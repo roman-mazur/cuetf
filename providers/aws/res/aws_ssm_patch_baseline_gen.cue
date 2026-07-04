@@ -10,6 +10,12 @@ import "list"
 		global_filter?: matchN(1, [#global_filter, list.MaxItems(4) & [...#global_filter]])
 		source?: matchN(1, [#source, list.MaxItems(20) & [...#source]])
 		approved_patches?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                                       string
 		approved_patches_compliance_level?:            string
 		approved_patches_enable_non_security?:         bool
 		arn?:                                          string
@@ -19,12 +25,6 @@ import "list"
 		json?:                                         string
 		name!:                                         string
 		operating_system?:                             string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		rejected_patches?: [...string]
 		rejected_patches_action?: string
 		tags?: [string]:     string

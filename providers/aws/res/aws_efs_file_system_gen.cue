@@ -8,7 +8,13 @@ import "list"
 	close({
 		lifecycle_policy?: matchN(1, [#lifecycle_policy, list.MaxItems(3) & [...#lifecycle_policy]])
 		protection?: matchN(1, [#protection, list.MaxItems(1) & [...#protection]])
-		arn?:                             string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                          string
 		availability_zone_id?:            string
 		availability_zone_name?:          string
 		creation_token?:                  string
@@ -21,12 +27,6 @@ import "list"
 		owner_id?:                        string
 		performance_mode?:                string
 		provisioned_throughput_in_mibps?: number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		size_in_bytes?: [...close({
 			value?:             number
 			value_in_ia?:       number

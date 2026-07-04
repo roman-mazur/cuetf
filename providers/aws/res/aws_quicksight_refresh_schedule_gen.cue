@@ -5,17 +5,17 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_quicksight_refresh_schedule")
 	close({
 		schedule?: matchN(1, [#schedule, [...#schedule]])
-		arn?:            string
-		aws_account_id?: string
-		data_set_id!:    string
-		id?:             string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:      string
-		schedule_id!: string
+		region?:         string
+		aws_account_id?: string
+		data_set_id!:    string
+		id?:             string
+		schedule_id!:    string
 	})
 
 	#schedule: close({

@@ -7,14 +7,14 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cognito_identity_pool_roles_attachment")
 	close({
 		role_mapping?: matchN(1, [#role_mapping, [...#role_mapping]])
-		id?:               string
-		identity_pool_id!: string
+		id?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:           string
+		identity_pool_id!: string
 		roles!: [string]: string
 	})
 

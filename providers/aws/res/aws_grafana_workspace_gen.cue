@@ -10,7 +10,13 @@ import "list"
 		timeouts?: #timeouts
 		vpc_configuration?: matchN(1, [#vpc_configuration, list.MaxItems(1) & [...#vpc_configuration]])
 		account_access_type!: string
-		arn?:                 string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		arn?:    string
 		authentication_providers!: [...string]
 		configuration?: string
 		data_sources?: [...string]
@@ -23,13 +29,7 @@ import "list"
 		notification_destinations?: [...string]
 		organization_role_name?: string
 		organizational_units?: [...string]
-		permission_type!: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                    string
+		permission_type!:           string
 		role_arn?:                  string
 		saml_configuration_status?: string
 		stack_set_name?:            string

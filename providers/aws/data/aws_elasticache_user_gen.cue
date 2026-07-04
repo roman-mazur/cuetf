@@ -5,17 +5,17 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_elasticache_user")
 	close({
 		authentication_mode?: matchN(1, [#authentication_mode, [...#authentication_mode]])
-		access_string?:        string
-		engine?:               string
-		id?:                   string
-		no_password_required?: bool
-		passwords?: [...string]
+		access_string?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:    string
+		region?:               string
+		engine?:               string
+		id?:                   string
+		no_password_required?: bool
+		passwords?: [...string]
 		user_id!:   string
 		user_name?: string
 	})

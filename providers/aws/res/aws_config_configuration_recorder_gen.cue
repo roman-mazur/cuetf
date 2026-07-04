@@ -8,14 +8,14 @@ import "list"
 	close({
 		recording_group?: matchN(1, [#recording_group, list.MaxItems(1) & [...#recording_group]])
 		recording_mode?: matchN(1, [#recording_mode, list.MaxItems(1) & [...#recording_mode]])
-		id?:   string
-		name?: string
+		id?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:   string
+		name?:     string
 		role_arn!: string
 	})
 

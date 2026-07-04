@@ -7,18 +7,18 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_ipam_pool_cidr")
 	close({
 		cidr_authorization_context?: matchN(1, [#cidr_authorization_context, list.MaxItems(1) & [...#cidr_authorization_context]])
-		timeouts?:          #timeouts
-		cidr?:              string
-		id?:                string
-		ipam_pool_cidr_id?: string
-		ipam_pool_id!:      string
-		netmask_length?:    number
+		timeouts?: #timeouts
+		cidr?:     string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:            string
+		id?:                string
+		ipam_pool_cidr_id?: string
+		ipam_pool_id!:      string
+		netmask_length?:    number
 	})
 
 	#cidr_authorization_context: close({

@@ -11,18 +11,18 @@ import "list"
 		source_flow_config!: matchN(1, [#source_flow_config, list.MaxItems(1) & [_, ...] & [...#source_flow_config]])
 		task!: matchN(1, [#task, [_, ...] & [...#task]])
 		trigger_config!: matchN(1, [#trigger_config, list.MaxItems(1) & [_, ...] & [...#trigger_config]])
-		arn?:         string
-		description?: string
-		flow_status?: string
-		id?:          string
-		kms_arn?:     string
-		name!:        string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:      string
+		description?: string
+		flow_status?: string
+		id?:          string
+		kms_arn?:     string
+		name!:        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

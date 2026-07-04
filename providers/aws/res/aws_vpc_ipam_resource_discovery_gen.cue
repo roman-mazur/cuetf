@@ -6,19 +6,19 @@ package res
 	close({
 		operating_regions!: matchN(1, [#operating_regions, [_, ...] & [...#operating_regions]])
 		organizational_unit_exclusion?: matchN(1, [#organizational_unit_exclusion, [...#organizational_unit_exclusion]])
-		timeouts?:                       #timeouts
-		arn?:                            string
-		description?:                    string
-		id?:                             string
-		ipam_resource_discovery_region?: string
-		is_default?:                     bool
-		owner_id?:                       string
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:                         string
+		description?:                    string
+		id?:                             string
+		ipam_resource_discovery_region?: string
+		is_default?:                     bool
+		owner_id?:                       string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

@@ -4,8 +4,7 @@ package data
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_odb_db_nodes")
 	close({
-		// Id of the cloud VM cluster. The unique identifier of the VM
-		// cluster.
+		// Id of the cloud VM cluster. The unique identifier of the VM cluster.
 		cloud_vm_cluster_id!: string
 
 		// The list of DB nodes along with their properties.

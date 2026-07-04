@@ -6,17 +6,17 @@ package res
 	close({
 		ip_rule?: matchN(1, [#ip_rule, [...#ip_rule]])
 		additional_encryption_context?: [string]: string
-		associated_portal_arns?: [...string]
-		customer_managed_key?:   string
-		description?:            string
-		display_name!:           string
-		ip_access_settings_arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		associated_portal_arns?: [...string]
+		customer_managed_key?:   string
+		description?:            string
+		display_name!:           string
+		ip_access_settings_arn?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

@@ -5,8 +5,14 @@ package data
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_instance")
 	close({
 		filter?: matchN(1, [#filter, [...#filter]])
-		timeouts?:                    #timeouts
-		ami?:                         string
+		timeouts?: #timeouts
+		ami?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                      string
 		arn?:                         string
 		associate_public_ip_address?: bool
 		availability_zone?:           string
@@ -76,12 +82,6 @@ package data
 		private_ip?: string
 		public_dns?: string
 		public_ip?:  string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		root_block_device?: [...close({
 			delete_on_termination?: bool
 			device_name?:           string

@@ -4,8 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_rds_custom_db_engine_version")
 	close({
-		timeouts?:                                   #timeouts
-		arn?:                                        string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                                     string
 		create_time?:                                string
 		database_installation_files_s3_bucket_name?: string
 		database_installation_files_s3_prefix?:      string
@@ -21,14 +27,8 @@ package res
 		manifest?:                                   string
 		manifest_computed?:                          string
 		manifest_hash?:                              string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:          string
-		source_image_id?: string
-		status?:          string
+		source_image_id?:                            string
+		status?:                                     string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

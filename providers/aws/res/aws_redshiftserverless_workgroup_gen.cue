@@ -8,8 +8,14 @@ import "list"
 	close({
 		config_parameter?: matchN(1, [#config_parameter, [...#config_parameter]])
 		price_performance_target?: matchN(1, [#price_performance_target, list.MaxItems(1) & [...#price_performance_target]])
-		timeouts?:      #timeouts
-		arn?:           string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:        string
 		base_capacity?: number
 		endpoint?: [...close({
 			address?: string
@@ -31,12 +37,6 @@ import "list"
 		namespace_name!:       string
 		port?:                 number
 		publicly_accessible?:  bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		security_group_ids?: [...string]
 		subnet_ids?: [...string]
 		tags?: [string]:     string

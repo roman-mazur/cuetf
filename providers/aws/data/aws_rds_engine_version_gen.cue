@@ -6,9 +6,15 @@ package data
 	close({
 		filter?: matchN(1, [#filter, [...#filter]])
 		default_character_set?: string
-		default_only?:          bool
-		engine!:                string
-		engine_description?:    string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:             string
+		default_only?:       bool
+		engine!:             string
+		engine_description?: string
 		exportable_log_types?: [...string]
 		has_major_target?:       bool
 		has_minor_target?:       bool
@@ -19,12 +25,6 @@ package data
 		preferred_major_targets?: [...string]
 		preferred_upgrade_targets?: [...string]
 		preferred_versions?: [...string]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		status?: string
 		supported_character_sets?: [...string]
 		supported_feature_names?: [...string]

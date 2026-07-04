@@ -4,8 +4,14 @@ package res
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dms_s3_endpoint")
 	close({
-		timeouts?:                                    #timeouts
-		add_column_name?:                             bool
+		timeouts?:        #timeouts
+		add_column_name?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                                      string
 		add_trailing_padding_character?:              bool
 		bucket_folder?:                               string
 		bucket_name!:                                 string
@@ -47,18 +53,12 @@ package res
 		parquet_timestamp_in_millisecond?:            bool
 		parquet_version?:                             string
 		preserve_transactions?:                       bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                            string
-		rfc_4180?:                          bool
-		row_group_length?:                  number
-		server_side_encryption_kms_key_id?: string
-		service_access_role_arn!:           string
-		ssl_mode?:                          string
-		status?:                            string
+		rfc_4180?:                                    bool
+		row_group_length?:                            number
+		server_side_encryption_kms_key_id?:           string
+		service_access_role_arn!:                     string
+		ssl_mode?:                                    string
+		status?:                                      string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		timestamp_column_name?:                       string

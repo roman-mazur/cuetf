@@ -25,7 +25,13 @@ import "list"
 		private_dns_name_options?: matchN(1, [#private_dns_name_options, list.MaxItems(1) & [...#private_dns_name_options]])
 		secondary_interfaces?: matchN(1, [#secondary_interfaces, [...#secondary_interfaces]])
 		tag_specifications?: matchN(1, [#tag_specifications, [...#tag_specifications]])
-		arn?:                                  string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                               string
 		default_version?:                      number
 		description?:                          string
 		disable_api_stop?:                     bool
@@ -41,12 +47,6 @@ import "list"
 		name?:                                 string
 		name_prefix?:                          string
 		ram_disk_id?:                          string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		security_group_names?: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string

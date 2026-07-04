@@ -7,16 +7,16 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datasync_location_fsx_openzfs_file_system")
 	close({
 		protocol!: matchN(1, [#protocol, list.MaxItems(1) & [_, ...] & [...#protocol]])
-		arn?:                string
-		creation_time?:      string
-		fsx_filesystem_arn!: string
-		id?:                 string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:             string
+		creation_time?:      string
+		fsx_filesystem_arn!: string
+		id?:                 string
 		security_group_arns!: [...string]
 		subdirectory?: string
 		tags?: [string]:     string

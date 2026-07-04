@@ -11,8 +11,14 @@ import "list"
 		operation_preferences?: matchN(1, [#operation_preferences, list.MaxItems(1) & [...#operation_preferences]])
 		timeouts?:                #timeouts
 		administration_role_arn?: string
-		arn?:                     string
-		call_as?:                 string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:  string
+		arn?:     string
+		call_as?: string
 		capabilities?: [...string]
 		description?:         string
 		execution_role_name?: string
@@ -20,13 +26,7 @@ import "list"
 		name!:                string
 		parameters?: [string]: string
 		permission_model?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:       string
-		stack_set_id?: string
+		stack_set_id?:     string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		template_body?: string

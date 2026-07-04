@@ -10,22 +10,22 @@ import "list"
 		schedule_frequency?: matchN(1, [#schedule_frequency, list.MaxItems(1) & [...#schedule_frequency]])
 		timeouts?:   #timeouts
 		created_at?: string
-		custom_data_identifier_ids?: [...string]
-		description?: string
-		id?:          string
-		initial_run?: bool
-		job_arn?:     string
-		job_id?:      string
-		job_status?:  string
-		job_type!:    string
-		name?:        string
-		name_prefix?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
+		region?: string
+		custom_data_identifier_ids?: [...string]
+		description?:         string
+		id?:                  string
+		initial_run?:         bool
+		job_arn?:             string
+		job_id?:              string
+		job_status?:          string
+		job_type!:            string
+		name?:                string
+		name_prefix?:         string
 		sampling_percentage?: number
 		tags?: [string]:     string
 		tags_all?: [string]: string

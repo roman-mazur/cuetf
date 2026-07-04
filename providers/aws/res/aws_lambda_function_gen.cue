@@ -20,6 +20,12 @@ import "list"
 		tracing_config?: matchN(1, [#tracing_config, list.MaxItems(1) & [...#tracing_config]])
 		vpc_config?: matchN(1, [#vpc_config, list.MaxItems(1) & [...#vpc_config]])
 		architectures?: [...string]
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                  string
 		arn?:                     string
 		code_sha256?:             string
 		code_signing_config_arn?: string
@@ -33,18 +39,12 @@ import "list"
 		kms_key_arn?:             string
 		last_modified?:           string
 		layers?: [...string]
-		memory_size?:          number
-		package_type?:         string
-		publish?:              bool
-		publish_to?:           string
-		qualified_arn?:        string
-		qualified_invoke_arn?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                             string
+		memory_size?:                        number
+		package_type?:                       string
+		publish?:                            bool
+		publish_to?:                         string
+		qualified_arn?:                      string
+		qualified_invoke_arn?:               string
 		replace_security_groups_on_destroy?: bool
 		replacement_security_group_ids?: [...string]
 		reserved_concurrent_executions?: number

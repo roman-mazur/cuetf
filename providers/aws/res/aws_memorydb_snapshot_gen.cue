@@ -6,6 +6,12 @@ package res
 	close({
 		timeouts?: #timeouts
 		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		cluster_configuration?: [...close({
 			description?:              string
 			engine?:                   string
@@ -27,13 +33,7 @@ package res
 		kms_key_arn?:  string
 		name?:         string
 		name_prefix?:  string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		source?: string
+		source?:       string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

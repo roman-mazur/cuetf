@@ -9,9 +9,9 @@ package res
 		// The Amazon Resource Name (ARN) of the Key Value Store.
 		key_value_store_arn!: string
 
-		// Maximum resource key values pairs that you wills update in a
-		// single API request. AWS has a default quota of 50 keys or a 3
-		// MB payload, whichever is reached first
+		// Maximum resource key values pairs that you wills update in a single API
+		// request. AWS has a default quota of 50 keys or a 3 MB payload, whichever is
+		// reached first
 		max_batch_size?: number
 
 		// Total size of the Key Value Store in bytes.

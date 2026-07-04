@@ -10,7 +10,13 @@ import "list"
 		stack_set_provisioning_preferences?: matchN(1, [#stack_set_provisioning_preferences, list.MaxItems(1) & [...#stack_set_provisioning_preferences]])
 		timeouts?:        #timeouts
 		accept_language?: string
-		arn?:             string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
+		arn?:    string
 		cloudwatch_dashboard_names?: [...string]
 		created_time?:                           string
 		id?:                                     string
@@ -32,15 +38,9 @@ import "list"
 		product_name?:               string
 		provisioning_artifact_id?:   string
 		provisioning_artifact_name?: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                    string
-		retain_physical_resources?: bool
-		status?:                    string
-		status_message?:            string
+		retain_physical_resources?:  bool
+		status?:                     string
+		status_message?:             string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		type?: string

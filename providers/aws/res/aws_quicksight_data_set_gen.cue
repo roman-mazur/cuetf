@@ -16,7 +16,13 @@ import "list"
 		refresh_properties?: matchN(1, [#refresh_properties, list.MaxItems(1) & [...#refresh_properties]])
 		row_level_permission_data_set?: matchN(1, [#row_level_permission_data_set, list.MaxItems(1) & [...#row_level_permission_data_set]])
 		row_level_permission_tag_configuration?: matchN(1, [#row_level_permission_tag_configuration, list.MaxItems(1) & [...#row_level_permission_tag_configuration]])
-		arn?:            string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:         string
 		aws_account_id?: string
 		data_set_id!:    string
 		id?:             string
@@ -27,12 +33,6 @@ import "list"
 			name?:        string
 			type?:        string
 		})]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		use_as?: string

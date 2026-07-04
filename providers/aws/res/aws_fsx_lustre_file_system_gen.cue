@@ -10,8 +10,14 @@ import "list"
 		log_configuration?: matchN(1, [#log_configuration, list.MaxItems(1) & [...#log_configuration]])
 		metadata_configuration?: matchN(1, [#metadata_configuration, list.MaxItems(1) & [...#metadata_configuration]])
 		root_squash_configuration?: matchN(1, [#root_squash_configuration, list.MaxItems(1) & [...#root_squash_configuration]])
-		timeouts?:                          #timeouts
-		arn?:                               string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                            string
 		auto_import_policy?:                string
 		automatic_backup_retention_days?:   number
 		backup_id?:                         string
@@ -33,12 +39,6 @@ import "list"
 		network_interface_ids?: [...string]
 		owner_id?:                    string
 		per_unit_storage_throughput?: number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		security_group_ids?: [...string]
 		skip_final_backup?: bool
 		storage_capacity?:  number

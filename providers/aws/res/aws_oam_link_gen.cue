@@ -7,18 +7,18 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_oam_link")
 	close({
 		link_configuration?: matchN(1, [#link_configuration, list.MaxItems(1) & [...#link_configuration]])
-		timeouts?:       #timeouts
-		arn?:            string
-		id?:             string
-		label?:          string
-		label_template!: string
-		link_id?:        string
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:         string
+		id?:             string
+		label?:          string
+		label_template!: string
+		link_id?:        string
 		resource_types!: [...string]
 		sink_arn?:        string
 		sink_identifier!: string

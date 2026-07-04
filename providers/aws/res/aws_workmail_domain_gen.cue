@@ -10,8 +10,7 @@ package res
 		// Mail domain name to register.
 		domain_name!: string
 
-		// Whether this domain is the default mail domain for the
-		// organization.
+		// Whether this domain is the default mail domain for the organization.
 		is_default?: bool
 
 		// Whether this is the auto-provisioned test domain.

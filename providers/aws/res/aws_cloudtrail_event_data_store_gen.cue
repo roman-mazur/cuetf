@@ -5,22 +5,22 @@ package res
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudtrail_event_data_store")
 	close({
 		advanced_event_selector?: matchN(1, [#advanced_event_selector, [...#advanced_event_selector]])
-		timeouts?:             #timeouts
-		arn?:                  string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:               string
 		billing_mode?:         string
 		id?:                   string
 		kms_key_id?:           string
 		multi_region_enabled?: bool
 		name!:                 string
 		organization_enabled?: bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:           string
-		retention_period?: number
-		suspend?:          string
+		retention_period?:     number
+		suspend?:              string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		termination_protection_enabled?: bool

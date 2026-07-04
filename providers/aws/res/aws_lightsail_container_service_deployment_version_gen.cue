@@ -10,13 +10,13 @@ import "list"
 		public_endpoint?: matchN(1, [#public_endpoint, list.MaxItems(1) & [...#public_endpoint]])
 		timeouts?:   #timeouts
 		created_at?: string
-		id?:         string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:       string
+		id?:           string
 		service_name!: string
 		state?:        string
 		version?:      number

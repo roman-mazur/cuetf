@@ -13,7 +13,13 @@ import "list"
 		maintenance_window_start_time?: matchN(1, [#maintenance_window_start_time, list.MaxItems(1) & [...#maintenance_window_start_time]])
 		timeouts?: #timeouts
 		user?: matchN(1, [#user, [...#user]])
-		apply_immediately?:                   bool
+		apply_immediately?: bool
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                              string
 		arn?:                                 string
 		authentication_strategy?:             string
 		auto_minor_version_upgrade?:          bool
@@ -32,12 +38,6 @@ import "list"
 		})]
 		pending_data_replication_mode?: string
 		publicly_accessible?:           bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		security_groups?: [...string]
 		storage_type?: string
 		subnet_ids?: [...string]

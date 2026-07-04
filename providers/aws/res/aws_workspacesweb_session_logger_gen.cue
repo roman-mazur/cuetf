@@ -7,16 +7,16 @@ package res
 		event_filter?: matchN(1, [#event_filter, [...#event_filter]])
 		log_configuration?: matchN(1, [#log_configuration, [...#log_configuration]])
 		additional_encryption_context?: [string]: string
-		associated_portal_arns?: [...string]
-		customer_managed_key?: string
-		display_name?:         string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:             string
-		session_logger_arn?: string
+		region?: string
+		associated_portal_arns?: [...string]
+		customer_managed_key?: string
+		display_name?:         string
+		session_logger_arn?:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

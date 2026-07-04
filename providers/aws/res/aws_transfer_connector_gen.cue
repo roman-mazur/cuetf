@@ -9,18 +9,18 @@ import "list"
 		as2_config?: matchN(1, [#as2_config, list.MaxItems(1) & [...#as2_config]])
 		egress_config?: matchN(1, [#egress_config, list.MaxItems(1) & [...#egress_config]])
 		sftp_config?: matchN(1, [#sftp_config, list.MaxItems(1) & [...#sftp_config]])
-		timeouts?:     #timeouts
-		access_role!:  string
-		arn?:          string
-		connector_id?: string
-		id?:           string
-		logging_role?: string
+		timeouts?:    #timeouts
+		access_role!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:               string
+		arn?:                  string
+		connector_id?:         string
+		id?:                   string
+		logging_role?:         string
 		security_policy_name?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

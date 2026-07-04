@@ -7,7 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_connect_queue")
 	close({
 		outbound_caller_config?: matchN(1, [#outbound_caller_config, list.MaxItems(1) & [...#outbound_caller_config]])
-		arn?:                   string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                string
 		description?:           string
 		hours_of_operation_id!: string
 		id?:                    string
@@ -16,12 +22,6 @@ import "list"
 		name!:                  string
 		queue_id?:              string
 		quick_connect_ids?: [...string]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		status?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string

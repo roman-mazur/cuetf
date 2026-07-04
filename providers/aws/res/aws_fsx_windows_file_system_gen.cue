@@ -11,6 +11,12 @@ import "list"
 		self_managed_active_directory?: matchN(1, [#self_managed_active_directory, list.MaxItems(1) & [...#self_managed_active_directory]])
 		timeouts?:            #timeouts
 		active_directory_id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?: string
 		aliases?: [...string]
 		arn?:                               string
 		automatic_backup_retention_days?:   number
@@ -23,15 +29,9 @@ import "list"
 		id?:         string
 		kms_key_id?: string
 		network_interface_ids?: [...string]
-		owner_id?:                 string
-		preferred_file_server_ip?: string
-		preferred_subnet_id?:      string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                         string
+		owner_id?:                       string
+		preferred_file_server_ip?:       string
+		preferred_subnet_id?:            string
 		remote_administration_endpoint?: string
 		security_group_ids?: [...string]
 		skip_final_backup?: bool

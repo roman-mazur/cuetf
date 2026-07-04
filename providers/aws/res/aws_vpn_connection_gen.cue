@@ -8,7 +8,13 @@ import "list"
 	close({
 		tunnel1_log_options?: matchN(1, [#tunnel1_log_options, list.MaxItems(1) & [...#tunnel1_log_options]])
 		tunnel2_log_options?: matchN(1, [#tunnel2_log_options, list.MaxItems(1) & [...#tunnel2_log_options]])
-		arn?:                            string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                         string
 		core_network_arn?:               string
 		core_network_attachment_arn?:    string
 		customer_gateway_configuration?: string
@@ -20,14 +26,8 @@ import "list"
 		outside_ip_address_type?:        string
 		preshared_key_arn?:              string
 		preshared_key_storage?:          string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                   string
-		remote_ipv4_network_cidr?: string
-		remote_ipv6_network_cidr?: string
+		remote_ipv4_network_cidr?:       string
+		remote_ipv6_network_cidr?:       string
 		routes?: [...close({
 			destination_cidr_block?: string
 			source?:                 string

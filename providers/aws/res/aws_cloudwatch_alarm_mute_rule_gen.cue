@@ -6,20 +6,20 @@ package res
 	close({
 		mute_targets?: matchN(1, [#mute_targets, [...#mute_targets]])
 		rule?: matchN(1, [#rule, [...#rule]])
-		arn?:                    string
-		description?:            string
-		expire_date?:            string
-		last_updated_timestamp?: string
-		mute_type?:              string
-		name!:                   string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:     string
-		start_date?: string
-		status?:     string
+		region?:                 string
+		description?:            string
+		expire_date?:            string
+		last_updated_timestamp?: string
+		mute_type?:              string
+		name!:                   string
+		start_date?:             string
+		status?:                 string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

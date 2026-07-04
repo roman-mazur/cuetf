@@ -7,7 +7,13 @@ import "list"
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ssm_document")
 	close({
 		attachments_source?: matchN(1, [#attachments_source, list.MaxItems(20) & [...#attachments_source]])
-		arn?:              string
+		arn?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:           string
 		content!:          string
 		created_date?:     string
 		default_version?:  string
@@ -29,12 +35,6 @@ import "list"
 		})]
 		permissions?: [string]: string
 		platform_types?: [...string]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:         string
 		schema_version?: string
 		status?:         string
 		tags?: [string]:     string

@@ -35,12 +35,11 @@ package data
 		// Group attribute for this SAML integration.
 		group_attribute?: string
 
-		// The XML IdP metadata file generated from your identity
-		// provider.
+		// The XML IdP metadata file generated from your identity provider.
 		metadata?: string
 
-		// Session timeout, in minutes. Minimum is 5 minutes and maximum
-		// is 720 minutes (12 hours). Default is 60 minutes.
+		// Session timeout, in minutes. Minimum is 5 minutes and maximum is 720 minutes
+		// (12 hours). Default is 60 minutes.
 		session_timeout?: number
 
 		// User attribute for this SAML integration.

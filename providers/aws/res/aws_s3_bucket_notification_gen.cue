@@ -7,15 +7,15 @@ package res
 		lambda_function?: matchN(1, [#lambda_function, [...#lambda_function]])
 		queue?: matchN(1, [#queue, [...#queue]])
 		topic?: matchN(1, [#topic, [...#topic]])
-		bucket!:      string
-		eventbridge?: bool
-		id?:          string
+		bucket!: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
+		region?:      string
+		eventbridge?: bool
+		id?:          string
 	})
 
 	#lambda_function: close({

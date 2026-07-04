@@ -9,18 +9,18 @@ import "list"
 		actions!: matchN(1, [#actions, [_, ...] & [...#actions]])
 		event_batching_condition?: matchN(1, [#event_batching_condition, [...#event_batching_condition]])
 		predicate?: matchN(1, [#predicate, list.MaxItems(1) & [...#predicate]])
-		timeouts?:    #timeouts
-		arn?:         string
-		description?: string
-		enabled?:     bool
-		id?:          string
-		name!:        string
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:            string
+		description?:       string
+		enabled?:           bool
+		id?:                string
+		name!:              string
 		schedule?:          string
 		start_on_creation?: bool
 		state?:             string

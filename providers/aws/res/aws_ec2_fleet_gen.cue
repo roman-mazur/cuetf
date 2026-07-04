@@ -11,21 +11,21 @@ import "list"
 		on_demand_options?: matchN(1, [#on_demand_options, list.MaxItems(1) & [...#on_demand_options]])
 		spot_options?: matchN(1, [#spot_options, list.MaxItems(1) & [...#spot_options]])
 		target_capacity_specification!: matchN(1, [#target_capacity_specification, list.MaxItems(1) & [_, ...] & [...#target_capacity_specification]])
-		timeouts?:                           #timeouts
-		arn?:                                string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                             string
 		context?:                            string
 		excess_capacity_termination_policy?: string
 		fleet_state?:                        string
 		fulfilled_capacity?:                 number
 		fulfilled_on_demand_capacity?:       number
 		id?:                                 string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                      string
-		replace_unhealthy_instances?: bool
+		replace_unhealthy_instances?:        bool
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		terminate_instances?:                 bool

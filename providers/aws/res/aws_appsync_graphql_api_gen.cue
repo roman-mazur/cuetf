@@ -12,7 +12,13 @@ import "list"
 		log_config?: matchN(1, [#log_config, list.MaxItems(1) & [...#log_config]])
 		openid_connect_config?: matchN(1, [#openid_connect_config, list.MaxItems(1) & [...#openid_connect_config]])
 		user_pool_config?: matchN(1, [#user_pool_config, list.MaxItems(1) & [...#user_pool_config]])
-		api_type?:                      string
+		api_type?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                        string
 		arn?:                           string
 		authentication_type!:           string
 		id?:                            string
@@ -20,14 +26,8 @@ import "list"
 		merged_api_execution_role_arn?: string
 		name!:                          string
 		query_depth_limit?:             number
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:               string
-		resolver_count_limit?: number
-		schema?:               string
+		resolver_count_limit?:          number
+		schema?:                        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		uris?: [string]:     string

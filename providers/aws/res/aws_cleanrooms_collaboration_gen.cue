@@ -8,8 +8,14 @@ import "list"
 	close({
 		data_encryption_metadata?: matchN(1, [#data_encryption_metadata, list.MaxItems(1) & [...#data_encryption_metadata]])
 		member?: matchN(1, [#member, [...#member]])
-		timeouts?:             #timeouts
-		analytics_engine?:     string
+		timeouts?:         #timeouts
+		analytics_engine?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:               string
 		arn?:                  string
 		create_time?:          string
 		creator_display_name!: string
@@ -18,12 +24,6 @@ import "list"
 		id?:               string
 		name!:             string
 		query_log_status!: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		update_time?: string

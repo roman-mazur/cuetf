@@ -8,8 +8,14 @@ import "list"
 	close({
 		cache_attributes?: matchN(1, [#cache_attributes, list.MaxItems(1) & [...#cache_attributes]])
 		nfs_file_share_defaults?: matchN(1, [#nfs_file_share_defaults, list.MaxItems(1) & [...#nfs_file_share_defaults]])
-		timeouts?:              #timeouts
-		arn?:                   string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                string
 		audit_destination_arn?: string
 		bucket_region?:         string
 		client_list!: [...string]
@@ -26,15 +32,9 @@ import "list"
 		object_acl?:              string
 		path?:                    string
 		read_only?:               bool
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:         string
-		requester_pays?: bool
-		role_arn!:       string
-		squash?:         string
+		requester_pays?:          bool
+		role_arn!:                string
+		squash?:                  string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vpc_endpoint_dns_name?: string

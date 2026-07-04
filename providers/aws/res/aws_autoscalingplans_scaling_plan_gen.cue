@@ -8,14 +8,14 @@ import "list"
 	close({
 		application_source!: matchN(1, [#application_source, list.MaxItems(1) & [_, ...] & [...#application_source]])
 		scaling_instruction!: matchN(1, [#scaling_instruction, [_, ...] & [...#scaling_instruction]])
-		id?:   string
-		name!: string
+		id?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:               string
+		name!:                 string
 		scaling_plan_version?: number
 	})
 

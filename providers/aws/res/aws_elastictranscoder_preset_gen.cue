@@ -11,18 +11,18 @@ import "list"
 		thumbnails?: matchN(1, [#thumbnails, list.MaxItems(1) & [...#thumbnails]])
 		video?: matchN(1, [#video, list.MaxItems(1) & [...#video]])
 		video_watermarks?: matchN(1, [#video_watermarks, [...#video_watermarks]])
-		arn?:         string
-		container!:   string
-		description?: string
-		id?:          string
-		name?:        string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
-		type?:   string
+		region?:      string
+		container!:   string
+		description?: string
+		id?:          string
+		name?:        string
+		type?:        string
 		video_codec_options?: [string]: string
 	})
 

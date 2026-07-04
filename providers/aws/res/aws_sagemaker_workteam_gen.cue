@@ -9,16 +9,16 @@ import "list"
 		member_definition!: matchN(1, [#member_definition, list.MaxItems(10) & [_, ...] & [...#member_definition]])
 		notification_configuration?: matchN(1, [#notification_configuration, list.MaxItems(1) & [...#notification_configuration]])
 		worker_access_configuration?: matchN(1, [#worker_access_configuration, list.MaxItems(1) & [...#worker_access_configuration]])
-		arn?:         string
-		description!: string
-		id?:          string
+		arn?: string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:    string
-		subdomain?: string
+		region?:      string
+		description!: string
+		id?:          string
+		subdomain?:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		workforce_name?: string

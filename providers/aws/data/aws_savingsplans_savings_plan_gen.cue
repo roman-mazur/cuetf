@@ -25,8 +25,7 @@ package data
 		// The product types.
 		product_types?: [...string]
 
-		// The time at which to purchase the Savings Plan, in UTC format
-		// (YYYY-MM-DDTHH:MM:SSZ).
+		// The time at which to purchase the Savings Plan, in UTC format (YYYY-MM-DDTHH:MM:SSZ).
 		purchase_time?: string
 
 		// The recurring payment amount.

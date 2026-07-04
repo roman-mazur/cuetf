@@ -9,6 +9,12 @@ import "list"
 		app_monitor_configuration?: matchN(1, [#app_monitor_configuration, list.MaxItems(1) & [...#app_monitor_configuration]])
 		custom_events?: matchN(1, [#custom_events, list.MaxItems(1) & [...#custom_events]])
 		app_monitor_id?: string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:         string
 		arn?:            string
 		cw_log_enabled?: bool
 		cw_log_group?:   string
@@ -16,12 +22,6 @@ import "list"
 		domain_list?: [...string]
 		id?:   string
 		name!: string
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?: string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
