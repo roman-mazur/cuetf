@@ -1,7 +1,7 @@
 module: "github.com/roman-mazur/cuetf/providers/aws"
 language: version: "v0.15.4"
-source: kind: "git"
+source: kind:      "git"
 deps: "github.com/roman-mazur/cuetf@v0": {
-	v:       "v0.2605.0"
+	v:       "v0.2606.0"
 	default: true
 }
