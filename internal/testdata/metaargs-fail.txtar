@@ -1,6 +1,8 @@
 env HOME=$WORK/_home
 
-exec cue export . -f -o input.tf.json
+# This should fail because the lifecycle.prevent_destroy value has a type error.
+! exec cue export . -f -o input.tf.json
+stderr 'conflicting values "rubbish" and bool \(mismatched types string and bool\)'
 
 -- cue.mod/module.cue --
 module: "mod.example"
@@ -22,5 +24,5 @@ gh.#Terraform
 
 resource: github_repository: cue: {
 	name: "test"
-	lifecycle: prevent_destroy: true
+	lifecycle: prevent_destroy: "rubbish"
 }
