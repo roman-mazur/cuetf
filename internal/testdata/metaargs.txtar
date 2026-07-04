@@ -9,7 +9,7 @@ language: {
 }
 deps: {
 	"github.com/roman-mazur/cuetf/providers/github@v0": {
-		v:       "v0.2607.1"
+		v:       "v0.2607.2"
 		default: true
 	}
 }
