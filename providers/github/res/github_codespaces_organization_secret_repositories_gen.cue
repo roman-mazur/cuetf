@@ -9,8 +9,7 @@ github_codespaces_organization_secret_repositories: {
 		// Name of the existing secret.
 		secret_name!: string
 
-		// An array of repository ids that can access the organization
-		// secret.
+		// An array of repository ids that can access the organization secret.
 		selected_repository_ids!: [...number]
 	})
 }

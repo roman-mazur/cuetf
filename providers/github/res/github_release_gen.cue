@@ -13,20 +13,19 @@ github_release: {
 		// The date and time the release was created.
 		created_at?: string
 
-		// If specified, a discussion of the specified category is created
-		// and linked to the release. The value must be a category that
-		// already exists in the repository.
+		// If specified, a discussion of the specified category is created and linked to
+		// the release. The value must be a category that already exists in the
+		// repository.
 		discussion_category_name?: string
 
 		// Set to 'false' to create a published release.
 		draft?: bool
 		etag?:  string
 
-		// Set to 'true' to automatically generate the name and body for
-		// this release. If 'name' is specified, the specified name will
-		// be used; otherwise, a name will be automatically generated. If
-		// 'body' is specified, the body will be pre-pended to the
-		// automatically generated notes.
+		// Set to 'true' to automatically generate the name and body for this release.
+		// If 'name' is specified, the specified name will be used; otherwise, a name
+		// will be automatically generated. If 'body' is specified, the body will be
+		// pre-pended to the automatically generated notes.
 		generate_release_notes?: bool
 
 		// The HTML URL for the release.

@@ -11,8 +11,7 @@ github_branch: {
 		etag?: string
 		id?:   string
 
-		// A string representing a branch reference, in the form of
-		// 'refs/heads/<branch>'.
+		// A string representing a branch reference, in the form of 'refs/heads/<branch>'.
 		ref?: string
 
 		// The GitHub repository name.
@@ -24,8 +23,8 @@ github_branch: {
 		// The branch name to start from. Defaults to 'main'.
 		source_branch?: string
 
-		// The commit hash to start from. Defaults to the tip of
-		// 'source_branch'. If provided, 'source_branch' is ignored.
+		// The commit hash to start from. Defaults to the tip of 'source_branch'. If
+		// provided, 'source_branch' is ignored.
 		source_sha?: string
 	})
 }

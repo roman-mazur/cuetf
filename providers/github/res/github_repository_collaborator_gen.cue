@@ -6,19 +6,16 @@ github_repository_collaborator: {
 	close({
 		id?: string
 
-		// ID of the invitation to be used in
-		// 'github_user_invitation_accepter'
+		// ID of the invitation to be used in 'github_user_invitation_accepter'
 		invitation_id?: string
 
-		// The permission of the outside collaborator for the repository.
-		// Must be one of 'pull', 'push', 'maintain', 'triage' or 'admin'
-		// or the name of an existing custom repository role within the
-		// organization for organization-owned repositories. Must be
-		// 'push' for personal repositories. Defaults to 'push'.
+		// The permission of the outside collaborator for the repository. Must be one of
+		// 'pull', 'push', 'maintain', 'triage' or 'admin' or the name of an existing
+		// custom repository role within the organization for organization-owned
+		// repositories. Must be 'push' for personal repositories. Defaults to 'push'.
 		permission?: string
 
-		// Suppress plan diffs for triage and maintain. Defaults to
-		// 'false'.
+		// Suppress plan diffs for triage and maintain. Defaults to 'false'.
 		permission_diff_suppression?: bool
 
 		// The GitHub repository

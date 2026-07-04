@@ -7,8 +7,8 @@ github_enterprise_actions_workflow_permissions: {
 		// Whether GitHub Actions can approve pull request reviews.
 		can_approve_pull_request_reviews?: bool
 
-		// The default workflow permissions granted to the GITHUB_TOKEN
-		// when running workflows. Can be 'read' or 'write'.
+		// The default workflow permissions granted to the GITHUB_TOKEN when running
+		// workflows. Can be 'read' or 'write'.
 		default_workflow_permissions?: string
 
 		// The slug of the enterprise.

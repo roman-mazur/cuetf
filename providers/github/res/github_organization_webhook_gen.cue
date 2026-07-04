@@ -14,15 +14,14 @@ github_organization_webhook: {
 
 		// A list of events which should trigger the webhook.
 		events!: [...string]
-		id?: string
 
 		// URL of the webhook.
 		url?: string
+		id?:  string
 	})
 
 	#configuration: close({
-		// The content type for the payload. Valid values are either
-		// 'form' or 'json'.
+		// The content type for the payload. Valid values are either 'form' or 'json'.
 		content_type?: string
 
 		// Insecure SSL boolean toggle. Defaults to 'false'.

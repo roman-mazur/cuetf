@@ -6,10 +6,10 @@ github_team_sync_group_mapping: {
 	close({
 		group?: matchN(1, [#group, [...#group]])
 		etag?: string
-		id?:   string
 
 		// Slug of the team.
 		team_slug!: string
+		id?:        string
 	})
 
 	#group: close({

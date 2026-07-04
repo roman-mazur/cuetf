@@ -7,12 +7,10 @@ github_repository_file: {
 		// The branch name, defaults to the repository's default branch
 		branch?: string
 
-		// The commit author name, defaults to the authenticated user's
-		// name
+		// The commit author name, defaults to the authenticated user's name
 		commit_author?: string
 
-		// The commit author email address, defaults to the authenticated
-		// user's email address
+		// The commit author email address, defaults to the authenticated user's email address
 		commit_email?: string
 
 		// The commit message when creating or updating the file

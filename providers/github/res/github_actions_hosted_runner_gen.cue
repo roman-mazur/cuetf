@@ -12,12 +12,10 @@ github_actions_hosted_runner: {
 		// The hosted runner ID.
 		id?: string
 
-		// Whether this runner should be used to generate custom images.
-		// Cannot be changed after creation.
+		// Whether this runner should be used to generate custom images. Cannot be changed after creation.
 		image_gen?: bool
 
-		// The version of the runner image to deploy. This is relevant
-		// only for runners using custom images.
+		// The version of the runner image to deploy. This is relevant only for runners using custom images.
 		image_version?: string
 
 		// Timestamp when the runner was last active.
@@ -34,9 +32,8 @@ github_actions_hosted_runner: {
 		// Maximum number of runners to scale up to.
 		maximum_runners?: number
 
-		// Name of the hosted runner. Must be between 1 and 64 characters
-		// and may only contain upper and lowercase letters a-z, numbers
-		// 0-9, '.', '-', and '_'.
+		// Name of the hosted runner. Must be between 1 and 64 characters and may only
+		// contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.
 		name!: string
 
 		// Platform of the runner.
@@ -55,8 +52,7 @@ github_actions_hosted_runner: {
 		// The runner group ID.
 		runner_group_id!: number
 
-		// Machine size (e.g., '4-core', '8-core'). Can be updated to
-		// scale the runner.
+		// Machine size (e.g., '4-core', '8-core'). Can be updated to scale the runner.
 		size!: string
 
 		// Current status of the runner.

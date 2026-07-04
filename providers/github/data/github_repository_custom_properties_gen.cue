@@ -12,8 +12,7 @@ github_repository_custom_properties: {
 			property_value?: [...string]
 		})]
 
-		// Name of the repository which the custom properties should be
-		// on.
+		// Name of the repository which the custom properties should be on.
 		repository!: string
 	})
 }

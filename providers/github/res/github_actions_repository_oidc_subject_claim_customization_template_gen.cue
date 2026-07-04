@@ -12,8 +12,7 @@ github_actions_repository_oidc_subject_claim_customization_template: {
 		// The name of the repository.
 		repository!: string
 
-		// Whether to use the default template or not. If 'true',
-		// 'include_claim_keys' must not be set.
+		// Whether to use the default template or not. If 'true', 'include_claim_keys' must not be set.
 		use_default!: bool
 	})
 }

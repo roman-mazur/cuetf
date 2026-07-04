@@ -20,8 +20,7 @@ github_organization_role: {
 		// The ID of the organization role.
 		role_id!: number
 
-		// The source of this role; one of `Predefined`, `Organization`,
-		// or `Enterprise`.
+		// The source of this role; one of `Predefined`, `Organization`, or `Enterprise`.
 		source?: string
 	})
 }

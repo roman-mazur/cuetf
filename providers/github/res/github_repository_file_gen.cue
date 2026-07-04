@@ -7,15 +7,14 @@ github_repository_file: {
 		// The branch name, defaults to the repository's default branch
 		branch?: string
 
-		// The commit author name, defaults to the authenticated user's
-		// name. GitHub app users may omit author and email information
-		// so GitHub can verify commits as the GitHub App.
+		// The commit author name, defaults to the authenticated user's name. GitHub app
+		// users may omit author and email information so GitHub can verify commits as
+		// the GitHub App.
 		commit_author?: string
 
-		// The commit author email address, defaults to the authenticated
-		// user's email address. GitHub app users may omit author and
-		// email information so GitHub can verify commits as the GitHub
-		// App.
+		// The commit author email address, defaults to the authenticated user's email
+		// address. GitHub app users may omit author and email information so GitHub
+		// can verify commits as the GitHub App.
 		commit_email?: string
 
 		// The commit message when creating, updating or deleting the file

@@ -12,8 +12,7 @@ github_team_members: {
 	})
 
 	#members: close({
-		// The role of the user within the team. Must be one of 'member'
-		// or 'maintainer'.
+		// The role of the user within the team. Must be one of 'member' or 'maintainer'.
 		role?: string
 
 		// The user to add to the team.
