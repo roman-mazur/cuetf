@@ -1,6 +1,6 @@
 package data
 
-#aws_acmpca_certificate_authority: {
+aws_acmpca_certificate_authority: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_acmpca_certificate_authority")
 	close({

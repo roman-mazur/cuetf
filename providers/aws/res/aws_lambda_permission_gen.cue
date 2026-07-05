@@ -1,6 +1,6 @@
 package res
 
-#aws_lambda_permission: {
+aws_lambda_permission: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lambda_permission")
 	close({

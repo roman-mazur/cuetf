@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_glue_ml_transform: {
+aws_glue_ml_transform: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_glue_ml_transform")
 	close({

@@ -1,6 +1,6 @@
 package data
 
-#aws_chatbot_slack_workspace: {
+aws_chatbot_slack_workspace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_chatbot_slack_workspace")
 	close({

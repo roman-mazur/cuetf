@@ -1,6 +1,6 @@
 package res
 
-#aws_fsx_s3_access_point_attachment: {
+aws_fsx_s3_access_point_attachment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_fsx_s3_access_point_attachment")
 	close({

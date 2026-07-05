@@ -1,6 +1,6 @@
 package res
 
-#aws_athena_data_catalog: {
+aws_athena_data_catalog: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_athena_data_catalog")
 	close({

@@ -1,6 +1,6 @@
 package res
 
-#aws_dataexchange_event_action: {
+aws_dataexchange_event_action: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dataexchange_event_action")
 	close({

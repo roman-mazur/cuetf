@@ -1,6 +1,6 @@
 package data
 
-#aws_odb_db_server: {
+aws_odb_db_server: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_odb_db_server")
 	close({

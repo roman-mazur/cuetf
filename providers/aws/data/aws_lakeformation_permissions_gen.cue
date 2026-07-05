@@ -2,7 +2,7 @@ package data
 
 import "list"
 
-#aws_lakeformation_permissions: {
+aws_lakeformation_permissions: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_lakeformation_permissions")
 	close({

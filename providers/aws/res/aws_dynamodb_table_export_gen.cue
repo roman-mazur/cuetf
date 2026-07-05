@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_dynamodb_table_export: {
+aws_dynamodb_table_export: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dynamodb_table_export")
 	close({

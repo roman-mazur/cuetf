@@ -1,6 +1,6 @@
 package res
 
-#aws_s3_bucket_metadata_configuration: {
+aws_s3_bucket_metadata_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_s3_bucket_metadata_configuration")
 	close({

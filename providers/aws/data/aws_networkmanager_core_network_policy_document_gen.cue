@@ -2,7 +2,7 @@ package data
 
 import "list"
 
-#aws_networkmanager_core_network_policy_document: {
+aws_networkmanager_core_network_policy_document: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_networkmanager_core_network_policy_document")
 	close({

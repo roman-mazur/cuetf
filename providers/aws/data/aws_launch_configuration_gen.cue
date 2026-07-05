@@ -1,6 +1,6 @@
 package data
 
-#aws_launch_configuration: {
+aws_launch_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_launch_configuration")
 	close({

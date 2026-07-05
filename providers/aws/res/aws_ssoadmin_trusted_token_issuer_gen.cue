@@ -1,6 +1,6 @@
 package res
 
-#aws_ssoadmin_trusted_token_issuer: {
+aws_ssoadmin_trusted_token_issuer: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ssoadmin_trusted_token_issuer")
 	close({
@@ -13,7 +13,6 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:       string
 		client_token?: string
-		id?:           string
 		instance_arn!: string
 		name!:         string
 		tags?: [string]:     string

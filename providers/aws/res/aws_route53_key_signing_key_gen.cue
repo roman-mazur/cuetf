@@ -1,6 +1,6 @@
 package res
 
-#aws_route53_key_signing_key: {
+aws_route53_key_signing_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_route53_key_signing_key")
 	close({

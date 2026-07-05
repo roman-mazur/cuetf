@@ -1,6 +1,6 @@
 package res
 
-#aws_vpc_endpoint_policy: {
+aws_vpc_endpoint_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_endpoint_policy")
 	close({

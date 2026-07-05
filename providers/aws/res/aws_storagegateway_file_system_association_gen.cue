@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_storagegateway_file_system_association: {
+aws_storagegateway_file_system_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_storagegateway_file_system_association")
 	close({

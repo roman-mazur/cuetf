@@ -1,6 +1,6 @@
 package data
 
-#aws_cloudwatch_contributor_managed_insight_rules: {
+aws_cloudwatch_contributor_managed_insight_rules: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_cloudwatch_contributor_managed_insight_rules")
 	close({

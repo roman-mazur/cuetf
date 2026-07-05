@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_evidently_launch: {
+aws_evidently_launch: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_evidently_launch")
 	close({

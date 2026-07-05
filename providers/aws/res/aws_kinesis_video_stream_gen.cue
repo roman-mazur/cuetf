@@ -1,6 +1,6 @@
 package res
 
-#aws_kinesis_video_stream: {
+aws_kinesis_video_stream: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_kinesis_video_stream")
 	close({

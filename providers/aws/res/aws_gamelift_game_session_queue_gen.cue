@@ -1,6 +1,6 @@
 package res
 
-#aws_gamelift_game_session_queue: {
+aws_gamelift_game_session_queue: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_gamelift_game_session_queue")
 	close({

@@ -1,6 +1,6 @@
 package res
 
-#aws_internet_gateway_attachment: {
+aws_internet_gateway_attachment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_internet_gateway_attachment")
 	close({

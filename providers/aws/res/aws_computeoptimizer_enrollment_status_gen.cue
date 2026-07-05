@@ -1,6 +1,6 @@
 package res
 
-#aws_computeoptimizer_enrollment_status: {
+aws_computeoptimizer_enrollment_status: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_computeoptimizer_enrollment_status")
 	close({

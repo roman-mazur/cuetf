@@ -1,6 +1,6 @@
 package res
 
-#aws_vpclattice_service_network_resource_association: {
+aws_vpclattice_service_network_resource_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpclattice_service_network_resource_association")
 	close({

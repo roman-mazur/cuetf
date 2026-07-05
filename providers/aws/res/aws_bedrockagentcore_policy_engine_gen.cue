@@ -1,6 +1,6 @@
 package res
 
-#aws_bedrockagentcore_policy_engine: {
+aws_bedrockagentcore_policy_engine: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_policy_engine")
 	close({

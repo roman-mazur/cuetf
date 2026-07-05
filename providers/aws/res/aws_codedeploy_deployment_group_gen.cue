@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_codedeploy_deployment_group: {
+aws_codedeploy_deployment_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_codedeploy_deployment_group")
 	close({

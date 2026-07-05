@@ -1,6 +1,6 @@
 package res
 
-#aws_finspace_kx_database: {
+aws_finspace_kx_database: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_finspace_kx_database")
 	close({

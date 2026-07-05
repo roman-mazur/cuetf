@@ -1,6 +1,6 @@
 package data
 
-#aws_ssm_parameters_by_path: {
+aws_ssm_parameters_by_path: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ssm_parameters_by_path")
 	close({

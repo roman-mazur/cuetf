@@ -1,6 +1,6 @@
 package res
 
-#aws_dx_bgp_peer: {
+aws_dx_bgp_peer: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dx_bgp_peer")
 	close({

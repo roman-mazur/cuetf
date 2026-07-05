@@ -1,6 +1,6 @@
 package data
 
-#aws_cognito_user_pool_clients: {
+aws_cognito_user_pool_clients: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_cognito_user_pool_clients")
 	close({

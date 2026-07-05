@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_sesv2_configuration_set: {
+aws_sesv2_configuration_set: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sesv2_configuration_set")
 	close({

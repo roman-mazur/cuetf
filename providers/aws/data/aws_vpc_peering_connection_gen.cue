@@ -1,6 +1,6 @@
 package data
 
-#aws_vpc_peering_connection: {
+aws_vpc_peering_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_vpc_peering_connection")
 	close({

@@ -1,13 +1,14 @@
 package data
 
-#aws_api_gateway_rest_api: {
+aws_api_gateway_rest_api: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_api_gateway_rest_api")
 	close({
 		api_key_source?: string
 		arn?:            string
 		binary_media_types?: [...string]
-		description?: string
+		description?:          string
+		endpoint_access_mode?: string
 		endpoint_configuration?: [...close({
 			ip_address_type?: string
 			types?: [...string]
@@ -25,6 +26,7 @@ package data
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:           string
 		root_resource_id?: string
+		security_policy?:  string
 		tags?: [string]: string
 	})
 }

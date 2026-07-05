@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_s3control_bucket_lifecycle_configuration: {
+aws_s3control_bucket_lifecycle_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_s3control_bucket_lifecycle_configuration")
 	close({

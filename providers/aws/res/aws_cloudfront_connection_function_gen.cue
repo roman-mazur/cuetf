@@ -1,6 +1,6 @@
 package res
 
-#aws_cloudfront_connection_function: {
+aws_cloudfront_connection_function: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_connection_function")
 	close({

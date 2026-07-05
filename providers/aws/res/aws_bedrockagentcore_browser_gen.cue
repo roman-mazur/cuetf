@@ -1,9 +1,12 @@
 package res
 
-#aws_bedrockagentcore_browser: {
+aws_bedrockagentcore_browser: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_browser")
 	close({
+		browser_signing?: matchN(1, [#browser_signing, [...#browser_signing]])
+		certificate?: matchN(1, [#certificate, [...#certificate]])
+		enterprise_policy?: matchN(1, [#enterprise_policy, [...#enterprise_policy]])
 		network_configuration?: matchN(1, [#network_configuration, [...#network_configuration]])
 		recording?: matchN(1, [#recording, [...#recording]])
 		timeouts?:    #timeouts
@@ -20,6 +23,19 @@ package res
 		name!:               string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+	})
+
+	#browser_signing: close({
+		enabled!: bool
+	})
+
+	#certificate: close({
+		location?: matchN(1, [_#defs."/$defs/certificate/$defs/location", [..._#defs."/$defs/certificate/$defs/location"]])
+	})
+
+	#enterprise_policy: close({
+		location?: matchN(1, [_#defs."/$defs/enterprise_policy/$defs/location", [..._#defs."/$defs/enterprise_policy/$defs/location"]])
+		type?: string
 	})
 
 	#network_configuration: close({
@@ -46,6 +62,24 @@ package res
 		// applicable if changes are saved into state before the destroy operation
 		// occurs.
 		delete?: string
+	})
+
+	_#defs: "/$defs/certificate/$defs/location": close({
+		secrets_manager?: matchN(1, [_#defs."/$defs/certificate/$defs/location/$defs/secrets_manager", [..._#defs."/$defs/certificate/$defs/location/$defs/secrets_manager"]])
+	})
+
+	_#defs: "/$defs/certificate/$defs/location/$defs/secrets_manager": close({
+		secret_arn!: string
+	})
+
+	_#defs: "/$defs/enterprise_policy/$defs/location": close({
+		s3?: matchN(1, [_#defs."/$defs/enterprise_policy/$defs/location/$defs/s3", [..._#defs."/$defs/enterprise_policy/$defs/location/$defs/s3"]])
+	})
+
+	_#defs: "/$defs/enterprise_policy/$defs/location/$defs/s3": close({
+		bucket!:     string
+		prefix!:     string
+		version_id?: string
 	})
 
 	_#defs: "/$defs/network_configuration/$defs/vpc_config": close({

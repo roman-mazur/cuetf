@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_api_gateway_documentation_part: {
+aws_api_gateway_documentation_part: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_api_gateway_documentation_part")
 	close({

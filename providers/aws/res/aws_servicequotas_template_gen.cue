@@ -1,6 +1,6 @@
 package res
 
-#aws_servicequotas_template: {
+aws_servicequotas_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_servicequotas_template")
 	close({

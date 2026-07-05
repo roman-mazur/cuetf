@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_config_configuration_aggregator: {
+aws_config_configuration_aggregator: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_config_configuration_aggregator")
 	close({

@@ -1,6 +1,6 @@
 package res
 
-#aws_devopsguru_notification_channel: {
+aws_devopsguru_notification_channel: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_devopsguru_notification_channel")
 	close({

@@ -1,6 +1,6 @@
 package res
 
-#aws_medialive_input_security_group: {
+aws_medialive_input_security_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_medialive_input_security_group")
 	close({

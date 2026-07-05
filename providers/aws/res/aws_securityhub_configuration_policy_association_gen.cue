@@ -1,6 +1,6 @@
 package res
 
-#aws_securityhub_configuration_policy_association: {
+aws_securityhub_configuration_policy_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_securityhub_configuration_policy_association")
 	close({

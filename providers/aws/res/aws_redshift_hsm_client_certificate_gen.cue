@@ -1,6 +1,6 @@
 package res
 
-#aws_redshift_hsm_client_certificate: {
+aws_redshift_hsm_client_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_redshift_hsm_client_certificate")
 	close({

@@ -1,6 +1,6 @@
 package res
 
-#aws_app_cookie_stickiness_policy: {
+aws_app_cookie_stickiness_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_app_cookie_stickiness_policy")
 	close({

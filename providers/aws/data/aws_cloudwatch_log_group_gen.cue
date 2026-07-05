@@ -1,6 +1,6 @@
 package data
 
-#aws_cloudwatch_log_group: {
+aws_cloudwatch_log_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_cloudwatch_log_group")
 	close({

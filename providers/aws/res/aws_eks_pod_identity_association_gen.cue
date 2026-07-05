@@ -1,6 +1,6 @@
 package res
 
-#aws_eks_pod_identity_association: {
+aws_eks_pod_identity_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_eks_pod_identity_association")
 	close({

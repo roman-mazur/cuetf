@@ -1,6 +1,6 @@
 package res
 
-#aws_amplify_webhook: {
+aws_amplify_webhook: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_amplify_webhook")
 	close({

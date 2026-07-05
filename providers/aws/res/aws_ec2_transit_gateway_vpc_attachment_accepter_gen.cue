@@ -1,6 +1,6 @@
 package res
 
-#aws_ec2_transit_gateway_vpc_attachment_accepter: {
+aws_ec2_transit_gateway_vpc_attachment_accepter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ec2_transit_gateway_vpc_attachment_accepter")
 	close({

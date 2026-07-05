@@ -1,6 +1,6 @@
 package res
 
-#aws_vpc_block_public_access_options: {
+aws_vpc_block_public_access_options: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_block_public_access_options")
 	close({

@@ -1,6 +1,6 @@
 package res
 
-#aws_vpc_ipam_resource_discovery: {
+aws_vpc_ipam_resource_discovery: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_ipam_resource_discovery")
 	close({

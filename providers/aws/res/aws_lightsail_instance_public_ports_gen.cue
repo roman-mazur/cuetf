@@ -1,6 +1,6 @@
 package res
 
-#aws_lightsail_instance_public_ports: {
+aws_lightsail_instance_public_ports: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lightsail_instance_public_ports")
 	close({

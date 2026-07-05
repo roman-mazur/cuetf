@@ -1,6 +1,6 @@
 package res
 
-#aws_datasync_location_object_storage: {
+aws_datasync_location_object_storage: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datasync_location_object_storage")
 	close({

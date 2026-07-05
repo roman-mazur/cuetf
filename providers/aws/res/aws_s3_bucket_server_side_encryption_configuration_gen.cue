@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_s3_bucket_server_side_encryption_configuration: {
+aws_s3_bucket_server_side_encryption_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_s3_bucket_server_side_encryption_configuration")
 	close({

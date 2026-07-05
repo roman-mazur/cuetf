@@ -1,6 +1,6 @@
 package res
 
-#aws_networkmanager_customer_gateway_association: {
+aws_networkmanager_customer_gateway_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_networkmanager_customer_gateway_association")
 	close({

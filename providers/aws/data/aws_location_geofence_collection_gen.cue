@@ -1,6 +1,6 @@
 package data
 
-#aws_location_geofence_collection: {
+aws_location_geofence_collection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_location_geofence_collection")
 	close({

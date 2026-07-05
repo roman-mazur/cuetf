@@ -1,6 +1,6 @@
 package data
 
-#aws_apigatewayv2_apis: {
+aws_apigatewayv2_apis: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_apigatewayv2_apis")
 	close({

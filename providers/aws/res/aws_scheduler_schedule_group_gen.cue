@@ -1,6 +1,6 @@
 package res
 
-#aws_scheduler_schedule_group: {
+aws_scheduler_schedule_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_scheduler_schedule_group")
 	close({

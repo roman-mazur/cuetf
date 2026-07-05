@@ -1,6 +1,6 @@
 package data
 
-#aws_ebs_snapshot_ids: {
+aws_ebs_snapshot_ids: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ebs_snapshot_ids")
 	close({

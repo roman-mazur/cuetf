@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_chimesdkmediapipelines_media_insights_pipeline_configuration: {
+aws_chimesdkmediapipelines_media_insights_pipeline_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_chimesdkmediapipelines_media_insights_pipeline_configuration")
 	close({

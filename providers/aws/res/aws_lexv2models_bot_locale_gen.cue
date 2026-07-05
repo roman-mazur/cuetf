@@ -1,6 +1,6 @@
 package res
 
-#aws_lexv2models_bot_locale: {
+aws_lexv2models_bot_locale: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lexv2models_bot_locale")
 	close({

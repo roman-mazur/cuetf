@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_location_map: {
+aws_location_map: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_location_map")
 	close({

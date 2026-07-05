@@ -1,6 +1,6 @@
 package data
 
-#aws_alb_listener: {
+aws_alb_listener: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_alb_listener")
 	close({

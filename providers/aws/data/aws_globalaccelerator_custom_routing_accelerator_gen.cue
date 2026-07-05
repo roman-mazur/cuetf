@@ -1,6 +1,6 @@
 package data
 
-#aws_globalaccelerator_custom_routing_accelerator: {
+aws_globalaccelerator_custom_routing_accelerator: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_globalaccelerator_custom_routing_accelerator")
 	close({

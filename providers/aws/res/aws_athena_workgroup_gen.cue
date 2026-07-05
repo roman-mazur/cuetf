@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_athena_workgroup: {
+aws_athena_workgroup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_athena_workgroup")
 	close({

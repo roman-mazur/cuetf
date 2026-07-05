@@ -2,7 +2,7 @@ package data
 
 import "list"
 
-#aws_resourcegroupstaggingapi_resources: {
+aws_resourcegroupstaggingapi_resources: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_resourcegroupstaggingapi_resources")
 	close({

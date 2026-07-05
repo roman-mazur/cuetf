@@ -1,6 +1,6 @@
 package res
 
-#aws_ebs_snapshot: {
+aws_ebs_snapshot: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ebs_snapshot")
 	close({

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_kendra_query_suggestions_block_list: {
+aws_kendra_query_suggestions_block_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_kendra_query_suggestions_block_list")
 	close({

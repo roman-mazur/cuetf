@@ -1,6 +1,6 @@
 package res
 
-#aws_rds_export_task: {
+aws_rds_export_task: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_rds_export_task")
 	close({

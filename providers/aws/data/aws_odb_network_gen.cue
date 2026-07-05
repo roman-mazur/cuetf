@@ -1,6 +1,6 @@
 package data
 
-#aws_odb_network: {
+aws_odb_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_odb_network")
 	close({

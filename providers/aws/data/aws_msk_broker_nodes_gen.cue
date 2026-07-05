@@ -1,6 +1,6 @@
 package data
 
-#aws_msk_broker_nodes: {
+aws_msk_broker_nodes: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_msk_broker_nodes")
 	close({

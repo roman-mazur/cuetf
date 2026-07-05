@@ -1,6 +1,6 @@
 package res
 
-#aws_ec2_traffic_mirror_target: {
+aws_ec2_traffic_mirror_target: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ec2_traffic_mirror_target")
 	close({

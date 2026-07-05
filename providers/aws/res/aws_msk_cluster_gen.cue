@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_msk_cluster: {
+aws_msk_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_msk_cluster")
 	close({
@@ -34,6 +34,7 @@ import "list"
 		cluster_name!:                                  string
 		cluster_uuid?:                                  string
 		current_version?:                               string
+		customer_action_status?:                        string
 		enhanced_monitoring?:                           string
 		id?:                                            string
 		kafka_version!:                                 string

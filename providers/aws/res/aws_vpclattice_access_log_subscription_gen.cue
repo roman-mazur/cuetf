@@ -1,6 +1,6 @@
 package res
 
-#aws_vpclattice_access_log_subscription: {
+aws_vpclattice_access_log_subscription: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpclattice_access_log_subscription")
 	close({

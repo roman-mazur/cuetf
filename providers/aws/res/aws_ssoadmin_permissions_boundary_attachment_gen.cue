@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_ssoadmin_permissions_boundary_attachment: {
+aws_ssoadmin_permissions_boundary_attachment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ssoadmin_permissions_boundary_attachment")
 	close({

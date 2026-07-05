@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_chime_voice_connector_termination_credentials: {
+aws_chime_voice_connector_termination_credentials: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_chime_voice_connector_termination_credentials")
 	close({

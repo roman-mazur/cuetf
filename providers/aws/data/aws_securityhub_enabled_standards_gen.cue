@@ -1,6 +1,6 @@
 package data
 
-#aws_securityhub_enabled_standards: {
+aws_securityhub_enabled_standards: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_securityhub_enabled_standards")
 	close({

@@ -1,6 +1,6 @@
 package res
 
-#aws_servicecatalog_portfolio: {
+aws_servicecatalog_portfolio: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_servicecatalog_portfolio")
 	close({

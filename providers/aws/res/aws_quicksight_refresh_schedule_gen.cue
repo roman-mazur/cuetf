@@ -1,6 +1,6 @@
 package res
 
-#aws_quicksight_refresh_schedule: {
+aws_quicksight_refresh_schedule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_quicksight_refresh_schedule")
 	close({

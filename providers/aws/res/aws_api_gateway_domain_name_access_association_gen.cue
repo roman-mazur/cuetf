@@ -1,6 +1,6 @@
 package res
 
-#aws_api_gateway_domain_name_access_association: {
+aws_api_gateway_domain_name_access_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_api_gateway_domain_name_access_association")
 	close({

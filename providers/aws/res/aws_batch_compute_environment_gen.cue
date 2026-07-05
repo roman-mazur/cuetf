@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_batch_compute_environment: {
+aws_batch_compute_environment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_batch_compute_environment")
 	close({
