@@ -2,15 +2,14 @@ package res
 
 import "list"
 
-#google_dataplex_lake: {
+google_dataplex_lake: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_lake")
 	close({
 		metastore?: matchN(1, [#metastore, list.MaxItems(1) & [...#metastore]])
 		timeouts?: #timeouts
 
-		// Output only. Aggregated status of the underlying assets of the
-		// lake.
+		// Output only. Aggregated status of the underlying assets of the lake.
 		asset_status?: [...close({
 			active_assets?:                   number
 			security_policy_applying_assets?: number
@@ -20,16 +19,11 @@ import "list"
 		// Output only. The time when the lake was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -39,18 +33,16 @@ import "list"
 		// Optional. User friendly display name.
 		display_name?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// Optional. User-defined labels for the lake.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field `effective_labels` for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field `effective_labels` for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location for the resource
@@ -70,22 +62,20 @@ import "list"
 		// The project for the resource
 		project?: string
 
-		// Output only. Service account associated with this lake. This
-		// service account must be authorized to access or operate on
-		// resources managed by the lake.
+		// Output only. Service account associated with this lake. This service account
+		// must be authorized to access or operate on resources managed by the lake.
 		service_account?: string
 
-		// Output only. Current state of the lake. Possible values:
-		// STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+		// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED,
+		// ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 		state?: string
 
-		// The combination of labels configured directly on the resource
-		// and default labels configured on the provider.
+		// The combination of labels configured directly on the resource and default
+		// labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// Output only. System generated globally unique ID for the lake.
-		// This ID will be different if the lake is deleted and
-		// re-created with the same name.
+		// Output only. System generated globally unique ID for the lake. This ID will
+		// be different if the lake is deleted and re-created with the same name.
 		uid?: string
 
 		// Output only. The time when the lake was last updated.
@@ -94,8 +84,8 @@ import "list"
 
 	#metastore: close({
 		// Optional. A relative reference to the Dataproc Metastore
-		// (https://cloud.google.com/dataproc-metastore/docs) service
-		// associated with the lake:
+		// (https://cloud.google.com/dataproc-metastore/docs) service associated with
+		// the lake:
 		// `projects/{project_id}/locations/{location_id}/services/{service_id}`
 		service?: string
 	})

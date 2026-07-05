@@ -2,32 +2,26 @@ package res
 
 import "list"
 
-#google_bigquery_datapolicy_data_policy: {
+google_bigquery_datapolicy_data_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_datapolicy_data_policy")
 	close({
 		data_masking_policy?: matchN(1, [#data_masking_policy, list.MaxItems(1) & [...#data_masking_policy]])
 		timeouts?: #timeouts
 
-		// User-assigned (human readable) ID of the data policy that needs
-		// to be unique within a project. Used as {dataPolicyId} in part
-		// of the resource name.
+		// User-assigned (human readable) ID of the data policy that needs to be unique
+		// within a project. Used as {dataPolicyId} in part of the resource name.
 		data_policy_id!: string
 
 		// The enrollment level of the service. Possible values:
 		// ["COLUMN_LEVEL_SECURITY_POLICY", "DATA_MASKING_POLICY"]
 		data_policy_type!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
@@ -48,13 +42,13 @@ import "list"
 	#data_masking_policy: close({
 		// The available masking rules. Learn more here:
 		// https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
-		// Possible values: ["SHA256", "ALWAYS_NULL",
-		// "DEFAULT_MASKING_VALUE", "LAST_FOUR_CHARACTERS",
-		// "FIRST_FOUR_CHARACTERS", "EMAIL_MASK", "DATE_YEAR_MASK"]
+		// Possible values: ["SHA256", "ALWAYS_NULL", "DEFAULT_MASKING_VALUE",
+		// "LAST_FOUR_CHARACTERS", "FIRST_FOUR_CHARACTERS", "EMAIL_MASK",
+		// "DATE_YEAR_MASK"]
 		predefined_expression?: string
 
-		// The name of the BigQuery routine that contains the custom
-		// masking routine, in the format of
+		// The name of the BigQuery routine that contains the custom masking routine, in
+		// the format of
 		// projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
 		routine?: string
 	})

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_gkeonprem_vmware_cluster: {
+google_gkeonprem_vmware_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gkeonprem_vmware_cluster")
 	close({
@@ -19,30 +19,25 @@ import "list"
 		vcenter?: matchN(1, [#vcenter, list.MaxItems(1) & [...#vcenter]])
 
 		// The admin cluster this VMware User Cluster belongs to.
-		// This is the full resource name of the admin cluster's hub
-		// membership.
-		// In the future, references to other resource types might be
-		// allowed if
+		// This is the full resource name of the admin cluster's hub membership.
+		// In the future, references to other resource types might be allowed if
 		// admin clusters are modeled as their own resources.
 		admin_cluster_membership!: string
 
 		// Annotations on the VMware User Cluster.
 		// This field has the same restrictions as Kubernetes annotations.
-		// The total size of all keys and values combined is limited to
-		// 256k.
+		// The total size of all keys and values combined is limited to 256k.
 		// Key can have 2 segments: prefix (optional) and name (required),
 		// separated by a slash (/).
 		// Prefix must be a DNS subdomain.
-		// Name must be 63 characters or less, begin and end with
-		// alphanumerics,
-		// with dashes (-), underscores (_), dots (.), and alphanumerics
-		// between.
+		// Name must be 63 characters or less, begin and end with alphanumerics,
+		// with dashes (-), underscores (_), dots (.), and alphanumerics between.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the annotations present in your configuration.
-		// Please refer to the field 'effective_annotations' for all of
-		// the annotations present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the
+		// annotations present in your configuration.
+		// Please refer to the field 'effective_annotations' for all of the annotations
+		// present on the resource.
 		annotations?: [string]: string
 
 		// The time at which VMware User Cluster was created.
@@ -51,16 +46,11 @@ import "list"
 		// The time at which VMware User Cluster was deleted.
 		delete_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -70,9 +60,9 @@ import "list"
 		// Disable bundled ingress.
 		disable_bundled_ingress?: bool
 
-		// All of annotations (key/value pairs) present on the resource in
-		// GCP, including the annotations configured through Terraform,
-		// other clients and services.
+		// All of annotations (key/value pairs) present on the resource in GCP,
+		// including the annotations configured through Terraform, other clients and
+		// services.
 		effective_annotations?: [string]: string
 
 		// Enable advanced cluster. Default to false.
@@ -84,10 +74,8 @@ import "list"
 		// The DNS name of VMware User Cluster's API server.
 		endpoint?: string
 
-		// This checksum is computed by the server based on the value of
-		// other
-		// fields, and may be sent on update and delete requests to ensure
-		// the
+		// This checksum is computed by the server based on the value of other
+		// fields, and may be sent on update and delete requests to ensure the
 		// client has an up-to-date value before proceeding.
 		// Allows clients to perform consistent read-modify-writes
 		// through optimistic concurrency control.
@@ -99,24 +87,16 @@ import "list"
 		})]
 		id?: string
 
-		// The object name of the VMware OnPremUserCluster custom resource
-		// on the
-		// associated admin cluster. This field is used to support
-		// conflicting
-		// names when enrolling existing clusters to the API. When used as
-		// a part of
-		// cluster enrollment, this field will differ from the ID in the
-		// resource
-		// name. For new clusters, this field will match the user provided
-		// cluster ID
-		// and be visible in the last component of the resource name. It
-		// is not
+		// The object name of the VMware OnPremUserCluster custom resource on the
+		// associated admin cluster. This field is used to support conflicting
+		// names when enrolling existing clusters to the API. When used as a part of
+		// cluster enrollment, this field will differ from the ID in the resource
+		// name. For new clusters, this field will match the user provided cluster ID
+		// and be visible in the last component of the resource name. It is not
 		// modifiable.
 		//
-		// All users should use this name to access their cluster using
-		// gkectl or
-		// kubectl and should expect to see the local name when viewing
-		// admin
+		// All users should use this name to access their cluster using gkectl or
+		// kubectl and should expect to see the local name when viewing admin
 		// cluster controller logs.
 		local_name?: string
 
@@ -126,24 +106,20 @@ import "list"
 		// The VMware cluster name.
 		name!: string
 
-		// The Anthos clusters on the VMware version for your user
-		// cluster.
+		// The Anthos clusters on the VMware version for your user cluster.
 		on_prem_version!: string
-		project?:         string
 
-		// If set, there are currently changes in flight to the VMware
-		// User Cluster.
+		// If set, there are currently changes in flight to the VMware User Cluster.
 		reconciling?: bool
+		project?:     string
 
-		// A list of validations to skip during preflight checks. Possible
-		// values: ["VALIDATION_SKIP_UNSPECIFIED", "ALL", "WORKSTATION",
-		// "CONFIG", "DOCKER", "INFRA", "LOAD_BALANCER", "VIPS",
-		// "NODE_IPS", "DNS", "TOD", "NET_CONFIG", "STORAGE_DRIVER",
-		// "PROXY", "INTERNET", "GCP", "GKEHUB", "RESERVED_IPS",
-		// "STACKDRIVER", "NODEPOOL_AUTOSCALING", "OS_IMAGES",
-		// "CLUSTER_VERSION", "CLUSTER_HEALTH", "WINDOWS",
-		// "HSM_SECRET_ENCRYPTION", "BACKUP_ADMIN", "CONNECTIVITY",
-		// "CLUSTER_SECRETS_CONFIG", "CSI_WORKLOAD", "VSPHERE_VERSION",
+		// A list of validations to skip during preflight checks. Possible values:
+		// ["VALIDATION_SKIP_UNSPECIFIED", "ALL", "WORKSTATION", "CONFIG", "DOCKER",
+		// "INFRA", "LOAD_BALANCER", "VIPS", "NODE_IPS", "DNS", "TOD", "NET_CONFIG",
+		// "STORAGE_DRIVER", "PROXY", "INTERNET", "GCP", "GKEHUB", "RESERVED_IPS",
+		// "STACKDRIVER", "NODEPOOL_AUTOSCALING", "OS_IMAGES", "CLUSTER_VERSION",
+		// "CLUSTER_HEALTH", "WINDOWS", "HSM_SECRET_ENCRYPTION", "BACKUP_ADMIN",
+		// "CONNECTIVITY", "CLUSTER_SECRETS_CONFIG", "CSI_WORKLOAD", "VSPHERE_VERSION",
 		// "MIGRATION"]
 		skip_validations?: [...string]
 
@@ -168,8 +144,7 @@ import "list"
 		// The time at which VMware User Cluster was last updated.
 		update_time?: string
 
-		// ValidationCheck represents the result of the preflight check
-		// job.
+		// ValidationCheck represents the result of the preflight check job.
 		validation_check?: [...close({
 			options?:  string
 			scenario?: string
@@ -189,8 +164,7 @@ import "list"
 	})
 
 	#anti_affinity_groups: close({
-		// Spread nodes across at least three physical hosts (requires at
-		// least three
+		// Spread nodes across at least three physical hosts (requires at least three
 		// hosts).
 		// Enabled by default.
 		aag_config_disabled!: bool
@@ -208,15 +182,12 @@ import "list"
 	#control_plane_node: close({
 		auto_resize_config?: matchN(1, [_#defs."/$defs/control_plane_node/$defs/auto_resize_config", list.MaxItems(1) & [..._#defs."/$defs/control_plane_node/$defs/auto_resize_config"]])
 
-		// The number of CPUs for each admin cluster node that serve as
-		// control planes
+		// The number of CPUs for each admin cluster node that serve as control planes
 		// for this VMware User Cluster. (default: 4 CPUs)
 		cpus?: number
 
-		// The megabytes of memory for each admin cluster node that serves
-		// as a
-		// control plane for this VMware User Cluster (default: 8192 MB
-		// memory).
+		// The megabytes of memory for each admin cluster node that serves as a
+		// control plane for this VMware User Cluster (default: 8192 MB memory).
 		memory?: number
 
 		// The number of control plane nodes for this VMware User Cluster.
@@ -231,8 +202,7 @@ import "list"
 	})
 
 	#dataplane_v2: close({
-		// Enable advanced networking which requires dataplane_v2_enabled
-		// to be set true.
+		// Enable advanced networking which requires dataplane_v2_enabled to be set true.
 		advanced_networking?: bool
 
 		// Enables Dataplane V2.
@@ -255,27 +225,21 @@ import "list"
 		host_config?: matchN(1, [_#defs."/$defs/network_config/$defs/host_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/host_config"]])
 		static_ip_config?: matchN(1, [_#defs."/$defs/network_config/$defs/static_ip_config", list.MaxItems(1) & [..._#defs."/$defs/network_config/$defs/static_ip_config"]])
 
-		// All pods in the cluster are assigned an RFC1918 IPv4 address
-		// from these ranges.
-		// Only a single range is supported. This field cannot be changed
-		// after creation.
+		// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
+		// Only a single range is supported. This field cannot be changed after creation.
 		pod_address_cidr_blocks!: [...string]
 
-		// All services in the cluster are assigned an RFC1918 IPv4
-		// address
-		// from these ranges. Only a single range is supported.. This
-		// field
+		// All services in the cluster are assigned an RFC1918 IPv4 address
+		// from these ranges. Only a single range is supported.. This field
 		// cannot be changed after creation.
 		service_address_cidr_blocks!: [...string]
 
-		// vcenter_network specifies vCenter network name. Inherited from
-		// the admin cluster.
+		// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
 		vcenter_network?: string
 	})
 
 	#storage: close({
-		// Whether or not to deploy vSphere CSI components in the VMware
-		// User Cluster.
+		// Whether or not to deploy vSphere CSI components in the VMware User Cluster.
 		// Enabled by default.
 		vsphere_csi_disabled!: bool
 	})
@@ -295,8 +259,7 @@ import "list"
 		// The vCenter IP address.
 		address?: string
 
-		// Contains the vCenter CA certificate public key for SSL
-		// verification.
+		// Contains the vCenter CA certificate public key for SSL verification.
 		ca_cert_data?: string
 
 		// The name of the vCenter cluster for the user cluster.
@@ -333,8 +296,7 @@ import "list"
 		address?: string
 
 		// he preexisting partition to be used by the load balancer. T
-		// his partition is usually created for the admin cluster for
-		// example:
+		// his partition is usually created for the admin cluster for example:
 		// 'my-f5-admin-partition'.
 		partition?: string
 
@@ -343,26 +305,19 @@ import "list"
 	})
 
 	_#defs: "/$defs/load_balancer/$defs/manual_lb_config": close({
-		// NodePort for control plane service. The Kubernetes API server
-		// in the admin
-		// cluster is implemented as a Service of type NodePort (ex.
-		// 30968).
+		// NodePort for control plane service. The Kubernetes API server in the admin
+		// cluster is implemented as a Service of type NodePort (ex. 30968).
 		control_plane_node_port?: number
 
-		// NodePort for ingress service's http. The ingress service in the
-		// admin
-		// cluster is implemented as a Service of type NodePort (ex.
-		// 32527).
+		// NodePort for ingress service's http. The ingress service in the admin
+		// cluster is implemented as a Service of type NodePort (ex. 32527).
 		ingress_http_node_port?: number
 
-		// NodePort for ingress service's https. The ingress service in
-		// the admin
-		// cluster is implemented as a Service of type NodePort (ex.
-		// 30139).
+		// NodePort for ingress service's https. The ingress service in the admin
+		// cluster is implemented as a Service of type NodePort (ex. 30139).
 		ingress_https_node_port?: number
 
-		// NodePort for konnectivity server service running as a sidecar
-		// in each
+		// NodePort for konnectivity server service running as a sidecar in each
 		// kube-apiserver pod (ex. 30564).
 		konnectivity_server_node_port?: number
 	})
@@ -378,13 +333,11 @@ import "list"
 		addresses!: [...string]
 
 		// If true, avoid using IPs ending in .0 or .255.
-		// This avoids buggy consumer devices mistakenly dropping IPv4
-		// traffic for
+		// This avoids buggy consumer devices mistakenly dropping IPv4 traffic for
 		// those special IP addresses.
 		avoid_buggy_ips?: bool
 
-		// If true, prevent IP addresses from being automatically
-		// assigned.
+		// If true, prevent IP addresses from being automatically assigned.
 		manual_assign?: bool
 
 		// The name of the address pool.
@@ -392,12 +345,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/load_balancer/$defs/vip_config": close({
-		// The VIP which you previously set aside for the Kubernetes API
-		// of this cluster.
+		// The VIP which you previously set aside for the Kubernetes API of this cluster.
 		control_plane_vip?: string
 
-		// The VIP which you previously set aside for ingress traffic into
-		// this cluster.
+		// The VIP which you previously set aside for ingress traffic into this cluster.
 		ingress_vip?: string
 	})
 
@@ -416,12 +367,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/network_config/$defs/control_plane_v2_config/$defs/control_plane_ip_block/$defs/ips": close({
-		// Hostname of the machine. VM's name will be used if this field
-		// is empty.
+		// Hostname of the machine. VM's name will be used if this field is empty.
 		hostname?: string
 
-		// IP could be an IP address (like 1.2.3.4) or a CIDR (like
-		// 1.2.3.0/24).
+		// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
 		ip?: string
 	})
 
@@ -457,12 +406,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/network_config/$defs/static_ip_config/$defs/ip_blocks/$defs/ips": close({
-		// Hostname of the machine. VM's name will be used if this field
-		// is empty.
+		// Hostname of the machine. VM's name will be used if this field is empty.
 		hostname?: string
 
-		// IP could be an IP address (like 1.2.3.4) or a CIDR (like
-		// 1.2.3.0/24).
+		// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
 		ip!: string
 	})
 }

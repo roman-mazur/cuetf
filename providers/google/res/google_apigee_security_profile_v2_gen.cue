@@ -1,6 +1,6 @@
 package res
 
-#google_apigee_security_profile_v2: {
+google_apigee_security_profile_v2: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_security_profile_v2")
 	close({
@@ -10,16 +10,11 @@ package res
 		// The timestamp at which this profile was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -28,12 +23,10 @@ package res
 		id?:          string
 
 		// Name of the security profile v2 resource,
-		// in the format
-		// 'organizations/{{org_name}}/securityProfilesV2/{{profile_id}}'.
+		// in the format 'organizations/{{org_name}}/securityProfilesV2/{{profile_id}}'.
 		name?: string
 
-		// The Apigee Organization associated with the Apigee Security
-		// Profile V2,
+		// The Apigee Organization associated with the Apigee Security Profile V2,
 		// in the format 'organizations/{{org_name}}'.
 		org_id!: string
 
@@ -47,8 +40,7 @@ package res
 	#profile_assessment_configs: close({
 		assessment!: string
 
-		// The weight of the assessment. Possible values: ["MINOR",
-		// "MODERATE", "MAJOR"]
+		// The weight of the assessment. Possible values: ["MINOR", "MODERATE", "MAJOR"]
 		weight!: string
 	})
 

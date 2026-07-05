@@ -1,45 +1,36 @@
 package data
 
-#google_folder_organization_policy: {
+google_folder_organization_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_folder_organization_policy")
 	close({
-		// A boolean policy is a constraint that is either enforced or
-		// not.
+		// A boolean policy is a constraint that is either enforced or not.
 		boolean_policy?: [...close({
 			enforced?: bool
 		})]
 
-		// The name of the Constraint the Policy is configuring, for
-		// example, serviceuser.services.
+		// The name of the Constraint the Policy is configuring, for example, serviceuser.services.
 		constraint!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The etag of the organization policy. etag is used for
-		// optimistic concurrency control as a way to help prevent
-		// simultaneous updates of a policy from overwriting each other.
+		// The etag of the organization policy. etag is used for optimistic concurrency
+		// control as a way to help prevent simultaneous updates of a policy from
+		// overwriting each other.
 		etag?: string
 
-		// The resource name of the folder to set the policy for. Its
-		// format is folders/{folder_id}.
+		// The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
 		folder!: string
 		id?:     string
 
-		// A policy that can define specific values that are allowed or
-		// denied for the given constraint. It can also be used to allow
-		// or deny all values.
+		// A policy that can define specific values that are allowed or denied for the
+		// given constraint. It can also be used to allow or deny all values.
 		list_policy?: [...close({
 			allow?: [...close({
 				all?: bool
@@ -58,9 +49,9 @@ package data
 			default?: bool
 		})]
 
-		// The timestamp in RFC3339 UTC "Zulu" format, accurate to
-		// nanoseconds, representing when the variable was last updated.
-		// Example: "2016-10-09T12:33:37.578138407Z".
+		// The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds,
+		// representing when the variable was last updated. Example:
+		// "2016-10-09T12:33:37.578138407Z".
 		update_time?: string
 
 		// Version of the Policy. Default version is 0.

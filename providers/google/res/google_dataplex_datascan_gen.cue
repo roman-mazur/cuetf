@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_dataplex_datascan: {
+google_dataplex_datascan: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_datascan")
 	close({
@@ -18,21 +18,15 @@ import "list"
 		// The time when the scan was created.
 		create_time?: string
 
-		// DataScan identifier. Must contain only lowercase letters,
-		// numbers and hyphens. Must start with a letter. Must end with a
-		// number or a letter.
+		// DataScan identifier. Must contain only lowercase letters, numbers and
+		// hyphens. Must start with a letter. Must end with a number or a letter.
 		data_scan_id!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -42,9 +36,8 @@ import "list"
 		// User friendly display name.
 		display_name?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// Status of the data scan execution.
@@ -57,24 +50,23 @@ import "list"
 		// User-defined labels for the scan. A list of key->value pairs.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location where the data scan should reside.
 		location!: string
 
 		// The relative resource name of the scan, of the form:
-		// projects/{project}/locations/{locationId}/dataScans/{datascan_id},
-		// where project refers to a project_id or project_number and
-		// locationId refers to a GCP region.
-		name?:    string
-		project?: string
+		// projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where
+		// project refers to a project_id or project_number and locationId refers to a
+		// GCP region.
+		name?: string
 
 		// Current state of the DataScan.
-		state?: string
+		state?:   string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -83,9 +75,8 @@ import "list"
 		// The type of DataScan.
 		type?: string
 
-		// System generated globally unique ID for the scan. This ID will
-		// be different if the scan is deleted and re-created with the
-		// same name.
+		// System generated globally unique ID for the scan. This ID will be different
+		// if the scan is deleted and re-created with the same name.
 		uid?: string
 
 		// The time when the scan was last updated.
@@ -93,15 +84,14 @@ import "list"
 	})
 
 	#data: close({
-		// The Dataplex entity that represents the data source(e.g.
-		// BigQuery table) for Datascan.
+		// The Dataplex entity that represents the data source(e.g. BigQuery table) for Datascan.
 		entity?: string
 
-		// The service-qualified full resource name of the cloud resource
-		// for a DataScan job to scan against. The field could be:
+		// The service-qualified full resource name of the cloud resource for a DataScan
+		// job to scan against. The field could be:
 		// Cloud Storage bucket
-		// (//storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID)
-		// for DataDiscoveryScan OR BigQuery table of type "TABLE"
+		// (//storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID) for
+		// DataDiscoveryScan OR BigQuery table of type "TABLE"
 		// (/bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID)
 		// for DataProfileScan/DataQualityScan.
 		resource?: string
@@ -119,22 +109,17 @@ import "list"
 		include_fields?: matchN(1, [_#defs."/$defs/data_profile_spec/$defs/include_fields", list.MaxItems(1) & [..._#defs."/$defs/data_profile_spec/$defs/include_fields"]])
 		post_scan_actions?: matchN(1, [_#defs."/$defs/data_profile_spec/$defs/post_scan_actions", list.MaxItems(1) & [..._#defs."/$defs/data_profile_spec/$defs/post_scan_actions"]])
 
-		// If set, the latest DataScan job result will be published to
-		// Dataplex Catalog.
+		// If set, the latest DataScan job result will be published to Dataplex Catalog.
 		catalog_publishing_enabled?: bool
 
-		// A filter applied to all rows in a single DataScan job. The
-		// filter needs to be a valid SQL expression for a WHERE clause
-		// in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 <
-		// 10
+		// A filter applied to all rows in a single DataScan job. The filter needs to be
+		// a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax.
+		// Example: col1 >= 0 AND col2 < 10
 		row_filter?: string
 
-		// The percentage of the records to be selected from the dataset
-		// for DataScan.
-		// Value can range between 0.0 and 100.0 with up to 3 significant
-		// decimal digits.
-		// Sampling is not applied if 'sampling_percent' is not specified,
-		// 0 or 100.
+		// The percentage of the records to be selected from the dataset for DataScan.
+		// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+		// Sampling is not applied if 'sampling_percent' is not specified, 0 or 100.
 		sampling_percent?: number
 	})
 
@@ -142,29 +127,23 @@ import "list"
 		post_scan_actions?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/post_scan_actions", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/post_scan_actions"]])
 		rules?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules", [..._#defs."/$defs/data_quality_spec/$defs/rules"]])
 
-		// If set, the latest DataScan job result will be published to
-		// Dataplex Catalog.
+		// If set, the latest DataScan job result will be published to Dataplex Catalog.
 		catalog_publishing_enabled?: bool
 
-		// If set to true, the scan will retrieve rules defined in Data
-		// Catalog for the resource.
+		// If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
 		enable_catalog_based_rules?: bool
 
 		// A filter to selectively run a subset of rules.
 		filter?: string
 
-		// A filter applied to all rows in a single DataScan job. The
-		// filter needs to be a valid SQL expression for a WHERE clause
-		// in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 <
-		// 10
+		// A filter applied to all rows in a single DataScan job. The filter needs to be
+		// a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax.
+		// Example: col1 >= 0 AND col2 < 10
 		row_filter?: string
 
-		// The percentage of the records to be selected from the dataset
-		// for DataScan.
-		// Value can range between 0.0 and 100.0 with up to 3 significant
-		// decimal digits.
-		// Sampling is not applied if 'sampling_percent' is not specified,
-		// 0 or 100.
+		// The percentage of the records to be selected from the dataset for DataScan.
+		// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+		// Sampling is not applied if 'sampling_percent' is not specified, 0 or 100.
 		sampling_percent?: number
 	})
 
@@ -177,9 +156,9 @@ import "list"
 	#execution_spec: close({
 		trigger!: matchN(1, [_#defs."/$defs/execution_spec/$defs/trigger", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/execution_spec/$defs/trigger"]])
 
-		// The unnested field (of type Date or Timestamp) that contains
-		// values which monotonically increase over time. If not
-		// specified, a data scan will run for all data in the table.
+		// The unnested field (of type Date or Timestamp) that contains values which
+		// monotonically increase over time. If not specified, a data scan will run for
+		// all data in the table.
 		field?: string
 	})
 
@@ -190,24 +169,23 @@ import "list"
 	})
 
 	_#defs: "/$defs/data_discovery_spec/$defs/bigquery_publishing_config": close({
-		// The BigQuery connection used to create BigLake tables. Must be
-		// in the form
+		// The BigQuery connection used to create BigLake tables. Must be in the form
 		// 'projects/{projectId}/locations/{locationId}/connections/{connection_id}'.
 		connection?: string
 
-		// The location of the BigQuery dataset to publish BigLake
-		// external or non-BigLake external tables to.
+		// The location of the BigQuery dataset to publish BigLake external or
+		// non-BigLake external tables to.
 		location?: string
 
-		// The project of the BigQuery dataset to publish BigLake external
-		// or non-BigLake external tables to. If not specified, the
-		// project of the Cloud Storage bucket will be used. The format
-		// is "projects/{project_id_or_number}".
+		// The project of the BigQuery dataset to publish BigLake external or
+		// non-BigLake external tables to. If not specified, the project of the Cloud
+		// Storage bucket will be used. The format is
+		// "projects/{project_id_or_number}".
 		project?: string
 
-		// Determines whether to publish discovered tables as BigLake
-		// external tables or non-BigLake external tables. Possible
-		// values: ["TABLE_TYPE_UNSPECIFIED", "EXTERNAL", "BIGLAKE"]
+		// Determines whether to publish discovered tables as BigLake external tables or
+		// non-BigLake external tables. Possible values: ["TABLE_TYPE_UNSPECIFIED",
+		// "EXTERNAL", "BIGLAKE"]
 		table_type?: string
 	})
 
@@ -215,41 +193,38 @@ import "list"
 		csv_options?: matchN(1, [_#defs."/$defs/data_discovery_spec/$defs/storage_config/$defs/csv_options", list.MaxItems(1) & [..._#defs."/$defs/data_discovery_spec/$defs/storage_config/$defs/csv_options"]])
 		json_options?: matchN(1, [_#defs."/$defs/data_discovery_spec/$defs/storage_config/$defs/json_options", list.MaxItems(1) & [..._#defs."/$defs/data_discovery_spec/$defs/storage_config/$defs/json_options"]])
 
-		// Defines the data to exclude during discovery. Provide a list of
-		// patterns that identify the data to exclude. For Cloud Storage
-		// bucket assets, these patterns are interpreted as glob patterns
-		// used to match object names. For BigQuery dataset assets, these
-		// patterns are interpreted as patterns to match table names.
+		// Defines the data to exclude during discovery. Provide a list of patterns that
+		// identify the data to exclude. For Cloud Storage bucket assets, these
+		// patterns are interpreted as glob patterns used to match object names. For
+		// BigQuery dataset assets, these patterns are interpreted as patterns to match
+		// table names.
 		exclude_patterns?: [...string]
 
-		// Defines the data to include during discovery when only a subset
-		// of the data should be considered. Provide a list of patterns
-		// that identify the data to include. For Cloud Storage bucket
-		// assets, these patterns are interpreted as glob patterns used
-		// to match object names. For BigQuery dataset assets, these
+		// Defines the data to include during discovery when only a subset of the data
+		// should be considered. Provide a list of patterns that identify the data to
+		// include. For Cloud Storage bucket assets, these patterns are interpreted as
+		// glob patterns used to match object names. For BigQuery dataset assets, these
 		// patterns are interpreted as patterns to match table names.
 		include_patterns?: [...string]
 	})
 
 	_#defs: "/$defs/data_discovery_spec/$defs/storage_config/$defs/csv_options": close({
-		// The delimiter that is used to separate values. The default is
-		// ',' (comma).
+		// The delimiter that is used to separate values. The default is ',' (comma).
 		delimiter?: string
 
 		// The character encoding of the data. The default is UTF-8.
 		encoding?: string
 
-		// The number of rows to interpret as header rows that should be
-		// skipped when reading data rows.
+		// The number of rows to interpret as header rows that should be skipped when reading data rows.
 		header_rows?: number
 
-		// The character used to quote column values. Accepts '"' (double
-		// quotation mark) or ''' (single quotation mark). If
-		// unspecified, defaults to '"' (double quotation mark).
+		// The character used to quote column values. Accepts '"' (double quotation
+		// mark) or ''' (single quotation mark). If unspecified, defaults to '"'
+		// (double quotation mark).
 		quote?: string
 
-		// Whether to disable the inference of data types for CSV data. If
-		// true, all columns are registered as strings.
+		// Whether to disable the inference of data types for CSV data. If true, all
+		// columns are registered as strings.
 		type_inference_disabled?: bool
 	})
 
@@ -257,29 +232,25 @@ import "list"
 		// The character encoding of the data. The default is UTF-8.
 		encoding?: string
 
-		// Whether to disable the inference of data types for JSON data.
-		// If true, all columns are registered as their primitive types
-		// (strings, number, or boolean).
+		// Whether to disable the inference of data types for JSON data. If true, all
+		// columns are registered as their primitive types (strings, number, or
+		// boolean).
 		type_inference_disabled?: bool
 	})
 
 	_#defs: "/$defs/data_profile_spec/$defs/exclude_fields": close({
-		// Expected input is a list of fully qualified names of fields as
-		// in the schema.
+		// Expected input is a list of fully qualified names of fields as in the schema.
 		// Only top-level field names for nested fields are supported.
-		// For instance, if 'x' is of nested field type, listing 'x' is
-		// supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are
-		// nested fields of 'x'.
+		// For instance, if 'x' is of nested field type, listing 'x' is supported but
+		// 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
 		field_names?: [...string]
 	})
 
 	_#defs: "/$defs/data_profile_spec/$defs/include_fields": close({
-		// Expected input is a list of fully qualified names of fields as
-		// in the schema.
+		// Expected input is a list of fully qualified names of fields as in the schema.
 		// Only top-level field names for nested fields are supported.
-		// For instance, if 'x' is of nested field type, listing 'x' is
-		// supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are
-		// nested fields of 'x'.
+		// For instance, if 'x' is of nested field type, listing 'x' is supported but
+		// 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
 		field_names?: [...string]
 	})
 
@@ -316,8 +287,7 @@ import "list"
 	_#defs: "/$defs/data_quality_spec/$defs/post_scan_actions/$defs/notification_report/$defs/job_failure_trigger": close({})
 
 	_#defs: "/$defs/data_quality_spec/$defs/post_scan_actions/$defs/notification_report/$defs/recipients": close({
-		// The email recipients who will receive the DataQualityScan
-		// results report.
+		// The email recipients who will receive the DataQualityScan results report.
 		emails?: [...string]
 	})
 
@@ -348,19 +318,17 @@ import "list"
 		// The maximum length is 1,024 characters.
 		description?: string
 
-		// The dimension name a rule belongs to. Custom dimension name is
-		// supported with all uppercase letters and maximum length of 30
-		// characters.
+		// The dimension name a rule belongs to. Custom dimension name is supported with
+		// all uppercase letters and maximum length of 30 characters.
 		dimension!: string
 
-		// Rows with null values will automatically fail a rule, unless
-		// ignoreNull is true. In that case, such null rows are trivially
-		// considered passing. Only applicable to ColumnMap rules.
+		// Rows with null values will automatically fail a rule, unless ignoreNull is
+		// true. In that case, such null rows are trivially considered passing. Only
+		// applicable to ColumnMap rules.
 		ignore_null?: bool
 
 		// A mutable name for the rule.
-		// The name must contain only letters (a-z, A-Z), numbers (0-9),
-		// or hyphens (-).
+		// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
 		// The maximum length is 63 characters.
 		// Must start with a letter.
 		// Must end with a number or a letter.
@@ -369,32 +337,28 @@ import "list"
 		// Whether the Rule is active or suspended. Default = false.
 		suspended?: bool
 
-		// The minimum ratio of passing_rows / total_rows required to pass
-		// this rule, with a range of [0.0, 1.0]. 0 indicates default
-		// value (i.e. 1.0).
+		// The minimum ratio of passing_rows / total_rows required to pass this rule,
+		// with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
 		threshold?: number
 	})
 
 	_#defs: "/$defs/data_quality_spec/$defs/rules/$defs/non_null_expectation": close({})
 
 	_#defs: "/$defs/data_quality_spec/$defs/rules/$defs/range_expectation": close({
-		// The maximum column value allowed for a row to pass this
-		// validation. At least one of minValue and maxValue need to be
-		// provided.
+		// The maximum column value allowed for a row to pass this validation. At least
+		// one of minValue and maxValue need to be provided.
 		max_value?: string
 
-		// The minimum column value allowed for a row to pass this
-		// validation. At least one of minValue and maxValue need to be
-		// provided.
+		// The minimum column value allowed for a row to pass this validation. At least
+		// one of minValue and maxValue need to be provided.
 		min_value?: string
 
-		// Whether each value needs to be strictly lesser than ('<') the
-		// maximum, or if equality is allowed.
+		// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
 		// Only relevant if a maxValue has been defined. Default = false.
 		strict_max_enabled?: bool
 
-		// Whether each value needs to be strictly greater than ('>') the
-		// minimum, or if equality is allowed.
+		// Whether each value needs to be strictly greater than ('>') the minimum, or if
+		// equality is allowed.
 		// Only relevant if a minValue has been defined. Default = false.
 		strict_min_enabled?: bool
 	})
@@ -420,27 +384,24 @@ import "list"
 	})
 
 	_#defs: "/$defs/data_quality_spec/$defs/rules/$defs/statistic_range_expectation": close({
-		// The maximum column statistic value allowed for a row to pass
-		// this validation.
+		// The maximum column statistic value allowed for a row to pass this validation.
 		// At least one of minValue and maxValue need to be provided.
 		max_value?: string
 
-		// The minimum column statistic value allowed for a row to pass
-		// this validation.
+		// The minimum column statistic value allowed for a row to pass this validation.
 		// At least one of minValue and maxValue need to be provided.
 		min_value?: string
 
-		// column statistics. Possible values: ["STATISTIC_UNDEFINED",
-		// "MEAN", "MIN", "MAX"]
+		// column statistics. Possible values: ["STATISTIC_UNDEFINED", "MEAN", "MIN", "MAX"]
 		statistic!: string
 
-		// Whether column statistic needs to be strictly lesser than ('<')
-		// the maximum, or if equality is allowed.
+		// Whether column statistic needs to be strictly lesser than ('<') the maximum,
+		// or if equality is allowed.
 		// Only relevant if a maxValue has been defined. Default = false.
 		strict_max_enabled?: bool
 
-		// Whether column statistic needs to be strictly greater than
-		// ('>') the minimum, or if equality is allowed.
+		// Whether column statistic needs to be strictly greater than ('>') the minimum,
+		// or if equality is allowed.
 		// Only relevant if a minValue has been defined. Default = false.
 		strict_min_enabled?: bool
 	})
@@ -484,16 +445,14 @@ import "list"
 	_#defs: "/$defs/execution_spec/$defs/trigger/$defs/on_demand": close({})
 
 	_#defs: "/$defs/execution_spec/$defs/trigger/$defs/one_time": close({
-		// Time to live for the DataScan and its results after the
-		// one-time run completes. Accepts a string with a unit suffix
-		// 's' (e.g., '7200s'). Default is 24 hours. Ranges between 0 and
-		// 31536000 seconds (1 year).
+		// Time to live for the DataScan and its results after the one-time run
+		// completes. Accepts a string with a unit suffix 's' (e.g., '7200s'). Default
+		// is 24 hours. Ranges between 0 and 31536000 seconds (1 year).
 		ttl_after_scan_completion?: string
 	})
 
 	_#defs: "/$defs/execution_spec/$defs/trigger/$defs/schedule": close({
-		// Cron schedule for running scans periodically. This field is
-		// required for Schedule scans.
+		// Cron schedule for running scans periodically. This field is required for Schedule scans.
 		cron!: string
 	})
 }

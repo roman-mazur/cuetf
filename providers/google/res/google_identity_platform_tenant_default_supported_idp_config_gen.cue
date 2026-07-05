@@ -1,6 +1,6 @@
 package res
 
-#google_identity_platform_tenant_default_supported_idp_config: {
+google_identity_platform_tenant_default_supported_idp_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_identity_platform_tenant_default_supported_idp_config")
 	close({
@@ -12,16 +12,11 @@ package res
 		// OAuth client secret
 		client_secret!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -53,12 +48,11 @@ package res
 		idp_id!: string
 
 		// The name of the default supported IDP config resource
-		name?:    string
-		project?: string
+		name?: string
 
-		// The name of the tenant where this DefaultSupportedIdpConfig
-		// resource exists
-		tenant!: string
+		// The name of the tenant where this DefaultSupportedIdpConfig resource exists
+		tenant!:  string
+		project?: string
 	})
 
 	#timeouts: close({

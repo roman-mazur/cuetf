@@ -1,6 +1,6 @@
 package res
 
-#google_document_ai_processor_default_version: {
+google_document_ai_processor_default_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_document_ai_processor_default_version")
 	close({
@@ -10,10 +10,9 @@ package res
 		// The processor to set the version on.
 		processor!: string
 
-		// The version to set. Using 'stable' or 'rc' will cause the API
-		// to return the latest version in that release channel.
-		// Apply 'lifecycle.ignore_changes' to the 'version' field to
-		// suppress this diff.
+		// The version to set. Using 'stable' or 'rc' will cause the API to return the
+		// latest version in that release channel.
+		// Apply 'lifecycle.ignore_changes' to the 'version' field to suppress this diff.
 		version!: string
 	})
 

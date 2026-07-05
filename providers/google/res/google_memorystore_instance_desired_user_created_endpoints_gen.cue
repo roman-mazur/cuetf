@@ -2,35 +2,28 @@ package res
 
 import "list"
 
-#google_memorystore_instance_desired_user_created_endpoints: {
+google_memorystore_instance_desired_user_created_endpoints: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_memorystore_instance_desired_user_created_endpoints")
 	close({
 		desired_user_created_endpoints?: matchN(1, [#desired_user_created_endpoints, [...#desired_user_created_endpoints]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
 
-		// The name of the Memorystore instance these endpoints should be
-		// added to.
-		name!:    string
-		project?: string
+		// The name of the Memorystore instance these endpoints should be added to.
+		name!: string
 
-		// The name of the region of the Memorystore instance these
-		// endpoints should be added to.
-		region!: string
+		// The name of the region of the Memorystore instance these endpoints should be added to.
+		region!:  string
+		project?: string
 	})
 
 	#desired_user_created_endpoints: close({
@@ -60,32 +53,29 @@ import "list"
 		// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
 		forwarding_rule!: string
 
-		// The IP allocated on the consumer network for the PSC forwarding
-		// rule.
+		// The IP allocated on the consumer network for the PSC forwarding rule.
 		ip_address!: string
 
-		// The consumer network where the IP address resides, in the form
-		// of
+		// The consumer network where the IP address resides, in the form of
 		// projects/{project_id}/global/networks/{network_id}.
 		network!: string
 
-		// The consumer project_id where the forwarding rule is created
-		// from.
+		// The consumer project_id where the forwarding rule is created from.
 		project_id?: string
 
 		// The PSC connection id of the forwarding rule connected to the
 		// service attachment.
 		psc_connection_id!: string
 
-		// Output Only. The status of the PSC connection: whether a
-		// connection exists and ACTIVE or it no longer exists.
+		// Output Only. The status of the PSC connection: whether a connection exists
+		// and ACTIVE or it no longer exists.
 		// Possible values:
 		// ACTIVE
 		// NOT_FOUND
 		psc_connection_status?: string
 
-		// The service attachment which is the target of the PSC
-		// connection, in the form of
+		// The service attachment which is the target of the PSC connection, in the form
+		// of
 		// projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
 		service_attachment!: string
 	})

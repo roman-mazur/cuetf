@@ -1,6 +1,6 @@
 package res
 
-#google_securityposture_posture_deployment: {
+google_securityposture_posture_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_securityposture_posture_deployment")
 	close({
@@ -9,44 +9,33 @@ package res
 		// Time the posture deployment was created in UTC.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// Description of the posture deployment.
 		description?: string
 
-		// This is an output only optional field which will be filled in
-		// case when
-		// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or
-		// DELETE_FAILED.
+		// This is an output only optional field which will be filled in case when
+		// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
 		// It denotes the desired posture to be deployed.
 		desired_posture_id?: string
 
-		// This is an output only optional field which will be filled in
-		// case when
-		// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or
-		// DELETE_FAILED.
+		// This is an output only optional field which will be filled in case when
+		// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
 		// It denotes the desired posture revision_id to be deployed.
 		desired_posture_revision_id?: string
 
 		// For Resource freshness validation (https://google.aip.dev/154)
 		etag?: string
 
-		// This is a output only optional field which will be filled in
-		// case where
+		// This is a output only optional field which will be filled in case where
 		// PostureDeployment enters a failure state like UPDATE_FAILED or
-		// CREATE_FAILED or DELETE_FAILED. It will have the failure
-		// message for posture deployment's
+		// CREATE_FAILED or DELETE_FAILED. It will have the failure message for posture deployment's
 		// CREATE/UPDATE/DELETE methods.
 		failure_message?: string
 		id?:              string
@@ -57,32 +46,28 @@ package res
 		// Name of the posture deployment instance.
 		name?: string
 
-		// The parent of the resource, an organization. Format should be
-		// 'organizations/{organization_id}'.
+		// The parent of the resource, an organization. Format should be 'organizations/{organization_id}'.
 		parent!: string
 
 		// ID of the posture deployment.
 		posture_deployment_id!: string
 
-		// Relative name of the posture which needs to be deployed. It
-		// should be in the format:
+		// Relative name of the posture which needs to be deployed. It should be in the format:
 		// organizations/{organization_id}/locations/{location}/postures/{posture_id}
 		posture_id!: string
 
 		// Revision_id the posture which needs to be deployed.
 		posture_revision_id!: string
 
-		// If set, there are currently changes in flight to the posture
-		// deployment.
+		// If set, there are currently changes in flight to the posture deployment.
 		reconciling?: bool
 
-		// State of the posture deployment. A posture deployment can be in
-		// the following terminal states:
+		// State of the posture deployment. A posture deployment can be in the following terminal states:
 		// ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
 		state?: string
 
-		// The resource on which the posture should be deployed. This can
-		// be in one of the following formats:
+		// The resource on which the posture should be deployed. This can be in one of
+		// the following formats:
 		// projects/{project_number},
 		// folders/{folder_number},
 		// organizations/{organization_id}

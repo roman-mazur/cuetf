@@ -1,27 +1,21 @@
 package res
 
-#google_apigee_flowhook: {
+google_apigee_flowhook: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_flowhook")
 	close({
 		timeouts?: #timeouts
 
-		// Flag that specifies whether execution should continue if the
-		// flow hook throws an exception. Set to true to continue
-		// execution. Set to false to stop execution if the flow hook
-		// throws an exception. Defaults to true.
+		// Flag that specifies whether execution should continue if the flow hook throws
+		// an exception. Set to true to continue execution. Set to false to stop
+		// execution if the flow hook throws an exception. Defaults to true.
 		continue_on_error?: bool
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -31,9 +25,9 @@ package res
 		// The resource ID of the environment.
 		environment!: string
 
-		// Where in the API call flow the flow hook is invoked. Must be
-		// one of PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook,
-		// or PostTargetFlowHook.
+		// Where in the API call flow the flow hook is invoked. Must be one of
+		// PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook, or
+		// PostTargetFlowHook.
 		flow_hook_point!: string
 		id?:              string
 

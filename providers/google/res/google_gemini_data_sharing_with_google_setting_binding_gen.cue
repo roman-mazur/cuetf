@@ -1,6 +1,6 @@
 package res
 
-#google_gemini_data_sharing_with_google_setting_binding: {
+google_gemini_data_sharing_with_google_setting_binding: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_data_sharing_with_google_setting_binding")
 	close({
@@ -9,56 +9,47 @@ package res
 		// Create time stamp.
 		create_time?: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		data_sharing_with_google_setting_id!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// Labels as key value pairs.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location?: string
 
 		// Identifier. Name of the resource.
 		// Format:projects/{project}/locations/{location}/dataSharingWithGoogleSettings/{setting}/settingBindings/{setting_binding}
 		name?: string
 
-		// Product type of the setting binding. Values include
-		// GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product
+		// Product type of the setting binding. Values include GEMINI_IN_BIGQUERY,
+		// GEMINI_CLOUD_ASSIST, etc. See [product
 		// reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings)
 		// for a complete list.
 		product?: string
-		project?: string
 
 		// Required. Id of the setting binding.
 		setting_binding_id!: string
+		project?:            string
 
 		// Target of the binding.
 		target!: string

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_looker_instance: {
+google_looker_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_looker_instance")
 	close({
@@ -20,8 +20,7 @@ import "list"
 
 		// Network name in the consumer project in the format of:
 		// projects/{project}/global/networks/{network}
-		// Note that the consumer network may be in a different GCP
-		// project than the consumer
+		// Note that the consumer network may be in a different GCP project than the consumer
 		// project that is hosting the Looker Instance.
 		consumer_network?: string
 
@@ -32,8 +31,7 @@ import "list"
 		// accurate to nanoseconds.
 		create_time?: string
 
-		// This field uses a custom implementation please refer to
-		// documentation under
+		// This field uses a custom implementation please refer to documentation under
 		// /hashicorp/terraform-provider-google-beta/website/docs/r/looker_instance.html.markdown
 		// for specifics
 		deletion_policy?: string
@@ -41,8 +39,7 @@ import "list"
 		// Public Egress IP (IPv4).
 		egress_public_ip?: string
 
-		// FIPS 140-2 Encryption enablement for Looker (Google Cloud
-		// Core).
+		// FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
 		fips_enabled?: bool
 
 		// Gemini enablement for Looker (Google Cloud Core).
@@ -55,56 +52,44 @@ import "list"
 		// Public Ingress IP (IPv4).
 		ingress_public_ip?: string
 
-		// Looker instance URI which can be used to access the Looker
-		// Instance UI.
+		// Looker instance URI which can be used to access the Looker Instance UI.
 		looker_uri?: string
 
 		// The Looker version that the instance is using.
 		looker_version?: string
 
-		// The ID of the instance or a fully qualified identifier for the
-		// instance.
+		// The ID of the instance or a fully qualified identifier for the instance.
 		name!: string
 
-		// Platform editions for a Looker instance. Each edition maps to a
-		// set of instance features, like its size. Must be one of these
-		// values:
+		// Platform editions for a Looker instance. Each edition maps to a set of
+		// instance features, like its size. Must be one of these values:
 		// - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
-		// - LOOKER_CORE_STANDARD: pay as you go standard instance
-		// (Currently Unavailable)
+		// - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
 		// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
-		// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise
-		// instance
+		// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
 		// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-		// - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription
-		// standard instance
-		// - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL: nonprod subscription
-		// enterprise instance
-		// - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed
-		// instance
-		// - LOOKER_CORE_TRIAL_STANDARD: A standard trial edition of
-		// Looker (Google Cloud core) product.
-		// - LOOKER_CORE_TRIAL_ENTERPRISE: An enterprise trial edition of
-		// Looker (Google Cloud core) product.
-		// - LOOKER_CORE_TRIAL_EMBED: An embed trial edition of Looker
-		// (Google Cloud core) product. Default value:
-		// "LOOKER_CORE_TRIAL" Possible values: ["LOOKER_CORE_TRIAL",
-		// "LOOKER_CORE_STANDARD", "LOOKER_CORE_STANDARD_ANNUAL",
+		// - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance
+		// - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL: nonprod subscription enterprise instance
+		// - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance
+		// - LOOKER_CORE_TRIAL_STANDARD: A standard trial edition of Looker (Google Cloud core) product.
+		// - LOOKER_CORE_TRIAL_ENTERPRISE: An enterprise trial edition of Looker (Google
+		// Cloud core) product.
+		// - LOOKER_CORE_TRIAL_EMBED: An embed trial edition of Looker (Google Cloud
+		// core) product. Default value: "LOOKER_CORE_TRIAL" Possible values:
+		// ["LOOKER_CORE_TRIAL", "LOOKER_CORE_STANDARD", "LOOKER_CORE_STANDARD_ANNUAL",
 		// "LOOKER_CORE_ENTERPRISE_ANNUAL", "LOOKER_CORE_EMBED_ANNUAL",
 		// "LOOKER_CORE_NONPROD_STANDARD_ANNUAL",
-		// "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL",
-		// "LOOKER_CORE_NONPROD_EMBED_ANNUAL",
+		// "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL", "LOOKER_CORE_NONPROD_EMBED_ANNUAL",
 		// "LOOKER_CORE_TRIAL_STANDARD", "LOOKER_CORE_TRIAL_ENTERPRISE",
 		// "LOOKER_CORE_TRIAL_EMBED"]
 		platform_edition?: string
 
 		// Whether private IP is enabled on the Looker instance.
 		private_ip_enabled?: bool
-		project?:            string
 
-		// Whether Public Service Connect (PSC) is enabled on the Looker
-		// instance
+		// Whether Public Service Connect (PSC) is enabled on the Looker instance
 		psc_enabled?: bool
+		project?:     string
 
 		// Whether public IP is enabled on the Looker instance.
 		public_ip_enabled?: bool
@@ -112,10 +97,8 @@ import "list"
 		// The name of the Looker region of the instance.
 		region?: string
 
-		// Name of a reserved IP address range within the consumer
-		// network, to be used for
-		// private service access connection. User may or may not specify
-		// this in a request.
+		// Name of a reserved IP address range within the consumer network, to be used for
+		// private service access connection. User may or may not specify this in a request.
 		reserved_range?: string
 
 		// The time the instance was updated in RFC3339 UTC "Zulu" format,
@@ -126,19 +109,15 @@ import "list"
 	#admin_settings: close({
 		// Email domain allowlist for the instance.
 		//
-		// Define the email domains to which your users can deliver Looker
-		// (Google Cloud core) content.
-		// Updating this list will restart the instance. Updating the
-		// allowed email domains from terraform
-		// means the value provided will be considered as the entire list
-		// and not an amendment to the
+		// Define the email domains to which your users can deliver Looker (Google Cloud core) content.
+		// Updating this list will restart the instance. Updating the allowed email domains from terraform
+		// means the value provided will be considered as the entire list and not an amendment to the
 		// existing list of allowed email domains.
 		allowed_email_domains?: [...string]
 	})
 
 	#controlled_egress_config: close({
-		// List of fully qualified domain names to be added to the
-		// allowlist for
+		// List of fully qualified domain names to be added to the allowlist for
 		// outbound traffic.
 		egress_fqdns?: [...string]
 
@@ -164,8 +143,7 @@ import "list"
 		// Name of the customer managed encryption key (CMEK) in KMS.
 		kms_key_name?: string
 
-		// Full name and version of the CMEK key currently in use to
-		// encrypt Looker data.
+		// Full name and version of the CMEK key currently in use to encrypt Looker data.
 		kms_key_name_version?: string
 
 		// Status of the customer managed encryption key (CMEK) in KMS.
@@ -183,8 +161,8 @@ import "list"
 		// - THURSDAY: Thursday
 		// - FRIDAY: Friday
 		// - SATURDAY: Saturday
-		// - SUNDAY: Sunday Possible values: ["MONDAY", "TUESDAY",
-		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+		// - SUNDAY: Sunday Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY",
+		// "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week!: string
 	})
 
@@ -226,51 +204,40 @@ import "list"
 	})
 
 	#user_metadata: close({
-		// Number of additional Developer Users to allocate to the Looker
-		// Instance.
+		// Number of additional Developer Users to allocate to the Looker Instance.
 		additional_developer_user_count?: number
 
-		// Number of additional Standard Users to allocate to the Looker
-		// Instance.
+		// Number of additional Standard Users to allocate to the Looker Instance.
 		additional_standard_user_count?: number
 
-		// Number of additional Viewer Users to allocate to the Looker
-		// Instance.
+		// Number of additional Viewer Users to allocate to the Looker Instance.
 		additional_viewer_user_count?: number
 	})
 
 	_#defs: "/$defs/deny_maintenance_period/$defs/end_date": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0
-		// to specify a year by itself or a year and month where the day
-		// isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
 		// month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
 		// a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deny_maintenance_period/$defs/start_date": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0
-		// to specify a year by itself or a year and month where the day
-		// isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
 		// month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
 		// a year.
 		year?: number
 	})
@@ -282,8 +249,7 @@ import "list"
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
 		// Seconds of minutes of the time. Must normally be from 0 to 59.
@@ -297,8 +263,7 @@ import "list"
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
 		// Seconds of minutes of the time. Must normally be from 0 to 59.
@@ -312,8 +277,7 @@ import "list"
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
 		// Seconds of minutes of the time. Must normally be from 0 to 59.
@@ -324,8 +288,8 @@ import "list"
 		// Status of the service attachment connection.
 		connection_status?: string
 
-		// Fully qualified domain name that will be used in the private
-		// DNS record created for the service attachment.
+		// Fully qualified domain name that will be used in the private DNS record
+		// created for the service attachment.
 		local_fqdn?: string
 
 		// URI of the service attachment to connect to.

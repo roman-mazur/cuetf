@@ -2,32 +2,24 @@ package res
 
 import "list"
 
-#google_bigtable_schema_bundle: {
+google_bigtable_schema_bundle: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigtable_schema_bundle")
 	close({
 		proto_schema!: matchN(1, [#proto_schema, list.MaxItems(1) & [_, ...] & [...#proto_schema]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// etag is used for optimistic concurrency control as a way to
-		// help prevent simultaneous
-		// updates of a schema bundle from overwriting each other. This
-		// may be sent on update and delete
-		// requests to ensure the client has an update-to-date value
-		// before proceeding. The server returns
+		// etag is used for optimistic concurrency control as a way to help prevent simultaneous
+		// updates of a schema bundle from overwriting each other. This may be sent on update and delete
+		// requests to ensure the client has an update-to-date value before proceeding. The server returns
 		// an ABORTED error on a mismatched etag.
 		etag?: string
 		id?:   string
@@ -38,15 +30,13 @@ import "list"
 		// The name of the instance to create the schema bundle within.
 		instance?: string
 
-		// The unique name of the requested schema bundle. Values are of
-		// the form
+		// The unique name of the requested schema bundle. Values are of the form
 		// 'projects/<project>/instances/<instance>/tables/<table>/schemaBundles/<schemaBundleId>'.
-		name?:    string
-		project?: string
+		name?: string
 
-		// The unique name of the schema bundle in the form
-		// '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
+		// The unique name of the schema bundle in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
 		schema_bundle_id!: string
+		project?:          string
 
 		// The name of the table to create the schema bundle within.
 		table?: string

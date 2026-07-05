@@ -2,16 +2,16 @@ package res
 
 import "list"
 
-#google_bigquery_analytics_hub_listing_subscription: {
+google_bigquery_analytics_hub_listing_subscription: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_analytics_hub_listing_subscription")
 	close({
 		destination_dataset!: matchN(1, [#destination_dataset, list.MaxItems(1) & [_, ...] & [...#destination_dataset]])
 		timeouts?: #timeouts
 
-		// Commercial info metadata for this subscription. This is set if
-		// this is a commercial subscription i.e. if this subscription
-		// was created from subscribing to a commercial listing.
+		// Commercial info metadata for this subscription. This is set if this is a
+		// commercial subscription i.e. if this subscription was created from
+		// subscribing to a commercial listing.
 		commercial_info?: [...close({
 			cloud_marketplace?: [...close({
 				order?: string
@@ -21,21 +21,16 @@ import "list"
 		// Timestamp when the subscription was created.
 		creation_time?: string
 
-		// The ID of the data exchange. Must contain only Unicode letters,
-		// numbers (0-9), underscores (_). Should not use characters that
-		// require URL-escaping, or characters outside of ASCII, spaces.
+		// The ID of the data exchange. Must contain only Unicode letters, numbers
+		// (0-9), underscores (_). Should not use characters that require URL-escaping,
+		// or characters outside of ASCII, spaces.
 		data_exchange_id!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
@@ -43,38 +38,35 @@ import "list"
 		// Timestamp when the subscription was last modified.
 		last_modify_time?: string
 
-		// Output only. Map of listing resource names to associated linked
-		// resource,
-		// e.g. projects/123/locations/US/dataExchanges/456/listings/789
-		// -> projects/123/datasets/my_dataset
+		// Output only. Map of listing resource names to associated linked resource,
+		// e.g. projects/123/locations/US/dataExchanges/456/listings/789 -> projects/123/datasets/my_dataset
 		linked_dataset_map?: [...close({
 			linked_dataset?: string
 			listing?:        string
 			resource_name?:  string
 		})]
 
-		// Output only. Linked resources created in the subscription. Only
-		// contains values if state = STATE_ACTIVE.
+		// Output only. Linked resources created in the subscription. Only contains
+		// values if state = STATE_ACTIVE.
 		linked_resources?: [...close({
 			linked_dataset?: string
 			listing?:        string
 		})]
 
-		// The ID of the listing. Must contain only Unicode letters,
-		// numbers (0-9), underscores (_). Should not use characters that
-		// require URL-escaping, or characters outside of ASCII, spaces.
+		// The ID of the listing. Must contain only Unicode letters, numbers (0-9),
+		// underscores (_). Should not use characters that require URL-escaping, or
+		// characters outside of ASCII, spaces.
 		listing_id!: string
 
-		// The name of the location of the data exchange. Distinct from
-		// the location of the destination data set.
+		// The name of the location of the data exchange. Distinct from the location of
+		// the destination data set.
 		location!: string
 
-		// Output only. By default, false. If true, the Subscriber agreed
-		// to the email sharing mandate that is enabled for Listing.
+		// Output only. By default, false. If true, the Subscriber agreed to the email
+		// sharing mandate that is enabled for Listing.
 		log_linked_dataset_query_user_email?: bool
 
-		// The resource name of the subscription. e.g.
-		// "projects/myproject/locations/US/subscriptions/123"
+		// The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
 		name?: string
 
 		// Display name of the project of this subscription.
@@ -82,10 +74,10 @@ import "list"
 
 		// Organization of the project this subscription belongs to.
 		organization_id?: string
-		project?:         string
 
 		// Listing shared asset type.
 		resource_type?: string
+		project?:       string
 
 		// Current state of the subscription.
 		state?: string
@@ -111,8 +103,7 @@ import "list"
 		labels?: [string]: string
 
 		// The geographic location where the dataset should reside.
-		// See https://cloud.google.com/bigquery/docs/locations for
-		// supported locations.
+		// See https://cloud.google.com/bigquery/docs/locations for supported locations.
 		location!: string
 
 		// List of regions where the subscriber wants dataset replicas.
@@ -125,9 +116,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/destination_dataset/$defs/dataset_reference": close({
-		// A unique ID for this dataset, without the project name. The ID
-		// must contain only letters (a-z, A-Z), numbers (0-9), or
-		// underscores (_). The maximum length is 1,024 characters.
+		// A unique ID for this dataset, without the project name. The ID must contain
+		// only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
+		// length is 1,024 characters.
 		dataset_id!: string
 
 		// The ID of the project containing this dataset.

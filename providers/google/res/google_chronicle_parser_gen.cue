@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_chronicle_parser: {
+google_chronicle_parser: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_parser")
 	close({
@@ -35,16 +35,11 @@ import "list"
 			source?:   string
 		})]
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -52,19 +47,16 @@ import "list"
 		dynamic_parsing_config?: string
 		id?:                     string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		instance!: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		logtype!: string
 
 		// name of the parser resource.
@@ -75,29 +67,22 @@ import "list"
 
 		// Extension applied over the parser, if any.
 		parser_extension?: string
-		project?:          string
 
 		// The release stage of the parser
-		// After internal validations the prebuilt parser will directly
-		// start as
-		// Release Candidate. The release_stage of prebuilt parsers are
-		// changed
+		// After internal validations the prebuilt parser will directly start as
+		// Release Candidate. The release_stage of prebuilt parsers are changed
 		// after every release cycle:
-		// The prebuilt Release Candidate parser is promoted as Release
-		// parser.
-		// The existing prebuilt Release parser is moved to Rollback
-		// state.
+		// The prebuilt Release Candidate parser is promoted as Release parser.
+		// The existing prebuilt Release parser is moved to Rollback state.
 		// and existing prebuilt rollback parser is moved to Archived.
 		// In case of custom parser:
-		// When the customer submits a validation passed custom parser it
-		// starts as
+		// When the customer submits a validation passed custom parser it starts as
 		// Release state.
 		// And existing one is moved to Rollback stage.
 		// And the existing rollback is moved to Archived.
 		// In case a release or release candidate parser is found faulty,
 		// the parser is marked FAULTY,
-		// if it is release parser then rollback candidate is moved to
-		// release.
+		// if it is release parser then rollback candidate is moved to release.
 		// Possible values:
 		// RELEASE
 		// RELEASE_CANDIDATE
@@ -106,6 +91,7 @@ import "list"
 		// FAULTY
 		// ARCHIVED_IN_USE
 		release_stage?: string
+		project?:       string
 
 		// The state of the parser
 		// Possible values:
@@ -120,8 +106,7 @@ import "list"
 		type?: string
 
 		// Flag to bypass parser validation when no logs are found.
-		// If enabled, the parser won't be be rejected during the
-		// validation
+		// If enabled, the parser won't be be rejected during the validation
 		// phase when no logs are found.
 		validated_on_empty_logs?: bool
 
@@ -134,16 +119,13 @@ import "list"
 		validation_skipped?: bool
 
 		// The validation stage of the parser
-		// When a customer submits a new parser for validation, it starts
-		// with a
+		// When a customer submits a new parser for validation, it starts with a
 		// new stage.
-		// When parser is picked for validation, it changes to Validation
-		// state.
+		// When parser is picked for validation, it changes to Validation state.
 		// If validation failed it is marked as failed, and
 		// existing failed is moved to delete_candidate stage.
 		// If passes it is moved to passed stage.
-		// If customer opts to submit it, the parser is moved to Release
-		// State.
+		// If customer opts to submit it, the parser is moved to Release State.
 		// Possible values:
 		// NEW
 		// VALIDATING
@@ -169,8 +151,7 @@ import "list"
 	})
 
 	#version_info: close({
-		// Signifies if the parser is disabled for auto upgrade. If true,
-		// the parser
+		// Signifies if the parser is disabled for auto upgrade. If true, the parser
 		// will not be upgraded by the auto upgrade process.
 		auto_upgrade_disabled!: bool
 
@@ -179,8 +160,7 @@ import "list"
 		// projects/{project}/locations/{region}/instances/{instance}/logTypes/{log_type}/parsers/{parser}/{id}
 		latest_parser?: string
 
-		// The version for the latest available stable version of the
-		// parser.
+		// The version for the latest available stable version of the parser.
 		latest_parser_version?: string
 
 		// Signifies if rollback is available for this parser version.
@@ -209,16 +189,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/low_code/$defs/field_extractors/$defs/extractors": close({
-		// Path in generated event which is to be populated. This is
-		// required if the
+		// Path in generated event which is to be populated. This is required if the
 		// FieldExtractor is used to specify the parser extension.
 		destination_path?: string
 
 		// Field path could be a json path, xml path or csv column name
-		// depending on log format. It refers to a section or substring in
-		// raw log.
-		// This is required if the FieldExtractor is used to specify the
-		// parser
+		// depending on log format. It refers to a section or substring in raw log.
+		// This is required if the FieldExtractor is used to specify the parser
 		// extension.
 		field_path?: string
 
@@ -228,10 +205,8 @@ import "list"
 		// NOT_EQUALS
 		precondition_op?: string
 
-		// Precondition path could be a json path, xml path or csv column
-		// name
-		// depending on log format. It refers to a section or substring in
-		// raw log.
+		// Precondition path could be a json path, xml path or csv column name
+		// depending on log format. It refers to a section or substring in raw log.
 		precondition_path?: string
 
 		// Precondition value.
@@ -248,8 +223,7 @@ import "list"
 		grok_regex?: string
 
 		// Target field name for the structured part of the log.
-		// This should match a SEMANTIC identifier from the grok
-		// expression.
+		// This should match a SEMANTIC identifier from the grok expression.
 		target?: string
 	})
 }

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_monitoring_alert_policy: {
+google_monitoring_alert_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_alert_policy")
 	close({
@@ -12,8 +12,8 @@ import "list"
 		timeouts?: #timeouts
 
 		// How to combine the results of multiple conditions to
-		// determine if an incident should be opened. Possible values:
-		// ["AND", "OR", "AND_WITH_MATCHING_RESOURCE"]
+		// determine if an incident should be opened. Possible values: ["AND", "OR",
+		// "AND_WITH_MATCHING_RESOURCE"]
 		combiner!: string
 
 		// A read-only record of the creation of the alerting policy.
@@ -24,24 +24,17 @@ import "list"
 			mutated_by?:  string
 		})]
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// A short name or phrase used to identify the policy in
-		// dashboards, notifications, and incidents. To avoid confusion,
-		// don't use
-		// the same display name for multiple policies in the same
-		// project. The
+		// dashboards, notifications, and incidents. To avoid confusion, don't use
+		// the same display name for multiple policies in the same project. The
 		// name is limited to 512 Unicode characters.
 		display_name!: string
 
@@ -50,41 +43,28 @@ import "list"
 		id?:      string
 
 		// The unique resource name for this policy.
-		// Its syntax is:
-		// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+		// Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
 		name?: string
 
-		// Identifies the notification channels to which notifications
-		// should be
-		// sent when incidents are opened or closed or when new violations
-		// occur
-		// on an already opened incident. Each element of this array
-		// corresponds
-		// to the name field in each of the NotificationChannel objects
-		// that are
-		// returned from the notificationChannels.list method. The syntax
-		// of the
+		// Identifies the notification channels to which notifications should be
+		// sent when incidents are opened or closed or when new violations occur
+		// on an already opened incident. Each element of this array corresponds
+		// to the name field in each of the NotificationChannel objects that are
+		// returned from the notificationChannels.list method. The syntax of the
 		// entries in this field is
 		// 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
 		notification_channels?: [...string]
-		project?: string
 
-		// The severity of an alert policy indicates how important
-		// incidents generated
-		// by that policy are. The severity level will be displayed on the
-		// Incident
-		// detail page and in notifications. Possible values: ["CRITICAL",
-		// "ERROR", "WARNING"]
+		// The severity of an alert policy indicates how important incidents generated
+		// by that policy are. The severity level will be displayed on the Incident
+		// detail page and in notifications. Possible values: ["CRITICAL", "ERROR", "WARNING"]
 		severity?: string
+		project?:  string
 
-		// This field is intended to be used for organizing and
-		// identifying the AlertPolicy
-		// objects.The field can contain up to 64 entries. Each key and
-		// value is limited
-		// to 63 Unicode characters or 128 bytes, whichever is smaller.
-		// Labels and values
-		// can contain only lowercase letters, numerals, underscores, and
-		// dashes. Keys
+		// This field is intended to be used for organizing and identifying the AlertPolicy
+		// objects.The field can contain up to 64 entries. Each key and value is limited
+		// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+		// can contain only lowercase letters, numerals, underscores, and dashes. Keys
 		// must begin with a letter.
 		user_labels?: [string]: string
 	})
@@ -93,8 +73,7 @@ import "list"
 		notification_channel_strategy?: matchN(1, [_#defs."/$defs/alert_strategy/$defs/notification_channel_strategy", [..._#defs."/$defs/alert_strategy/$defs/notification_channel_strategy"]])
 		notification_rate_limit?: matchN(1, [_#defs."/$defs/alert_strategy/$defs/notification_rate_limit", list.MaxItems(1) & [..._#defs."/$defs/alert_strategy/$defs/notification_rate_limit"]])
 
-		// If an alert policy that was active has no data for this long,
-		// any open incidents will close.
+		// If an alert policy that was active has no data for this long, any open incidents will close.
 		auto_close?: string
 
 		// Control when notifications will be sent out. Possible values:
@@ -129,8 +108,7 @@ import "list"
 	#documentation: close({
 		links?: matchN(1, [_#defs."/$defs/documentation/$defs/links", [..._#defs."/$defs/documentation/$defs/links"]])
 
-		// The text of the documentation, interpreted according to
-		// mimeType.
+		// The text of the documentation, interpreted according to mimeType.
 		// The content may not exceed 8,192 Unicode characters and may not
 		// exceed more than 10,240 bytes when encoded in UTF-8 format,
 		// whichever is smaller.
@@ -141,10 +119,8 @@ import "list"
 		mime_type?: string
 
 		// The subject line of the notification. The subject line may not
-		// exceed 10,240 bytes. In notifications generated by this policy
-		// the contents
-		// of the subject line after variable expansion will be truncated
-		// to 255 bytes
+		// exceed 10,240 bytes. In notifications generated by this policy the contents
+		// of the subject line after variable expansion will be truncated to 255 bytes
 		// or shorter at the latest UTF-8 character boundary.
 		subject?: string
 	})
@@ -156,24 +132,19 @@ import "list"
 	})
 
 	_#defs: "/$defs/alert_strategy/$defs/notification_channel_strategy": close({
-		// The notification channels that these settings apply to. Each of
-		// these
-		// correspond to the name field in one of the NotificationChannel
-		// objects
-		// referenced in the notification_channels field of this
-		// AlertPolicy. The format is
+		// The notification channels that these settings apply to. Each of these
+		// correspond to the name field in one of the NotificationChannel objects
+		// referenced in the notification_channels field of this AlertPolicy. The format is
 		// 'projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]'
 		notification_channel_names?: [...string]
 
-		// The frequency at which to send reminder notifications for open
-		// incidents.
+		// The frequency at which to send reminder notifications for open incidents.
 		renotify_interval?: string
 	})
 
 	_#defs: "/$defs/alert_strategy/$defs/notification_rate_limit": close({
 		// Not more than one notification per period.
-		// A duration in seconds with up to nine fractional digits,
-		// terminated by 's'. Example "60.5s".
+		// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
 		period?: string
 	})
 
@@ -236,11 +207,10 @@ import "list"
 		// specified and not equal ALIGN_NONE
 		// and alignmentPeriod must be
 		// specified; otherwise, an error is
-		// returned. Possible values: ["REDUCE_NONE", "REDUCE_MEAN",
-		// "REDUCE_MIN", "REDUCE_MAX", "REDUCE_SUM", "REDUCE_STDDEV",
-		// "REDUCE_COUNT", "REDUCE_COUNT_TRUE", "REDUCE_COUNT_FALSE",
-		// "REDUCE_FRACTION_TRUE", "REDUCE_PERCENTILE_99",
-		// "REDUCE_PERCENTILE_95", "REDUCE_PERCENTILE_50",
+		// returned. Possible values: ["REDUCE_NONE", "REDUCE_MEAN", "REDUCE_MIN",
+		// "REDUCE_MAX", "REDUCE_SUM", "REDUCE_STDDEV", "REDUCE_COUNT",
+		// "REDUCE_COUNT_TRUE", "REDUCE_COUNT_FALSE", "REDUCE_FRACTION_TRUE",
+		// "REDUCE_PERCENTILE_99", "REDUCE_PERCENTILE_95", "REDUCE_PERCENTILE_50",
 		// "REDUCE_PERCENTILE_05"]
 		cross_series_reducer?: string
 
@@ -287,14 +257,12 @@ import "list"
 		// specified and not equal ALIGN_NONE
 		// and alignmentPeriod must be
 		// specified; otherwise, an error is
-		// returned. Possible values: ["ALIGN_NONE", "ALIGN_DELTA",
-		// "ALIGN_RATE", "ALIGN_INTERPOLATE", "ALIGN_NEXT_OLDER",
-		// "ALIGN_MIN", "ALIGN_MAX", "ALIGN_MEAN", "ALIGN_COUNT",
-		// "ALIGN_SUM", "ALIGN_STDDEV", "ALIGN_COUNT_TRUE",
-		// "ALIGN_COUNT_FALSE", "ALIGN_FRACTION_TRUE",
-		// "ALIGN_PERCENTILE_99", "ALIGN_PERCENTILE_95",
-		// "ALIGN_PERCENTILE_50", "ALIGN_PERCENTILE_05",
-		// "ALIGN_PERCENT_CHANGE"]
+		// returned. Possible values: ["ALIGN_NONE", "ALIGN_DELTA", "ALIGN_RATE",
+		// "ALIGN_INTERPOLATE", "ALIGN_NEXT_OLDER", "ALIGN_MIN", "ALIGN_MAX",
+		// "ALIGN_MEAN", "ALIGN_COUNT", "ALIGN_SUM", "ALIGN_STDDEV",
+		// "ALIGN_COUNT_TRUE", "ALIGN_COUNT_FALSE", "ALIGN_FRACTION_TRUE",
+		// "ALIGN_PERCENTILE_99", "ALIGN_PERCENTILE_95", "ALIGN_PERCENTILE_50",
+		// "ALIGN_PERCENTILE_05", "ALIGN_PERCENT_CHANGE"]
 		per_series_aligner?: string
 	})
 
@@ -314,16 +282,12 @@ import "list"
 		// A logs-based filter.
 		filter!: string
 
-		// A map from a label key to an extractor expression, which is
-		// used to
+		// A map from a label key to an extractor expression, which is used to
 		// extract the value for this label key. Each entry in this map is
-		// a specification for how data should be extracted from log
-		// entries that
-		// match filter. Each combination of extracted values is treated
-		// as
+		// a specification for how data should be extracted from log entries that
+		// match filter. Each combination of extracted values is treated as
 		// a separate rule for the purposes of triggering notifications.
-		// Label keys and corresponding values can be used in
-		// notifications
+		// Label keys and corresponding values can be used in notifications
 		// generated by this condition.
 		label_extractors?: [string]: string
 	})
@@ -350,10 +314,8 @@ import "list"
 
 		// A condition control that determines how
 		// metric-threshold conditions are evaluated when
-		// data stops arriving. Possible values:
-		// ["EVALUATION_MISSING_DATA_INACTIVE",
-		// "EVALUATION_MISSING_DATA_ACTIVE",
-		// "EVALUATION_MISSING_DATA_NO_OP"]
+		// data stops arriving. Possible values: ["EVALUATION_MISSING_DATA_INACTIVE",
+		// "EVALUATION_MISSING_DATA_ACTIVE", "EVALUATION_MISSING_DATA_NO_OP"]
 		evaluation_missing_data?: string
 
 		// Monitoring Query Language query that outputs a boolean stream.
@@ -373,94 +335,64 @@ import "list"
 	})
 
 	_#defs: "/$defs/conditions/$defs/condition_prometheus_query_language": close({
-		// The alerting rule name of this alert in the corresponding
-		// Prometheus
+		// The alerting rule name of this alert in the corresponding Prometheus
 		// configuration file.
 		//
-		// Some external tools may require this field to be populated
-		// correctly
-		// in order to refer to the original Prometheus configuration
-		// file.
-		// The rule group name and the alert name are necessary to update
-		// the
-		// relevant AlertPolicies in case the definition of the rule group
-		// changes
+		// Some external tools may require this field to be populated correctly
+		// in order to refer to the original Prometheus configuration file.
+		// The rule group name and the alert name are necessary to update the
+		// relevant AlertPolicies in case the definition of the rule group changes
 		// in the future.
 		//
-		// This field is optional. If this field is not empty, then it
-		// must be a
+		// This field is optional. If this field is not empty, then it must be a
 		// valid Prometheus label name.
 		alert_rule?: string
 
-		// Whether to disable metric existence validation for this
-		// condition.
+		// Whether to disable metric existence validation for this condition.
 		//
-		// This allows alerting policies to be defined on metrics that do
-		// not yet
-		// exist, improving advanced customer workflows such as
-		// configuring
+		// This allows alerting policies to be defined on metrics that do not yet
+		// exist, improving advanced customer workflows such as configuring
 		// alerting policies using Terraform.
 		//
-		// Users with the 'monitoring.alertPolicyViewer' role are able to
-		// see the
-		// name of the non-existent metric in the alerting policy
-		// condition.
+		// Users with the 'monitoring.alertPolicyViewer' role are able to see the
+		// name of the non-existent metric in the alerting policy condition.
 		disable_metric_validation?: bool
 
-		// Alerts are considered firing once their PromQL expression
-		// evaluated
-		// to be "true" for this long. Alerts whose PromQL expression was
-		// not
-		// evaluated to be "true" for long enough are considered pending.
-		// The
+		// Alerts are considered firing once their PromQL expression evaluated
+		// to be "true" for this long. Alerts whose PromQL expression was not
+		// evaluated to be "true" for long enough are considered pending. The
 		// default value is zero. Must be zero or positive.
 		duration?: string
 
-		// How often this rule should be evaluated. Must be a positive
-		// multiple
-		// of 30 seconds or missing. The default value is 30 seconds. If
-		// this
-		// PrometheusQueryLanguageCondition was generated from a
-		// Prometheus
-		// alerting rule, then this value should be taken from the
-		// enclosing
+		// How often this rule should be evaluated. Must be a positive multiple
+		// of 30 seconds or missing. The default value is 30 seconds. If this
+		// PrometheusQueryLanguageCondition was generated from a Prometheus
+		// alerting rule, then this value should be taken from the enclosing
 		// rule group.
 		evaluation_interval?: string
 
-		// Labels to add to or overwrite in the PromQL query result. Label
-		// names
+		// Labels to add to or overwrite in the PromQL query result. Label names
 		// must be valid.
 		//
-		// Label values can be templatized by using variables. The only
-		// available
-		// variable names are the names of the labels in the PromQL
-		// result,
-		// although label names beginning with \_\_ (two "\_") are
-		// reserved for
-		// internal use. "labels" may be empty. This field is intended to
-		// be used
+		// Label values can be templatized by using variables. The only available
+		// variable names are the names of the labels in the PromQL result,
+		// although label names beginning with \_\_ (two "\_") are reserved for
+		// internal use. "labels" may be empty. This field is intended to be used
 		// for organizing and identifying the AlertPolicy.
 		labels?: [string]: string
 
 		// The PromQL expression to evaluate. Every evaluation cycle this
-		// expression is evaluated at the current time, and all resultant
-		// time
-		// series become pending/firing alerts. This field must not be
-		// empty.
+		// expression is evaluated at the current time, and all resultant time
+		// series become pending/firing alerts. This field must not be empty.
 		query!: string
 
-		// The rule group name of this alert in the corresponding
-		// Prometheus
+		// The rule group name of this alert in the corresponding Prometheus
 		// configuration file.
 		//
-		// Some external tools may require this field to be populated
-		// correctly
-		// in order to refer to the original Prometheus configuration
-		// file.
-		// The rule group name and the alert name are necessary to update
-		// the
-		// relevant AlertPolicies in case the definition of the rule group
-		// changes
+		// Some external tools may require this field to be populated correctly
+		// in order to refer to the original Prometheus configuration file.
+		// The rule group name and the alert name are necessary to update the
+		// relevant AlertPolicies in case the definition of the rule group changes
 		// in the future. This field is optional.
 		rule_group?: string
 	})
@@ -473,19 +405,15 @@ import "list"
 		row_count_test?: matchN(1, [_#defs."/$defs/conditions/$defs/condition_sql/$defs/row_count_test", list.MaxItems(1) & [..._#defs."/$defs/conditions/$defs/condition_sql/$defs/row_count_test"]])
 
 		// The Log Analytics SQL query to run, as a string. The query must
-		// conform to the required shape. Specifically, the query must not
-		// try to
-		// filter the input by time. A filter will automatically be
-		// applied
-		// to filter the input so that the query receives all rows
-		// received
+		// conform to the required shape. Specifically, the query must not try to
+		// filter the input by time. A filter will automatically be applied
+		// to filter the input so that the query receives all rows received
 		// since the last time the query was run.
 		query!: string
 	})
 
 	_#defs: "/$defs/conditions/$defs/condition_sql/$defs/boolean_test": close({
-		// The name of the column containing the boolean value. If the
-		// value in a row is
+		// The name of the column containing the boolean value. If the value in a row is
 		// NULL, that row is ignored.
 		column!: string
 	})
@@ -501,8 +429,7 @@ import "list"
 	_#defs: "/$defs/conditions/$defs/condition_sql/$defs/daily/$defs/execution_time": close({
 		// Hours of a day in 24 hour format. Must be greater than or equal
 		// to 0 and typically must be less than or equal to 23. An API may
-		// choose to allow the value "24:00:00" for scenarios like
-		// business
+		// choose to allow the value "24:00:00" for scenarios like business
 		// closing time.
 		hours?: number
 
@@ -515,29 +442,24 @@ import "list"
 		nanos?: number
 
 		// Seconds of a minute. Must be greater than or equal to 0 and
-		// typically must be less than or equal to 59. An API may allow
-		// the
+		// typically must be less than or equal to 59. An API may allow the
 		// value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
 	_#defs: "/$defs/conditions/$defs/condition_sql/$defs/hourly": close({
 		// The number of minutes after the hour (in UTC) to run the query.
-		// Must be greater than or equal to 0 minutes and less than or
-		// equal to
-		// 59 minutes. If left unspecified, then an arbitrary offset is
-		// used.
+		// Must be greater than or equal to 0 minutes and less than or equal to
+		// 59 minutes. If left unspecified, then an arbitrary offset is used.
 		minute_offset?: number
 
-		// Number of hours between runs. The interval must be greater than
-		// or
+		// Number of hours between runs. The interval must be greater than or
 		// equal to 1 hour and less than or equal to 48 hours.
 		periodicity!: number
 	})
 
 	_#defs: "/$defs/conditions/$defs/condition_sql/$defs/minutes": close({
-		// Number of minutes between runs. The interval must be greater
-		// than or
+		// Number of minutes between runs. The interval must be greater than or
 		// equal to 5 minutes and less than or equal to 1440 minutes.
 		periodicity!: number
 	})
@@ -557,9 +479,8 @@ import "list"
 		// imported state but will be rejected by the API.
 		// See
 		// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies#MetricThreshold.
-		// Possible values: ["COMPARISON_GT", "COMPARISON_GE",
-		// "COMPARISON_LT", "COMPARISON_LE", "COMPARISON_EQ",
-		// "COMPARISON_NE"]
+		// Possible values: ["COMPARISON_GT", "COMPARISON_GE", "COMPARISON_LT",
+		// "COMPARISON_LE", "COMPARISON_EQ", "COMPARISON_NE"]
 		comparison!: string
 
 		// The value against which to compare the row count.
@@ -585,9 +506,8 @@ import "list"
 		// compatibility with imported state but will be rejected
 		// by the API. See
 		// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies#MetricThreshold.
-		// Possible values: ["COMPARISON_GT", "COMPARISON_GE",
-		// "COMPARISON_LT", "COMPARISON_LE", "COMPARISON_EQ",
-		// "COMPARISON_NE"]
+		// Possible values: ["COMPARISON_GT", "COMPARISON_GE", "COMPARISON_LT",
+		// "COMPARISON_LE", "COMPARISON_EQ", "COMPARISON_NE"]
 		comparison!: string
 
 		// A filter that identifies a time series that
@@ -626,10 +546,8 @@ import "list"
 
 		// A condition control that determines how
 		// metric-threshold conditions are evaluated when
-		// data stops arriving. Possible values:
-		// ["EVALUATION_MISSING_DATA_INACTIVE",
-		// "EVALUATION_MISSING_DATA_ACTIVE",
-		// "EVALUATION_MISSING_DATA_NO_OP"]
+		// data stops arriving. Possible values: ["EVALUATION_MISSING_DATA_INACTIVE",
+		// "EVALUATION_MISSING_DATA_ACTIVE", "EVALUATION_MISSING_DATA_NO_OP"]
 		evaluation_missing_data?: string
 
 		// A filter that identifies which time series
@@ -684,11 +602,10 @@ import "list"
 		// specified and not equal ALIGN_NONE
 		// and alignmentPeriod must be
 		// specified; otherwise, an error is
-		// returned. Possible values: ["REDUCE_NONE", "REDUCE_MEAN",
-		// "REDUCE_MIN", "REDUCE_MAX", "REDUCE_SUM", "REDUCE_STDDEV",
-		// "REDUCE_COUNT", "REDUCE_COUNT_TRUE", "REDUCE_COUNT_FALSE",
-		// "REDUCE_FRACTION_TRUE", "REDUCE_PERCENTILE_99",
-		// "REDUCE_PERCENTILE_95", "REDUCE_PERCENTILE_50",
+		// returned. Possible values: ["REDUCE_NONE", "REDUCE_MEAN", "REDUCE_MIN",
+		// "REDUCE_MAX", "REDUCE_SUM", "REDUCE_STDDEV", "REDUCE_COUNT",
+		// "REDUCE_COUNT_TRUE", "REDUCE_COUNT_FALSE", "REDUCE_FRACTION_TRUE",
+		// "REDUCE_PERCENTILE_99", "REDUCE_PERCENTILE_95", "REDUCE_PERCENTILE_50",
 		// "REDUCE_PERCENTILE_05"]
 		cross_series_reducer?: string
 
@@ -735,14 +652,12 @@ import "list"
 		// specified and not equal ALIGN_NONE
 		// and alignmentPeriod must be
 		// specified; otherwise, an error is
-		// returned. Possible values: ["ALIGN_NONE", "ALIGN_DELTA",
-		// "ALIGN_RATE", "ALIGN_INTERPOLATE", "ALIGN_NEXT_OLDER",
-		// "ALIGN_MIN", "ALIGN_MAX", "ALIGN_MEAN", "ALIGN_COUNT",
-		// "ALIGN_SUM", "ALIGN_STDDEV", "ALIGN_COUNT_TRUE",
-		// "ALIGN_COUNT_FALSE", "ALIGN_FRACTION_TRUE",
-		// "ALIGN_PERCENTILE_99", "ALIGN_PERCENTILE_95",
-		// "ALIGN_PERCENTILE_50", "ALIGN_PERCENTILE_05",
-		// "ALIGN_PERCENT_CHANGE"]
+		// returned. Possible values: ["ALIGN_NONE", "ALIGN_DELTA", "ALIGN_RATE",
+		// "ALIGN_INTERPOLATE", "ALIGN_NEXT_OLDER", "ALIGN_MIN", "ALIGN_MAX",
+		// "ALIGN_MEAN", "ALIGN_COUNT", "ALIGN_SUM", "ALIGN_STDDEV",
+		// "ALIGN_COUNT_TRUE", "ALIGN_COUNT_FALSE", "ALIGN_FRACTION_TRUE",
+		// "ALIGN_PERCENTILE_99", "ALIGN_PERCENTILE_95", "ALIGN_PERCENTILE_50",
+		// "ALIGN_PERCENTILE_05", "ALIGN_PERCENT_CHANGE"]
 		per_series_aligner?: string
 	})
 
@@ -779,11 +694,10 @@ import "list"
 		// specified and not equal ALIGN_NONE
 		// and alignmentPeriod must be
 		// specified; otherwise, an error is
-		// returned. Possible values: ["REDUCE_NONE", "REDUCE_MEAN",
-		// "REDUCE_MIN", "REDUCE_MAX", "REDUCE_SUM", "REDUCE_STDDEV",
-		// "REDUCE_COUNT", "REDUCE_COUNT_TRUE", "REDUCE_COUNT_FALSE",
-		// "REDUCE_FRACTION_TRUE", "REDUCE_PERCENTILE_99",
-		// "REDUCE_PERCENTILE_95", "REDUCE_PERCENTILE_50",
+		// returned. Possible values: ["REDUCE_NONE", "REDUCE_MEAN", "REDUCE_MIN",
+		// "REDUCE_MAX", "REDUCE_SUM", "REDUCE_STDDEV", "REDUCE_COUNT",
+		// "REDUCE_COUNT_TRUE", "REDUCE_COUNT_FALSE", "REDUCE_FRACTION_TRUE",
+		// "REDUCE_PERCENTILE_99", "REDUCE_PERCENTILE_95", "REDUCE_PERCENTILE_50",
 		// "REDUCE_PERCENTILE_05"]
 		cross_series_reducer?: string
 
@@ -830,14 +744,12 @@ import "list"
 		// specified and not equal ALIGN_NONE
 		// and alignmentPeriod must be
 		// specified; otherwise, an error is
-		// returned. Possible values: ["ALIGN_NONE", "ALIGN_DELTA",
-		// "ALIGN_RATE", "ALIGN_INTERPOLATE", "ALIGN_NEXT_OLDER",
-		// "ALIGN_MIN", "ALIGN_MAX", "ALIGN_MEAN", "ALIGN_COUNT",
-		// "ALIGN_SUM", "ALIGN_STDDEV", "ALIGN_COUNT_TRUE",
-		// "ALIGN_COUNT_FALSE", "ALIGN_FRACTION_TRUE",
-		// "ALIGN_PERCENTILE_99", "ALIGN_PERCENTILE_95",
-		// "ALIGN_PERCENTILE_50", "ALIGN_PERCENTILE_05",
-		// "ALIGN_PERCENT_CHANGE"]
+		// returned. Possible values: ["ALIGN_NONE", "ALIGN_DELTA", "ALIGN_RATE",
+		// "ALIGN_INTERPOLATE", "ALIGN_NEXT_OLDER", "ALIGN_MIN", "ALIGN_MAX",
+		// "ALIGN_MEAN", "ALIGN_COUNT", "ALIGN_SUM", "ALIGN_STDDEV",
+		// "ALIGN_COUNT_TRUE", "ALIGN_COUNT_FALSE", "ALIGN_FRACTION_TRUE",
+		// "ALIGN_PERCENTILE_99", "ALIGN_PERCENTILE_95", "ALIGN_PERCENTILE_50",
+		// "ALIGN_PERCENTILE_05", "ALIGN_PERCENT_CHANGE"]
 		per_series_aligner?: string
 	})
 
@@ -864,14 +776,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/documentation/$defs/links": close({
-		// A short display name for the link. The display name must not be
-		// empty or exceed 63 characters. Example: "playbook".
+		// A short display name for the link. The display name must not be empty or
+		// exceed 63 characters. Example: "playbook".
 		display_name?: string
 
-		// The url of a webpage. A url can be templatized by using
-		// variables in the path or the query parameters. The total
-		// length of a URL should not exceed 2083 characters before and
-		// after variable expansion. Example:
+		// The url of a webpage. A url can be templatized by using variables in the path
+		// or the query parameters. The total length of a URL should not exceed 2083
+		// characters before and after variable expansion. Example:
 		// "https://my_domain.com/playbook?name=${resource.name}".
 		url?: string
 	})

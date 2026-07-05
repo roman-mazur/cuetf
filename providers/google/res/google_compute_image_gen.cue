@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_compute_image: {
+google_compute_image: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_image")
 	close({
@@ -16,90 +16,71 @@ import "list"
 		source_snapshot_encryption_key?: matchN(1, [#source_snapshot_encryption_key, list.MaxItems(1) & [...#source_snapshot_encryption_key]])
 		timeouts?: #timeouts
 
-		// Size of the image tar.gz archive stored in Google Cloud Storage
-		// (in
+		// Size of the image tar.gz archive stored in Google Cloud Storage (in
 		// bytes).
 		archive_size_bytes?: number
 
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// An optional description of this resource. Provide this property
-		// when
+		// An optional description of this resource. Provide this property when
 		// you create the resource.
 		description?: string
 
 		// Size of the image when restored onto a persistent disk (in GB).
 		disk_size_gb?: number
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// The name of the image family to which this image belongs. You
-		// can
-		// create disks by specifying an image family instead of a
-		// specific
-		// image name. The image family always returns its latest image
-		// that is
+		// The name of the image family to which this image belongs. You can
+		// create disks by specifying an image family instead of a specific
+		// image name. The image family always returns its latest image that is
 		// not deprecated. The name of the image family must comply with
 		// RFC1035.
 		family?: string
 		id?:     string
 
-		// The fingerprint used for optimistic locking of this resource.
-		// Used
+		// The fingerprint used for optimistic locking of this resource. Used
 		// internally during updates.
 		label_fingerprint?: string
 
 		// Labels to apply to this Image.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Any applicable license URI.
 		licenses?: [...string]
 
-		// Name of the resource; provided by the client when the resource
-		// is
+		// Name of the resource; provided by the client when the resource is
 		// created. The name must be 1-63 characters long, and comply with
-		// RFC1035. Specifically, the name must be 1-63 characters long
-		// and
-		// match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which
-		// means
-		// the first character must be a lowercase letter, and all
-		// following
-		// characters must be a dash, lowercase letter, or digit, except
-		// the
+		// RFC1035. Specifically, the name must be 1-63 characters long and
+		// match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means
+		// the first character must be a lowercase letter, and all following
+		// characters must be a dash, lowercase letter, or digit, except the
 		// last character, which cannot be a dash.
-		name!:      string
-		project?:   string
-		self_link?: string
+		name!: string
 
 		// The source disk to create this image based on.
 		// You must provide either this property or the
 		// rawDisk.source property but not both to create an image.
 		source_disk?: string
+		project?:     string
 
-		// URL of the source image used to create this image. In order to
-		// create an image, you must provide the full or partial
+		// URL of the source image used to create this image. In order to create an
+		// image, you must provide the full or partial
 		// URL of one of the following:
 		//
 		// * The selfLink URL
@@ -107,11 +88,11 @@ import "list"
 		// * The rawDisk.source URL
 		// * The sourceDisk URL
 		source_image?: string
+		self_link?:    string
 
 		// URL of the source snapshot used to create this image.
 		//
-		// In order to create an image, you must provide the full or
-		// partial URL of one of the following:
+		// In order to create an image, you must provide the full or partial URL of one of the following:
 		//
 		// * The selfLink URL
 		// * This property
@@ -122,8 +103,7 @@ import "list"
 
 		// Cloud Storage bucket storage location of the image
 		// (regional or multi-regional).
-		// Reference link:
-		// https://cloud.google.com/compute/docs/reference/rest/v1/images
+		// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
 		storage_locations?: [...string]
 
 		// The combination of labels configured directly on the resource
@@ -132,56 +112,44 @@ import "list"
 	})
 
 	#guest_os_features: close({
-		// The type of supported feature. Read [Enabling guest operating
-		// system
+		// The type of supported feature. Read [Enabling guest operating system
 		// features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features)
-		// to see a list of available options. Possible values:
-		// ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE",
-		// "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS",
-		// "GVNIC", "IDPF", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE",
-		// "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE",
-		// "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE"]
+		// to see a list of available options. Possible values: ["MULTI_IP_SUBNET",
+		// "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE",
+		// "WINDOWS", "GVNIC", "IDPF", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE",
+		// "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2",
+		// "SNP_SVSM_CAPABLE"]
 		type!: string
 	})
 
 	#image_encryption_key: close({
-		// The self link of the encryption key that is stored in Google
-		// Cloud
+		// The self link of the encryption key that is stored in Google Cloud
 		// KMS.
 		kms_key_self_link?: string
 
-		// The service account being used for the encryption request for
-		// the
+		// The service account being used for the encryption request for the
 		// given KMS key. If absent, the Compute Engine default service
 		// account is used.
 		kms_key_service_account?: string
 
-		// Specifies a 256-bit customer-supplied encryption key, encoded
-		// in
+		// Specifies a 256-bit customer-supplied encryption key, encoded in
 		// RFC 4648 base64 to either encrypt or decrypt this resource.
 		raw_key?: string
 
-		// Specifies a 256-bit customer-supplied encryption key, encoded
-		// in
+		// Specifies a 256-bit customer-supplied encryption key, encoded in
 		// RFC 4648 base64 to either encrypt or decrypt this resource.
 		rsa_encrypted_key?: string
 	})
 
 	#params: close({
-		// Resource manager tags to be bound to the image. Tag keys and
-		// values have the
-		// same definition as resource manager tags. Keys and values can
-		// be either in numeric format,
-		// such as tagKeys/{tag_key_id} and tagValues/{tag_value_id} or in
-		// namespaced format such as
-		// {org_id|projectId}/{tag_key_short_name} and
-		// {tag_value_short_name}. The field is ignored when empty.
-		// The field is immutable and causes resource replacement when
-		// mutated. This field is only
-		// set at create time and modifying this field after creation will
-		// trigger recreation.
-		// To apply tags to an existing resource, see the
-		// google_tags_tag_binding resource.
+		// Resource manager tags to be bound to the image. Tag keys and values have the
+		// same definition as resource manager tags. Keys and values can be either in numeric format,
+		// such as tagKeys/{tag_key_id} and tagValues/{tag_value_id} or in namespaced format such as
+		// {org_id|projectId}/{tag_key_short_name} and {tag_value_short_name}. The field
+		// is ignored when empty.
+		// The field is immutable and causes resource replacement when mutated. This field is only
+		// set at create time and modifying this field after creation will trigger recreation.
+		// To apply tags to an existing resource, see the google_tags_tag_binding resource.
 		resource_manager_tags?: [string]: string
 	})
 
@@ -197,8 +165,7 @@ import "list"
 		sha1?: string
 
 		// The full Google Cloud Storage URL where disk storage is stored
-		// You must provide either this property or the sourceDisk
-		// property
+		// You must provide either this property or the sourceDisk property
 		// but not both.
 		source!: string
 	})
@@ -211,95 +178,74 @@ import "list"
 	})
 
 	#source_disk_encryption_key: close({
-		// The self link of the encryption key used to decrypt this
-		// resource. Also called KmsKeyName
-		// in the cloud console. Your project's Compute Engine System
-		// service account
-		// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com')
-		// must have
-		// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this
-		// feature.
+		// The self link of the encryption key used to decrypt this resource. Also called KmsKeyName
+		// in the cloud console. Your project's Compute Engine System service account
+		// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+		// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
 		// See
 		// https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
 		kms_key_self_link?: string
 
-		// The service account being used for the encryption request for
-		// the
+		// The service account being used for the encryption request for the
 		// given KMS key. If absent, the Compute Engine default service
 		// account is used.
 		kms_key_service_account?: string
 
-		// Specifies a 256-bit customer-supplied encryption key, encoded
-		// in
+		// Specifies a 256-bit customer-supplied encryption key, encoded in
 		// RFC 4648 base64 to either encrypt or decrypt this resource.
 		raw_key?: string
 
 		// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
 		// customer-supplied encryption key to either encrypt or decrypt
-		// this resource. You can provide either the rawKey or the
-		// rsaEncryptedKey.
+		// this resource. You can provide either the rawKey or the rsaEncryptedKey.
 		rsa_encrypted_key?: string
 	})
 
 	#source_image_encryption_key: close({
-		// The self link of the encryption key used to decrypt this
-		// resource. Also called KmsKeyName
-		// in the cloud console. Your project's Compute Engine System
-		// service account
-		// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com')
-		// must have
-		// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this
-		// feature.
+		// The self link of the encryption key used to decrypt this resource. Also called KmsKeyName
+		// in the cloud console. Your project's Compute Engine System service account
+		// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+		// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
 		// See
 		// https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
 		kms_key_self_link?: string
 
-		// The service account being used for the encryption request for
-		// the
+		// The service account being used for the encryption request for the
 		// given KMS key. If absent, the Compute Engine default service
 		// account is used.
 		kms_key_service_account?: string
 
-		// Specifies a 256-bit customer-supplied encryption key, encoded
-		// in
+		// Specifies a 256-bit customer-supplied encryption key, encoded in
 		// RFC 4648 base64 to either encrypt or decrypt this resource.
 		raw_key?: string
 
 		// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
 		// customer-supplied encryption key to either encrypt or decrypt
-		// this resource. You can provide either the rawKey or the
-		// rsaEncryptedKey.
+		// this resource. You can provide either the rawKey or the rsaEncryptedKey.
 		rsa_encrypted_key?: string
 	})
 
 	#source_snapshot_encryption_key: close({
-		// The self link of the encryption key used to decrypt this
-		// resource. Also called KmsKeyName
-		// in the cloud console. Your project's Compute Engine System
-		// service account
-		// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com')
-		// must have
-		// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this
-		// feature.
+		// The self link of the encryption key used to decrypt this resource. Also called KmsKeyName
+		// in the cloud console. Your project's Compute Engine System service account
+		// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+		// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
 		// See
 		// https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
 		kms_key_self_link?: string
 
-		// The service account being used for the encryption request for
-		// the
+		// The service account being used for the encryption request for the
 		// given KMS key. If absent, the Compute Engine default service
 		// account is used.
 		kms_key_service_account?: string
 
-		// Specifies a 256-bit customer-supplied encryption key, encoded
-		// in
+		// Specifies a 256-bit customer-supplied encryption key, encoded in
 		// RFC 4648 base64 to either encrypt or decrypt this resource.
 		raw_key?: string
 
 		// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
 		// customer-supplied encryption key to either encrypt or decrypt
-		// this resource. You can provide either the rawKey or the
-		// rsaEncryptedKey.
+		// this resource. You can provide either the rawKey or the rsaEncryptedKey.
 		rsa_encrypted_key?: string
 	})
 

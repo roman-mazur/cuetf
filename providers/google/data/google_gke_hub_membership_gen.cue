@@ -1,37 +1,30 @@
 package data
 
-#google_gke_hub_membership: {
+google_gke_hub_membership: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_gke_hub_membership")
 	close({
-		// Authority encodes how Google will recognize identities from
-		// this Membership.
+		// Authority encodes how Google will recognize identities from this Membership.
 		// See the workload identity documentation for more details:
 		// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 		authority?: [...close({
 			issuer?: string
 		})]
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// If this Membership is a Kubernetes API server hosted on GKE,
-		// this is a self link to its GCP resource.
+		// If this Membership is a Kubernetes API server hosted on GKE, this is a self
+		// link to its GCP resource.
 		endpoint?: [...close({
 			gke_cluster?: [...close({
 				resource_link?: string
@@ -42,10 +35,9 @@ package data
 		// Labels to apply to this membership.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Location of the membership.

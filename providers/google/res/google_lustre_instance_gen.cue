@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_lustre_instance: {
+google_lustre_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_lustre_instance")
 	close({
@@ -11,49 +11,37 @@ import "list"
 		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
 		timeouts?: #timeouts
 
-		// The storage capacity of the instance in gibibytes (GiB).
-		// Allowed values
-		// are from '9000' to '7632000', depending on the
-		// 'perUnitStorageThroughput'.
+		// The storage capacity of the instance in gibibytes (GiB). Allowed values
+		// are from '9000' to '7632000', depending on the 'perUnitStorageThroughput'.
 		// See [Performance tiers and maximum storage
 		// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
-		// for specific minimums, maximums, and step sizes for each
-		// performance tier.
+		// for specific minimums, maximums, and step sizes for each performance tier.
 		capacity_gib!: string
 
 		// Timestamp when the instance was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// A user-readable description of the instance.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// The filesystem name for this instance. This name is used by
-		// client-side
-		// tools, including when mounting the instance. Must be eight
-		// characters or
+		// The filesystem name for this instance. This name is used by client-side
+		// tools, including when mounting the instance. Must be eight characters or
 		// less and can only contain letters and numbers.
 		filesystem!: string
 
-		// Indicates whether you want to enable support for GKE clients.
-		// By default,
+		// Indicates whether you want to enable support for GKE clients. By default,
 		// GKE clients are not supported.
 		gke_support_enabled?: bool
 		id?:                  string
@@ -67,8 +55,7 @@ import "list"
 		instance_id!: string
 
 		// The Cloud KMS key name to use for data encryption.
-		// If not set, the instance will use Google-managed encryption
-		// keys.
+		// If not set, the instance will use Google-managed encryption keys.
 		// If set, the instance will use customer-managed encryption keys.
 		// The key must be in the same region as the instance.
 		// The key format is:
@@ -77,46 +64,39 @@ import "list"
 
 		// Labels as key value pairs.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
-		// Mount point of the instance in the format
-		// 'IP_ADDRESS@tcp:/FILESYSTEM'.
+		// Mount point of the instance in the format 'IP_ADDRESS@tcp:/FILESYSTEM'.
 		mount_point?: string
 
 		// Identifier. The name of the instance.
 		name?: string
 
-		// The full name of the VPC network to which the instance is
-		// connected.
+		// The full name of the VPC network to which the instance is connected.
 		// Must be in the format
 		// 'projects/{project_id}/global/networks/{network_name}'.
 		network!: string
 
-		// The throughput of the instance in MBps per TiB. Valid values
-		// are 125, 250,
+		// The throughput of the instance in MBps per TiB. Valid values are 125, 250,
 		// 500, 1000.
 		// See [Performance tiers and maximum storage
 		// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
 		// for more information.
 		//
-		// If the instance is using the Dynamic tier, this field must not
-		// be set or
+		// If the instance is using the Dynamic tier, this field must not be set or
 		// must be set to zero.
 		per_unit_storage_throughput?: string
 
 		// The placement policy name for the instance in the format of
 		// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
 		placement_policy?: string
-		project?:          string
 
 		// The state of the instance.
 		// Possible values:
@@ -128,10 +108,10 @@ import "list"
 		// STOPPED
 		// UPDATING
 		// SUSPENDED
-		state?: string
+		state?:   string
+		project?: string
 
-		// The reason why the instance is in a certain state (e.g.
-		// SUSPENDED).
+		// The reason why the instance is in a certain state (e.g. SUSPENDED).
 		state_reason?: string
 
 		// The combination of labels configured directly on the resource
@@ -139,8 +119,7 @@ import "list"
 		terraform_labels?: [string]: string
 
 		// Unique ID of the resource.
-		// This is unrelated to the access rules which allow specifying
-		// the root
+		// This is unrelated to the access rules which allow specifying the root
 		// squash uid.
 		uid?: string
 
@@ -158,10 +137,8 @@ import "list"
 		access_rules?: matchN(1, [_#defs."/$defs/access_rules_options/$defs/access_rules", [..._#defs."/$defs/access_rules_options/$defs/access_rules"]])
 
 		// The user squash GID for the default access rule.
-		// This user squash GID applies to all root users connecting from
-		// clients
-		// that are not matched by any of the access rules. If not set,
-		// the default
+		// This user squash GID applies to all root users connecting from clients
+		// that are not matched by any of the access rules. If not set, the default
 		// is 0 (no GID squash).
 		default_squash_gid?: number
 
@@ -172,10 +149,8 @@ import "list"
 		default_squash_mode!: string
 
 		// The user squash UID for the default access rule.
-		// This user squash UID applies to all root users connecting from
-		// clients
-		// that are not matched by any of the access rules. If not set,
-		// the default
+		// This user squash UID applies to all root users connecting from clients
+		// that are not matched by any of the access rules. If not set, the default
 		// is 0 (no UID squash).
 		default_squash_uid?: number
 	})
@@ -200,16 +175,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/access_rules_options/$defs/access_rules": close({
-		// The IP address ranges to which to apply this access rule.
-		// Accepts
-		// non-overlapping CIDR ranges (e.g., '192.168.1.0/24') and IP
-		// addresses
+		// The IP address ranges to which to apply this access rule. Accepts
+		// non-overlapping CIDR ranges (e.g., '192.168.1.0/24') and IP addresses
 		// (e.g., '192.168.1.0').
 		ip_address_ranges!: [...string]
 
 		// The name of the access rule policy group.
-		// Must be 16 characters or less and include only alphanumeric
-		// characters
+		// Must be 16 characters or less and include only alphanumeric characters
 		// or '_'.
 		name!: string
 
@@ -227,65 +199,51 @@ import "list"
 	})
 
 	_#defs: "/$defs/maintenance_policy/$defs/maintenance_exclusion_window/$defs/end_date": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0
-		// to specify a year by itself or a year and month where the day
-		// isn't
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
 		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
 		// month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
 		// a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/maintenance_policy/$defs/maintenance_exclusion_window/$defs/start_date": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0
-		// to specify a year by itself or a year and month where the day
-		// isn't
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
 		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
 		// month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
 		// a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/maintenance_policy/$defs/maintenance_exclusion_window/$defs/time": close({
-		// Hours of a day in 24 hour format. Must be greater than or equal
-		// to 0 and
-		// typically must be less than or equal to 23. An API may choose
-		// to allow the
+		// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+		// typically must be less than or equal to 23. An API may choose to allow the
 		// value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
-		// Minutes of an hour. Must be greater than or equal to 0 and less
-		// than or
+		// Minutes of an hour. Must be greater than or equal to 0 and less than or
 		// equal to 59.
 		minutes?: number
 
-		// Fractions of seconds, in nanoseconds. Must be greater than or
-		// equal to 0
+		// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
 		// and less than or equal to 999,999,999.
 		nanos?: number
 
-		// Seconds of a minute. Must be greater than or equal to 0 and
-		// typically must
-		// be less than or equal to 59. An API may allow the value 60 if
-		// it allows
+		// Seconds of a minute. Must be greater than or equal to 0 and typically must
+		// be less than or equal to 59. An API may allow the value 60 if it allows
 		// leap-seconds.
 		seconds?: number
 	})
@@ -305,27 +263,21 @@ import "list"
 	})
 
 	_#defs: "/$defs/maintenance_policy/$defs/weekly_maintenance_windows/$defs/start_time": close({
-		// Hours of a day in 24 hour format. Must be greater than or equal
-		// to 0 and
-		// typically must be less than or equal to 23. An API may choose
-		// to allow the
+		// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+		// typically must be less than or equal to 23. An API may choose to allow the
 		// value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
-		// Minutes of an hour. Must be greater than or equal to 0 and less
-		// than or
+		// Minutes of an hour. Must be greater than or equal to 0 and less than or
 		// equal to 59.
 		minutes?: number
 
-		// Fractions of seconds, in nanoseconds. Must be greater than or
-		// equal to 0
+		// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
 		// and less than or equal to 999,999,999.
 		nanos?: number
 
-		// Seconds of a minute. Must be greater than or equal to 0 and
-		// typically must
-		// be less than or equal to 59. An API may allow the value 60 if
-		// it allows
+		// Seconds of a minute. Must be greater than or equal to 0 and typically must
+		// be less than or equal to 59. An API may allow the value 60 if it allows
 		// leap-seconds.
 		seconds?: number
 	})

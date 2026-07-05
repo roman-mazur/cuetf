@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_dataplex_task: {
+google_dataplex_task: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_task")
 	close({
@@ -15,16 +15,11 @@ import "list"
 		// The time when the task was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -34,9 +29,8 @@ import "list"
 		// User friendly display name.
 		display_name?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// Configuration for the cluster
@@ -59,10 +53,9 @@ import "list"
 		// User-defined labels for the task.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The lake in which the task will be created in.
@@ -74,11 +67,11 @@ import "list"
 		// The relative resource name of the task, of the form:
 		// projects/{project_number}/locations/{locationId}/lakes/{lakeId}/
 		// tasks/{name}.
-		name?:    string
-		project?: string
+		name?: string
 
 		// Current state of the task.
-		state?: string
+		state?:   string
+		project?: string
 
 		// The task Id of the task.
 		task_id?: string
@@ -87,9 +80,8 @@ import "list"
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// System generated globally unique ID for the task. This ID will
-		// be different if the task is deleted and re-created with the
-		// same name.
+		// System generated globally unique ID for the task. This ID will be different
+		// if the task is deleted and re-created with the same name.
 		uid?: string
 
 		// The time when the task was last updated.
@@ -97,95 +89,85 @@ import "list"
 	})
 
 	#execution_spec: close({
-		// The arguments to pass to the task. The args can use
-		// placeholders of the format ${placeholder} as part of key/value
-		// string. These will be interpolated before passing the args to
-		// the driver. Currently supported placeholders: - ${taskId} -
-		// ${job_time} To pass positional args, set the key as TASK_ARGS.
-		// The value should be a comma-separated string of all the
-		// positional arguments. To use a delimiter other than comma,
-		// refer to
-		// https://cloud.google.com/sdk/gcloud/reference/topic/escaping.
-		// In case of other keys being present in the args, then
-		// TASK_ARGS will be passed as the last argument. An object
-		// containing a list of 'key': value pairs. Example: { 'name':
-		// 'wrench', 'mass': '1.3kg', 'count': '3' }.
+		// The arguments to pass to the task. The args can use placeholders of the
+		// format ${placeholder} as part of key/value string. These will be
+		// interpolated before passing the args to the driver. Currently supported
+		// placeholders: - ${taskId} - ${job_time} To pass positional args, set the key
+		// as TASK_ARGS. The value should be a comma-separated string of all the
+		// positional arguments. To use a delimiter other than comma, refer to
+		// https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of
+		// other keys being present in the args, then TASK_ARGS will be passed as the
+		// last argument. An object containing a list of 'key': value pairs. Example: {
+		// 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
 		args?: [string]: string
 
 		// The Cloud KMS key to use for encryption, of the form:
 		// projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
 		kms_key?: string
 
-		// The maximum duration after which the job execution is expired.
-		// A duration in seconds with up to nine fractional digits,
-		// ending with 's'. Example: '3.5s'.
+		// The maximum duration after which the job execution is expired. A duration in
+		// seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
 		max_job_execution_lifetime?: string
 
-		// The project in which jobs are run. By default, the project
-		// containing the Lake is used. If a project is provided, the
-		// ExecutionSpec.service_account must belong to this project.
+		// The project in which jobs are run. By default, the project containing the
+		// Lake is used. If a project is provided, the ExecutionSpec.service_account
+		// must belong to this project.
 		project?: string
 
-		// Service account to use to execute a task. If not provided, the
-		// default Compute service account for the project is used.
+		// Service account to use to execute a task. If not provided, the default
+		// Compute service account for the project is used.
 		service_account!: string
 	})
 
 	#notebook: close({
 		infrastructure_spec?: matchN(1, [_#defs."/$defs/notebook/$defs/infrastructure_spec", list.MaxItems(1) & [..._#defs."/$defs/notebook/$defs/infrastructure_spec"]])
 
-		// Cloud Storage URIs of archives to be extracted into the working
-		// directory of each executor. Supported file types: .jar, .tar,
-		// .tar.gz, .tgz, and .zip.
+		// Cloud Storage URIs of archives to be extracted into the working directory of
+		// each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 		archive_uris?: [...string]
 
-		// Cloud Storage URIs of files to be placed in the working
-		// directory of each executor.
+		// Cloud Storage URIs of files to be placed in the working directory of each executor.
 		file_uris?: [...string]
 
-		// Path to input notebook. This can be the Cloud Storage URI of
-		// the notebook file or the path to a Notebook Content. The
-		// execution args are accessible as environment variables
-		// (TASK_key=value).
+		// Path to input notebook. This can be the Cloud Storage URI of the notebook
+		// file or the path to a Notebook Content. The execution args are accessible as
+		// environment variables (TASK_key=value).
 		notebook!: string
 	})
 
 	#spark: close({
 		infrastructure_spec?: matchN(1, [_#defs."/$defs/spark/$defs/infrastructure_spec", list.MaxItems(1) & [..._#defs."/$defs/spark/$defs/infrastructure_spec"]])
 
-		// Cloud Storage URIs of archives to be extracted into the working
-		// directory of each executor. Supported file types: .jar, .tar,
-		// .tar.gz, .tgz, and .zip.
+		// Cloud Storage URIs of archives to be extracted into the working directory of
+		// each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 		archive_uris?: [...string]
 
-		// Cloud Storage URIs of files to be placed in the working
-		// directory of each executor.
+		// Cloud Storage URIs of files to be placed in the working directory of each executor.
 		file_uris?: [...string]
 
-		// The name of the driver's main class. The jar file that contains
-		// the class must be in the default CLASSPATH or specified in
-		// jar_file_uris. The execution args are passed in as a sequence
-		// of named process arguments (--key=value).
+		// The name of the driver's main class. The jar file that contains the class
+		// must be in the default CLASSPATH or specified in jar_file_uris. The
+		// execution args are passed in as a sequence of named process arguments
+		// (--key=value).
 		main_class?: string
 
-		// The Cloud Storage URI of the jar file that contains the main
-		// class. The execution args are passed in as a sequence of named
-		// process arguments (--key=value).
+		// The Cloud Storage URI of the jar file that contains the main class. The
+		// execution args are passed in as a sequence of named process arguments
+		// (--key=value).
 		main_jar_file_uri?: string
 
-		// The Gcloud Storage URI of the main Python file to use as the
-		// driver. Must be a .py file. The execution args are passed in
-		// as a sequence of named process arguments (--key=value).
+		// The Gcloud Storage URI of the main Python file to use as the driver. Must be
+		// a .py file. The execution args are passed in as a sequence of named process
+		// arguments (--key=value).
 		python_script_file?: string
 
-		// The query text. The execution args are used to declare a set of
-		// script variables (set key='value';).
+		// The query text. The execution args are used to declare a set of script
+		// variables (set key='value';).
 		sql_script?: string
 
-		// A reference to a query file. This can be the Cloud Storage URI
-		// of the query file or it can the path to a SqlScript Content.
-		// The execution args are used to declare a set of script
-		// variables (set key='value';).
+		// A reference to a query file. This can be the Cloud Storage URI of the query
+		// file or it can the path to a SqlScript Content. The execution args are used
+		// to declare a set of script variables (set key='value';).
 		sql_script_file?: string
 	})
 
@@ -196,32 +178,27 @@ import "list"
 	})
 
 	#trigger_spec: close({
-		// Prevent the task from executing. This does not cancel already
-		// running tasks. It is intended to temporarily disable RECURRING
-		// tasks.
+		// Prevent the task from executing. This does not cancel already running tasks.
+		// It is intended to temporarily disable RECURRING tasks.
 		disabled?: bool
 
-		// Number of retry attempts before aborting. Set to zero to never
-		// attempt to retry a failed task.
+		// Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
 		max_retries?: number
 
-		// Cron schedule (https://en.wikipedia.org/wiki/Cron) for running
-		// tasks periodically. To explicitly set a timezone to the cron
-		// tab, apply a prefix in the cron tab:
-		// 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The
-		// ${IANA_TIME_ZONE} may only be a valid string from IANA time
-		// zone database. For example, CRON_TZ=America/New_York 1 * * *
-		// *, or TZ=America/New_York 1 * * * *. This field is required
-		// for RECURRING tasks.
+		// Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks
+		// periodically. To explicitly set a timezone to the cron tab, apply a prefix
+		// in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The
+		// ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database.
+		// For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 *
+		// * * *. This field is required for RECURRING tasks.
 		schedule?: string
 
-		// The first run of the task will be after this time. If not
-		// specified, the task will run shortly after being submitted if
-		// ON_DEMAND and based on the schedule if RECURRING.
+		// The first run of the task will be after this time. If not specified, the task
+		// will run shortly after being submitted if ON_DEMAND and based on the
+		// schedule if RECURRING.
 		start_time?: string
 
-		// Trigger type of the user-specified Task Possible values:
-		// ["ON_DEMAND", "RECURRING"]
+		// Trigger type of the user-specified Task Possible values: ["ON_DEMAND", "RECURRING"]
 		type!: string
 	})
 
@@ -232,13 +209,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/notebook/$defs/infrastructure_spec/$defs/batch": close({
-		// Total number of job executors. Executor Count should be between
-		// 2 and 100. [Default=2]
+		// Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
 		executors_count?: number
 
-		// Max configurable executors. If maxExecutorsCount >
-		// executorsCount, then auto-scaling is enabled. Max Executor
-		// Count should be between 2 and 1000. [Default=1000]
+		// Max configurable executors. If maxExecutorsCount > executorsCount, then
+		// auto-scaling is enabled. Max Executor Count should be between 2 and 1000.
+		// [Default=1000]
 		max_executors_count?: number
 	})
 
@@ -246,27 +222,26 @@ import "list"
 		// Container image to use.
 		image?: string
 
-		// A list of Java JARS to add to the classpath. Valid input
-		// includes Cloud Storage URIs to Jar binaries. For example,
+		// A list of Java JARS to add to the classpath. Valid input includes Cloud
+		// Storage URIs to Jar binaries. For example,
 		// gs://bucket-name/my/path/to/file.jar
 		java_jars?: [...string]
 
-		// Override to common configuration of open source components
-		// installed on the Dataproc cluster. The properties to set on
-		// daemon config files. Property keys are specified in
-		// prefix:property format, for example core:hadoop.tmp.dir. For
-		// more information, see Cluster properties.
+		// Override to common configuration of open source components installed on the
+		// Dataproc cluster. The properties to set on daemon config files. Property
+		// keys are specified in prefix:property format, for example
+		// core:hadoop.tmp.dir. For more information, see Cluster properties.
 		properties?: [string]: string
 
-		// A list of python packages to be installed. Valid formats
-		// include Cloud Storage URI to a PIP installable library. For
-		// example, gs://bucket-name/my/path/to/lib.tar.gz
+		// A list of python packages to be installed. Valid formats include Cloud
+		// Storage URI to a PIP installable library. For example,
+		// gs://bucket-name/my/path/to/lib.tar.gz
 		python_packages?: [...string]
 	})
 
 	_#defs: "/$defs/notebook/$defs/infrastructure_spec/$defs/vpc_network": close({
-		// The Cloud VPC network in which the job is run. By default, the
-		// Cloud VPC network named Default within the project is used.
+		// The Cloud VPC network in which the job is run. By default, the Cloud VPC
+		// network named Default within the project is used.
 		network?: string
 
 		// List of network tags to apply to the job.
@@ -283,13 +258,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/spark/$defs/infrastructure_spec/$defs/batch": close({
-		// Total number of job executors. Executor Count should be between
-		// 2 and 100. [Default=2]
+		// Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
 		executors_count?: number
 
-		// Max configurable executors. If maxExecutorsCount >
-		// executorsCount, then auto-scaling is enabled. Max Executor
-		// Count should be between 2 and 1000. [Default=1000]
+		// Max configurable executors. If maxExecutorsCount > executorsCount, then
+		// auto-scaling is enabled. Max Executor Count should be between 2 and 1000.
+		// [Default=1000]
 		max_executors_count?: number
 	})
 
@@ -297,27 +271,26 @@ import "list"
 		// Container image to use.
 		image?: string
 
-		// A list of Java JARS to add to the classpath. Valid input
-		// includes Cloud Storage URIs to Jar binaries. For example,
+		// A list of Java JARS to add to the classpath. Valid input includes Cloud
+		// Storage URIs to Jar binaries. For example,
 		// gs://bucket-name/my/path/to/file.jar
 		java_jars?: [...string]
 
-		// Override to common configuration of open source components
-		// installed on the Dataproc cluster. The properties to set on
-		// daemon config files. Property keys are specified in
-		// prefix:property format, for example core:hadoop.tmp.dir. For
-		// more information, see Cluster properties.
+		// Override to common configuration of open source components installed on the
+		// Dataproc cluster. The properties to set on daemon config files. Property
+		// keys are specified in prefix:property format, for example
+		// core:hadoop.tmp.dir. For more information, see Cluster properties.
 		properties?: [string]: string
 
-		// A list of python packages to be installed. Valid formats
-		// include Cloud Storage URI to a PIP installable library. For
-		// example, gs://bucket-name/my/path/to/lib.tar.gz
+		// A list of python packages to be installed. Valid formats include Cloud
+		// Storage URI to a PIP installable library. For example,
+		// gs://bucket-name/my/path/to/lib.tar.gz
 		python_packages?: [...string]
 	})
 
 	_#defs: "/$defs/spark/$defs/infrastructure_spec/$defs/vpc_network": close({
-		// The Cloud VPC network in which the job is run. By default, the
-		// Cloud VPC network named Default within the project is used.
+		// The Cloud VPC network in which the job is run. By default, the Cloud VPC
+		// network named Default within the project is used.
 		network?: string
 
 		// List of network tags to apply to the job.

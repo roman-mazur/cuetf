@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_storage_transfer_job: {
+google_storage_transfer_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_transfer_job")
 	close({
@@ -16,16 +16,11 @@ import "list"
 		// When the Transfer Job was created.
 		creation_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -42,73 +37,62 @@ import "list"
 		// The name of the Transfer Job.
 		name?: string
 
-		// The project in which the resource belongs. If it is not
-		// provided, the provider project is used.
+		// The project in which the resource belongs. If it is not provided, the provider project is used.
 		project?: string
 
-		// The user-managed service account to run the job. If this field
-		// is specified, the given service account is granted the
-		// necessary permissions to all applicable resources (e.g. GCS
-		// buckets) required by the job.
+		// The user-managed service account to run the job. If this field is specified,
+		// the given service account is granted the necessary permissions to all
+		// applicable resources (e.g. GCS buckets) required by the job.
 		service_account?: string
 
-		// Status of the job. Default: ENABLED. NOTE: The effect of the
-		// new job status takes place during a subsequent job run. For
-		// example, if you change the job status from ENABLED to
-		// DISABLED, and an operation spawned by the transfer is running,
-		// the status change would not affect the current operation.
+		// Status of the job. Default: ENABLED. NOTE: The effect of the new job status
+		// takes place during a subsequent job run. For example, if you change the job
+		// status from ENABLED to DISABLED, and an operation spawned by the transfer is
+		// running, the status change would not affect the current operation.
 		status?: string
 	})
 
 	#event_stream: close({
-		// Specifies the data and time at which Storage Transfer Service
-		// stops listening for events from this stream. After this time,
-		// any transfers in progress will complete, but no new transfers
-		// are initiated
+		// Specifies the data and time at which Storage Transfer Service stops listening
+		// for events from this stream. After this time, any transfers in progress will
+		// complete, but no new transfers are initiated
 		event_stream_expiration_time?: string
 
-		// Specifies the date and time that Storage Transfer Service
-		// starts listening for events from this stream. If no start time
-		// is specified or start time is in the past, Storage Transfer
-		// Service starts listening immediately
+		// Specifies the date and time that Storage Transfer Service starts listening
+		// for events from this stream. If no start time is specified or start time is
+		// in the past, Storage Transfer Service starts listening immediately
 		event_stream_start_time?: string
 
-		// Specifies a unique name of the resource such as AWS SQS ARN in
-		// the form 'arn:aws:sqs:region:account_id:queue_name', or
-		// Pub/Sub subscription resource name in the form
-		// 'projects/{project}/subscriptions/{sub}'
+		// Specifies a unique name of the resource such as AWS SQS ARN in the form
+		// 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource
+		// name in the form 'projects/{project}/subscriptions/{sub}'
 		name!: string
 	})
 
 	#logging_config: close({
-		// For transfers with a PosixFilesystem source, this option
-		// enables the Cloud Storage transfer logs for this transfer.
+		// For transfers with a PosixFilesystem source, this option enables the Cloud
+		// Storage transfer logs for this transfer.
 		enable_on_prem_gcs_transfer_logs?: bool
 
-		// States in which logActions are logged. Not supported for
-		// transfers with PosifxFilesystem data sources; use
-		// enable_on_prem_gcs_transfer_logs instead.
+		// States in which logActions are logged. Not supported for transfers with
+		// PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
 		log_action_states?: [...string]
 
-		// Specifies the actions to be logged. Not supported for transfers
-		// with PosifxFilesystem data sources; use
-		// enable_on_prem_gcs_transfer_logs instead.
+		// Specifies the actions to be logged. Not supported for transfers with
+		// PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
 		log_actions?: [...string]
 	})
 
 	#notification_config: close({
-		// Event types for which a notification is desired. If empty, send
-		// notifications for all event types. The valid types are
-		// "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED",
-		// "TRANSFER_OPERATION_ABORTED".
+		// Event types for which a notification is desired. If empty, send notifications
+		// for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS",
+		// "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
 		event_types?: [...string]
 
-		// The desired format of the notification message payloads. One of
-		// "NONE" or "JSON".
+		// The desired format of the notification message payloads. One of "NONE" or "JSON".
 		payload_format!: string
 
-		// The Topic.name of the Pub/Sub topic to which to publish
-		// notifications.
+		// The Topic.name of the Pub/Sub topic to which to publish notifications.
 		pubsub_topic!: string
 	})
 
@@ -124,10 +108,10 @@ import "list"
 		schedule_start_date!: matchN(1, [_#defs."/$defs/schedule/$defs/schedule_start_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/schedule/$defs/schedule_start_date"]])
 		start_time_of_day?: matchN(1, [_#defs."/$defs/schedule/$defs/start_time_of_day", list.MaxItems(1) & [..._#defs."/$defs/schedule/$defs/start_time_of_day"]])
 
-		// Interval between the start of each scheduled transfer. If
-		// unspecified, the default value is 24 hours. This value may not
-		// be less than 1 hour. A duration in seconds with up to nine
-		// fractional digits, terminated by 's'. Example: "3.5s".
+		// Interval between the start of each scheduled transfer. If unspecified, the
+		// default value is 24 hours. This value may not be less than 1 hour. A
+		// duration in seconds with up to nine fractional digits, terminated by 's'.
+		// Example: "3.5s".
 		repeat_interval?: string
 	})
 
@@ -145,12 +129,12 @@ import "list"
 		transfer_manifest?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/transfer_manifest", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/transfer_manifest"]])
 		transfer_options?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/transfer_options", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/transfer_options"]])
 
-		// Specifies the agent pool name associated with the posix data
-		// source. When unspecified, the default name is used.
+		// Specifies the agent pool name associated with the posix data source. When
+		// unspecified, the default name is used.
 		sink_agent_pool_name?: string
 
-		// Specifies the agent pool name associated with the posix data
-		// source. When unspecified, the default name is used.
+		// Specifies the agent pool name associated with the posix data source. When
+		// unspecified, the default name is used.
 		source_agent_pool_name?: string
 	})
 
@@ -158,10 +142,9 @@ import "list"
 		// Google Cloud Storage bucket name.
 		bucket_name!: string
 
-		// Google Cloud Storage path in bucket to transfer. Must be an
-		// empty string or full path name that ends with a '/'. This
-		// field is treated as an object prefix. As such, it should not
-		// begin with a '/'.
+		// Google Cloud Storage path in bucket to transfer. Must be an empty string or
+		// full path name that ends with a '/'. This field is treated as an object
+		// prefix. As such, it should not begin with a '/'.
 		path?: string
 	})
 
@@ -169,116 +152,98 @@ import "list"
 		// Google Cloud Storage bucket name.
 		bucket_name!: string
 
-		// Google Cloud Storage path in bucket to transfer. Must be an
-		// empty string or full path name that ends with a '/'. This
-		// field is treated as an object prefix. As such, it should not
-		// begin with a '/'.
+		// Google Cloud Storage path in bucket to transfer. Must be an empty string or
+		// full path name that ends with a '/'. This field is treated as an object
+		// prefix. As such, it should not begin with a '/'.
 		path?: string
 	})
 
 	_#defs: "/$defs/replication_spec/$defs/object_conditions": close({
-		// exclude_prefixes must follow the requirements described for
-		// include_prefixes.
+		// exclude_prefixes must follow the requirements described for include_prefixes.
 		exclude_prefixes?: [...string]
 
-		// If include_refixes is specified, objects that satisfy the
-		// object conditions must have names that start with one of the
-		// include_prefixes and that do not start with any of the
-		// exclude_prefixes. If include_prefixes is not specified, all
-		// objects except those that have names starting with one of the
+		// If include_refixes is specified, objects that satisfy the object conditions
+		// must have names that start with one of the include_prefixes and that do not
+		// start with any of the exclude_prefixes. If include_prefixes is not
+		// specified, all objects except those that have names starting with one of the
 		// exclude_prefixes must satisfy the object conditions.
 		include_prefixes?: [...string]
 
-		// If specified, only objects with a "last modification time"
-		// before this timestamp and objects that don't have a "last
-		// modification time" are transferred. A timestamp in RFC3339 UTC
-		// "Zulu" format, with nanosecond resolution and up to nine
-		// fractional digits. Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// If specified, only objects with a "last modification time" before this
+		// timestamp and objects that don't have a "last modification time" are
+		// transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and up to nine fractional digits. Examples:
+		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		last_modified_before?: string
 
-		// If specified, only objects with a "last modification time" on
-		// or after this timestamp and objects that don't have a "last
-		// modification time" are transferred. A timestamp in RFC3339 UTC
-		// "Zulu" format, with nanosecond resolution and up to nine
-		// fractional digits. Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// If specified, only objects with a "last modification time" on or after this
+		// timestamp and objects that don't have a "last modification time" are
+		// transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and up to nine fractional digits. Examples:
+		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		last_modified_since?: string
 
-		// A duration in seconds with up to nine fractional digits,
-		// terminated by 's'. Example: "3.5s".
+		// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 		max_time_elapsed_since_last_modification?: string
 
-		// A duration in seconds with up to nine fractional digits,
-		// terminated by 's'. Example: "3.5s".
+		// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 		min_time_elapsed_since_last_modification?: string
 	})
 
 	_#defs: "/$defs/replication_spec/$defs/transfer_options": close({
 		metadata_options?: matchN(1, [_#defs."/$defs/replication_spec/$defs/transfer_options/$defs/metadata_options", list.MaxItems(1) & [..._#defs."/$defs/replication_spec/$defs/transfer_options/$defs/metadata_options"]])
 
-		// Whether objects should be deleted from the source after they
-		// are transferred to the sink. Note that this option and
-		// delete_objects_unique_in_sink are mutually exclusive.
+		// Whether objects should be deleted from the source after they are transferred
+		// to the sink. Note that this option and delete_objects_unique_in_sink are
+		// mutually exclusive.
 		delete_objects_from_source_after_transfer?: bool
 
-		// Whether objects that exist only in the sink should be deleted.
-		// Note that this option and
-		// delete_objects_from_source_after_transfer are mutually
-		// exclusive.
+		// Whether objects that exist only in the sink should be deleted. Note that this
+		// option and delete_objects_from_source_after_transfer are mutually exclusive.
 		delete_objects_unique_in_sink?: bool
 
-		// Whether overwriting objects that already exist in the sink is
-		// allowed.
+		// Whether overwriting objects that already exist in the sink is allowed.
 		overwrite_objects_already_existing_in_sink?: bool
 
-		// When to overwrite objects that already exist in the sink. If
-		// not set, overwrite behavior is determined by
-		// overwriteObjectsAlreadyExistingInSink.
+		// When to overwrite objects that already exist in the sink. If not set,
+		// overwrite behavior is determined by overwriteObjectsAlreadyExistingInSink.
 		overwrite_when?: string
 	})
 
 	_#defs: "/$defs/replication_spec/$defs/transfer_options/$defs/metadata_options": close({
-		// Specifies how each object's ACLs should be preserved for
-		// transfers between Google Cloud Storage buckets
+		// Specifies how each object's ACLs should be preserved for transfers between
+		// Google Cloud Storage buckets
 		acl?: string
 
-		// Specifies how each file's POSIX group ID (GID) attribute should
-		// be handled by the transfer.
+		// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
 		gid?: string
 
-		// Specifies how each object's Cloud KMS customer-managed
-		// encryption key (CMEK) is preserved for transfers between
-		// Google Cloud Storage buckets
+		// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK)
+		// is preserved for transfers between Google Cloud Storage buckets
 		kms_key?: string
 
-		// Specifies how each file's mode attribute should be handled by
-		// the transfer.
+		// Specifies how each file's mode attribute should be handled by the transfer.
 		mode?: string
 
-		// Specifies the storage class to set on objects being transferred
-		// to Google Cloud Storage buckets
+		// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
 		storage_class?: string
 
 		// Specifies how symlinks should be handled by the transfer.
 		symlink?: string
 
-		// SSpecifies how each object's temporary hold status should be
-		// preserved for transfers between Google Cloud Storage buckets
+		// SSpecifies how each object's temporary hold status should be preserved for
+		// transfers between Google Cloud Storage buckets
 		temporary_hold?: string
 
-		// Specifies how each object's timeCreated metadata is preserved
-		// for transfers.
+		// Specifies how each object's timeCreated metadata is preserved for transfers.
 		time_created?: string
 
-		// Specifies how each file's POSIX user ID (UID) attribute should
-		// be handled by the transfer.
+		// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
 		uid?: string
 	})
 
 	_#defs: "/$defs/schedule/$defs/schedule_end_date": close({
-		// Day of month. Must be from 1 to 31 and valid for the year and
-		// month.
+		// Day of month. Must be from 1 to 31 and valid for the year and month.
 		day!: number
 
 		// Month of year. Must be from 1 to 12.
@@ -289,8 +254,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/schedule/$defs/schedule_start_date": close({
-		// Day of month. Must be from 1 to 31 and valid for the year and
-		// month.
+		// Day of month. Must be from 1 to 31 and valid for the year and month.
 		day!: number
 
 		// Month of year. Must be from 1 to 12.
@@ -307,8 +271,7 @@ import "list"
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes!: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos!: number
 
 		// Seconds of minutes of the time. Must normally be from 0 to 59.
@@ -327,30 +290,27 @@ import "list"
 		// Specifies the path to transfer objects.
 		path?: string
 
-		// Specifies the region to sign requests with. This can be left
-		// blank if requests should be signed with an empty region.
+		// Specifies the region to sign requests with. This can be left blank if
+		// requests should be signed with an empty region.
 		region?: string
 	})
 
 	_#defs: "/$defs/transfer_spec/$defs/aws_s3_compatible_data_source/$defs/s3_metadata": close({
-		// Authentication and authorization method used by the storage
-		// service. When not specified, Transfer Service will attempt to
-		// determine right auth method to use.
+		// Authentication and authorization method used by the storage service. When not
+		// specified, Transfer Service will attempt to determine right auth method to
+		// use.
 		auth_method?: string
 
-		// The Listing API to use for discovering objects. When not
-		// specified, Transfer Service will attempt to determine the
-		// right API to use.
+		// The Listing API to use for discovering objects. When not specified, Transfer
+		// Service will attempt to determine the right API to use.
 		list_api?: string
 
-		// The network protocol of the agent. When not specified, the
-		// default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is
-		// used.
+		// The network protocol of the agent. When not specified, the default value of
+		// NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
 		protocol?: string
 
-		// API request model used to call the storage service. When not
-		// specified, the default value of RequestModel
-		// REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+		// API request model used to call the storage service. When not specified, the
+		// default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
 		request_model?: string
 	})
 
@@ -360,36 +320,32 @@ import "list"
 		// S3 Bucket name.
 		bucket_name!: string
 
-		// The CloudFront distribution domain name pointing to this
-		// bucket, to use when fetching. See [Transfer from S3 via
+		// The CloudFront distribution domain name pointing to this bucket, to use when
+		// fetching. See [Transfer from S3 via
 		// CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront)
-		// for more information. Format: https://{id}.cloudfront.net or
-		// any valid custom domain. Must begin with https://.
+		// for more information. Format: https://{id}.cloudfront.net or any valid
+		// custom domain. Must begin with https://.
 		cloudfront_domain?: string
 
-		// The Resource name of a secret in Secret Manager. AWS
-		// credentials must be stored in Secret Manager in JSON format.
-		// If credentials_secret is specified, do not specify role_arn or
-		// aws_access_key. Format:
+		// The Resource name of a secret in Secret Manager. AWS credentials must be
+		// stored in Secret Manager in JSON format. If credentials_secret is specified,
+		// do not specify role_arn or aws_access_key. Format:
 		// projects/{projectNumber}/secrets/{secret_name}.
 		credentials_secret?: string
 
-		// Egress bytes over a Google-managed private network. This
-		// network is shared between other users of Storage Transfer
-		// Service.
+		// Egress bytes over a Google-managed private network. This network is shared
+		// between other users of Storage Transfer Service.
 		managed_private_network?: bool
 
 		// S3 Bucket path in bucket to transfer.
 		path?: string
 
-		// The Amazon Resource Name (ARN) of the role to support temporary
-		// credentials via 'AssumeRoleWithWebIdentity'. For more
-		// information about ARNs, see [IAM
+		// The Amazon Resource Name (ARN) of the role to support temporary credentials
+		// via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM
 		// ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
-		// When a role ARN is provided, Transfer Service fetches
-		// temporary credentials for the session using a
-		// 'AssumeRoleWithWebIdentity' call for the provided role using
-		// the [GoogleServiceAccount][] for this project.
+		// When a role ARN is provided, Transfer Service fetches temporary credentials
+		// for the session using a 'AssumeRoleWithWebIdentity' call for the provided
+		// role using the [GoogleServiceAccount][] for this project.
 		role_arn?: string
 	})
 
@@ -408,16 +364,14 @@ import "list"
 		// The container to transfer from the Azure Storage account.
 		container!: string
 
-		// The Resource name of a secret in Secret Manager containing SAS
-		// Credentials in JSON form. Service Agent must have permissions
-		// to access secret. If credentials_secret is specified, do not
-		// specify azure_credentials.
+		// The Resource name of a secret in Secret Manager containing SAS Credentials in
+		// JSON form. Service Agent must have permissions to access secret. If
+		// credentials_secret is specified, do not specify azure_credentials.
 		credentials_secret?: string
 
-		// Root path to transfer objects. Must be an empty string or full
-		// path name that ends with a '/'. This field is treated as an
-		// object prefix. As such, it should generally not begin with a
-		// '/'.
+		// Root path to transfer objects. Must be an empty string or full path name that
+		// ends with a '/'. This field is treated as an object prefix. As such, it
+		// should generally not begin with a '/'.
 		path?: string
 
 		// The name of the Azure Storage account.
@@ -430,12 +384,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/transfer_spec/$defs/azure_blob_storage_data_source/$defs/federated_identity_config": close({
-		// The client (application) ID of the application with federated
-		// credentials.
+		// The client (application) ID of the application with federated credentials.
 		client_id!: string
 
-		// The tenant (directory) ID of the application with federated
-		// credentials.
+		// The tenant (directory) ID of the application with federated credentials.
 		tenant_id!: string
 	})
 
@@ -443,10 +395,9 @@ import "list"
 		// Google Cloud Storage bucket name.
 		bucket_name!: string
 
-		// Google Cloud Storage path in bucket to transfer. Must be an
-		// empty string or full path name that ends with a '/'. This
-		// field is treated as an object prefix. As such, it should not
-		// begin with a '/'.
+		// Google Cloud Storage path in bucket to transfer. Must be an empty string or
+		// full path name that ends with a '/'. This field is treated as an object
+		// prefix. As such, it should not begin with a '/'.
 		path?: string
 	})
 
@@ -454,10 +405,9 @@ import "list"
 		// Google Cloud Storage bucket name.
 		bucket_name!: string
 
-		// Google Cloud Storage path in bucket to transfer. Must be an
-		// empty string or full path name that ends with a '/'. This
-		// field is treated as an object prefix. As such, it should not
-		// begin with a '/'.
+		// Google Cloud Storage path in bucket to transfer. Must be an empty string or
+		// full path name that ends with a '/'. This field is treated as an object
+		// prefix. As such, it should not begin with a '/'.
 		path?: string
 	})
 
@@ -467,47 +417,41 @@ import "list"
 	})
 
 	_#defs: "/$defs/transfer_spec/$defs/http_data_source": close({
-		// The URL that points to the file that stores the object list
-		// entries. This file must allow public access. Currently, only
-		// URLs with HTTP and HTTPS schemes are supported.
+		// The URL that points to the file that stores the object list entries. This
+		// file must allow public access. Currently, only URLs with HTTP and HTTPS
+		// schemes are supported.
 		list_url!: string
 	})
 
 	_#defs: "/$defs/transfer_spec/$defs/object_conditions": close({
-		// exclude_prefixes must follow the requirements described for
-		// include_prefixes.
+		// exclude_prefixes must follow the requirements described for include_prefixes.
 		exclude_prefixes?: [...string]
 
-		// If include_refixes is specified, objects that satisfy the
-		// object conditions must have names that start with one of the
-		// include_prefixes and that do not start with any of the
-		// exclude_prefixes. If include_prefixes is not specified, all
-		// objects except those that have names starting with one of the
+		// If include_refixes is specified, objects that satisfy the object conditions
+		// must have names that start with one of the include_prefixes and that do not
+		// start with any of the exclude_prefixes. If include_prefixes is not
+		// specified, all objects except those that have names starting with one of the
 		// exclude_prefixes must satisfy the object conditions.
 		include_prefixes?: [...string]
 
-		// If specified, only objects with a "last modification time"
-		// before this timestamp and objects that don't have a "last
-		// modification time" are transferred. A timestamp in RFC3339 UTC
-		// "Zulu" format, with nanosecond resolution and up to nine
-		// fractional digits. Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// If specified, only objects with a "last modification time" before this
+		// timestamp and objects that don't have a "last modification time" are
+		// transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and up to nine fractional digits. Examples:
+		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		last_modified_before?: string
 
-		// If specified, only objects with a "last modification time" on
-		// or after this timestamp and objects that don't have a "last
-		// modification time" are transferred. A timestamp in RFC3339 UTC
-		// "Zulu" format, with nanosecond resolution and up to nine
-		// fractional digits. Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// If specified, only objects with a "last modification time" on or after this
+		// timestamp and objects that don't have a "last modification time" are
+		// transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+		// resolution and up to nine fractional digits. Examples:
+		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		last_modified_since?: string
 
-		// A duration in seconds with up to nine fractional digits,
-		// terminated by 's'. Example: "3.5s".
+		// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 		max_time_elapsed_since_last_modification?: string
 
-		// A duration in seconds with up to nine fractional digits,
-		// terminated by 's'. Example: "3.5s".
+		// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 		min_time_elapsed_since_last_modification?: string
 	})
 
@@ -529,62 +473,52 @@ import "list"
 	_#defs: "/$defs/transfer_spec/$defs/transfer_options": close({
 		metadata_options?: matchN(1, [_#defs."/$defs/transfer_spec/$defs/transfer_options/$defs/metadata_options", list.MaxItems(1) & [..._#defs."/$defs/transfer_spec/$defs/transfer_options/$defs/metadata_options"]])
 
-		// Whether objects should be deleted from the source after they
-		// are transferred to the sink. Note that this option and
-		// delete_objects_unique_in_sink are mutually exclusive.
+		// Whether objects should be deleted from the source after they are transferred
+		// to the sink. Note that this option and delete_objects_unique_in_sink are
+		// mutually exclusive.
 		delete_objects_from_source_after_transfer?: bool
 
-		// Whether objects that exist only in the sink should be deleted.
-		// Note that this option and
-		// delete_objects_from_source_after_transfer are mutually
-		// exclusive.
+		// Whether objects that exist only in the sink should be deleted. Note that this
+		// option and delete_objects_from_source_after_transfer are mutually exclusive.
 		delete_objects_unique_in_sink?: bool
 
-		// Whether overwriting objects that already exist in the sink is
-		// allowed.
+		// Whether overwriting objects that already exist in the sink is allowed.
 		overwrite_objects_already_existing_in_sink?: bool
 
-		// When to overwrite objects that already exist in the sink. If
-		// not set, overwrite behavior is determined by
-		// overwriteObjectsAlreadyExistingInSink.
+		// When to overwrite objects that already exist in the sink. If not set,
+		// overwrite behavior is determined by overwriteObjectsAlreadyExistingInSink.
 		overwrite_when?: string
 	})
 
 	_#defs: "/$defs/transfer_spec/$defs/transfer_options/$defs/metadata_options": close({
-		// Specifies how each object's ACLs should be preserved for
-		// transfers between Google Cloud Storage buckets
+		// Specifies how each object's ACLs should be preserved for transfers between
+		// Google Cloud Storage buckets
 		acl?: string
 
-		// Specifies how each file's POSIX group ID (GID) attribute should
-		// be handled by the transfer.
+		// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
 		gid?: string
 
-		// Specifies how each object's Cloud KMS customer-managed
-		// encryption key (CMEK) is preserved for transfers between
-		// Google Cloud Storage buckets
+		// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK)
+		// is preserved for transfers between Google Cloud Storage buckets
 		kms_key?: string
 
-		// Specifies how each file's mode attribute should be handled by
-		// the transfer.
+		// Specifies how each file's mode attribute should be handled by the transfer.
 		mode?: string
 
-		// Specifies the storage class to set on objects being transferred
-		// to Google Cloud Storage buckets
+		// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets
 		storage_class?: string
 
 		// Specifies how symlinks should be handled by the transfer.
 		symlink?: string
 
-		// SSpecifies how each object's temporary hold status should be
-		// preserved for transfers between Google Cloud Storage buckets
+		// SSpecifies how each object's temporary hold status should be preserved for
+		// transfers between Google Cloud Storage buckets
 		temporary_hold?: string
 
-		// Specifies how each object's timeCreated metadata is preserved
-		// for transfers.
+		// Specifies how each object's timeCreated metadata is preserved for transfers.
 		time_created?: string
 
-		// Specifies how each file's POSIX user ID (UID) attribute should
-		// be handled by the transfer.
+		// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
 		uid?: string
 	})
 }

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_identity_platform_inbound_saml_config: {
+google_identity_platform_inbound_saml_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_identity_platform_inbound_saml_config")
 	close({
@@ -10,16 +10,11 @@ import "list"
 		sp_config!: matchN(1, [#sp_config, list.MaxItems(1) & [_, ...] & [...#sp_config]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -30,10 +25,10 @@ import "list"
 		enabled?: bool
 		id?:      string
 
-		// The name of the InboundSamlConfig resource. Must start with
-		// 'saml.' and can only have alphanumeric characters,
-		// hyphens, underscores or periods. The part after 'saml.' must
-		// also start with a lowercase letter, end with an
+		// The name of the InboundSamlConfig resource. Must start with 'saml.' and can
+		// only have alphanumeric characters,
+		// hyphens, underscores or periods. The part after 'saml.' must also start with
+		// a lowercase letter, end with an
 		// alphanumeric character, and have at least 2 characters.
 		name!:    string
 		project?: string
@@ -53,12 +48,10 @@ import "list"
 	})
 
 	#sp_config: close({
-		// Callback URI where responses from IDP are handled. Must start
-		// with 'https://'.
+		// Callback URI where responses from IDP are handled. Must start with 'https://'.
 		callback_uri?: string
 
-		// The IDP's certificate data to verify the signature in the
-		// SAMLResponse issued by the IDP.
+		// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 		sp_certificates?: [...close({
 			x509_certificate?: string
 		})]

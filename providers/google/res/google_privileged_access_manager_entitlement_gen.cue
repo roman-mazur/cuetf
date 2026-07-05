@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_privileged_access_manager_entitlement: {
+google_privileged_access_manager_entitlement: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_privileged_access_manager_entitlement")
 	close({
@@ -13,33 +13,23 @@ import "list"
 		requester_justification_config!: matchN(1, [#requester_justification_config, list.MaxItems(1) & [_, ...] & [...#requester_justification_config]])
 		timeouts?: #timeouts
 
-		// Output only. Create time stamp. A timestamp in RFC3339 UTC
-		// "Zulu" format, with nanosecond resolution and up to nine
-		// fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z"
+		// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format,
+		// with nanosecond resolution and up to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The ID to use for this Entitlement. This will become the last
-		// part of the resource name.
-		// This value should be 4-63 characters, and valid characters are
-		// "[a-z]", "[0-9]", and "-". The first character should be from
-		// [a-z].
-		// This value should be unique among all other Entitlements under
-		// the specified 'parent'.
+		// The ID to use for this Entitlement. This will become the last part of the resource name.
+		// This value should be 4-63 characters, and valid characters are "[a-z]",
+		// "[0-9]", and "-". The first character should be from [a-z].
+		// This value should be unique among all other Entitlements under the specified 'parent'.
 		entitlement_id!: string
 
 		// For Resource freshness validation (https://google.aip.dev/154)
@@ -49,17 +39,15 @@ import "list"
 		// The region of the Entitlement resource.
 		location!: string
 
-		// The maximum amount of time for which access would be granted
-		// for a request.
-		// A requester can choose to ask for access for less than this
-		// duration but never more.
-		// Format: calculate the time in seconds and concatenate it with
-		// 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+		// The maximum amount of time for which access would be granted for a request.
+		// A requester can choose to ask for access for less than this duration but never more.
+		// Format: calculate the time in seconds and concatenate it with 's' i.e. 2
+		// hours = "7200s", 45 minutes = "2700s"
 		max_request_duration!: string
 
-		// Output Only. The entitlement's name follows a hierarchical
-		// structure, comprising the organization, folder, or project,
-		// alongside the region and a unique entitlement ID.
+		// Output Only. The entitlement's name follows a hierarchical structure,
+		// comprising the organization, folder, or project, alongside the region and a
+		// unique entitlement ID.
 		// Formats:
 		// organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
 		// folders/{folder-number}/locations/{region}/entitlements/{entitlement-id},
@@ -74,11 +62,9 @@ import "list"
 		// Output only. The current state of the Entitlement.
 		state?: string
 
-		// Output only. Update time stamp. A timestamp in RFC3339 UTC
-		// "Zulu" format, with nanosecond resolution and up to nine
-		// fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format,
+		// with nanosecond resolution and up to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
 	})
 
@@ -87,8 +73,7 @@ import "list"
 		// principal(requester) is granted access.
 		admin_email_recipients?: [...string]
 
-		// Optional. Additional email address to be notified about an
-		// eligible entitlement.
+		// Optional. Additional email address to be notified about an eligible entitlement.
 		requester_email_recipients?: [...string]
 	})
 
@@ -97,9 +82,8 @@ import "list"
 	})
 
 	#eligible_users: close({
-		// Users who are being allowed for the operation. Each entry
-		// should be a valid v1 IAM Principal Identifier. Format for
-		// these is documented at
+		// Users who are being allowed for the operation. Each entry should be a valid
+		// v1 IAM Principal Identifier. Format for these is documented at
 		// "https://cloud.google.com/iam/docs/principal-identifiers#v1"
 		principals!: [...string]
 	})
@@ -122,8 +106,7 @@ import "list"
 	_#defs: "/$defs/approval_workflow/$defs/manual_approvals": close({
 		steps!: matchN(1, [_#defs."/$defs/approval_workflow/$defs/manual_approvals/$defs/steps", [_, ...] & [..._#defs."/$defs/approval_workflow/$defs/manual_approvals/$defs/steps"]])
 
-		// Optional. Do the approvers need to provide a justification for
-		// their actions?
+		// Optional. Do the approvers need to provide a justification for their actions?
 		require_approver_justification?: bool
 	})
 
@@ -131,22 +114,18 @@ import "list"
 		approvers!: matchN(1, [_#defs."/$defs/approval_workflow/$defs/manual_approvals/$defs/steps/$defs/approvers", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/approval_workflow/$defs/manual_approvals/$defs/steps/$defs/approvers"]])
 
 		// How many users from the above list need to approve.
-		// If there are not enough distinct users in the list above then
-		// the workflow
-		// will indefinitely block. Should always be greater than 0.
-		// Currently 1 is the only
+		// If there are not enough distinct users in the list above then the workflow
+		// will indefinitely block. Should always be greater than 0. Currently 1 is the only
 		// supported value.
 		approvals_needed?: number
 
-		// Optional. Additional email addresses to be notified when a
-		// grant is pending approval.
+		// Optional. Additional email addresses to be notified when a grant is pending approval.
 		approver_email_recipients?: [...string]
 	})
 
 	_#defs: "/$defs/approval_workflow/$defs/manual_approvals/$defs/steps/$defs/approvers": close({
-		// Users who are being allowed for the operation. Each entry
-		// should be a valid v1 IAM Principal Identifier. Format for
-		// these is documented at:
+		// Users who are being allowed for the operation. Each entry should be a valid
+		// v1 IAM Principal Identifier. Format for these is documented at:
 		// https://cloud.google.com/iam/docs/principal-identifiers#v1
 		principals!: [...string]
 	})
@@ -162,15 +141,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/privileged_access/$defs/gcp_iam_access/$defs/role_bindings": close({
-		// The expression field of the IAM condition to be associated with
-		// the role. If specified, a user with an active grant for this
-		// entitlement would be able to access the resource only if this
-		// condition evaluates to true for their request.
+		// The expression field of the IAM condition to be associated with the role. If
+		// specified, a user with an active grant for this entitlement would be able to
+		// access the resource only if this condition evaluates to true for their
+		// request.
 		// https://cloud.google.com/iam/docs/conditions-overview#attributes.
 		condition_expression?: string
 
-		// IAM role to be granted.
-		// https://cloud.google.com/iam/docs/roles-overview.
+		// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
 		role!: string
 	})
 

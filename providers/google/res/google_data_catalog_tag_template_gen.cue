@@ -2,42 +2,36 @@ package res
 
 import "list"
 
-#google_data_catalog_tag_template: {
+google_data_catalog_tag_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_catalog_tag_template")
 	close({
 		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// The display name for this template.
 		display_name?: string
 
-		// This confirms the deletion of any possible tags using this
-		// template. Must be set to true in order to delete the tag
-		// template.
+		// This confirms the deletion of any possible tags using this template. Must be
+		// set to true in order to delete the tag template.
 		force_delete?: bool
 		id?:           string
 
 		// The resource name of the tag template in URL format. Example:
 		// projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
-		name?:    string
-		project?: string
+		name?: string
 
 		// Template location region.
-		region?: string
+		region?:  string
+		project?: string
 
 		// The id of the tag template to create.
 		tag_template_id!: string
@@ -56,17 +50,14 @@ import "list"
 		// Whether this is a required field. Defaults to false.
 		is_required?: bool
 
-		// The resource name of the tag template field in URL format.
-		// Example:
+		// The resource name of the tag template field in URL format. Example:
 		// projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
 		name?: string
 
-		// The order of this field with respect to other fields in this
-		// tag template.
-		// A higher value indicates a more important field. The value can
-		// be negative.
-		// Multiple fields can have the same order, and field orders
-		// within a tag do not have to be sequential.
+		// The order of this field with respect to other fields in this tag template.
+		// A higher value indicates a more important field. The value can be negative.
+		// Multiple fields can have the same order, and field orders within a tag do not
+		// have to be sequential.
 		order?: number
 	})
 
@@ -80,9 +71,8 @@ import "list"
 		enum_type?: matchN(1, [_#defs."/$defs/fields/$defs/type/$defs/enum_type", list.MaxItems(1) & [..._#defs."/$defs/fields/$defs/type/$defs/enum_type"]])
 
 		// Represents primitive types - string, bool etc.
-		// Exactly one of 'primitive_type' or 'enum_type' must be set
-		// Possible values: ["DOUBLE", "STRING", "BOOL", "TIMESTAMP",
-		// "RICHTEXT"]
+		// Exactly one of 'primitive_type' or 'enum_type' must be set Possible values:
+		// ["DOUBLE", "STRING", "BOOL", "TIMESTAMP", "RICHTEXT"]
 		primitive_type?: string
 	})
 

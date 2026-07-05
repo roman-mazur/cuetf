@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_oracle_database_goldengate_connection: {
+google_oracle_database_goldengate_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_oracle_database_goldengate_connection")
 	close({
@@ -12,92 +12,74 @@ import "list"
 		// The date and time that the GoldengateConnection was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Whether or not to allow Terraform to destroy the instance.
-		// Unless this field is set to false in Terraform state, a
-		// terraform destroy or terraform apply that would delete the
-		// instance will fail.
+		// Whether or not to allow Terraform to destroy the instance. Unless this field
+		// is set to false in Terraform state, a terraform destroy or terraform apply
+		// that would delete the instance will fail.
 		deletion_protection?: bool
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// The ID of the subscription entitlement associated with the
 		// GoldengateConnection.
 		entitlement_id?: string
 
-		// The GCP Oracle zone where Oracle GoldengateConnection is
-		// hosted.
+		// The GCP Oracle zone where Oracle GoldengateConnection is hosted.
 		// Example: us-east4-b-r2.
-		// If not specified, the system will pick a zone based on
-		// availability.
+		// If not specified, the system will pick a zone based on availability.
 		gcp_oracle_zone?: string
 
 		// The ID of the GoldengateConnection to create. This value is
-		// restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a
-		// maximum of
-		// 63 characters in length. The value must start with a letter and
-		// end with a
+		// restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of
+		// 63 characters in length. The value must start with a letter and end with a
 		// letter or a number.
 		goldengate_connection_id!: string
 		id?:                       string
 
 		// The labels or tags associated with the GoldengateConnection.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
-		// Identifier. The name of the GoldengateConnection resource in
-		// the following format:
+		// Identifier. The name of the GoldengateConnection resource in the following format:
 		// projects/{project}/locations/{region}/goldengateConnections/{goldengate_connection}
 		name?: string
 
-		// HTTPS link to OCI resources exposed to Customer via UI
-		// Interface.
+		// HTTPS link to OCI resources exposed to Customer via UI Interface.
 		oci_url?: string
 
-		// The name of the OdbNetwork associated with the
-		// GoldengateConnection.
+		// The name of the OdbNetwork associated with the GoldengateConnection.
 		// The format is
 		// projects/{project}/locations/{location}/odbNetworks/{odb_network}.
-		// It is optional but if specified, this should match the parent
-		// ODBNetwork
+		// It is optional but if specified, this should match the parent ODBNetwork
 		// of the OdbSubnet.
 		odb_network?: string
 
-		// The name of the OdbSubnet associated with the
-		// GoldengateConnection for IP
+		// The name of the OdbSubnet associated with the GoldengateConnection for IP
 		// allocation.
 		// Format:
 		// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
 		odb_subnet?: string
-		project?:    string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+		project?: string
 	})
 
 	#properties: close({
@@ -173,10 +155,8 @@ import "list"
 		// The Ingress IPs of the GoldengateConnection.
 		ingress_ip_addresses?: [...string]
 
-		// Describes the object's current state in detail. For example, it
-		// can be
-		// used to provide actionable information for a resource in a
-		// Failed state.
+		// Describes the object's current state in detail. For example, it can be
+		// used to provide actionable information for a resource in a Failed state.
 		lifecycle_details?: string
 
 		// The lifecycle state of the connection.
@@ -236,23 +216,19 @@ import "list"
 		// 'jdbc:redshift://aws-redshift-instance.aaaaaaaaaaaa.us-east-2.redshift.amazonaws.com:5439/mydb'
 		connection_url?: string
 
-		// Input only. The password Oracle Goldengate uses for Amazon
-		// Redshift connection
+		// Input only. The password Oracle Goldengate uses for Amazon Redshift connection
 		// in plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
-		// the password Oracle Goldengate uses for Amazon Redshift
-		// connection.
+		// Input only. The resource name of a secret version in Secret Manager which contains
+		// the password Oracle Goldengate uses for Amazon Redshift connection.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		password_secret_version?: string
 
 		// The technology type of AmazonRedshiftConnection.
 		technology_type?: string
 
-		// The username Oracle Goldengate uses to connect the associated
-		// system of
+		// The username Oracle Goldengate uses to connect the associated system of
 		// the given technology.
 		username?: string
 	})
@@ -289,32 +265,27 @@ import "list"
 		// AZURE_ACTIVE_DIRECTORY
 		authentication_type?: string
 
-		// The endpoint used for authentication with Microsoft Entra ID
-		// (formerly
+		// The endpoint used for authentication with Microsoft Entra ID (formerly
 		// Azure Active Directory). Default value:
 		// https://login.microsoftonline.com
 		azure_authority_host?: string
 
-		// Azure tenant ID of the application. This property is required
-		// when
+		// Azure tenant ID of the application. This property is required when
 		// 'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
 		azure_tenant_id?: string
 
-		// Azure client ID of the application. This property is required
-		// when
+		// Azure client ID of the application. This property is required when
 		// 'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
 		client_id?: string
 
-		// Azure client secret (aka application password) for
-		// authentication.
+		// Azure client secret (aka application password) for authentication.
 		client_secret?: string
 
 		// Azure Storage service endpoint.
 		// e.g: https://test.blob.core.windows.net
 		endpoint?: string
 
-		// Credential that uses a shared access signature (SAS) to
-		// authenticate to
+		// Credential that uses a shared access signature (SAS) to authenticate to
 		// an Azure Service.
 		sas_token_secret?: string
 
@@ -328,13 +299,11 @@ import "list"
 		// 'jdbc:sqlserver://.sql.azuresynapse.net:1433;database=;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.sql.azuresynapse.net;loginTimeout=300;'
 		connection_string?: string
 
-		// Input only. The password Oracle Goldengate uses for Azure
-		// Synapse Analytics
+		// Input only. The password Oracle Goldengate uses for Azure Synapse Analytics
 		// connection in plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the password Oracle Goldengate uses for Azure Synapse Analytics
 		// connection.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
@@ -343,8 +312,7 @@ import "list"
 		// The technology type of AzureSynapseAnalyticsConnection.
 		technology_type?: string
 
-		// The username Oracle Goldengate uses to connect the associated
-		// system of
+		// The username Oracle Goldengate uses to connect the associated system of
 		// the given technology.
 		username?: string
 	})
@@ -356,12 +324,10 @@ import "list"
 		// OAUTH_M2M
 		authentication_type?: string
 
-		// OAuth client id, only applicable for authentication_type ==
-		// OAUTH_M2M
+		// OAuth client id, only applicable for authentication_type == OAUTH_M2M
 		client_id?: string
 
-		// OAuth client secret, only applicable for authentication_type ==
-		// OAUTH_M2M
+		// OAuth client secret, only applicable for authentication_type == OAUTH_M2M
 		client_secret?: string
 
 		// Connection URL.
@@ -369,12 +335,10 @@ import "list"
 		// 'jdbc:databricks://adb-33934.4.azuredatabricks.net:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3393########44/0##3-7-hlrb'
 		connection_url?: string
 
-		// Input only. The password used to connect to Databricks in plain
-		// text.
+		// Input only. The password used to connect to Databricks in plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the password used to connect to Databricks.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		password_secret_version?: string
@@ -396,12 +360,10 @@ import "list"
 		// The name or address of a host.
 		host?: string
 
-		// Input only. The password Oracle Goldengate uses for Db2
-		// connection in plain text.
+		// Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the password Oracle Goldengate uses for Db2 connection.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		password_secret_version?: string
@@ -420,8 +382,7 @@ import "list"
 		ssl_client_keystash_file?: string
 
 		// The keystore file created at the client containing the
-		// server certificate / CA root certificate. Not supported for IBM
-		// Db2 for i.
+		// server certificate / CA root certificate. Not supported for IBM Db2 for i.
 		ssl_client_keystoredb_file?: string
 
 		// The file which contains the self-signed server certificate
@@ -431,8 +392,7 @@ import "list"
 		// The technology type of Db2Connection.
 		technology_type?: string
 
-		// The username Oracle Goldengate uses to connect to the DB2
-		// database.
+		// The username Oracle Goldengate uses to connect to the DB2 database.
 		username?: string
 	})
 
@@ -452,19 +412,15 @@ import "list"
 		authentication_type?: string
 
 		// Fingerprint required by TLS security protocol.
-		// Eg.:
-		// '6152b2dfbff200f973c5074a5b91d06ab3b472c07c09a1ea57bb7fd406cdce9c'
+		// Eg.: '6152b2dfbff200f973c5074a5b91d06ab3b472c07c09a1ea57bb7fd406cdce9c'
 		fingerprint?: string
 
-		// Input only. The password Oracle Goldengate uses for Elastic
-		// Search connection
+		// Input only. The password Oracle Goldengate uses for Elastic Search connection
 		// in plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
-		// the password Oracle Goldengate uses for Elastic Search
-		// connection.
+		// Input only. The resource name of a secret version in Secret Manager which contains
+		// the password Oracle Goldengate uses for Elastic Search connection.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		password_secret_version?: string
 
@@ -474,10 +430,8 @@ import "list"
 		// TLS
 		security_protocol?: string
 
-		// Comma separated list of Elasticsearch server addresses,
-		// specified as
-		// host:port entries, where :port is optional. If port is not
-		// specified, it
+		// Comma separated list of Elasticsearch server addresses, specified as
+		// host:port entries, where :port is optional. If port is not specified, it
 		// defaults to 9200. Example:
 		// "server1.example.com:4000,server2.example.com:4000"
 		servers?: string
@@ -485,8 +439,7 @@ import "list"
 		// The technology type of ElasticsearchConnection.
 		technology_type?: string
 
-		// The username Oracle Goldengate uses to connect the associated
-		// system of
+		// The username Oracle Goldengate uses to connect the associated system of
 		// the given technology.
 		username?: string
 	})
@@ -509,12 +462,10 @@ import "list"
 		// The host of the GoldengateConnection.
 		host?: string
 
-		// Input only. The password used to connect to the Oracle
-		// Goldengate in plain text.
+		// Input only. The password used to connect to the Oracle Goldengate in plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the password used to connect to the Oracle Goldengate.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		password_secret_version?: string
@@ -620,8 +571,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/properties/$defs/iceberg_connection_properties/$defs/catalog/$defs/rest_iceberg_catalog": close({
-		// The content of the configuration file containing additional
-		// properties for
+		// The content of the configuration file containing additional properties for
 		// the REST catalog.
 		properties?: string
 
@@ -697,13 +647,11 @@ import "list"
 		// BASIC
 		authentication_type?: string
 
-		// The Java class implementing javax.jms.ConnectionFactory
-		// interface supplied
+		// The Java class implementing javax.jms.ConnectionFactory interface supplied
 		// by the JMS provider.
 		connection_factory?: string
 
-		// Connection URL of the Java Message Service, specifying the
-		// protocol, host,
+		// Connection URL of the Java Message Service, specifying the protocol, host,
 		// and port. e.g.: 'mq://myjms.host.domain:7676'
 		connection_url?: string
 
@@ -711,22 +659,18 @@ import "list"
 		// e.g.: 'ConnectionFactory'
 		jndi_connection_factory?: string
 
-		// The implementation of javax.naming.spi.InitialContextFactory
-		// interface
+		// The implementation of javax.naming.spi.InitialContextFactory interface
 		// used to obtain initial naming context.
 		jndi_initial_context_factory?: string
 
-		// The URL that Java Message Service will use to contact the JNDI
-		// provider.
-		// e.g.:
-		// 'tcp://myjms.host.domain:61616?jms.prefetchPolicy.all=1000'
+		// The URL that Java Message Service will use to contact the JNDI provider.
+		// e.g.: 'tcp://myjms.host.domain:61616?jms.prefetchPolicy.all=1000'
 		jndi_provider_url?: string
 
 		// The password associated to the principal.
 		jndi_security_credentials_secret?: string
 
-		// Specifies the identity of the principal (user) to be
-		// authenticated.
+		// Specifies the identity of the principal (user) to be authenticated.
 		jndi_security_principal?: string
 
 		// The content of the KeyStore file.
@@ -735,21 +679,17 @@ import "list"
 		// Input only. The KeyStore password in plain text.
 		key_store_password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the KeyStore password.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		key_store_password_secret_version?: string
 
-		// Input only. The password Oracle Goldengate uses to connect the
-		// Java Message Service
+		// Input only. The password Oracle Goldengate uses to connect the Java Message Service
 		// in plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
-		// the password Oracle Goldengate uses to connect the associated
-		// Java
+		// Input only. The resource name of a secret version in Secret Manager which contains
+		// the password Oracle Goldengate uses to connect the associated Java
 		// Message Service.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		password_secret_version?: string
@@ -761,12 +701,10 @@ import "list"
 		// MTLS
 		security_protocol?: string
 
-		// Input only. The password for the cert inside of the KeyStore in
-		// plain text.
+		// Input only. The password for the cert inside of the KeyStore in plain text.
 		ssl_key_password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the password for the cert inside of the KeyStore.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		ssl_key_password_secret_version?: string
@@ -780,19 +718,16 @@ import "list"
 		// Input only. The TrustStore password in plain text.
 		trust_store_password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the TrustStore password.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		trust_store_password_secret_version?: string
 
-		// If set to true, Java Naming and Directory Interface (JNDI)
-		// properties
+		// If set to true, Java Naming and Directory Interface (JNDI) properties
 		// should be provided.
 		use_jndi?: bool
 
-		// The username Oracle Goldengate uses to connect to the Java
-		// Message
+		// The username Oracle Goldengate uses to connect to the Java Message
 		// Service.
 		username?: string
 	})
@@ -800,8 +735,7 @@ import "list"
 	_#defs: "/$defs/properties/$defs/kafka_connection_properties": close({
 		bootstrap_servers?: matchN(1, [_#defs."/$defs/properties/$defs/kafka_connection_properties/$defs/bootstrap_servers", [..._#defs."/$defs/properties/$defs/kafka_connection_properties/$defs/bootstrap_servers"]])
 
-		// The OCID of the Kafka cluster being referenced from OCI
-		// Streaming with
+		// The OCID of the Kafka cluster being referenced from OCI Streaming with
 		// Apache Kafka.
 		cluster_id?: string
 
@@ -814,18 +748,15 @@ import "list"
 		// Input only. The KeyStore password in plain text.
 		key_store_password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the KeyStore password.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		key_store_password_secret_version?: string
 
-		// Input only. The password for Kafka basic/SASL auth in plain
-		// text.
+		// Input only. The password for Kafka basic/SASL auth in plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the password for Kafka basic/SASL auth.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		password_secret_version?: string
@@ -841,12 +772,10 @@ import "list"
 		// SASL_PLAINTEXT
 		security_protocol?: string
 
-		// Input only. The password for the cert inside of the KeyStore in
-		// plain text.
+		// Input only. The password for the cert inside of the KeyStore in plain text.
 		ssl_key_password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the password for the cert inside of the KeyStore.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		ssl_key_password_secret_version?: string
@@ -863,20 +792,16 @@ import "list"
 		// Input only. The TrustStore password in plain text.
 		trust_store_password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the TrustStore password.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		trust_store_password_secret_version?: string
 
-		// Specifies that the user intends to authenticate to the instance
-		// using a
-		// resource principal. Applicable only for OCI Streaming
-		// connections.
+		// Specifies that the user intends to authenticate to the instance using a
+		// resource principal. Applicable only for OCI Streaming connections.
 		use_resource_principal?: bool
 
-		// The username Oracle Goldengate uses to connect the associated
-		// system of
+		// The username Oracle Goldengate uses to connect the associated system of
 		// the given technology.
 		username?: string
 	})
@@ -888,18 +813,12 @@ import "list"
 		// The port of an endpoint usually specified for a connection.
 		port?: number
 
-		// The private IP address of the connection's endpoint in the
-		// customer's VCN,
-		// typically a database endpoint or a big data endpoint (e.g.
-		// Kafka bootstrap
-		// server). In case the privateIp is provided, the subnetId must
-		// also be
-		// provided. In case the privateIp (and the subnetId) is not
-		// provided it is
-		// assumed the datasource is publicly accessible. In case the
-		// connection is
-		// accessible only privately, the lack of privateIp will result in
-		// not being
+		// The private IP address of the connection's endpoint in the customer's VCN,
+		// typically a database endpoint or a big data endpoint (e.g. Kafka bootstrap
+		// server). In case the privateIp is provided, the subnetId must also be
+		// provided. In case the privateIp (and the subnetId) is not provided it is
+		// assumed the datasource is publicly accessible. In case the connection is
+		// accessible only privately, the lack of privateIp will result in not being
 		// able to access the connection.
 		private_ip_address?: string
 	})
@@ -918,29 +837,23 @@ import "list"
 		// Input only. The KeyStore password in plain text.
 		key_store_password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the KeyStore password.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		key_store_password_secret_version?: string
 
-		// Input only. The password to access Schema Registry in plain
-		// text.
+		// Input only. The password to access Schema Registry in plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
-		// the password to access Schema Registry using basic
-		// authentication.
+		// Input only. The resource name of a secret version in Secret Manager which contains
+		// the password to access Schema Registry using basic authentication.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		password_secret_version?: string
 
-		// Input only. The password for the cert inside the KeyStore in
-		// plain text.
+		// Input only. The password for the cert inside the KeyStore in plain text.
 		ssl_key_password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the password for the cert inside the KeyStore.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		ssl_key_password_secret_version?: string
@@ -954,8 +867,7 @@ import "list"
 		// Input only. The TrustStore password in plain text.
 		trust_store_password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the TrustStore password.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		trust_store_password_secret_version?: string
@@ -964,11 +876,9 @@ import "list"
 		// e.g.: 'https://server1.us.oracle.com:8081'
 		url?: string
 
-		// The username to access Schema Registry using basic
-		// authentication.
+		// The username to access Schema Registry using basic authentication.
 		// This value is injected into
-		// 'schema.registry.basic.auth.user.info=user:password'
-		// configuration
+		// 'schema.registry.basic.auth.user.info=user:password' configuration
 		// property.
 		username?: string
 	})
@@ -1000,13 +910,11 @@ import "list"
 		// The name or address of a host.
 		host?: string
 
-		// Input only. The password Oracle Goldengate uses for Microsoft
-		// SQL Server connection
+		// Input only. The password Oracle Goldengate uses for Microsoft SQL Server connection
 		// in plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the password Oracle Goldengate uses for Microsoft SQL Server
 		// connection.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
@@ -1021,8 +929,7 @@ import "list"
 		// TLS
 		security_protocol?: string
 
-		// If set to true, the driver validates the certificate that is
-		// sent by the
+		// If set to true, the driver validates the certificate that is sent by the
 		// database server.
 		server_certificate_validation_required?: bool
 
@@ -1033,8 +940,7 @@ import "list"
 		// The technology type of MicrosoftSqlserverConnection.
 		technology_type?: string
 
-		// The username Oracle Goldengate uses to connect to the Microsoft
-		// SQL
+		// The username Oracle Goldengate uses to connect to the Microsoft SQL
 		// Server.
 		username?: string
 	})
@@ -1055,15 +961,12 @@ import "list"
 		// The OCID of the Oracle Autonomous Json Database.
 		database_id?: string
 
-		// Input only. The password Oracle Goldengate uses to connect the
-		// Mongodb connection in
+		// Input only. The password Oracle Goldengate uses to connect the Mongodb connection in
 		// plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
-		// the password Oracle Goldengate uses to connect the Mongodb
-		// connection.
+		// Input only. The resource name of a secret version in Secret Manager which contains
+		// the password Oracle Goldengate uses to connect the Mongodb connection.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		password_secret_version?: string
 
@@ -1085,12 +988,10 @@ import "list"
 		// the client public key (for 2-way SSL).
 		tls_certificate_key_file?: string
 
-		// Input only. The Client Certificate key file password in plain
-		// text.
+		// Input only. The Client Certificate key file password in plain text.
 		tls_certificate_key_file_password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the Client Certificate key file password in Secret Manager.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		tls_certificate_key_file_password_secret_version?: string
@@ -1111,12 +1012,10 @@ import "list"
 		// The name or address of a host.
 		host?: string
 
-		// Input only. The password Oracle Goldengate uses to connect to
-		// MySQL in plain text.
+		// Input only. The password Oracle Goldengate uses to connect to MySQL in plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the password Oracle Goldengate uses to connect to MySQL.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		password_secret_version?: string
@@ -1159,8 +1058,7 @@ import "list"
 		// The technology type of MysqlConnection.
 		technology_type?: string
 
-		// The username Oracle Goldengate uses to connect the associated
-		// system of
+		// The username Oracle Goldengate uses to connect the associated system of
 		// the given technology.
 		username?: string
 	})
@@ -1181,14 +1079,11 @@ import "list"
 		// The passphrase of the private key.
 		private_key_passphrase_secret?: string
 
-		// The fingerprint of the API Key of the user specified by the
-		// userId.
+		// The fingerprint of the API Key of the user specified by the userId.
 		public_key_fingerprint?: string
 
-		// The name of the region of OCI Object Storage. e.g.:
-		// us-ashburn-1
-		// If the region is not provided, backend will default to the
-		// default region.
+		// The name of the region of OCI Object Storage. e.g.: us-ashburn-1
+		// If the region is not provided, backend will default to the default region.
 		region?: string
 
 		// The technology type of OciObjectStorageConnection.
@@ -1197,14 +1092,12 @@ import "list"
 		// The OCID of the related OCI tenancy.
 		tenancy_id?: string
 
-		// Specifies that the user intends to authenticate to the instance
-		// using a
+		// Specifies that the user intends to authenticate to the instance using a
 		// resource principal.
 		use_resource_principal?: bool
 
 		// The OCID of the OCI user who will access the Object Storage.
-		// The user must have write access to the bucket they want to
-		// connect to.
+		// The user must have write access to the bucket they want to connect to.
 		user_id?: string
 	})
 
@@ -1219,8 +1112,7 @@ import "list"
 		// The passphrase of the private key.
 		private_key_passphrase_secret?: string
 
-		// The fingerprint of the API Key of the user specified by the
-		// user_id.
+		// The fingerprint of the API Key of the user specified by the user_id.
 		public_key_fingerprint?: string
 
 		// The name of the region. e.g.: us-ashburn-1
@@ -1232,8 +1124,7 @@ import "list"
 		// The OCID of the related OCI tenancy.
 		tenancy_id?: string
 
-		// Specifies that the user intends to authenticate to the instance
-		// using a
+		// Specifies that the user intends to authenticate to the instance using a
 		// resource principal.
 		use_resource_principal?: bool
 
@@ -1248,28 +1139,23 @@ import "list"
 		// MTLS
 		authentication_mode?: string
 
-		// Connect descriptor or Easy Connect Naming method used to
-		// connect to a
+		// Connect descriptor or Easy Connect Naming method used to connect to a
 		// database.
 		connection_string?: string
 
-		// Database instance id of database in Oracle Database @ Google
-		// Cloud.
-		// If gcp_oracle_database_id is provided, connection_string must
-		// be empty.
+		// Database instance id of database in Oracle Database @ Google Cloud.
+		// If gcp_oracle_database_id is provided, connection_string must be empty.
 		gcp_oracle_database_id?: string
 
 		// Input only. The password Oracle Goldengate uses in plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the password Oracle Goldengate uses.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		password_secret_version?: string
 
-		// The mode of the database connection session to be established
-		// by the data
+		// The mode of the database connection session to be established by the data
 		// client.
 		// Possible values:
 		// DIRECT
@@ -1282,8 +1168,7 @@ import "list"
 		// The username Oracle Goldengate uses to connect.
 		username?: string
 
-		// The wallet contents Oracle Goldengate uses to make connections
-		// to a
+		// The wallet contents Oracle Goldengate uses to make connections to a
 		// database.
 		wallet_file?: string
 	})
@@ -1296,8 +1181,7 @@ import "list"
 		// The passphrase of the private key.
 		private_key_passphrase_secret?: string
 
-		// The fingerprint of the API Key of the user specified by the
-		// userId.
+		// The fingerprint of the API Key of the user specified by the userId.
 		public_key_fingerprint?: string
 
 		// The name of the region. e.g.: us-ashburn-1
@@ -1309,13 +1193,11 @@ import "list"
 		// The OCID of the OCI tenancy.
 		tenancy_id?: string
 
-		// Specifies that the user intends to authenticate to the instance
-		// using a
+		// Specifies that the user intends to authenticate to the instance using a
 		// resource principal.
 		use_resource_principal?: bool
 
-		// The OCID of the OCI user who will access the Oracle NoSQL
-		// database.
+		// The OCID of the OCI user who will access the Oracle NoSQL database.
 		user_id?: string
 	})
 
@@ -1331,13 +1213,11 @@ import "list"
 		// The name or address of a host.
 		host?: string
 
-		// Input only. The password Oracle Goldengate uses for PostgreSQL
-		// connection in plain
+		// Input only. The password Oracle Goldengate uses for PostgreSQL connection in plain
 		// text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the password Oracle Goldengate uses for PostgreSQL connection.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		password_secret_version?: string
@@ -1377,8 +1257,7 @@ import "list"
 		// The technology type of PostgresqlConnection.
 		technology_type?: string
 
-		// The username Oracle Goldengate uses to connect the associated
-		// system of
+		// The username Oracle Goldengate uses to connect the associated system of
 		// the given technology.
 		username?: string
 	})
@@ -1404,18 +1283,15 @@ import "list"
 		// Input only. The KeyStore password in plain text.
 		key_store_password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the KeyStore password.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		key_store_password_secret_version?: string
 
-		// Input only. The password Oracle Goldengate uses for Redis
-		// connection in plain text.
+		// Input only. The password Oracle Goldengate uses for Redis connection in plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the password Oracle Goldengate uses for Redis connection.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		password_secret_version?: string
@@ -1430,12 +1306,9 @@ import "list"
 		// MTLS
 		security_protocol?: string
 
-		// Comma separated list of Redis server addresses, specified as
-		// host:port
-		// entries, where :port is optional. If port is not specified, it
-		// defaults
-		// to 6379. Example:
-		// "server1.example.com:6379,server2.example.com:6379"
+		// Comma separated list of Redis server addresses, specified as host:port
+		// entries, where :port is optional. If port is not specified, it defaults
+		// to 6379. Example: "server1.example.com:6379,server2.example.com:6379"
 		servers?: string
 
 		// The technology type of RedisConnection.
@@ -1447,14 +1320,12 @@ import "list"
 		// Input only. The TrustStore password in plain text.
 		trust_store_password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
+		// Input only. The resource name of a secret version in Secret Manager which contains
 		// the TrustStore password.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		trust_store_password_secret_version?: string
 
-		// The username Oracle Goldengate uses to connect the associated
-		// system of
+		// The username Oracle Goldengate uses to connect the associated system of
 		// the given technology.
 		username?: string
 	})
@@ -1471,15 +1342,12 @@ import "list"
 		// 'jdbc:snowflake://.snowflakecomputing.com/?warehouse=&db='
 		connection_url?: string
 
-		// Input only. The password Oracle Goldengate uses to connect to
-		// Snowflake platform
+		// Input only. The password Oracle Goldengate uses to connect to Snowflake platform
 		// in plain text.
 		password?: string
 
-		// Input only. The resource name of a secret version in Secret
-		// Manager which contains
-		// the password Oracle Goldengate uses to connect to Snowflake
-		// platform.
+		// Input only. The resource name of a secret version in Secret Manager which contains
+		// the password Oracle Goldengate uses to connect to Snowflake platform.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}.
 		password_secret_version?: string
 

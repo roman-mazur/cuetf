@@ -1,18 +1,15 @@
 package data
 
-#google_oracle_database_autonomous_database: {
+google_oracle_database_autonomous_database: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_oracle_database_autonomous_database")
 	close({
 		// The password for the default ADMIN user.
 		admin_password?: string
 
-		// The ID of the Autonomous Database to create. This value is
-		// restricted
-		// to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of
-		// 63
-		// characters in length. The value must start with a letter and
-		// end with
+		// The ID of the Autonomous Database to create. This value is restricted
+		// to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63
+		// characters in length. The value must start with a letter and end with
 		// a letter or a number.
 		autonomous_database_id!: string
 
@@ -22,66 +19,52 @@ package data
 		// The date and time that the Autonomous Database was created.
 		create_time?: string
 
-		// The name of the Autonomous Database. The database name must be
-		// unique in
+		// The name of the Autonomous Database. The database name must be unique in
 		// the project. The name must begin with a letter and can
 		// contain a maximum of 30 alphanumeric characters.
 		database?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Whether or not to allow Terraform to destroy the instance.
-		// Unless this field is set to false in Terraform state, a
-		// terraform destroy or terraform apply that would delete the
-		// instance will fail.
+		// Whether or not to allow Terraform to destroy the instance. Unless this field
+		// is set to false in Terraform state, a terraform destroy or terraform apply
+		// that would delete the instance will fail.
 		deletion_protection?: bool
 
-		// List of supported GCP region to clone the Autonomous Database
-		// for disaster recovery.
+		// List of supported GCP region to clone the Autonomous Database for disaster recovery.
 		disaster_recovery_supported_locations?: [...string]
 
-		// The display name for the Autonomous Database. The name does not
-		// have to
+		// The display name for the Autonomous Database. The name does not have to
 		// be unique within your project.
 		display_name?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// The ID of the subscription entitlement associated with the
-		// Autonomous
+		// The ID of the subscription entitlement associated with the Autonomous
 		// Database.
 		entitlement_id?: string
 		id?:             string
 
 		// The labels or tags associated with the Autonomous Database.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Resource ID segment making up resource 'name'. See
-		// documentation for resource type
-		// 'oracledatabase.googleapis.com/AutonomousDatabaseBackup'.
+		// Resource ID segment making up resource 'name'. See documentation for resource
+		// type 'oracledatabase.googleapis.com/AutonomousDatabaseBackup'.
 		location!: string
 
-		// Identifier. The name of the Autonomous Database resource in the
-		// following format:
+		// Identifier. The name of the Autonomous Database resource in the following format:
 		// projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}
 		name?: string
 
@@ -89,23 +72,19 @@ package data
 		// Format: projects/{project}/global/networks/{network}
 		network?: string
 
-		// The name of the OdbNetwork associated with the Autonomous
-		// Database.
+		// The name of the OdbNetwork associated with the Autonomous Database.
 		// Format:
 		// projects/{project}/locations/{location}/odbNetworks/{odb_network}
-		// It is optional but if specified, this should match the parent
-		// ODBNetwork of
+		// It is optional but if specified, this should match the parent ODBNetwork of
 		// the odb_subnet and backup_odb_subnet.
 		odb_network?: string
 
-		// The name of the OdbSubnet associated with the Autonomous
-		// Database for
+		// The name of the OdbSubnet associated with the Autonomous Database for
 		// IP allocation. Format:
 		// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
 		odb_subnet?: string
 
-		// The peer Autonomous Database names of the given Autonomous
-		// Database.
+		// The peer Autonomous Database names of the given Autonomous Database.
 		peer_autonomous_databases?: [...string]
 		project?: string
 
@@ -225,8 +204,7 @@ package data
 			vault_id?:                           string
 		})]
 
-		// The source Autonomous Database configuration for the standby
-		// Autonomous Database.
+		// The source Autonomous Database configuration for the standby Autonomous Database.
 		source_config?: [...close({
 			automatic_backups_replication_enabled?: bool
 			autonomous_database?:                   string

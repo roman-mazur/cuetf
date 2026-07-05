@@ -1,6 +1,6 @@
 package res
 
-#google_gemini_code_repository_index: {
+google_gemini_code_repository_index: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_code_repository_index")
 	close({
@@ -12,55 +12,45 @@ package res
 		// Output only. Create time stamp.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// If set to true, will allow deletion of the CodeRepositoryIndex
-		// even if there are existing RepositoryGroups for the resource.
-		// These RepositoryGroups will also be deleted.
+		// If set to true, will allow deletion of the CodeRepositoryIndex even if there
+		// are existing RepositoryGroups for the resource. These RepositoryGroups will
+		// also be deleted.
 		force_destroy?: bool
 		id?:            string
 
-		// Optional. Immutable. Customer-managed encryption key name, in
-		// the format
+		// Optional. Immutable. Customer-managed encryption key name, in the format
 		// 'projects/*/locations/*/keyRings/*/cryptoKeys/*'.
 		kms_key?: string
 
 		// Optional. Labels as key value pairs.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// The location of the Code Repository Index, for example
-		// 'us-central1'.
+		// The location of the Code Repository Index, for example 'us-central1'.
 		location!: string
 
 		// Immutable. Identifier. Name of Code Repository Index.
-		name?:    string
-		project?: string
+		name?: string
 
 		// Output only. Code Repository Index instance State.
-		// Possible values are: 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE',
-		// 'DELETING', 'SUSPENDED'.
-		state?: string
+		// Possible values are: 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'DELETING', 'SUSPENDED'.
+		state?:   string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

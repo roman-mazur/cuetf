@@ -1,19 +1,17 @@
 package data
 
-#google_backup_dr_backup_plan_association: {
+google_backup_dr_backup_plan_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_backup_dr_backup_plan_association")
 	close({
 		// The BP with which resource needs to be created
 		// Note:
-		// - A Backup Plan configured for
-		// 'compute.googleapis.com/Instance', can only protect instance
-		// type resources.
-		// - A Backup Plan configured for 'compute.googleapis.com/Disk'
-		// can be used to protect both standard Disks and Regional Disks
-		// resources.
-		// - A Backup Plan configured for 'file.googleapis.com/Instance'
-		// can only protect Filestore instances.
+		// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only
+		// protect instance type resources.
+		// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to
+		// protect both standard Disks and Regional Disks resources.
+		// - A Backup Plan configured for 'file.googleapis.com/Instance' can only
+		// protect Filestore instances.
 		backup_plan?: string
 
 		// The id of backupplan association
@@ -22,20 +20,14 @@ package data
 		// The time when the instance was created
 		create_time?: string
 
-		// Resource name of data source which will be used as storage
-		// location for backups taken
+		// Resource name of data source which will be used as storage location for backups taken
 		data_source?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
@@ -52,8 +44,7 @@ package data
 
 		// The resource type of workload on which backupplan is applied.
 		// Examples include, "compute.googleapis.com/Instance",
-		// "compute.googleapis.com/Disk",
-		// "compute.googleapis.com/RegionDisk", and
+		// "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and
 		// "file.googleapis.com/Instance"
 		resource_type?: string
 

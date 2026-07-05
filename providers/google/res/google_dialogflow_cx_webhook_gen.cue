@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_dialogflow_cx_webhook: {
+google_dialogflow_cx_webhook: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_webhook")
 	close({
@@ -10,55 +10,44 @@ import "list"
 		service_directory?: matchN(1, [#service_directory, list.MaxItems(1) & [...#service_directory]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// Indicates whether the webhook is disabled.
 		disabled?: bool
 
-		// The human-readable name of the webhook, unique within the
-		// agent.
+		// The human-readable name of the webhook, unique within the agent.
 		display_name!: string
 
-		// Deprecated. Indicates if automatic spell correction is enabled
-		// in detect intent requests.
+		// Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
 		enable_spell_correction?: bool
 
-		// Deprecated. Determines whether this agent should log
-		// conversation queries.
+		// Deprecated. Determines whether this agent should log conversation queries.
 		enable_stackdriver_logging?: bool
 		id?:                         string
 
 		// The unique identifier of the webhook.
-		// Format: projects/<Project ID>/locations/<Location
-		// ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+		// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
 		name?: string
 
 		// The agent to create a webhook for.
-		// Format: projects/<Project ID>/locations/<Location
-		// ID>/agents/<Agent ID>.
+		// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 		parent?: string
 
-		// Deprecated. Name of the SecuritySettings reference for the
-		// agent. Format: projects/<Project ID>/locations/<Location
-		// ID>/securitySettings/<Security Settings ID>.
+		// Deprecated. Name of the SecuritySettings reference for the agent. Format:
+		// projects/<Project ID>/locations/<Location ID>/securitySettings/<Security
+		// Settings ID>.
 		security_settings?: string
 
-		// Deprecated. Name of the start flow in this agent. A start flow
-		// will be automatically created when the agent is created, and
-		// can only be deleted by deleting the agent. Format:
-		// projects/<Project ID>/locations/<Location ID>/agents/<Agent
-		// ID>/flows/<Flow ID>.
+		// Deprecated. Name of the start flow in this agent. A start flow will be
+		// automatically created when the agent is created, and can only be deleted by
+		// deleting the agent. Format: projects/<Project ID>/locations/<Location
+		// ID>/agents/<Agent ID>/flows/<Flow ID>.
 		start_flow?: string
 
 		// Webhook execution timeout.
@@ -70,17 +59,12 @@ import "list"
 		secret_versions_for_request_headers?: matchN(1, [_#defs."/$defs/generic_web_service/$defs/secret_versions_for_request_headers", [..._#defs."/$defs/generic_web_service/$defs/secret_versions_for_request_headers"]])
 		service_account_auth_config?: matchN(1, [_#defs."/$defs/generic_web_service/$defs/service_account_auth_config", list.MaxItems(1) & [..._#defs."/$defs/generic_web_service/$defs/service_account_auth_config"]])
 
-		// Specifies a list of allowed custom CA certificates (in DER
-		// format) for
-		// HTTPS verification. This overrides the default SSL trust store.
-		// If this
-		// is empty or unspecified, Dialogflow will use Google's default
-		// trust store
+		// Specifies a list of allowed custom CA certificates (in DER format) for
+		// HTTPS verification. This overrides the default SSL trust store. If this
+		// is empty or unspecified, Dialogflow will use Google's default trust store
 		// to verify certificates.
-		// N.B. Make sure the HTTPS server certificates are signed with
-		// "subject alt
-		// name". For instance a certificate can be self-signed using the
-		// following
+		// N.B. Make sure the HTTPS server certificates are signed with "subject alt
+		// name". For instance a certificate can be self-signed using the following
 		// command,
 		// openssl x509 -req -days 200 -in example.com.csr \
 		// -signkey example.com.key \
@@ -88,43 +72,34 @@ import "list"
 		// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
 		allowed_ca_certs?: [...string]
 
-		// HTTP method for the flexible webhook calls. Standard webhook
-		// always uses
-		// POST. Possible values: ["POST", "GET", "HEAD", "PUT", "DELETE",
-		// "PATCH", "OPTIONS"]
+		// HTTP method for the flexible webhook calls. Standard webhook always uses
+		// POST. Possible values: ["POST", "GET", "HEAD", "PUT", "DELETE", "PATCH", "OPTIONS"]
 		http_method?: string
 
-		// Maps the values extracted from specific fields of the flexible
-		// webhook
+		// Maps the values extracted from specific fields of the flexible webhook
 		// response into session parameters.
 		// - Key: session parameter name
 		// - Value: field path in the webhook response
 		parameter_mapping?: [string]: string
 
-		// Defines a custom JSON object as request body to send to
-		// flexible webhook.
+		// Defines a custom JSON object as request body to send to flexible webhook.
 		request_body?: string
 
-		// The HTTP request headers to send together with webhook
-		// requests.
+		// The HTTP request headers to send together with webhook requests.
 		request_headers?: [string]: string
 
-		// The SecretManager secret version resource storing the
-		// username:password
+		// The SecretManager secret version resource storing the username:password
 		// pair for HTTP Basic authentication.
-		// Format:
-		// 'projects/{project}/secrets/{secret}/versions/{version}'
+		// Format: 'projects/{project}/secrets/{secret}/versions/{version}'
 		secret_version_for_username_password?: string
 
-		// Indicate the auth token type generated from the [Diglogflow
-		// service
+		// Indicate the auth token type generated from the [Diglogflow service
 		// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
-		// The generated token is sent in the Authorization header.
-		// Possible values: ["NONE", "ID_TOKEN", "ACCESS_TOKEN"]
+		// The generated token is sent in the Authorization header. Possible values:
+		// ["NONE", "ID_TOKEN", "ACCESS_TOKEN"]
 		service_agent_auth?: string
 
-		// The webhook URI for receiving POST requests. It must use https
-		// protocol.
+		// The webhook URI for receiving POST requests. It must use https protocol.
 		uri!: string
 
 		// Type of the webhook. Possible values: ["STANDARD", "FLEXIBLE"]
@@ -149,25 +124,20 @@ import "list"
 		client_id!: string
 
 		// The client secret provided by the 3rd party platform. If the
-		// 'secret_version_for_client_secret' field is set, this field
-		// will be
+		// 'secret_version_for_client_secret' field is set, this field will be
 		// ignored.
 		client_secret?: string
 
 		// The OAuth scopes to grant.
 		scopes?: [...string]
 
-		// The name of the SecretManager secret version resource storing
-		// the
-		// client secret. If this field is set, the 'client_secret' field
-		// will be
+		// The name of the SecretManager secret version resource storing the
+		// client secret. If this field is set, the 'client_secret' field will be
 		// ignored.
-		// Format:
-		// 'projects/{project}/secrets/{secret}/versions/{version}'
+		// Format: 'projects/{project}/secrets/{secret}/versions/{version}'
 		secret_version_for_client_secret?: string
 
-		// The token endpoint provided by the 3rd party platform to
-		// exchange an
+		// The token endpoint provided by the 3rd party platform to exchange an
 		// access token.
 		token_endpoint!: string
 	})
@@ -175,23 +145,17 @@ import "list"
 	_#defs: "/$defs/generic_web_service/$defs/secret_versions_for_request_headers": close({
 		key!: string
 
-		// The SecretManager secret version resource storing the header
-		// value.
-		// Format:
-		// 'projects/{project}/secrets/{secret}/versions/{version}'
+		// The SecretManager secret version resource storing the header value.
+		// Format: 'projects/{project}/secrets/{secret}/versions/{version}'
 		secret_version!: string
 	})
 
 	_#defs: "/$defs/generic_web_service/$defs/service_account_auth_config": close({
-		// The email address of the service account used to authenticate
-		// the webhook call.
-		// Dialogflow uses this service account to exchange an access
-		// token and the access
-		// token is then sent in the **Authorization** header of the
-		// webhook request.
+		// The email address of the service account used to authenticate the webhook call.
+		// Dialogflow uses this service account to exchange an access token and the access
+		// token is then sent in the **Authorization** header of the webhook request.
 		//
-		// The service account must have the
-		// **roles/iam.serviceAccountTokenCreator** role
+		// The service account must have the **roles/iam.serviceAccountTokenCreator** role
 		// granted to the
 		// [Dialogflow service
 		// agent](https://cloud.google.com/iam/docs/service-agents?_gl=1*1jsujvh*_ga*NjYxMzU3OTg2LjE3Njc3MzQ4NjM.*_ga_WH2QY8WWF5*czE3Njc3MzQ2MjgkbzIkZzEkdDE3Njc3MzQ3NzQkajYwJGwwJGgw#dialogflow-service-agent).
@@ -203,17 +167,12 @@ import "list"
 		secret_versions_for_request_headers?: matchN(1, [_#defs."/$defs/service_directory/$defs/generic_web_service/$defs/secret_versions_for_request_headers", [..._#defs."/$defs/service_directory/$defs/generic_web_service/$defs/secret_versions_for_request_headers"]])
 		service_account_auth_config?: matchN(1, [_#defs."/$defs/service_directory/$defs/generic_web_service/$defs/service_account_auth_config", list.MaxItems(1) & [..._#defs."/$defs/service_directory/$defs/generic_web_service/$defs/service_account_auth_config"]])
 
-		// Specifies a list of allowed custom CA certificates (in DER
-		// format) for
-		// HTTPS verification. This overrides the default SSL trust store.
-		// If this
-		// is empty or unspecified, Dialogflow will use Google's default
-		// trust store
+		// Specifies a list of allowed custom CA certificates (in DER format) for
+		// HTTPS verification. This overrides the default SSL trust store. If this
+		// is empty or unspecified, Dialogflow will use Google's default trust store
 		// to verify certificates.
-		// N.B. Make sure the HTTPS server certificates are signed with
-		// "subject alt
-		// name". For instance a certificate can be self-signed using the
-		// following
+		// N.B. Make sure the HTTPS server certificates are signed with "subject alt
+		// name". For instance a certificate can be self-signed using the following
 		// command,
 		// openssl x509 -req -days 200 -in example.com.csr \
 		// -signkey example.com.key \
@@ -221,43 +180,34 @@ import "list"
 		// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
 		allowed_ca_certs?: [...string]
 
-		// HTTP method for the flexible webhook calls. Standard webhook
-		// always uses
-		// POST. Possible values: ["POST", "GET", "HEAD", "PUT", "DELETE",
-		// "PATCH", "OPTIONS"]
+		// HTTP method for the flexible webhook calls. Standard webhook always uses
+		// POST. Possible values: ["POST", "GET", "HEAD", "PUT", "DELETE", "PATCH", "OPTIONS"]
 		http_method?: string
 
-		// Maps the values extracted from specific fields of the flexible
-		// webhook
+		// Maps the values extracted from specific fields of the flexible webhook
 		// response into session parameters.
 		// - Key: session parameter name
 		// - Value: field path in the webhook response
 		parameter_mapping?: [string]: string
 
-		// Defines a custom JSON object as request body to send to
-		// flexible webhook.
+		// Defines a custom JSON object as request body to send to flexible webhook.
 		request_body?: string
 
-		// The HTTP request headers to send together with webhook
-		// requests.
+		// The HTTP request headers to send together with webhook requests.
 		request_headers?: [string]: string
 
-		// The SecretManager secret version resource storing the
-		// username:password
+		// The SecretManager secret version resource storing the username:password
 		// pair for HTTP Basic authentication.
-		// Format:
-		// 'projects/{project}/secrets/{secret}/versions/{version}'
+		// Format: 'projects/{project}/secrets/{secret}/versions/{version}'
 		secret_version_for_username_password?: string
 
-		// Indicate the auth token type generated from the [Diglogflow
-		// service
+		// Indicate the auth token type generated from the [Diglogflow service
 		// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
-		// The generated token is sent in the Authorization header.
-		// Possible values: ["NONE", "ID_TOKEN", "ACCESS_TOKEN"]
+		// The generated token is sent in the Authorization header. Possible values:
+		// ["NONE", "ID_TOKEN", "ACCESS_TOKEN"]
 		service_agent_auth?: string
 
-		// The webhook URI for receiving POST requests. It must use https
-		// protocol.
+		// The webhook URI for receiving POST requests. It must use https protocol.
 		uri!: string
 
 		// Type of the webhook. Possible values: ["STANDARD", "FLEXIBLE"]
@@ -269,25 +219,20 @@ import "list"
 		client_id!: string
 
 		// The client secret provided by the 3rd party platform. If the
-		// 'secret_version_for_client_secret' field is set, this field
-		// will be
+		// 'secret_version_for_client_secret' field is set, this field will be
 		// ignored.
 		client_secret?: string
 
 		// The OAuth scopes to grant.
 		scopes?: [...string]
 
-		// The name of the SecretManager secret version resource storing
-		// the
-		// client secret. If this field is set, the 'client_secret' field
-		// will be
+		// The name of the SecretManager secret version resource storing the
+		// client secret. If this field is set, the 'client_secret' field will be
 		// ignored.
-		// Format:
-		// 'projects/{project}/secrets/{secret}/versions/{version}'
+		// Format: 'projects/{project}/secrets/{secret}/versions/{version}'
 		secret_version_for_client_secret?: string
 
-		// The token endpoint provided by the 3rd party platform to
-		// exchange an
+		// The token endpoint provided by the 3rd party platform to exchange an
 		// access token.
 		token_endpoint!: string
 	})
@@ -295,23 +240,17 @@ import "list"
 	_#defs: "/$defs/service_directory/$defs/generic_web_service/$defs/secret_versions_for_request_headers": close({
 		key!: string
 
-		// The SecretManager secret version resource storing the header
-		// value.
-		// Format:
-		// 'projects/{project}/secrets/{secret}/versions/{version}'
+		// The SecretManager secret version resource storing the header value.
+		// Format: 'projects/{project}/secrets/{secret}/versions/{version}'
 		secret_version!: string
 	})
 
 	_#defs: "/$defs/service_directory/$defs/generic_web_service/$defs/service_account_auth_config": close({
-		// The email address of the service account used to authenticate
-		// the webhook call.
-		// Dialogflow uses this service account to exchange an access
-		// token and the access
-		// token is then sent in the **Authorization** header of the
-		// webhook request.
+		// The email address of the service account used to authenticate the webhook call.
+		// Dialogflow uses this service account to exchange an access token and the access
+		// token is then sent in the **Authorization** header of the webhook request.
 		//
-		// The service account must have the
-		// **roles/iam.serviceAccountTokenCreator** role
+		// The service account must have the **roles/iam.serviceAccountTokenCreator** role
 		// granted to the
 		// [Dialogflow service
 		// agent](https://cloud.google.com/iam/docs/service-agents?_gl=1*1jsujvh*_ga*NjYxMzU3OTg2LjE3Njc3MzQ4NjM.*_ga_WH2QY8WWF5*czE3Njc3MzQ2MjgkbzIkZzEkdDE3Njc3MzQ3NzQkajYwJGwwJGgw#dialogflow-service-agent).

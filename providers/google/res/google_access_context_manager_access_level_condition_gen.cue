@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_access_context_manager_access_level_condition: {
+google_access_context_manager_access_level_condition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_access_level_condition")
 	close({
@@ -16,16 +16,11 @@ import "list"
 		// The name of the Access Policy this resource belongs to.
 		access_policy_id?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
@@ -35,8 +30,7 @@ import "list"
 		// Note that for a CIDR IP address block, the specified IP address
 		// portion must be properly truncated (i.e. all the host bits must
 		// be zero) or the input is considered malformed. For example,
-		// "192.0.2.0/24" is accepted but "192.0.2.1/24" is not.
-		// Similarly,
+		// "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
 		// for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
 		// is not. The originating IP of a request must be in one of the
 		// listed subnets in order for this Condition to be true.
@@ -46,8 +40,7 @@ import "list"
 		// An allowed list of members (users, service accounts).
 		// Using groups is not supported yet.
 		//
-		// The signed-in user originating the request must be a part of
-		// one
+		// The signed-in user originating the request must be a part of one
 		// of the provided members. If not specified, a request may come
 		// from any user (logged in/not logged in, not present in any
 		// groups, etc.).
@@ -82,8 +75,8 @@ import "list"
 
 		// A list of allowed encryptions statuses.
 		// An empty list allows all statuses. Possible values:
-		// ["ENCRYPTION_UNSPECIFIED", "ENCRYPTION_UNSUPPORTED",
-		// "UNENCRYPTED", "ENCRYPTED"]
+		// ["ENCRYPTION_UNSPECIFIED", "ENCRYPTION_UNSUPPORTED", "UNENCRYPTED",
+		// "ENCRYPTED"]
 		allowed_encryption_statuses?: [...string]
 
 		// Whether the device needs to be approved by the customer admin.
@@ -112,16 +105,16 @@ import "list"
 		// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 		minimum_version?: string
 
-		// The operating system type of the device. Possible values:
-		// ["OS_UNSPECIFIED", "DESKTOP_MAC", "DESKTOP_WINDOWS",
-		// "DESKTOP_LINUX", "DESKTOP_CHROME_OS", "ANDROID", "IOS"]
+		// The operating system type of the device. Possible values: ["OS_UNSPECIFIED",
+		// "DESKTOP_MAC", "DESKTOP_WINDOWS", "DESKTOP_LINUX", "DESKTOP_CHROME_OS",
+		// "ANDROID", "IOS"]
 		os_type!: string
 	})
 
 	_#defs: "/$defs/vpc_network_sources/$defs/vpc_subnetwork": close({
-		// Required. Network name to be allowed by this Access Level.
-		// Networks of foreign organizations requires
-		// 'compute.network.get' permission to be granted to caller.
+		// Required. Network name to be allowed by this Access Level. Networks of
+		// foreign organizations requires 'compute.network.get' permission to be
+		// granted to caller.
 		network!: string
 
 		// CIDR block IP subnetwork specification. Must be IPv4.

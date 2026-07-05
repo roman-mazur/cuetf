@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_dialogflow_cx_generative_settings: {
+google_dialogflow_cx_generative_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_generative_settings")
 	close({
@@ -17,13 +17,11 @@ import "list"
 		language_code!: string
 
 		// The unique identifier of the generativeSettings.
-		// Format:
-		// projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/generativeSettings.
+		// Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/generativeSettings.
 		name?: string
 
 		// The agent to create a flow for.
-		// Format: projects/<Project ID>/locations/<Location
-		// ID>/agents/<Agent ID>.
+		// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 		parent?: string
 	})
 
@@ -45,29 +43,26 @@ import "list"
 	})
 
 	#knowledge_connector_settings: close({
-		// Name of the virtual agent. Used for LLM prompt. Can be left
-		// empty.
+		// Name of the virtual agent. Used for LLM prompt. Can be left empty.
 		agent?: string
 
 		// Identity of the agent, e.g. "virtual agent", "AI assistant".
 		agent_identity?: string
 
-		// Agent scope, e.g. "Example company website", "internal Example
-		// company website for employees", "manual of car owner".
+		// Agent scope, e.g. "Example company website", "internal Example company
+		// website for employees", "manual of car owner".
 		agent_scope?: string
 
-		// Name of the company, organization or other entity that the
-		// agent represents. Used for knowledge connector LLM prompt and
-		// for knowledge search.
+		// Name of the company, organization or other entity that the agent represents.
+		// Used for knowledge connector LLM prompt and for knowledge search.
 		business?: string
 
-		// Company description, used for LLM prompt, e.g. "a family
-		// company selling freshly roasted coffee beans".''
+		// Company description, used for LLM prompt, e.g. "a family company selling
+		// freshly roasted coffee beans".''
 		business_description?: string
 
-		// Whether to disable fallback to Data Store search results (in
-		// case the LLM couldn't pick a proper answer). Per default the
-		// feature is enabled.
+		// Whether to disable fallback to Data Store search results (in case the LLM
+		// couldn't pick a proper answer). Per default the feature is enabled.
 		disable_data_store_fallback?: bool
 	})
 
@@ -89,13 +84,12 @@ import "list"
 		// Prompt name.
 		display_name?: string
 
-		// If the flag is true, the prompt is frozen and cannot be
-		// modified by users.
+		// If the flag is true, the prompt is frozen and cannot be modified by users.
 		frozen?: bool
 
-		// Prompt text that is sent to a LLM on no-match default,
-		// placeholders are filled downstream. For example: "Here is a
-		// conversation $conversation, a response is: "
+		// Prompt text that is sent to a LLM on no-match default, placeholders are
+		// filled downstream. For example: "Here is a conversation $conversation, a
+		// response is: "
 		prompt_text?: string
 	})
 

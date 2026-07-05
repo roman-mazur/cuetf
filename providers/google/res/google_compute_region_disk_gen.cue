@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_compute_region_disk: {
+google_compute_region_disk: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_disk")
 	close({
@@ -15,88 +15,68 @@ import "list"
 
 		// The access mode of the disk.
 		// For example:
-		// * READ_WRITE_SINGLE: The default AccessMode, means the disk can
-		// be attached to single instance in RW mode.
-		// * READ_WRITE_MANY: The AccessMode means the disk can be
-		// attached to multiple instances in RW mode.
-		// * READ_ONLY_SINGLE: The AccessMode means the disk can be
-		// attached to multiple instances in RO mode.
+		// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached
+		// to single instance in RW mode.
+		// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple
+		// instances in RW mode.
+		// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple
+		// instances in RO mode.
 		// The AccessMode is only valid for Hyperdisk disk types.
 		access_mode?: string
 
-		// If set to true, a snapshot of the disk will be created before
-		// it is destroyed.
-		// If your disk is encrypted with customer managed encryption keys
-		// these will be reused for the snapshot creation.
-		// The name of the snapshot by default will be
-		// '{{disk-name}}-YYYYMMDD-HHmm'
+		// If set to true, a snapshot of the disk will be created before it is destroyed.
+		// If your disk is encrypted with customer managed encryption keys these will be
+		// reused for the snapshot creation.
+		// The name of the snapshot by default will be '{{disk-name}}-YYYYMMDD-HHmm'
 		create_snapshot_before_destroy?: bool
 
-		// This will set a custom name prefix for the snapshot that's
-		// created when the disk is deleted.
+		// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
 		create_snapshot_before_destroy_prefix?: string
 
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// An optional description of this resource. Provide this property
-		// when
+		// An optional description of this resource. Provide this property when
 		// you create the resource.
 		description?: string
 
-		// The unique identifier for the resource. This identifier is
-		// defined by the server.
+		// The unique identifier for the resource. This identifier is defined by the server.
 		disk_id?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// The image from which to initialize this disk. This can be
-		// one of: the image's 'self_link',
-		// 'projects/{project}/global/images/{image}',
-		// 'projects/{project}/global/images/family/{family}',
-		// 'global/images/{image}',
-		// 'global/images/family/{family}', 'family/{family}',
-		// '{project}/{family}',
-		// '{project}/{image}', '{family}', or '{image}'. If referred by
-		// family, the
-		// images names must include the family name. If they don't, use
-		// the
-		// [google_compute_image data
-		// source](/docs/providers/google/d/compute_image.html).
-		// For instance, the image 'centos-6-v20180104' includes its
-		// family name 'centos-6'.
+		// one of: the image's 'self_link', 'projects/{project}/global/images/{image}',
+		// 'projects/{project}/global/images/family/{family}', 'global/images/{image}',
+		// 'global/images/family/{family}', 'family/{family}', '{project}/{family}',
+		// '{project}/{image}', '{family}', or '{image}'. If referred by family, the
+		// images names must include the family name. If they don't, use the
+		// [google_compute_image data source](/docs/providers/google/d/compute_image.html).
+		// For instance, the image 'centos-6-v20180104' includes its family name 'centos-6'.
 		// These images can be referred by family name here.
 		image?: string
 
-		// The fingerprint used for optimistic locking of this resource.
-		// Used
+		// The fingerprint used for optimistic locking of this resource. Used
 		// internally during updates.
 		label_fingerprint?: string
 
 		// Labels to apply to this disk. A list of key->value pairs.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Last attach timestamp in RFC3339 text format.
@@ -108,42 +88,32 @@ import "list"
 		// Any applicable license URI.
 		licenses?: [...string]
 
-		// Name of the resource. Provided by the client when the resource
-		// is
+		// Name of the resource. Provided by the client when the resource is
 		// created. The name must be 1-63 characters long, and comply with
-		// RFC1035. Specifically, the name must be 1-63 characters long
-		// and match
-		// the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means
-		// the
+		// RFC1035. Specifically, the name must be 1-63 characters long and match
+		// the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the
 		// first character must be a lowercase letter, and all following
-		// characters must be a dash, lowercase letter, or digit, except
-		// the last
+		// characters must be a dash, lowercase letter, or digit, except the last
 		// character, which cannot be a dash.
 		name!: string
 
-		// Physical block size of the persistent disk, in bytes. If not
-		// present
-		// in a request, a default value is used. Currently supported
-		// sizes
+		// Physical block size of the persistent disk, in bytes. If not present
+		// in a request, a default value is used. Currently supported sizes
 		// are 4096 and 16384, other sizes may be added in the future.
-		// If an unsupported value is requested, the error message will
-		// list
+		// If an unsupported value is requested, the error message will list
 		// the supported values for the caller's project.
 		physical_block_size_bytes?: number
-		project?:                   string
 
-		// Indicates how many IOPS to provision for the disk. This sets
-		// the number of I/O operations per second
-		// that the disk can handle. Values must be between 10,000 and
-		// 120,000.
+		// Indicates how many IOPS to provision for the disk. This sets the number of
+		// I/O operations per second
+		// that the disk can handle. Values must be between 10,000 and 120,000.
 		// For more details, see the Extreme persistent disk
 		// [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
 		provisioned_iops?: number
+		project?:          string
 
-		// Indicates how much throughput to provision for the disk. This
-		// sets the number of throughput
-		// mb per second that the disk can handle. Values must be greater
-		// than or equal to 1.
+		// Indicates how much throughput to provision for the disk. This sets the number of throughput
+		// mb per second that the disk can handle. Values must be greater than or equal to 1.
 		provisioned_throughput?: number
 
 		// A reference to the region where the disk resides.
@@ -151,77 +121,57 @@ import "list"
 
 		// URLs of the zones where the disk should be replicated to.
 		replica_zones!: [...string]
-		self_link?: string
 
-		// Size of the persistent disk, specified in GB. You can specify
-		// this
+		// Size of the persistent disk, specified in GB. You can specify this
 		// field when creating a persistent disk using the sourceImage or
-		// sourceSnapshot parameter, or specify it alone to create an
-		// empty
+		// sourceSnapshot parameter, or specify it alone to create an empty
 		// persistent disk.
 		//
-		// If you specify this field along with sourceImage or
-		// sourceSnapshot,
-		// the value of sizeGb must not be less than the size of the
-		// sourceImage
+		// If you specify this field along with sourceImage or sourceSnapshot,
+		// the value of sizeGb must not be less than the size of the sourceImage
 		// or the size of the snapshot.
 		size?: number
 
-		// The source snapshot used to create this disk. You can provide
-		// this as
-		// a partial or full URL to the resource. For example, the
-		// following are
+		// The source snapshot used to create this disk. You can provide this as
+		// a partial or full URL to the resource. For example, the following are
 		// valid values:
 		//
-		// *
-		// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot'
+		// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot'
 		// * 'projects/project/global/snapshots/snapshot'
 		// * 'global/snapshots/snapshot'
 		// * 'snapshot'
-		snapshot?: string
+		snapshot?:  string
+		self_link?: string
 
-		// The source disk used to create this disk. You can provide this
-		// as a partial or full URL to the resource.
+		// The source disk used to create this disk. You can provide this as a partial
+		// or full URL to the resource.
 		// For example, the following are valid values:
 		//
-		// *
-		// https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-		// *
-		// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+		// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+		// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
 		// * projects/{project}/zones/{zone}/disks/{disk}
 		// * projects/{project}/regions/{region}/disks/{disk}
 		// * zones/{zone}/disks/{disk}
 		// * regions/{region}/disks/{disk}
 		source_disk?: string
 
-		// The ID value of the disk used to create this image. This value
-		// may
-		// be used to determine whether the image was taken from the
-		// current
+		// The ID value of the disk used to create this image. This value may
+		// be used to determine whether the image was taken from the current
 		// or a previous instance of a given disk name.
 		source_disk_id?: string
 
 		// The ID value of the image used to create this disk. This value
-		// identifies the exact image that was used to create this
-		// persistent
-		// disk. For example, if you created the persistent disk from an
-		// image
-		// that was later deleted and recreated under the same name, the
-		// source
-		// image ID would identify the exact version of the image that was
-		// used.
+		// identifies the exact image that was used to create this persistent
+		// disk. For example, if you created the persistent disk from an image
+		// that was later deleted and recreated under the same name, the source
+		// image ID would identify the exact version of the image that was used.
 		source_image_id?: string
 
-		// The unique ID of the snapshot used to create this disk. This
-		// value
-		// identifies the exact snapshot that was used to create this
-		// persistent
-		// disk. For example, if you created the persistent disk from a
-		// snapshot
-		// that was later deleted and recreated under the same name, the
-		// source
-		// snapshot ID would identify the exact version of the snapshot
-		// that was
+		// The unique ID of the snapshot used to create this disk. This value
+		// identifies the exact snapshot that was used to create this persistent
+		// disk. For example, if you created the persistent disk from a snapshot
+		// that was later deleted and recreated under the same name, the source
+		// snapshot ID would identify the exact version of the snapshot that was
 		// used.
 		source_snapshot_id?: string
 
@@ -229,8 +179,7 @@ import "list"
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// URL of the disk type resource describing which disk type to use
-		// to
+		// URL of the disk type resource describing which disk type to use to
 		// create the disk. Provide this when creating the disk.
 		type?: string
 
@@ -245,76 +194,62 @@ import "list"
 	})
 
 	#disk_encryption_key: close({
-		// The name of the encryption key that is stored in Google Cloud
-		// KMS.
+		// The name of the encryption key that is stored in Google Cloud KMS.
 		kms_key_name?: string
 
-		// Specifies a 256-bit customer-supplied encryption key, encoded
-		// in
+		// Specifies a 256-bit customer-supplied encryption key, encoded in
 		// RFC 4648 base64 to either encrypt or decrypt this resource.
 		raw_key?: string
 
 		// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
 		// customer-supplied encryption key to either encrypt or decrypt
-		// this resource. You can provide either the rawKey or the
-		// rsaEncryptedKey.
+		// this resource. You can provide either the rawKey or the rsaEncryptedKey.
 		rsa_encrypted_key?: string
 
-		// The RFC 4648 base64 encoded SHA-256 hash of the
-		// customer-supplied
+		// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
 		// encryption key that protects this resource.
 		sha256?: string
 	})
 
 	#guest_os_features: close({
-		// The type of supported feature. Read [Enabling guest operating
-		// system
+		// The type of supported feature. Read [Enabling guest operating system
 		// features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features)
-		// to see a list of available options. Possible values:
-		// ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE",
-		// "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS",
-		// "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE",
-		// "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE",
-		// "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE"]
+		// to see a list of available options. Possible values: ["MULTI_IP_SUBNET",
+		// "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE",
+		// "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE",
+		// "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2",
+		// "SNP_SVSM_CAPABLE"]
 		type!: string
 	})
 
 	#source_image_encryption_key: close({
-		// The name of the encryption key that is stored in Google Cloud
-		// KMS.
+		// The name of the encryption key that is stored in Google Cloud KMS.
 		kms_key_name?: string
 
-		// The service account used for the encryption request for the
-		// given KMS key.
-		// If absent, the Compute Engine Service Agent service account is
-		// used.
+		// The service account used for the encryption request for the given KMS key.
+		// If absent, the Compute Engine Service Agent service account is used.
 		kms_key_service_account?: string
 
-		// Specifies a 256-bit customer-supplied encryption key, encoded
-		// in
+		// Specifies a 256-bit customer-supplied encryption key, encoded in
 		// RFC 4648 base64 to either encrypt or decrypt this resource.
 		raw_key?: string
 
 		// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
 		// customer-supplied encryption key to either encrypt or decrypt
-		// this resource. You can provide either the rawKey or the
-		// rsaEncryptedKey.
+		// this resource. You can provide either the rawKey or the rsaEncryptedKey.
 		rsa_encrypted_key?: string
 
-		// The RFC 4648 base64 encoded SHA-256 hash of the
-		// customer-supplied
+		// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
 		// encryption key that protects this resource.
 		sha256?: string
 	})
 
 	#source_snapshot_encryption_key: close({
-		// Specifies a 256-bit customer-supplied encryption key, encoded
-		// in
+		// Specifies a 256-bit customer-supplied encryption key, encoded in
 		// RFC 4648 base64 to either encrypt or decrypt this resource.
 		raw_key?: string
 
-		// The RFC 4648 base64 encoded SHA-256 hash of the
-		// customer-supplied
+		// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
 		// encryption key that protects this resource.
 		sha256?: string
 	})

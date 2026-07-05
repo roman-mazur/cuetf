@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_datastream_connection_profile: {
+google_datastream_connection_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_datastream_connection_profile")
 	close({
@@ -23,46 +23,39 @@ import "list"
 		// Create the connection profile without validating it.
 		create_without_validation?: bool
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// Display name.
 		display_name!: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// Labels.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The name of the location this connection profile is located in.
 		location!: string
 
 		// The resource's name.
-		name?:    string
-		project?: string
+		name?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+		project?: string
 	})
 
 	#bigquery_profile: close({})
@@ -111,8 +104,7 @@ import "list"
 		// Name of the replica set.
 		replica_set?: string
 
-		// A reference to a Secret Manager resource name storing the
-		// MongoDB
+		// A reference to a Secret Manager resource name storing the MongoDB
 		// connection password. Mutually exclusive with password.
 		secret_manager_stored_password?: string
 
@@ -132,8 +124,7 @@ import "list"
 		// Port for the MySQL connection.
 		port?: number
 
-		// A reference to a Secret Manager resource name storing the
-		// user's password.
+		// A reference to a Secret Manager resource name storing the user's password.
 		secret_manager_stored_password?: string
 
 		// Username for the MySQL connection.
@@ -156,8 +147,7 @@ import "list"
 		// Port for the Oracle connection.
 		port?: number
 
-		// A reference to a Secret Manager resource name storing the
-		// user's password.
+		// A reference to a Secret Manager resource name storing the user's password.
 		secret_manager_stored_password?: string
 
 		// Username for the Oracle connection.
@@ -179,8 +169,7 @@ import "list"
 		// Port for the PostgreSQL connection.
 		port?: number
 
-		// A reference to a Secret Manager resource name storing the
-		// user's password.
+		// A reference to a Secret Manager resource name storing the user's password.
 		secret_manager_stored_password?: string
 
 		// Username for the PostgreSQL connection.
@@ -206,8 +195,7 @@ import "list"
 		// Port for the SQL Server connection.
 		port?: number
 
-		// A reference to a Secret Manager resource name storing the
-		// user's password.
+		// A reference to a Secret Manager resource name storing the user's password.
 		secret_manager_stored_password?: string
 
 		// Username for the SQL Server connection.
@@ -231,8 +219,7 @@ import "list"
 	_#defs: "/$defs/mongodb_profile/$defs/srv_connection_format": close({})
 
 	_#defs: "/$defs/mongodb_profile/$defs/ssl_config": close({
-		// PEM-encoded certificate of the CA that signed the source
-		// database
+		// PEM-encoded certificate of the CA that signed the source database
 		// server's certificate.
 		ca_certificate?: string
 
@@ -268,8 +255,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/mysql_profile/$defs/ssl_config": close({
-		// PEM-encoded certificate of the CA that signed the source
-		// database
+		// PEM-encoded certificate of the CA that signed the source database
 		// server's certificate.
 		ca_certificate?: string
 
@@ -303,14 +289,10 @@ import "list"
 		// PEM-encoded server root CA certificate.
 		ca_certificate!: string
 
-		// PEM-encoded certificate used by the source database to
-		// authenticate the
-		// client identity (i.e., the Datastream's identity). This
-		// certificate is
-		// signed by either a root certificate trusted by the server or
-		// one or more
-		// intermediate certificates (which is stored with the leaf
-		// certificate) to
+		// PEM-encoded certificate used by the source database to authenticate the
+		// client identity (i.e., the Datastream's identity). This certificate is
+		// signed by either a root certificate trusted by the server or one or more
+		// intermediate certificates (which is stored with the leaf certificate) to
 		// link to this certificate to the trusted root certificate.
 		client_certificate!: string
 

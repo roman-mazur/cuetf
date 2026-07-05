@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_logging_saved_query: {
+google_logging_saved_query: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_saved_query")
 	close({
@@ -13,16 +13,11 @@ import "list"
 		// Output only. The creation timestamp of the saved query.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -34,8 +29,7 @@ import "list"
 		id?:           string
 
 		// The location of the resource see
-		// [supported
-		// regions](https://docs.cloud.google.com/logging/docs/region-support#bucket-regions).
+		// [supported regions](https://docs.cloud.google.com/logging/docs/region-support#bucket-regions).
 		location!: string
 
 		// The name of the saved query. For example: 'my-saved-query'
@@ -47,17 +41,14 @@ import "list"
 		// Output only. The last update timestamp of the saved query.
 		update_time?: string
 
-		// The visibility of the saved query. Possible values: ["SHARED",
-		// "PRIVATE"]
+		// The visibility of the saved query. Possible values: ["SHARED", "PRIVATE"]
 		visibility!: string
 	})
 
 	#logging_query: close({
 		summary_fields?: matchN(1, [_#defs."/$defs/logging_query/$defs/summary_fields", [..._#defs."/$defs/logging_query/$defs/summary_fields"]])
 
-		// An [advanced logs
-		// filter](https://cloud.google.com/logging/docs/view/advanced-filters)
-		// which
+		// An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-filters) which
 		// is used to match log entries.
 		filter!: string
 
@@ -69,8 +60,7 @@ import "list"
 	})
 
 	#ops_analytics_query: close({
-		// A logs analytics SQL query, which generally follows BigQuery
-		// format.
+		// A logs analytics SQL query, which generally follows BigQuery format.
 		sql_query_text!: string
 	})
 

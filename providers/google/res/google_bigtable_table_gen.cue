@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_bigtable_table: {
+google_bigtable_table: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigtable_table")
 	close({
@@ -10,62 +10,55 @@ import "list"
 		column_family?: matchN(1, [#column_family, [...#column_family]])
 		timeouts?: #timeouts
 
-		// Duration to retain change stream data for the table. Set to 0
-		// to disable. Must be between 1 and 7 days.
+		// Duration to retain change stream data for the table. Set to 0 to disable.
+		// Must be between 1 and 7 days.
 		change_stream_retention?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// A field to make the table protected against data loss i.e. when
-		// set to PROTECTED, deleting the table, the column families in
-		// the table, and the instance containing the table would be
-		// prohibited. If not provided, currently deletion protection
-		// will be set to UNPROTECTED as it is the API default value.
+		// A field to make the table protected against data loss i.e. when set to
+		// PROTECTED, deleting the table, the column families in the table, and the
+		// instance containing the table would be prohibited. If not provided,
+		// currently deletion protection will be set to UNPROTECTED as it is the API
+		// default value.
 		deletion_protection?: string
 		id?:                  string
 
 		// The name of the Bigtable instance.
 		instance_name!: string
 
-		// The name of the table. Must be 1-50 characters and must only
-		// contain hyphens, underscores, periods, letters and numbers.
+		// The name of the table. Must be 1-50 characters and must only contain hyphens,
+		// underscores, periods, letters and numbers.
 		name!: string
 
-		// The ID of the project in which the resource belongs. If it is
-		// not provided, the provider project is used.
+		// The ID of the project in which the resource belongs. If it is not provided,
+		// the provider project is used.
 		project?: string
 
-		// Defines the row key schema of a table. To create or update a
-		// table with a row key schema, specify this argument.
-		// Note that in-place update is not supported, and any in-place
-		// modification to the schema will lead to failure.
-		// To update a schema, please clear it (by omitting the field),
-		// and update the resource again with a new schema.\n
+		// Defines the row key schema of a table. To create or update a table with a row
+		// key schema, specify this argument.
+		// Note that in-place update is not supported, and any in-place modification to
+		// the schema will lead to failure.
+		// To update a schema, please clear it (by omitting the field), and update the
+		// resource again with a new schema.\n
 		//
-		// The schema must be a valid JSON encoded string representing a
-		// Type's struct protobuf message. Note that for bytes sequence
-		// (like delimited_bytes.delimiter)
-		// the delimiter must be base64 encoded. For example, if you want
-		// to set a delimiter to a single byte character "#", it should
-		// be set to "Iw==", which is the base64 encoding of the byte
-		// sequence "#".
+		// The schema must be a valid JSON encoded string representing a Type's struct
+		// protobuf message. Note that for bytes sequence (like
+		// delimited_bytes.delimiter)
+		// the delimiter must be base64 encoded. For example, if you want to set a
+		// delimiter to a single byte character "#", it should be set to "Iw==", which
+		// is the base64 encoding of the byte sequence "#".
 		row_key_schema?: string
 
-		// A list of predefined keys to split the table on. !> Warning:
-		// Modifying the split_keys of an existing table will cause
-		// Terraform to delete/recreate the entire google_bigtable_table
-		// resource.
+		// A list of predefined keys to split the table on. !> Warning: Modifying the
+		// split_keys of an existing table will cause Terraform to delete/recreate the
+		// entire google_bigtable_table resource.
 		split_keys?: [...string]
 	})
 
@@ -73,11 +66,10 @@ import "list"
 		// How frequently automated backups should occur.
 		frequency?: string
 
-		// A list of Cloud Bigtable zones where automated backups are
-		// allowed to be created. If empty, automated backups will be
-		// created in all zones of the instance. Locations are in the
-		// format projects/{project}/locations/{zone}. This field can
-		// only be set for tables in Enterprise Plus instances.
+		// A list of Cloud Bigtable zones where automated backups are allowed to be
+		// created. If empty, automated backups will be created in all zones of the
+		// instance. Locations are in the format projects/{project}/locations/{zone}.
+		// This field can only be set for tables in Enterprise Plus instances.
 		locations?: [...string]
 
 		// How long the automated backups should be retained.

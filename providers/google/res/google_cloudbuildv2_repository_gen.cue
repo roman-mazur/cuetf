@@ -1,6 +1,6 @@
 package res
 
-#google_cloudbuildv2_repository: {
+google_cloudbuildv2_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloudbuildv2_repository")
 	close({
@@ -8,37 +8,31 @@ package res
 
 		// Allows clients to store small amounts of arbitrary data.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the annotations present in your configuration.
-		// Please refer to the field 'effective_annotations' for all of
-		// the annotations present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the
+		// annotations present in your configuration.
+		// Please refer to the field 'effective_annotations' for all of the annotations
+		// present on the resource.
 		annotations?: [string]: string
 
-		// Output only. Server assigned timestamp for when the connection
-		// was created.
+		// Output only. Server assigned timestamp for when the connection was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of annotations (key/value pairs) present on the resource in
-		// GCP, including the annotations configured through Terraform,
-		// other clients and services.
+		// All of annotations (key/value pairs) present on the resource in GCP,
+		// including the annotations configured through Terraform, other clients and
+		// services.
 		effective_annotations?: [string]: string
 
-		// This checksum is computed by the server based on the value of
-		// other fields, and may be sent on update and delete requests to
-		// ensure the client has an up-to-date value before proceeding.
+		// This checksum is computed by the server based on the value of other fields,
+		// and may be sent on update and delete requests to ensure the client has an
+		// up-to-date value before proceeding.
 		etag?: string
 		id?:   string
 
@@ -50,13 +44,12 @@ package res
 
 		// The connection for the resource
 		parent_connection!: string
-		project?:           string
 
 		// Required. Git Clone HTTPS URI.
 		remote_uri!: string
+		project?:    string
 
-		// Output only. Server assigned timestamp for when the connection
-		// was updated.
+		// Output only. Server assigned timestamp for when the connection was updated.
 		update_time?: string
 	})
 

@@ -1,6 +1,6 @@
 package data
 
-#google_network_management_connectivity_tests: {
+google_network_management_connectivity_tests: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_network_management_connectivity_tests")
 	close({
@@ -52,9 +52,8 @@ package data
 			terraform_labels?: [string]: string
 		})]
 
-		// Lists the ConnectivityTests that match the filter expression. A
-		// filter expression filters the resources listed in the
-		// response.
+		// Lists the ConnectivityTests that match the filter expression. A filter
+		// expression filters the resources listed in the response.
 		filter?:  string
 		id?:      string
 		project?: string

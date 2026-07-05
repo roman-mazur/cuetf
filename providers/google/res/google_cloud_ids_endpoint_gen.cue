@@ -1,6 +1,6 @@
 package res
 
-#google_cloud_ids_endpoint: {
+google_cloud_ids_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_ids_endpoint")
 	close({
@@ -9,24 +9,18 @@ package res
 		// Creation timestamp in RFC 3339 text format.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// An optional description of the endpoint.
 		description?: string
 
-		// URL of the endpoint's network address to which traffic is to be
-		// sent by Packet Mirroring.
+		// URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
 		endpoint_forwarding_rule?: string
 
 		// Internal IP address of the endpoint's network entry point.
@@ -40,20 +34,17 @@ package res
 		// projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
 		name!: string
 
-		// Name of the VPC network that is connected to the IDS endpoint.
-		// This can either contain the VPC network name itself (like
-		// "src-net") or the full URL to the network (like
-		// "projects/{project_id}/global/networks/src-net").
+		// Name of the VPC network that is connected to the IDS endpoint. This can
+		// either contain the VPC network name itself (like "src-net") or the full URL
+		// to the network (like "projects/{project_id}/global/networks/src-net").
 		network!: string
-		project?: string
 
-		// The minimum alert severity level that is reported by the
-		// endpoint. Possible values: ["INFORMATIONAL", "LOW", "MEDIUM",
-		// "HIGH", "CRITICAL"]
+		// The minimum alert severity level that is reported by the endpoint. Possible
+		// values: ["INFORMATIONAL", "LOW", "MEDIUM", "HIGH", "CRITICAL"]
 		severity!: string
+		project?:  string
 
-		// Configuration for threat IDs excluded from generating alerts.
-		// Limit: 99 IDs.
+		// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
 		threat_exceptions?: [...string]
 
 		// Last update timestamp in RFC 3339 text format.

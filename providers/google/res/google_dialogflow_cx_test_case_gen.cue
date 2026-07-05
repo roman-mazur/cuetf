@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_dialogflow_cx_test_case: {
+google_dialogflow_cx_test_case: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_test_case")
 	close({
@@ -13,21 +13,15 @@ import "list"
 		// When the test was created. A timestamp in RFC3339 text format.
 		creation_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The human-readable name of the test case, unique within the
-		// agent. Limit of 200 characters.
+		// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 		display_name!: string
 		id?:           string
 
@@ -83,21 +77,18 @@ import "list"
 		})]
 
 		// The unique identifier of the test case.
-		// Format: projects/<Project ID>/locations/<Location
-		// ID>/agents/<Agent ID>/testCases/<TestCase ID>.
+		// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/testCases/<TestCase ID>.
 		name?: string
 
-		// Additional freeform notes about the test case. Limit of 400
-		// characters.
+		// Additional freeform notes about the test case. Limit of 400 characters.
 		notes?: string
 
 		// The agent to create the test case for.
-		// Format: projects/<Project ID>/locations/<Location
-		// ID>/agents/<Agent ID>.
+		// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 		parent?: string
 
-		// Tags are short descriptions that users may apply to test cases
-		// for organizational and filtering purposes.
+		// Tags are short descriptions that users may apply to test cases for
+		// organizational and filtering purposes.
 		// Each tag should start with "#" and has a limit of 30 characters
 		tags?: [...string]
 	})
@@ -109,19 +100,18 @@ import "list"
 
 	#test_config: close({
 		// Flow name to start the test case with.
-		// Format: projects/<Project ID>/locations/<Location
-		// ID>/agents/<Agent ID>/flows/<Flow ID>.
-		// Only one of flow and page should be set to indicate the
-		// starting point of the test case. If neither is set, the test
-		// case will start with start page on the default start flow.
+		// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+		// Only one of flow and page should be set to indicate the starting point of the
+		// test case. If neither is set, the test case will start with start page on
+		// the default start flow.
 		flow?: string
 
 		// The page to start the test case with.
-		// Format: projects/<Project ID>/locations/<Location
-		// ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-		// Only one of flow and page should be set to indicate the
-		// starting point of the test case. If neither is set, the test
-		// case will start with start page on the default start flow.
+		// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
+		// ID>/flows/<Flow ID>/pages/<Page ID>.
+		// Only one of flow and page should be set to indicate the starting point of the
+		// test case. If neither is set, the test case will start with start page on
+		// the default start flow.
 		page?: string
 
 		// Session parameters to be compared when calculating differences.
@@ -140,13 +130,11 @@ import "list"
 		// Whether sentiment analysis is enabled.
 		enable_sentiment_analysis?: bool
 
-		// Parameters that need to be injected into the conversation
-		// during intent detection.
+		// Parameters that need to be injected into the conversation during intent detection.
 		injected_parameters?: string
 
-		// If webhooks should be allowed to trigger in response to the
-		// user utterance. Often if parameters are injected, webhooks
-		// should not be enabled.
+		// If webhooks should be allowed to trigger in response to the user utterance.
+		// Often if parameters are injected, webhooks should not be enabled.
 		is_webhook_enabled?: bool
 	})
 
@@ -156,10 +144,9 @@ import "list"
 		text?: matchN(1, [_#defs."/$defs/test_case_conversation_turns/$defs/user_input/$defs/input/$defs/text", list.MaxItems(1) & [..._#defs."/$defs/test_case_conversation_turns/$defs/user_input/$defs/input/$defs/text"]])
 
 		// The language of the input. See [Language
-		// Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
-		// for a list of the currently supported language codes.
-		// Note that queries in the same session do not necessarily need
-		// to specify the same language.
+		// Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for
+		// a list of the currently supported language codes.
+		// Note that queries in the same session do not necessarily need to specify the same language.
 		language_code?: string
 	})
 
@@ -177,8 +164,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/test_case_conversation_turns/$defs/user_input/$defs/input/$defs/text": close({
-		// The natural language text to be processed. Text length must not
-		// exceed 256 characters.
+		// The natural language text to be processed. Text length must not exceed 256 characters.
 		text!: string
 	})
 
@@ -196,8 +182,8 @@ import "list"
 		display_name?: string
 
 		// The unique identifier of the page.
-		// Format: projects/<Project ID>/locations/<Location
-		// ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+		// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
+		// ID>/flows/<Flow ID>/pages/<Page ID>.
 		name?: string
 	})
 
@@ -211,8 +197,7 @@ import "list"
 		display_name?: string
 
 		// The unique identifier of the intent.
-		// Format: projects/<Project ID>/locations/<Location
-		// ID>/agents/<Agent ID>/intents/<Intent ID>.
+		// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
 		name?: string
 	})
 }

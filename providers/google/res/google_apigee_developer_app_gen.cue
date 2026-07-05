@@ -1,6 +1,6 @@
 package res
 
-#google_apigee_developer_app: {
+google_apigee_developer_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_developer_app")
 	close({
@@ -17,45 +17,33 @@ package res
 		// automatically generated on app creation. appId is a UUID.
 		app_id?: string
 
-		// Callback URL used by OAuth 2.0 authorization servers to
-		// communicate
+		// Callback URL used by OAuth 2.0 authorization servers to communicate
 		// authorization codes back to developer apps.
 		callback_url!: string
 
-		// Optionally specify a static consumer key for the developer
-		// app's credential.
-		// If not set, the API auto-generates a key. The consumer key must
-		// be unique
-		// across all developer apps in an organization. Changing this
-		// field forces the
+		// Optionally specify a static consumer key for the developer app's credential.
+		// If not set, the API auto-generates a key. The consumer key must be unique
+		// across all developer apps in an organization. Changing this field forces the
 		// resource to be recreated.
 		//
-		// This is a write-only input used at create time: the provider
-		// creates the
-		// credential with this key via the keys API and removes the
-		// auto-generated
+		// This is a write-only input used at create time: the provider creates the
+		// credential with this key via the keys API and removes the auto-generated
 		// one. The effective key is exposed in the 'credentials' output.
 		consumer_key?: string
 
-		// Optionally specify a static consumer secret for the developer
-		// app's
-		// credential. Required if 'consumer_key' is specified. If not
-		// set, the API
-		// auto-generates a secret. Changing this field forces the
-		// resource to be
+		// Optionally specify a static consumer secret for the developer app's
+		// credential. Required if 'consumer_key' is specified. If not set, the API
+		// auto-generates a secret. Changing this field forces the resource to be
 		// recreated.
 		//
-		// This is a write-only input used at create time; the effective
-		// secret is
+		// This is a write-only input used at create time; the effective secret is
 		// exposed in the 'credentials' output.
 		consumer_secret?: string
 
-		// Time at which the developer was created in milliseconds since
-		// epoch.
+		// Time at which the developer was created in milliseconds since epoch.
 		created_at?: string
 
-		// Output only. Set of credentials for the developer app
-		// consisting of
+		// Output only. Set of credentials for the developer app consisting of
 		// the consumer key/secret pairs associated with the API products.
 		credentials?: [...close({
 			api_products?: [...close({
@@ -74,22 +62,16 @@ package res
 			status?: string
 		})]
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// Email address of the developer.
-		// This value is used to uniquely identify the developer in Apigee
-		// hybrid.
+		// This value is used to uniquely identify the developer in Apigee hybrid.
 		// Note that the email address has to be in lowercase only.
 		developer_email!: string
 
@@ -97,16 +79,12 @@ package res
 		developer_id?: string
 		id?:           string
 
-		// Expiration time, in milliseconds, for the consumer key that is
-		// generated
-		// for the developer app. If not set or left to the default value
-		// of -1,
-		// the API key never expires. The expiration time can't be updated
-		// after it is set.
+		// Expiration time, in milliseconds, for the consumer key that is generated
+		// for the developer app. If not set or left to the default value of -1,
+		// the API key never expires. The expiration time can't be updated after it is set.
 		key_expires_in?: string
 
-		// Time at which the developer was last modified in milliseconds
-		// since epoch.
+		// Time at which the developer was last modified in milliseconds since epoch.
 		last_modified_at?: string
 
 		// Name of the developer app.
@@ -117,13 +95,11 @@ package res
 		org_id!: string
 
 		// Scopes to apply to the developer app.
-		// The specified scopes must already exist for the API product
-		// that
+		// The specified scopes must already exist for the API product that
 		// you associate with the developer app.
 		scopes?: [...string]
 
-		// Status of the credential. Valid values include approved or
-		// revoked.
+		// Status of the credential. Valid values include approved or revoked.
 		status?: string
 	})
 

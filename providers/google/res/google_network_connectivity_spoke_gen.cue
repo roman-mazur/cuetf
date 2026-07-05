@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_network_connectivity_spoke: {
+google_network_connectivity_spoke: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_spoke")
 	close({
@@ -16,25 +16,19 @@ import "list"
 		// Output only. The time the spoke was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// An optional description of the spoke.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// The name of the group that this spoke is associated with.
@@ -44,22 +38,20 @@ import "list"
 		hub!: string
 		id?:  string
 
-		// Optional labels in key:value format. For more information about
-		// labels, see [Requirements for
+		// Optional labels in key:value format. For more information about labels, see
+		// [Requirements for
 		// labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location for the resource
 		location!: string
 
 		// Immutable. The name of the spoke. Spoke names must be unique.
-		name!:    string
-		project?: string
+		name!: string
 
 		// The reasons for the current state in the lifecycle
 		reasons?: [...close({
@@ -67,6 +59,7 @@ import "list"
 			message?:      string
 			user_details?: string
 		})]
+		project?: string
 
 		// Output only. The current lifecycle state of this spoke.
 		state?: string
@@ -75,10 +68,9 @@ import "list"
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// Output only. The Google-generated UUID for the spoke. This
-		// value is unique across all spoke resources. If a spoke is
-		// deleted and another with the same name is created, the new
-		// spoke is assigned a different unique_id.
+		// Output only. The Google-generated UUID for the spoke. This value is unique
+		// across all spoke resources. If a spoke is deleted and another with the same
+		// name is created, the new spoke is assigned a different unique_id.
 		unique_id?: string
 
 		// Output only. The time the spoke was last updated.
@@ -86,26 +78,21 @@ import "list"
 	})
 
 	#linked_interconnect_attachments: close({
-		// Dynamic routes overlapped/encompassed by exclude export ranges
-		// are excluded during export to hub.
+		// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
 		exclude_export_ranges?: [...string]
 
-		// Hub routes overlapped/encompassed by exclude import ranges are
-		// excluded during import from hub.
+		// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
 		exclude_import_ranges?: [...string]
 
-		// Dynamic routes fully encompassed by include export ranges are
-		// included during export to hub.
+		// Dynamic routes fully encompassed by include export ranges are included during export to hub.
 		include_export_ranges?: [...string]
 
-		// Hub routes fully encompassed by include import ranges are
-		// included during import from hub.
+		// Hub routes fully encompassed by include import ranges are included during import from hub.
 		// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 		include_import_ranges?: [...string]
 
-		// A value that controls whether site-to-site data transfer is
-		// enabled for these resources. Note that data transfer is
-		// available only in supported locations.
+		// A value that controls whether site-to-site data transfer is enabled for these
+		// resources. Note that data transfer is available only in supported locations.
 		site_to_site_data_transfer!: bool
 
 		// The URIs of linked interconnect attachment resources
@@ -119,13 +106,12 @@ import "list"
 		// IP ranges allowed to be included from peering.
 		include_export_ranges?: [...string]
 
-		// The URI of the Service Consumer VPC that the Producer VPC is
-		// peered with.
+		// The URI of the Service Consumer VPC that the Producer VPC is peered with.
 		network!: string
 
-		// The name of the VPC peering between the Service Consumer VPC
-		// and the Producer VPC (defined in the Tenant project) which is
-		// added to the NCC hub. This peering must be in ACTIVE state.
+		// The name of the VPC peering between the Service Consumer VPC and the Producer
+		// VPC (defined in the Tenant project) which is added to the NCC hub. This
+		// peering must be in ACTIVE state.
 		peering!: string
 
 		// The URI of the Producer VPC.
@@ -135,26 +121,21 @@ import "list"
 	#linked_router_appliance_instances: close({
 		instances!: matchN(1, [_#defs."/$defs/linked_router_appliance_instances/$defs/instances", [_, ...] & [..._#defs."/$defs/linked_router_appliance_instances/$defs/instances"]])
 
-		// Dynamic routes overlapped/encompassed by exclude export ranges
-		// are excluded during export to hub.
+		// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
 		exclude_export_ranges?: [...string]
 
-		// Hub routes overlapped/encompassed by exclude import ranges are
-		// excluded during import from hub.
+		// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
 		exclude_import_ranges?: [...string]
 
-		// Dynamic routes fully encompassed by include export ranges are
-		// included during export to hub.
+		// Dynamic routes fully encompassed by include export ranges are included during export to hub.
 		include_export_ranges?: [...string]
 
-		// Hub routes fully encompassed by include import ranges are
-		// included during import from hub.
+		// Hub routes fully encompassed by include import ranges are included during import from hub.
 		// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 		include_import_ranges?: [...string]
 
-		// A value that controls whether site-to-site data transfer is
-		// enabled for these resources. Note that data transfer is
-		// available only in supported locations.
+		// A value that controls whether site-to-site data transfer is enabled for these
+		// resources. Note that data transfer is available only in supported locations.
 		site_to_site_data_transfer!: bool
 	})
 
@@ -170,26 +151,21 @@ import "list"
 	})
 
 	#linked_vpn_tunnels: close({
-		// Dynamic routes overlapped/encompassed by exclude export ranges
-		// are excluded during export to hub.
+		// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
 		exclude_export_ranges?: [...string]
 
-		// Hub routes overlapped/encompassed by exclude import ranges are
-		// excluded during import from hub.
+		// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
 		exclude_import_ranges?: [...string]
 
-		// Dynamic routes fully encompassed by include export ranges are
-		// included during export to hub.
+		// Dynamic routes fully encompassed by include export ranges are included during export to hub.
 		include_export_ranges?: [...string]
 
-		// Hub routes fully encompassed by include import ranges are
-		// included during import from hub.
+		// Hub routes fully encompassed by include import ranges are included during import from hub.
 		// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 		include_import_ranges?: [...string]
 
-		// A value that controls whether site-to-site data transfer is
-		// enabled for these resources. Note that data transfer is
-		// available only in supported locations.
+		// A value that controls whether site-to-site data transfer is enabled for these
+		// resources. Note that data transfer is available only in supported locations.
 		site_to_site_data_transfer!: bool
 
 		// The URIs of linked VPN tunnel resources.

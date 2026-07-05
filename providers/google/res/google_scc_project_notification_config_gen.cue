@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_scc_project_notification_config: {
+google_scc_project_notification_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_project_notification_config")
 	close({
@@ -12,50 +12,40 @@ import "list"
 		// This must be unique within the organization.
 		config_id!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The description of the notification config (max of 1024
-		// characters).
+		// The description of the notification config (max of 1024 characters).
 		description?: string
 		id?:          string
 
 		// The resource name of this notification config, in the format
 		// 'projects/{{projectId}}/notificationConfigs/{{config_id}}'.
-		name?:    string
-		project?: string
+		name?: string
 
 		// The Pub/Sub topic to send notifications to. Its format is
 		// "projects/[project_id]/topics/[topic]".
 		pubsub_topic!: string
+		project?:      string
 
-		// The service account that needs "pubsub.topics.publish"
-		// permission to
+		// The service account that needs "pubsub.topics.publish" permission to
 		// publish to the Pub/Sub topic.
 		service_account?: string
 	})
 
 	#streaming_config: close({
-		// Expression that defines the filter to apply across
-		// create/update
-		// events of assets or findings as specified by the event type.
-		// The
+		// Expression that defines the filter to apply across create/update
+		// events of assets or findings as specified by the event type. The
 		// expression is a list of zero or more restrictions combined via
 		// logical operators AND and OR. Parentheses are supported, and OR
 		// has higher precedence than AND.
 		//
-		// Restrictions have the form <field> <operator> <value> and may
-		// have
+		// Restrictions have the form <field> <operator> <value> and may have
 		// a - character in front of them to indicate negation. The fields
 		// map to those defined in the corresponding resource.
 		//

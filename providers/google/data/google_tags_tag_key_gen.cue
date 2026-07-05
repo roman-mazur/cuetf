@@ -1,6 +1,6 @@
 package data
 
-#google_tags_tag_key: {
+google_tags_tag_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_tags_tag_key")
 	close({

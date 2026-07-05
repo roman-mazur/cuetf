@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_ces_toolset: {
+google_ces_toolset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_toolset")
 	close({
@@ -11,38 +11,29 @@ import "list"
 		timeouts?: #timeouts
 		tool_fake_config?: matchN(1, [#tool_fake_config, list.MaxItems(1) & [...#tool_fake_config]])
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		app!: string
 
 		// Timestamp when the toolset was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// The description of the toolset.
 		description?: string
 
-		// The display name of the toolset. Must be unique within the same
-		// app.
+		// The display name of the toolset. Must be unique within the same app.
 		display_name?: string
 
-		// ETag used to ensure the object hasn't changed during a
-		// read-modify-write
-		// operation. If the etag is empty, the update will overwrite any
-		// concurrent
+		// ETag used to ensure the object hasn't changed during a read-modify-write
+		// operation. If the etag is empty, the update will overwrite any concurrent
 		// changes.
 		etag?: string
 
@@ -52,23 +43,20 @@ import "list"
 		execution_type?: string
 		id?:             string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Identifier. The unique identifier of the toolset.
 		// Format:
 		// 'projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}'
-		name?:    string
-		project?: string
+		name?: string
 
-		// The ID to use for the toolset, which will become the final
-		// component of
-		// the toolset's resource name. If not provided, a unique ID will
-		// be
+		// The ID to use for the toolset, which will become the final component of
+		// the toolset's resource name. If not provided, a unique ID will be
 		// automatically assigned for the toolset.
 		toolset_id!: string
+		project?:    string
 
 		// Timestamp when the toolset was last updated.
 		update_time?: string
@@ -79,21 +67,16 @@ import "list"
 		service_directory_config?: matchN(1, [_#defs."/$defs/mcp_toolset/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/mcp_toolset/$defs/service_directory_config"]])
 		tls_config?: matchN(1, [_#defs."/$defs/mcp_toolset/$defs/tls_config", list.MaxItems(1) & [..._#defs."/$defs/mcp_toolset/$defs/tls_config"]])
 
-		// The custom headers to send in the request to the MCP server.
-		// The values
-		// must be in the format '$context.variables.<name_of_variable>'
-		// and can be
+		// The custom headers to send in the request to the MCP server. The values
+		// must be in the format '$context.variables.<name_of_variable>' and can be
 		// set in the session variables. See
 		// https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
 		// for more details.
 		custom_headers?: [string]: string
 
-		// The address of the MCP server, for example,
-		// "https://example.com/mcp/". If
-		// the server is built with the MCP SDK, the url should be
-		// suffixed with
-		// "/mcp/". Only Streamable HTTP transport based servers are
-		// supported. See
+		// The address of the MCP server, for example, "https://example.com/mcp/". If
+		// the server is built with the MCP SDK, the url should be suffixed with
+		// "/mcp/". Only Streamable HTTP transport based servers are supported. See
 		// https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http
 		// for more details.
 		server_address!: string
@@ -104,8 +87,7 @@ import "list"
 		service_directory_config?: matchN(1, [_#defs."/$defs/open_api_toolset/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/open_api_toolset/$defs/service_directory_config"]])
 		tls_config?: matchN(1, [_#defs."/$defs/open_api_toolset/$defs/tls_config", list.MaxItems(1) & [..._#defs."/$defs/open_api_toolset/$defs/tls_config"]])
 
-		// If true, the agent will ignore unknown fields in the API
-		// response for all
+		// If true, the agent will ignore unknown fields in the API response for all
 		// operations defined in the OpenAPI schema.
 		ignore_unknown_fields?: bool
 
@@ -113,11 +95,9 @@ import "list"
 		open_api_schema!: string
 
 		// The server URL of the Open API schema.
-		// This field is only set in toolsets in the environment
-		// dependencies
+		// This field is only set in toolsets in the environment dependencies
 		// during the export process if the schema contains a server url.
-		// During the import process, if this url is present in the
-		// environment dependencies
+		// During the import process, if this url is present in the environment dependencies
 		// and the schema has the $env_var placeholder,
 		// it will replace the placeholder in the schema.
 		url?: string
@@ -145,20 +125,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/mcp_toolset/$defs/api_authentication/$defs/api_key_config": close({
-		// The name of the SecretManager secret version resource storing
-		// the API key.
-		// Format:
-		// 'projects/{project}/secrets/{secret}/versions/{version}'
-		// Note: You should grant 'roles/secretmanager.secretAccessor'
-		// role to the CES
+		// The name of the SecretManager secret version resource storing the API key.
+		// Format: 'projects/{project}/secrets/{secret}/versions/{version}'
+		// Note: You should grant 'roles/secretmanager.secretAccessor' role to the CES
 		// service agent
 		// 'service-@gcp-sa-ces.iam.gserviceaccount.com'.
 		api_key_secret_version!: string
 
 		// The parameter name or the header name of the API key.
-		// E.g., If the API request is
-		// "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the
-		// parameter name.
+		// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key"
+		// would be the parameter name.
 		key_name!: string
 
 		// Key location in the request. For API key auth on MCP toolsets,
@@ -176,14 +152,11 @@ import "list"
 		// The client ID from the OAuth provider.
 		client_id!: string
 
-		// The name of the SecretManager secret version resource storing
-		// the
+		// The name of the SecretManager secret version resource storing the
 		// client secret.
-		// Format:
-		// 'projects/{project}/secrets/{secret}/versions/{version}'
+		// Format: 'projects/{project}/secrets/{secret}/versions/{version}'
 		//
-		// Note: You should grant 'roles/secretmanager.secretAccessor'
-		// role to the CES
+		// Note: You should grant 'roles/secretmanager.secretAccessor' role to the CES
 		// service agent
 		// 'service-@gcp-sa-ces.iam.gserviceaccount.com'.
 		client_secret_version!: string
@@ -196,8 +169,7 @@ import "list"
 		// The OAuth scopes to grant.
 		scopes?: [...string]
 
-		// The token endpoint in the OAuth provider to exchange for an
-		// access token.
+		// The token endpoint in the OAuth provider to exchange for an access token.
 		token_endpoint!: string
 	})
 
@@ -206,10 +178,8 @@ import "list"
 		// 'https://www.googleapis.com/auth/cloud-platform' is used.
 		scopes?: [...string]
 
-		// The email address of the service account used for
-		// authenticatation. CES
-		// uses this service account to exchange an access token and the
-		// access token
+		// The email address of the service account used for authenticatation. CES
+		// uses this service account to exchange an access token and the access token
 		// is then sent in the 'Authorization' header of the request.
 		//
 		// The service account must have the
@@ -226,8 +196,7 @@ import "list"
 		// Directory](https://cloud.google.com/service-directory) service.
 		// Format:
 		// 'projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}'.
-		// Location of the service directory must be the same as the
-		// location of the
+		// Location of the service directory must be the same as the location of the
 		// app.
 		service!: string
 	})
@@ -238,8 +207,7 @@ import "list"
 
 	_#defs: "/$defs/mcp_toolset/$defs/tls_config/$defs/ca_certs": close({
 		// The allowed custom CA certificates (in DER format) for
-		// HTTPS verification. This overrides the default SSL trust store.
-		// If this
+		// HTTPS verification. This overrides the default SSL trust store. If this
 		// is empty or unspecified, CES will use Google's default trust
 		// store to verify certificates. N.B. Make sure the HTTPS server
 		// certificates are signed with "subject alt name". For instance a
@@ -264,20 +232,16 @@ import "list"
 	})
 
 	_#defs: "/$defs/open_api_toolset/$defs/api_authentication/$defs/api_key_config": close({
-		// The name of the SecretManager secret version resource storing
-		// the API key.
-		// Format:
-		// 'projects/{project}/secrets/{secret}/versions/{version}'
-		// Note: You should grant 'roles/secretmanager.secretAccessor'
-		// role to the CES
+		// The name of the SecretManager secret version resource storing the API key.
+		// Format: 'projects/{project}/secrets/{secret}/versions/{version}'
+		// Note: You should grant 'roles/secretmanager.secretAccessor' role to the CES
 		// service agent
 		// 'service-@gcp-sa-ces.iam.gserviceaccount.com'.
 		api_key_secret_version!: string
 
 		// The parameter name or the header name of the API key.
-		// E.g., If the API request is
-		// "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the
-		// parameter name.
+		// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key"
+		// would be the parameter name.
 		key_name!: string
 
 		// Key location in the request.
@@ -295,14 +259,11 @@ import "list"
 		// The client ID from the OAuth provider.
 		client_id!: string
 
-		// The name of the SecretManager secret version resource storing
-		// the
+		// The name of the SecretManager secret version resource storing the
 		// client secret.
-		// Format:
-		// 'projects/{project}/secrets/{secret}/versions/{version}'
+		// Format: 'projects/{project}/secrets/{secret}/versions/{version}'
 		//
-		// Note: You should grant 'roles/secretmanager.secretAccessor'
-		// role to the CES
+		// Note: You should grant 'roles/secretmanager.secretAccessor' role to the CES
 		// service agent
 		// 'service-@gcp-sa-ces.iam.gserviceaccount.com'.
 		client_secret_version!: string
@@ -315,8 +276,7 @@ import "list"
 		// The OAuth scopes to grant.
 		scopes?: [...string]
 
-		// The token endpoint in the OAuth provider to exchange for an
-		// access token.
+		// The token endpoint in the OAuth provider to exchange for an access token.
 		token_endpoint!: string
 	})
 
@@ -325,10 +285,8 @@ import "list"
 		// 'https://www.googleapis.com/auth/cloud-platform' is used.
 		scopes?: [...string]
 
-		// The email address of the service account used for
-		// authenticatation. CES
-		// uses this service account to exchange an access token and the
-		// access token
+		// The email address of the service account used for authenticatation. CES
+		// uses this service account to exchange an access token and the access token
 		// is then sent in the 'Authorization' header of the request.
 		//
 		// The service account must have the
@@ -345,8 +303,7 @@ import "list"
 		// Directory](https://cloud.google.com/service-directory) service.
 		// Format:
 		// 'projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}'.
-		// Location of the service directory must be the same as the
-		// location of the
+		// Location of the service directory must be the same as the location of the
 		// app.
 		service!: string
 	})
@@ -357,8 +314,7 @@ import "list"
 
 	_#defs: "/$defs/open_api_toolset/$defs/tls_config/$defs/ca_certs": close({
 		// The allowed custom CA certificates (in DER format) for
-		// HTTPS verification. This overrides the default SSL trust store.
-		// If this
+		// HTTPS verification. This overrides the default SSL trust store. If this
 		// is empty or unspecified, CES will use Google's default trust
 		// store to verify certificates. N.B. Make sure the HTTPS server
 		// certificates are signed with "subject alt name". For instance a

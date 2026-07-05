@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_recaptcha_enterprise_key: {
+google_recaptcha_enterprise_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_recaptcha_enterprise_key")
 	close({
@@ -16,80 +16,65 @@ import "list"
 		// The timestamp corresponding to the creation of this Key.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// Human-readable display name of this key. Modifiable by user.
 		display_name!: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
-		// See [Creating and managing
-		// labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+		// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field `effective_labels` for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field `effective_labels` for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// The resource id for the Key, which is the same as the Site Key
-		// itself.
+		// The resource id for the Key, which is the same as the Site Key itself.
 		name?: string
 
 		// The project for the resource
 		project?: string
 
-		// The combination of labels configured directly on the resource
-		// and default labels configured on the provider.
+		// The combination of labels configured directly on the resource and default
+		// labels configured on the provider.
 		terraform_labels?: [string]: string
 	})
 
 	#android_settings: close({
-		// If set to true, it means allowed_package_names will not be
-		// enforced.
+		// If set to true, it means allowed_package_names will not be enforced.
 		allow_all_package_names?: bool
 
-		// Android package names of apps allowed to use the key. Example:
-		// 'com.companyname.appname'
+		// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 		allowed_package_names?: [...string]
 	})
 
 	#ios_settings: close({
-		// If set to true, it means allowed_bundle_ids will not be
-		// enforced.
+		// If set to true, it means allowed_bundle_ids will not be enforced.
 		allow_all_bundle_ids?: bool
 
-		// iOS bundle ids of apps allowed to use the key. Example:
-		// 'com.companyname.productname.appname'
+		// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 		allowed_bundle_ids?: [...string]
 	})
 
 	#testing_options: close({
-		// For challenge-based keys only (CHECKBOX, INVISIBLE), all
-		// challenge requests for this site will return nocaptcha if
-		// NOCAPTCHA, or an unsolvable challenge if UNSOLVABLE_CHALLENGE.
-		// Possible values: TESTING_CHALLENGE_UNSPECIFIED, NOCAPTCHA,
-		// UNSOLVABLE_CHALLENGE
+		// For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests
+		// for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge
+		// if UNSOLVABLE_CHALLENGE. Possible values: TESTING_CHALLENGE_UNSPECIFIED,
+		// NOCAPTCHA, UNSOLVABLE_CHALLENGE
 		testing_challenge?: string
 
-		// All assessments for this Key will return this score. Must be
-		// between 0 (likely not legitimate) and 1 (likely legitimate)
-		// inclusive.
+		// All assessments for this Key will return this score. Must be between 0
+		// (likely not legitimate) and 1 (likely legitimate) inclusive.
 		testing_score?: number
 	})
 
@@ -102,8 +87,7 @@ import "list"
 	#waf_settings: close({
 		// Supported WAF features. For more information, see
 		// https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features.
-		// Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN,
-		// EXPRESS
+		// Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
 		waf_feature!: string
 
 		// The WAF service that uses this key. Possible values: CA, FASTLY
@@ -116,28 +100,24 @@ import "list"
 		// If set to true, it means allowed_domains will not be enforced.
 		allow_all_domains?: bool
 
-		// If set to true, the key can be used on AMP (Accelerated Mobile
-		// Pages) websites. This is supported only for the SCORE
-		// integration type.
+		// If set to true, the key can be used on AMP (Accelerated Mobile Pages)
+		// websites. This is supported only for the SCORE integration type.
 		allow_amp_traffic?: bool
 
-		// Domains or subdomains of websites allowed to use the key. All
-		// subdomains of an allowed domain are automatically allowed. A
-		// valid domain requires a host and must not include any path,
-		// port, query or fragment. Examples: 'example.com' or
-		// 'subdomain.example.com'
+		// Domains or subdomains of websites allowed to use the key. All subdomains of
+		// an allowed domain are automatically allowed. A valid domain requires a host
+		// and must not include any path, port, query or fragment. Examples:
+		// 'example.com' or 'subdomain.example.com'
 		allowed_domains?: [...string]
 
-		// Settings for the frequency and difficulty at which this key
-		// triggers captcha challenges. This should only be specified for
-		// IntegrationTypes CHECKBOX and INVISIBLE. Possible values:
-		// CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED, USABILITY, BALANCE,
-		// SECURITY
+		// Settings for the frequency and difficulty at which this key triggers captcha
+		// challenges. This should only be specified for IntegrationTypes CHECKBOX and
+		// INVISIBLE. Possible values: CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED,
+		// USABILITY, BALANCE, SECURITY
 		challenge_security_preference?: string
 
-		// Required. Describes how this key is integrated with the
-		// website. Possible values: SCORE, CHECKBOX, INVISIBLE,
-		// POLICY_BASED_CHALLENGE
+		// Required. Describes how this key is integrated with the website. Possible
+		// values: SCORE, CHECKBOX, INVISIBLE, POLICY_BASED_CHALLENGE
 		integration_type!: string
 	})
 
@@ -150,14 +130,14 @@ import "list"
 		// The action name.
 		action!: string
 
-		// A challenge is triggered if the end-user score is below that
-		// threshold. Value must be between 0 and 1 (inclusive).
+		// A challenge is triggered if the end-user score is below that threshold. Value
+		// must be between 0 and 1 (inclusive).
 		score_threshold!: number
 	})
 
 	_#defs: "/$defs/web_settings/$defs/challenge_settings/$defs/default_settings": close({
-		// A challenge is triggered if the end-user score is below that
-		// threshold. Value must be between 0 and 1 (inclusive).
+		// A challenge is triggered if the end-user score is below that threshold. Value
+		// must be between 0 and 1 (inclusive).
 		score_threshold!: number
 	})
 }

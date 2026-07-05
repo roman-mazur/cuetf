@@ -1,29 +1,22 @@
 package data
 
-#google_monitoring_istio_canonical_service: {
+google_monitoring_istio_canonical_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_monitoring_istio_canonical_service")
 	close({
 		// The name of the canonical service underlying this service..
-		// Corresponds to the destination_service_name metric label in
-		// Istio metrics.
+		// Corresponds to the destination_service_name metric label in Istio metrics.
 		canonical_service!: string
 
 		// The namespace of the canonical service underlying this service.
-		// Corresponds to the destination_service_namespace metric label
-		// in Istio metrics.
+		// Corresponds to the destination_service_namespace metric label in Istio metrics.
 		canonical_service_namespace!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -31,8 +24,7 @@ package data
 		display_name?: string
 		id?:           string
 
-		// Identifier for the Istio mesh in which this canonical service
-		// is defined.
+		// Identifier for the Istio mesh in which this canonical service is defined.
 		// Corresponds to the meshUid metric label in Istio metrics.
 		mesh_uid!: string
 
@@ -41,8 +33,7 @@ package data
 		name?:    string
 		project?: string
 
-		// An optional service ID to use. If not given, the server will
-		// generate a
+		// An optional service ID to use. If not given, the server will generate a
 		// service ID.
 		service_id?: string
 
@@ -51,16 +42,11 @@ package data
 			resource_name?: string
 		})]
 
-		// Labels which have been used to annotate the service. Label keys
-		// must start
-		// with a letter. Label keys and values may contain lowercase
-		// letters,
-		// numbers, underscores, and dashes. Label keys and values have a
-		// maximum
-		// length of 63 characters, and must be less than 128 bytes in
-		// size. Up to 64
-		// label entries may be stored. For labels which do not have a
-		// semantic value,
+		// Labels which have been used to annotate the service. Label keys must start
+		// with a letter. Label keys and values may contain lowercase letters,
+		// numbers, underscores, and dashes. Label keys and values have a maximum
+		// length of 63 characters, and must be less than 128 bytes in size. Up to 64
+		// label entries may be stored. For labels which do not have a semantic value,
 		// the empty string may be supplied for the label value.
 		user_labels?: [string]: string
 	})

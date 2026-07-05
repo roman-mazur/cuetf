@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_gke_backup_restore_plan: {
+google_gke_backup_restore_plan: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_backup_restore_plan")
 	close({
@@ -13,29 +13,22 @@ import "list"
 		// as the source for Restores created via this RestorePlan.
 		backup_plan!: string
 
-		// The name of the target cluster to which you want to Restore via
-		// this RestorePlan.
+		// The name of the target cluster to which you want to Restore via this RestorePlan.
 		cluster!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// User specified descriptive string for this RestorePlan.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
@@ -44,24 +37,22 @@ import "list"
 		// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The region of the Restore Plan.
 		location!: string
 
 		// The full name of the BackupPlan Resource.
-		name!:    string
-		project?: string
+		name!: string
 
 		// The State of the RestorePlan.
-		state?: string
+		state?:   string
+		project?: string
 
-		// Detailed description of why RestorePlan is in its current
-		// state.
+		// Detailed description of why RestorePlan is in its current state.
 		state_reason?: string
 
 		// The combination of labels configured directly on the resource
@@ -85,32 +76,25 @@ import "list"
 		// Setting this field to False will result in an error.
 		all_namespaces?: bool
 
-		// Defines the behavior for handling the situation where
-		// cluster-scoped resources
+		// Defines the behavior for handling the situation where cluster-scoped resources
 		// being restored already exist in the target cluster.
-		// This MUST be set to a value other than
-		// 'CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED'
-		// if 'clusterResourceRestoreScope' is anyting other than
-		// 'noGroupKinds'.
+		// This MUST be set to a value other than 'CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED'
+		// if 'clusterResourceRestoreScope' is anyting other than 'noGroupKinds'.
 		// See
 		// https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
 		// for more information on each policy option. Possible values:
 		// ["USE_EXISTING_VERSION", "USE_BACKUP_VERSION"]
 		cluster_resource_conflict_policy?: string
 
-		// Defines the behavior for handling the situation where sets of
-		// namespaced resources
+		// Defines the behavior for handling the situation where sets of namespaced resources
 		// being restored already exist in the target cluster.
-		// This MUST be set to a value other than
-		// 'NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED'
-		// if the 'namespacedResourceRestoreScope' is anything other than
-		// 'noNamespaces'.
+		// This MUST be set to a value other than 'NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED'
+		// if the 'namespacedResourceRestoreScope' is anything other than 'noNamespaces'.
 		// See
 		// https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
-		// for more information on each mode. Possible values:
-		// ["DELETE_AND_RESTORE", "FAIL_ON_CONFLICT",
-		// "MERGE_SKIP_ON_CONFLICT", "MERGE_REPLACE_VOLUME_ON_CONFLICT",
-		// "MERGE_REPLACE_ON_CONFLICT"]
+		// for more information on each mode. Possible values: ["DELETE_AND_RESTORE",
+		// "FAIL_ON_CONFLICT", "MERGE_SKIP_ON_CONFLICT",
+		// "MERGE_REPLACE_VOLUME_ON_CONFLICT", "MERGE_REPLACE_ON_CONFLICT"]
 		namespaced_resource_restore_mode?: string
 
 		// Do not restore any namespaced resources if set to "True".
@@ -118,17 +102,13 @@ import "list"
 		no_namespaces?: bool
 
 		// Specifies the mechanism to be used to restore volume data.
-		// This should be set to a value other than
-		// 'NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED'
-		// if the 'namespacedResourceRestoreScope' is anything other than
-		// 'noNamespaces'.
-		// If not specified, it will be treated as
-		// 'NO_VOLUME_DATA_RESTORATION'.
+		// This should be set to a value other than 'NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED'
+		// if the 'namespacedResourceRestoreScope' is anything other than 'noNamespaces'.
+		// If not specified, it will be treated as 'NO_VOLUME_DATA_RESTORATION'.
 		// See
 		// https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
 		// for more information on each policy option. Possible values:
-		// ["RESTORE_VOLUME_DATA_FROM_BACKUP",
-		// "REUSE_VOLUME_HANDLE_FROM_BACKUP",
+		// ["RESTORE_VOLUME_DATA_FROM_BACKUP", "REUSE_VOLUME_HANDLE_FROM_BACKUP",
 		// "NO_VOLUME_DATA_RESTORATION"]
 		volume_data_restore_policy?: string
 	})
@@ -144,13 +124,11 @@ import "list"
 		selected_group_kinds?: matchN(1, [_#defs."/$defs/restore_config/$defs/cluster_resource_restore_scope/$defs/selected_group_kinds", [..._#defs."/$defs/restore_config/$defs/cluster_resource_restore_scope/$defs/selected_group_kinds"]])
 
 		// If True, all valid cluster-scoped resources will be restored.
-		// Mutually exclusive to any other field in
-		// 'clusterResourceRestoreScope'.
+		// Mutually exclusive to any other field in 'clusterResourceRestoreScope'.
 		all_group_kinds?: bool
 
 		// If True, no cluster-scoped resources will be restored.
-		// Mutually exclusive to any other field in
-		// 'clusterResourceRestoreScope'.
+		// Mutually exclusive to any other field in 'clusterResourceRestoreScope'.
 		no_group_kinds?: bool
 	})
 
@@ -243,13 +221,12 @@ import "list"
 		// location in the target document to move the value from.
 		from_path?: string
 
-		// Specifies the operation to perform. Possible values: ["REMOVE",
-		// "MOVE", "COPY", "ADD", "TEST", "REPLACE"]
+		// Specifies the operation to perform. Possible values: ["REMOVE", "MOVE",
+		// "COPY", "ADD", "TEST", "REPLACE"]
 		op!: string
 
 		// A string containing a JSON-Pointer value that references a
-		// location within the target document where the operation is
-		// performed.
+		// location within the target document where the operation is performed.
 		path?: string
 
 		// A string that specifies the desired value in string format
@@ -266,17 +243,12 @@ import "list"
 		// be candidates for transformation).
 		json_path?: string
 
-		// (Filtering parameter) Any resource subject to transformation
-		// must
-		// be contained within one of the listed Kubernetes Namespace in
-		// the
-		// Backup. If this field is not provided, no namespace filtering
-		// will
+		// (Filtering parameter) Any resource subject to transformation must
+		// be contained within one of the listed Kubernetes Namespace in the
+		// Backup. If this field is not provided, no namespace filtering will
 		// be performed (all resources in all Namespaces, including all
-		// cluster-scoped resources, will be candidates for
-		// transformation).
-		// To mix cluster-scoped and namespaced resources in the same
-		// rule,
+		// cluster-scoped resources, will be candidates for transformation).
+		// To mix cluster-scoped and namespaced resources in the same rule,
 		// use an empty string ("") as one of the target namespaces.
 		namespaces?: [...string]
 	})
@@ -297,14 +269,12 @@ import "list"
 		// See
 		// https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
 		// for more information on each policy option. Possible values:
-		// ["RESTORE_VOLUME_DATA_FROM_BACKUP",
-		// "REUSE_VOLUME_HANDLE_FROM_BACKUP",
+		// ["RESTORE_VOLUME_DATA_FROM_BACKUP", "REUSE_VOLUME_HANDLE_FROM_BACKUP",
 		// "NO_VOLUME_DATA_RESTORATION"]
 		policy!: string
 
 		// The volume type, as determined by the PVC's
-		// bound PV, to apply the policy to. Possible values:
-		// ["GCE_PERSISTENT_DISK"]
+		// bound PV, to apply the policy to. Possible values: ["GCE_PERSISTENT_DISK"]
 		volume_type!: string
 	})
 }

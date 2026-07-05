@@ -1,38 +1,31 @@
 package res
 
-#google_vmwareengine_network: {
+google_vmwareengine_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vmwareengine_network")
 	close({
 		timeouts?: #timeouts
 
 		// Creation time of this resource.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// User-provided description for this VMware Engine network.
 		description?: string
 
-		// Checksum that may be sent on update and delete requests to
-		// ensure that the user-provided value is up to date befor
-		// The server computes checksums based on the value of other
-		// fields in the request.
+		// Checksum that may be sent on update and delete requests to ensure that the
+		// user-provided value is up to date befor
+		// The server computes checksums based on the value of other fields in the request.
 		etag?: string
 		id?:   string
 
@@ -40,28 +33,26 @@ package res
 		location!: string
 
 		// The ID of the VMwareEngineNetwork.
-		name!:    string
-		project?: string
+		name!: string
 
 		// State of the VMware Engine network.
-		state?: string
+		state?:   string
+		project?: string
 
-		// VMware Engine network type. Possible values: ["LEGACY",
-		// "STANDARD"]
+		// VMware Engine network type. Possible values: ["LEGACY", "STANDARD"]
 		type!: string
 
 		// System-generated unique identifier for the resource.
 		uid?: string
 
 		// Last update time of this resource.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
 
-		// VMware Engine service VPC networks that provide connectivity
-		// from a private cloud to customer projects,
+		// VMware Engine service VPC networks that provide connectivity from a private
+		// cloud to customer projects,
 		// the internet, and other Google Cloud services.
 		vpc_networks?: [...close({
 			network?: string

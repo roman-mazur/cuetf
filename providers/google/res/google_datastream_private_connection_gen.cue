@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_datastream_private_connection: {
+google_datastream_private_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_datastream_private_connection")
 	close({
@@ -13,8 +13,7 @@ import "list"
 		// If set to true, will skip validations.
 		create_without_validation?: bool
 
-		// This field uses a custom implementation please refer to
-		// documentation under
+		// This field uses a custom implementation please refer to documentation under
 		// /hashicorp/terraform-provider-google-beta/website/docs/r/datastream_private_connection.html.markdown
 		// for specifics
 		deletion_policy?: string
@@ -22,9 +21,8 @@ import "list"
 		// Display name.
 		display_name!: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// The PrivateConnection error in case of failure.
@@ -36,10 +34,9 @@ import "list"
 
 		// Labels.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The name of the location this private connection is located in.
@@ -50,10 +47,10 @@ import "list"
 
 		// The private connectivity identifier.
 		private_connection_id!: string
-		project?:               string
 
 		// State of the PrivateConnection.
-		state?: string
+		state?:   string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -61,19 +58,15 @@ import "list"
 	})
 
 	#psc_interface_config: close({
-		// Fully qualified name of the network attachment that Datastream
-		// will connect to.
-		// Format:
-		// projects/{project}/regions/{region}/networkAttachments/{name}
+		// Fully qualified name of the network attachment that Datastream will connect to.
+		// Format: projects/{project}/regions/{region}/networkAttachments/{name}
 		//
 		// To get Datastream project for the accepted list:
-		// 'gcloud datastream private-connections create [PC ID]
-		// --location=[LOCATION] --network-attachment=[NA URI]
-		// --validate-only --display-name=[ANY STRING]'
+		// 'gcloud datastream private-connections create [PC ID] --location=[LOCATION]
+		// --network-attachment=[NA URI] --validate-only --display-name=[ANY STRING]'
 		// Add Datastream project to the attachment accepted list:
-		// 'gcloud compute network-attachments update [NA URI]
-		// --region=[NA region] --producer-accept-list=[TP from prev
-		// command]'
+		// 'gcloud compute network-attachments update [NA URI] --region=[NA region]
+		// --producer-accept-list=[TP from prev command]'
 		network_attachment!: string
 	})
 

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_apihub_curation: {
+google_apihub_curation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apihub_curation")
 	close({
@@ -12,15 +12,11 @@ import "list"
 		// The time at which the curation was created.
 		create_time?: string
 
-		// The ID to use for the curation resource, which will become the
-		// final
-		// component of the curations's resource name. This field is
-		// optional.
+		// The ID to use for the curation resource, which will become the final
+		// component of the curations's resource name. This field is optional.
 		//
-		// * If provided, the same will be used. The service will throw an
-		// error if
-		// the specified ID is already used by another curation resource
-		// in the API
+		// * If provided, the same will be used. The service will throw an error if
+		// the specified ID is already used by another curation resource in the API
 		// hub.
 		// * If not provided, a system generated ID will be used.
 		//
@@ -28,16 +24,11 @@ import "list"
 		// are /a-z[0-9]-_/.
 		curation_id!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -48,8 +39,7 @@ import "list"
 		display_name!: string
 		id?:           string
 
-		// The error code of the last execution of the curation. The error
-		// code is
+		// The error code of the last execution of the curation. The error code is
 		// populated only when the last execution state is failed.
 		// Possible values:
 		// ERROR_CODE_UNSPECIFIED
@@ -57,8 +47,7 @@ import "list"
 		// UNAUTHORIZED
 		last_execution_error_code?: string
 
-		// Error message describing the failure, if any, during the last
-		// execution of
+		// Error message describing the failure, if any, during the last execution of
 		// the curation.
 		last_execution_error_message?: string
 
@@ -69,9 +58,8 @@ import "list"
 		// FAILED
 		last_execution_state?: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Identifier. The name of the curation.
@@ -80,19 +68,17 @@ import "list"
 		// 'projects/{project}/locations/{location}/curations/{curation}'
 		name?: string
 
-		// The plugin instances and associated actions that are using the
-		// curation.
-		// Note: A particular curation could be used by multiple plugin
-		// instances or
+		// The plugin instances and associated actions that are using the curation.
+		// Note: A particular curation could be used by multiple plugin instances or
 		// multiple actions in a plugin instance.
 		plugin_instance_actions?: [...close({
 			action_id?:       string
 			plugin_instance?: string
 		})]
-		project?: string
 
 		// The time at which the curation was last updated.
 		update_time?: string
+		project?:     string
 	})
 
 	#endpoint: close({
@@ -109,8 +95,7 @@ import "list"
 		// The API trigger ID of the Application Integration workflow.
 		trigger_id!: string
 
-		// The endpoint URI should be a valid REST URI for triggering an
-		// Application
+		// The endpoint URI should be a valid REST URI for triggering an Application
 		// Integration.
 		// Format:
 		// 'https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute'

@@ -2,48 +2,39 @@ package res
 
 import "list"
 
-#google_compute_router_route_policy: {
+google_compute_router_route_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_router_route_policy")
 	close({
 		terms!: matchN(1, [#terms, [_, ...] & [...#terms]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The fingerprint used for optimistic locking of this resource.
-		// Used
+		// The fingerprint used for optimistic locking of this resource. Used
 		// internally during updates.
 		fingerprint?: string
 		id?:          string
 
-		// Name of the route policy. This policy's name, which must be a
-		// resource ID segment and unique within all policies owned by
-		// the Router
-		name!:    string
-		project?: string
+		// Name of the route policy. This policy's name, which must be a resource ID
+		// segment and unique within all policies owned by the Router
+		name!: string
 
 		// Region where the router and NAT reside.
-		region?: string
+		region?:  string
+		project?: string
 
-		// The name of the Cloud Router in which this route policy will be
-		// configured.
+		// The name of the Cloud Router in which this route policy will be configured.
 		router!: string
 
-		// This is policy's type, which is one of IMPORT or EXPORT
-		// Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-		// "ROUTE_POLICY_TYPE_EXPORT"]
+		// This is policy's type, which is one of IMPORT or EXPORT Possible values:
+		// ["ROUTE_POLICY_TYPE_IMPORT", "ROUTE_POLICY_TYPE_EXPORT"]
 		type?: string
 	})
 
@@ -51,9 +42,8 @@ import "list"
 		actions?: matchN(1, [_#defs."/$defs/terms/$defs/actions", [..._#defs."/$defs/terms/$defs/actions"]])
 		match!: matchN(1, [_#defs."/$defs/terms/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/terms/$defs/match"]])
 
-		// The evaluation priority for this term, which must be between 0
-		// (inclusive) and 2147483648 (exclusive), and unique within the
-		// list.
+		// The evaluation priority for this term, which must be between 0 (inclusive)
+		// and 2147483648 (exclusive), and unique within the list.
 		priority!: number
 	})
 
@@ -84,16 +74,14 @@ import "list"
 		// Description of the expression
 		description?: string
 
-		// Textual representation of an expression in Common Expression
-		// Language syntax.
+		// Textual representation of an expression in Common Expression Language syntax.
 		expression!: string
 
-		// String indicating the location of the expression for error
-		// reporting, e.g. a file name and a position in the file
+		// String indicating the location of the expression for error reporting, e.g. a
+		// file name and a position in the file
 		location?: string
 
-		// Title for the expression, i.e. a short string describing its
-		// purpose.
+		// Title for the expression, i.e. a short string describing its purpose.
 		title?: string
 	})
 }

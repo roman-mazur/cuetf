@@ -1,39 +1,31 @@
 package data
 
-#google_vmwareengine_private_cloud: {
+google_vmwareengine_private_cloud: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_vmwareengine_private_cloud")
 	close({
 		// Creation time of this resource.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		create_time?: string
 
 		// Time when the resource was scheduled for deletion.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		delete_time?: string
 
-		// The number of hours to delay this request. You can set this
-		// value to an hour between 0 to 8, where setting it to 0 starts
-		// the deletion request immediately. If no value is set, a
-		// default value is set at the API Level.
+		// The number of hours to delay this request. You can set this value to an hour
+		// between 0 to 8, where setting it to 0 starts the deletion request
+		// immediately. If no value is set, a default value is set at the API Level.
 		deletion_delay_hours?: number
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -41,10 +33,9 @@ package data
 		description?: string
 
 		// Time when the resource will be irreversibly deleted.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		expire_time?: string
 
 		// Details about a HCX Cloud Manager appliance.
@@ -59,8 +50,8 @@ package data
 		// The location where the PrivateCloud should reside.
 		location!: string
 
-		// The management cluster for this private cloud. This used for
-		// creating and managing the default cluster.
+		// The management cluster for this private cloud. This used for creating and
+		// managing the default cluster.
 		management_cluster?: [...close({
 			autoscaling_settings?: [...close({
 				autoscaling_policies?: [...close({
@@ -99,8 +90,7 @@ package data
 		// The ID of the PrivateCloud.
 		name!: string
 
-		// Network configuration in the consumer project with which the
-		// peering has to be done.
+		// Network configuration in the consumer project with which the peering has to be done.
 		network_config?: [...close({
 			dns_server_ip?:                        string
 			management_cidr?:                      string
@@ -118,29 +108,25 @@ package data
 		})]
 		project?: string
 
-		// While set true, deletion_delay_hours value will be sent in the
-		// request even for zero value of the field. This field is only
-		// useful for setting 0 value to the deletion_delay_hours field.
-		// It can be used both alone and together with
-		// deletion_delay_hours.
+		// While set true, deletion_delay_hours value will be sent in the request even
+		// for zero value of the field. This field is only useful for setting 0 value
+		// to the deletion_delay_hours field. It can be used both alone and together
+		// with deletion_delay_hours.
 		send_deletion_delay_hours_if_zero?: bool
 
-		// State of the resource. New values may be added to this enum
-		// when appropriate.
+		// State of the resource. New values may be added to this enum when appropriate.
 		state?: string
 
-		// Initial type of the private cloud. Possible values:
-		// ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+		// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
 		type?: string
 
 		// System-generated unique identifier for the resource.
 		uid?: string
 
 		// Last update time of this resource.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
 
 		// Details about a vCenter Server management appliance.

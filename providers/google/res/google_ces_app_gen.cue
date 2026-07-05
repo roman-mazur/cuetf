@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_ces_app: {
+google_ces_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_app")
 	close({
@@ -18,8 +18,7 @@ import "list"
 		timeouts?: #timeouts
 		variable_declarations?: matchN(1, [#variable_declarations, [...#variable_declarations]])
 
-		// The ID to use for the app, which will become the final
-		// component of
+		// The ID to use for the app, which will become the final component of
 		// the app's resource name. If not provided, a unique ID will be
 		// automatically assigned for the app.
 		app_id!: string
@@ -27,16 +26,11 @@ import "list"
 		// Timestamp when the app was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -49,16 +43,13 @@ import "list"
 		// Display name of the app.
 		display_name!: string
 
-		// Etag used to ensure the object hasn't changed during a
-		// read-modify-write
-		// operation. If the etag is empty, the update will overwrite any
-		// concurrent
+		// Etag used to ensure the object hasn't changed during a read-modify-write
+		// operation. If the etag is empty, the update will overwrite any concurrent
 		// changes.
 		etag?: string
 
 		// Instructions for all the agents in the app.
-		// You can use this instruction to set up a stable identity or
-		// personality
+		// You can use this instruction to set up a stable identity or personality
 		// across all the agents.
 		global_instruction?: string
 
@@ -68,13 +59,11 @@ import "list"
 		guardrails?: [...string]
 		id?: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
-		// Metadata about the app. This field can be used to store
-		// additional
+		// Metadata about the app. This field can be used to store additional
 		// information relevant to the app's details or intended usages.
 		metadata?: [string]: string
 
@@ -83,13 +72,12 @@ import "list"
 		name?: string
 
 		// Whether the app is pinned in the app list.
-		pinned?:  bool
-		project?: string
+		pinned?: bool
 
 		// The root agent is the entry point of the app.
-		// Format:
-		// 'projects/{project}/locations/{location}/apps/{app}/agents/{agent}'
+		// Format: 'projects/{project}/locations/{location}/apps/{app}/agents/{agent}'
 		root_agent?: string
+		project?:    string
 
 		// The tool execution mode for the app.
 		// See the [API
@@ -106,10 +94,8 @@ import "list"
 		barge_in_config?: matchN(1, [_#defs."/$defs/audio_processing_config/$defs/barge_in_config", list.MaxItems(1) & [..._#defs."/$defs/audio_processing_config/$defs/barge_in_config"]])
 		synthesize_speech_configs?: matchN(1, [_#defs."/$defs/audio_processing_config/$defs/synthesize_speech_configs", [..._#defs."/$defs/audio_processing_config/$defs/synthesize_speech_configs"]])
 
-		// The duration of user inactivity (no speech or interaction)
-		// before the agent
-		// prompts the user for reengagement. If not set, the agent will
-		// not prompt
+		// The duration of user inactivity (no speech or interaction) before the agent
+		// prompts the user for reengagement. If not set, the agent will not prompt
 		// the user for reengagement.
 		inactivity_timeout?: string
 	})
@@ -152,10 +138,8 @@ import "list"
 		channel_type?: string
 
 		// Whether to disable user barge-in in the conversation.
-		// - true: User interruptions are disabled while the agent is
-		// speaking.
-		// - false: The agent retains automatic control over when the user
-		// can interrupt.
+		// - true: User interruptions are disabled while the agent is speaking.
+		// - false: The agent retains automatic control over when the user can interrupt.
 		disable_barge_in_control?: bool
 
 		// Whether to disable DTMF (dual-tone multi-frequency).
@@ -173,26 +157,21 @@ import "list"
 		// The default language code of the app.
 		default_language_code?: string
 
-		// Enables multilingual support. If true, agents in the app will
-		// use pre-built
+		// Enables multilingual support. If true, agents in the app will use pre-built
 		// instructions to improve handling of multilingual input.
 		enable_multilingual_support?: bool
 
-		// The action to perform when an agent receives input in an
-		// unsupported
+		// The action to perform when an agent receives input in an unsupported
 		// language.
 		// This can be a predefined action or a custom tool call.
 		// Valid values are:
-		// - A tool's full resource name, which triggers a specific tool
-		// execution.
-		// - A predefined system action, such as "escalate" or "exit",
-		// which triggers
+		// - A tool's full resource name, which triggers a specific tool execution.
+		// - A predefined system action, such as "escalate" or "exit", which triggers
 		// an EndSession signal with corresponding metadata
 		// to terminate the conversation.
 		fallback_action?: string
 
-		// List of languages codes supported by the app, in addition to
-		// the
+		// List of languages codes supported by the app, in addition to the
 		// 'default_language_code'.
 		supported_language_codes?: [...string]
 	})
@@ -207,23 +186,18 @@ import "list"
 
 	#model_settings: close({
 		// The LLM model that the agent should use.
-		// If not set, the agent will inherit the model from its parent
-		// agent.
+		// If not set, the agent will inherit the model from its parent agent.
 		model?: string
 
-		// If set, this temperature will be used for the LLM model.
-		// Temperature
-		// controls the randomness of the model's responses. Lower
-		// temperatures
-		// produce responses that are more predictable. Higher
-		// temperatures produce
+		// If set, this temperature will be used for the LLM model. Temperature
+		// controls the randomness of the model's responses. Lower temperatures
+		// produce responses that are more predictable. Higher temperatures produce
 		// responses that are more creative.
 		temperature?: number
 	})
 
 	#time_zone_settings: close({
-		// The time zone of the app from the time zone database, e.g.,
-		// America/Los_Angeles, Europe/Paris.
+		// The time zone of the app from the time zone database, e.g., America/Los_Angeles, Europe/Paris.
 		time_zone?: string
 	})
 
@@ -239,15 +213,13 @@ import "list"
 		// The description of the variable.
 		description!: string
 
-		// The name of the variable. The name must start with a letter or
-		// underscore
+		// The name of the variable. The name must start with a letter or underscore
 		// and contain only letters, numbers, or underscores.
 		name!: string
 	})
 
 	_#defs: "/$defs/audio_processing_config/$defs/ambient_sound_config": close({
-		// Ambient noise as a mono-channel, 16kHz WAV file stored in
-		// [Cloud
+		// Ambient noise as a mono-channel, 16kHz WAV file stored in [Cloud
 		// Storage](https://cloud.google.com/storage).
 		// Note: Please make sure the CES service agent
 		// 'service-@gcp-sa-ces.iam.gserviceaccount.com' has
@@ -255,36 +227,27 @@ import "list"
 		gcs_uri?: string
 
 		// Name of the prebuilt ambient sound.
-		// Valid values are: - "coffee_shop" - "keyboard" - "keypad" -
-		// "hum"
+		// Valid values are: - "coffee_shop" - "keyboard" - "keypad" - "hum"
 		// -"office_1" - "office_2" - "office_3"
 		// -"room_1" - "room_2" - "room_3"
 		// -"room_4" - "room_5" - "air_conditioner"
 		prebuilt_ambient_sound?: string
 
 		// Volume gain (in dB) of the normal native volume supported by
-		// ambient noise, in the range [-96.0, 16.0]. If unset, or set to
-		// a value of
-		// 0.0 (dB), will play at normal native signal amplitude. A value
-		// of -6.0 (dB)
-		// will play at approximately half the amplitude of the normal
-		// native signal
-		// amplitude. A value of +6.0 (dB) will play at approximately
-		// twice the
-		// amplitude of the normal native signal amplitude. We strongly
-		// recommend not
-		// to exceed +10 (dB) as there's usually no effective increase in
-		// loudness for
+		// ambient noise, in the range [-96.0, 16.0]. If unset, or set to a value of
+		// 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB)
+		// will play at approximately half the amplitude of the normal native signal
+		// amplitude. A value of +6.0 (dB) will play at approximately twice the
+		// amplitude of the normal native signal amplitude. We strongly recommend not
+		// to exceed +10 (dB) as there's usually no effective increase in loudness for
 		// any value greater than that.
 		volume_gain_db?: number
 	})
 
 	_#defs: "/$defs/audio_processing_config/$defs/barge_in_config": close({
-		// If enabled, the agent will adapt its next response based on the
-		// assumption
+		// If enabled, the agent will adapt its next response based on the assumption
 		// that the user hasn't heard the full preceding agent message.
-		// This should not be used in scenarios where agent responses are
-		// displayed
+		// This should not be used in scenarios where agent responses are displayed
 		// visually.
 		barge_in_awareness?: bool
 	})
@@ -292,18 +255,14 @@ import "list"
 	_#defs: "/$defs/audio_processing_config/$defs/synthesize_speech_configs": close({
 		language_code!: string
 
-		// The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the
-		// normal native
-		// speed supported by the specific voice. 2.0 is twice as fast,
-		// and 0.5 is
-		// half as fast. Values outside of the range [0.25, 2.0] will
-		// return an error.
+		// The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
+		// speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
+		// half as fast. Values outside of the range [0.25, 2.0] will return an error.
 		speaking_rate?: number
 
 		// The name of the voice. If not set, the service will choose a
 		// voice based on the other parameters such as language_code.
-		// For the list of available voices, please refer to Supported
-		// voices and
+		// For the list of available voices, please refer to Supported voices and
 		// languages from Cloud Text-to-Speech.
 		voice?: string
 	})
@@ -349,31 +308,25 @@ import "list"
 	})
 
 	_#defs: "/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds/$defs/turn_level_metrics_thresholds": close({
-		// The success threshold for overall tool invocation correctness.
-		// Must be
+		// The success threshold for overall tool invocation correctness. Must be
 		// a float between 0 and 1. Default is 1.0.
 		overall_tool_invocation_correctness_threshold?: number
 
-		// The success threshold for semantic similarity. Must be an
-		// integer
+		// The success threshold for semantic similarity. Must be an integer
 		// between 0 and 4. Default is >= 3.
 		semantic_similarity_success_threshold?: number
 	})
 
 	_#defs: "/$defs/logging_settings/$defs/audio_recording_config": close({
-		// The [Cloud Storage](https://cloud.google.com/storage) bucket to
-		// store the
+		// The [Cloud Storage](https://cloud.google.com/storage) bucket to store the
 		// session audio recordings. The URI must start with "gs://".
-		// Note: If the Cloud Storage bucket is in a different project
-		// from the app,
-		// you should grant 'storage.objects.create' permission to the CES
-		// service
+		// Note: If the Cloud Storage bucket is in a different project from the app,
+		// you should grant 'storage.objects.create' permission to the CES service
 		// agent 'service-@gcp-sa-ces.iam.gserviceaccount.com'.
 		gcs_bucket?: string
 
 		// The Cloud Storage path prefix for audio recordings.
-		// This prefix can include the following placeholders, which will
-		// be
+		// This prefix can include the following placeholders, which will be
 		// dynamically substituted at serving time:
 		// - $project: project ID
 		// - $location: app location
@@ -393,10 +346,8 @@ import "list"
 		enabled?: bool
 
 		// The project ID of the BigQuery dataset to export the data to.
-		// Note: If the BigQuery dataset is in a different project from
-		// the app, you should grant
-		// roles/bigquery.admin role to the CES service agent
-		// service-<PROJECT-
+		// Note: If the BigQuery dataset is in a different project from the app, you should grant
+		// roles/bigquery.admin role to the CES service agent service-<PROJECT-
 		// NUMBER>@gcp-sa-ces.iam.gserviceaccount.com.
 		project?: string
 	})
@@ -412,20 +363,17 @@ import "list"
 	})
 
 	_#defs: "/$defs/logging_settings/$defs/redaction_config": close({
-		// [DLP](https://cloud.google.com/dlp/docs) deidentify template
-		// name to
+		// [DLP](https://cloud.google.com/dlp/docs) deidentify template name to
 		// instruct on how to de-identify content.
 		// Format:
 		// 'projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}'
 		deidentify_template?: string
 
-		// If true, redaction will be applied in various logging
-		// scenarios, including
+		// If true, redaction will be applied in various logging scenarios, including
 		// conversation history, Cloud Logging and audio recording.
 		enable_redaction?: bool
 
-		// [DLP](https://cloud.google.com/dlp/docs) inspect template name
-		// to configure
+		// [DLP](https://cloud.google.com/dlp/docs) inspect template name to configure
 		// detection of sensitive data types.
 		// Format:
 		// 'projects/{project}/locations/{location}/inspectTemplates/{inspect_template}'
@@ -433,40 +381,30 @@ import "list"
 	})
 
 	_#defs: "/$defs/variable_declarations/$defs/schema": close({
-		// Optional. Defines the schema for additional properties allowed
-		// in an object.
-		// The value must be a valid JSON string representing the Schema
-		// object.
-		// (Note: OpenAPI also allows a boolean, this definition expects a
-		// Schema JSON).
+		// Optional. Defines the schema for additional properties allowed in an object.
+		// The value must be a valid JSON string representing the Schema object.
+		// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
 		additional_properties?: string
 
-		// Optional. The instance value should be valid against at least
-		// one of the schemas in this list.
+		// Optional. The instance value should be valid against at least one of the schemas in this list.
 		any_of?: string
 
-		// Optional. Default value of the data. Represents a dynamically
-		// typed value
-		// which can be either null, a number, a string, a boolean, a
-		// struct,
-		// or a list of values. The provided default value must be encoded
-		// as a JSON string.
+		// Optional. Default value of the data. Represents a dynamically typed value
+		// which can be either null, a number, a string, a boolean, a struct,
+		// or a list of values. The provided default value must be encoded as a JSON string.
 		// Use 'jsonencode' in Terraform HCL to encode the default value.
 		default?: string
 
-		// A map of definitions for use by ref. Only allowed at the root
-		// of the schema.
+		// A map of definitions for use by ref. Only allowed at the root of the schema.
 		defs?: string
 
 		// The description of the data.
 		description?: string
 
-		// Possible values of the element of primitive type with enum
-		// format.
+		// Possible values of the element of primitive type with enum format.
 		// Examples:
 		// 1. We can define direction as :
-		// {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH",
-		// "WEST"]}
+		// {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
 		// 2. We can define apartment number as :
 		// {type:INTEGER, format:enum, enum:["101", "201", "301"]}
 		enum?: [...string]
@@ -483,11 +421,9 @@ import "list"
 		// Properties of Type.OBJECT.
 		properties?: string
 
-		// Allows indirect references between schema nodes. The value
-		// should be a
+		// Allows indirect references between schema nodes. The value should be a
 		// valid reference to a child of the root 'defs'.
-		// For example, the following schema defines a reference to a
-		// schema node
+		// For example, the following schema defines a reference to a schema node
 		// named "Pet":
 		// type: object
 		// properties:
@@ -499,8 +435,7 @@ import "list"
 		// properties:
 		// name:
 		// type: string
-		// The value of the "pet" property is a reference to the schema
-		// node
+		// The value of the "pet" property is a reference to the schema node
 		// named "Pet".
 		// See details in
 		// https://json-schema.org/understanding-json-schema/structuring.
@@ -522,8 +457,7 @@ import "list"
 		// ARRAY
 		type!: string
 
-		// Indicate the items in the array must be unique. Only applies to
-		// TYPE.ARRAY.
+		// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
 		unique_items?: bool
 	})
 }

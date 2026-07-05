@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_chronicle_parser_extension: {
+google_chronicle_parser_extension: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_parser_extension")
 	close({
@@ -16,16 +16,11 @@ import "list"
 		// The time the parser extension was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -34,25 +29,22 @@ import "list"
 		extension_validation_report?: string
 		id?:                          string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		instance!: string
 
 		// The time the config was last serving live traffic.
 		last_live_time?: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Raw log used to assist the user in creation of augmentation.
 		log?: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		log_type!: string
 
 		// Format:
@@ -61,7 +53,6 @@ import "list"
 
 		// Output only. The server-generated ID of the parser extension.
 		parserextension?: string
-		project?:         string
 
 		// The state of the parser extension
 		// Possible values:
@@ -73,7 +64,8 @@ import "list"
 		// VALIDATED
 		// ARCHIVED
 		// VALIDATION_SKIPPED
-		state?: string
+		state?:   string
+		project?: string
 
 		// The time the config state was last changed.
 		state_last_changed_time?: string
@@ -82,8 +74,7 @@ import "list"
 		validation_report?: string
 
 		// Flag to bypass parser extension validation.
-		// If enabled, the parser extension won't be rejected during the
-		// validation
+		// If enabled, the parser extension won't be rejected during the validation
 		// phase and validation will be skipped.
 		validation_skipped?: bool
 	})
@@ -124,16 +115,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/field_extractors/$defs/extractors": close({
-		// Path in generated event which is to be populated. This is
-		// required if the
+		// Path in generated event which is to be populated. This is required if the
 		// FieldExtractor is used to specify the parser extension.
 		destination_path?: string
 
 		// Field path could be a json path, xml path or csv column name
-		// depending on log format. It refers to a section or substring in
-		// raw log.
-		// This is required if the FieldExtractor is used to specify the
-		// parser
+		// depending on log format. It refers to a section or substring in raw log.
+		// This is required if the FieldExtractor is used to specify the parser
 		// extension.
 		field_path?: string
 
@@ -143,10 +131,8 @@ import "list"
 		// NOT_EQUALS
 		precondition_op?: string
 
-		// Precondition path could be a json path, xml path or csv column
-		// name
-		// depending on log format. It refers to a section or substring in
-		// raw log.
+		// Precondition path could be a json path, xml path or csv column name
+		// depending on log format. It refers to a section or substring in raw log.
 		precondition_path?: string
 
 		// Precondition value.
@@ -163,8 +149,7 @@ import "list"
 		grok_regex?: string
 
 		// Target field name for the structured part of the log.
-		// This should match a SEMANTIC identifier from the grok
-		// expression.
+		// This should match a SEMANTIC identifier from the grok expression.
 		target?: string
 	})
 }

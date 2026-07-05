@@ -1,14 +1,12 @@
 package data
 
-#google_secret_manager_secrets: {
+google_secret_manager_secrets: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_secret_manager_secrets")
 	close({
-		// Filter string, adhering to the rules in List-operation
-		// filtering
+		// Filter string, adhering to the rules in List-operation filtering
 		// (https://cloud.google.com/secret-manager/docs/filtering).
-		// List only secrets matching the filter. If filter is empty, all
-		// secrets are listed.
+		// List only secrets matching the filter. If filter is empty, all secrets are listed.
 		filter?:  string
 		id?:      string
 		project?: string

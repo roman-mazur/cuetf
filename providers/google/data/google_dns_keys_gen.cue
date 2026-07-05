@@ -1,6 +1,6 @@
 package data
 
-#google_dns_keys: {
+google_dns_keys: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_dns_keys")
 	close({

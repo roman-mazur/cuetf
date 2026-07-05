@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_config_deployment: {
+google_config_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_config_deployment")
 	close({
@@ -11,52 +11,44 @@ import "list"
 
 		// Optional. Arbitrary key-value metadata storage.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the annotations present in your configuration.
-		// Please refer to the field 'effective_annotations' for all of
-		// the annotations present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the
+		// annotations present in your configuration.
+		// Please refer to the field 'effective_annotations' for all of the annotations
+		// present on the resource.
 		annotations?: [string]: string
 
 		// Location for Cloud Build logs and artifacts.
 		artifacts_gcs_bucket?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of annotations (key/value pairs) present on the resource in
-		// GCP, including the annotations configured through Terraform,
-		// other clients and services.
+		// All of annotations (key/value pairs) present on the resource in GCP,
+		// including the annotations configured through Terraform, other clients and
+		// services.
 		effective_annotations?: [string]: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// If true, deletes the deployment and its nested resources.
 		force_destroy?: bool
 		id?:            string
 
-		// If true, attempts to automatically import resources on 409
-		// conflict.
+		// If true, attempts to automatically import resources on 409 conflict.
 		import_existing_resources?: bool
 
 		// Optional. User-defined metadata for the deployment.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Output only. Revision name most recently applied.
@@ -66,14 +58,13 @@ import "list"
 		location!: string
 
 		// The user-specified ID of the deployment.
-		name!:    string
-		project?: string
+		name!: string
 
 		// Controls quota checks. Possible values: ["ENABLED", "ENFORCED"]
 		quota_validation?: string
+		project?:          string
 
-		// Required. User-specified Service Account (SA) credentials to be
-		// used when actuating resources.
+		// Required. User-specified Service Account (SA) credentials to be used when actuating resources.
 		service_account!: string
 
 		// Output only. Current state of the deployment.

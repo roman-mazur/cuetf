@@ -1,6 +1,6 @@
 package res
 
-#google_parameter_manager_parameter_version: {
+google_parameter_manager_parameter_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_parameter_manager_parameter_version")
 	close({
@@ -9,26 +9,21 @@ package res
 		// The time at which the Parameter Version was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The current state of Parameter Version. This field is only
-		// applicable for updating Parameter Version.
+		// The current state of Parameter Version. This field is only applicable for
+		// updating Parameter Version.
 		disabled?: bool
 		id?:       string
 
-		// The resource name of the Cloud KMS CryptoKeyVersion used to
-		// decrypt parameter version payload. Format
+		// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter
+		// version payload. Format
 		// 'projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}'
 		kms_key_version?: string
 
@@ -42,8 +37,7 @@ package res
 		// The Parameter data.
 		parameter_data!: string
 
-		// Version ID of the Parameter Version Resource. This must be
-		// unique within the Parameter.
+		// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
 		parameter_version_id!: string
 
 		// The time at which the Parameter Version was updated.

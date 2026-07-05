@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_cloudbuild_bitbucket_server_config: {
+google_cloudbuild_bitbucket_server_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloudbuild_bitbucket_server_config")
 	close({
@@ -10,34 +10,26 @@ import "list"
 		secrets!: matchN(1, [#secrets, list.MaxItems(1) & [_, ...] & [...#secrets]])
 		timeouts?: #timeouts
 
-		// Immutable. API Key that will be attached to webhook. Once this
-		// field has been set, it cannot be changed.
-		// Changing this field will result in deleting/ recreating the
-		// resource.
+		// Immutable. API Key that will be attached to webhook. Once this field has been
+		// set, it cannot be changed.
+		// Changing this field will result in deleting/ recreating the resource.
 		api_key!: string
 
-		// The ID to use for the BitbucketServerConfig, which will become
-		// the final component of the BitbucketServerConfig's resource
-		// name.
+		// The ID to use for the BitbucketServerConfig, which will become the final
+		// component of the BitbucketServerConfig's resource name.
 		config_id!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Immutable. The URI of the Bitbucket Server host. Once this
-		// field has been set, it cannot be changed.
-		// If you need to change it, please create another
-		// BitbucketServerConfig.
+		// Immutable. The URI of the Bitbucket Server host. Once this field has been
+		// set, it cannot be changed.
+		// If you need to change it, please create another BitbucketServerConfig.
 		host_uri!: string
 		id?:       string
 
@@ -47,32 +39,26 @@ import "list"
 		// The resource name for the config.
 		name?: string
 
-		// The network to be used when reaching out to the Bitbucket
-		// Server instance. The VPC network must be enabled for private
-		// service connection.
-		// This should be set if the Bitbucket Server instance is hosted
-		// on-premises and not reachable by public internet. If this
-		// field is left empty,
-		// no network peering will occur and calls to the Bitbucket Server
-		// instance will be made over the public internet. Must be in the
-		// format
-		// projects/{project}/global/networks/{network}, where {project}
-		// is a project number or id and {network} is the name of a VPC
-		// network in the project.
+		// The network to be used when reaching out to the Bitbucket Server instance.
+		// The VPC network must be enabled for private service connection.
+		// This should be set if the Bitbucket Server instance is hosted on-premises and
+		// not reachable by public internet. If this field is left empty,
+		// no network peering will occur and calls to the Bitbucket Server instance will
+		// be made over the public internet. Must be in the format
+		// projects/{project}/global/networks/{network}, where {project} is a project
+		// number or id and {network} is the name of a VPC network in the project.
 		peered_network?: string
-		project?:        string
 
-		// SSL certificate to use for requests to Bitbucket Server. The
-		// format should be PEM format but the extension can be one of
-		// .pem, .cer, or .crt.
-		ssl_ca?: string
+		// SSL certificate to use for requests to Bitbucket Server. The format should be
+		// PEM format but the extension can be one of .pem, .cer, or .crt.
+		ssl_ca?:  string
+		project?: string
 
-		// Username of the account Cloud Build will use on Bitbucket
-		// Server.
+		// Username of the account Cloud Build will use on Bitbucket Server.
 		username!: string
 
-		// Output only. UUID included in webhook requests. The UUID is
-		// used to look up the corresponding config.
+		// Output only. UUID included in webhook requests. The UUID is used to look up
+		// the corresponding config.
 		webhook_key?: string
 	})
 
@@ -91,10 +77,9 @@ import "list"
 		// The resource name for the read access token's secret version.
 		read_access_token_version_name!: string
 
-		// Immutable. The resource name for the webhook secret's secret
-		// version. Once this field has been set, it cannot be changed.
-		// Changing this field will result in deleting/ recreating the
-		// resource.
+		// Immutable. The resource name for the webhook secret's secret version. Once
+		// this field has been set, it cannot be changed.
+		// Changing this field will result in deleting/ recreating the resource.
 		webhook_secret_version_name!: string
 	})
 

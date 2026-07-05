@@ -1,451 +1,466 @@
 package google
 
-import "github.com/roman-mazur/cuetf/providers/google/data"
+import (
+	"github.com/roman-mazur/cuetf"
+	"github.com/roman-mazur/cuetf/providers/google/data"
+)
 
 #Terraform: {
 	#googlePrefix: string
-	_#ds: "\(#googlePrefix)_access_approval_folder_service_account": data.#google_access_approval_folder_service_account
-	_#ds: "\(#googlePrefix)_access_approval_organization_service_account": data.#google_access_approval_organization_service_account
-	_#ds: "\(#googlePrefix)_access_approval_project_service_account": data.#google_access_approval_project_service_account
-	_#ds: "\(#googlePrefix)_access_context_manager_access_policy": data.#google_access_context_manager_access_policy
-	_#ds: "\(#googlePrefix)_access_context_manager_access_policy_iam_policy": data.#google_access_context_manager_access_policy_iam_policy
-	_#ds: "\(#googlePrefix)_access_context_manager_supported_service": data.#google_access_context_manager_supported_service
-	_#ds: "\(#googlePrefix)_access_context_manager_supported_services": data.#google_access_context_manager_supported_services
-	_#ds: "\(#googlePrefix)_active_folder": data.#google_active_folder
-	_#ds: "\(#googlePrefix)_alloydb_cluster": data.#google_alloydb_cluster
-	_#ds: "\(#googlePrefix)_alloydb_instance": data.#google_alloydb_instance
-	_#ds: "\(#googlePrefix)_alloydb_locations": data.#google_alloydb_locations
-	_#ds: "\(#googlePrefix)_alloydb_supported_database_flags": data.#google_alloydb_supported_database_flags
-	_#ds: "\(#googlePrefix)_apigee_environment_iam_policy": data.#google_apigee_environment_iam_policy
-	_#ds: "\(#googlePrefix)_apigee_instance": data.#google_apigee_instance
-	_#ds: "\(#googlePrefix)_app_engine_default_service_account": data.#google_app_engine_default_service_account
-	_#ds: "\(#googlePrefix)_apphub_application": data.#google_apphub_application
-	_#ds: "\(#googlePrefix)_apphub_discovered_service": data.#google_apphub_discovered_service
-	_#ds: "\(#googlePrefix)_apphub_discovered_workload": data.#google_apphub_discovered_workload
-	_#ds: "\(#googlePrefix)_artifact_registry_docker_image": data.#google_artifact_registry_docker_image
-	_#ds: "\(#googlePrefix)_artifact_registry_docker_images": data.#google_artifact_registry_docker_images
-	_#ds: "\(#googlePrefix)_artifact_registry_file": data.#google_artifact_registry_file
-	_#ds: "\(#googlePrefix)_artifact_registry_locations": data.#google_artifact_registry_locations
-	_#ds: "\(#googlePrefix)_artifact_registry_maven_artifact": data.#google_artifact_registry_maven_artifact
-	_#ds: "\(#googlePrefix)_artifact_registry_maven_artifacts": data.#google_artifact_registry_maven_artifacts
-	_#ds: "\(#googlePrefix)_artifact_registry_npm_package": data.#google_artifact_registry_npm_package
-	_#ds: "\(#googlePrefix)_artifact_registry_npm_packages": data.#google_artifact_registry_npm_packages
-	_#ds: "\(#googlePrefix)_artifact_registry_package": data.#google_artifact_registry_package
-	_#ds: "\(#googlePrefix)_artifact_registry_packages": data.#google_artifact_registry_packages
-	_#ds: "\(#googlePrefix)_artifact_registry_python_package": data.#google_artifact_registry_python_package
-	_#ds: "\(#googlePrefix)_artifact_registry_python_packages": data.#google_artifact_registry_python_packages
-	_#ds: "\(#googlePrefix)_artifact_registry_repositories": data.#google_artifact_registry_repositories
-	_#ds: "\(#googlePrefix)_artifact_registry_repository": data.#google_artifact_registry_repository
-	_#ds: "\(#googlePrefix)_artifact_registry_repository_iam_policy": data.#google_artifact_registry_repository_iam_policy
-	_#ds: "\(#googlePrefix)_artifact_registry_tag": data.#google_artifact_registry_tag
-	_#ds: "\(#googlePrefix)_artifact_registry_tags": data.#google_artifact_registry_tags
-	_#ds: "\(#googlePrefix)_artifact_registry_version": data.#google_artifact_registry_version
-	_#ds: "\(#googlePrefix)_artifact_registry_versions": data.#google_artifact_registry_versions
-	_#ds: "\(#googlePrefix)_backup_dr_backup": data.#google_backup_dr_backup
-	_#ds: "\(#googlePrefix)_backup_dr_backup_plan_association": data.#google_backup_dr_backup_plan_association
-	_#ds: "\(#googlePrefix)_backup_dr_backup_plan_associations": data.#google_backup_dr_backup_plan_associations
-	_#ds: "\(#googlePrefix)_backup_dr_backup_plan": data.#google_backup_dr_backup_plan
-	_#ds: "\(#googlePrefix)_backup_dr_backup_vault": data.#google_backup_dr_backup_vault
-	_#ds: "\(#googlePrefix)_backup_dr_data_source": data.#google_backup_dr_data_source
-	_#ds: "\(#googlePrefix)_backup_dr_data_source_reference": data.#google_backup_dr_data_source_reference
-	_#ds: "\(#googlePrefix)_backup_dr_data_source_references": data.#google_backup_dr_data_source_references
-	_#ds: "\(#googlePrefix)_backup_dr_data_sources": data.#google_backup_dr_data_sources
-	_#ds: "\(#googlePrefix)_backup_dr_management_server": data.#google_backup_dr_management_server
-	_#ds: "\(#googlePrefix)_beyondcorp_app_connection": data.#google_beyondcorp_app_connection
-	_#ds: "\(#googlePrefix)_beyondcorp_app_connector": data.#google_beyondcorp_app_connector
-	_#ds: "\(#googlePrefix)_beyondcorp_app_gateway": data.#google_beyondcorp_app_gateway
-	_#ds: "\(#googlePrefix)_beyondcorp_security_gateway_application_iam_policy": data.#google_beyondcorp_security_gateway_application_iam_policy
-	_#ds: "\(#googlePrefix)_beyondcorp_security_gateway": data.#google_beyondcorp_security_gateway
-	_#ds: "\(#googlePrefix)_beyondcorp_security_gateway_iam_policy": data.#google_beyondcorp_security_gateway_iam_policy
-	_#ds: "\(#googlePrefix)_biglake_iceberg_catalog_iam_policy": data.#google_biglake_iceberg_catalog_iam_policy
-	_#ds: "\(#googlePrefix)_biglake_iceberg_namespace_iam_policy": data.#google_biglake_iceberg_namespace_iam_policy
-	_#ds: "\(#googlePrefix)_biglake_iceberg_table_iam_policy": data.#google_biglake_iceberg_table_iam_policy
-	_#ds: "\(#googlePrefix)_bigquery_analytics_hub_data_exchange_iam_policy": data.#google_bigquery_analytics_hub_data_exchange_iam_policy
-	_#ds: "\(#googlePrefix)_bigquery_analytics_hub_listing_iam_policy": data.#google_bigquery_analytics_hub_listing_iam_policy
-	_#ds: "\(#googlePrefix)_bigquery_connection_iam_policy": data.#google_bigquery_connection_iam_policy
-	_#ds: "\(#googlePrefix)_bigquery_datapolicy_data_policy_iam_policy": data.#google_bigquery_datapolicy_data_policy_iam_policy
-	_#ds: "\(#googlePrefix)_bigquery_datapolicyv2_data_policy_iam_policy": data.#google_bigquery_datapolicyv2_data_policy_iam_policy
-	_#ds: "\(#googlePrefix)_bigquery_dataset": data.#google_bigquery_dataset
-	_#ds: "\(#googlePrefix)_bigquery_dataset_iam_policy": data.#google_bigquery_dataset_iam_policy
-	_#ds: "\(#googlePrefix)_bigquery_datasets": data.#google_bigquery_datasets
-	_#ds: "\(#googlePrefix)_bigquery_default_service_account": data.#google_bigquery_default_service_account
-	_#ds: "\(#googlePrefix)_bigquery_routine_iam_policy": data.#google_bigquery_routine_iam_policy
-	_#ds: "\(#googlePrefix)_bigquery_table": data.#google_bigquery_table
-	_#ds: "\(#googlePrefix)_bigquery_table_iam_policy": data.#google_bigquery_table_iam_policy
-	_#ds: "\(#googlePrefix)_bigquery_tables": data.#google_bigquery_tables
-	_#ds: "\(#googlePrefix)_bigtable_instance_iam_policy": data.#google_bigtable_instance_iam_policy
-	_#ds: "\(#googlePrefix)_bigtable_table_iam_policy": data.#google_bigtable_table_iam_policy
-	_#ds: "\(#googlePrefix)_billing_account": data.#google_billing_account
-	_#ds: "\(#googlePrefix)_billing_account_iam_policy": data.#google_billing_account_iam_policy
-	_#ds: "\(#googlePrefix)_binary_authorization_attestor_iam_policy": data.#google_binary_authorization_attestor_iam_policy
-	_#ds: "\(#googlePrefix)_certificate_manager_certificate_map": data.#google_certificate_manager_certificate_map
-	_#ds: "\(#googlePrefix)_certificate_manager_certificates": data.#google_certificate_manager_certificates
-	_#ds: "\(#googlePrefix)_certificate_manager_dns_authorization": data.#google_certificate_manager_dns_authorization
-	_#ds: "\(#googlePrefix)_client_config": data.#google_client_config
-	_#ds: "\(#googlePrefix)_client_openid_userinfo": data.#google_client_openid_userinfo
-	_#ds: "\(#googlePrefix)_cloud_asset_search_all_resources": data.#google_cloud_asset_search_all_resources
-	_#ds: "\(#googlePrefix)_cloud_identity_group_lookup": data.#google_cloud_identity_group_lookup
-	_#ds: "\(#googlePrefix)_cloud_identity_group_memberships": data.#google_cloud_identity_group_memberships
-	_#ds: "\(#googlePrefix)_cloud_identity_group_transitive_memberships": data.#google_cloud_identity_group_transitive_memberships
-	_#ds: "\(#googlePrefix)_cloud_identity_groups": data.#google_cloud_identity_groups
-	_#ds: "\(#googlePrefix)_cloud_identity_policies": data.#google_cloud_identity_policies
-	_#ds: "\(#googlePrefix)_cloud_identity_policy": data.#google_cloud_identity_policy
-	_#ds: "\(#googlePrefix)_cloud_quotas_quota_info": data.#google_cloud_quotas_quota_info
-	_#ds: "\(#googlePrefix)_cloud_quotas_quota_infos": data.#google_cloud_quotas_quota_infos
-	_#ds: "\(#googlePrefix)_cloud_run_locations": data.#google_cloud_run_locations
-	_#ds: "\(#googlePrefix)_cloud_run_service": data.#google_cloud_run_service
-	_#ds: "\(#googlePrefix)_cloud_run_service_iam_policy": data.#google_cloud_run_service_iam_policy
-	_#ds: "\(#googlePrefix)_cloud_run_v2_job": data.#google_cloud_run_v2_job
-	_#ds: "\(#googlePrefix)_cloud_run_v2_job_iam_policy": data.#google_cloud_run_v2_job_iam_policy
-	_#ds: "\(#googlePrefix)_cloud_run_v2_service": data.#google_cloud_run_v2_service
-	_#ds: "\(#googlePrefix)_cloud_run_v2_service_iam_policy": data.#google_cloud_run_v2_service_iam_policy
-	_#ds: "\(#googlePrefix)_cloud_run_v2_worker_pool": data.#google_cloud_run_v2_worker_pool
-	_#ds: "\(#googlePrefix)_cloud_run_v2_worker_pool_iam_policy": data.#google_cloud_run_v2_worker_pool_iam_policy
-	_#ds: "\(#googlePrefix)_cloud_tasks_queue_iam_policy": data.#google_cloud_tasks_queue_iam_policy
-	_#ds: "\(#googlePrefix)_cloudbuild_trigger": data.#google_cloudbuild_trigger
-	_#ds: "\(#googlePrefix)_cloudbuildv2_connection_iam_policy": data.#google_cloudbuildv2_connection_iam_policy
-	_#ds: "\(#googlePrefix)_clouddeploy_custom_target_type_iam_policy": data.#google_clouddeploy_custom_target_type_iam_policy
-	_#ds: "\(#googlePrefix)_clouddeploy_delivery_pipeline_iam_policy": data.#google_clouddeploy_delivery_pipeline_iam_policy
-	_#ds: "\(#googlePrefix)_clouddeploy_target_iam_policy": data.#google_clouddeploy_target_iam_policy
-	_#ds: "\(#googlePrefix)_cloudfunctions2_function": data.#google_cloudfunctions2_function
-	_#ds: "\(#googlePrefix)_cloudfunctions2_function_iam_policy": data.#google_cloudfunctions2_function_iam_policy
-	_#ds: "\(#googlePrefix)_cloudfunctions_function": data.#google_cloudfunctions_function
-	_#ds: "\(#googlePrefix)_cloudfunctions_function_iam_policy": data.#google_cloudfunctions_function_iam_policy
-	_#ds: "\(#googlePrefix)_colab_runtime_template_iam_policy": data.#google_colab_runtime_template_iam_policy
-	_#ds: "\(#googlePrefix)_composer_environment": data.#google_composer_environment
-	_#ds: "\(#googlePrefix)_composer_image_versions": data.#google_composer_image_versions
-	_#ds: "\(#googlePrefix)_composer_user_workloads_config_map": data.#google_composer_user_workloads_config_map
-	_#ds: "\(#googlePrefix)_composer_user_workloads_secret": data.#google_composer_user_workloads_secret
-	_#ds: "\(#googlePrefix)_compute_address": data.#google_compute_address
-	_#ds: "\(#googlePrefix)_compute_addresses": data.#google_compute_addresses
-	_#ds: "\(#googlePrefix)_compute_backend_bucket": data.#google_compute_backend_bucket
-	_#ds: "\(#googlePrefix)_compute_backend_service": data.#google_compute_backend_service
-	_#ds: "\(#googlePrefix)_compute_default_service_account": data.#google_compute_default_service_account
-	_#ds: "\(#googlePrefix)_compute_disk": data.#google_compute_disk
-	_#ds: "\(#googlePrefix)_compute_disk_iam_policy": data.#google_compute_disk_iam_policy
-	_#ds: "\(#googlePrefix)_compute_forwarding_rule": data.#google_compute_forwarding_rule
-	_#ds: "\(#googlePrefix)_compute_forwarding_rules": data.#google_compute_forwarding_rules
-	_#ds: "\(#googlePrefix)_compute_global_address": data.#google_compute_global_address
-	_#ds: "\(#googlePrefix)_compute_global_forwarding_rule": data.#google_compute_global_forwarding_rule
-	_#ds: "\(#googlePrefix)_compute_ha_vpn_gateway": data.#google_compute_ha_vpn_gateway
-	_#ds: "\(#googlePrefix)_compute_health_check": data.#google_compute_health_check
-	_#ds: "\(#googlePrefix)_compute_image": data.#google_compute_image
-	_#ds: "\(#googlePrefix)_compute_image_iam_policy": data.#google_compute_image_iam_policy
-	_#ds: "\(#googlePrefix)_compute_images": data.#google_compute_images
-	_#ds: "\(#googlePrefix)_compute_instance": data.#google_compute_instance
-	_#ds: "\(#googlePrefix)_compute_instance_group": data.#google_compute_instance_group
-	_#ds: "\(#googlePrefix)_compute_instance_group_manager": data.#google_compute_instance_group_manager
-	_#ds: "\(#googlePrefix)_compute_instance_guest_attributes": data.#google_compute_instance_guest_attributes
-	_#ds: "\(#googlePrefix)_compute_instance_iam_policy": data.#google_compute_instance_iam_policy
-	_#ds: "\(#googlePrefix)_compute_instance_serial_port": data.#google_compute_instance_serial_port
-	_#ds: "\(#googlePrefix)_compute_instance_template": data.#google_compute_instance_template
-	_#ds: "\(#googlePrefix)_compute_instance_template_iam_policy": data.#google_compute_instance_template_iam_policy
-	_#ds: "\(#googlePrefix)_compute_instant_snapshot_iam_policy": data.#google_compute_instant_snapshot_iam_policy
-	_#ds: "\(#googlePrefix)_compute_interconnect_location": data.#google_compute_interconnect_location
-	_#ds: "\(#googlePrefix)_compute_interconnect_locations": data.#google_compute_interconnect_locations
-	_#ds: "\(#googlePrefix)_compute_lb_ip_ranges": data.#google_compute_lb_ip_ranges
-	_#ds: "\(#googlePrefix)_compute_machine_types": data.#google_compute_machine_types
-	_#ds: "\(#googlePrefix)_compute_network_attachment": data.#google_compute_network_attachment
-	_#ds: "\(#googlePrefix)_compute_network_endpoint_group": data.#google_compute_network_endpoint_group
-	_#ds: "\(#googlePrefix)_compute_network_endpoint_groups": data.#google_compute_network_endpoint_groups
-	_#ds: "\(#googlePrefix)_compute_network": data.#google_compute_network
-	_#ds: "\(#googlePrefix)_compute_network_peering": data.#google_compute_network_peering
-	_#ds: "\(#googlePrefix)_compute_networks": data.#google_compute_networks
-	_#ds: "\(#googlePrefix)_compute_node_types": data.#google_compute_node_types
-	_#ds: "\(#googlePrefix)_compute_region_backend_service": data.#google_compute_region_backend_service
-	_#ds: "\(#googlePrefix)_compute_region_disk": data.#google_compute_region_disk
-	_#ds: "\(#googlePrefix)_compute_region_disk_iam_policy": data.#google_compute_region_disk_iam_policy
-	_#ds: "\(#googlePrefix)_compute_region_instance_group": data.#google_compute_region_instance_group
-	_#ds: "\(#googlePrefix)_compute_region_instance_group_manager": data.#google_compute_region_instance_group_manager
-	_#ds: "\(#googlePrefix)_compute_region_instance_template": data.#google_compute_region_instance_template
-	_#ds: "\(#googlePrefix)_compute_region_instant_snapshot_iam_policy": data.#google_compute_region_instant_snapshot_iam_policy
-	_#ds: "\(#googlePrefix)_compute_region_network_endpoint_group": data.#google_compute_region_network_endpoint_group
-	_#ds: "\(#googlePrefix)_compute_region_security_policy": data.#google_compute_region_security_policy
-	_#ds: "\(#googlePrefix)_compute_region_ssl_certificate": data.#google_compute_region_ssl_certificate
-	_#ds: "\(#googlePrefix)_compute_region_ssl_policy": data.#google_compute_region_ssl_policy
-	_#ds: "\(#googlePrefix)_compute_region_target_http_proxy": data.#google_compute_region_target_http_proxy
-	_#ds: "\(#googlePrefix)_compute_region_target_https_proxy": data.#google_compute_region_target_https_proxy
-	_#ds: "\(#googlePrefix)_compute_regions": data.#google_compute_regions
-	_#ds: "\(#googlePrefix)_compute_reservation_block": data.#google_compute_reservation_block
-	_#ds: "\(#googlePrefix)_compute_reservation": data.#google_compute_reservation
-	_#ds: "\(#googlePrefix)_compute_reservation_sub_block": data.#google_compute_reservation_sub_block
-	_#ds: "\(#googlePrefix)_compute_resource_policy": data.#google_compute_resource_policy
-	_#ds: "\(#googlePrefix)_compute_router": data.#google_compute_router
-	_#ds: "\(#googlePrefix)_compute_router_nat": data.#google_compute_router_nat
-	_#ds: "\(#googlePrefix)_compute_router_status": data.#google_compute_router_status
-	_#ds: "\(#googlePrefix)_compute_routers": data.#google_compute_routers
-	_#ds: "\(#googlePrefix)_compute_security_policy": data.#google_compute_security_policy
-	_#ds: "\(#googlePrefix)_compute_service_attachment": data.#google_compute_service_attachment
-	_#ds: "\(#googlePrefix)_compute_snapshot": data.#google_compute_snapshot
-	_#ds: "\(#googlePrefix)_compute_snapshot_iam_policy": data.#google_compute_snapshot_iam_policy
-	_#ds: "\(#googlePrefix)_compute_ssl_certificate": data.#google_compute_ssl_certificate
-	_#ds: "\(#googlePrefix)_compute_ssl_policy": data.#google_compute_ssl_policy
-	_#ds: "\(#googlePrefix)_compute_storage_pool": data.#google_compute_storage_pool
-	_#ds: "\(#googlePrefix)_compute_storage_pool_iam_policy": data.#google_compute_storage_pool_iam_policy
-	_#ds: "\(#googlePrefix)_compute_storage_pool_types": data.#google_compute_storage_pool_types
-	_#ds: "\(#googlePrefix)_compute_subnetwork": data.#google_compute_subnetwork
-	_#ds: "\(#googlePrefix)_compute_subnetwork_iam_policy": data.#google_compute_subnetwork_iam_policy
-	_#ds: "\(#googlePrefix)_compute_subnetworks": data.#google_compute_subnetworks
-	_#ds: "\(#googlePrefix)_compute_target_http_proxy": data.#google_compute_target_http_proxy
-	_#ds: "\(#googlePrefix)_compute_target_https_proxy": data.#google_compute_target_https_proxy
-	_#ds: "\(#googlePrefix)_compute_vpn_gateway": data.#google_compute_vpn_gateway
-	_#ds: "\(#googlePrefix)_compute_zones": data.#google_compute_zones
-	_#ds: "\(#googlePrefix)_container_analysis_note_iam_policy": data.#google_container_analysis_note_iam_policy
-	_#ds: "\(#googlePrefix)_container_attached_install_manifest": data.#google_container_attached_install_manifest
-	_#ds: "\(#googlePrefix)_container_attached_versions": data.#google_container_attached_versions
-	_#ds: "\(#googlePrefix)_container_aws_versions": data.#google_container_aws_versions
-	_#ds: "\(#googlePrefix)_container_azure_versions": data.#google_container_azure_versions
-	_#ds: "\(#googlePrefix)_container_cluster": data.#google_container_cluster
-	_#ds: "\(#googlePrefix)_container_engine_versions": data.#google_container_engine_versions
-	_#ds: "\(#googlePrefix)_container_registry_image": data.#google_container_registry_image
-	_#ds: "\(#googlePrefix)_container_registry_repository": data.#google_container_registry_repository
-	_#ds: "\(#googlePrefix)_data_catalog_entry_group_iam_policy": data.#google_data_catalog_entry_group_iam_policy
-	_#ds: "\(#googlePrefix)_data_catalog_policy_tag_iam_policy": data.#google_data_catalog_policy_tag_iam_policy
-	_#ds: "\(#googlePrefix)_data_catalog_tag_template_iam_policy": data.#google_data_catalog_tag_template_iam_policy
-	_#ds: "\(#googlePrefix)_data_catalog_taxonomy_iam_policy": data.#google_data_catalog_taxonomy_iam_policy
-	_#ds: "\(#googlePrefix)_data_fusion_instance_iam_policy": data.#google_data_fusion_instance_iam_policy
-	_#ds: "\(#googlePrefix)_data_lineage_config": data.#google_data_lineage_config
-	_#ds: "\(#googlePrefix)_dataplex_aspect_type_iam_policy": data.#google_dataplex_aspect_type_iam_policy
-	_#ds: "\(#googlePrefix)_dataplex_asset_iam_policy": data.#google_dataplex_asset_iam_policy
-	_#ds: "\(#googlePrefix)_dataplex_data_product_iam_policy": data.#google_dataplex_data_product_iam_policy
-	_#ds: "\(#googlePrefix)_dataplex_data_quality_rules": data.#google_dataplex_data_quality_rules
-	_#ds: "\(#googlePrefix)_dataplex_datascan_iam_policy": data.#google_dataplex_datascan_iam_policy
-	_#ds: "\(#googlePrefix)_dataplex_entry_group_iam_policy": data.#google_dataplex_entry_group_iam_policy
-	_#ds: "\(#googlePrefix)_dataplex_entry_type_iam_policy": data.#google_dataplex_entry_type_iam_policy
-	_#ds: "\(#googlePrefix)_dataplex_glossary_iam_policy": data.#google_dataplex_glossary_iam_policy
-	_#ds: "\(#googlePrefix)_dataplex_lake_iam_policy": data.#google_dataplex_lake_iam_policy
-	_#ds: "\(#googlePrefix)_dataplex_task_iam_policy": data.#google_dataplex_task_iam_policy
-	_#ds: "\(#googlePrefix)_dataplex_zone_iam_policy": data.#google_dataplex_zone_iam_policy
-	_#ds: "\(#googlePrefix)_dataproc_autoscaling_policy_iam_policy": data.#google_dataproc_autoscaling_policy_iam_policy
-	_#ds: "\(#googlePrefix)_dataproc_cluster_iam_policy": data.#google_dataproc_cluster_iam_policy
-	_#ds: "\(#googlePrefix)_dataproc_job_iam_policy": data.#google_dataproc_job_iam_policy
-	_#ds: "\(#googlePrefix)_dataproc_metastore_database_iam_policy": data.#google_dataproc_metastore_database_iam_policy
-	_#ds: "\(#googlePrefix)_dataproc_metastore_federation_iam_policy": data.#google_dataproc_metastore_federation_iam_policy
-	_#ds: "\(#googlePrefix)_dataproc_metastore_service": data.#google_dataproc_metastore_service
-	_#ds: "\(#googlePrefix)_dataproc_metastore_service_iam_policy": data.#google_dataproc_metastore_service_iam_policy
-	_#ds: "\(#googlePrefix)_dataproc_metastore_table_iam_policy": data.#google_dataproc_metastore_table_iam_policy
-	_#ds: "\(#googlePrefix)_datastream_static_ips": data.#google_datastream_static_ips
-	_#ds: "\(#googlePrefix)_discovery_engine_data_store": data.#google_discovery_engine_data_store
-	_#ds: "\(#googlePrefix)_discovery_engine_data_stores": data.#google_discovery_engine_data_stores
-	_#ds: "\(#googlePrefix)_discovery_engine_search_engine_iam_policy": data.#google_discovery_engine_search_engine_iam_policy
-	_#ds: "\(#googlePrefix)_dns_keys": data.#google_dns_keys
-	_#ds: "\(#googlePrefix)_dns_managed_zone": data.#google_dns_managed_zone
-	_#ds: "\(#googlePrefix)_dns_managed_zone_iam_policy": data.#google_dns_managed_zone_iam_policy
-	_#ds: "\(#googlePrefix)_dns_managed_zones": data.#google_dns_managed_zones
-	_#ds: "\(#googlePrefix)_dns_record_set": data.#google_dns_record_set
-	_#ds: "\(#googlePrefix)_dns_record_sets": data.#google_dns_record_sets
-	_#ds: "\(#googlePrefix)_endpoints_service_consumers_iam_policy": data.#google_endpoints_service_consumers_iam_policy
-	_#ds: "\(#googlePrefix)_endpoints_service_iam_policy": data.#google_endpoints_service_iam_policy
-	_#ds: "\(#googlePrefix)_filestore_instance": data.#google_filestore_instance
-	_#ds: "\(#googlePrefix)_firestore_document": data.#google_firestore_document
-	_#ds: "\(#googlePrefix)_folder": data.#google_folder
-	_#ds: "\(#googlePrefix)_folder_iam_policy": data.#google_folder_iam_policy
-	_#ds: "\(#googlePrefix)_folder_organization_policy": data.#google_folder_organization_policy
-	_#ds: "\(#googlePrefix)_folders": data.#google_folders
-	_#ds: "\(#googlePrefix)_gemini_repository_group_iam_policy": data.#google_gemini_repository_group_iam_policy
-	_#ds: "\(#googlePrefix)_gke_backup_backup_plan_iam_policy": data.#google_gke_backup_backup_plan_iam_policy
-	_#ds: "\(#googlePrefix)_gke_backup_restore_plan_iam_policy": data.#google_gke_backup_restore_plan_iam_policy
-	_#ds: "\(#googlePrefix)_gke_hub_feature": data.#google_gke_hub_feature
-	_#ds: "\(#googlePrefix)_gke_hub_feature_iam_policy": data.#google_gke_hub_feature_iam_policy
-	_#ds: "\(#googlePrefix)_gke_hub_membership_binding": data.#google_gke_hub_membership_binding
-	_#ds: "\(#googlePrefix)_gke_hub_membership": data.#google_gke_hub_membership
-	_#ds: "\(#googlePrefix)_gke_hub_membership_iam_policy": data.#google_gke_hub_membership_iam_policy
-	_#ds: "\(#googlePrefix)_gke_hub_scope_iam_policy": data.#google_gke_hub_scope_iam_policy
-	_#ds: "\(#googlePrefix)_healthcare_consent_store_iam_policy": data.#google_healthcare_consent_store_iam_policy
-	_#ds: "\(#googlePrefix)_healthcare_dataset_iam_policy": data.#google_healthcare_dataset_iam_policy
-	_#ds: "\(#googlePrefix)_healthcare_dicom_store_iam_policy": data.#google_healthcare_dicom_store_iam_policy
-	_#ds: "\(#googlePrefix)_healthcare_fhir_store_iam_policy": data.#google_healthcare_fhir_store_iam_policy
-	_#ds: "\(#googlePrefix)_healthcare_hl7_v2_store_iam_policy": data.#google_healthcare_hl7_v2_store_iam_policy
-	_#ds: "\(#googlePrefix)_iam_policy": data.#google_iam_policy
-	_#ds: "\(#googlePrefix)_iam_role": data.#google_iam_role
-	_#ds: "\(#googlePrefix)_iam_testable_permissions": data.#google_iam_testable_permissions
-	_#ds: "\(#googlePrefix)_iam_workforce_pool_iam_policy": data.#google_iam_workforce_pool_iam_policy
-	_#ds: "\(#googlePrefix)_iam_workload_identity_pool": data.#google_iam_workload_identity_pool
-	_#ds: "\(#googlePrefix)_iam_workload_identity_pool_iam_policy": data.#google_iam_workload_identity_pool_iam_policy
-	_#ds: "\(#googlePrefix)_iam_workload_identity_pool_provider": data.#google_iam_workload_identity_pool_provider
-	_#ds: "\(#googlePrefix)_iap_app_engine_service_iam_policy": data.#google_iap_app_engine_service_iam_policy
-	_#ds: "\(#googlePrefix)_iap_app_engine_version_iam_policy": data.#google_iap_app_engine_version_iam_policy
-	_#ds: "\(#googlePrefix)_iap_client": data.#google_iap_client
-	_#ds: "\(#googlePrefix)_iap_tunnel_dest_group_iam_policy": data.#google_iap_tunnel_dest_group_iam_policy
-	_#ds: "\(#googlePrefix)_iap_tunnel_iam_policy": data.#google_iap_tunnel_iam_policy
-	_#ds: "\(#googlePrefix)_iap_tunnel_instance_iam_policy": data.#google_iap_tunnel_instance_iam_policy
-	_#ds: "\(#googlePrefix)_iap_web_backend_service_iam_policy": data.#google_iap_web_backend_service_iam_policy
-	_#ds: "\(#googlePrefix)_iap_web_cloud_run_service_iam_policy": data.#google_iap_web_cloud_run_service_iam_policy
-	_#ds: "\(#googlePrefix)_iap_web_forwarding_rule_service_iam_policy": data.#google_iap_web_forwarding_rule_service_iam_policy
-	_#ds: "\(#googlePrefix)_iap_web_iam_policy": data.#google_iap_web_iam_policy
-	_#ds: "\(#googlePrefix)_iap_web_region_backend_service_iam_policy": data.#google_iap_web_region_backend_service_iam_policy
-	_#ds: "\(#googlePrefix)_iap_web_region_forwarding_rule_service_iam_policy": data.#google_iap_web_region_forwarding_rule_service_iam_policy
-	_#ds: "\(#googlePrefix)_iap_web_type_app_engine_iam_policy": data.#google_iap_web_type_app_engine_iam_policy
-	_#ds: "\(#googlePrefix)_iap_web_type_compute_iam_policy": data.#google_iap_web_type_compute_iam_policy
-	_#ds: "\(#googlePrefix)_kms_autokey_config": data.#google_kms_autokey_config
-	_#ds: "\(#googlePrefix)_kms_crypto_key": data.#google_kms_crypto_key
-	_#ds: "\(#googlePrefix)_kms_crypto_key_iam_policy": data.#google_kms_crypto_key_iam_policy
-	_#ds: "\(#googlePrefix)_kms_crypto_key_latest_version": data.#google_kms_crypto_key_latest_version
-	_#ds: "\(#googlePrefix)_kms_crypto_key_version": data.#google_kms_crypto_key_version
-	_#ds: "\(#googlePrefix)_kms_crypto_key_versions": data.#google_kms_crypto_key_versions
-	_#ds: "\(#googlePrefix)_kms_crypto_keys": data.#google_kms_crypto_keys
-	_#ds: "\(#googlePrefix)_kms_ekm_connection_iam_policy": data.#google_kms_ekm_connection_iam_policy
-	_#ds: "\(#googlePrefix)_kms_key_handle": data.#google_kms_key_handle
-	_#ds: "\(#googlePrefix)_kms_key_handles": data.#google_kms_key_handles
-	_#ds: "\(#googlePrefix)_kms_key_ring": data.#google_kms_key_ring
-	_#ds: "\(#googlePrefix)_kms_key_ring_iam_policy": data.#google_kms_key_ring_iam_policy
-	_#ds: "\(#googlePrefix)_kms_key_rings": data.#google_kms_key_rings
-	_#ds: "\(#googlePrefix)_kms_secret_asymmetric": data.#google_kms_secret_asymmetric
-	_#ds: "\(#googlePrefix)_kms_secret_ciphertext": data.#google_kms_secret_ciphertext
-	_#ds: "\(#googlePrefix)_kms_secret": data.#google_kms_secret
-	_#ds: "\(#googlePrefix)_logging_folder_settings": data.#google_logging_folder_settings
-	_#ds: "\(#googlePrefix)_logging_log_view": data.#google_logging_log_view
-	_#ds: "\(#googlePrefix)_logging_log_view_iam_policy": data.#google_logging_log_view_iam_policy
-	_#ds: "\(#googlePrefix)_logging_organization_settings": data.#google_logging_organization_settings
-	_#ds: "\(#googlePrefix)_logging_project_cmek_settings": data.#google_logging_project_cmek_settings
-	_#ds: "\(#googlePrefix)_logging_project_settings": data.#google_logging_project_settings
-	_#ds: "\(#googlePrefix)_logging_sink": data.#google_logging_sink
-	_#ds: "\(#googlePrefix)_lustre_instance": data.#google_lustre_instance
-	_#ds: "\(#googlePrefix)_memcache_instance": data.#google_memcache_instance
-	_#ds: "\(#googlePrefix)_memorystore_instance": data.#google_memorystore_instance
-	_#ds: "\(#googlePrefix)_monitoring_app_engine_service": data.#google_monitoring_app_engine_service
-	_#ds: "\(#googlePrefix)_monitoring_cluster_istio_service": data.#google_monitoring_cluster_istio_service
-	_#ds: "\(#googlePrefix)_monitoring_istio_canonical_service": data.#google_monitoring_istio_canonical_service
-	_#ds: "\(#googlePrefix)_monitoring_mesh_istio_service": data.#google_monitoring_mesh_istio_service
-	_#ds: "\(#googlePrefix)_monitoring_notification_channel": data.#google_monitoring_notification_channel
-	_#ds: "\(#googlePrefix)_monitoring_uptime_check_ips": data.#google_monitoring_uptime_check_ips
-	_#ds: "\(#googlePrefix)_netblock_ip_ranges": data.#google_netblock_ip_ranges
-	_#ds: "\(#googlePrefix)_network_connectivity_hub_iam_policy": data.#google_network_connectivity_hub_iam_policy
-	_#ds: "\(#googlePrefix)_network_management_connectivity_test_run": data.#google_network_management_connectivity_test_run
-	_#ds: "\(#googlePrefix)_network_management_connectivity_tests": data.#google_network_management_connectivity_tests
-	_#ds: "\(#googlePrefix)_network_security_address_group_iam_policy": data.#google_network_security_address_group_iam_policy
-	_#ds: "\(#googlePrefix)_network_security_address_groups": data.#google_network_security_address_groups
-	_#ds: "\(#googlePrefix)_notebooks_instance_iam_policy": data.#google_notebooks_instance_iam_policy
-	_#ds: "\(#googlePrefix)_notebooks_runtime_iam_policy": data.#google_notebooks_runtime_iam_policy
-	_#ds: "\(#googlePrefix)_oracle_database_autonomous_database": data.#google_oracle_database_autonomous_database
-	_#ds: "\(#googlePrefix)_oracle_database_autonomous_databases": data.#google_oracle_database_autonomous_databases
-	_#ds: "\(#googlePrefix)_oracle_database_cloud_exadata_infrastructure": data.#google_oracle_database_cloud_exadata_infrastructure
-	_#ds: "\(#googlePrefix)_oracle_database_cloud_exadata_infrastructures": data.#google_oracle_database_cloud_exadata_infrastructures
-	_#ds: "\(#googlePrefix)_oracle_database_cloud_vm_cluster": data.#google_oracle_database_cloud_vm_cluster
-	_#ds: "\(#googlePrefix)_oracle_database_cloud_vm_clusters": data.#google_oracle_database_cloud_vm_clusters
-	_#ds: "\(#googlePrefix)_oracle_database_db_nodes": data.#google_oracle_database_db_nodes
-	_#ds: "\(#googlePrefix)_oracle_database_db_servers": data.#google_oracle_database_db_servers
-	_#ds: "\(#googlePrefix)_oracle_database_goldengate_connection_types": data.#google_oracle_database_goldengate_connection_types
-	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_environments": data.#google_oracle_database_goldengate_deployment_environments
-	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_types": data.#google_oracle_database_goldengate_deployment_types
-	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_versions": data.#google_oracle_database_goldengate_deployment_versions
-	_#ds: "\(#googlePrefix)_oracle_database_odb_network": data.#google_oracle_database_odb_network
-	_#ds: "\(#googlePrefix)_oracle_database_odb_subnet": data.#google_oracle_database_odb_subnet
-	_#ds: "\(#googlePrefix)_organization": data.#google_organization
-	_#ds: "\(#googlePrefix)_organization_iam_custom_role": data.#google_organization_iam_custom_role
-	_#ds: "\(#googlePrefix)_organization_iam_custom_roles": data.#google_organization_iam_custom_roles
-	_#ds: "\(#googlePrefix)_organization_iam_policy": data.#google_organization_iam_policy
-	_#ds: "\(#googlePrefix)_organizations": data.#google_organizations
-	_#ds: "\(#googlePrefix)_parameter_manager_parameter": data.#google_parameter_manager_parameter
-	_#ds: "\(#googlePrefix)_parameter_manager_parameter_version": data.#google_parameter_manager_parameter_version
-	_#ds: "\(#googlePrefix)_parameter_manager_parameter_version_render": data.#google_parameter_manager_parameter_version_render
-	_#ds: "\(#googlePrefix)_parameter_manager_parameters": data.#google_parameter_manager_parameters
-	_#ds: "\(#googlePrefix)_parameter_manager_regional_parameter": data.#google_parameter_manager_regional_parameter
-	_#ds: "\(#googlePrefix)_parameter_manager_regional_parameter_version": data.#google_parameter_manager_regional_parameter_version
-	_#ds: "\(#googlePrefix)_parameter_manager_regional_parameter_version_render": data.#google_parameter_manager_regional_parameter_version_render
-	_#ds: "\(#googlePrefix)_parameter_manager_regional_parameters": data.#google_parameter_manager_regional_parameters
-	_#ds: "\(#googlePrefix)_privateca_ca_pool_iam_policy": data.#google_privateca_ca_pool_iam_policy
-	_#ds: "\(#googlePrefix)_privateca_certificate_authority": data.#google_privateca_certificate_authority
-	_#ds: "\(#googlePrefix)_privateca_certificate_template_iam_policy": data.#google_privateca_certificate_template_iam_policy
-	_#ds: "\(#googlePrefix)_privileged_access_manager_entitlement": data.#google_privileged_access_manager_entitlement
-	_#ds: "\(#googlePrefix)_project_ancestry": data.#google_project_ancestry
-	_#ds: "\(#googlePrefix)_project": data.#google_project
-	_#ds: "\(#googlePrefix)_project_iam_custom_role": data.#google_project_iam_custom_role
-	_#ds: "\(#googlePrefix)_project_iam_custom_roles": data.#google_project_iam_custom_roles
-	_#ds: "\(#googlePrefix)_project_iam_policy": data.#google_project_iam_policy
-	_#ds: "\(#googlePrefix)_project_organization_policy": data.#google_project_organization_policy
-	_#ds: "\(#googlePrefix)_project_service": data.#google_project_service
-	_#ds: "\(#googlePrefix)_projects": data.#google_projects
-	_#ds: "\(#googlePrefix)_pubsub_schema_iam_policy": data.#google_pubsub_schema_iam_policy
-	_#ds: "\(#googlePrefix)_pubsub_subscription": data.#google_pubsub_subscription
-	_#ds: "\(#googlePrefix)_pubsub_subscription_iam_policy": data.#google_pubsub_subscription_iam_policy
-	_#ds: "\(#googlePrefix)_pubsub_topic": data.#google_pubsub_topic
-	_#ds: "\(#googlePrefix)_pubsub_topic_iam_policy": data.#google_pubsub_topic_iam_policy
-	_#ds: "\(#googlePrefix)_redis_cluster": data.#google_redis_cluster
-	_#ds: "\(#googlePrefix)_redis_instance": data.#google_redis_instance
-	_#ds: "\(#googlePrefix)_scc_source_iam_policy": data.#google_scc_source_iam_policy
-	_#ds: "\(#googlePrefix)_scc_v2_organization_source_iam_policy": data.#google_scc_v2_organization_source_iam_policy
-	_#ds: "\(#googlePrefix)_secret_manager_regional_secret": data.#google_secret_manager_regional_secret
-	_#ds: "\(#googlePrefix)_secret_manager_regional_secret_iam_policy": data.#google_secret_manager_regional_secret_iam_policy
-	_#ds: "\(#googlePrefix)_secret_manager_regional_secret_version_access": data.#google_secret_manager_regional_secret_version_access
-	_#ds: "\(#googlePrefix)_secret_manager_regional_secret_version": data.#google_secret_manager_regional_secret_version
-	_#ds: "\(#googlePrefix)_secret_manager_regional_secrets": data.#google_secret_manager_regional_secrets
-	_#ds: "\(#googlePrefix)_secret_manager_secret": data.#google_secret_manager_secret
-	_#ds: "\(#googlePrefix)_secret_manager_secret_iam_policy": data.#google_secret_manager_secret_iam_policy
-	_#ds: "\(#googlePrefix)_secret_manager_secret_version_access": data.#google_secret_manager_secret_version_access
-	_#ds: "\(#googlePrefix)_secret_manager_secret_version": data.#google_secret_manager_secret_version
-	_#ds: "\(#googlePrefix)_secret_manager_secrets": data.#google_secret_manager_secrets
-	_#ds: "\(#googlePrefix)_secure_source_manager_instance_iam_policy": data.#google_secure_source_manager_instance_iam_policy
-	_#ds: "\(#googlePrefix)_secure_source_manager_repository_iam_policy": data.#google_secure_source_manager_repository_iam_policy
-	_#ds: "\(#googlePrefix)_service_account_access_token": data.#google_service_account_access_token
-	_#ds: "\(#googlePrefix)_service_account": data.#google_service_account
-	_#ds: "\(#googlePrefix)_service_account_iam_policy": data.#google_service_account_iam_policy
-	_#ds: "\(#googlePrefix)_service_account_id_token": data.#google_service_account_id_token
-	_#ds: "\(#googlePrefix)_service_account_jwt": data.#google_service_account_jwt
-	_#ds: "\(#googlePrefix)_service_account_key": data.#google_service_account_key
-	_#ds: "\(#googlePrefix)_service_accounts": data.#google_service_accounts
-	_#ds: "\(#googlePrefix)_service_directory_namespace_iam_policy": data.#google_service_directory_namespace_iam_policy
-	_#ds: "\(#googlePrefix)_service_directory_service_iam_policy": data.#google_service_directory_service_iam_policy
-	_#ds: "\(#googlePrefix)_service_networking_peered_dns_domain": data.#google_service_networking_peered_dns_domain
-	_#ds: "\(#googlePrefix)_site_verification_token": data.#google_site_verification_token
-	_#ds: "\(#googlePrefix)_sourcerepo_repository": data.#google_sourcerepo_repository
-	_#ds: "\(#googlePrefix)_sourcerepo_repository_iam_policy": data.#google_sourcerepo_repository_iam_policy
-	_#ds: "\(#googlePrefix)_spanner_database": data.#google_spanner_database
-	_#ds: "\(#googlePrefix)_spanner_database_iam_policy": data.#google_spanner_database_iam_policy
-	_#ds: "\(#googlePrefix)_spanner_instance": data.#google_spanner_instance
-	_#ds: "\(#googlePrefix)_spanner_instance_iam_policy": data.#google_spanner_instance_iam_policy
-	_#ds: "\(#googlePrefix)_sql_backup_run": data.#google_sql_backup_run
-	_#ds: "\(#googlePrefix)_sql_ca_certs": data.#google_sql_ca_certs
-	_#ds: "\(#googlePrefix)_sql_database": data.#google_sql_database
-	_#ds: "\(#googlePrefix)_sql_database_instance": data.#google_sql_database_instance
-	_#ds: "\(#googlePrefix)_sql_database_instance_latest_recovery_time": data.#google_sql_database_instance_latest_recovery_time
-	_#ds: "\(#googlePrefix)_sql_database_instances": data.#google_sql_database_instances
-	_#ds: "\(#googlePrefix)_sql_databases": data.#google_sql_databases
-	_#ds: "\(#googlePrefix)_sql_tiers": data.#google_sql_tiers
-	_#ds: "\(#googlePrefix)_storage_bucket": data.#google_storage_bucket
-	_#ds: "\(#googlePrefix)_storage_bucket_iam_policy": data.#google_storage_bucket_iam_policy
-	_#ds: "\(#googlePrefix)_storage_bucket_object_content": data.#google_storage_bucket_object_content
-	_#ds: "\(#googlePrefix)_storage_bucket_object_contents": data.#google_storage_bucket_object_contents
-	_#ds: "\(#googlePrefix)_storage_bucket_object": data.#google_storage_bucket_object
-	_#ds: "\(#googlePrefix)_storage_bucket_objects": data.#google_storage_bucket_objects
-	_#ds: "\(#googlePrefix)_storage_buckets": data.#google_storage_buckets
-	_#ds: "\(#googlePrefix)_storage_control_folder_intelligence_config": data.#google_storage_control_folder_intelligence_config
-	_#ds: "\(#googlePrefix)_storage_control_organization_intelligence_config": data.#google_storage_control_organization_intelligence_config
-	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_config": data.#google_storage_control_project_intelligence_config
-	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_finding": data.#google_storage_control_project_intelligence_finding
-	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_finding_revision": data.#google_storage_control_project_intelligence_finding_revision
-	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_finding_revisions": data.#google_storage_control_project_intelligence_finding_revisions
-	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_findings": data.#google_storage_control_project_intelligence_findings
-	_#ds: "\(#googlePrefix)_storage_insights_dataset_config": data.#google_storage_insights_dataset_config
-	_#ds: "\(#googlePrefix)_storage_managed_folder_iam_policy": data.#google_storage_managed_folder_iam_policy
-	_#ds: "\(#googlePrefix)_storage_object_signed_url": data.#google_storage_object_signed_url
-	_#ds: "\(#googlePrefix)_storage_project_service_account": data.#google_storage_project_service_account
-	_#ds: "\(#googlePrefix)_storage_transfer_project_service_account": data.#google_storage_transfer_project_service_account
-	_#ds: "\(#googlePrefix)_tags_tag_key": data.#google_tags_tag_key
-	_#ds: "\(#googlePrefix)_tags_tag_key_iam_policy": data.#google_tags_tag_key_iam_policy
-	_#ds: "\(#googlePrefix)_tags_tag_keys": data.#google_tags_tag_keys
-	_#ds: "\(#googlePrefix)_tags_tag_value": data.#google_tags_tag_value
-	_#ds: "\(#googlePrefix)_tags_tag_value_iam_policy": data.#google_tags_tag_value_iam_policy
-	_#ds: "\(#googlePrefix)_tags_tag_values": data.#google_tags_tag_values
-	_#ds: "\(#googlePrefix)_vertex_ai_index": data.#google_vertex_ai_index
-	_#ds: "\(#googlePrefix)_vertex_ai_reasoning_engine_iam_policy": data.#google_vertex_ai_reasoning_engine_iam_policy
-	_#ds: "\(#googlePrefix)_vertex_ai_reasoning_engine_query": data.#google_vertex_ai_reasoning_engine_query
-	_#ds: "\(#googlePrefix)_vmwareengine_announcements": data.#google_vmwareengine_announcements
-	_#ds: "\(#googlePrefix)_vmwareengine_cluster": data.#google_vmwareengine_cluster
-	_#ds: "\(#googlePrefix)_vmwareengine_datastore": data.#google_vmwareengine_datastore
-	_#ds: "\(#googlePrefix)_vmwareengine_external_access_rule": data.#google_vmwareengine_external_access_rule
-	_#ds: "\(#googlePrefix)_vmwareengine_external_address": data.#google_vmwareengine_external_address
-	_#ds: "\(#googlePrefix)_vmwareengine_network": data.#google_vmwareengine_network
-	_#ds: "\(#googlePrefix)_vmwareengine_network_peering": data.#google_vmwareengine_network_peering
-	_#ds: "\(#googlePrefix)_vmwareengine_network_policy": data.#google_vmwareengine_network_policy
-	_#ds: "\(#googlePrefix)_vmwareengine_nsx_credentials": data.#google_vmwareengine_nsx_credentials
-	_#ds: "\(#googlePrefix)_vmwareengine_private_cloud": data.#google_vmwareengine_private_cloud
-	_#ds: "\(#googlePrefix)_vmwareengine_subnet": data.#google_vmwareengine_subnet
-	_#ds: "\(#googlePrefix)_vmwareengine_upgrades": data.#google_vmwareengine_upgrades
-	_#ds: "\(#googlePrefix)_vmwareengine_vcenter_credentials": data.#google_vmwareengine_vcenter_credentials
-	_#ds: "\(#googlePrefix)_vpc_access_connector": data.#google_vpc_access_connector
-	_#ds: "\(#googlePrefix)_workbench_instance_iam_policy": data.#google_workbench_instance_iam_policy
-	_#ds: "\(#googlePrefix)_workstations_workstation_config_iam_policy": data.#google_workstations_workstation_config_iam_policy
-	_#ds: "\(#googlePrefix)_workstations_workstation_iam_policy": data.#google_workstations_workstation_iam_policy
+	_#ds: "\(#googlePrefix)_access_approval_folder_service_account": close({data.google_access_approval_folder_service_account & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_access_approval_organization_service_account": close({data.google_access_approval_organization_service_account & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_access_approval_project_service_account": close({data.google_access_approval_project_service_account & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_access_context_manager_access_policy": close({data.google_access_context_manager_access_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_access_context_manager_access_policy_iam_policy": close({data.google_access_context_manager_access_policy_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_access_context_manager_supported_service": close({data.google_access_context_manager_supported_service & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_access_context_manager_supported_services": close({data.google_access_context_manager_supported_services & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_active_folder": close({data.google_active_folder & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_agent_registry_agent": close({data.google_agent_registry_agent & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_agent_registry_endpoint": close({data.google_agent_registry_endpoint & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_agent_registry_mcp_server": close({data.google_agent_registry_mcp_server & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_alloydb_cluster": close({data.google_alloydb_cluster & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_alloydb_instance": close({data.google_alloydb_instance & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_alloydb_locations": close({data.google_alloydb_locations & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_alloydb_supported_database_flags": close({data.google_alloydb_supported_database_flags & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_apigee_environment_iam_policy": close({data.google_apigee_environment_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_apigee_instance": close({data.google_apigee_instance & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_app_engine_default_service_account": close({data.google_app_engine_default_service_account & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_apphub_application": close({data.google_apphub_application & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_apphub_discovered_service": close({data.google_apphub_discovered_service & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_apphub_discovered_workload": close({data.google_apphub_discovered_workload & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_docker_image": close({data.google_artifact_registry_docker_image & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_docker_images": close({data.google_artifact_registry_docker_images & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_file": close({data.google_artifact_registry_file & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_locations": close({data.google_artifact_registry_locations & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_maven_artifact": close({data.google_artifact_registry_maven_artifact & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_maven_artifacts": close({data.google_artifact_registry_maven_artifacts & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_npm_package": close({data.google_artifact_registry_npm_package & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_npm_packages": close({data.google_artifact_registry_npm_packages & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_package": close({data.google_artifact_registry_package & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_packages": close({data.google_artifact_registry_packages & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_python_package": close({data.google_artifact_registry_python_package & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_python_packages": close({data.google_artifact_registry_python_packages & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_repositories": close({data.google_artifact_registry_repositories & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_repository": close({data.google_artifact_registry_repository & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_repository_iam_policy": close({data.google_artifact_registry_repository_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_tag": close({data.google_artifact_registry_tag & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_tags": close({data.google_artifact_registry_tags & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_version": close({data.google_artifact_registry_version & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_artifact_registry_versions": close({data.google_artifact_registry_versions & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_backup_dr_backup": close({data.google_backup_dr_backup & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_backup_dr_backup_plan_association": close({data.google_backup_dr_backup_plan_association & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_backup_dr_backup_plan_associations": close({data.google_backup_dr_backup_plan_associations & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_backup_dr_backup_plan": close({data.google_backup_dr_backup_plan & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_backup_dr_backup_vault": close({data.google_backup_dr_backup_vault & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_backup_dr_data_source": close({data.google_backup_dr_data_source & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_backup_dr_data_source_reference": close({data.google_backup_dr_data_source_reference & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_backup_dr_data_source_references": close({data.google_backup_dr_data_source_references & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_backup_dr_data_sources": close({data.google_backup_dr_data_sources & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_backup_dr_management_server": close({data.google_backup_dr_management_server & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_beyondcorp_app_connection": close({data.google_beyondcorp_app_connection & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_beyondcorp_app_connector": close({data.google_beyondcorp_app_connector & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_beyondcorp_app_gateway": close({data.google_beyondcorp_app_gateway & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_beyondcorp_security_gateway_application_iam_policy": close({data.google_beyondcorp_security_gateway_application_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_beyondcorp_security_gateway": close({data.google_beyondcorp_security_gateway & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_beyondcorp_security_gateway_iam_policy": close({data.google_beyondcorp_security_gateway_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_biglake_iceberg_catalog_iam_policy": close({data.google_biglake_iceberg_catalog_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_biglake_iceberg_namespace_iam_policy": close({data.google_biglake_iceberg_namespace_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_biglake_iceberg_table_iam_policy": close({data.google_biglake_iceberg_table_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigquery_analytics_hub_data_exchange_iam_policy": close({data.google_bigquery_analytics_hub_data_exchange_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigquery_analytics_hub_listing_iam_policy": close({data.google_bigquery_analytics_hub_listing_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigquery_connection_iam_policy": close({data.google_bigquery_connection_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigquery_datapolicy_data_policy_iam_policy": close({data.google_bigquery_datapolicy_data_policy_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigquery_datapolicyv2_data_policy_iam_policy": close({data.google_bigquery_datapolicyv2_data_policy_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigquery_dataset": close({data.google_bigquery_dataset & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigquery_dataset_iam_policy": close({data.google_bigquery_dataset_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigquery_datasets": close({data.google_bigquery_datasets & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigquery_default_service_account": close({data.google_bigquery_default_service_account & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigquery_routine_iam_policy": close({data.google_bigquery_routine_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigquery_table": close({data.google_bigquery_table & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigquery_table_iam_policy": close({data.google_bigquery_table_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigquery_tables": close({data.google_bigquery_tables & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigtable_instance_iam_policy": close({data.google_bigtable_instance_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_bigtable_table_iam_policy": close({data.google_bigtable_table_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_billing_account": close({data.google_billing_account & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_billing_account_iam_policy": close({data.google_billing_account_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_binary_authorization_attestor_iam_policy": close({data.google_binary_authorization_attestor_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_certificate_manager_certificate_map": close({data.google_certificate_manager_certificate_map & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_certificate_manager_certificates": close({data.google_certificate_manager_certificates & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_certificate_manager_dns_authorization": close({data.google_certificate_manager_dns_authorization & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_client_config": close({data.google_client_config & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_client_openid_userinfo": close({data.google_client_openid_userinfo & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_asset_search_all_resources": close({data.google_cloud_asset_search_all_resources & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_identity_group_lookup": close({data.google_cloud_identity_group_lookup & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_identity_group_memberships": close({data.google_cloud_identity_group_memberships & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_identity_group_transitive_memberships": close({data.google_cloud_identity_group_transitive_memberships & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_identity_groups": close({data.google_cloud_identity_groups & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_identity_policies": close({data.google_cloud_identity_policies & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_identity_policy": close({data.google_cloud_identity_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_quotas_quota_info": close({data.google_cloud_quotas_quota_info & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_quotas_quota_infos": close({data.google_cloud_quotas_quota_infos & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_run_locations": close({data.google_cloud_run_locations & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_run_service": close({data.google_cloud_run_service & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_run_service_iam_policy": close({data.google_cloud_run_service_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_run_v2_job": close({data.google_cloud_run_v2_job & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_run_v2_job_iam_policy": close({data.google_cloud_run_v2_job_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_run_v2_service": close({data.google_cloud_run_v2_service & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_run_v2_service_iam_policy": close({data.google_cloud_run_v2_service_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_run_v2_worker_pool": close({data.google_cloud_run_v2_worker_pool & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_run_v2_worker_pool_iam_policy": close({data.google_cloud_run_v2_worker_pool_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_tasks_queue_iam_policy": close({data.google_cloud_tasks_queue_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloudbuild_trigger": close({data.google_cloudbuild_trigger & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloudbuildv2_connection_iam_policy": close({data.google_cloudbuildv2_connection_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_clouddeploy_custom_target_type_iam_policy": close({data.google_clouddeploy_custom_target_type_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_clouddeploy_delivery_pipeline_iam_policy": close({data.google_clouddeploy_delivery_pipeline_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_clouddeploy_target_iam_policy": close({data.google_clouddeploy_target_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloudfunctions2_function": close({data.google_cloudfunctions2_function & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloudfunctions2_function_iam_policy": close({data.google_cloudfunctions2_function_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloudfunctions_function": close({data.google_cloudfunctions_function & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloudfunctions_function_iam_policy": close({data.google_cloudfunctions_function_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_colab_runtime_template_iam_policy": close({data.google_colab_runtime_template_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_composer_environment": close({data.google_composer_environment & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_composer_image_versions": close({data.google_composer_image_versions & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_composer_user_workloads_config_map": close({data.google_composer_user_workloads_config_map & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_composer_user_workloads_secret": close({data.google_composer_user_workloads_secret & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_address": close({data.google_compute_address & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_addresses": close({data.google_compute_addresses & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_backend_bucket": close({data.google_compute_backend_bucket & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_backend_service": close({data.google_compute_backend_service & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_default_service_account": close({data.google_compute_default_service_account & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_disk": close({data.google_compute_disk & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_disk_iam_policy": close({data.google_compute_disk_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_firewall_policy_iam_policy": close({data.google_compute_firewall_policy_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_forwarding_rule": close({data.google_compute_forwarding_rule & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_forwarding_rules": close({data.google_compute_forwarding_rules & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_global_address": close({data.google_compute_global_address & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_global_forwarding_rule": close({data.google_compute_global_forwarding_rule & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_ha_vpn_gateway": close({data.google_compute_ha_vpn_gateway & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_health_check": close({data.google_compute_health_check & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_image": close({data.google_compute_image & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_image_iam_policy": close({data.google_compute_image_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_images": close({data.google_compute_images & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_instance": close({data.google_compute_instance & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_instance_group": close({data.google_compute_instance_group & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_instance_group_manager": close({data.google_compute_instance_group_manager & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_instance_groups": close({data.google_compute_instance_groups & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_instance_guest_attributes": close({data.google_compute_instance_guest_attributes & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_instance_iam_policy": close({data.google_compute_instance_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_instance_serial_port": close({data.google_compute_instance_serial_port & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_instance_template": close({data.google_compute_instance_template & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_instance_template_iam_policy": close({data.google_compute_instance_template_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_instant_snapshot_iam_policy": close({data.google_compute_instant_snapshot_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_interconnect_location": close({data.google_compute_interconnect_location & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_interconnect_locations": close({data.google_compute_interconnect_locations & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_lb_ip_ranges": close({data.google_compute_lb_ip_ranges & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_machine_types": close({data.google_compute_machine_types & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_network_attachment": close({data.google_compute_network_attachment & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_network_endpoint_group": close({data.google_compute_network_endpoint_group & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_network_endpoint_groups": close({data.google_compute_network_endpoint_groups & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_network_firewall_policy_iam_policy": close({data.google_compute_network_firewall_policy_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_network": close({data.google_compute_network & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_network_peering": close({data.google_compute_network_peering & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_networks": close({data.google_compute_networks & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_node_types": close({data.google_compute_node_types & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_region_backend_service": close({data.google_compute_region_backend_service & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_region_disk": close({data.google_compute_region_disk & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_region_disk_iam_policy": close({data.google_compute_region_disk_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_region_instance_group": close({data.google_compute_region_instance_group & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_region_instance_group_manager": close({data.google_compute_region_instance_group_manager & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_region_instance_template": close({data.google_compute_region_instance_template & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_region_instant_snapshot_iam_policy": close({data.google_compute_region_instant_snapshot_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_region_network_endpoint_group": close({data.google_compute_region_network_endpoint_group & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_region_network_firewall_policy_iam_policy": close({data.google_compute_region_network_firewall_policy_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_region_security_policy": close({data.google_compute_region_security_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_region_ssl_certificate": close({data.google_compute_region_ssl_certificate & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_region_ssl_policy": close({data.google_compute_region_ssl_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_region_target_http_proxy": close({data.google_compute_region_target_http_proxy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_region_target_https_proxy": close({data.google_compute_region_target_https_proxy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_regions": close({data.google_compute_regions & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_reservation_block": close({data.google_compute_reservation_block & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_reservation": close({data.google_compute_reservation & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_reservation_sub_block": close({data.google_compute_reservation_sub_block & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_resource_policy": close({data.google_compute_resource_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_router": close({data.google_compute_router & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_router_nat": close({data.google_compute_router_nat & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_router_status": close({data.google_compute_router_status & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_routers": close({data.google_compute_routers & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_security_policy": close({data.google_compute_security_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_service_attachment": close({data.google_compute_service_attachment & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_snapshot": close({data.google_compute_snapshot & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_snapshot_iam_policy": close({data.google_compute_snapshot_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_ssl_certificate": close({data.google_compute_ssl_certificate & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_ssl_policy": close({data.google_compute_ssl_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_storage_pool": close({data.google_compute_storage_pool & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_storage_pool_iam_policy": close({data.google_compute_storage_pool_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_storage_pool_types": close({data.google_compute_storage_pool_types & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_subnetwork": close({data.google_compute_subnetwork & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_subnetwork_iam_policy": close({data.google_compute_subnetwork_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_subnetworks": close({data.google_compute_subnetworks & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_target_http_proxy": close({data.google_compute_target_http_proxy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_target_https_proxy": close({data.google_compute_target_https_proxy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_vpn_gateway": close({data.google_compute_vpn_gateway & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_zones": close({data.google_compute_zones & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_container_analysis_note_iam_policy": close({data.google_container_analysis_note_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_container_attached_install_manifest": close({data.google_container_attached_install_manifest & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_container_attached_versions": close({data.google_container_attached_versions & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_container_aws_versions": close({data.google_container_aws_versions & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_container_azure_versions": close({data.google_container_azure_versions & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_container_cluster": close({data.google_container_cluster & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_container_engine_versions": close({data.google_container_engine_versions & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_container_registry_image": close({data.google_container_registry_image & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_container_registry_repository": close({data.google_container_registry_repository & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_data_catalog_entry_group_iam_policy": close({data.google_data_catalog_entry_group_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_data_catalog_policy_tag_iam_policy": close({data.google_data_catalog_policy_tag_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_data_catalog_tag_template_iam_policy": close({data.google_data_catalog_tag_template_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_data_catalog_taxonomy_iam_policy": close({data.google_data_catalog_taxonomy_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_data_fusion_instance_iam_policy": close({data.google_data_fusion_instance_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_data_lineage_config": close({data.google_data_lineage_config & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataplex_aspect_type_iam_policy": close({data.google_dataplex_aspect_type_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataplex_asset_iam_policy": close({data.google_dataplex_asset_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataplex_data_product_iam_policy": close({data.google_dataplex_data_product_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataplex_data_quality_rules": close({data.google_dataplex_data_quality_rules & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataplex_datascan_iam_policy": close({data.google_dataplex_datascan_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataplex_entry_group_iam_policy": close({data.google_dataplex_entry_group_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataplex_entry_type_iam_policy": close({data.google_dataplex_entry_type_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataplex_glossary_iam_policy": close({data.google_dataplex_glossary_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataplex_lake_iam_policy": close({data.google_dataplex_lake_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataplex_task_iam_policy": close({data.google_dataplex_task_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataplex_zone_iam_policy": close({data.google_dataplex_zone_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataproc_autoscaling_policy_iam_policy": close({data.google_dataproc_autoscaling_policy_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataproc_cluster_iam_policy": close({data.google_dataproc_cluster_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataproc_job_iam_policy": close({data.google_dataproc_job_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataproc_metastore_database_iam_policy": close({data.google_dataproc_metastore_database_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataproc_metastore_federation_iam_policy": close({data.google_dataproc_metastore_federation_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataproc_metastore_service": close({data.google_dataproc_metastore_service & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataproc_metastore_service_iam_policy": close({data.google_dataproc_metastore_service_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataproc_metastore_table_iam_policy": close({data.google_dataproc_metastore_table_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_datastream_static_ips": close({data.google_datastream_static_ips & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_discovery_engine_data_store": close({data.google_discovery_engine_data_store & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_discovery_engine_data_stores": close({data.google_discovery_engine_data_stores & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_discovery_engine_search_engine_iam_policy": close({data.google_discovery_engine_search_engine_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dns_keys": close({data.google_dns_keys & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dns_managed_zone": close({data.google_dns_managed_zone & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dns_managed_zone_iam_policy": close({data.google_dns_managed_zone_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dns_managed_zones": close({data.google_dns_managed_zones & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dns_record_set": close({data.google_dns_record_set & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dns_record_sets": close({data.google_dns_record_sets & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_endpoints_service_consumers_iam_policy": close({data.google_endpoints_service_consumers_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_endpoints_service_iam_policy": close({data.google_endpoints_service_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_filestore_instance": close({data.google_filestore_instance & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_firestore_document": close({data.google_firestore_document & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_folder": close({data.google_folder & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_folder_iam_policy": close({data.google_folder_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_folder_organization_policy": close({data.google_folder_organization_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_folders": close({data.google_folders & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_gemini_repository_group_iam_policy": close({data.google_gemini_repository_group_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_gke_backup_backup_plan_iam_policy": close({data.google_gke_backup_backup_plan_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_gke_backup_restore_plan_iam_policy": close({data.google_gke_backup_restore_plan_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_gke_hub_feature": close({data.google_gke_hub_feature & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_gke_hub_feature_iam_policy": close({data.google_gke_hub_feature_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_gke_hub_membership_binding": close({data.google_gke_hub_membership_binding & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_gke_hub_membership": close({data.google_gke_hub_membership & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_gke_hub_membership_iam_policy": close({data.google_gke_hub_membership_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_gke_hub_scope_iam_policy": close({data.google_gke_hub_scope_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_healthcare_consent_store_iam_policy": close({data.google_healthcare_consent_store_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_healthcare_dataset_iam_policy": close({data.google_healthcare_dataset_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_healthcare_dicom_store_iam_policy": close({data.google_healthcare_dicom_store_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_healthcare_fhir_store_iam_policy": close({data.google_healthcare_fhir_store_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_healthcare_hl7_v2_store_iam_policy": close({data.google_healthcare_hl7_v2_store_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iam_policy": close({data.google_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iam_role": close({data.google_iam_role & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iam_testable_permissions": close({data.google_iam_testable_permissions & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iam_workforce_pool_iam_policy": close({data.google_iam_workforce_pool_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iam_workload_identity_pool": close({data.google_iam_workload_identity_pool & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iam_workload_identity_pool_iam_policy": close({data.google_iam_workload_identity_pool_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iam_workload_identity_pool_provider": close({data.google_iam_workload_identity_pool_provider & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_agent_registry_iam_policy": close({data.google_iap_agent_registry_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_app_engine_service_iam_policy": close({data.google_iap_app_engine_service_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_app_engine_version_iam_policy": close({data.google_iap_app_engine_version_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_client": close({data.google_iap_client & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_location_web_iam_policy": close({data.google_iap_location_web_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_tunnel_dest_group_iam_policy": close({data.google_iap_tunnel_dest_group_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_tunnel_iam_policy": close({data.google_iap_tunnel_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_tunnel_instance_iam_policy": close({data.google_iap_tunnel_instance_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_web_backend_service_iam_policy": close({data.google_iap_web_backend_service_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_web_cloud_run_service_iam_policy": close({data.google_iap_web_cloud_run_service_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_web_forwarding_rule_service_iam_policy": close({data.google_iap_web_forwarding_rule_service_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_web_iam_policy": close({data.google_iap_web_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_web_region_backend_service_iam_policy": close({data.google_iap_web_region_backend_service_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_web_region_forwarding_rule_service_iam_policy": close({data.google_iap_web_region_forwarding_rule_service_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_web_type_app_engine_iam_policy": close({data.google_iap_web_type_app_engine_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iap_web_type_compute_iam_policy": close({data.google_iap_web_type_compute_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_autokey_config": close({data.google_kms_autokey_config & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_crypto_key": close({data.google_kms_crypto_key & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_crypto_key_iam_policy": close({data.google_kms_crypto_key_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_crypto_key_latest_version": close({data.google_kms_crypto_key_latest_version & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_crypto_key_version": close({data.google_kms_crypto_key_version & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_crypto_key_versions": close({data.google_kms_crypto_key_versions & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_crypto_keys": close({data.google_kms_crypto_keys & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_ekm_connection_iam_policy": close({data.google_kms_ekm_connection_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_key_handle": close({data.google_kms_key_handle & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_key_handles": close({data.google_kms_key_handles & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_key_ring": close({data.google_kms_key_ring & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_key_ring_iam_policy": close({data.google_kms_key_ring_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_key_rings": close({data.google_kms_key_rings & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_secret_asymmetric": close({data.google_kms_secret_asymmetric & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_secret_ciphertext": close({data.google_kms_secret_ciphertext & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_kms_secret": close({data.google_kms_secret & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_logging_folder_settings": close({data.google_logging_folder_settings & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_logging_log_view": close({data.google_logging_log_view & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_logging_log_view_iam_policy": close({data.google_logging_log_view_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_logging_organization_settings": close({data.google_logging_organization_settings & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_logging_project_cmek_settings": close({data.google_logging_project_cmek_settings & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_logging_project_settings": close({data.google_logging_project_settings & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_logging_sink": close({data.google_logging_sink & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_lustre_instance": close({data.google_lustre_instance & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_memcache_instance": close({data.google_memcache_instance & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_memorystore_instance": close({data.google_memorystore_instance & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_monitoring_app_engine_service": close({data.google_monitoring_app_engine_service & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_monitoring_cluster_istio_service": close({data.google_monitoring_cluster_istio_service & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_monitoring_istio_canonical_service": close({data.google_monitoring_istio_canonical_service & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_monitoring_mesh_istio_service": close({data.google_monitoring_mesh_istio_service & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_monitoring_notification_channel": close({data.google_monitoring_notification_channel & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_monitoring_uptime_check_ips": close({data.google_monitoring_uptime_check_ips & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_netblock_ip_ranges": close({data.google_netblock_ip_ranges & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_network_connectivity_hub_iam_policy": close({data.google_network_connectivity_hub_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_network_management_connectivity_test_run": close({data.google_network_management_connectivity_test_run & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_network_management_connectivity_tests": close({data.google_network_management_connectivity_tests & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_network_security_address_group_iam_policy": close({data.google_network_security_address_group_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_network_security_address_groups": close({data.google_network_security_address_groups & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_notebooks_instance_iam_policy": close({data.google_notebooks_instance_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_notebooks_runtime_iam_policy": close({data.google_notebooks_runtime_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_autonomous_database": close({data.google_oracle_database_autonomous_database & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_autonomous_databases": close({data.google_oracle_database_autonomous_databases & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_cloud_exadata_infrastructure": close({data.google_oracle_database_cloud_exadata_infrastructure & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_cloud_exadata_infrastructures": close({data.google_oracle_database_cloud_exadata_infrastructures & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_cloud_vm_cluster": close({data.google_oracle_database_cloud_vm_cluster & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_cloud_vm_clusters": close({data.google_oracle_database_cloud_vm_clusters & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_db_nodes": close({data.google_oracle_database_db_nodes & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_db_servers": close({data.google_oracle_database_db_servers & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_goldengate_connection_types": close({data.google_oracle_database_goldengate_connection_types & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_environments": close({data.google_oracle_database_goldengate_deployment_environments & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_types": close({data.google_oracle_database_goldengate_deployment_types & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_versions": close({data.google_oracle_database_goldengate_deployment_versions & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_odb_network": close({data.google_oracle_database_odb_network & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_odb_subnet": close({data.google_oracle_database_odb_subnet & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_organization": close({data.google_organization & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_organization_iam_custom_role": close({data.google_organization_iam_custom_role & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_organization_iam_custom_roles": close({data.google_organization_iam_custom_roles & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_organization_iam_policy": close({data.google_organization_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_organizations": close({data.google_organizations & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_parameter_manager_parameter": close({data.google_parameter_manager_parameter & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_parameter_manager_parameter_version": close({data.google_parameter_manager_parameter_version & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_parameter_manager_parameter_version_render": close({data.google_parameter_manager_parameter_version_render & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_parameter_manager_parameters": close({data.google_parameter_manager_parameters & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_parameter_manager_regional_parameter": close({data.google_parameter_manager_regional_parameter & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_parameter_manager_regional_parameter_version": close({data.google_parameter_manager_regional_parameter_version & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_parameter_manager_regional_parameter_version_render": close({data.google_parameter_manager_regional_parameter_version_render & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_parameter_manager_regional_parameters": close({data.google_parameter_manager_regional_parameters & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_privateca_ca_pool_iam_policy": close({data.google_privateca_ca_pool_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_privateca_certificate_authority": close({data.google_privateca_certificate_authority & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_privateca_certificate_template_iam_policy": close({data.google_privateca_certificate_template_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_privileged_access_manager_entitlement": close({data.google_privileged_access_manager_entitlement & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_project_ancestry": close({data.google_project_ancestry & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_project": close({data.google_project & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_project_iam_custom_role": close({data.google_project_iam_custom_role & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_project_iam_custom_roles": close({data.google_project_iam_custom_roles & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_project_iam_policy": close({data.google_project_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_project_organization_policy": close({data.google_project_organization_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_project_service": close({data.google_project_service & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_projects": close({data.google_projects & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_pubsub_schema_iam_policy": close({data.google_pubsub_schema_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_pubsub_subscription": close({data.google_pubsub_subscription & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_pubsub_subscription_iam_policy": close({data.google_pubsub_subscription_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_pubsub_topic": close({data.google_pubsub_topic & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_pubsub_topic_iam_policy": close({data.google_pubsub_topic_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_redis_cluster": close({data.google_redis_cluster & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_redis_instance": close({data.google_redis_instance & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_scc_source_iam_policy": close({data.google_scc_source_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_scc_v2_organization_source_iam_policy": close({data.google_scc_v2_organization_source_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_secret_manager_regional_secret": close({data.google_secret_manager_regional_secret & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_secret_manager_regional_secret_iam_policy": close({data.google_secret_manager_regional_secret_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_secret_manager_regional_secret_version_access": close({data.google_secret_manager_regional_secret_version_access & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_secret_manager_regional_secret_version": close({data.google_secret_manager_regional_secret_version & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_secret_manager_regional_secrets": close({data.google_secret_manager_regional_secrets & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_secret_manager_secret": close({data.google_secret_manager_secret & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_secret_manager_secret_iam_policy": close({data.google_secret_manager_secret_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_secret_manager_secret_version_access": close({data.google_secret_manager_secret_version_access & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_secret_manager_secret_version": close({data.google_secret_manager_secret_version & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_secret_manager_secrets": close({data.google_secret_manager_secrets & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_secure_source_manager_instance_iam_policy": close({data.google_secure_source_manager_instance_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_secure_source_manager_repository_iam_policy": close({data.google_secure_source_manager_repository_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_service_account_access_token": close({data.google_service_account_access_token & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_service_account": close({data.google_service_account & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_service_account_iam_policy": close({data.google_service_account_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_service_account_id_token": close({data.google_service_account_id_token & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_service_account_jwt": close({data.google_service_account_jwt & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_service_account_key": close({data.google_service_account_key & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_service_accounts": close({data.google_service_accounts & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_service_directory_namespace_iam_policy": close({data.google_service_directory_namespace_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_service_directory_service_iam_policy": close({data.google_service_directory_service_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_service_networking_peered_dns_domain": close({data.google_service_networking_peered_dns_domain & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_site_verification_token": close({data.google_site_verification_token & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_sourcerepo_repository": close({data.google_sourcerepo_repository & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_sourcerepo_repository_iam_policy": close({data.google_sourcerepo_repository_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_spanner_database": close({data.google_spanner_database & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_spanner_database_iam_policy": close({data.google_spanner_database_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_spanner_instance": close({data.google_spanner_instance & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_spanner_instance_iam_policy": close({data.google_spanner_instance_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_sql_backup_run": close({data.google_sql_backup_run & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_sql_ca_certs": close({data.google_sql_ca_certs & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_sql_database": close({data.google_sql_database & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_sql_database_instance": close({data.google_sql_database_instance & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_sql_database_instance_latest_recovery_time": close({data.google_sql_database_instance_latest_recovery_time & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_sql_database_instances": close({data.google_sql_database_instances & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_sql_databases": close({data.google_sql_databases & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_sql_tiers": close({data.google_sql_tiers & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_bucket": close({data.google_storage_bucket & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_bucket_iam_policy": close({data.google_storage_bucket_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_bucket_object_content": close({data.google_storage_bucket_object_content & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_bucket_object_contents": close({data.google_storage_bucket_object_contents & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_bucket_object": close({data.google_storage_bucket_object & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_bucket_objects": close({data.google_storage_bucket_objects & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_buckets": close({data.google_storage_buckets & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_control_folder_intelligence_config": close({data.google_storage_control_folder_intelligence_config & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_control_folder_intelligence_findings_summary": close({data.google_storage_control_folder_intelligence_findings_summary & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_control_organization_intelligence_config": close({data.google_storage_control_organization_intelligence_config & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_control_organization_intelligence_findings_summary": close({data.google_storage_control_organization_intelligence_findings_summary & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_config": close({data.google_storage_control_project_intelligence_config & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_finding": close({data.google_storage_control_project_intelligence_finding & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_finding_revision": close({data.google_storage_control_project_intelligence_finding_revision & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_finding_revisions": close({data.google_storage_control_project_intelligence_finding_revisions & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_findings": close({data.google_storage_control_project_intelligence_findings & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_control_project_intelligence_findings_summary": close({data.google_storage_control_project_intelligence_findings_summary & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_insights_dataset_config": close({data.google_storage_insights_dataset_config & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_managed_folder_iam_policy": close({data.google_storage_managed_folder_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_object_signed_url": close({data.google_storage_object_signed_url & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_project_service_account": close({data.google_storage_project_service_account & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_storage_transfer_project_service_account": close({data.google_storage_transfer_project_service_account & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_tags_tag_key": close({data.google_tags_tag_key & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_tags_tag_key_iam_policy": close({data.google_tags_tag_key_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_tags_tag_keys": close({data.google_tags_tag_keys & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_tags_tag_value": close({data.google_tags_tag_value & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_tags_tag_value_iam_policy": close({data.google_tags_tag_value_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_tags_tag_values": close({data.google_tags_tag_values & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vertex_ai_index": close({data.google_vertex_ai_index & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vertex_ai_reasoning_engine_iam_policy": close({data.google_vertex_ai_reasoning_engine_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vertex_ai_reasoning_engine_query": close({data.google_vertex_ai_reasoning_engine_query & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vmwareengine_announcements": close({data.google_vmwareengine_announcements & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vmwareengine_cluster": close({data.google_vmwareengine_cluster & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vmwareengine_datastore": close({data.google_vmwareengine_datastore & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vmwareengine_external_access_rule": close({data.google_vmwareengine_external_access_rule & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vmwareengine_external_address": close({data.google_vmwareengine_external_address & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vmwareengine_network": close({data.google_vmwareengine_network & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vmwareengine_network_peering": close({data.google_vmwareengine_network_peering & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vmwareengine_network_policy": close({data.google_vmwareengine_network_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vmwareengine_nsx_credentials": close({data.google_vmwareengine_nsx_credentials & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vmwareengine_private_cloud": close({data.google_vmwareengine_private_cloud & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vmwareengine_subnet": close({data.google_vmwareengine_subnet & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vmwareengine_upgrades": close({data.google_vmwareengine_upgrades & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vmwareengine_vcenter_credentials": close({data.google_vmwareengine_vcenter_credentials & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_vpc_access_connector": close({data.google_vpc_access_connector & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_workbench_instance_iam_policy": close({data.google_workbench_instance_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_workstations_workstation_config_iam_policy": close({data.google_workstations_workstation_config_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_workstations_workstation_iam_policy": close({data.google_workstations_workstation_iam_policy & cuetf.MetaArgs})
 
 }

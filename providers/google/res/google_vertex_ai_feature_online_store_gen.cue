@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_vertex_ai_feature_online_store: {
+google_vertex_ai_feature_online_store: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_feature_online_store")
 	close({
@@ -12,57 +12,46 @@ import "list"
 		optimized?: matchN(1, [#optimized, list.MaxItems(1) & [...#optimized]])
 		timeouts?: #timeouts
 
-		// The timestamp of when the feature online store was created in
-		// RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-		// to nine fractional digits.
+		// The timestamp of when the feature online store was created in RFC3339 UTC
+		// "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// Used to perform consistent read-modify-write updates.
 		etag?: string
 
-		// If set to true, any FeatureViews and Features for this
-		// FeatureOnlineStore will also be deleted.
+		// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
 		force_destroy?: bool
 		id?:            string
 
-		// The labels with user-defined metadata to organize your feature
-		// online stores.
+		// The labels with user-defined metadata to organize your feature online stores.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// The resource name of the Feature Online Store. This value may
-		// be up to 60 characters, and valid characters are [a-z0-9_].
-		// The first character cannot be a number.
-		name!:    string
-		project?: string
+		// The resource name of the Feature Online Store. This value may be up to 60
+		// characters, and valid characters are [a-z0-9_]. The first character cannot
+		// be a number.
+		name!: string
 
 		// The region of feature online store. eg us-central1
-		region?: string
+		region?:  string
+		project?: string
 
-		// The state of the Feature Online Store. See the possible states
-		// in [this
+		// The state of the Feature Online Store. See the possible states in [this
 		// link](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores#state).
 		state?: string
 
@@ -70,17 +59,16 @@ import "list"
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// The timestamp of when the feature online store was last updated
-		// in RFC3339 UTC "Zulu" format, with nanosecond resolution and
-		// up to nine fractional digits.
+		// The timestamp of when the feature online store was last updated in RFC3339
+		// UTC "Zulu" format, with nanosecond resolution and up to nine fractional
+		// digits.
 		update_time?: string
 	})
 
 	#bigtable: close({
 		auto_scaling!: matchN(1, [_#defs."/$defs/bigtable/$defs/auto_scaling", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bigtable/$defs/auto_scaling"]])
 
-		// Optional. If true, enable direct access to the Bigtable
-		// instance.
+		// Optional. If true, enable direct access to the Bigtable instance.
 		enable_direct_bigtable_access?: bool
 
 		// The zone where the Bigtable instance will be created.
@@ -93,18 +81,17 @@ import "list"
 		// Domain name to use for this FeatureOnlineStore
 		public_endpoint_domain_name?: string
 
-		// Name of the service attachment resource. Applicable only if
-		// private service connect is enabled and after FeatureViewSync
-		// is created.
+		// Name of the service attachment resource. Applicable only if private service
+		// connect is enabled and after FeatureViewSync is created.
 		service_attachment?: string
 	})
 
 	#encryption_spec: close({
-		// The Cloud KMS resource identifier of the customer managed
-		// encryption key used to protect a resource. Has the form:
+		// The Cloud KMS resource identifier of the customer managed encryption key used
+		// to protect a resource. Has the form:
 		// projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
-		// The key needs to be in the same region as where the compute
-		// resource is created.
+		// The key needs to be in the same region as where the compute resource is
+		// created.
 		kms_key_name!: string
 	})
 
@@ -117,31 +104,27 @@ import "list"
 	})
 
 	_#defs: "/$defs/bigtable/$defs/auto_scaling": close({
-		// A percentage of the cluster's CPU capacity. Can be from 10% to
-		// 80%. When a cluster's CPU utilization exceeds the target that
-		// you have set, Bigtable immediately adds nodes to the cluster.
-		// When CPU utilization is substantially lower than the target,
-		// Bigtable removes nodes. If not set will default to 50%.
+		// A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a
+		// cluster's CPU utilization exceeds the target that you have set, Bigtable
+		// immediately adds nodes to the cluster. When CPU utilization is substantially
+		// lower than the target, Bigtable removes nodes. If not set will default to
+		// 50%.
 		cpu_utilization_target?: number
 
-		// The maximum number of nodes to scale up to. Must be greater
-		// than or equal to minNodeCount, and less than or equal to 10
-		// times of 'minNodeCount'.
+		// The maximum number of nodes to scale up to. Must be greater than or equal to
+		// minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
 		max_node_count!: number
 
-		// The minimum number of nodes to scale down to. Must be greater
-		// than or equal to 1.
+		// The minimum number of nodes to scale down to. Must be greater than or equal to 1.
 		min_node_count!: number
 	})
 
 	_#defs: "/$defs/dedicated_serving_endpoint/$defs/private_service_connect_config": close({
-		// If set to true, customers will use private service connection
-		// to send request. Otherwise, the connection will set to public
-		// endpoint.
+		// If set to true, customers will use private service connection to send
+		// request. Otherwise, the connection will set to public endpoint.
 		enable_private_service_connect!: bool
 
-		// A list of Projects from which the forwarding rule will target
-		// the service attachment.
+		// A list of Projects from which the forwarding rule will target the service attachment.
 		project_allowlist?: [...string]
 	})
 }

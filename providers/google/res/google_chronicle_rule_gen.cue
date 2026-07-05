@@ -1,6 +1,6 @@
 package res
 
-#google_chronicle_rule: {
+google_chronicle_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_rule")
 	close({
@@ -10,13 +10,11 @@ package res
 		// Populated in BASIC view and FULL view.
 		allowed_run_frequencies?: [...string]
 
-		// Output only. The author of the rule. Extracted from the meta
-		// section of text.
+		// Output only. The author of the rule. Extracted from the meta section of text.
 		// Populated in BASIC view and FULL view.
 		author?: string
 
-		// Output only. A list of a rule's corresponding compilation
-		// diagnostic messages
+		// Output only. A list of a rule's corresponding compilation diagnostic messages
 		// such as compilation errors and compilation warnings.
 		// Populated in FULL view.
 		compilation_diagnostics?: [...close({
@@ -43,12 +41,10 @@ package res
 		// Populated in FULL view.
 		create_time?: string
 
-		// Output only. Resource names of the data tables used in this
-		// rule.
+		// Output only. Resource names of the data tables used in this rule.
 		data_tables?: [...string]
 
-		// This field uses a custom implementation please refer to
-		// documentation under
+		// This field uses a custom implementation please refer to documentation under
 		// /hashicorp/terraform-provider-google-beta/website/docs/r/chronicle_rule.html.markdown
 		// for specifics
 		deletion_policy?: string
@@ -58,56 +54,46 @@ package res
 		display_name?: string
 
 		// The etag for this rule.
-		// If this is provided on update, the request will succeed if and
-		// only if it
-		// matches the server-computed value, and will fail with an
-		// ABORTED error
+		// If this is provided on update, the request will succeed if and only if it
+		// matches the server-computed value, and will fail with an ABORTED error
 		// otherwise.
 		// Populated in BASIC view and FULL view.
 		etag?: string
 		id?:   string
 
-		// The unique identifier for the Chronicle instance, which is the
-		// same as the customer ID.
+		// The unique identifier for the Chronicle instance, which is the same as the customer ID.
 		instance!: string
 
-		// The location of the resource. This is the geographical region
-		// where the Chronicle instance resides, such as "us" or
-		// "europe-west2".
+		// The location of the resource. This is the geographical region where the
+		// Chronicle instance resides, such as "us" or "europe-west2".
 		location!: string
 
-		// Output only. Additional metadata specified in the meta section
-		// of text.
+		// Output only. Additional metadata specified in the meta section of text.
 		// Populated in FULL view.
 		metadata?: [string]: string
 
-		// Full resource name for the rule. This unique identifier is
-		// generated using values provided for the URL parameters.
+		// Full resource name for the rule. This unique identifier is generated using
+		// values provided for the URL parameters.
 		// Format:
 		// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
 		name?: string
 
-		// Output only. Indicate the rule can run in near real time live
-		// rule.
-		// If this is true, the rule uses the near real time live rule
-		// when the run
+		// Output only. Indicate the rule can run in near real time live rule.
+		// If this is true, the rule uses the near real time live rule when the run
 		// frequency is set to LIVE.
 		near_real_time_live_rule_eligible?: bool
-		project?:                           string
 
-		// Output only. Resource names of the reference lists used in this
-		// rule.
+		// Output only. Resource names of the reference lists used in this rule.
 		// Populated in FULL view.
 		reference_lists?: [...string]
+		project?: string
 
-		// Output only. The timestamp of when the rule revision was
-		// created.
+		// Output only. The timestamp of when the rule revision was created.
 		// Populated in FULL, REVISION_METADATA_ONLY views.
 		revision_create_time?: string
 
 		// Output only. The revision ID of the rule.
-		// A new revision is created whenever the rule text is changed in
-		// any way.
+		// A new revision is created whenever the rule text is changed in any way.
 		// Format: v_{10 digits}_{9 digits}
 		// Populated in REVISION_METADATA_ONLY view and FULL view.
 		revision_id?: string
@@ -117,10 +103,8 @@ package res
 
 		// Resource name of the DataAccessScope bound to this rule.
 		// Populated in BASIC view and FULL view.
-		// If reference lists are used in the rule, validations will be
-		// performed
-		// against this scope to ensure that the reference lists are
-		// compatible with
+		// If reference lists are used in the rule, validations will be performed
+		// against this scope to ensure that the reference lists are compatible with
 		// both the user's and the rule's scopes.
 		// The scope should be in the format:
 		// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope}".

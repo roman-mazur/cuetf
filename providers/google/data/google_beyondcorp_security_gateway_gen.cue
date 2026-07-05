@@ -1,31 +1,24 @@
 package data
 
-#google_beyondcorp_security_gateway: {
+google_beyondcorp_security_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_beyondcorp_security_gateway")
 	close({
 		// Output only. Timestamp when the resource was created.
 		create_time?: string
 
-		// Service account used for operations that involve resources in
-		// consumer projects.
+		// Service account used for operations that involve resources in consumer projects.
 		delegating_service_account?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Optional. An arbitrary user-provided name for the
-		// SecurityGateway.
+		// Optional. An arbitrary user-provided name for the SecurityGateway.
 		// Cannot exceed 64 characters.
 		display_name?: string
 
@@ -33,8 +26,7 @@ package data
 		// connection to the endpoints.
 		external_ips?: [...string]
 
-		// Optional. Map of Hubs that represents regional data path
-		// deployment with GCP region
+		// Optional. Map of Hubs that represents regional data path deployment with GCP region
 		// as a key.
 		hubs?: [...close({
 			internet_gateway?: [...close({
@@ -44,10 +36,9 @@ package data
 		})]
 		id?: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122. Must be omitted or set to
-		// 'global'.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
+		// Must be omitted or set to 'global'.
 		location?: string
 
 		// Settings related to Cloud Logging.

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_vertex_ai_reasoning_engine: {
+google_vertex_ai_reasoning_engine: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_reasoning_engine")
 	close({
@@ -10,13 +10,11 @@ import "list"
 		spec?: matchN(1, [#spec, list.MaxItems(1) & [...#spec]])
 		timeouts?: #timeouts
 
-		// The timestamp of when the Index was created in RFC3339 UTC
-		// "Zulu" format,
+		// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
 		// with nanosecond resolution and up to nine fractional digits.
 		create_time?: string
 
-		// This field uses a custom implementation please refer to
-		// documentation under
+		// This field uses a custom implementation please refer to documentation under
 		// /hashicorp/terraform-provider-google-beta/website/docs/r/vertex_ai_reasoning_engine.html.markdown
 		// for specifics
 		deletion_policy?: string
@@ -27,49 +25,42 @@ import "list"
 		// The display name of the ReasoningEngine.
 		display_name!: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
-		// The labels associated with this ReasoningEngine. You can use
-		// these to
+		// The labels associated with this ReasoningEngine. You can use these to
 		// organize and group your ReasoningEngines.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The generated name of the ReasoningEngine, in the format
 		// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
-		name?:    string
-		project?: string
+		name?: string
 
 		// The region of the reasoning engine. eg us-central1
-		region?: string
+		region?:  string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// The timestamp of when the Index was last updated in RFC3339 UTC
-		// "Zulu"
-		// format, with nanosecond resolution and up to nine fractional
-		// digits.
+		// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
+		// format, with nanosecond resolution and up to nine fractional digits.
 		update_time?: string
 	})
 
 	#encryption_spec: close({
-		// Required. The Cloud KMS resource identifier of the customer
-		// managed
+		// Required. The Cloud KMS resource identifier of the customer managed
 		// encryption key used to protect a resource. Has the form:
 		// projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
-		// The key needs to be in the same region as where the compute
-		// resource
+		// The key needs to be in the same region as where the compute resource
 		// is created.
 		kms_key_name!: string
 	})
@@ -91,27 +82,20 @@ import "list"
 		effective_identity?: string
 
 		// Optional. The identity type to use for the Reasoning Engine.
-		// If not specified, the 'service_account' field will be used if
-		// set,
-		// otherwise the default Vertex AI Reasoning Engine Service Agent
-		// in the project will be used.
+		// If not specified, the 'service_account' field will be used if set,
+		// otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
 		// Possible values:
-		// * 'SERVICE_ACCOUNT': Use a custom service account if the
-		// 'service_account' field is set, otherwise use the default
-		// Vertex AI Reasoning Engine Service Agent in the project.
-		// * 'AGENT_IDENTITY': Use Agent Identity. The 'service_account'
-		// field must not be set. Possible values: ["SERVICE_ACCOUNT",
-		// "AGENT_IDENTITY"]
+		// * 'SERVICE_ACCOUNT': Use a custom service account if the 'service_account'
+		// field is set, otherwise use the default Vertex AI Reasoning Engine Service
+		// Agent in the project.
+		// * 'AGENT_IDENTITY': Use Agent Identity. The 'service_account' field must not
+		// be set. Possible values: ["SERVICE_ACCOUNT", "AGENT_IDENTITY"]
 		identity_type?: string
 
-		// Optional. The service account that the Reasoning Engine
-		// artifact runs
-		// as. It should have "roles/storage.objectViewer" for reading the
-		// user
-		// project's Cloud Storage and "roles/aiplatform.user" for using
-		// Vertex
-		// extensions. If not specified, the Vertex AI Reasoning Engine
-		// service
+		// Optional. The service account that the Reasoning Engine artifact runs
+		// as. It should have "roles/storage.objectViewer" for reading the user
+		// project's Cloud Storage and "roles/aiplatform.user" for using Vertex
+		// extensions. If not specified, the Vertex AI Reasoning Engine service
 		// Agent in the project will be used.
 		service_account?: string
 	})
@@ -124,8 +108,7 @@ import "list"
 
 	_#defs: "/$defs/spec/$defs/container_spec": close({
 		// The Artifact Registry Docker image URI (e.g.,
-		// 'us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag')
-		// of the
+		// 'us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag') of the
 		// container image that is to be run on each worker replica.
 		image_uri!: string
 	})
@@ -139,15 +122,13 @@ import "list"
 		// Recommended value: 2 * cpu + 1. Defaults to 9.
 		container_concurrency?: number
 
-		// Optional. The maximum number of application instances that can
-		// be
+		// Optional. The maximum number of application instances that can be
 		// launched to handle increased traffic. Defaults to 100.
 		// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
 		// range is [1, 100].
 		max_instances?: number
 
-		// Optional. The minimum number of application instances that will
-		// be
+		// Optional. The minimum number of application instances that will be
 		// kept running at all times. Defaults to 1. Range: [0, 10].
 		min_instances?: number
 
@@ -156,13 +137,11 @@ import "list"
 		//
 		// Defaults to {"cpu": "4", "memory": "4Gi"}.
 		//
-		// The only supported values for CPU are '1', '2', '4', '6' and
-		// '8'.
+		// The only supported values for CPU are '1', '2', '4', '6' and '8'.
 		// For more information, go to
 		// https://cloud.google.com/run/docs/configuring/cpu.
 		//
-		// The only supported values for memory are '1Gi', '2Gi', ... '32
-		// Gi'.
+		// The only supported values for memory are '1Gi', '2Gi', ... '32 Gi'.
 		// For more information, go to
 		// https://cloud.google.com/run/docs/configuring/memory-limits.
 		resource_limits?: [string]: string
@@ -189,8 +168,7 @@ import "list"
 
 		// Optional. The name of the Compute Engine network attachment
 		// to attach to the resource within the region and user project.
-		// To specify this field, you must have already created a network
-		// attachment.
+		// To specify this field, you must have already created a network attachment.
 		// This field is only used for resources using PSC-Interface.
 		network_attachment?: string
 	})
@@ -232,8 +210,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/package_spec": close({
-		// Optional. The Cloud Storage URI of the dependency files in
-		// tar.gz
+		// Optional. The Cloud Storage URI of the dependency files in tar.gz
 		// format.
 		dependency_files_gcs_uri?: string
 
@@ -260,22 +237,20 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/source_code_spec/$defs/developer_connect_source/$defs/config": close({
-		// Directory, relative to the source root, in which to run the
-		// build.
+		// Directory, relative to the source root, in which to run the build.
 		dir!: string
 
 		// The Developer Connect Git repository link, formatted as
 		// projects/*/locations/*/connections/*/gitRepositoryLink/*.
 		git_repository_link!: string
 
-		// The revision to fetch from the Git repository such as a branch,
-		// a tag, a commit SHA, or any Git ref.
+		// The revision to fetch from the Git repository such as a branch, a tag, a
+		// commit SHA, or any Git ref.
 		revision!: string
 	})
 
 	_#defs: "/$defs/spec/$defs/source_code_spec/$defs/image_spec": close({
-		// Build arguments to be used. They will be passed through
-		// --build-arg flags.
+		// Build arguments to be used. They will be passed through --build-arg flags.
 		build_args?: [string]: string
 	})
 

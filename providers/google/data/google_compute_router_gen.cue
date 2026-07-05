@@ -1,6 +1,6 @@
 package data
 
-#google_compute_router: {
+google_compute_router: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_router")
 	close({
@@ -20,16 +20,11 @@ package data
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -47,24 +42,18 @@ package data
 			name?: string
 		})]
 
-		// Name of the resource. The name must be 1-63 characters long,
-		// and
-		// comply with RFC1035. Specifically, the name must be 1-63
-		// characters
-		// long and match the regular expression
-		// '[a-z]([-a-z0-9]*[a-z0-9])?'
-		// which means the first character must be a lowercase letter, and
-		// all
-		// following characters must be a dash, lowercase letter, or
-		// digit,
+		// Name of the resource. The name must be 1-63 characters long, and
+		// comply with RFC1035. Specifically, the name must be 1-63 characters
+		// long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?'
+		// which means the first character must be a lowercase letter, and all
+		// following characters must be a dash, lowercase letter, or digit,
 		// except the last character, which cannot be a dash.
 		name!: string
 
 		// A reference to the network to which this router belongs.
 		network!: string
 
-		// Additional params passed with the request, but not persisted as
-		// part of resource payload
+		// Additional params passed with the request, but not persisted as part of resource payload
 		params?: [...close({
 			resource_manager_tags?: [string]: string
 		})]

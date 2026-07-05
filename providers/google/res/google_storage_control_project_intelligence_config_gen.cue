@@ -2,15 +2,15 @@ package res
 
 import "list"
 
-#google_storage_control_project_intelligence_config: {
+google_storage_control_project_intelligence_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_control_project_intelligence_config")
 	close({
 		filter?: matchN(1, [#filter, list.MaxItems(1) & [...#filter]])
 		timeouts?: #timeouts
 
-		// Edition configuration of the Storage Intelligence resource.
-		// Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
+		// Edition configuration of the Storage Intelligence resource. Valid values are
+		// INHERIT, TRIAL, DISABLED and STANDARD.
 		edition_config?: string
 
 		// The Intelligence config that is effective for the resource.
@@ -20,8 +20,7 @@ import "list"
 		})]
 		id?: string
 
-		// Identifier of the GCP project. For GCP project, this field can
-		// be project name or project number.
+		// Identifier of the GCP project. For GCP project, this field can be project name or project number.
 		name!: string
 
 		// The trial configuration of the Storage Intelligence resource.
@@ -29,8 +28,7 @@ import "list"
 			expire_time?: string
 		})]
 
-		// The time at which the Storage Intelligence Config resource is
-		// last updated.
+		// The time at which the Storage Intelligence Config resource is last updated.
 		update_time?: string
 	})
 
@@ -48,8 +46,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/filter/$defs/excluded_cloud_storage_buckets": close({
-		// List of bucket id regexes to exclude in the storage
-		// intelligence plan.
+		// List of bucket id regexes to exclude in the storage intelligence plan.
 		bucket_id_regexes!: [...string]
 	})
 
@@ -59,8 +56,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/filter/$defs/included_cloud_storage_buckets": close({
-		// List of bucket id regexes to exclude in the storage
-		// intelligence plan.
+		// List of bucket id regexes to exclude in the storage intelligence plan.
 		bucket_id_regexes!: [...string]
 	})
 

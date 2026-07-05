@@ -1,33 +1,26 @@
 package res
 
-#google_network_security_gateway_security_policy: {
+google_network_security_gateway_security_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_gateway_security_policy")
 	close({
 		timeouts?: #timeouts
 
 		// The timestamp when the resource was created.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z"
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// A free-text description of the resource. Max length 1024
-		// characters.
+		// A free-text description of the resource. Max length 1024 characters.
 		description?: string
 		id?:          string
 
@@ -38,21 +31,20 @@ package res
 		// Name of the resource. Name is of the form
 		// projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
 		// gatewaySecurityPolicy should match the pattern:(^a-z?$).
-		name!:    string
-		project?: string
+		name!: string
 
 		// Server-defined URL of this resource.
 		self_link?: string
+		project?:   string
 
-		// Name of a TlsInspectionPolicy resource that defines how TLS
-		// inspection is performed for any rule that enables it.
+		// Name of a TlsInspectionPolicy resource that defines how TLS inspection is
+		// performed for any rule that enables it.
 		tls_inspection_policy?: string
 
 		// The timestamp when the resource was updated.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
 	})
 

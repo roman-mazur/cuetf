@@ -1,6 +1,6 @@
 package data
 
-#google_compute_region_instance_template: {
+google_compute_region_instance_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_region_instance_template")
 	close({
@@ -14,14 +14,12 @@ package data
 			visible_core_count?:           number
 		})]
 
-		// Whether to allow sending and receiving of packets with
-		// non-matching source or destination IPs. This defaults to
-		// false.
+		// Whether to allow sending and receiving of packets with non-matching source or
+		// destination IPs. This defaults to false.
 		can_ip_forward?: bool
 
-		// The Confidential VM config being used by the instance.
-		// on_host_maintenance has to be set to TERMINATE or this will
-		// fail to create.
+		// The Confidential VM config being used by the instance. on_host_maintenance
+		// has to be set to TERMINATE or this will fail to create.
 		confidential_instance_config?: [...close({
 			confidential_instance_type?:  string
 			enable_confidential_compute?: bool
@@ -30,24 +28,19 @@ package data
 		// The time at which the instance was created in RFC 3339 format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// A brief description of this resource.
 		description?: string
 
-		// Disks to attach to instances created from this template. This
-		// can be specified multiple times for multiple disks.
+		// Disks to attach to instances created from this template. This can be
+		// specified multiple times for multiple disks.
 		disk?: [...close({
 			architecture?: string
 			auto_delete?:  bool
@@ -87,14 +80,12 @@ package data
 			type?:         string
 		})]
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		filter?: string
 
-		// List of the type and count of accelerator cards attached to the
-		// instance.
+		// List of the type and count of accelerator cards attached to the instance.
 		guest_accelerator?: [...close({
 			count?: number
 			type?:  string
@@ -104,54 +95,48 @@ package data
 		// A description of the instance.
 		instance_description?: string
 
-		// Action to be taken when a customer's encryption key is revoked.
-		// Supports "STOP" and "NONE", with "NONE" being the default.
+		// Action to be taken when a customer's encryption key is revoked. Supports
+		// "STOP" and "NONE", with "NONE" being the default.
 		key_revocation_action_type?: string
 
-		// A set of key/value label pairs to assign to instances created
-		// from this template,
+		// A set of key/value label pairs to assign to instances created from this template,
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// The machine type to create. To create a machine with a custom
-		// type (such as extended memory), format the value like
-		// custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB
-		// of RAM.
+		// The machine type to create. To create a machine with a custom type (such as
+		// extended memory), format the value like custom-VCPUS-MEM_IN_MB like
+		// custom-6-20480 for 6 vCPU and 20GB of RAM.
 		machine_type?: string
 
-		// Metadata key/value pairs to make available from within
-		// instances created from this template.
+		// Metadata key/value pairs to make available from within instances created from this template.
 		metadata?: [string]: string
 
 		// The unique fingerprint of the metadata.
 		metadata_fingerprint?: string
 
-		// An alternative to using the startup-script metadata key, mostly
-		// to match the compute_instance resource. This replaces the
-		// startup-script metadata key on the created instance and thus
-		// the two mechanisms are not allowed to be used simultaneously.
+		// An alternative to using the startup-script metadata key, mostly to match the
+		// compute_instance resource. This replaces the startup-script metadata key on
+		// the created instance and thus the two mechanisms are not allowed to be used
+		// simultaneously.
 		metadata_startup_script?: string
 
-		// Specifies a minimum CPU platform. Applicable values are the
-		// friendly names of CPU platforms, such as Intel Haswell or
-		// Intel Skylake.
+		// Specifies a minimum CPU platform. Applicable values are the friendly names of
+		// CPU platforms, such as Intel Haswell or Intel Skylake.
 		min_cpu_platform?: string
 		most_recent?:      bool
 
-		// The name of the instance template. If you leave this blank,
-		// Terraform will auto-generate a unique name.
+		// The name of the instance template. If you leave this blank, Terraform will
+		// auto-generate a unique name.
 		name?: string
 
-		// Creates a unique name beginning with the specified prefix.
-		// Conflicts with name.
+		// Creates a unique name beginning with the specified prefix. Conflicts with name.
 		name_prefix?: string
 
-		// Networks to attach to instances created from this template.
-		// This can be specified multiple times for multiple networks.
+		// Networks to attach to instances created from this template. This can be
+		// specified multiple times for multiple networks.
 		network_interface?: [...close({
 			access_config?: [...close({
 				nat_ip?:                 string
@@ -186,9 +171,9 @@ package data
 			vlan?:               number
 		})]
 
-		// Configures network performance settings for the instance. If
-		// not specified, the instance will be created with its default
-		// network performance configuration.
+		// Configures network performance settings for the instance. If not specified,
+		// the instance will be created with its default network performance
+		// configuration.
 		network_performance_config?: [...close({
 			total_egress_bandwidth_tier?: string
 		})]
@@ -196,12 +181,12 @@ package data
 		// The ID of the template in numeric format.
 		numeric_id?: string
 
-		// The ID of the project in which the resource belongs. If it is
-		// not provided, the provider project is used.
+		// The ID of the project in which the resource belongs. If it is not provided,
+		// the provider project is used.
 		project?: string
 
-		// The region in which the instance template is located. If it is
-		// not provided, the provider region is used.
+		// The region in which the instance template is located. If it is not provided,
+		// the provider region is used.
 		region?: string
 
 		// Specifies the reservations that this instance can consume from.
@@ -214,15 +199,14 @@ package data
 		})]
 
 		// A map of resource manager tags.
-		// Resource manager tag keys and values have the same definition
-		// as resource manager tags. Keys must be in the format
-		// tagKeys/{tag_key_id}, and values are in the format
-		// tagValues/456. The field is ignored (both PUT & PATCH) when
-		// empty.
+		// Resource manager tag keys and values have the same definition as resource
+		// manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values
+		// are in the format tagValues/456. The field is ignored (both PUT & PATCH)
+		// when empty.
 		resource_manager_tags?: [string]: string
 
-		// A list of self_links of resource policies to attach to the
-		// instance. Currently a max of 1 resource policy is supported.
+		// A list of self_links of resource policies to attach to the instance.
+		// Currently a max of 1 resource policy is supported.
 		resource_policies?: [...string]
 
 		// The scheduling strategy to use.
@@ -262,10 +246,10 @@ package data
 			scopes?: [...string]
 		})]
 
-		// Enable Shielded VM on this instance. Shielded VM provides
-		// verifiable integrity to prevent against malware and rootkits.
-		// Defaults to disabled. Note: shielded_instance_config can only
-		// be used with boot images with shielded vm support.
+		// Enable Shielded VM on this instance. Shielded VM provides verifiable
+		// integrity to prevent against malware and rootkits. Defaults to disabled.
+		// Note: shielded_instance_config can only be used with boot images with
+		// shielded vm support.
 		shielded_instance_config?: [...close({
 			enable_integrity_monitoring?: bool
 			enable_secure_boot?:          bool
@@ -278,8 +262,8 @@ package data
 		// The unique fingerprint of the tags.
 		tags_fingerprint?: string
 
-		// The combination of labels configured directly on the resource
-		// and default labels configured on the provider.
+		// The combination of labels configured directly on the resource and default
+		// labels configured on the provider.
 		terraform_labels?: [string]: string
 	})
 }

@@ -1,13 +1,12 @@
 package res
 
-#google_secure_source_manager_branch_rule: {
+google_secure_source_manager_branch_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secure_source_manager_branch_rule")
 	close({
 		timeouts?: #timeouts
 
-		// Determines if allow stale reviews or approvals before merging
-		// to the branch.
+		// Determines if allow stale reviews or approvals before merging to the branch.
 		allow_stale_reviews?: bool
 
 		// The ID for the BranchRule.
@@ -16,16 +15,11 @@ package res
 		// Time the BranchRule was created in UTC.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -33,34 +27,30 @@ package res
 		disabled?: bool
 		id?:       string
 
-		// The BranchRule matches branches based on the specified regular
-		// expression. Use .* to match all branches.
+		// The BranchRule matches branches based on the specified regular expression.
+		// Use .* to match all branches.
 		include_pattern!: string
 
 		// The location for the Repository.
 		location!: string
 
-		// The minimum number of approvals required for the branch rule to
-		// be matched.
+		// The minimum number of approvals required for the branch rule to be matched.
 		minimum_approvals_count?: number
 
-		// The minimum number of reviews required for the branch rule to
-		// be matched.
+		// The minimum number of reviews required for the branch rule to be matched.
 		minimum_reviews_count?: number
 
 		// The resource name for the BranchRule.
-		name?:    string
-		project?: string
+		name?: string
 
 		// The ID for the Repository.
 		repository_id!: string
+		project?:       string
 
-		// Determines if require comments resolved before merging to the
-		// branch.
+		// Determines if require comments resolved before merging to the branch.
 		require_comments_resolved?: bool
 
-		// Determines if require linear history before merging to the
-		// branch.
+		// Determines if require linear history before merging to the branch.
 		require_linear_history?: bool
 
 		// Determines if the branch rule requires a pull request or not.

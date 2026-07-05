@@ -2,20 +2,19 @@ package res
 
 import "list"
 
-#google_kms_crypto_key_version: {
+google_kms_crypto_key_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_kms_crypto_key_version")
 	close({
 		external_protection_level_options?: matchN(1, [#external_protection_level_options, list.MaxItems(1) & [...#external_protection_level_options]])
 		timeouts?: #timeouts
 
-		// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion
-		// supports.
+		// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
 		algorithm?: string
 
-		// Statement that was generated and signed by the HSM at key
-		// creation time. Use this statement to verify attributes of the
-		// key as stored on the HSM, independently of Google.
+		// Statement that was generated and signed by the HSM at key creation time. Use
+		// this statement to verify attributes of the key as stored on the HSM,
+		// independently of Google.
 		// Only provided for key versions with protectionLevel HSM.
 		attestation?: [...close({
 			cert_chains?: [...close({
@@ -31,22 +30,16 @@ import "list"
 			format?: string
 		})]
 
-		// The name of the cryptoKey associated with the
-		// CryptoKeyVersions.
+		// The name of the cryptoKey associated with the CryptoKeyVersions.
 		// Format:
 		// ''projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}''
 		crypto_key!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -57,28 +50,24 @@ import "list"
 		// The resource name for this CryptoKeyVersion.
 		name?: string
 
-		// The ProtectionLevel describing how crypto operations are
-		// performed with this CryptoKeyVersion.
+		// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
 		protection_level?: string
 
-		// The current state of the CryptoKeyVersion. Note: you can only
-		// specify this field to manually 'ENABLE' or 'DISABLE' the
-		// CryptoKeyVersion,
-		// otherwise the value of this field is always retrieved
-		// automatically. Possible values: ["PENDING_GENERATION",
-		// "ENABLED", "DISABLED", "DESTROYED", "DESTROY_SCHEDULED",
-		// "PENDING_IMPORT", "IMPORT_FAILED"]
+		// The current state of the CryptoKeyVersion. Note: you can only specify this
+		// field to manually 'ENABLE' or 'DISABLE' the CryptoKeyVersion,
+		// otherwise the value of this field is always retrieved automatically. Possible
+		// values: ["PENDING_GENERATION", "ENABLED", "DISABLED", "DESTROYED",
+		// "DESTROY_SCHEDULED", "PENDING_IMPORT", "IMPORT_FAILED"]
 		state?: string
 	})
 
 	#external_protection_level_options: close({
-		// The path to the external key material on the EKM when using
-		// EkmConnection e.g., "v0/my/key". Set this field instead of
-		// externalKeyUri when using an EkmConnection.
+		// The path to the external key material on the EKM when using EkmConnection
+		// e.g., "v0/my/key". Set this field instead of externalKeyUri when using an
+		// EkmConnection.
 		ekm_connection_key_path?: string
 
-		// The URI for an external resource that this CryptoKeyVersion
-		// represents.
+		// The URI for an external resource that this CryptoKeyVersion represents.
 		external_key_uri?: string
 	})
 

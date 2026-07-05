@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_data_loss_prevention_stored_info_type: {
+google_data_loss_prevention_stored_info_type: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_loss_prevention_stored_info_type")
 	close({
@@ -11,16 +11,11 @@ import "list"
 		regex?: matchN(1, [#regex, list.MaxItems(1) & [...#regex]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -42,10 +37,8 @@ import "list"
 		// * 'organizations/{{organization_id}}/locations/{{location}}'
 		parent!: string
 
-		// The storedInfoType ID can contain uppercase and lowercase
-		// letters, numbers, and hyphens;
-		// that is, it must match the regular expression: [a-zA-Z\d-_]+.
-		// The maximum length is 100
+		// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+		// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
 		// characters. Can be empty to allow the system to generate one.
 		stored_info_type_id?: string
 	})
@@ -62,14 +55,13 @@ import "list"
 	})
 
 	#regex: close({
-		// The index of the submatch to extract as findings. When not
-		// specified, the entire match is returned. No more than 3 may be
-		// included.
+		// The index of the submatch to extract as findings. When not specified, the
+		// entire match is returned. No more than 3 may be included.
 		group_indexes?: [...number]
 
 		// Pattern defining the regular expression.
-		// Its syntax (https://github.com/google/re2/wiki/Syntax) can be
-		// found under the google/re2 repository on GitHub.
+		// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the
+		// google/re2 repository on GitHub.
 		pattern!: string
 	})
 
@@ -80,16 +72,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/dictionary/$defs/cloud_storage_path": close({
-		// A url representing a file or path (no wildcards) in Cloud
-		// Storage. Example: 'gs://[BUCKET_NAME]/dictionary.txt'
+		// A url representing a file or path (no wildcards) in Cloud Storage. Example:
+		// 'gs://[BUCKET_NAME]/dictionary.txt'
 		path!: string
 	})
 
 	_#defs: "/$defs/dictionary/$defs/word_list": close({
-		// Words or phrases defining the dictionary. The dictionary must
-		// contain at least one
-		// phrase and every phrase must contain at least 2 characters that
-		// are letters or digits.
+		// Words or phrases defining the dictionary. The dictionary must contain at least one
+		// phrase and every phrase must contain at least 2 characters that are letters or digits.
 		words!: [...string]
 	})
 
@@ -107,8 +97,7 @@ import "list"
 		// The dataset ID of the table.
 		dataset_id!: string
 
-		// The Google Cloud Platform project ID of the project containing
-		// the table.
+		// The Google Cloud Platform project ID of the project containing the table.
 		project_id!: string
 
 		// The name of the table.
@@ -116,14 +105,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/large_custom_dictionary/$defs/cloud_storage_file_set": close({
-		// The url, in the format 'gs://<bucket>/<path>'. Trailing
-		// wildcard in the path is allowed.
+		// The url, in the format 'gs://<bucket>/<path>'. Trailing wildcard in the path is allowed.
 		url!: string
 	})
 
 	_#defs: "/$defs/large_custom_dictionary/$defs/output_path": close({
-		// A url representing a file or path (no wildcards) in Cloud
-		// Storage. Example: 'gs://[BUCKET_NAME]/dictionary.txt'
+		// A url representing a file or path (no wildcards) in Cloud Storage. Example:
+		// 'gs://[BUCKET_NAME]/dictionary.txt'
 		path!: string
 	})
 }

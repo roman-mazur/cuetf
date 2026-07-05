@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_compute_route: {
+google_compute_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_route")
 	close({
@@ -16,16 +16,11 @@ import "list"
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -33,32 +28,25 @@ import "list"
 		// when you create the resource.
 		description?: string
 
-		// The destination range of outgoing packets that this route
-		// applies to.
+		// The destination range of outgoing packets that this route applies to.
 		// Only IPv4 is supported.
 		dest_range!: string
-		id?:         string
 
-		// Name of the resource. Provided by the client when the resource
-		// is
+		// Name of the resource. Provided by the client when the resource is
 		// created. The name must be 1-63 characters long, and comply with
-		// RFC1035. Specifically, the name must be 1-63 characters long
-		// and
-		// match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which
-		// means
-		// the first character must be a lowercase letter, and all
-		// following
-		// characters must be a dash, lowercase letter, or digit, except
-		// the
+		// RFC1035. Specifically, the name must be 1-63 characters long and
+		// match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means
+		// the first character must be a lowercase letter, and all following
+		// characters must be a dash, lowercase letter, or digit, except the
 		// last character, which cannot be a dash.
 		name!: string
+		id?:   string
 
 		// The network that this route applies to.
 		network!: string
 
 		// URL to a gateway that should handle matching packets.
-		// Currently, you can only specify the internet gateway, using a
-		// full or
+		// Currently, you can only specify the internet gateway, using a full or
 		// partial valid URL:
 		// *
 		// 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
@@ -67,8 +55,7 @@ import "list"
 		// * The string 'default-internet-gateway'.
 		next_hop_gateway?: string
 
-		// The hub network that should handle matching packets, which
-		// should conform to RFC1035.
+		// The hub network that should handle matching packets, which should conform to RFC1035.
 		next_hop_hub?: string
 
 		// The IP address or URL to a forwarding rule of type
@@ -92,80 +79,69 @@ import "list"
 
 		// URL to an instance that should handle matching packets.
 		// You can specify this as a full or partial URL. For example:
-		// *
-		// 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+		// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
 		// * 'projects/project/zones/zone/instances/instance'
 		// * 'zones/zone/instances/instance'
-		// * Just the instance name, with the zone in
-		// 'next_hop_instance_zone'.
+		// * Just the instance name, with the zone in 'next_hop_instance_zone'.
 		next_hop_instance?: string
 
-		// The zone of the instance specified in next_hop_instance. Omit
-		// if next_hop_instance is specified as a URL.
+		// The zone of the instance specified in next_hop_instance. Omit if
+		// next_hop_instance is specified as a URL.
 		next_hop_instance_zone?: string
 
-		// Internal fixed region-to-region cost that Google Cloud
-		// calculates based on factors such as network performance,
-		// distance, and available bandwidth between regions.
+		// Internal fixed region-to-region cost that Google Cloud calculates based on
+		// factors such as network performance, distance, and available bandwidth
+		// between regions.
 		next_hop_inter_region_cost?: string
 
-		// Network IP address of an instance that should handle matching
-		// packets.
+		// Network IP address of an instance that should handle matching packets.
 		next_hop_ip?: string
 
-		// Multi-Exit Discriminator, a BGP route metric that indicates the
-		// desirability of a particular route in a network.
+		// Multi-Exit Discriminator, a BGP route metric that indicates the desirability
+		// of a particular route in a network.
 		next_hop_med?: string
 
 		// URL to a Network that should handle matching packets.
 		next_hop_network?: string
 
-		// Indicates the origin of the route. Can be IGP (Interior Gateway
-		// Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+		// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol),
+		// EGP (Exterior Gateway Protocol), or INCOMPLETE.
 		next_hop_origin?: string
 
-		// The network peering name that should handle matching packets,
-		// which should conform to RFC1035.
+		// The network peering name that should handle matching packets, which should conform to RFC1035.
 		next_hop_peering?: string
 
 		// URL to a VpnTunnel that should handle matching packets.
 		next_hop_vpn_tunnel?: string
 
-		// The priority of this route. Priority is used to break ties in
-		// cases
-		// where there is more than one matching route of equal prefix
-		// length.
+		// The priority of this route. Priority is used to break ties in cases
+		// where there is more than one matching route of equal prefix length.
 		//
-		// In the case of two routes with equal prefix length, the one
-		// with the
+		// In the case of two routes with equal prefix length, the one with the
 		// lowest-numbered priority value wins.
 		//
 		// Default value is 1000. Valid range is 0 through 65535.
 		priority?: number
-		project?:  string
 
-		// The status of the route, which can be one of the following
-		// values:
+		// The status of the route, which can be one of the following values:
 		// - 'ACTIVE' for an active route
 		// - 'INACTIVE' for an inactive route
 		route_status?: string
 
-		// The type of this route, which can be one of the following
-		// values:
-		// - 'TRANSIT' for a transit route that this router learned from
-		// another Cloud Router and will readvertise to one of its BGP
-		// peers
+		// The type of this route, which can be one of the following values:
+		// - 'TRANSIT' for a transit route that this router learned from another Cloud
+		// Router and will readvertise to one of its BGP peers
 		// - 'SUBNET' for a route from a subnet of the VPC
 		// - 'BGP' for a route learned from a BGP peer of this router
 		// - 'STATIC' for a static route
 		route_type?: string
-		self_link?:  string
+		project?:    string
 
 		// A list of instance tags to which this route applies.
 		tags?: [...string]
 
-		// If potential misconfigurations are detected for this route,
-		// this field will be populated with warning messages.
+		// If potential misconfigurations are detected for this route, this field will
+		// be populated with warning messages.
 		warnings?: [...close({
 			code?: string
 			data?: [...close({
@@ -174,21 +150,16 @@ import "list"
 			})]
 			message?: string
 		})]
+		self_link?: string
 	})
 
 	#params: close({
-		// Resource manager tags to be bound to the route. Tag keys and
-		// values have the
-		// same definition as resource manager tags. Keys must be in the
-		// format tagKeys/{tag_key_id},
-		// and values are in the format tagValues/456. The field is
-		// ignored when empty.
-		// The field is immutable and causes resource replacement when
-		// mutated. This field is only
-		// set at create time and modifying this field after creation will
-		// trigger recreation.
-		// To apply tags to an existing resource, see the
-		// google_tags_tag_binding resource.
+		// Resource manager tags to be bound to the route. Tag keys and values have the
+		// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+		// and values are in the format tagValues/456. The field is ignored when empty.
+		// The field is immutable and causes resource replacement when mutated. This field is only
+		// set at create time and modifying this field after creation will trigger recreation.
+		// To apply tags to an existing resource, see the google_tags_tag_binding resource.
 		resource_manager_tags?: [string]: string
 	})
 

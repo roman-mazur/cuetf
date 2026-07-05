@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_container_attached_cluster: {
+google_container_attached_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_attached_cluster")
 	close({
@@ -17,22 +17,17 @@ import "list"
 		timeouts?: #timeouts
 
 		// Optional. Annotations on the cluster. This field has the same
-		// restrictions as Kubernetes annotations. The total size of all
-		// keys and
-		// values combined is limited to 256k. Key can have 2 segments:
-		// prefix (optional)
-		// and name (required), separated by a slash (/). Prefix must be a
-		// DNS subdomain.
-		// Name must be 63 characters or less, begin and end with
-		// alphanumerics,
-		// with dashes (-), underscores (_), dots (.), and alphanumerics
-		// between.
+		// restrictions as Kubernetes annotations. The total size of all keys and
+		// values combined is limited to 256k. Key can have 2 segments: prefix (optional)
+		// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
+		// Name must be 63 characters or less, begin and end with alphanumerics,
+		// with dashes (-), underscores (_), dots (.), and alphanumerics between.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the annotations present in your configuration.
-		// Please refer to the field 'effective_annotations' for all of
-		// the annotations present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the
+		// annotations present in your configuration.
+		// Please refer to the field 'effective_annotations' for all of the annotations
+		// present on the resource.
 		annotations?: [string]: string
 
 		// Output only. The region where this cluster runs.
@@ -44,27 +39,23 @@ import "list"
 		// Output only. The time at which this cluster was created.
 		create_time?: string
 
-		// This field uses a custom implementation please refer to
-		// documentation under
+		// This field uses a custom implementation please refer to documentation under
 		// /hashicorp/terraform-provider-google-beta/website/docs/r/container_attached_cluster.html.markdown
 		// for specifics
 		deletion_policy?: string
 
-		// A human readable description of this attached cluster. Cannot
-		// be longer
+		// A human readable description of this attached cluster. Cannot be longer
 		// than 255 UTF-8 encoded bytes.
 		description?: string
 
-		// The Kubernetes distribution of the underlying attached cluster.
-		// Supported values:
-		// "eks", "aks", "generic". The generic distribution provides the
-		// ability to register
+		// The Kubernetes distribution of the underlying attached cluster. Supported values:
+		// "eks", "aks", "generic". The generic distribution provides the ability to register
 		// or migrate any CNCF conformant cluster.
 		distribution!: string
 
-		// All of annotations (key/value pairs) present on the resource in
-		// GCP, including the annotations configured through Terraform,
-		// other clients and services.
+		// All of annotations (key/value pairs) present on the resource in GCP,
+		// including the annotations configured through Terraform, other clients and
+		// services.
 		effective_annotations?: [string]: string
 
 		// A set of errors found in the cluster.
@@ -84,14 +75,13 @@ import "list"
 
 		// The platform version for the cluster (e.g. '1.23.0-gke.1').
 		platform_version!: string
-		project?:          string
 
 		// If set, there are currently changes in flight to the cluster.
 		reconciling?: bool
+		project?:     string
 
 		// The current state of the cluster. Possible values:
-		// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-		// STOPPING, ERROR,
+		// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
 		// DEGRADED
 		state?: string
 
@@ -110,10 +100,8 @@ import "list"
 	})
 
 	#authorization: close({
-		// Groups that can perform operations as a cluster admin. A
-		// managed
-		// ClusterRoleBinding will be created to grant the 'cluster-admin'
-		// ClusterRole
+		// Groups that can perform operations as a cluster admin. A managed
+		// ClusterRoleBinding will be created to grant the 'cluster-admin' ClusterRole
 		// to the groups. Up to ten admin groups can be provided.
 		//
 		// For more info on RBAC, see
@@ -121,8 +109,7 @@ import "list"
 		admin_groups?: [...string]
 
 		// Users that can perform operations as a cluster admin. A managed
-		// ClusterRoleBinding will be created to grant the 'cluster-admin'
-		// ClusterRole
+		// ClusterRoleBinding will be created to grant the 'cluster-admin' ClusterRole
 		// to the users. Up to ten admin users can be provided.
 		//
 		// For more info on RBAC, see
@@ -131,20 +118,18 @@ import "list"
 	})
 
 	#binary_authorization: close({
-		// Configure Binary Authorization evaluation mode. Possible
-		// values: ["DISABLED", "PROJECT_SINGLETON_POLICY_ENFORCE"]
+		// Configure Binary Authorization evaluation mode. Possible values: ["DISABLED",
+		// "PROJECT_SINGLETON_POLICY_ENFORCE"]
 		evaluation_mode?: string
 	})
 
 	#fleet: close({
-		// The name of the managed Hub Membership resource associated to
-		// this
+		// The name of the managed Hub Membership resource associated to this
 		// cluster. Membership names are formatted as
 		// projects/<project-number>/locations/global/membership/<cluster-id>.
 		membership?: string
 
-		// The number of the Fleet host project where this cluster will be
-		// registered.
+		// The number of the Fleet host project where this cluster will be registered.
 		project!: string
 	})
 
@@ -157,8 +142,7 @@ import "list"
 	})
 
 	#oidc_config: close({
-		// A JSON Web Token (JWT) issuer URI. 'issuer' must start with
-		// 'https://'
+		// A JSON Web Token (JWT) issuer URI. 'issuer' must start with 'https://'
 		issuer_url!: string
 
 		// OIDC verification keys in JWKS format (RFC 7517).
@@ -170,9 +154,9 @@ import "list"
 	})
 
 	#security_posture_config: close({
-		// Sets the mode of the Kubernetes security posture API's workload
-		// vulnerability scanning. Possible values:
-		// ["VULNERABILITY_DISABLED", "VULNERABILITY_ENTERPRISE"]
+		// Sets the mode of the Kubernetes security posture API's workload vulnerability
+		// scanning. Possible values: ["VULNERABILITY_DISABLED",
+		// "VULNERABILITY_ENTERPRISE"]
 		vulnerability_mode!: string
 	})
 
@@ -183,8 +167,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/logging_config/$defs/component_config": close({
-		// The components to be enabled. Possible values:
-		// ["SYSTEM_COMPONENTS", "WORKLOADS"]
+		// The components to be enabled. Possible values: ["SYSTEM_COMPONENTS", "WORKLOADS"]
 		enable_components?: [...string]
 	})
 

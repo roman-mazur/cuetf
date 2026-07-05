@@ -1,11 +1,10 @@
 package data
 
-#google_oracle_database_cloud_vm_cluster: {
+google_oracle_database_cloud_vm_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_oracle_database_cloud_vm_cluster")
 	close({
-		// The name of the backup OdbSubnet associated with the VM
-		// Cluster.
+		// The name of the backup OdbSubnet associated with the VM Cluster.
 		// Format:
 		// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
 		backup_odb_subnet?: string
@@ -17,57 +16,45 @@ package data
 		cidr?: string
 
 		// The ID of the VM Cluster to create. This value is restricted
-		// to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of
-		// 63
-		// characters in length. The value must start with a letter and
-		// end with
+		// to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63
+		// characters in length. The value must start with a letter and end with
 		// a letter or a number.
 		cloud_vm_cluster_id!: string
 
 		// The date and time that the VM cluster was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// cluster. Deleting this cluster via terraform destroy or
-		// terraform apply will only succeed if this field is false in
-		// the Terraform state.
+		// Whether Terraform will be prevented from destroying the cluster. Deleting
+		// this cluster via terraform destroy or terraform apply will only succeed if
+		// this field is false in the Terraform state.
 		deletion_protection?: bool
 
 		// User friendly name for this resource.
 		display_name?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// The name of the Exadata Infrastructure resource on which VM
-		// cluster
+		// The name of the Exadata Infrastructure resource on which VM cluster
 		// resource is created, in the following format:
 		// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
 		exadata_infrastructure?: string
 
-		// GCP location where Oracle Exadata is hosted. It is same as GCP
-		// Oracle zone
+		// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
 		// of Exadata infrastructure.
 		gcp_oracle_zone?: string
 		id?:              string
 
-		// The identity connector details which will allow OCI to securely
-		// access
+		// The identity connector details which will allow OCI to securely access
 		// the resources in the customer project.
 		identity_connector?: [...close({
 			connection_state?:    string
@@ -76,19 +63,16 @@ package data
 
 		// Labels or tags associated with the VM Cluster.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Resource ID segment making up resource 'name'. See
-		// documentation for resource type
-		// 'oracledatabase.googleapis.com/DbNode'.
+		// Resource ID segment making up resource 'name'. See documentation for resource
+		// type 'oracledatabase.googleapis.com/DbNode'.
 		location!: string
 
-		// Identifier. The name of the VM Cluster resource with the
-		// format:
+		// Identifier. The name of the VM Cluster resource with the format:
 		// projects/{project}/locations/{region}/cloudVmClusters/{cloud_vm_cluster}
 		name?: string
 
@@ -99,8 +83,7 @@ package data
 		// The name of the OdbNetwork associated with the VM Cluster.
 		// Format:
 		// projects/{project}/locations/{location}/odbNetworks/{odb_network}
-		// It is optional but if specified, this should match the parent
-		// ODBNetwork of
+		// It is optional but if specified, this should match the parent ODBNetwork of
 		// the odb_subnet and backup_odb_subnet.
 		odb_network?: string
 
@@ -110,8 +93,7 @@ package data
 		odb_subnet?: string
 		project?:    string
 
-		// Various properties and settings associated with Exadata VM
-		// cluster.
+		// Various properties and settings associated with Exadata VM cluster.
 		properties?: [...close({
 			cluster_name?:            string
 			compartment_id?:          string

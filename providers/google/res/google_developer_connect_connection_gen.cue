@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_developer_connect_connection: {
+google_developer_connect_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_developer_connect_connection")
 	close({
@@ -16,13 +16,12 @@ import "list"
 		http_config?: matchN(1, [#http_config, list.MaxItems(1) & [...#http_config]])
 		timeouts?: #timeouts
 
-		// Optional. Allows clients to store small amounts of arbitrary
-		// data.
+		// Optional. Allows clients to store small amounts of arbitrary data.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the annotations present in your configuration.
-		// Please refer to the field 'effective_annotations' for all of
-		// the annotations present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the
+		// annotations present in your configuration.
+		// Please refer to the field 'effective_annotations' for all of the annotations
+		// present on the resource.
 		annotations?: [string]: string
 
 		// Required. Id of the requesting object
@@ -36,47 +35,36 @@ import "list"
 		// Output only. [Output only] Delete timestamp
 		delete_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Optional. If disabled is set to true, functionality is disabled
-		// for this connection.
-		// Repository based API methods and webhooks processing for
-		// repositories in
+		// Optional. If disabled is set to true, functionality is disabled for this connection.
+		// Repository based API methods and webhooks processing for repositories in
 		// this connection will be disabled.
 		disabled?: bool
 
-		// All of annotations (key/value pairs) present on the resource in
-		// GCP, including the annotations configured through Terraform,
-		// other clients and services.
+		// All of annotations (key/value pairs) present on the resource in GCP,
+		// including the annotations configured through Terraform, other clients and
+		// services.
 		effective_annotations?: [string]: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// Optional. This checksum is computed by the server based on the
-		// value of other
-		// fields, and may be sent on update and delete requests to ensure
-		// the
+		// Optional. This checksum is computed by the server based on the value of other
+		// fields, and may be sent on update and delete requests to ensure the
 		// client has an up-to-date value before proceeding.
 		etag?: string
 		id?:   string
 
 		// Describes stage and necessary actions to be taken by the
-		// user to complete the installation. Used for GitHub and GitHub
-		// Enterprise
+		// user to complete the installation. Used for GitHub and GitHub Enterprise
 		// based connections.
 		installation_state?: [...close({
 			action_uri?: string
@@ -86,33 +74,29 @@ import "list"
 
 		// Optional. Labels as key value pairs
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Identifier. The resource name of the connection, in the format
 		// 'projects/{project}/locations/{location}/connections/{connection_id}'.
-		name?:    string
-		project?: string
+		name?: string
 
-		// Output only. Set to true when the connection is being set up or
-		// updated in the
+		// Output only. Set to true when the connection is being set up or updated in the
 		// background.
 		reconciling?: bool
+		project?:     string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// Output only. A system-assigned unique identifier for a the
-		// GitRepositoryLink.
+		// Output only. A system-assigned unique identifier for a the GitRepositoryLink.
 		uid?: string
 
 		// Output only. [Output only] Update timestamp
@@ -123,15 +107,12 @@ import "list"
 		authorizer_credential!: matchN(1, [_#defs."/$defs/bitbucket_cloud_config/$defs/authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_cloud_config/$defs/authorizer_credential"]])
 		read_authorizer_credential!: matchN(1, [_#defs."/$defs/bitbucket_cloud_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_cloud_config/$defs/read_authorizer_credential"]])
 
-		// Required. Immutable. SecretManager resource containing the
-		// webhook secret used to verify webhook
-		// events, formatted as 'projects/*/secrets/*/versions/*'. This is
-		// used to
+		// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook
+		// events, formatted as 'projects/*/secrets/*/versions/*'. This is used to
 		// validate and create webhooks.
 		webhook_secret_secret_version!: string
 
-		// Required. The Bitbucket Cloud Workspace ID to be connected to
-		// Google Cloud Platform.
+		// Required. The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
 		workspace!: string
 	})
 
@@ -140,30 +121,24 @@ import "list"
 		read_authorizer_credential!: matchN(1, [_#defs."/$defs/bitbucket_data_center_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/bitbucket_data_center_config/$defs/read_authorizer_credential"]])
 		service_directory_config?: matchN(1, [_#defs."/$defs/bitbucket_data_center_config/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/bitbucket_data_center_config/$defs/service_directory_config"]])
 
-		// Required. The URI of the Bitbucket Data Center host this
-		// connection is for.
+		// Required. The URI of the Bitbucket Data Center host this connection is for.
 		host_uri!: string
 
-		// Output only. Version of the Bitbucket Data Center server
-		// running on the 'host_uri'.
+		// Output only. Version of the Bitbucket Data Center server running on the 'host_uri'.
 		server_version?: string
 
-		// Optional. SSL certificate authority to trust when making
-		// requests to Bitbucket Data
+		// Optional. SSL certificate authority to trust when making requests to Bitbucket Data
 		// Center.
 		ssl_ca_certificate?: string
 
-		// Required. Immutable. SecretManager resource containing the
-		// webhook secret used to verify webhook
-		// events, formatted as 'projects/*/secrets/*/versions/*'. This is
-		// used to
+		// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook
+		// events, formatted as 'projects/*/secrets/*/versions/*'. This is used to
 		// validate webhooks.
 		webhook_secret_secret_version!: string
 	})
 
 	#crypto_key_config: close({
-		// Required. The name of the key which is used to encrypt/decrypt
-		// customer data. For key
+		// Required. The name of the key which is used to encrypt/decrypt customer data. For key
 		// in Cloud KMS, the key should be in the format of
 		// 'projects/*/locations/*/keyRings/*/cryptoKeys/*'.
 		key_reference!: string
@@ -175,8 +150,7 @@ import "list"
 		// Optional. GitHub App installation id.
 		app_installation_id?: string
 
-		// Required. Immutable. The GitHub Application that was installed
-		// to the GitHub user or
+		// Required. Immutable. The GitHub Application that was installed to the GitHub user or
 		// organization.
 		// Possible values:
 		// GIT_HUB_APP_UNSPECIFIED
@@ -184,8 +158,7 @@ import "list"
 		// FIREBASE
 		github_app!: string
 
-		// Output only. The URI to navigate to in order to manage the
-		// installation associated
+		// Output only. The URI to navigate to in order to manage the installation associated
 		// with this GitHubConfig.
 		installation_uri?: string
 	})
@@ -202,30 +175,24 @@ import "list"
 		// Output only. The URL-friendly name of the GitHub App.
 		app_slug?: string
 
-		// Required. The URI of the GitHub Enterprise host this connection
-		// is for.
+		// Required. The URI of the GitHub Enterprise host this connection is for.
 		host_uri!: string
 
-		// Output only. The URI to navigate to in order to manage the
-		// installation associated
+		// Output only. The URI to navigate to in order to manage the installation associated
 		// with this GitHubEnterpriseConfig.
 		installation_uri?: string
 
-		// Optional. SecretManager resource containing the private key of
-		// the GitHub App,
+		// Optional. SecretManager resource containing the private key of the GitHub App,
 		// formatted as 'projects/*/secrets/*/versions/*'.
 		private_key_secret_version?: string
 
-		// Output only. GitHub Enterprise version installed at the
-		// host_uri.
+		// Output only. GitHub Enterprise version installed at the host_uri.
 		server_version?: string
 
-		// Optional. SSL certificate to use for requests to GitHub
-		// Enterprise.
+		// Optional. SSL certificate to use for requests to GitHub Enterprise.
 		ssl_ca_certificate?: string
 
-		// Optional. SecretManager resource containing the webhook secret
-		// of the GitHub App,
+		// Optional. SecretManager resource containing the webhook secret of the GitHub App,
 		// formatted as 'projects/*/secrets/*/versions/*'.
 		webhook_secret_secret_version?: string
 	})
@@ -234,10 +201,8 @@ import "list"
 		authorizer_credential!: matchN(1, [_#defs."/$defs/gitlab_config/$defs/authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_config/$defs/authorizer_credential"]])
 		read_authorizer_credential!: matchN(1, [_#defs."/$defs/gitlab_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_config/$defs/read_authorizer_credential"]])
 
-		// Required. Immutable. SecretManager resource containing the
-		// webhook secret of a GitLab project,
-		// formatted as 'projects/*/secrets/*/versions/*'. This is used to
-		// validate
+		// Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
+		// formatted as 'projects/*/secrets/*/versions/*'. This is used to validate
 		// webhooks.
 		webhook_secret_secret_version!: string
 	})
@@ -247,23 +212,18 @@ import "list"
 		read_authorizer_credential!: matchN(1, [_#defs."/$defs/gitlab_enterprise_config/$defs/read_authorizer_credential", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/gitlab_enterprise_config/$defs/read_authorizer_credential"]])
 		service_directory_config?: matchN(1, [_#defs."/$defs/gitlab_enterprise_config/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/gitlab_enterprise_config/$defs/service_directory_config"]])
 
-		// Required. The URI of the GitLab Enterprise host this connection
-		// is for.
+		// Required. The URI of the GitLab Enterprise host this connection is for.
 		host_uri!: string
 
-		// Output only. Version of the GitLab Enterprise server running on
-		// the 'host_uri'.
+		// Output only. Version of the GitLab Enterprise server running on the 'host_uri'.
 		server_version?: string
 
-		// Optional. SSL Certificate Authority certificate to use for
-		// requests to GitLab
+		// Optional. SSL Certificate Authority certificate to use for requests to GitLab
 		// Enterprise instance.
 		ssl_ca_certificate?: string
 
-		// Required. Immutable. SecretManager resource containing the
-		// webhook secret of a GitLab project,
-		// formatted as 'projects/*/secrets/*/versions/*'. This is used to
-		// validate
+		// Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
+		// formatted as 'projects/*/secrets/*/versions/*'. This is used to validate
 		// webhooks.
 		webhook_secret_secret_version!: string
 	})
@@ -276,8 +236,7 @@ import "list"
 		// The service provider's https endpoint.
 		host_uri!: string
 
-		// The SSL certificate to use for requests to the HTTP service
-		// provider.
+		// The SSL certificate to use for requests to the HTTP service provider.
 		ssl_ca_certificate?: string
 	})
 
@@ -288,8 +247,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/bitbucket_cloud_config/$defs/authorizer_credential": close({
-		// Required. A SecretManager resource containing the user token
-		// that authorizes
+		// Required. A SecretManager resource containing the user token that authorizes
 		// the Developer Connect connection. Format:
 		// 'projects/*/secrets/*/versions/*'.
 		user_token_secret_version!: string
@@ -299,8 +257,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/bitbucket_cloud_config/$defs/read_authorizer_credential": close({
-		// Required. A SecretManager resource containing the user token
-		// that authorizes
+		// Required. A SecretManager resource containing the user token that authorizes
 		// the Developer Connect connection. Format:
 		// 'projects/*/secrets/*/versions/*'.
 		user_token_secret_version!: string
@@ -310,8 +267,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/bitbucket_data_center_config/$defs/authorizer_credential": close({
-		// Required. A SecretManager resource containing the user token
-		// that authorizes
+		// Required. A SecretManager resource containing the user token that authorizes
 		// the Developer Connect connection. Format:
 		// 'projects/*/secrets/*/versions/*'.
 		user_token_secret_version!: string
@@ -321,8 +277,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/bitbucket_data_center_config/$defs/read_authorizer_credential": close({
-		// Required. A SecretManager resource containing the user token
-		// that authorizes
+		// Required. A SecretManager resource containing the user token that authorizes
 		// the Developer Connect connection. Format:
 		// 'projects/*/secrets/*/versions/*'.
 		user_token_secret_version!: string
@@ -339,8 +294,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/github_config/$defs/authorizer_credential": close({
-		// Required. A SecretManager resource containing the OAuth token
-		// that authorizes
+		// Required. A SecretManager resource containing the OAuth token that authorizes
 		// the connection. Format: 'projects/*/secrets/*/versions/*'.
 		oauth_token_secret_version!: string
 
@@ -356,8 +310,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/gitlab_config/$defs/authorizer_credential": close({
-		// Required. A SecretManager resource containing the user token
-		// that authorizes
+		// Required. A SecretManager resource containing the user token that authorizes
 		// the Developer Connect connection. Format:
 		// 'projects/*/secrets/*/versions/*'.
 		user_token_secret_version!: string
@@ -367,8 +320,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/gitlab_config/$defs/read_authorizer_credential": close({
-		// Required. A SecretManager resource containing the user token
-		// that authorizes
+		// Required. A SecretManager resource containing the user token that authorizes
 		// the Developer Connect connection. Format:
 		// 'projects/*/secrets/*/versions/*'.
 		user_token_secret_version!: string
@@ -378,8 +330,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/gitlab_enterprise_config/$defs/authorizer_credential": close({
-		// Required. A SecretManager resource containing the user token
-		// that authorizes
+		// Required. A SecretManager resource containing the user token that authorizes
 		// the Developer Connect connection. Format:
 		// 'projects/*/secrets/*/versions/*'.
 		user_token_secret_version!: string
@@ -389,8 +340,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/gitlab_enterprise_config/$defs/read_authorizer_credential": close({
-		// Required. A SecretManager resource containing the user token
-		// that authorizes
+		// Required. A SecretManager resource containing the user token that authorizes
 		// the Developer Connect connection. Format:
 		// 'projects/*/secrets/*/versions/*'.
 		user_token_secret_version!: string

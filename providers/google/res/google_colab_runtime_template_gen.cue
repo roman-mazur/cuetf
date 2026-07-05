@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_colab_runtime_template: {
+google_colab_runtime_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_colab_runtime_template")
 	close({
@@ -16,16 +16,11 @@ import "list"
 		software_config?: matchN(1, [#software_config, list.MaxItems(1) & [...#software_config]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -35,22 +30,19 @@ import "list"
 		// Required. The display name of the Runtime Template.
 		display_name!: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// Labels to identify and group the runtime template.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// The location for the resource:
-		// https://cloud.google.com/colab/docs/locations
+		// The location for the resource: https://cloud.google.com/colab/docs/locations
 		location!: string
 
 		// The resource name of the Runtime Template
@@ -58,17 +50,16 @@ import "list"
 
 		// Applies the given Compute Engine tags to the runtime.
 		network_tags?: [...string]
-		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+		project?: string
 	})
 
 	#data_persistent_disk_spec: close({
-		// The disk size of the runtime in GB. If specified, the diskType
-		// must also be specified. The minimum size is 10GB and the
-		// maximum is 65536GB.
+		// The disk size of the runtime in GB. If specified, the diskType must also be
+		// specified. The minimum size is 10GB and the maximum is 65536GB.
 		disk_size_gb?: string
 
 		// The type of the persistent disk.
@@ -76,8 +67,7 @@ import "list"
 	})
 
 	#encryption_spec: close({
-		// The Cloud KMS encryption key (customer-managed encryption key)
-		// used to protect the runtime.
+		// The Cloud KMS encryption key (customer-managed encryption key) used to protect the runtime.
 		kms_key_name?: string
 	})
 
@@ -87,9 +77,8 @@ import "list"
 	})
 
 	#idle_shutdown_config: close({
-		// The duration after which the runtime is automatically shut
-		// down. An input of 0s disables the idle shutdown feature, and a
-		// valid range is [10m, 24h].
+		// The duration after which the runtime is automatically shut down. An input of
+		// 0s disables the idle shutdown feature, and a valid range is [10m, 24h].
 		idle_timeout?: string
 	})
 
@@ -97,8 +86,8 @@ import "list"
 		// The number of accelerators used by the runtime.
 		accelerator_count?: number
 
-		// The type of hardware accelerator used by the runtime. If
-		// specified, acceleratorCount must also be specified.
+		// The type of hardware accelerator used by the runtime. If specified,
+		// acceleratorCount must also be specified.
 		accelerator_type?: string
 
 		// The Compute Engine machine type selected for the runtime.
@@ -134,8 +123,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/software_config/$defs/colab_image": close({
-		// The release name of the NotebookRuntime Colab image, e.g.
-		// "py310". If not specified, detault to the latest release.
+		// The release name of the NotebookRuntime Colab image, e.g. "py310". If not
+		// specified, detault to the latest release.
 		release_name?: string
 	})
 
@@ -143,12 +132,11 @@ import "list"
 		// Name of the environment variable. Must be a valid C identifier.
 		name?: string
 
-		// Variables that reference a $(VAR_NAME) are expanded using the
-		// previous defined environment variables in the container and
-		// any service environment variables. If a variable cannot be
-		// resolved, the reference in the input string will be unchanged.
-		// The $(VAR_NAME) syntax can be escaped with a double $$, ie:
-		// $$(VAR_NAME). Escaped references will never be expanded,
+		// Variables that reference a $(VAR_NAME) are expanded using the previous
+		// defined environment variables in the container and any service environment
+		// variables. If a variable cannot be resolved, the reference in the input
+		// string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
+		// double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
 		// regardless of whether the variable exists or not.
 		value?: string
 	})
@@ -157,13 +145,12 @@ import "list"
 		// Post startup script to run after runtime is started.
 		post_startup_script?: string
 
-		// Post startup script behavior that defines download and
-		// execution behavior. Possible values: ["RUN_ONCE",
-		// "RUN_EVERY_START", "DOWNLOAD_AND_RUN_EVERY_START"]
+		// Post startup script behavior that defines download and execution behavior.
+		// Possible values: ["RUN_ONCE", "RUN_EVERY_START",
+		// "DOWNLOAD_AND_RUN_EVERY_START"]
 		post_startup_script_behavior?: string
 
-		// Post startup script url to download. Example:
-		// https://bucket/script.sh.
+		// Post startup script url to download. Example: https://bucket/script.sh.
 		post_startup_script_url?: string
 	})
 }

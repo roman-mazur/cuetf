@@ -1,6 +1,6 @@
 package res
 
-#google_firebase_app_check_debug_token: {
+google_firebase_app_check_debug_token: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_check_debug_token")
 	close({
@@ -18,38 +18,28 @@ package res
 		// The last segment of the resource name of the debug token.
 		debug_token_id?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// A human readable display name used to identify this debug
-		// token.
+		// A human readable display name used to identify this debug token.
 		display_name!: string
 		id?:           string
-		project?:      string
 
-		// The secret token itself. Must be provided during creation, and
-		// must be a UUID4,
-		// case insensitive. You may use a method of your choice such as
-		// random/random_uuid
+		// The secret token itself. Must be provided during creation, and must be a UUID4,
+		// case insensitive. You may use a method of your choice such as random/random_uuid
 		// to generate the token.
 		//
-		// This field is immutable once set, and cannot be updated. You
-		// can, however, delete
+		// This field is immutable once set, and cannot be updated. You can, however, delete
 		// this debug token to revoke it.
 		//
-		// For security reasons, this field will never be populated in any
-		// response.
-		token!: string
+		// For security reasons, this field will never be populated in any response.
+		token!:   string
+		project?: string
 	})
 
 	#timeouts: close({

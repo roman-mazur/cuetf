@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_gkeonprem_vmware_node_pool: {
+google_gkeonprem_vmware_node_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gkeonprem_vmware_node_pool")
 	close({
@@ -12,21 +12,18 @@ import "list"
 
 		// Annotations on the node Pool.
 		// This field has the same restrictions as Kubernetes annotations.
-		// The total size of all keys and values combined is limited to
-		// 256k.
+		// The total size of all keys and values combined is limited to 256k.
 		// Key can have 2 segments: prefix (optional) and name (required),
 		// separated by a slash (/).
 		// Prefix must be a DNS subdomain.
-		// Name must be 63 characters or less, begin and end with
-		// alphanumerics,
-		// with dashes (-), underscores (_), dots (.), and alphanumerics
-		// between.
+		// Name must be 63 characters or less, begin and end with alphanumerics,
+		// with dashes (-), underscores (_), dots (.), and alphanumerics between.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the annotations present in your configuration.
-		// Please refer to the field 'effective_annotations' for all of
-		// the annotations present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the
+		// annotations present in your configuration.
+		// Please refer to the field 'effective_annotations' for all of the annotations
+		// present on the resource.
 		annotations?: [string]: string
 
 		// The time the cluster was created, in RFC3339 text format.
@@ -35,31 +32,24 @@ import "list"
 		// The time the cluster was deleted, in RFC3339 text format.
 		delete_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// The display name for the node pool.
 		display_name?: string
 
-		// All of annotations (key/value pairs) present on the resource in
-		// GCP, including the annotations configured through Terraform,
-		// other clients and services.
+		// All of annotations (key/value pairs) present on the resource in GCP,
+		// including the annotations configured through Terraform, other clients and
+		// services.
 		effective_annotations?: [string]: string
 
-		// This checksum is computed by the server based on the value of
-		// other
-		// fields, and may be sent on update and delete requests to ensure
-		// the
+		// This checksum is computed by the server based on the value of other
+		// fields, and may be sent on update and delete requests to ensure the
 		// client has an up-to-date value before proceeding.
 		// Allows clients to perform consistent read-modify-writes
 		// through optimistic concurrency control.
@@ -72,13 +62,12 @@ import "list"
 		// The vmware node pool name.
 		name!: string
 
-		// Anthos version for the node pool. Defaults to the user cluster
-		// version.
+		// Anthos version for the node pool. Defaults to the user cluster version.
 		on_prem_version?: string
-		project?:         string
 
 		// If set, there are currently changes in flight to the node pool.
 		reconciling?: bool
+		project?:     string
 
 		// The current state of this cluster.
 		state?: string
@@ -115,8 +104,7 @@ import "list"
 		// The number of CPUs for each node in the node pool.
 		cpus?: number
 
-		// Allow node pool traffic to be load balanced. Only works for
-		// clusters with
+		// Allow node pool traffic to be load balanced. Only works for clusters with
 		// MetalLB load balancers.
 		enable_load_balancer?: bool
 
@@ -124,18 +112,15 @@ import "list"
 		image?: string
 
 		// The OS image to be used for each node in a node pool.
-		// Currently 'cos', 'cos_cgv2', 'ubuntu', 'ubuntu_cgv2',
-		// 'ubuntu_containerd' and 'windows' are supported.
+		// Currently 'cos', 'cos_cgv2', 'ubuntu', 'ubuntu_cgv2', 'ubuntu_containerd' and
+		// 'windows' are supported.
 		image_type!: string
 
-		// The map of Kubernetes labels (key/value pairs) to be applied to
-		// each node.
+		// The map of Kubernetes labels (key/value pairs) to be applied to each node.
 		// These will added in addition to any default label(s) that
 		// Kubernetes may apply to the node.
-		// In case of conflict in label keys, the applied set may differ
-		// depending on
-		// the Kubernetes version -- it's best to assume the behavior is
-		// undefined
+		// In case of conflict in label keys, the applied set may differ depending on
+		// the Kubernetes version -- it's best to assume the behavior is undefined
 		// and conflicts should be avoided.
 		labels?: [string]: string
 
@@ -161,9 +146,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/taints": close({
-		// Available taint effects. Possible values:
-		// ["EFFECT_UNSPECIFIED", "NO_SCHEDULE", "PREFER_NO_SCHEDULE",
-		// "NO_EXECUTE"]
+		// Available taint effects. Possible values: ["EFFECT_UNSPECIFIED",
+		// "NO_SCHEDULE", "PREFER_NO_SCHEDULE", "NO_EXECUTE"]
 		effect?: string
 
 		// Key associated with the effect.
@@ -176,8 +160,7 @@ import "list"
 	_#defs: "/$defs/config/$defs/vsphere_config": close({
 		tags?: matchN(1, [_#defs."/$defs/config/$defs/vsphere_config/$defs/tags", [..._#defs."/$defs/config/$defs/vsphere_config/$defs/tags"]])
 
-		// The name of the vCenter datastore. Inherited from the user
-		// cluster.
+		// The name of the vCenter datastore. Inherited from the user cluster.
 		datastore?: string
 
 		// Vsphere host groups to apply to all VMs in the node pool

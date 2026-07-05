@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_dns_managed_zone: {
+google_dns_managed_zone: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dns_managed_zone")
 	close({
@@ -17,29 +17,22 @@ import "list"
 		// This is in RFC3339 text format.
 		creation_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// A textual description field. Defaults to 'Managed by
-		// Terraform'.
+		// A textual description field. Defaults to 'Managed by Terraform'.
 		description?: string
 
 		// The DNS name of this managed zone, for instance "example.com.".
 		dns_name!: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// Set this true to delete all records in the zone.
@@ -49,10 +42,9 @@ import "list"
 		// A set of key/value label pairs to assign to this ManagedZone.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Unique identifier for the resource; defined by the server.
@@ -65,23 +57,20 @@ import "list"
 		// Delegate your managed_zone to these virtual name servers;
 		// defined by the server
 		name_servers?: [...string]
-		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+		project?: string
 
-		// The zone's visibility: public zones are exposed to the
-		// Internet,
-		// while private zones are visible only to Virtual Private Cloud
-		// resources. Default value: "public" Possible values:
-		// ["private", "public"]
+		// The zone's visibility: public zones are exposed to the Internet,
+		// while private zones are visible only to Virtual Private Cloud resources.
+		// Default value: "public" Possible values: ["private", "public"]
 		visibility?: string
 	})
 
 	#cloud_logging_config: close({
-		// If set, enable query logging for this ManagedZone. False by
-		// default, making logging opt-in.
+		// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
 		enable_logging!: bool
 	})
 
@@ -91,14 +80,12 @@ import "list"
 		// Identifies what kind of resource this is
 		kind?: string
 
-		// Specifies the mechanism used to provide authenticated
-		// denial-of-existence responses.
-		// non_existence can only be updated when the state is 'off'.
-		// Possible values: ["nsec", "nsec3"]
+		// Specifies the mechanism used to provide authenticated denial-of-existence responses.
+		// non_existence can only be updated when the state is 'off'. Possible values: ["nsec", "nsec3"]
 		non_existence?: string
 
-		// Specifies whether DNSSEC is enabled, and what mode it is in
-		// Possible values: ["off", "on", "transfer"]
+		// Specifies whether DNSSEC is enabled, and what mode it is in Possible values:
+		// ["off", "on", "transfer"]
 		state?: string
 	})
 
@@ -122,9 +109,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/dnssec_config/$defs/default_key_specs": close({
-		// String mnemonic specifying the DNSSEC algorithm of this key
-		// Possible values: ["ecdsap256sha256", "ecdsap384sha384",
-		// "rsasha1", "rsasha256", "rsasha512"]
+		// String mnemonic specifying the DNSSEC algorithm of this key Possible values:
+		// ["ecdsap256sha256", "ecdsap384sha384", "rsasha1", "rsasha256", "rsasha512"]
 		algorithm?: string
 
 		// Length of the keys in bits
@@ -135,8 +121,7 @@ import "list"
 		// Point flag set and, when active, will only be used to sign
 		// resource record sets of type DNSKEY. Zone signing keys do
 		// not have the Secure Entry Point flag set and will be used
-		// to sign all other types of resource record sets. Possible
-		// values: ["keySigning", "zoneSigning"]
+		// to sign all other types of resource record sets. Possible values: ["keySigning", "zoneSigning"]
 		key_type?: string
 
 		// Identifies what kind of resource this is
@@ -147,14 +132,11 @@ import "list"
 		// Fully qualified domain name for the forwarding target.
 		domain_name?: string
 
-		// Forwarding path for this TargetNameServer. If unset or
-		// 'default'
-		// Cloud DNS will make forwarding decision based on address
-		// ranges,
+		// Forwarding path for this TargetNameServer. If unset or 'default'
+		// Cloud DNS will make forwarding decision based on address ranges,
 		// i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 		// to the Internet. When set to 'private', Cloud DNS will always
-		// send queries through VPC for this target. Possible values:
-		// ["default", "private"]
+		// send queries through VPC for this target. Possible values: ["default", "private"]
 		forwarding_path?: string
 
 		// IPv4 address of a target name server.
@@ -167,10 +149,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/peering_config/$defs/target_network": close({
-		// The id or fully qualified URL of the VPC network to forward
-		// queries to.
-		// This should be formatted like
-		// 'projects/{project}/global/networks/{network}' or
+		// The id or fully qualified URL of the VPC network to forward queries to.
+		// This should be formatted like 'projects/{project}/global/networks/{network}' or
 		// 'https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}'
 		network_url!: string
 	})
@@ -184,8 +164,7 @@ import "list"
 
 	_#defs: "/$defs/private_visibility_config/$defs/networks": close({
 		// The id or fully qualified URL of the VPC network to bind to.
-		// This should be formatted like
-		// 'projects/{project}/global/networks/{network}' or
+		// This should be formatted like 'projects/{project}/global/networks/{network}' or
 		// 'https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}'
 		network_url!: string
 	})

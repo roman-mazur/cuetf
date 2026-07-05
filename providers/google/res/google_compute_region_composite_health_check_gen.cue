@@ -1,6 +1,6 @@
 package res
 
-#google_compute_region_composite_health_check: {
+google_compute_region_composite_health_check: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_composite_health_check")
 	close({
@@ -9,31 +9,22 @@ package res
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// An optional description of this resource. Provide this property
-		// when you
+		// An optional description of this resource. Provide this property when you
 		// create the resource.
 		description?: string
 
-		// Fingerprint of this resource. A hash of the contents stored in
-		// this object.
-		// This field is used in optimistic locking. This field will be
-		// ignored when
+		// Fingerprint of this resource. A hash of the contents stored in this object.
+		// This field is used in optimistic locking. This field will be ignored when
 		// inserting a 'CompositeHealthCheck'. An up-to-date fingerprint
-		// must be provided in order to patch the CompositeHealthCheck;
-		// Otherwise,
+		// must be provided in order to patch the CompositeHealthCheck; Otherwise,
 		// the request will fail with error '412 conditionNotMet'. To see
 		// the latest fingerprint, make a 'get()' request to retrieve the
 		// CompositeHealthCheck.
@@ -54,20 +45,15 @@ package res
 		// CompositeHealthCheck. Can be mutated.
 		health_sources?: [...string]
 
-		// The unique identifier for the resource. This identifier is
-		// defined by the server.
+		// The unique identifier for the resource. This identifier is defined by the server.
 		id?: string
 
-		// Name of the resource. Provided by the client when the resource
-		// is created.
+		// Name of the resource. Provided by the client when the resource is created.
 		// The name must be 1-63 characters long, and comply with RFC1035.
-		// Specifically, the name must be 1-63 characters long and match
-		// the regular
+		// Specifically, the name must be 1-63 characters long and match the regular
 		// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first
-		// character must be a lowercase letter, and all following
-		// characters must
-		// be a dash, lowercase letter, or digit, except the last
-		// character, which
+		// character must be a lowercase letter, and all following characters must
+		// be a dash, lowercase letter, or digit, except the last character, which
 		// cannot be a dash.
 		name!:    string
 		project?: string

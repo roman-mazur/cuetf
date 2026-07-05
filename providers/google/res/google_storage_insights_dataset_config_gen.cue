@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_storage_insights_dataset_config: {
+google_storage_insights_dataset_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_insights_dataset_config")
 	close({
@@ -15,13 +15,11 @@ import "list"
 		source_projects?: matchN(1, [#source_projects, list.MaxItems(1) & [...#source_projects]])
 		timeouts?: #timeouts
 
-		// Number of days of activity data that must be retained. If not
-		// specified, retentionPeriodDays will be used. Set to 0 to turn
-		// off the activity data.
+		// Number of days of activity data that must be retained. If not specified,
+		// retentionPeriodDays will be used. Set to 0 to turn off the activity data.
 		activity_data_retention_period_days?: number
 
-		// The UTC time at which the DatasetConfig was created. This is
-		// auto-populated.
+		// The UTC time at which the DatasetConfig was created. This is auto-populated.
 		create_time?: string
 
 		// The user-defined ID of the DatasetConfig
@@ -30,27 +28,21 @@ import "list"
 		// State of the DatasetConfig.
 		dataset_config_state?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// An optional user-provided description for the dataset
-		// configuration with a maximum length of 256 characters.
+		// An optional user-provided description for the dataset configuration with a
+		// maximum length of 256 characters.
 		description?: string
 		id?:          string
 
-		// If set to true, the request includes all the newly created
-		// buckets in the dataset that meet the inclusion and exclusion
-		// rules.
+		// If set to true, the request includes all the newly created buckets in the
+		// dataset that meet the inclusion and exclusion rules.
 		include_newly_created_buckets?: bool
 
 		// Details of the linked DatasetConfig.
@@ -61,12 +53,11 @@ import "list"
 
 		// A boolean terraform only flag to link/unlink dataset.
 		//
-		// Setting this field to true while creation will automatically
-		// link the created dataset as an additional functionality.
-		// -> **Note** A dataset config resource can only be destroyed
-		// once it is unlinked,
-		// so users must set this field to false to unlink the dataset and
-		// destroy the dataset config resource.
+		// Setting this field to true while creation will automatically link the created
+		// dataset as an additional functionality.
+		// -> **Note** A dataset config resource can only be destroyed once it is unlinked,
+		// so users must set this field to false to unlink the dataset and destroy the
+		// dataset config resource.
 		link_dataset?: bool
 
 		// The location of the DatasetConfig.
@@ -76,25 +67,22 @@ import "list"
 		// projects/P/locations/L/datasetConfigs/ID).
 		name?: string
 
-		// Organization resource ID that the source projects should belong
-		// to.
-		// Projects that do not belong to the provided organization are
-		// not considered when creating the dataset.
+		// Organization resource ID that the source projects should belong to.
+		// Projects that do not belong to the provided organization are not considered
+		// when creating the dataset.
 		organization_number?: string
 
-		// Defines the options for providing a source organization for the
-		// DatasetConfig.
+		// Defines the options for providing a source organization for the DatasetConfig.
 		organization_scope?: bool
-		project?:            string
 
 		// Number of days of history that must be retained.
 		retention_period_days!: number
+		project?:               string
 
 		// System generated unique identifier for the resource.
 		uid?: string
 
-		// The UTC time at which the DatasetConfig was updated. This is
-		// auto-populated.
+		// The UTC time at which the DatasetConfig was updated. This is auto-populated.
 		update_time?: string
 	})
 
@@ -103,8 +91,7 @@ import "list"
 	})
 
 	#exclude_cloud_storage_locations: close({
-		// The list of cloud storage locations to exclude in the
-		// DatasetConfig.
+		// The list of cloud storage locations to exclude in the DatasetConfig.
 		locations!: [...string]
 	})
 
@@ -122,8 +109,7 @@ import "list"
 	})
 
 	#include_cloud_storage_locations: close({
-		// The list of cloud storage locations to include in the
-		// DatasetConfig.
+		// The list of cloud storage locations to include in the DatasetConfig.
 		locations!: [...string]
 	})
 
@@ -144,32 +130,24 @@ import "list"
 	})
 
 	_#defs: "/$defs/exclude_cloud_storage_buckets/$defs/cloud_storage_buckets": close({
-		// The list of cloud storage bucket names to exclude in the
-		// DatasetConfig.
-		// Exactly one of the bucket_name and bucket_prefix_regex should
-		// be specified.
+		// The list of cloud storage bucket names to exclude in the DatasetConfig.
+		// Exactly one of the bucket_name and bucket_prefix_regex should be specified.
 		bucket_name?: string
 
 		// The list of regex patterns for bucket names matching the regex.
-		// Regex should follow the syntax specified in google/re2 on
-		// GitHub.
-		// Exactly one of the bucket_name and bucket_prefix_regex should
-		// be specified.
+		// Regex should follow the syntax specified in google/re2 on GitHub.
+		// Exactly one of the bucket_name and bucket_prefix_regex should be specified.
 		bucket_prefix_regex?: string
 	})
 
 	_#defs: "/$defs/include_cloud_storage_buckets/$defs/cloud_storage_buckets": close({
-		// The list of cloud storage bucket names to include in the
-		// DatasetConfig.
-		// Exactly one of the bucket_name and bucket_prefix_regex should
-		// be specified.
+		// The list of cloud storage bucket names to include in the DatasetConfig.
+		// Exactly one of the bucket_name and bucket_prefix_regex should be specified.
 		bucket_name?: string
 
 		// The list of regex patterns for bucket names matching the regex.
-		// Regex should follow the syntax specified in google/re2 on
-		// GitHub.
-		// Exactly one of the bucket_name and bucket_prefix_regex should
-		// be specified.
+		// Regex should follow the syntax specified in google/re2 on GitHub.
+		// Exactly one of the bucket_name and bucket_prefix_regex should be specified.
 		bucket_prefix_regex?: string
 	})
 }

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_network_services_multicast_domain: {
+google_network_services_multicast_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_multicast_domain")
 	close({
@@ -18,75 +18,62 @@ import "list"
 		// The timestamp when the multicast domain was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// An optional text description of the multicast domain.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// Labels as key-value pairs.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
-		// The multicast domain group this domain should be associated
-		// with.
+		// The multicast domain group this domain should be associated with.
 		// Use the following format:
 		// 'projects/{project}/locations/global/multicastDomainGroups/{multicast_domain_group}'.
 		multicast_domain_group?: string
 
 		// A unique name for the multicast domain.
-		// The name is restricted to letters, numbers, and hyphen, with
-		// the first
-		// character a letter, and the last a letter or a number. The name
-		// must not
+		// The name is restricted to letters, numbers, and hyphen, with the first
+		// character a letter, and the last a letter or a number. The name must not
 		// exceed 48 characters.
 		multicast_domain_id!: string
 
 		// Identifier. The resource name of the multicast domain.
 		// Use the following format:
 		// 'projects/*/locations/global/multicastDomains/*'
-		name?:    string
-		project?: string
+		name?: string
 
 		// The multicast resource's state.
 		state?: [...close({
 			state?: string
 		})]
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
 		// The Google-generated UUID for the resource. This value is
-		// unique across all multicast domain resources. If a domain is
-		// deleted and
-		// another with the same name is created, the new domain is
-		// assigned a
+		// unique across all multicast domain resources. If a domain is deleted and
+		// another with the same name is created, the new domain is assigned a
 		// different unique_id.
 		unique_id?: string
 
@@ -103,8 +90,7 @@ import "list"
 		connection_type!: string
 
 		// The resource name of the
-		// [NCC](https://cloud.google.com/network-connectivity-center)
-		// hub.
+		// [NCC](https://cloud.google.com/network-connectivity-center) hub.
 		// Use the following format:
 		// 'projects/{project}/locations/global/hubs/{hub}'.
 		ncc_hub?: string

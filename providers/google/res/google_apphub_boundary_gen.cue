@@ -1,6 +1,6 @@
 package res
 
-#google_apphub_boundary: {
+google_apphub_boundary: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apphub_boundary")
 	close({
@@ -9,8 +9,7 @@ package res
 		// Create time.
 		create_time?: string
 
-		// Optional. The resource name of the CRM node being attached to
-		// the
+		// Optional. The resource name of the CRM node being attached to the
 		// boundary.
 		// Format: 'projects/{project-number}'
 		crm_node?: string
@@ -21,11 +20,11 @@ package res
 
 		// Identifier. The resource name of the boundary.
 		// Format: "projects/{project}/locations/{{location}}/boundary"
-		name?:    string
-		project?: string
+		name?: string
 
 		// Boundary type.
-		type?: string
+		type?:    string
+		project?: string
 
 		// Update time.
 		update_time?: string

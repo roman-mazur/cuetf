@@ -1,37 +1,31 @@
 package res
 
-#google_apigee_endpoint_attachment: {
+google_apigee_endpoint_attachment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_endpoint_attachment")
 	close({
 		timeouts?: #timeouts
 
-		// State of the endpoint attachment connection to the service
-		// attachment.
+		// State of the endpoint attachment connection to the service attachment.
+		// Possible values are: 'CONNECTION_STATE_UNSPECIFIED', 'PENDING', 'ACCEPTED', 'REJECTED', 'CLOSED'.
 		connection_state?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// ID of the endpoint attachment.
 		endpoint_attachment_id!: string
 
-		// Host that can be used in either HTTP Target Endpoint directly,
-		// or as the host in Target Server.
+		// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
 		host?: string
 		id?:   string
 
-		// Location of the endpoint attachment.
+		// The location of the endpoint attachment.
 		location!: string
 
 		// Name of the Endpoint Attachment in the following format:
@@ -42,7 +36,8 @@ package res
 		// in the format 'organizations/{{org_name}}'.
 		org_id!: string
 
-		// Format: projects/*/regions/*/serviceAttachments/*
+		// The resource URL of the service attachment in the format:
+		// 'projects/*/regions/*/serviceAttachments/*'.
 		service_attachment!: string
 	})
 

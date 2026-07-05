@@ -1,6 +1,6 @@
 package data
 
-#google_compute_reservation_sub_block: {
+google_compute_reservation_sub_block: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_reservation_sub_block")
 	close({
@@ -17,12 +17,10 @@ package data
 		})]
 		id?: string
 
-		// The number of instances that are currently in use on this
-		// reservation sub-block.
+		// The number of instances that are currently in use on this reservation sub-block.
 		in_use_count?: number
 
-		// Type of the resource. Always compute#reservationSubBlock for
-		// reservation sub-blocks.
+		// Type of the resource. Always compute#reservationSubBlock for reservation sub-blocks.
 		kind?: string
 
 		// The name of the reservation sub-block.
@@ -67,8 +65,7 @@ package data
 		// Status of the reservation sub-block.
 		status?: string
 
-		// The number of hosts that are allocated in this reservation
-		// sub-block.
+		// The number of hosts that are allocated in this reservation sub-block.
 		sub_block_count?: number
 
 		// The zone where the reservation sub-block resides.

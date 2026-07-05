@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_dataplex_entry_link: {
+google_dataplex_entry_link: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_entry_link")
 	close({
@@ -13,16 +13,11 @@ import "list"
 		// The time when the Entry Link was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -32,8 +27,7 @@ import "list"
 		// The id of the entry link to create.
 		entry_link_id!: string
 
-		// Relative resource name of the Entry Link Type used to create
-		// this Entry Link. For example:
+		// Relative resource name of the Entry Link Type used to create this Entry Link. For example:
 		// projects/dataplex-types/locations/global/entryLinkTypes/definition
 		entry_link_type!: string
 		id?:              string
@@ -43,11 +37,11 @@ import "list"
 
 		// The relative resource name of the Entry Link, of the form:
 		// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}
-		name?:    string
-		project?: string
+		name?: string
 
 		// The time when the Entry Link was last updated.
 		update_time?: string
+		project?:     string
 	})
 
 	#aspects: close({
@@ -60,18 +54,15 @@ import "list"
 	})
 
 	#entry_references: close({
-		// The relative resource name of the referenced Entry, of the
-		// form:
+		// The relative resource name of the referenced Entry, of the form:
 		// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
 		name!: string
 
 		// The path in the Entry that is referenced in the Entry Link.
-		// Empty path denotes that the Entry itself is referenced in the
-		// Entry Link.
+		// Empty path denotes that the Entry itself is referenced in the Entry Link.
 		path?: string
 
-		// The reference type of the Entry. Possible values: ["SOURCE",
-		// "TARGET"]
+		// The reference type of the Entry. Possible values: ["SOURCE", "TARGET"]
 		type?: string
 	})
 
@@ -88,9 +79,8 @@ import "list"
 		// The time when the Aspect was created.
 		create_time?: string
 
-		// The content of the aspect in JSON form, according to its aspect
-		// type schema. The maximum size of the field is 120KB (encoded
-		// as UTF-8).
+		// The content of the aspect in JSON form, according to its aspect type schema.
+		// The maximum size of the field is 120KB (encoded as UTF-8).
 		data!: string
 
 		// The path in the entry link under which the aspect is attached.

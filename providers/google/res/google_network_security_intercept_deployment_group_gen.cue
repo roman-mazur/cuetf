@@ -1,13 +1,12 @@
 package res
 
-#google_network_security_intercept_deployment_group: {
+google_network_security_intercept_deployment_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_intercept_deployment_group")
 	close({
 		timeouts?: #timeouts
 
-		// The list of endpoint groups that are connected to this
-		// resource.
+		// The list of endpoint groups that are connected to this resource.
 		connected_endpoint_groups?: [...close({
 			name?: string
 		})]
@@ -16,16 +15,11 @@ package res
 		// See https://google.aip.dev/148#timestamps.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -33,28 +27,23 @@ package res
 		// Used as additional context for the deployment group.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
-		// The ID to use for the new deployment group, which will become
-		// the final
+		// The ID to use for the new deployment group, which will become the final
 		// component of the deployment group's resource name.
 		intercept_deployment_group_id!: string
 
-		// Labels are key/value pairs that help to organize and filter
-		// resources.
+		// Labels are key/value pairs that help to organize and filter resources.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// The cloud location of the deployment group, currently
-		// restricted to 'global'.
+		// The cloud location of the deployment group, currently restricted to 'global'.
 		location!: string
 
 		// The list of locations where the deployment group is present.
@@ -68,20 +57,17 @@ package res
 		// See https://google.aip.dev/122 for more details.
 		name?: string
 
-		// The network that will be used for all child deployments, for
-		// example:
+		// The network that will be used for all child deployments, for example:
 		// 'projects/{project}/global/networks/{network}'.
 		// See https://google.aip.dev/124.
 		network!: string
-		project?: string
 
-		// The current state of the resource does not match the user's
-		// intended state,
-		// and the system is working to reconcile them. This is part of
-		// the normal
+		// The current state of the resource does not match the user's intended state,
+		// and the system is working to reconcile them. This is part of the normal
 		// operation (e.g. adding a new deployment to the group)
 		// See https://google.aip.dev/128.
 		reconciling?: bool
+		project?:     string
 
 		// The current state of the deployment group.
 		// See https://google.aip.dev/216.

@@ -1,43 +1,35 @@
 package res
 
-#google_scc_management_organization_event_threat_detection_custom_module: {
+google_scc_management_organization_event_threat_detection_custom_module: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_management_organization_event_threat_detection_custom_module")
 	close({
 		timeouts?: #timeouts
 
-		// Config for the module. For the resident module, its config
-		// value is defined at this level.
-		// For the inherited module, its config value is inherited from
-		// the ancestor module.
+		// Config for the module. For the resident module, its config value is defined at this level.
+		// For the inherited module, its config value is inherited from the ancestor module.
 		config?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// The human readable name to be displayed for the module.
 		display_name?: string
 
-		// The state of enablement for the module at the given level of
-		// the hierarchy. Possible values: ["ENABLED", "DISABLED"]
+		// The state of enablement for the module at the given level of the hierarchy.
+		// Possible values: ["ENABLED", "DISABLED"]
 		enablement_state?: string
 		id?:               string
 
 		// The editor that last updated the custom module
 		last_editor?: string
 
-		// Location ID of the parent organization. Only global is
-		// supported at the moment.
+		// Location ID of the parent organization. Only global is supported at the moment.
 		location?: string
 
 		// The resource name of the Event Threat Detection custom module.
@@ -53,10 +45,9 @@ package res
 
 		// The time at which the custom module was last updated.
 		//
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and
-		// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
-		// and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+		// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
 	})
 

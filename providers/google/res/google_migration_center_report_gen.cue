@@ -1,6 +1,6 @@
 package res
 
-#google_migration_center_report: {
+google_migration_center_report: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_migration_center_report")
 	close({
@@ -9,16 +9,11 @@ package res
 		// Creation timestamp.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -29,28 +24,22 @@ package res
 		display_name?: string
 		id?:           string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Name of resource.
-		name?:    string
-		project?: string
+		name?: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		report_config!: string
+		project?:       string
 
-		// User specified id for the report. It will become the last
-		// component
-		// of the report name. The id must be unique within the project,
-		// must
-		// conform with RFC-1034, is restricted to lower-cased letters,
-		// and has a
-		// maximum length of 63 characters. The id must match the regular
-		// expression:
+		// User specified id for the report. It will become the last component
+		// of the report name. The id must be unique within the project, must
+		// conform with RFC-1034, is restricted to lower-cased letters, and has a
+		// maximum length of 63 characters. The id must match the regular expression:
 		// [a-z]([a-z0-9-]{0,61}[a-z0-9])?.
 		report_id!: string
 
@@ -61,8 +50,7 @@ package res
 		// FAILED
 		state?: string
 
-		// Describes the Summary view of a Report, which contains
-		// aggregated values
+		// Describes the Summary view of a Report, which contains aggregated values
 		// for all the groups and preference sets included in this Report.
 		summary?: [...close({
 			all_assets_stats?: [...close({

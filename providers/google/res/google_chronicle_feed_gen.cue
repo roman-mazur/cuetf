@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_chronicle_feed: {
+google_chronicle_feed: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_feed")
 	close({
@@ -10,16 +10,11 @@ import "list"
 		failure_details?: matchN(1, [#failure_details, list.MaxItems(1) & [...#failure_details]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -29,51 +24,44 @@ import "list"
 		// Whether the feed is enabled.
 		enabled?: bool
 
-		// Details about the most recent failure when feed state is
-		// FAILED.
+		// Details about the most recent failure when feed state is FAILED.
 		failure_msg?: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		feed?: string
 
-		// Output only. The service account used by Chronicle to ingest
-		// data from Cloud Storage. This is only available when the feed
-		// source type is GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN or
-		// GOOGLE_CLOUD_STORAGE.
+		// Output only. The service account used by Chronicle to ingest data from Cloud
+		// Storage. This is only available when the feed source type is
+		// GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN or GOOGLE_CLOUD_STORAGE.
 		feed_service_account?: string
 		id?:                   string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		instance!: string
 
 		// Latest timestamp when the transfer was successful for the feed.
 		last_feed_initiation_time?: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// The resource name of the feed.
 		// Format:
 		// projects/{project}/locations/{location}/instances/{instance}/feeds/{feed}
-		name?:    string
-		project?: string
+		name?: string
 
 		// Whether this feed can be updated or deleted.
 		read_only?: bool
+		project?:   string
 
-		// Reference ID, this field will contain the legacy id of the
-		// feed.
+		// Reference ID, this field will contain the legacy id of the feed.
 		reference_id?: string
 
-		// Output only. The secret generated for the feed. This is only
-		// available when the feed source type is
-		// HTTPS_PUSH_AMAZON_KINESIS_FIREHOSE.
+		// Output only. The secret generated for the feed. This is only available when
+		// the feed source type is HTTPS_PUSH_AMAZON_KINESIS_FIREHOSE.
 		secret?: string
 
 		// The state of the feed (e.g., ACTIVE, INACTIVE).
@@ -160,8 +148,7 @@ import "list"
 		workspace_privileges_settings?: matchN(1, [_#defs."/$defs/details/$defs/workspace_privileges_settings", list.MaxItems(1) & [..._#defs."/$defs/details/$defs/workspace_privileges_settings"]])
 		workspace_users_settings?: matchN(1, [_#defs."/$defs/details/$defs/workspace_users_settings", list.MaxItems(1) & [..._#defs."/$defs/details/$defs/workspace_users_settings"]])
 
-		// The asset namespace to apply to all logs ingested through this
-		// feed.
+		// The asset namespace to apply to all logs ingested through this feed.
 		asset_namespace?: string
 
 		// Source Type of the feed.
@@ -184,19 +171,16 @@ import "list"
 		// AMAZON_S3_V2
 		// AMAZON_SQS_V2
 		// AZURE_BLOBSTORE_V2
-		// GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN Possible values:
-		// ["GOOGLE_CLOUD_STORAGE", "HTTP", "SFTP", "AMAZON_S3",
-		// "AZURE_BLOBSTORE", "API", "AMAZON_SQS", "PUBSUB",
-		// "AMAZON_KINESIS_FIREHOSE", "WEBHOOK",
-		// "HTTPS_PUSH_GOOGLE_CLOUD_PUBSUB",
-		// "HTTPS_PUSH_AMAZON_KINESIS_FIREHOSE", "HTTPS_PUSH_WEBHOOK",
-		// "AZURE_EVENT_HUB", "GOOGLE_CLOUD_STORAGE_V2", "AMAZON_S3_V2",
-		// "AMAZON_SQS_V2", "AZURE_BLOBSTORE_V2",
+		// GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN Possible values: ["GOOGLE_CLOUD_STORAGE",
+		// "HTTP", "SFTP", "AMAZON_S3", "AZURE_BLOBSTORE", "API", "AMAZON_SQS",
+		// "PUBSUB", "AMAZON_KINESIS_FIREHOSE", "WEBHOOK",
+		// "HTTPS_PUSH_GOOGLE_CLOUD_PUBSUB", "HTTPS_PUSH_AMAZON_KINESIS_FIREHOSE",
+		// "HTTPS_PUSH_WEBHOOK", "AZURE_EVENT_HUB", "GOOGLE_CLOUD_STORAGE_V2",
+		// "AMAZON_S3_V2", "AMAZON_SQS_V2", "AZURE_BLOBSTORE_V2",
 		// "GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN"]
 		feed_source_type?: string
 
-		// The ingestion metadata labels to apply to all logs ingested
-		// through this
+		// The ingestion metadata labels to apply to all logs ingested through this
 		// feed, and the resulting normalized data.
 		labels?: [string]: string
 
@@ -214,22 +198,18 @@ import "list"
 	})
 
 	#failure_details: close({
-		// error_action contains the user action prescribed for
-		// remediation of feed
+		// error_action contains the user action prescribed for remediation of feed
 		// error.
 		error_action?: string
 
-		// error_cause contains the information regarding the failure
-		// cause.
+		// error_cause contains the information regarding the failure cause.
 		error_cause?: string
 
-		// error_code contains the error code for the feed. The field is
-		// populated for
+		// error_code contains the error code for the feed. The field is populated for
 		// the feeds with failed status.
 		error_code?: string
 
-		// http_error_code contains the HTTP error code for the feed
-		// failure.
+		// http_error_code contains the HTTP error code for the feed failure.
 		// feed transfer failure may or may not result in http error code.
 		http_error_code?: number
 	})
@@ -317,8 +297,7 @@ import "list"
 	_#defs: "/$defs/details/$defs/amazon_s3_v2_settings": close({
 		authentication!: matchN(1, [_#defs."/$defs/details/$defs/amazon_s3_v2_settings/$defs/authentication", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/details/$defs/amazon_s3_v2_settings/$defs/authentication"]])
 
-		// SA that will read data, this is Storage Transfer Service SA of
-		// Customer's
+		// SA that will read data, this is Storage Transfer Service SA of Customer's
 		// Tenancy Project.
 		chronicle_service_account?: string
 
@@ -340,8 +319,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/details/$defs/amazon_s3_v2_settings/$defs/authentication/$defs/access_key_secret_auth": close({
-		// Access Key ID for an AWS account (a 20-character, alphanumeric
-		// string).
+		// Access Key ID for an AWS account (a 20-character, alphanumeric string).
 		access_key_id!: string
 
 		// Secret Access Key for an AWS account (a 40-character string).
@@ -432,8 +410,7 @@ import "list"
 	_#defs: "/$defs/details/$defs/amazon_sqs_v2_settings": close({
 		authentication!: matchN(1, [_#defs."/$defs/details/$defs/amazon_sqs_v2_settings/$defs/authentication", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/details/$defs/amazon_sqs_v2_settings/$defs/authentication"]])
 
-		// SA that will read data, this is Storage Transfer Service SA of
-		// Customer's
+		// SA that will read data, this is Storage Transfer Service SA of Customer's
 		// Tenancy Project.
 		chronicle_service_account?: string
 
@@ -642,8 +619,7 @@ import "list"
 		// Azure URI.
 		azure_uri!: string
 
-		// SA that will read data, this is Storage Transfer Service SA of
-		// Customer's
+		// SA that will read data, this is Storage Transfer Service SA of Customer's
 		// Tenancy Project.
 		chronicle_service_account?: string
 
@@ -875,10 +851,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/details/$defs/fox_it_stix_settings/$defs/ssl": close({
-		// The encoded private key. The string should be a private key in
-		// PEM format,
-		// and should include the begin header and end footer lines. It
-		// may also
+		// The encoded private key. The string should be a private key in PEM format,
+		// and should include the begin header and end footer lines. It may also
 		// include newlines.
 		//
 		// Example:
@@ -886,14 +860,11 @@ import "list"
 		// Proc-Type: 4,ENCRYPTED
 		// DEK-Info: DES-EDE3-CBC,F23074E02CF47304
 		//
-		//
 		// -----END RSA PRIVATE KEY-----
 		encoded_private_key?: string
 
-		// The encoded SSL certificate. The string should be an SSL
-		// certificate in
-		// PEM format, and should include the begin header and end footer
-		// lines. It
+		// The encoded SSL certificate. The string should be an SSL certificate in
+		// PEM format, and should include the begin header and end footer lines. It
 		// may also include newlines.
 		//
 		// Example:
@@ -927,8 +898,7 @@ import "list"
 		// Google Cloud Storage Bucket URI for the feed.
 		bucket_uri!: string
 
-		// SA that will read data, this is Storage Transfer Service SA of
-		// Customer's
+		// SA that will read data, this is Storage Transfer Service SA of Customer's
 		// Tenancy Project.
 		chronicle_service_account?: string
 
@@ -1004,8 +974,7 @@ import "list"
 		// Google Cloud Storage Bucket URI for the feed.
 		bucket_uri!: string
 
-		// SA that will read data, this is Storage Transfer Service SA of
-		// Customer's
+		// SA that will read data, this is Storage Transfer Service SA of Customer's
 		// Tenancy Project.
 		chronicle_service_account?: string
 
@@ -1118,8 +1087,7 @@ import "list"
 		// API Hostname.
 		hostname?: string
 
-		// Subscription ID of the Microsoft security center alert settings
-		// alert.
+		// Subscription ID of the Microsoft security center alert settings alert.
 		subscription_id?: string
 
 		// Tenant ID.
@@ -1660,8 +1628,7 @@ import "list"
 		authentication?: matchN(1, [_#defs."/$defs/details/$defs/trellix_hx_alerts_settings/$defs/authentication", list.MaxItems(1) & [..._#defs."/$defs/details/$defs/trellix_hx_alerts_settings/$defs/authentication"]])
 
 		// Trellix HX Device URL.
-		// This must be a valid URL with an http or https scheme. It has
-		// no default.
+		// This must be a valid URL with an http or https scheme. It has no default.
 		// Usually a device URL is in the form of either:
 		// https://xxx.trellix.com/hx/id//
 		// - or -
@@ -1676,64 +1643,45 @@ import "list"
 
 	_#defs: "/$defs/details/$defs/trellix_hx_alerts_settings/$defs/authentication/$defs/msso": close({
 		// The login api endpoint url.
-		// This must be a valid URL with an http or https scheme. It has
-		// no default.
+		// This must be a valid URL with an http or https scheme. It has no default.
 		api_endpoint?: string
 
 		// Password of the account identified by username.
-		// There are no restrictions on the format of the password. It has
-		// no default,
-		// specifically enforced min / max length or character set. The
-		// password
-		// will have been provided by an MSSO administrator and it is
-		// assumed that
-		// they have provided a password that is internally consistent
-		// with MSSO
+		// There are no restrictions on the format of the password. It has no default,
+		// specifically enforced min / max length or character set. The password
+		// will have been provided by an MSSO administrator and it is assumed that
+		// they have provided a password that is internally consistent with MSSO
 		// authentication requirements / validation.
 		password?: string
 
 		// Username for MSSO authentication.
-		// There are no restrictions on the format of the username. It has
-		// no default,
-		// specifically enforced min / max length or character set. The
-		// username
-		// will have been provided by an MSSO administrator and it is
-		// assumed that
-		// they have provided a username that is internally consistent
-		// with MSSO
+		// There are no restrictions on the format of the username. It has no default,
+		// specifically enforced min / max length or character set. The username
+		// will have been provided by an MSSO administrator and it is assumed that
+		// they have provided a username that is internally consistent with MSSO
 		// authentication requirements / validation.
 		username?: string
 	})
 
 	_#defs: "/$defs/details/$defs/trellix_hx_alerts_settings/$defs/authentication/$defs/trellix_iam": close({
 		// Client ID generated in Trellix IAM.
-		// This is a unique identifier for the user that is generated in
-		// Trellix IAM.
-		// It has no default, specifically enforced min / max length or
-		// character set.
-		// It is assumed that the Client ID generated in Trellix IAM is
-		// internally
-		// consistent with Trellix IAM authentication requirements /
-		// validation.
+		// This is a unique identifier for the user that is generated in Trellix IAM.
+		// It has no default, specifically enforced min / max length or character set.
+		// It is assumed that the Client ID generated in Trellix IAM is internally
+		// consistent with Trellix IAM authentication requirements / validation.
 		client_id?: string
 
 		// Secret associated with the Client ID.
-		// This is the secret generated in Trellix IAM for the Client ID.
-		// It has no
-		// default, specifically enforced min / max length or character
-		// set. It is
+		// This is the secret generated in Trellix IAM for the Client ID. It has no
+		// default, specifically enforced min / max length or character set. It is
 		// assumed that the secret generated in Trellix IAM is internally
-		// consistent with Trellix IAM authentication requirements /
-		// validation.
+		// consistent with Trellix IAM authentication requirements / validation.
 		client_secret?: string
 
 		// OAUTH 2 scope to request for the authentication token.
-		// This is the OAUTH 2 scope to request for the authentication
-		// token. It has
-		// no default, specifically enforced min / max length or character
-		// set. It is
-		// assumed that the scope provided is internally consistent with
-		// Trellix IAM
+		// This is the OAUTH 2 scope to request for the authentication token. It has
+		// no default, specifically enforced min / max length or character set. It is
+		// assumed that the scope provided is internally consistent with Trellix IAM
 		// authentication requirements / validation.
 		scope?: string
 	})
@@ -1742,8 +1690,7 @@ import "list"
 		authentication?: matchN(1, [_#defs."/$defs/details/$defs/trellix_hx_bulk_acqs_settings/$defs/authentication", list.MaxItems(1) & [..._#defs."/$defs/details/$defs/trellix_hx_bulk_acqs_settings/$defs/authentication"]])
 
 		// Trellix HX Device URL.
-		// This must be a valid URL with an http or https scheme. It has
-		// no default.
+		// This must be a valid URL with an http or https scheme. It has no default.
 		// Usually a device URL is in the form of either:
 		// https://xxx.trellix.com/hx/id//
 		// - or -
@@ -1758,64 +1705,45 @@ import "list"
 
 	_#defs: "/$defs/details/$defs/trellix_hx_bulk_acqs_settings/$defs/authentication/$defs/msso": close({
 		// The login api endpoint url.
-		// This must be a valid URL with an http or https scheme. It has
-		// no default.
+		// This must be a valid URL with an http or https scheme. It has no default.
 		api_endpoint!: string
 
 		// Password of the account identified by username.
-		// There are no restrictions on the format of the password. It has
-		// no default,
-		// specifically enforced min / max length or character set. The
-		// password
-		// will have been provided by an MSSO administrator and it is
-		// assumed that
-		// they have provided a password that is internally consistent
-		// with MSSO
+		// There are no restrictions on the format of the password. It has no default,
+		// specifically enforced min / max length or character set. The password
+		// will have been provided by an MSSO administrator and it is assumed that
+		// they have provided a password that is internally consistent with MSSO
 		// authentication requirements / validation.
 		password!: string
 
 		// Username for MSSO authentication.
-		// There are no restrictions on the format of the username. It has
-		// no default,
-		// specifically enforced min / max length or character set. The
-		// username
-		// will have been provided by an MSSO administrator and it is
-		// assumed that
-		// they have provided a username that is internally consistent
-		// with MSSO
+		// There are no restrictions on the format of the username. It has no default,
+		// specifically enforced min / max length or character set. The username
+		// will have been provided by an MSSO administrator and it is assumed that
+		// they have provided a username that is internally consistent with MSSO
 		// authentication requirements / validation.
 		username!: string
 	})
 
 	_#defs: "/$defs/details/$defs/trellix_hx_bulk_acqs_settings/$defs/authentication/$defs/trellix_iam": close({
 		// Client ID generated in Trellix IAM.
-		// This is a unique identifier for the user that is generated in
-		// Trellix IAM.
-		// It has no default, specifically enforced min / max length or
-		// character set.
-		// It is assumed that the Client ID generated in Trellix IAM is
-		// internally
-		// consistent with Trellix IAM authentication requirements /
-		// validation.
+		// This is a unique identifier for the user that is generated in Trellix IAM.
+		// It has no default, specifically enforced min / max length or character set.
+		// It is assumed that the Client ID generated in Trellix IAM is internally
+		// consistent with Trellix IAM authentication requirements / validation.
 		client_id!: string
 
 		// Secret associated with the Client ID.
-		// This is the secret generated in Trellix IAM for the Client ID.
-		// It has no
-		// default, specifically enforced min / max length or character
-		// set. It is
+		// This is the secret generated in Trellix IAM for the Client ID. It has no
+		// default, specifically enforced min / max length or character set. It is
 		// assumed that the secret generated in Trellix IAM is internally
-		// consistent with Trellix IAM authentication requirements /
-		// validation.
+		// consistent with Trellix IAM authentication requirements / validation.
 		client_secret!: string
 
 		// OAUTH 2 scope to request for the authentication token.
-		// This is the OAUTH 2 scope to request for the authentication
-		// token. It has
-		// no default, specifically enforced min / max length or character
-		// set. It is
-		// assumed that the scope provided is internally consistent with
-		// Trellix IAM
+		// This is the OAUTH 2 scope to request for the authentication token. It has
+		// no default, specifically enforced min / max length or character set. It is
+		// assumed that the scope provided is internally consistent with Trellix IAM
 		// authentication requirements / validation.
 		scope!: string
 	})
@@ -1824,8 +1752,7 @@ import "list"
 		authentication?: matchN(1, [_#defs."/$defs/details/$defs/trellix_hx_hosts_settings/$defs/authentication", list.MaxItems(1) & [..._#defs."/$defs/details/$defs/trellix_hx_hosts_settings/$defs/authentication"]])
 
 		// Trellix HX Device URL.
-		// This must be a valid URL with an http or https scheme. It has
-		// no default.
+		// This must be a valid URL with an http or https scheme. It has no default.
 		// Usually a device URL is in the form of either:
 		// https://xxx.trellix.com/hx/id//
 		// - or -
@@ -1840,64 +1767,45 @@ import "list"
 
 	_#defs: "/$defs/details/$defs/trellix_hx_hosts_settings/$defs/authentication/$defs/msso": close({
 		// The login api endpoint url.
-		// This must be a valid URL with an http or https scheme. It has
-		// no default.
+		// This must be a valid URL with an http or https scheme. It has no default.
 		api_endpoint!: string
 
 		// Password of the account identified by username.
-		// There are no restrictions on the format of the password. It has
-		// no default,
-		// specifically enforced min / max length or character set. The
-		// password
-		// will have been provided by an MSSO administrator and it is
-		// assumed that
-		// they have provided a password that is internally consistent
-		// with MSSO
+		// There are no restrictions on the format of the password. It has no default,
+		// specifically enforced min / max length or character set. The password
+		// will have been provided by an MSSO administrator and it is assumed that
+		// they have provided a password that is internally consistent with MSSO
 		// authentication requirements / validation.
 		password!: string
 
 		// Username for MSSO authentication.
-		// There are no restrictions on the format of the username. It has
-		// no default,
-		// specifically enforced min / max length or character set. The
-		// username
-		// will have been provided by an MSSO administrator and it is
-		// assumed that
-		// they have provided a username that is internally consistent
-		// with MSSO
+		// There are no restrictions on the format of the username. It has no default,
+		// specifically enforced min / max length or character set. The username
+		// will have been provided by an MSSO administrator and it is assumed that
+		// they have provided a username that is internally consistent with MSSO
 		// authentication requirements / validation.
 		username!: string
 	})
 
 	_#defs: "/$defs/details/$defs/trellix_hx_hosts_settings/$defs/authentication/$defs/trellix_iam": close({
 		// Client ID generated in Trellix IAM.
-		// This is a unique identifier for the user that is generated in
-		// Trellix IAM.
-		// It has no default, specifically enforced min / max length or
-		// character set.
-		// It is assumed that the Client ID generated in Trellix IAM is
-		// internally
-		// consistent with Trellix IAM authentication requirements /
-		// validation.
+		// This is a unique identifier for the user that is generated in Trellix IAM.
+		// It has no default, specifically enforced min / max length or character set.
+		// It is assumed that the Client ID generated in Trellix IAM is internally
+		// consistent with Trellix IAM authentication requirements / validation.
 		client_id!: string
 
 		// Secret associated with the Client ID.
-		// This is the secret generated in Trellix IAM for the Client ID.
-		// It has no
-		// default, specifically enforced min / max length or character
-		// set. It is
+		// This is the secret generated in Trellix IAM for the Client ID. It has no
+		// default, specifically enforced min / max length or character set. It is
 		// assumed that the secret generated in Trellix IAM is internally
-		// consistent with Trellix IAM authentication requirements /
-		// validation.
+		// consistent with Trellix IAM authentication requirements / validation.
 		client_secret!: string
 
 		// OAUTH 2 scope to request for the authentication token.
-		// This is the OAUTH 2 scope to request for the authentication
-		// token. It has
-		// no default, specifically enforced min / max length or character
-		// set. It is
-		// assumed that the scope provided is internally consistent with
-		// Trellix IAM
+		// This is the OAUTH 2 scope to request for the authentication token. It has
+		// no default, specifically enforced min / max length or character set. It is
+		// assumed that the scope provided is internally consistent with Trellix IAM
 		// authentication requirements / validation.
 		scope!: string
 	})
@@ -1924,24 +1832,18 @@ import "list"
 		// Refresh Token.
 		refresh_token?: string
 
-		// The access token used to authenticate against Workday. This
-		// field is called
-		// "secret" to maintain backwards compatibility. Workday was
-		// (only) configured
-		// using username (which was unused) and secret (which is used as
-		// the access
-		// token). Either this field or all of the other OAuth fields
-		// below must be
+		// The access token used to authenticate against Workday. This field is called
+		// "secret" to maintain backwards compatibility. Workday was (only) configured
+		// using username (which was unused) and secret (which is used as the access
+		// token). Either this field or all of the other OAuth fields below must be
 		// specified.
 		secret?: string
 
 		// Token endpoint to get the OAuth token from.
 		token_endpoint?: string
 
-		// Username. This is unused: Workday feeds were originally
-		// configured using a
-		// username and secret authentication method, but only the secret
-		// field was
+		// Username. This is unused: Workday feeds were originally configured using a
+		// username and secret authentication method, but only the secret field was
 		// used, and it was used to supply the OAuth access token.
 		user?: string
 	})

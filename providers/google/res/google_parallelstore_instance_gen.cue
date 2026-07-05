@@ -1,18 +1,16 @@
 package res
 
-#google_parallelstore_instance: {
+google_parallelstore_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_parallelstore_instance")
 	close({
 		timeouts?: #timeouts
 
 		// Output only. List of access_points.
-		// Contains a list of IPv4 addresses used for client side
-		// configuration.
+		// Contains a list of IPv4 addresses used for client side configuration.
 		access_points?: [...string]
 
-		// Required. Immutable. Storage capacity of Parallelstore instance
-		// in Gibibytes (GiB).
+		// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
 		capacity_gib!: string
 
 		// The time when the instance was created.
@@ -21,16 +19,11 @@ package res
 		// The version of DAOS software running in the instance.
 		daos_version?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -54,16 +47,13 @@ package res
 		// DIRECTORY_STRIPE_LEVEL_MAX
 		directory_stripe_level?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// Immutable. Contains the id of the allocated IP address
-		// range associated with the private service access connection for
-		// example, \"test-default\"
-		// associated with IP range 10.0.0.0/29. This field is populated
-		// by the service
+		// range associated with the private service access connection for example, \"test-default\"
+		// associated with IP range 10.0.0.0/29. This field is populated by the service
 		// and contains the value currently used by the service.
 		effective_reserved_ip_range?: string
 
@@ -78,8 +68,8 @@ package res
 		file_stripe_level?: string
 		id?:                string
 
-		// The logical name of the Parallelstore instance in the user
-		// project with the following restrictions:
+		// The logical name of the Parallelstore instance in the user project with the
+		// following restrictions:
 		// * Must contain only lowercase letters, numbers, and hyphens.
 		// * Must start with a letter.
 		// * Must be between 1-63 characters.
@@ -88,45 +78,31 @@ package res
 		instance_id!: string
 
 		// Cloud Labels are a flexible and lightweight mechanism for
-		// organizing cloud resources into groups that reflect a
-		// customer's organizational
-		// needs and deployment strategies. Cloud Labels can be used to
-		// filter collections
-		// of resources. They can be used to control how resource metrics
-		// are aggregated.
-		// And they can be used as arguments to policy management rules
-		// (e.g. route, firewall,
+		// organizing cloud resources into groups that reflect a customer's organizational
+		// needs and deployment strategies. Cloud Labels can be used to filter collections
+		// of resources. They can be used to control how resource metrics are aggregated.
+		// And they can be used as arguments to policy management rules (e.g. route, firewall,
 		// load balancing, etc.).
 		//
-		// * Label keys must be between 1 and 63 characters long and must
-		// conform to
+		// * Label keys must be between 1 and 63 characters long and must conform to
 		// the following regular expression: 'a-z{0,62}'.
-		// * Label values must be between 0 and 63 characters long and
-		// must conform
+		// * Label values must be between 0 and 63 characters long and must conform
 		// to the regular expression '[a-z0-9_-]{0,63}'.
-		// * No more than 64 labels can be associated with a given
-		// resource.
+		// * No more than 64 labels can be associated with a given resource.
 		//
-		// See https://goo.gl/xmQnxf for more information on and examples
-		// of labels.
+		// See https://goo.gl/xmQnxf for more information on and examples of labels.
 		//
-		// If you plan to use labels in your own code, please note that
-		// additional
-		// characters may be allowed in the future. Therefore, you are
-		// advised to use
-		// an internal label representation, such as JSON, which doesn't
-		// rely upon
-		// specific characters being disallowed. For example, representing
-		// labels
-		// as the string: 'name + "_" + value' would prove problematic if
-		// we were to
+		// If you plan to use labels in your own code, please note that additional
+		// characters may be allowed in the future. Therefore, you are advised to use
+		// an internal label representation, such as JSON, which doesn't rely upon
+		// specific characters being disallowed. For example, representing labels
+		// as the string: 'name + "_" + value' would prove problematic if we were to
 		// allow '"_"' in a future release. "
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Part of 'parent'. See documentation of 'projectsId'.
@@ -140,15 +116,13 @@ package res
 		// network](https://cloud.google.com/vpc/docs/vpc)
 		// to which the instance is connected.
 		network?: string
-		project?: string
 
 		// Immutable. Contains the id of the allocated IP address range
-		// associated with the private service access connection for
-		// example, \"test-default\"
-		// associated with IP range 10.0.0.0/29. If no range id is
-		// provided all ranges will
+		// associated with the private service access connection for example, \"test-default\"
+		// associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
 		// be considered.
 		reserved_ip_range?: string
+		project?:           string
 
 		// The instance state.
 		// Possible values:

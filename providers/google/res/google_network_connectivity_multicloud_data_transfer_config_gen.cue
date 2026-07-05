@@ -1,26 +1,20 @@
 package res
 
-#google_network_connectivity_multicloud_data_transfer_config: {
+google_network_connectivity_multicloud_data_transfer_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_multicloud_data_transfer_config")
 	close({
 		services?: matchN(1, [#services, [...#services]])
 		timeouts?: #timeouts
 
-		// Time when the MulticloudDataTransferConfig resource was
-		// created.
+		// Time when the MulticloudDataTransferConfig resource was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -35,15 +29,12 @@ package res
 		// MulticloudDataTransferConfig resource.
 		destinations_count?: number
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// The etag is computed by the server, and might be sent with
-		// update and
-		// delete requests so that the client has an up-to-date value
-		// before
+		// The etag is computed by the server, and might be sent with update and
+		// delete requests so that the client has an up-to-date value before
 		// proceeding.
 		etag?: string
 		id?:   string
@@ -51,35 +42,29 @@ package res
 		// User-defined labels.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location of the multicloud data transfer config.
 		location!: string
 
 		// The name of the MulticloudDataTransferConfig resource.
-		name!:    string
-		project?: string
+		name!: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+		project?: string
 
-		// The Google-generated unique ID for the
-		// MulticloudDataTransferConfig
-		// resource. This value is unique across all
-		// MulticloudDataTransferConfig
-		// resources. If a resource is deleted and another with the same
-		// name is
-		// created, the new resource is assigned a different and unique
-		// ID.
+		// The Google-generated unique ID for the MulticloudDataTransferConfig
+		// resource. This value is unique across all MulticloudDataTransferConfig
+		// resources. If a resource is deleted and another with the same name is
+		// created, the new resource is assigned a different and unique ID.
 		uid?: string
 
-		// Time when the MulticloudDataTransferConfig resource was
-		// updated.
+		// Time when the MulticloudDataTransferConfig resource was updated.
 		update_time?: string
 	})
 

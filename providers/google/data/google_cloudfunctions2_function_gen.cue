@@ -1,11 +1,10 @@
 package data
 
-#google_cloudfunctions2_function: {
+google_cloudfunctions2_function: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_cloudfunctions2_function")
 	close({
-		// Describes the Build step of the function that builds a
-		// container
+		// Describes the Build step of the function that builds a container
 		// from the given source.
 		build_config?: [...close({
 			automatic_update_policy?: [...close({})]
@@ -37,32 +36,25 @@ package data
 			worker_pool?: string
 		})]
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// User-provided description of a function.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// The environment the function is hosted on.
 		environment?: string
 
-		// An Eventarc trigger managed by Google Cloud Functions that
-		// fires events in
+		// An Eventarc trigger managed by Google Cloud Functions that fires events in
 		// response to a condition in another service.
 		event_trigger?: [...close({
 			event_filters?: [...close({
@@ -85,22 +77,19 @@ package data
 		// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
 		kms_key_name?: string
 
-		// A set of key/value label pairs associated with this Cloud
-		// Function.
+		// A set of key/value label pairs associated with this Cloud Function.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location of this cloud function.
 		location!: string
 
 		// A user-defined name of the function. Function names must
-		// be unique globally and match pattern
-		// 'projects/*/locations/*/functions/*'.
+		// be unique globally and match pattern 'projects/*/locations/*/functions/*'.
 		name!:    string
 		project?: string
 

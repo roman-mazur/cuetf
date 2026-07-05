@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_network_services_tcp_route: {
+google_network_services_tcp_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_tcp_route")
 	close({
@@ -12,31 +12,23 @@ import "list"
 		// Time the TcpRoute was created in UTC.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// A free-text description of the resource. Max length 1024
-		// characters.
+		// A free-text description of the resource. Max length 1024 characters.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// Gateways defines a list of gateways this TcpRoute is attached
-		// to, as one of the routing rules to route the requests served
-		// by the gateway.
+		// Gateways defines a list of gateways this TcpRoute is attached to, as one of
+		// the routing rules to route the requests served by the gateway.
 		// Each gateway reference should match the pattern:
 		// projects/*/locations/global/gateways/<gateway_name>
 		gateways?: [...string]
@@ -44,26 +36,23 @@ import "list"
 
 		// Set of label tags associated with the TcpRoute resource.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Meshes defines a list of meshes this TcpRoute is attached to,
-		// as one of the routing rules to route the requests served by
-		// the mesh.
-		// Each mesh reference should match the pattern:
-		// projects/*/locations/global/meshes/<mesh_name>
+		// Meshes defines a list of meshes this TcpRoute is attached to, as one of the
+		// routing rules to route the requests served by the mesh.
+		// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
 		// The attached Mesh should be of a type SIDECAR
 		meshes?: [...string]
 
 		// Name of the TcpRoute resource.
-		name!:    string
-		project?: string
+		name!: string
 
 		// Server-defined URL of this resource.
 		self_link?: string
+		project?:   string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -87,18 +76,16 @@ import "list"
 	_#defs: "/$defs/rules/$defs/action": close({
 		destinations?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/destinations", [..._#defs."/$defs/rules/$defs/action/$defs/destinations"]])
 
-		// Specifies the idle timeout for the selected route. The idle
-		// timeout is defined as the period in which there are no bytes
-		// sent or received on either the upstream or downstream
-		// connection. If not set, the default idle timeout is 30
-		// seconds. If set to 0s, the timeout will be disabled.
+		// Specifies the idle timeout for the selected route. The idle timeout is
+		// defined as the period in which there are no bytes sent or received on either
+		// the upstream or downstream connection. If not set, the default idle timeout
+		// is 30 seconds. If set to 0s, the timeout will be disabled.
 		//
-		// A duration in seconds with up to nine fractional digits, ending
-		// with 's'. Example: "3.5s".
+		// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 		idle_timeout?: string
 
-		// If true, Router will use the destination IP and port of the
-		// original connection as the destination of the request.
+		// If true, Router will use the destination IP and port of the original
+		// connection as the destination of the request.
 		original_destination?: bool
 	})
 
@@ -106,32 +93,27 @@ import "list"
 		// The URL of a BackendService to route traffic to.
 		service_name?: string
 
-		// Specifies the proportion of requests forwarded to the backend
-		// referenced by the serviceName field. This is computed as:
-		// weight/Sum(weights in this destination list). For non-zero
-		// values, there may be some epsilon from the exact proportion
-		// defined here depending on the precision an implementation
+		// Specifies the proportion of requests forwarded to the backend referenced by
+		// the serviceName field. This is computed as: weight/Sum(weights in this
+		// destination list). For non-zero values, there may be some epsilon from the
+		// exact proportion defined here depending on the precision an implementation
 		// supports.
-		// If only one serviceName is specified and it has a weight
-		// greater than 0, 100% of the traffic is forwarded to that
-		// backend.
-		// If weights are specified for any one service name, they need to
-		// be specified for all of them.
-		// If weights are unspecified for all services, then, traffic is
-		// distributed in equal proportions to all of them.
+		// If only one serviceName is specified and it has a weight greater than 0, 100%
+		// of the traffic is forwarded to that backend.
+		// If weights are specified for any one service name, they need to be specified for all of them.
+		// If weights are unspecified for all services, then, traffic is distributed in
+		// equal proportions to all of them.
 		weight?: number
 	})
 
 	_#defs: "/$defs/rules/$defs/matches": close({
-		// Must be specified in the CIDR range format. A CIDR range
-		// consists of an IP Address and a prefix length to construct the
-		// subnet mask.
-		// By default, the prefix length is 32 (i.e. matches a single IP
-		// address). Only IPV4 addresses are supported. Examples:
-		// "10.0.0.1" - matches against this exact IP address.
-		// "10.0.0.0/8" - matches against any IP address within the
-		// 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches
-		// against any IP address'.
+		// Must be specified in the CIDR range format. A CIDR range consists of an IP
+		// Address and a prefix length to construct the subnet mask.
+		// By default, the prefix length is 32 (i.e. matches a single IP address). Only
+		// IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this
+		// exact IP address. "10.0.0.0/8" - matches against any IP address within the
+		// 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP
+		// address'.
 		address!: string
 
 		// Specifies the destination port to match against.

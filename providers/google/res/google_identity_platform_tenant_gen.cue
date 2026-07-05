@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_identity_platform_tenant: {
+google_identity_platform_tenant: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_identity_platform_tenant")
 	close({
@@ -12,23 +12,16 @@ import "list"
 		// Whether to allow email/password user authentication.
 		allow_password_signup?: bool
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Whether authentication is disabled for the tenant. If true, the
-		// users under
-		// the disabled tenant are not allowed to sign-in. Admins of the
-		// disabled tenant
+		// Whether authentication is disabled for the tenant. If true, the users under
+		// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
 		// are not able to manage its users.
 		disable_auth?: bool
 
@@ -55,12 +48,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/client/$defs/permissions": close({
-		// When true, end users cannot delete their account on the
-		// associated project through any of our API methods.
+		// When true, end users cannot delete their account on the associated project
+		// through any of our API methods.
 		disabled_user_deletion?: bool
 
-		// When true, end users cannot sign up for a new account on the
-		// associated project through any of our API methods.
+		// When true, end users cannot sign up for a new account on the associated
+		// project through any of our API methods.
 		disabled_user_signup?: bool
 	})
 }

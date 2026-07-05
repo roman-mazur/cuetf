@@ -1,6 +1,6 @@
 package data
 
-#google_sql_database_instance: {
+google_sql_database_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_sql_database_instance")
 	close({
@@ -10,8 +10,7 @@ package data
 		// The name of the BackupDR backup to restore from.
 		backupdr_backup?: string
 
-		// Configuration for creating a new instance as a clone of another
-		// instance.
+		// Configuration for creating a new instance as a clone of another instance.
 		clone?: [...close({
 			allocated_ip_range?: string
 			database_names?: [...string]
@@ -22,47 +21,37 @@ package data
 			source_project?:                string
 		})]
 
-		// The connection name of the instance to be used in connection
-		// strings. For example, when connecting with Cloud SQL Proxy.
+		// The connection name of the instance to be used in connection strings. For
+		// example, when connecting with Cloud SQL Proxy.
 		connection_name?: string
 
-		// The MySQL, PostgreSQL or SQL Server version to use. Supported
-		// values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4,
-		// POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12,
-		// POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16,
-		// POSTGRES_17, POSTGRES_18, SQLSERVER_2022_STANDARD,
-		// SQLSERVER_2022_ENTERPRISE, SQLSERVER_2022_EXPRESS,
-		// SQLSERVER_2022_WEB, SQLSERVER_2025_STANDARD,
-		// SQLSERVER_2025_ENTERPRISE, SQLSERVER_2025_EXPRESS,
-		// SQLSERVER_2025_WEB. Database Version Policies includes an
-		// up-to-date reference of supported versions.
+		// The MySQL, PostgreSQL or SQL Server version to use. Supported values include
+		// MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10,
+		// POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15,
+		// POSTGRES_16, POSTGRES_17, POSTGRES_18, SQLSERVER_2022_STANDARD,
+		// SQLSERVER_2022_ENTERPRISE, SQLSERVER_2022_EXPRESS, SQLSERVER_2022_WEB,
+		// SQLSERVER_2025_STANDARD, SQLSERVER_2025_ENTERPRISE, SQLSERVER_2025_EXPRESS,
+		// SQLSERVER_2025_WEB. Database Version Policies includes an up-to-date
+		// reference of supported versions.
 		database_version?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Used to block Terraform from deleting a SQL Instance. Defaults
-		// to true.
+		// Used to block Terraform from deleting a SQL Instance. Defaults to true.
 		deletion_protection?: bool
 
-		// The instance-level dns name of the instance for PSC instances
-		// or public IP CAS instances.
+		// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
 		dns_name?: string
 
-		// The list of DNS names used by this instance. Different
-		// connection types for an instance may have different DNS names.
-		// DNS names can apply to an individual instance or a cluster of
-		// instances.
+		// The list of DNS names used by this instance. Different connection types for
+		// an instance may have different DNS names. DNS names can apply to an
+		// individual instance or a cluster of instances.
 		dns_names?: [...close({
 			connection_type?: string
 			dns_scope?:       string
@@ -70,13 +59,12 @@ package data
 		})]
 		encryption_key_name?: string
 
-		// The description of final backup if instance enable create final
-		// backup during instance deletion.
+		// The description of final backup if instance enable create final backup during instance deletion.
 		final_backup_description?: string
 
-		// The first IPv4 address of any type assigned. This is to support
-		// accessing the first address in the list in a terraform output
-		// when the resource is configured with a count.
+		// The first IPv4 address of any type assigned. This is to support accessing the
+		// first address in the list in a terraform output when the resource is
+		// configured with a count.
 		first_ip_address?: string
 		id?:               string
 
@@ -93,24 +81,21 @@ package data
 		// Maintenance version.
 		maintenance_version?: string
 
-		// The name of the instance that will act as the master in the
-		// replication setup. Note, this requires the master to have
-		// binary_log_enabled set, as well as existing backups.
+		// The name of the instance that will act as the master in the replication
+		// setup. Note, this requires the master to have binary_log_enabled set, as
+		// well as existing backups.
 		master_instance_name?: string
 
-		// The name of the instance. If the name is left blank, Terraform
-		// will randomly generate one when the instance is first created.
-		// This is done because after a name is used, it cannot be reused
-		// for up to one week.
+		// The name of the instance. If the name is left blank, Terraform will randomly
+		// generate one when the instance is first created. This is done because after
+		// a name is used, it cannot be reused for up to one week.
 		name!: string
 
-		// For a read pool instance, the number of nodes in the read pool.
-		// For read pools with auto scaling enabled, this field is read
-		// only.
+		// For a read pool instance, the number of nodes in the read pool. For read
+		// pools with auto scaling enabled, this field is read only.
 		node_count?: number
 
-		// Configuration for creating a new instance using
-		// point-in-time-restore from backupdr backup.
+		// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
 		point_in_time_restore_context?: [...close({
 			allocated_ip_range?: string
 			datasource?:         string
@@ -120,33 +105,29 @@ package data
 			target_instance?:    string
 		})]
 
-		// IPv4 address assigned. This is a workaround for an issue fixed
-		// in Terraform 0.12 but also provides a convenient way to access
-		// an IP of a specific type without performing filtering in a
-		// Terraform config.
+		// IPv4 address assigned. This is a workaround for an issue fixed in Terraform
+		// 0.12 but also provides a convenient way to access an IP of a specific type
+		// without performing filtering in a Terraform config.
 		private_ip_address?: string
 
-		// The ID of the project in which the resource belongs. If it is
-		// not provided, the provider project is used.
+		// The ID of the project in which the resource belongs. If it is not provided,
+		// the provider project is used.
 		project?: string
 
 		// The link to service attachment of PSC instance.
 		psc_service_attachment_link?: string
 
-		// IPv4 address assigned. This is a workaround for an issue fixed
-		// in Terraform 0.12 but also provides a convenient way to access
-		// an IP of a specific type without performing filtering in a
-		// Terraform config.
+		// IPv4 address assigned. This is a workaround for an issue fixed in Terraform
+		// 0.12 but also provides a convenient way to access an IP of a specific type
+		// without performing filtering in a Terraform config.
 		public_ip_address?: string
 
-		// The region the instance will sit in. Note, Cloud SQL is not
-		// available in all regions. A valid region must be provided to
-		// use this resource. If a region is not provided in the resource
-		// definition, the provider region will be used instead, but this
-		// will be an apply-time error for instances if the provider
-		// region is not supported with Cloud SQL. If you choose not to
-		// provide the region argument for this resource, make sure you
-		// understand this.
+		// The region the instance will sit in. Note, Cloud SQL is not available in all
+		// regions. A valid region must be provided to use this resource. If a region
+		// is not provided in the resource definition, the provider region will be used
+		// instead, but this will be an apply-time error for instances if the provider
+		// region is not supported with Cloud SQL. If you choose not to provide the
+		// region argument for this resource, make sure you understand this.
 		region?: string
 
 		// The configuration for replication.
@@ -168,10 +149,9 @@ package data
 		// The replicas of the instance.
 		replica_names?: [...string]
 
-		// A primary instance and disaster recovery replica pair.
-		// Applicable to MySQL and PostgreSQL. This field can be set if
-		// the primary has psa_write_endpoint set or both the primary and
-		// replica are created.
+		// A primary instance and disaster recovery replica pair. Applicable to MySQL
+		// and PostgreSQL. This field can be set if the primary has psa_write_endpoint
+		// set or both the primary and replica are created.
 		replication_cluster?: [...close({
 			dr_replica?:               bool
 			failover_dr_replica_name?: string
@@ -187,13 +167,13 @@ package data
 		root_password?: string
 
 		// Initial root password. Required for MS SQL Server.
-		// Note: This property is write-only and will not be read from the
-		// API. For more info see [updating write-only
+		// Note: This property is write-only and will not be read from the API. For more
+		// info see [updating write-only
 		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 		root_password_wo?: string
 
-		// Triggers update of root_password_wo write-only. For more info
-		// see [updating write-only
+		// Triggers update of root_password_wo write-only. For more info see [updating
+		// write-only
 		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 		root_password_wo_version?: string
 
@@ -210,8 +190,7 @@ package data
 		// The service account email address assigned to the instance.
 		service_account_email_address?: string
 
-		// The settings to use for the database. The configuration is
-		// detailed below.
+		// The settings to use for the database. The configuration is detailed below.
 		settings?: [...close({
 			activation_policy?: string
 			active_directory_config?: [...close({

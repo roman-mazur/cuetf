@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_healthcare_pipeline_job: {
+google_healthcare_pipeline_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_healthcare_pipeline_job")
 	close({
@@ -14,55 +14,43 @@ import "list"
 		// Healthcare Dataset under which the Pipeline Job is to run
 		dataset!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// If true, disables writing lineage for the pipeline.
 		disable_lineage?: bool
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// User-supplied key-value pairs used to organize Pipeline Jobs.
-		// Label keys must be between 1 and 63 characters long, have a
-		// UTF-8 encoding of
-		// maximum 128 bytes, and must conform to the following PCRE
-		// regular expression:
+		// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+		// maximum 128 bytes, and must conform to the following PCRE regular expression:
 		// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-		// Label values are optional, must be between 1 and 63 characters
-		// long, have a
-		// UTF-8 encoding of maximum 128 bytes, and must conform to the
-		// following PCRE
+		// Label values are optional, must be between 1 and 63 characters long, have a
+		// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE
 		// regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
 		// No more than 64 labels can be associated with a given pipeline.
 		// An object containing a list of "key": value pairs.
 		// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Location where the Pipeline Job is to run
 		location!: string
 
-		// Specifies the name of the pipeline job. This field is
-		// user-assigned.
+		// Specifies the name of the pipeline job. This field is user-assigned.
 		name!: string
 
 		// The fully qualified name of this dataset
@@ -106,15 +94,13 @@ import "list"
 	#reconciliation_pipeline_job: close({
 		merge_config!: matchN(1, [_#defs."/$defs/reconciliation_pipeline_job/$defs/merge_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/reconciliation_pipeline_job/$defs/merge_config"]])
 
-		// The harmonized FHIR store to write harmonized FHIR resources
-		// to,
+		// The harmonized FHIR store to write harmonized FHIR resources to,
 		// in the format of:
 		// project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{id}
 		fhir_store_destination?: string
 
 		// Specifies the top level directory of the matching configs used
-		// in all mapping pipelines, which extract properties for
-		// resources
+		// in all mapping pipelines, which extract properties for resources
 		// to be matched on.
 		// Example: gs://{bucket-id}/{path/to/matching/configs}
 		matching_uri_prefix!: string
@@ -147,10 +133,8 @@ import "list"
 		// Example: gs://{bucket-id}/{path/to/import-root/dir}
 		import_uri_prefix!: string
 
-		// Main configuration file which has the entrypoint or the root
-		// function.
-		// Example:
-		// gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+		// Main configuration file which has the entrypoint or the root function.
+		// Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
 		uri!: string
 	})
 
@@ -166,10 +150,8 @@ import "list"
 		// Example: gs://{bucket-id}/{path/to/import-root/dir}
 		import_uri_prefix!: string
 
-		// Main configuration file which has the entrypoint or the root
-		// function.
-		// Example:
-		// gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+		// Main configuration file which has the entrypoint or the root function.
+		// Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
 		uri!: string
 	})
 }

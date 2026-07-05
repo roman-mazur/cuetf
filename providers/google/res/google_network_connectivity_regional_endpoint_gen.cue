@@ -1,65 +1,55 @@
 package res
 
-#google_network_connectivity_regional_endpoint: {
+google_network_connectivity_regional_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_regional_endpoint")
 	close({
 		timeouts?: #timeouts
 
-		// The access type of this regional endpoint. This field is
-		// reflected in the PSC Forwarding Rule configuration to enable
-		// global access. Possible values: ["GLOBAL", "REGIONAL"]
+		// The access type of this regional endpoint. This field is reflected in the PSC
+		// Forwarding Rule configuration to enable global access. Possible values:
+		// ["GLOBAL", "REGIONAL"]
 		access_type!: string
 
-		// The IP Address of the Regional Endpoint. When no address is
-		// provided, an IP from the subnetwork is allocated. Use one of
-		// the following formats: * IPv4 address as in '10.0.0.1' *
-		// Address resource URI as in
+		// The IP Address of the Regional Endpoint. When no address is provided, an IP
+		// from the subnetwork is allocated. Use one of the following formats: * IPv4
+		// address as in '10.0.0.1' * Address resource URI as in
 		// 'projects/{project}/regions/{region}/addresses/{address_name}'
 		//
-		// ~> **Note:** This field accepts both a reference to a Compute
-		// Address resource, which is the resource name of which format
-		// is given in the description, and IP literal value. If the user
-		// chooses to input a reserved address value; they need to make
-		// sure that the reserved address is in IPv4 version, its purpose
-		// is GCE_ENDPOINT, its type is INTERNAL and its status is
-		// RESERVED. If the user chooses to input an IP literal, they
-		// need to make sure that it's a valid IPv4 address (x.x.x.x)
-		// within the subnetwork.
+		// ~> **Note:** This field accepts both a reference to a Compute Address
+		// resource, which is the resource name of which format is given in the
+		// description, and IP literal value. If the user chooses to input a reserved
+		// address value; they need to make sure that the reserved address is in IPv4
+		// version, its purpose is GCE_ENDPOINT, its type is INTERNAL and its status is
+		// RESERVED. If the user chooses to input an IP literal, they need to make sure
+		// that it's a valid IPv4 address (x.x.x.x) within the subnetwork.
 		address?: string
 
 		// Time when the RegionalEndpoint was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// A description of this resource.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// User-defined labels.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location of the RegionalEndpoint.
@@ -68,23 +58,22 @@ package res
 		// The name of the RegionalEndpoint.
 		name!: string
 
-		// The name of the VPC network for this private regional endpoint.
-		// Format: 'projects/{project}/global/networks/{network}'
+		// The name of the VPC network for this private regional endpoint. Format:
+		// 'projects/{project}/global/networks/{network}'
 		network?: string
-		project?: string
 
-		// The resource reference of the PSC Forwarding Rule created on
-		// behalf of the customer. Format:
+		// The resource reference of the PSC Forwarding Rule created on behalf of the
+		// customer. Format:
 		// '//compute.googleapis.com/projects/{project}/regions/{region}/forwardingRules/{forwarding_rule_name}'
 		psc_forwarding_rule?: string
+		project?:             string
 
-		// The name of the subnetwork from which the IP address will be
-		// allocated. Format:
-		// 'projects/{project}/regions/{region}/subnetworks/{subnetwork}'
+		// The name of the subnetwork from which the IP address will be allocated.
+		// Format: 'projects/{project}/regions/{region}/subnetworks/{subnetwork}'
 		subnetwork?: string
 
-		// The service endpoint this private regional endpoint connects
-		// to. Format: '{apiname}.{region}.rep.googleapis.com' Example:
+		// The service endpoint this private regional endpoint connects to. Format:
+		// '{apiname}.{region}.rep.googleapis.com' Example:
 		// \"cloudkms.us-central1.rep.googleapis.com\".
 		target_google_api!: string
 

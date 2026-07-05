@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_firebase_app_hosting_backend: {
+google_firebase_app_hosting_backend: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_hosting_backend")
 	close({
@@ -10,14 +10,13 @@ import "list"
 		timeouts?: #timeouts
 
 		// Unstructured key value map that may be set by external tools to
-		// store and arbitrary metadata. They are not queryable and should
-		// be
+		// store and arbitrary metadata. They are not queryable and should be
 		// preserved when modifying objects.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the annotations present in your configuration.
-		// Please refer to the field 'effective_annotations' for all of
-		// the annotations present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the
+		// annotations present in your configuration.
+		// Please refer to the field 'effective_annotations' for all of the annotations
+		// present on the resource.
 		annotations?: [string]: string
 
 		// The [ID of a Web
@@ -25,8 +24,7 @@ import "list"
 		// associated with the backend.
 		app_id!: string
 
-		// Id of the backend. Also used as the service ID for Cloud Run,
-		// and as part
+		// Id of the backend. Also used as the service ID for Cloud Run, and as part
 		// of the default domain name.
 		backend_id!: string
 
@@ -36,55 +34,44 @@ import "list"
 		// Time at which the backend was deleted.
 		delete_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// Human-readable name. 63 character limit.
 		display_name?: string
 
-		// All of annotations (key/value pairs) present on the resource in
-		// GCP, including the annotations configured through Terraform,
-		// other clients and services.
+		// All of annotations (key/value pairs) present on the resource in GCP,
+		// including the annotations configured through Terraform, other clients and
+		// services.
 		effective_annotations?: [string]: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// The environment name of the backend, used to load environment
-		// variables
+		// The environment name of the backend, used to load environment variables
 		// from environment specific configuration.
 		environment?: string
 
 		// Server-computed checksum based on other values; may be sent
-		// on update or delete to ensure operation is done on expected
-		// resource.
+		// on update or delete to ensure operation is done on expected resource.
 		etag?: string
 		id?:   string
 
-		// Unstructured key value map that can be used to organize and
-		// categorize
+		// Unstructured key value map that can be used to organize and categorize
 		// objects.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// The canonical IDs of a Google Cloud location such as
-		// "us-east1".
+		// The canonical IDs of a Google Cloud location such as "us-east1".
 		location!: string
 
 		// A list of the resources managed by this backend.
@@ -99,22 +86,18 @@ import "list"
 		// Format:
 		//
 		// 'projects/{project}/locations/{locationId}/backends/{backendId}'.
-		name?:    string
-		project?: string
+		name?: string
 
-		// The name of the service account used for Cloud Build and Cloud
-		// Run.
+		// The name of the service account used for Cloud Build and Cloud Run.
 		// Should have the role roles/firebaseapphosting.computeRunner
 		// or equivalent permissions.
 		service_account!: string
+		project?:         string
 
-		// Immutable. Specifies how App Hosting will serve the content for
-		// this backend. It will
-		// either be contained to a single region (REGIONAL_STRICT) or
-		// allowed to use
-		// App Hosting's global-replicated serving infrastructure
-		// (GLOBAL_ACCESS). Possible values: ["REGIONAL_STRICT",
-		// "GLOBAL_ACCESS"]
+		// Immutable. Specifies how App Hosting will serve the content for this backend. It will
+		// either be contained to a single region (REGIONAL_STRICT) or allowed to use
+		// App Hosting's global-replicated serving infrastructure (GLOBAL_ACCESS).
+		// Possible values: ["REGIONAL_STRICT", "GLOBAL_ACCESS"]
 		serving_locality!: string
 
 		// The combination of labels configured directly on the resource
@@ -139,8 +122,7 @@ import "list"
 		// projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}
 		repository!: string
 
-		// If 'repository' is provided, the directory relative to the root
-		// of the
+		// If 'repository' is provided, the directory relative to the root of the
 		// repository to use as the root for the deployed web app.
 		root_directory?: string
 	})

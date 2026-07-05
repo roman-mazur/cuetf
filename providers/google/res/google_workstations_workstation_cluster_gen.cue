@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_workstations_workstation_cluster: {
+google_workstations_workstation_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_workstations_workstation_cluster")
 	close({
@@ -12,10 +12,10 @@ import "list"
 
 		// Client-specified annotations. This is distinct from labels.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the annotations present in your configuration.
-		// Please refer to the field 'effective_annotations' for all of
-		// the annotations present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the
+		// annotations present in your configuration.
+		// Please refer to the field 'effective_annotations' for all of the annotations
+		// present on the resource.
 		annotations?: [string]: string
 
 		// Status conditions describing the current resource state.
@@ -27,61 +27,52 @@ import "list"
 			message?: string
 		})]
 
-		// The private IP address of the control plane for this
-		// workstation cluster.
-		// Workstation VMs need access to this IP address to work with the
-		// service, so make sure that your firewall rules allow egress
-		// from the workstation VMs to this address.
+		// The private IP address of the control plane for this workstation cluster.
+		// Workstation VMs need access to this IP address to work with the service, so
+		// make sure that your firewall rules allow egress from the workstation VMs to
+		// this address.
 		control_plane_ip?: string
 
 		// Time when this resource was created.
 		create_time?: string
 
-		// Whether this resource is in degraded mode, in which case it may
-		// require user action to restore full functionality.
+		// Whether this resource is in degraded mode, in which case it may require user
+		// action to restore full functionality.
 		// Details can be found in the conditions field.
 		degraded?: bool
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// Human-readable name for this resource.
 		display_name?: string
 
-		// All of annotations (key/value pairs) present on the resource in
-		// GCP, including the annotations configured through Terraform,
-		// other clients and services.
+		// All of annotations (key/value pairs) present on the resource in GCP,
+		// including the annotations configured through Terraform, other clients and
+		// services.
 		effective_annotations?: [string]: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// Checksum computed by the server.
-		// May be sent on update and delete requests to ensure that the
-		// client has an up-to-date value before proceeding.
+		// May be sent on update and delete requests to ensure that the client has an
+		// up-to-date value before proceeding.
 		etag?: string
 		id?:   string
 
-		// Client-specified labels that are applied to the resource and
-		// that are also propagated to the underlying Compute Engine
-		// resources.
+		// Client-specified labels that are applied to the resource and that are also
+		// propagated to the underlying Compute Engine resources.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location where the workstation cluster should reside.
@@ -90,17 +81,15 @@ import "list"
 		// The name of the cluster resource.
 		name?: string
 
-		// The relative resource name of the VPC network on which the
-		// instance can be accessed.
-		// It is specified in the following form:
-		// "projects/{projectNumber}/global/networks/{network_id}".
+		// The relative resource name of the VPC network on which the instance can be accessed.
+		// It is specified in the following form: "projects/{projectNumber}/global/networks/{network_id}".
 		network!: string
-		project?: string
 
-		// Name of the Compute Engine subnetwork in which instances
-		// associated with this cluster will be created.
+		// Name of the Compute Engine subnetwork in which instances associated with this
+		// cluster will be created.
 		// Must be part of the subnetwork specified for this cluster.
 		subnetwork!: string
+		project?:    string
 
 		// Resource manager tags bound to this resource.
 		// For example:
@@ -115,26 +104,23 @@ import "list"
 		// The system-generated UID of the resource.
 		uid?: string
 
-		// Specifies the redirect URL for unauthorized requests received
-		// by workstation VMs in this cluster.
-		// Redirects to this endpoint will send a base64 encoded 'state'
-		// query param containing the target workstation name and
-		// original request hostname. The endpoint is responsible for
-		// retrieving a token using 'GenerateAccessToken' and redirecting
-		// back to the original hostname with the token.
+		// Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+		// Redirects to this endpoint will send a base64 encoded 'state' query param
+		// containing the target workstation name and original request hostname. The
+		// endpoint is responsible for retrieving a token using 'GenerateAccessToken'
+		// and redirecting back to the original hostname with the token.
 		workstation_authorization_url?: string
 
 		// ID to use for the workstation cluster.
 		workstation_cluster_id!: string
 
-		// Specifies the launch URL for workstations in this cluster.
-		// Requests sent to unstarted workstations will be redirected to
-		// this URL.
-		// Requests redirected to the launch endpoint will be sent with a
-		// 'workstation' query parameter containing the full workstation
-		// resource. The launch endpoint is responsible for starting the
-		// workstation, polling it until it reaches 'STATE_RUNNING', and
-		// then issuing a redirect to the workstation's host URL.
+		// Specifies the launch URL for workstations in this cluster. Requests sent to
+		// unstarted workstations will be redirected to this URL.
+		// Requests redirected to the launch endpoint will be sent with a 'workstation'
+		// query parameter containing the full workstation resource. The launch
+		// endpoint is responsible for starting the workstation, polling it until it
+		// reaches 'STATE_RUNNING', and then issuing a redirect to the workstation's
+		// host URL.
 		workstation_launch_url?: string
 	})
 
@@ -144,29 +130,26 @@ import "list"
 	})
 
 	#private_cluster_config: close({
-		// Additional project IDs that are allowed to attach to the
-		// workstation cluster's service attachment.
-		// By default, the workstation cluster's project and the VPC host
-		// project (if different) are allowed.
+		// Additional project IDs that are allowed to attach to the workstation
+		// cluster's service attachment.
+		// By default, the workstation cluster's project and the VPC host project (if
+		// different) are allowed.
 		allowed_projects?: [...string]
 
 		// Hostname for the workstation cluster.
-		// This field will be populated only when private endpoint is
-		// enabled.
-		// To access workstations in the cluster, create a new DNS zone
-		// mapping this domain name to an internal IP address and a
-		// forwarding rule mapping that address to the service
-		// attachment.
+		// This field will be populated only when private endpoint is enabled.
+		// To access workstations in the cluster, create a new DNS zone mapping this
+		// domain name to an internal IP address and a forwarding rule mapping that
+		// address to the service attachment.
 		cluster_hostname?: string
 
 		// Whether Workstations endpoint is private.
 		enable_private_endpoint!: bool
 
 		// Service attachment URI for the workstation cluster.
-		// The service attachment is created when private endpoint is
-		// enabled.
-		// To access workstations in the cluster, configure access to the
-		// managed service using (Private Service
+		// The service attachment is created when private endpoint is enabled.
+		// To access workstations in the cluster, configure access to the managed
+		// service using (Private Service
 		// Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
 		service_attachment_uri?: string
 	})

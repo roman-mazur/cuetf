@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_compute_node_template: {
+google_compute_node_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_node_template")
 	close({
@@ -12,23 +12,17 @@ import "list"
 		server_binding?: matchN(1, [#server_binding, list.MaxItems(1) & [...#server_binding]])
 		timeouts?: #timeouts
 
-		// CPU overcommit. Default value: "NONE" Possible values:
-		// ["ENABLED", "NONE"]
+		// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
 		cpu_overcommit_type?: string
 
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -43,15 +37,14 @@ import "list"
 		// instance scheduling.
 		node_affinity_labels?: [string]: string
 
-		// Node type to use for nodes group that are created from this
-		// template.
+		// Node type to use for nodes group that are created from this template.
 		// Only one of nodeTypeFlexibility and nodeType can be specified.
 		node_type?: string
-		project?:   string
 
 		// Region where nodes using the node template will be created.
 		// If it is not provided, the provider region is used.
 		region?:    string
+		project?:   string
 		self_link?: string
 	})
 
@@ -72,10 +65,9 @@ import "list"
 		// Specifies the size of the disk in base-2 GB.
 		disk_size_gb?: number
 
-		// Specifies the desired disk type on the node. This disk type
-		// must be a local storage type (e.g.: local-ssd). Note that for
-		// nodeTemplates, this should be the name of the disk type and
-		// not its URL.
+		// Specifies the desired disk type on the node. This disk type must be a local
+		// storage type (e.g.: local-ssd). Note that for nodeTemplates, this should be
+		// the name of the disk type and not its URL.
 		disk_type?: string
 	})
 
@@ -96,17 +88,14 @@ import "list"
 		// following a maintenance event.
 		//
 		// If 'RESTART_NODE_ON_MINIMAL_SERVER', nodes using this template
-		// will restart on the same physical server following a
-		// maintenance
+		// will restart on the same physical server following a maintenance
 		// event, instead of being live migrated to or restarted on a new
 		// physical server. This option may be useful if you are using
 		// software licenses tied to the underlying server characteristics
 		// such as physical sockets or cores, to avoid the need for
-		// additional licenses when maintenance occurs. However, VMs on
-		// such
-		// nodes will experience outages while maintenance is applied.
-		// Possible values: ["RESTART_NODE_ON_ANY_SERVER",
-		// "RESTART_NODE_ON_MINIMAL_SERVERS"]
+		// additional licenses when maintenance occurs. However, VMs on such
+		// nodes will experience outages while maintenance is applied. Possible values:
+		// ["RESTART_NODE_ON_ANY_SERVER", "RESTART_NODE_ON_MINIMAL_SERVERS"]
 		type!: string
 	})
 

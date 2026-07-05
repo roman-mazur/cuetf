@@ -1,29 +1,23 @@
 package res
 
-#google_apigee_security_feedback: {
+google_apigee_security_feedback: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_security_feedback")
 	close({
 		feedback_contexts!: matchN(1, [#feedback_contexts, [_, ...] & [...#feedback_contexts]])
 		timeouts?: #timeouts
 
-		// Optional text the user can provide for additional, unstructured
-		// context.
+		// Optional text the user can provide for additional, unstructured context.
 		comment?: string
 
 		// The time when this specific feedback id was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -33,24 +27,20 @@ package res
 		// Resource ID of the security feedback.
 		feedback_id!: string
 
-		// The type of feedback being submitted. Possible values:
-		// ["EXCLUDED_DETECTION"]
+		// The type of feedback being submitted. Possible values: ["EXCLUDED_DETECTION"]
 		feedback_type!: string
 		id?:            string
 
 		// Name of the security feedback resource,
-		// in the format
-		// 'organizations/{{org_name}}/securityFeedback/{{feedback_id}}'.
+		// in the format 'organizations/{{org_name}}/securityFeedback/{{feedback_id}}'.
 		name?: string
 
-		// The Apigee Organization associated with the Apigee Security
-		// Feedback,
+		// The Apigee Organization associated with the Apigee Security Feedback,
 		// in the format 'organizations/{{org_name}}'.
 		org_id!: string
 
-		// The reason for the feedback. Possible values:
-		// ["INTERNAL_SYSTEM", "NON_RISK_CLIENT", "NAT",
-		// "PENETRATION_TEST", "OTHER"]
+		// The reason for the feedback. Possible values: ["INTERNAL_SYSTEM",
+		// "NON_RISK_CLIENT", "NAT", "PENETRATION_TEST", "OTHER"]
 		reason?: string
 
 		// The time when this specific feedback id was updated.
@@ -58,13 +48,11 @@ package res
 	})
 
 	#feedback_contexts: close({
-		// The attribute the user is providing feedback about. Possible
-		// values: ["ATTRIBUTE_ENVIRONMENTS",
-		// "ATTRIBUTE_IP_ADDRESS_RANGES"]
+		// The attribute the user is providing feedback about. Possible values:
+		// ["ATTRIBUTE_ENVIRONMENTS", "ATTRIBUTE_IP_ADDRESS_RANGES"]
 		attribute!: string
 
-		// The values of the attribute the user is providing feedback
-		// about, separated by commas.
+		// The values of the attribute the user is providing feedback about, separated by commas.
 		values!: [...string]
 	})
 

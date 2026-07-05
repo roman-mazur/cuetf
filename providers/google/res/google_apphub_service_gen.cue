@@ -2,60 +2,51 @@ package res
 
 import "list"
 
-#google_apphub_service: {
+google_apphub_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apphub_service")
 	close({
 		attributes?: matchN(1, [#attributes, list.MaxItems(1) & [...#attributes]])
 		timeouts?: #timeouts
 
-		// Part of 'parent'. Full resource name of a parent Application.
-		// Example:
+		// Part of 'parent'. Full resource name of a parent Application. Example:
 		// projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
 		application_id!: string
 
 		// Output only. Create time.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// User-defined description of a Service.
 		description?: string
 
-		// Immutable. The resource name of the original discovered
-		// service.
+		// Immutable. The resource name of the original discovered service.
 		discovered_service!: string
 
 		// User-defined name for the Service.
 		display_name?: string
 		id?:           string
 
-		// Part of 'parent'. Full resource name of a parent Application.
-		// Example:
+		// Part of 'parent'. Full resource name of a parent Application. Example:
 		// projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
 		location!: string
 
 		// Identifier. The resource name of a Service. Format:
 		// "projects/{host-project-id}/locations/{location}/applications/{application-id}/services/{service-id}"
-		name?:    string
-		project?: string
+		name?: string
 
 		// The Service identifier.
 		service_id!: string
+		project?:    string
 
-		// Properties of an underlying cloud resource that can comprise a
-		// Service.
+		// Properties of an underlying cloud resource that can comprise a Service.
 		service_properties?: [...close({
 			extended_metadata?: [...close({
 				key?: string
@@ -78,18 +69,15 @@ import "list"
 			zone?: string
 		})]
 
-		// Reference to an underlying networking resource that can
-		// comprise a Service.
+		// Reference to an underlying networking resource that can comprise a Service.
 		service_reference?: [...close({
 			uri?: string
 		})]
 
-		// Output only. Service state. Possible values: STATE_UNSPECIFIED
-		// CREATING ACTIVE DELETING DETACHED
+		// Output only. Service state. Possible values: STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
 		state?: string
 
-		// Output only. A universally unique identifier (UUID) for the
-		// 'Service' in the UUID4
+		// Output only. A universally unique identifier (UUID) for the 'Service' in the UUID4
 		// format.
 		uid?: string
 
@@ -120,8 +108,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/attributes/$defs/criticality": close({
-		// Criticality type. Possible values: ["MISSION_CRITICAL", "HIGH",
-		// "MEDIUM", "LOW"]
+		// Criticality type. Possible values: ["MISSION_CRITICAL", "HIGH", "MEDIUM", "LOW"]
 		type!: string
 	})
 
@@ -134,8 +121,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/attributes/$defs/environment": close({
-		// Environment type. Possible values: ["PRODUCTION", "STAGING",
-		// "TEST", "DEVELOPMENT"]
+		// Environment type. Possible values: ["PRODUCTION", "STAGING", "TEST", "DEVELOPMENT"]
 		type!: string
 	})
 

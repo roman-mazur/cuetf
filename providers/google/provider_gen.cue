@@ -1,6 +1,6 @@
 package google
 
-#provider: {
+provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/google/provider")
 	close({
@@ -11,6 +11,7 @@ package google
 		access_token?:                               string
 		active_directory_custom_endpoint?:           string
 		add_terraform_attribution_label?:            bool
+		agent_registry_custom_endpoint?:             string
 		alloydb_custom_endpoint?:                    string
 		apigee_custom_endpoint?:                     string
 		apihub_custom_endpoint?:                     string

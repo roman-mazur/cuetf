@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_integrations_auth_config: {
+google_integrations_auth_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_integrations_auth_config")
 	close({
@@ -15,28 +15,23 @@ import "list"
 
 		// The timestamp when the auth config is created.
 		//
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		create_time?: string
 
-		// The creator's email address. Generated based on the End User
-		// Credentials/LOAS role of the user making the call.
+		// The creator's email address. Generated based on the End User Credentials/LOAS
+		// role of the user making the call.
 		creator_email?: string
 
 		// Credential type of the encrypted credential.
 		credential_type?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -46,23 +41,20 @@ import "list"
 		// The name of the auth config.
 		display_name!: string
 
-		// Auth credential encrypted by Cloud KMS. Can be decrypted as
-		// Credential with proper KMS key.
+		// Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
 		//
 		// A base64-encoded string.
 		encrypted_credential?: string
 
-		// User can define the time to receive notification after which
-		// the auth config becomes invalid. Support up to 30 days.
-		// Support granularity in hours.
+		// User can define the time to receive notification after which the auth config
+		// becomes invalid. Support up to 30 days. Support granularity in hours.
 		//
-		// A duration in seconds with up to nine fractional digits, ending
-		// with 's'. Example: "3.5s".
+		// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 		expiry_notification_duration?: [...string]
 		id?: string
 
-		// The last modifier's email address. Generated based on the End
-		// User Credentials/LOAS role of the user making the call.
+		// The last modifier's email address. Generated based on the End User
+		// Credentials/LOAS role of the user making the call.
 		last_modifier_email?: string
 
 		// Location in which client needs to be provisioned.
@@ -71,55 +63,53 @@ import "list"
 		// Resource name of the auth config.
 		name?: string
 
-		// User provided expiry time to override. For the example of
-		// Salesforce, username/password credentials can be valid for 6
-		// months depending on the instance settings.
+		// User provided expiry time to override. For the example of Salesforce,
+		// username/password credentials can be valid for 6 months depending on the
+		// instance settings.
 		//
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		override_valid_time?: string
-		project?:             string
 
 		// The reason / details of the current status.
-		reason?: string
+		reason?:  string
+		project?: string
 
 		// The status of the auth config.
 		state?: string
 
 		// The timestamp when the auth config is modified.
 		//
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
 
-		// The time until the auth config is valid. Empty or max value is
-		// considered the auth config won't expire.
+		// The time until the auth config is valid. Empty or max value is considered the
+		// auth config won't expire.
 		//
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		valid_time?: string
 
-		// The visibility of the auth config. Possible values: ["PRIVATE",
-		// "CLIENT_VISIBLE"]
+		// The visibility of the auth config. Possible values: ["PRIVATE", "CLIENT_VISIBLE"]
 		visibility?: string
 	})
 
 	#client_certificate: close({
-		// The ssl certificate encoded in PEM format. This string must
-		// include the begin header and end footer lines.
+		// The ssl certificate encoded in PEM format. This string must include the begin
+		// header and end footer lines.
 		encrypted_private_key!: string
 
-		// 'passphrase' should be left unset if private key is not
-		// encrypted.
-		// Note that 'passphrase' is not the password for web server, but
-		// an extra layer of security to protected private key.
+		// 'passphrase' should be left unset if private key is not encrypted.
+		// Note that 'passphrase' is not the password for web server, but an extra layer
+		// of security to protected private key.
 		passphrase?: string
 
-		// The ssl certificate encoded in PEM format. This string must
-		// include the begin header and end footer lines.
+		// The ssl certificate encoded in PEM format. This string must include the begin
+		// header and end footer lines.
 		ssl_certificate!: string
 	})
 
@@ -157,10 +147,10 @@ import "list"
 		// Identifies which algorithm is used to generate the signature.
 		jwt_header?: string
 
-		// Contains a set of claims. The JWT specification defines seven
-		// Registered Claim Names which are the standard fields commonly
-		// included in tokens. Custom claims are usually also included,
-		// depending on the purpose of the token.
+		// Contains a set of claims. The JWT specification defines seven Registered
+		// Claim Names which are the standard fields commonly included in tokens.
+		// Custom claims are usually also included, depending on the purpose of the
+		// token.
 		jwt_payload?: string
 
 		// User's pre-shared secret to sign the token.
@@ -193,16 +183,16 @@ import "list"
 		// The client's secret.
 		client_secret?: string
 
-		// Represent how to pass parameters to fetch access token Possible
-		// values: ["REQUEST_TYPE_UNSPECIFIED", "REQUEST_BODY",
-		// "QUERY_PARAMETERS", "ENCODED_HEADER"]
+		// Represent how to pass parameters to fetch access token Possible values:
+		// ["REQUEST_TYPE_UNSPECIFIED", "REQUEST_BODY", "QUERY_PARAMETERS",
+		// "ENCODED_HEADER"]
 		request_type?: string
 
 		// A space-delimited list of requested scope permissions.
 		scope?: string
 
-		// The token endpoint is used by the client to obtain an access
-		// token by presenting its authorization grant or refresh token.
+		// The token endpoint is used by the client to obtain an access token by
+		// presenting its authorization grant or refresh token.
 		token_endpoint?: string
 	})
 
@@ -234,12 +224,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/decrypted_credential/$defs/oidc_token": close({
-		// Audience to be used when generating OIDC token. The audience
-		// claim identifies the recipients that the JWT is intended for.
+		// Audience to be used when generating OIDC token. The audience claim identifies
+		// the recipients that the JWT is intended for.
 		audience?: string
 
-		// The service account email to be used as the identity for the
-		// token.
+		// The service account email to be used as the identity for the token.
 		service_account_email?: string
 
 		// ID token obtained for the service account.
@@ -247,9 +236,9 @@ import "list"
 
 		// The approximate time until the token retrieved is valid.
 		//
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		token_expire_time?: string
 	})
 
@@ -257,8 +246,7 @@ import "list"
 		// A space-delimited list of requested scope permissions.
 		scope?: string
 
-		// Name of the service account that has the permission to make the
-		// request.
+		// Name of the service account that has the permission to make the request.
 		service_account?: string
 	})
 

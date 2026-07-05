@@ -1,6 +1,6 @@
 package res
 
-#google_network_security_mirroring_endpoint_group_association: {
+google_network_security_mirroring_endpoint_group_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_mirroring_endpoint_group_association")
 	close({
@@ -10,61 +10,47 @@ package res
 		// See https://google.aip.dev/148#timestamps.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
-		// Labels are key/value pairs that help to organize and filter
-		// resources.
+		// Labels are key/value pairs that help to organize and filter resources.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// The cloud location of the association, currently restricted to
-		// 'global'.
+		// The cloud location of the association, currently restricted to 'global'.
 		location!: string
 
-		// The list of locations where the association is configured. This
-		// information
+		// The list of locations where the association is configured. This information
 		// is retrieved from the linked endpoint group.
 		locations?: [...close({
 			location?: string
 			state?:    string
 		})]
 
-		// The endpoint group that this association is connected to, for
-		// example:
+		// The endpoint group that this association is connected to, for example:
 		// 'projects/123456789/locations/global/mirroringEndpointGroups/my-eg'.
 		// See https://google.aip.dev/124.
 		mirroring_endpoint_group!: string
 
-		// The ID to use for the new association, which will become the
-		// final
-		// component of the endpoint group's resource name. If not
-		// provided, the
+		// The ID to use for the new association, which will become the final
+		// component of the endpoint group's resource name. If not provided, the
 		// server will generate a unique ID.
 		mirroring_endpoint_group_association_id?: string
 
-		// The resource name of this endpoint group association, for
-		// example:
+		// The resource name of this endpoint group association, for example:
 		// 'projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association'.
 		// See https://google.aip.dev/122 for more details.
 		name?: string
@@ -73,16 +59,13 @@ package res
 		// 'projects/123456789/global/networks/my-network'.
 		// See https://google.aip.dev/124.
 		network!: string
-		project?: string
 
-		// The current state of the resource does not match the user's
-		// intended state,
-		// and the system is working to reconcile them. This part of the
-		// normal
-		// operation (e.g. adding a new location to the target deployment
-		// group).
+		// The current state of the resource does not match the user's intended state,
+		// and the system is working to reconcile them. This part of the normal
+		// operation (e.g. adding a new location to the target deployment group).
 		// See https://google.aip.dev/128.
 		reconciling?: bool
+		project?:     string
 
 		// Current state of the endpoint group association.
 		// Possible values:

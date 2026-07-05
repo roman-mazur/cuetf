@@ -1,21 +1,18 @@
 package data
 
-#google_privileged_access_manager_entitlement: {
+google_privileged_access_manager_entitlement: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_privileged_access_manager_entitlement")
 	close({
-		// AdditionalNotificationTargets includes email addresses to be
-		// notified.
+		// AdditionalNotificationTargets includes email addresses to be notified.
 		additional_notification_targets?: [...close({
 			admin_email_recipients?: [...string]
 			requester_email_recipients?: [...string]
 		})]
 
-		// The approvals needed before access will be granted to a
-		// requester.
-		// No approvals will be needed if this field is null. Different
-		// types of approval workflows that can be used to gate
-		// privileged access granting.
+		// The approvals needed before access will be granted to a requester.
+		// No approvals will be needed if this field is null. Different types of
+		// approval workflows that can be used to gate privileged access granting.
 		approval_workflow?: [...close({
 			manual_approvals?: [...close({
 				require_approver_justification?: bool
@@ -29,39 +26,28 @@ package data
 			})]
 		})]
 
-		// Output only. Create time stamp. A timestamp in RFC3339 UTC
-		// "Zulu" format, with nanosecond resolution and up to nine
-		// fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z"
+		// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format,
+		// with nanosecond resolution and up to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Who can create Grants using Entitlement. This list should
-		// contain at most one entry
+		// Who can create Grants using Entitlement. This list should contain at most one entry
 		eligible_users?: [...close({
 			principals?: [...string]
 		})]
 
-		// The ID to use for this Entitlement. This will become the last
-		// part of the resource name.
-		// This value should be 4-63 characters, and valid characters are
-		// "[a-z]", "[0-9]", and "-". The first character should be from
-		// [a-z].
-		// This value should be unique among all other Entitlements under
-		// the specified 'parent'.
+		// The ID to use for this Entitlement. This will become the last part of the resource name.
+		// This value should be 4-63 characters, and valid characters are "[a-z]",
+		// "[0-9]", and "-". The first character should be from [a-z].
+		// This value should be unique among all other Entitlements under the specified 'parent'.
 		entitlement_id?: string
 
 		// For Resource freshness validation (https://google.aip.dev/154)
@@ -71,17 +57,15 @@ package data
 		// The region of the Entitlement resource.
 		location?: string
 
-		// The maximum amount of time for which access would be granted
-		// for a request.
-		// A requester can choose to ask for access for less than this
-		// duration but never more.
-		// Format: calculate the time in seconds and concatenate it with
-		// 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
+		// The maximum amount of time for which access would be granted for a request.
+		// A requester can choose to ask for access for less than this duration but never more.
+		// Format: calculate the time in seconds and concatenate it with 's' i.e. 2
+		// hours = "7200s", 45 minutes = "2700s"
 		max_request_duration?: string
 
-		// Output Only. The entitlement's name follows a hierarchical
-		// structure, comprising the organization, folder, or project,
-		// alongside the region and a unique entitlement ID.
+		// Output Only. The entitlement's name follows a hierarchical structure,
+		// comprising the organization, folder, or project, alongside the region and a
+		// unique entitlement ID.
 		// Formats:
 		// organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id},
 		// folders/{folder-number}/locations/{region}/entitlements/{entitlement-id},
@@ -105,8 +89,8 @@ package data
 			})]
 		})]
 
-		// Defines the ways in which a requester should provide the
-		// justification while requesting for access.
+		// Defines the ways in which a requester should provide the justification while
+		// requesting for access.
 		requester_justification_config?: [...close({
 			not_mandatory?: [...close({})]
 			unstructured?: [...close({})]
@@ -115,11 +99,9 @@ package data
 		// Output only. The current state of the Entitlement.
 		state?: string
 
-		// Output only. Update time stamp. A timestamp in RFC3339 UTC
-		// "Zulu" format, with nanosecond resolution and up to nine
-		// fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format,
+		// with nanosecond resolution and up to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
 	})
 }

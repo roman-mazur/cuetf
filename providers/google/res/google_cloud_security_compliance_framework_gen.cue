@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_cloud_security_compliance_framework: {
+google_cloud_security_compliance_framework: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_security_compliance_framework")
 	close({
@@ -12,25 +12,18 @@ import "list"
 		// The category of the framework.
 		category?: [...string]
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The description of the framework. The maximum length is 2000
-		// characters.
+		// The description of the framework. The maximum length is 2000 characters.
 		description?: string
 
-		// Display name of the framework. The maximum length is 200
-		// characters.
+		// Display name of the framework. The maximum length is 200 characters.
 		display_name?: string
 
 		// ID of the framework.
@@ -39,9 +32,8 @@ import "list"
 		framework_id!: string
 		id?:           string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Major revision of the framework incremented in ascending order.

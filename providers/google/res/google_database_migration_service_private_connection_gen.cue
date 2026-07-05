@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_database_migration_service_private_connection: {
+google_database_migration_service_private_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_database_migration_service_private_connection")
 	close({
@@ -13,25 +13,19 @@ import "list"
 		// If set to true, will skip validations.
 		create_without_validation?: bool
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// Display name.
 		display_name?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// The PrivateConnection error in case of failure.
@@ -43,10 +37,9 @@ import "list"
 
 		// Labels.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The name of the location this private connection is located in.
@@ -57,10 +50,10 @@ import "list"
 
 		// The private connectivity identifier.
 		private_connection_id!: string
-		project?:               string
 
 		// State of the PrivateConnection.
-		state?: string
+		state?:   string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -68,10 +61,8 @@ import "list"
 	})
 
 	#psc_interface_config: close({
-		// Fully qualified name of the Network Attachment that DMS will
-		// connect to.
-		// Format:
-		// projects/{project}/regions/{region}/networkAttachments/{name}
+		// Fully qualified name of the Network Attachment that DMS will connect to.
+		// Format: projects/{project}/regions/{region}/networkAttachments/{name}
 		network_attachment!: string
 	})
 
@@ -85,8 +76,7 @@ import "list"
 		// A free subnet for peering. (CIDR of /29)
 		subnet!: string
 
-		// Fully qualified name of the VPC that Database Migration Service
-		// will peer to.
+		// Fully qualified name of the VPC that Database Migration Service will peer to.
 		// Format: projects/{project}/global/{networks}/{name}
 		vpc_name!: string
 	})

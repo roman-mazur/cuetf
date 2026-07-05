@@ -1,63 +1,53 @@
 package res
 
-#google_sql_source_representation_instance: {
+google_sql_source_representation_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sql_source_representation_instance")
 	close({
 		timeouts?: #timeouts
 
-		// The CA certificate on the external server. Include only if
-		// SSL/TLS is used on the external server.
+		// The CA certificate on the external server. Include only if SSL/TLS is used on
+		// the external server.
 		ca_certificate?: string
 
-		// The client certificate on the external server. Required only
-		// for server-client authentication. Include only if SSL/TLS is
-		// used on the external server.
+		// The client certificate on the external server. Required only for
+		// server-client authentication. Include only if SSL/TLS is used on the
+		// external server.
 		client_certificate?: string
 
-		// The private key file for the client certificate on the external
-		// server. Required only for server-client authentication.
-		// Include only if SSL/TLS is used on the external server.
+		// The private key file for the client certificate on the external server.
+		// Required only for server-client authentication. Include only if SSL/TLS is
+		// used on the external server.
 		client_key?: string
 
-		// The MySQL, PostgreSQL or SQL Server (beta) version to use.
-		// Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0,
-		// MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11,
-		// POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15,
-		// POSTGRES_16, POSTGRES_17, POSTGRES_18,
-		// SQLSERVER_2022_STANDARD, SQLSERVER_2022_ENTERPRISE,
-		// SQLSERVER_2022_EXPRESS, SQLSERVER_2022_WEB,
-		// SQLSERVER_2025_STANDARD, SQLSERVER_2025_ENTERPRISE,
-		// SQLSERVER_2025_EXPRESS, SQLSERVER_2025_WEB. Database Version
-		// Policies includes an up-to-date reference of supported
-		// versions.
+		// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values
+		// include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6,
+		// POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14,
+		// POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18, SQLSERVER_2022_STANDARD,
+		// SQLSERVER_2022_ENTERPRISE, SQLSERVER_2022_EXPRESS, SQLSERVER_2022_WEB,
+		// SQLSERVER_2025_STANDARD, SQLSERVER_2025_ENTERPRISE, SQLSERVER_2025_EXPRESS,
+		// SQLSERVER_2025_WEB. Database Version Policies includes an up-to-date
+		// reference of supported versions.
 		database_version!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// A file in the bucket that contains the data from the external
-		// server.
+		// A file in the bucket that contains the data from the external server.
 		dump_file_path?: string
 
-		// The IPv4 address and port for the external server, or the the
-		// DNS address for the external server. If the external server is
-		// hosted on Cloud SQL, the port is 5432.
+		// The IPv4 address and port for the external server, or the the DNS address for
+		// the external server. If the external server is hosted on Cloud SQL, the port
+		// is 5432.
 		host!: string
 		id?:   string
 
-		// The name of the source representation instance. Use any valid
-		// Cloud SQL instance name.
+		// The name of the source representation instance. Use any valid Cloud SQL instance name.
 		name!: string
 
 		// The password for the replication user account.
@@ -65,12 +55,12 @@ package res
 
 		// The externally accessible port for the source database server.
 		// Defaults to 3306.
-		port?:    number
-		project?: string
+		port?: number
 
 		// The Region in which the created instance should reside.
 		// If it is not provided, the provider region is used.
-		region?: string
+		region?:  string
+		project?: string
 
 		// The replication user account on the external server.
 		username?: string

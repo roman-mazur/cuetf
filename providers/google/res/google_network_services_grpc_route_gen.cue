@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_network_services_grpc_route: {
+google_network_services_grpc_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_grpc_route")
 	close({
@@ -12,60 +12,50 @@ import "list"
 		// Time the GrpcRoute was created in UTC.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// A free-text description of the resource. Max length 1024
-		// characters.
+		// A free-text description of the resource. Max length 1024 characters.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// List of gateways this GrpcRoute is attached to, as one of the
-		// routing rules to route the requests served by the gateway.
+		// List of gateways this GrpcRoute is attached to, as one of the routing rules
+		// to route the requests served by the gateway.
 		gateways?: [...string]
 
-		// Required. Service hostnames with an optional port for which
-		// this route describes traffic.
+		// Required. Service hostnames with an optional port for which this route describes traffic.
 		hostnames!: [...string]
 		id?: string
 
 		// Set of label tags associated with the GrpcRoute resource.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Location (region) of the GRPCRoute resource to be created. Only
-		// the value 'global' is currently allowed; defaults to 'global'
-		// if omitted.
+		// Location (region) of the GRPCRoute resource to be created. Only the value
+		// 'global' is currently allowed; defaults to 'global' if omitted.
 		location?: string
 
-		// List of meshes this GrpcRoute is attached to, as one of the
-		// routing rules to route the requests served by the mesh.
+		// List of meshes this GrpcRoute is attached to, as one of the routing rules to
+		// route the requests served by the mesh.
 		meshes?: [...string]
 
 		// Name of the GrpcRoute resource.
-		name!:    string
-		project?: string
+		name!: string
 
 		// Server-defined URL of this resource.
 		self_link?: string
+		project?:   string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -99,8 +89,8 @@ import "list"
 		// The URL of a BackendService to route traffic to.
 		service_name?: string
 
-		// Specifies the proportion of requests forwarded to the backend
-		// referenced by the serviceName field.
+		// Specifies the proportion of requests forwarded to the backend referenced by
+		// the serviceName field.
 		weight?: number
 	})
 
@@ -129,10 +119,9 @@ import "list"
 		// Specifies the allowed number of retries.
 		num_retries?: number
 
-		// Specifies one or more conditions when this retry policy
-		// applies. Possible values: ["connect-failure",
-		// "refused-stream", "cancelled", "deadline-exceeded",
-		// "resource-exhausted", "unavailable"]
+		// Specifies one or more conditions when this retry policy applies. Possible
+		// values: ["connect-failure", "refused-stream", "cancelled",
+		// "deadline-exceeded", "resource-exhausted", "unavailable"]
 		retry_conditions?: [...string]
 	})
 
@@ -154,8 +143,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/matches/$defs/method": close({
-		// Specifies that matches are case sensitive. The default value is
-		// true.
+		// Specifies that matches are case sensitive. The default value is true.
 		case_sensitive?: bool
 
 		// Required. Name of the method to match against.

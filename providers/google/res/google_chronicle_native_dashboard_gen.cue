@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_chronicle_native_dashboard: {
+google_chronicle_native_dashboard: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_native_dashboard")
 	close({
@@ -25,16 +25,11 @@ import "list"
 		// The unique ID of the Dashboard.
 		dashboard_id?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -65,13 +60,13 @@ import "list"
 		location!: string
 
 		// The full resource name of the dashboard.
-		name?:    string
-		project?: string
+		name?: string
 
 		// The type of dashboard.
 		// Possible values:
 		// CURATED, PRIVATE, PUBLIC, CUSTOM, MARKETPLACE
-		type?: string
+		type?:    string
+		project?: string
 
 		// The time when the dashboard was last edited.
 		update_time?: string
@@ -98,10 +93,8 @@ import "list"
 
 		// The data source for the filter.
 		// Possible values:
-		// UDM, ENTITY, INGESTION_METRICS, RULE_DETECTIONS, RULESETS,
-		// GLOBAL,
-		// IOC_MATCHES, RULES, SOAR_CASES, SOAR_PLAYBOOKS,
-		// SOAR_CASE_HISTORY,
+		// UDM, ENTITY, INGESTION_METRICS, RULE_DETECTIONS, RULESETS, GLOBAL,
+		// IOC_MATCHES, RULES, SOAR_CASES, SOAR_PLAYBOOKS, SOAR_CASE_HISTORY,
 		// DATA_TABLE, INVESTIGATION, INVESTIGATION_FEEDBACK
 		data_source?: string
 
@@ -149,12 +142,11 @@ import "list"
 		// value other than 'IN' and 'BETWEEN'.
 		field_values?: [...string]
 
-		// The operator to apply to the field. Possible values: ["EQUAL",
-		// "NOT_EQUAL", "IN", "GREATER_THAN", "GREATER_THAN_OR_EQUAL_TO",
-		// "LESS_THAN", "LESS_THAN_OR_EQUAL_TO", "BETWEEN", "PAST",
-		// "IS_NULL", "IS_NOT_NULL", "STARTS_WITH", "ENDS_WITH",
-		// "DOES_NOT_STARTS_WITH", "DOES_NOT_ENDS_WITH", "NOT_IN",
-		// "CONTAINS", "DOES_NOT_CONTAIN"]
+		// The operator to apply to the field. Possible values: ["EQUAL", "NOT_EQUAL",
+		// "IN", "GREATER_THAN", "GREATER_THAN_OR_EQUAL_TO", "LESS_THAN",
+		// "LESS_THAN_OR_EQUAL_TO", "BETWEEN", "PAST", "IS_NULL", "IS_NOT_NULL",
+		// "STARTS_WITH", "ENDS_WITH", "DOES_NOT_STARTS_WITH", "DOES_NOT_ENDS_WITH",
+		// "NOT_IN", "CONTAINS", "DOES_NOT_CONTAIN"]
 		filter_operator?: string
 	})
 }

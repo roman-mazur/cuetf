@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_cloud_scheduler_job: {
+google_cloud_scheduler_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_scheduler_job")
 	close({
@@ -12,31 +12,24 @@ import "list"
 		retry_config?: matchN(1, [#retry_config, list.MaxItems(1) & [...#retry_config]])
 		timeouts?: #timeouts
 
-		// The deadline for job attempts. If the request handler does not
-		// respond by this deadline then the request is
-		// cancelled and the attempt is marked as a DEADLINE_EXCEEDED
-		// failure. The failed attempt can be viewed in
-		// execution logs. Cloud Scheduler will retry the job according to
-		// the RetryConfig.
+		// The deadline for job attempts. If the request handler does not respond by
+		// this deadline then the request is
+		// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The
+		// failed attempt can be viewed in
+		// execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
 		// The allowed duration for this deadline is:
 		// * For HTTP targets, between 15 seconds and 30 minutes.
 		// * For App Engine HTTP targets, between 15 seconds and 24 hours.
-		// * **Note**: For PubSub targets, this field is ignored - setting
-		// it will introduce an unresolvable diff.
-		// A duration in seconds with up to nine fractional digits,
-		// terminated by 's'. Example: "3.5s"
+		// * **Note**: For PubSub targets, this field is ignored - setting it will
+		// introduce an unresolvable diff.
+		// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
 		attempt_deadline?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -48,14 +41,13 @@ import "list"
 		// The name of the job.
 		name!: string
 
-		// Sets the job to a paused state. Jobs default to being enabled
-		// when this property is not set.
-		paused?:  bool
-		project?: string
+		// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+		paused?: bool
 
-		// Region where the scheduler job resides. If it is not provided,
-		// Terraform will use the provider default.
-		region?: string
+		// Region where the scheduler job resides. If it is not provided, Terraform will
+		// use the provider default.
+		region?:  string
+		project?: string
 
 		// Describes the schedule on which the job will be executed.
 		schedule?: string
@@ -64,8 +56,7 @@ import "list"
 		state?: string
 
 		// Specifies the time zone to be used in interpreting schedule.
-		// The value of this field must be a time zone name from the tz
-		// database.
+		// The value of this field must be a time zone name from the tz database.
 		time_zone?: string
 	})
 
@@ -73,10 +64,8 @@ import "list"
 		app_engine_routing?: matchN(1, [_#defs."/$defs/app_engine_http_target/$defs/app_engine_routing", list.MaxItems(1) & [..._#defs."/$defs/app_engine_http_target/$defs/app_engine_routing"]])
 
 		// HTTP request body.
-		// A request body is allowed only if the HTTP method is POST or
-		// PUT.
-		// It will result in invalid argument error to set a body on a job
-		// with an incompatible HttpMethod.
+		// A request body is allowed only if the HTTP method is POST or PUT.
+		// It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
 		//
 		// A base64-encoded string.
 		body?: string
@@ -90,14 +79,10 @@ import "list"
 		http_method?: string
 
 		// The relative URI.
-		// The relative URL must begin with "/" and must be a valid HTTP
-		// relative URL.
-		// It can contain a path, query string arguments, and \#
-		// fragments.
-		// If the relative URL is empty, then the root path "/" will be
-		// used.
-		// No spaces are allowed, and the maximum length allowed is 2083
-		// characters
+		// The relative URL must begin with "/" and must be a valid HTTP relative URL.
+		// It can contain a path, query string arguments, and \# fragments.
+		// If the relative URL is empty, then the root path "/" will be used.
+		// No spaces are allowed, and the maximum length allowed is 2083 characters
 		relative_uri!: string
 	})
 
@@ -106,17 +91,14 @@ import "list"
 		oidc_token?: matchN(1, [_#defs."/$defs/http_target/$defs/oidc_token", list.MaxItems(1) & [..._#defs."/$defs/http_target/$defs/oidc_token"]])
 
 		// HTTP request body.
-		// A request body is allowed only if the HTTP method is POST, PUT,
-		// or PATCH.
-		// It is an error to set body on a job with an incompatible
-		// HttpMethod.
+		// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
+		// It is an error to set body on a job with an incompatible HttpMethod.
 		//
 		// A base64-encoded string.
 		body?: string
 
 		// This map contains the header field names and values.
-		// Repeated headers are not supported, but a header value can
-		// contain commas.
+		// Repeated headers are not supported, but a header value can contain commas.
 		headers?: [string]: string
 
 		// Which HTTP method to use for the request.
@@ -128,57 +110,45 @@ import "list"
 
 	#pubsub_target: close({
 		// Attributes for PubsubMessage.
-		// Pubsub message must contain either non-empty data, or at least
-		// one attribute.
+		// Pubsub message must contain either non-empty data, or at least one attribute.
 		attributes?: [string]: string
 
 		// The message payload for PubsubMessage.
-		// Pubsub message must contain either non-empty data, or at least
-		// one attribute.
+		// Pubsub message must contain either non-empty data, or at least one attribute.
 		//
 		// A base64-encoded string.
 		data?: string
 
 		// The full resource name for the Cloud Pub/Sub topic to which
 		// messages will be published when a job is delivered. ~>**NOTE:**
-		// The topic name must be in the same format as required by
-		// PubSub's
-		// PublishRequest.name, e.g.
-		// 'projects/my-project/topics/my-topic'.
+		// The topic name must be in the same format as required by PubSub's
+		// PublishRequest.name, e.g. 'projects/my-project/topics/my-topic'.
 		topic_name!: string
 	})
 
 	#retry_config: close({
-		// The maximum amount of time to wait before retrying a job after
-		// it fails.
-		// A duration in seconds with up to nine fractional digits,
-		// terminated by 's'.
+		// The maximum amount of time to wait before retrying a job after it fails.
+		// A duration in seconds with up to nine fractional digits, terminated by 's'.
 		max_backoff_duration?: string
 
 		// The time between retries will double maxDoublings times.
 		// A job's retry interval starts at minBackoffDuration,
 		// then doubles maxDoublings times, then increases linearly,
-		// and finally retries retries at intervals of maxBackoffDuration
-		// up to retryCount times.
+		// and finally retries retries at intervals of maxBackoffDuration up to retryCount times.
 		max_doublings?: number
 
-		// The time limit for retrying a failed job, measured from time
-		// when an execution was first attempted.
-		// If specified with retryCount, the job will be retried until
-		// both limits are reached.
-		// A duration in seconds with up to nine fractional digits,
-		// terminated by 's'.
+		// The time limit for retrying a failed job, measured from time when an
+		// execution was first attempted.
+		// If specified with retryCount, the job will be retried until both limits are reached.
+		// A duration in seconds with up to nine fractional digits, terminated by 's'.
 		max_retry_duration?: string
 
-		// The minimum amount of time to wait before retrying a job after
-		// it fails.
-		// A duration in seconds with up to nine fractional digits,
-		// terminated by 's'.
+		// The minimum amount of time to wait before retrying a job after it fails.
+		// A duration in seconds with up to nine fractional digits, terminated by 's'.
 		min_backoff_duration?: string
 
 		// The number of attempts that the system will make to run a
-		// job using the exponential backoff procedure described by
-		// maxDoublings.
+		// job using the exponential backoff procedure described by maxDoublings.
 		// Values greater than 5 and negative values are not allowed.
 		retry_count?: number
 	})
@@ -191,24 +161,22 @@ import "list"
 
 	_#defs: "/$defs/app_engine_http_target/$defs/app_engine_routing": close({
 		// App instance.
-		// By default, the job is sent to an instance which is available
-		// when the job is attempted.
+		// By default, the job is sent to an instance which is available when the job is attempted.
 		instance?: string
 
 		// App service.
-		// By default, the job is sent to the service which is the default
-		// service when the job is attempted.
+		// By default, the job is sent to the service which is the default service when
+		// the job is attempted.
 		service?: string
 
 		// App version.
-		// By default, the job is sent to the version which is the default
-		// version when the job is attempted.
+		// By default, the job is sent to the version which is the default version when
+		// the job is attempted.
 		version?: string
 	})
 
 	_#defs: "/$defs/http_target/$defs/oauth_token": close({
-		// OAuth scope to be used for generating OAuth access token. If
-		// not specified,
+		// OAuth scope to be used for generating OAuth access token. If not specified,
 		// "https://www.googleapis.com/auth/cloud-platform" will be used.
 		scope?: string
 
@@ -218,8 +186,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/http_target/$defs/oidc_token": close({
-		// Audience to be used when generating OIDC token. If not
-		// specified,
+		// Audience to be used when generating OIDC token. If not specified,
 		// the URI specified in target will be used.
 		audience?: string
 

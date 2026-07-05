@@ -1,6 +1,6 @@
 package data
 
-#google_vmwareengine_cluster: {
+google_vmwareengine_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_vmwareengine_cluster")
 	close({
@@ -29,20 +29,16 @@ package data
 		})]
 
 		// Creation time of this resource.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and
-		// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
-		// and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+		// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		create_time?: string
 
 		// Optional. Configuration to mount a datastore.
-		// Mount can be done along with cluster create or during cluster
-		// update
-		// Since service subnet is not configured with ip range on mgmt
-		// cluster creation, mount on management cluster is done as
-		// update only
-		// for unmount remove 'datastore_mount_config' config from the
-		// update of cluster resource
+		// Mount can be done along with cluster create or during cluster update
+		// Since service subnet is not configured with ip range on mgmt cluster
+		// creation, mount on management cluster is done as update only
+		// for unmount remove 'datastore_mount_config' config from the update of cluster resource
 		datastore_mount_config?: [...close({
 			access_mode?: string
 			datastore?:   string
@@ -58,43 +54,34 @@ package data
 			servers?: [...string]
 		})]
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
 
 		// True if the cluster is a management cluster; false otherwise.
-		// There can only be one management cluster in a private cloud and
-		// it has to be the first one.
+		// There can only be one management cluster in a private cloud and it has to be the first one.
 		management?: bool
 
 		// The ID of the Cluster.
 		name!: string
 
 		// The map of cluster node types in this cluster,
-		// where the key is canonical identifier of the node type
-		// (corresponds to the NodeType).
+		// where the key is canonical identifier of the node type (corresponds to the NodeType).
 		node_type_configs?: [...close({
 			custom_core_count?: number
 			node_count?:        number
 			node_type_id?:      string
 		})]
 
-		// The resource name of the private cloud to create a new cluster
-		// in.
-		// Resource names are schemeless URIs that follow the conventions
-		// in https://cloud.google.com/apis/design/resource_names.
-		// For example:
-		// projects/my-project/locations/us-west1-a/privateClouds/my-cloud
+		// The resource name of the private cloud to create a new cluster in.
+		// Resource names are schemeless URIs that follow the conventions in
+		// https://cloud.google.com/apis/design/resource_names.
+		// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 		parent!: string
 
 		// State of the Cluster.
@@ -104,10 +91,8 @@ package data
 		uid?: string
 
 		// Last updated time of this resource.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine
-		// fractional digits. Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+		// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
 	})
 }

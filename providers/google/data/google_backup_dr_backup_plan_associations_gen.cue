@@ -1,6 +1,6 @@
 package data
 
-#google_backup_dr_backup_plan_associations: {
+google_backup_dr_backup_plan_associations: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_backup_dr_backup_plan_associations")
 	close({

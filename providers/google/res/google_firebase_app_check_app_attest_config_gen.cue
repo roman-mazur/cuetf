@@ -1,6 +1,6 @@
 package res
 
-#google_firebase_app_check_app_attest_config: {
+google_firebase_app_check_app_attest_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_check_app_attest_config")
 	close({
@@ -12,19 +12,16 @@ package res
 		app_id!: string
 		id?:     string
 
-		// The relative resource name of the App Attest configuration
-		// object
-		name?:    string
-		project?: string
+		// The relative resource name of the App Attest configuration object
+		name?: string
 
-		// Specifies the duration for which App Check tokens exchanged
-		// from App Attest artifacts will be valid.
-		// If unset, a default value of 1 hour is assumed. Must be between
-		// 30 minutes and 7 days, inclusive.
+		// Specifies the duration for which App Check tokens exchanged from App Attest
+		// artifacts will be valid.
+		// If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
 		//
-		// A duration in seconds with up to nine fractional digits, ending
-		// with 's'. Example: "3.5s".
+		// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 		token_ttl?: string
+		project?:   string
 	})
 
 	#timeouts: close({

@@ -1,6 +1,6 @@
 package data
 
-#google_kms_key_handles: {
+google_kms_key_handles: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_kms_key_handles")
 	close({
@@ -19,9 +19,8 @@ package data
 		// Project ID of the project.
 		project?: string
 
-		// The resource_type_selector argument is used to add a filter
-		// query parameter that limits which key handles are retrieved by
-		// the data source:
+		// The resource_type_selector argument is used to add a filter query parameter
+		// that limits which key handles are retrieved by the data source:
 		// ?filter=resource_type_selector="{{resource_type_selector}}".
 		// Example values:
 		// * resource_type_selector="{SERVICE}.googleapis.com/{TYPE}".

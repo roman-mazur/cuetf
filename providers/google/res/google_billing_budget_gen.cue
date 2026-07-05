@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_billing_budget: {
+google_billing_budget: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_billing_budget")
 	close({
@@ -15,16 +15,11 @@ import "list"
 		// ID of the billing account to set a budget on.
 		billing_account!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -37,11 +32,9 @@ import "list"
 		// billingAccounts/{billingAccountId}/budgets/{budgetId}.
 		name?: string
 
-		// The ownership scope of the budget. The ownership scope and
-		// users'
-		// IAM permissions determine who has full access to the budget's
-		// data. Possible values: ["OWNERSHIP_SCOPE_UNSPECIFIED",
-		// "ALL_USERS", "BILLING_ACCOUNT"]
+		// The ownership scope of the budget. The ownership scope and users'
+		// IAM permissions determine who has full access to the budget's data. Possible
+		// values: ["OWNERSHIP_SCOPE_UNSPECIFIED", "ALL_USERS", "BILLING_ACCOUNT"]
 		ownership_scope?: string
 	})
 
@@ -52,15 +45,11 @@ import "list"
 		// Account Users IAM roles for the target account.
 		disable_default_iam_recipients?: bool
 
-		// When set to true, and when the budget has a single project
-		// configured,
-		// notifications will be sent to project level recipients of that
-		// project.
-		// This field will be ignored if the budget has multiple or no
-		// project configured.
+		// When set to true, and when the budget has a single project configured,
+		// notifications will be sent to project level recipients of that project.
+		// This field will be ignored if the budget has multiple or no project configured.
 		//
-		// Currently, project level recipients are the users with Owner
-		// role on a cloud project.
+		// Currently, project level recipients are the users with Owner role on a cloud project.
 		enable_project_level_recipients?: bool
 
 		// The full resource name of a monitoring notification
@@ -94,30 +83,25 @@ import "list"
 	#budget_filter: close({
 		custom_period?: matchN(1, [_#defs."/$defs/budget_filter/$defs/custom_period", list.MaxItems(1) & [..._#defs."/$defs/budget_filter/$defs/custom_period"]])
 
-		// A CalendarPeriod represents the abstract concept of a recurring
-		// time period that has a
-		// canonical start. Grammatically, "the start of the current
-		// CalendarPeriod".
-		// All calendar times begin at 12 AM US and Canadian Pacific Time
-		// (UTC-8).
+		// A CalendarPeriod represents the abstract concept of a recurring time period that has a
+		// canonical start. Grammatically, "the start of the current CalendarPeriod".
+		// All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
 		//
-		// Exactly one of 'calendar_period', 'custom_period' must be
-		// provided. Possible values: ["MONTH", "QUARTER", "YEAR",
-		// "CALENDAR_PERIOD_UNSPECIFIED"]
+		// Exactly one of 'calendar_period', 'custom_period' must be provided. Possible
+		// values: ["MONTH", "QUARTER", "YEAR", "CALENDAR_PERIOD_UNSPECIFIED"]
 		calendar_period?: string
 
 		// Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
-		// this is a list of credit types to be subtracted from gross cost
-		// to determine the spend for threshold calculations. See a list
-		// of acceptable credit type values.
-		// If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this
-		// field must be empty.
+		// this is a list of credit types to be subtracted from gross cost to determine
+		// the spend for threshold calculations. See a list of acceptable credit type
+		// values.
+		// If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
 		credit_types?: [...string]
 
 		// Specifies how credits should be treated when determining spend
-		// for threshold calculations. Default value:
-		// "INCLUDE_ALL_CREDITS" Possible values: ["INCLUDE_ALL_CREDITS",
-		// "EXCLUDE_ALL_CREDITS", "INCLUDE_SPECIFIED_CREDITS"]
+		// for threshold calculations. Default value: "INCLUDE_ALL_CREDITS" Possible
+		// values: ["INCLUDE_ALL_CREDITS", "EXCLUDE_ALL_CREDITS",
+		// "INCLUDE_SPECIFIED_CREDITS"]
 		credit_types_treatment?: string
 
 		// A single label and value pair specifying that usage from only
@@ -131,14 +115,14 @@ import "list"
 		// the usage occurred on.
 		projects?: [...string]
 
-		// A set of folder and organization names of the form
-		// folders/{folderId} or organizations/{organizationId},
-		// specifying that usage from only this set of folders and
-		// organizations should be included in the budget.
-		// If omitted, the budget includes all usage that the billing
-		// account pays for. If the folder or organization
-		// contains projects that are paid for by a different Cloud
-		// Billing account, the budget doesn't apply to those projects.
+		// A set of folder and organization names of the form folders/{folderId} or
+		// organizations/{organizationId},
+		// specifying that usage from only this set of folders and organizations should
+		// be included in the budget.
+		// If omitted, the budget includes all usage that the billing account pays for.
+		// If the folder or organization
+		// contains projects that are paid for by a different Cloud Billing account, the
+		// budget doesn't apply to those projects.
 		resource_ancestors?: [...string]
 
 		// A set of services of the form services/{service_id},
@@ -151,12 +135,9 @@ import "list"
 
 		// A set of subaccounts of the form billingAccounts/{account_id},
 		// specifying that usage from only this set of subaccounts should
-		// be included in the budget. If a subaccount is set to the name
-		// of
-		// the parent account, usage from the parent account will be
-		// included.
-		// If the field is omitted, the report will include usage from the
-		// parent
+		// be included in the budget. If a subaccount is set to the name of
+		// the parent account, usage from the parent account will be included.
+		// If the field is omitted, the report will include usage from the parent
 		// account and all subaccounts, if they exist.
 		subaccounts?: [...string]
 	})
@@ -202,8 +183,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/budget_filter/$defs/custom_period/$defs/end_date": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month.
 		day!: number
 
 		// Month of a year. Must be from 1 to 12.
@@ -214,8 +194,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/budget_filter/$defs/custom_period/$defs/start_date": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month.
 		day!: number
 
 		// Month of a year. Must be from 1 to 12.

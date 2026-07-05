@@ -2,21 +2,17 @@ package res
 
 import "list"
 
-#google_network_security_firewall_endpoint: {
+google_network_security_firewall_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_security_firewall_endpoint")
 	close({
 		endpoint_settings?: matchN(1, [#endpoint_settings, list.MaxItems(1) & [...#endpoint_settings]])
 		timeouts?: #timeouts
 
-		// List of networks that are associated with this endpoint in the
-		// local zone.
-		// This is a projection of the FirewallEndpointAssociations
-		// pointing at this
-		// endpoint. A network will only appear in this list after traffic
-		// routing is
-		// fully configured. Format:
-		// projects/{project}/global/networks/{name}.
+		// List of networks that are associated with this endpoint in the local zone.
+		// This is a projection of the FirewallEndpointAssociations pointing at this
+		// endpoint. A network will only appear in this list after traffic routing is
+		// fully configured. Format: projects/{project}/global/networks/{name}.
 		associated_networks?: [...string]
 
 		// Project to charge for the deployed firewall endpoint.
@@ -28,32 +24,25 @@ import "list"
 		// Time the firewall endpoint was created in UTC.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// A map of key/value label pairs to assign to the resource.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location (zone) of the firewall endpoint.
@@ -63,12 +52,10 @@ import "list"
 		name!: string
 
 		// The name of the parent this firewall endpoint belongs to.
-		// Format: 'organizations/{organization_id}' or
-		// 'projects/{project_id}'.
+		// Format: 'organizations/{organization_id}' or 'projects/{project_id}'.
 		parent!: string
 
-		// Whether reconciling is in progress, recommended per
-		// https://google.aip.dev/128.
+		// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
 		reconciling?: bool
 
 		// Server-defined URL of this resource.
@@ -86,8 +73,7 @@ import "list"
 	})
 
 	#endpoint_settings: close({
-		// Indicates whether Jumbo Frames are enabled for the firewall
-		// endpoint.
+		// Indicates whether Jumbo Frames are enabled for the firewall endpoint.
 		jumbo_frames_enabled?: bool
 	})
 

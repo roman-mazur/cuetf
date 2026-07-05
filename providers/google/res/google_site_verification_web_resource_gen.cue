@@ -2,37 +2,29 @@ package res
 
 import "list"
 
-#google_site_verification_web_resource: {
+google_site_verification_web_resource: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_site_verification_web_resource")
 	close({
 		site!: matchN(1, [#site, list.MaxItems(1) & [_, ...] & [...#site]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
 
-		// The email addresses of all direct, verified owners of this
-		// exact property. Indirect owners —
-		// for example verified owners of the containing domain—are not
-		// included in this list.
+		// The email addresses of all direct, verified owners of this exact property. Indirect owners —
+		// for example verified owners of the containing domain—are not included in this list.
 		owners?: [...string]
 
-		// The verification method for the Site Verification system to use
-		// to verify
-		// this site or domain. Possible values: ["ANALYTICS",
-		// "DNS_CNAME", "DNS_TXT", "FILE", "META", "TAG_MANAGER"]
+		// The verification method for the Site Verification system to use to verify
+		// this site or domain. Possible values: ["ANALYTICS", "DNS_CNAME", "DNS_TXT",
+		// "FILE", "META", "TAG_MANAGER"]
 		verification_method!: string
 
 		// The string used to identify this web resource.
@@ -40,13 +32,11 @@ import "list"
 	})
 
 	#site: close({
-		// The site identifier. If the type is set to SITE, the identifier
-		// is a URL. If the type is
+		// The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
 		// set to INET_DOMAIN, the identifier is a domain name.
 		identifier!: string
 
-		// The type of resource to be verified. Possible values:
-		// ["INET_DOMAIN", "SITE"]
+		// The type of resource to be verified. Possible values: ["INET_DOMAIN", "SITE"]
 		type!: string
 	})
 

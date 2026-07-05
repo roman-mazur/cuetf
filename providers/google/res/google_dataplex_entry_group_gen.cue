@@ -1,6 +1,6 @@
 package res
 
-#google_dataplex_entry_group: {
+google_dataplex_entry_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dataplex_entry_group")
 	close({
@@ -9,16 +9,11 @@ package res
 		// The time when the EntryGroup was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -28,9 +23,8 @@ package res
 		// User friendly display name.
 		display_name?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// The entry group id of the entry group.
@@ -40,10 +34,9 @@ package res
 		// User-defined labels for the EntryGroup.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location where entry group will be created in.
@@ -51,21 +44,19 @@ package res
 
 		// The relative resource name of the EntryGroup, of the form:
 		// projects/{project_number}/locations/{location_id}/entryGroups/{entry_group_id}
-		name?:    string
-		project?: string
+		name?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+		project?: string
 
-		// Denotes the transfer status of the Entry Group. It is
-		// unspecified
+		// Denotes the transfer status of the Entry Group. It is unspecified
 		// for Entry Group created from Dataplex API.
 		transfer_status?: string
 
-		// System generated globally unique ID for the EntryGroup. This ID
-		// will be different if the EntryGroup is deleted and re-created
-		// with the same name.
+		// System generated globally unique ID for the EntryGroup. This ID will be
+		// different if the EntryGroup is deleted and re-created with the same name.
 		uid?: string
 
 		// The time when the EntryGroup was last updated.

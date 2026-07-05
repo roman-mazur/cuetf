@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_model_armor_template: {
+google_model_armor_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_model_armor_template")
 	close({
@@ -13,46 +13,38 @@ import "list"
 		// Create time stamp
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// Labels as key value pairs
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Identifier. name of resource
-		name?:    string
-		project?: string
+		name?: string
 
 		// Id of the requesting object
 		// If auto-generating Id server-side, remove this field and
 		// template_id from the method_signature of Create RPC
 		template_id!: string
+		project?:     string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -72,24 +64,19 @@ import "list"
 	#template_metadata: close({
 		multi_language_detection?: matchN(1, [_#defs."/$defs/template_metadata/$defs/multi_language_detection", list.MaxItems(1) & [..._#defs."/$defs/template_metadata/$defs/multi_language_detection"]])
 
-		// Indicates the custom error code set by the user to be returned
-		// to the end
+		// Indicates the custom error code set by the user to be returned to the end
 		// user if the LLM response trips Model Armor filters.
 		custom_llm_response_safety_error_code?: number
 
-		// Indicates the custom error message set by the user to be
-		// returned to the
+		// Indicates the custom error message set by the user to be returned to the
 		// end user if the LLM response trips Model Armor filters.
 		custom_llm_response_safety_error_message?: string
 
-		// Indicates the custom error code set by the user to be returned
-		// to the end
-		// user by the service extension if the prompt trips Model Armor
-		// filters.
+		// Indicates the custom error code set by the user to be returned to the end
+		// user by the service extension if the prompt trips Model Armor filters.
 		custom_prompt_safety_error_code?: number
 
-		// Indicates the custom error message set by the user to be
-		// returned to the
+		// Indicates the custom error message set by the user to be returned to the
 		// end user if the prompt trips Model Armor filters.
 		custom_prompt_safety_error_message?: string
 
@@ -129,8 +116,7 @@ import "list"
 		// HIGH
 		confidence_level?: string
 
-		// Tells whether Prompt injection and Jailbreak filter is enabled
-		// or
+		// Tells whether Prompt injection and Jailbreak filter is enabled or
 		// disabled.
 		// Possible values:
 		// ENABLED
@@ -163,37 +149,28 @@ import "list"
 	})
 
 	_#defs: "/$defs/filter_config/$defs/sdp_settings/$defs/advanced_config": close({
-		// Optional Sensitive Data Protection Deidentify template resource
-		// name.
-		// If provided then DeidentifyContent action is performed during
-		// Sanitization
-		// using this template and inspect template. The De-identified
-		// data will
+		// Optional Sensitive Data Protection Deidentify template resource name.
+		// If provided then DeidentifyContent action is performed during Sanitization
+		// using this template and inspect template. The De-identified data will
 		// be returned in SdpDeidentifyResult.
-		// Note that all info-types present in the deidentify template
-		// must be present
+		// Note that all info-types present in the deidentify template must be present
 		// in inspect template.
 		// e.g.
 		// 'projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}'
 		deidentify_template?: string
 
 		// Sensitive Data Protection inspect template resource name
-		// If only inspect template is provided (de-identify template not
-		// provided),
-		// then Sensitive Data Protection InspectContent action is
-		// performed during
-		// Sanitization. All Sensitive Data Protection findings identified
-		// during
-		// inspection will be returned as SdpFinding in
-		// SdpInsepctionResult.
+		// If only inspect template is provided (de-identify template not provided),
+		// then Sensitive Data Protection InspectContent action is performed during
+		// Sanitization. All Sensitive Data Protection findings identified during
+		// inspection will be returned as SdpFinding in SdpInsepctionResult.
 		// e.g:-
 		// 'projects/{project}/locations/{location}/inspectTemplates/{inspect_template}'
 		inspect_template?: string
 	})
 
 	_#defs: "/$defs/filter_config/$defs/sdp_settings/$defs/basic_config": close({
-		// Tells whether the Sensitive Data Protection basic config is
-		// enabled or
+		// Tells whether the Sensitive Data Protection basic config is enabled or
 		// disabled.
 		// Possible values:
 		// ENABLED

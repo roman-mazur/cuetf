@@ -1,6 +1,6 @@
 package res
 
-#google_parameter_manager_parameter: {
+google_parameter_manager_parameter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_parameter_manager_parameter")
 	close({
@@ -9,45 +9,36 @@ package res
 		// The time at which the Parameter was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// The format type of the parameter resource. Default value:
-		// "UNFORMATTED" Possible values: ["UNFORMATTED", "YAML", "JSON"]
+		// The format type of the parameter resource. Default value: "UNFORMATTED"
+		// Possible values: ["UNFORMATTED", "YAML", "JSON"]
 		format?: string
 		id?:     string
 
-		// The resource name of the Cloud KMS CryptoKey used to encrypt
-		// parameter version payload. Format
+		// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
 		// 'projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}'
 		kms_key?: string
 
 		// The labels assigned to this Parameter.
 		//
-		// Label keys must be between 1 and 63 characters long, have a
-		// UTF-8 encoding of maximum 128 bytes,
+		// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
 		// and must conform to the following PCRE regular expression:
 		// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
 		//
-		// Label values must be between 0 and 63 characters long, have a
-		// UTF-8 encoding of maximum 128 bytes,
-		// and must conform to the following PCRE regular expression:
-		// [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+		// Label values must be between 0 and 63 characters long, have a UTF-8 encoding
+		// of maximum 128 bytes,
+		// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
 		//
 		// No more than 64 labels can be assigned to a given resource.
 		//
@@ -55,10 +46,9 @@ package res
 		// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The resource name of the Parameter. Format:
@@ -73,11 +63,11 @@ package res
 			iam_policy_name_principal?: string
 			iam_policy_uid_principal?:  string
 		})]
-		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+		project?: string
 
 		// The time at which the Parameter was updated.
 		update_time?: string

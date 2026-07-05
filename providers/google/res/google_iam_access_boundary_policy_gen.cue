@@ -2,23 +2,18 @@ package res
 
 import "list"
 
-#google_iam_access_boundary_policy: {
+google_iam_access_boundary_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_access_boundary_policy")
 	close({
 		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -32,8 +27,7 @@ import "list"
 		// The name of the policy.
 		name!: string
 
-		// The attachment point is identified by its URL-encoded full
-		// resource name.
+		// The attachment point is identified by its URL-encoded full resource name.
 		parent!: string
 	})
 
@@ -53,8 +47,7 @@ import "list"
 	_#defs: "/$defs/rules/$defs/access_boundary_rule": close({
 		availability_condition?: matchN(1, [_#defs."/$defs/rules/$defs/access_boundary_rule/$defs/availability_condition", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/access_boundary_rule/$defs/availability_condition"]])
 
-		// A list of permissions that may be allowed for use on the
-		// specified resource.
+		// A list of permissions that may be allowed for use on the specified resource.
 		available_permissions?: [...string]
 
 		// The full resource name of a Google Cloud resource entity.
@@ -62,24 +55,19 @@ import "list"
 	})
 
 	_#defs: "/$defs/rules/$defs/access_boundary_rule/$defs/availability_condition": close({
-		// Description of the expression. This is a longer text which
-		// describes the expression,
+		// Description of the expression. This is a longer text which describes the expression,
 		// e.g. when hovered over it in a UI.
 		description?: string
 
-		// Textual representation of an expression in Common Expression
-		// Language syntax.
+		// Textual representation of an expression in Common Expression Language syntax.
 		expression!: string
 
-		// String indicating the location of the expression for error
-		// reporting,
+		// String indicating the location of the expression for error reporting,
 		// e.g. a file name and a position in the file.
 		location?: string
 
-		// Title for the expression, i.e. a short string describing its
-		// purpose.
-		// This can be used e.g. in UIs which allow to enter the
-		// expression.
+		// Title for the expression, i.e. a short string describing its purpose.
+		// This can be used e.g. in UIs which allow to enter the expression.
 		title?: string
 	})
 }

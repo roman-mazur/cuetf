@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_apihub_plugin_instance: {
+google_apihub_plugin_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apihub_plugin_instance")
 	close({
@@ -13,39 +13,28 @@ import "list"
 		// Timestamp indicating when the plugin instance was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The display name for this plugin instance. Max length is 255
-		// characters.
+		// The display name for this plugin instance. Max length is 255 characters.
 		disable?: bool
 
-		// The display name for this plugin instance. Max length is 255
-		// characters.
+		// The display name for this plugin instance. Max length is 255 characters.
 		display_name!: string
 
-		// Error message describing the failure, if any, during Create,
-		// Delete or
-		// ApplyConfig operation corresponding to the plugin instance.This
-		// field will
-		// only be populated if the plugin instance is in the ERROR or
-		// FAILED state.
+		// Error message describing the failure, if any, during Create, Delete or
+		// ApplyConfig operation corresponding to the plugin instance.This field will
+		// only be populated if the plugin instance is in the ERROR or FAILED state.
 		error_message?: string
 		id?:            string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Identifier. The unique name of the plugin instance resource.
@@ -53,30 +42,23 @@ import "list"
 		// 'projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}'
 		name?: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		plugin!: string
 
-		// The ID to use for the plugin instance, which will become the
-		// final
-		// component of the plugin instance's resource name. This field is
-		// optional.
+		// The ID to use for the plugin instance, which will become the final
+		// component of the plugin instance's resource name. This field is optional.
 		//
-		// * If provided, the same will be used. The service will throw an
-		// error if
-		// the specified id is already used by another plugin instance in
-		// the plugin
+		// * If provided, the same will be used. The service will throw an error if
+		// the specified id is already used by another plugin instance in the plugin
 		// resource.
 		// * If not provided, a system generated id will be used.
 		//
 		// This value should be 4-63 characters, and valid characters
 		// are /a-z[0-9]-_/.
 		plugin_instance_id!: string
-		project?:            string
 
-		// The current state of the plugin instance (e.g., enabled,
-		// disabled,
+		// The current state of the plugin instance (e.g., enabled, disabled,
 		// provisioning).
 		// Possible values:
 		// STATE_UNSPECIFIED
@@ -86,7 +68,8 @@ import "list"
 		// ERROR
 		// FAILED
 		// DELETING
-		state?: string
+		state?:   string
+		project?: string
 
 		// Timestamp indicating when the plugin instance was last updated.
 		update_time?: string
@@ -110,13 +93,11 @@ import "list"
 			})]
 		})]
 
-		// The schedule for this plugin instance action. This can only be
-		// set if the
+		// The schedule for this plugin instance action. This can only be set if the
 		// plugin supports API_HUB_SCHEDULE_TRIGGER mode for this action.
 		schedule_cron_expression?: string
 
-		// The time zone for the schedule cron expression. If not
-		// provided, UTC will
+		// The time zone for the schedule cron expression. If not provided, UTC will
 		// be used.
 		schedule_time_zone?: string
 
@@ -164,8 +145,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/actions/$defs/curation_config/$defs/custom_curation": close({
-		// The unique name of the curation resource. This will be the name
-		// of the
+		// The unique name of the curation resource. This will be the name of the
 		// curation resource in the format:
 		// 'projects/{project}/locations/{location}/curations/{curation}'
 		curation!: string
@@ -200,8 +180,7 @@ import "list"
 	_#defs: "/$defs/auth_config/$defs/google_service_account_config": close({
 		// The service account to be used for authenticating request.
 		//
-		// The 'iam.serviceAccounts.getAccessToken' permission should be
-		// granted on
+		// The 'iam.serviceAccounts.getAccessToken' permission should be granted on
 		// this service account to the impersonator service account.
 		service_account!: string
 	})

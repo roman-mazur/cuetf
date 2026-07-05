@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_logging_billing_account_sink: {
+google_logging_billing_account_sink: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_billing_account_sink")
 	close({
@@ -12,57 +12,46 @@ import "list"
 		// The billing account exported to the sink.
 		billing_account!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// A description of this sink. The maximum length of the
-		// description is 8000 characters.
+		// A description of this sink. The maximum length of the description is 8000 characters.
 		description?: string
 
-		// The destination of the sink (or, in other words, where logs are
-		// written to). Can be a Cloud Storage bucket, a PubSub topic, or
-		// a BigQuery dataset. Examples:
-		// "storage.googleapis.com/[GCS_BUCKET]"
+		// The destination of the sink (or, in other words, where logs are written to).
+		// Can be a Cloud Storage bucket, a PubSub topic, or a BigQuery dataset.
+		// Examples: "storage.googleapis.com/[GCS_BUCKET]"
 		// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-		// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-		// The writer associated with the sink must have access to write
-		// to the above resource.
+		// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The writer
+		// associated with the sink must have access to write to the above resource.
 		destination!: string
 
-		// If set to True, then this sink is disabled and it does not
-		// export any log entries.
+		// If set to True, then this sink is disabled and it does not export any log entries.
 		disabled?: bool
 
-		// The filter to apply when exporting logs. Only log entries that
-		// match the filter are exported.
+		// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 		filter?: string
 		id?:     string
 
 		// The name of the logging sink.
 		name!: string
 
-		// The identity associated with this sink. This identity must be
-		// granted write access to the configured destination.
+		// The identity associated with this sink. This identity must be granted write
+		// access to the configured destination.
 		writer_identity?: string
 	})
 
 	#bigquery_options: close({
-		// Whether to use BigQuery's partition tables. By default, Logging
-		// creates dated tables based on the log entries' timestamps,
-		// e.g. syslog_20170523. With partitioned tables the date suffix
-		// is no longer present and special query syntax has to be used
-		// instead. In both cases, tables are sharded based on UTC
-		// timezone.
+		// Whether to use BigQuery's partition tables. By default, Logging creates dated
+		// tables based on the log entries' timestamps, e.g. syslog_20170523. With
+		// partitioned tables the date suffix is no longer present and special query
+		// syntax has to be used instead. In both cases, tables are sharded based on
+		// UTC timezone.
 		use_partitioned_tables!: bool
 	})
 
@@ -70,19 +59,17 @@ import "list"
 		// A description of this exclusion.
 		description?: string
 
-		// If set to True, then this exclusion is disabled and it does not
-		// exclude any log entries
+		// If set to True, then this exclusion is disabled and it does not exclude any log entries
 		disabled?: bool
 
-		// An advanced logs filter that matches the log entries to be
-		// excluded. By using the sample function, you can exclude less
-		// than 100% of the matching log entries
+		// An advanced logs filter that matches the log entries to be excluded. By using
+		// the sample function, you can exclude less than 100% of the matching log
+		// entries
 		filter!: string
 
-		// A client-assigned identifier, such as
-		// "load-balancer-exclusion". Identifiers are limited to 100
-		// characters and can include only letters, digits, underscores,
-		// hyphens, and periods. First character has to be alphanumeric.
+		// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers
+		// are limited to 100 characters and can include only letters, digits,
+		// underscores, hyphens, and periods. First character has to be alphanumeric.
 		name!: string
 	})
 }

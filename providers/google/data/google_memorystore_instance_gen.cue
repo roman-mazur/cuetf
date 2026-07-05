@@ -1,11 +1,10 @@
 package data
 
-#google_memorystore_instance: {
+google_memorystore_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_memorystore_instance")
 	close({
-		// Optional. Immutable. Authorization mode of the instance.
-		// Possible values:
+		// Optional. Immutable. Authorization mode of the instance. Possible values:
 		// AUTH_DISABLED
 		// IAM_AUTH
 		authorization_mode?: string
@@ -20,13 +19,11 @@ package data
 			retention?: string
 		})]
 
-		// This field is used to determine the available maintenance
-		// versions for the self service update.
+		// This field is used to determine the available maintenance versions for the self service update.
 		available_maintenance_versions?: [...string]
 
 		// The backup collection full resource name.
-		// Example:
-		// projects/{project}/locations/{location}/backupCollections/{collection}
+		// Example: projects/{project}/locations/{location}/backupCollections/{collection}
 		backup_collection?: string
 
 		// Output only. Creation timestamp of the instance.
@@ -56,52 +53,43 @@ package data
 			update_time?: string
 		})]
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// Optional. If set to true deletion of the instance will fail.
 		deletion_protection_enabled?: bool
 
-		// Immutable. User inputs for the auto-created endpoints
-		// connections.
+		// Immutable. User inputs for the auto-created endpoints connections.
 		desired_auto_created_endpoints?: [...close({
 			network?:    string
 			project_id?: string
 		})]
 
 		// 'desired_psc_auto_connections' is deprecated Use
-		// 'desired_auto_created_endpoints' instead 'terraform import'
-		// will only work with desired_auto_created_endpoints'.
+		// 'desired_auto_created_endpoints' instead 'terraform import' will only work
+		// with desired_auto_created_endpoints'.
 		desired_psc_auto_connections?: [...close({
 			network?:    string
 			project_id?: string
 		})]
 
-		// Deprecated. Output only. Endpoints clients can connect to the
-		// instance through.
+		// Deprecated. Output only. Endpoints clients can connect to the instance through.
 		discovery_endpoints?: [...close({
 			address?: string
 			network?: string
 			port?:    number
 		})]
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// This field represents the actual maintenance version of the
-		// cluster.
+		// This field represents the actual maintenance version of the cluster.
 		effective_maintenance_version?: string
 
 		// Endpoints for the instance.
@@ -132,8 +120,7 @@ package data
 		})]
 		id?: string
 
-		// Required. The ID to use for the instance, which will become the
-		// final component of
+		// Required. The ID to use for the instance, which will become the final component of
 		// the instance's resource name.
 		//
 		// This value is subject to the following restrictions:
@@ -150,16 +137,15 @@ package data
 
 		// Optional. Labels to represent user-provided metadata.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122. See documentation for resource
-		// type 'memorystore.googleapis.com/CertificateAuthority'.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122. See
+		// documentation for resource type
+		// 'memorystore.googleapis.com/CertificateAuthority'.
 		location?: string
 
 		// Maintenance policy for a cluster
@@ -185,13 +171,11 @@ package data
 			start_time?:             string
 		})]
 
-		// This field can be used to trigger self service update to
-		// indicate the desired maintenance version. The input to this
-		// field can be determined by the available_maintenance_versions
-		// field.
-		// *Note*: This field can only be specified when updating an
-		// existing cluster to a newer version. Downgrades are currently
-		// not supported!
+		// This field can be used to trigger self service update to indicate the desired
+		// maintenance version. The input to this field can be determined by the
+		// available_maintenance_versions field.
+		// *Note*: This field can only be specified when updating an existing cluster to
+		// a newer version. Downgrades are currently not supported!
 		maintenance_version?: string
 
 		// Managed backup source for the instance.
@@ -199,9 +183,8 @@ package data
 			backup?: string
 		})]
 
-		// Instance's Certificate Authority. This field will only be
-		// populated if instance's transit_encryption_mode is
-		// SERVER_AUTHENTICATION
+		// Instance's Certificate Authority. This field will only be populated if
+		// instance's transit_encryption_mode is SERVER_AUTHENTICATION
 		managed_server_ca?: [...close({
 			ca_certs?: [...close({
 				certificates?: [...string]
@@ -211,13 +194,11 @@ package data
 		// Optional. cluster or cluster-disabled.
 		// Possible values:
 		// CLUSTER
-		// CLUSTER_DISABLED Possible values: ["CLUSTER",
-		// "CLUSTER_DISABLED"]
+		// CLUSTER_DISABLED Possible values: ["CLUSTER", "CLUSTER_DISABLED"]
 		mode?: string
 
 		// Identifier. Unique name of the instance.
-		// Format:
-		// projects/{project}/locations/{location}/instances/{instance}
+		// Format: projects/{project}/locations/{location}/instances/{instance}
 		name?: string
 
 		// Represents configuration for nodes of the instance.
@@ -252,15 +233,13 @@ package data
 		})]
 		project?: string
 
-		// Configuration of a service attachment of the cluster, for
-		// creating PSC connections.
+		// Configuration of a service attachment of the cluster, for creating PSC connections.
 		psc_attachment_details?: [...close({
 			connection_type?:    string
 			service_attachment?: string
 		})]
 
-		// Output only. User inputs and resource details of the
-		// auto-created PSC connections.
+		// Output only. User inputs and resource details of the auto-created PSC connections.
 		psc_auto_connections?: [...close({
 			connection_type?:       string
 			forwarding_rule?:       string
@@ -273,22 +252,19 @@ package data
 			service_attachment?:    string
 		})]
 
-		// Optional. Number of replica nodes per shard. If omitted the
-		// default is 0 replicas.
+		// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
 		replica_count?: number
 
 		// The serverCaMode for the TLS enabled Memorystore instance.
-		// If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as
-		// default Possible values: ["GOOGLE_MANAGED_PER_INSTANCE_CA",
+		// If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+		// Possible values: ["GOOGLE_MANAGED_PER_INSTANCE_CA",
 		// "GOOGLE_MANAGED_SHARED_CA", "CUSTOMER_MANAGED_CAS_CA",
 		// "SERVER_CA_MODE_UNSPECIFIED"]
 		server_ca_mode?: string
 
-		// The resource name of the server CA pool for an instance with
-		// CUSTOMER_MANAGED_CAS_CA
+		// The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
 		// as the server_ca_mode.
-		// Format:
-		// projects/{project}/locations/{region}/caPools/{caPoolId}
+		// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
 		server_ca_pool?: string
 
 		// Required. Number of shards for the instance.
@@ -316,22 +292,19 @@ package data
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// Optional. Immutable. In-transit encryption mode of the
-		// instance.
+		// Optional. Immutable. In-transit encryption mode of the instance.
 		// Possible values:
 		// TRANSIT_ENCRYPTION_DISABLED
 		// SERVER_AUTHENTICATION
 		transit_encryption_mode?: string
 
-		// Output only. System assigned, unique identifier for the
-		// instance.
+		// Output only. System assigned, unique identifier for the instance.
 		uid?: string
 
 		// Output only. Latest update timestamp of the instance.
 		update_time?: string
 
-		// Zone distribution configuration for allocation of instance
-		// resources.
+		// Zone distribution configuration for allocation of instance resources.
 		zone_distribution_config?: [...close({
 			mode?: string
 			zone?: string

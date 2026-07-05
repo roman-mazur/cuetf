@@ -1,6 +1,6 @@
 package res
 
-#google_workstations_workstation: {
+google_workstations_workstation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_workstations_workstation")
 	close({
@@ -8,75 +8,63 @@ package res
 
 		// Client-specified annotations. This is distinct from labels.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the annotations present in your configuration.
-		// Please refer to the field 'effective_annotations' for all of
-		// the annotations present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the
+		// annotations present in your configuration.
+		// Please refer to the field 'effective_annotations' for all of the annotations
+		// present on the resource.
 		annotations?: [string]: string
 
 		// Time when this resource was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// Human-readable name for this resource.
 		display_name?: string
 
-		// All of annotations (key/value pairs) present on the resource in
-		// GCP, including the annotations configured through Terraform,
-		// other clients and services.
+		// All of annotations (key/value pairs) present on the resource in GCP,
+		// including the annotations configured through Terraform, other clients and
+		// services.
 		effective_annotations?: [string]: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// 'Client-specified environment variables passed to the
-		// workstation container's entrypoint.'
+		// 'Client-specified environment variables passed to the workstation container's entrypoint.'
 		env?: [string]: string
 
-		// Host to which clients can send HTTPS traffic that will be
-		// received by the workstation.
-		// Authorized traffic will be received to the workstation as HTTP
-		// on port 80.
-		// To send traffic to a different port, clients may prefix the
-		// host with the destination port in the format "{port}-{host}".
+		// Host to which clients can send HTTPS traffic that will be received by the workstation.
+		// Authorized traffic will be received to the workstation as HTTP on port 80.
+		// To send traffic to a different port, clients may prefix the host with the
+		// destination port in the format "{port}-{host}".
 		host?: string
 		id?:   string
 
-		// Client-specified labels that are applied to the resource and
-		// that are also propagated to the underlying Compute Engine
-		// resources.
+		// Client-specified labels that are applied to the resource and that are also
+		// propagated to the underlying Compute Engine resources.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location where the workstation parent resources reside.
 		location!: string
 
 		// Full name of this resource.
-		name?:    string
-		project?: string
+		name?: string
 
-		// Full resource name of the source workstation from which the
-		// workstation's persistent
+		// Full resource name of the source workstation from which the workstation's persistent
 		// directories will be cloned from during creation.
 		source_workstation?: string
+		project?:            string
 
 		// Current state of the workstation.
 		state?: string

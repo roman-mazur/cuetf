@@ -1,6 +1,6 @@
 package data
 
-#google_storage_control_project_intelligence_finding_revisions: {
+google_storage_control_project_intelligence_finding_revisions: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_storage_control_project_intelligence_finding_revisions")
 	close({
@@ -8,16 +8,15 @@ package data
 		finding_id!: string
 		id?:         string
 
-		// The location of the intelligence finding. Currently default
-		// value is global and users cannot use for input for now.
+		// The location of the intelligence finding. Currently default value is global
+		// and users cannot use for input for now.
 		location?: string
 
-		// The maximum number of IntelligenceFindingRevision resources to
-		// return.
+		// The maximum number of IntelligenceFindingRevision resources to return.
 		page_size?: number
 
-		// The ID of the project in which the resource belongs. If it is
-		// not provided, the provider project is used.
+		// The ID of the project in which the resource belongs. If it is not provided,
+		// the provider project is used.
 		project?: string
 
 		// The list of intelligence finding revisions.

@@ -1,6 +1,6 @@
 package data
 
-#google_compute_network_endpoint_groups: {
+google_compute_network_endpoint_groups: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_network_endpoint_groups")
 	close({

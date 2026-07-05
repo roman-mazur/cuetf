@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_bigtable_gc_policy: {
+google_bigtable_gc_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigtable_gc_policy")
 	close({
@@ -13,45 +13,35 @@ import "list"
 		// The name of the column family.
 		column_family!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Serialized JSON string for garbage collection policy. Conflicts
-		// with "mode", "max_age" and "max_version".
+		// Serialized JSON string for garbage collection policy. Conflicts with "mode",
+		// "max_age" and "max_version".
 		gc_rules?: string
 		id?:       string
 
-		// Allows ignoring warnings when updating the GC policy. This can
-		// be used
-		// to increase the gc policy on replicated clusters. Doing this
-		// may make clusters be
-		// inconsistent for a longer period of time, before using this
-		// make sure you understand
-		// the risks listed at
-		// https://cloud.google.com/bigtable/docs/garbage-collection#increasing
+		// Allows ignoring warnings when updating the GC policy. This can be used
+		// to increase the gc policy on replicated clusters. Doing this may make clusters be
+		// inconsistent for a longer period of time, before using this make sure you understand
+		// the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing
 		ignore_warnings?: bool
 
 		// The name of the Bigtable instance.
 		instance_name!: string
 
-		// NOTE: 'gc_rules' is more flexible, and should be preferred over
-		// this field for new resources. This field may be deprecated in
-		// the future. If multiple policies are set, you should choose
-		// between UNION OR INTERSECTION.
+		// NOTE: 'gc_rules' is more flexible, and should be preferred over this field
+		// for new resources. This field may be deprecated in the future. If multiple
+		// policies are set, you should choose between UNION OR INTERSECTION.
 		mode?: string
 
-		// The ID of the project in which the resource belongs. If it is
-		// not provided, the provider project is used.
+		// The ID of the project in which the resource belongs. If it is not provided,
+		// the provider project is used.
 		project?: string
 
 		// The name of the table.

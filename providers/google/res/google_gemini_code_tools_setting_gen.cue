@@ -1,6 +1,6 @@
 package res
 
-#google_gemini_code_tools_setting: {
+google_gemini_code_tools_setting: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gemini_code_tools_setting")
 	close({
@@ -13,46 +13,38 @@ package res
 		// Create time stamp.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// Labels as key value pairs.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location?: string
 
 		// Identifier. Name of the resource.
 		// Format:projects/{project}/locations/{location}/codeToolsSettings/{codeToolsSetting}
-		name?:    string
-		project?: string
+		name?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+		project?: string
 
 		// Update time stamp.
 		update_time?: string
@@ -61,8 +53,7 @@ package res
 	#enabled_tool: close({
 		config?: matchN(1, [_#defs."/$defs/enabled_tool/$defs/config", [..._#defs."/$defs/enabled_tool/$defs/config"]])
 
-		// Link to the Dev Connect Account Connector that holds the user
-		// credentials.
+		// Link to the Dev Connect Account Connector that holds the user credentials.
 		// projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
 		account_connector?: string
 

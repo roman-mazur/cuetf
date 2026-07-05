@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_apihub_plugin: {
+google_apihub_plugin: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apihub_plugin")
 	close({
@@ -15,42 +15,32 @@ import "list"
 		// Timestamp indicating when the plugin was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The plugin description. Max length is 2000 characters (Unicode
-		// code
+		// The plugin description. Max length is 2000 characters (Unicode code
 		// points).
 		description?: string
 
-		// The display name of the plugin. Max length is 50 characters
-		// (Unicode code
+		// The display name of the plugin. Max length is 50 characters (Unicode code
 		// points).
 		display_name!: string
 		id?:           string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Identifier. The name of the plugin.
-		// Format:
-		// 'projects/{project}/locations/{location}/plugins/{plugin}'
+		// Format: 'projects/{project}/locations/{location}/plugins/{plugin}'
 		name?: string
 
-		// The type of the plugin, indicating whether it is 'SYSTEM_OWNED'
-		// or
+		// The type of the plugin, indicating whether it is 'SYSTEM_OWNED' or
 		// 'USER_OWNED'.
 		// Possible values:
 		// OWNERSHIP_TYPE_UNSPECIFIED
@@ -64,38 +54,30 @@ import "list"
 		// API_PRODUCER
 		plugin_category?: string
 
-		// The ID to use for the Plugin resource, which will become the
-		// final
-		// component of the Plugin's resource name. This field is
-		// optional.
+		// The ID to use for the Plugin resource, which will become the final
+		// component of the Plugin's resource name. This field is optional.
 		//
-		// * If provided, the same will be used. The service will throw an
-		// error if
-		// the specified id is already used by another Plugin resource in
-		// the API hub
+		// * If provided, the same will be used. The service will throw an error if
+		// the specified id is already used by another Plugin resource in the API hub
 		// instance.
 		// * If not provided, a system generated id will be used.
 		//
-		// This value should be 4-63 characters, overall resource name
-		// which will be
+		// This value should be 4-63 characters, overall resource name which will be
 		// of format
 		// 'projects/{project}/locations/{location}/plugins/{plugin}',
-		// its length is limited to 1000 characters and valid characters
-		// are
+		// its length is limited to 1000 characters and valid characters are
 		// /a-z[0-9]-_/.
 		plugin_id!: string
-		project?:   string
 
 		// Represents the state of the plugin.
-		// Note this field will not be set for plugins developed via
-		// plugin
-		// framework as the state will be managed at plugin instance
-		// level.
+		// Note this field will not be set for plugins developed via plugin
+		// framework as the state will be managed at plugin instance level.
 		// Possible values:
 		// STATE_UNSPECIFIED
 		// ENABLED
 		// DISABLED
-		state?: string
+		state?:   string
+		project?: string
 
 		// Timestamp indicating when the plugin was last updated.
 		update_time?: string
@@ -131,10 +113,8 @@ import "list"
 	})
 
 	#hosting_service: close({
-		// The URI of the service implemented by the plugin developer,
-		// used to
-		// invoke the plugin's functionality. This information is only
-		// required for
+		// The URI of the service implemented by the plugin developer, used to
+		// invoke the plugin's functionality. This information is only required for
 		// user defined plugins.
 		service_uri?: string
 	})
@@ -151,17 +131,14 @@ import "list"
 		// Description.
 		description?: string
 
-		// ID of the config variable. Must be unique within the
-		// configuration.
+		// ID of the config variable. Must be unique within the configuration.
 		id!: string
 
-		// Flag represents that this 'ConfigVariable' must be provided for
-		// a
+		// Flag represents that this 'ConfigVariable' must be provided for a
 		// PluginInstance.
 		required?: bool
 
-		// Regular expression in RE2 syntax used for validating the
-		// 'value' of a
+		// Regular expression in RE2 syntax used for validating the 'value' of a
 		// 'ConfigVariable'.
 		validation_regex?: string
 
@@ -211,8 +188,7 @@ import "list"
 	_#defs: "/$defs/config_template/$defs/auth_config_template/$defs/service_account": close({
 		// The service account to be used for authenticating request.
 		//
-		// The 'iam.serviceAccounts.getAccessToken' permission should be
-		// granted on
+		// The 'iam.serviceAccounts.getAccessToken' permission should be granted on
 		// this service account to the impersonator service account.
 		service_account!: string
 	})

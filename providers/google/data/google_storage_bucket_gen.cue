@@ -1,6 +1,6 @@
 package data
 
-#google_storage_bucket: {
+google_storage_bucket: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_storage_bucket")
 	close({
@@ -10,8 +10,7 @@ package data
 			terminal_storage_class?: string
 		})]
 
-		// The bucket's Cross-Origin Resource Sharing (CORS)
-		// configuration.
+		// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 		cors?: [...close({
 			max_age_seconds?: number
 			method?: [...string]
@@ -19,39 +18,30 @@ package data
 			response_header?: [...string]
 		})]
 
-		// The bucket's custom location configuration, which specifies the
-		// individual regions that comprise a dual-region bucket. If the
-		// bucket is designated a single or multi-region, the parameters
-		// are empty.
+		// The bucket's custom location configuration, which specifies the individual
+		// regions that comprise a dual-region bucket. If the bucket is designated a
+		// single or multi-region, the parameters are empty.
 		custom_placement_config?: [...close({
 			data_locations?: [...string]
 		})]
 
-		// Whether or not to automatically apply an eventBasedHold to new
-		// objects added to the bucket.
+		// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 		default_event_based_hold?: bool
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// Enables each object in the bucket to have its own retention
-		// policy, which prevents deletion until stored for a specific
-		// length of time.
+		// Enables each object in the bucket to have its own retention policy, which
+		// prevents deletion until stored for a specific length of time.
 		enable_object_retention?: bool
 
 		// The bucket's encryption configuration.
@@ -71,20 +61,18 @@ package data
 			})]
 		})]
 
-		// When true, before deleting a bucket, delete all objects within
-		// the bucket, or Anywhere Caches caching data for that bucket.
-		// Otherwise, buckets with objects/caches will fail. Anywhere
-		// Cache requires additional permissions to interact with and
-		// will be ignored when those are not present, attempting to
-		// delete anyways. This may result in the objects in the bucket
-		// getting destroyed but not the bucket itself if there is a
-		// cache in use with the bucket. Force deletion may take a long
-		// time to delete buckets with lots of objects or with any
-		// Anywhere Caches (80m+).
+		// When true, before deleting a bucket, delete all objects within the bucket, or
+		// Anywhere Caches caching data for that bucket. Otherwise, buckets with
+		// objects/caches will fail. Anywhere Cache requires additional permissions to
+		// interact with and will be ignored when those are not present, attempting to
+		// delete anyways. This may result in the objects in the bucket getting
+		// destroyed but not the bucket itself if there is a cache in use with the
+		// bucket. Force deletion may take a long time to delete buckets with lots of
+		// objects or with any Anywhere Caches (80m+).
 		force_destroy?: bool
 
-		// The bucket's HNS configuration, which defines bucket can
-		// organize folders in logical file system structure.
+		// The bucket's HNS configuration, which defines bucket can organize folders in
+		// logical file system structure.
 		hierarchical_namespace?: [...close({
 			enabled?: bool
 		})]
@@ -146,12 +134,11 @@ package data
 		// The name of the bucket.
 		name!: string
 
-		// The ID of the project in which the resource belongs. If it is
-		// not provided, the provider project is used.
+		// The ID of the project in which the resource belongs. If it is not provided,
+		// the provider project is used.
 		project?: string
 
-		// The project number of the project in which the resource
-		// belongs.
+		// The project number of the project in which the resource belongs.
 		project_number?: number
 
 		// Prevents public access to a bucket.
@@ -160,39 +147,37 @@ package data
 		// Enables Requester Pays on a storage bucket.
 		requester_pays?: bool
 
-		// Configuration of the bucket's data retention policy for how
-		// long objects in the bucket should be retained.
+		// Configuration of the bucket's data retention policy for how long objects in
+		// the bucket should be retained.
 		retention_policy?: [...close({
 			is_locked?:        bool
 			retention_period?: string
 		})]
 
-		// Specifies the RPO setting of bucket. If set 'ASYNC_TURBO', The
-		// Turbo Replication will be enabled for the dual-region bucket.
-		// Value 'DEFAULT' will set RPO setting to default. Turbo
-		// Replication is only for buckets in dual-regions.See the docs
-		// for more details.
+		// Specifies the RPO setting of bucket. If set 'ASYNC_TURBO', The Turbo
+		// Replication will be enabled for the dual-region bucket. Value 'DEFAULT' will
+		// set RPO setting to default. Turbo Replication is only for buckets in
+		// dual-regions.See the docs for more details.
 		rpo?: string
 
 		// The URI of the created resource.
 		self_link?: string
 
-		// The bucket's soft delete policy, which defines the period of
-		// time that soft-deleted objects will be retained, and cannot be
-		// permanently deleted. If it is not provided, by default Google
-		// Cloud Storage sets this to default soft delete policy
+		// The bucket's soft delete policy, which defines the period of time that
+		// soft-deleted objects will be retained, and cannot be permanently deleted. If
+		// it is not provided, by default Google Cloud Storage sets this to default
+		// soft delete policy
 		soft_delete_policy?: [...close({
 			effective_time?:             string
 			retention_duration_seconds?: number
 		})]
 
-		// The Storage Class of the new bucket. Supported values include:
-		// STANDARD, MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE,
-		// ARCHIVE.
+		// The Storage Class of the new bucket. Supported values include: STANDARD,
+		// MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE.
 		storage_class?: string
 
-		// The combination of labels configured directly on the resource
-		// and default labels configured on the provider.
+		// The combination of labels configured directly on the resource and default
+		// labels configured on the provider.
 		terraform_labels?: [string]: string
 
 		// The creation time of the bucket in RFC 3339 format.
@@ -201,8 +186,7 @@ package data
 		// Enables uniform bucket-level access on a bucket.
 		uniform_bucket_level_access?: bool
 
-		// The time at which the bucket's metadata or IAM policy was last
-		// updated, in RFC 3339 format.
+		// The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
 		updated?: string
 
 		// The base URL of the bucket, in the format gs://<bucket-name>.

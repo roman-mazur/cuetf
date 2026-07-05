@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_beyondcorp_security_gateway: {
+google_beyondcorp_security_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_beyondcorp_security_gateway")
 	close({
@@ -15,25 +15,18 @@ import "list"
 		// Output only. Timestamp when the resource was created.
 		create_time?: string
 
-		// Service account used for operations that involve resources in
-		// consumer projects.
+		// Service account used for operations that involve resources in consumer projects.
 		delegating_service_account?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Optional. An arbitrary user-provided name for the
-		// SecurityGateway.
+		// Optional. An arbitrary user-provided name for the SecurityGateway.
 		// Cannot exceed 64 characters.
 		display_name?: string
 
@@ -43,14 +36,14 @@ import "list"
 		id?: string
 
 		// Identifier. Name of the resource.
-		name?:    string
-		project?: string
+		name?: string
 
 		// Optional. User-settable SecurityGateway resource ID.
 		// * Must start with a letter.
 		// * Must contain between 4-63 characters from '/a-z-/'.
 		// * Must end with a number or letter.
 		security_gateway_id!: string
+		project?:             string
 
 		// Output only. The operational state of the SecurityGateway.
 		// Possible values:
@@ -80,21 +73,17 @@ import "list"
 		// The configuration for the proxy.
 		allowed_client_headers?: [...string]
 
-		// Client IP configuration. The client IP address is included if
-		// true.
+		// Client IP configuration. The client IP address is included if true.
 		client_ip?: bool
 
-		// Gateway identity configuration. Possible values:
-		// ["RESOURCE_NAME"]
+		// Gateway identity configuration. Possible values: ["RESOURCE_NAME"]
 		gateway_identity?: string
 
 		// Custom resource specific headers along with the values.
 		// The names should conform to RFC 9110:
-		// > Field names SHOULD constrain themselves to alphanumeric
-		// characters, "-",
+		// > Field names SHOULD constrain themselves to alphanumeric characters, "-",
 		// and ".", and SHOULD begin with a letter.
-		// > Field values SHOULD contain only ASCII printable characters
-		// and tab.
+		// > Field values SHOULD contain only ASCII printable characters and tab.
 		metadata_headers?: [string]: string
 	})
 
@@ -118,26 +107,22 @@ import "list"
 		group_info?: matchN(1, [_#defs."/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/group_info", list.MaxItems(1) & [..._#defs."/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/group_info"]])
 		user_info?: matchN(1, [_#defs."/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/user_info", list.MaxItems(1) & [..._#defs."/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/user_info"]])
 
-		// Default output type for all enabled headers. Possible values:
-		// ["PROTOBUF", "JSON", "NONE"]
+		// Default output type for all enabled headers. Possible values: ["PROTOBUF", "JSON", "NONE"]
 		output_type?: string
 	})
 
 	_#defs: "/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/device_info": close({
-		// The output type of the delegated device info. Possible values:
-		// ["PROTOBUF", "JSON", "NONE"]
+		// The output type of the delegated device info. Possible values: ["PROTOBUF", "JSON", "NONE"]
 		output_type?: string
 	})
 
 	_#defs: "/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/group_info": close({
-		// The output type of the delegated group info. Possible values:
-		// ["PROTOBUF", "JSON", "NONE"]
+		// The output type of the delegated group info. Possible values: ["PROTOBUF", "JSON", "NONE"]
 		output_type?: string
 	})
 
 	_#defs: "/$defs/proxy_protocol_config/$defs/contextual_headers/$defs/user_info": close({
-		// The output type of the delegated user info. Possible values:
-		// ["PROTOBUF", "JSON", "NONE"]
+		// The output type of the delegated user info. Possible values: ["PROTOBUF", "JSON", "NONE"]
 		output_type?: string
 	})
 

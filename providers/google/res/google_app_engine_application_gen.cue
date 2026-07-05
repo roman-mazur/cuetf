@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_app_engine_application: {
+google_app_engine_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_app_engine_application")
 	close({
@@ -13,8 +13,7 @@ import "list"
 		// Identifier of the app.
 		app_id?: string
 
-		// The domain to authenticate users with when using App Engine's
-		// User API.
+		// The domain to authenticate users with when using App Engine's User API.
 		auth_domain?: string
 
 		// The GCS bucket code is being stored in for this app.
@@ -27,13 +26,12 @@ import "list"
 		// The default hostname for this app.
 		default_hostname?: string
 
-		// The GCR domain used for storing managed Docker images for this
-		// app.
+		// The GCR domain used for storing managed Docker images for this app.
 		gcr_domain?: string
-		id?:         string
 
 		// The location to serve the app from.
 		location_id!: string
+		id?:          string
 
 		// Unique name of the app.
 		name?: string
@@ -44,13 +42,12 @@ import "list"
 		// The serving status of the app.
 		serving_status?: string
 
-		// The SSL policy that will be applied to the application. If set
-		// to Modern it will restrict traffic with TLS \u003c 1.2 and
-		// allow only Modern Ciphers suite
+		// The SSL policy that will be applied to the application. If set to Modern it
+		// will restrict traffic with TLS \u003c 1.2 and allow only Modern Ciphers
+		// suite
 		ssl_policy?: string
 
-		// A list of dispatch rule blocks. Each block has a domain, path,
-		// and service field.
+		// A list of dispatch rule blocks. Each block has a domain, path, and service field.
 		url_dispatch_rule?: [...close({
 			domain?:  string
 			path?:    string
@@ -69,9 +66,8 @@ import "list"
 		// OAuth2 client ID to use for the authentication flow.
 		oauth2_client_id!: string
 
-		// OAuth2 client secret to use for the authentication flow. The
-		// SHA-256 hash of the value is returned in the
-		// oauth2ClientSecretSha256 field.
+		// OAuth2 client secret to use for the authentication flow. The SHA-256 hash of
+		// the value is returned in the oauth2ClientSecretSha256 field.
 		oauth2_client_secret!: string
 
 		// Hex-encoded SHA-256 hash of the client secret.

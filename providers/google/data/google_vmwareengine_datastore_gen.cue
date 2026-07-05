@@ -1,6 +1,6 @@
 package data
 
-#google_vmwareengine_datastore: {
+google_vmwareengine_datastore: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_vmwareengine_datastore")
 	close({
@@ -10,16 +10,11 @@ package data
 		// Creation time of this resource.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -27,14 +22,12 @@ package data
 		description?: string
 		id?:          string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// The user-provided identifier of the datastore to be created.
-		// This identifier must be unique among each 'Datastore' within
-		// the parent
+		// This identifier must be unique among each 'Datastore' within the parent
 		// and becomes the final token in the name URI.
 		// The identifier must meet the following requirements:
 		//
@@ -42,8 +35,7 @@ package data
 		// * Begins with an alphabetical character
 		// * Ends with a non-hyphen character
 		// * Not formatted as a UUID
-		// * Complies with [RFC
-		// 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+		// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
 		// (section 3.5)
 		name!: string
 

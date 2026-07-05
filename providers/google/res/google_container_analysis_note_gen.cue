@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_container_analysis_note: {
+google_container_analysis_note: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_analysis_note")
 	close({
@@ -13,21 +13,15 @@ import "list"
 		// The time this note was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Time of expiration for this note. Leave empty if note does not
-		// expire.
+		// Time of expiration for this note. Leave empty if note does not expire.
 		expiration_time?: string
 		id?:              string
 
@@ -38,11 +32,11 @@ import "list"
 		long_description?: string
 
 		// The name of the note.
-		name!:    string
-		project?: string
+		name!: string
 
 		// Names of other notes related to this note.
 		related_note_names?: [...string]
+		project?: string
 
 		// A one sentence description of the note.
 		short_description?: string

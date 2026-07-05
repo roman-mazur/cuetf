@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_bigquery_data_transfer_config: {
+google_bigquery_data_transfer_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_data_transfer_config")
 	close({
@@ -12,31 +12,21 @@ import "list"
 		sensitive_params?: matchN(1, [#sensitive_params, list.MaxItems(1) & [...#sensitive_params]])
 		timeouts?: #timeouts
 
-		// The number of days to look back to automatically refresh the
-		// data.
-		// For example, if dataRefreshWindowDays = 10, then every day
-		// BigQuery
-		// reingests data for [today-10, today-1], rather than ingesting
-		// data for
-		// just [today-1]. Only valid if the data source supports the
-		// feature.
+		// The number of days to look back to automatically refresh the data.
+		// For example, if dataRefreshWindowDays = 10, then every day BigQuery
+		// reingests data for [today-10, today-1], rather than ingesting data for
+		// just [today-1]. Only valid if the data source supports the feature.
 		// Set the value to 0 to use the default value.
 		data_refresh_window_days?: number
 
-		// The data source id. Cannot be changed once the transfer config
-		// is created.
+		// The data source id. Cannot be changed once the transfer config is created.
 		data_source_id!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -50,68 +40,52 @@ import "list"
 		display_name!: string
 		id?:           string
 
-		// The geographic location where the transfer config should
-		// reside.
+		// The geographic location where the transfer config should reside.
 		// Examples: US, EU, asia-northeast1. The default value is US.
 		location?: string
 
-		// The resource name of the transfer config. Transfer config names
-		// have the
-		// form
-		// projects/{projectId}/locations/{location}/transferConfigs/{configId}
+		// The resource name of the transfer config. Transfer config names have the
+		// form projects/{projectId}/locations/{location}/transferConfigs/{configId}
 		// or projects/{projectId}/transferConfigs/{configId},
 		// where configId is usually a uuid, but this is not required.
 		// The name is ignored when creating a transfer config.
 		name?: string
 
-		// Pub/Sub topic where notifications will be sent after transfer
-		// runs
+		// Pub/Sub topic where notifications will be sent after transfer runs
 		// associated with this transfer config finish.
 		notification_pubsub_topic?: string
 
-		// Parameters specific to each data source. For more information
-		// see the bq tab in the 'Setting up a data transfer'
-		// section for each data source. For example the parameters for
-		// Cloud Storage transfers are listed here:
+		// Parameters specific to each data source. For more information see the bq tab
+		// in the 'Setting up a data transfer'
+		// section for each data source. For example the parameters for Cloud Storage
+		// transfers are listed here:
 		// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 		//
-		// **NOTE** : If you are attempting to update a parameter that
-		// cannot be updated (due to api limitations) [please force
-		// recreation of the
+		// **NOTE** : If you are attempting to update a parameter that cannot be updated
+		// (due to api limitations) [please force recreation of the
 		// resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
 		params!: [string]: string
-		project?: string
 
-		// Data transfer schedule. If the data source does not support a
-		// custom
-		// schedule, this should be empty. If it is empty, the default
-		// value for
-		// the data source will be used. The specified times are in UTC.
-		// Examples
-		// of valid format: 1st,3rd monday of month 15:30, every wed,fri
-		// of jan,
-		// jun 13:15, and first sunday of quarter 00:00. See more
-		// explanation
+		// Data transfer schedule. If the data source does not support a custom
+		// schedule, this should be empty. If it is empty, the default value for
+		// the data source will be used. The specified times are in UTC. Examples
+		// of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
+		// jun 13:15, and first sunday of quarter 00:00. See more explanation
 		// about the format here:
 		// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-		// NOTE: The minimum interval time between recurring transfers
-		// depends
-		// on the data source; refer to the documentation for your data
-		// source.
+		// NOTE: The minimum interval time between recurring transfers depends
+		// on the data source; refer to the documentation for your data source.
 		schedule?: string
+		project?:  string
 
-		// Service account email. If this field is set, transfer config
-		// will
-		// be created with this service account credentials. It requires
-		// that
-		// requesting user calling this API has permissions to act as this
-		// service account.
+		// Service account email. If this field is set, transfer config will
+		// be created with this service account credentials. It requires that
+		// requesting user calling this API has permissions to act as this service account.
 		service_account_name?: string
 	})
 
 	#email_preferences: close({
-		// If true, email notifications will be sent on transfer run
-		// failures.
+		// If true, email notifications will be sent on transfer run failures.
 		enable_failure_email!: bool
 	})
 
@@ -122,46 +96,35 @@ import "list"
 
 	#schedule_options: close({
 		// If true, automatic scheduling of data transfer runs for this
-		// configuration will be disabled. The runs can be started on
-		// ad-hoc
+		// configuration will be disabled. The runs can be started on ad-hoc
 		// basis using transferConfigs.startManualRuns API. When automatic
 		// scheduling is disabled, the TransferConfig.schedule field will
 		// be ignored.
 		disable_auto_scheduling?: bool
 
-		// Defines time to stop scheduling transfer runs. A transfer run
-		// cannot be
-		// scheduled at or after the end time. The end time can be changed
-		// at any
-		// moment. The time when a data transfer can be triggered manually
-		// is not
+		// Defines time to stop scheduling transfer runs. A transfer run cannot be
+		// scheduled at or after the end time. The end time can be changed at any
+		// moment. The time when a data transfer can be triggered manually is not
 		// limited by this option.
 		end_time?: string
 
-		// Specifies time to start scheduling transfer runs. The first run
-		// will be
-		// scheduled at or after the start time according to a recurrence
-		// pattern
-		// defined in the schedule string. The start time can be changed
-		// at any
-		// moment. The time when a data transfer can be triggered manually
-		// is not
+		// Specifies time to start scheduling transfer runs. The first run will be
+		// scheduled at or after the start time according to a recurrence pattern
+		// defined in the schedule string. The start time can be changed at any
+		// moment. The time when a data transfer can be triggered manually is not
 		// limited by this option.
 		start_time?: string
 	})
 
 	#sensitive_params: close({
-		// The Secret Access Key of the AWS account transferring data
-		// from.
+		// The Secret Access Key of the AWS account transferring data from.
 		secret_access_key?: string
 
-		// The Secret Access Key of the AWS account transferring data
-		// from.
+		// The Secret Access Key of the AWS account transferring data from.
 		secret_access_key_wo?: string
 
-		// The version of the sensitive params - used to trigger updates
-		// of the write-only params. For more info see [updating
-		// write-only
+		// The version of the sensitive params - used to trigger updates of the
+		// write-only params. For more info see [updating write-only
 		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 		secret_access_key_wo_version?: number
 	})

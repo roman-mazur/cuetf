@@ -1,42 +1,30 @@
 package data
 
-#google_memcache_instance: {
+google_memcache_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_memcache_instance")
 	close({
-		// The full name of the GCE network to connect the instance to. If
-		// not provided,
+		// The full name of the GCE network to connect the instance to. If not provided,
 		// 'default' will be used.
 		authorized_network?: string
 
 		// Creation timestamp in RFC3339 text format.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance.
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is not set to false in
-		// Terraform state.
-		// When the field is set to true or unset in Terraform state, a
-		// 'terraform apply'
-		// or 'terraform destroy' that would delete the instance will
-		// fail.
-		// When the field is set to false, deleting the instance is
-		// allowed.
+		// Whether Terraform will be prevented from destroying the instance.
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is not set to false in Terraform state.
+		// When the field is set to true or unset in Terraform state, a 'terraform apply'
+		// or 'terraform destroy' that would delete the instance will fail.
+		// When the field is set to false, deleting the instance is allowed.
 		deletion_protection?: bool
 
 		// Endpoint for Discovery API
@@ -45,19 +33,17 @@ package data
 		// A user-visible name for the instance.
 		display_name?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// Resource labels to represent user-provided metadata.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Maintenance policy for an instance.
@@ -102,13 +88,11 @@ package data
 			params?: [string]: string
 		})]
 
-		// The major version of Memcached software. If not provided,
-		// latest supported version will be used.
-		// Currently the latest supported major version is MEMCACHE_1_5.
-		// The minor version will be automatically
-		// determined by our system based on the latest supported minor
-		// version. Default value: "MEMCACHE_1_5" Possible values:
-		// ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
+		// The major version of Memcached software. If not provided, latest supported version will be used.
+		// Currently the latest supported major version is MEMCACHE_1_5. The minor
+		// version will be automatically
+		// determined by our system based on the latest supported minor version. Default
+		// value: "MEMCACHE_1_5" Possible values: ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
 		memcache_version?: string
 
 		// The resource name of the instance.
@@ -124,14 +108,11 @@ package data
 		node_count?: number
 		project?:    string
 
-		// The region of the Memcache instance. If it is not provided, the
-		// provider region is used.
+		// The region of the Memcache instance. If it is not provided, the provider region is used.
 		region?: string
 
-		// Contains the name of allocated IP address ranges associated
-		// with
-		// the private service access connection for example,
-		// "test-default"
+		// Contains the name of allocated IP address ranges associated with
+		// the private service access connection for example, "test-default"
 		// associated with IP range 10.0.0.0/29.
 		reserved_ip_range_id?: [...string]
 

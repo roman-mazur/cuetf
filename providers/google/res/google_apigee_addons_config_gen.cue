@@ -2,23 +2,18 @@ package res
 
 import "list"
 
-#google_apigee_addons_config: {
+google_apigee_addons_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_addons_config")
 	close({
 		addons_config?: matchN(1, [#addons_config, list.MaxItems(1) & [...#addons_config]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
@@ -42,8 +37,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/addons_config/$defs/advanced_api_ops_config": close({
-		// Flag that specifies whether the Advanced API Ops add-on is
-		// enabled.
+		// Flag that specifies whether the Advanced API Ops add-on is enabled.
 		enabled?: bool
 	})
 
@@ -51,20 +45,17 @@ import "list"
 		// Flag that specifies whether the API security add-on is enabled.
 		enabled?: bool
 
-		// Time at which the API Security add-on expires in in
-		// milliseconds since epoch. If unspecified, the add-on will
-		// never expire.
+		// Time at which the API Security add-on expires in in milliseconds since epoch.
+		// If unspecified, the add-on will never expire.
 		expires_at?: string
 	})
 
 	_#defs: "/$defs/addons_config/$defs/connectors_platform_config": close({
-		// Flag that specifies whether the Connectors Platform add-on is
-		// enabled.
+		// Flag that specifies whether the Connectors Platform add-on is enabled.
 		enabled?: bool
 
-		// Time at which the Connectors Platform add-on expires in
-		// milliseconds since epoch. If unspecified, the add-on will
-		// never expire.
+		// Time at which the Connectors Platform add-on expires in milliseconds since
+		// epoch. If unspecified, the add-on will never expire.
 		expires_at?: string
 	})
 
