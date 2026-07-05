@@ -1,6 +1,6 @@
 package data
 
-#elasticstack_elasticsearch_ingest_processor_fingerprint: {
+elasticstack_elasticsearch_ingest_processor_fingerprint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_ingest_processor_fingerprint")
 	close({
@@ -19,9 +19,8 @@ package data
 		// Ignore failures for the processor.
 		ignore_failure?: bool
 
-		// If `true`, the processor ignores any missing `fields`. If all
-		// fields are missing, the processor silently exits without
-		// modifying the document.
+		// If `true`, the processor ignores any missing `fields`. If all fields are
+		// missing, the processor silently exits without modifying the document.
 		ignore_missing?: bool
 
 		// JSON representation of this data source.

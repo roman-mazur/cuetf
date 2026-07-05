@@ -1,6 +1,6 @@
 package data
 
-#elasticstack_elasticsearch_ingest_processor_script: {
+elasticstack_elasticsearch_ingest_processor_script: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_ingest_processor_script")
 	close({
@@ -28,12 +28,10 @@ package data
 		// Object containing parameters for the script.
 		params?: string
 
-		// ID of a stored script. If no `source` is specified, this
-		// parameter is required.
+		// ID of a stored script. If no `source` is specified, this parameter is required.
 		script_id?: string
 
-		// Inline script. If no `script_id` is specified, this parameter
-		// is required.
+		// Inline script. If no `script_id` is specified, this parameter is required.
 		source?: string
 
 		// Identifier for the processor.

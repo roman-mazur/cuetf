@@ -1,6 +1,6 @@
 package res
 
-#elasticstack_elasticsearch_security_user: {
+elasticstack_elasticsearch_security_user: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_security_user")
 	close({
@@ -8,9 +8,36 @@ package res
 
 		// The email of the user.
 		email?: string
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			create?: string
 
-		// Specifies whether the user is enabled. The default value is
-		// true.
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+			// applicable if changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Read operations occur during any refresh or
+			// planning operation when refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			update?: string
+		})
+
+		// Specifies whether the user is enabled. The default value is true.
 		enabled?: bool
 
 		// The full name of the user.
@@ -22,33 +49,29 @@ package res
 		// Arbitrary metadata that you want to associate with the user.
 		metadata?: string
 
-		// The user's password. Passwords must be at least 6 characters
-		// long. Note: Consider using `password_wo` for better security
-		// with ephemeral resources.
+		// The user's password. Passwords must be at least 6 characters long. Note:
+		// Consider using `password_wo` for better security with ephemeral resources.
 		password?: string
 
-		// A hash of the user's password. This must be produced using the
-		// same hashing algorithm as has been configured for password
-		// storage (see the [security settings
+		// A hash of the user's password. This must be produced using the same hashing
+		// algorithm as has been configured for password storage (see the [security
+		// settings
 		// documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings)).
 		password_hash?: string
 
-		// Write-only password attribute for use with ephemeral resources.
-		// Passwords must be at least 6 characters long. This attribute
-		// is designed for use with ephemeral resources like
-		// `vault_kv_secret_v2` to prevent secrets from being stored in
-		// the Terraform state. Must be used with `password_wo_version`.
+		// Write-only password attribute for use with ephemeral resources. Passwords
+		// must be at least 6 characters long. This attribute is designed for use with
+		// ephemeral resources like `vault_kv_secret_v2` to prevent secrets from being
+		// stored in the Terraform state. Must be used with `password_wo_version`.
 		password_wo?: string
 
-		// Version identifier for the write-only password. This field is
-		// used to trigger updates when the password changes. Required
-		// when `password_wo` is set. Typically, you would use a hash of
-		// the password or a version identifier from your secret
-		// management system.
+		// Version identifier for the write-only password. This field is used to trigger
+		// updates when the password changes. Required when `password_wo` is set.
+		// Typically, you would use a hash of the password or a version identifier from
+		// your secret management system.
 		password_wo_version?: string
 
-		// A set of roles the user has. The roles determine the user's
-		// access permissions.
+		// A set of roles the user has. The roles determine the user's access permissions.
 		roles!: [...string]
 
 		// An identifier for the user (see the [security API put user
@@ -70,22 +93,25 @@ package res
 		// Path to a custom Certificate Authority certificate
 		ca_file?: string
 
+		// SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators)
+		// of the server TLS certificate used to pin the connection instead of a full
+		// CA chain
+		ca_fingerprint?: string
+
 		// PEM encoded certificate for client auth
 		cert_data?: string
 
-		// Path to a file containing the PEM encoded certificate for
-		// client auth
+		// Path to a file containing the PEM encoded certificate for client auth
 		cert_file?: string
 
-		// A list of endpoints where the terraform provider will point to,
-		// this must include the http(s) schema and port number.
+		// A list of endpoints where the terraform provider will point to, this must
+		// include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// ES Client Authentication field to be used with the JWT token
 		es_client_authentication?: string
 
-		// A list of headers to be sent with each request to
-		// Elasticsearch.
+		// A list of headers to be sent with each request to Elasticsearch.
 		headers?: [string]: string
 
 		// Disable TLS certificate validation
@@ -94,8 +120,7 @@ package res
 		// PEM encoded private key for client auth
 		key_data?: string
 
-		// Path to a file containing the PEM encoded private key for
-		// client auth
+		// Path to a file containing the PEM encoded private key for client auth
 		key_file?: string
 
 		// Password to use for API authentication to Elasticsearch.

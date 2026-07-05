@@ -1,14 +1,42 @@
 package res
 
-#elasticstack_elasticsearch_inference_endpoint: {
+elasticstack_elasticsearch_inference_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_inference_endpoint")
 	close({
 		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
-		// Configuration for chunking input text, as a JSON object.
-		// Applicable only for embedding task types.
+		// Configuration for chunking input text, as a JSON object. Applicable only for
+		// embedding task types.
 		chunking_settings?: string
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			create?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+			// applicable if changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Read operations occur during any refresh or
+			// planning operation when refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			update?: string
+		})
 
 		// Internal identifier of the resource.
 		id?: string
@@ -16,22 +44,20 @@ package res
 		// The unique identifier of the inference endpoint.
 		inference_id!: string
 
-		// The service type for the inference endpoint (e.g. `openai`,
-		// `cohere`, `elasticsearch`).
+		// The service type for the inference endpoint (e.g. `openai`, `cohere`, `elasticsearch`).
 		service!: string
 
-		// Settings specific to the service provider, as a JSON object.
-		// May include credentials and model identifiers.
+		// Settings specific to the service provider, as a JSON object. May include
+		// credentials and model identifiers.
 		service_settings!: string
 
-		// Task-specific settings, as a JSON object. Optional and
-		// service-dependent. Only keys explicitly set here are tracked;
-		// server-applied defaults returned by the API are ignored to
-		// avoid perpetual drift.
+		// Task-specific settings, as a JSON object. Optional and service-dependent.
+		// Only keys explicitly set here are tracked; server-applied defaults returned
+		// by the API are ignored to avoid perpetual drift.
 		task_settings?: string
 
-		// must be one of [`sparse_embedding`, `text_embedding`, `rerank`,
-		// `completion`, `chat_completion`, `embedding`]
+		// must be one of [`sparse_embedding`, `text_embedding`, `rerank`, `completion`,
+		// `chat_completion`, `embedding`]
 		task_type?: string
 	})
 
@@ -48,22 +74,25 @@ package res
 		// Path to a custom Certificate Authority certificate
 		ca_file?: string
 
+		// SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators)
+		// of the server TLS certificate used to pin the connection instead of a full
+		// CA chain
+		ca_fingerprint?: string
+
 		// PEM encoded certificate for client auth
 		cert_data?: string
 
-		// Path to a file containing the PEM encoded certificate for
-		// client auth
+		// Path to a file containing the PEM encoded certificate for client auth
 		cert_file?: string
 
-		// A list of endpoints where the terraform provider will point to,
-		// this must include the http(s) schema and port number.
+		// A list of endpoints where the terraform provider will point to, this must
+		// include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// ES Client Authentication field to be used with the JWT token
 		es_client_authentication?: string
 
-		// A list of headers to be sent with each request to
-		// Elasticsearch.
+		// A list of headers to be sent with each request to Elasticsearch.
 		headers?: [string]: string
 
 		// Disable TLS certificate validation
@@ -72,8 +101,7 @@ package res
 		// PEM encoded private key for client auth
 		key_data?: string
 
-		// Path to a file containing the PEM encoded private key for
-		// client auth
+		// Path to a file containing the PEM encoded private key for client auth
 		key_file?: string
 
 		// Password to use for API authentication to Elasticsearch.

@@ -1,6 +1,6 @@
 package data
 
-#elasticstack_fleet_integration: {
+elasticstack_fleet_integration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_fleet_integration")
 	close({
@@ -15,8 +15,7 @@ package data
 		// Include prerelease packages.
 		prerelease?: bool
 
-		// The Kibana space ID to scope the request to. When not
-		// specified, the default space is used.
+		// The Kibana space ID to scope the request to. When not specified, the default space is used.
 		space_id?: string
 
 		// The integration package version.
@@ -30,13 +29,11 @@ package data
 		// Bearer Token to use for authentication to Kibana
 		bearer_token?: string
 
-		// A list of paths to CA certificates to validate the certificate
-		// presented by the Kibana server.
+		// A list of paths to CA certificates to validate the certificate presented by the Kibana server.
 		ca_certs?: [...string]
 
-		// A comma-separated list of endpoints where the terraform
-		// provider will point to, this must include the http(s) schema
-		// and port number.
+		// A comma-separated list of endpoints where the terraform provider will point
+		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// Disable TLS certificate validation

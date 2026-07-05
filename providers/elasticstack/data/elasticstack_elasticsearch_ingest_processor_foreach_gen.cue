@@ -1,6 +1,6 @@
 package data
 
-#elasticstack_elasticsearch_ingest_processor_foreach: {
+elasticstack_elasticsearch_ingest_processor_foreach: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_ingest_processor_foreach")
 	close({
@@ -19,8 +19,8 @@ package data
 		// Ignore failures for the processor.
 		ignore_failure?: bool
 
-		// If `true`, the processor silently exits without changing the
-		// document if the `field` is `null` or missing.
+		// If `true`, the processor silently exits without changing the document if the
+		// `field` is `null` or missing.
 		ignore_missing?: bool
 
 		// JSON representation of this data source.

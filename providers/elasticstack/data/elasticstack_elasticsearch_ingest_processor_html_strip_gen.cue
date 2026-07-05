@@ -1,6 +1,6 @@
 package data
 
-#elasticstack_elasticsearch_ingest_processor_html_strip: {
+elasticstack_elasticsearch_ingest_processor_html_strip: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_ingest_processor_html_strip")
 	close({
@@ -19,8 +19,8 @@ package data
 		// Ignore failures for the processor.
 		ignore_failure?: bool
 
-		// If `true` and `field` does not exist or is `null`, the
-		// processor quietly exits without modifying the document.
+		// If `true` and `field` does not exist or is `null`, the processor quietly
+		// exits without modifying the document.
 		ignore_missing?: bool
 
 		// JSON representation of this data source.
@@ -32,8 +32,7 @@ package data
 		// Identifier for the processor.
 		tag?: string
 
-		// The field to assign the converted value to, by default `field`
-		// is updated in-place.
+		// The field to assign the converted value to, by default `field` is updated in-place.
 		target_field?: string
 	})
 }

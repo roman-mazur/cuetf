@@ -1,20 +1,18 @@
 package data
 
-#elasticstack_elasticsearch_enrich_policy: {
+elasticstack_elasticsearch_enrich_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_enrich_policy")
 	close({
 		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
-		// Fields to add to matching incoming documents. These fields must
-		// be present in the source indices.
+		// Fields to add to matching incoming documents. These fields must be present in the source indices.
 		enrich_fields?: [...string]
 
 		// Internal identifier of the resource
 		id?: string
 
-		// Array of one or more source indices used to create the enrich
-		// index.
+		// Array of one or more source indices used to create the enrich index.
 		indices?: [...string]
 
 		// Field from the source indices used to match incoming documents.
@@ -23,13 +21,12 @@ package data
 		// The name of the policy.
 		name!: string
 
-		// The type of enrich policy, can be one of geo_match, match,
-		// range.
+		// The type of enrich policy, can be one of geo_match, match, range.
 		policy_type?: string
 
-		// Query used to filter documents in the enrich index. The policy
-		// only uses documents matching this query to enrich incoming
-		// documents. Defaults to a match_all query.
+		// Query used to filter documents in the enrich index. The policy only uses
+		// documents matching this query to enrich incoming documents. Defaults to a
+		// match_all query.
 		query?: string
 	})
 
@@ -46,22 +43,25 @@ package data
 		// Path to a custom Certificate Authority certificate
 		ca_file?: string
 
+		// SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators)
+		// of the server TLS certificate used to pin the connection instead of a full
+		// CA chain
+		ca_fingerprint?: string
+
 		// PEM encoded certificate for client auth
 		cert_data?: string
 
-		// Path to a file containing the PEM encoded certificate for
-		// client auth
+		// Path to a file containing the PEM encoded certificate for client auth
 		cert_file?: string
 
-		// A list of endpoints where the terraform provider will point to,
-		// this must include the http(s) schema and port number.
+		// A list of endpoints where the terraform provider will point to, this must
+		// include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// ES Client Authentication field to be used with the JWT token
 		es_client_authentication?: string
 
-		// A list of headers to be sent with each request to
-		// Elasticsearch.
+		// A list of headers to be sent with each request to Elasticsearch.
 		headers?: [string]: string
 
 		// Disable TLS certificate validation
@@ -70,8 +70,7 @@ package data
 		// PEM encoded private key for client auth
 		key_data?: string
 
-		// Path to a file containing the PEM encoded private key for
-		// client auth
+		// Path to a file containing the PEM encoded private key for client auth
 		key_file?: string
 
 		// Password to use for API authentication to Elasticsearch.

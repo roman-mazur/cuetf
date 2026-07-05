@@ -1,34 +1,13 @@
 package res
 
-#elasticstack_kibana_data_view: {
+elasticstack_kibana_data_view: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_data_view")
 	close({
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 		data_view!: close({
-			// Allows the Data view saved object to exist before the data is
-			// available.
+			// Allows the Data view saved object to exist before the data is available.
 			allow_no_index?: bool
-
-			// Saved object ID.
-			id?: string
-
-			// The Data view name.
-			name?: string
-
-			// Array of space IDs for sharing the Data view between multiple
-			// spaces.
-			namespaces?: [...string]
-
-			// List of field names you want to filter out in Discover.
-			source_filters?: [...string]
-
-			// Timestamp field name, which you use for time-based Data views.
-			time_field_name?: string
-
-			// Comma-separated list of data streams, indices, and aliases that
-			// you want to search. Supports wildcards (*).
-			title!: string
 
 			// Map of field attributes by field name.
 			field_attrs?: [string]: close({
@@ -39,11 +18,14 @@ package res
 				custom_label?: string
 			})
 
+			// Saved object ID.
+			id?: string
+
 			// Map of field formats by field name.
 			field_formats?: [string]: close({
-				// The ID of the field format. Valid values include: `boolean`,
-				// `color`, `date`, `duration`, `number`, `percent`,
-				// `relative_date`, `static_lookup`, `string`, `truncate`, `url`.
+				// The ID of the field format. Valid values include: `boolean`, `color`, `date`,
+				// `duration`, `number`, `percent`, `relative_date`, `static_lookup`, `string`,
+				// `truncate`, `url`.
 				id!: string
 				params?: close({
 					// Color rules for the field.
@@ -76,14 +58,10 @@ package res
 					// Length to truncate the field value.
 					field_length?: number
 
-					// Field type for color formatting (e.g., `string`, `number`).
-					field_type?: string
-
 					// Height for image type URLs.
 					height?: number
 
-					// Whether to include a space before the suffix in duration
-					// format.
+					// Whether to include a space before the suffix in duration format.
 					include_space_with_suffix?: bool
 
 					// Input format for duration fields (e.g., `hours`, `minutes`).
@@ -107,8 +85,10 @@ package res
 						value!: string
 					})]])
 
-					// Output format for duration fields (e.g., `humanizePrecise`,
-					// `humanize`).
+					// Field type for color formatting (e.g., `string`, `number`).
+					field_type?: string
+
+					// Output format for duration fields (e.g., `humanizePrecise`, `humanize`).
 					output_format?: string
 
 					// Precision for duration output.
@@ -140,28 +120,69 @@ package res
 				})
 			})
 
+			// The Data view name.
+			name?: string
+
 			// Map of runtime field definitions by field name.
 			runtime_field_map?: [string]: close({
 				// Script of the runtime field.
 				script_source!: string
 
-				// Mapping type of the runtime field. For more information, check
-				// [Field data
+				// Mapping type of the runtime field. For more information, check [Field data
 				// types](https://www.elastic.co/guide/en/elasticsearch/reference/8.11/mapping-types.html).
 				type!: string
 			})
+
+			// Array of space IDs for sharing the Data view between multiple spaces.
+			namespaces?: [...string]
+
+			// List of field names you want to filter out in Discover.
+			source_filters?: [...string]
+
+			// Timestamp field name, which you use for time-based Data views.
+			time_field_name?: string
+
+			// Comma-separated list of data streams, indices, and aliases that you want to
+			// search. Supports wildcards (*).
+			title!: string
 		})
 
 		// Generated ID for the data view.
 		id?: string
 
-		// Overrides an existing data view if a data view with the
-		// provided title already exists.
-		override?: bool
-
-		// An identifier for the space. If space_id is not provided, the
-		// default space is used.
+		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			create?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+			// applicable if changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Read operations occur during any refresh or
+			// planning operation when refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			update?: string
+		})
+
+		// Overrides an existing data view if a data view with the provided title already exists.
+		override?: bool
 	})
 
 	#kibana_connection: close({
@@ -171,13 +192,11 @@ package res
 		// Bearer Token to use for authentication to Kibana
 		bearer_token?: string
 
-		// A list of paths to CA certificates to validate the certificate
-		// presented by the Kibana server.
+		// A list of paths to CA certificates to validate the certificate presented by the Kibana server.
 		ca_certs?: [...string]
 
-		// A comma-separated list of endpoints where the terraform
-		// provider will point to, this must include the http(s) schema
-		// and port number.
+		// A comma-separated list of endpoints where the terraform provider will point
+		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// Disable TLS certificate validation

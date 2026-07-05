@@ -1,6 +1,6 @@
 package data
 
-#elasticstack_elasticsearch_ingest_processor_reroute: {
+elasticstack_elasticsearch_ingest_processor_reroute: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_ingest_processor_reroute")
 	close({
@@ -10,8 +10,7 @@ package data
 		// Description of the processor.
 		description?: string
 
-		// The destination data stream, index, or index alias to route the
-		// document to.
+		// The destination data stream, index, or index alias to route the document to.
 		destination?: string
 
 		// Internal identifier of the resource.

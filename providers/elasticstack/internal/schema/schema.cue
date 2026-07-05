@@ -36,6 +36,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								description_kind: "markdown"
 								optional:         true
 							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
+								description_kind: "markdown"
+								optional:         true
+							}
 							cert_data: {
 								type:             "string"
 								description:      "PEM encoded certificate for client auth"
@@ -455,14 +461,576 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "markdown"
 			}
 		}
+		elasticstack_elasticsearch_ccr_auto_follow_pattern: {
+			version: 0
+			block: {
+				attributes: {
+					active: {
+						type:             "bool"
+						description:      "Desired state of the auto-follow pattern. When `false`, the pattern is paused."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					follow_index_pattern: {
+						type:             "string"
+						description:      "Name template for follower indices; `{{leader_index}}` is substituted with the matched leader index name."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource in the format `<cluster_uuid>/<name>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					leader_index_exclusion_patterns: {
+						type: ["list", "string"]
+						description:      "Simple index patterns that exclude indices from being auto-followed even when they match `leader_index_patterns`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					leader_index_patterns: {
+						type: ["list", "string"]
+						description:      "One or more simple index patterns to match against indices in the remote cluster."
+						description_kind: "markdown"
+						required:         true
+					}
+					max_outstanding_read_requests: {
+						type:             "number"
+						description:      "Maximum number of outstanding read requests from the remote cluster."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					max_outstanding_write_requests: {
+						type:             "number"
+						description:      "Maximum number of outstanding write requests on the follower."
+						description_kind: "markdown"
+						optional:         true
+					}
+					max_read_request_operation_count: {
+						type:             "number"
+						description:      "Maximum number of operations to pull per read from the remote cluster."
+						description_kind: "markdown"
+						optional:         true
+					}
+					max_read_request_size: {
+						type:             "string"
+						description:      "Maximum size in bytes per read batch from the remote cluster (e.g. `\"100mb\"`)."
+						description_kind: "markdown"
+						optional:         true
+					}
+					max_retry_delay: {
+						type:             "string"
+						description:      "Maximum time to wait before retrying a failed operation (e.g. `\"10s\"`)."
+						description_kind: "markdown"
+						optional:         true
+					}
+					max_write_buffer_count: {
+						type:             "number"
+						description:      "Maximum number of operations queued for writing."
+						description_kind: "markdown"
+						optional:         true
+					}
+					max_write_buffer_size: {
+						type:             "string"
+						description:      "Maximum total bytes of operations queued for writing (e.g. `\"100mb\"`)."
+						description_kind: "markdown"
+						optional:         true
+					}
+					max_write_request_operation_count: {
+						type:             "number"
+						description:      "Maximum number of operations per bulk write request on the follower."
+						description_kind: "markdown"
+						optional:         true
+					}
+					max_write_request_size: {
+						type:             "string"
+						description:      "Maximum total bytes per bulk write request on the follower (e.g. `\"100mb\"`)."
+						description_kind: "markdown"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the auto-follow pattern."
+						description_kind: "markdown"
+						required:         true
+					}
+					read_poll_timeout: {
+						type:             "string"
+						description:      "Maximum time to wait for new operations on the remote cluster when synchronized (e.g. `\"10m\"`)."
+						description_kind: "markdown"
+						optional:         true
+					}
+					remote_cluster: {
+						type:             "string"
+						description:      "Remote cluster alias containing leader indices to match."
+						description_kind: "markdown"
+						required:         true
+					}
+					settings_raw: {
+						type:             "string"
+						description:      "JSON-encoded index settings to apply to auto-created follower indices. Write-only; not returned by the auto-follow API."
+						description_kind: "markdown"
+						optional:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages a Cross-Cluster Replication (CCR) auto-follow pattern. CCR requires a Platinum or Enterprise license."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_ccr_follower_index: {
+			version: 0
+			block: {
+				attributes: {
+					data_stream_name: {
+						type:             "string"
+						description:      "Local data stream name when following a data stream leader. Requires Elasticsearch 8.4.0 or later. Write-only; not returned by the CCR info API."
+						description_kind: "markdown"
+						optional:         true
+					}
+					delete_index_on_destroy: {
+						type:             "bool"
+						description:      "When true, destroy deletes the underlying index after unfollowing. When false (default), the index is opened as a regular index."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource in the format `<cluster_uuid>/<name>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					leader_index: {
+						type:             "string"
+						description:      "Name of the leader index on the remote cluster."
+						description_kind: "markdown"
+						required:         true
+					}
+					max_outstanding_read_requests: {
+						type:             "number"
+						description:      "Maximum number of outstanding read requests from the remote cluster."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					max_outstanding_write_requests: {
+						type:             "number"
+						description:      "Maximum number of outstanding write requests on the follower."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					max_read_request_operation_count: {
+						type:             "number"
+						description:      "Maximum number of operations to pull per read from the remote cluster."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					max_read_request_size: {
+						type:             "string"
+						description:      "Maximum size in bytes per read batch from the remote cluster (e.g. `\"100mb\"`)."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					max_retry_delay: {
+						type:             "string"
+						description:      "Maximum time to wait before retrying a failed operation (e.g. `\"10s\"`)."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					max_write_buffer_count: {
+						type:             "number"
+						description:      "Maximum number of operations queued for writing."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					max_write_buffer_size: {
+						type:             "string"
+						description:      "Maximum total bytes of operations queued for writing (e.g. `\"100mb\"`)."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					max_write_request_operation_count: {
+						type:             "number"
+						description:      "Maximum number of operations per bulk write request on the follower."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					max_write_request_size: {
+						type:             "string"
+						description:      "Maximum total bytes per bulk write request on the follower (e.g. `\"100mb\"`)."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the follower index."
+						description_kind: "markdown"
+						required:         true
+					}
+					read_poll_timeout: {
+						type:             "string"
+						description:      "Maximum time to wait for new operations on the remote cluster when synchronized (e.g. `\"10m\"`)."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					remote_cluster: {
+						type:             "string"
+						description:      "Remote cluster alias containing the leader index."
+						description_kind: "markdown"
+						required:         true
+					}
+					settings_raw: {
+						type:             "string"
+						description:      "JSON-encoded index settings to override from the leader index. Write-only; not returned by the CCR info API."
+						description_kind: "markdown"
+						optional:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Desired replication status: `active` or `paused`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages a Cross-Cluster Replication (CCR) follower index. CCR requires a Platinum or Enterprise license."
+				description_kind: "markdown"
+			}
+		}
 		elasticstack_elasticsearch_cluster_settings: {
 			version: 1
 			block: {
-				attributes: id: {
-					type:             "string"
-					description:      "Internal identifier of the resource."
-					description_kind: "markdown"
-					computed:         true
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: {
 					elasticsearch_connection: {
@@ -492,6 +1060,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								ca_file: {
 									type:             "string"
 									description:      "Path to a custom Certificate Authority certificate"
+									description_kind: "markdown"
+									optional:         true
+								}
+								ca_fingerprint: {
+									type:             "string"
+									description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -660,6 +1234,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					version: {
 						type:             "number"
 						description:      "Version number used to manage component templates externally."
@@ -695,6 +1302,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								ca_file: {
 									type:             "string"
 									description:      "Path to a custom Certificate Authority certificate"
+									description_kind: "markdown"
+									optional:         true
+								}
+								ca_fingerprint: {
+									type:             "string"
+									description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -1197,6 +1810,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -1225,6 +1871,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -1407,6 +2059,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					timestamp_field: {
 						type:             "string"
 						description:      "Contains information about the data stream's @timestamp field."
@@ -1441,6 +2126,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -1562,7 +2253,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					expand_wildcards: {
 						type:             "string"
-						description:      "Determines how wildcard patterns in the `indices` parameter match data streams and indices. Supports comma-separated values, such as `closed,hidden`."
+						description:      "Determines how wildcard patterns in the `name` parameter match data streams and indices. Accepted values are: `all`, `open`, `closed`, `hidden`, `none`."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -1578,6 +2269,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "Name of the data stream. Supports wildcards."
 						description_kind: "plain"
 						required:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
 					}
 				}
 				block_types: elasticsearch_connection: {
@@ -1607,6 +2331,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -1737,6 +2467,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -1765,6 +2528,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -2361,6 +3130,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					unassigned_node_left_delayed_timeout: {
 						type:             "string"
 						description:      "Time to delay the allocation of replica shards which become unassigned because a node has left, in time units, e.g. `10s`"
@@ -2426,6 +3228,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								ca_file: {
 									type:             "string"
 									description:      "Path to a custom Certificate Authority certificate"
+									description_kind: "markdown"
+									optional:         true
+								}
+								ca_fingerprint: {
+									type:             "string"
+									description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -2606,6 +3414,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						optional:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					write_index: {
 						nested_type: {
 							attributes: {
@@ -2681,6 +3522,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -2792,6 +3639,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "Identifier for the policy."
 						description_kind: "plain"
 						required:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
 					}
 				}
 				block_types: {
@@ -3038,6 +3918,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								ca_file: {
 									type:             "string"
 									description:      "Path to a custom Certificate Authority certificate"
+									description_kind: "markdown"
+									optional:         true
+								}
+								ca_fingerprint: {
+									type:             "string"
+									description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -3585,6 +4471,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -3613,6 +4532,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -3744,6 +4669,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					version: {
 						type:             "number"
 						description:      "Version number used to manage index templates externally."
@@ -3802,6 +4760,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								ca_file: {
 									type:             "string"
 									description:      "Path to a custom Certificate Authority certificate"
+									description_kind: "markdown"
+									optional:         true
+								}
+								ca_fingerprint: {
+									type:             "string"
+									description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -4027,6 +4991,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -4055,6 +5052,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -4226,6 +5229,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -4254,6 +5290,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -4377,6 +5419,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -4405,6 +5480,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -4629,6 +5710,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					username: {
 						type:             "string"
 						description:      "User who last updated the pipeline."
@@ -4664,6 +5778,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -5156,119 +6276,144 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 					}
-				}
-				block_types: {
-					elasticsearch_connection: {
-						nesting_mode: "list"
-						block: {
+					timeouts: {
+						nested_type: {
 							attributes: {
-								api_key: {
+								create: {
 									type:             "string"
-									description:      "API Key to use for authentication to Elasticsearch"
-									description_kind: "markdown"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
 									optional:         true
-									sensitive:        true
 								}
-								bearer_token: {
+								delete: {
 									type:             "string"
-									description:      "Bearer Token to use for authentication to Elasticsearch"
-									description_kind: "markdown"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
 									optional:         true
-									sensitive:        true
 								}
-								ca_data: {
+								read: {
 									type:             "string"
-									description:      "PEM-encoded custom Certificate Authority certificate"
-									description_kind: "markdown"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
 									optional:         true
 								}
-								ca_file: {
+								update: {
 									type:             "string"
-									description:      "Path to a custom Certificate Authority certificate"
-									description_kind: "markdown"
-									optional:         true
-								}
-								cert_data: {
-									type:             "string"
-									description:      "PEM encoded certificate for client auth"
-									description_kind: "markdown"
-									optional:         true
-								}
-								cert_file: {
-									type:             "string"
-									description:      "Path to a file containing the PEM encoded certificate for client auth"
-									description_kind: "markdown"
-									optional:         true
-								}
-								endpoints: {
-									type: ["list", "string"]
-									description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
-									description_kind: "markdown"
-									optional:         true
-									sensitive:        true
-								}
-								es_client_authentication: {
-									type:             "string"
-									description:      "ES Client Authentication field to be used with the JWT token"
-									description_kind: "markdown"
-									optional:         true
-									sensitive:        true
-								}
-								headers: {
-									type: ["map", "string"]
-									description:      "A list of headers to be sent with each request to Elasticsearch."
-									description_kind: "markdown"
-									optional:         true
-									sensitive:        true
-								}
-								insecure: {
-									type:             "bool"
-									description:      "Disable TLS certificate validation"
-									description_kind: "markdown"
-									optional:         true
-								}
-								key_data: {
-									type:             "string"
-									description:      "PEM encoded private key for client auth"
-									description_kind: "markdown"
-									optional:         true
-									sensitive:        true
-								}
-								key_file: {
-									type:             "string"
-									description:      "Path to a file containing the PEM encoded private key for client auth"
-									description_kind: "markdown"
-									optional:         true
-								}
-								password: {
-									type:             "string"
-									description:      "Password to use for API authentication to Elasticsearch."
-									description_kind: "markdown"
-									optional:         true
-									sensitive:        true
-								}
-								username: {
-									type:             "string"
-									description:      "Username to use for API authentication to Elasticsearch."
-									description_kind: "markdown"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
 									optional:         true
 								}
 							}
-							description:      "Elasticsearch connection configuration block."
-							description_kind: "markdown"
+							nesting_mode: "single"
 						}
+						description_kind: "plain"
+						optional:         true
 					}
-					timeouts: {
-						nesting_mode: "single"
-						block: {
-							attributes: delete: {
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
 								type:             "string"
-								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
-								description_kind: "plain"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
 								optional:         true
 							}
-							description_kind: "plain"
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
 						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
 					}
 				}
 				description: """
@@ -5303,6 +6448,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -5331,6 +6509,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -5468,6 +6652,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -5496,6 +6713,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -5595,6 +6818,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -5623,6 +6879,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -5907,6 +7169,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -5935,6 +7230,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -6084,6 +7385,18 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description_kind: "plain"
 									optional:         true
 								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
 								update: {
 									type:             "string"
 									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
@@ -6124,6 +7437,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -6238,6 +7557,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -6266,6 +7618,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -6388,6 +7746,18 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description_kind: "plain"
 									optional:         true
 								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
 								update: {
 									type:             "string"
 									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
@@ -6428,6 +7798,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -6518,6 +7894,443 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					- Opening a job allows it to receive and process data.
 					- Closing a job stops data processing and frees up resources.
 					- Jobs can be opened and closed multiple times throughout their lifecycle.
+					"""
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_ml_trained_model_alias: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					model_alias: {
+						type:             "string"
+						description:      "The alias to create or update. This value cannot end in numbers."
+						description_kind: "markdown"
+						required:         true
+					}
+					model_id: {
+						type:             "string"
+						description:      "The identifier for the trained model that the alias refers to."
+						description_kind: "markdown"
+						required:         true
+					}
+					reassign: {
+						type:             "bool"
+						description:      "Specifies whether the alias gets reassigned to the specified trained model if it is already assigned to a different model."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages Machine Learning trained model aliases. A trained model alias is a logical name used to reference a single trained model. See the [ML Trained Model Alias API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html) for more details."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_elasticsearch_ml_trained_model_deployment: {
+			version: 0
+			block: {
+				attributes: {
+					adaptive_allocations: {
+						nested_type: {
+							attributes: {
+								enabled: {
+									type:             "bool"
+									description:      "If `true`, adaptive allocations is enabled."
+									description_kind: "markdown"
+									required:         true
+								}
+								max_number_of_allocations: {
+									type:             "number"
+									description:      "Specifies the maximum number of allocations to scale to."
+									description_kind: "markdown"
+									optional:         true
+								}
+								min_number_of_allocations: {
+									type:             "number"
+									description:      "Specifies the minimum number of allocations to scale to."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Adaptive allocations configuration. When enabled, the number of allocations is set based on the current load. Cannot be set when `number_of_allocations` is configured."
+						description_kind: "markdown"
+						optional:         true
+					}
+					allocation_status: {
+						type:             "string"
+						description:      "The detailed allocation state of the deployment."
+						description_kind: "markdown"
+						computed:         true
+					}
+					api_timeout: {
+						type:             "string"
+						description:      "Specifies the amount of time to wait for the model to deploy. This is the server-side start timeout."
+						description_kind: "markdown"
+						optional:         true
+					}
+					deployment_id: {
+						type:             "string"
+						description:      "A unique identifier for the deployment of the model. Defaults to the value of `model_id`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					force_stop: {
+						type:             "bool"
+						description:      "When `true`, passes `force=true` to the Stop Deployment API on destroy."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource in the format `<cluster_uuid>/<deployment_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					model_id: {
+						type:             "string"
+						description:      "The unique identifier of the trained model to deploy."
+						description_kind: "markdown"
+						required:         true
+					}
+					number_of_allocations: {
+						type:             "number"
+						description:      "The number of model allocations on each node where the model is deployed. Cannot be set when `adaptive_allocations` is configured."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					priority: {
+						type:             "string"
+						description:      "The deployment priority. Valid values are `low` and `normal`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					queue_capacity: {
+						type:             "number"
+						description:      "Specifies the number of inference requests that are allowed in the queue."
+						description_kind: "markdown"
+						optional:         true
+					}
+					state: {
+						type:             "string"
+						description:      "The overall state of the deployment."
+						description_kind: "markdown"
+						computed:         true
+					}
+					stats_json: {
+						type:             "string"
+						description:      "The raw JSON of the trained model stats for this deployment."
+						description_kind: "markdown"
+						computed:         true
+					}
+					threads_per_allocation: {
+						type:             "number"
+						description:      "Sets the number of threads used by each model allocation during inference."
+						description_kind: "markdown"
+						optional:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+					wait_for: {
+						type:             "string"
+						description:      "Specifies the allocation status to wait for before returning. Valid values are `starting`, `started`, and `fully_allocated`. Defaults to `fully_allocated`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					Manages the deployment lifecycle (start, scale, stop) of an existing Elasticsearch ML trained model.
+
+					This resource does not upload or create the underlying trained model; it only manages the deployment state.
+					On Terraform destroy the resource stops (undeploys) the model deployment.
+
 					"""
 				description_kind: "markdown"
 			}
@@ -6632,6 +8445,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -6660,6 +8506,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -6780,6 +8632,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -6808,6 +8693,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -7008,6 +8899,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					type: {
 						type:             "string"
 						description:      "The type of API key. Valid values are 'rest' (default) and 'cross_cluster'. Cross-cluster API keys are used for cross-cluster search and replication."
@@ -7043,6 +8967,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -7172,6 +9102,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: {
 					applications: {
@@ -7228,6 +9191,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								ca_file: {
 									type:             "string"
 									description:      "Path to a custom Certificate Authority certificate"
+									description_kind: "markdown"
+									optional:         true
+								}
+								ca_fingerprint: {
+									type:             "string"
+									description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -7364,6 +9333,16 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						nesting_mode: "set"
 						block: {
 							attributes: {
+								allow_restricted_indices: {
+									type: "bool"
+									description: """
+												Include matching restricted indices in names parameter. Usage is strongly discouraged as it can grant unrestricted operations on critical data, make the entire system unstable or leak sensitive information.
+
+												"""
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
 								clusters: {
 									type: ["set", "string"]
 									description:      "A list of cluster aliases to which the permissions in this entry apply."
@@ -7471,6 +9450,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -7499,6 +9511,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -7613,6 +9631,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						sensitive:        true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					username: {
 						type:             "string"
 						description:      "An identifier for the system user (see the [built-in users documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html))."
@@ -7647,6 +9698,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -7810,6 +9867,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					username: {
 						type: "string"
 						description: """
@@ -7847,6 +9937,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -8032,6 +10128,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -8060,6 +10189,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -8152,6 +10287,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description:      "Name of the snapshot repository to register or update."
 						description_kind: "markdown"
 						required:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
 					}
 					verify: {
 						type:             "bool"
@@ -8261,6 +10429,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								ca_file: {
 									type:             "string"
 									description:      "Path to a custom Certificate Authority certificate"
+									description_kind: "markdown"
+									optional:         true
+								}
+								ca_fingerprint: {
+									type:             "string"
+									description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -8745,6 +10919,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: elasticsearch_connection: {
 					nesting_mode: "list"
@@ -8773,6 +10980,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -8963,6 +11176,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					unattended: {
 						type:             "bool"
 						description:      "In unattended mode, the transform retries indefinitely in case of an error which means the transform never fails."
@@ -9041,6 +11287,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								ca_file: {
 									type:             "string"
 									description:      "Path to a custom Certificate Authority certificate"
+									description_kind: "markdown"
+									optional:         true
+								}
+								ca_fingerprint: {
+									type:             "string"
+									description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -9261,6 +11513,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					transform: {
 						type:             "string"
 						description:      "Processes the watch payload to prepare it for the watch actions."
@@ -9307,6 +11592,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -9432,6 +11723,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
 					}
 				}
 				block_types: kibana_connection: {
@@ -9995,6 +12319,18 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description_kind: "plain"
 									optional:         true
 								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
 								update: {
 									type:             "string"
 									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
@@ -10077,9 +12413,15 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				attributes: {
 					agent_policy_id: {
 						type:             "string"
-						description:      "ID of the agent policy."
+						description:      "ID of the agent policy. Conflicts with agent_policy_ids."
 						description_kind: "plain"
-						required:         true
+						optional:         true
+					}
+					agent_policy_ids: {
+						type: ["list", "string"]
+						description:      "List of agent policy IDs. Requires Elastic Stack >= 8.15.0. Conflicts with agent_policy_id."
+						description_kind: "plain"
+						optional:         true
 					}
 					description: {
 						type:             "string"
@@ -11078,6 +13420,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					version: {
 						type:             "string"
 						description:      "The integration package version."
@@ -11718,6 +14093,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						optional:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					type: {
 						type:             "string"
 						description:      "The output type."
@@ -11851,6 +14259,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					url: {
 						type:             "string"
 						description:      "The proxy URL."
@@ -11962,6 +14403,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
 					}
 				}
 				block_types: kibana_connection: {
@@ -12109,6 +14583,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: kibana_connection: {
 					nesting_mode: "list"
@@ -12235,6 +14742,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
 					}
 					tools: {
 						type: ["set", "string"]
@@ -12371,6 +14911,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					tool_ids: {
 						type: ["set", "string"]
 						description:      "Set of tool IDs from the tool registry that this skill references."
@@ -12470,6 +15043,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						type: ["set", "string"]
 						description:      "List of tags for the tool."
 						description_kind: "markdown"
+						optional:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
 						optional:         true
 					}
 					tool_id: {
@@ -12584,6 +15190,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
 					}
 					valid: {
 						type:             "bool"
@@ -12807,6 +15446,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: {
 					actions: {
@@ -13021,8 +15693,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					dashboard_id: {
 						type:             "string"
-						description:      "The Kibana-assigned identifier for the dashboard."
+						description:      "Optional dashboard identifier. When set, create uses PUT upsert semantics; changing this value forces replacement. When omitted, Kibana assigns a UUID."
 						description_kind: "markdown"
+						optional:         true
 						computed:         true
 					}
 					description: {
@@ -28177,6 +30850,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					title: {
 						type:             "string"
 						description:      "A human-readable title for the dashboard."
@@ -28558,6 +31264,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: kibana_connection: {
 					nesting_mode: "list"
@@ -28656,6 +31395,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
 					}
 				}
 				block_types: kibana_connection: {
@@ -28923,6 +31695,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: kibana_connection: {
 					nesting_mode: "list"
@@ -29112,6 +31917,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
 					}
 					title: {
 						type:             "string"
@@ -30127,6 +32965,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					timestamp_override: {
 						type:             "string"
 						description:      "Field name to use for timestamp override. Available for all rule types."
@@ -30270,6 +33141,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					value: {
 						type:             "string"
 						description:      "The tag value to filter rules by (e.g., 'Windows')."
@@ -30341,6 +33245,1469 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 
 
 					"""
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_security_entity_store: {
+			version: 0
+			block: {
+				attributes: {
+					allow_entity_type_shrink: {
+						type:             "bool"
+						description:      "Terraform-only guard that permits removing installed entity types when true. Removing an entity type will also remove any registered entities of that type."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					entity_types: {
+						type: ["set", "string"]
+						description:      "Entity types to install and manage. Valid values are user, host, service, and generic."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					history_snapshot: {
+						nested_type: {
+							attributes: frequency: {
+								type:             "string"
+								description:      "History snapshot frequency used during installation."
+								description_kind: "plain"
+								optional:         true
+							}
+							nesting_mode: "single"
+						}
+						description:      "Install-only history snapshot settings."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Computed resource identifier in the format <space_id>/entity_store."
+						description_kind: "plain"
+						computed:         true
+					}
+					log_extraction: {
+						nested_type: {
+							attributes: {
+								additional_index_patterns: {
+									type: ["list", "string"]
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								delay: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								docs_limit: {
+									type:             "number"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								excluded_index_patterns: {
+									type: ["list", "string"]
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								field_history_length: {
+									type:             "number"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								frequency: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								lookback_period: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								max_logs_per_page: {
+									type:             "number"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								max_logs_per_window: {
+									type:             "number"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								max_logs_per_window_cap_behavior: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								max_time_window_size: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Optional log extraction settings for the entity store."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the Kibana space. If omitted, the default space is used."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					started: {
+						type:             "bool"
+						description:      "Whether any managed entity engine should be running after reconciliation."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					status_json: {
+						type:             "string"
+						description:      "Normalized JSON representation of the most recent entity store status response."
+						description_kind: "plain"
+						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages the Elastic Security Entity Store lifecycle within a Kibana space."
+				description_kind: "plain"
+			}
+		}
+		elasticstack_kibana_security_entity_store_entity: {
+			version: 0
+			block: {
+				attributes: {
+					asset: {
+						nested_type: {
+							attributes: {
+								criticality: {
+									type:             "string"
+									description:      "Asset criticality level."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								criticality_feedback: {
+									nested_type: {
+										attributes: {
+											notes: {
+												type:             "string"
+												description:      "Feedback notes."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											reason: {
+												type:             "string"
+												description:      "Feedback reason."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Feedback on the asset criticality."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								owner: {
+									nested_type: {
+										attributes: {
+											department: {
+												type:             "string"
+												description:      "Owner department."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											email: {
+												type:             "string"
+												description:      "Owner email."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											ext: {
+												type:             "string"
+												description:      "Owner extension."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											name: {
+												type:             "string"
+												description:      "Owner name."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Asset owner information."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								value: {
+									type:             "number"
+									description:      "Asset value."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Asset metadata associated with the entity."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					asset_json: {
+						type:             "string"
+						description:      "JSON fallback for the asset block."
+						description_kind: "plain"
+						optional:         true
+					}
+					cloud: {
+						nested_type: {
+							attributes: {
+								account_id: {
+									type:             "string"
+									description:      "Cloud account identifier."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								account_name: {
+									type:             "string"
+									description:      "Cloud account name."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								project_id: {
+									type:             "string"
+									description:      "Cloud project identifier."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								project_name: {
+									type:             "string"
+									description:      "Cloud project name."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								provider: {
+									type:             "string"
+									description:      "Cloud provider."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								region: {
+									type:             "string"
+									description:      "Cloud region."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								service_name: {
+									type:             "string"
+									description:      "Cloud service name."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Cloud fields collected on the entity."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					cloud_json: {
+						type:             "string"
+						description:      "JSON fallback for the cloud block."
+						description_kind: "plain"
+						optional:         true
+					}
+					document_json: {
+						type:             "string"
+						description:      "Canonical JSON (sorted keys) containing the full entity document as read back from Kibana."
+						description_kind: "plain"
+						computed:         true
+					}
+					entity: {
+						nested_type: {
+							attributes: {
+								attributes: {
+									nested_type: {
+										attributes: {
+											asset: {
+												type:             "bool"
+												description:      "Whether the entity is classified as an asset."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											managed: {
+												type:             "bool"
+												description:      "Whether the entity is managed (for example, via a directory service)."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											mfa_enabled: {
+												type:             "bool"
+												description:      "Whether multi-factor authentication is enabled for the entity."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											privileged: {
+												type:             "bool"
+												description:      "Whether the entity has elevated privileges."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Boolean flags describing characteristics of the entity."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								behaviors: {
+									nested_type: {
+										attributes: {
+											brute_force_victim: {
+												type:             "bool"
+												description:      "Whether the entity has been targeted by brute-force attacks."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											new_country_login: {
+												type:             "bool"
+												description:      "Whether the entity has logged in from a new country."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											used_usb_device: {
+												type:             "bool"
+												description:      "Whether the entity has used a USB device."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Boolean flags indicating observed behavioral signals."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								id: {
+									type:             "string"
+									description:      "Unique identifier for this entity."
+									description_kind: "plain"
+									required:         true
+								}
+								lifecycle: {
+									nested_type: {
+										attributes: {
+											first_seen: {
+												type:             "string"
+												description:      "When the entity was first observed."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											last_activity: {
+												type:             "string"
+												description:      "When the entity last generated activity."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											last_seen: {
+												type:             "string"
+												description:      "When the entity was last observed."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Timestamps tracking the entity lifecycle."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Human-readable name of the entity."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								relationships: {
+									nested_type: {
+										attributes: {
+											accessed_frequently_by: {
+												type: ["set", "string"]
+												description:      "Entity IDs that frequently access this entity."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											accesses_frequently: {
+												type: ["set", "string"]
+												description:      "Entity IDs this entity accesses frequently."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											accesses_infrequently: {
+												type: ["set", "string"]
+												description:      "Entity IDs this entity accesses infrequently."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											communicates_with: {
+												type: ["set", "string"]
+												description:      "Entity IDs this entity communicates with."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											dependent_of: {
+												type: ["set", "string"]
+												description:      "Entity IDs that depend on this entity."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											depends_on: {
+												type: ["set", "string"]
+												description:      "Entity IDs this entity depends on."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											owned_by: {
+												type: ["set", "string"]
+												description:      "Entity IDs that own this entity."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											owns: {
+												type: ["set", "string"]
+												description:      "Entity IDs owned by this entity."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											supervised_by: {
+												type: ["set", "string"]
+												description:      "Entity IDs that supervise this entity."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											supervises: {
+												type: ["set", "string"]
+												description:      "Entity IDs supervised by this entity."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Connections between this entity and other entities."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								risk: {
+									nested_type: {
+										attributes: {
+											calculated_level: {
+												type:             "string"
+												description:      "The calculated risk level."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											calculated_score: {
+												type:             "number"
+												description:      "The raw numeric value of the given entity's risk score."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											calculated_score_norm: {
+												type:             "number"
+												description:      "The normalized numeric value of the given entity's risk score."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Risk scoring information for the entity."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								source: {
+									type: ["set", "string"]
+									description:      "The sources that produced this entity record."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								sub_type: {
+									type:             "string"
+									description:      "Optional sub-type classification for the entity."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								type: {
+									type:             "string"
+									description:      "The entity type."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Core entity fields shared across all entity types."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					entity_id: {
+						type:             "string"
+						description:      "Unique identifier for this entity. Must match the entity.id field in the typed entity block or entity_json when supplied."
+						description_kind: "plain"
+						required:         true
+					}
+					entity_json: {
+						type:             "string"
+						description:      "JSON fallback for the entity block."
+						description_kind: "plain"
+						optional:         true
+					}
+					entity_type: {
+						type:             "string"
+						description:      "The type of entity. Must be one of: user, host, service, generic."
+						description_kind: "plain"
+						required:         true
+					}
+					event: {
+						nested_type: {
+							attributes: {
+								action: {
+									type:             "string"
+									description:      "Event action."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								category: {
+									type:             "string"
+									description:      "Event category."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								code: {
+									type:             "string"
+									description:      "Event code."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								dataset: {
+									type:             "string"
+									description:      "Event dataset."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								ingested: {
+									type:             "string"
+									description:      "When the event was ingested into Elasticsearch."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								kind: {
+									type:             "string"
+									description:      "Event kind."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								outcome: {
+									type:             "string"
+									description:      "Event outcome."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								provider: {
+									type:             "string"
+									description:      "Event provider."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								reason: {
+									type:             "string"
+									description:      "Event reason."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								reference: {
+									type:             "string"
+									description:      "Event reference."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								severity: {
+									type:             "string"
+									description:      "Event severity."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								timezone: {
+									type:             "string"
+									description:      "Event timezone."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								type: {
+									type:             "string"
+									description:      "Event type."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								url: {
+									type:             "string"
+									description:      "Event URL."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Event fields collected on the entity."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					event_json: {
+						type:             "string"
+						description:      "JSON fallback for the event block."
+						description_kind: "plain"
+						optional:         true
+					}
+					force: {
+						type:             "bool"
+						description:      "When true, passes force=true on PUT updates."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					host: {
+						nested_type: {
+							attributes: {
+								architecture: {
+									type: ["set", "string"]
+									description:      "Observed CPU architectures."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								domain: {
+									type: ["set", "string"]
+									description:      "Observed host domains."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								hostname: {
+									type: ["set", "string"]
+									description:      "Observed hostnames."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								id: {
+									type: ["set", "string"]
+									description:      "Observed host IDs."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								ip: {
+									type: ["set", "string"]
+									description:      "Observed IP addresses."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								mac: {
+									type: ["set", "string"]
+									description:      "Observed MAC addresses."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Primary host name."
+									description_kind: "plain"
+									required:         true
+								}
+								os: {
+									nested_type: {
+										attributes: {
+											family: {
+												type:             "string"
+												description:      "Operating system family."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											full: {
+												type:             "string"
+												description:      "Full operating system name."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											kernel: {
+												type:             "string"
+												description:      "Kernel version."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											name: {
+												type:             "string"
+												description:      "Operating system name."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											platform: {
+												type:             "string"
+												description:      "Operating system platform."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											type: {
+												type:             "string"
+												description:      "Operating system type."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											version: {
+												type:             "string"
+												description:      "Operating system version."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Elastic Common Schema (ECS) host.os fields collected on the entity."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								risk: {
+									nested_type: {
+										attributes: {
+											calculated_level: {
+												type:             "string"
+												description:      "The calculated risk level."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											calculated_score: {
+												type:             "number"
+												description:      "The raw numeric value of the given entity's risk score."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											calculated_score_norm: {
+												type:             "number"
+												description:      "The normalized numeric value of the given entity's risk score."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Risk scoring information for the host."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								type: {
+									type: ["set", "string"]
+									description:      "Observed host types."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "ECS host fields collected on the entity."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					host_json: {
+						type:             "string"
+						description:      "JSON fallback for the host block."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Computed resource identifier in the format <space_id>/<entity_id>."
+						description_kind: "plain"
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description:      "Labels associated with the entity as a map of string to string."
+						description_kind: "plain"
+						optional:         true
+					}
+					labels_json: {
+						type:             "string"
+						description:      "JSON fallback for labels. Supports non-string values."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					orchestrator: {
+						nested_type: {
+							attributes: {
+								cluster_id: {
+									type:             "string"
+									description:      "Cluster identifier."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								cluster_name: {
+									type:             "string"
+									description:      "Cluster name."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								cluster_version: {
+									type:             "string"
+									description:      "Cluster version."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Orchestrator name."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								namespace: {
+									type:             "string"
+									description:      "Orchestrator namespace."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								resource_id: {
+									type:             "string"
+									description:      "Resource identifier."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								resource_name: {
+									type:             "string"
+									description:      "Resource name."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								resource_type: {
+									type:             "string"
+									description:      "Resource type."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								type: {
+									type:             "string"
+									description:      "Orchestrator type."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Orchestrator fields collected on the entity."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					orchestrator_json: {
+						type:             "string"
+						description:      "JSON fallback for the orchestrator block."
+						description_kind: "plain"
+						optional:         true
+					}
+					response_json: {
+						type:             "string"
+						description:      "Raw API response body serialized as normalized JSON for troubleshooting."
+						description_kind: "plain"
+						computed:         true
+					}
+					service: {
+						nested_type: {
+							attributes: {
+								name: {
+									type:             "string"
+									description:      "Primary service name."
+									description_kind: "plain"
+									required:         true
+								}
+								risk: {
+									nested_type: {
+										attributes: {
+											calculated_level: {
+												type:             "string"
+												description:      "The calculated risk level."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											calculated_score: {
+												type:             "number"
+												description:      "The raw numeric value of the given entity's risk score."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											calculated_score_norm: {
+												type:             "number"
+												description:      "The normalized numeric value of the given entity's risk score."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Risk scoring information for the service."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "ECS service fields collected on the entity."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					service_json: {
+						type:             "string"
+						description:      "JSON fallback for the service block."
+						description_kind: "plain"
+						optional:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the Kibana space. If omitted, the default space is used."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					tags: {
+						type: ["set", "string"]
+						description:      "Tags associated with the entity."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+					timestamp: {
+						type:             "string"
+						description:      "The time the entity record was last updated. Maps to @timestamp in the API body."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					user: {
+						nested_type: {
+							attributes: {
+								domain: {
+									type: ["set", "string"]
+									description:      "Observed user domains."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								email: {
+									type: ["set", "string"]
+									description:      "Observed email addresses."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								full_name: {
+									type: ["set", "string"]
+									description:      "Observed full names of the user."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								hash: {
+									type: ["set", "string"]
+									description:      "Observed user hashes."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								id: {
+									type: ["set", "string"]
+									description:      "Observed user IDs."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Primary user name."
+									description_kind: "plain"
+									required:         true
+								}
+								risk: {
+									nested_type: {
+										attributes: {
+											calculated_level: {
+												type:             "string"
+												description:      "The calculated risk level."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											calculated_score: {
+												type:             "number"
+												description:      "The raw numeric value of the given entity's risk score."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											calculated_score_norm: {
+												type:             "number"
+												description:      "The normalized numeric value of the given entity's risk score."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Risk scoring information for the user."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								roles: {
+									type: ["set", "string"]
+									description:      "Observed roles assigned to the user."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "ECS user fields collected on the entity."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					user_json: {
+						type:             "string"
+						description:      "JSON fallback for the user block."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages a single entity record in the Kibana Security Entity Store."
+				description_kind: "plain"
+			}
+		}
+		elasticstack_kibana_security_entity_store_entity_link: {
+			version: 0
+			block: {
+				attributes: {
+					entity_ids: {
+						type: ["set", "string"]
+						description:      "The set of alias entity identifiers to link to the target entity. Must contain between 1 and 1000 items."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The composite ID of the entity link: `<space_id>/<target_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					resolution_group_json: {
+						type:             "string"
+						description:      "The normalized JSON representation of the resolution group returned by the Kibana API."
+						description_kind: "markdown"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					target_id: {
+						type:             "string"
+						description:      "The entity identifier that linked entities resolve to."
+						description_kind: "markdown"
+						required:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages entity resolution links in the Kibana Entity Store. Links one or more alias entity identifiers to a single target (golden) entity, forming a resolution group. Requires Elastic Stack 9.1.0 or later."
 				description_kind: "markdown"
 			}
 		}
@@ -30560,6 +34927,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					type: {
 						type:             "string"
 						description:      "The type of exception item. Must be `simple`."
@@ -30728,6 +35128,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					type: {
 						type:             "string"
 						description:      "The type of exception list. Can be one of: `detection`, `endpoint`, `endpoint_trusted_apps`, `endpoint_events`, `endpoint_host_isolation_exceptions`, `endpoint_blocklists`, `rule_default`."
@@ -30878,6 +35311,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 					type: {
 						type: "string"
 						description: """
@@ -31013,6 +35479,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: kibana_connection: {
 					nesting_mode: "list"
@@ -31124,6 +35623,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
 					}
 					updated_at: {
 						type:             "string"
@@ -31244,6 +35776,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: {
 					elasticsearch: {
@@ -31316,6 +35881,15 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									nesting_mode: "set"
 									block: {
 										attributes: {
+											allow_restricted_indices: {
+												type: "bool"
+												description: """
+															Include matching restricted indices in names parameter. Usage is strongly discouraged as it can grant unrestricted operations on critical data, make the entire system unstable or leak sensitive information.
+
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
 											clusters: {
 												type: ["set", "string"]
 												description:      "A list of cluster aliases to which the permissions in this entry apply."
@@ -31569,6 +36143,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags for the SLO."
+						description_kind: "plain"
+						optional:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
 						description_kind: "plain"
 						optional:         true
 					}
@@ -32311,6 +36918,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						required:         true
 					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: kibana_connection: {
 					nesting_mode: "list"
@@ -32369,6 +37009,325 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				}
 				description:      "Creates a Kibana space. See the [spaces API documentation](https://www.elastic.co/guide/en/kibana/master/spaces-api-post.html) for more details."
 				description_kind: "plain"
+			}
+		}
+		elasticstack_kibana_stream: {
+			version: 0
+			block: {
+				attributes: {
+					classic_config: {
+						nested_type: {
+							attributes: {
+								failure_store_json: {
+									type:             "string"
+									description:      "Failure store configuration as a JSON object. When not set, defaults to `{\"disabled\":{}}` and the server value is stored in state."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								field_overrides_json: {
+									type:             "string"
+									description:      "Field override definitions as a JSON object. Maps field names to override configurations for classic stream field handling."
+									description_kind: "markdown"
+									optional:         true
+								}
+								index_number_of_replicas: {
+									type:             "number"
+									description:      "Number of replica shards for the underlying index."
+									description_kind: "markdown"
+									optional:         true
+								}
+								index_number_of_shards: {
+									type:             "number"
+									description:      "Number of primary shards for the underlying index."
+									description_kind: "markdown"
+									optional:         true
+								}
+								index_refresh_interval: {
+									type:             "string"
+									description:      "How often to refresh the index (e.g. `1s`, `5s`, `-1` to disable)."
+									description_kind: "markdown"
+									optional:         true
+								}
+								lifecycle_json: {
+									type:             "string"
+									description:      "Lifecycle configuration as a JSON object. Supports DSL, ILM, or inherited lifecycle. When not set, the previous state value is preserved on update."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								processing_steps: {
+									type: ["list", "string"]
+									description:      "Processing pipeline steps in streamlang format. Each element is a JSON-encoded step object. Steps are applied in order during ingest."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Configuration for a classic stream. Classic streams adopt pre-existing Elasticsearch data streams. They cannot be created or deleted via this resource — use `terraform import` to manage them. Mutually exclusive with `wired_config` and `query_config`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					dashboards: {
+						type: ["list", "string"]
+						description:      "List of dashboard IDs to link to this stream."
+						description_kind: "markdown"
+						optional:         true
+					}
+					description: {
+						type:             "string"
+						description:      "A human-readable description of the stream."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Generated composite identifier for the stream (`space_id/name`)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the stream. Stream names follow Elasticsearch data stream naming conventions (e.g. `logs.nginx`)."
+						description_kind: "markdown"
+						required:         true
+					}
+					queries: {
+						nested_type: {
+							attributes: {
+								description: {
+									type:             "string"
+									description:      "A human-readable description for the query."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								esql: {
+									type:             "string"
+									description:      "The ES|QL query string."
+									description_kind: "markdown"
+									required:         true
+								}
+								evidence: {
+									type: ["list", "string"]
+									description:      "Optional list of evidence field names for the query."
+									description_kind: "markdown"
+									optional:         true
+								}
+								id: {
+									type:             "string"
+									description:      "A unique identifier for the query."
+									description_kind: "markdown"
+									required:         true
+								}
+								severity_score: {
+									type:             "number"
+									description:      "Optional severity score for the query (0–100)."
+									description_kind: "markdown"
+									optional:         true
+								}
+								title: {
+									type:             "string"
+									description:      "A human-readable title for the query."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "ES|QL queries attached to this stream."
+						description_kind: "markdown"
+						optional:         true
+					}
+					query_config: {
+						nested_type: {
+							attributes: {
+								esql: {
+									type:             "string"
+									description:      "The ES|QL query that defines this virtual stream. The `FROM` clause must reference the parent stream using the `$.{parent}` data view notation, where `{parent}` is the stream name with its last `.segment` removed. For example, a query stream named `logs.otel.errors` must use `FROM $.logs.otel | ...`."
+									description_kind: "markdown"
+									required:         true
+								}
+								view: {
+									type:             "string"
+									description:      "The Kibana data view name for this query stream. Automatically set to `$.{name}` (the stream name prefixed with `$.`) — this is enforced by the API and cannot be changed."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Configuration for a query stream. Query streams are virtual streams defined by an ES|QL query. Mutually exclusive with `wired_config` and `classic_config`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+					wired_config: {
+						nested_type: {
+							attributes: {
+								failure_store_json: {
+									type:             "string"
+									description:      "Failure store configuration as a JSON object. Controls where failed ingest documents are stored. Supports `{\"inherit\": {}}`, `{\"disabled\": {}}`, or a lifecycle-enabled configuration. When not set, defaults to `{\"disabled\":{}}` and the server value is stored in state."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								fields_json: {
+									type:             "string"
+									description:      "Field type mappings as a JSON object. Maps field names to their type definitions (e.g. `{\"host.name\": {\"type\": \"keyword\"}}`). Wired streams enforce these mappings across routed data."
+									description_kind: "markdown"
+									optional:         true
+								}
+								index_number_of_replicas: {
+									type:             "number"
+									description:      "Number of replica shards for the underlying index."
+									description_kind: "markdown"
+									optional:         true
+								}
+								index_number_of_shards: {
+									type:             "number"
+									description:      "Number of primary shards for the underlying index."
+									description_kind: "markdown"
+									optional:         true
+								}
+								index_refresh_interval: {
+									type:             "string"
+									description:      "How often to refresh the index (e.g. `1s`, `5s`, `-1` to disable). Accepts a duration string or `-1`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								lifecycle_json: {
+									type:             "string"
+									description:      "Lifecycle configuration as a JSON object. Supports DSL (`{\"dsl\": {\"data_retention\": \"30d\"}}`), ILM (`{\"ilm\": {\"policy\": \"my-policy\"}}`), or inherited lifecycle (`{\"inherit\": {}}`). When not set, the previous state value is preserved on update; on first create defaults to `{\"inherit\":{}}` and the server value is stored in state."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								processing_steps: {
+									type: ["list", "string"]
+									description:      "Processing pipeline steps in streamlang format. Each element is a JSON-encoded step object (e.g. `jsonencode({ action = \"grok\", from = \"message\", patterns = [\"...\"] })`). Steps are applied in order during ingest. Storing each step as a separate list element gives granular per-step diffs in Terraform plans. Conditions and nested steps are supported by embedding the full streamlang object as JSON."
+									description_kind: "markdown"
+									optional:         true
+								}
+								routing_json: {
+									type:             "string"
+									description:      "Routing rules as a JSON array. Each rule defines a destination child stream and a filter condition (`where`) that determines which documents are routed there. Example: `[{\"destination\": \"logs.nginx.errors\", \"where\": {\"field\": \"http.response.status_code\", \"gte\": 400}}]`."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Configuration for a wired stream. Wired streams are fully managed data streams with explicit field mappings and routing rules. Mutually exclusive with `classic_config` and `query_config`."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					Manages Kibana [Streams](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-streams). Requires Elastic Stack 9.4.0 or higher (the stream type discriminator field used by this resource was introduced in 9.4.0). This functionality is in technical preview and may be changed or removed in a future release.
+
+					Three stream types are supported:
+					- **Wired streams** (`wired_config`): fully managed data streams with typed field mappings and routing rules.
+					- **Classic streams** (`classic_config`): adopt existing Elasticsearch data streams — they cannot be created or deleted via this resource, only imported and updated.
+					- **Query streams** (`query_config`): virtual streams defined by an ES|QL query.
+					"""
+				description_kind: "markdown"
 			}
 		}
 		elasticstack_kibana_synthetics_monitor: {
@@ -32503,12 +37462,15 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description:      "The password for authenticating with the server. The credentials are passed with the request."
 									description_kind: "markdown"
 									optional:         true
+									computed:         true
+									sensitive:        true
 								}
 								proxy_header: {
 									type:             "string"
-									description:      "Additional headers to send to proxies during CONNECT requests.. Raw JSON object, use `jsonencode` function to represent JSON"
+									description:      "Additional headers to send to proxies during CONNECT requests. Raw JSON object, use `jsonencode` function to represent JSON"
 									description_kind: "markdown"
 									optional:         true
+									computed:         true
 								}
 								proxy_url: {
 									type:             "string"
@@ -32577,6 +37539,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description:      "The username for authenticating with the server. The credentials are passed with the request."
 									description_kind: "markdown"
 									optional:         true
+									computed:         true
 								}
 							}
 							nesting_mode: "single"
@@ -32701,12 +37664,14 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description:      "The expected answer. "
 									description_kind: "markdown"
 									optional:         true
+									computed:         true
 								}
 								check_send: {
 									type:             "string"
 									description:      "An optional payload string to send to the remote host."
 									description_kind: "markdown"
 									optional:         true
+									computed:         true
 								}
 								host: {
 									type:             "string"
@@ -32790,6 +37755,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
 					}
 				}
 				block_types: kibana_connection: {
@@ -32900,6 +37898,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
 					}
 					value: {
 						type:             "string"
@@ -33037,6 +38068,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						type: ["list", "string"]
 						description:      "An array of tags to categorize the private location."
 						description_kind: "markdown"
+						optional:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
 						optional:         true
 					}
 				}
@@ -33510,6 +38574,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								description_kind: "markdown"
 								optional:         true
 							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
+								description_kind: "markdown"
+								optional:         true
+							}
 							cert_data: {
 								type:             "string"
 								description:      "PEM encoded certificate for client auth"
@@ -33661,6 +38731,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -33849,6 +38925,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								ca_file: {
 									type:             "string"
 									description:      "Path to a custom Certificate Authority certificate"
+									description_kind: "markdown"
+									optional:         true
+								}
+								ca_fingerprint: {
+									type:             "string"
+									description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -34592,6 +39674,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								description_kind: "markdown"
 								optional:         true
 							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
+								description_kind: "markdown"
+								optional:         true
+							}
 							cert_data: {
 								type:             "string"
 								description:      "PEM encoded certificate for client auth"
@@ -34792,6 +39880,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -38256,6 +43350,217 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "plain"
 			}
 		}
+		elasticstack_elasticsearch_ml_trained_model: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "The time when the trained model was created."
+						description_kind: "markdown"
+						computed:         true
+					}
+					created_by: {
+						type:             "string"
+						description:      "Information on the creator of the trained model."
+						description_kind: "markdown"
+						computed:         true
+					}
+					default_field_map: {
+						type: ["map", "string"]
+						description:      "Any field map described in the inference configuration takes precedence."
+						description_kind: "markdown"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The free-text description of the trained model."
+						description_kind: "markdown"
+						computed:         true
+					}
+					fully_defined: {
+						type:             "bool"
+						description:      "True if the full model definition is present."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier of the resource"
+						description_kind: "markdown"
+						computed:         true
+					}
+					inference_config_json: {
+						type:             "string"
+						description:      "JSON string of the default inference configuration."
+						description_kind: "markdown"
+						computed:         true
+					}
+					input_json: {
+						type:             "string"
+						description:      "JSON string of the model input field names."
+						description_kind: "markdown"
+						computed:         true
+					}
+					license_level: {
+						type:             "string"
+						description:      "The license level of the trained model."
+						description_kind: "markdown"
+						computed:         true
+					}
+					metadata_json: {
+						type:             "string"
+						description:      "JSON string of the model metadata."
+						description_kind: "markdown"
+						computed:         true
+					}
+					model_id: {
+						type:             "string"
+						description:      "The identifier for the trained model."
+						description_kind: "markdown"
+						required:         true
+					}
+					model_size_bytes: {
+						type:             "number"
+						description:      "The estimated memory usage in bytes to keep the trained model in memory."
+						description_kind: "markdown"
+						computed:         true
+					}
+					model_type: {
+						type:             "string"
+						description:      "The model type."
+						description_kind: "markdown"
+						computed:         true
+					}
+					platform_architecture: {
+						type:             "string"
+						description:      "The platform identifier (e.g. linux-x86_64)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					tags: {
+						type: ["set", "string"]
+						description:      "A set of tags for the trained model."
+						description_kind: "markdown"
+						computed:         true
+					}
+					version: {
+						type:             "string"
+						description:      "The Elasticsearch version number in which the trained model was created."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Retrieves an Elasticsearch ML trained model. See, https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html"
+				description_kind: "markdown"
+			}
+		}
 		elasticstack_elasticsearch_query_ruleset: {
 			version: 0
 			block: {
@@ -38394,6 +43699,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -38604,6 +43915,15 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					remote_indices: {
 						nested_type: {
 							attributes: {
+								allow_restricted_indices: {
+									type: "bool"
+									description: """
+												Include matching restricted indices in names parameter. Usage is strongly discouraged as it can grant unrestricted operations on critical data, make the entire system unstable or leak sensitive information.
+
+												"""
+									description_kind: "markdown"
+									computed:         true
+								}
 								clusters: {
 									type: ["set", "string"]
 									description:      "A list of cluster aliases to which the permissions in this entry apply."
@@ -38694,6 +44014,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -38848,6 +44174,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								description_kind: "markdown"
 								optional:         true
 							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
+								description_kind: "markdown"
+								optional:         true
+							}
 							cert_data: {
 								type:             "string"
 								description:      "PEM encoded certificate for client auth"
@@ -38996,6 +44328,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -39518,6 +44856,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								description_kind: "markdown"
 								optional:         true
 							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
+								description_kind: "markdown"
+								optional:         true
+							}
 							cert_data: {
 								type:             "string"
 								description:      "PEM encoded certificate for client auth"
@@ -39658,6 +45002,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -40918,6 +46268,608 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "plain"
 			}
 		}
+		elasticstack_kibana_security_entity_store_entities: {
+			version: 0
+			block: {
+				attributes: {
+					entity_id: {
+						type:             "string"
+						description:      "When set, the provider generates an implicit KQL filter for this entity id. Conflicts with filter and filter_query."
+						description_kind: "plain"
+						optional:         true
+					}
+					entity_types: {
+						type: ["set", "string"]
+						description:      "Entity types to include in the results. Valid values are user, host, service, generic."
+						description_kind: "plain"
+						optional:         true
+					}
+					fields: {
+						type: ["list", "string"]
+						description:      "Fields to include in response fields."
+						description_kind: "plain"
+						optional:         true
+					}
+					filter: {
+						type:             "string"
+						description:      "A Kibana Query Language (KQL) filter for the search-after mode."
+						description_kind: "plain"
+						optional:         true
+					}
+					filter_query: {
+						type:             "string"
+						description:      "An Elasticsearch query string to filter entities in page mode."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Stable identifier computed as <space_id>/entity_store_entities."
+						description_kind: "plain"
+						computed:         true
+					}
+					items: {
+						type: ["list", ["object", {
+							"@timestamp": "string"
+							asset: ["object", {
+								criticality: "string"
+								criticality_feedback: ["object", {
+									notes:  "string"
+									reason: "string"
+								}]
+								owner: ["object", {
+									department: "string"
+									email:      "string"
+									ext:        "string"
+									name:       "string"
+								}]
+								value: "number"
+							}]
+							cloud: ["object", {
+								account_id:   "string"
+								account_name: "string"
+								project_id:   "string"
+								project_name: "string"
+								provider:     "string"
+								region:       "string"
+								service_name: "string"
+							}]
+							document_json: "string"
+							entity: ["object", {
+								attributes: ["object", {
+									asset:       "bool"
+									managed:     "bool"
+									mfa_enabled: "bool"
+									privileged:  "bool"
+								}]
+								behaviors: ["object", {
+									brute_force_victim: "bool"
+									new_country_login:  "bool"
+									used_usb_device:    "bool"
+								}]
+								id: "string"
+								lifecycle: ["object", {
+									first_seen:    "string"
+									last_activity: "string"
+									last_seen:     "string"
+								}]
+								name: "string"
+								relationships: ["object", {
+									accessed_frequently_by: ["set", "string"]
+									accesses_frequently: ["set", "string"]
+									accesses_infrequently: ["set", "string"]
+									communicates_with: ["set", "string"]
+									dependent_of: ["set", "string"]
+									depends_on: ["set", "string"]
+									owned_by: ["set", "string"]
+									owns: ["set", "string"]
+									supervised_by: ["set", "string"]
+									supervises: ["set", "string"]
+								}]
+								risk: ["object", {
+									calculated_level:      "string"
+									calculated_score:      "number"
+									calculated_score_norm: "number"
+								}]
+								source: ["set", "string"]
+								sub_type: "string"
+								type:     "string"
+							}]
+							event: ["object", {
+								action:    "string"
+								category:  "string"
+								code:      "string"
+								dataset:   "string"
+								ingested:  "string"
+								kind:      "string"
+								outcome:   "string"
+								provider:  "string"
+								reason:    "string"
+								reference: "string"
+								severity:  "string"
+								timezone:  "string"
+								type:      "string"
+								url:       "string"
+							}]
+							host: ["object", {
+								architecture: ["set", "string"]
+								domain: ["set", "string"]
+								hostname: ["set", "string"]
+								id: ["set", "string"]
+								ip: ["set", "string"]
+								mac: ["set", "string"]
+								name: "string"
+								os: ["object", {
+									family:   "string"
+									full:     "string"
+									kernel:   "string"
+									name:     "string"
+									platform: "string"
+									type:     "string"
+									version:  "string"
+								}]
+								risk: ["object", {
+									calculated_level:      "string"
+									calculated_score:      "number"
+									calculated_score_norm: "number"
+								}]
+								type: ["set", "string"]
+							}]
+							labels: ["map", "string"]
+							orchestrator: ["object", {
+								cluster_id:      "string"
+								cluster_name:    "string"
+								cluster_version: "string"
+								name:            "string"
+								namespace:       "string"
+								resource_id:     "string"
+								resource_name:   "string"
+								resource_type:   "string"
+								type:            "string"
+							}]
+							service: ["object", {
+								name: "string"
+								risk: ["object", {
+									calculated_level:      "string"
+									calculated_score:      "number"
+									calculated_score_norm: "number"
+								}]
+							}]
+							tags: ["set", "string"]
+							user: ["object", {
+								domain: ["set", "string"]
+								email: ["set", "string"]
+								full_name: ["set", "string"]
+								hash: ["set", "string"]
+								id: ["set", "string"]
+								name: "string"
+								risk: ["object", {
+									calculated_level:      "string"
+									calculated_score:      "number"
+									calculated_score_norm: "number"
+								}]
+								roles: ["set", "string"]
+							}]
+						}]]
+						description:      "List of entity records with typed attributes matching the resource schema."
+						description_kind: "plain"
+						computed:         true
+					}
+					page: {
+						type:             "number"
+						description:      "Page number to return (1-indexed) in page mode."
+						description_kind: "plain"
+						optional:         true
+					}
+					per_page: {
+						type:             "number"
+						description:      "Number of entities per page in page mode."
+						description_kind: "plain"
+						optional:         true
+					}
+					results_json: {
+						type:             "string"
+						description:      "Normalized JSON (sorted keys) of the full API response body."
+						description_kind: "plain"
+						computed:         true
+					}
+					search_after: {
+						type:             "string"
+						description:      "JSON-encoded search_after cursor from a previous response."
+						description_kind: "plain"
+						optional:         true
+					}
+					size: {
+						type:             "number"
+						description:      "Number of entities to return in search-after mode."
+						description_kind: "plain"
+						optional:         true
+					}
+					sort_field: {
+						type:             "string"
+						description:      "Field to sort results by in page mode."
+						description_kind: "plain"
+						optional:         true
+					}
+					sort_order: {
+						type:             "string"
+						description:      "Sort order in page mode."
+						description_kind: "plain"
+						optional:         true
+					}
+					source: {
+						type: ["list", "string"]
+						description:      "Fields to include in response _source."
+						description_kind: "plain"
+						optional:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the Kibana space. If omitted, the default space is used."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Queries the Kibana Security Entity Store list/search endpoint."
+				description_kind: "plain"
+			}
+		}
+		elasticstack_kibana_security_entity_store_resolution_group: {
+			version: 0
+			block: {
+				attributes: {
+					entity_id: {
+						type:             "string"
+						description:      "The entity identifier to look up the resolution group for."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The composite ID: `<space_id>/<entity_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					resolution_group_json: {
+						type:             "string"
+						description:      "The normalized JSON representation of the resolution group returned by the Kibana API."
+						description_kind: "markdown"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Retrieve the resolution group for a given entity in the Kibana Entity Store. Returns the target entity, all linked alias entities, and the group size. Requires Elastic Stack 9.1.0 or later."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_security_entity_store_status: {
+			version: 0
+			block: {
+				attributes: {
+					engines: {
+						nested_type: {
+							attributes: {
+								components: {
+									nested_type: {
+										attributes: {
+											health: {
+												type:             "string"
+												description:      "Health status of the component."
+												description_kind: "plain"
+												computed:         true
+											}
+											id: {
+												type:             "string"
+												description:      "Component identifier."
+												description_kind: "plain"
+												computed:         true
+											}
+											installed: {
+												type:             "bool"
+												description:      "Whether the component is installed."
+												description_kind: "plain"
+												computed:         true
+											}
+											resource: {
+												type:             "string"
+												description:      "Type of Elasticsearch or Kibana resource backing this component."
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "Component-level status for the engine."
+									description_kind: "plain"
+									computed:         true
+								}
+								delay: {
+									type:             "string"
+									description:      "Delay used for log extraction."
+									description_kind: "plain"
+									computed:         true
+								}
+								error_action: {
+									type:             "string"
+									description:      "Action associated with the last engine error, if any."
+									description_kind: "plain"
+									computed:         true
+								}
+								error_message: {
+									type:             "string"
+									description:      "Message describing the last engine error, if any."
+									description_kind: "plain"
+									computed:         true
+								}
+								field_history_length: {
+									type:             "number"
+									description:      "Number of historical values kept per field."
+									description_kind: "plain"
+									computed:         true
+								}
+								filter: {
+									type:             "string"
+									description:      "Filter query applied to the engine."
+									description_kind: "plain"
+									computed:         true
+								}
+								frequency: {
+									type:             "string"
+									description:      "Frequency used for log extraction."
+									description_kind: "plain"
+									computed:         true
+								}
+								index_pattern: {
+									type:             "string"
+									description:      "Index pattern used by the engine."
+									description_kind: "plain"
+									computed:         true
+								}
+								lookback_period: {
+									type:             "string"
+									description:      "Lookback period used for log extraction."
+									description_kind: "plain"
+									computed:         true
+								}
+								status: {
+									type:             "string"
+									description:      "Current status of the engine."
+									description_kind: "plain"
+									computed:         true
+								}
+								timeout: {
+									type:             "string"
+									description:      "Timeout setting for the engine."
+									description_kind: "plain"
+									computed:         true
+								}
+								timestamp_field: {
+									type:             "string"
+									description:      "Timestamp field used by the engine."
+									description_kind: "plain"
+									computed:         true
+								}
+								type: {
+									type:             "string"
+									description:      "The entity type managed by this engine."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Per-engine status details."
+						description_kind: "plain"
+						computed:         true
+					}
+					include_components: {
+						type:             "bool"
+						description:      "If true, returns a detailed status of each engine including all its components."
+						description_kind: "plain"
+						optional:         true
+					}
+					installed: {
+						type:             "bool"
+						description:      "True when the Entity Store is installed."
+						description_kind: "plain"
+						computed:         true
+					}
+					overall_status: {
+						type:             "string"
+						description:      "The overall operational status of the Entity Store."
+						description_kind: "plain"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the Kibana space. If omitted, the default space is used."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					status_json: {
+						type:             "string"
+						description:      "Normalized JSON of the full status response."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Reads Elastic Security Entity Store status for a Kibana space."
+				description_kind: "plain"
+			}
+		}
 		elasticstack_kibana_security_role: {
 			version: 0
 			block: {
@@ -40991,6 +46943,15 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								remote_indices: {
 									nested_type: {
 										attributes: {
+											allow_restricted_indices: {
+												type: "bool"
+												description: """
+															Include matching restricted indices in names parameter. Usage is strongly discouraged as it can grant unrestricted operations on critical data, make the entire system unstable or leak sensitive information.
+
+															"""
+												description_kind: "plain"
+												computed:         true
+											}
 											clusters: {
 												type: ["set", "string"]
 												description:      "A list of cluster aliases to which the permissions in this entry apply."
@@ -41461,6 +47422,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							description_kind: "markdown"
 							optional:         true
 						}
+						ca_fingerprint: {
+							type:             "string"
+							description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
+							description_kind: "markdown"
+							optional:         true
+						}
 						cert_data: {
 							type:             "string"
 							description:      "PEM encoded certificate for client auth"
@@ -41598,6 +47565,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -41781,6 +47754,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}
@@ -41982,6 +47961,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							ca_file: {
 								type:             "string"
 								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
 								description_kind: "markdown"
 								optional:         true
 							}

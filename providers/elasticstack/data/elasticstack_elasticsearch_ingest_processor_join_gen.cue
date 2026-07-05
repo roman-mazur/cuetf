@@ -1,6 +1,6 @@
 package data
 
-#elasticstack_elasticsearch_ingest_processor_join: {
+elasticstack_elasticsearch_ingest_processor_join: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_ingest_processor_join")
 	close({
@@ -31,8 +31,7 @@ package data
 		// Identifier for the processor.
 		tag?: string
 
-		// The field to assign the converted value to, by default `field`
-		// is updated in-place.
+		// The field to assign the converted value to, by default `field` is updated in-place.
 		target_field?: string
 	})
 }

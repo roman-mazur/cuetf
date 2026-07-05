@@ -1,18 +1,67 @@
 package res
 
-#elasticstack_kibana_alerting_rule: {
+elasticstack_kibana_alerting_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_alerting_rule")
 	close({
 		actions?: matchN(1, [#actions, [...#actions]])
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
-		// A number that indicates how many consecutive runs need to meet
-		// the rule conditions for an alert to occur.
+		// A number that indicates how many consecutive runs need to meet the rule
+		// conditions for an alert to occur.
 		alert_delay?: number
+
+		// Rule-level [flapping
+		// detection](https://www.elastic.co/guide/en/kibana/master/alerting-settings.html)
+		// (Kibana **8.16** or higher). When this object is set in configuration,
+		// `look_back_window` and `status_change_threshold` are required. The optional
+		// `enabled` attribute is supported only from **Elastic Stack 9.3** onward;
+		// configuring it against an older stack returns an error. When `flapping` is
+		// omitted from configuration on update, Terraform retains the previous value,
+		// so existing server-side flapping settings are not cleared by that omission.
+		flapping?: close({
+			// Whether the rule may enter the flapping state. When unset, the Kibana default
+			// applies. Supported only from Elastic Stack 9.3 onward.
+			enabled?: bool
+
+			// Minimum number of rule runs in which the status change threshold must be met.
+			look_back_window?: number
+
+			// Minimum number of times an alert must switch between active and recovered
+			// within the look-back window.
+			status_change_threshold?: number
+		})
 
 		// The name of the application or feature that owns the rule.
 		consumer!: string
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			create?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+			// applicable if changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Read operations occur during any refresh or
+			// planning operation when refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			update?: string
+		})
 
 		// Indicates if you want to run the rule on an interval basis.
 		enabled?: bool
@@ -20,9 +69,8 @@ package res
 		// Generated ID for the alerting rule.
 		id?: string
 
-		// The check interval, which specifies how frequently the rule
-		// conditions are checked. The interval must be specified in
-		// seconds, minutes, hours or days.
+		// The check interval, which specifies how frequently the rule conditions are
+		// checked. The interval must be specified in seconds, minutes, hours or days.
 		interval!: string
 
 		// Date of the last execution of this rule.
@@ -31,35 +79,32 @@ package res
 		// Status of the last execution of this rule.
 		last_execution_status?: string
 
-		// The name of the rule. While this name does not have to be
-		// unique, a distinctive name can help you identify a rule.
+		// The name of the rule. While this name does not have to be unique, a
+		// distinctive name can help you identify a rule.
 		name!: string
 
-		// Required until v8.6.0. Deprecated in v8.13.0. Use the
-		// `notify_when` property in the action `frequency` object
-		// instead. Defines how often alerts generate actions. Valid
-		// values include: `onActionGroupChange`: Actions run when the
-		// alert status changes; `onActiveAlert`: Actions run when the
-		// alert becomes active and at each check interval while the rule
-		// conditions are met; `onThrottleInterval`: Actions run when the
-		// alert becomes active and at the interval specified in the
-		// throttle property while the rule conditions are met. NOTE:
-		// This is a rule level property; if you update the rule in
-		// Kibana, it is automatically changed to use action-specific
-		// `notify_when` values.
+		// Required until v8.6.0. Deprecated in v8.13.0. Use the `notify_when` property
+		// in the action `frequency` object instead. Defines how often alerts generate
+		// actions. Valid values include: `onActionGroupChange`: Actions run when the
+		// alert status changes; `onActiveAlert`: Actions run when the alert becomes
+		// active and at each check interval while the rule conditions are met;
+		// `onThrottleInterval`: Actions run when the alert becomes active and at the
+		// interval specified in the throttle property while the rule conditions are
+		// met. NOTE: This is a rule level property; if you update the rule in Kibana,
+		// it is automatically changed to use action-specific `notify_when` values.
 		notify_when?: string
 
 		// The rule parameters, which differ for each rule type.
 		params!: string
 
-		// The identifier for the rule. Until Kibana version 8.17.0 this
-		// should be a UUID v1 or v4, for later versions any format can
-		// be used. If it is omitted, an ID is randomly generated.
+		// The identifier for the rule. Until Kibana version 8.17.0 this should be a
+		// UUID v1 or v4, for later versions any format can be used. If it is omitted,
+		// an ID is randomly generated.
 		rule_id?: string
 
-		// The ID of the rule type that you want to call when the rule is
-		// scheduled to run. For more information about the valid values,
-		// list the rule types using [Get rule types
+		// The ID of the rule type that you want to call when the rule is scheduled to
+		// run. For more information about the valid values, list the rule types using
+		// [Get rule types
 		// API](https://www.elastic.co/guide/en/kibana/master/list-rule-types-api.html)
 		// or refer to the [Rule types
 		// documentation](https://www.elastic.co/guide/en/kibana/master/rule-types.html).
@@ -68,70 +113,40 @@ package res
 		// ID of the scheduled task that will execute the alert.
 		scheduled_task_id?: string
 
-		// An identifier for the space. If space_id is not provided, the
-		// default space is used.
+		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string
 
 		// A list of tag names that are applied to the rule.
 		tags?: [...string]
 
-		// Deprecated in 8.13.0. Defines how often an alert generates
-		// repeated actions. This custom action interval must be
-		// specified in seconds, minutes, hours, or days. For example,
-		// 10m or 1h. This property is applicable only if `notify_when`
-		// is `onThrottleInterval`. NOTE: This is a rule level property;
-		// if you update the rule in Kibana, it is automatically changed
-		// to use action-specific `throttle` values.
+		// Deprecated in 8.13.0. Defines how often an alert generates repeated actions.
+		// This custom action interval must be specified in seconds, minutes, hours, or
+		// days. For example, 10m or 1h. This property is applicable only if
+		// `notify_when` is `onThrottleInterval`. NOTE: This is a rule level property;
+		// if you update the rule in Kibana, it is automatically changed to use
+		// action-specific `throttle` values.
 		//
-		// Kibana cannot clear this deprecated rule-level value via the
-		// update API: once set, omitting or sending `null` in a
-		// subsequent PUT is preserved server-side. The provider
-		// therefore marks `throttle` as Computed with
-		// `UseStateForUnknown` so removing it from configuration does
-		// not surface a provider inconsistency error; the value persists
-		// in state until the rule is recreated. If you switch the rule
-		// to use per-action `frequency` instead, the provider plans
-		// `throttle` as unknown (via the shared `StringSetUnknownIf`
-		// plan modifier) so the stale value is not sent alongside
-		// per-action frequency; state will then reflect whatever Kibana
-		// returns. To fully drop a rule-level `throttle`, recreate the
-		// resource (for example with `terraform taint`).
+		// Kibana cannot clear this deprecated rule-level value via the update API: once
+		// set, omitting or sending `null` in a subsequent PUT is preserved
+		// server-side. The provider therefore marks `throttle` as Computed with
+		// `UseStateForUnknown` so removing it from configuration does not surface a
+		// provider inconsistency error; the value persists in state until the rule is
+		// recreated. If you switch the rule to use per-action `frequency` instead, the
+		// provider plans `throttle` as unknown (via the shared `StringSetUnknownIf`
+		// plan modifier) so the stale value is not sent alongside per-action
+		// frequency; state will then reflect whatever Kibana returns. To fully drop a
+		// rule-level `throttle`, recreate the resource (for example with `terraform
+		// taint`).
 		throttle?: string
-
-		// Rule-level [flapping
-		// detection](https://www.elastic.co/guide/en/kibana/master/alerting-settings.html)
-		// (Kibana **8.16** or higher). When this object is set in
-		// configuration, `look_back_window` and
-		// `status_change_threshold` are required. The optional `enabled`
-		// attribute is supported only from **Elastic Stack 9.3** onward;
-		// configuring it against an older stack returns an error. When
-		// `flapping` is omitted from configuration on update, Terraform
-		// retains the previous value, so existing server-side flapping
-		// settings are not cleared by that omission.
-		flapping?: close({
-			// Whether the rule may enter the flapping state. When unset, the
-			// Kibana default applies. Supported only from Elastic Stack 9.3
-			// onward.
-			enabled?: bool
-
-			// Minimum number of rule runs in which the status change
-			// threshold must be met.
-			look_back_window?: number
-
-			// Minimum number of times an alert must switch between active and
-			// recovered within the look-back window.
-			status_change_threshold?: number
-		})
 	})
 
 	#actions: close({
 		alerts_filter?: _#defs."/$defs/actions/$defs/alerts_filter"
 		frequency?:     _#defs."/$defs/actions/$defs/frequency"
 
-		// The group name, which affects when the action runs (for
-		// example, when the threshold is met or when the alert is
-		// recovered). Each rule type has a list of valid action group
-		// names.
+		// The group name, which affects when the action runs (for example, when the
+		// threshold is met or when the alert is recovered). Each rule type has a list
+		// of valid action group names.
 		group?: string
 
 		// The identifier for the connector saved object.
@@ -148,13 +163,11 @@ package res
 		// Bearer Token to use for authentication to Kibana
 		bearer_token?: string
 
-		// A list of paths to CA certificates to validate the certificate
-		// presented by the Kibana server.
+		// A list of paths to CA certificates to validate the certificate presented by the Kibana server.
 		ca_certs?: [...string]
 
-		// A comma-separated list of endpoints where the terraform
-		// provider will point to, this must include the http(s) schema
-		// and port number.
+		// A comma-separated list of endpoints where the terraform provider will point
+		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// Disable TLS certificate validation
@@ -170,49 +183,47 @@ package res
 	_#defs: "/$defs/actions/$defs/alerts_filter": close({
 		timeframe?: _#defs."/$defs/actions/$defs/alerts_filter/$defs/timeframe"
 
-		// Defines a query filter that determines whether the action runs.
-		// Written in Kibana Query Language (KQL).
+		// Defines a query filter that determines whether the action runs. Written in
+		// Kibana Query Language (KQL).
 		kql?: string
 	})
 
 	_#defs: "/$defs/actions/$defs/alerts_filter/$defs/timeframe": close({
-		// Defines the days of the week that the action can run,
-		// represented as an array of numbers. For example, 1 represents
-		// Monday. An empty array is equivalent to specifying all the
-		// days of the week.
+		// Defines the days of the week that the action can run, represented as an array
+		// of numbers. For example, 1 represents Monday. An empty array is equivalent
+		// to specifying all the days of the week.
 		days?: [...number]
 
-		// Defines the range of time in a day that the action can run. The
-		// end of the time frame in 24-hour notation (hh:mm).
+		// Defines the range of time in a day that the action can run. The end of the
+		// time frame in 24-hour notation (hh:mm).
 		hours_end?: string
 
-		// Defines the range of time in a day that the action can run. The
-		// start of the time frame in 24-hour notation (hh:mm).
+		// Defines the range of time in a day that the action can run. The start of the
+		// time frame in 24-hour notation (hh:mm).
 		hours_start?: string
 
-		// The ISO time zone for the hours values. Values such as UTC and
-		// UTC+1 also work but lack built-in daylight savings time
-		// support and are not recommended.
+		// The ISO time zone for the hours values. Values such as UTC and UTC+1 also
+		// work but lack built-in daylight savings time support and are not
+		// recommended.
 		timezone?: string
 	})
 
 	_#defs: "/$defs/actions/$defs/frequency": close({
-		// Defines how often alerts generate actions. Valid values
-		// include: `onActionGroupChange`: Actions run when the alert
-		// status changes; `onActiveAlert`: Actions run when the alert
-		// becomes active and at each check interval while the rule
-		// conditions are met; `onThrottleInterval`: Actions run when the
-		// alert becomes active and at the interval specified in the
+		// Defines how often alerts generate actions. Valid values include:
+		// `onActionGroupChange`: Actions run when the alert status changes;
+		// `onActiveAlert`: Actions run when the alert becomes active and at each check
+		// interval while the rule conditions are met; `onThrottleInterval`: Actions
+		// run when the alert becomes active and at the interval specified in the
 		// throttle property while the rule conditions are met.
 		notify_when?: string
 
 		// Indicates whether the action is a summary.
 		summary?: bool
 
-		// Defines how often an alert generates repeated actions. This
-		// custom action interval must be specified in seconds, minutes,
-		// hours, or days. For example, 10m or 1h. This property is
-		// applicable only if `notify_when` is `onThrottleInterval`.
+		// Defines how often an alert generates repeated actions. This custom action
+		// interval must be specified in seconds, minutes, hours, or days. For example,
+		// 10m or 1h. This property is applicable only if `notify_when` is
+		// `onThrottleInterval`.
 		throttle?: string
 	})
 }
