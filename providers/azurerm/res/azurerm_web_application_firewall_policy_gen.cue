@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_web_application_firewall_policy: {
+azurerm_web_application_firewall_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_web_application_firewall_policy")
 	close({
@@ -113,8 +113,8 @@ import "list"
 		enabled?:        bool
 		match_variable!: string
 
-		// When matchVariable is a collection, operator used to specify
-		// which elements in the collection this rule applies to.
+		// When matchVariable is a collection, operator used to specify which elements
+		// in the collection this rule applies to.
 		selector?:                string
 		selector_match_operator?: string
 	})

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_logic_app_standard: {
+azurerm_logic_app_standard: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_logic_app_standard")
 	close({
@@ -91,8 +91,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/site_config/$defs/cors": close({
-		// Specifies a list of origins that should be allowed to make
-		// cross-origin calls.
+		// Specifies a list of origins that should be allowed to make cross-origin calls.
 		allowed_origins?: [...string]
 
 		// Are credentials allowed in CORS requests? Defaults to `false`.
@@ -112,9 +111,8 @@ import "list"
 			x_forwarded_host?: [...string]
 		})]
 
-		// The CIDR notation of the IP or IP Range to match. For example:
-		// `10.0.0.0/24` or `192.168.10.1/32` or `fe80::/64` or
-		// `13.107.6.152/31,13.107.128.0/22`
+		// The CIDR notation of the IP or IP Range to match. For example: `10.0.0.0/24`
+		// or `192.168.10.1/32` or `fe80::/64` or `13.107.6.152/31,13.107.128.0/22`
 		ip_address?: string
 
 		// The name which should be used for this `ip_restriction`.
@@ -143,9 +141,8 @@ import "list"
 			x_forwarded_host?: [...string]
 		})]
 
-		// The CIDR notation of the IP or IP Range to match. For example:
-		// `10.0.0.0/24` or `192.168.10.1/32` or `fe80::/64` or
-		// `13.107.6.152/31,13.107.128.0/22`
+		// The CIDR notation of the IP or IP Range to match. For example: `10.0.0.0/24`
+		// or `192.168.10.1/32` or `fe80::/64` or `13.107.6.152/31,13.107.128.0/22`
 		ip_address?: string
 
 		// The name which should be used for this `ip_restriction`.

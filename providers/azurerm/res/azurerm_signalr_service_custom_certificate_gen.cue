@@ -1,6 +1,6 @@
 package res
 
-#azurerm_signalr_service_custom_certificate: {
+azurerm_signalr_service_custom_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_signalr_service_custom_certificate")
 	close({

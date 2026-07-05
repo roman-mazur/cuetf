@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_data_factory_linked_service_snowflake: {
+azurerm_data_factory_linked_service_snowflake: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_linked_service_snowflake")
 	close({

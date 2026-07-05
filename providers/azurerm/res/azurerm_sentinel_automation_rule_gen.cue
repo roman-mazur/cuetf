@@ -1,6 +1,6 @@
 package res
 
-#azurerm_sentinel_automation_rule: {
+azurerm_sentinel_automation_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_sentinel_automation_rule")
 	close({

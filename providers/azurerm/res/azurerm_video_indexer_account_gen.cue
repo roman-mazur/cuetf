@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_video_indexer_account: {
+azurerm_video_indexer_account: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_video_indexer_account")
 	close({

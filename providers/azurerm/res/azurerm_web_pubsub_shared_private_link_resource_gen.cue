@@ -1,6 +1,6 @@
 package res
 
-#azurerm_web_pubsub_shared_private_link_resource: {
+azurerm_web_pubsub_shared_private_link_resource: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_web_pubsub_shared_private_link_resource")
 	close({

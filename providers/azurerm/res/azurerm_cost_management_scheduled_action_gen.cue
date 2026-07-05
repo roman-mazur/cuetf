@@ -1,6 +1,6 @@
 package res
 
-#azurerm_cost_management_scheduled_action: {
+azurerm_cost_management_scheduled_action: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cost_management_scheduled_action")
 	close({

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_container_app_job: {
+azurerm_container_app_job: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_app_job")
 	close({
@@ -46,12 +46,11 @@ import "list"
 	})
 
 	#registry: close({
-		// ID of the System or User Managed Identity used to pull images
-		// from the Container Registry
+		// ID of the System or User Managed Identity used to pull images from the Container Registry
 		identity?: string
 
-		// The name of the Secret Reference containing the password value
-		// for this user on the Container Registry.
+		// The name of the Secret Reference containing the password value for this user
+		// on the Container Registry.
 		password_secret_name?: string
 
 		// The hostname for the Container Registry.
@@ -71,8 +70,7 @@ import "list"
 		// The identity to use for accessing key vault reference.
 		identity?: string
 
-		// The Key Vault Secret ID. Could be either one of `id` or
-		// `versionless_id`.
+		// The Key Vault Secret ID. Could be either one of `id` or `versionless_id`.
 		key_vault_secret_id?: string
 
 		// The secret name.
@@ -106,8 +104,7 @@ import "list"
 		authentication?: matchN(1, [_#defs."/$defs/event_trigger_config/$defs/scale/$defs/rules/$defs/authentication", [..._#defs."/$defs/event_trigger_config/$defs/scale/$defs/rules/$defs/authentication"]])
 		custom_rule_type!: string
 
-		// ID of the System or User Managed Identity used to execute scale
-		// rule.
+		// ID of the System or User Managed Identity used to execute scale rule.
 		identity_id?: string
 		metadata!: [string]: string
 		name!: string
@@ -128,9 +125,8 @@ import "list"
 		// A list of args to pass to the container.
 		args?: [...string]
 
-		// A command to pass to the container to override the default.
-		// This is provided as a list of command line elements without
-		// spaces.
+		// A command to pass to the container to override the default. This is provided
+		// as a list of command line elements without spaces.
 		command?: [...string]
 
 		// The amount of vCPU to allocate to the container.
@@ -153,51 +149,47 @@ import "list"
 		// The name of the environment variable for the container.
 		name!: string
 
-		// The name of the secret that contains the value for this
-		// environment variable.
+		// The name of the secret that contains the value for this environment variable.
 		secret_name?: string
 
-		// The value for this environment variable. **NOTE:** This value
-		// is ignored if `secret_name` is used
+		// The value for this environment variable. **NOTE:** This value is ignored if `secret_name` is used
 		value?: string
 	})
 
 	_#defs: "/$defs/template/$defs/container/$defs/liveness_probe": close({
 		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/liveness_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/liveness_probe/$defs/header"]])
 
-		// The number of consecutive failures required to consider this
-		// probe as failed. Possible values are between `1` and `30`.
-		// Defaults to `3`.
+		// The number of consecutive failures required to consider this probe as failed.
+		// Possible values are between `1` and `30`. Defaults to `3`.
 		failure_count_threshold?: number
 
-		// The probe hostname. Defaults to the pod IP address. Setting a
-		// value for `Host` in `headers` can be used to override this for
-		// `http` and `https` type probes.
+		// The probe hostname. Defaults to the pod IP address. Setting a value for
+		// `Host` in `headers` can be used to override this for `http` and `https` type
+		// probes.
 		host?: string
 
-		// The number of seconds elapsed after the container has started
-		// before the probe is initiated. Possible values are between `0`
-		// and `60`. Defaults to `1` seconds.
+		// The number of seconds elapsed after the container has started before the
+		// probe is initiated. Possible values are between `0` and `60`. Defaults to
+		// `1` seconds.
 		initial_delay?: number
 
-		// How often, in seconds, the probe should run. Possible values
-		// are between `1` and `240`. Defaults to `10`
+		// How often, in seconds, the probe should run. Possible values are between `1`
+		// and `240`. Defaults to `10`
 		interval_seconds?: number
 
-		// The URI to use with the `host` for http type probes. Not valid
-		// for `TCP` type probes. Defaults to `/`.
+		// The URI to use with the `host` for http type probes. Not valid for `TCP` type
+		// probes. Defaults to `/`.
 		path?: string
 
-		// The port number on which to connect. Possible values are
-		// between `1` and `65535`.
+		// The port number on which to connect. Possible values are between `1` and `65535`.
 		port!: number
 
-		// The time in seconds after the container is sent the termination
-		// signal before the process if forcibly killed.
+		// The time in seconds after the container is sent the termination signal before
+		// the process if forcibly killed.
 		termination_grace_period_seconds?: number
 
-		// Time in seconds after which the probe times out. Possible
-		// values are between `1` an `240`. Defaults to `1`.
+		// Time in seconds after which the probe times out. Possible values are between
+		// `1` an `240`. Defaults to `1`.
 		timeout?: number
 
 		// Type of probe. Possible values are `TCP`, `HTTP`, and `HTTPS`.
@@ -215,40 +207,37 @@ import "list"
 	_#defs: "/$defs/template/$defs/container/$defs/readiness_probe": close({
 		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/readiness_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/readiness_probe/$defs/header"]])
 
-		// The number of consecutive failures required to consider this
-		// probe as failed. Possible values are between `1` and `48`.
-		// Defaults to `3`.
+		// The number of consecutive failures required to consider this probe as failed.
+		// Possible values are between `1` and `48`. Defaults to `3`.
 		failure_count_threshold?: number
 
-		// The probe hostname. Defaults to the pod IP address. Setting a
-		// value for `Host` in `headers` can be used to override this for
-		// `http` and `https` type probes.
+		// The probe hostname. Defaults to the pod IP address. Setting a value for
+		// `Host` in `headers` can be used to override this for `http` and `https` type
+		// probes.
 		host?: string
 
-		// The number of seconds elapsed after the container has started
-		// before the probe is initiated. Possible values are between `0`
-		// and `60`. Defaults to `0` seconds.
+		// The number of seconds elapsed after the container has started before the
+		// probe is initiated. Possible values are between `0` and `60`. Defaults to
+		// `0` seconds.
 		initial_delay?: number
 
-		// How often, in seconds, the probe should run. Possible values
-		// are between `1` and `240`. Defaults to `10`
+		// How often, in seconds, the probe should run. Possible values are between `1`
+		// and `240`. Defaults to `10`
 		interval_seconds?: number
 
-		// The URI to use for http type probes. Not valid for `TCP` type
-		// probes. Defaults to `/`.
+		// The URI to use for http type probes. Not valid for `TCP` type probes. Defaults to `/`.
 		path?: string
 
-		// The port number on which to connect. Possible values are
-		// between `1` and `65535`.
+		// The port number on which to connect. Possible values are between `1` and `65535`.
 		port!: number
 
-		// The number of consecutive successful responses required to
-		// consider this probe as successful. Possible values are between
-		// `1` and `10`. Defaults to `3`.
+		// The number of consecutive successful responses required to consider this
+		// probe as successful. Possible values are between `1` and `10`. Defaults to
+		// `3`.
 		success_count_threshold?: number
 
-		// Time in seconds after which the probe times out. Possible
-		// values are between `1` an `240`. Defaults to `1`.
+		// Time in seconds after which the probe times out. Possible values are between
+		// `1` an `240`. Defaults to `1`.
 		timeout?: number
 
 		// Type of probe. Possible values are `TCP`, `HTTP`, and `HTTPS`.
@@ -266,39 +255,37 @@ import "list"
 	_#defs: "/$defs/template/$defs/container/$defs/startup_probe": close({
 		header?: matchN(1, [_#defs."/$defs/template/$defs/container/$defs/startup_probe/$defs/header", [..._#defs."/$defs/template/$defs/container/$defs/startup_probe/$defs/header"]])
 
-		// The number of consecutive failures required to consider this
-		// probe as failed. Possible values are between `1` and `240`.
-		// Defaults to `3`.
+		// The number of consecutive failures required to consider this probe as failed.
+		// Possible values are between `1` and `240`. Defaults to `3`.
 		failure_count_threshold?: number
 
-		// The probe hostname. Defaults to the pod IP address. Setting a
-		// value for `Host` in `headers` can be used to override this for
-		// `http` and `https` type probes.
+		// The probe hostname. Defaults to the pod IP address. Setting a value for
+		// `Host` in `headers` can be used to override this for `http` and `https` type
+		// probes.
 		host?: string
 
-		// The number of seconds elapsed after the container has started
-		// before the probe is initiated. Possible values are between `0`
-		// and `60`. Defaults to `0` seconds.
+		// The number of seconds elapsed after the container has started before the
+		// probe is initiated. Possible values are between `0` and `60`. Defaults to
+		// `0` seconds.
 		initial_delay?: number
 
-		// How often, in seconds, the probe should run. Possible values
-		// are between `1` and `240`. Defaults to `10`
+		// How often, in seconds, the probe should run. Possible values are between `1`
+		// and `240`. Defaults to `10`
 		interval_seconds?: number
 
-		// The URI to use with the `host` for http type probes. Not valid
-		// for `TCP` type probes. Defaults to `/`.
+		// The URI to use with the `host` for http type probes. Not valid for `TCP` type
+		// probes. Defaults to `/`.
 		path?: string
 
-		// The port number on which to connect. Possible values are
-		// between `1` and `65535`.
+		// The port number on which to connect. Possible values are between `1` and `65535`.
 		port!: number
 
-		// The time in seconds after the container is sent the termination
-		// signal before the process if forcibly killed.
+		// The time in seconds after the container is sent the termination signal before
+		// the process if forcibly killed.
 		termination_grace_period_seconds?: number
 
-		// Time in seconds after which the probe times out. Possible
-		// values are between `1` an `240`. Defaults to `1`.
+		// Time in seconds after which the probe times out. Possible values are between
+		// `1` an `240`. Defaults to `1`.
 		timeout?: number
 
 		// Type of probe. Possible values are `TCP`, `HTTP`, and `HTTPS`.
@@ -331,9 +318,8 @@ import "list"
 		// A list of args to pass to the container.
 		args?: [...string]
 
-		// A command to pass to the container to override the default.
-		// This is provided as a list of command line elements without
-		// spaces.
+		// A command to pass to the container to override the default. This is provided
+		// as a list of command line elements without spaces.
 		command?: [...string]
 
 		// The amount of vCPU to allocate to the container.
@@ -356,12 +342,10 @@ import "list"
 		// The name of the environment variable for the container.
 		name!: string
 
-		// The name of the secret that contains the value for this
-		// environment variable.
+		// The name of the secret that contains the value for this environment variable.
 		secret_name?: string
 
-		// The value for this environment variable. **NOTE:** This value
-		// is ignored if `secret_name` is used
+		// The value for this environment variable. **NOTE:** This value is ignored if `secret_name` is used
 		value?: string
 	})
 
@@ -377,19 +361,17 @@ import "list"
 	})
 
 	_#defs: "/$defs/template/$defs/volume": close({
-		// Mount options used while mounting the AzureFile. Must be a
-		// comma-separated string.
+		// Mount options used while mounting the AzureFile. Must be a comma-separated string.
 		mount_options?: string
 
 		// The name of the volume.
 		name!: string
 
-		// The name of the `AzureFile` storage. Required when
-		// `storage_type` is `AzureFile`
+		// The name of the `AzureFile` storage. Required when `storage_type` is `AzureFile`
 		storage_name?: string
 
-		// The type of storage volume. Possible values include `AzureFile`
-		// and `EmptyDir`. Defaults to `EmptyDir`.
+		// The type of storage volume. Possible values include `AzureFile` and
+		// `EmptyDir`. Defaults to `EmptyDir`.
 		storage_type?: string
 	})
 }

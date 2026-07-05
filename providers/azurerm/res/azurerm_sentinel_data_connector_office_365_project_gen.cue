@@ -1,6 +1,6 @@
 package res
 
-#azurerm_sentinel_data_connector_office_365_project: {
+azurerm_sentinel_data_connector_office_365_project: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_sentinel_data_connector_office_365_project")
 	close({

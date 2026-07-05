@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_pim_active_role_assignment: {
+azurerm_pim_active_role_assignment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_pim_active_role_assignment")
 	close({
@@ -38,8 +38,7 @@ import "list"
 		// User-supplied ticket number to be included with the request
 		number?: string
 
-		// User-supplied ticket system name to be included with the
-		// request
+		// User-supplied ticket system name to be included with the request
 		system?: string
 	})
 

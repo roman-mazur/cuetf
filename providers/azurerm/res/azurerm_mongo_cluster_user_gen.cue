@@ -1,6 +1,6 @@
 package res
 
-#azurerm_mongo_cluster_user: {
+azurerm_mongo_cluster_user: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mongo_cluster_user")
 	close({

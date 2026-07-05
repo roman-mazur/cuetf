@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_cosmosdb_mongo_role_definition: {
+azurerm_cosmosdb_mongo_role_definition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_cosmosdb_mongo_role_definition")
 	close({

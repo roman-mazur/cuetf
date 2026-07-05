@@ -1,21 +1,26 @@
 package data
 
-#azurerm_container_app: {
+azurerm_container_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_container_app")
 	close({
 		timeouts?:                     #timeouts
 		container_app_environment_id?: string
 
-		// The ID of the Custom Domain Verification for this Container
-		// App.
+		// The ID of the Custom Domain Verification for this Container App.
 		custom_domain_verification_id?: string
+
+		// The fully qualified domain name of the latest Container App.
+		latest_revision_fqdn?: string
 		dapr?: [...close({
 			app_id?:       string
 			app_port?:     number
 			app_protocol?: string
 		})]
-		id?: string
+
+		// The name of the latest Container Revision.
+		latest_revision_name?: string
+		id?:                   string
 		identity?: [...close({
 			identity_ids?: [...string]
 			principal_id?: string
@@ -56,12 +61,6 @@ package data
 			})]
 			transport?: string
 		})]
-
-		// The fully qualified domain name of the latest Container App.
-		latest_revision_fqdn?: string
-
-		// The name of the latest Container Revision.
-		latest_revision_name?:   string
 		location?:               string
 		max_inactive_revisions?: number
 		name!:                   string

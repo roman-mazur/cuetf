@@ -1,6 +1,6 @@
 package res
 
-#azurerm_virtual_desktop_host_pool_registration_info: {
+azurerm_virtual_desktop_host_pool_registration_info: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_desktop_host_pool_registration_info")
 	close({

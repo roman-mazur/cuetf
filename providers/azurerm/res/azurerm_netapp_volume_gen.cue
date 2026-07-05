@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_netapp_volume: {
+azurerm_netapp_volume: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_netapp_volume")
 	close({
@@ -14,57 +14,54 @@ import "list"
 		export_policy_rule?: matchN(1, [#export_policy_rule, list.MaxItems(5) & [...#export_policy_rule]])
 		timeouts?: #timeouts
 
-		// While auto splitting the short term clone volume, if the parent
-		// pool does not have enough space to accommodate the volume
-		// after split, it will be automatically resized, which will lead
-		// to increased billing. To accept capacity pool size auto grow
-		// and create a short term clone volume, set the property as
-		// accepted. Can only be used in conjunction with
+		// While auto splitting the short term clone volume, if the parent pool does not
+		// have enough space to accommodate the volume after split, it will be
+		// automatically resized, which will lead to increased billing. To accept
+		// capacity pool size auto grow and create a short term clone volume, set the
+		// property as accepted. Can only be used in conjunction with
 		// `create_from_snapshot_resource_id`.
 		accept_grow_capacity_pool_for_short_term_clone_split?: string
 		account_name!:                                         string
-		azure_vmware_data_store_enabled?:                      bool
-		create_from_snapshot_resource_id?:                     string
-		encryption_key_source?:                                string
-		id?:                                                   string
 
-		// Enable to allow Kerberos secured volumes. Requires appropriate
-		// export rules as well as the parent `azurerm_netapp_account`
-		// having a defined AD connection.
-		kerberos_enabled?:              bool
-		key_vault_private_endpoint_id?: string
+		// Enable to allow Kerberos secured volumes. Requires appropriate export rules
+		// as well as the parent `azurerm_netapp_account` having a defined AD
+		// connection.
+		kerberos_enabled?:                bool
+		azure_vmware_data_store_enabled?: bool
 
 		// Indicates whether the volume is a large volume.
-		large_volume_enabled?: bool
-		location!:             string
+		large_volume_enabled?:             bool
+		create_from_snapshot_resource_id?: string
+
+		// SMB3 encryption option should be used only for SMB/DualProtocol volumes.
+		// Using it for any other workloads is not supported.
+		smb3_protocol_encryption_enabled?: bool
+		encryption_key_source?:            string
+
+		// Enable access based enumeration setting for SMB/Dual Protocol volume. When
+		// enabled, users who do not have permission to access a shared folder or file
+		// underneath it, do not see that shared resource displayed in their
+		// environment.
+		smb_access_based_enumeration_enabled?: bool
+		id?:                                   string
+
+		// Continuous availability option should be used only for SQL and FSLogix
+		// workloads. Using it for any other SMB workloads is not supported.
+		smb_continuous_availability_enabled?: bool
+
+		// Enable non browsable share setting for SMB/Dual Protocol volume. When
+		// enabled, it restricts windows clients to browse the share
+		smb_non_browsable_enabled?:     bool
+		key_vault_private_endpoint_id?: string
+		location!:                      string
 		mount_ip_addresses?: [...string]
 		name!:             string
 		network_features?: string
 		pool_name!:        string
 		protocols?: [...string]
-		resource_group_name!: string
-		security_style?:      string
-		service_level!:       string
-
-		// SMB3 encryption option should be used only for SMB/DualProtocol
-		// volumes. Using it for any other workloads is not supported.
-		smb3_protocol_encryption_enabled?: bool
-
-		// Enable access based enumeration setting for SMB/Dual Protocol
-		// volume. When enabled, users who do not have permission to
-		// access a shared folder or file underneath it, do not see that
-		// shared resource displayed in their environment.
-		smb_access_based_enumeration_enabled?: bool
-
-		// Continuous availability option should be used only for SQL and
-		// FSLogix workloads. Using it for any other SMB workloads is not
-		// supported.
-		smb_continuous_availability_enabled?: bool
-
-		// Enable non browsable share setting for SMB/Dual Protocol
-		// volume. When enabled, it restricts windows clients to browse
-		// the share
-		smb_non_browsable_enabled?:  bool
+		resource_group_name!:        string
+		security_style?:             string
+		service_level!:              string
 		snapshot_directory_visible?: bool
 		storage_quota_in_gb!:        number
 		subnet_id!:                  string
@@ -92,8 +89,8 @@ import "list"
 		// The ID of the backup vault to associate with this volume.
 		backup_vault_id!: string
 
-		// If set to false, the backup policy will not be enabled on this
-		// volume, thus disabling scheduled backups.
+		// If set to false, the backup policy will not be enabled on this volume, thus
+		// disabling scheduled backups.
 		policy_enabled?: bool
 	})
 

@@ -1,13 +1,12 @@
 package data
 
-#azurerm_netapp_volume: {
+azurerm_netapp_volume: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_netapp_volume")
 	close({
 		timeouts?: #timeouts
 
-		// The accept grow capacity pool for short term clone split
-		// property.
+		// The accept grow capacity pool for short term clone split property.
 		accept_grow_capacity_pool_for_short_term_clone_split?: string
 		account_name!:                                         string
 		data_protection_advanced_ransomware?: [...close({

@@ -1,6 +1,6 @@
 package data
 
-#azurerm_consumption_budget_subscription: {
+azurerm_consumption_budget_subscription: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_consumption_budget_subscription")
 	close({

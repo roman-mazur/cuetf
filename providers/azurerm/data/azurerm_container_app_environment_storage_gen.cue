@@ -1,6 +1,6 @@
 package data
 
-#azurerm_container_app_environment_storage: {
+azurerm_container_app_environment_storage: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_container_app_environment_storage")
 	close({
@@ -12,8 +12,7 @@ package data
 		// The Azure Storage Account in which the Share is located.
 		account_name?: string
 
-		// The ID of the Container App Environment to which this storage
-		// belongs.
+		// The ID of the Container App Environment to which this storage belongs.
 		container_app_environment_id!: string
 		id?:                           string
 

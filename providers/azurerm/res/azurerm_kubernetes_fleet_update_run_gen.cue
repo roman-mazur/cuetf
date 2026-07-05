@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_kubernetes_fleet_update_run: {
+azurerm_kubernetes_fleet_update_run: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_kubernetes_fleet_update_run")
 	close({

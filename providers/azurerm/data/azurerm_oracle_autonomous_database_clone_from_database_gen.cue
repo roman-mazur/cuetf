@@ -1,6 +1,6 @@
 package data
 
-#azurerm_oracle_autonomous_database_clone_from_database: {
+azurerm_oracle_autonomous_database_clone_from_database: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_oracle_autonomous_database_clone_from_database")
 	close({

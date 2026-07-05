@@ -1,11 +1,14 @@
 package data
 
-#azurerm_linux_web_app: {
+azurerm_linux_web_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_linux_web_app")
 	close({
 		timeouts?: #timeouts
 		app_metadata?: [string]: string
+
+		// Paths to exclude when using client certificates, separated by ;
+		client_certificate_exclusion_paths?: string
 		app_settings?: [string]: string
 		auth_settings?: [...close({
 			active_directory?: [...close({
@@ -158,10 +161,7 @@ package data
 		})]
 		client_affinity_enabled?:    bool
 		client_certificate_enabled?: bool
-
-		// Paths to exclude when using client certificates, separated by ;
-		client_certificate_exclusion_paths?: string
-		client_certificate_mode?:            string
+		client_certificate_mode?:    string
 		connection_string?: [...close({
 			name?:  string
 			type?:  string

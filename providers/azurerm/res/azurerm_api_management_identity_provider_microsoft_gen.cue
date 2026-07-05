@@ -1,6 +1,6 @@
 package res
 
-#azurerm_api_management_identity_provider_microsoft: {
+azurerm_api_management_identity_provider_microsoft: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_api_management_identity_provider_microsoft")
 	close({

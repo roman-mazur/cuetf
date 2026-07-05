@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_role_management_policy: {
+azurerm_role_management_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_role_management_policy")
 	close({
@@ -38,15 +38,13 @@ import "list"
 		// Whether a justification is required during activation
 		require_justification?: bool
 
-		// Whether multi-factor authentication is required during
-		// activation
+		// Whether multi-factor authentication is required during activation
 		require_multifactor_authentication?: bool
 
 		// Whether ticket information is required during activation
 		require_ticket_info?: bool
 
-		// Whether a conditional access context is required during
-		// activation
+		// Whether a conditional access context is required during activation
 		required_conditional_access_authentication_context?: string
 	})
 
@@ -60,8 +58,7 @@ import "list"
 		// Whether a justification is required to make an assignment
 		require_justification?: bool
 
-		// Whether multi-factor authentication is required to make an
-		// assignment
+		// Whether multi-factor authentication is required to make an assignment
 		require_multifactor_authentication?: bool
 
 		// Whether ticket information is required to make an assignment

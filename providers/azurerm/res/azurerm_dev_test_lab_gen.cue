@@ -1,6 +1,6 @@
 package res
 
-#azurerm_dev_test_lab: {
+azurerm_dev_test_lab: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dev_test_lab")
 	close({

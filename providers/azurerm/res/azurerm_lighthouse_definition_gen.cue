@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_lighthouse_definition: {
+azurerm_lighthouse_definition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_lighthouse_definition")
 	close({

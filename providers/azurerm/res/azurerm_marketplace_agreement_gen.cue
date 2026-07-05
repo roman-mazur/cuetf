@@ -1,6 +1,6 @@
 package res
 
-#azurerm_marketplace_agreement: {
+azurerm_marketplace_agreement: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_marketplace_agreement")
 	close({

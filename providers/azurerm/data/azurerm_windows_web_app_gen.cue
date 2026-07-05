@@ -1,11 +1,14 @@
 package data
 
-#azurerm_windows_web_app: {
+azurerm_windows_web_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_windows_web_app")
 	close({
 		timeouts?: #timeouts
 		app_settings?: [string]: string
+
+		// Paths to exclude when using client certificates, separated by ;
+		client_certificate_exclusion_paths?: string
 		auth_settings?: [...close({
 			active_directory?: [...close({
 				allowed_audiences?: [...string]
@@ -156,10 +159,7 @@ package data
 		})]
 		client_affinity_enabled?:    bool
 		client_certificate_enabled?: bool
-
-		// Paths to exclude when using client certificates, separated by ;
-		client_certificate_exclusion_paths?: string
-		client_certificate_mode?:            string
+		client_certificate_mode?:    string
 		connection_string?: [...close({
 			name?:  string
 			type?:  string

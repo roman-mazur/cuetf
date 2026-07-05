@@ -1,6 +1,6 @@
 package res
 
-#azurerm_data_factory_dataset_sql_server_table: {
+azurerm_data_factory_dataset_sql_server_table: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_dataset_sql_server_table")
 	close({

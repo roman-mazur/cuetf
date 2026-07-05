@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_spring_cloud_dev_tool_portal: {
+azurerm_spring_cloud_dev_tool_portal: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_spring_cloud_dev_tool_portal")
 	close({

@@ -1,6 +1,6 @@
 package res
 
-#azurerm_mssql_outbound_firewall_rule: {
+azurerm_mssql_outbound_firewall_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_outbound_firewall_rule")
 	close({

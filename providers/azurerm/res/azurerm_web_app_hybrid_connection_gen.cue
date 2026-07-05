@@ -1,6 +1,6 @@
 package res
 
-#azurerm_web_app_hybrid_connection: {
+azurerm_web_app_hybrid_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_web_app_hybrid_connection")
 	close({
@@ -22,8 +22,7 @@ package res
 		// The name of the Relay in use.
 		relay_name?: string
 
-		// The name of the Relay key with `Send` permission to use.
-		// Defaults to `RootManageSharedAccessKey`
+		// The name of the Relay key with `Send` permission to use. Defaults to `RootManageSharedAccessKey`
 		send_key_name?: string
 
 		// The Primary Access Key for the `send_key_name`

@@ -1,11 +1,14 @@
 package data
 
-#azurerm_windows_function_app: {
+azurerm_windows_function_app: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_windows_function_app")
 	close({
 		timeouts?: #timeouts
 		app_settings?: [string]: string
+
+		// Paths to exclude when using client certificates, separated by ;
+		client_certificate_exclusion_paths?: string
 		auth_settings?: [...close({
 			active_directory?: [...close({
 				allowed_audiences?: [...string]
@@ -52,6 +55,10 @@ package data
 			})]
 			unauthenticated_client_action?: string
 		})]
+
+		// The Key Vault Secret ID, including version, that contains the Connection
+		// String used to connect to the storage account for this Function App.
+		storage_key_vault_secret_id?: string
 		auth_settings_v2?: [...close({
 			active_directory_v2?: [...close({
 				allowed_applications?: [...string]
@@ -156,10 +163,7 @@ package data
 		})]
 		builtin_logging_enabled?:    bool
 		client_certificate_enabled?: bool
-
-		// Paths to exclude when using client certificates, separated by ;
-		client_certificate_exclusion_paths?: string
-		client_certificate_mode?:            string
+		client_certificate_mode?:    string
 		connection_string?: [...close({
 			name?:  string
 			type?:  string
@@ -279,13 +283,8 @@ package data
 			app_setting_names?: [...string]
 			connection_string_names?: [...string]
 		})]
-		storage_account_access_key?: string
-		storage_account_name?:       string
-
-		// The Key Vault Secret ID, including version, that contains the
-		// Connection String used to connect to the storage account for
-		// this Function App.
-		storage_key_vault_secret_id?:   string
+		storage_account_access_key?:    string
+		storage_account_name?:          string
 		storage_uses_managed_identity?: bool
 		tags?: [string]: string
 		virtual_network_backup_restore_enabled?:         bool

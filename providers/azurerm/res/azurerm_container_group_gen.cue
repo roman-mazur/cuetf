@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_container_group: {
+azurerm_container_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_container_group")
 	close({
@@ -75,8 +75,7 @@ import "list"
 		password?: string
 		server!:   string
 
-		// The User Assigned Identity to use for Container Registry
-		// access.
+		// The User Assigned Identity to use for Container Registry access.
 		user_assigned_identity_id?: string
 		username?:                  string
 	})

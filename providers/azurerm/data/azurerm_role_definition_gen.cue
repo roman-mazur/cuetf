@@ -1,6 +1,6 @@
 package data
 
-#azurerm_role_definition: {
+azurerm_role_definition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_role_definition")
 	close({

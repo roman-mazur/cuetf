@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_eventgrid_system_topic_event_subscription: {
+azurerm_eventgrid_system_topic_event_subscription: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_eventgrid_system_topic_event_subscription")
 	close({

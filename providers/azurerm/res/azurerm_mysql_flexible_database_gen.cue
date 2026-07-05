@@ -1,6 +1,6 @@
 package res
 
-#azurerm_mysql_flexible_database: {
+azurerm_mysql_flexible_database: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mysql_flexible_database")
 	close({
