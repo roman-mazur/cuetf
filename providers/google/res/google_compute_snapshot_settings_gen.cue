@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_compute_snapshot_settings: {
+google_compute_snapshot_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_snapshot_settings")
 	close({
@@ -15,8 +15,8 @@ import "list"
 	#storage_location: close({
 		locations?: matchN(1, [_#defs."/$defs/storage_location/$defs/locations", [..._#defs."/$defs/storage_location/$defs/locations"]])
 
-		// The chosen location policy Possible values:
-		// ["NEAREST_MULTI_REGION", "LOCAL_REGION", "SPECIFIC_LOCATIONS"]
+		// The chosen location policy Possible values: ["NEAREST_MULTI_REGION",
+		// "LOCAL_REGION", "SPECIFIC_LOCATIONS"]
 		policy!: string
 	})
 
@@ -29,8 +29,7 @@ import "list"
 	_#defs: "/$defs/storage_location/$defs/locations": close({
 		location!: string
 
-		// Name of the location. It should be one of the Cloud Storage
-		// buckets.
+		// Name of the location. It should be one of the Cloud Storage buckets.
 		// Only one location can be specified. (should match location)
 		name!: string
 	})

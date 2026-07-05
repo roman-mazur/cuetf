@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_edgecontainer_vpn_connection: {
+google_edgecontainer_vpn_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_edgecontainer_vpn_connection")
 	close({
@@ -16,16 +16,11 @@ import "list"
 		// The time when the VPN connection was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -41,23 +36,20 @@ import "list"
 			state?: string
 		})]
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// Whether this VPN connection has HA enabled on cluster side. If
-		// enabled, when creating VPN connection we will attempt to use 2
-		// ANG floating IPs.
+		// Whether this VPN connection has HA enabled on cluster side. If enabled, when
+		// creating VPN connection we will attempt to use 2 ANG floating IPs.
 		enable_high_availability?: bool
 		id?:                       string
 
 		// Labels associated with this resource.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Google Cloud Platform location.
@@ -66,15 +58,15 @@ import "list"
 		// The resource name of VPN connection
 		name!: string
 
-		// NAT gateway IP, or WAN IP address. If a customer has multiple
-		// NAT IPs, the customer needs to configure NAT such that only
-		// one external IP maps to the GMEC Anthos cluster.
+		// NAT gateway IP, or WAN IP address. If a customer has multiple NAT IPs, the
+		// customer needs to configure NAT such that only one external IP maps to the
+		// GMEC Anthos cluster.
 		// This is empty if NAT is not used.
 		nat_gateway_ip?: string
-		project?:        string
 
 		// The VPN connection Cloud Router name.
-		router?: string
+		router?:  string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -94,8 +86,7 @@ import "list"
 	})
 
 	#vpc_project: close({
-		// The project of the VPC to connect to. If not specified, it is
-		// the same as the cluster project.
+		// The project of the VPC to connect to. If not specified, it is the same as the cluster project.
 		project_id?: string
 	})
 }

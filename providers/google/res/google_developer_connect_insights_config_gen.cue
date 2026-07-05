@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_developer_connect_insights_config: {
+google_developer_connect_insights_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_developer_connect_insights_config")
 	close({
@@ -10,14 +10,13 @@ import "list"
 		target_projects?: matchN(1, [#target_projects, list.MaxItems(1) & [...#target_projects]])
 		timeouts?: #timeouts
 
-		// User specified annotations. See
-		// https://google.aip.dev/148#annotations
+		// User specified annotations. See https://google.aip.dev/148#annotations
 		// for more details such as format and size limitations.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the annotations present in your configuration.
-		// Please refer to the field 'effective_annotations' for all of
-		// the annotations present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the
+		// annotations present in your configuration.
+		// Please refer to the field 'effective_annotations' for all of the annotations
+		// present on the resource.
 		annotations?: [string]: string
 
 		// The name of the App Hub Application.
@@ -28,32 +27,25 @@ import "list"
 		// [Output only] Create timestamp
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of annotations (key/value pairs) present on the resource in
-		// GCP, including the annotations configured through Terraform,
-		// other clients and services.
+		// All of annotations (key/value pairs) present on the resource in GCP,
+		// including the annotations configured through Terraform, other clients and
+		// services.
 		effective_annotations?: [string]: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// Any errors that occurred while setting up the InsightsConfig.
-		// Each error will be in the format: 'field_name: error_message',
-		// e.g.
+		// Each error will be in the format: 'field_name: error_message', e.g.
 		// GetAppHubApplication: Permission denied while getting App Hub
 		// application. Please grant permissions to the P4SA.
 		errors?: [...close({
@@ -70,32 +62,27 @@ import "list"
 
 		// Set of labels associated with an InsightsConfig.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Identifier. The name of the InsightsConfig.
 		// Format:
 		// projects/{project}/locations/{location}/insightsConfigs/{insightsConfig}
-		name?:    string
-		project?: string
+		name?: string
 
 		// Reconciling (https://google.aip.dev/128#reconciliation).
-		// Set to true if the current state of InsightsConfig does not
-		// match the
-		// user's intended state, and the service is actively updating the
-		// resource to
-		// reconcile them. This can happen due to user-triggered updates
-		// or
+		// Set to true if the current state of InsightsConfig does not match the
+		// user's intended state, and the service is actively updating the resource to
+		// reconcile them. This can happen due to user-triggered updates or
 		// system actions like failover or maintenance.
 		reconciling?: bool
+		project?:     string
 
 		// The runtime configurations where the application is deployed.
 		runtime_configs?: [...close({
@@ -134,8 +121,7 @@ import "list"
 
 		// The URI of the artifact that is deployed.
 		// e.g. 'us-docker.pkg.dev/my-project/my-repo/image'.
-		// The URI does not include the tag / digest because it captures a
-		// lineage of
+		// The URI does not include the tag / digest because it captures a lineage of
 		// artifacts.
 		uri?: string
 	})

@@ -1,37 +1,29 @@
 package res
 
-#google_apigee_environment_keyvaluemaps_entries: {
+google_apigee_environment_keyvaluemaps_entries: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_environment_keyvaluemaps_entries")
 	close({
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The Apigee environment keyvalumaps Id associated with the
-		// Apigee environment,
+		// The Apigee environment keyvalumaps Id associated with the Apigee environment,
 		// in the format
 		// 'organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}'.
 		env_keyvaluemap_id!: string
 		id?:                 string
 
-		// Required. Resource URI that can be used to identify the scope
-		// of the key value map entries.
+		// Required. Resource URI that can be used to identify the scope of the key value map entries.
 		name!: string
 
-		// Required. Data or payload that is being retrieved and
-		// associated with the unique key.
+		// Required. Data or payload that is being retrieved and associated with the unique key.
 		value!: string
 	})
 

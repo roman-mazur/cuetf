@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_notebooks_runtime: {
+google_notebooks_runtime: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_notebooks_runtime")
 	close({
@@ -11,22 +11,16 @@ import "list"
 		timeouts?: #timeouts
 		virtual_machine?: matchN(1, [#virtual_machine, list.MaxItems(1) & [...#virtual_machine]])
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// The health state of this runtime. For a list of possible output
@@ -38,34 +32,31 @@ import "list"
 		// The labels to associate with this runtime. Label **keys** must
 		// contain 1 to 63 characters, and must conform to [RFC 1035]
 		// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
-		// empty, but, if present, must contain 1 to 63 characters, and
-		// must
+		// empty, but, if present, must contain 1 to 63 characters, and must
 		// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 		// more than 32 labels can be associated with a cluster.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// A reference to the zone where the machine resides.
 		location!: string
 
-		// Contains Runtime daemon metrics such as Service status and
-		// JupyterLab
+		// Contains Runtime daemon metrics such as Service status and JupyterLab
 		// status
 		metrics?: [...close({
 			system_metrics?: [string]: string
 		})]
 
 		// The name specified for the Notebook runtime.
-		name!:    string
-		project?: string
+		name!: string
 
 		// The state of this runtime.
-		state?: string
+		state?:   string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -81,8 +72,7 @@ import "list"
 		// The proxy endpoint that is used to access the runtime.
 		proxy_uri?: string
 
-		// The owner of this runtime after creation. Format:
-		// 'alias@example.com'.
+		// The owner of this runtime after creation. Format: 'alias@example.com'.
 		// Currently supports one owner only.
 		runtime_owner?: string
 	})
@@ -90,10 +80,8 @@ import "list"
 	#software_config: close({
 		kernels?: matchN(1, [_#defs."/$defs/software_config/$defs/kernels", [..._#defs."/$defs/software_config/$defs/kernels"]])
 
-		// Specify a custom Cloud Storage path where the GPU driver is
-		// stored.
-		// If not specified, we'll automatically choose from official GPU
-		// drivers.
+		// Specify a custom Cloud Storage path where the GPU driver is stored.
+		// If not specified, we'll automatically choose from official GPU drivers.
 		custom_gpu_driver_path?: string
 
 		// Verifies core internal services are running. Default: True.
@@ -110,25 +98,21 @@ import "list"
 		// Install Nvidia Driver automatically.
 		install_gpu_driver?: bool
 
-		// Cron expression in UTC timezone for schedule instance auto
-		// upgrade.
-		// Please follow the [cron
-		// format](https://en.wikipedia.org/wiki/Cron).
+		// Cron expression in UTC timezone for schedule instance auto upgrade.
+		// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 		notebook_upgrade_schedule?: string
 
-		// Path to a Bash script that automatically runs after a notebook
-		// instance
+		// Path to a Bash script that automatically runs after a notebook instance
 		// fully boots up. The path must be a URL or
 		// Cloud Storage path (gs://path-to-file/file-name).
 		post_startup_script?: string
 
 		// Behavior for the post startup script. Possible values:
-		// ["POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED",
-		// "RUN_EVERY_START", "DOWNLOAD_AND_RUN_EVERY_START"]
+		// ["POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED", "RUN_EVERY_START",
+		// "DOWNLOAD_AND_RUN_EVERY_START"]
 		post_startup_script_behavior?: string
 
-		// Bool indicating whether an newer image is available in an image
-		// family.
+		// Bool indicating whether an newer image is available in an image family.
 		upgradeable?: bool
 	})
 
@@ -153,8 +137,7 @@ import "list"
 		// For example: gcr.io/{project_id}/{imageName}
 		repository!: string
 
-		// The tag of the container image. If not specified, this defaults
-		// to the latest tag.
+		// The tag of the container image. If not specified, this defaults to the latest tag.
 		tag?: string
 	})
 
@@ -170,12 +153,10 @@ import "list"
 		// storing-retrieving-metadata#guest_attributes)).
 		guest_attributes?: [string]: string
 
-		// If true, runtime will only have internal IP addresses. By
-		// default,
+		// If true, runtime will only have internal IP addresses. By default,
 		// runtimes are not restricted to internal IP addresses, and will
 		// have ephemeral external IP addresses assigned to each vm. This
-		// 'internal_ip_only' restriction can only be enabled for
-		// subnetwork
+		// 'internal_ip_only' restriction can only be enabled for subnetwork
 		// enabled networks, and all dependencies must be configured to be
 		// accessible without external IP addresses.
 		internal_ip_only?: bool
@@ -183,8 +164,7 @@ import "list"
 		// The labels to associate with this runtime. Label **keys** must
 		// contain 1 to 63 characters, and must conform to [RFC 1035]
 		// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
-		// empty, but, if present, must contain 1 to 63 characters, and
-		// must
+		// empty, but, if present, must contain 1 to 63 characters, and must
 		// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 		// more than 32 labels can be associated with a cluster.
 		labels?: [string]: string
@@ -198,8 +178,7 @@ import "list"
 		// _metadata)).
 		metadata?: [string]: string
 
-		// The Compute Engine network to be used for machine
-		// communications.
+		// The Compute Engine network to be used for machine communications.
 		// Cannot be specified with subnetwork. If neither 'network' nor
 		// 'subnet' is specified, the "default" network of the project is
 		// used, if it exists. A full URL or partial URI. Examples:
@@ -209,22 +188,18 @@ import "list"
 		// Runtimes are managed resources inside Google Infrastructure.
 		// Runtimes support the following network configurations:
 		// * Google Managed Network (Network & subnet are empty)
-		// * Consumer Project VPC (network & subnet are required).
-		// Requires
+		// * Consumer Project VPC (network & subnet are required). Requires
 		// configuring Private Service Access.
 		// * Shared VPC (network & subnet are required). Requires
 		// configuring Private Service Access.
 		network?: string
 
-		// The type of vNIC to be used on this interface. This may be
-		// gVNIC
-		// or VirtioNet. Possible values: ["UNSPECIFIED_NIC_TYPE",
-		// "VIRTIO_NET", "GVNIC"]
+		// The type of vNIC to be used on this interface. This may be gVNIC
+		// or VirtioNet. Possible values: ["UNSPECIFIED_NIC_TYPE", "VIRTIO_NET", "GVNIC"]
 		nic_type?: string
 
 		// Reserved IP Range name is used for VPC Peering. The
-		// subnetwork allocation will use the range *name* if it's
-		// assigned.
+		// subnetwork allocation will use the range *name* if it's assigned.
 		reserved_ip_range?: string
 
 		// The Compute Engine subnetwork to be used for machine
@@ -235,8 +210,7 @@ import "list"
 		// * 'projects/[project_id]/regions/us-east1/subnetworks/sub0'
 		subnet?: string
 
-		// The Compute Engine tags to add to runtime (see [Tagging
-		// instances]
+		// The Compute Engine tags to add to runtime (see [Tagging instances]
 		// (https://cloud.google.com/compute/docs/
 		// label-or-tag-resources#tags)).
 		tags?: [...string]
@@ -260,8 +234,7 @@ import "list"
 		// For example: gcr.io/{project_id}/{imageName}
 		repository!: string
 
-		// The tag of the container image. If not specified, this defaults
-		// to the latest tag.
+		// The tag of the container image. If not specified, this defaults to the latest tag.
 		tag?: string
 	})
 
@@ -291,8 +264,7 @@ import "list"
 
 		// Indicates a list of features to enable on the guest operating
 		// system. Applicable only for bootable images. To see a list of
-		// available features, read
-		// 'https://cloud.google.com/compute/docs/
+		// available features, read 'https://cloud.google.com/compute/docs/
 		// images/create-delete-deprecate-private-images#guest-os-features'
 		// options. ''
 		guest_os_features?: [...string]
@@ -304,14 +276,10 @@ import "list"
 
 		// "Specifies the disk interface to use for attaching this disk,
 		// which is either SCSI or NVME. The default is SCSI. Persistent
-		// disks must always use SCSI and the request will fail if you
-		// attempt
-		// to attach a persistent disk in any other format than SCSI.
-		// Local SSDs
-		// can use either NVME or SCSI. For performance characteristics of
-		// SCSI
-		// over NVMe, see Local SSD performance. Valid values: * NVME *
-		// SCSI".
+		// disks must always use SCSI and the request will fail if you attempt
+		// to attach a persistent disk in any other format than SCSI. Local SSDs
+		// can use either NVME or SCSI. For performance characteristics of SCSI
+		// over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
 		interface?: string
 
 		// Type of the resource. Always compute#attachedDisk for attached

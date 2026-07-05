@@ -1,6 +1,6 @@
 package data
 
-#google_bigquery_datasets: {
+google_bigquery_datasets: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_bigquery_datasets")
 	close({
@@ -12,8 +12,8 @@ package data
 		})]
 		id?: string
 
-		// The ID of the project in which the datasets are located. If it
-		// is not provided, the provider project is used.
+		// The ID of the project in which the datasets are located. If it is not
+		// provided, the provider project is used.
 		project?: string
 	})
 }

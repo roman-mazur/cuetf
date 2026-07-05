@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_monitoring_slo: {
+google_monitoring_slo: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_monitoring_slo")
 	close({
@@ -12,56 +12,44 @@ import "list"
 		windows_based_sli?: matchN(1, [#windows_based_sli, list.MaxItems(1) & [...#windows_based_sli]])
 
 		// A calendar period, semantically "since the start of the current
-		// <calendarPeriod>". Possible values: ["DAY", "WEEK",
-		// "FORTNIGHT", "MONTH"]
+		// <calendarPeriod>". Possible values: ["DAY", "WEEK", "FORTNIGHT", "MONTH"]
 		calendar_period?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// Name used for UI elements listing this SLO.
 		display_name?: string
 
-		// The fraction of service that must be good in order for this
-		// objective
+		// The fraction of service that must be good in order for this objective
 		// to be met. 0 < goal <= 0.999
 		goal!: number
 		id?:   string
 
 		// The full resource name for this service. The syntax is:
 		// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
-		name?:    string
-		project?: string
+		name?: string
 
 		// A rolling time period, semantically "in the past X days".
 		// Must be between 1 to 30 days, inclusive.
 		rolling_period_days?: number
+		project?:             string
 
 		// ID of the service to which this SLO belongs.
 		service!: string
 
-		// The id to use for this ServiceLevelObjective. If omitted, an id
-		// will be generated instead.
+		// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 		slo_id?: string
 
-		// This field is intended to be used for organizing and
-		// identifying the AlertPolicy
-		// objects.The field can contain up to 64 entries. Each key and
-		// value is limited
-		// to 63 Unicode characters or 128 bytes, whichever is smaller.
-		// Labels and values
-		// can contain only lowercase letters, numerals, underscores, and
-		// dashes. Keys
+		// This field is intended to be used for organizing and identifying the AlertPolicy
+		// objects.The field can contain up to 64 entries. Each key and value is limited
+		// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+		// can contain only lowercase letters, numerals, underscores, and dashes. Keys
 		// must begin with a letter.
 		user_labels?: [string]: string
 	})
@@ -111,8 +99,7 @@ import "list"
 		metric_mean_in_range?: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/metric_mean_in_range", list.MaxItems(1) & [..._#defs."/$defs/windows_based_sli/$defs/metric_mean_in_range"]])
 		metric_sum_in_range?: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/metric_sum_in_range", list.MaxItems(1) & [..._#defs."/$defs/windows_based_sli/$defs/metric_sum_in_range"]])
 
-		// A TimeSeries [monitoring
-		// filter](https://cloud.google.com/monitoring/api/v3/filters)
+		// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 		// with ValueType = BOOL. The window is good if any true values
 		// appear in the window. One of 'good_bad_metric_filter',
 		// 'good_total_ratio_threshold', 'metric_mean_in_range',
@@ -126,8 +113,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/basic_sli/$defs/availability": close({
-		// Whether an availability SLI is enabled or not. Must be set to
-		// true. Defaults to 'true'.
+		// Whether an availability SLI is enabled or not. Must be set to true. Defaults to 'true'.
 		enabled?: bool
 	})
 
@@ -141,8 +127,7 @@ import "list"
 	_#defs: "/$defs/request_based_sli/$defs/distribution_cut": close({
 		range!: matchN(1, [_#defs."/$defs/request_based_sli/$defs/distribution_cut/$defs/range", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/request_based_sli/$defs/distribution_cut/$defs/range"]])
 
-		// A TimeSeries [monitoring
-		// filter](https://cloud.google.com/monitoring/api/v3/filters)
+		// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 		// aggregating values to quantify the good service provided.
 		//
 		// Must have ValueType = DISTRIBUTION and
@@ -161,8 +146,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/request_based_sli/$defs/good_total_ratio": close({
-		// A TimeSeries [monitoring
-		// filter](https://cloud.google.com/monitoring/api/v3/filters)
+		// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 		// quantifying bad service provided, either demanded service that
 		// was not provided or demanded service that was of inadequate
 		// quality.
@@ -170,31 +154,26 @@ import "list"
 		// Must have ValueType = DOUBLE or ValueType = INT64 and
 		// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
 		//
-		// Exactly two of
-		// 'good_service_filter','bad_service_filter','total_service_filter'
+		// Exactly two of 'good_service_filter','bad_service_filter','total_service_filter'
 		// must be set (good + bad = total is assumed).
 		bad_service_filter?: string
 
-		// A TimeSeries [monitoring
-		// filter](https://cloud.google.com/monitoring/api/v3/filters)
+		// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 		// quantifying good service provided.
 		// Must have ValueType = DOUBLE or ValueType = INT64 and
 		// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
 		//
-		// Exactly two of
-		// 'good_service_filter','bad_service_filter','total_service_filter'
+		// Exactly two of 'good_service_filter','bad_service_filter','total_service_filter'
 		// must be set (good + bad = total is assumed).
 		good_service_filter?: string
 
-		// A TimeSeries [monitoring
-		// filter](https://cloud.google.com/monitoring/api/v3/filters)
+		// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 		// quantifying total demanded service.
 		//
 		// Must have ValueType = DOUBLE or ValueType = INT64 and
 		// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
 		//
-		// Exactly two of
-		// 'good_service_filter','bad_service_filter','total_service_filter'
+		// Exactly two of 'good_service_filter','bad_service_filter','total_service_filter'
 		// must be set (good + bad = total is assumed).
 		total_service_filter?: string
 	})
@@ -238,8 +217,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/basic_sli_performance/$defs/availability": close({
-		// Whether an availability SLI is enabled or not. Must be set to
-		// 'true. Defaults to 'true'.
+		// Whether an availability SLI is enabled or not. Must be set to 'true. Defaults to 'true'.
 		enabled?: bool
 	})
 
@@ -258,8 +236,7 @@ import "list"
 	_#defs: "/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/performance/$defs/distribution_cut": close({
 		range!: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/performance/$defs/distribution_cut/$defs/range", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/performance/$defs/distribution_cut/$defs/range"]])
 
-		// A TimeSeries [monitoring
-		// filter](https://cloud.google.com/monitoring/api/v3/filters)
+		// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 		// aggregating values to quantify the good service provided.
 		//
 		// Must have ValueType = DISTRIBUTION and
@@ -278,8 +255,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/windows_based_sli/$defs/good_total_ratio_threshold/$defs/performance/$defs/good_total_ratio": close({
-		// A TimeSeries [monitoring
-		// filter](https://cloud.google.com/monitoring/api/v3/filters)
+		// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 		// quantifying bad service provided, either demanded service that
 		// was not provided or demanded service that was of inadequate
 		// quality. Exactly two of
@@ -290,8 +266,7 @@ import "list"
 		// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
 		bad_service_filter?: string
 
-		// A TimeSeries [monitoring
-		// filter](https://cloud.google.com/monitoring/api/v3/filters)
+		// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 		// quantifying good service provided. Exactly two of
 		// good, bad, or total service filter must be defined (where
 		// good + bad = total is assumed)
@@ -300,8 +275,7 @@ import "list"
 		// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
 		good_service_filter?: string
 
-		// A TimeSeries [monitoring
-		// filter](https://cloud.google.com/monitoring/api/v3/filters)
+		// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 		// quantifying total demanded service. Exactly two of
 		// good, bad, or total service filter must be defined (where
 		// good + bad = total is assumed)
@@ -314,8 +288,7 @@ import "list"
 	_#defs: "/$defs/windows_based_sli/$defs/metric_mean_in_range": close({
 		range!: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/metric_mean_in_range/$defs/range", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/windows_based_sli/$defs/metric_mean_in_range/$defs/range"]])
 
-		// A [monitoring
-		// filter](https://cloud.google.com/monitoring/api/v3/filters)
+		// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 		// specifying the TimeSeries to use for evaluating window
 		// The provided TimeSeries must have ValueType = INT64 or
 		// ValueType = DOUBLE and MetricKind = GAUGE. Mean value 'X'
@@ -339,8 +312,7 @@ import "list"
 	_#defs: "/$defs/windows_based_sli/$defs/metric_sum_in_range": close({
 		range!: matchN(1, [_#defs."/$defs/windows_based_sli/$defs/metric_sum_in_range/$defs/range", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/windows_based_sli/$defs/metric_sum_in_range/$defs/range"]])
 
-		// A [monitoring
-		// filter](https://cloud.google.com/monitoring/api/v3/filters)
+		// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 		// specifying the TimeSeries to use for evaluating window
 		// quality. The provided TimeSeries must have
 		// ValueType = INT64 or ValueType = DOUBLE and

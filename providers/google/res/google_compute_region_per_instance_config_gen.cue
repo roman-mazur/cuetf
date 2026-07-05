@@ -2,23 +2,18 @@ package res
 
 import "list"
 
-#google_compute_region_per_instance_config: {
+google_compute_region_per_instance_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_per_instance_config")
 	close({
 		preserved_state?: matchN(1, [#preserved_state, list.MaxItems(1) & [...#preserved_state]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
@@ -31,8 +26,7 @@ import "list"
 		// * NONE
 		minimal_action?: string
 
-		// The most disruptive action to perform on the instance during an
-		// update.
+		// The most disruptive action to perform on the instance during an update.
 		// Default is 'REPLACE'. Possible values are:
 		// * REPLACE
 		// * RESTART
@@ -40,30 +34,26 @@ import "list"
 		// * NONE
 		most_disruptive_allowed_action?: string
 
-		// The name for this per-instance config and its corresponding
-		// instance.
-		name!:    string
-		project?: string
+		// The name for this per-instance config and its corresponding instance.
+		name!: string
 
 		// Region where the containing instance group manager is located
-		region?: string
+		region?:  string
+		project?: string
 
-		// The region instance group manager this instance config is part
-		// of.
+		// The region instance group manager this instance config is part of.
 		region_instance_group_manager!: string
 
-		// When true, deleting this config will immediately remove the
-		// underlying instance.
-		// When false, deleting this config will use the behavior as
-		// determined by remove_instance_on_destroy.
+		// When true, deleting this config will immediately remove the underlying instance.
+		// When false, deleting this config will use the behavior as determined by
+		// remove_instance_on_destroy.
 		remove_instance_on_destroy?: bool
 
-		// When true, deleting this config will immediately remove any
-		// specified state from the underlying instance.
-		// When false, deleting this config will *not* immediately remove
-		// any state from the underlying instance.
-		// State will be removed on the next instance recreation or
-		// update.
+		// When true, deleting this config will immediately remove any specified state
+		// from the underlying instance.
+		// When false, deleting this config will *not* immediately remove any state from
+		// the underlying instance.
+		// State will be removed on the next instance recreation or update.
 		remove_instance_state_on_destroy?: bool
 	})
 
@@ -72,8 +62,7 @@ import "list"
 		external_ip?: matchN(1, [_#defs."/$defs/preserved_state/$defs/external_ip", [..._#defs."/$defs/preserved_state/$defs/external_ip"]])
 		internal_ip?: matchN(1, [_#defs."/$defs/preserved_state/$defs/internal_ip", [..._#defs."/$defs/preserved_state/$defs/internal_ip"]])
 
-		// Preserved metadata defined for this instance. This is a list of
-		// key->value pairs.
+		// Preserved metadata defined for this instance. This is a list of key->value pairs.
 		metadata?: [string]: string
 	})
 
@@ -84,28 +73,22 @@ import "list"
 	})
 
 	_#defs: "/$defs/preserved_state/$defs/disk": close({
-		// A value that prescribes what should happen to the stateful disk
-		// when the VM instance is deleted.
-		// The available options are 'NEVER' and
-		// 'ON_PERMANENT_INSTANCE_DELETION'.
-		// 'NEVER' - detach the disk when the VM is deleted, but do not
-		// delete the disk.
-		// 'ON_PERMANENT_INSTANCE_DELETION' will delete the stateful disk
-		// when the VM is permanently
-		// deleted from the instance group. Default value: "NEVER"
-		// Possible values: ["NEVER", "ON_PERMANENT_INSTANCE_DELETION"]
+		// A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
+		// The available options are 'NEVER' and 'ON_PERMANENT_INSTANCE_DELETION'.
+		// 'NEVER' - detach the disk when the VM is deleted, but do not delete the disk.
+		// 'ON_PERMANENT_INSTANCE_DELETION' will delete the stateful disk when the VM is permanently
+		// deleted from the instance group. Default value: "NEVER" Possible values:
+		// ["NEVER", "ON_PERMANENT_INSTANCE_DELETION"]
 		delete_rule?: string
 
-		// A unique device name that is reflected into the /dev/ tree of a
-		// Linux operating system running within the instance.
+		// A unique device name that is reflected into the /dev/ tree of a Linux
+		// operating system running within the instance.
 		device_name!: string
 
-		// The mode of the disk. Default value: "READ_WRITE" Possible
-		// values: ["READ_ONLY", "READ_WRITE"]
+		// The mode of the disk. Default value: "READ_WRITE" Possible values: ["READ_ONLY", "READ_WRITE"]
 		mode?: string
 
-		// The URI of an existing persistent disk to attach under the
-		// specified device-name in the format
+		// The URI of an existing persistent disk to attach under the specified device-name in the format
 		// 'projects/project-id/zones/zone/disks/disk-name'.
 		source!: string
 	})
@@ -113,12 +96,11 @@ import "list"
 	_#defs: "/$defs/preserved_state/$defs/external_ip": close({
 		ip_address?: matchN(1, [_#defs."/$defs/preserved_state/$defs/external_ip/$defs/ip_address", list.MaxItems(1) & [..._#defs."/$defs/preserved_state/$defs/external_ip/$defs/ip_address"]])
 
-		// These stateful IPs will never be released during autohealing,
-		// update or VM instance recreate operations. This flag is used
-		// to configure if the IP reservation should be deleted after it
-		// is no longer used by the group, e.g. when the given instance
-		// or the whole group is deleted. Default value: "NEVER" Possible
-		// values: ["NEVER", "ON_PERMANENT_INSTANCE_DELETION"]
+		// These stateful IPs will never be released during autohealing, update or VM
+		// instance recreate operations. This flag is used to configure if the IP
+		// reservation should be deleted after it is no longer used by the group, e.g.
+		// when the given instance or the whole group is deleted. Default value:
+		// "NEVER" Possible values: ["NEVER", "ON_PERMANENT_INSTANCE_DELETION"]
 		auto_delete?:    string
 		interface_name!: string
 	})
@@ -131,12 +113,11 @@ import "list"
 	_#defs: "/$defs/preserved_state/$defs/internal_ip": close({
 		ip_address?: matchN(1, [_#defs."/$defs/preserved_state/$defs/internal_ip/$defs/ip_address", list.MaxItems(1) & [..._#defs."/$defs/preserved_state/$defs/internal_ip/$defs/ip_address"]])
 
-		// These stateful IPs will never be released during autohealing,
-		// update or VM instance recreate operations. This flag is used
-		// to configure if the IP reservation should be deleted after it
-		// is no longer used by the group, e.g. when the given instance
-		// or the whole group is deleted. Default value: "NEVER" Possible
-		// values: ["NEVER", "ON_PERMANENT_INSTANCE_DELETION"]
+		// These stateful IPs will never be released during autohealing, update or VM
+		// instance recreate operations. This flag is used to configure if the IP
+		// reservation should be deleted after it is no longer used by the group, e.g.
+		// when the given instance or the whole group is deleted. Default value:
+		// "NEVER" Possible values: ["NEVER", "ON_PERMANENT_INSTANCE_DELETION"]
 		auto_delete?:    string
 		interface_name!: string
 	})

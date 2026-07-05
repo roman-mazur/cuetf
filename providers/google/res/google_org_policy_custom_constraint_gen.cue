@@ -1,64 +1,55 @@
 package res
 
-#google_org_policy_custom_constraint: {
+google_org_policy_custom_constraint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_org_policy_custom_constraint")
 	close({
 		timeouts?: #timeouts
 
-		// The action to take if the condition is met. Possible values:
-		// ["ALLOW", "DENY"]
+		// The action to take if the condition is met. Possible values: ["ALLOW", "DENY"]
 		action_type!: string
 
-		// A CEL condition that refers to a supported service resource,
-		// for example 'resource.management.autoUpgrade == false'. For
-		// details about CEL usage, see [Common Expression
+		// A CEL condition that refers to a supported service resource, for example
+		// 'resource.management.autoUpgrade == false'. For details about CEL usage, see
+		// [Common Expression
 		// Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
 		condition!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// A human-friendly description of the constraint to display as an
-		// error message when the policy is violated.
+		// A human-friendly description of the constraint to display as an error message
+		// when the policy is violated.
 		description?: string
 
 		// A human-friendly name for the constraint.
 		display_name?: string
 		id?:           string
 
-		// A list of RESTful methods for which to enforce the constraint.
-		// Can be 'CREATE', 'UPDATE', or both. Not all Google Cloud
-		// services support both methods. To see supported methods for
-		// each service, find the service in [Supported
+		// A list of RESTful methods for which to enforce the constraint. Can be
+		// 'CREATE', 'UPDATE', or both. Not all Google Cloud services support both
+		// methods. To see supported methods for each service, find the service in
+		// [Supported
 		// services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
 		method_types!: [...string]
 
-		// Immutable. The name of the custom constraint. This is unique
-		// within the organization.
+		// Immutable. The name of the custom constraint. This is unique within the organization.
 		name!: string
 
-		// The parent of the resource, an organization. Format should be
-		// 'organizations/{organization_id}'.
+		// The parent of the resource, an organization. Format should be 'organizations/{organization_id}'.
 		parent!: string
 
-		// Immutable. The fully qualified name of the Google Cloud REST
-		// resource containing the object and field you want to restrict.
-		// For example, 'container.googleapis.com/NodePool'.
+		// Immutable. The fully qualified name of the Google Cloud REST resource
+		// containing the object and field you want to restrict. For example,
+		// 'container.googleapis.com/NodePool'.
 		resource_types!: [...string]
 
-		// Output only. The timestamp representing when the constraint was
-		// last updated.
+		// Output only. The timestamp representing when the constraint was last updated.
 		update_time?: string
 	})
 

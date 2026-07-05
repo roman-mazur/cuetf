@@ -1,11 +1,10 @@
 package data
 
-#google_storage_control_project_intelligence_findings: {
+google_storage_control_project_intelligence_findings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_storage_control_project_intelligence_findings")
 	close({
-		// The filter expression to apply. Supports filtering by type and
-		// associated_resources.
+		// The filter expression to apply. Supports filtering by type and associated_resources.
 		filter?: string
 
 		// The list of intelligence findings.
@@ -126,17 +125,16 @@ package data
 		})]
 		id?: string
 
-		// The location of the intelligence findings. Currently default
-		// value is global and users cannot use for input for now.
+		// The location of the intelligence findings. Currently default value is global
+		// and users cannot use for input for now.
 		location?: string
 
-		// The maximum number of IntelligenceFinding resources to return.
-		// The maximum value is 100; values greater than 100 become 100.
-		// The default value is 100.
+		// The maximum number of IntelligenceFinding resources to return. The maximum
+		// value is 100; values greater than 100 become 100. The default value is 100.
 		page_size?: number
 
-		// The ID of the project in which the resource belongs. If it is
-		// not provided, the provider project is used.
+		// The ID of the project in which the resource belongs. If it is not provided,
+		// the provider project is used.
 		project?: string
 	})
 }

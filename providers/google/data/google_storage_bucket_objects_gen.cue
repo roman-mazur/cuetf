@@ -1,6 +1,6 @@
 package data
 
-#google_storage_bucket_objects: {
+google_storage_bucket_objects: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_storage_bucket_objects")
 	close({

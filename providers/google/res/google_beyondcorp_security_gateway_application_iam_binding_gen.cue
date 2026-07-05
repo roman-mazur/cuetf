@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_beyondcorp_security_gateway_application_iam_binding: {
+google_beyondcorp_security_gateway_application_iam_binding: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_beyondcorp_security_gateway_application_iam_binding")
 	close({

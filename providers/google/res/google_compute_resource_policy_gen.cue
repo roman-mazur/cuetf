@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_compute_resource_policy: {
+google_compute_resource_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_resource_policy")
 	close({
@@ -13,42 +13,30 @@ import "list"
 		timeouts?: #timeouts
 		workload_policy?: matchN(1, [#workload_policy, list.MaxItems(1) & [...#workload_policy]])
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// An optional description of this resource. Provide this property
-		// when you create the resource.
+		// An optional description of this resource. Provide this property when you create the resource.
 		description?: string
 		id?:          string
 
-		// The name of the resource, provided by the client when initially
-		// creating
-		// the resource. The resource name must be 1-63 characters long,
-		// and comply
-		// with RFC1035. Specifically, the name must be 1-63 characters
-		// long and
-		// match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])'? which
-		// means the
-		// first character must be a lowercase letter, and all following
-		// characters
-		// must be a dash, lowercase letter, or digit, except the last
-		// character,
+		// The name of the resource, provided by the client when initially creating
+		// the resource. The resource name must be 1-63 characters long, and comply
+		// with RFC1035. Specifically, the name must be 1-63 characters long and
+		// match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the
+		// first character must be a lowercase letter, and all following characters
+		// must be a dash, lowercase letter, or digit, except the last character,
 		// which cannot be a dash.
-		name!:    string
-		project?: string
+		name!: string
 
 		// Region where resource policy resides.
 		region?:    string
+		project?:   string
 		self_link?: string
 	})
 
@@ -58,29 +46,25 @@ import "list"
 	})
 
 	#group_placement_policy: close({
-		// The number of availability domains instances will be spread
-		// across. If two instances are in different
-		// availability domain, they will not be put in the same low
-		// latency network
+		// The number of availability domains instances will be spread across. If two
+		// instances are in different
+		// availability domain, they will not be put in the same low latency network
 		availability_domain_count?: number
 
-		// Collocation specifies whether to place VMs inside the same
-		// availability domain on the same low-latency network.
-		// Specify 'COLLOCATED' to enable collocation. Can only be
-		// specified with 'vm_count'. If compute instances are created
-		// with a COLLOCATED policy, then exactly 'vm_count' instances
-		// must be created at the same time with the resource policy
+		// Collocation specifies whether to place VMs inside the same availability
+		// domain on the same low-latency network.
+		// Specify 'COLLOCATED' to enable collocation. Can only be specified with
+		// 'vm_count'. If compute instances are created
+		// with a COLLOCATED policy, then exactly 'vm_count' instances must be created
+		// at the same time with the resource policy
 		// attached. Possible values: ["COLLOCATED"]
 		collocation?: string
 
-		// Specifies the shape of the GPU slice, in slice based GPU
-		// families eg. A4X.
+		// Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
 		gpu_topology?: string
 
-		// Number of VMs in this placement group. Google does not
-		// recommend that you use this field
-		// unless you use a compact policy and you want your policy to
-		// work only if it contains this
+		// Number of VMs in this placement group. Google does not recommend that you use this field
+		// unless you use a compact policy and you want your policy to work only if it contains this
 		// exact number of VMs.
 		vm_count?: number
 	})
@@ -89,16 +73,14 @@ import "list"
 		vm_start_schedule?: matchN(1, [_#defs."/$defs/instance_schedule_policy/$defs/vm_start_schedule", list.MaxItems(1) & [..._#defs."/$defs/instance_schedule_policy/$defs/vm_start_schedule"]])
 		vm_stop_schedule?: matchN(1, [_#defs."/$defs/instance_schedule_policy/$defs/vm_stop_schedule", list.MaxItems(1) & [..._#defs."/$defs/instance_schedule_policy/$defs/vm_stop_schedule"]])
 
-		// The expiration time of the schedule. The timestamp is an
-		// RFC3339 string.
+		// The expiration time of the schedule. The timestamp is an RFC3339 string.
 		expiration_time?: string
 
-		// The start time of the schedule. The timestamp is an RFC3339
-		// string.
+		// The start time of the schedule. The timestamp is an RFC3339 string.
 		start_time?: string
 
-		// Specifies the time zone to be used in interpreting the
-		// schedule. The value of this field must be a time zone name
+		// Specifies the time zone to be used in interpreting the schedule. The value of
+		// this field must be a time zone name
 		// from the tz database: http://en.wikipedia.org/wiki/Tz_database.
 		time_zone!: string
 	})
@@ -116,32 +98,28 @@ import "list"
 	})
 
 	#workload_policy: close({
-		// The accelerator topology. This field can be set only when the
-		// workload policy type is HIGH_THROUGHPUT
+		// The accelerator topology. This field can be set only when the workload policy
+		// type is HIGH_THROUGHPUT
 		// and cannot be set if max topology distance is set.
 		accelerator_topology?: string
 
-		// The maximum topology distance. This field can be set only when
-		// the workload policy type is HIGH_THROUGHPUT
-		// and cannot be set if accelerator topology or accelerator
-		// topology mode is set. Possible values: ["BLOCK", "CLUSTER",
-		// "SUBBLOCK"]
+		// The maximum topology distance. This field can be set only when the workload
+		// policy type is HIGH_THROUGHPUT
+		// and cannot be set if accelerator topology or accelerator topology mode is
+		// set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
 		max_topology_distance?: string
 
-		// The type of workload policy. Possible values:
-		// ["HIGH_AVAILABILITY", "HIGH_THROUGHPUT"]
+		// The type of workload policy. Possible values: ["HIGH_AVAILABILITY", "HIGH_THROUGHPUT"]
 		type!: string
 	})
 
 	_#defs: "/$defs/instance_schedule_policy/$defs/vm_start_schedule": close({
-		// Specifies the frequency for the operation, using the unix-cron
-		// format.
+		// Specifies the frequency for the operation, using the unix-cron format.
 		schedule!: string
 	})
 
 	_#defs: "/$defs/instance_schedule_policy/$defs/vm_stop_schedule": close({
-		// Specifies the frequency for the operation, using the unix-cron
-		// format.
+		// Specifies the frequency for the operation, using the unix-cron format.
 		schedule!: string
 	})
 
@@ -150,9 +128,8 @@ import "list"
 		max_retention_days!: number
 
 		// Specifies the behavior to apply to scheduled snapshots when
-		// the source disk is deleted. Default value:
-		// "KEEP_AUTO_SNAPSHOTS" Possible values: ["KEEP_AUTO_SNAPSHOTS",
-		// "APPLY_RETENTION_POLICY"]
+		// the source disk is deleted. Default value: "KEEP_AUTO_SNAPSHOTS" Possible
+		// values: ["KEEP_AUTO_SNAPSHOTS", "APPLY_RETENTION_POLICY"]
 		on_source_disk_delete?: string
 	})
 
@@ -163,9 +140,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/snapshot_schedule_policy/$defs/schedule/$defs/daily_schedule": close({
-		// Defines a schedule with units measured in days. The value
-		// determines how many days pass between the start of each cycle.
-		// Days in cycle for snapshot schedule policy must be 1.
+		// Defines a schedule with units measured in days. The value determines how many
+		// days pass between the start of each cycle. Days in cycle for snapshot
+		// schedule policy must be 1.
 		days_in_cycle!: number
 
 		// This must be in UTC format that resolves to one of
@@ -189,21 +166,19 @@ import "list"
 	})
 
 	_#defs: "/$defs/snapshot_schedule_policy/$defs/schedule/$defs/weekly_schedule/$defs/day_of_weeks": close({
-		// The day of the week to create the snapshot. e.g. MONDAY
-		// Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY",
-		// "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+		// The day of the week to create the snapshot. e.g. MONDAY Possible values:
+		// ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
+		// "SUNDAY"]
 		day!: string
 
 		// Time within the window to start the operations.
-		// It must be in format "HH:MM", where HH : [00-23] and MM :
-		// [00-00] GMT.
+		// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 		start_time!: string
 	})
 
 	_#defs: "/$defs/snapshot_schedule_policy/$defs/snapshot_properties": close({
 		// Creates the new snapshot in the snapshot chain labeled with the
-		// specified name. The chain name must be 1-63 characters long and
-		// comply
+		// specified name. The chain name must be 1-63 characters long and comply
 		// with RFC1035.
 		chain_name?: string
 

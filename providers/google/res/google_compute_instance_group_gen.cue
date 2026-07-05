@@ -1,22 +1,17 @@
 package res
 
-#google_compute_instance_group: {
+google_compute_instance_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_instance_group")
 	close({
 		named_port?: matchN(1, [#named_port, [...#named_port]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -24,25 +19,24 @@ package res
 		description?: string
 		id?:          string
 
-		// The list of instances in the group, in self_link format. When
-		// adding instances they must all be in the same network and zone
-		// as the instance group.
+		// The list of instances in the group, in self_link format. When adding
+		// instances they must all be in the same network and zone as the instance
+		// group.
 		instances?: [...string]
 
-		// The name of the instance group. Must be 1-63 characters long
-		// and comply with RFC1035. Supported characters include
-		// lowercase letters, numbers, and hyphens.
+		// The name of the instance group. Must be 1-63 characters long and comply with
+		// RFC1035. Supported characters include lowercase letters, numbers, and
+		// hyphens.
 		name!: string
 
-		// The URL of the network the instance group is in. If this is
-		// different from the network where the instances are in, the
-		// creation fails. Defaults to the network where the instances
-		// are in (if neither network nor instances is specified, this
-		// field will be blank).
+		// The URL of the network the instance group is in. If this is different from
+		// the network where the instances are in, the creation fails. Defaults to the
+		// network where the instances are in (if neither network nor instances is
+		// specified, this field will be blank).
 		network?: string
 
-		// The ID of the project in which the resource belongs. If it is
-		// not provided, the provider project is used.
+		// The ID of the project in which the resource belongs. If it is not provided,
+		// the provider project is used.
 		project?: string
 
 		// The URI of the created resource.

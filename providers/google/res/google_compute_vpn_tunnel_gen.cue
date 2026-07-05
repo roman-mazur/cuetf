@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_compute_vpn_tunnel: {
+google_compute_vpn_tunnel: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_vpn_tunnel")
 	close({
@@ -13,16 +13,11 @@ import "list"
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -32,40 +27,34 @@ import "list"
 		// Detailed status message for the VPN tunnel.
 		detailed_status?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
-		// IKE protocol version to use when establishing the VPN tunnel
-		// with
+		// IKE protocol version to use when establishing the VPN tunnel with
 		// peer VPN gateway.
 		// Acceptable IKE versions are 1 or 2. Default version is 2.
 		ike_version?: number
 
-		// The fingerprint used for optimistic locking of this resource.
-		// Used
+		// The fingerprint used for optimistic locking of this resource. Used
 		// internally during updates.
 		label_fingerprint?: string
 
 		// Labels to apply to this VpnTunnel.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Local traffic selector to use when establishing the VPN tunnel
-		// with
+		// Local traffic selector to use when establishing the VPN tunnel with
 		// peer VPN gateway. The value should be a CIDR formatted string,
 		// for example '192.168.0.0/16'. The ranges should be disjoint.
 		// Only IPv4 is supported.
 		local_traffic_selector?: [...string]
 
-		// Name of the resource. The name must be 1-63 characters long,
-		// and
+		// Name of the resource. The name must be 1-63 characters long, and
 		// comply with RFC1035. Specifically, the name must be 1-63
 		// characters long and match the regular expression
 		// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character
@@ -74,58 +63,49 @@ import "list"
 		// except the last character, which cannot be a dash.
 		name!: string
 
-		// URL of the peer side external VPN gateway to which this VPN
-		// tunnel is connected.
+		// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
 		peer_external_gateway?: string
 
-		// The interface ID of the external VPN gateway to which this VPN
-		// tunnel is connected.
+		// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
 		peer_external_gateway_interface?: number
 
-		// URL of the peer side HA GCP VPN gateway to which this VPN
-		// tunnel is connected.
-		// If provided, the VPN tunnel will automatically use the same
-		// vpn_gateway_interface
+		// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+		// If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
 		// ID in the peer GCP VPN gateway.
-		// This field must reference a 'google_compute_ha_vpn_gateway'
-		// resource.
+		// This field must reference a 'google_compute_ha_vpn_gateway' resource.
 		peer_gcp_gateway?: string
 
 		// IP address of the peer VPN gateway. Only IPv4 is supported.
 		peer_ip?: string
+
+		// The region where the tunnel is located. If unset, is set to the region of 'target_vpn_gateway'.
+		region?:  string
 		project?: string
 
-		// The region where the tunnel is located. If unset, is set to the
-		// region of 'target_vpn_gateway'.
-		region?: string
-
-		// Remote traffic selector to use when establishing the VPN tunnel
-		// with
+		// Remote traffic selector to use when establishing the VPN tunnel with
 		// peer VPN gateway. The value should be a CIDR formatted string,
 		// for example '192.168.0.0/16'. The ranges should be disjoint.
 		// Only IPv4 is supported.
 		remote_traffic_selector?: [...string]
 
 		// URL of router resource to be used for dynamic routing.
-		router?:    string
-		self_link?: string
+		router?: string
 
-		// Shared secret used to set the secure session between the Cloud
-		// VPN
+		// Shared secret used to set the secure session between the Cloud VPN
 		// gateway and the peer VPN gateway.
 		shared_secret?: string
 
 		// Hash of the shared secret.
 		shared_secret_hash?: string
+		self_link?:          string
 
-		// Shared secret used to set the secure session between the Cloud
-		// VPN
+		// Shared secret used to set the secure session between the Cloud VPN
 		// gateway and the peer VPN gateway.
 		shared_secret_wo?: string
 
-		// Triggers update of 'shared_secret_wo' write-only. Increment
-		// this value when an update to 'shared_secret_wo' is needed. For
-		// more info see [updating write-only
+		// Triggers update of 'shared_secret_wo' write-only. Increment this value when
+		// an update to 'shared_secret_wo' is needed. For more info see [updating
+		// write-only
 		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 		shared_secret_wo_version?: string
 
@@ -137,20 +117,15 @@ import "list"
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// The unique identifier for the resource. This identifier is
-		// defined by the server.
+		// The unique identifier for the resource. This identifier is defined by the server.
 		tunnel_id?: string
 
-		// URL of the VPN gateway with which this VPN tunnel is
-		// associated.
-		// This must be used if a High Availability VPN gateway resource
-		// is created.
-		// This field must reference a 'google_compute_ha_vpn_gateway'
-		// resource.
+		// URL of the VPN gateway with which this VPN tunnel is associated.
+		// This must be used if a High Availability VPN gateway resource is created.
+		// This field must reference a 'google_compute_ha_vpn_gateway' resource.
 		vpn_gateway?: string
 
-		// The interface ID of the VPN gateway with which this VPN tunnel
-		// is associated.
+		// The interface ID of the VPN gateway with which this VPN tunnel is associated.
 		vpn_gateway_interface?: number
 	})
 
@@ -160,10 +135,8 @@ import "list"
 	})
 
 	#params: close({
-		// Resource manager tags to be bound to the Vpn Tunnel. Tag keys
-		// and values have the
-		// same definition as resource manager tags. Keys must be in the
-		// format tagKeys/{tag_key_id},
+		// Resource manager tags to be bound to the Vpn Tunnel. Tag keys and values have the
+		// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
 		// and values are in the format tagValues/456.
 		resource_manager_tags?: [string]: string
 	})

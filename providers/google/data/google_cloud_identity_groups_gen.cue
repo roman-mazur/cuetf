@@ -1,6 +1,6 @@
 package data
 
-#google_cloud_identity_groups: {
+google_cloud_identity_groups: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_cloud_identity_groups")
 	close({
@@ -26,12 +26,10 @@ package data
 		})]
 		id?: string
 
-		// The resource name of the entity under which this Group resides
-		// in the
+		// The resource name of the entity under which this Group resides in the
 		// Cloud Identity resource hierarchy.
 		//
-		// Must be of the form identitysources/{identity_source_id} for
-		// external-identity-mapped
+		// Must be of the form identitysources/{identity_source_id} for external-identity-mapped
 		// groups or customers/{customer_id} for Google Groups.
 		parent!: string
 	})

@@ -1,22 +1,17 @@
 package res
 
-#google_dialogflow_entity_type: {
+google_dialogflow_entity_type: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_entity_type")
 	close({
 		entities?: matchN(1, [#entities, [...#entities]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -28,41 +23,35 @@ package res
 		id?:                      string
 
 		// Indicates the kind of entity type.
-		// * KIND_MAP: Map entity types allow mapping of a group of
-		// synonyms to a reference value.
-		// * KIND_LIST: List entity types contain a set of entries that do
-		// not map to reference values. However, list entity
-		// types can contain references to other entity types (with or
-		// without aliases).
-		// * KIND_REGEXP: Regexp entity types allow to specify regular
-		// expressions in entries values. Possible values: ["KIND_MAP",
-		// "KIND_LIST", "KIND_REGEXP"]
+		// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
+		// * KIND_LIST: List entity types contain a set of entries that do not map to
+		// reference values. However, list entity
+		// types can contain references to other entity types (with or without aliases).
+		// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in
+		// entries values. Possible values: ["KIND_MAP", "KIND_LIST", "KIND_REGEXP"]
 		kind!: string
 
 		// The unique identifier of the entity type.
-		// Format: projects/<Project ID>/agent/entityTypes/<Entity type
-		// ID>.
+		// Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
 		name?:    string
 		project?: string
 	})
 
 	#entities: close({
-		// A collection of value synonyms. For example, if the entity type
-		// is vegetable, and value is scallions, a synonym
+		// A collection of value synonyms. For example, if the entity type is vegetable,
+		// and value is scallions, a synonym
 		// could be green onions.
 		// For KIND_LIST entity types:
-		// * This collection must contain exactly one synonym equal to
-		// value.
+		// * This collection must contain exactly one synonym equal to value.
 		synonyms!: [...string]
 
-		// The primary value associated with this entity entry. For
-		// example, if the entity type is vegetable, the value
+		// The primary value associated with this entity entry. For example, if the
+		// entity type is vegetable, the value
 		// could be scallions.
 		// For KIND_MAP entity types:
 		// * A reference value to be used in place of synonyms.
 		// For KIND_LIST entity types:
-		// * A string that can contain references to other entity types
-		// (with or without aliases).
+		// * A string that can contain references to other entity types (with or without aliases).
 		value!: string
 	})
 

@@ -2,23 +2,18 @@ package res
 
 import "list"
 
-#google_iam_deny_policy: {
+google_iam_deny_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_deny_policy")
 	close({
 		rules!: matchN(1, [#rules, [_, ...] & [...#rules]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -32,8 +27,7 @@ import "list"
 		// The name of the policy.
 		name!: string
 
-		// The attachment point is identified by its URL-encoded full
-		// resource name.
+		// The attachment point is identified by its URL-encoded full resource name.
 		parent!: string
 	})
 
@@ -53,51 +47,43 @@ import "list"
 	_#defs: "/$defs/rules/$defs/deny_rule": close({
 		denial_condition?: matchN(1, [_#defs."/$defs/rules/$defs/deny_rule/$defs/denial_condition", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/deny_rule/$defs/denial_condition"]])
 
-		// The permissions that are explicitly denied by this rule. Each
-		// permission uses the format '{service-fqdn}/{resource}.{verb}',
-		// where '{service-fqdn}' is the fully qualified domain name for
-		// the service. For example, 'iam.googleapis.com/roles.list'.
+		// The permissions that are explicitly denied by this rule. Each permission uses
+		// the format '{service-fqdn}/{resource}.{verb}',
+		// where '{service-fqdn}' is the fully qualified domain name for the service.
+		// For example, 'iam.googleapis.com/roles.list'.
 		denied_permissions?: [...string]
 
-		// The identities that are prevented from using one or more
-		// permissions on Google Cloud resources.
+		// The identities that are prevented from using one or more permissions on Google Cloud resources.
 		denied_principals?: [...string]
 
-		// Specifies the permissions that this rule excludes from the set
-		// of denied permissions given by deniedPermissions.
-		// If a permission appears in deniedPermissions and in
-		// exceptionPermissions then it will not be denied.
-		// The excluded permissions can be specified using the same syntax
-		// as deniedPermissions.
+		// Specifies the permissions that this rule excludes from the set of denied
+		// permissions given by deniedPermissions.
+		// If a permission appears in deniedPermissions and in exceptionPermissions then
+		// it will not be denied.
+		// The excluded permissions can be specified using the same syntax as deniedPermissions.
 		exception_permissions?: [...string]
 
-		// The identities that are excluded from the deny rule, even if
-		// they are listed in the deniedPrincipals.
-		// For example, you could add a Google group to the
-		// deniedPrincipals, then exclude specific users who belong to
-		// that group.
+		// The identities that are excluded from the deny rule, even if they are listed
+		// in the deniedPrincipals.
+		// For example, you could add a Google group to the deniedPrincipals, then
+		// exclude specific users who belong to that group.
 		exception_principals?: [...string]
 	})
 
 	_#defs: "/$defs/rules/$defs/deny_rule/$defs/denial_condition": close({
-		// Description of the expression. This is a longer text which
-		// describes the expression,
+		// Description of the expression. This is a longer text which describes the expression,
 		// e.g. when hovered over it in a UI.
 		description?: string
 
-		// Textual representation of an expression in Common Expression
-		// Language syntax.
+		// Textual representation of an expression in Common Expression Language syntax.
 		expression!: string
 
-		// String indicating the location of the expression for error
-		// reporting,
+		// String indicating the location of the expression for error reporting,
 		// e.g. a file name and a position in the file.
 		location?: string
 
-		// Title for the expression, i.e. a short string describing its
-		// purpose.
-		// This can be used e.g. in UIs which allow to enter the
-		// expression.
+		// Title for the expression, i.e. a short string describing its purpose.
+		// This can be used e.g. in UIs which allow to enter the expression.
 		title?: string
 	})
 }

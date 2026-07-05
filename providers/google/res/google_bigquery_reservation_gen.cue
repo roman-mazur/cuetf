@@ -2,77 +2,57 @@ package res
 
 import "list"
 
-#google_bigquery_reservation: {
+google_bigquery_reservation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_reservation")
 	close({
 		autoscale?: matchN(1, [#autoscale, list.MaxItems(1) & [...#autoscale]])
 		timeouts?: #timeouts
 
-		// Maximum number of queries that are allowed to run concurrently
-		// in this reservation. This is a soft limit due to asynchronous
-		// nature of the system and various optimizations for small
-		// queries. Default value is 0 which means that concurrency will
-		// be automatically set based on the reservation size.
+		// Maximum number of queries that are allowed to run concurrently in this
+		// reservation. This is a soft limit due to asynchronous nature of the system
+		// and various optimizations for small queries. Default value is 0 which means
+		// that concurrency will be automatically set based on the reservation size.
 		concurrency?: number
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The edition type. Valid values are STANDARD, ENTERPRISE,
-		// ENTERPRISE_PLUS
+		// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 		edition?: string
 		id?:      string
 
-		// If false, any query using this reservation will use idle slots
-		// from other reservations within
-		// the same admin project. If true, a query using this reservation
-		// will execute with the slot
+		// If false, any query using this reservation will use idle slots from other reservations within
+		// the same admin project. If true, a query using this reservation will execute with the slot
 		// capacity specified above at most.
 		ignore_idle_slots?: bool
 
-		// The geographic location where the transfer config should
-		// reside.
+		// The geographic location where the transfer config should reside.
 		// Examples: US, EU, asia-northeast1. The default value is US.
 		location?: string
 
-		// The name of the reservation. This field must only contain
-		// alphanumeric characters or dash.
+		// The name of the reservation. This field must only contain alphanumeric characters or dash.
 		name!: string
 
-		// The location where the reservation was originally created. This
-		// is set only during the
-		// failover reservation's creation. All billing charges for the
-		// failover reservation will be
+		// The location where the reservation was originally created. This is set only during the
+		// failover reservation's creation. All billing charges for the failover reservation will be
 		// applied to this location.
 		original_primary_location?: string
 
-		// The current location of the reservation's primary replica. This
-		// field is only set for
+		// The current location of the reservation's primary replica. This field is only set for
 		// reservations using the managed disaster recovery feature.
 		primary_location?: string
-		project?:          string
 
-		// The Disaster Recovery(DR) replication status of the
-		// reservation. This is only available for
-		// the primary replicas of DR/failover reservations and provides
-		// information about the both the
-		// staleness of the secondary and the last error encountered while
-		// trying to replicate changes
-		// from the primary to the secondary. If this field is blank, it
-		// means that the reservation is
-		// either not a DR reservation or the reservation is a DR
-		// secondary or that any replication
+		// The Disaster Recovery(DR) replication status of the reservation. This is only available for
+		// the primary replicas of DR/failover reservations and provides information about the both the
+		// staleness of the secondary and the last error encountered while trying to replicate changes
+		// from the primary to the secondary. If this field is blank, it means that the reservation is
+		// either not a DR reservation or the reservation is a DR secondary or that any replication
 		// operations on the reservation have succeeded.
 		replication_status?: [...close({
 			error?: [...close({
@@ -82,30 +62,27 @@ import "list"
 			last_error_time?:       string
 			last_replication_time?: string
 		})]
+		project?: string
 
 		// The reservation group that this reservation belongs to.
 		reservation_group?: string
 
-		// The current location of the reservation's secondary replica.
-		// This field is only set for
-		// reservations using the managed disaster recovery feature. Users
-		// can set this in create
-		// reservation calls to create a failover reservation or in update
-		// reservation calls to convert
-		// a non-failover reservation to a failover reservation(or vice
-		// versa).
+		// The current location of the reservation's secondary replica. This field is only set for
+		// reservations using the managed disaster recovery feature. Users can set this in create
+		// reservation calls to create a failover reservation or in update reservation calls to convert
+		// a non-failover reservation to a failover reservation(or vice versa).
 		secondary_location?: string
 
-		// Minimum slots available to this reservation. A slot is a unit
-		// of computational power in BigQuery, and serves as the
-		// unit of parallelism. Queries using this reservation might use
-		// more slots during runtime if ignoreIdleSlots is set to false.
+		// Minimum slots available to this reservation. A slot is a unit of
+		// computational power in BigQuery, and serves as the
+		// unit of parallelism. Queries using this reservation might use more slots
+		// during runtime if ignoreIdleSlots is set to false.
 		slot_capacity!: number
 	})
 
 	#autoscale: close({
-		// The slot capacity added to this reservation when autoscale
-		// happens. Will be between [0, max_slots].
+		// The slot capacity added to this reservation when autoscale happens. Will be
+		// between [0, max_slots].
 		current_slots?: number
 
 		// Number of slots to be scaled when needed.

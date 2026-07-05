@@ -2,28 +2,22 @@ package res
 
 import "list"
 
-#google_binary_authorization_attestor: {
+google_binary_authorization_attestor: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_binary_authorization_attestor")
 	close({
 		attestation_authority_note!: matchN(1, [#attestation_authority_note, list.MaxItems(1) & [_, ...] & [...#attestation_authority_note]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// A descriptive comment. This field may be updated. The field may
-		// be
+		// A descriptive comment. This field may be updated. The field may be
 		// displayed in chooser dialogs.
 		description?: string
 		id?:          string
@@ -38,28 +32,20 @@ import "list"
 
 		// This field will contain the service account email address that
 		// this Attestor will use as the principal when querying Container
-		// Analysis. Attestor administrators must grant this service
-		// account
-		// the IAM role needed to read attestations from the noteReference
-		// in
-		// Container Analysis
-		// (containeranalysis.notes.occurrences.viewer).
-		// This email address is fixed for the lifetime of the Attestor,
-		// but
+		// Analysis. Attestor administrators must grant this service account
+		// the IAM role needed to read attestations from the noteReference in
+		// Container Analysis (containeranalysis.notes.occurrences.viewer).
+		// This email address is fixed for the lifetime of the Attestor, but
 		// callers should not make any other assumptions about the service
 		// account email; future versions may use an email based on a
 		// different naming pattern.
 		delegation_service_account_email?: string
 
-		// The resource name of a ATTESTATION_AUTHORITY Note, created by
-		// the
-		// user. If the Note is in a different project from the Attestor,
-		// it
-		// should be specified in the format 'projects/*/notes/*' (or the
-		// legacy
+		// The resource name of a ATTESTATION_AUTHORITY Note, created by the
+		// user. If the Note is in a different project from the Attestor, it
+		// should be specified in the format 'projects/*/notes/*' (or the legacy
 		// 'providers/*/notes/*'). This field may not be updated.
-		// An attestation by this attestor is stored as a Container
-		// Analysis
+		// An attestation by this attestor is stored as a Container Analysis
 		// ATTESTATION_AUTHORITY Occurrence that names a container image
 		// and that links to this Note.
 		note_reference!: string

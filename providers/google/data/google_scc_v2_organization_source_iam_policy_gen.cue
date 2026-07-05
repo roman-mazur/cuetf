@@ -1,6 +1,6 @@
 package data
 
-#google_scc_v2_organization_source_iam_policy: {
+google_scc_v2_organization_source_iam_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_scc_v2_organization_source_iam_policy")
 	close({

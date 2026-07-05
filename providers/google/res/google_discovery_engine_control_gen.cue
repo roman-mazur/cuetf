@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_discovery_engine_control: {
+google_discovery_engine_control: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_control")
 	close({
@@ -20,21 +20,15 @@ import "list"
 		// The unique id of the control.
 		control_id!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The display name of the control. This field must be a UTF-8
-		// encoded
+		// The display name of the control. This field must be a UTF-8 encoded
 		// string with a length limit of 128 characters.
 		display_name!: string
 
@@ -42,24 +36,21 @@ import "list"
 		engine_id!: string
 		id?:        string
 
-		// The geographic location where the data store should reside. The
-		// value can
+		// The geographic location where the data store should reside. The value can
 		// only be one of "global", "us" and "eu".
 		location!: string
 
-		// The unique full resource name of the control. Values are of the
-		// format
+		// The unique full resource name of the control. Values are of the format
 		// 'projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/controls/{control_id}'.
-		// This field must be a UTF-8 encoded string with a length limit
-		// of 1024
+		// This field must be a UTF-8 encoded string with a length limit of 1024
 		// characters.
-		name?:    string
-		project?: string
+		name?: string
 
 		// The solution type that the control belongs to. Possible values:
 		// ["SOLUTION_TYPE_RECOMMENDATION", "SOLUTION_TYPE_SEARCH",
 		// "SOLUTION_TYPE_CHAT", "SOLUTION_TYPE_GENERATIVE_CHAT"]
 		solution_type!: string
+		project?:       string
 
 		// The use cases that the control is used for. Possible values:
 		// ["SEARCH_USE_CASE_SEARCH", "SEARCH_USE_CASE_BROWSE"]
@@ -75,10 +66,9 @@ import "list"
 		// The filter to apply to the search results.
 		filter!: string
 
-		// The fixed boost value to apply to the search results. Positive
-		// values will increase the relevance of the results, while
-		// negative values will decrease the relevance. The value must be
-		// between -100 and 100.
+		// The fixed boost value to apply to the search results. Positive values will
+		// increase the relevance of the results, while negative values will decrease
+		// the relevance. The value must be between -100 and 100.
 		fixed_boost?: number
 	})
 
@@ -86,8 +76,7 @@ import "list"
 		active_time_range?: matchN(1, [_#defs."/$defs/conditions/$defs/active_time_range", [..._#defs."/$defs/conditions/$defs/active_time_range"]])
 		query_terms?: matchN(1, [_#defs."/$defs/conditions/$defs/query_terms", [..._#defs."/$defs/conditions/$defs/query_terms"]])
 
-		// The regular expression that the query must match for this
-		// condition to be met.
+		// The regular expression that the query must match for this condition to be met.
 		query_regex?: string
 	})
 
@@ -125,16 +114,14 @@ import "list"
 	_#defs: "/$defs/boost_action/$defs/interpolation_boost_spec": close({
 		control_point?: matchN(1, [_#defs."/$defs/boost_action/$defs/interpolation_boost_spec/$defs/control_point", list.MaxItems(1) & [..._#defs."/$defs/boost_action/$defs/interpolation_boost_spec/$defs/control_point"]])
 
-		// The attribute type to be used to determine the boost amount.
-		// Possible values: ["NUMERICAL", "FRESHNESS"]
+		// The attribute type to be used to determine the boost amount. Possible values:
+		// ["NUMERICAL", "FRESHNESS"]
 		attribute_type?: string
 
-		// The name of the field whose value will be used to determine the
-		// boost amount.
+		// The name of the field whose value will be used to determine the boost amount.
 		field_name?: string
 
-		// The interpolation type to be applied to connect the control
-		// points. Possible values: ["LINEAR"]
+		// The interpolation type to be applied to connect the control points. Possible values: ["LINEAR"]
 		interpolation_type?: string
 	})
 
@@ -142,8 +129,7 @@ import "list"
 		// The attribute value of the control point.
 		attribute_value?: string
 
-		// The value between -1 to 1 by which to boost the score if the
-		// attributeValue
+		// The value between -1 to 1 by which to boost the score if the attributeValue
 		// evaluates to the value specified above.
 		boost_amount?: number
 	})
@@ -157,8 +143,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/conditions/$defs/query_terms": close({
-		// If true, the query term must be an exact match. Otherwise, the
-		// query term can be a partial match.
+		// If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
 		full_match?: bool
 
 		// The value of the query term.

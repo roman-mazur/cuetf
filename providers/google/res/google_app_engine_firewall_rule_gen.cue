@@ -1,25 +1,19 @@
 package res
 
-#google_app_engine_firewall_rule: {
+google_app_engine_firewall_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_app_engine_firewall_rule")
 	close({
 		timeouts?: #timeouts
 
-		// The action to take if this rule matches. Possible values:
-		// ["UNSPECIFIED_ACTION", "ALLOW", "DENY"]
+		// The action to take if this rule matches. Possible values: ["UNSPECIFIED_ACTION", "ALLOW", "DENY"]
 		action!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -34,11 +28,10 @@ package res
 		// IPv6 traffic when no previous rule matches. Only the action of
 		// this rule can be modified by the user.
 		priority?: number
-		project?:  string
 
-		// IP address or range, defined using CIDR notation, of requests
-		// that this rule applies to.
+		// IP address or range, defined using CIDR notation, of requests that this rule applies to.
 		source_range!: string
+		project?:      string
 	})
 
 	#timeouts: close({

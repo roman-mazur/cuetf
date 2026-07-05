@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_cloud_identity_group_membership: {
+google_cloud_identity_group_membership: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_identity_group_membership")
 	close({
@@ -10,23 +10,18 @@ import "list"
 		roles!: matchN(1, [#roles, [_, ...] & [...#roles]])
 		timeouts?: #timeouts
 
-		// If set to true, skip group member creation if a membership with
-		// the same name already exists. Defaults to false.
+		// If set to true, skip group member creation if a membership with the same name
+		// already exists. Defaults to false.
 		create_ignore_already_exists?: bool
 
 		// The time when the Membership was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -34,8 +29,7 @@ import "list"
 		group!: string
 		id?:    string
 
-		// The resource name of the Membership, of the form
-		// groups/{group_id}/memberships/{membership_id}.
+		// The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
 		name?: string
 
 		// The type of the membership.
@@ -48,12 +42,10 @@ import "list"
 	#preferred_member_key: close({
 		// The ID of the entity.
 		//
-		// For Google-managed entities, the id must be the email address
-		// of an existing
+		// For Google-managed entities, the id must be the email address of an existing
 		// group or user.
 		//
-		// For external-identity-mapped entities, the id must be a string
-		// conforming
+		// For external-identity-mapped entities, the id must be a string conforming
 		// to the Identity Source's requirements.
 		//
 		// Must be unique within a namespace.
@@ -61,24 +53,20 @@ import "list"
 
 		// The namespace in which the entity exists.
 		//
-		// If not specified, the EntityKey represents a Google-managed
-		// entity
+		// If not specified, the EntityKey represents a Google-managed entity
 		// such as a Google user or a Google Group.
 		//
-		// If specified, the EntityKey represents an
-		// external-identity-mapped group.
-		// The namespace must correspond to an identity source created in
-		// Admin Console
-		// and must be in the form of
-		// 'identitysources/{identity_source_id}'.
+		// If specified, the EntityKey represents an external-identity-mapped group.
+		// The namespace must correspond to an identity source created in Admin Console
+		// and must be in the form of 'identitysources/{identity_source_id}'.
 		namespace?: string
 	})
 
 	#roles: close({
 		expiry_detail?: matchN(1, [_#defs."/$defs/roles/$defs/expiry_detail", list.MaxItems(1) & [..._#defs."/$defs/roles/$defs/expiry_detail"]])
 
-		// The name of the MembershipRole. Must be one of OWNER, MANAGER,
-		// MEMBER. Possible values: ["OWNER", "MANAGER", "MEMBER"]
+		// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+		// Possible values: ["OWNER", "MANAGER", "MEMBER"]
 		name!: string
 	})
 
@@ -94,8 +82,7 @@ import "list"
 		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 		// resolution and up to nine fractional digits.
 		//
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		expire_time!: string
 	})
 }

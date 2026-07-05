@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_apigee_security_monitoring_condition: {
+google_apigee_security_monitoring_condition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_security_monitoring_condition")
 	close({
@@ -15,27 +15,20 @@ import "list"
 		// The timestamp at which this profile was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
 
 		// Name of the security monitoring condition resource,
-		// in the format
-		// 'organizations/{{org_name}}/securityMonitoringConditions/{{condition_id}}'.
+		// in the format 'organizations/{{org_name}}/securityMonitoringConditions/{{condition_id}}'.
 		name?: string
 
-		// The Apigee Organization associated with the Apigee Security
-		// Monitoring Condition,
+		// The Apigee Organization associated with the Apigee Security Monitoring Condition,
 		// in the format 'organizations/{{org_name}}'.
 		org_id!: string
 

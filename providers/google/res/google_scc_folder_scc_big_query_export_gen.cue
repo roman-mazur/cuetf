@@ -1,6 +1,6 @@
 package res
 
-#google_scc_folder_scc_big_query_export: {
+google_scc_folder_scc_big_query_export: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_scc_folder_scc_big_query_export")
 	close({
@@ -10,44 +10,35 @@ package res
 		big_query_export_id!: string
 
 		// The time at which the BigQuery export was created.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		create_time?: string
 
 		// The dataset to write findings' updates to.
-		// Its format is
-		// "projects/[projectId]/datasets/[bigquery_dataset_id]".
-		// BigQuery Dataset unique ID must contain only letters (a-z,
-		// A-Z), numbers (0-9), or underscores (_).
+		// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
+		// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers
+		// (0-9), or underscores (_).
 		dataset!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// The description of the export (max of 1024 characters).
 		description!: string
 
-		// Expression that defines the filter to apply across
-		// create/update
+		// Expression that defines the filter to apply across create/update
 		// events of findings. The
 		// expression is a list of zero or more restrictions combined via
 		// logical operators AND and OR. Parentheses are supported, and OR
 		// has higher precedence than AND.
 		//
-		// Restrictions have the form <field> <operator> <value> and may
-		// have
+		// Restrictions have the form <field> <operator> <value> and may have
 		// a - character in front of them to indicate negation. The fields
 		// map to those defined in the corresponding resource.
 		//
@@ -79,19 +70,17 @@ package res
 
 		// The resource name of this export, in the format
 		// 'projects/{{project}}/bigQueryExports/{{big_query_export_id}}'.
-		// This field is provided in responses, and is ignored when
-		// provided in create requests.
+		// This field is provided in responses, and is ignored when provided in create requests.
 		name?: string
 
-		// The service account that needs permission to create table and
-		// upload data to the BigQuery dataset.
+		// The service account that needs permission to create table and upload data to
+		// the BigQuery dataset.
 		principal?: string
 
 		// The most recent time at which the BigQuery export was updated.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
 	})
 

@@ -2,74 +2,63 @@ package res
 
 import "list"
 
-#google_vertex_ai_feature_group: {
+google_vertex_ai_feature_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_feature_group")
 	close({
 		big_query?: matchN(1, [#big_query, list.MaxItems(1) & [...#big_query]])
 		timeouts?: #timeouts
 
-		// The timestamp of when the FeatureGroup was created in RFC3339
-		// UTC "Zulu" format, with nanosecond resolution and up to nine
-		// fractional digits.
+		// The timestamp of when the FeatureGroup was created in RFC3339 UTC "Zulu"
+		// format, with nanosecond resolution and up to nine fractional digits.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// The description of the FeatureGroup.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// Used to perform consistent read-modify-write updates.
 		etag?: string
 		id?:   string
 
-		// The labels with user-defined metadata to organize your
-		// FeatureGroup.
+		// The labels with user-defined metadata to organize your FeatureGroup.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The resource name of the Feature Group.
-		name?:    string
-		project?: string
+		name?: string
 
 		// The region of feature group. eg us-central1
-		region?: string
+		region?:  string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// The timestamp of when the FeatureGroup was last updated in
-		// RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-		// to nine fractional digits.
+		// The timestamp of when the FeatureGroup was last updated in RFC3339 UTC "Zulu"
+		// format, with nanosecond resolution and up to nine fractional digits.
 		update_time?: string
 	})
 
 	#big_query: close({
 		big_query_source!: matchN(1, [_#defs."/$defs/big_query/$defs/big_query_source", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/big_query/$defs/big_query_source"]])
 
-		// Columns to construct entityId / row keys. If not provided
-		// defaults to entityId.
+		// Columns to construct entityId / row keys. If not provided defaults to entityId.
 		entity_id_columns?: [...string]
 	})
 
@@ -80,8 +69,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/big_query/$defs/big_query_source": close({
-		// BigQuery URI to a table, up to 2000 characters long. For
-		// example: 'bq://projectId.bqDatasetId.bqTableId.'
+		// BigQuery URI to a table, up to 2000 characters long. For example:
+		// 'bq://projectId.bqDatasetId.bqTableId.'
 		input_uri!: string
 	})
 }

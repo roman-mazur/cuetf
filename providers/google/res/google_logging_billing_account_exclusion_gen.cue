@@ -1,6 +1,6 @@
 package res
 
-#google_logging_billing_account_exclusion: {
+google_logging_billing_account_exclusion: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_logging_billing_account_exclusion")
 	close({
@@ -9,12 +9,10 @@ package res
 		// A human-readable description.
 		description?: string
 
-		// Whether this exclusion rule should be disabled or not. This
-		// defaults to false.
+		// Whether this exclusion rule should be disabled or not. This defaults to false.
 		disabled?: bool
 
-		// The filter to apply when excluding logs. Only log entries that
-		// match the filter are excluded.
+		// The filter to apply when excluding logs. Only log entries that match the filter are excluded.
 		filter!: string
 		id?:     string
 

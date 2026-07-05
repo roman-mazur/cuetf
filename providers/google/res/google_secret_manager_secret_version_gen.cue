@@ -1,6 +1,6 @@
 package res
 
-#google_secret_manager_secret_version: {
+google_secret_manager_secret_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secret_manager_secret_version")
 	close({
@@ -9,30 +9,27 @@ package res
 		// The time at which the Secret was created.
 		create_time?: string
 
-		// This field uses a custom implementation please refer to
-		// documentation under
+		// This field uses a custom implementation please refer to documentation under
 		// /hashicorp/terraform-provider-google-beta/website/docs/r/secret_manager_secret_version.html.markdown
 		// for specifics
 		deletion_policy?: string
 
-		// The time at which the Secret was destroyed. Only present if
-		// state is DESTROYED.
+		// The time at which the Secret was destroyed. Only present if state is DESTROYED.
 		destroy_time?: string
 
 		// The current state of the SecretVersion.
 		enabled?: bool
 		id?:      string
 
-		// If set to 'true', the secret data is expected to be
-		// base64-encoded string and would be sent as is.
+		// If set to 'true', the secret data is expected to be base64-encoded string and
+		// would be sent as is.
 		is_secret_data_base64?: bool
 
 		// The resource name of the SecretVersion. Format:
 		// 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
 		name?: string
 
-		// The ID of the project in which the resource belongs. If it is
-		// not provided,
+		// The ID of the project in which the resource belongs. If it is not provided,
 		// the provider project is used
 		project?: string
 
@@ -42,13 +39,13 @@ package res
 		// The secret data. Must be no larger than 64KiB.
 		secret_data?: string
 
-		// The secret data. Must be no larger than 64KiB. For more info
-		// see [updating write-only
+		// The secret data. Must be no larger than 64KiB. For more info see [updating
+		// write-only
 		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 		secret_data_wo?: string
 
-		// Triggers update of secret data write-only. For more info see
-		// [updating write-only
+		// Triggers update of secret data write-only. For more info see [updating
+		// write-only
 		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 		secret_data_wo_version?: number
 

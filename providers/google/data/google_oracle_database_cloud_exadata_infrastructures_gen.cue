@@ -1,6 +1,6 @@
 package data
 
-#google_oracle_database_cloud_exadata_infrastructures: {
+google_oracle_database_cloud_exadata_infrastructures: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_oracle_database_cloud_exadata_infrastructures")
 	close({
@@ -65,8 +65,8 @@ package data
 		// location
 		location!: string
 
-		// The ID of the project in which the dataset is located. If it is
-		// not provided, the provider project is used.
+		// The ID of the project in which the dataset is located. If it is not provided,
+		// the provider project is used.
 		project?: string
 	})
 }

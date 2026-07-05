@@ -2,23 +2,18 @@ package res
 
 import "list"
 
-#google_document_ai_warehouse_document_schema: {
+google_document_ai_warehouse_document_schema: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_document_ai_warehouse_document_schema")
 	close({
 		property_definitions!: matchN(1, [#property_definitions, [_, ...] & [...#property_definitions]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -53,9 +48,8 @@ import "list"
 		// The display-name for the property, used for front-end.
 		display_name?: string
 
-		// Whether the property can be filtered. If this is a
-		// sub-property, all the parent properties must be marked
-		// filterable.
+		// Whether the property can be filtered. If this is a sub-property, all the
+		// parent properties must be marked filterable.
 		is_filterable?: bool
 
 		// Whether the property is user supplied metadata.
@@ -67,15 +61,14 @@ import "list"
 		// Whether the property is mandatory.
 		is_required?: bool
 
-		// Indicates that the property should be included in a global
-		// search.
+		// Indicates that the property should be included in a global search.
 		is_searchable?: bool
 
 		// The name of the metadata property.
 		name!: string
 
-		// Stores the retrieval importance. Possible values: ["HIGHEST",
-		// "HIGHER", "HIGH", "MEDIUM", "LOW", "LOWEST"]
+		// Stores the retrieval importance. Possible values: ["HIGHEST", "HIGHER",
+		// "HIGH", "MEDIUM", "LOW", "LOWEST"]
 		retrieval_importance?: string
 	})
 
@@ -90,9 +83,8 @@ import "list"
 		// List of possible enum values.
 		possible_values!: [...string]
 
-		// Make sure the enum property value provided in the document is
-		// in the possile value list during document creation. The
-		// validation check runs by default.
+		// Make sure the enum property value provided in the document is in the possile
+		// value list during document creation. The validation check runs by default.
 		validation_check_disabled?: bool
 	})
 
@@ -119,9 +111,8 @@ import "list"
 		// The display-name for the property, used for front-end.
 		display_name?: string
 
-		// Whether the property can be filtered. If this is a
-		// sub-property, all the parent properties must be marked
-		// filterable.
+		// Whether the property can be filtered. If this is a sub-property, all the
+		// parent properties must be marked filterable.
 		is_filterable?: bool
 
 		// Whether the property is user supplied metadata.
@@ -133,15 +124,14 @@ import "list"
 		// Whether the property is mandatory.
 		is_required?: bool
 
-		// Indicates that the property should be included in a global
-		// search.
+		// Indicates that the property should be included in a global search.
 		is_searchable?: bool
 
 		// The name of the metadata property.
 		name!: string
 
-		// Stores the retrieval importance. Possible values: ["HIGHEST",
-		// "HIGHER", "HIGH", "MEDIUM", "LOW", "LOWEST"]
+		// Stores the retrieval importance. Possible values: ["HIGHEST", "HIGHER",
+		// "HIGH", "MEDIUM", "LOW", "LOWEST"]
 		retrieval_importance?: string
 	})
 
@@ -151,9 +141,8 @@ import "list"
 		// List of possible enum values.
 		possible_values!: [...string]
 
-		// Make sure the enum property value provided in the document is
-		// in the possile value list during document creation. The
-		// validation check runs by default.
+		// Make sure the enum property value provided in the document is in the possile
+		// value list during document creation. The validation check runs by default.
 		validation_check_disabled?: bool
 	})
 

@@ -1,6 +1,6 @@
 package data
 
-#google_composer_environment: {
+google_composer_environment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_composer_environment")
 	close({
@@ -134,47 +134,38 @@ package data
 			})]
 		})]
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
-		// User-defined labels for this environment. The labels map can
-		// contain no more than 64 entries. Entries of the labels map are
-		// UTF8 strings that comply with the following restrictions:
-		// Label keys must be between 1 and 63 characters long and must
-		// conform to the following regular expression:
-		// [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and
-		// 63 characters long and must conform to the regular expression
-		// ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-		// associated with a given environment. Both keys and values must
-		// be <= 128 bytes in size.
+		// User-defined labels for this environment. The labels map can contain no more
+		// than 64 entries. Entries of the labels map are UTF8 strings that comply with
+		// the following restrictions: Label keys must be between 1 and 63 characters
+		// long and must conform to the following regular expression:
+		// [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63 characters
+		// long and must conform to the regular expression
+		// ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be associated with
+		// a given environment. Both keys and values must be <= 128 bytes in size.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Name of the environment.
 		name!: string
 
-		// The ID of the project in which the resource belongs. If it is
-		// not provided, the provider project is used.
+		// The ID of the project in which the resource belongs. If it is not provided,
+		// the provider project is used.
 		project?: string
 
 		// The location or Compute Engine region for the environment.
@@ -185,8 +176,8 @@ package data
 			bucket?: string
 		})]
 
-		// The combination of labels configured directly on the resource
-		// and default labels configured on the provider.
+		// The combination of labels configured directly on the resource and default
+		// labels configured on the provider.
 		terraform_labels?: [string]: string
 	})
 }

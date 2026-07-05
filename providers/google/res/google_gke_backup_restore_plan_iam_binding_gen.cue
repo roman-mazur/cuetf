@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_gke_backup_restore_plan_iam_binding: {
+google_gke_backup_restore_plan_iam_binding: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_backup_restore_plan_iam_binding")
 	close({

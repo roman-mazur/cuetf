@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_network_management_connectivity_test: {
+google_network_management_connectivity_test: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_management_connectivity_test")
 	close({
@@ -10,20 +10,14 @@ import "list"
 		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
 		timeouts?: #timeouts
 
-		// Whether the analysis should skip firewall checking. Default
-		// value is false.
+		// Whether the analysis should skip firewall checking. Default value is false.
 		bypass_firewall_checks?: bool
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -31,35 +25,32 @@ import "list"
 		// Maximum of 512 characters.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// Resource labels to represent user-provided metadata.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Unique name for the connectivity test.
-		name!:    string
-		project?: string
+		name!: string
 
 		// IP Protocol of the test. When not provided, "TCP" is assumed.
 		protocol?: string
+		project?:  string
 
 		// Other projects that may be relevant for reachability analysis.
 		// This is applicable to scenarios where a test can cross project
 		// boundaries.
 		related_projects?: [...string]
 
-		// Whether run analysis for the return path from destination to
-		// source.
+		// Whether run analysis for the return path from destination to source.
 		// Default value is false.
 		round_trip?: bool
 
@@ -72,60 +63,47 @@ import "list"
 		// A Cloud SQL instance URI.
 		cloud_sql_instance?: string
 
-		// Forwarding rule URI. Forwarding rules are frontends for load
-		// balancers,
+		// Forwarding rule URI. Forwarding rules are frontends for load balancers,
 		// PSC endpoints, and Protocol Forwarding.
 		forwarding_rule?: string
 
-		// A DNS endpoint of Google Kubernetes Engine cluster control
-		// plane.
-		// Requires gke_master_cluster to be set, can't be used
-		// simultaneoulsly with
+		// A DNS endpoint of Google Kubernetes Engine cluster control plane.
+		// Requires gke_master_cluster to be set, can't be used simultaneoulsly with
 		// ip_address or network. Applicable only to destination endpoint.
 		fqdn?: string
 
-		// A cluster URI for Google Kubernetes Engine cluster control
-		// plane.
+		// A cluster URI for Google Kubernetes Engine cluster control plane.
 		gke_master_cluster?: string
 
-		// A [GKE
-		// Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod)
-		// URI.
+		// A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
 		gke_pod?: string
 
 		// A Compute Engine instance URI.
 		instance?: string
 
-		// The IP address of the endpoint, which can be an external or
-		// internal IP.
+		// The IP address of the endpoint, which can be an external or internal IP.
 		ip_address?: string
 
 		// A VPC network URI.
 		network?: string
 
-		// For source endpoints, type of the network where the endpoint is
-		// located. Not relevant for destination endpoints. Possible
-		// values: ["GCP_NETWORK", "NON_GCP_NETWORK", "INTERNET"]
+		// For source endpoints, type of the network where the endpoint is located. Not
+		// relevant for destination endpoints. Possible values: ["GCP_NETWORK",
+		// "NON_GCP_NETWORK", "INTERNET"]
 		network_type?: string
 
-		// The IP protocol port of the endpoint. Only applicable when
-		// protocol is
+		// The IP protocol port of the endpoint. Only applicable when protocol is
 		// TCP or UDP.
 		port?: number
 
 		// Project ID where the endpoint is located.
-		// The project ID can be derived from the URI if you provide a
-		// endpoint or
+		// The project ID can be derived from the URI if you provide a endpoint or
 		// network URI.
-		// The following are two cases where you may need to provide the
-		// project ID:
-		// 1. Only the IP address is specified, and the IP address is
-		// within a Google
+		// The following are two cases where you may need to provide the project ID:
+		// 1. Only the IP address is specified, and the IP address is within a Google
 		// Cloud project.
-		// 2. When you are using Shared VPC and the IP address that you
-		// provide is
-		// from the service project. In this case, the network that the IP
-		// address
+		// 2. When you are using Shared VPC and the IP address that you provide is
+		// from the service project. In this case, the network that the IP address
 		// resides in is defined in the host project.
 		project_id?: string
 
@@ -144,42 +122,34 @@ import "list"
 		// A Cloud SQL instance URI.
 		cloud_sql_instance?: string
 
-		// A cluster URI for Google Kubernetes Engine cluster control
-		// plane.
+		// A cluster URI for Google Kubernetes Engine cluster control plane.
 		gke_master_cluster?: string
 
 		// A Compute Engine instance URI.
 		instance?: string
 
-		// The IP address of the endpoint, which can be an external or
-		// internal IP.
+		// The IP address of the endpoint, which can be an external or internal IP.
 		ip_address?: string
 
 		// A VPC network URI.
 		network?: string
 
-		// Type of the network where the endpoint is located. Possible
-		// values: ["GCP_NETWORK", "NON_GCP_NETWORK"]
+		// Type of the network where the endpoint is located. Possible values:
+		// ["GCP_NETWORK", "NON_GCP_NETWORK"]
 		network_type?: string
 
-		// The IP protocol port of the endpoint. Only applicable when
-		// protocol is
+		// The IP protocol port of the endpoint. Only applicable when protocol is
 		// TCP or UDP.
 		port?: number
 
 		// Project ID where the endpoint is located.
-		// The project ID can be derived from the URI if you provide a
-		// endpoint or
+		// The project ID can be derived from the URI if you provide a endpoint or
 		// network URI.
-		// The following are two cases where you may need to provide the
-		// project ID:
-		// 1. Only the IP address is specified, and the IP address is
-		// within a Google
+		// The following are two cases where you may need to provide the project ID:
+		// 1. Only the IP address is specified, and the IP address is within a Google
 		// Cloud project.
-		// 2. When you are using Shared VPC and the IP address that you
-		// provide is
-		// from the service project. In this case, the network that the IP
-		// address
+		// 2. When you are using Shared VPC and the IP address that you provide is
+		// from the service project. In this case, the network that the IP address
 		// resides in is defined in the host project.
 		project_id?: string
 	})

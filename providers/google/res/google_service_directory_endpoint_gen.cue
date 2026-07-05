@@ -1,6 +1,6 @@
 package res
 
-#google_service_directory_endpoint: {
+google_service_directory_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_service_directory_endpoint")
 	close({
@@ -9,16 +9,11 @@ package res
 		// IPv4 or IPv6 address of the endpoint.
 		address?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -37,8 +32,7 @@ package res
 		// 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
 		name?: string
 
-		// The URL to the network, such as
-		// projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
+		// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
 		network?: string
 
 		// Port that the endpoint is running on, must be in the

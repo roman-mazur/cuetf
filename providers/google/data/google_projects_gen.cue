@@ -1,6 +1,6 @@
 package data
 
-#google_projects: {
+google_projects: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_projects")
 	close({

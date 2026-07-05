@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_vmwareengine_datastore: {
+google_vmwareengine_datastore: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vmwareengine_datastore")
 	close({
@@ -15,16 +15,11 @@ import "list"
 		// Creation time of this resource.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -32,14 +27,12 @@ import "list"
 		description?: string
 		id?:          string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// The user-provided identifier of the datastore to be created.
-		// This identifier must be unique among each 'Datastore' within
-		// the parent
+		// This identifier must be unique among each 'Datastore' within the parent
 		// and becomes the final token in the name URI.
 		// The identifier must meet the following requirements:
 		//
@@ -47,11 +40,9 @@ import "list"
 		// * Begins with an alphabetical character
 		// * Ends with a non-hyphen character
 		// * Not formatted as a UUID
-		// * Complies with [RFC
-		// 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+		// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
 		// (section 3.5)
-		name!:    string
-		project?: string
+		name!: string
 
 		// The state of the Datastore.
 		// Possible values:
@@ -61,7 +52,8 @@ import "list"
 		// DELETING
 		// SOFT_DELETING
 		// SOFT_DELETED
-		state?: string
+		state?:   string
+		project?: string
 
 		// System-generated unique identifier for the resource.
 		uid?: string
@@ -83,8 +75,7 @@ import "list"
 
 	_#defs: "/$defs/nfs_datastore/$defs/google_file_service": close({
 		// Google filestore instance resource name
-		// e.g.
-		// projects/my-project/locations/me-west1-b/instances/my-instance
+		// e.g. projects/my-project/locations/me-west1-b/instances/my-instance
 		filestore_instance?: string
 
 		// Google netapp volume resource name
@@ -104,8 +95,7 @@ import "list"
 
 		// Server IP addresses of the NFS file service.
 		// NFS v3, provide a single IP address or DNS name.
-		// Multiple servers can be supported in future when NFS 4.1
-		// protocol support
+		// Multiple servers can be supported in future when NFS 4.1 protocol support
 		// is enabled.
 		servers!: [...string]
 	})

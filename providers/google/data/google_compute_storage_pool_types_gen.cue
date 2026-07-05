@@ -1,6 +1,6 @@
 package data
 
-#google_compute_storage_pool_types: {
+google_compute_storage_pool_types: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_storage_pool_types")
 	close({
@@ -19,12 +19,10 @@ package data
 		// An optional description of this resource.
 		description?: string
 
-		// The unique identifier for the resource. This identifier is
-		// defined by the server.
+		// The unique identifier for the resource. This identifier is defined by the server.
 		id?: number
 
-		// Type of the resource. Always compute#storagePoolType for
-		// storage pool types.
+		// Type of the resource. Always compute#storagePoolType for storage pool types.
 		kind?: string
 
 		// Maximum storage pool size in GB.

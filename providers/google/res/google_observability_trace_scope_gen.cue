@@ -1,6 +1,6 @@
 package res
 
-#google_observability_trace_scope: {
+google_observability_trace_scope: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_observability_trace_scope")
 	close({
@@ -9,16 +9,11 @@ package res
 		// The creation timestamp of the trace scope.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -28,8 +23,7 @@ package res
 		description?: string
 		id?:          string
 
-		// GCP region the TraceScope is stored in. Only 'global' is
-		// supported.
+		// GCP region the TraceScope is stored in. Only 'global' is supported.
 		location!: string
 
 		// Identifier. The resource name of the trace scope.
@@ -37,8 +31,7 @@ package res
 		// For example:
 		//
 		// projects/my-project/locations/global/traceScopes/my-trace-scope
-		name?:    string
-		project?: string
+		name?: string
 
 		// Names of the projects that are included in this trace scope.
 		//
@@ -46,6 +39,7 @@ package res
 		//
 		// A trace scope can include a maximum of 20 projects.
 		resource_names!: [...string]
+		project?: string
 
 		// A client-assigned identifier for the trace scope.
 		trace_scope_id!: string

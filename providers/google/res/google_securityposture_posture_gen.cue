@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_securityposture_posture: {
+google_securityposture_posture: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_securityposture_posture")
 	close({
@@ -12,16 +12,11 @@ import "list"
 		// Time the Posture was created in UTC.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -38,8 +33,7 @@ import "list"
 		// Name of the posture.
 		name?: string
 
-		// The parent of the resource, an organization. Format should be
-		// 'organizations/{organization_id}'.
+		// The parent of the resource, an organization. Format should be 'organizations/{organization_id}'.
 		parent!: string
 
 		// Id of the posture. It is an immutable field.
@@ -51,10 +45,8 @@ import "list"
 		// Revision_id of the posture.
 		revision_id?: string
 
-		// State of the posture. Update to state field should not be
-		// triggered along with
-		// with other field updates. Possible values: ["DEPRECATED",
-		// "DRAFT", "ACTIVE"]
+		// State of the posture. Update to state field should not be triggered along with
+		// with other field updates. Possible values: ["DEPRECATED", "DRAFT", "ACTIVE"]
 		state!: string
 
 		// Time the Posture was updated in UTC.
@@ -114,16 +106,15 @@ import "list"
 		condition?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules/$defs/condition"]])
 		values?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules/$defs/values", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint/$defs/policy_rules/$defs/values"]])
 
-		// Setting this to true means that all values are allowed. This
-		// field can be set only in policies for list constraints.
+		// Setting this to true means that all values are allowed. This field can be set
+		// only in policies for list constraints.
 		allow_all?: bool
 
-		// Setting this to true means that all values are denied. This
-		// field can be set only in policies for list constraints.
+		// Setting this to true means that all values are denied. This field can be set
+		// only in policies for list constraints.
 		deny_all?: bool
 
-		// If 'true', then the policy is enforced. If 'false', then any
-		// configuration is acceptable.
+		// If 'true', then the policy is enforced. If 'false', then any configuration is acceptable.
 		// This field can be set only in policies for boolean constraints.
 		enforce?: bool
 	})
@@ -132,16 +123,14 @@ import "list"
 		// Description of the expression
 		description?: string
 
-		// Textual representation of an expression in Common Expression
-		// Language syntax.
+		// Textual representation of an expression in Common Expression Language syntax.
 		expression!: string
 
-		// String indicating the location of the expression for error
-		// reporting, e.g. a file name and a position in the file
+		// String indicating the location of the expression for error reporting, e.g. a
+		// file name and a position in the file
 		location?: string
 
-		// Title for the expression, i.e. a short string describing its
-		// purpose.
+		// Title for the expression, i.e. a short string describing its purpose.
 		title?: string
 	})
 
@@ -159,37 +148,35 @@ import "list"
 	})
 
 	_#defs: "/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/custom_constraint": close({
-		// The action to take if the condition is met. Possible values:
-		// ["ALLOW", "DENY"]
+		// The action to take if the condition is met. Possible values: ["ALLOW", "DENY"]
 		action_type!: string
 
-		// A CEL condition that refers to a supported service resource,
-		// for example 'resource.management.autoUpgrade == false'. For
-		// details about CEL usage, see [Common Expression
+		// A CEL condition that refers to a supported service resource, for example
+		// 'resource.management.autoUpgrade == false'. For details about CEL usage, see
+		// [Common Expression
 		// Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
 		condition!: string
 
-		// A human-friendly description of the constraint to display as an
-		// error message when the policy is violated.
+		// A human-friendly description of the constraint to display as an error message
+		// when the policy is violated.
 		description?: string
 
 		// A human-friendly name for the constraint.
 		display_name?: string
 
-		// A list of RESTful methods for which to enforce the constraint.
-		// Can be 'CREATE', 'UPDATE', or both. Not all Google Cloud
-		// services support both methods. To see supported methods for
-		// each service, find the service in [Supported
+		// A list of RESTful methods for which to enforce the constraint. Can be
+		// 'CREATE', 'UPDATE', or both. Not all Google Cloud services support both
+		// methods. To see supported methods for each service, find the service in
+		// [Supported
 		// services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
 		method_types!: [...string]
 
-		// Immutable. The name of the custom constraint. This is unique
-		// within the organization.
+		// Immutable. The name of the custom constraint. This is unique within the organization.
 		name!: string
 
-		// Immutable. The fully qualified name of the Google Cloud REST
-		// resource containing the object and field you want to restrict.
-		// For example, 'container.googleapis.com/NodePool'.
+		// Immutable. The fully qualified name of the Google Cloud REST resource
+		// containing the object and field you want to restrict. For example,
+		// 'container.googleapis.com/NodePool'.
 		resource_types!: [...string]
 	})
 
@@ -197,16 +184,15 @@ import "list"
 		condition?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules/$defs/condition", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules/$defs/condition"]])
 		values?: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules/$defs/values", list.MaxItems(1) & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/org_policy_constraint_custom/$defs/policy_rules/$defs/values"]])
 
-		// Setting this to true means that all values are allowed. This
-		// field can be set only in policies for list constraints.
+		// Setting this to true means that all values are allowed. This field can be set
+		// only in policies for list constraints.
 		allow_all?: bool
 
-		// Setting this to true means that all values are denied. This
-		// field can be set only in policies for list constraints.
+		// Setting this to true means that all values are denied. This field can be set
+		// only in policies for list constraints.
 		deny_all?: bool
 
-		// If 'true', then the policy is enforced. If 'false', then any
-		// configuration is acceptable.
+		// If 'true', then the policy is enforced. If 'false', then any configuration is acceptable.
 		// This field can be set only in policies for boolean constraints.
 		enforce?: bool
 	})
@@ -215,16 +201,14 @@ import "list"
 		// Description of the expression
 		description?: string
 
-		// Textual representation of an expression in Common Expression
-		// Language syntax.
+		// Textual representation of an expression in Common Expression Language syntax.
 		expression!: string
 
-		// String indicating the location of the expression for error
-		// reporting, e.g. a file name and a position in the file
+		// String indicating the location of the expression for error reporting, e.g. a
+		// file name and a position in the file
 		location?: string
 
-		// Title for the expression, i.e. a short string describing its
-		// purpose.
+		// Title for the expression, i.e. a short string describing its purpose.
 		title?: string
 	})
 
@@ -239,19 +223,17 @@ import "list"
 	_#defs: "/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module": close({
 		config!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config"]])
 
-		// The display name of the Security Health Analytics custom
-		// module. This
-		// display name becomes the finding category for all findings that
-		// are
+		// The display name of the Security Health Analytics custom module. This
+		// display name becomes the finding category for all findings that are
 		// returned by this custom module.
 		display_name?: string
 
 		// A server generated id of custom module.
 		id?: string
 
-		// The state of enablement for the module at its level of the
-		// resource hierarchy. Possible values:
-		// ["ENABLEMENT_STATE_UNSPECIFIED", "ENABLED", "DISABLED"]
+		// The state of enablement for the module at its level of the resource
+		// hierarchy. Possible values: ["ENABLEMENT_STATE_UNSPECIFIED", "ENABLED",
+		// "DISABLED"]
 		module_enablement_state?: string
 	})
 
@@ -260,19 +242,16 @@ import "list"
 		predicate!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/predicate", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/predicate"]])
 		resource_selector!: matchN(1, [_#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/resource_selector", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_custom_module/$defs/config/$defs/resource_selector"]])
 
-		// Text that describes the vulnerability or misconfiguration that
-		// the custom
+		// Text that describes the vulnerability or misconfiguration that the custom
 		// module detects.
 		description?: string
 
-		// An explanation of the recommended steps that security teams can
-		// take to
+		// An explanation of the recommended steps that security teams can take to
 		// resolve the detected issue
 		recommendation?: string
 
-		// The severity to assign to findings generated by the module.
-		// Possible values: ["SEVERITY_UNSPECIFIED", "CRITICAL", "HIGH",
-		// "MEDIUM", "LOW"]
+		// The severity to assign to findings generated by the module. Possible values:
+		// ["SEVERITY_UNSPECIFIED", "CRITICAL", "HIGH", "MEDIUM", "LOW"]
 		severity!: string
 	})
 
@@ -291,16 +270,14 @@ import "list"
 		// Description of the expression
 		description?: string
 
-		// Textual representation of an expression in Common Expression
-		// Language syntax.
+		// Textual representation of an expression in Common Expression Language syntax.
 		expression!: string
 
-		// String indicating the location of the expression for error
-		// reporting, e.g. a file name and a position in the file
+		// String indicating the location of the expression for error reporting, e.g. a
+		// file name and a position in the file
 		location?: string
 
-		// Title for the expression, i.e. a short string describing its
-		// purpose.
+		// Title for the expression, i.e. a short string describing its purpose.
 		title?: string
 	})
 
@@ -308,16 +285,14 @@ import "list"
 		// Description of the expression
 		description?: string
 
-		// Textual representation of an expression in Common Expression
-		// Language syntax.
+		// Textual representation of an expression in Common Expression Language syntax.
 		expression!: string
 
-		// String indicating the location of the expression for error
-		// reporting, e.g. a file name and a position in the file
+		// String indicating the location of the expression for error reporting, e.g. a
+		// file name and a position in the file
 		location?: string
 
-		// Title for the expression, i.e. a short string describing its
-		// purpose.
+		// Title for the expression, i.e. a short string describing its purpose.
 		title?: string
 	})
 
@@ -327,9 +302,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/policy_sets/$defs/policies/$defs/constraint/$defs/security_health_analytics_module": close({
-		// The state of enablement for the module at its level of the
-		// resource hierarchy. Possible values:
-		// ["ENABLEMENT_STATE_UNSPECIFIED", "ENABLED", "DISABLED"]
+		// The state of enablement for the module at its level of the resource
+		// hierarchy. Possible values: ["ENABLEMENT_STATE_UNSPECIFIED", "ENABLED",
+		// "DISABLED"]
 		module_enablement_state?: string
 
 		// The name of the module eg: BIGQUERY_TABLE_CMEK_DISABLED.

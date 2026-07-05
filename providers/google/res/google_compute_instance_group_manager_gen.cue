@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_compute_instance_group_manager: {
+google_compute_instance_group_manager: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_instance_group_manager")
 	close({
@@ -20,26 +20,20 @@ import "list"
 		update_policy?: matchN(1, [#update_policy, list.MaxItems(1) & [...#update_policy]])
 		version!: matchN(1, [#version, [_, ...] & [...#version]])
 
-		// The base instance name to use for instances in this group. The
-		// value must be a valid RFC1035 name. Supported characters are
-		// lowercase letters, numbers, and hyphens (-). Instances are
-		// named by appending a hyphen and a random four-character string
-		// to the base instance name.
+		// The base instance name to use for instances in this group. The value must be
+		// a valid RFC1035 name. Supported characters are lowercase letters, numbers,
+		// and hyphens (-). Instances are named by appending a hyphen and a random
+		// four-character string to the base instance name.
 		base_instance_name!: string
 
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -53,29 +47,26 @@ import "list"
 		// The full URL of the instance group created by the manager.
 		instance_group?: string
 
-		// The unique identifier number for the resource. This identifier
-		// is defined by the server.
+		// The unique identifier number for the resource. This identifier is defined by the server.
 		instance_group_manager_id?: number
 
-		// Pagination behavior of the listManagedInstances API method for
-		// this managed instance group. Valid values are: "PAGELESS",
-		// "PAGINATED". If PAGELESS (default), Pagination is disabled for
-		// the group's listManagedInstances API method. maxResults and
-		// pageToken query parameters are ignored and all instances are
-		// returned in a single response. If PAGINATED, pagination is
-		// enabled, maxResults and pageToken query parameters are
-		// respected.
+		// Pagination behavior of the listManagedInstances API method for this managed
+		// instance group. Valid values are: "PAGELESS", "PAGINATED". If PAGELESS
+		// (default), Pagination is disabled for the group's listManagedInstances API
+		// method. maxResults and pageToken query parameters are ignored and all
+		// instances are returned in a single response. If PAGINATED, pagination is
+		// enabled, maxResults and pageToken query parameters are respected.
 		list_managed_instances_results?: string
 
-		// The name of the instance group manager. Must be 1-63 characters
-		// long and comply with RFC1035. Supported characters include
-		// lowercase letters, numbers, and hyphens.
-		name!:      string
-		operation?: string
+		// The name of the instance group manager. Must be 1-63 characters long and
+		// comply with RFC1035. Supported characters include lowercase letters,
+		// numbers, and hyphens.
+		name!: string
 
-		// The ID of the project in which the resource belongs. If it is
-		// not provided, the provider project is used.
-		project?: string
+		// The ID of the project in which the resource belongs. If it is not provided,
+		// the provider project is used.
+		project?:   string
+		operation?: string
 
 		// The URL of the created resource.
 		self_link?: string
@@ -98,37 +89,32 @@ import "list"
 			})]
 		})]
 
-		// The full URL of all target pools to which new instances in the
-		// group are added. Updating the target pools attribute does not
-		// affect existing instances.
+		// The full URL of all target pools to which new instances in the group are
+		// added. Updating the target pools attribute does not affect existing
+		// instances.
 		target_pools?: [...string]
 
-		// The target number of running instances for this managed
-		// instance group. This value should always be explicitly set
-		// unless this resource is attached to an autoscaler, in which
-		// case it should never be set. Defaults to 0.
+		// The target number of running instances for this managed instance group. This
+		// value should always be explicitly set unless this resource is attached to an
+		// autoscaler, in which case it should never be set. Defaults to 0.
 		target_size?: number
 
-		// The target number of stopped instances for this managed
-		// instance group.
+		// The target number of stopped instances for this managed instance group.
 		target_stopped_size?: number
 
-		// The target number of suspended instances for this managed
-		// instance group.
+		// The target number of suspended instances for this managed instance group.
 		target_suspended_size?: number
 
-		// Whether to wait for all instances to be created/updated before
-		// returning. Note that if this is set to true and the operation
-		// does not succeed, Terraform will continue trying until it
-		// times out.
+		// Whether to wait for all instances to be created/updated before returning.
+		// Note that if this is set to true and the operation does not succeed,
+		// Terraform will continue trying until it times out.
 		wait_for_instances?: bool
 
-		// When used with wait_for_instances specifies the status to wait
-		// for. When STABLE is specified this resource will wait until
-		// the instances are stable before returning. When UPDATED is
-		// set, it will wait for the version target to be reached and any
-		// per instance configs to be effective and all instances configs
-		// to be effective as well as all instances to be stable before
+		// When used with wait_for_instances specifies the status to wait for. When
+		// STABLE is specified this resource will wait until the instances are stable
+		// before returning. When UPDATED is set, it will wait for the version target
+		// to be reached and any per instance configs to be effective and all instances
+		// configs to be effective as well as all instances to be stable before
 		// returning.
 		wait_for_instances_status?: string
 
@@ -137,13 +123,11 @@ import "list"
 	})
 
 	#all_instances_config: close({
-		// The label key-value pairs that you want to patch onto the
-		// instance,
+		// The label key-value pairs that you want to patch onto the instance,
 		labels?: [string]: string
 
-		// The metadata key-value pairs that you want to patch onto the
-		// instance. For more information, see Project and instance
-		// metadata,
+		// The metadata key-value pairs that you want to patch onto the instance. For
+		// more information, see Project and instance metadata,
 		metadata?: [string]: string
 	})
 
@@ -151,23 +135,36 @@ import "list"
 		// The health check resource that signals autohealing.
 		health_check!: string
 
-		// The number of seconds that the managed instance group waits
-		// before it applies autohealing policies to new instances or
-		// recently recreated instances. Between 0 and 3600.
+		// The number of seconds that the managed instance group waits before it applies
+		// autohealing policies to new instances or recently recreated instances.
+		// Between 0 and 3600.
 		initial_delay_sec!: number
 	})
 
 	#instance_lifecycle_policy: close({
-		// Default behavior for all instance or health check failures.
+		// Specifies the action that a MIG performs on a failed VM. If the value of the
+		// "on_failed_health_check" field is DEFAULT_ACTION, then the same action also
+		// applies to the VMs on which your application fails a health check. Valid
+		// values are: REPAIR, DO_NOTHING. If REPAIR (default), then MIG automatically
+		// repairs a failed VM by recreating it. For more information, see about
+		// repairing VMs in a MIG. If DO_NOTHING, then MIG does not repair a failed VM.
 		default_action_on_failure?: string
 
-		// Specifies whether to apply the group's latest configuration
-		// when repairing a VM. Valid options are: YES, NO. If YES and
-		// you updated the group's instance template or per-instance
-		// configurations after the VM was created, then these changes
-		// are applied when VM is repaired. If NO (default), then updates
-		// are applied in accordance with the group's update policy type.
+		// Specifies whether to apply the group's latest configuration when repairing a
+		// VM. Valid options are: YES, NO. If YES and you updated the group's instance
+		// template or per-instance configurations after the VM was created, then these
+		// changes are applied when VM is repaired. If NO (default), then updates are
+		// applied in accordance with the group's update policy type.
 		force_update_on_repair?: string
+
+		// Specifies the action that a MIG performs on an unhealthy VM. A VM is marked
+		// as unhealthy when the application running on that VM fails a health check.
+		// Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION
+		// (default), then MIG uses the same action configured for the
+		// "default_action_on_failure" field. If DO_NOTHING, then MIG does not repair
+		// unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by
+		// recreating it.
+		on_failed_health_check?: string
 	})
 
 	#named_port: close({
@@ -179,32 +176,30 @@ import "list"
 	})
 
 	#resource_policies: close({
-		// The URL of the workload policy that is specified for this
-		// managed instance group. It can be a full or partial URL.
+		// The URL of the workload policy that is specified for this managed instance
+		// group. It can be a full or partial URL.
 		workload_policy?: string
 	})
 
 	#standby_policy: close({
-		// Specifies the number of seconds that the MIG should wait to
-		// suspend or stop a VM after that VM was created. The initial
-		// delay gives the initialization script the time to prepare your
-		// VM for a quick scale out. The value of initial delay must be
-		// between 0 and 3600 seconds. The default value is 0.
+		// Specifies the number of seconds that the MIG should wait to suspend or stop a
+		// VM after that VM was created. The initial delay gives the initialization
+		// script the time to prepare your VM for a quick scale out. The value of
+		// initial delay must be between 0 and 3600 seconds. The default value is 0.
 		initial_delay_sec?: number
 
-		// Defines how a MIG resumes or starts VMs from a standby pool
-		// when the group scales out. The default mode is "MANUAL".
+		// Defines how a MIG resumes or starts VMs from a standby pool when the group
+		// scales out. The default mode is "MANUAL".
 		mode?: string
 	})
 
 	#stateful_disk: close({
-		// A value that prescribes what should happen to the stateful disk
-		// when the VM instance is deleted. The available options are
-		// NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the
-		// disk when the VM is deleted, but do not delete the disk.
-		// ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk
-		// when the VM is permanently deleted from the instance group.
-		// The default is NEVER.
+		// A value that prescribes what should happen to the stateful disk when the VM
+		// instance is deleted. The available options are NEVER and
+		// ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is
+		// deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will
+		// delete the stateful disk when the VM is permanently deleted from the
+		// instance group. The default is NEVER.
 		delete_rule?: string
 
 		// The device name of the disk to be attached.
@@ -212,14 +207,12 @@ import "list"
 	})
 
 	#stateful_external_ip: close({
-		// A value that prescribes what should happen to an associated
-		// static Address resource when a VM instance is permanently
-		// deleted. The available options are NEVER and
-		// ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the
+		// A value that prescribes what should happen to an associated static Address
+		// resource when a VM instance is permanently deleted. The available options
+		// are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the
 		// VM is deleted, but do not delete the address resource.
-		// ON_PERMANENT_INSTANCE_DELETION will delete the stateful
-		// address when the VM is permanently deleted from the instance
-		// group. The default is NEVER.
+		// ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM
+		// is permanently deleted from the instance group. The default is NEVER.
 		delete_rule?: string
 
 		// The network interface name
@@ -227,14 +220,12 @@ import "list"
 	})
 
 	#stateful_internal_ip: close({
-		// A value that prescribes what should happen to an associated
-		// static Address resource when a VM instance is permanently
-		// deleted. The available options are NEVER and
-		// ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the
+		// A value that prescribes what should happen to an associated static Address
+		// resource when a VM instance is permanently deleted. The available options
+		// are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the
 		// VM is deleted, but do not delete the address resource.
-		// ON_PERMANENT_INSTANCE_DELETION will delete the stateful
-		// address when the VM is permanently deleted from the instance
-		// group. The default is NEVER.
+		// ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM
+		// is permanently deleted from the instance group. The default is NEVER.
 		delete_rule?: string
 
 		// The network interface name
@@ -242,8 +233,8 @@ import "list"
 	})
 
 	#target_size_policy: close({
-		// The mode of target size policy based on which the MIG creates
-		// its VMs individually or all at once.
+		// The mode of target size policy based on which the MIG creates its VMs
+		// individually or all at once.
 		mode!: string
 	})
 
@@ -254,67 +245,59 @@ import "list"
 	})
 
 	#update_policy: close({
-		// Specifies a fixed number of VM instances. This must be a
-		// positive integer. Conflicts with max_surge_percent. Both
-		// cannot be 0
+		// Specifies a fixed number of VM instances. This must be a positive integer.
+		// Conflicts with max_surge_percent. Both cannot be 0
 		max_surge_fixed?: number
 
-		// Specifies a percentage of instances between 0 to 100%,
-		// inclusive. For example, specify 80 for 80%. Conflicts with
-		// max_surge_fixed.
+		// Specifies a percentage of instances between 0 to 100%, inclusive. For
+		// example, specify 80 for 80%. Conflicts with max_surge_fixed.
 		max_surge_percent?: number
 
-		// Specifies a fixed number of VM instances. This must be a
-		// positive integer.
+		// Specifies a fixed number of VM instances. This must be a positive integer.
 		max_unavailable_fixed?: number
 
-		// Specifies a percentage of instances between 0 to 100%,
-		// inclusive. For example, specify 80 for 80%.
+		// Specifies a percentage of instances between 0 to 100%, inclusive. For
+		// example, specify 80 for 80%.
 		max_unavailable_percent?: number
 
-		// Minimal action to be taken on an instance. You can specify
-		// either NONE to forbid any actions, REFRESH to update without
-		// stopping instances, RESTART to restart existing instances or
-		// REPLACE to delete and create new instances from the target
-		// template. If you specify a REFRESH, the Updater will attempt
-		// to perform that action only. However, if the Updater
-		// determines that the minimal action you specify is not enough
-		// to perform the update, it might perform a more disruptive
-		// action.
+		// Minimal action to be taken on an instance. You can specify either NONE to
+		// forbid any actions, REFRESH to update without stopping instances, RESTART to
+		// restart existing instances or REPLACE to delete and create new instances
+		// from the target template. If you specify a REFRESH, the Updater will attempt
+		// to perform that action only. However, if the Updater determines that the
+		// minimal action you specify is not enough to perform the update, it might
+		// perform a more disruptive action.
 		minimal_action!: string
 
-		// Most disruptive action that is allowed to be taken on an
-		// instance. You can specify either NONE to forbid any actions,
-		// REFRESH to allow actions that do not need instance restart,
-		// RESTART to allow actions that can be applied without instance
-		// replacing or REPLACE to allow all possible actions. If the
-		// Updater determines that the minimal update action needed is
-		// more disruptive than most disruptive allowed action you
-		// specify it will not perform the update at all.
+		// Most disruptive action that is allowed to be taken on an instance. You can
+		// specify either NONE to forbid any actions, REFRESH to allow actions that do
+		// not need instance restart, RESTART to allow actions that can be applied
+		// without instance replacing or REPLACE to allow all possible actions. If the
+		// Updater determines that the minimal update action needed is more disruptive
+		// than most disruptive allowed action you specify it will not perform the
+		// update at all.
 		most_disruptive_allowed_action?: string
 
-		// The instance replacement method for managed instance groups.
-		// Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE
-		// (default), the group replaces VM instances with new instances
-		// that have randomly generated names. If RECREATE, instance
-		// names are preserved. You must also set max_unavailable_fixed
-		// or max_unavailable_percent to be greater than 0.
+		// The instance replacement method for managed instance groups. Valid values
+		// are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces
+		// VM instances with new instances that have randomly generated names. If
+		// RECREATE, instance names are preserved. You must also set
+		// max_unavailable_fixed or max_unavailable_percent to be greater than 0.
 		replacement_method?: string
 
-		// The type of update process. You can specify either PROACTIVE so
-		// that the instance group manager proactively executes actions
-		// in order to bring instances to their target versions or
-		// OPPORTUNISTIC so that no action is proactively executed but
-		// the update will be performed as part of other actions (for
-		// example, resizes or recreateInstances calls).
+		// The type of update process. You can specify either PROACTIVE so that the
+		// instance group manager proactively executes actions in order to bring
+		// instances to their target versions or OPPORTUNISTIC so that no action is
+		// proactively executed but the update will be performed as part of other
+		// actions (for example, resizes or recreateInstances calls).
 		type!: string
 	})
 
 	#version: close({
 		target_size?: matchN(1, [_#defs."/$defs/version/$defs/target_size", list.MaxItems(1) & [..._#defs."/$defs/version/$defs/target_size"]])
 
-		// The full URL to an instance template from which all new
-		// instances of this version will be created.
+		// The full URL to an instance template from which all new instances of this
+		// version will be created.
 		instance_template!: string
 
 		// Version name.
@@ -322,16 +305,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/version/$defs/target_size": close({
-		// The number of instances which are managed for this version.
-		// Conflicts with percent.
+		// The number of instances which are managed for this version. Conflicts with percent.
 		fixed?: number
 
-		// The number of instances (calculated as percentage) which are
-		// managed for this version. Conflicts with fixed. Note that when
-		// using percent, rounding will be in favor of explicitly set
-		// target_size values; a managed instance group with 2 instances
-		// and 2 versions, one of which has a target_size.percent of 60
-		// will create 2 instances of that version.
+		// The number of instances (calculated as percentage) which are managed for this
+		// version. Conflicts with fixed. Note that when using percent, rounding will
+		// be in favor of explicitly set target_size values; a managed instance group
+		// with 2 instances and 2 versions, one of which has a target_size.percent of
+		// 60 will create 2 instances of that version.
 		percent?: number
 	})
 }

@@ -1,6 +1,6 @@
 package res
 
-#google_oracle_database_odb_subnet: {
+google_oracle_database_odb_subnet: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_oracle_database_odb_subnet")
 	close({
@@ -12,68 +12,55 @@ package res
 		// The date and time that the OdbNetwork was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Whether or not to allow Terraform to destroy the instance.
-		// Unless this field is set to false in Terraform state, a
-		// terraform destroy or terraform apply that would delete the
-		// instance will fail.
+		// Whether or not to allow Terraform to destroy the instance. Unless this field
+		// is set to false in Terraform state, a terraform destroy or terraform apply
+		// that would delete the instance will fail.
 		deletion_protection?: bool
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// Labels or tags associated with the resource.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
-		// Identifier. The name of the OdbSubnet resource in the following
-		// format:
+		// Identifier. The name of the OdbSubnet resource in the following format:
 		// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
 		name?: string
 
 		// The ID of the OdbSubnet to create. This value is restricted
-		// to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of
-		// 63
-		// characters in length. The value must start with a letter and
-		// end with
+		// to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63
+		// characters in length. The value must start with a letter and end with
 		// a letter or a number.
 		odb_subnet_id!: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		odbnetwork!: string
-		project?:    string
 
 		// Purpose of the subnet.
 		// Possible values:
 		// CLIENT_SUBNET
 		// BACKUP_SUBNET
 		purpose!: string
+		project?: string
 
 		// State of the ODB Subnet.
 		// Possible values:

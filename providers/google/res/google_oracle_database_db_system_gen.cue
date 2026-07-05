@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_oracle_database_db_system: {
+google_oracle_database_db_system: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_oracle_database_db_system")
 	close({
@@ -13,79 +13,62 @@ import "list"
 		create_time?: string
 
 		// The ID of the DbSystem to create. This value is
-		// restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a
-		// maximum of
-		// 63 characters in length. The value must start with a letter and
-		// end with a
+		// restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of
+		// 63 characters in length. The value must start with a letter and end with a
 		// letter or a number.
 		db_system_id!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Whether or not to allow Terraform to destroy the instance.
-		// Unless this field is set to false in Terraform state, a
-		// terraform destroy or terraform apply that would delete the
-		// instance will fail.
+		// Whether or not to allow Terraform to destroy the instance. Unless this field
+		// is set to false in Terraform state, a terraform destroy or terraform apply
+		// that would delete the instance will fail.
 		deletion_protection?: bool
 
 		// The display name for the System db. The name does not have to
 		// be unique within your project.
 		display_name!: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// The ID of the subscription entitlement associated with the
-		// DbSystem
+		// The ID of the subscription entitlement associated with the DbSystem
 		entitlement_id?: string
 
 		// The GCP Oracle zone where Oracle DbSystem is hosted.
 		// Example: us-east4-b-r2.
-		// If not specified, the system will pick a zone based on
-		// availability.
+		// If not specified, the system will pick a zone based on availability.
 		gcp_oracle_zone?: string
 		id?:              string
 
 		// The labels or tags associated with the DbSystem.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
-		// Identifier. The name of the DbSystem resource in the following
-		// format:
+		// Identifier. The name of the DbSystem resource in the following format:
 		// projects/{project}/locations/{region}/dbSystems/{db_system}
 		name?: string
 
-		// HTTPS link to OCI resources exposed to Customer via UI
-		// Interface.
+		// HTTPS link to OCI resources exposed to Customer via UI Interface.
 		oci_url?: string
 
 		// The name of the OdbNetwork associated with the DbSystem.
-		// Format:
-		// projects/{project}/locations/{location}/odbNetworks/{odb_network}
-		// It is optional but if specified, this should match the parent
-		// ODBNetwork of
+		// Format: projects/{project}/locations/{location}/odbNetworks/{odb_network}
+		// It is optional but if specified, this should match the parent ODBNetwork of
 		// the OdbSubnet.
 		odb_network?: string
 
@@ -93,11 +76,11 @@ import "list"
 		// allocation. Format:
 		// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
 		odb_subnet!: string
-		project?:    string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+		project?: string
 	})
 
 	#properties: close({
@@ -115,8 +98,7 @@ import "list"
 		// OCPU
 		compute_model?: string
 
-		// The data storage size in GB that is currently available to
-		// DbSystems.
+		// The data storage size in GB that is currently available to DbSystems.
 		data_storage_size_gb?: number
 
 		// The database edition of the DbSystem.
@@ -197,13 +179,11 @@ import "list"
 	_#defs: "/$defs/properties/$defs/db_home": close({
 		database!: matchN(1, [_#defs."/$defs/properties/$defs/db_home/$defs/database", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/properties/$defs/db_home/$defs/database"]])
 
-		// A valid Oracle Database version. For a list of supported
-		// versions, use the
+		// A valid Oracle Database version. For a list of supported versions, use the
 		// ListDbVersions operation.
 		db_version!: string
 
-		// The display name for the Database Home. The name does not have
-		// to
+		// The display name for the Database Home. The name does not have to
 		// be unique within your project.
 		display_name?: string
 
@@ -229,10 +209,8 @@ import "list"
 		// The name of the DbHome resource associated with the Database.
 		db_home_name?: string
 
-		// The database name. The name must begin with an alphabetic
-		// character and can
-		// contain a maximum of eight alphanumeric characters. Special
-		// characters are
+		// The database name. The name must begin with an alphabetic character and can
+		// contain a maximum of eight alphanumeric characters. Special characters are
 		// not permitted.
 		db_name?: string
 
@@ -242,17 +220,14 @@ import "list"
 		// The GCP Oracle zone where the Database is created.
 		gcp_oracle_zone?: string
 
-		// Identifier. The name of the Database resource in the following
-		// format:
+		// Identifier. The name of the Database resource in the following format:
 		// projects/{project}/locations/{region}/databases/{database}
 		name?: string
 
-		// The national character set for the database. The default is
-		// AL16UTF16.
+		// The national character set for the database. The default is AL16UTF16.
 		ncharacter_set?: string
 
-		// HTTPS link to OCI resources exposed to Customer via UI
-		// Interface.
+		// HTTPS link to OCI resources exposed to Customer via UI Interface.
 		oci_url?: string
 
 		// The Status of Operations Insights for this Database.
@@ -265,13 +240,13 @@ import "list"
 		// FAILED_DISABLING
 		ops_insights_status?: string
 
-		// The ID of the pluggable database associated with Database. The
-		// ID must be unique within the project and location.
+		// The ID of the pluggable database associated with Database. The ID must be
+		// unique within the project and location.
 		pluggable_database_id?: string
 
-		// The pluggable dataabse associated with the Database. The name
-		// must begin with an alphabetic character and can contain a
-		// maximum of thirty alphanumeric characters.
+		// The pluggable dataabse associated with the Database. The name must begin with
+		// an alphabetic character and can contain a maximum of thirty alphanumeric
+		// characters.
 		pluggable_database_name?: string
 
 		// The TDE wallet password for the database.
@@ -336,8 +311,7 @@ import "list"
 		// SUNDAY
 		auto_full_backup_day?: string
 
-		// The window in which the full backup should be performed on the
-		// database.
+		// The window in which the full backup should be performed on the database.
 		// If no value is provided, the default is anytime.
 		// Possible values:
 		// SLOT_ONE
@@ -354,10 +328,8 @@ import "list"
 		// SLOT_TWELVE
 		auto_full_backup_window?: string
 
-		// The window in which the incremental backup should be performed
-		// on the
-		// database. If no value is provided, the default is anytime
-		// except the auto
+		// The window in which the incremental backup should be performed on the
+		// database. If no value is provided, the default is anytime except the auto
 		// full backup day.
 		// Possible values:
 		// SLOT_ONE
@@ -374,16 +346,14 @@ import "list"
 		// SLOT_TWELVE
 		auto_incremental_backup_window?: string
 
-		// This defines when the backups will be deleted after Database
-		// termination.
+		// This defines when the backups will be deleted after Database termination.
 		// Possible values:
 		// DELETE_IMMEDIATELY
 		// DELETE_AFTER_RETENTION_PERIOD
 		backup_deletion_policy?: string
 
 		// The number of days an automatic backup is retained before being
-		// automatically deleted. This value determines the earliest point
-		// in time to
+		// automatically deleted. This value determines the earliest point in time to
 		// which a database can be restored. Min: 1, Max: 60.
 		retention_period_days?: number
 	})
@@ -408,8 +378,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/properties/$defs/time_zone": close({
-		// IANA Time Zone Database time zone. For example
-		// "America/New_York".
+		// IANA Time Zone Database time zone. For example "America/New_York".
 		id?: string
 	})
 }

@@ -1,40 +1,33 @@
 package res
 
-#google_apigee_developer: {
+google_apigee_developer: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_developer")
 	close({
 		attributes?: matchN(1, [#attributes, [...#attributes]])
 		timeouts?: #timeouts
 
-		// Time at which the developer was created in milliseconds since
-		// epoch.
+		// Time at which the developer was created in milliseconds since epoch.
 		created_at?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Email address of the developer. This value is used to uniquely
-		// identify the developer in Apigee hybrid. Note that the email
-		// address has to be in lowercase only..
+		// Email address of the developer. This value is used to uniquely identify the
+		// developer in Apigee hybrid. Note that the email address has to be in
+		// lowercase only..
 		email!: string
 
 		// First name of the developer.
 		first_name!: string
 		id?:         string
 
-		// Time at which the developer was last modified in milliseconds
-		// since epoch.
+		// Time at which the developer was last modified in milliseconds since epoch.
 		last_modified_at?: string
 
 		// Last name of the developer.

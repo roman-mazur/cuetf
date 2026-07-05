@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_pubsub_topic: {
+google_pubsub_topic: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_pubsub_topic")
 	close({
@@ -12,83 +12,57 @@ import "list"
 		schema_settings?: matchN(1, [#schema_settings, list.MaxItems(1) & [...#schema_settings]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
-		// The resource name of the Cloud KMS CryptoKey to be used to
-		// protect access
-		// to messages published on this topic. Your project's PubSub
-		// service account
-		// ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com')
-		// must have
-		// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this
-		// feature.
-		// The expected format is
-		// 'projects/*/locations/*/keyRings/*/cryptoKeys/*'
+		// The resource name of the Cloud KMS CryptoKey to be used to protect access
+		// to messages published on this topic. Your project's PubSub service account
+		// ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
+		// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
+		// The expected format is 'projects/*/locations/*/keyRings/*/cryptoKeys/*'
 		kms_key_name?: string
 
 		// A set of key/value label pairs to assign to this Topic.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Indicates the minimum duration to retain a message after it is
-		// published
-		// to the topic. If this field is set, messages published to the
-		// topic in
-		// the last messageRetentionDuration are always available to
-		// subscribers.
-		// For instance, it allows any attached subscription to seek to a
-		// timestamp
-		// that is up to messageRetentionDuration in the past. If this
-		// field is not
-		// set, message retention is controlled by settings on individual
-		// subscriptions.
-		// The rotation period has the format of a decimal number,
-		// followed by the
-		// letter 's' (seconds). Cannot be more than 31 days or less than
-		// 10 minutes.
+		// Indicates the minimum duration to retain a message after it is published
+		// to the topic. If this field is set, messages published to the topic in
+		// the last messageRetentionDuration are always available to subscribers.
+		// For instance, it allows any attached subscription to seek to a timestamp
+		// that is up to messageRetentionDuration in the past. If this field is not
+		// set, message retention is controlled by settings on individual subscriptions.
+		// The rotation period has the format of a decimal number, followed by the
+		// letter 's' (seconds). Cannot be more than 31 days or less than 10 minutes.
 		message_retention_duration?: string
 
 		// Name of the topic.
-		name!:    string
-		project?: string
+		name!: string
 
-		// Input only. Resource manager tags to be bound to the topic. Tag
-		// keys and
-		// values have the same definition as resource manager tags. Keys
-		// must be in
+		// Input only. Resource manager tags to be bound to the topic. Tag keys and
+		// values have the same definition as resource manager tags. Keys must be in
 		// the format tagKeys/{tag_key_id}, and values are in the format
-		// tagValues/456. The field is ignored when empty. The field is
-		// immutable and
-		// causes resource replacement when mutated. This field is only
-		// set at create
-		// time and modifying this field after creation will trigger
-		// recreation. To
-		// apply tags to an existing resource, see the
-		// 'google_tags_tag_value'
+		// tagValues/456. The field is ignored when empty. The field is immutable and
+		// causes resource replacement when mutated. This field is only set at create
+		// time and modifying this field after creation will trigger recreation. To
+		// apply tags to an existing resource, see the 'google_tags_tag_value'
 		// resource.
 		tags?: [string]: string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -105,25 +79,18 @@ import "list"
 	})
 
 	#message_storage_policy: close({
-		// A list of IDs of GCP regions where messages that are published
-		// to
+		// A list of IDs of GCP regions where messages that are published to
 		// the topic may be persisted in storage. Messages published by
-		// publishers running in non-allowed GCP regions (or running
-		// outside
+		// publishers running in non-allowed GCP regions (or running outside
 		// of GCP altogether) will be routed for storage in one of the
-		// allowed regions. An empty list means that no regions are
-		// allowed,
+		// allowed regions. An empty list means that no regions are allowed,
 		// and is not a valid configuration.
 		allowed_persistence_regions!: [...string]
 
-		// If true, 'allowedPersistenceRegions' is also used to enforce
-		// in-transit
-		// guarantees for messages. That is, Pub/Sub will fail
-		// topics.publish
-		// operations on this topic and subscribe operations on any
-		// subscription
-		// attached to this topic in any region that is not in
-		// 'allowedPersistenceRegions'.
+		// If true, 'allowedPersistenceRegions' is also used to enforce in-transit
+		// guarantees for messages. That is, Pub/Sub will fail topics.publish
+		// operations on this topic and subscribe operations on any subscription
+		// attached to this topic in any region that is not in 'allowedPersistenceRegions'.
 		enforce_in_transit?: bool
 	})
 
@@ -131,33 +98,29 @@ import "list"
 		ai_inference?: matchN(1, [_#defs."/$defs/message_transforms/$defs/ai_inference", list.MaxItems(1) & [..._#defs."/$defs/message_transforms/$defs/ai_inference"]])
 		javascript_udf?: matchN(1, [_#defs."/$defs/message_transforms/$defs/javascript_udf", list.MaxItems(1) & [..._#defs."/$defs/message_transforms/$defs/javascript_udf"]])
 
-		// Controls whether or not to use this transform. If not set or
-		// 'false',
+		// Controls whether or not to use this transform. If not set or 'false',
 		// the transform will be applied to messages. Default: 'true'.
 		disabled?: bool
 	})
 
 	#schema_settings: close({
-		// The encoding of messages validated against schema. Default
-		// value: "ENCODING_UNSPECIFIED" Possible values:
-		// ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
+		// The encoding of messages validated against schema. Default value:
+		// "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON",
+		// "BINARY"]
 		encoding?: string
 
-		// The minimum (inclusive) revision allowed for validating
-		// messages. If empty or not present, allow any revision to be
-		// validated against last_revision or any revision created
-		// before.
+		// The minimum (inclusive) revision allowed for validating messages. If empty or
+		// not present, allow any revision to be validated against last_revision or any
+		// revision created before.
 		first_revision_id?: string
 
-		// The maximum (inclusive) revision allowed for validating
-		// messages. If empty or not present, allow any revision to be
-		// validated against first_revision or any revision created
-		// after.
+		// The maximum (inclusive) revision allowed for validating messages. If empty or
+		// not present, allow any revision to be validated against first_revision or
+		// any revision created after.
 		last_revision_id?: string
 
 		// The name of the schema that messages published should be
-		// validated against. Format is
-		// projects/{project}/schemas/{schema}.
+		// validated against. Format is projects/{project}/schemas/{schema}.
 		// The value of this field will be _deleted-schema_
 		// if the schema has been deleted.
 		schema!: string
@@ -170,10 +133,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/ingestion_data_source_settings/$defs/aws_kinesis": close({
-		// AWS role ARN to be used for Federated Identity authentication
-		// with
-		// Kinesis. Check the Pub/Sub docs for how to set up this role and
-		// the
+		// AWS role ARN to be used for Federated Identity authentication with
+		// Kinesis. Check the Pub/Sub docs for how to set up this role and the
 		// required permissions that need to be attached to it.
 		aws_role_arn!: string
 
@@ -182,12 +143,9 @@ import "list"
 		// created and ready to be used.
 		consumer_arn!: string
 
-		// The GCP service account to be used for Federated Identity
-		// authentication
-		// with Kinesis (via a 'AssumeRoleWithWebIdentity' call for the
-		// provided
-		// role). The 'awsRoleArn' must be set up with
-		// 'accounts.google.com:sub'
+		// The GCP service account to be used for Federated Identity authentication
+		// with Kinesis (via a 'AssumeRoleWithWebIdentity' call for the provided
+		// role). The 'awsRoleArn' must be set up with 'accounts.google.com:sub'
 		// equals to this service account number.
 		gcp_service_account!: string
 
@@ -196,8 +154,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/ingestion_data_source_settings/$defs/aws_msk": close({
-		// AWS role ARN to be used for Federated Identity authentication
-		// with
+		// AWS role ARN to be used for Federated Identity authentication with
 		// MSK. Check the Pub/Sub docs for how to set up this role and the
 		// required permissions that need to be attached to it.
 		aws_role_arn!: string
@@ -205,12 +162,9 @@ import "list"
 		// ARN that uniquely identifies the MSK cluster.
 		cluster_arn!: string
 
-		// The GCP service account to be used for Federated Identity
-		// authentication
-		// with MSK (via a 'AssumeRoleWithWebIdentity' call for the
-		// provided
-		// role). The 'awsRoleArn' must be set up with
-		// 'accounts.google.com:sub'
+		// The GCP service account to be used for Federated Identity authentication
+		// with MSK (via a 'AssumeRoleWithWebIdentity' call for the provided
+		// role). The 'awsRoleArn' must be set up with 'accounts.google.com:sub'
 		// equals to this service account number.
 		gcp_service_account!: string
 
@@ -225,10 +179,8 @@ import "list"
 		// The Azure event hub to ingest data from.
 		event_hub?: string
 
-		// The GCP service account to be used for Federated Identity
-		// authentication
-		// with Azure (via a 'AssumeRoleWithWebIdentity' call for the
-		// provided
+		// The GCP service account to be used for Federated Identity authentication
+		// with Azure (via a 'AssumeRoleWithWebIdentity' call for the provided
 		// role).
 		gcp_service_account?: string
 
@@ -255,16 +207,13 @@ import "list"
 		// https://cloud.google.com/storage/docs/buckets#naming.
 		bucket!: string
 
-		// Glob pattern used to match objects that will be ingested. If
-		// unset, all
+		// Glob pattern used to match objects that will be ingested. If unset, all
 		// objects will be ingested. See the supported patterns:
 		// https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
 		match_glob?: string
 
-		// The timestamp set in RFC3339 text format. If set, only objects
-		// with a
-		// larger or equal timestamp will be ingested. Unset by default,
-		// meaning
+		// The timestamp set in RFC3339 text format. If set, only objects with a
+		// larger or equal timestamp will be ingested. Unset by default, meaning
 		// all objects will be ingested.
 		minimum_object_create_time?: string
 	})
@@ -274,10 +223,8 @@ import "list"
 	_#defs: "/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/pubsub_avro_format": close({})
 
 	_#defs: "/$defs/ingestion_data_source_settings/$defs/cloud_storage/$defs/text_format": close({
-		// The delimiter to use when using the 'text' format. Each line of
-		// text as
-		// specified by the delimiter will be set to the 'data' field of a
-		// Pub/Sub
+		// The delimiter to use when using the 'text' format. Each line of text as
+		// specified by the delimiter will be set to the 'data' field of a Pub/Sub
 		// message. When unset, '\n' is used.
 		delimiter?: string
 	})
@@ -289,26 +236,21 @@ import "list"
 		// The Confluent Cloud cluster ID.
 		cluster_id?: string
 
-		// The GCP service account to be used for Federated Identity
-		// authentication
+		// The GCP service account to be used for Federated Identity authentication
 		// with Confluent Cloud.
 		gcp_service_account!: string
 
-		// Identity pool ID to be used for Federated Identity
-		// authentication with Confluent Cloud.
+		// Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
 		identity_pool_id!: string
 
-		// Name of the Confluent Cloud topic that Pub/Sub will import
-		// from.
+		// Name of the Confluent Cloud topic that Pub/Sub will import from.
 		topic!: string
 	})
 
 	_#defs: "/$defs/ingestion_data_source_settings/$defs/platform_logs_settings": close({
-		// The minimum severity level of Platform Logs that will be
-		// written. If unspecified,
-		// no Platform Logs will be written. Default value:
-		// "SEVERITY_UNSPECIFIED" Possible values:
-		// ["SEVERITY_UNSPECIFIED", "DISABLED", "DEBUG", "INFO",
+		// The minimum severity level of Platform Logs that will be written. If unspecified,
+		// no Platform Logs will be written. Default value: "SEVERITY_UNSPECIFIED"
+		// Possible values: ["SEVERITY_UNSPECIFIED", "DISABLED", "DEBUG", "INFO",
 		// "WARNING", "ERROR"]
 		severity?: string
 	})
@@ -317,8 +259,7 @@ import "list"
 		unstructured_inference?: matchN(1, [_#defs."/$defs/message_transforms/$defs/ai_inference/$defs/unstructured_inference", list.MaxItems(1) & [..._#defs."/$defs/message_transforms/$defs/ai_inference/$defs/unstructured_inference"]])
 
 		// The endpoint to a Vertex AI model of the form
-		// 'projects/{project}/locations/{location}/endpoints/{endpoint}'
-		// or
+		// 'projects/{project}/locations/{location}/endpoints/{endpoint}' or
 		// 'projects/{project}/locations/{location}/publishers/{publisher}/models/{model}'.
 		// Vertex AI API requests will be sent to this endpoint.
 		endpoint!: string
@@ -330,43 +271,35 @@ import "list"
 
 	_#defs: "/$defs/message_transforms/$defs/ai_inference/$defs/unstructured_inference": close({
 		// A parameters object to be included in each inference request.
-		// The parameters object is combined with the data field of the
-		// Pub/Sub
+		// The parameters object is combined with the data field of the Pub/Sub
 		// message to form the inference request.
 		parameters?: [string]: string
 	})
 
 	_#defs: "/$defs/message_transforms/$defs/javascript_udf": close({
-		// JavaScript code that contains a function 'function_name' with
-		// the
+		// JavaScript code that contains a function 'function_name' with the
 		// following signature:
 		// '''
 		// /**
 		// * Transforms a Pub/Sub message.
 		// *
-		// * @return {(Object<string, (string | Object<string,
-		// string>)>|null)} - To
-		// * filter a message, return 'null'. To transform a message
-		// return a map
+		// * @return {(Object<string, (string | Object<string, string>)>|null)} - To
+		// * filter a message, return 'null'. To transform a message return a map
 		// * with the following keys:
 		// * - (required) 'data' : {string}
 		// * - (optional) 'attributes' : {Object<string, string>}
-		// * Returning empty 'attributes' will remove all attributes from
-		// the
+		// * Returning empty 'attributes' will remove all attributes from the
 		// * message.
 		// *
-		// * @param {(Object<string, (string | Object<string, string>)>}
-		// Pub/Sub
+		// * @param {(Object<string, (string | Object<string, string>)>} Pub/Sub
 		// * message. Keys:
 		// * - (required) 'data' : {string}
 		// * - (required) 'attributes' : {Object<string, string>}
 		// *
-		// * @param {Object<string, any>} metadata - Pub/Sub message
-		// metadata.
+		// * @param {Object<string, any>} metadata - Pub/Sub message metadata.
 		// * Keys:
 		// * - (required) 'message_id' : {string}
-		// * - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ
-		// format
+		// * - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format
 		// * - (optional) 'ordering_key': {string}
 		// */
 		// function <function_name>(message, metadata) {
@@ -374,8 +307,7 @@ import "list"
 		// '''
 		code!: string
 
-		// Name of the JavaScript function that should be applied to
-		// Pub/Sub messages.
+		// Name of the JavaScript function that should be applied to Pub/Sub messages.
 		function_name!: string
 	})
 }

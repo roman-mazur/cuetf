@@ -1,6 +1,6 @@
 package res
 
-#google_clouddeploy_target_iam_policy: {
+google_clouddeploy_target_iam_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_clouddeploy_target_iam_policy")
 	close({

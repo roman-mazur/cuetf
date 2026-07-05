@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_cloud_security_compliance_framework_deployment: {
+google_cloud_security_compliance_framework_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_security_compliance_framework_deployment")
 	close({
@@ -12,8 +12,7 @@ import "list"
 		timeouts?: #timeouts
 
 		// The references to the cloud control deployments. It has all the
-		// CloudControlDeployments which are either directly added in the
-		// framework or
+		// CloudControlDeployments which are either directly added in the framework or
 		// through a CloudControlGroup.
 		// Example: If a framework deployment deploys two
 		// cloud controls, cc-deployment-1 and cc-deployment-2, then the
@@ -31,26 +30,19 @@ import "list"
 			cloud_control_deployment?: string
 		})]
 
-		// The resource on which the Framework is deployed based on the
-		// provided
+		// The resource on which the Framework is deployed based on the provided
 		// TargetResourceConfig in the following format:
-		// organizations/{organization}, folders/{folder} or
-		// projects/{project}
+		// organizations/{organization}, folders/{folder} or projects/{project}
 		computed_target_resource?: string
 
 		// The time at which the resource was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -68,25 +60,20 @@ import "list"
 		// User provided description of the Framework deployment
 		description?: string
 
-		// To prevent concurrent updates from overwriting each other,
-		// always provide
+		// To prevent concurrent updates from overwriting each other, always provide
 		// the 'etag' when you update a FrameworkDeployment. You can also
-		// provide the 'etag' when you delete a FrameworkDeployment, to
-		// help
+		// provide the 'etag' when you delete a FrameworkDeployment, to help
 		// ensure that you're deleting the intended version of the
 		// FrameworkDeployment.
 		etag?: string
 
-		// User provided identifier. It should be unique in scope of a
-		// parent.
-		// This is optional and if not provided, a random UUID will be
-		// generated.
+		// User provided identifier. It should be unique in scope of a parent.
+		// This is optional and if not provided, a random UUID will be generated.
 		framework_deployment_id!: string
 		id?:                      string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location?: string
 
 		// Identifier. FrameworkDeployment name in the following format:
@@ -129,8 +116,7 @@ import "list"
 	#target_resource_config: close({
 		target_resource_creation_config?: matchN(1, [_#defs."/$defs/target_resource_config/$defs/target_resource_creation_config", list.MaxItems(1) & [..._#defs."/$defs/target_resource_config/$defs/target_resource_creation_config"]])
 
-		// CRM node in format organizations/{organization},
-		// folders/{folder},
+		// CRM node in format organizations/{organization}, folders/{folder},
 		// or projects/{project}
 		existing_target_resource?: string
 	})
@@ -211,8 +197,7 @@ import "list"
 		// Display name of the folder to be created
 		folder_display_name!: string
 
-		// The parent of the folder to be created. It can be an
-		// organizations/{org} or
+		// The parent of the folder to be created. It can be an organizations/{org} or
 		// folders/{folder}
 		parent!: string
 	})

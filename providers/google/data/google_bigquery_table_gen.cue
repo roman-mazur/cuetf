@@ -1,6 +1,6 @@
 package data
 
-#google_bigquery_table: {
+google_bigquery_table: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_bigquery_table")
 	close({
@@ -12,50 +12,40 @@ package data
 			table_format?:  string
 		})]
 
-		// Specifies column names to use for data clustering. Up to four
-		// top-level columns are allowed, and should be specified in
-		// descending priority order.
+		// Specifies column names to use for data clustering. Up to four top-level
+		// columns are allowed, and should be specified in descending priority order.
 		clustering?: [...string]
 
-		// The time when this table was created, in milliseconds since the
-		// epoch.
+		// The time when this table was created, in milliseconds since the epoch.
 		creation_time?: number
 
-		// The dataset ID to create the table in. Changing this forces a
-		// new resource to be created.
+		// The dataset ID to create the table in. Changing this forces a new resource to be created.
 		dataset_id!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. When the field is set to true or unset in Terraform
-		// state, a terraform apply or terraform destroy that would
-		// delete the table will fail. When the field is set to false,
-		// deleting the table is allowed.
+		// Whether Terraform will be prevented from destroying the instance. When the
+		// field is set to true or unset in Terraform state, a terraform apply or
+		// terraform destroy that would delete the table will fail. When the field is
+		// set to false, deleting the table is allowed.
 		deletion_protection?: bool
 
 		// The field description.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// Specifies how the table should be encrypted. If left blank, the
-		// table will be encrypted with a Google-managed key; that
-		// process is transparent to the user.
+		// Specifies how the table should be encrypted. If left blank, the table will be
+		// encrypted with a Google-managed key; that process is transparent to the
+		// user.
 		encryption_configuration?: [...close({
 			kms_key_name?:    string
 			kms_key_version?: string
@@ -64,9 +54,9 @@ package data
 		// A hash of the resource.
 		etag?: string
 
-		// The time when this table expires, in milliseconds since the
-		// epoch. If not present, the table will persist indefinitely.
-		// Expired tables will be deleted and their storage reclaimed.
+		// The time when this table expires, in milliseconds since the epoch. If not
+		// present, the table will persist indefinitely. Expired tables will be deleted
+		// and their storage reclaimed.
 		expiration_time?: number
 
 		// Options defining open source compatible table.
@@ -85,10 +75,9 @@ package data
 			})]
 		})]
 
-		// Describes the data format, location, and other properties of a
-		// table stored outside of BigQuery. By defining these
-		// properties, the data source can then be queried as if it were
-		// a standard BigQuery table.
+		// Describes the data format, location, and other properties of a table stored
+		// outside of BigQuery. By defining these properties, the data source can then
+		// be queried as if it were a standard BigQuery table.
 		external_data_configuration?: [...close({
 			autodetect?: bool
 			avro_options?: [...close({
@@ -160,8 +149,7 @@ package data
 		generated_schema_columns?: string
 		id?:                       string
 
-		// Whether Terraform will prevent implicitly added columns in
-		// schema from showing diff.
+		// Whether Terraform will prevent implicitly added columns in schema from showing diff.
 		ignore_auto_generated_schema?: bool
 
 		// Mention which fields in schema are to be ignored
@@ -169,18 +157,15 @@ package data
 
 		// A mapping of labels to assign to the resource.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// The time when this table was last modified, in milliseconds
-		// since the epoch.
+		// The time when this table was last modified, in milliseconds since the epoch.
 		last_modified_time?: number
 
-		// The geographic location where the table resides. This value is
-		// inherited from the dataset.
+		// The geographic location where the table resides. This value is inherited from the dataset.
 		location?: string
 
 		// If specified, configures this table as a materialized view.
@@ -191,29 +176,24 @@ package data
 			refresh_interval_ms?:              number
 		})]
 
-		// The maximum staleness of data that could be returned when the
-		// table (or stale MV) is queried. Staleness encoded as a string
-		// encoding of [SQL IntervalValue
+		// The maximum staleness of data that could be returned when the table (or stale
+		// MV) is queried. Staleness encoded as a string encoding of [SQL IntervalValue
 		// type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
 		max_staleness?: string
 
-		// The geographic location where the table resides. This value is
-		// inherited from the dataset.
+		// The geographic location where the table resides. This value is inherited from the dataset.
 		num_bytes?: number
 
-		// The number of bytes in the table that are considered "long-term
-		// storage".
+		// The number of bytes in the table that are considered "long-term storage".
 		num_long_term_bytes?: number
 
-		// The number of rows of data in this table, excluding any data in
-		// the streaming buffer.
+		// The number of rows of data in this table, excluding any data in the streaming buffer.
 		num_rows?: number
 
 		// The ID of the project in which the resource belongs.
 		project?: string
 
-		// If specified, configures range-based partitioning for this
-		// table.
+		// If specified, configures range-based partitioning for this table.
 		range_partitioning?: [...close({
 			field?: string
 			range?: [...close({
@@ -223,24 +203,21 @@ package data
 			})]
 		})]
 
-		// If set to true, queries over this table require a partition
-		// filter that can be used for partition elimination to be
-		// specified.
+		// If set to true, queries over this table require a partition filter that can
+		// be used for partition elimination to be specified.
 		require_partition_filter?: bool
 
-		// The tags attached to this table. Tag keys are globally unique.
-		// Tag key is expected to be in the namespaced format, for
-		// example "123456789012/environment" where 123456789012 is the
-		// ID of the parent organization or project resource for this tag
-		// key. Tag value is expected to be the short name, for example
-		// "Production".
+		// The tags attached to this table. Tag keys are globally unique. Tag key is
+		// expected to be in the namespaced format, for example
+		// "123456789012/environment" where 123456789012 is the ID of the parent
+		// organization or project resource for this tag key. Tag value is expected to
+		// be the short name, for example "Production".
 		resource_tags?: [string]: string
 
 		// A JSON schema for the table.
 		schema?: string
 
-		// Specifies metadata of the foreign data type definition in field
-		// schema.
+		// Specifies metadata of the foreign data type definition in field schema.
 		schema_foreign_type_info?: [...close({
 			type_system?: string
 		})]
@@ -267,19 +244,17 @@ package data
 			})]
 		})]
 
-		// A unique ID for the resource. Changing this forces a new
-		// resource to be created.
+		// A unique ID for the resource. Changing this forces a new resource to be created.
 		table_id!: string
 
-		// View sets the optional parameter "view": Specifies the view
-		// that determines which table information is returned. By
-		// default, basic table information and storage statistics
-		// (STORAGE_STATS) are returned. Possible values:
+		// View sets the optional parameter "view": Specifies the view that determines
+		// which table information is returned. By default, basic table information and
+		// storage statistics (STORAGE_STATS) are returned. Possible values:
 		// TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
 		table_metadata_view?: string
 
-		// Replication info of a table created using "AS REPLICA" DDL
-		// like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+		// Replication info of a table created using "AS REPLICA" DDL like: "CREATE
+		// MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
 		table_replication_info?: [...close({
 			replication_interval_ms?: number
 			source_dataset_id?:       string
@@ -287,12 +262,11 @@ package data
 			source_table_id?:         string
 		})]
 
-		// The combination of labels configured directly on the resource
-		// and default labels configured on the provider.
+		// The combination of labels configured directly on the resource and default
+		// labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// If specified, configures time-based partitioning for this
-		// table.
+		// If specified, configures time-based partitioning for this table.
 		time_partitioning?: [...close({
 			expiration_ms?:            number
 			field?:                    string

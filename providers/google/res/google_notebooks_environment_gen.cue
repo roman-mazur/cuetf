@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_notebooks_environment: {
+google_notebooks_environment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_notebooks_environment")
 	close({
@@ -13,16 +13,11 @@ import "list"
 		// Instance creation time
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -37,14 +32,11 @@ import "list"
 		location!: string
 
 		// The name specified for the Environment instance.
-		// Format:
-		// projects/{project_id}/locations/{location}/environments/{environmentId}
+		// Format: projects/{project_id}/locations/{location}/environments/{environmentId}
 		name!: string
 
-		// Path to a Bash script that automatically runs after a notebook
-		// instance fully boots up.
-		// The path must be a URL or Cloud Storage path. Example:
-		// "gs://path-to-file/file-name"
+		// Path to a Bash script that automatically runs after a notebook instance fully boots up.
+		// The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
 		post_startup_script?: string
 		project?:             string
 	})
@@ -54,8 +46,7 @@ import "list"
 		// For example: gcr.io/{project_id}/{imageName}
 		repository!: string
 
-		// The tag of the container image. If not specified, this defaults
-		// to the latest tag.
+		// The tag of the container image. If not specified, this defaults to the latest tag.
 		tag?: string
 	})
 
@@ -66,15 +57,13 @@ import "list"
 	})
 
 	#vm_image: close({
-		// Use this VM image family to find the image; the newest image in
-		// this family will be used.
+		// Use this VM image family to find the image; the newest image in this family will be used.
 		image_family?: string
 
 		// Use VM image name to find the image.
 		image_name?: string
 
-		// The name of the Google Cloud project that this VM image belongs
-		// to.
+		// The name of the Google Cloud project that this VM image belongs to.
 		// Format: projects/{project_id}
 		project!: string
 	})

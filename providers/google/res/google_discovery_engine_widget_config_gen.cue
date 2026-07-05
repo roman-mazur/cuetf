@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_discovery_engine_widget_config: {
+google_discovery_engine_widget_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_widget_config")
 	close({
@@ -22,35 +22,31 @@ import "list"
 		engine_id!: string
 		id?:        string
 
-		// The geographic location where the data store should reside. The
-		// value can
+		// The geographic location where the data store should reside. The value can
 		// only be one of "global", "us" and "eu".
 		location!: string
 
 		// The full resource name of the widget config. Format:
 		// 'projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/widgetConfigs/{widget_config_id}'.
-		name?:    string
-		project?: string
+		name?: string
 
-		// The unique ID to use for the WidgetConfig. Currently only
-		// accepts "default_search_widget_config".
+		// The unique ID to use for the WidgetConfig. Currently only accepts "default_search_widget_config".
 		widget_config_id?: string
+		project?:          string
 	})
 
 	#access_settings: close({
 		// Whether public unauthenticated access is allowed.
 		allow_public_access?: bool
 
-		// List of domains that are allowed to integrate the search
-		// widget.
+		// List of domains that are allowed to integrate the search widget.
 		allowlisted_domains?: [...string]
 
 		// Whether web app access is enabled.
 		enable_web_app?: bool
 
 		// Language code for user interface. Use language tags defined by
-		// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). If
-		// unset, the
+		// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). If unset, the
 		// default language code is "en-US".
 		language_code?: string
 
@@ -92,31 +88,25 @@ import "list"
 		// If set to true, the widget will enable people search.
 		enable_people_search?: bool
 
-		// Turn on or off collecting the search result quality feedback
-		// from end users.
+		// Turn on or off collecting the search result quality feedback from end users.
 		enable_quality_feedback?: bool
 
 		// Whether to enable safe search.
 		enable_safe_search?: bool
 
-		// Whether to enable search-as-you-type behavior for the search
-		// widget.
+		// Whether to enable search-as-you-type behavior for the search widget.
 		enable_search_as_you_type?: bool
 
-		// If set to true, the widget will enable visual content summary
-		// on applicable
+		// If set to true, the widget will enable visual content summary on applicable
 		// search requests. Only used by healthcare search.
 		enable_visual_content_summary?: bool
 
 		// Describes widget (or web app) interaction type Possible values:
-		// ["SEARCH_ONLY", "SEARCH_WITH_ANSWER",
-		// "SEARCH_WITH_FOLLOW_UPS"]
+		// ["SEARCH_ONLY", "SEARCH_WITH_ANSWER", "SEARCH_WITH_FOLLOW_UPS"]
 		interaction_type?: string
 
-		// Controls whether result extract is display and how (snippet or
-		// extractive answer).
-		// Default to no result if unspecified. Possible values:
-		// ["SNIPPET", "EXTRACTIVE_ANSWER"]
+		// Controls whether result extract is display and how (snippet or extractive answer).
+		// Default to no result if unspecified. Possible values: ["SNIPPET", "EXTRACTIVE_ANSWER"]
 		result_description_type?: string
 	})
 
@@ -144,11 +134,9 @@ import "list"
 		facet_field?: matchN(1, [_#defs."/$defs/ui_settings/$defs/data_store_ui_configs/$defs/facet_field", [..._#defs."/$defs/ui_settings/$defs/data_store_ui_configs/$defs/facet_field"]])
 		fields_ui_components_map?: matchN(1, [_#defs."/$defs/ui_settings/$defs/data_store_ui_configs/$defs/fields_ui_components_map", [..._#defs."/$defs/ui_settings/$defs/data_store_ui_configs/$defs/fields_ui_components_map"]])
 
-		// The name of the data store. It should be data store resource
-		// name. Format:
+		// The name of the data store. It should be data store resource name. Format:
 		// 'projects/{project}/locations/{location}/collections/{collectionId}/dataStores/{dataStoreId}'.
-		// For APIs under 'WidgetService', such as
-		// [WidgetService.LookUpWidgetConfig][],
+		// For APIs under 'WidgetService', such as [WidgetService.LookUpWidgetConfig][],
 		// the project number and location part is erased in this field.
 		name?: string
 	})
@@ -166,8 +154,7 @@ import "list"
 		device_visibility?: [...string]
 
 		// The template to customize how the field is displayed.
-		// An example value would be a string that looks like: "Price:
-		// {value}".
+		// An example value would be a string that looks like: "Price: {value}".
 		display_template?: string
 
 		// Registered field name. The format is 'field.abc'.
@@ -182,28 +169,22 @@ import "list"
 		// Specifies whether to filter out queries that are adversarial.
 		ignore_adversarial_query?: bool
 
-		// Specifies whether to filter out queries that are not relevant
-		// to the content.
+		// Specifies whether to filter out queries that are not relevant to the content.
 		ignore_low_relevant_content?: bool
 
-		// Specifies whether to filter out queries that are not
-		// answer-seeking.
-		// The default value is 'false'. No answer is returned if the
-		// search query
+		// Specifies whether to filter out queries that are not answer-seeking.
+		// The default value is 'false'. No answer is returned if the search query
 		// is classified as a non-answer seeking query.
 		// If this field is set to 'true', we skip generating answers for
-		// non-answer seeking queries and return fallback messages
-		// instead.
+		// non-answer seeking queries and return fallback messages instead.
 		ignore_non_answer_seeking_query?: bool
 
 		// Source of image returned in the answer. Possible values:
-		// ["ALL_AVAILABLE_SOURCES", "CORPUS_IMAGE_ONLY",
-		// "FIGURE_GENERATION_ONLY"]
+		// ["ALL_AVAILABLE_SOURCES", "CORPUS_IMAGE_ONLY", "FIGURE_GENERATION_ONLY"]
 		image_source?: string
 
 		// Language code for Summary. Use language tags defined by
-		// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note:
-		// This
+		// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This
 		// is an experimental feature.
 		language_code?: string
 
@@ -211,15 +192,13 @@ import "list"
 		// set to < 1, it will be set to 1 by default.
 		max_rephrase_steps?: number
 
-		// Text at the beginning of the prompt that instructs the model
-		// that generates the answer.
+		// Text at the beginning of the prompt that instructs the model that generates the answer.
 		model_prompt_preamble?: string
 
 		// The model version used to generate the answer.
 		model_version?: string
 
-		// The number of top results to generate the answer from. Up to
-		// 10.
+		// The number of top results to generate the answer from. Up to 10.
 		result_count?: number
 	})
 }

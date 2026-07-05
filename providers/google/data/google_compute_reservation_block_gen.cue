@@ -1,11 +1,10 @@
 package data
 
-#google_compute_reservation_block: {
+google_compute_reservation_block: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_reservation_block")
 	close({
-		// The number of resources that are allocated in this reservation
-		// block.
+		// The number of resources that are allocated in this reservation block.
 		block_count?: number
 
 		// Creation timestamp in RFC3339 text format.
@@ -19,12 +18,10 @@ package data
 		})]
 		id?: string
 
-		// The number of instances that are currently in use on this
-		// reservation block.
+		// The number of instances that are currently in use on this reservation block.
 		in_use_count?: number
 
-		// Type of the resource. Always compute#reservationBlock for
-		// reservation blocks.
+		// Type of the resource. Always compute#reservationBlock for reservation blocks.
 		kind?: string
 
 		// The name of the reservation block.
@@ -53,12 +50,10 @@ package data
 			subblock_infra_maintenance_pending_count?: number
 		})]
 
-		// The number of reservation subBlocks associated with this
-		// reservation block.
+		// The number of reservation subBlocks associated with this reservation block.
 		reservation_sub_block_count?: number
 
-		// The number of in-use reservation subBlocks associated with this
-		// reservation block.
+		// The number of in-use reservation subBlocks associated with this reservation block.
 		reservation_sub_block_in_use_count?: number
 
 		// The unique identifier for the resource.

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_compute_packet_mirroring: {
+google_compute_packet_mirroring: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_packet_mirroring")
 	close({
@@ -12,26 +12,21 @@ import "list"
 		network!: matchN(1, [#network, list.MaxItems(1) & [_, ...] & [...#network]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// A human-readable description of the rule.
 		description?: string
 
-		// Indicates whether or not this packet mirroring takes effect. If
-		// set to FALSE, this packet mirroring
-		// policy will not be enforced on the network. The default is
-		// TRUE. Possible values: ["TRUE", "FALSE"]
+		// Indicates whether or not this packet mirroring takes effect. If set to FALSE,
+		// this packet mirroring
+		// policy will not be enforced on the network. The default is TRUE. Possible
+		// values: ["TRUE", "FALSE"]
 		enable?: string
 		id?:     string
 
@@ -42,11 +37,11 @@ import "list"
 		// used to break ties in the case of two rules that apply to
 		// the same instances.
 		priority?: number
-		project?:  string
 
 		// The Region in which the created address should reside.
 		// If it is not provided, the provider region is used.
-		region?: string
+		region?:  string
+		project?: string
 	})
 
 	#collector_ilb: close({
@@ -55,14 +50,12 @@ import "list"
 	})
 
 	#filter: close({
-		// IP CIDR ranges that apply as a filter on the source (ingress)
-		// or
-		// destination (egress) IP in the IP header. Only IPv4 is
-		// supported.
+		// IP CIDR ranges that apply as a filter on the source (ingress) or
+		// destination (egress) IP in the IP header. Only IPv4 is supported.
 		cidr_ranges?: [...string]
 
-		// Direction of traffic to mirror. Default value: "BOTH" Possible
-		// values: ["INGRESS", "EGRESS", "BOTH"]
+		// Direction of traffic to mirror. Default value: "BOTH" Possible values:
+		// ["INGRESS", "EGRESS", "BOTH"]
 		direction?: string
 
 		// Possible IP protocols including tcp, udp, icmp and esp
@@ -78,8 +71,7 @@ import "list"
 	})
 
 	#network: close({
-		// The full self_link URL of the network where this rule is
-		// active.
+		// The full self_link URL of the network where this rule is active.
 		url!: string
 	})
 

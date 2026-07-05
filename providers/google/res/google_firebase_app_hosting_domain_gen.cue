@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_firebase_app_hosting_domain: {
+google_firebase_app_hosting_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_hosting_domain")
 	close({
@@ -64,16 +64,11 @@ import "list"
 		// Time at which the domain was deleted.
 		delete_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -82,8 +77,7 @@ import "list"
 		domain_id!: string
 
 		// Server-computed checksum based on other values; may be sent
-		// on update or delete to ensure operation is done on expected
-		// resource.
+		// on update or delete to ensure operation is done on expected resource.
 		etag?: string
 		id?:   string
 
@@ -92,13 +86,12 @@ import "list"
 
 		// Identifier. The resource name of the domain, e.g.
 		// 'projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}'
-		name?:    string
-		project?: string
+		name?: string
 
-		// Time at which a soft-deleted domain will be purged, rendering
-		// in
+		// Time at which a soft-deleted domain will be purged, rendering in
 		// permanently deleted.
 		purge_time?: string
+		project?:    string
 
 		// System-assigned, unique identifier.
 		uid?: string
@@ -118,15 +111,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/serve/$defs/redirect": close({
-		// The status code to use in a redirect response. Must be a valid
-		// HTTP 3XX
+		// The status code to use in a redirect response. Must be a valid HTTP 3XX
 		// status code. Defaults to 302 if not present.
 		status?: string
 
-		// The URI of the redirect's intended destination. This URI will
-		// be
-		// prepended to the original request path. URI without a scheme
-		// are
+		// The URI of the redirect's intended destination. This URI will be
+		// prepended to the original request path. URI without a scheme are
 		// assumed to be HTTPS.
 		uri!: string
 	})

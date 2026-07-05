@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_discovery_engine_acl_config: {
+google_discovery_engine_acl_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_discovery_engine_acl_config")
 	close({
@@ -10,13 +10,11 @@ import "list"
 		timeouts?: #timeouts
 		id?:       string
 
-		// The geographic location where the data store should reside. The
-		// value can
+		// The geographic location where the data store should reside. The value can
 		// only be one of "global", "us" and "eu".
 		location!: string
 
-		// The unique full resource name of the aclConfig. Values are of
-		// the format
+		// The unique full resource name of the aclConfig. Values are of the format
 		// 'projects/{project}/locations/{location}/aclConfig'.
 		name?:    string
 		project?: string
@@ -25,8 +23,7 @@ import "list"
 	#idp_config: close({
 		external_idp_config?: matchN(1, [_#defs."/$defs/idp_config/$defs/external_idp_config", list.MaxItems(1) & [..._#defs."/$defs/idp_config/$defs/external_idp_config"]])
 
-		// Identity provider type. Possible values: ["GSUITE",
-		// "THIRD_PARTY"]
+		// Identity provider type. Possible values: ["GSUITE", "THIRD_PARTY"]
 		idp_type?: string
 	})
 

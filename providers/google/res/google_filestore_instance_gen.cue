@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_filestore_instance: {
+google_filestore_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_filestore_instance")
 	close({
@@ -16,16 +16,11 @@ import "list"
 		// Creation timestamp in RFC3339 text format.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -38,15 +33,13 @@ import "list"
 		// A description of the instance.
 		description?: string
 
-		// The desired_replica_state field controls the state of a
-		// replica. Terraform will attempt to make the actual state of
-		// the replica match the desired state. Default value: "READY"
-		// Possible values: ["PAUSED", "READY"]
+		// The desired_replica_state field controls the state of a replica. Terraform
+		// will attempt to make the actual state of the replica match the desired
+		// state. Default value: "READY" Possible values: ["PAUSED", "READY"]
 		desired_replica_state?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// Output only fields for replication configuration.
@@ -71,27 +64,23 @@ import "list"
 		// Resource labels to represent user-provided metadata.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// The name of the location of the instance. This can be a region
-		// for ENTERPRISE tier instances.
+		// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 		location?: string
 
 		// The resource name of the instance.
-		name!:    string
-		project?: string
+		name!: string
 
 		// Either NFSv3, for using NFS version 3 as file sharing protocol,
 		// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
-		// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and
-		// ENTERPRISE.
-		// The default is NFSv3. Default value: "NFS_V3" Possible values:
-		// ["NFS_V3", "NFS_V4_1"]
+		// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+		// The default is NFSv3. Default value: "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
 		protocol?: string
+		project?:  string
 
 		// A map of resource manager tags. Resource manager tag keys
 		// and values have the same definition as resource manager
@@ -109,8 +98,8 @@ import "list"
 		terraform_labels?: [string]: string
 
 		// The service tier of the instance.
-		// Possible values include: STANDARD, PREMIUM, BASIC_HDD,
-		// BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
+		// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD,
+		// HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 		tier!: string
 	})
 
@@ -152,17 +141,15 @@ import "list"
 
 		// The network connect mode of the Filestore instance.
 		// If not provided, the connect mode defaults to
-		// DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible
-		// values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS",
-		// "PRIVATE_SERVICE_CONNECT"]
+		// DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values:
+		// ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS", "PRIVATE_SERVICE_CONNECT"]
 		connect_mode?: string
 
 		// A list of IPv4 or IPv6 addresses.
 		ip_addresses?: [...string]
 
 		// IP versions for which the instance has
-		// IP addresses assigned. Possible values:
-		// ["ADDRESS_MODE_UNSPECIFIED", "MODE_IPV4", "MODE_IPV6"]
+		// IP addresses assigned. Possible values: ["ADDRESS_MODE_UNSPECIFIED", "MODE_IPV4", "MODE_IPV6"]
 		modes!: [...string]
 
 		// The name of the GCE VPC network to which the
@@ -189,74 +176,55 @@ import "list"
 		// The LDAP domain name in the format of 'my-domain.com'.
 		domain!: string
 
-		// The groups Organizational Unit (OU) is optional. This parameter
-		// is a hint
-		// to allow faster lookup in the LDAP namespace. In case that this
-		// parameter
-		// is not provided, Filestore instance will query the whole LDAP
-		// namespace.
+		// The groups Organizational Unit (OU) is optional. This parameter is a hint
+		// to allow faster lookup in the LDAP namespace. In case that this parameter
+		// is not provided, Filestore instance will query the whole LDAP namespace.
 		groups_ou?: string
 
-		// The servers names are used for specifying the LDAP servers
-		// names.
+		// The servers names are used for specifying the LDAP servers names.
 		// The LDAP servers names can come with two formats:
-		// 1. DNS name, for example: 'ldap.example1.com',
-		// 'ldap.example2.com'.
+		// 1. DNS name, for example: 'ldap.example1.com', 'ldap.example2.com'.
 		// 2. IP address, for example: '10.0.0.1', '10.0.0.2', '10.0.0.3'.
-		// All servers names must be in the same format: either all DNS
-		// names or all
+		// All servers names must be in the same format: either all DNS names or all
 		// IP addresses.
 		servers!: [...string]
 
-		// The users Organizational Unit (OU) is optional. This parameter
-		// is a hint
-		// to allow faster lookup in the LDAP namespace. In case that this
-		// parameter
-		// is not provided, Filestore instance will query the whole LDAP
-		// namespace.
+		// The users Organizational Unit (OU) is optional. This parameter is a hint
+		// to allow faster lookup in the LDAP namespace. In case that this parameter
+		// is not provided, Filestore instance will query the whole LDAP namespace.
 		users_ou?: string
 	})
 
 	_#defs: "/$defs/file_shares/$defs/nfs_export_options": close({
-		// Either READ_ONLY, for allowing only read requests on the
-		// exported directory,
-		// or READ_WRITE, for allowing both read and write requests. The
-		// default is READ_WRITE. Default value: "READ_WRITE" Possible
-		// values: ["READ_ONLY", "READ_WRITE"]
+		// Either READ_ONLY, for allowing only read requests on the exported directory,
+		// or READ_WRITE, for allowing both read and write requests. The default is
+		// READ_WRITE. Default value: "READ_WRITE" Possible values: ["READ_ONLY",
+		// "READ_WRITE"]
 		access_mode?: string
 
-		// An integer representing the anonymous group id with a default
-		// value of 65534.
-		// Anon_gid may only be set with squashMode of ROOT_SQUASH. An
-		// error will be returned
+		// An integer representing the anonymous group id with a default value of 65534.
+		// Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
 		// if this field is specified for other squashMode settings.
 		anon_gid?: number
 
-		// An integer representing the anonymous user id with a default
-		// value of 65534.
-		// Anon_uid may only be set with squashMode of ROOT_SQUASH. An
-		// error will be returned
+		// An integer representing the anonymous user id with a default value of 65534.
+		// Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
 		// if this field is specified for other squashMode settings.
 		anon_uid?: number
 
-		// List of either IPv4 addresses, or ranges in CIDR notation which
-		// may mount the file share.
+		// List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
 		// Overlapping IP ranges are not allowed, both within and across
 		// NfsExportOptions. An error will be returned.
-		// The limit is 64 IP ranges/addresses for each FileShareConfig
-		// among all NfsExportOptions.
+		// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 		ip_ranges?: [...string]
 
 		// The source VPC network for 'ip_ranges'.
-		// Required for instances using Private Service Connect, optional
-		// otherwise.
+		// Required for instances using Private Service Connect, optional otherwise.
 		network?: string
 
-		// Either NO_ROOT_SQUASH, for allowing root access on the exported
-		// directory, or ROOT_SQUASH,
-		// for not allowing root access. The default is NO_ROOT_SQUASH.
-		// Default value: "NO_ROOT_SQUASH" Possible values:
-		// ["NO_ROOT_SQUASH", "ROOT_SQUASH"]
+		// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+		// for not allowing root access. The default is NO_ROOT_SQUASH. Default value:
+		// "NO_ROOT_SQUASH" Possible values: ["NO_ROOT_SQUASH", "ROOT_SQUASH"]
 		squash_mode?: string
 	})
 
@@ -266,12 +234,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/networks/$defs/psc_config": close({
-		// Consumer service project in which the Private Service Connect
-		// endpoint
-		// would be set up. This is optional, and only relevant in case
-		// the network
-		// is a shared VPC. If this is not specified, the endpoint would
-		// be set up
+		// Consumer service project in which the Private Service Connect endpoint
+		// would be set up. This is optional, and only relevant in case the network
+		// is a shared VPC. If this is not specified, the endpoint would be set up
 		// in the VPC host project.
 		endpoint_project?: string
 	})

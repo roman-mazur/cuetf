@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_vertex_ai_endpoint_with_model_garden_deployment: {
+google_vertex_ai_endpoint_with_model_garden_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_endpoint_with_model_garden_deployment")
 	close({
@@ -11,35 +11,26 @@ import "list"
 		model_config?: matchN(1, [#model_config, list.MaxItems(1) & [...#model_config]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Output only. The display name assigned to the model deployed to
-		// the endpoint.
-		// This is not required to delete the resource but is used for
-		// debug logging.
+		// Output only. The display name assigned to the model deployed to the endpoint.
+		// This is not required to delete the resource but is used for debug logging.
 		deployed_model_display_name?: string
 
-		// Output only. The unique numeric ID that Vertex AI assigns to
-		// the model at the time it is deployed to the endpoint.
-		// It is required to undeploy the model from the endpoint during
-		// resource deletion as described in
+		// Output only. The unique numeric ID that Vertex AI assigns to the model at the
+		// time it is deployed to the endpoint.
+		// It is required to undeploy the model from the endpoint during resource deletion as described in
 		// https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints/undeployModel.
 		deployed_model_id?: string
 
-		// Resource ID segment making up resource 'endpoint'. It
-		// identifies the resource within its parent collection as
-		// described in https://google.aip.dev/122.
+		// Resource ID segment making up resource 'endpoint'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		endpoint?: string
 
 		// The Hugging Face model to deploy.
@@ -47,30 +38,26 @@ import "list"
 		hugging_face_model_id?: string
 		id?:                    string
 
-		// Resource ID segment making up resource 'location'. It
-		// identifies the resource within its parent collection as
-		// described in https://google.aip.dev/122.
+		// Resource ID segment making up resource 'location'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
-		project?:  string
 
 		// The Model Garden model to deploy.
 		// Format:
-		// 'publishers/{publisher}/models/{publisher_model}@{version_id}',
-		// or
+		// 'publishers/{publisher}/models/{publisher_model}@{version_id}', or
 		// 'publishers/hf-{hugging-face-author}/models/{hugging-face-model-name}@001'.
 		publisher_model_name?: string
+		project?:              string
 	})
 
 	#deploy_config: close({
 		dedicated_resources?: matchN(1, [_#defs."/$defs/deploy_config/$defs/dedicated_resources", list.MaxItems(1) & [..._#defs."/$defs/deploy_config/$defs/dedicated_resources"]])
 
-		// If true, enable the QMT fast tryout feature for this model if
-		// possible.
+		// If true, enable the QMT fast tryout feature for this model if possible.
 		fast_tryout_enabled?: bool
 
 		// System labels for Model Garden deployments.
-		// These labels are managed by Google and for tracking purposes
-		// only.
+		// These labels are managed by Google and for tracking purposes only.
 		system_labels?: [string]: string
 	})
 
@@ -78,14 +65,11 @@ import "list"
 		private_service_connect_config?: matchN(1, [_#defs."/$defs/endpoint_config/$defs/private_service_connect_config", list.MaxItems(1) & [..._#defs."/$defs/endpoint_config/$defs/private_service_connect_config"]])
 
 		// If true, the endpoint will be exposed through a dedicated
-		// DNS [Endpoint.dedicated_endpoint_dns]. Your request to the
-		// dedicated DNS
+		// DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS
 		// will be isolated from other users' traffic and will have better
-		// performance and reliability. Note: Once you enabled dedicated
-		// endpoint,
+		// performance and reliability. Note: Once you enabled dedicated endpoint,
 		// you won't be able to send request to the shared DNS
-		// {region}-aiplatform.googleapis.com. The limitations will be
-		// removed soon.
+		// {region}-aiplatform.googleapis.com. The limitations will be removed soon.
 		dedicated_endpoint_enabled?: bool
 
 		// The user-specified display name of the endpoint. If not set, a
@@ -104,10 +88,8 @@ import "list"
 		// artifacts of gated models.
 		hugging_face_access_token?: string
 
-		// If true, the model will deploy with a cached version instead of
-		// directly
-		// downloading the model artifacts from Hugging Face. This is
-		// suitable for
+		// If true, the model will deploy with a cached version instead of directly
+		// downloading the model artifacts from Hugging Face. This is suitable for
 		// VPC-SC users with limited internet access.
 		hugging_face_cache_enabled?: bool
 
@@ -125,44 +107,31 @@ import "list"
 		autoscaling_metric_specs?: matchN(1, [_#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/autoscaling_metric_specs", [..._#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/autoscaling_metric_specs"]])
 		machine_spec!: matchN(1, [_#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec"]])
 
-		// The maximum number of replicas that may be deployed on when the
-		// traffic
-		// against it increases. If the requested value is too large, the
-		// deployment
-		// will error, but if deployment succeeds then the ability to
-		// scale to that
-		// many replicas is guaranteed (barring service outages). If
-		// traffic increases
-		// beyond what its replicas at maximum may handle, a portion of
-		// the traffic
+		// The maximum number of replicas that may be deployed on when the traffic
+		// against it increases. If the requested value is too large, the deployment
+		// will error, but if deployment succeeds then the ability to scale to that
+		// many replicas is guaranteed (barring service outages). If traffic increases
+		// beyond what its replicas at maximum may handle, a portion of the traffic
 		// will be dropped. If this value is not provided, will use
 		// min_replica_count as the default value.
 		//
-		// The value of this field impacts the charge against Vertex CPU
-		// and GPU
-		// quotas. Specifically, you will be charged for
-		// (max_replica_count *
-		// number of cores in the selected machine type) and
-		// (max_replica_count *
+		// The value of this field impacts the charge against Vertex CPU and GPU
+		// quotas. Specifically, you will be charged for (max_replica_count *
+		// number of cores in the selected machine type) and (max_replica_count *
 		// number of GPUs per replica in the selected machine type).
 		max_replica_count?: number
 
-		// The minimum number of machine replicas that will be always
-		// deployed on.
+		// The minimum number of machine replicas that will be always deployed on.
 		// This value must be greater than or equal to 1.
 		//
-		// If traffic increases, it may dynamically be deployed onto more
-		// replicas,
-		// and as traffic decreases, some of these extra replicas may be
-		// freed.
+		// If traffic increases, it may dynamically be deployed onto more replicas,
+		// and as traffic decreases, some of these extra replicas may be freed.
 		min_replica_count!: number
 
-		// Number of required available replicas for the deployment to
-		// succeed.
+		// Number of required available replicas for the deployment to succeed.
 		// This field is only needed when partial deployment/mutation is
 		// desired. If set, the deploy/mutate operation will succeed once
-		// available_replica_count reaches required_replica_count, and the
-		// rest of
+		// available_replica_count reaches required_replica_count, and the rest of
 		// the replicas will be retried. If not set, the default
 		// required_replica_count will be min_replica_count.
 		required_replica_count?: number
@@ -177,17 +146,13 @@ import "list"
 		// Supported metrics:
 		//
 		// * For Online Prediction:
-		// *
-		// 'aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle'
+		// * 'aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle'
 		// * 'aiplatform.googleapis.com/prediction/online/cpu/utilization'
 		metric_name!: string
 
-		// The target resource utilization in percentage (1% - 100%) for
-		// the given
-		// metric; once the real usage deviates from the target by a
-		// certain
-		// percentage, the machine replicas change. The default value is
-		// 60
+		// The target resource utilization in percentage (1% - 100%) for the given
+		// metric; once the real usage deviates from the target by a certain
+		// percentage, the machine replicas change. The default value is 60
 		// (representing 60%) if not provided.
 		target?: number
 	})
@@ -234,19 +199,15 @@ import "list"
 		// The number of nodes per replica for multihost GPU deployments.
 		multihost_gpu_node_count?: number
 
-		// The topology of the TPUs. Corresponds to the TPU topologies
-		// available from
+		// The topology of the TPUs. Corresponds to the TPU topologies available from
 		// GKE. (Example: tpu_topology: "2x2x1").
 		tpu_topology?: string
 	})
 
 	_#defs: "/$defs/deploy_config/$defs/dedicated_resources/$defs/machine_spec/$defs/reservation_affinity": close({
-		// Corresponds to the label key of a reservation resource. To
-		// target a
-		// SPECIFIC_RESERVATION by name, use
-		// 'compute.googleapis.com/reservation-name'
-		// as the key and specify the name of your reservation as its
-		// value.
+		// Corresponds to the label key of a reservation resource. To target a
+		// SPECIFIC_RESERVATION by name, use 'compute.googleapis.com/reservation-name'
+		// as the key and specify the name of your reservation as its value.
 		key?: string
 
 		// Specifies the reservation affinity type.
@@ -257,8 +218,7 @@ import "list"
 		// SPECIFIC_RESERVATION
 		reservation_affinity_type!: string
 
-		// Corresponds to the label values of a reservation resource. This
-		// must be the
+		// Corresponds to the label values of a reservation resource. This must be the
 		// full resource name of the reservation or reservation block.
 		values?: [...string]
 	})
@@ -266,32 +226,25 @@ import "list"
 	_#defs: "/$defs/endpoint_config/$defs/private_service_connect_config": close({
 		psc_automation_configs?: matchN(1, [_#defs."/$defs/endpoint_config/$defs/private_service_connect_config/$defs/psc_automation_configs", list.MaxItems(1) & [..._#defs."/$defs/endpoint_config/$defs/private_service_connect_config/$defs/psc_automation_configs"]])
 
-		// Required. If true, expose the IndexEndpoint via private service
-		// connect.
+		// Required. If true, expose the IndexEndpoint via private service connect.
 		enable_private_service_connect!: bool
 
-		// A list of Projects from which the forwarding rule will target
-		// the service attachment.
+		// A list of Projects from which the forwarding rule will target the service attachment.
 		project_allowlist?: [...string]
 
-		// Output only. The name of the generated service attachment
-		// resource.
-		// This is only populated if the endpoint is deployed with
-		// PrivateServiceConnect.
+		// Output only. The name of the generated service attachment resource.
+		// This is only populated if the endpoint is deployed with PrivateServiceConnect.
 		service_attachment?: string
 	})
 
 	_#defs: "/$defs/endpoint_config/$defs/private_service_connect_config/$defs/psc_automation_configs": close({
-		// Output only. Error message if the PSC service automation
-		// failed.
+		// Output only. Error message if the PSC service automation failed.
 		error_message?: string
 
-		// Output only. Forwarding rule created by the PSC service
-		// automation.
+		// Output only. Forwarding rule created by the PSC service automation.
 		forwarding_rule?: string
 
-		// Output only. IP address rule created by the PSC service
-		// automation.
+		// Output only. IP address rule created by the PSC service automation.
 		ip_address?: string
 
 		// Required. The full name of the Google Compute Engine network.
@@ -313,30 +266,23 @@ import "list"
 		ports?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/ports", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/ports"]])
 		startup_probe?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe"]])
 
-		// Specifies arguments for the command that runs when the
-		// container starts.
+		// Specifies arguments for the command that runs when the container starts.
 		// This overrides the container's
-		// ['CMD'](https://docs.docker.com/engine/reference/builder/#cmd).
-		// Specify
-		// this field as an array of executable and arguments, similar to
-		// a Docker
+		// ['CMD'](https://docs.docker.com/engine/reference/builder/#cmd). Specify
+		// this field as an array of executable and arguments, similar to a Docker
 		// 'CMD''s "default parameters" form.
 		//
 		// If you don't specify this field but do specify the
 		// command field, then the command from the
 		// 'command' field runs without any additional arguments. See the
 		// [Kubernetes documentation about how the
-		// 'command' and 'args' fields interact with a container's
-		// 'ENTRYPOINT' and
+		// 'command' and 'args' fields interact with a container's 'ENTRYPOINT' and
 		// 'CMD'](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
 		//
-		// If you don't specify this field and don't specify the 'command'
-		// field,
+		// If you don't specify this field and don't specify the 'command' field,
 		// then the container's
-		// ['ENTRYPOINT'](https://docs.docker.com/engine/reference/builder/#cmd)
-		// and
-		// 'CMD' determine what runs based on their default behavior. See
-		// the Docker
+		// ['ENTRYPOINT'](https://docs.docker.com/engine/reference/builder/#cmd) and
+		// 'CMD' determine what runs based on their default behavior. See the Docker
 		// documentation about [how 'CMD' and 'ENTRYPOINT'
 		// interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
 		//
@@ -344,72 +290,50 @@ import "list"
 		// set by Vertex
 		// AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
 		// and environment variables set in the env field.
-		// You cannot reference environment variables set in the Docker
-		// image. In
-		// order for environment variables to be expanded, reference them
-		// by using the
+		// You cannot reference environment variables set in the Docker image. In
+		// order for environment variables to be expanded, reference them by using the
 		// following syntax:$(VARIABLE_NAME)
-		// Note that this differs from Bash variable expansion, which does
-		// not use
-		// parentheses. If a variable cannot be resolved, the reference in
-		// the input
-		// string is used unchanged. To avoid variable expansion, you can
-		// escape this
+		// Note that this differs from Bash variable expansion, which does not use
+		// parentheses. If a variable cannot be resolved, the reference in the input
+		// string is used unchanged. To avoid variable expansion, you can escape this
 		// syntax with '$$'; for example:$$(VARIABLE_NAME)
-		// This field corresponds to the 'args' field of the Kubernetes
-		// Containers
+		// This field corresponds to the 'args' field of the Kubernetes Containers
 		// [v1 core
 		// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
 		args?: [...string]
 
-		// Specifies the command that runs when the container starts. This
-		// overrides
+		// Specifies the command that runs when the container starts. This overrides
 		// the container's
 		// [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint).
-		// Specify this field as an array of executable and arguments,
-		// similar to a
+		// Specify this field as an array of executable and arguments, similar to a
 		// Docker 'ENTRYPOINT''s "exec" form, not its "shell" form.
 		//
-		// If you do not specify this field, then the container's
-		// 'ENTRYPOINT' runs,
+		// If you do not specify this field, then the container's 'ENTRYPOINT' runs,
 		// in conjunction with the args field or the
-		// container's
-		// ['CMD'](https://docs.docker.com/engine/reference/builder/#cmd),
-		// if either exists. If this field is not specified and the
-		// container does not
-		// have an 'ENTRYPOINT', then refer to the Docker documentation
-		// about [how
+		// container's ['CMD'](https://docs.docker.com/engine/reference/builder/#cmd),
+		// if either exists. If this field is not specified and the container does not
+		// have an 'ENTRYPOINT', then refer to the Docker documentation about [how
 		// 'CMD' and 'ENTRYPOINT'
 		// interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
 		//
-		// If you specify this field, then you can also specify the 'args'
-		// field to
-		// provide additional arguments for this command. However, if you
-		// specify this
+		// If you specify this field, then you can also specify the 'args' field to
+		// provide additional arguments for this command. However, if you specify this
 		// field, then the container's 'CMD' is ignored. See the
 		// [Kubernetes documentation about how the
-		// 'command' and 'args' fields interact with a container's
-		// 'ENTRYPOINT' and
+		// 'command' and 'args' fields interact with a container's 'ENTRYPOINT' and
 		// 'CMD'](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
 		//
-		// In this field, you can reference [environment variables set by
-		// Vertex
+		// In this field, you can reference [environment variables set by Vertex
 		// AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
 		// and environment variables set in the env field.
-		// You cannot reference environment variables set in the Docker
-		// image. In
-		// order for environment variables to be expanded, reference them
-		// by using the
+		// You cannot reference environment variables set in the Docker image. In
+		// order for environment variables to be expanded, reference them by using the
 		// following syntax:$(VARIABLE_NAME)
-		// Note that this differs from Bash variable expansion, which does
-		// not use
-		// parentheses. If a variable cannot be resolved, the reference in
-		// the input
-		// string is used unchanged. To avoid variable expansion, you can
-		// escape this
+		// Note that this differs from Bash variable expansion, which does not use
+		// parentheses. If a variable cannot be resolved, the reference in the input
+		// string is used unchanged. To avoid variable expansion, you can escape this
 		// syntax with '$$'; for example:$$(VARIABLE_NAME)
-		// This field corresponds to the 'command' field of the Kubernetes
-		// Containers
+		// This field corresponds to the 'command' field of the Kubernetes Containers
 		// [v1 core
 		// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
 		command?: [...string]
@@ -419,93 +343,69 @@ import "list"
 		deployment_timeout?: string
 
 		// HTTP path on the container to send health checks to. Vertex AI
-		// intermittently sends GET requests to this path on the
-		// container's IP
-		// address and port to check that the container is healthy. Read
-		// more about
+		// intermittently sends GET requests to this path on the container's IP
+		// address and port to check that the container is healthy. Read more about
 		// [health
 		// checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health).
 		//
 		// For example, if you set this field to '/bar', then Vertex AI
-		// intermittently sends a GET request to the '/bar' path on the
-		// port of your
-		// container specified by the first value of this
-		// 'ModelContainerSpec''s
+		// intermittently sends a GET request to the '/bar' path on the port of your
+		// container specified by the first value of this 'ModelContainerSpec''s
 		// ports field.
 		//
-		// If you don't specify this field, it defaults to the following
-		// value when
-		// you deploy this Model to an
-		// Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+		// If you don't specify this field, it defaults to the following value when
+		// you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
 		// The placeholders in this value are replaced as follows:
 		//
 		// * ENDPOINT: The last segment (following 'endpoints/')of the
-		// Endpoint.name][] field of the Endpoint where this Model has
-		// been
-		// deployed. (Vertex AI makes this value available to your
-		// container code
+		// Endpoint.name][] field of the Endpoint where this Model has been
+		// deployed. (Vertex AI makes this value available to your container code
 		// as the ['AIP_ENDPOINT_ID' environment
 		// variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
 		//
 		// * DEPLOYED_MODEL: DeployedModel.id of the 'DeployedModel'.
-		// (Vertex AI makes this value available to your container code as
-		// the
+		// (Vertex AI makes this value available to your container code as the
 		// ['AIP_DEPLOYED_MODEL_ID' environment
 		// variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
 		health_route?: string
 
-		// URI of the Docker image to be used as the custom container for
-		// serving
-		// predictions. This URI must identify an image in Artifact
-		// Registry or
+		// URI of the Docker image to be used as the custom container for serving
+		// predictions. This URI must identify an image in Artifact Registry or
 		// Container Registry. Learn more about the [container publishing
 		// requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#publishing),
-		// including permissions requirements for the Vertex AI Service
-		// Agent.
+		// including permissions requirements for the Vertex AI Service Agent.
 		//
-		// The container image is ingested upon ModelService.UploadModel,
-		// stored
+		// The container image is ingested upon ModelService.UploadModel, stored
 		// internally, and this original path is afterwards not used.
 		//
-		// To learn about the requirements for the Docker image itself,
-		// see
+		// To learn about the requirements for the Docker image itself, see
 		// [Custom container
 		// requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#).
 		//
-		// You can use the URI to one of Vertex AI's [pre-built container
-		// images for
+		// You can use the URI to one of Vertex AI's [pre-built container images for
 		// prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers)
 		// in this field.
 		image_uri!: string
 
-		// HTTP path on the container to send prediction requests to.
-		// Vertex AI
+		// HTTP path on the container to send prediction requests to. Vertex AI
 		// forwards requests sent using
 		// projects.locations.endpoints.predict to this
-		// path on the container's IP address and port. Vertex AI then
-		// returns the
+		// path on the container's IP address and port. Vertex AI then returns the
 		// container's response in the API response.
 		//
-		// For example, if you set this field to '/foo', then when Vertex
-		// AI
-		// receives a prediction request, it forwards the request body in
-		// a POST
-		// request to the '/foo' path on the port of your container
-		// specified by the
+		// For example, if you set this field to '/foo', then when Vertex AI
+		// receives a prediction request, it forwards the request body in a POST
+		// request to the '/foo' path on the port of your container specified by the
 		// first value of this 'ModelContainerSpec''s
 		// ports field.
 		//
-		// If you don't specify this field, it defaults to the following
-		// value when
-		// you deploy this Model to an
-		// Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+		// If you don't specify this field, it defaults to the following value when
+		// you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
 		// The placeholders in this value are replaced as follows:
 		//
 		// * ENDPOINT: The last segment (following 'endpoints/')of the
-		// Endpoint.name][] field of the Endpoint where this Model has
-		// been
-		// deployed. (Vertex AI makes this value available to your
-		// container code
+		// Endpoint.name][] field of the Endpoint where this Model has been
+		// deployed. (Vertex AI makes this value available to your container code
 		// as the ['AIP_ENDPOINT_ID' environment
 		// variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
 		//
@@ -515,8 +415,7 @@ import "list"
 		// variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
 		predict_route?: string
 
-		// The amount of the VM memory to reserve as the shared memory for
-		// the model
+		// The amount of the VM memory to reserve as the shared memory for the model
 		// in megabytes.
 		shared_memory_size_mb?: string
 	})
@@ -526,16 +425,11 @@ import "list"
 		name!: string
 
 		// Variables that reference a $(VAR_NAME) are expanded
-		// using the previous defined environment variables in the
-		// container and
-		// any service environment variables. If a variable cannot be
-		// resolved,
-		// the reference in the input string will be unchanged. The
-		// $(VAR_NAME)
-		// syntax can be escaped with a double $$, ie: $$(VAR_NAME).
-		// Escaped
-		// references will never be expanded, regardless of whether the
-		// variable
+		// using the previous defined environment variables in the container and
+		// any service environment variables. If a variable cannot be resolved,
+		// the reference in the input string will be unchanged. The $(VAR_NAME)
+		// syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
+		// references will never be expanded, regardless of whether the variable
 		// exists or not.
 		value!: string
 	})
@@ -552,36 +446,31 @@ import "list"
 		http_get?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get"]])
 		tcp_socket?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/tcp_socket"]])
 
-		// Number of consecutive failures before the probe is considered
-		// failed.
+		// Number of consecutive failures before the probe is considered failed.
 		// Defaults to 3. Minimum value is 1.
 		//
 		// Maps to Kubernetes probe argument 'failureThreshold'.
 		failure_threshold?: number
 
-		// Number of seconds to wait before starting the probe. Defaults
-		// to 0.
+		// Number of seconds to wait before starting the probe. Defaults to 0.
 		// Minimum value is 0.
 		//
 		// Maps to Kubernetes probe argument 'initialDelaySeconds'.
 		initial_delay_seconds?: number
 
-		// How often (in seconds) to perform the probe. Default to 10
-		// seconds.
+		// How often (in seconds) to perform the probe. Default to 10 seconds.
 		// Minimum value is 1. Must be less than timeout_seconds.
 		//
 		// Maps to Kubernetes probe argument 'periodSeconds'.
 		period_seconds?: number
 
-		// Number of consecutive successes before the probe is considered
-		// successful.
+		// Number of consecutive successes before the probe is considered successful.
 		// Defaults to 1. Minimum value is 1.
 		//
 		// Maps to Kubernetes probe argument 'successThreshold'.
 		success_threshold?: number
 
-		// Number of seconds after which the probe times out. Defaults to
-		// 1 second.
+		// Number of seconds after which the probe times out. Defaults to 1 second.
 		// Minimum value is 1. Must be greater or equal to period_seconds.
 		//
 		// Maps to Kubernetes probe argument 'timeoutSeconds'.
@@ -589,38 +478,31 @@ import "list"
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/exec": close({
-		// Command is the command line to execute inside the container,
-		// the working
-		// directory for the command is root ('/') in the container's
-		// filesystem.
+		// Command is the command line to execute inside the container, the working
+		// directory for the command is root ('/') in the container's filesystem.
 		// The command is simply exec'd, it is not run inside a shell, so
-		// traditional shell instructions ('|', etc) won't work. To use a
-		// shell, you
-		// need to explicitly call out to that shell. Exit status of 0 is
-		// treated as
+		// traditional shell instructions ('|', etc) won't work. To use a shell, you
+		// need to explicitly call out to that shell. Exit status of 0 is treated as
 		// live/healthy and non-zero is unhealthy.
 		command?: [...string]
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/grpc": close({
-		// Port number of the gRPC service. Number must be in the range 1
-		// to 65535.
+		// Port number of the gRPC service. Number must be in the range 1 to 65535.
 		port?: number
 
 		// Service is the name of the service to place in the gRPC
 		// HealthCheckRequest. See
 		// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
 		//
-		// If this is not specified, the default behavior is defined by
-		// gRPC.
+		// If this is not specified, the default behavior is defined by gRPC.
 		service?: string
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get": close({
 		http_headers?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get/$defs/http_headers", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get/$defs/http_headers"]])
 
-		// Host name to connect to, defaults to the model serving
-		// container's IP.
+		// Host name to connect to, defaults to the model serving container's IP.
 		// You probably want to set "Host" in httpHeaders instead.
 		host?: string
 
@@ -638,8 +520,7 @@ import "list"
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/http_get/$defs/http_headers": close({
 		// The header field name.
-		// This will be canonicalized upon output, so case-variant names
-		// will be
+		// This will be canonicalized upon output, so case-variant names will be
 		// understood as the same header.
 		name?: string
 
@@ -648,8 +529,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/health_probe/$defs/tcp_socket": close({
-		// Optional: Host name to connect to, defaults to the model
-		// serving
+		// Optional: Host name to connect to, defaults to the model serving
 		// container's IP.
 		host?: string
 
@@ -664,36 +544,31 @@ import "list"
 		http_get?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get"]])
 		tcp_socket?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/tcp_socket"]])
 
-		// Number of consecutive failures before the probe is considered
-		// failed.
+		// Number of consecutive failures before the probe is considered failed.
 		// Defaults to 3. Minimum value is 1.
 		//
 		// Maps to Kubernetes probe argument 'failureThreshold'.
 		failure_threshold?: number
 
-		// Number of seconds to wait before starting the probe. Defaults
-		// to 0.
+		// Number of seconds to wait before starting the probe. Defaults to 0.
 		// Minimum value is 0.
 		//
 		// Maps to Kubernetes probe argument 'initialDelaySeconds'.
 		initial_delay_seconds?: number
 
-		// How often (in seconds) to perform the probe. Default to 10
-		// seconds.
+		// How often (in seconds) to perform the probe. Default to 10 seconds.
 		// Minimum value is 1. Must be less than timeout_seconds.
 		//
 		// Maps to Kubernetes probe argument 'periodSeconds'.
 		period_seconds?: number
 
-		// Number of consecutive successes before the probe is considered
-		// successful.
+		// Number of consecutive successes before the probe is considered successful.
 		// Defaults to 1. Minimum value is 1.
 		//
 		// Maps to Kubernetes probe argument 'successThreshold'.
 		success_threshold?: number
 
-		// Number of seconds after which the probe times out. Defaults to
-		// 1 second.
+		// Number of seconds after which the probe times out. Defaults to 1 second.
 		// Minimum value is 1. Must be greater or equal to period_seconds.
 		//
 		// Maps to Kubernetes probe argument 'timeoutSeconds'.
@@ -701,38 +576,31 @@ import "list"
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/exec": close({
-		// Command is the command line to execute inside the container,
-		// the working
-		// directory for the command is root ('/') in the container's
-		// filesystem.
+		// Command is the command line to execute inside the container, the working
+		// directory for the command is root ('/') in the container's filesystem.
 		// The command is simply exec'd, it is not run inside a shell, so
-		// traditional shell instructions ('|', etc) won't work. To use a
-		// shell, you
-		// need to explicitly call out to that shell. Exit status of 0 is
-		// treated as
+		// traditional shell instructions ('|', etc) won't work. To use a shell, you
+		// need to explicitly call out to that shell. Exit status of 0 is treated as
 		// live/healthy and non-zero is unhealthy.
 		command?: [...string]
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/grpc": close({
-		// Port number of the gRPC service. Number must be in the range 1
-		// to 65535.
+		// Port number of the gRPC service. Number must be in the range 1 to 65535.
 		port?: number
 
 		// Service is the name of the service to place in the gRPC
 		// HealthCheckRequest. See
 		// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
 		//
-		// If this is not specified, the default behavior is defined by
-		// gRPC.
+		// If this is not specified, the default behavior is defined by gRPC.
 		service?: string
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get": close({
 		http_headers?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get/$defs/http_headers", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get/$defs/http_headers"]])
 
-		// Host name to connect to, defaults to the model serving
-		// container's IP.
+		// Host name to connect to, defaults to the model serving container's IP.
 		// You probably want to set "Host" in httpHeaders instead.
 		host?: string
 
@@ -750,8 +618,7 @@ import "list"
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/http_get/$defs/http_headers": close({
 		// The header field name.
-		// This will be canonicalized upon output, so case-variant names
-		// will be
+		// This will be canonicalized upon output, so case-variant names will be
 		// understood as the same header.
 		name?: string
 
@@ -760,8 +627,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/liveness_probe/$defs/tcp_socket": close({
-		// Optional: Host name to connect to, defaults to the model
-		// serving
+		// Optional: Host name to connect to, defaults to the model serving
 		// container's IP.
 		host?: string
 
@@ -782,36 +648,31 @@ import "list"
 		http_get?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get"]])
 		tcp_socket?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/tcp_socket", list.MaxItems(1) & [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/tcp_socket"]])
 
-		// Number of consecutive failures before the probe is considered
-		// failed.
+		// Number of consecutive failures before the probe is considered failed.
 		// Defaults to 3. Minimum value is 1.
 		//
 		// Maps to Kubernetes probe argument 'failureThreshold'.
 		failure_threshold?: number
 
-		// Number of seconds to wait before starting the probe. Defaults
-		// to 0.
+		// Number of seconds to wait before starting the probe. Defaults to 0.
 		// Minimum value is 0.
 		//
 		// Maps to Kubernetes probe argument 'initialDelaySeconds'.
 		initial_delay_seconds?: number
 
-		// How often (in seconds) to perform the probe. Default to 10
-		// seconds.
+		// How often (in seconds) to perform the probe. Default to 10 seconds.
 		// Minimum value is 1. Must be less than timeout_seconds.
 		//
 		// Maps to Kubernetes probe argument 'periodSeconds'.
 		period_seconds?: number
 
-		// Number of consecutive successes before the probe is considered
-		// successful.
+		// Number of consecutive successes before the probe is considered successful.
 		// Defaults to 1. Minimum value is 1.
 		//
 		// Maps to Kubernetes probe argument 'successThreshold'.
 		success_threshold?: number
 
-		// Number of seconds after which the probe times out. Defaults to
-		// 1 second.
+		// Number of seconds after which the probe times out. Defaults to 1 second.
 		// Minimum value is 1. Must be greater or equal to period_seconds.
 		//
 		// Maps to Kubernetes probe argument 'timeoutSeconds'.
@@ -819,38 +680,31 @@ import "list"
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/exec": close({
-		// Command is the command line to execute inside the container,
-		// the working
-		// directory for the command is root ('/') in the container's
-		// filesystem.
+		// Command is the command line to execute inside the container, the working
+		// directory for the command is root ('/') in the container's filesystem.
 		// The command is simply exec'd, it is not run inside a shell, so
-		// traditional shell instructions ('|', etc) won't work. To use a
-		// shell, you
-		// need to explicitly call out to that shell. Exit status of 0 is
-		// treated as
+		// traditional shell instructions ('|', etc) won't work. To use a shell, you
+		// need to explicitly call out to that shell. Exit status of 0 is treated as
 		// live/healthy and non-zero is unhealthy.
 		command?: [...string]
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/grpc": close({
-		// Port number of the gRPC service. Number must be in the range 1
-		// to 65535.
+		// Port number of the gRPC service. Number must be in the range 1 to 65535.
 		port?: number
 
 		// Service is the name of the service to place in the gRPC
 		// HealthCheckRequest. See
 		// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
 		//
-		// If this is not specified, the default behavior is defined by
-		// gRPC.
+		// If this is not specified, the default behavior is defined by gRPC.
 		service?: string
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get": close({
 		http_headers?: matchN(1, [_#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get/$defs/http_headers", [..._#defs."/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get/$defs/http_headers"]])
 
-		// Host name to connect to, defaults to the model serving
-		// container's IP.
+		// Host name to connect to, defaults to the model serving container's IP.
 		// You probably want to set "Host" in httpHeaders instead.
 		host?: string
 
@@ -868,8 +722,7 @@ import "list"
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/http_get/$defs/http_headers": close({
 		// The header field name.
-		// This will be canonicalized upon output, so case-variant names
-		// will be
+		// This will be canonicalized upon output, so case-variant names will be
 		// understood as the same header.
 		name?: string
 
@@ -878,8 +731,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/model_config/$defs/container_spec/$defs/startup_probe/$defs/tcp_socket": close({
-		// Optional: Host name to connect to, defaults to the model
-		// serving
+		// Optional: Host name to connect to, defaults to the model serving
 		// container's IP.
 		host?: string
 

@@ -1,6 +1,6 @@
 package data
 
-#google_artifact_registry_docker_image: {
+google_artifact_registry_docker_image: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_artifact_registry_docker_image")
 	close({
@@ -14,8 +14,7 @@ package data
 		// Calculated size of the image in bytes.
 		image_size_bytes?: string
 
-		// The region of the artifact registry repository. For example,
-		// "us-west1".
+		// The region of the artifact registry repository. For example, "us-west1".
 		location!: string
 
 		// Media type of this image.

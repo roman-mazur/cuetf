@@ -1,6 +1,6 @@
 package res
 
-#google_network_connectivity_hub: {
+google_network_connectivity_hub: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_hub")
 	close({
@@ -9,73 +9,63 @@ package res
 		// Output only. The time the hub was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// An optional description of the hub.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// Whether Private Service Connect transitivity is enabled for the
-		// hub. If true, Private Service Connect endpoints in VPC spokes
-		// attached to the hub are made accessible to other VPC spokes
-		// attached to the hub. The default value is false.
+		// Whether Private Service Connect transitivity is enabled for the hub. If true,
+		// Private Service Connect endpoints in VPC spokes attached to the hub are made
+		// accessible to other VPC spokes attached to the hub. The default value is
+		// false.
 		export_psc?: bool
 		id?:         string
 
-		// Optional labels in key:value format. For more information about
-		// labels, see [Requirements for
+		// Optional labels in key:value format. For more information about labels, see
+		// [Requirements for
 		// labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Immutable. The name of the hub. Hub names must be unique. They
-		// use the following form:
-		// 'projects/{project_number}/locations/global/hubs/{hub_id}'
+		// Immutable. The name of the hub. Hub names must be unique. They use the
+		// following form: 'projects/{project_number}/locations/global/hubs/{hub_id}'
 		name?: string
 
-		// Optional. The policy mode of this hub. This field can be either
-		// PRESET or CUSTOM. If unspecified, the policyMode defaults to
-		// PRESET. Possible values: ["CUSTOM", "PRESET"]
+		// Optional. The policy mode of this hub. This field can be either PRESET or
+		// CUSTOM. If unspecified, the policyMode defaults to PRESET. Possible values:
+		// ["CUSTOM", "PRESET"]
 		policy_mode?: string
 
-		// Optional. The topology implemented in this hub. Currently, this
-		// field is only used when policyMode = PRESET. The available
-		// preset topologies are MESH and STAR. If presetTopology is
-		// unspecified and policyMode = PRESET, the presetTopology
-		// defaults to MESH. When policyMode = CUSTOM, the presetTopology
-		// is set to PRESET_TOPOLOGY_UNSPECIFIED. Possible values:
+		// Optional. The topology implemented in this hub. Currently, this field is only
+		// used when policyMode = PRESET. The available preset topologies are MESH and
+		// STAR. If presetTopology is unspecified and policyMode = PRESET, the
+		// presetTopology defaults to MESH. When policyMode = CUSTOM, the
+		// presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED. Possible values:
 		// ["MESH", "STAR", "HYBRID_INSPECTION"]
 		preset_topology?: string
-		project?:         string
 
-		// The VPC network associated with this hub's spokes. All of the
-		// VPN tunnels, VLAN attachments, and router appliance instances
-		// referenced by this hub's spokes must belong to this VPC
-		// network. This field is read-only. Network Connectivity Center
-		// automatically populates it based on the set of spokes attached
-		// to the hub.
+		// The VPC network associated with this hub's spokes. All of the VPN tunnels,
+		// VLAN attachments, and router appliance instances referenced by this hub's
+		// spokes must belong to this VPC network. This field is read-only. Network
+		// Connectivity Center automatically populates it based on the set of spokes
+		// attached to the hub.
 		routing_vpcs?: [...close({
 			uri?: string
 		})]
+		project?: string
 
 		// Output only. The current lifecycle state of this hub.
 		state?: string
@@ -84,10 +74,9 @@ package res
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// Output only. The Google-generated UUID for the hub. This value
-		// is unique across all hub resources. If a hub is deleted and
-		// another with the same name is created, the new hub is assigned
-		// a different unique_id.
+		// Output only. The Google-generated UUID for the hub. This value is unique
+		// across all hub resources. If a hub is deleted and another with the same name
+		// is created, the new hub is assigned a different unique_id.
 		unique_id?: string
 
 		// Output only. The time the hub was last updated.

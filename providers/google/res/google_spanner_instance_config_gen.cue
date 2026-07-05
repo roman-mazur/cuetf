@@ -1,42 +1,34 @@
 package res
 
-#google_spanner_instance_config: {
+google_spanner_instance_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_spanner_instance_config")
 	close({
 		replicas!: matchN(1, [#replicas, [_, ...] & [...#replicas]])
 		timeouts?: #timeouts
 
-		// Base configuration name, e.g. nam3, based on which this
-		// configuration is created.
+		// Base configuration name, e.g. nam3, based on which this configuration is created.
 		// Only set for user managed configurations.
-		// baseConfig must refer to a configuration of type GOOGLE_MANAGED
-		// in the same project as this configuration.
+		// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same
+		// project as this configuration.
 		base_config?: string
 
-		// Output only. Whether this instance config is a Google or User
-		// Managed Configuration.
+		// Output only. Whether this instance config is a Google or User Managed Configuration.
 		config_type?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// The name of this instance configuration as it appears in UIs.
 		display_name!: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
@@ -44,26 +36,23 @@ package res
 		// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// A unique identifier for the instance configuration. Values are
-		// of the
+		// A unique identifier for the instance configuration. Values are of the
 		// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
-		name?:    string
-		project?: string
+		name?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+		project?: string
 	})
 
 	#replicas: close({
-		// If true, this location is designated as the default leader
-		// location where
+		// If true, this location is designated as the default leader location where
 		// leader replicas are placed.
 		default_leader_location?: bool
 
@@ -72,8 +61,7 @@ package res
 
 		// Indicates the type of replica. See the [replica types
 		// documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
-		// for more details. Possible values: ["READ_WRITE", "READ_ONLY",
-		// "WITNESS"]
+		// for more details. Possible values: ["READ_WRITE", "READ_ONLY", "WITNESS"]
 		type?: string
 	})
 

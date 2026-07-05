@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_chronicle_data_table: {
+google_chronicle_data_table: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_data_table")
 	close({
@@ -16,8 +16,7 @@ import "list"
 		// Table create time
 		create_time?: string
 
-		// The ID to use for the data table. This is also the display name
-		// for
+		// The ID to use for the data table. This is also the display name for
 		// the data table. It must satisfy the following requirements:
 		// - Starts with letter.
 		// - Contains only letters, numbers and underscore.
@@ -27,8 +26,7 @@ import "list"
 		// Data table unique id
 		data_table_uuid?: string
 
-		// This field uses a custom implementation please refer to
-		// documentation under
+		// This field uses a custom implementation please refer to documentation under
 		// /hashicorp/terraform-provider-google-beta/website/docs/r/chronicle_data_table.html.markdown
 		// for specifics
 		deletion_policy?: string
@@ -40,24 +38,22 @@ import "list"
 		display_name?: string
 		id?:           string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		instance!: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Identifier. The resource name of the data table
 		// Format:
 		// "{project}/locations/{region}/instances/{instance}/dataTables/{data_table}"
-		name?:    string
-		project?: string
+		name?: string
 
 		// User-provided TTL of the data table.
 		row_time_to_live?: string
+		project?:          string
 
 		// Last update time of the TTL of the data table.
 		row_time_to_live_update_time?: string
@@ -93,20 +89,16 @@ import "list"
 		// NUMBER Possible values: ["STRING", "REGEX", "CIDR", "NUMBER"]
 		column_type?: string
 
-		// Whether to include this column in the calculation of the row
-		// ID.
-		// If no columns have key_column = true, all columns will be
-		// included in the
+		// Whether to include this column in the calculation of the row ID.
+		// If no columns have key_column = true, all columns will be included in the
 		// calculation of the row ID.
 		key_column?: bool
 
 		// Entity proto field path that the column is mapped to
 		mapped_column_path?: string
 
-		// Original column name of the Data Table (present in the CSV
-		// header in case
-		// of creation of data tables using file uploads). It must satisfy
-		// the
+		// Original column name of the Data Table (present in the CSV header in case
+		// of creation of data tables using file uploads). It must satisfy the
 		// following requirements:
 		// - Starts with letter.
 		// - Contains only letters, numbers and underscore.
@@ -118,10 +110,8 @@ import "list"
 	})
 
 	#scope_info: close({
-		// Contains the list of scope names of the data table. If the list
-		// is empty,
-		// the data table is treated as unscoped. The scope names should
-		// be
+		// Contains the list of scope names of the data table. If the list is empty,
+		// the data table is treated as unscoped. The scope names should be
 		// full resource names and should be of the format:
 		// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}"
 		data_access_scopes!: [...string]

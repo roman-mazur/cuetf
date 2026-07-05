@@ -1,6 +1,6 @@
 package res
 
-#google_firebase_data_connect_service: {
+google_firebase_data_connect_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_data_connect_service")
 	close({
@@ -8,17 +8,16 @@ package res
 
 		// Optional. Stores small amounts of arbitrary data.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the annotations present in your configuration.
-		// Please refer to the field 'effective_annotations' for all of
-		// the annotations present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the
+		// annotations present in your configuration.
+		// Please refer to the field 'effective_annotations' for all of the annotations
+		// present on the resource.
 		annotations?: [string]: string
 
 		// Output only. [Output only] Create time stamp.
 		create_time?: string
 
-		// This field uses a custom implementation please refer to
-		// documentation under
+		// This field uses a custom implementation please refer to documentation under
 		// /hashicorp/terraform-provider-google-beta/website/docs/r/firebase_data_connect_service.html.markdown
 		// for specifics
 		deletion_policy?: string
@@ -26,20 +25,17 @@ package res
 		// Optional. Mutable human-readable name. 63 character limit.
 		display_name?: string
 
-		// All of annotations (key/value pairs) present on the resource in
-		// GCP, including the annotations configured through Terraform,
-		// other clients and services.
+		// All of annotations (key/value pairs) present on the resource in GCP,
+		// including the annotations configured through Terraform, other clients and
+		// services.
 		effective_annotations?: [string]: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// Output only. This checksum is computed by the server based on
-		// the value of other
-		// fields, and may be sent on update and delete requests to ensure
-		// the
+		// Output only. This checksum is computed by the server based on the value of other
+		// fields, and may be sent on update and delete requests to ensure the
 		// client has an up-to-date value before proceeding.
 		// [AIP-154](https://google.aip.dev/154)
 		etag?: string
@@ -47,37 +43,30 @@ package res
 
 		// Optional. Labels as key value pairs.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// The region in which the service resides, e.g. "us-central1" or
-		// "asia-east1".
+		// The region in which the service resides, e.g. "us-central1" or "asia-east1".
 		location!: string
 
-		// Identifier. The relative resource name of the Firebase Data
-		// Connect service, in the
+		// Identifier. The relative resource name of the Firebase Data Connect service, in the
 		// format:
 		// '''
 		// projects/{project}/locations/{location}/services/{service}
 		// '''
-		// Note that the service ID is specific to Firebase Data Connect
-		// and does not
-		// correspond to any of the instance IDs of the underlying data
-		// source
+		// Note that the service ID is specific to Firebase Data Connect and does not
+		// correspond to any of the instance IDs of the underlying data source
 		// connections.
-		name?:    string
-		project?: string
+		name?: string
 
-		// Output only. A field that if true, indicates that the system is
-		// working update the
+		// Output only. A field that if true, indicates that the system is working update the
 		// service.
 		reconciling?: bool
+		project?:     string
 
-		// Required. The ID to use for the service, which will become the
-		// final component of the
+		// Required. The ID to use for the service, which will become the final component of the
 		// service's resource name.
 		service_id!: string
 

@@ -2,85 +2,75 @@ package res
 
 import "list"
 
-#google_sql_user: {
+google_sql_user: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sql_user")
 	close({
 		password_policy?: matchN(1, [#password_policy, list.MaxItems(1) & [...#password_policy]])
 		timeouts?: #timeouts
 
-		// A list of database roles to be assigned to the user. This
-		// option is only available for MySQL and PostgreSQL instances.
+		// A list of database roles to be assigned to the user. This option is only
+		// available for MySQL and PostgreSQL instances.
 		database_roles?: [...string]
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The host the user can connect from. This is only supported for
-		// MySQL instances. Don't set this field for PostgreSQL
-		// instances. Can be an IP address. Changing this forces a new
-		// resource to be created.
+		// The host the user can connect from. This is only supported for MySQL
+		// instances. Don't set this field for PostgreSQL instances. Can be an IP
+		// address. Changing this forces a new resource to be created.
 		host?: string
 
 		// The email address for MySQL IAM database users.
 		iam_email?: string
 		id?:        string
 
-		// The name of the Cloud SQL instance. Changing this forces a new
-		// resource to be created.
+		// The name of the Cloud SQL instance. Changing this forces a new resource to be created.
 		instance!: string
 
-		// The name of the user. Changing this forces a new resource to be
-		// created.
+		// The name of the user. Changing this forces a new resource to be created.
 		name!: string
 
-		// The password for the user. Can be updated. For Postgres
-		// instances this is a Required field, unless type is set to
+		// The password for the user. Can be updated. For Postgres instances this is a
+		// Required field, unless type is set to
 		// either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
 		password?: string
 
-		// The password for the user. Can be updated. For Postgres
-		// instances this is a Required field, unless type is set to
+		// The password for the user. Can be updated. For Postgres instances this is a
+		// Required field, unless type is set to
 		// either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
 		password_wo?: string
 
 		// The version of the password_wo.
 		password_wo_version?: number
 
-		// The ID of the project in which the resource belongs. If it is
-		// not provided, the provider project is used.
+		// The ID of the project in which the resource belongs. If it is not provided,
+		// the provider project is used.
 		project?: string
+
+		// The user type. It determines the method to authenticate the user during login.
+		// The default is the database's built-in user type.
+		type?: string
 		sql_server_user_details?: [...close({
 			disabled?: bool
 			server_roles?: [...string]
 		})]
-
-		// The user type. It determines the method to authenticate the
-		// user during login.
-		// The default is the database's built-in user type.
-		type?: string
 	})
 
 	#password_policy: close({
 		// Number of failed attempts allowed before the user get locked.
 		allowed_failed_attempts?: number
 
-		// If true, the check that will lock user after too many failed
-		// login attempts will be enabled.
+		// If true, the check that will lock user after too many failed login attempts will be enabled.
 		enable_failed_attempts_check?: bool
 
-		// If true, the user must specify the current password before
-		// changing the password. This flag is supported only for MySQL.
+		// If true, the user must specify the current password before changing the
+		// password. This flag is supported only for MySQL.
 		enable_password_verification?: bool
 
 		// Password expiration duration with one week grace period.

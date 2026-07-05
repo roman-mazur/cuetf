@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_integration_connectors_connection: {
+google_integration_connectors_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_integration_connectors_connection")
 	close({
@@ -16,16 +16,15 @@ import "list"
 		ssl_config?: matchN(1, [#ssl_config, list.MaxItems(1) & [...#ssl_config]])
 		timeouts?: #timeouts
 
-		// Connection revision. This field is only updated when the
-		// connection is created or updated by User.
+		// Connection revision. This field is only updated when the connection is
+		// created or updated by User.
 		connection_revision?: string
 
 		// connectorVersion of the Connector.
 		connector_version!: string
 
-		// This configuration provides infra configs like rate limit
-		// threshold which need to be configurable for every connector
-		// version.
+		// This configuration provides infra configs like rate limit threshold which
+		// need to be configurable for every connector version.
 		connector_version_infra_config?: [...close({
 			ratelimit_threshold?: string
 		})]
@@ -36,30 +35,23 @@ import "list"
 		// Time the Namespace was created in UTC.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// An arbitrary description for the Connection.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// Eventing enablement type. Will be nil if eventing is not
-		// enabled. Possible values: ["EVENTING_AND_CONNECTION",
-		// "ONLY_EVENTING"]
+		// Eventing enablement type. Will be nil if eventing is not enabled. Possible
+		// values: ["EVENTING_AND_CONNECTION", "ONLY_EVENTING"]
 		eventing_enablement_type?: string
 
 		// Eventing Runtime Data.
@@ -75,25 +67,23 @@ import "list"
 		// Resource labels to represent user provided metadata.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Location in which Connection needs to be created.
 		location!: string
 
 		// Name of Connection needs to be created.
-		name!:    string
-		project?: string
+		name!: string
 
-		// Service account needed for runtime plane to access Google Cloud
-		// resources.
+		// Service account needed for runtime plane to access Google Cloud resources.
 		service_account?: string
+		project?:         string
 
-		// The name of the Service Directory service name. Used for
-		// Private Harpoon to resolve the ILB address.
+		// The name of the Service Directory service name. Used for Private Harpoon to
+		// resolve the ILB address.
 		// e.g.
 		// "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
 		service_directory?: string
@@ -105,12 +95,10 @@ import "list"
 			status?:      string
 		})]
 
-		// This subscription type enum states the subscription type of the
-		// project.
+		// This subscription type enum states the subscription type of the project.
 		subscription_type?: string
 
-		// Suspended indicates if a user has suspended a connection or
-		// not.
+		// Suspended indicates if a user has suspended a connection or not.
 		suspended?: bool
 
 		// The combination of labels configured directly on the resource
@@ -132,9 +120,8 @@ import "list"
 		// The type of authentication configured.
 		auth_key?: string
 
-		// authType of the Connection Possible values:
-		// ["AUTH_TYPE_UNSPECIFIED", "USER_PASSWORD",
-		// "OAUTH2_JWT_BEARER", "OAUTH2_CLIENT_CREDENTIALS",
+		// authType of the Connection Possible values: ["AUTH_TYPE_UNSPECIFIED",
+		// "USER_PASSWORD", "OAUTH2_JWT_BEARER", "OAUTH2_CLIENT_CREDENTIALS",
 		// "SSH_PUBLIC_KEY", "OAUTH2_AUTH_CODE_FLOW"]
 		auth_type!: string
 	})
@@ -159,8 +146,7 @@ import "list"
 	#destination_config: close({
 		destination?: matchN(1, [_#defs."/$defs/destination_config/$defs/destination", [..._#defs."/$defs/destination_config/$defs/destination"]])
 
-		// The key is the destination identifier that is supported by the
-		// Connector.
+		// The key is the destination identifier that is supported by the Connector.
 		key!: string
 	})
 
@@ -182,12 +168,10 @@ import "list"
 	})
 
 	#log_config: close({
-		// Enabled represents whether logging is enabled or not for a
-		// connection.
+		// Enabled represents whether logging is enabled or not for a connection.
 		enabled!: bool
 
-		// Log configuration level. Possible values:
-		// ["LOG_LEVEL_UNSPECIFIED", "ERROR", "INFO", "DEBUG"]
+		// Log configuration level. Possible values: ["LOG_LEVEL_UNSPECIFIED", "ERROR", "INFO", "DEBUG"]
 		level?: string
 	})
 
@@ -212,12 +196,10 @@ import "list"
 		// Type of Server Cert (PEM/JKS/.. etc.) Possible values: ["PEM"]
 		server_cert_type?: string
 
-		// Enum for Trust Model Possible values: ["PUBLIC", "PRIVATE",
-		// "INSECURE"]
+		// Enum for Trust Model Possible values: ["PUBLIC", "PRIVATE", "INSECURE"]
 		trust_model?: string
 
-		// Enum for controlling the SSL Type (TLS/MTLS) Possible values:
-		// ["TLS", "MTLS"]
+		// Enum for controlling the SSL Type (TLS/MTLS) Possible values: ["TLS", "MTLS"]
 		type!: string
 
 		// Bool for enabling SSL
@@ -248,15 +230,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/auth_config/$defs/additional_variable/$defs/encryption_key_value": close({
-		// The [KMS key name] with which the content of the Operation is
-		// encrypted. The
-		// expected format:
-		// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+		// The [KMS key name] with which the content of the Operation is encrypted. The
+		// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 		// Will be empty string if google managed.
 		kms_key_name?: string
 
-		// Type of Encryption Key Possible values: ["GOOGLE_MANAGED",
-		// "CUSTOMER_MANAGED"]
+		// Type of Encryption Key Possible values: ["GOOGLE_MANAGED", "CUSTOMER_MANAGED"]
 		type!: string
 	})
 
@@ -274,12 +253,10 @@ import "list"
 		// Client ID for user-provided OAuth app.
 		client_id?: string
 
-		// Whether to enable PKCE when the user performs the auth code
-		// flow.
+		// Whether to enable PKCE when the user performs the auth code flow.
 		enable_pkce?: bool
 
-		// Scopes the connection will request when the user performs the
-		// auth code flow.
+		// Scopes the connection will request when the user performs the auth code flow.
 		scopes?: [...string]
 	})
 
@@ -361,15 +338,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/config_variable/$defs/encryption_key_value": close({
-		// The [KMS key name] with which the content of the Operation is
-		// encrypted. The
-		// expected format:
-		// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+		// The [KMS key name] with which the content of the Operation is encrypted. The
+		// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 		// Will be empty string if google managed.
 		kms_key_name?: string
 
-		// Type of Encryption Key Possible values: ["GOOGLE_MANAGED",
-		// "CUSTOMER_MANAGED"]
+		// Type of Encryption Key Possible values: ["GOOGLE_MANAGED", "CUSTOMER_MANAGED"]
 		type!: string
 	})
 
@@ -382,12 +356,10 @@ import "list"
 		// For publicly routable host.
 		host?: string
 
-		// The port is the target port number that is accepted by the
-		// destination.
+		// The port is the target port number that is accepted by the destination.
 		port?: number
 
-		// PSC service attachments. Format:
-		// projects/*/regions/*/serviceAttachments/*
+		// PSC service attachments. Format: projects/*/regions/*/serviceAttachments/*
 		service_attachment?: string
 	})
 
@@ -409,15 +381,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/eventing_config/$defs/additional_variable/$defs/encryption_key_value": close({
-		// The [KMS key name] with which the content of the Operation is
-		// encrypted. The
-		// expected format:
-		// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+		// The [KMS key name] with which the content of the Operation is encrypted. The
+		// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 		// Will be empty string if google managed.
 		kms_key_name?: string
 
-		// Type of Encryption Key Possible values: ["GOOGLE_MANAGED",
-		// "CUSTOMER_MANAGED"]
+		// Type of Encryption Key Possible values: ["GOOGLE_MANAGED", "CUSTOMER_MANAGED"]
 		type?: string
 	})
 
@@ -455,15 +424,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/eventing_config/$defs/auth_config/$defs/additional_variable/$defs/encryption_key_value": close({
-		// The [KMS key name] with which the content of the Operation is
-		// encrypted. The
-		// expected format:
-		// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+		// The [KMS key name] with which the content of the Operation is encrypted. The
+		// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 		// Will be empty string if google managed.
 		kms_key_name?: string
 
-		// Type of Encryption Key Possible values: ["GOOGLE_MANAGED",
-		// "CUSTOMER_MANAGED"]
+		// Type of Encryption Key Possible values: ["GOOGLE_MANAGED", "CUSTOMER_MANAGED"]
 		type?: string
 	})
 
@@ -521,15 +487,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/ssl_config/$defs/additional_variable/$defs/encryption_key_value": close({
-		// The [KMS key name] with which the content of the Operation is
-		// encrypted. The
-		// expected format:
-		// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+		// The [KMS key name] with which the content of the Operation is encrypted. The
+		// expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
 		// Will be empty string if google managed.
 		kms_key_name?: string
 
-		// Type of Encryption Key Possible values: ["GOOGLE_MANAGED",
-		// "CUSTOMER_MANAGED"]
+		// Type of Encryption Key Possible values: ["GOOGLE_MANAGED", "CUSTOMER_MANAGED"]
 		type?: string
 	})
 

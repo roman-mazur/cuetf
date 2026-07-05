@@ -1,6 +1,6 @@
 package res
 
-#google_firebase_app_hosting_default_domain: {
+google_firebase_app_hosting_default_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firebase_app_hosting_default_domain")
 	close({
@@ -20,8 +20,7 @@ package res
 		domain_id!: string
 
 		// Server-computed checksum based on other values; may be sent
-		// on update or delete to ensure operation is done on expected
-		// resource.
+		// on update or delete to ensure operation is done on expected resource.
 		etag?: string
 		id?:   string
 
@@ -30,11 +29,11 @@ package res
 
 		// Identifier. The resource name of the domain, e.g.
 		// 'projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}'
-		name?:    string
-		project?: string
+		name?: string
 
 		// System-assigned, unique identifier.
-		uid?: string
+		uid?:     string
+		project?: string
 
 		// Time at which the domain was last updated.
 		update_time?: string

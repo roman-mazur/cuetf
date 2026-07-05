@@ -2,46 +2,39 @@ package res
 
 import "list"
 
-#google_bigquery_analytics_hub_data_exchange: {
+google_bigquery_analytics_hub_data_exchange: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_analytics_hub_data_exchange")
 	close({
 		sharing_environment_config?: matchN(1, [#sharing_environment_config, list.MaxItems(1) & [...#sharing_environment_config]])
 		timeouts?: #timeouts
 
-		// The ID of the data exchange. Must contain only Unicode letters,
-		// numbers (0-9), underscores (_). Should not use characters that
-		// require URL-escaping, or characters outside of ASCII, spaces.
+		// The ID of the data exchange. Must contain only Unicode letters, numbers
+		// (0-9), underscores (_). Should not use characters that require URL-escaping,
+		// or characters outside of ASCII, spaces.
 		data_exchange_id!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// Description of the data exchange.
 		description?: string
 
-		// Type of discovery on the discovery page for all the listings
-		// under this exchange. Cannot be set for a Data Clean Room.
-		// Updating this field also updates (overwrites) the
-		// discoveryType field for all the listings under this exchange.
-		// Possible values: ["DISCOVERY_TYPE_PRIVATE",
+		// Type of discovery on the discovery page for all the listings under this
+		// exchange. Cannot be set for a Data Clean Room. Updating this field also
+		// updates (overwrites) the discoveryType field for all the listings under this
+		// exchange. Possible values: ["DISCOVERY_TYPE_PRIVATE",
 		// "DISCOVERY_TYPE_PUBLIC"]
 		discovery_type?: string
 
-		// Human-readable display name of the data exchange. The display
-		// name must contain only Unicode letters, numbers (0-9),
-		// underscores (_), dashes (-), spaces ( ), and must not start or
-		// end with spaces.
+		// Human-readable display name of the data exchange. The display name must
+		// contain only Unicode letters, numbers (0-9), underscores (_), dashes (-),
+		// spaces ( ), and must not start or end with spaces.
 		display_name!: string
 
 		// Documentation describing the data exchange.
@@ -57,17 +50,16 @@ import "list"
 		// The name of the location this data exchange.
 		location!: string
 
-		// If true, subscriber email logging is enabled and all queries on
-		// the linked dataset will log the email address of the querying
-		// user. Once enabled, this setting cannot be turned off.
+		// If true, subscriber email logging is enabled and all queries on the linked
+		// dataset will log the email address of the querying user. Once enabled, this
+		// setting cannot be turned off.
 		log_linked_dataset_query_user_email?: bool
 
 		// The resource name of the data exchange, for example:
 		// "projects/myproject/locations/US/dataExchanges/123"
 		name?: string
 
-		// Email or URL of the primary point of contact of the data
-		// exchange.
+		// Email or URL of the primary point of contact of the data exchange.
 		primary_contact?: string
 		project?:         string
 	})

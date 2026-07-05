@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_iam_workload_identity_pool_provider: {
+google_iam_workload_identity_pool_provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_workload_identity_pool_provider")
 	close({
@@ -12,65 +12,46 @@ import "list"
 		timeouts?: #timeouts
 		x509?: matchN(1, [#x509, list.MaxItems(1) & [...#x509]])
 
-		// [A Common Expression
-		// Language](https://github.com/google/cel-spec) expression, in
-		// plain text, to restrict what otherwise valid authentication
-		// credentials issued by the
+		// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
+		// plain text, to restrict what otherwise valid authentication credentials issued by the
 		// provider should not be accepted.
 		//
-		// The expression must output a boolean representing whether to
-		// allow the federation.
+		// The expression must output a boolean representing whether to allow the federation.
 		//
 		// The following keywords may be referenced in the expressions:
-		// * 'assertion': JSON representing the authentication credential
-		// issued by the provider.
-		// * 'google': The Google attributes mapped from the assertion in
-		// the 'attribute_mappings'.
-		// * 'attribute': The custom attributes mapped from the assertion
-		// in the 'attribute_mappings'.
+		// * 'assertion': JSON representing the authentication credential issued by the provider.
+		// * 'google': The Google attributes mapped from the assertion in the 'attribute_mappings'.
+		// * 'attribute': The custom attributes mapped from the assertion in the 'attribute_mappings'.
 		//
-		// The maximum length of the attribute condition expression is
-		// 4096 characters. If
+		// The maximum length of the attribute condition expression is 4096 characters. If
 		// unspecified, all valid authentication credential are accepted.
 		//
-		// The following example shows how to only allow credentials with
-		// a mapped 'google.groups'
+		// The following example shows how to only allow credentials with a mapped 'google.groups'
 		// value of 'admins':
 		// '''
 		// "'admins' in google.groups"
 		// '''
 		attribute_condition?: string
 
-		// Maps attributes from authentication credentials issued by an
-		// external identity provider
+		// Maps attributes from authentication credentials issued by an external identity provider
 		// to Google Cloud attributes, such as 'subject' and 'segment'.
 		//
-		// Each key must be a string specifying the Google Cloud IAM
-		// attribute to map to.
+		// Each key must be a string specifying the Google Cloud IAM attribute to map to.
 		//
 		// The following keys are supported:
-		// * 'google.subject': The principal IAM is authenticating. You
-		// can reference this value
-		// in IAM bindings. This is also the subject that appears in Cloud
-		// Logging logs.
+		// * 'google.subject': The principal IAM is authenticating. You can reference this value
+		// in IAM bindings. This is also the subject that appears in Cloud Logging logs.
 		// Cannot exceed 127 characters.
-		// * 'google.groups': Groups the external identity belongs to. You
-		// can grant groups
-		// access to resources using an IAM 'principalSet' binding; access
-		// applies to all
+		// * 'google.groups': Groups the external identity belongs to. You can grant groups
+		// access to resources using an IAM 'principalSet' binding; access applies to all
 		// members of the group.
 		//
-		// You can also provide custom attributes by specifying
-		// 'attribute.{custom_attribute}',
-		// where '{custom_attribute}' is the name of the custom attribute
-		// to be mapped. You can
-		// define a maximum of 50 custom attributes. The maximum length of
-		// a mapped attribute key
-		// is 100 characters, and the key may only contain the characters
-		// [a-z0-9_].
+		// You can also provide custom attributes by specifying 'attribute.{custom_attribute}',
+		// where '{custom_attribute}' is the name of the custom attribute to be mapped. You can
+		// define a maximum of 50 custom attributes. The maximum length of a mapped attribute key
+		// is 100 characters, and the key may only contain the characters [a-z0-9_].
 		//
-		// You can reference these attributes in IAM policies to define
-		// fine-grained access for a
+		// You can reference these attributes in IAM policies to define fine-grained access for a
 		// workload to Google Cloud resources. For example:
 		// * 'google.subject':
 		// 'principal://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/subject/{value}'
@@ -79,23 +60,18 @@ import "list"
 		// * 'attribute.{custom_attribute}':
 		// 'principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}'
 		//
-		// Each value must be a [Common Expression
-		// Language](https://github.com/google/cel-spec)
-		// function that maps an identity provider credential to the
-		// normalized attribute specified
+		// Each value must be a [Common Expression Language](https://github.com/google/cel-spec)
+		// function that maps an identity provider credential to the normalized attribute specified
 		// by the corresponding map key.
 		//
-		// You can use the 'assertion' keyword in the expression to access
-		// a JSON representation of
+		// You can use the 'assertion' keyword in the expression to access a JSON representation of
 		// the authentication credential issued by the provider.
 		//
-		// The maximum length of an attribute mapping expression is 2048
-		// characters. When evaluated,
+		// The maximum length of an attribute mapping expression is 2048 characters. When evaluated,
 		// the total size of all mapped attributes must not exceed 8KB.
 		//
 		// For AWS providers, the following rules apply:
-		// - If no attribute mapping is defined, the following default
-		// mapping applies:
+		// - If no attribute mapping is defined, the following default mapping applies:
 		// '''
 		// {
 		// "google.subject":"assertion.arn",
@@ -107,40 +83,30 @@ import "list"
 		// " : assertion.arn",
 		// }
 		// '''
-		// - If any custom attribute mappings are defined, they must
-		// include a mapping to the
+		// - If any custom attribute mappings are defined, they must include a mapping to the
 		// 'google.subject' attribute.
 		//
 		// For OIDC providers, the following rules apply:
-		// - Custom attribute mappings must be defined, and must include a
-		// mapping to the
-		// 'google.subject' attribute. For example, the following maps the
-		// 'sub' claim of the
-		// incoming credential to the 'subject' attribute on a Google
-		// token.
+		// - Custom attribute mappings must be defined, and must include a mapping to the
+		// 'google.subject' attribute. For example, the following maps the 'sub' claim of the
+		// incoming credential to the 'subject' attribute on a Google token.
 		// '''
 		// {"google.subject": "assertion.sub"}
 		// '''
 		attribute_mapping?: [string]: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// A description for the provider. Cannot exceed 256 characters.
 		description?: string
 
-		// Whether the provider is disabled. You cannot use a disabled
-		// provider to exchange tokens.
+		// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
 		// However, existing tokens still grant access.
 		disabled?: bool
 
@@ -150,33 +116,25 @@ import "list"
 
 		// The resource name of the provider as
 		// 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}'.
-		name?:    string
-		project?: string
+		name?: string
 
 		// The state of the provider.
 		// * STATE_UNSPECIFIED: State unspecified.
-		// * ACTIVE: The provider is active, and may be used to validate
-		// authentication credentials.
-		// * DELETED: The provider is soft-deleted. Soft-deleted providers
-		// are permanently deleted
-		// after approximately 30 days. You can restore a soft-deleted
-		// provider using
-		// UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID
-		// of a soft-deleted provider
+		// * ACTIVE: The provider is active, and may be used to validate authentication credentials.
+		// * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently deleted
+		// after approximately 30 days. You can restore a soft-deleted provider using
+		// UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
 		// until it is permanently deleted.
-		state?: string
+		state?:   string
+		project?: string
 
-		// The ID used for the pool, which is the final component of the
-		// pool resource name. This
-		// value should be 4-32 characters, and may contain the characters
-		// [a-z0-9-]. The prefix
+		// The ID used for the pool, which is the final component of the pool resource name. This
+		// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 		// 'gcp-' is reserved for use by Google, and may not be specified.
 		workload_identity_pool_id!: string
 
-		// The ID for the provider, which becomes the final component of
-		// the resource name. This
-		// value must be 4-32 characters, and may contain the characters
-		// [a-z0-9-]. The prefix
+		// The ID for the provider, which becomes the final component of the resource name. This
+		// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 		// 'gcp-' is reserved for use by Google, and may not be specified.
 		workload_identity_pool_provider_id!: string
 	})
@@ -187,18 +145,13 @@ import "list"
 	})
 
 	#oidc: close({
-		// Acceptable values for the 'aud' field (audience) in the OIDC
-		// token. Token exchange
-		// requests are rejected if the token audience does not match one
-		// of the configured
-		// values. Each audience may be at most 256 characters. A maximum
-		// of 10 audiences may
+		// Acceptable values for the 'aud' field (audience) in the OIDC token. Token exchange
+		// requests are rejected if the token audience does not match one of the configured
+		// values. Each audience may be at most 256 characters. A maximum of 10 audiences may
 		// be configured.
 		//
-		// If this list is empty, the OIDC token audience must be equal to
-		// the full canonical
-		// resource name of the WorkloadIdentityPoolProvider, with or
-		// without the HTTPS prefix.
+		// If this list is empty, the OIDC token audience must be equal to the full canonical
+		// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
 		// For example:
 		// '''
 		// //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
@@ -212,10 +165,8 @@ import "list"
 		// OIDC JWKs in JSON String format. For details on definition of a
 		// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
 		// use the 'jwks_uri' from the discovery document fetched from the
-		// .well-known path for the 'issuer_uri'. Currently, RSA and EC
-		// asymmetric
-		// keys are supported. The JWK must use following format and
-		// include only
+		// .well-known path for the 'issuer_uri'. Currently, RSA and EC asymmetric
+		// keys are supported. The JWK must use following format and include only
 		// the following fields:
 		// '''
 		// {
@@ -258,15 +209,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/x509/$defs/trust_store/$defs/intermediate_cas": close({
-		// PEM certificate of the PKI used for validation. Must only
-		// contain one
+		// PEM certificate of the PKI used for validation. Must only contain one
 		// ca certificate(either root or intermediate cert).
 		pem_certificate?: string
 	})
 
 	_#defs: "/$defs/x509/$defs/trust_store/$defs/trust_anchors": close({
-		// PEM certificate of the PKI used for validation. Must only
-		// contain one
+		// PEM certificate of the PKI used for validation. Must only contain one
 		// ca certificate(either root or intermediate cert).
 		pem_certificate?: string
 	})

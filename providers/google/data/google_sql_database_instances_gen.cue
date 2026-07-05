@@ -1,11 +1,10 @@
 package data
 
-#google_sql_database_instances: {
+google_sql_database_instances: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_sql_database_instances")
 	close({
-		// To filter out the database instances which are of the specified
-		// database version.
+		// To filter out the database instances which are of the specified database version.
 		database_version?: string
 		id?:               string
 		instances?: [...close({
@@ -246,22 +245,19 @@ package data
 		// Project ID of the project that contains the instances.
 		project?: string
 
-		// To filter out the database instances which are located in this
-		// specified region.
+		// To filter out the database instances which are located in this specified region.
 		region?: string
 
-		// To filter out the database instances based on the current state
-		// of the database instance, valid values include :
-		// "SQL_INSTANCE_STATE_UNSPECIFIED", "RUNNABLE", "SUSPENDED",
-		// "PENDING_DELETE", "PENDING_CREATE", "MAINTENANCE" and
-		// "FAILED".
+		// To filter out the database instances based on the current state of the
+		// database instance, valid values include : "SQL_INSTANCE_STATE_UNSPECIFIED",
+		// "RUNNABLE", "SUSPENDED", "PENDING_DELETE", "PENDING_CREATE", "MAINTENANCE"
+		// and "FAILED".
 		state?: string
 
 		// To filter out the database instances based on the machine type.
 		tier?: string
 
-		// To filter out the database instances which are located in this
-		// specified zone.
+		// To filter out the database instances which are located in this specified zone.
 		zone?: string
 	})
 }

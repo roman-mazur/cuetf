@@ -2,23 +2,18 @@ package res
 
 import "list"
 
-#google_storage_transfer_agent_pool: {
+google_storage_transfer_agent_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_transfer_agent_pool")
 	close({
 		bandwidth_limit?: matchN(1, [#bandwidth_limit, list.MaxItems(1) & [...#bandwidth_limit]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -32,22 +27,20 @@ import "list"
 		// * Length of 128 characters or less.
 		// * Not start with the string goog.
 		// * Start with a lowercase ASCII character, followed by:
-		// * Zero or more: lowercase Latin alphabet characters, numerals,
-		// hyphens (-), periods (.), underscores (_), or tildes (~).
+		// * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-),
+		// periods (.), underscores (_), or tildes (~).
 		// * One or more numerals or lowercase ASCII characters.
 		//
-		// As expressed by the regular expression:
-		// ^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$.
-		name!:    string
-		project?: string
+		// As expressed by the regular expression: ^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$.
+		name!: string
 
 		// Specifies the state of the AgentPool.
-		state?: string
+		state?:   string
+		project?: string
 	})
 
 	#bandwidth_limit: close({
-		// Bandwidth rate in megabytes per second, distributed across all
-		// the agents in the pool.
+		// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
 		limit_mbps!: string
 	})
 

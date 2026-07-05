@@ -2,26 +2,25 @@ package res
 
 import "list"
 
-#google_privateca_certificate: {
+google_privateca_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_privateca_certificate")
 	close({
 		config?: matchN(1, [#config, list.MaxItems(1) & [...#config]])
 		timeouts?: #timeouts
 
-		// The Certificate Authority ID that should issue the certificate.
-		// For example, to issue a Certificate from
+		// The Certificate Authority ID that should issue the certificate. For example,
+		// to issue a Certificate from
 		// a Certificate Authority with resource name
 		// 'projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca',
 		// argument 'pool' should be set to
-		// 'projects/my-project/locations/us-central1/caPools/my-pool',
-		// argument 'certificate_authority'
+		// 'projects/my-project/locations/us-central1/caPools/my-pool', argument
+		// 'certificate_authority'
 		// should be set to 'my-ca'.
 		certificate_authority?: string
 
-		// Output only. Details regarding the revocation of this
-		// Certificate. This Certificate is considered revoked if and
-		// only if this field is present.
+		// Output only. Details regarding the revocation of this Certificate. This
+		// Certificate is considered revoked if and only if this field is present.
 		certificate_description?: [...close({
 			aia_issuing_certificate_urls?: [...string]
 			authority_key_id?: [...close({
@@ -121,14 +120,10 @@ import "list"
 			})]
 		})]
 
-		// The resource name for a CertificateTemplate used to issue this
-		// certificate,
-		// in the format 'projects/*/locations/*/certificateTemplates/*'.
-		// If this is specified,
-		// the caller must have the necessary permission to use this
-		// template. If this is
-		// omitted, no template will be used. This template must be in the
-		// same location
+		// The resource name for a CertificateTemplate used to issue this certificate,
+		// in the format 'projects/*/locations/*/certificateTemplates/*'. If this is specified,
+		// the caller must have the necessary permission to use this template. If this is
+		// omitted, no template will be used. This template must be in the same location
 		// as the Certificate.
 		certificate_template?: string
 
@@ -136,48 +131,37 @@ import "list"
 		// This is in RFC3339 text format.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
-		// The resource name of the issuing CertificateAuthority in the
-		// format
+		// The resource name of the issuing CertificateAuthority in the format
 		// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
 		issuer_certificate_authority?: string
 
 		// Labels with user-defined metadata to apply to this resource.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// The desired lifetime of the CA certificate. Used to create the
-		// "notBeforeTime" and
-		// "notAfterTime" fields inside an X.509 certificate. A duration
-		// in seconds with up to nine
+		// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+		// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
 		// fractional digits, terminated by 's'. Example: "3.5s".
 		lifetime?: string
 
-		// Location of the Certificate. A full list of valid locations can
-		// be found by
+		// Location of the Certificate. A full list of valid locations can be found by
 		// running 'gcloud privateca locations list'.
 		location!: string
 
@@ -187,32 +171,29 @@ import "list"
 		// Output only. The pem-encoded, signed X.509 certificate.
 		pem_certificate?: string
 
-		// The chain that may be used to verify the X.509 certificate.
-		// Expected to be in issuer-to-root order according to RFC 5246.
+		// The chain that may be used to verify the X.509 certificate. Expected to be in
+		// issuer-to-root order according to RFC 5246.
 		pem_certificate_chain?: [...string]
 
-		// Immutable. A pem-encoded X.509 certificate signing request
-		// (CSR).
+		// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 		pem_csr?: string
 
 		// The name of the CaPool this Certificate belongs to.
-		pool!:    string
-		project?: string
+		pool!: string
 
-		// Output only. Details regarding the revocation of this
-		// Certificate. This Certificate is
+		// Output only. Details regarding the revocation of this Certificate. This Certificate is
 		// considered revoked if and only if this field is present.
 		revocation_details?: [...close({
 			revocation_state?: string
 			revocation_time?:  string
 		})]
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// Output only. The time at which this CertificateAuthority was
-		// updated.
+		// Output only. The time at which this CertificateAuthority was updated.
 		// This is in RFC3339 text format.
 		update_time?: string
 	})
@@ -231,16 +212,15 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/public_key": close({
-		// The format of the public key. Currently, only PEM format is
-		// supported. Possible values: ["KEY_TYPE_UNSPECIFIED", "PEM"]
+		// The format of the public key. Currently, only PEM format is supported.
+		// Possible values: ["KEY_TYPE_UNSPECIFIED", "PEM"]
 		format!: string
 
-		// Required. A public key. When this is specified in a request,
-		// the padding and encoding can be any of the options described
-		// by the respective 'KeyType' value. When this is generated by
-		// the service, it will always be an RFC 5280
-		// SubjectPublicKeyInfo structure containing an algorithm
-		// identifier and a key. A base64-encoded string.
+		// Required. A public key. When this is specified in a request, the padding and
+		// encoding can be any of the options described by the respective 'KeyType'
+		// value. When this is generated by the service, it will always be an RFC 5280
+		// SubjectPublicKeyInfo structure containing an algorithm identifier and a key.
+		// A base64-encoded string.
 		key?: string
 	})
 
@@ -282,8 +262,7 @@ import "list"
 		// Contains only valid RFC 2822 E-mail addresses.
 		email_addresses?: [...string]
 
-		// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6
-		// addresses.
+		// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
 		ip_addresses?: [...string]
 
 		// Contains only valid RFC 3986 URIs.
@@ -302,8 +281,7 @@ import "list"
 		name_constraints?: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/name_constraints", list.MaxItems(1) & [..._#defs."/$defs/config/$defs/x509_config/$defs/name_constraints"]])
 		policy_ids?: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/policy_ids", [..._#defs."/$defs/config/$defs/x509_config/$defs/policy_ids"]])
 
-		// Describes Online Certificate Status Protocol (OCSP) endpoint
-		// addresses that appear in the
+		// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
 		// "Authority Information Access" extension in the certificate.
 		aia_ocsp_servers?: [...string]
 	})
@@ -311,10 +289,8 @@ import "list"
 	_#defs: "/$defs/config/$defs/x509_config/$defs/additional_extensions": close({
 		object_id!: matchN(1, [_#defs."/$defs/config/$defs/x509_config/$defs/additional_extensions/$defs/object_id", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/config/$defs/x509_config/$defs/additional_extensions/$defs/object_id"]])
 
-		// Indicates whether or not this extension is critical (i.e., if
-		// the client does not know how to
-		// handle this extension, the client should consider this to be an
-		// error).
+		// Indicates whether or not this extension is critical (i.e., if the client does not know how to
+		// handle this extension, the client should consider this to be an error).
 		critical!: bool
 
 		// The value of this X.509 extension. A base64-encoded string.
@@ -322,33 +298,27 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/x509_config/$defs/additional_extensions/$defs/object_id": close({
-		// An ObjectId specifies an object identifier (OID). These provide
-		// context and describe types in ASN.1 messages.
+		// An ObjectId specifies an object identifier (OID). These provide context and
+		// describe types in ASN.1 messages.
 		object_id_path!: [...number]
 	})
 
 	_#defs: "/$defs/config/$defs/x509_config/$defs/ca_options": close({
-		// When true, the "CA" in Basic Constraints extension will be set
-		// to true.
+		// When true, the "CA" in Basic Constraints extension will be set to true.
 		is_ca?: bool
 
-		// Refers to the "path length constraint" in Basic Constraints
-		// extension. For a CA certificate, this value describes the
-		// depth of
-		// subordinate CA certificates that are allowed. If this value is
-		// less than 0, the request will fail.
+		// Refers to the "path length constraint" in Basic Constraints extension. For a
+		// CA certificate, this value describes the depth of
+		// subordinate CA certificates that are allowed. If this value is less than 0,
+		// the request will fail.
 		max_issuer_path_length?: number
 
-		// When true, the "CA" in Basic Constraints extension will be set
-		// to false.
-		// If both 'is_ca' and 'non_ca' are unset, the extension will be
-		// omitted from the CA certificate.
+		// When true, the "CA" in Basic Constraints extension will be set to false.
+		// If both 'is_ca' and 'non_ca' are unset, the extension will be omitted from the CA certificate.
 		non_ca?: bool
 
-		// When true, the "path length constraint" in Basic Constraints
-		// extension will be set to 0.
-		// if both 'max_issuer_path_length' and
-		// 'zero_max_issuer_path_length' are unset,
+		// When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+		// if both 'max_issuer_path_length' and 'zero_max_issuer_path_length' are unset,
 		// the max path length will be omitted from the CA certificate.
 		zero_max_issuer_path_length?: bool
 	})
@@ -363,8 +333,8 @@ import "list"
 		// The key may be used to sign certificates.
 		cert_sign?: bool
 
-		// The key may be used for cryptographic commitments. Note that
-		// this may also be referred to as "non-repudiation".
+		// The key may be used for cryptographic commitments. Note that this may also be
+		// referred to as "non-repudiation".
 		content_commitment?: bool
 
 		// The key may be used sign certificate revocation lists.
@@ -390,71 +360,59 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/x509_config/$defs/key_usage/$defs/extended_key_usage": close({
-		// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as
-		// "TLS WWW client authentication", though regularly used for
-		// non-WWW TLS.
+		// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client
+		// authentication", though regularly used for non-WWW TLS.
 		client_auth?: bool
 
-		// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as
-		// "Signing of downloadable executable code client
-		// authentication".
+		// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of
+		// downloadable executable code client authentication".
 		code_signing?: bool
 
-		// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as
-		// "Email protection".
+		// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
 		email_protection?: bool
 
-		// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as
-		// "Signing OCSP responses".
+		// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
 		ocsp_signing?: bool
 
-		// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as
-		// "TLS WWW server authentication", though regularly used for
-		// non-WWW TLS.
+		// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server
+		// authentication", though regularly used for non-WWW TLS.
 		server_auth?: bool
 
-		// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as
-		// "Binding the hash of an object to a time".
+		// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the
+		// hash of an object to a time".
 		time_stamping?: bool
 	})
 
 	_#defs: "/$defs/config/$defs/x509_config/$defs/key_usage/$defs/unknown_extended_key_usages": close({
-		// An ObjectId specifies an object identifier (OID). These provide
-		// context and describe types in ASN.1 messages.
+		// An ObjectId specifies an object identifier (OID). These provide context and
+		// describe types in ASN.1 messages.
 		object_id_path!: [...number]
 	})
 
 	_#defs: "/$defs/config/$defs/x509_config/$defs/name_constraints": close({
-		// Indicates whether or not the name constraints are marked
-		// critical.
+		// Indicates whether or not the name constraints are marked critical.
 		critical!: bool
 
 		// Contains excluded DNS names. Any DNS name that can be
 		// constructed by simply adding zero or more labels to
 		// the left-hand side of the name satisfies the name constraint.
-		// For example, 'example.com', 'www.example.com',
-		// 'www.sub.example.com'
+		// For example, 'example.com', 'www.example.com', 'www.sub.example.com'
 		// would satisfy 'example.com' while 'example1.com' does not.
 		excluded_dns_names?: [...string]
 
-		// Contains the excluded email addresses. The value can be a
-		// particular
-		// email address, a hostname to indicate all email addresses on
-		// that host or
-		// a domain with a leading period (e.g. '.example.com') to
-		// indicate
+		// Contains the excluded email addresses. The value can be a particular
+		// email address, a hostname to indicate all email addresses on that host or
+		// a domain with a leading period (e.g. '.example.com') to indicate
 		// all email addresses in that domain.
 		excluded_email_addresses?: [...string]
 
 		// Contains the excluded IP ranges. For IPv4 addresses, the ranges
 		// are expressed using CIDR notation as specified in RFC 4632.
-		// For IPv6 addresses, the ranges are expressed in similar
-		// encoding as IPv4
+		// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
 		// addresses.
 		excluded_ip_ranges?: [...string]
 
-		// Contains the excluded URIs that apply to the host part of the
-		// name.
+		// Contains the excluded URIs that apply to the host part of the name.
 		// The value can be a hostname or a domain with a
 		// leading period (like '.example.com')
 		excluded_uris?: [...string]
@@ -462,38 +420,31 @@ import "list"
 		// Contains permitted DNS names. Any DNS name that can be
 		// constructed by simply adding zero or more labels to
 		// the left-hand side of the name satisfies the name constraint.
-		// For example, 'example.com', 'www.example.com',
-		// 'www.sub.example.com'
+		// For example, 'example.com', 'www.example.com', 'www.sub.example.com'
 		// would satisfy 'example.com' while 'example1.com' does not.
 		permitted_dns_names?: [...string]
 
-		// Contains the permitted email addresses. The value can be a
-		// particular
-		// email address, a hostname to indicate all email addresses on
-		// that host or
-		// a domain with a leading period (e.g. '.example.com') to
-		// indicate
+		// Contains the permitted email addresses. The value can be a particular
+		// email address, a hostname to indicate all email addresses on that host or
+		// a domain with a leading period (e.g. '.example.com') to indicate
 		// all email addresses in that domain.
 		permitted_email_addresses?: [...string]
 
-		// Contains the permitted IP ranges. For IPv4 addresses, the
-		// ranges
+		// Contains the permitted IP ranges. For IPv4 addresses, the ranges
 		// are expressed using CIDR notation as specified in RFC 4632.
-		// For IPv6 addresses, the ranges are expressed in similar
-		// encoding as IPv4
+		// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
 		// addresses.
 		permitted_ip_ranges?: [...string]
 
-		// Contains the permitted URIs that apply to the host part of the
-		// name.
+		// Contains the permitted URIs that apply to the host part of the name.
 		// The value can be a hostname or a domain with a
 		// leading period (like '.example.com')
 		permitted_uris?: [...string]
 	})
 
 	_#defs: "/$defs/config/$defs/x509_config/$defs/policy_ids": close({
-		// An ObjectId specifies an object identifier (OID). These provide
-		// context and describe types in ASN.1 messages.
+		// An ObjectId specifies an object identifier (OID). These provide context and
+		// describe types in ASN.1 messages.
 		object_id_path!: [...number]
 	})
 }

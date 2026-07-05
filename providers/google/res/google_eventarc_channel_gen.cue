@@ -1,13 +1,13 @@
 package res
 
-#google_eventarc_channel: {
+google_eventarc_channel: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_eventarc_channel")
 	close({
 		timeouts?: #timeouts
 
-		// The activation token for the channel. The token must be used by
-		// the provider to register the channel for publishing.
+		// The activation token for the channel. The token must be used by the provider
+		// to register the channel for publishing.
 		activation_token?: string
 
 		// The creation time.
@@ -18,45 +18,37 @@ package res
 		// 'projects/*/locations/*/keyRings/*/cryptoKeys/*'.
 		crypto_key_name?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// User-defined labels for the channel.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location for the resource
 		location!: string
 
-		// The resource name of the channel. Must be unique within the
-		// location on the project.
-		name!:    string
-		project?: string
+		// The resource name of the channel. Must be unique within the location on the project.
+		name!: string
 
-		// The name of the Pub/Sub topic created and managed by Eventarc
-		// system as a transport for the event delivery. Format:
+		// The name of the Pub/Sub topic created and managed by Eventarc system as a
+		// transport for the event delivery. Format:
 		// 'projects/{project}/topics/{topic_id}'.
 		pubsub_topic?: string
+		project?:      string
 
 		// The state of a Channel.
 		state?: string
@@ -65,15 +57,14 @@ package res
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// The name of the event provider (e.g. Eventarc SaaS partner)
-		// associated with the channel. This provider will be granted
-		// permissions to publish events to the channel. Format:
+		// The name of the event provider (e.g. Eventarc SaaS partner) associated with
+		// the channel. This provider will be granted permissions to publish events to
+		// the channel. Format:
 		// 'projects/{project}/locations/{location}/providers/{provider_id}'.
 		third_party_provider?: string
 
-		// Server assigned unique identifier for the channel. The value is
-		// a UUID4 string and guaranteed to remain unchanged until the
-		// resource is deleted.
+		// Server assigned unique identifier for the channel. The value is a UUID4
+		// string and guaranteed to remain unchanged until the resource is deleted.
 		uid?: string
 
 		// The last-modified time.

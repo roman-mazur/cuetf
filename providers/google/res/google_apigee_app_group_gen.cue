@@ -1,6 +1,6 @@
 package res
 
-#google_apigee_app_group: {
+google_apigee_app_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_app_group")
 	close({
@@ -10,8 +10,7 @@ package res
 		// Internal identifier that cannot be edited
 		app_group_id?: string
 
-		// Channel identifier identifies the owner maintaining this
-		// grouping.
+		// Channel identifier identifies the owner maintaining this grouping.
 		channel_id?: string
 
 		// A reference to the associated storefront/marketplace.
@@ -20,16 +19,11 @@ package res
 		// Created time as milliseconds since epoch.
 		created_at?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -40,8 +34,7 @@ package res
 		// Modified time as milliseconds since epoch.
 		last_modified_at?: string
 
-		// Name of the AppGroup. Characters you can use in the name are
-		// restricted to: A-Z0-9._-$ %.
+		// Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
 		name!: string
 
 		// The Apigee Organization associated with the Apigee app group,
@@ -51,10 +44,9 @@ package res
 		// App group name displayed in the UI
 		organization?: string
 
-		// Valid values are active or inactive. Note that the status of
-		// the AppGroup should be updated via UpdateAppGroupRequest by
-		// setting the action as active or inactive. Possible values:
-		// ["active", "inactive"]
+		// Valid values are active or inactive. Note that the status of the AppGroup
+		// should be updated via UpdateAppGroupRequest by setting the action as active
+		// or inactive. Possible values: ["active", "inactive"]
 		status?: string
 	})
 

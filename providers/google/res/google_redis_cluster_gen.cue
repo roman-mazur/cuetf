@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_redis_cluster: {
+google_redis_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_redis_cluster")
 	close({
@@ -16,47 +16,34 @@ import "list"
 		timeouts?: #timeouts
 		zone_distribution_config?: matchN(1, [#zone_distribution_config, list.MaxItems(1) & [...#zone_distribution_config]])
 
-		// Optional. The authorization mode of the Redis cluster. If not
-		// provided, auth feature is disabled for the cluster. Default
-		// value: "AUTH_MODE_DISABLED" Possible values:
-		// ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
+		// Optional. The authorization mode of the Redis cluster. If not provided, auth
+		// feature is disabled for the cluster. Default value: "AUTH_MODE_DISABLED"
+		// Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
 		// "AUTH_MODE_DISABLED"]
 		authorization_mode?: string
 
-		// This field is used to determine the available maintenance
-		// versions for the self service update.
+		// This field is used to determine the available maintenance versions for the self service update.
 		available_maintenance_versions?: [...string]
 
 		// The backup collection full resource name.
-		// Example:
-		// projects/{project}/locations/{location}/backupCollections/{collection}
+		// Example: projects/{project}/locations/{location}/backupCollections/{collection}
 		backup_collection?: string
 
-		// The timestamp associated with the cluster creation request. A
-		// timestamp in
-		// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-		// nine fractional
-		// digits. Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// The timestamp associated with the cluster creation request. A timestamp in
+		// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
+		// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Optional. Indicates if the cluster is deletion protected or
-		// not.
-		// If the value if set to true, any delete cluster operation will
-		// fail.
+		// Optional. Indicates if the cluster is deletion protected or not.
+		// If the value if set to true, any delete cluster operation will fail.
 		// Default value is true.
 		deletion_protection_enabled?: bool
 
@@ -71,13 +58,11 @@ import "list"
 			})]
 		})]
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// This field represents the actual maintenance version of the
-		// cluster.
+		// This field represents the actual maintenance version of the cluster.
 		effective_maintenance_version?: string
 		id?:                            string
 
@@ -86,10 +71,9 @@ import "list"
 
 		// Resource labels to represent user provided metadata.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Upcoming maintenance schedule.
@@ -99,17 +83,15 @@ import "list"
 			start_time?:             string
 		})]
 
-		// This field can be used to trigger self service update to
-		// indicate the desired maintenance version. The input to this
-		// field can be determined by the available_maintenance_versions
-		// field.
-		// *Note*: This field can only be specified when updating an
-		// existing cluster to a newer version. Downgrades are currently
-		// not supported!
+		// This field can be used to trigger self service update to indicate the desired
+		// maintenance version. The input to this field can be determined by the
+		// available_maintenance_versions field.
+		// *Note*: This field can only be specified when updating an existing cluster to
+		// a newer version. Downgrades are currently not supported!
 		maintenance_version?: string
 
-		// Cluster's Certificate Authority. This field will only be
-		// populated if Redis Cluster's transit_encryption_mode is
+		// Cluster's Certificate Authority. This field will only be populated if Redis
+		// Cluster's transit_encryption_mode is
 		// TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
 		managed_server_ca?: [...close({
 			ca_certs?: [...close({
@@ -117,26 +99,21 @@ import "list"
 			})]
 		})]
 
-		// Unique name of the resource in this scope including project and
-		// location using the form:
+		// Unique name of the resource in this scope including project and location using the form:
 		// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 		name?: string
 
 		// The nodeType for the Redis cluster.
-		// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-		// Possible values: ["REDIS_SHARED_CORE_NANO",
-		// "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHCPU_MEDIUM",
-		// "REDIS_STANDARD_LARGE", "REDIS_HIGHMEM_XLARGE",
+		// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible
+		// values: ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM",
+		// "REDIS_HIGHCPU_MEDIUM", "REDIS_STANDARD_LARGE", "REDIS_HIGHMEM_XLARGE",
 		// "REDIS_HIGHMEM_2XLARGE", "REDIS_STANDARD_SMALL"]
 		node_type?: string
 
-		// Output only. Redis memory precise size in GB for the entire
-		// cluster.
+		// Output only. Redis memory precise size in GB for the entire cluster.
 		precise_size_gb?: number
-		project?:         string
 
-		// Output only. PSC connections for discovery of the cluster
-		// topology and accessing the cluster.
+		// Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
 		psc_connections?: [...close({
 			address?:           string
 			forwarding_rule?:   string
@@ -144,6 +121,7 @@ import "list"
 			project_id?:        string
 			psc_connection_id?: string
 		})]
+		project?: string
 
 		// Service attachment details to configure Psc connections.
 		psc_service_attachments?: [...close({
@@ -151,10 +129,8 @@ import "list"
 			service_attachment?: string
 		})]
 
-		// Configure Redis Cluster behavior using a subset of native Redis
-		// configuration parameters.
-		// Please check Memorystore documentation for the list of
-		// supported parameters:
+		// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+		// Please check Memorystore documentation for the list of supported parameters:
 		// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
 		redis_configs?: [string]: string
 
@@ -165,19 +141,17 @@ import "list"
 		replica_count?: number
 
 		// The serverCaMode for the TLS enabled Redis cluster.
-		// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA
-		// will be used as default Possible values:
+		// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used
+		// as default Possible values:
 		// ["SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA",
 		// "SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA",
-		// "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA",
-		// "SERVER_CA_MODE_UNSPECIFIED"]
+		// "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA", "SERVER_CA_MODE_UNSPECIFIED"]
 		server_ca_mode?: string
 
 		// The resource name of the server CA pool for an instance with
 		// SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
 		// as the server_ca_mode.
-		// Format:
-		// projects/{project}/locations/{region}/caPools/{caPoolId}
+		// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
 		server_ca_pool?: string
 
 		// Required. Number of shards for the Redis cluster.
@@ -186,12 +160,10 @@ import "list"
 		// Output only. Redis memory size in GB for the entire cluster.
 		size_gb?: number
 
-		// The current state of this cluster. Can be CREATING, READY,
-		// UPDATING, DELETING and SUSPENDED
+		// The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
 		state?: string
 
-		// Output only. Additional information about the current state of
-		// the cluster.
+		// Output only. Additional information about the current state of the cluster.
 		state_info?: [...close({
 			update_info?: [...close({
 				target_replica_count?: number
@@ -204,10 +176,9 @@ import "list"
 		terraform_labels?: [string]: string
 
 		// Optional. The in-transit encryption for the Redis cluster.
-		// If not provided, encryption is disabled for the cluster.
-		// Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible
-		// values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-		// "TRANSIT_ENCRYPTION_MODE_DISABLED",
+		// If not provided, encryption is disabled for the cluster. Default value:
+		// "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values:
+		// ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED", "TRANSIT_ENCRYPTION_MODE_DISABLED",
 		// "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
 		transit_encryption_mode?: string
 
@@ -218,12 +189,9 @@ import "list"
 	#automated_backup_config: close({
 		fixed_frequency_schedule!: matchN(1, [_#defs."/$defs/automated_backup_config/$defs/fixed_frequency_schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/automated_backup_config/$defs/fixed_frequency_schedule"]])
 
-		// How long to keep automated backups before the backups are
-		// deleted.
-		// The value should be between 1 day and 365 days. If not
-		// specified, the default value is 35 days.
-		// A duration in seconds with up to nine fractional digits, ending
-		// with 's'. Example: "3.5s".
+		// How long to keep automated backups before the backups are deleted.
+		// The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+		// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 		retention!: string
 	})
 
@@ -231,31 +199,28 @@ import "list"
 		primary_cluster?: matchN(1, [_#defs."/$defs/cross_cluster_replication_config/$defs/primary_cluster", list.MaxItems(1) & [..._#defs."/$defs/cross_cluster_replication_config/$defs/primary_cluster"]])
 		secondary_clusters?: matchN(1, [_#defs."/$defs/cross_cluster_replication_config/$defs/secondary_clusters", [..._#defs."/$defs/cross_cluster_replication_config/$defs/secondary_clusters"]])
 
-		// The role of the cluster in cross cluster replication. Supported
-		// values are:
+		// The role of the cluster in cross cluster replication. Supported values are:
 		//
-		// 1. 'CLUSTER_ROLE_UNSPECIFIED': This is an independent cluster
-		// that has never participated in cross cluster replication. It
+		// 1. 'CLUSTER_ROLE_UNSPECIFIED': This is an independent cluster that has never
+		// participated in cross cluster replication. It allows both reads and writes.
+		//
+		// 1. 'NONE': This is an independent cluster that previously participated in
+		// cross cluster replication(either as a 'PRIMARY' or 'SECONDARY' cluster). It
 		// allows both reads and writes.
 		//
-		// 1. 'NONE': This is an independent cluster that previously
-		// participated in cross cluster replication(either as a
-		// 'PRIMARY' or 'SECONDARY' cluster). It allows both reads and
+		// 1. 'PRIMARY': This cluster serves as the replication source for secondary
+		// clusters that are replicating from it. Any data written to it is
+		// automatically replicated to its secondary clusters. It allows both reads and
 		// writes.
 		//
-		// 1. 'PRIMARY': This cluster serves as the replication source for
-		// secondary clusters that are replicating from it. Any data
-		// written to it is automatically replicated to its secondary
-		// clusters. It allows both reads and writes.
-		//
-		// 1. 'SECONDARY': This cluster replicates data from the primary
-		// cluster. It allows only reads. Possible values:
-		// ["CLUSTER_ROLE_UNSPECIFIED", "NONE", "PRIMARY", "SECONDARY"]
+		// 1. 'SECONDARY': This cluster replicates data from the primary cluster. It
+		// allows only reads. Possible values: ["CLUSTER_ROLE_UNSPECIFIED", "NONE",
+		// "PRIMARY", "SECONDARY"]
 		cluster_role?: string
 
-		// An output only view of all the member clusters participating in
-		// cross cluster replication. This field is populated for all the
-		// member clusters irrespective of their cluster role.
+		// An output only view of all the member clusters participating in cross cluster
+		// replication. This field is populated for all the member clusters
+		// irrespective of their cluster role.
 		membership?: [...close({
 			primary_cluster?: [...close({
 				cluster?: string
@@ -272,8 +237,7 @@ import "list"
 	})
 
 	#gcs_source: close({
-		// URIs of the GCS objects to import. Example:
-		// gs://bucket1/object1, gs://bucket2/folder2/object2
+		// URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
 		uris!: [...string]
 	})
 
@@ -301,11 +265,10 @@ import "list"
 		aof_config?: matchN(1, [_#defs."/$defs/persistence_config/$defs/aof_config", list.MaxItems(1) & [..._#defs."/$defs/persistence_config/$defs/aof_config"]])
 		rdb_config?: matchN(1, [_#defs."/$defs/persistence_config/$defs/rdb_config", list.MaxItems(1) & [..._#defs."/$defs/persistence_config/$defs/rdb_config"]])
 
-		// Optional. Controls whether Persistence features are enabled. If
-		// not provided, the existing value will be used.
+		// Optional. Controls whether Persistence features are enabled. If not provided,
+		// the existing value will be used.
 		//
-		// - DISABLED: Persistence (both backup and restore) is disabled
-		// for the cluster.
+		// - DISABLED: Persistence (both backup and restore) is disabled for the cluster.
 		// - RDB: RDB based Persistence is enabled.
 		// - AOF: AOF based Persistence is enabled. Possible values:
 		// ["PERSISTENCE_MODE_UNSPECIFIED", "DISABLED", "RDB", "AOF"]
@@ -326,10 +289,9 @@ import "list"
 	})
 
 	#zone_distribution_config: close({
-		// Immutable. The mode for zone distribution for Memorystore Redis
-		// cluster.
-		// If not provided, MULTI_ZONE will be used as default Possible
-		// values: ["MULTI_ZONE", "SINGLE_ZONE"]
+		// Immutable. The mode for zone distribution for Memorystore Redis cluster.
+		// If not provided, MULTI_ZONE will be used as default Possible values:
+		// ["MULTI_ZONE", "SINGLE_ZONE"]
 		mode?: string
 
 		// Immutable. The zone for single zone Memorystore Redis cluster.
@@ -341,10 +303,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/automated_backup_config/$defs/fixed_frequency_schedule/$defs/start_time": close({
-		// Hours of a day in 24 hour format. Must be greater than or equal
-		// to 0 and typically must be less than or equal to 23.
-		// An API may choose to allow the value "24:00:00" for scenarios
-		// like business closing time.
+		// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+		// typically must be less than or equal to 23.
+		// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
 		hours!: number
 	})
 
@@ -378,9 +339,8 @@ import "list"
 		// - THURSDAY: Thursday
 		// - FRIDAY: Friday
 		// - SATURDAY: Saturday
-		// - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED",
-		// "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY",
-		// "SATURDAY", "SUNDAY"]
+		// - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY",
+		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day!: string
 
 		// Output only. Duration of the maintenance window.
@@ -392,15 +352,13 @@ import "list"
 
 	_#defs: "/$defs/maintenance_policy/$defs/weekly_maintenance_window/$defs/start_time": close({
 		// Hours of day in 24 hour format. Should be from 0 to 23.
-		// An API may choose to allow the value "24:00:00" for scenarios
-		// like business closing time.
+		// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
 		// Seconds of minutes of the time. Must normally be from 0 to 59.
@@ -412,11 +370,10 @@ import "list"
 		// Optional. Available fsync modes.
 		//
 		// - NO - Do not explicitly call fsync(). Rely on OS defaults.
-		// - EVERYSEC - Call fsync() once per second in a background
-		// thread. A balance between performance and durability.
-		// - ALWAYS - Call fsync() for earch write command. Possible
-		// values: ["APPEND_FSYNC_UNSPECIFIED", "NO", "EVERYSEC",
-		// "ALWAYS"]
+		// - EVERYSEC - Call fsync() once per second in a background thread. A balance
+		// between performance and durability.
+		// - ALWAYS - Call fsync() for earch write command. Possible values:
+		// ["APPEND_FSYNC_UNSPECIFIED", "NO", "EVERYSEC", "ALWAYS"]
 		append_fsync?: string
 	})
 
@@ -427,12 +384,11 @@ import "list"
 		// - SIX_HOURS: Snapshot every 6 hours.
 		// - TWELVE_HOURS: Snapshot every 12 hours.
 		// - TWENTY_FOUR_HOURS: Snapshot every 24 hours. Possible values:
-		// ["SNAPSHOT_PERIOD_UNSPECIFIED", "ONE_HOUR", "SIX_HOURS",
-		// "TWELVE_HOURS", "TWENTY_FOUR_HOURS"]
+		// ["SNAPSHOT_PERIOD_UNSPECIFIED", "ONE_HOUR", "SIX_HOURS", "TWELVE_HOURS",
+		// "TWENTY_FOUR_HOURS"]
 		rdb_snapshot_period?: string
 
-		// The time that the first snapshot was/will be attempted, and to
-		// which
+		// The time that the first snapshot was/will be attempted, and to which
 		// future snapshots will be aligned.
 		// If not provided, the current time will be used.
 		rdb_snapshot_start_time?: string

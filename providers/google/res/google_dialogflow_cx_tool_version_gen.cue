@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_dialogflow_cx_tool_version: {
+google_dialogflow_cx_tool_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_tool_version")
 	close({
@@ -10,24 +10,18 @@ import "list"
 		tool!: matchN(1, [#tool, list.MaxItems(1) & [_, ...] & [...#tool]])
 
 		// Last time the tool version was created or modified.
-		// Uses RFC 3339, where generated output will always be
-		// Z-normalized and use 0, 3, 6 or 9 fractional digits.
+		// Uses RFC 3339, where generated output will always be Z-normalized and use 0,
+		// 3, 6 or 9 fractional digits.
 		// Offsets other than "Z" are also accepted.
-		// Examples: "2014-10-02T15:01:23Z",
-		// "2014-10-02T15:01:23.045123456Z" or
+		// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or
 		// "2014-10-02T15:01:23+05:30".
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -41,16 +35,14 @@ import "list"
 		name?: string
 
 		// The tool to create a Version for.
-		// Format: projects/<Project ID>/locations/<Location
-		// ID>/agents/<Agent ID>/tools/<Tool ID>.
+		// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
 		parent!: string
 
 		// Last time the tool version was created or modified.
-		// Uses RFC 3339, where generated output will always be
-		// Z-normalized and use 0, 3, 6 or 9 fractional digits.
+		// Uses RFC 3339, where generated output will always be Z-normalized and use 0,
+		// 3, 6 or 9 fractional digits.
 		// Offsets other than "Z" are also accepted.
-		// Examples: "2014-10-02T15:01:23Z",
-		// "2014-10-02T15:01:23.045123456Z" or
+		// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or
 		// "2014-10-02T15:01:23+05:30".
 		update_time?: string
 	})
@@ -72,8 +64,7 @@ import "list"
 		display_name!: string
 
 		// The unique identifier of the Tool.
-		// Format: projects/<Project ID>/locations/<Location
-		// ID>/agents/<Agent ID>/tools/<Tool ID>.
+		// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
 		name?: string
 
 		// The tool type.
@@ -97,10 +88,9 @@ import "list"
 		// for valid values.
 		data_store_type?: string
 
-		// The document processing mode for the data store connection.
-		// Should only be set for PUBLIC_WEB and UNSTRUCTURED data
-		// stores. If not set it is considered as DOCUMENTS, as this is
-		// the legacy mode.
+		// The document processing mode for the data store connection. Should only be
+		// set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered
+		// as DOCUMENTS, as this is the legacy mode.
 		// See
 		// [DocumentProcessingMode](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#documentprocessingmode)
 		// for valid values.
@@ -113,15 +103,13 @@ import "list"
 		// Optional. The JSON schema is encapsulated in a
 		// [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct)
 		// to describe the input of the function.
-		// This input is a JSON object that contains the function's
-		// parameters as properties of the object
+		// This input is a JSON object that contains the function's parameters as properties of the object
 		input_schema?: string
 
 		// Optional. The JSON schema is encapsulated in a
 		// [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct)
 		// to describe the output of the function.
-		// This output is a JSON object that contains the function's
-		// parameters as properties of the object
+		// This output is a JSON object that contains the function's parameters as properties of the object
 		output_schema?: string
 	})
 
@@ -131,8 +119,7 @@ import "list"
 		tls_config?: matchN(1, [_#defs."/$defs/tool/$defs/open_api_spec/$defs/tls_config", list.MaxItems(1) & [..._#defs."/$defs/tool/$defs/open_api_spec/$defs/tls_config"]])
 
 		// The OpenAPI schema specified as a text.
-		// This field is part of a union field 'schema': only one of
-		// 'textSchema' may be set.
+		// This field is part of a union field 'schema': only one of 'textSchema' may be set.
 		text_schema!: string
 	})
 
@@ -144,14 +131,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/tool/$defs/open_api_spec/$defs/authentication/$defs/api_key_config": close({
-		// Optional. The API key. If the 'secretVersionForApiKey'' field
-		// is set, this field will be ignored.
+		// Optional. The API key. If the 'secretVersionForApiKey'' field is set, this field will be ignored.
 		api_key?: string
 
 		// The parameter name or the header name of the API key.
-		// E.g., If the API request is
-		// "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the
-		// parameter name.
+		// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key"
+		// would be the parameter name.
 		key_name!: string
 
 		// Key location in the request.
@@ -160,22 +145,19 @@ import "list"
 		// for valid values.
 		request_location!: string
 
-		// Optional. The name of the SecretManager secret version resource
-		// storing the API key.
+		// Optional. The name of the SecretManager secret version resource storing the API key.
 		// If this field is set, the apiKey field will be ignored.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}
 		secret_version_for_api_key?: string
 	})
 
 	_#defs: "/$defs/tool/$defs/open_api_spec/$defs/authentication/$defs/bearer_token_config": close({
-		// Optional. The name of the SecretManager secret version resource
-		// storing the Bearer token. If this field is set, the 'token'
-		// field will be ignored.
+		// Optional. The name of the SecretManager secret version resource storing the
+		// Bearer token. If this field is set, the 'token' field will be ignored.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}
 		secret_version_for_token?: string
 
-		// Optional. The text token appended to the text Bearer to the
-		// request Authorization header.
+		// Optional. The text token appended to the text Bearer to the request Authorization header.
 		// [Session parameters
 		// reference](https://cloud.google.com/dialogflow/cx/docs/concept/parameter#session-ref)
 		// can be used to pass the token dynamically, e.g.
@@ -188,8 +170,7 @@ import "list"
 		client_id!: string
 
 		// Optional. The client secret from the OAuth provider. If the
-		// 'secretVersionForClientSecret' field is set, this field will
-		// be ignored.
+		// 'secretVersionForClientSecret' field is set, this field will be ignored.
 		client_secret?: string
 
 		// OAuth grant types.
@@ -201,20 +182,17 @@ import "list"
 		// Optional. The OAuth scopes to grant.
 		scopes?: [...string]
 
-		// Optional. The name of the SecretManager secret version resource
-		// storing the client secret.
+		// Optional. The name of the SecretManager secret version resource storing the client secret.
 		// If this field is set, the clientSecret field will be ignored.
 		// Format: projects/{project}/secrets/{secret}/versions/{version}
 		secret_version_for_client_secret?: string
 
-		// The token endpoint in the OAuth provider to exchange for an
-		// access token.
+		// The token endpoint in the OAuth provider to exchange for an access token.
 		token_endpoint!: string
 	})
 
 	_#defs: "/$defs/tool/$defs/open_api_spec/$defs/authentication/$defs/service_agent_auth_config": close({
-		// Optional. Indicate the auth token type generated from the
-		// Diglogflow service agent.
+		// Optional. Indicate the auth token type generated from the Diglogflow service agent.
 		// The generated token is sent in the Authorization header.
 		// See
 		// [ServiceAgentAuth](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#serviceagentauth)
@@ -223,13 +201,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/tool/$defs/open_api_spec/$defs/service_directory_config": close({
-		// The name of [Service
-		// Directory](https://cloud.google.com/service-directory/docs)
-		// service.
+		// The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
 		// Format:
 		// projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>.
-		// LocationID of the service directory must be the same as the
-		// location of the agent.
+		// LocationID of the service directory must be the same as the location of the
+		// agent.
 		service!: string
 	})
 
@@ -238,14 +214,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/tool/$defs/open_api_spec/$defs/tls_config/$defs/ca_certs": close({
-		// The allowed custom CA certificates (in DER format) for HTTPS
-		// verification. This overrides the default SSL trust store.
-		// If this is empty or unspecified, Dialogflow will use Google's
-		// default trust store to verify certificates.
-		// N.B. Make sure the HTTPS server certificates are signed with
-		// "subject alt name".
-		// For instance a certificate can be self-signed using the
-		// following command:
+		// The allowed custom CA certificates (in DER format) for HTTPS verification.
+		// This overrides the default SSL trust store.
+		// If this is empty or unspecified, Dialogflow will use Google's default trust
+		// store to verify certificates.
+		// N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+		// For instance a certificate can be self-signed using the following command:
 		// '''
 		// openssl x509 -req -days 200 -in example.com.csr \
 		// -signkey example.com.key \
@@ -255,8 +229,8 @@ import "list"
 		// A base64-encoded string.
 		cert!: string
 
-		// The name of the allowed custom CA certificates. This can be
-		// used to disambiguate the custom CA certificates.
+		// The name of the allowed custom CA certificates. This can be used to
+		// disambiguate the custom CA certificates.
 		display_name!: string
 	})
 }

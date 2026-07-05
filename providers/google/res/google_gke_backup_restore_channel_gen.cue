@@ -1,21 +1,16 @@
 package res
 
-#google_gke_backup_restore_channel: {
+google_gke_backup_restore_channel: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_backup_restore_channel")
 	close({
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -31,23 +26,17 @@ package res
 		// Example Project ID: "my-project-id".
 		destination_project_id?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// etag is used for optimistic concurrency control as a way to
-		// help prevent simultaneous
-		// updates of a restore channel from overwriting each other. It is
-		// strongly suggested that
-		// systems make use of the 'etag' in the read-modify-write cycle
-		// to perform RestoreChannel updates
-		// in order to avoid race conditions: An etag is returned in the
-		// response to restoreChannels.get,
-		// and systems are expected to put that etag in the request to
-		// restoreChannels.patch or
-		// restoreChannels.delete to ensure that their change will be
-		// applied to the same version of the resource.
+		// etag is used for optimistic concurrency control as a way to help prevent simultaneous
+		// updates of a restore channel from overwriting each other. It is strongly suggested that
+		// systems make use of the 'etag' in the read-modify-write cycle to perform RestoreChannel updates
+		// in order to avoid race conditions: An etag is returned in the response to restoreChannels.get,
+		// and systems are expected to put that etag in the request to restoreChannels.patch or
+		// restoreChannels.delete to ensure that their change will be applied to the
+		// same version of the resource.
 		etag?: string
 		id?:   string
 
@@ -56,22 +45,21 @@ package res
 		// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The region of the Restore Channel.
 		location!: string
 
 		// The full name of the RestoreChannel Resource.
-		name!:    string
-		project?: string
+		name!: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+		project?: string
 
 		// Server generated, unique identifier of UUID format.
 		uid?: string

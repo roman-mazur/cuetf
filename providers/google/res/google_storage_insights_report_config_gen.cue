@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_storage_insights_report_config: {
+google_storage_insights_report_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_insights_report_config")
 	close({
@@ -12,30 +12,24 @@ import "list"
 		parquet_options?: matchN(1, [#parquet_options, list.MaxItems(1) & [...#parquet_options]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The editable display name of the inventory report
-		// configuration. Has a limit of 256 characters. Can be empty.
+		// The editable display name of the inventory report configuration. Has a limit
+		// of 256 characters. Can be empty.
 		display_name?: string
 
-		// If set, all the inventory report details associated with this
-		// report configuration are deleted.
+		// If set, all the inventory report details associated with this report configuration are deleted.
 		force_destroy?: bool
 		id?:            string
 
-		// The location of the ReportConfig. The source and destination
-		// buckets specified in the ReportConfig
+		// The location of the ReportConfig. The source and destination buckets
+		// specified in the ReportConfig
 		// must be in the same location.
 		location!: string
 
@@ -45,16 +39,13 @@ import "list"
 	})
 
 	#csv_options: close({
-		// The delimiter used to separate the fields in the inventory
-		// report CSV file.
+		// The delimiter used to separate the fields in the inventory report CSV file.
 		delimiter?: string
 
-		// The boolean that indicates whether or not headers are included
-		// in the inventory report CSV file.
+		// The boolean that indicates whether or not headers are included in the inventory report CSV file.
 		header_required?: bool
 
-		// The character used to separate the records in the inventory
-		// report CSV file.
+		// The character used to separate the records in the inventory report CSV file.
 		record_separator?: string
 	})
 
@@ -62,8 +53,8 @@ import "list"
 		end_date!: matchN(1, [_#defs."/$defs/frequency_options/$defs/end_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/frequency_options/$defs/end_date"]])
 		start_date!: matchN(1, [_#defs."/$defs/frequency_options/$defs/start_date", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/frequency_options/$defs/start_date"]])
 
-		// The frequency in which inventory reports are generated. Values
-		// are DAILY or WEEKLY. Possible values: ["DAILY", "WEEKLY"]
+		// The frequency in which inventory reports are generated. Values are DAILY or
+		// WEEKLY. Possible values: ["DAILY", "WEEKLY"]
 		frequency!: string
 	})
 
@@ -106,18 +97,15 @@ import "list"
 	})
 
 	_#defs: "/$defs/object_metadata_report_options/$defs/storage_destination_options": close({
-		// The destination bucket that stores the generated inventory
-		// reports.
+		// The destination bucket that stores the generated inventory reports.
 		bucket!: string
 
-		// The path within the destination bucket to store generated
-		// inventory reports.
+		// The path within the destination bucket to store generated inventory reports.
 		destination_path?: string
 	})
 
 	_#defs: "/$defs/object_metadata_report_options/$defs/storage_filters": close({
-		// The filter to use when specifying which bucket to generate
-		// inventory reports for.
+		// The filter to use when specifying which bucket to generate inventory reports for.
 		bucket?: string
 	})
 }

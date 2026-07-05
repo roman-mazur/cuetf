@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_vertex_ai_feature_online_store_featureview: {
+google_vertex_ai_feature_online_store_featureview: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_feature_online_store_featureview")
 	close({
@@ -11,27 +11,20 @@ import "list"
 		sync_config?: matchN(1, [#sync_config, list.MaxItems(1) & [...#sync_config]])
 		timeouts?: #timeouts
 
-		// The timestamp of when the featureOnlinestore was created in
-		// RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-		// to nine fractional digits.
+		// The timestamp of when the featureOnlinestore was created in RFC3339 UTC
+		// "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// The name of the FeatureOnlineStore to use for the featureview.
@@ -41,39 +34,34 @@ import "list"
 		// A set of key/value label pairs to assign to this FeatureView.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Name of the FeatureView. This value may be up to 60 characters,
-		// and valid characters are [a-z0-9_]. The first character cannot
-		// be a number.
-		name?:    string
-		project?: string
+		// Name of the FeatureView. This value may be up to 60 characters, and valid
+		// characters are [a-z0-9_]. The first character cannot be a number.
+		name?: string
 
-		// The region for the resource. It should be the same as the
-		// featureonlinestore region.
-		region?: string
+		// The region for the resource. It should be the same as the featureonlinestore region.
+		region?:  string
+		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// The timestamp of when the featureOnlinestore was last updated
-		// in RFC3339 UTC "Zulu" format, with nanosecond resolution and
-		// up to nine fractional digits.
+		// The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC
+		// "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 		update_time?: string
 	})
 
 	#big_query_source: close({
-		// Columns to construct entityId / row keys. Start by supporting 1
-		// only.
+		// Columns to construct entityId / row keys. Start by supporting 1 only.
 		entity_id_columns!: [...string]
 
-		// The BigQuery view URI that will be materialized on each sync
-		// trigger based on FeatureView.SyncConfig.
+		// The BigQuery view URI that will be materialized on each sync trigger based on
+		// FeatureView.SyncConfig.
 		uri!: string
 	})
 
@@ -85,15 +73,12 @@ import "list"
 	})
 
 	#sync_config: close({
-		// If true, syncs the FeatureView in a continuous manner to Online
-		// Store.
+		// If true, syncs the FeatureView in a continuous manner to Online Store.
 		continuous?: bool
 
-		// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch
-		// scheduled runs.
-		// To explicitly set a timezone to the cron tab, apply a prefix in
-		// the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or
-		// "TZ=${IANA_TIME_ZONE}".
+		// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+		// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab:
+		// "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
 		cron?: string
 	})
 

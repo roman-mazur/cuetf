@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_contact_center_insights_qa_question: {
+google_contact_center_insights_qa_question: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_contact_center_insights_qa_question")
 	close({
@@ -13,8 +13,7 @@ import "list"
 		timeouts?: #timeouts
 		tuning_metadata?: matchN(1, [#tuning_metadata, list.MaxItems(1) & [...#tuning_metadata]])
 
-		// Short, descriptive string, used in the UI where it's not
-		// practical
+		// Short, descriptive string, used in the UI where it's not practical
 		// to display the full question body. E.g., "Greeting".
 		abbreviation?: string
 
@@ -24,23 +23,17 @@ import "list"
 		// The time at which this question was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Identifier. The resource name of the question.
@@ -48,15 +41,13 @@ import "list"
 		// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question}
 		name?: string
 
-		// Defines the order of the question within its parent scorecard
-		// revision.
-		order?:   number
-		project?: string
+		// Defines the order of the question within its parent scorecard revision.
+		order?: number
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		qa_scorecard!: string
+		project?:      string
 
 		// Question text. E.g., "Did the agent greet the customer?"
 		question_body?: string
@@ -67,23 +58,17 @@ import "list"
 		// PREDEFINED
 		question_type?: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		revision!: string
 
-		// Questions are tagged for categorization and scoring. Tags can
-		// either be:
-		// - Default Tags: These are predefined categories. They are
-		// identified by
-		// their string value (e.g., "BUSINESS", "COMPLIANCE", and
-		// "CUSTOMER").
-		// - Custom Tags: These are user-defined categories. They are
-		// identified by
+		// Questions are tagged for categorization and scoring. Tags can either be:
+		// - Default Tags: These are predefined categories. They are identified by
+		// their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
+		// - Custom Tags: These are user-defined categories. They are identified by
 		// their full resource name (e.g.,
 		// projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
-		// Both default and custom tags are used to group questions and to
-		// influence
+		// Both default and custom tags are used to group questions and to influence
 		// the scoring of each question.
 		tags?: [...string]
 
@@ -98,20 +83,16 @@ import "list"
 		// A short string used as an identifier.
 		key?: string
 
-		// A value of "Not Applicable (N/A)". If provided, this field may
-		// only
-		// be set to 'true'. If a question receives this answer, it will
-		// be
+		// A value of "Not Applicable (N/A)". If provided, this field may only
+		// be set to 'true'. If a question receives this answer, it will be
 		// excluded from any score calculations.
 		na_value?: bool
 
 		// Numerical value.
 		num_value?: number
 
-		// Numerical score of the answer, used for generating the overall
-		// score of
-		// a QaScorecardResult. If the answer uses na_value, this field is
-		// unused.
+		// Numerical score of the answer, used for generating the overall score of
+		// a QaScorecardResult. If the answer uses na_value, this field is unused.
 		score?: number
 
 		// String value.
@@ -119,8 +100,7 @@ import "list"
 	})
 
 	#metrics: close({
-		// Accuracy of the model. Measures the percentage of correct
-		// answers the
+		// Accuracy of the model. Measures the percentage of correct answers the
 		// model gave on the test set.
 		accuracy?: number
 	})
@@ -144,25 +124,21 @@ import "list"
 	})
 
 	#tuning_metadata: close({
-		// A list of any applicable data validation warnings about the
-		// question's
+		// A list of any applicable data validation warnings about the question's
 		// feedback labels.
 		dataset_validation_warnings?: [...string]
 
-		// Total number of valid labels provided for the question at the
-		// time of
+		// Total number of valid labels provided for the question at the time of
 		// tuining.
 		total_valid_label_count?: string
 
-		// Error status of the tuning operation for the question. Will
-		// only be set
+		// Error status of the tuning operation for the question. Will only be set
 		// if the tuning operation failed.
 		tuning_error?: string
 	})
 
 	_#defs: "/$defs/qa_question_data_options/$defs/conversation_data_options": close({
-		// Whether to include the per turn Dialogflow interaction data in
-		// conversation
+		// Whether to include the per turn Dialogflow interaction data in conversation
 		// transcript.
 		include_dialogflow_interaction_data?: bool
 	})

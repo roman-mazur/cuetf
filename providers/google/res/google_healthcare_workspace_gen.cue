@@ -2,46 +2,37 @@ package res
 
 import "list"
 
-#google_healthcare_workspace: {
+google_healthcare_workspace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_healthcare_workspace")
 	close({
 		settings!: matchN(1, [#settings, list.MaxItems(1) & [_, ...] & [...#settings]])
 		timeouts?: #timeouts
 
-		// Identifies the dataset addressed by this request. Must be in
-		// the format
+		// Identifies the dataset addressed by this request. Must be in the format
 		// 'projects/{project}/locations/{location}/datasets/{dataset}'
 		dataset!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
-		// The user labels. An object containing a list of "key": value
-		// pairs. Example: { "name": "wrench", "mass": "1.3kg", "count":
-		// "3" }
+		// The user labels. An object containing a list of "key": value pairs. Example:
+		// { "name": "wrench", "mass": "1.3kg", "count": "3" }
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The name of the workspace, in the format

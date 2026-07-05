@@ -1,6 +1,6 @@
 package data
 
-#google_compute_security_policy: {
+google_compute_security_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_security_policy")
 	close({
@@ -38,26 +38,19 @@ package data
 			user_ip_request_headers?: [...string]
 		})]
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// An optional description of this security policy. Max size is
-		// 2048.
+		// An optional description of this security policy. Max size is 2048.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// Fingerprint of this resource.
@@ -70,29 +63,26 @@ package data
 		// Labels to apply to this address. A list of key->value pairs.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The name of the security policy.
 		name?: string
 
-		// The project in which the resource belongs. If it is not
-		// provided, the provider project is used.
+		// The project in which the resource belongs. If it is not provided, the provider project is used.
 		project?: string
 
-		// reCAPTCHA configuration options to be applied for the security
-		// policy.
+		// reCAPTCHA configuration options to be applied for the security policy.
 		recaptcha_options_config?: [...close({
 			redirect_site_key?: string
 		})]
 
-		// The set of rules that belong to this policy. There must always
-		// be a default rule (rule with priority 2147483647 and match
-		// "*"). If no rules are provided when creating a security
-		// policy, a default rule with action "allow" will be added.
+		// The set of rules that belong to this policy. There must always be a default
+		// rule (rule with priority 2147483647 and match "*"). If no rules are provided
+		// when creating a security policy, a default rule with action "allow" will be
+		// added.
 		rule?: [...close({
 			action?:      string
 			description?: string
@@ -173,19 +163,18 @@ package data
 		// The URI of the created resource.
 		self_link?: string
 
-		// The combination of labels configured directly on the resource
-		// and default labels configured on the provider.
+		// The combination of labels configured directly on the resource and default
+		// labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// The type indicates the intended use of the security policy.
-		// CLOUD_ARMOR - Cloud Armor backend security policies can be
-		// configured to filter incoming HTTP requests targeting backend
-		// services. They filter requests before they hit the origin
-		// servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies
-		// can be configured to filter incoming HTTP requests targeting
-		// backend services (including Cloud CDN-enabled) as well as
-		// backend buckets (Cloud Storage). They filter requests before
-		// the request is served from Google's cache.
+		// The type indicates the intended use of the security policy. CLOUD_ARMOR -
+		// Cloud Armor backend security policies can be configured to filter incoming
+		// HTTP requests targeting backend services. They filter requests before they
+		// hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security
+		// policies can be configured to filter incoming HTTP requests targeting
+		// backend services (including Cloud CDN-enabled) as well as backend buckets
+		// (Cloud Storage). They filter requests before the request is served from
+		// Google's cache.
 		type?: string
 	})
 }

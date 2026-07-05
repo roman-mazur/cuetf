@@ -2,23 +2,18 @@ package res
 
 import "list"
 
-#google_access_context_manager_access_levels: {
+google_access_context_manager_access_levels: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_access_levels")
 	close({
 		access_levels?: matchN(1, [#access_levels, [...#access_levels]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
@@ -32,12 +27,10 @@ import "list"
 		basic?: matchN(1, [_#defs."/$defs/access_levels/$defs/basic", list.MaxItems(1) & [..._#defs."/$defs/access_levels/$defs/basic"]])
 		custom?: matchN(1, [_#defs."/$defs/access_levels/$defs/custom", list.MaxItems(1) & [..._#defs."/$defs/access_levels/$defs/custom"]])
 
-		// Description of the AccessLevel and its use. Does not affect
-		// behavior.
+		// Description of the AccessLevel and its use. Does not affect behavior.
 		description?: string
 
-		// Resource name for the Access Level. The short_name component
-		// must begin
+		// Resource name for the Access Level. The short_name component must begin
 		// with a letter and only include alphanumeric and '_'.
 		// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
 		name!: string
@@ -55,15 +48,11 @@ import "list"
 	_#defs: "/$defs/access_levels/$defs/basic": close({
 		conditions!: matchN(1, [_#defs."/$defs/access_levels/$defs/basic/$defs/conditions", [_, ...] & [..._#defs."/$defs/access_levels/$defs/basic/$defs/conditions"]])
 
-		// How the conditions list should be combined to determine if a
-		// request
+		// How the conditions list should be combined to determine if a request
 		// is granted this AccessLevel. If AND is used, each Condition in
-		// conditions must be satisfied for the AccessLevel to be applied.
-		// If
-		// OR is used, at least one Condition in conditions must be
-		// satisfied
-		// for the AccessLevel to be applied. Default value: "AND"
-		// Possible values: ["AND", "OR"]
+		// conditions must be satisfied for the AccessLevel to be applied. If
+		// OR is used, at least one Condition in conditions must be satisfied
+		// for the AccessLevel to be applied. Default value: "AND" Possible values: ["AND", "OR"]
 		combining_function?: string
 	})
 
@@ -76,8 +65,7 @@ import "list"
 		// Note that for a CIDR IP address block, the specified IP address
 		// portion must be properly truncated (i.e. all the host bits must
 		// be zero) or the input is considered malformed. For example,
-		// "192.0.2.0/24" is accepted but "192.0.2.1/24" is not.
-		// Similarly,
+		// "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
 		// for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
 		// is not. The originating IP of a request must be in one of the
 		// listed subnets in order for this Condition to be true.
@@ -87,8 +75,7 @@ import "list"
 		// An allowed list of members (users, service accounts).
 		// Using groups is not supported yet.
 		//
-		// The signed-in user originating the request must be a part of
-		// one
+		// The signed-in user originating the request must be a part of one
 		// of the provided members. If not specified, a request may come
 		// from any user (logged in/not logged in, not present in any
 		// groups, etc.).
@@ -123,8 +110,8 @@ import "list"
 
 		// A list of allowed encryptions statuses.
 		// An empty list allows all statuses. Possible values:
-		// ["ENCRYPTION_UNSPECIFIED", "ENCRYPTION_UNSUPPORTED",
-		// "UNENCRYPTED", "ENCRYPTED"]
+		// ["ENCRYPTION_UNSPECIFIED", "ENCRYPTION_UNSUPPORTED", "UNENCRYPTED",
+		// "ENCRYPTED"]
 		allowed_encryption_statuses?: [...string]
 
 		// Whether the device needs to be approved by the customer admin.
@@ -144,9 +131,9 @@ import "list"
 		// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 		minimum_version?: string
 
-		// The operating system type of the device. Possible values:
-		// ["OS_UNSPECIFIED", "DESKTOP_MAC", "DESKTOP_WINDOWS",
-		// "DESKTOP_LINUX", "DESKTOP_CHROME_OS", "ANDROID", "IOS"]
+		// The operating system type of the device. Possible values: ["OS_UNSPECIFIED",
+		// "DESKTOP_MAC", "DESKTOP_WINDOWS", "DESKTOP_LINUX", "DESKTOP_CHROME_OS",
+		// "ANDROID", "IOS"]
 		os_type!: string
 	})
 
@@ -155,9 +142,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/access_levels/$defs/basic/$defs/conditions/$defs/vpc_network_sources/$defs/vpc_subnetwork": close({
-		// Required. Network name to be allowed by this Access Level.
-		// Networks of foreign organizations requires
-		// 'compute.network.get' permission to be granted to caller.
+		// Required. Network name to be allowed by this Access Level. Networks of
+		// foreign organizations requires 'compute.network.get' permission to be
+		// granted to caller.
 		network!: string
 
 		// CIDR block IP subnetwork specification. Must be IPv4.
@@ -172,16 +159,14 @@ import "list"
 		// Description of the expression
 		description?: string
 
-		// Textual representation of an expression in Common Expression
-		// Language syntax.
+		// Textual representation of an expression in Common Expression Language syntax.
 		expression!: string
 
-		// String indicating the location of the expression for error
-		// reporting, e.g. a file name and a position in the file
+		// String indicating the location of the expression for error reporting, e.g. a
+		// file name and a position in the file
 		location?: string
 
-		// Title for the expression, i.e. a short string describing its
-		// purpose.
+		// Title for the expression, i.e. a short string describing its purpose.
 		title?: string
 	})
 }

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_database_migration_service_connection_profile: {
+google_database_migration_service_connection_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_database_migration_service_connection_profile")
 	close({
@@ -16,33 +16,27 @@ import "list"
 		// The ID of the connection profile.
 		connection_profile_id!: string
 
-		// Output only. The timestamp when the resource was created. A
-		// timestamp in RFC3339 UTC 'Zulu' format, accurate to
-		// nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
+		// Output only. The timestamp when the resource was created. A timestamp in
+		// RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example:
+		// '2014-10-02T15:01:23.045123456Z'.
 		create_time?: string
 
 		// The database provider.
 		dbprovider?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// The connection profile display name.
 		display_name?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// Output only. The error details in case of state FAILED.
@@ -55,14 +49,13 @@ import "list"
 		})]
 		id?: string
 
-		// The resource labels for connection profile to use to annotate
-		// any related underlying resources such as Compute Engine VMs.
+		// The resource labels for connection profile to use to annotate any related
+		// underlying resources such as Compute Engine VMs.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location where the connection profile should reside.
@@ -70,12 +63,11 @@ import "list"
 
 		// The name of this connection profile resource in the form of
 		// projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
-		name?:    string
-		project?: string
+		name?: string
 
-		// The connection profile role. Possible values: ["SOURCE",
-		// "DESTINATION"]
-		role?: string
+		// The connection profile role. Possible values: ["SOURCE", "DESTINATION"]
+		role?:    string
+		project?: string
 
 		// The current connection profile state.
 		state?: string
@@ -88,16 +80,14 @@ import "list"
 	#alloydb: close({
 		settings?: matchN(1, [_#defs."/$defs/alloydb/$defs/settings", list.MaxItems(1) & [..._#defs."/$defs/alloydb/$defs/settings"]])
 
-		// Required. The AlloyDB cluster ID that this connection profile
-		// is associated with.
+		// Required. The AlloyDB cluster ID that this connection profile is associated with.
 		cluster_id!: string
 	})
 
 	#cloudsql: close({
 		settings?: matchN(1, [_#defs."/$defs/cloudsql/$defs/settings", list.MaxItems(1) & [..._#defs."/$defs/cloudsql/$defs/settings"]])
 
-		// Output only. The Cloud SQL instance ID that this connection
-		// profile is associated with.
+		// Output only. The Cloud SQL instance ID that this connection profile is associated with.
 		cloud_sql_id?: string
 
 		// Output only. The Cloud SQL database instance's private IP.
@@ -110,29 +100,27 @@ import "list"
 	#mysql: close({
 		ssl?: matchN(1, [_#defs."/$defs/mysql/$defs/ssl", list.MaxItems(1) & [..._#defs."/$defs/mysql/$defs/ssl"]])
 
-		// If the connection profile is a Cloud SQL database, use this
-		// field to provide the Cloud SQL instance ID.
+		// If the connection profile is a Cloud SQL database, use this field to provide
+		// the Cloud SQL instance ID.
 		cloud_sql_id?: string
 
 		// The IP or hostname of the source MySQL database.
 		host?: string
 
-		// Input only. The password for the user that Database Migration
-		// Service will be using to connect to the database.
-		// This field is not returned on request, and the value is
-		// encrypted when stored in Database Migration Service.
+		// Input only. The password for the user that Database Migration Service will be
+		// using to connect to the database.
+		// This field is not returned on request, and the value is encrypted when stored
+		// in Database Migration Service.
 		password?: string
 
-		// Output only. Indicates If this connection profile password is
-		// stored.
+		// Output only. Indicates If this connection profile password is stored.
 		password_set?: bool
 
 		// The network port of the source MySQL database.
 		port?: number
 
-		// The username that Database Migration Service will use to
-		// connect to the database. The value is encrypted when stored in
-		// Database Migration Service.
+		// The username that Database Migration Service will use to connect to the
+		// database. The value is encrypted when stored in Database Migration Service.
 		username?: string
 	})
 
@@ -148,22 +136,21 @@ import "list"
 		// Required. The IP or hostname of the source Oracle database.
 		host!: string
 
-		// Required. Input only. The password for the user that Database
-		// Migration Service will be using to connect to the database.
-		// This field is not returned on request, and the value is
-		// encrypted when stored in Database Migration Service.
+		// Required. Input only. The password for the user that Database Migration
+		// Service will be using to connect to the database.
+		// This field is not returned on request, and the value is encrypted when stored
+		// in Database Migration Service.
 		password!: string
 
-		// Output only. Indicates If this connection profile password is
-		// stored.
+		// Output only. Indicates If this connection profile password is stored.
 		password_set?: bool
 
 		// Required. The network port of the source Oracle database.
 		port!: number
 
-		// Required. The username that Database Migration Service will use
-		// to connect to the database. The value is encrypted when stored
-		// in Database Migration Service.
+		// Required. The username that Database Migration Service will use to connect to
+		// the database. The value is encrypted when stored in Database Migration
+		// Service.
 		username!: string
 	})
 
@@ -171,12 +158,12 @@ import "list"
 		private_connectivity?: matchN(1, [_#defs."/$defs/postgresql/$defs/private_connectivity", list.MaxItems(1) & [..._#defs."/$defs/postgresql/$defs/private_connectivity"]])
 		ssl?: matchN(1, [_#defs."/$defs/postgresql/$defs/ssl", list.MaxItems(1) & [..._#defs."/$defs/postgresql/$defs/ssl"]])
 
-		// If the connection profile is an AlloyDB instance, use this
-		// field to provide the AlloyDB cluster ID.
+		// If the connection profile is an AlloyDB instance, use this field to provide
+		// the AlloyDB cluster ID.
 		alloydb_cluster_id?: string
 
-		// If the connection profile is a Cloud SQL database, use this
-		// field to provide the Cloud SQL instance ID.
+		// If the connection profile is a Cloud SQL database, use this field to provide
+		// the Cloud SQL instance ID.
 		cloud_sql_id?: string
 
 		// The name of the specific database within the host.
@@ -185,26 +172,24 @@ import "list"
 		// The IP or hostname of the source MySQL database.
 		host?: string
 
-		// Output only. If the source is a Cloud SQL database, this field
-		// indicates the network architecture it's associated with.
+		// Output only. If the source is a Cloud SQL database, this field indicates the
+		// network architecture it's associated with.
 		network_architecture?: string
 
-		// Input only. The password for the user that Database Migration
-		// Service will be using to connect to the database.
-		// This field is not returned on request, and the value is
-		// encrypted when stored in Database Migration Service.
+		// Input only. The password for the user that Database Migration Service will be
+		// using to connect to the database.
+		// This field is not returned on request, and the value is encrypted when stored
+		// in Database Migration Service.
 		password?: string
 
-		// Output only. Indicates If this connection profile password is
-		// stored.
+		// Output only. Indicates If this connection profile password is stored.
 		password_set?: bool
 
 		// The network port of the source MySQL database.
 		port?: number
 
-		// The username that Database Migration Service will use to
-		// connect to the database. The value is encrypted when stored in
-		// Database Migration Service.
+		// The username that Database Migration Service will use to connect to the
+		// database. The value is encrypted when stored in Database Migration Service.
 		username?: string
 	})
 
@@ -221,13 +206,12 @@ import "list"
 		// Labels for the AlloyDB cluster created by DMS.
 		labels?: [string]: string
 
-		// Required. The resource link for the VPC network in which
-		// cluster resources are created and from which they are
-		// accessible via Private IP. The network must belong to the same
-		// project as the cluster.
+		// Required. The resource link for the VPC network in which cluster resources
+		// are created and from which they are accessible via Private IP. The network
+		// must belong to the same project as the cluster.
 		// It is specified in the form:
-		// 'projects/{project_number}/global/networks/{network_id}'. This
-		// is required to create a cluster.
+		// 'projects/{project_number}/global/networks/{network_id}'. This is required
+		// to create a cluster.
 		vpc_network!: string
 	})
 
@@ -235,8 +219,7 @@ import "list"
 		// The initial password for the user.
 		password!: string
 
-		// Output only. Indicates if the initialUser.password field has
-		// been set.
+		// Output only. Indicates if the initialUser.password field has been set.
 		password_set?: bool
 
 		// The database username.
@@ -246,9 +229,8 @@ import "list"
 	_#defs: "/$defs/alloydb/$defs/settings/$defs/primary_instance_settings": close({
 		machine_config!: matchN(1, [_#defs."/$defs/alloydb/$defs/settings/$defs/primary_instance_settings/$defs/machine_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/alloydb/$defs/settings/$defs/primary_instance_settings/$defs/machine_config"]])
 
-		// Database flags to pass to AlloyDB when DMS is creating the
-		// AlloyDB cluster and instances. See the AlloyDB documentation
-		// for how these can be used.
+		// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster
+		// and instances. See the AlloyDB documentation for how these can be used.
 		database_flags?: [string]: string
 
 		// The database username.
@@ -257,8 +239,8 @@ import "list"
 		// Labels for the AlloyDB primary instance created by DMS.
 		labels?: [string]: string
 
-		// Output only. The private IP address for the Instance. This is
-		// the connection endpoint for an end-user application.
+		// Output only. The private IP address for the Instance. This is the connection
+		// endpoint for an end-user application.
 		private_ip?: string
 	})
 
@@ -270,18 +252,16 @@ import "list"
 	_#defs: "/$defs/cloudsql/$defs/settings": close({
 		ip_config?: matchN(1, [_#defs."/$defs/cloudsql/$defs/settings/$defs/ip_config", list.MaxItems(1) & [..._#defs."/$defs/cloudsql/$defs/settings/$defs/ip_config"]])
 
-		// The activation policy specifies when the instance is activated;
-		// it is applicable only when the instance state is 'RUNNABLE'.
-		// Possible values: ["ALWAYS", "NEVER"]
+		// The activation policy specifies when the instance is activated; it is
+		// applicable only when the instance state is 'RUNNABLE'. Possible values:
+		// ["ALWAYS", "NEVER"]
 		activation_policy?: string
 
-		// If you enable this setting, Cloud SQL checks your available
-		// storage every 30 seconds. If the available storage falls below
-		// a threshold size, Cloud SQL automatically adds additional
-		// storage capacity.
-		// If the available storage repeatedly falls below the threshold
-		// size, Cloud SQL continues to add storage until it reaches the
-		// maximum of 30 TB.
+		// If you enable this setting, Cloud SQL checks your available storage every 30
+		// seconds. If the available storage falls below a threshold size, Cloud SQL
+		// automatically adds additional storage capacity.
+		// If the available storage repeatedly falls below the threshold size, Cloud SQL
+		// continues to add storage until it reaches the maximum of 30 TB.
 		auto_storage_increase?: bool
 
 		// The KMS key name used for the csql instance.
@@ -290,8 +270,7 @@ import "list"
 		// The Cloud SQL default instance level collation.
 		collation?: string
 
-		// The storage capacity available to the database, in GB. The
-		// minimum (and default) size is 10GB.
+		// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
 		data_disk_size_gb?: string
 
 		// The type of storage. Possible values: ["PD_SSD", "PD_HDD"]
@@ -305,40 +284,33 @@ import "list"
 		// https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
 		database_version?: string
 
-		// The edition of the given Cloud SQL instance. Possible values:
-		// ["ENTERPRISE", "ENTERPRISE_PLUS"]
+		// The edition of the given Cloud SQL instance. Possible values: ["ENTERPRISE", "ENTERPRISE_PLUS"]
 		edition?: string
 
 		// Input only. Initial root password.
 		root_password?: string
 
-		// Output only. Indicates If this connection profile root password
-		// is stored.
+		// Output only. Indicates If this connection profile root password is stored.
 		root_password_set?: bool
 
-		// The Database Migration Service source connection profile ID, in
-		// the format:
+		// The Database Migration Service source connection profile ID, in the format:
 		// projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID
 		source_id!: string
 
-		// The maximum size to which storage capacity can be automatically
-		// increased. The default value is 0, which specifies that there
-		// is no limit.
+		// The maximum size to which storage capacity can be automatically increased.
+		// The default value is 0, which specifies that there is no limit.
 		storage_auto_resize_limit?: string
 
-		// The tier (or machine type) for this instance, for example:
-		// db-n1-standard-1 (MySQL instances) or db-custom-1-3840
-		// (PostgreSQL instances).
-		// For more information, see
-		// https://cloud.google.com/sql/docs/mysql/instance-settings
+		// The tier (or machine type) for this instance, for example: db-n1-standard-1
+		// (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
+		// For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
 		tier?: string
 
-		// The resource labels for a Cloud SQL instance to use to annotate
-		// any related underlying resources such as Compute Engine VMs.
+		// The resource labels for a Cloud SQL instance to use to annotate any related
+		// underlying resources such as Compute Engine VMs.
 		user_labels?: [string]: string
 
-		// The Google Cloud Platform zone where your Cloud SQL datdabse
-		// instance is located.
+		// The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
 		zone?: string
 	})
 
@@ -348,11 +320,10 @@ import "list"
 		// Whether the instance should be assigned an IPv4 address or not.
 		enable_ipv4?: bool
 
-		// The resource link for the VPC network from which the Cloud SQL
-		// instance is accessible for private IP. For example,
+		// The resource link for the VPC network from which the Cloud SQL instance is
+		// accessible for private IP. For example,
 		// projects/myProject/global/networks/default.
-		// This setting can be updated, but it cannot be removed after it
-		// is set.
+		// This setting can be updated, but it cannot be removed after it is set.
 		private_network?: string
 
 		// Whether SSL connections over IP should be enforced or not.
@@ -360,8 +331,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/cloudsql/$defs/settings/$defs/ip_config/$defs/authorized_networks": close({
-		// The time when this access control entry expires in RFC 3339
-		// format.
+		// The time when this access control entry expires in RFC 3339 format.
 		expire_time?: string
 
 		// A label to identify this entry.
@@ -375,26 +345,23 @@ import "list"
 	})
 
 	_#defs: "/$defs/mysql/$defs/ssl": close({
-		// Input only. The x509 PEM-encoded certificate of the CA that
-		// signed the source database server's certificate.
-		// The replica will use this certificate to verify it's connecting
-		// to the right host.
+		// Input only. The x509 PEM-encoded certificate of the CA that signed the source
+		// database server's certificate.
+		// The replica will use this certificate to verify it's connecting to the right host.
 		ca_certificate?: string
 
-		// Input only. The x509 PEM-encoded certificate that will be used
-		// by the replica to authenticate against the source database
-		// server.
+		// Input only. The x509 PEM-encoded certificate that will be used by the replica
+		// to authenticate against the source database server.
 		// If this field is used then the 'clientKey' field is mandatory
 		client_certificate?: string
 
-		// Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded
-		// private key associated with the Client Certificate.
-		// If this field is used then the 'clientCertificate' field is
-		// mandatory.
+		// Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key
+		// associated with the Client Certificate.
+		// If this field is used then the 'clientCertificate' field is mandatory.
 		client_key?: string
 
-		// The current connection profile state. Possible values:
-		// ["SERVER_ONLY", "SERVER_CLIENT", "REQUIRED", "NONE"]
+		// The current connection profile state. Possible values: ["SERVER_ONLY",
+		// "SERVER_CLIENT", "REQUIRED", "NONE"]
 		type?: string
 	})
 
@@ -402,15 +369,13 @@ import "list"
 		// Required. Hostname for the SSH tunnel.
 		hostname!: string
 
-		// Input only. SSH password. Only one of 'password' and
-		// 'private_key' can be configured.
+		// Input only. SSH password. Only one of 'password' and 'private_key' can be configured.
 		password?: string
 
 		// Port for the SSH tunnel, default value is 22.
 		port!: number
 
-		// Input only. SSH private key. Only one of 'password' and
-		// 'private_key' can be configured.
+		// Input only. SSH private key. Only one of 'password' and 'private_key' can be configured.
 		private_key?: string
 
 		// Required. Username for the SSH tunnel.
@@ -423,22 +388,19 @@ import "list"
 	})
 
 	_#defs: "/$defs/oracle/$defs/ssl": close({
-		// Input only. The x509 PEM-encoded certificate of the CA that
-		// signed the source database server's certificate.
-		// The replica will use this certificate to verify it's connecting
-		// to the right host.
+		// Input only. The x509 PEM-encoded certificate of the CA that signed the source
+		// database server's certificate.
+		// The replica will use this certificate to verify it's connecting to the right host.
 		ca_certificate?: string
 
-		// Input only. The x509 PEM-encoded certificate that will be used
-		// by the replica to authenticate against the source database
-		// server.
+		// Input only. The x509 PEM-encoded certificate that will be used by the replica
+		// to authenticate against the source database server.
 		// If this field is used then the 'clientKey' field is mandatory
 		client_certificate?: string
 
-		// Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded
-		// private key associated with the Client Certificate.
-		// If this field is used then the 'clientCertificate' field is
-		// mandatory.
+		// Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key
+		// associated with the Client Certificate.
+		// If this field is used then the 'clientCertificate' field is mandatory.
 		client_key?: string
 
 		// The current connection profile state.
@@ -453,26 +415,23 @@ import "list"
 	})
 
 	_#defs: "/$defs/postgresql/$defs/ssl": close({
-		// Input only. The x509 PEM-encoded certificate of the CA that
-		// signed the source database server's certificate.
-		// The replica will use this certificate to verify it's connecting
-		// to the right host.
+		// Input only. The x509 PEM-encoded certificate of the CA that signed the source
+		// database server's certificate.
+		// The replica will use this certificate to verify it's connecting to the right host.
 		ca_certificate?: string
 
-		// Input only. The x509 PEM-encoded certificate that will be used
-		// by the replica to authenticate against the source database
-		// server.
+		// Input only. The x509 PEM-encoded certificate that will be used by the replica
+		// to authenticate against the source database server.
 		// If this field is used then the 'clientKey' field is mandatory
 		client_certificate?: string
 
-		// Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded
-		// private key associated with the Client Certificate.
-		// If this field is used then the 'clientCertificate' field is
-		// mandatory.
+		// Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key
+		// associated with the Client Certificate.
+		// If this field is used then the 'clientCertificate' field is mandatory.
 		client_key?: string
 
-		// The current connection profile state. Possible values:
-		// ["SERVER_ONLY", "SERVER_CLIENT", "REQUIRED", "NONE"]
+		// The current connection profile state. Possible values: ["SERVER_ONLY",
+		// "SERVER_CLIENT", "REQUIRED", "NONE"]
 		type?: string
 	})
 }

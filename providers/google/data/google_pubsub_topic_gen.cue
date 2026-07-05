@@ -1,25 +1,19 @@
 package data
 
-#google_pubsub_topic: {
+google_pubsub_topic: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_pubsub_topic")
 	close({
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
@@ -68,57 +62,40 @@ package data
 			})]
 		})]
 
-		// The resource name of the Cloud KMS CryptoKey to be used to
-		// protect access
-		// to messages published on this topic. Your project's PubSub
-		// service account
-		// ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com')
-		// must have
-		// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this
-		// feature.
-		// The expected format is
-		// 'projects/*/locations/*/keyRings/*/cryptoKeys/*'
+		// The resource name of the Cloud KMS CryptoKey to be used to protect access
+		// to messages published on this topic. Your project's PubSub service account
+		// ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
+		// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
+		// The expected format is 'projects/*/locations/*/keyRings/*/cryptoKeys/*'
 		kms_key_name?: string
 
 		// A set of key/value label pairs to assign to this Topic.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Indicates the minimum duration to retain a message after it is
-		// published
-		// to the topic. If this field is set, messages published to the
-		// topic in
-		// the last messageRetentionDuration are always available to
-		// subscribers.
-		// For instance, it allows any attached subscription to seek to a
-		// timestamp
-		// that is up to messageRetentionDuration in the past. If this
-		// field is not
-		// set, message retention is controlled by settings on individual
-		// subscriptions.
-		// The rotation period has the format of a decimal number,
-		// followed by the
-		// letter 's' (seconds). Cannot be more than 31 days or less than
-		// 10 minutes.
+		// Indicates the minimum duration to retain a message after it is published
+		// to the topic. If this field is set, messages published to the topic in
+		// the last messageRetentionDuration are always available to subscribers.
+		// For instance, it allows any attached subscription to seek to a timestamp
+		// that is up to messageRetentionDuration in the past. If this field is not
+		// set, message retention is controlled by settings on individual subscriptions.
+		// The rotation period has the format of a decimal number, followed by the
+		// letter 's' (seconds). Cannot be more than 31 days or less than 10 minutes.
 		message_retention_duration?: string
 
-		// Policy constraining the set of Google Cloud Platform regions
-		// where
-		// messages published to the topic may be stored. If not present,
-		// then no
+		// Policy constraining the set of Google Cloud Platform regions where
+		// messages published to the topic may be stored. If not present, then no
 		// constraints are in effect.
 		message_storage_policy?: [...close({
 			allowed_persistence_regions?: [...string]
 			enforce_in_transit?: bool
 		})]
 
-		// Transforms to be applied to messages published to the topic.
-		// Transforms are applied in the
+		// Transforms to be applied to messages published to the topic. Transforms are applied in the
 		// order specified.
 		message_transforms?: [...close({
 			ai_inference?: [...close({
@@ -147,19 +124,13 @@ package data
 			schema?:            string
 		})]
 
-		// Input only. Resource manager tags to be bound to the topic. Tag
-		// keys and
-		// values have the same definition as resource manager tags. Keys
-		// must be in
+		// Input only. Resource manager tags to be bound to the topic. Tag keys and
+		// values have the same definition as resource manager tags. Keys must be in
 		// the format tagKeys/{tag_key_id}, and values are in the format
-		// tagValues/456. The field is ignored when empty. The field is
-		// immutable and
-		// causes resource replacement when mutated. This field is only
-		// set at create
-		// time and modifying this field after creation will trigger
-		// recreation. To
-		// apply tags to an existing resource, see the
-		// 'google_tags_tag_value'
+		// tagValues/456. The field is ignored when empty. The field is immutable and
+		// causes resource replacement when mutated. This field is only set at create
+		// time and modifying this field after creation will trigger recreation. To
+		// apply tags to an existing resource, see the 'google_tags_tag_value'
 		// resource.
 		tags?: [string]: string
 

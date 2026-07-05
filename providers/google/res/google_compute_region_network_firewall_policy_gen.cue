@@ -1,6 +1,6 @@
 package res
 
-#google_compute_region_network_firewall_policy: {
+google_compute_region_network_firewall_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_network_firewall_policy")
 	close({
@@ -9,58 +9,47 @@ package res
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// An optional description of this resource. Provide this property
-		// when you create the resource.
+		// An optional description of this resource. Provide this property when you create the resource.
 		description?: string
 
-		// Fingerprint of the resource. This field is used internally
-		// during updates of this resource.
+		// Fingerprint of the resource. This field is used internally during updates of this resource.
 		fingerprint?: string
 		id?:          string
 
-		// User-provided name of the Network firewall policy. The name
-		// should be unique in the project in which the firewall policy
-		// is created. The name must be 1-63 characters long, and comply
-		// with RFC1035. Specifically, the name must be 1-63 characters
-		// long and match the regular expression
-		// [a-z]([-a-z0-9]*[a-z0-9])? which means the first character
-		// must be a lowercase letter, and all following characters must
-		// be a dash, lowercase letter, or digit, except the last
-		// character, which cannot be a dash.
+		// User-provided name of the Network firewall policy. The name should be unique
+		// in the project in which the firewall policy is created. The name must be
+		// 1-63 characters long, and comply with RFC1035. Specifically, the name must
+		// be 1-63 characters long and match the regular expression
+		// [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a
+		// lowercase letter, and all following characters must be a dash, lowercase
+		// letter, or digit, except the last character, which cannot be a dash.
 		name!: string
 
-		// Policy type is used to determine which resources (networks) the
-		// policy can be associated with.
-		// A policy can be associated with a network only if the network
-		// has the matching policyType in its network profile.
-		// Different policy types may support some of the Firewall Rules
-		// features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY",
-		// "RDMA_FALCON_POLICY", "ULL_POLICY"]
+		// Policy type is used to determine which resources (networks) the policy can be associated with.
+		// A policy can be associated with a network only if the network has the
+		// matching policyType in its network profile.
+		// Different policy types may support some of the Firewall Rules features.
+		// Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY", "RDMA_FALCON_POLICY",
+		// "ULL_POLICY"]
 		policy_type?: string
-		project?:     string
 
 		// The region of this resource.
-		region?: string
+		region?:  string
+		project?: string
 
-		// The unique identifier for the resource. This identifier is
-		// defined by the server.
+		// The unique identifier for the resource. This identifier is defined by the server.
 		region_network_firewall_policy_id?: string
 
-		// Total count of all firewall policy rule tuples. A firewall
-		// policy can not exceed a set number of tuples.
+		// Total count of all firewall policy rule tuples. A firewall policy can not
+		// exceed a set number of tuples.
 		rule_tuple_count?: number
 
 		// Server-defined URL for the resource.

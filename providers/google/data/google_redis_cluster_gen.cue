@@ -1,13 +1,12 @@
 package data
 
-#google_redis_cluster: {
+google_redis_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_redis_cluster")
 	close({
-		// Optional. The authorization mode of the Redis cluster. If not
-		// provided, auth feature is disabled for the cluster. Default
-		// value: "AUTH_MODE_DISABLED" Possible values:
-		// ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
+		// Optional. The authorization mode of the Redis cluster. If not provided, auth
+		// feature is disabled for the cluster. Default value: "AUTH_MODE_DISABLED"
+		// Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
 		// "AUTH_MODE_DISABLED"]
 		authorization_mode?: string
 
@@ -21,21 +20,16 @@ package data
 			retention?: string
 		})]
 
-		// This field is used to determine the available maintenance
-		// versions for the self service update.
+		// This field is used to determine the available maintenance versions for the self service update.
 		available_maintenance_versions?: [...string]
 
 		// The backup collection full resource name.
-		// Example:
-		// projects/{project}/locations/{location}/backupCollections/{collection}
+		// Example: projects/{project}/locations/{location}/backupCollections/{collection}
 		backup_collection?: string
 
-		// The timestamp associated with the cluster creation request. A
-		// timestamp in
-		// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-		// nine fractional
-		// digits. Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// The timestamp associated with the cluster creation request. A timestamp in
+		// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
+		// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		create_time?: string
 
 		// Cross cluster replication config
@@ -62,23 +56,16 @@ package data
 			update_time?: string
 		})]
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Optional. Indicates if the cluster is deletion protected or
-		// not.
-		// If the value if set to true, any delete cluster operation will
-		// fail.
+		// Optional. Indicates if the cluster is deletion protected or not.
+		// If the value if set to true, any delete cluster operation will fail.
 		// Default value is true.
 		deletion_protection_enabled?: bool
 
@@ -93,17 +80,15 @@ package data
 			})]
 		})]
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// This field represents the actual maintenance version of the
-		// cluster.
+		// This field represents the actual maintenance version of the cluster.
 		effective_maintenance_version?: string
 
-		// Backups stored in Cloud Storage buckets. The Cloud Storage
-		// buckets need to be the same region as the clusters.
+		// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be
+		// the same region as the clusters.
 		gcs_source?: [...close({
 			uris?: [...string]
 		})]
@@ -114,10 +99,9 @@ package data
 
 		// Resource labels to represent user provided metadata.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Maintenance policy for a cluster
@@ -143,13 +127,11 @@ package data
 			start_time?:             string
 		})]
 
-		// This field can be used to trigger self service update to
-		// indicate the desired maintenance version. The input to this
-		// field can be determined by the available_maintenance_versions
-		// field.
-		// *Note*: This field can only be specified when updating an
-		// existing cluster to a newer version. Downgrades are currently
-		// not supported!
+		// This field can be used to trigger self service update to indicate the desired
+		// maintenance version. The input to this field can be determined by the
+		// available_maintenance_versions field.
+		// *Note*: This field can only be specified when updating an existing cluster to
+		// a newer version. Downgrades are currently not supported!
 		maintenance_version?: string
 
 		// Backups that generated and managed by memorystore.
@@ -157,8 +139,8 @@ package data
 			backup?: string
 		})]
 
-		// Cluster's Certificate Authority. This field will only be
-		// populated if Redis Cluster's transit_encryption_mode is
+		// Cluster's Certificate Authority. This field will only be populated if Redis
+		// Cluster's transit_encryption_mode is
 		// TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
 		managed_server_ca?: [...close({
 			ca_certs?: [...close({
@@ -166,16 +148,14 @@ package data
 			})]
 		})]
 
-		// Unique name of the resource in this scope including project and
-		// location using the form:
+		// Unique name of the resource in this scope including project and location using the form:
 		// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 		name!: string
 
 		// The nodeType for the Redis cluster.
-		// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-		// Possible values: ["REDIS_SHARED_CORE_NANO",
-		// "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHCPU_MEDIUM",
-		// "REDIS_STANDARD_LARGE", "REDIS_HIGHMEM_XLARGE",
+		// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible
+		// values: ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM",
+		// "REDIS_HIGHCPU_MEDIUM", "REDIS_STANDARD_LARGE", "REDIS_HIGHMEM_XLARGE",
 		// "REDIS_HIGHMEM_2XLARGE", "REDIS_STANDARD_SMALL"]
 		node_type?: string
 
@@ -191,22 +171,18 @@ package data
 			})]
 		})]
 
-		// Output only. Redis memory precise size in GB for the entire
-		// cluster.
+		// Output only. Redis memory precise size in GB for the entire cluster.
 		precise_size_gb?: number
 		project?:         string
 
-		// Required. Each PscConfig configures the consumer network where
-		// two
-		// network addresses will be designated to the cluster for client
-		// access.
+		// Required. Each PscConfig configures the consumer network where two
+		// network addresses will be designated to the cluster for client access.
 		// Currently, only one PscConfig is supported.
 		psc_configs?: [...close({
 			network?: string
 		})]
 
-		// Output only. PSC connections for discovery of the cluster
-		// topology and accessing the cluster.
+		// Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
 		psc_connections?: [...close({
 			address?:           string
 			forwarding_rule?:   string
@@ -221,10 +197,8 @@ package data
 			service_attachment?: string
 		})]
 
-		// Configure Redis Cluster behavior using a subset of native Redis
-		// configuration parameters.
-		// Please check Memorystore documentation for the list of
-		// supported parameters:
+		// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+		// Please check Memorystore documentation for the list of supported parameters:
 		// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
 		redis_configs?: [string]: string
 
@@ -235,19 +209,17 @@ package data
 		replica_count?: number
 
 		// The serverCaMode for the TLS enabled Redis cluster.
-		// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA
-		// will be used as default Possible values:
+		// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used
+		// as default Possible values:
 		// ["SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA",
 		// "SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA",
-		// "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA",
-		// "SERVER_CA_MODE_UNSPECIFIED"]
+		// "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA", "SERVER_CA_MODE_UNSPECIFIED"]
 		server_ca_mode?: string
 
 		// The resource name of the server CA pool for an instance with
 		// SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
 		// as the server_ca_mode.
-		// Format:
-		// projects/{project}/locations/{region}/caPools/{caPoolId}
+		// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
 		server_ca_pool?: string
 
 		// Required. Number of shards for the Redis cluster.
@@ -256,12 +228,10 @@ package data
 		// Output only. Redis memory size in GB for the entire cluster.
 		size_gb?: number
 
-		// The current state of this cluster. Can be CREATING, READY,
-		// UPDATING, DELETING and SUSPENDED
+		// The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
 		state?: string
 
-		// Output only. Additional information about the current state of
-		// the cluster.
+		// Output only. Additional information about the current state of the cluster.
 		state_info?: [...close({
 			update_info?: [...close({
 				target_replica_count?: number
@@ -274,18 +244,16 @@ package data
 		terraform_labels?: [string]: string
 
 		// Optional. The in-transit encryption for the Redis cluster.
-		// If not provided, encryption is disabled for the cluster.
-		// Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible
-		// values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-		// "TRANSIT_ENCRYPTION_MODE_DISABLED",
+		// If not provided, encryption is disabled for the cluster. Default value:
+		// "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values:
+		// ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED", "TRANSIT_ENCRYPTION_MODE_DISABLED",
 		// "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
 		transit_encryption_mode?: string
 
 		// System assigned, unique identifier for the cluster.
 		uid?: string
 
-		// Immutable. Zone distribution config for Memorystore Redis
-		// cluster.
+		// Immutable. Zone distribution config for Memorystore Redis cluster.
 		zone_distribution_config?: [...close({
 			mode?: string
 			zone?: string

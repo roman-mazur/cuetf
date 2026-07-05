@@ -1,21 +1,16 @@
 package res
 
-#google_compute_instance_group_membership: {
+google_compute_instance_group_membership: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_instance_group_membership")
 	close({
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
@@ -23,13 +18,12 @@ package res
 		// An instance being added to the InstanceGroup
 		instance!: string
 
-		// Represents an Instance Group resource name that the instance
-		// belongs to.
+		// Represents an Instance Group resource name that the instance belongs to.
 		instance_group!: string
-		project?:        string
 
 		// A reference to the zone where the instance group resides.
-		zone?: string
+		zone?:    string
+		project?: string
 	})
 
 	#timeouts: close({

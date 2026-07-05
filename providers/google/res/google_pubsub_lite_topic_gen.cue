@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_pubsub_lite_topic: {
+google_pubsub_lite_topic: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_pubsub_lite_topic")
 	close({
@@ -11,26 +11,21 @@ import "list"
 		retention_config?: matchN(1, [#retention_config, list.MaxItems(1) & [...#retention_config]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
 
 		// Name of the topic.
-		name!:    string
-		project?: string
+		name!: string
 
 		// The region of the pubsub lite topic.
-		region?: string
+		region?:  string
+		project?: string
 
 		// The zone of the pubsub lite topic.
 		zone?: string
@@ -49,20 +44,14 @@ import "list"
 	})
 
 	#retention_config: close({
-		// The provisioned storage, in bytes, per partition. If the number
-		// of bytes stored
-		// in any of the topic's partitions grows beyond this value, older
-		// messages will be
-		// dropped to make room for newer ones, regardless of the value of
-		// period.
+		// The provisioned storage, in bytes, per partition. If the number of bytes stored
+		// in any of the topic's partitions grows beyond this value, older messages will be
+		// dropped to make room for newer ones, regardless of the value of period.
 		per_partition_bytes!: string
 
-		// How long a published message is retained. If unset, messages
-		// will be retained as
-		// long as the bytes retained for each partition is below
-		// perPartitionBytes. A
-		// duration in seconds with up to nine fractional digits,
-		// terminated by 's'.
+		// How long a published message is retained. If unset, messages will be retained as
+		// long as the bytes retained for each partition is below perPartitionBytes. A
+		// duration in seconds with up to nine fractional digits, terminated by 's'.
 		// Example: "3.5s".
 		period?: string
 	})
@@ -74,12 +63,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/partition_config/$defs/capacity": close({
-		// Subscribe throughput capacity per partition in MiB/s. Must be
-		// >= 4 and <= 16.
+		// Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
 		publish_mib_per_sec!: number
 
-		// Publish throughput capacity per partition in MiB/s. Must be >=
-		// 4 and <= 16.
+		// Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
 		subscribe_mib_per_sec!: number
 	})
 }

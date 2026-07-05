@@ -2,16 +2,15 @@ package res
 
 import "list"
 
-#google_biglake_iceberg_catalog: {
+google_biglake_iceberg_catalog: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_biglake_iceberg_catalog")
 	close({
 		restricted_locations_config?: matchN(1, [#restricted_locations_config, list.MaxItems(1) & [...#restricted_locations_config]])
 		timeouts?: #timeouts
 
-		// Output only. The service account used for credential vending.
-		// It might be empty if credential vending was never enabled for
-		// the catalog.
+		// Output only. The service account used for credential vending. It might be
+		// empty if credential vending was never enabled for the catalog.
 		biglake_service_account?: string
 
 		// The catalog type of the IcebergCatalog. Possible values:
@@ -21,71 +20,56 @@ import "list"
 		// Output only. The creation time of the IcebergCatalog.
 		create_time?: string
 
-		// The credential mode used for the catalog.
-		// CREDENTIAL_MODE_END_USER - End user credentials, default. The
-		// authenticating user must have access to the catalog resources
-		// and the corresponding Google Cloud Storage files.
-		// CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending.
-		// The authenticating user must have access to the catalog
-		// resources and the system will provide the caller with
-		// downscoped credentials to access the Google Cloud Storage
-		// files. All table operations in this mode would require
-		// 'X-Iceberg-Access-Delegation' header with 'vended-credentials'
-		// value included. System will generate a service account and the
-		// catalog administrator must grant the service account
-		// appropriate permissions. Possible values:
-		// ["CREDENTIAL_MODE_END_USER",
+		// The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user
+		// credentials, default. The authenticating user must have access to the
+		// catalog resources and the corresponding Google Cloud Storage files.
+		// CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The
+		// authenticating user must have access to the catalog resources and the system
+		// will provide the caller with downscoped credentials to access the Google
+		// Cloud Storage files. All table operations in this mode would require
+		// 'X-Iceberg-Access-Delegation' header with 'vended-credentials' value
+		// included. System will generate a service account and the catalog
+		// administrator must grant the service account appropriate permissions.
+		// Possible values: ["CREDENTIAL_MODE_END_USER",
 		// "CREDENTIAL_MODE_VENDED_CREDENTIALS"]
 		credential_mode?: string
 
-		// The default storage location for the catalog, e.g.,
-		// 'gs://my-bucket'.
+		// The default storage location for the catalog, e.g., 'gs://my-bucket'.
 		// Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
 		// Required when the catalog type is CATALOG_TYPE_BIGLAKE.
 		default_location?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
 
 		// The name of the IcebergCatalog.
-		// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to
-		// be the
-		// exact same value of the GCS bucket's name. For example, for a
-		// bucket:
-		// gs://bucket-name, the catalog name will be exactly
-		// "bucket-name".
+		// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+		// exact same value of the GCS bucket's name. For example, for a bucket:
+		// gs://bucket-name, the catalog name will be exactly "bucket-name".
 		name!: string
 
-		// The primary location for mirroring the remote catalog metadata.
-		// It must be
-		// a BigLake-supported location, and it should be proximate to the
-		// remote
+		// The primary location for mirroring the remote catalog metadata. It must be
+		// a BigLake-supported location, and it should be proximate to the remote
 		// catalog's location.
 		primary_location?: string
-		project?:          string
 
 		// Output only. The replicas for the catalog metadata.
 		replicas?: [...close({
 			region?: string
 			state?:  string
 		})]
+		project?: string
 
-		// Output only. The GCP region(s) where the physical metadata for
-		// the tables is stored, e.g. 'us-central1', 'nam4' or 'us'. This
-		// will contain one value for all locations, except for the
-		// catalogs that are configured to use custom dual region
-		// buckets.
+		// Output only. The GCP region(s) where the physical metadata for the tables is
+		// stored, e.g. 'us-central1', 'nam4' or 'us'. This will contain one value for
+		// all locations, except for the catalogs that are configured to use custom
+		// dual region buckets.
 		storage_regions?: [...string]
 
 		// Output only. The last modification time of the IcebergCatalog.
@@ -93,10 +77,8 @@ import "list"
 	})
 
 	#restricted_locations_config: close({
-		// A list of GCS locations (e.g., 'gs://my-other-bucket/...') that
-		// are
-		// permitted for use by resources within this catalog. Each entry
-		// can be
+		// A list of GCS locations (e.g., 'gs://my-other-bucket/...') that are
+		// permitted for use by resources within this catalog. Each entry can be
 		// either a GCS bucket or a path within it.
 		restricted_locations?: [...string]
 	})

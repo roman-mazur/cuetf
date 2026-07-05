@@ -2,36 +2,27 @@ package res
 
 import "list"
 
-#google_compute_forwarding_rule: {
+google_compute_forwarding_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_forwarding_rule")
 	close({
 		service_directory_registrations?: matchN(1, [#service_directory_registrations, list.MaxItems(1) & [...#service_directory_registrations]])
 		timeouts?: #timeouts
 
-		// The 'ports', 'portRange', and 'allPorts' fields are mutually
-		// exclusive.
-		// Only packets addressed to ports in the specified range will be
-		// forwarded
+		// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+		// Only packets addressed to ports in the specified range will be forwarded
 		// to the backends configured with this forwarding rule.
 		//
 		// The 'allPorts' field has the following limitations:
-		// * It requires that the forwarding rule 'IPProtocol' be TCP,
-		// UDP, SCTP, or
+		// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, SCTP, or
 		// L3_DEFAULT.
-		// * It's applicable only to the following products: internal
-		// passthrough
-		// Network Load Balancers, backend service-based external
-		// passthrough Network
+		// * It's applicable only to the following products: internal passthrough
+		// Network Load Balancers, backend service-based external passthrough Network
 		// Load Balancers, and internal and external protocol forwarding.
-		// * Set this field to true to allow packets addressed to any port
-		// or packets
-		// lacking destination port information (for example, UDP
-		// fragments after the
-		// first fragment) to be forwarded to the backends configured with
-		// this
-		// forwarding rule. The L3_DEFAULT protocol requires 'allPorts' be
-		// set to
+		// * Set this field to true to allow packets addressed to any port or packets
+		// lacking destination port information (for example, UDP fragments after the
+		// first fragment) to be forwarded to the backends configured with this
+		// forwarding rule. The L3_DEFAULT protocol requires 'allPorts' be set to
 		// true.
 		all_ports?: bool
 
@@ -42,66 +33,52 @@ import "list"
 		// If the field is set to 'TRUE', clients can access ILB from all
 		// regions.
 		//
-		// Otherwise only allows access from clients in the same region as
-		// the
+		// Otherwise only allows access from clients in the same region as the
 		// internal load balancer.
 		allow_global_access?: bool
 
-		// This is used in PSC consumer ForwardingRule to control whether
-		// the PSC endpoint can be accessed from another region.
+		// This is used in PSC consumer ForwardingRule to control whether the PSC
+		// endpoint can be accessed from another region.
 		allow_psc_global_access?: bool
 
-		// Identifies the backend service to which the forwarding rule
-		// sends traffic.
+		// Identifies the backend service to which the forwarding rule sends traffic.
 		//
-		// Required for Internal TCP/UDP Load Balancing and Network Load
-		// Balancing;
+		// Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
 		// must be omitted for all other load balancer types.
 		backend_service?: string
 
-		// [Output Only] The URL for the corresponding base Forwarding
-		// Rule. By base Forwarding Rule, we mean the Forwarding Rule
-		// that has the same IP address, protocol, and port settings with
-		// the current Forwarding Rule, but without sourceIPRanges
-		// specified. Always empty if the current Forwarding Rule does
+		// [Output Only] The URL for the corresponding base Forwarding Rule. By base
+		// Forwarding Rule, we mean the Forwarding Rule that has the same IP address,
+		// protocol, and port settings with the current Forwarding Rule, but without
+		// sourceIPRanges specified. Always empty if the current Forwarding Rule does
 		// not have sourceIPRanges specified.
 		base_forwarding_rule?: string
 
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// An optional description of this resource. Provide this property
-		// when
+		// An optional description of this resource. Provide this property when
 		// you create the resource.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// The unique identifier number for the resource. This identifier
-		// is defined by the server.
+		// The unique identifier number for the resource. This identifier is defined by the server.
 		forwarding_rule_id?: number
 		id?:                 string
 
-		// IP address for which this forwarding rule accepts traffic. When
-		// a client
-		// sends traffic to this IP address, the forwarding rule directs
-		// the traffic
+		// IP address for which this forwarding rule accepts traffic. When a client
+		// sends traffic to this IP address, the forwarding rule directs the traffic
 		// to the referenced 'target' or 'backendService'.
 		//
 		// While creating a forwarding rule, specifying an 'IPAddress' is
@@ -113,14 +90,11 @@ import "list"
 		// * When the 'target' is a Private Service Connect Google APIs
 		// bundle, you must specify an 'IPAddress'.
 		//
-		// Otherwise, you can optionally specify an IP address that
-		// references an
-		// existing static (reserved) IP address resource. When omitted,
-		// Google Cloud
+		// Otherwise, you can optionally specify an IP address that references an
+		// existing static (reserved) IP address resource. When omitted, Google Cloud
 		// assigns an ephemeral IP address.
 		//
-		// Use one of the following formats to specify an IP address while
-		// creating a
+		// Use one of the following formats to specify an IP address while creating a
 		// forwarding rule:
 		//
 		// * IP address number, as in '100.1.2.3'
@@ -134,10 +108,8 @@ import "list"
 		// * 'address-name'
 		//
 		// The forwarding rule's 'target' or 'backendService',
-		// and in most cases, also the 'loadBalancingScheme', determine
-		// the
-		// type of IP address that you can use. For detailed information,
-		// see
+		// and in most cases, also the 'loadBalancingScheme', determine the
+		// type of IP address that you can use. For detailed information, see
 		// [IP address
 		// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
 		//
@@ -145,18 +117,15 @@ import "list"
 		// address number.
 		ip_address?: string
 
-		// Resource reference of a PublicDelegatedPrefix. The PDP must be
-		// a sub-PDP
+		// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
 		// in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
-		// Use one of the following formats to specify a sub-PDP when
-		// creating an
+		// Use one of the following formats to specify a sub-PDP when creating an
 		// IPv6 NetLB forwarding rule using BYOIP:
 		// Full resource URL, as in:
 		// *
 		// 'https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
 		// Partial URL, as in:
-		// *
-		// 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}'
+		// * 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}'
 		// * 'regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
 		ip_collection?: string
 
@@ -167,32 +136,25 @@ import "list"
 		// 'AH', 'SCTP', 'ICMP' and
 		// 'L3_DEFAULT'.
 		//
-		// The valid IP protocols are different for different load
-		// balancing products
+		// The valid IP protocols are different for different load balancing products
 		// as described in [Load balancing
 		// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 		//
-		// A Forwarding Rule with protocol L3_DEFAULT can attach with
-		// target instance or
+		// A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
 		// backend service with UNSPECIFIED protocol.
-		// A forwarding rule with "L3_DEFAULT" IPProtocal cannot be
-		// attached to a backend service with TCP or UDP. Possible
-		// values: ["TCP", "UDP", "ESP", "AH", "SCTP", "ICMP",
-		// "L3_DEFAULT"]
+		// A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a
+		// backend service with TCP or UDP. Possible values: ["TCP", "UDP", "ESP",
+		// "AH", "SCTP", "ICMP", "L3_DEFAULT"]
 		ip_protocol?: string
 
-		// The IP address version that will be used by this forwarding
-		// rule.
+		// The IP address version that will be used by this forwarding rule.
 		// Valid options are IPV4 and IPV6.
 		//
-		// If not set, the IPv4 address will be used by default. Possible
-		// values: ["IPV4", "IPV6"]
+		// If not set, the IPv4 address will be used by default. Possible values: ["IPV4", "IPV6"]
 		ip_version?: string
 
-		// Indicates whether or not this load balancer can be used as a
-		// collector for
-		// packet mirroring. To prevent mirroring loops, instances behind
-		// this
+		// Indicates whether or not this load balancer can be used as a collector for
+		// packet mirroring. To prevent mirroring loops, instances behind this
 		// load balancer will not have their traffic mirrored even if a
 		// 'PacketMirroring' rule applies to them.
 		//
@@ -200,70 +162,55 @@ import "list"
 		// 'loadBalancingScheme' set to 'INTERNAL'.
 		is_mirroring_collector?: bool
 
-		// The fingerprint used for optimistic locking of this resource.
-		// Used
+		// The fingerprint used for optimistic locking of this resource. Used
 		// internally during updates.
 		label_fingerprint?: string
 
-		// Labels to apply to this forwarding rule. A list of key->value
-		// pairs.
+		// Labels to apply to this forwarding rule. A list of key->value pairs.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Specifies the forwarding rule type.
 		//
-		// Note that an empty string value ('""') is also supported for
-		// some use
-		// cases, for example PSC (private service connection) regional
-		// forwarding
+		// Note that an empty string value ('""') is also supported for some use
+		// cases, for example PSC (private service connection) regional forwarding
 		// rules.
 		//
 		// For more information about forwarding rules, refer to
 		// [Forwarding rule
 		// concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-		// Default value: "EXTERNAL" Possible values: ["EXTERNAL",
-		// "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED"]
+		// Default value: "EXTERNAL" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED",
+		// "INTERNAL", "INTERNAL_MANAGED"]
 		load_balancing_scheme?: string
 
-		// Name of the resource; provided by the client when the resource
-		// is created.
+		// Name of the resource; provided by the client when the resource is created.
 		// The name must be 1-63 characters long, and comply with
 		// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
 		//
-		// Specifically, the name must be 1-63 characters long and match
-		// the regular
+		// Specifically, the name must be 1-63 characters long and match the regular
 		// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first
-		// character must be a lowercase letter, and all following
-		// characters must
-		// be a dash, lowercase letter, or digit, except the last
-		// character, which
+		// character must be a lowercase letter, and all following characters must
+		// be a dash, lowercase letter, or digit, except the last character, which
 		// cannot be a dash.
 		//
-		// For Private Service Connect forwarding rules that forward
-		// traffic to Google
-		// APIs, the forwarding rule name must be a 1-20 characters string
-		// with
+		// For Private Service Connect forwarding rules that forward traffic to Google
+		// APIs, the forwarding rule name must be a 1-20 characters string with
 		// lowercase letters and numbers and must start with a letter.
 		name!: string
 
 		// This field is not used for external load balancing.
 		//
-		// For Internal TCP/UDP Load Balancing, this field identifies the
-		// network that
+		// For Internal TCP/UDP Load Balancing, this field identifies the network that
 		// the load balanced IP should belong to for this Forwarding Rule.
-		// If the subnetwork is specified, the network of the subnetwork
-		// will be used.
-		// If neither subnetwork nor this field is specified, the default
-		// network will
+		// If the subnetwork is specified, the network of the subnetwork will be used.
+		// If neither subnetwork nor this field is specified, the default network will
 		// be used.
 		//
-		// For Private Service Connect forwarding rules that forward
-		// traffic to Google
+		// For Private Service Connect forwarding rules that forward traffic to Google
 		// APIs, a network must be provided.
 		network?: string
 
@@ -277,172 +224,130 @@ import "list"
 		//
 		// If this field is not specified, it is assumed to be 'PREMIUM'.
 		// If 'IPAddress' is specified, this value must be equal to the
-		// networkTier of the Address. Possible values: ["PREMIUM",
-		// "STANDARD"]
+		// networkTier of the Address. Possible values: ["PREMIUM", "STANDARD"]
 		network_tier?: string
 
-		// This is used in PSC consumer ForwardingRule to control whether
-		// it should try to auto-generate a DNS zone or not. Non-PSC
-		// forwarding rules do not use this field.
+		// This is used in PSC consumer ForwardingRule to control whether it should try
+		// to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this
+		// field.
 		no_automate_dns_zone?: bool
 
-		// The 'ports', 'portRange', and 'allPorts' fields are mutually
-		// exclusive.
-		// Only packets addressed to ports in the specified range will be
-		// forwarded
+		// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+		// Only packets addressed to ports in the specified range will be forwarded
 		// to the backends configured with this forwarding rule.
 		//
 		// The 'portRange' field has the following limitations:
-		// * It requires that the forwarding rule 'IPProtocol' be TCP,
-		// UDP, or SCTP,
+		// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
 		// and
-		// * It's applicable only to the following products: external
-		// passthrough
-		// Network Load Balancers, internal and external proxy Network
-		// Load
-		// Balancers, internal and external Application Load Balancers,
-		// external
+		// * It's applicable only to the following products: external passthrough
+		// Network Load Balancers, internal and external proxy Network Load
+		// Balancers, internal and external Application Load Balancers, external
 		// protocol forwarding, and Classic VPN.
-		// * Some products have restrictions on what ports can be used.
-		// See
+		// * Some products have restrictions on what ports can be used. See
 		// [port
 		// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
 		// for details.
 		//
-		// For external forwarding rules, two or more forwarding rules
-		// cannot use the
-		// same '[IPAddress, IPProtocol]' pair, and cannot have
-		// overlapping
+		// For external forwarding rules, two or more forwarding rules cannot use the
+		// same '[IPAddress, IPProtocol]' pair, and cannot have overlapping
 		// 'portRange's.
 		//
-		// For internal forwarding rules within the same VPC network, two
-		// or more
-		// forwarding rules cannot use the same '[IPAddress, IPProtocol]'
-		// pair, and
+		// For internal forwarding rules within the same VPC network, two or more
+		// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
 		// cannot have overlapping 'portRange's.
 		//
 		// @pattern: \d+(?:-\d+)?
 		port_range?: string
 
-		// The 'ports', 'portRange', and 'allPorts' fields are mutually
-		// exclusive.
-		// Only packets addressed to ports in the specified range will be
-		// forwarded
+		// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+		// Only packets addressed to ports in the specified range will be forwarded
 		// to the backends configured with this forwarding rule.
 		//
 		// The 'ports' field has the following limitations:
-		// * It requires that the forwarding rule 'IPProtocol' be TCP,
-		// UDP, or SCTP,
+		// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
 		// and
-		// * It's applicable only to the following products: internal
-		// passthrough
-		// Network Load Balancers, backend service-based external
-		// passthrough Network
+		// * It's applicable only to the following products: internal passthrough
+		// Network Load Balancers, backend service-based external passthrough Network
 		// Load Balancers, and internal protocol forwarding.
-		// * You can specify a list of up to five ports by number,
-		// separated by
+		// * You can specify a list of up to five ports by number, separated by
 		// commas. The ports can be contiguous or discontiguous.
 		//
-		// For external forwarding rules, two or more forwarding rules
-		// cannot use the
-		// same '[IPAddress, IPProtocol]' pair if they share at least one
-		// port
+		// For external forwarding rules, two or more forwarding rules cannot use the
+		// same '[IPAddress, IPProtocol]' pair if they share at least one port
 		// number.
 		//
-		// For internal forwarding rules within the same VPC network, two
-		// or more
-		// forwarding rules cannot use the same '[IPAddress, IPProtocol]'
-		// pair if
+		// For internal forwarding rules within the same VPC network, two or more
+		// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
 		// they share at least one port number.
 		//
 		// @pattern: \d+(?:-\d+)?
 		ports?: [...string]
-		project?: string
 
 		// The PSC connection id of the PSC Forwarding Rule.
 		psc_connection_id?: string
+		project?:           string
 
-		// The PSC connection status of the PSC Forwarding Rule. Possible
-		// values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED',
-		// 'REJECTED', 'CLOSED'
+		// The PSC connection status of the PSC Forwarding Rule. Possible values:
+		// 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED', 'REJECTED', 'CLOSED'
 		psc_connection_status?: string
 
-		// This is used in PSC consumer ForwardingRule to make terraform
-		// recreate the ForwardingRule when the status is closed
+		// This is used in PSC consumer ForwardingRule to make terraform recreate the
+		// ForwardingRule when the status is closed
 		recreate_closed_psc?: bool
 
-		// A reference to the region where the regional forwarding rule
-		// resides.
+		// A reference to the region where the regional forwarding rule resides.
 		//
 		// This field is not applicable to global forwarding rules.
-		region?:    string
-		self_link?: string
+		region?: string
 
-		// An optional prefix to the service name for this Forwarding
-		// Rule.
-		// If specified, will be the first label of the fully qualified
-		// service
+		// An optional prefix to the service name for this Forwarding Rule.
+		// If specified, will be the first label of the fully qualified service
 		// name.
 		//
-		// The label must be 1-63 characters long, and comply with
-		// RFC1035.
-		// Specifically, the label must be 1-63 characters long and match
-		// the
-		// regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the
-		// first
-		// character must be a lowercase letter, and all following
-		// characters
+		// The label must be 1-63 characters long, and comply with RFC1035.
+		// Specifically, the label must be 1-63 characters long and match the
+		// regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first
+		// character must be a lowercase letter, and all following characters
 		// must be a dash, lowercase letter, or digit, except the last
 		// character, which cannot be a dash.
 		//
 		// This field is only used for INTERNAL load balancing.
 		service_label?: string
 
-		// The internal fully qualified service name for this Forwarding
-		// Rule.
+		// The internal fully qualified service name for this Forwarding Rule.
 		//
 		// This field is only used for INTERNAL load balancing.
 		service_name?: string
+		self_link?:    string
 
-		// If not empty, this Forwarding Rule will only forward the
-		// traffic when the source IP address matches one of the IP
-		// addresses or CIDR ranges set here. Note that a Forwarding Rule
-		// can only have up to 64 source IP ranges, and this field can
-		// only be used with a regional Forwarding Rule whose scheme is
-		// EXTERNAL. Each sourceIpRange entry should be either an IP
-		// address (for example, 1.2.3.4) or a CIDR range (for example,
-		// 1.2.3.0/24).
+		// If not empty, this Forwarding Rule will only forward the traffic when the
+		// source IP address matches one of the IP addresses or CIDR ranges set here.
+		// Note that a Forwarding Rule can only have up to 64 source IP ranges, and
+		// this field can only be used with a regional Forwarding Rule whose scheme is
+		// EXTERNAL. Each sourceIpRange entry should be either an IP address (for
+		// example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
 		source_ip_ranges?: [...string]
 
-		// This field identifies the subnetwork that the load balanced IP
-		// should
-		// belong to for this Forwarding Rule, used in internal load
-		// balancing and
+		// This field identifies the subnetwork that the load balanced IP should
+		// belong to for this Forwarding Rule, used in internal load balancing and
 		// network load balancing with IPv6.
 		//
-		// If the network specified is in auto subnet mode, this field is
-		// optional.
-		// However, a subnetwork must be specified if the network is in
-		// custom subnet
+		// If the network specified is in auto subnet mode, this field is optional.
+		// However, a subnetwork must be specified if the network is in custom subnet
 		// mode or when creating external forwarding rule with IPv6.
 		subnetwork?: string
 
-		// The URL of the target resource to receive the matched traffic.
-		// For
-		// regional forwarding rules, this target must be in the same
-		// region as the
-		// forwarding rule. For global forwarding rules, this target must
-		// be a global
+		// The URL of the target resource to receive the matched traffic. For
+		// regional forwarding rules, this target must be in the same region as the
+		// forwarding rule. For global forwarding rules, this target must be a global
 		// load balancing resource.
 		//
-		// The forwarded traffic must be of a type appropriate to the
-		// target object.
+		// The forwarded traffic must be of a type appropriate to the target object.
 		// * For load balancers, see the "Target" column in [Port
 		// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
 		//
-		// For Private Service Connect forwarding rules that forward
-		// traffic to managed services, the target must be a service
-		// attachment.
+		// For Private Service Connect forwarding rules that forward traffic to managed
+		// services, the target must be a service attachment.
 		target?: string
 
 		// The combination of labels configured directly on the resource
@@ -451,12 +356,10 @@ import "list"
 	})
 
 	#service_directory_registrations: close({
-		// Service Directory namespace to register the forwarding rule
-		// under.
+		// Service Directory namespace to register the forwarding rule under.
 		namespace?: string
 
-		// Service Directory service to register the forwarding rule
-		// under.
+		// Service Directory service to register the forwarding rule under.
 		service?: string
 	})
 

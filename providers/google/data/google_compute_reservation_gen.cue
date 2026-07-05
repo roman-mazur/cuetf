@@ -1,87 +1,71 @@
 package data
 
-#google_compute_reservation: {
+google_compute_reservation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_reservation")
 	close({
 		// List of all reservation block names in the parent reservation.
 		block_names?: [...string]
 
-		// Full or partial URL to a parent commitment. This field displays
-		// for
+		// Full or partial URL to a parent commitment. This field displays for
 		// reservations that are tied to a commitment.
 		commitment?: string
 
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Duration after which the reservation will be auto-deleted by
-		// Compute Engine. Cannot be used with delete_at_time.
+		// Duration after which the reservation will be auto-deleted by Compute Engine.
+		// Cannot be used with delete_at_time.
 		delete_after_duration?: [...close({
 			nanos?:   number
 			seconds?: string
 		})]
 
-		// Absolute time in future when the reservation will be
-		// auto-deleted by Compute Engine. Timestamp is represented in
-		// RFC3339 text format.
+		// Absolute time in future when the reservation will be auto-deleted by Compute
+		// Engine. Timestamp is represented in RFC3339 text format.
 		// Cannot be used with delete_after_duration.
 		delete_at_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// An optional description of this resource.
 		description?: string
 
-		// The unique identifier for the resource. This identifier is
-		// defined by the server.
+		// The unique identifier for the resource. This identifier is defined by the server.
 		id?: string
 
-		// Type of the resource. Always compute#reservations for
-		// reservations.
+		// Type of the resource. Always compute#reservations for reservations.
 		kind?: string
 
-		// Full or partial URL to parent commitments. This field displays
-		// for reservations that are tied to multiple commitments.
+		// Full or partial URL to parent commitments. This field displays for
+		// reservations that are tied to multiple commitments.
 		linked_commitments?: [...string]
 
-		// Name of the resource. Provided by the client when the resource
-		// is
+		// Name of the resource. Provided by the client when the resource is
 		// created. The name must be 1-63 characters long, and comply with
-		// RFC1035. Specifically, the name must be 1-63 characters long
-		// and match
-		// the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means
-		// the
+		// RFC1035. Specifically, the name must be 1-63 characters long and match
+		// the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the
 		// first character must be a lowercase letter, and all following
-		// characters must be a dash, lowercase letter, or digit, except
-		// the last
+		// characters must be a dash, lowercase letter, or digit, except the last
 		// character, which cannot be a dash.
 		name!: string
 
-		// Additional params passed with the request, but not persisted as
-		// part of resource payload
+		// Additional params passed with the request, but not persisted as part of resource payload
 		params?: [...close({
 			resource_manager_tags?: [string]: string
 		})]
 		project?: string
 
-		// The number of reservation blocks associated with this
-		// reservation.
+		// The number of reservation blocks associated with this reservation.
 		reservation_block_count?: number
 
-		// Sharing policy for reservations with Google Cloud managed
-		// services.
+		// Sharing policy for reservations with Google Cloud managed services.
 		reservation_sharing_policy?: [...close({
 			service_share_type?: string
 		})]
@@ -153,10 +137,8 @@ package data
 			source_instance_template?: string
 		})]
 
-		// When set to true, only VMs that target this reservation by name
-		// can
-		// consume this reservation. Otherwise, it can be consumed by VMs
-		// with
+		// When set to true, only VMs that target this reservation by name can
+		// consume this reservation. Otherwise, it can be consumed by VMs with
 		// affinity for any reservation. Defaults to false.
 		specific_reservation_required?: bool
 

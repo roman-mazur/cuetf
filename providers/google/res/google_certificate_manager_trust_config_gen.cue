@@ -1,6 +1,6 @@
 package res
 
-#google_certificate_manager_trust_config: {
+google_certificate_manager_trust_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_certificate_manager_trust_config")
 	close({
@@ -10,66 +10,56 @@ package res
 
 		// The creation timestamp of a TrustConfig.
 		//
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// One or more paragraphs of text description of a trust config.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// Set of label tags associated with the trust config.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The trust config location.
 		location!: string
 
-		// A user-defined name of the trust config. Trust config names
-		// must be unique globally.
-		name!:    string
-		project?: string
+		// A user-defined name of the trust config. Trust config names must be unique globally.
+		name!: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+		project?: string
 
 		// The last update timestamp of a TrustConfig.
 		//
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
 	})
 
 	#allowlisted_certificates: close({
-		// PEM certificate that is allowlisted. The certificate can be up
-		// to 5k bytes, and must be a parseable X.509 certificate.
+		// PEM certificate that is allowlisted. The certificate can be up to 5k bytes,
+		// and must be a parseable X.509 certificate.
 		pem_certificate!: string
 	})
 
@@ -85,8 +75,7 @@ package res
 	})
 
 	_#defs: "/$defs/trust_stores/$defs/intermediate_cas": close({
-		// PEM intermediate certificate used for building up paths for
-		// validation.
+		// PEM intermediate certificate used for building up paths for validation.
 		// Each certificate provided in PEM format may occupy up to 5kB.
 		pem_certificate?: string
 	})

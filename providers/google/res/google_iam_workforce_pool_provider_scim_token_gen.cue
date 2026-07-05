@@ -1,26 +1,20 @@
 package res
 
-#google_iam_workforce_pool_provider_scim_token: {
+google_iam_workforce_pool_provider_scim_token: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_workforce_pool_provider_scim_token")
 	close({
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// A user-specified display name for the scim token. Cannot exceed
-		// 32 characters.
+		// A user-specified display name for the scim token. Cannot exceed 32 characters.
 		display_name?: string
 		id?:           string
 
@@ -38,21 +32,18 @@ package res
 		// The ID of the SCIM Tenant.
 		scim_tenant_id!: string
 
-		// The ID to use for the SCIM Token, which becomes the final
-		// component of the resource name. This value should be 4-32
-		// characters and follow the pattern:
+		// The ID to use for the SCIM Token, which becomes the final component of the
+		// resource name. This value should be 4-32 characters and follow the pattern:
 		// '([a-z]([a-z0-9\\-]{2,30}[a-z0-9]))'.
 		scim_token_id!: string
 
-		// The token string provided to the IdP for authentication and
-		// will be set only during creation.
+		// The token string provided to the IdP for authentication and will be set only during creation.
 		security_token?: string
 
 		// The current state of the scim token.
-		// * ACTIVE: The token is active and may be used to provision
-		// users and groups.
-		// * DELETED: The token is soft-deleted. Soft-deleted tokens are
-		// permanently deleted after approximately 30 days.
+		// * ACTIVE: The token is active and may be used to provision users and groups.
+		// * DELETED: The token is soft-deleted. Soft-deleted tokens are permanently
+		// deleted after approximately 30 days.
 		state?: string
 
 		// The ID of the Workforce Pool.

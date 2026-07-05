@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_dialogflow_cx_generator: {
+google_dialogflow_cx_generator: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_cx_generator")
 	close({
@@ -12,21 +12,15 @@ import "list"
 		prompt_text!: matchN(1, [#prompt_text, list.MaxItems(1) & [_, ...] & [...#prompt_text]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The human-readable name of the generator, unique within the
-		// agent.
+		// The human-readable name of the generator, unique within the agent.
 		display_name!: string
 		id?:           string
 
@@ -36,13 +30,12 @@ import "list"
 		language_code?: string
 
 		// The unique identifier of the Generator.
-		// Format: projects/<Project ID>/locations/<Location
-		// ID>/agents/<Agent ID>/generators/<Generator ID>.
+		// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
+		// ID>/generators/<Generator ID>.
 		name?: string
 
 		// The agent to create a Generator for.
-		// Format: projects/<Project ID>/locations/<Location
-		// ID>/agents/<Agent ID>.
+		// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 		parent?: string
 	})
 
@@ -58,30 +51,25 @@ import "list"
 		// The maximum number of tokens to generate.
 		max_decode_steps?: number
 
-		// The temperature used for sampling. Temperature sampling occurs
-		// after both topP and topK have been applied.
-		// Valid range: [0.0, 1.0] Low temperature = less random. High
-		// temperature = more random.
+		// The temperature used for sampling. Temperature sampling occurs after both
+		// topP and topK have been applied.
+		// Valid range: [0.0, 1.0] Low temperature = less random. High temperature = more random.
 		temperature?: number
 
-		// If set, the sampling process in each step is limited to the
-		// topK tokens with highest probabilities.
-		// Valid range: [1, 40] or 1000+. Small topK = less random. Large
-		// topK = more random.
+		// If set, the sampling process in each step is limited to the topK tokens with
+		// highest probabilities.
+		// Valid range: [1, 40] or 1000+. Small topK = less random. Large topK = more random.
 		top_k?: number
 
-		// If set, only the tokens comprising the top topP probability
-		// mass are considered.
-		// If both topP and topK are set, topP will be used for further
-		// refining candidates selected with topK.
-		// Valid range: (0.0, 1.0]. Small topP = less random. Large topP =
-		// more random.
+		// If set, only the tokens comprising the top topP probability mass are considered.
+		// If both topP and topK are set, topP will be used for further refining
+		// candidates selected with topK.
+		// Valid range: (0.0, 1.0]. Small topP = less random. Large topP = more random.
 		top_p?: number
 	})
 
 	#placeholders: close({
-		// Unique ID used to map custom placeholder to parameters in
-		// fulfillment.
+		// Unique ID used to map custom placeholder to parameters in fulfillment.
 		id?: string
 
 		// Custom placeholder value in the prompt text.

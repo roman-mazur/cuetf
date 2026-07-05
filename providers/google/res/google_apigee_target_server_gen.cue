@@ -2,98 +2,83 @@ package res
 
 import "list"
 
-#google_apigee_target_server: {
+google_apigee_target_server: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_target_server")
 	close({
 		s_sl_info?: matchN(1, [#s_sl_info, list.MaxItems(1) & [...#s_sl_info]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// A human-readable description of this TargetServer.
 		description?: string
 
-		// The Apigee environment group associated with the Apigee
-		// environment,
-		// in the format
-		// 'organizations/{{org_name}}/environments/{{env_name}}'.
+		// The Apigee environment group associated with the Apigee environment,
+		// in the format 'organizations/{{org_name}}/environments/{{env_name}}'.
 		env_id!: string
 
-		// The host name this target connects to. Value must be a valid
-		// hostname as described by RFC-1123.
+		// The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
 		host!: string
 		id?:   string
 
-		// Enabling/disabling a TargetServer is useful when TargetServers
-		// are used in load balancing configurations, and one or more
-		// TargetServers need to taken out of rotation periodically.
-		// Defaults to true.
+		// Enabling/disabling a TargetServer is useful when TargetServers are used in
+		// load balancing configurations, and one or more TargetServers need to taken
+		// out of rotation periodically. Defaults to true.
 		is_enabled?: bool
 
-		// The resource id of this reference. Values must match the
-		// regular expression [\w\s-.]+.
+		// The resource id of this reference. Values must match the regular expression [\w\s-.]+.
 		name!: string
 
-		// The port number this target connects to on the given host.
-		// Value must be between 1 and 65535, inclusive.
+		// The port number this target connects to on the given host. Value must be
+		// between 1 and 65535, inclusive.
 		port!: number
 
-		// Immutable. The protocol used by this TargetServer. Possible
-		// values: ["HTTP", "HTTP2", "GRPC_TARGET", "GRPC",
-		// "EXTERNAL_CALLOUT"]
+		// Immutable. The protocol used by this TargetServer. Possible values: ["HTTP",
+		// "HTTP2", "GRPC_TARGET", "GRPC", "EXTERNAL_CALLOUT"]
 		protocol?: string
 	})
 
 	#s_sl_info: close({
 		common_name?: matchN(1, [_#defs."/$defs/s_sl_info/$defs/common_name", list.MaxItems(1) & [..._#defs."/$defs/s_sl_info/$defs/common_name"]])
 
-		// The SSL/TLS cipher suites to be used. For programmable proxies,
-		// it must be one of the cipher suite names listed in:
+		// The SSL/TLS cipher suites to be used. For programmable proxies, it must be
+		// one of the cipher suite names listed in:
 		// http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites.
-		// For configurable proxies, it must follow the configuration
-		// specified in:
+		// For configurable proxies, it must follow the configuration specified in:
 		// https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration.
-		// This setting has no effect for configurable proxies when
-		// negotiating TLS 1.3.
+		// This setting has no effect for configurable proxies when negotiating TLS
+		// 1.3.
 		ciphers?: [...string]
 
 		// Enables two-way TLS.
 		client_auth_enabled?: bool
 
-		// Enables TLS. If false, neither one-way nor two-way TLS will be
-		// enabled.
+		// Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
 		enabled!: bool
 
 		// If true, TLS is strictly enforced.
 		enforce?: bool
 
-		// If true, Edge ignores TLS certificate errors. Valid when
-		// configuring TLS for target servers and target endpoints, and
-		// when configuring virtual hosts that use 2-way TLS. When used
-		// with a target endpoint/target server, if the backend system
-		// uses SNI and returns a cert with a subject Distinguished Name
-		// (DN) that does not match the hostname, there is no way to
-		// ignore the error and the connection fails.
+		// If true, Edge ignores TLS certificate errors. Valid when configuring TLS for
+		// target servers and target endpoints, and when configuring virtual hosts that
+		// use 2-way TLS. When used with a target endpoint/target server, if the
+		// backend system uses SNI and returns a cert with a subject Distinguished Name
+		// (DN) that does not match the hostname, there is no way to ignore the error
+		// and the connection fails.
 		ignore_validation_errors?: bool
 
-		// Required if clientAuthEnabled is true. The resource ID for the
-		// alias containing the private key and cert.
+		// Required if clientAuthEnabled is true. The resource ID for the alias
+		// containing the private key and cert.
 		key_alias?: string
 
-		// Required if clientAuthEnabled is true. The resource ID of the
-		// keystore.
+		// Required if clientAuthEnabled is true. The resource ID of the keystore.
 		key_store?: string
 
 		// The TLS versioins to be used.
@@ -113,8 +98,7 @@ import "list"
 		// The TLS Common Name string of the certificate.
 		value?: string
 
-		// Indicates whether the cert should be matched against as a
-		// wildcard cert.
+		// Indicates whether the cert should be matched against as a wildcard cert.
 		wildcard_match?: bool
 	})
 }

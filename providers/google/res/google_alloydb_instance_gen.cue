@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_alloydb_instance: {
+google_alloydb_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_alloydb_instance")
 	close({
@@ -15,45 +15,34 @@ import "list"
 		read_pool_config?: matchN(1, [#read_pool_config, list.MaxItems(1) & [...#read_pool_config]])
 		timeouts?: #timeouts
 
-		// 'Specifies whether an instance needs to spin up. Once the
-		// instance is
-		// active, the activation policy can be updated to the 'NEVER' to
-		// stop the
-		// instance. Likewise, the activation policy can be updated to
-		// 'ALWAYS' to
+		// 'Specifies whether an instance needs to spin up. Once the instance is
+		// active, the activation policy can be updated to the 'NEVER' to stop the
+		// instance. Likewise, the activation policy can be updated to 'ALWAYS' to
 		// start the instance.
-		// There are restrictions around when an instance can/cannot be
-		// activated (for
-		// example, a read pool instance should be stopped before stopping
-		// primary
+		// There are restrictions around when an instance can/cannot be activated (for
+		// example, a read pool instance should be stopped before stopping primary
 		// etc.). Please refer to the API documentation for more details.
-		// Possible values are: 'ACTIVATION_POLICY_UNSPECIFIED', 'ALWAYS',
-		// 'NEVER'.' Possible values: ["ACTIVATION_POLICY_UNSPECIFIED",
-		// "ALWAYS", "NEVER"]
+		// Possible values are: 'ACTIVATION_POLICY_UNSPECIFIED', 'ALWAYS', 'NEVER'.'
+		// Possible values: ["ACTIVATION_POLICY_UNSPECIFIED", "ALWAYS", "NEVER"]
 		activation_policy?: string
 
-		// Annotations to allow client tools to store small amount of
-		// arbitrary data. This is distinct from labels.
+		// Annotations to allow client tools to store small amount of arbitrary data.
+		// This is distinct from labels.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the annotations present in your configuration.
-		// Please refer to the field 'effective_annotations' for all of
-		// the annotations present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the
+		// annotations present in your configuration.
+		// Please refer to the field 'effective_annotations' for all of the annotations
+		// present on the resource.
 		annotations?: [string]: string
 
-		// 'Availability type of an Instance. Defaults to REGIONAL for
-		// both primary and read instances.
-		// Note that primary and read instances can have different
-		// availability types.
-		// Primary instances can be either ZONAL or REGIONAL. Read Pool
-		// instances can also be either ZONAL or REGIONAL.
-		// Read pools of size 1 can only have zonal availability. Read
-		// pools with a node count of 2 or more
-		// can have regional availability (nodes are present in 2 or more
-		// zones in a region).
-		// Possible values are: 'AVAILABILITY_TYPE_UNSPECIFIED', 'ZONAL',
-		// 'REGIONAL'.' Possible values:
-		// ["AVAILABILITY_TYPE_UNSPECIFIED", "ZONAL", "REGIONAL"]
+		// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+		// Note that primary and read instances can have different availability types.
+		// Primary instances can be either ZONAL or REGIONAL. Read Pool instances can
+		// also be either ZONAL or REGIONAL.
+		// Read pools of size 1 can only have zonal availability. Read pools with a node count of 2 or more
+		// can have regional availability (nodes are present in 2 or more zones in a region).
+		// Possible values are: 'AVAILABILITY_TYPE_UNSPECIFIED', 'ZONAL', 'REGIONAL'.'
+		// Possible values: ["AVAILABILITY_TYPE_UNSPECIFIED", "ZONAL", "REGIONAL"]
 		availability_type?: string
 
 		// Identifies the alloydb cluster. Must be in the format
@@ -63,46 +52,38 @@ import "list"
 		// Time the Instance was created in UTC.
 		create_time?: string
 
-		// Database flags. Set at instance level. * They are copied from
-		// primary instance on read instance creation. * Read instances
-		// can set new or override existing flags that are relevant for
-		// reads, e.g. for enabling columnar cache on a read instance.
-		// Flags set on read instance may or may not be present on
+		// Database flags. Set at instance level. * They are copied from primary
+		// instance on read instance creation. * Read instances can set new or override
+		// existing flags that are relevant for reads, e.g. for enabling columnar cache
+		// on a read instance. Flags set on read instance may or may not be present on
 		// primary.
 		database_flags?: [string]: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// User-settable and human-readable display name for the Instance.
 		display_name?: string
 
-		// All of annotations (key/value pairs) present on the resource in
-		// GCP, including the annotations configured through Terraform,
-		// other clients and services.
+		// All of annotations (key/value pairs) present on the resource in GCP,
+		// including the annotations configured through Terraform, other clients and
+		// services.
 		effective_annotations?: [string]: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// The Compute Engine zone that the instance should serve from,
-		// per https://cloud.google.com/compute/docs/regions-zones This
-		// can ONLY be specified for ZONAL instances. If present for a
-		// REGIONAL instance, an error will be thrown. If this is absent
-		// for a ZONAL instance, instance is created in a random zone
-		// with available capacity.
+		// The Compute Engine zone that the instance should serve from, per
+		// https://cloud.google.com/compute/docs/regions-zones This can ONLY be
+		// specified for ZONAL instances. If present for a REGIONAL instance, an error
+		// will be thrown. If this is absent for a ZONAL instance, instance is created
+		// in a random zone with available capacity.
 		gce_zone?: string
 		id?:       string
 
@@ -110,60 +91,50 @@ import "list"
 		instance_id!: string
 
 		// The type of the instance.
-		// If the instance type is READ_POOL, provide the associated
-		// PRIMARY/SECONDARY instance in the 'depends_on' meta-data
-		// attribute.
-		// If the instance type is SECONDARY, point to the cluster_type of
-		// the associated secondary cluster instead of mentioning
-		// SECONDARY.
+		// If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY
+		// instance in the 'depends_on' meta-data attribute.
+		// If the instance type is SECONDARY, point to the cluster_type of the
+		// associated secondary cluster instead of mentioning SECONDARY.
 		// Example: {instance_type =
-		// google_alloydb_cluster.<secondary_cluster_name>.cluster_type}
-		// instead of {instance_type = SECONDARY}
-		// If the instance type is SECONDARY, the terraform delete
-		// instance operation does not delete the secondary instance but
-		// abandons it instead.
-		// Use deletion_policy = "FORCE" in the associated secondary
-		// cluster and delete the cluster forcefully to delete the
-		// secondary cluster as well its associated secondary instance.
-		// Users can undo the delete secondary instance action by
-		// importing the deleted secondary instance by calling terraform
-		// import. Possible values: ["PRIMARY", "READ_POOL", "SECONDARY"]
+		// google_alloydb_cluster.<secondary_cluster_name>.cluster_type} instead of
+		// {instance_type = SECONDARY}
+		// If the instance type is SECONDARY, the terraform delete instance operation
+		// does not delete the secondary instance but abandons it instead.
+		// Use deletion_policy = "FORCE" in the associated secondary cluster and delete
+		// the cluster forcefully to delete the secondary cluster as well its
+		// associated secondary instance.
+		// Users can undo the delete secondary instance action by importing the deleted
+		// secondary instance by calling terraform import. Possible values: ["PRIMARY",
+		// "READ_POOL", "SECONDARY"]
 		instance_type!: string
 
-		// The IP address for the Instance. This is the connection
-		// endpoint for an end-user application.
+		// The IP address for the Instance. This is the connection endpoint for an end-user application.
 		ip_address?: string
 
 		// User-defined labels for the alloydb instance.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The name of the instance resource.
 		name?: string
 
-		// The outbound public IP addresses for the instance. This is
-		// available ONLY when
-		// networkConfig.enableOutboundPublicIp is set to true. These IP
-		// addresses are used
+		// The outbound public IP addresses for the instance. This is available ONLY when
+		// networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
 		// for outbound connections.
 		outbound_public_ip_addresses?: [...string]
 
-		// The public IP addresses for the Instance. This is available
-		// ONLY when
-		// networkConfig.enablePublicIp is set to true. This is the
-		// connection
+		// The public IP addresses for the Instance. This is available ONLY when
+		// networkConfig.enablePublicIp is set to true. This is the connection
 		// endpoint for an end-user application.
 		public_ip_address?: string
 
-		// Set to true if the current state of Instance does not match the
-		// user's intended state, and the service is actively updating
-		// the resource to reconcile them. This can happen due to
-		// user-triggered updates or system actions like failover or
-		// maintenance.
+		// Set to true if the current state of Instance does not match the user's
+		// intended state, and the service is actively updating the resource to
+		// reconcile them. This can happen due to user-triggered updates or system
+		// actions like failover or maintenance.
 		reconciling?: bool
 
 		// The current state of the alloydb instance.
@@ -183,8 +154,7 @@ import "list"
 	#client_connection_config: close({
 		ssl_config?: matchN(1, [_#defs."/$defs/client_connection_config/$defs/ssl_config", list.MaxItems(1) & [..._#defs."/$defs/client_connection_config/$defs/ssl_config"]])
 
-		// Configuration to enforce connectors only (ex: AuthProxy)
-		// connections to the database.
+		// Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
 		require_connectors?: bool
 	})
 
@@ -192,17 +162,13 @@ import "list"
 		// Whether to enabled Managed Connection Pool.
 		enabled!: bool
 
-		// Flags for configuring managed connection pooling when it is
-		// enabled.
-		// These flags will only be set if
-		// 'connection_pool_config.enabled' is
+		// Flags for configuring managed connection pooling when it is enabled.
+		// These flags will only be set if 'connection_pool_config.enabled' is
 		// true.
 		// Please see
 		// https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
-		// for a comprehensive list of flags that can be set. To specify
-		// the flags
-		// in Terraform, please remove the "connection-pooling-" prefix
-		// and use
+		// for a comprehensive list of flags that can be set. To specify the flags
+		// in Terraform, please remove the "connection-pooling-" prefix and use
 		// underscores instead of dashes in the name. For example,
 		// "connection-pooling-pool-mode" would be "pool_mode".
 		flags?: [string]: string
@@ -224,23 +190,19 @@ import "list"
 	#network_config: close({
 		authorized_external_networks?: matchN(1, [_#defs."/$defs/network_config/$defs/authorized_external_networks", [..._#defs."/$defs/network_config/$defs/authorized_external_networks"]])
 
-		// Name of the allocated IP range for the private IP AlloyDB
-		// instance, for example: "google-managed-services-default".
-		// If set, the instance IPs will be created from this allocated
-		// range and will override the IP range used by the parent
-		// cluster.
-		// The range name must comply with RFC 1035. Specifically, the
-		// name must be 1-63 characters long and match the regular
-		// expression [a-z]([-a-z0-9]*[a-z0-9])?.
+		// Name of the allocated IP range for the private IP AlloyDB instance, for
+		// example: "google-managed-services-default".
+		// If set, the instance IPs will be created from this allocated range and will
+		// override the IP range used by the parent cluster.
+		// The range name must comply with RFC 1035. Specifically, the name must be 1-63
+		// characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
 		allocated_ip_range_override?: string
 
 		// Enabling outbound public ip for the instance.
 		enable_outbound_public_ip?: bool
 
-		// Enabling public ip for the instance. If a user wishes to
-		// disable this,
-		// please also clear the list of the authorized external networks
-		// set on
+		// Enabling public ip for the instance. If a user wishes to disable this,
+		// please also clear the list of the authorized external networks set on
 		// the same instance.
 		enable_public_ip?: bool
 	})
@@ -249,8 +211,8 @@ import "list"
 		psc_auto_connections?: matchN(1, [_#defs."/$defs/psc_instance_config/$defs/psc_auto_connections", [..._#defs."/$defs/psc_instance_config/$defs/psc_auto_connections"]])
 		psc_interface_configs?: matchN(1, [_#defs."/$defs/psc_instance_config/$defs/psc_interface_configs", [..._#defs."/$defs/psc_instance_config/$defs/psc_interface_configs"]])
 
-		// List of consumer projects that are allowed to create PSC
-		// endpoints to service-attachments to this instance.
+		// List of consumer projects that are allowed to create PSC endpoints to
+		// service-attachments to this instance.
 		// These should be specified as project numbers only.
 		allowed_consumer_projects?: [...string]
 
@@ -258,29 +220,27 @@ import "list"
 		// Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
 		psc_dns_name?: string
 
-		// The service attachment created when Private Service Connect
-		// (PSC) is enabled for the instance.
+		// The service attachment created when Private Service Connect (PSC) is enabled for the instance.
 		// The name of the resource will be in the format of
 		// 'projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>'
 		service_attachment_link?: string
 	})
 
 	#query_insights_config: close({
-		// Number of query execution plans captured by Insights per minute
-		// for all queries combined. The default value is 5. Any integer
-		// between 0 and 20 is considered valid.
+		// Number of query execution plans captured by Insights per minute for all
+		// queries combined. The default value is 5. Any integer between 0 and 20 is
+		// considered valid.
 		query_plans_per_minute?: number
 
-		// Query string length. The default value is 1024. Any integer
-		// between 256 and 4500 is considered valid.
+		// Query string length. The default value is 1024. Any integer between 256 and
+		// 4500 is considered valid.
 		query_string_length?: number
 
-		// Record application tags for an instance. This flag is turned
-		// "on" by default.
+		// Record application tags for an instance. This flag is turned "on" by default.
 		record_application_tags?: bool
 
-		// Record client address for an instance. Client address is PII
-		// information. This flag is turned "on" by default.
+		// Record client address for an instance. Client address is PII information.
+		// This flag is turned "on" by default.
 		record_client_address?: bool
 	})
 
@@ -296,9 +256,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/client_connection_config/$defs/ssl_config": close({
-		// SSL mode. Specifies client-server SSL/TLS connection behavior.
-		// Possible values: ["ENCRYPTED_ONLY",
-		// "ALLOW_UNENCRYPTED_AND_ENCRYPTED"]
+		// SSL mode. Specifies client-server SSL/TLS connection behavior. Possible
+		// values: ["ENCRYPTED_ONLY", "ALLOW_UNENCRYPTED_AND_ENCRYPTED"]
 		ssl_mode?: string
 	})
 
@@ -310,20 +269,16 @@ import "list"
 	_#defs: "/$defs/psc_instance_config/$defs/psc_auto_connections": close({
 		// The consumer network for the PSC service automation, example:
 		// "projects/vpc-host-project/global/networks/default".
-		// The consumer network might be hosted a different project than
-		// the
-		// consumer project. The API expects the consumer project
-		// specified to be
+		// The consumer network might be hosted a different project than the
+		// consumer project. The API expects the consumer project specified to be
 		// the project ID (and not the project number)
 		consumer_network?: string
 
 		// The status of the service connection policy.
 		consumer_network_status?: string
 
-		// The consumer project to which the PSC service automation
-		// endpoint will
-		// be created. The API expects the consumer project to be the
-		// project ID(
+		// The consumer project to which the PSC service automation endpoint will
+		// be created. The API expects the consumer project to be the project ID(
 		// and not the project number).
 		consumer_project?: string
 
@@ -335,12 +290,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/psc_instance_config/$defs/psc_interface_configs": close({
-		// The network attachment resource created in the consumer project
-		// to which the PSC interface will be linked.
+		// The network attachment resource created in the consumer project to which the
+		// PSC interface will be linked.
 		// This is of the format:
 		// "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
-		// The network attachment must be in the same region as the
-		// instance.
+		// The network attachment must be in the same region as the instance.
 		network_attachment_resource?: string
 	})
 }

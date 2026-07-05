@@ -2,15 +2,15 @@ package res
 
 import "list"
 
-#google_compute_preview_feature: {
+google_compute_preview_feature: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_preview_feature")
 	close({
 		rollout_operation?: matchN(1, [#rollout_operation, list.MaxItems(1) & [...#rollout_operation]])
 		timeouts?: #timeouts
 
-		// The activation status of the preview feature. Possible values:
-		// ["ENABLED", "ACTIVATION_STATE_UNSPECIFIED"]
+		// The activation status of the preview feature. Possible values: ["ENABLED",
+		// "ACTIVATION_STATE_UNSPECIFIED"]
 		activation_status!: string
 		id?:                string
 
@@ -30,8 +30,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/rollout_operation/$defs/rollout_input": close({
-		// Predefined rollout plans. Possible values:
-		// ["ROLLOUT_PLAN_FAST_ROLLOUT"]
+		// Predefined rollout plans. Possible values: ["ROLLOUT_PLAN_FAST_ROLLOUT"]
 		predefined_rollout_plan!: string
 	})
 }

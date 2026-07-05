@@ -1,6 +1,6 @@
 package data
 
-#google_discovery_engine_data_store: {
+google_discovery_engine_data_store: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_discovery_engine_data_store")
 	close({
@@ -10,14 +10,12 @@ package data
 			disable_initial_index?:     bool
 		})]
 
-		// The content config of the data store. Possible values:
-		// ["NO_CONTENT", "CONTENT_REQUIRED", "PUBLIC_WEBSITE"]
+		// The content config of the data store. Possible values: ["NO_CONTENT",
+		// "CONTENT_REQUIRED", "PUBLIC_WEBSITE"]
 		content_config?: string
 
-		// If true, an advanced data store for site search will be
-		// created. If the
-		// data store is not configured as site search (GENERIC vertical
-		// and
+		// If true, an advanced data store for site search will be created. If the
+		// data store is not configured as site search (GENERIC vertical and
 		// PUBLIC_WEBSITE contentConfig), this flag will be ignored.
 		create_advanced_site_search?: bool
 
@@ -30,21 +28,15 @@ package data
 		// The id of the default Schema associated with this data store.
 		default_schema_id?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The display name of the data store. This field must be a UTF-8
-		// encoded
+		// The display name of the data store. This field must be a UTF-8 encoded
 		// string with a length limit of 128 characters.
 		display_name?: string
 
@@ -89,46 +81,35 @@ package data
 		})]
 		id?: string
 
-		// The industry vertical that the data store registers. Possible
-		// values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
+		// The industry vertical that the data store registers. Possible values:
+		// ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
 		industry_vertical?: string
 
 		// KMS key resource name which will be used to encrypt resources:
 		// '/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}'
-		// The KMS key to be used to protect this DataStore at creation
-		// time. Must be
-		// set for requests that need to comply with CMEK Org Policy
-		// protections.
-		// If this field is set and processed successfully, the DataStore
-		// will be
-		// protected by the KMS key, as indicated in the cmek_config
-		// field.
+		// The KMS key to be used to protect this DataStore at creation time. Must be
+		// set for requests that need to comply with CMEK Org Policy protections.
+		// If this field is set and processed successfully, the DataStore will be
+		// protected by the KMS key, as indicated in the cmek_config field.
 		kms_key_name?: string
 
-		// The geographic location where the data store should reside. The
-		// value can
+		// The geographic location where the data store should reside. The value can
 		// only be one of "global", "us" and "eu".
 		location?: string
 
-		// The unique full resource name of the data store. Values are of
-		// the format
+		// The unique full resource name of the data store. Values are of the format
 		// 'projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}'.
-		// This field must be a UTF-8 encoded string with a length limit
-		// of 1024
+		// This field must be a UTF-8 encoded string with a length limit of 1024
 		// characters.
 		name?:    string
 		project?: string
 
-		// A boolean flag indicating whether to skip the default schema
-		// creation for
-		// the data store. Only enable this flag if you are certain that
-		// the default
+		// A boolean flag indicating whether to skip the default schema creation for
+		// the data store. Only enable this flag if you are certain that the default
 		// schema is incompatible with your use case.
-		// If set to true, you must manually create a schema for the data
-		// store
+		// If set to true, you must manually create a schema for the data store
 		// before any documents can be ingested.
-		// This flag cannot be specified if 'data_store.starting_schema'
-		// is
+		// This flag cannot be specified if 'data_store.starting_schema' is
 		// specified.
 		skip_default_schema_creation?: bool
 

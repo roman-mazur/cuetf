@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_vmwareengine_cluster: {
+google_vmwareengine_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vmwareengine_cluster")
 	close({
@@ -12,40 +12,31 @@ import "list"
 		timeouts?: #timeouts
 
 		// Creation time of this resource.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and
-		// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
-		// and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+		// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
 
 		// True if the cluster is a management cluster; false otherwise.
-		// There can only be one management cluster in a private cloud and
-		// it has to be the first one.
+		// There can only be one management cluster in a private cloud and it has to be the first one.
 		management?: bool
 
 		// The ID of the Cluster.
 		name!: string
 
-		// The resource name of the private cloud to create a new cluster
-		// in.
-		// Resource names are schemeless URIs that follow the conventions
-		// in https://cloud.google.com/apis/design/resource_names.
-		// For example:
-		// projects/my-project/locations/us-west1-a/privateClouds/my-cloud
+		// The resource name of the private cloud to create a new cluster in.
+		// Resource names are schemeless URIs that follow the conventions in
+		// https://cloud.google.com/apis/design/resource_names.
+		// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 		parent!: string
 
 		// State of the Cluster.
@@ -55,10 +46,8 @@ import "list"
 		uid?: string
 
 		// Last updated time of this resource.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine
-		// fractional digits. Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+		// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
 	})
 
@@ -68,28 +57,23 @@ import "list"
 		// The minimum duration between consecutive autoscale operations.
 		// It starts once addition or removal of nodes is fully completed.
 		// Minimum cool down period is 30m.
-		// Cool down period must be in whole minutes (for example, 30m,
-		// 31m, 50m).
-		// Mandatory for successful addition of autoscaling settings in
-		// cluster.
+		// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+		// Mandatory for successful addition of autoscaling settings in cluster.
 		cool_down_period?: string
 
 		// Maximum number of nodes of any type in a cluster.
-		// Mandatory for successful addition of autoscaling settings in
-		// cluster.
+		// Mandatory for successful addition of autoscaling settings in cluster.
 		max_cluster_node_count?: number
 
 		// Minimum number of nodes of any type in a cluster.
-		// Mandatory for successful addition of autoscaling settings in
-		// cluster.
+		// Mandatory for successful addition of autoscaling settings in cluster.
 		min_cluster_node_count?: number
 	})
 
 	#datastore_mount_config: close({
 		datastore_network!: matchN(1, [_#defs."/$defs/datastore_mount_config/$defs/datastore_network", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/datastore_mount_config/$defs/datastore_network"]])
 
-		// Optional. NFS is accessed by hosts in either read or read_write
-		// mode
+		// Optional. NFS is accessed by hosts in either read or read_write mode
 		// Default value used will be READ_WRITE
 		// Possible values:
 		// READ_ONLY
@@ -97,11 +81,9 @@ import "list"
 		access_mode?: string
 
 		// The resource name of the datastore to unmount.
-		// The datastore requested to be mounted should be in same
-		// region/zone as the
+		// The datastore requested to be mounted should be in same region/zone as the
 		// cluster.
-		// Resource names are schemeless URIs that follow the conventions
-		// in
+		// Resource names are schemeless URIs that follow the conventions in
 		// https://cloud.google.com/apis/design/resource_names.
 		// For example:
 		// 'projects/my-project/locations/us-central1/datastores/my-datastore'
@@ -110,11 +92,9 @@ import "list"
 		// File share name.
 		file_share?: string
 
-		// Optional. If set to true, the colocation requirement will be
-		// ignored.
+		// Optional. If set to true, the colocation requirement will be ignored.
 		// If set to false, the colocation requirement will be enforced.
-		// Colocation requirement is the requirement that the cluster must
-		// be in the
+		// Colocation requirement is the requirement that the cluster must be in the
 		// same region/zone of datastore.
 		ignore_colocation?: bool
 
@@ -132,10 +112,8 @@ import "list"
 
 	#node_type_configs: close({
 		// Customized number of cores available to each node of the type.
-		// This number must always be one of
-		// 'nodeType.availableCustomCoreCounts'.
-		// If zero is provided max value from
-		// 'nodeType.availableCustomCoreCounts' will be used.
+		// This number must always be one of 'nodeType.availableCustomCoreCounts'.
+		// If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
 		// Once the customer is created then corecount cannot be changed.
 		custom_core_count?: number
 
@@ -159,8 +137,7 @@ import "list"
 		// The canonical identifier of the node type to add or remove.
 		node_type_id!: string
 
-		// Number of nodes to add to a cluster during a scale-out
-		// operation.
+		// Number of nodes to add to a cluster during a scale-out operation.
 		// Must be divisible by 2 for stretched clusters.
 		scale_out_size!: number
 	})
@@ -201,8 +178,7 @@ import "list"
 		mtu?: number
 
 		// The resource name of the network peering, used to access the
-		// file share by clients on private cloud. Resource names are
-		// schemeless
+		// file share by clients on private cloud. Resource names are schemeless
 		// URIs that follow the conventions in
 		// https://cloud.google.com/apis/design/resource_names.
 		// e.g.
@@ -210,11 +186,9 @@ import "list"
 		network_peering?: string
 
 		// The resource name of the subnet
-		// Resource names are schemeless URIs that follow the conventions
-		// in
+		// Resource names are schemeless URIs that follow the conventions in
 		// https://cloud.google.com/apis/design/resource_names.
-		// e.g.
-		// projects/my-project/locations/us-central1/subnets/my-subnet
+		// e.g. projects/my-project/locations/us-central1/subnets/my-subnet
 		subnet!: string
 	})
 }

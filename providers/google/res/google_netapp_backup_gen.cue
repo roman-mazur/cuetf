@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_netapp_backup: {
+google_netapp_backup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_netapp_backup")
 	close({
@@ -12,76 +12,64 @@ import "list"
 		// Region in which backup is stored.
 		backup_region?: string
 
-		// Type of backup, manually created or created by a backup policy.
-		// Possible Values : [TYPE_UNSPECIFIED, MANUAL, SCHEDULED]
+		// Type of backup, manually created or created by a backup policy. Possible
+		// Values : [TYPE_UNSPECIFIED, MANUAL, SCHEDULED]
 		backup_type?: string
 
-		// Backups of a volume build incrementally on top of each other.
-		// They form a "backup chain".
-		// Total size of all backups in a chain in bytes = baseline backup
-		// size + sum(incremental backup size)
+		// Backups of a volume build incrementally on top of each other. They form a "backup chain".
+		// Total size of all backups in a chain in bytes = baseline backup size +
+		// sum(incremental backup size)
 		chain_storage_bytes?: string
 
-		// Create time of the backup. A timestamp in RFC3339 UTC "Zulu"
-		// format. Examples: "2023-06-22T09:13:01.617Z".
+		// Create time of the backup. A timestamp in RFC3339 UTC "Zulu" format.
+		// Examples: "2023-06-22T09:13:01.617Z".
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// A description of the backup with 2048 characters or less.
-		// Requests with longer descriptions will be rejected.
+		// A description of the backup with 2048 characters or less. Requests with
+		// longer descriptions will be rejected.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
-		// Labels as key value pairs. Example: '{ "owner": "Bob",
-		// "department": "finance", "purpose": "testing" }'.
+		// Labels as key value pairs. Example: '{ "owner": "Bob", "department":
+		// "finance", "purpose": "testing" }'.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// Location of the backup.
 		location!: string
 
-		// The resource name of the backup. Needs to be unique per
-		// location.
-		name!:    string
-		project?: string
+		// The resource name of the backup. Needs to be unique per location.
+		name!: string
 
-		// If specified, backup will be created from the given snapshot.
-		// If not specified,
-		// there will be a new snapshot taken to initiate the backup
-		// creation.
+		// If specified, backup will be created from the given snapshot. If not specified,
+		// there will be a new snapshot taken to initiate the backup creation.
 		// Format:
 		// 'projects/{{projectId}}/locations/{{location}}/volumes/{{volumename}}/snapshots/{{snapshotname}}''
 		source_snapshot?: string
+		project?:         string
 
 		// ID of volumes this backup belongs to. Format:
 		// 'projects/{{projects_id}}/locations/{{location}}/volumes/{{name}}''
 		source_volume?: string
 
-		// The state of the Backup Vault. Possible Values :
-		// [STATE_UNSPECIFIED, CREATING, UPLOADING, READY, DELETING,
-		// ERROR, UPDATING]
+		// The state of the Backup Vault. Possible Values : [STATE_UNSPECIFIED,
+		// CREATING, UPLOADING, READY, DELETING, ERROR, UPDATING]
 		state?: string
 
 		// The combination of labels configured directly on the resource
@@ -94,9 +82,8 @@ import "list"
 		// Region of the volume from which the backup was created.
 		volume_region?: string
 
-		// Size of the file system when the backup was created. When
-		// creating a new volume from the backup, the volume capacity
-		// will have to be at least as big.
+		// Size of the file system when the backup was created. When creating a new
+		// volume from the backup, the volume capacity will have to be at least as big.
 		volume_usage_bytes?: string
 	})
 
@@ -104,10 +91,8 @@ import "list"
 		// The UUID of the ONTAP source snapshot.
 		snapshot_uuid?: string
 
-		// Name of the storage pool. This must be specified for creating
-		// backups for ONTAP mode volumes.
-		// Format:
-		// 'projects/{{project}}/locations/{{location}}/storagePools/{{storage_pool_id}}'
+		// Name of the storage pool. This must be specified for creating backups for ONTAP mode volumes.
+		// Format: 'projects/{{project}}/locations/{{location}}/storagePools/{{storage_pool_id}}'
 		storage_pool!: string
 
 		// The UUID of the ONTAP source volume.

@@ -2,16 +2,15 @@ package res
 
 import "list"
 
-#google_firestore_index: {
+google_firestore_index: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firestore_index")
 	close({
 		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
 		timeouts?: #timeouts
 
-		// The API scope at which a query is run. Default value: "ANY_API"
-		// Possible values: ["ANY_API", "DATASTORE_MODE_API",
-		// "MONGODB_COMPATIBLE_API"]
+		// The API scope at which a query is run. Default value: "ANY_API" Possible
+		// values: ["ANY_API", "DATASTORE_MODE_API", "MONGODB_COMPATIBLE_API"]
 		api_scope?: string
 
 		// The collection being indexed.
@@ -20,49 +19,41 @@ import "list"
 		// The Firestore database id. Defaults to '"(default)"'.
 		database?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The density configuration for this index. Possible values:
-		// ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+		// The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
 		density?: string
 		id?:      string
 
-		// Optional. Whether the index is multikey. By default, the index
-		// is not multikey. For non-multikey indexes, none of the paths
-		// in the index definition reach or traverse an array, except via
-		// an explicit array index. For multikey indexes, at most one of
-		// the paths in the index definition reach or traverse an array,
-		// except via an explicit array index. Violations will result in
-		// errors. Note this field only applies to indexes with
+		// Optional. Whether the index is multikey. By default, the index is not
+		// multikey. For non-multikey indexes, none of the paths in the index
+		// definition reach or traverse an array, except via an explicit array index.
+		// For multikey indexes, at most one of the paths in the index definition reach
+		// or traverse an array, except via an explicit array index. Violations will
+		// result in errors. Note this field only applies to indexes with
 		// MONGODB_COMPATIBLE_API ApiScope.
 		multikey?: bool
 
 		// A server defined name for this index. Format:
 		// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
-		name?:    string
-		project?: string
+		name?: string
 
-		// The scope at which a query is run. Default value: "COLLECTION"
-		// Possible values: ["COLLECTION", "COLLECTION_GROUP",
-		// "COLLECTION_RECURSIVE"]
+		// The scope at which a query is run. Default value: "COLLECTION" Possible
+		// values: ["COLLECTION", "COLLECTION_GROUP", "COLLECTION_RECURSIVE"]
 		query_scope?: string
+		project?:     string
 
 		// Whether to skip waiting for the index to be created.
 		skip_wait?: bool
 
-		// Whether it is an unique index. Unique index ensures all values
-		// for the indexed field(s) are unique across documents.
+		// Whether it is an unique index. Unique index ensures all values for the
+		// indexed field(s) are unique across documents.
 		unique?: bool
 	})
 
@@ -70,19 +61,18 @@ import "list"
 		search_config?: matchN(1, [_#defs."/$defs/fields/$defs/search_config", list.MaxItems(1) & [..._#defs."/$defs/fields/$defs/search_config"]])
 		vector_config?: matchN(1, [_#defs."/$defs/fields/$defs/vector_config", list.MaxItems(1) & [..._#defs."/$defs/fields/$defs/vector_config"]])
 
-		// Indicates that this field supports operations on arrayValues.
-		// Only one of 'order', 'arrayConfig', 'searchConfig' and
+		// Indicates that this field supports operations on arrayValues. Only one of
+		// 'order', 'arrayConfig', 'searchConfig' and
 		// 'vectorConfig' can be specified. Possible values: ["CONTAINS"]
 		array_config?: string
 
 		// Name of the field.
 		field_path?: string
 
-		// Indicates that this field supports ordering by the specified
-		// order or comparing using =, <, <=, >, >=.
-		// Only one of 'order', 'arrayConfig', 'searchConfig' and
-		// 'vectorConfig' can be specified. Possible values:
-		// ["ASCENDING", "DESCENDING"]
+		// Indicates that this field supports ordering by the specified order or
+		// comparing using =, <, <=, >, >=.
+		// Only one of 'order', 'arrayConfig', 'searchConfig' and 'vectorConfig' can be
+		// specified. Possible values: ["ASCENDING", "DESCENDING"]
 		order?: string
 	})
 
@@ -98,10 +88,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/fields/$defs/search_config/$defs/geo_spec": close({
-		// If true, disables GeoJSON indexing for the field. By default,
-		// GeoJSON points are indexed.
-		// Firestore GeoPoints are indexed regardless of the value of this
-		// field.
+		// If true, disables GeoJSON indexing for the field. By default, GeoJSON points are indexed.
+		// Firestore GeoPoints are indexed regardless of the value of this field.
 		geo_json_indexing_disabled!: bool
 	})
 
@@ -120,8 +108,8 @@ import "list"
 	_#defs: "/$defs/fields/$defs/vector_config": close({
 		flat?: matchN(1, [_#defs."/$defs/fields/$defs/vector_config/$defs/flat", list.MaxItems(1) & [..._#defs."/$defs/fields/$defs/vector_config/$defs/flat"]])
 
-		// The resulting index will only include vectors of this
-		// dimension, and can be used for vector search
+		// The resulting index will only include vectors of this dimension, and can be
+		// used for vector search
 		// with the same dimension.
 		dimension?: number
 	})

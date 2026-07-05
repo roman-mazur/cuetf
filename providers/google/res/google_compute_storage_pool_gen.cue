@@ -2,54 +2,41 @@ package res
 
 import "list"
 
-#google_compute_storage_pool: {
+google_compute_storage_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_storage_pool")
 	close({
 		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 		timeouts?: #timeouts
 
-		// Provisioning type of the byte capacity of the pool. Possible
-		// values: ["STANDARD", "ADVANCED"]
+		// Provisioning type of the byte capacity of the pool. Possible values: ["STANDARD", "ADVANCED"]
 		capacity_provisioning_type?: string
 
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// StoragePool.
-		// When the field is set to true or unset in Terraform state, a
-		// 'terraform apply'
-		// or 'terraform destroy' that would delete the StoragePool will
-		// fail.
-		// When the field is set to false, deleting the StoragePool is
-		// allowed.
+		// Whether Terraform will be prevented from destroying the StoragePool.
+		// When the field is set to true or unset in Terraform state, a 'terraform apply'
+		// or 'terraform destroy' that would delete the StoragePool will fail.
+		// When the field is set to false, deleting the StoragePool is allowed.
 		deletion_protection?: bool
 
-		// A description of this resource. Provide this property when you
-		// create the resource.
+		// A description of this resource. Provide this property when you create the resource.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// The unique identifier for the resource. This identifier is
-		// defined by the server.
+		// The unique identifier for the resource. This identifier is defined by the server.
 		id?: string
 
 		// Type of the resource.
@@ -59,34 +46,28 @@ import "list"
 		// Used internally during updates.
 		label_fingerprint?: string
 
-		// Labels to apply to this storage pool. These can be later
-		// modified by the setLabels method.
+		// Labels to apply to this storage pool. These can be later modified by the setLabels method.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// Name of the resource. Provided by the client when the resource
-		// is created.
+		// Name of the resource. Provided by the client when the resource is created.
 		// The name must be 1-63 characters long, and comply with RFC1035.
 		// Specifically, the name must be 1-63 characters long and match
 		// the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?'
 		// which means the first character must be a lowercase letter,
-		// and all following characters must be a dash, lowercase letter,
-		// or digit,
+		// and all following characters must be a dash, lowercase letter, or digit,
 		// except the last character, which cannot be a dash.
 		name!: string
 
-		// Provisioning type of the performance-related parameters of the
-		// pool, such as throughput and IOPS. Possible values:
-		// ["STANDARD", "ADVANCED"]
+		// Provisioning type of the performance-related parameters of the pool, such as
+		// throughput and IOPS. Possible values: ["STANDARD", "ADVANCED"]
 		performance_provisioning_type?: string
 
-		// Size, in GiB, of the storage pool. For more information about
-		// the size limits,
+		// Size, in GiB, of the storage pool. For more information about the size limits,
 		// see https://cloud.google.com/compute/docs/disks/storage-pools.
 		pool_provisioned_capacity_gb!: string
 
@@ -95,8 +76,7 @@ import "list"
 		pool_provisioned_iops?: string
 
 		// Provisioned throughput, in MB/s, of the storage pool.
-		// Only relevant if the storage pool type is 'hyperdisk-balanced'
-		// or 'hyperdisk-throughput'.
+		// Only relevant if the storage pool type is 'hyperdisk-balanced' or 'hyperdisk-throughput'.
 		pool_provisioned_throughput!: string
 		project?:                     string
 
@@ -145,20 +125,14 @@ import "list"
 	})
 
 	#params: close({
-		// Resource manager tags to be bound to the storage pool. Tag keys
-		// and values have the
-		// same definition as resource manager tags. Keys and values can
-		// be either in numeric format,
-		// such as tagKeys/{tag_key_id} and tagValues/{tag_value_id} or in
-		// namespaced format such as
-		// {org_id|projectId}/{tag_key_short_name} and
-		// {tag_value_short_name}. The field is ignored when empty.
-		// The field is immutable and causes resource replacement when
-		// mutated. This field is only
-		// set at create time and modifying this field after creation will
-		// trigger recreation.
-		// To apply tags to an existing resource, see the
-		// google_tags_tag_binding resource.
+		// Resource manager tags to be bound to the storage pool. Tag keys and values have the
+		// same definition as resource manager tags. Keys and values can be either in numeric format,
+		// such as tagKeys/{tag_key_id} and tagValues/{tag_value_id} or in namespaced format such as
+		// {org_id|projectId}/{tag_key_short_name} and {tag_value_short_name}. The field
+		// is ignored when empty.
+		// The field is immutable and causes resource replacement when mutated. This field is only
+		// set at create time and modifying this field after creation will trigger recreation.
+		// To apply tags to an existing resource, see the google_tags_tag_binding resource.
 		resource_manager_tags?: [string]: string
 	})
 

@@ -2,31 +2,26 @@ package res
 
 import "list"
 
-#google_ces_example: {
+google_ces_example: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_example")
 	close({
 		messages?: matchN(1, [#messages, [...#messages]])
 		timeouts?: #timeouts
 
-		// Resource ID segment making up resource 'name', defining the app
-		// the example belongs to. It identifies the resource within its
-		// parent collection as described in https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name', defining the app the example
+		// belongs to. It identifies the resource within its parent collection as
+		// described in https://google.aip.dev/122.
 		app!: string
 
 		// Timestamp when the example was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -36,47 +31,38 @@ import "list"
 		// Display name of the example.
 		display_name!: string
 
-		// The agent that initially handles the conversation. If not
-		// specified, the
-		// example represents a conversation that is handled by the root
-		// agent.
-		// Format:
-		// 'projects/{project}/locations/{location}/apps/{app}/agents/{agent}'
+		// The agent that initially handles the conversation. If not specified, the
+		// example represents a conversation that is handled by the root agent.
+		// Format: 'projects/{project}/locations/{location}/apps/{app}/agents/{agent}'
 		entry_agent?: string
 
-		// Etag used to ensure the object hasn't changed during a
-		// read-modify-write
-		// operation. If the etag is empty, the update will overwrite any
-		// concurrent
+		// Etag used to ensure the object hasn't changed during a read-modify-write
+		// operation. If the etag is empty, the update will overwrite any concurrent
 		// changes.
 		etag?: string
 
-		// The ID to use for the example, which will become the final
-		// component of
-		// the example's resource name. In Terraform, this field is
-		// required.
+		// The ID to use for the example, which will become the final component of
+		// the example's resource name. In Terraform, this field is required.
 		example_id!: string
 		id?:         string
 
-		// The example may become invalid if referencing resources are
-		// deleted.
+		// The example may become invalid if referencing resources are deleted.
 		// Invalid examples will not be used as few-shot examples.
 		invalid?: bool
 
-		// Resource ID segment making up resource 'name', defining what
-		// region the parent app is in. It identifies the resource within
-		// its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name', defining what region the
+		// parent app is in. It identifies the resource within its parent collection as
+		// described in https://google.aip.dev/122.
 		location!: string
 
 		// Identifier. The unique identifier of the example.
 		// Format:
 		// 'projects/{project}/locations/{location}/apps/{app}/examples/{example}'
-		name?:    string
-		project?: string
+		name?: string
 
 		// Timestamp when the example was last updated.
 		update_time?: string
+		project?:     string
 	})
 
 	#messages: close({
@@ -101,8 +87,7 @@ import "list"
 		// Text data.
 		text?: string
 
-		// A struct represents variables that were updated in the
-		// conversation,
+		// A struct represents variables that were updated in the conversation,
 		// keyed by variable names.
 		updated_variables?: string
 	})
@@ -111,11 +96,9 @@ import "list"
 		// Display name of the agent.
 		display_name?: string
 
-		// The agent to which the conversation is being transferred. The
-		// agent will
+		// The agent to which the conversation is being transferred. The agent will
 		// handle the conversation from this point forward.
-		// Format:
-		// 'projects/{project}/locations/{location}/apps/{app}/agents/{agent}'
+		// Format: 'projects/{project}/locations/{location}/apps/{app}/agents/{agent}'
 		target_agent!: string
 	})
 
@@ -134,22 +117,19 @@ import "list"
 	_#defs: "/$defs/messages/$defs/chunks/$defs/tool_call": close({
 		toolset_tool?: matchN(1, [_#defs."/$defs/messages/$defs/chunks/$defs/tool_call/$defs/toolset_tool", list.MaxItems(1) & [..._#defs."/$defs/messages/$defs/chunks/$defs/tool_call/$defs/toolset_tool"]])
 
-		// The input parameters and values for the tool in JSON object
-		// format.
+		// The input parameters and values for the tool in JSON object format.
 		args?: string
 
 		// Display name of the tool.
 		display_name?: string
 
-		// The unique identifier of the tool call. If populated, the
-		// client should
+		// The unique identifier of the tool call. If populated, the client should
 		// return the execution result with the matching ID in
 		// ToolResponse.
 		id?: string
 
 		// The name of the tool to execute.
-		// Format:
-		// 'projects/{project}/locations/{location}/apps/{app}/tools/{tool}'
+		// Format: 'projects/{project}/locations/{location}/apps/{app}/tools/{tool}'
 		tool?: string
 	})
 
@@ -157,8 +137,7 @@ import "list"
 		// The tool ID to filter the tools to retrieve the schema for.
 		tool_id?: string
 
-		// The resource name of the Toolset from which this tool is
-		// derived.
+		// The resource name of the Toolset from which this tool is derived.
 		// Format:
 		// 'projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}'
 		toolset!: string
@@ -174,16 +153,13 @@ import "list"
 		id?: string
 
 		// The tool execution result in JSON object format.
-		// Use "output" key to specify tool response and "error" key to
-		// specify
-		// error details (if any). If "output" and "error" keys are not
-		// specified,
+		// Use "output" key to specify tool response and "error" key to specify
+		// error details (if any). If "output" and "error" keys are not specified,
 		// then whole "response" is treated as tool execution result.
 		response!: string
 
 		// The name of the tool to execute.
-		// Format:
-		// 'projects/{project}/locations/{location}/apps/{app}/tools/{tool}'
+		// Format: 'projects/{project}/locations/{location}/apps/{app}/tools/{tool}'
 		tool?: string
 	})
 
@@ -191,8 +167,7 @@ import "list"
 		// The tool ID to filter the tools to retrieve the schema for.
 		tool_id?: string
 
-		// The resource name of the Toolset from which this tool is
-		// derived.
+		// The resource name of the Toolset from which this tool is derived.
 		// Format:
 		// 'projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}'
 		toolset!: string

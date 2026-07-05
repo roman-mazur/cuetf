@@ -2,22 +2,17 @@ package res
 
 import "list"
 
-#google_dns_record_set: {
+google_dns_record_set: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dns_record_set")
 	close({
 		routing_policy?: matchN(1, [#routing_policy, list.MaxItems(1) & [...#routing_policy]])
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
@@ -28,16 +23,15 @@ import "list"
 		// The DNS name this record set will apply to.
 		name!: string
 
-		// The ID of the project in which the resource belongs. If it is
-		// not provided, the provider project is used.
+		// The ID of the project in which the resource belongs. If it is not provided,
+		// the provider project is used.
 		project?: string
 
-		// The string data for the records in this record set whose
-		// meaning depends on the DNS type. For TXT record, if the string
-		// data contains spaces, add surrounding \" if you don't want
-		// your string to get split on spaces. To specify a single record
-		// value longer than 255 characters such as a TXT record for
-		// DKIM, add \"\" inside the Terraform configuration string (e.g.
+		// The string data for the records in this record set whose meaning depends on
+		// the DNS type. For TXT record, if the string data contains spaces, add
+		// surrounding \" if you don't want your string to get split on spaces. To
+		// specify a single record value longer than 255 characters such as a TXT
+		// record for DKIM, add \"\" inside the Terraform configuration string (e.g.
 		// "first255characters\"\"morecharacters").
 		rrdatas?: [...string]
 
@@ -83,13 +77,12 @@ import "list"
 		// case-sensitive. Possible values: ["tcp", "udp"]
 		ip_protocol!: string
 
-		// The type of load balancer. This value is case-sensitive.
-		// Possible values: ["regionalL4ilb", "regionalL7ilb",
-		// "globalL7ilb"]
+		// The type of load balancer. This value is case-sensitive. Possible values:
+		// ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
 		load_balancer_type?: string
 
-		// The fully qualified url of the network in which the load
-		// balancer belongs. This should be formatted like
+		// The fully qualified url of the network in which the load balancer belongs.
+		// This should be formatted like
 		// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
 		network_url!: string
 
@@ -99,8 +92,7 @@ import "list"
 		// The ID of the project in which the load balancer belongs.
 		project!: string
 
-		// The region of the load balancer. Only needed for regional load
-		// balancers.
+		// The region of the load balancer. Only needed for regional load balancers.
 		region?: string
 	})
 
@@ -111,8 +103,8 @@ import "list"
 		// Specifies whether to enable fencing for backup geo queries.
 		enable_geo_fencing_for_backups?: bool
 
-		// Specifies the percentage of traffic to send to the backup
-		// targets even when the primary targets are healthy.
+		// Specifies the percentage of traffic to send to the backup targets even when
+		// the primary targets are healthy.
 		trickle_ratio?: number
 	})
 
@@ -139,13 +131,12 @@ import "list"
 		// case-sensitive. Possible values: ["tcp", "udp"]
 		ip_protocol!: string
 
-		// The type of load balancer. This value is case-sensitive.
-		// Possible values: ["regionalL4ilb", "regionalL7ilb",
-		// "globalL7ilb"]
+		// The type of load balancer. This value is case-sensitive. Possible values:
+		// ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
 		load_balancer_type?: string
 
-		// The fully qualified url of the network in which the load
-		// balancer belongs. This should be formatted like
+		// The fully qualified url of the network in which the load balancer belongs.
+		// This should be formatted like
 		// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
 		network_url!: string
 
@@ -155,8 +146,7 @@ import "list"
 		// The ID of the project in which the load balancer belongs.
 		project!: string
 
-		// The region of the load balancer. Only needed for regional load
-		// balancers.
+		// The region of the load balancer. Only needed for regional load balancers.
 		region?: string
 	})
 
@@ -175,13 +165,12 @@ import "list"
 		// case-sensitive. Possible values: ["tcp", "udp"]
 		ip_protocol!: string
 
-		// The type of load balancer. This value is case-sensitive.
-		// Possible values: ["regionalL4ilb", "regionalL7ilb",
-		// "globalL7ilb"]
+		// The type of load balancer. This value is case-sensitive. Possible values:
+		// ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
 		load_balancer_type?: string
 
-		// The fully qualified url of the network in which the load
-		// balancer belongs. This should be formatted like
+		// The fully qualified url of the network in which the load balancer belongs.
+		// This should be formatted like
 		// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
 		network_url!: string
 
@@ -191,8 +180,7 @@ import "list"
 		// The ID of the project in which the load balancer belongs.
 		project!: string
 
-		// The region of the load balancer. Only needed for regional load
-		// balancers.
+		// The region of the load balancer. Only needed for regional load balancers.
 		region?: string
 	})
 
@@ -219,13 +207,12 @@ import "list"
 		// case-sensitive. Possible values: ["tcp", "udp"]
 		ip_protocol!: string
 
-		// The type of load balancer. This value is case-sensitive.
-		// Possible values: ["regionalL4ilb", "regionalL7ilb",
-		// "globalL7ilb"]
+		// The type of load balancer. This value is case-sensitive. Possible values:
+		// ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
 		load_balancer_type?: string
 
-		// The fully qualified url of the network in which the load
-		// balancer belongs. This should be formatted like
+		// The fully qualified url of the network in which the load balancer belongs.
+		// This should be formatted like
 		// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
 		network_url!: string
 
@@ -235,8 +222,7 @@ import "list"
 		// The ID of the project in which the load balancer belongs.
 		project!: string
 
-		// The region of the load balancer. Only needed for regional load
-		// balancers.
+		// The region of the load balancer. Only needed for regional load balancers.
 		region?: string
 	})
 }

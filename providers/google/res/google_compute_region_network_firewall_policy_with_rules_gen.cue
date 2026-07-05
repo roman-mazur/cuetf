@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_compute_region_network_firewall_policy_with_rules: {
+google_compute_region_network_firewall_policy_with_rules: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_region_network_firewall_policy_with_rules")
 	close({
@@ -12,51 +12,39 @@ import "list"
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// An optional description of this resource.
 		description?: string
 
-		// Fingerprint of the resource. This field is used internally
-		// during updates of this resource.
+		// Fingerprint of the resource. This field is used internally during updates of this resource.
 		fingerprint?: string
 		id?:          string
 
 		// User-provided name of the Network firewall policy.
-		// The name should be unique in the project in which the firewall
-		// policy is created.
-		// The name must be 1-63 characters long, and comply with RFC1035.
-		// Specifically,
-		// the name must be 1-63 characters long and match the regular
-		// expression [a-z]([-a-z0-9]*[a-z0-9])?
-		// which means the first character must be a lowercase letter, and
-		// all following characters must be a dash,
-		// lowercase letter, or digit, except the last character, which
-		// cannot be a dash.
+		// The name should be unique in the project in which the firewall policy is created.
+		// The name must be 1-63 characters long, and comply with RFC1035. Specifically,
+		// the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?
+		// which means the first character must be a lowercase letter, and all following
+		// characters must be a dash,
+		// lowercase letter, or digit, except the last character, which cannot be a dash.
 		name!: string
 
-		// The unique identifier for the resource. This identifier is
-		// defined by the server.
+		// The unique identifier for the resource. This identifier is defined by the server.
 		network_firewall_policy_id?: string
 
-		// Policy type is used to determine which resources (networks) the
-		// policy can be associated with.
-		// A policy can be associated with a network only if the network
-		// has the matching policyType in its network profile.
-		// Different policy types may support some of the Firewall Rules
-		// features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY",
-		// "RDMA_FALCON_POLICY", "ULL_POLICY"]
+		// Policy type is used to determine which resources (networks) the policy can be associated with.
+		// A policy can be associated with a network only if the network has the
+		// matching policyType in its network profile.
+		// Different policy types may support some of the Firewall Rules features.
+		// Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY", "RDMA_FALCON_POLICY",
+		// "ULL_POLICY"]
 		policy_type?: string
 
 		// A list of firewall policy pre-defined rules.
@@ -96,13 +84,13 @@ import "list"
 			target_service_accounts?: [...string]
 			tls_inspect?: bool
 		})]
-		project?: string
 
 		// The region of this resource.
-		region?: string
+		region?:  string
+		project?: string
 
-		// Total count of all firewall policy rule tuples. A firewall
-		// policy can not exceed a set number of tuples.
+		// Total count of all firewall policy rule tuples. A firewall policy can not
+		// exceed a set number of tuples.
 		rule_tuple_count?: number
 
 		// Server-defined URL for the resource.
@@ -116,25 +104,20 @@ import "list"
 		match!: matchN(1, [_#defs."/$defs/rule/$defs/match", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/rule/$defs/match"]])
 		target_secure_tag?: matchN(1, [_#defs."/$defs/rule/$defs/target_secure_tag", [..._#defs."/$defs/rule/$defs/target_secure_tag"]])
 
-		// The Action to perform when the client connection triggers the
-		// rule. Can currently be either
+		// The Action to perform when the client connection triggers the rule. Can currently be either
 		// "allow", "deny", "apply_security_profile_group" or "goto_next".
 		action!: string
 
 		// A description of the rule.
 		description?: string
 
-		// The direction in which this rule applies. If unspecified an
-		// INGRESS rule is created. Possible values: ["INGRESS",
-		// "EGRESS"]
+		// The direction in which this rule applies. If unspecified an INGRESS rule is
+		// created. Possible values: ["INGRESS", "EGRESS"]
 		direction?: string
 
-		// Denotes whether the firewall policy rule is disabled. When set
-		// to true,
-		// the firewall policy rule is not enforced and traffic behaves as
-		// if it did
-		// not exist. If this is unspecified, the firewall policy rule
-		// will be
+		// Denotes whether the firewall policy rule is disabled. When set to true,
+		// the firewall policy rule is not enforced and traffic behaves as if it did
+		// not exist. If this is unspecified, the firewall policy rule will be
 		// enabled.
 		disabled?: bool
 
@@ -143,15 +126,12 @@ import "list"
 		// configured export destination in Stackdriver.
 		enable_logging?: bool
 
-		// An integer indicating the priority of a rule in the list. The
-		// priority must be a value
-		// between 0 and 2147483647. Rules are evaluated from highest to
-		// lowest priority where 0 is the
+		// An integer indicating the priority of a rule in the list. The priority must be a value
+		// between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
 		// highest priority and 2147483647 is the lowest priority.
 		priority!: number
 
-		// An optional name for the rule. This field is not a unique
-		// identifier
+		// An optional name for the rule. This field is not a unique identifier
 		// and can be updated.
 		rule_name?: string
 
@@ -166,8 +146,8 @@ import "list"
 		target_service_accounts?: [...string]
 
 		// Boolean flag indicating if the traffic should be TLS decrypted.
-		// It can be set only if action = 'apply_security_profile_group'
-		// and cannot be set for other actions.
+		// It can be set only if action = 'apply_security_profile_group' and cannot be
+		// set for other actions.
 		tls_inspect?: bool
 	})
 
@@ -181,41 +161,33 @@ import "list"
 		layer4_config!: matchN(1, [_#defs."/$defs/rule/$defs/match/$defs/layer4_config", [_, ...] & [..._#defs."/$defs/rule/$defs/match/$defs/layer4_config"]])
 		src_secure_tag?: matchN(1, [_#defs."/$defs/rule/$defs/match/$defs/src_secure_tag", [..._#defs."/$defs/rule/$defs/match/$defs/src_secure_tag"]])
 
-		// Address groups which should be matched against the traffic
-		// destination.
+		// Address groups which should be matched against the traffic destination.
 		// Maximum number of destination address groups is 10.
 		dest_address_groups?: [...string]
 
-		// Fully Qualified Domain Name (FQDN) which should be matched
-		// against
-		// traffic destination. Maximum number of destination fqdn allowed
-		// is 100.
+		// Fully Qualified Domain Name (FQDN) which should be matched against
+		// traffic destination. Maximum number of destination fqdn allowed is 100.
 		dest_fqdns?: [...string]
 
 		// Destination IP address range in CIDR format. Required for
 		// EGRESS rules.
 		dest_ip_ranges?: [...string]
 
-		// Region codes whose IP addresses will be used to match for
-		// destination
-		// of traffic. Should be specified as 2 letter country code
-		// defined as per
+		// Region codes whose IP addresses will be used to match for destination
+		// of traffic. Should be specified as 2 letter country code defined as per
 		// ISO 3166 alpha-2 country codes. ex."US"
 		// Maximum number of destination region codes allowed is 5000.
 		dest_region_codes?: [...string]
 
 		// Names of Network Threat Intelligence lists.
-		// The IPs in these lists will be matched against traffic
-		// destination.
+		// The IPs in these lists will be matched against traffic destination.
 		dest_threat_intelligences?: [...string]
 
-		// Address groups which should be matched against the traffic
-		// source.
+		// Address groups which should be matched against the traffic source.
 		// Maximum number of source address groups is 10.
 		src_address_groups?: [...string]
 
-		// Fully Qualified Domain Name (FQDN) which should be matched
-		// against
+		// Fully Qualified Domain Name (FQDN) which should be matched against
 		// traffic source. Maximum number of source fqdn allowed is 100.
 		src_fqdns?: [...string]
 
@@ -223,10 +195,8 @@ import "list"
 		// INGRESS rules.
 		src_ip_ranges?: [...string]
 
-		// Region codes whose IP addresses will be used to match for
-		// source
-		// of traffic. Should be specified as 2 letter country code
-		// defined as per
+		// Region codes whose IP addresses will be used to match for source
+		// of traffic. Should be specified as 2 letter country code defined as per
 		// ISO 3166 alpha-2 country codes. ex."US"
 		// Maximum number of source region codes allowed is 5000.
 		src_region_codes?: [...string]
@@ -244,8 +214,7 @@ import "list"
 		// or the IP protocol number.
 		ip_protocol!: string
 
-		// An optional list of ports to which this rule applies. This
-		// field
+		// An optional list of ports to which this rule applies. This field
 		// is only applicable for UDP or TCP protocol. Each entry must be
 		// either an integer or a range. If not specified, this rule
 		// applies to connections through any port.

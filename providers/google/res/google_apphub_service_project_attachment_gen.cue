@@ -1,6 +1,6 @@
 package res
 
-#google_apphub_service_project_attachment: {
+google_apphub_service_project_attachment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apphub_service_project_attachment")
 	close({
@@ -9,35 +9,27 @@ package res
 		// Output only. Create time.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
 
 		// "Identifier. The resource name of a ServiceProjectAttachment.
 		// Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
-		name?:    string
-		project?: string
+		name?: string
 
-		// "Immutable. Service project name in the format:
-		// \"projects/abc\"
-		// or \"projects/123\". As input, project name with either project
-		// id or number
-		// are accepted. As output, this field will contain project
-		// number."
+		// "Immutable. Service project name in the format: \"projects/abc\"
+		// or \"projects/123\". As input, project name with either project id or number
+		// are accepted. As output, this field will contain project number."
 		service_project?: string
+		project?:         string
 
-		// Required. The service project attachment identifier must
-		// contain the project_id of the service project specified in the
+		// Required. The service project attachment identifier must contain the
+		// project_id of the service project specified in the
 		// service_project_attachment.service_project field. Hint:
 		// "projects/{project_id}"
 		service_project_attachment_id!: string
@@ -45,8 +37,7 @@ package res
 		// ServiceProjectAttachment state.
 		state?: string
 
-		// Output only. A globally unique identifier (in UUID4 format) for
-		// the 'ServiceProjectAttachment'.
+		// Output only. A globally unique identifier (in UUID4 format) for the 'ServiceProjectAttachment'.
 		uid?: string
 	})
 

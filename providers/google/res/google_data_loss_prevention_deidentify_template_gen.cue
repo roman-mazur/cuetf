@@ -2,27 +2,21 @@ package res
 
 import "list"
 
-#google_data_loss_prevention_deidentify_template: {
+google_data_loss_prevention_deidentify_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_loss_prevention_deidentify_template")
 	close({
 		deidentify_config!: matchN(1, [#deidentify_config, list.MaxItems(1) & [_, ...] & [...#deidentify_config]])
 		timeouts?: #timeouts
 
-		// The creation timestamp of an deidentifyTemplate. Set by the
-		// server.
+		// The creation timestamp of an deidentifyTemplate. Set by the server.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -44,16 +38,12 @@ import "list"
 		// * 'organizations/{{organization_id}}/locations/{{location}}'
 		parent!: string
 
-		// The template id can contain uppercase and lowercase letters,
-		// numbers, and hyphens;
-		// that is, it must match the regular expression: [a-zA-Z\d-_]+.
-		// The maximum length is
-		// 100 characters. Can be empty to allow the system to generate
-		// one.
+		// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+		// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+		// 100 characters. Can be empty to allow the system to generate one.
 		template_id?: string
 
-		// The last update timestamp of an deidentifyTemplate. Set by the
-		// server.
+		// The last update timestamp of an deidentifyTemplate. Set by the server.
 		update_time?: string
 	})
 
@@ -85,16 +75,13 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/image_transformations/$defs/transforms/$defs/all_text": close({})
 
 	_#defs: "/$defs/deidentify_config/$defs/image_transformations/$defs/transforms/$defs/redaction_color": close({
-		// The amount of blue in the color as a value in the interval [0,
-		// 1].
+		// The amount of blue in the color as a value in the interval [0, 1].
 		blue?: number
 
-		// The amount of green in the color as a value in the interval [0,
-		// 1].
+		// The amount of green in the color as a value in the interval [0, 1].
 		green?: number
 
-		// The amount of red in the color as a value in the interval [0,
-		// 1].
+		// The amount of red in the color as a value in the interval [0, 1].
 		red?: number
 	})
 
@@ -114,8 +101,7 @@ import "list"
 
 	_#defs: "/$defs/deidentify_config/$defs/image_transformations/$defs/transforms/$defs/selected_info_types/$defs/info_types/$defs/sensitivity_score": close({
 		// The sensitivity score applied to the resource. Possible values:
-		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE",
-		// "SENSITIVITY_HIGH"]
+		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE", "SENSITIVITY_HIGH"]
 		score!: string
 	})
 
@@ -140,8 +126,7 @@ import "list"
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/info_types/$defs/sensitivity_score": close({
 		// The sensitivity score applied to the resource. Possible values:
-		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE",
-		// "SENSITIVITY_HIGH"]
+		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE", "SENSITIVITY_HIGH"]
 		score!: string
 	})
 
@@ -176,9 +161,8 @@ import "list"
 		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value"]])
 		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value"]])
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -190,42 +174,38 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
@@ -233,9 +213,8 @@ import "list"
 		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value"]])
 		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value"]])
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -247,42 +226,38 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
@@ -290,9 +265,8 @@ import "list"
 		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value"]])
 		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value"]])
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -304,66 +278,58 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config": close({
 		characters_to_ignore?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore", [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore"]])
 
-		// Character to use to mask the sensitive values—for example, *
-		// for an alphabetic string such as a name, or 0 for a numeric
-		// string
-		// such as ZIP code or credit card number. This string must have a
-		// length of 1. If not supplied, this value defaults to * for
+		// Character to use to mask the sensitive values—for example, * for an
+		// alphabetic string such as a name, or 0 for a numeric string
+		// such as ZIP code or credit card number. This string must have a length of 1.
+		// If not supplied, this value defaults to * for
 		// strings, and 0 for digits.
 		masking_character?: string
 
-		// Number of characters to mask. If not set, all matching chars
-		// will be masked. Skipped characters do not count towards this
-		// tally.
+		// Number of characters to mask. If not set, all matching chars will be masked.
+		// Skipped characters do not count towards this tally.
 		number_to_mask?: number
 
-		// Mask characters in reverse order. For example, if
-		// masking_character is 0, number_to_mask is 14, and
-		// reverse_order is 'false', then the
-		// input string '1234-5678-9012-3456' is masked as
-		// '00000000000000-3456'.
+		// Mask characters in reverse order. For example, if masking_character is 0,
+		// number_to_mask is 14, and reverse_order is 'false', then the
+		// input string '1234-5678-9012-3456' is masked as '00000000000000-3456'.
 		reverse_order?: bool
 	})
 
@@ -371,10 +337,9 @@ import "list"
 		// Characters to not transform when masking.
 		characters_to_skip?: string
 
-		// Common characters to not transform when masking. Useful to
-		// avoid removing punctuation. Possible values: ["NUMERIC",
-		// "ALPHA_UPPER_CASE", "ALPHA_LOWER_CASE", "PUNCTUATION",
-		// "WHITESPACE"]
+		// Common characters to not transform when masking. Useful to avoid removing
+		// punctuation. Possible values: ["NUMERIC", "ALPHA_UPPER_CASE",
+		// "ALPHA_LOWER_CASE", "PUNCTUATION", "WHITESPACE"]
 		common_characters_to_ignore?: string
 	})
 
@@ -406,13 +371,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/crypto_key/$defs/transient": close({
-		// Name of the key. This is an arbitrary string used to
-		// differentiate different keys. A unique key is generated per
-		// name: two separate 'TransientCryptoKey' protos share the same
-		// generated key if their names are the same. When the data
-		// crypto key is generated, this name is not used in any way
-		// (repeating the api call will result in a different key being
-		// generated).
+		// Name of the key. This is an arbitrary string used to differentiate different
+		// keys. A unique key is generated per name: two separate 'TransientCryptoKey'
+		// protos share the same generated key if their names are the same. When the
+		// data crypto key is generated, this name is not used in any way (repeating
+		// the api call will result in a different key being generated).
 		name!: string
 	})
 
@@ -426,12 +389,12 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type": close({
 		sensitivity_score?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type/$defs/sensitivity_score"]])
 
-		// Name of the information type. Either a name of your choosing
-		// when creating a CustomInfoType, or one of the names listed at
+		// Name of the information type. Either a name of your choosing when creating a
+		// CustomInfoType, or one of the names listed at
 		// [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference)
-		// when specifying a built-in type. When sending Cloud DLP
-		// results to Data Catalog, infoType names should conform to the
-		// pattern '[A-Za-z0-9$-_]{1,64}'.
+		// when specifying a built-in type. When sending Cloud DLP results to Data
+		// Catalog, infoType names should conform to the pattern
+		// '[A-Za-z0-9$-_]{1,64}'.
 		name?: string
 
 		// Optional version name for this InfoType.
@@ -440,8 +403,7 @@ import "list"
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type/$defs/sensitivity_score": close({
 		// The sensitivity score applied to the resource. Possible values:
-		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE",
-		// "SENSITIVITY_HIGH"]
+		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE", "SENSITIVITY_HIGH"]
 		score!: string
 	})
 
@@ -466,13 +428,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_hash_config/$defs/crypto_key/$defs/transient": close({
-		// Name of the key. This is an arbitrary string used to
-		// differentiate different keys. A unique key is generated per
-		// name: two separate 'TransientCryptoKey' protos share the same
-		// generated key if their names are the same. When the data
-		// crypto key is generated, this name is not used in any way
-		// (repeating the api call will result in a different key being
-		// generated).
+		// Name of the key. This is an arbitrary string used to differentiate different
+		// keys. A unique key is generated per name: two separate 'TransientCryptoKey'
+		// protos share the same generated key if their names are the same. When the
+		// data crypto key is generated, this name is not used in any way (repeating
+		// the api call will result in a different key being generated).
 		name!: string
 	})
 
@@ -488,25 +448,21 @@ import "list"
 		crypto_key?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key"]])
 		surrogate_info_type?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type"]])
 
-		// Common alphabets. Possible values:
-		// ["FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED", "NUMERIC",
-		// "HEXADECIMAL", "UPPER_CASE_ALPHA_NUMERIC", "ALPHA_NUMERIC"]
+		// Common alphabets. Possible values: ["FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED",
+		// "NUMERIC", "HEXADECIMAL", "UPPER_CASE_ALPHA_NUMERIC", "ALPHA_NUMERIC"]
 		common_alphabet?: string
 
-		// This is supported by mapping these to the alphanumeric
-		// characters that the FFX mode natively supports. This happens
-		// before/after encryption/decryption. Each character listed must
-		// appear only once. Number of characters must be in the range
-		// \[2, 95\]. This must be encoded as ASCII. The order of
-		// characters does not matter. The full list of allowed
-		// characters is:
+		// This is supported by mapping these to the alphanumeric characters that the
+		// FFX mode natively supports. This happens before/after encryption/decryption.
+		// Each character listed must appear only once. Number of characters must be in
+		// the range \[2, 95\]. This must be encoded as ASCII. The order of characters
+		// does not matter. The full list of allowed characters is:
 		//
 		// ''0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
 		// ~'!@#$%^&*()_-+={[}]|:;"'<,>.?/''
 		custom_alphabet?: string
 
-		// The native way to select the alphabet. Must be in the range
-		// \[2, 95\].
+		// The native way to select the alphabet. Must be in the range \[2, 95\].
 		radix?: number
 	})
 
@@ -532,13 +488,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key/$defs/transient": close({
-		// Name of the key. This is an arbitrary string used to
-		// differentiate different keys. A unique key is generated per
-		// name: two separate 'TransientCryptoKey' protos share the same
-		// generated key if their names are the same. When the data
-		// crypto key is generated, this name is not used in any way
-		// (repeating the api call will result in a different key being
-		// generated).
+		// Name of the key. This is an arbitrary string used to differentiate different
+		// keys. A unique key is generated per name: two separate 'TransientCryptoKey'
+		// protos share the same generated key if their names are the same. When the
+		// data crypto key is generated, this name is not used in any way (repeating
+		// the api call will result in a different key being generated).
 		name!: string
 	})
 
@@ -552,12 +506,12 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type": close({
 		sensitivity_score?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type/$defs/sensitivity_score"]])
 
-		// Name of the information type. Either a name of your choosing
-		// when creating a CustomInfoType, or one of the names listed at
+		// Name of the information type. Either a name of your choosing when creating a
+		// CustomInfoType, or one of the names listed at
 		// [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference)
-		// when specifying a built-in type. When sending Cloud DLP
-		// results to Data Catalog, infoType names should conform to the
-		// pattern '[A-Za-z0-9$-_]{1,64}'.
+		// when specifying a built-in type. When sending Cloud DLP results to Data
+		// Catalog, infoType names should conform to the pattern
+		// '[A-Za-z0-9$-_]{1,64}'.
 		name?: string
 
 		// Optional version name for this InfoType.
@@ -566,8 +520,7 @@ import "list"
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type/$defs/sensitivity_score": close({
 		// The sensitivity score applied to the resource. Possible values:
-		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE",
-		// "SENSITIVITY_HIGH"]
+		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE", "SENSITIVITY_HIGH"]
 		score!: string
 	})
 
@@ -575,14 +528,13 @@ import "list"
 		context?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/context", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/context"]])
 		crypto_key?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/crypto_key", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/crypto_key"]])
 
-		// Range of shift in days. Negative means shift to earlier in
-		// time.
+		// Range of shift in days. Negative means shift to earlier in time.
 		lower_bound_days!: number
 
-		// Range of shift in days. Actual shift will be selected at random
-		// within this range (inclusive ends).
-		// Negative means shift to earlier in time. Must not be more than
-		// 365250 days (1000 years) each direction.
+		// Range of shift in days. Actual shift will be selected at random within this
+		// range (inclusive ends).
+		// Negative means shift to earlier in time. Must not be more than 365250 days
+		// (1000 years) each direction.
 		upper_bound_days!: number
 	})
 
@@ -607,13 +559,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/crypto_key/$defs/transient": close({
-		// Name of the key. This is an arbitrary string used to
-		// differentiate different keys. A unique key is generated per
-		// name: two separate 'TransientCryptoKey' protos share the same
-		// generated key if their names are the same. When the data
-		// crypto key is generated, this name is not used in any way
-		// (repeating the api call will result in a different key being
-		// generated).
+		// Name of the key. This is an arbitrary string used to differentiate different
+		// keys. A unique key is generated per name: two separate 'TransientCryptoKey'
+		// protos share the same generated key if their names are the same. When the
+		// data crypto key is generated, this name is not used in any way (repeating
+		// the api call will result in a different key being generated).
 		name!: string
 	})
 
@@ -628,9 +578,9 @@ import "list"
 		upper_bound!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound"]])
 
 		// Size of each bucket (except for minimum and maximum buckets).
-		// So if lower_bound = 10, upper_bound = 89, and bucketSize = 10,
-		// then the following buckets would be used: -10, 10-20, 20-30,
-		// 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
+		// So if lower_bound = 10, upper_bound = 89, and bucketSize = 10, then the
+		// following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60,
+		// 60-70, 70-80, 80-89, 89+.
 		// Precision up to 2 decimals works.
 		bucket_size!: number
 	})
@@ -664,9 +614,8 @@ import "list"
 		// A boolean value.
 		boolean_value?: bool
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -678,26 +627,21 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value": close({
-		// Day of month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 if specifying a
-		// year by itself or a year and month where the day is not
-		// significant.
+		// Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
+		// year by itself or a year and month where the day is not significant.
 		day?: number
 
-		// Month of year. Must be from 1 to 12, or 0 if specifying a year
-		// without a month and day.
+		// Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
 		month?: number
 
-		// Year of date. Must be from 1 to 9999, or 0 if specifying a date
-		// without a year.
+		// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
 		year?: number
 	})
 
@@ -708,8 +652,7 @@ import "list"
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
 		// Seconds of minutes of the time. Must normally be from 0 to 59.
@@ -721,16 +664,15 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config/$defs/word_list": close({
-		// Words or phrases defining the dictionary. The dictionary must
-		// contain at least one phrase and every phrase must contain at
-		// least 2 characters that are letters or digits.
+		// Words or phrases defining the dictionary. The dictionary must contain at
+		// least one phrase and every phrase must contain at least 2 characters that
+		// are letters or digits.
 		words!: [...string]
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/time_part_config": close({
-		// The part of the time to keep. Possible values: ["YEAR",
-		// "MONTH", "DAY_OF_MONTH", "DAY_OF_WEEK", "WEEK_OF_YEAR",
-		// "HOUR_OF_DAY"]
+		// The part of the time to keep. Possible values: ["YEAR", "MONTH",
+		// "DAY_OF_MONTH", "DAY_OF_WEEK", "WEEK_OF_YEAR", "HOUR_OF_DAY"]
 		part_to_extract?: string
 	})
 
@@ -753,9 +695,8 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions": close({
 		conditions?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions"]])
 
-		// The operator to apply to the result of conditions. Default and
-		// currently only supported value is AND Default value: "AND"
-		// Possible values: ["AND"]
+		// The operator to apply to the result of conditions. Default and currently only
+		// supported value is AND Default value: "AND" Possible values: ["AND"]
 		logical_operator?: string
 	})
 
@@ -767,10 +708,9 @@ import "list"
 		field!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/field", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/field"]])
 		value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value"]])
 
-		// Operator used to compare the field or infoType to the value.
-		// Possible values: ["EQUAL_TO", "NOT_EQUAL_TO", "GREATER_THAN",
-		// "LESS_THAN", "GREATER_THAN_OR_EQUALS", "LESS_THAN_OR_EQUALS",
-		// "EXISTS"]
+		// Operator used to compare the field or infoType to the value. Possible values:
+		// ["EQUAL_TO", "NOT_EQUAL_TO", "GREATER_THAN", "LESS_THAN",
+		// "GREATER_THAN_OR_EQUALS", "LESS_THAN_OR_EQUALS", "EXISTS"]
 		operator!: string
 	})
 
@@ -786,9 +726,8 @@ import "list"
 		// A boolean value.
 		boolean_value?: bool
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -800,42 +739,38 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
@@ -865,8 +800,7 @@ import "list"
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/info_types/$defs/sensitivity_score": close({
 		// The sensitivity score applied to the resource. Possible values:
-		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE",
-		// "SENSITIVITY_HIGH"]
+		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE", "SENSITIVITY_HIGH"]
 		score!: string
 	})
 
@@ -899,9 +833,8 @@ import "list"
 		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value"]])
 		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value"]])
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -913,42 +846,38 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
@@ -956,9 +885,8 @@ import "list"
 		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value"]])
 		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value"]])
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -970,42 +898,38 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
@@ -1013,9 +937,8 @@ import "list"
 		date_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value"]])
 		time_value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value"]])
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -1027,79 +950,70 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config": close({
 		characters_to_ignore?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore", [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore"]])
 
-		// Character to use to mask the sensitive values—for example, *
-		// for an alphabetic string such as a name, or 0 for a numeric
-		// string
-		// such as ZIP code or credit card number. This string must have a
-		// length of 1. If not supplied, this value defaults to * for
+		// Character to use to mask the sensitive values—for example, * for an
+		// alphabetic string such as a name, or 0 for a numeric string
+		// such as ZIP code or credit card number. This string must have a length of 1.
+		// If not supplied, this value defaults to * for
 		// strings, and 0 for digits.
 		masking_character?: string
 
-		// Number of characters to mask. If not set, all matching chars
-		// will be masked. Skipped characters do not count towards this
-		// tally.
-		// If number_to_mask is negative, this denotes inverse masking.
-		// Cloud DLP masks all but a number of characters. For example,
-		// suppose you have the following values:
+		// Number of characters to mask. If not set, all matching chars will be masked.
+		// Skipped characters do not count towards this tally.
+		// If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks
+		// all but a number of characters. For example, suppose you have the following
+		// values:
 		// - 'masking_character' is *
 		// - 'number_to_mask' is -4
 		// - 'reverse_order' is false
 		// - 'characters_to_ignore' includes -
 		// - Input string is 1234-5678-9012-3456
 		//
-		// The resulting de-identified string is ****-****-****-3456.
-		// Cloud DLP masks all but the last four characters. If
-		// reverseOrder is true, all but the first four characters are
-		// masked as 1234-****-****-****.
+		// The resulting de-identified string is ****-****-****-3456. Cloud DLP masks
+		// all but the last four characters. If reverseOrder is true, all but the first
+		// four characters are masked as 1234-****-****-****.
 		number_to_mask?: number
 
-		// Mask characters in reverse order. For example, if
-		// masking_character is 0, number_to_mask is 14, and
-		// reverse_order is 'false', then the
-		// input string '1234-5678-9012-3456' is masked as
-		// '00000000000000-3456'.
+		// Mask characters in reverse order. For example, if masking_character is 0,
+		// number_to_mask is 14, and reverse_order is 'false', then the
+		// input string '1234-5678-9012-3456' is masked as '00000000000000-3456'.
 		reverse_order?: bool
 	})
 
@@ -1108,10 +1022,9 @@ import "list"
 		// 'common_characters_to_ignore' must be specified.
 		characters_to_skip?: string
 
-		// Common characters to not transform when masking. Useful to
-		// avoid removing punctuation. Only one of this or
-		// 'characters_to_skip' must be specified. Possible values:
-		// ["NUMERIC", "ALPHA_UPPER_CASE", "ALPHA_LOWER_CASE",
+		// Common characters to not transform when masking. Useful to avoid removing
+		// punctuation. Only one of this or 'characters_to_skip' must be specified.
+		// Possible values: ["NUMERIC", "ALPHA_UPPER_CASE", "ALPHA_LOWER_CASE",
 		// "PUNCTUATION", "WHITESPACE"]
 		common_characters_to_ignore?: string
 	})
@@ -1144,13 +1057,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/crypto_key/$defs/transient": close({
-		// Name of the key. This is an arbitrary string used to
-		// differentiate different keys. A unique key is generated per
-		// name: two separate 'TransientCryptoKey' protos share the same
-		// generated key if their names are the same. When the data
-		// crypto key is generated, this name is not used in any way
-		// (repeating the api call will result in a different key being
-		// generated).
+		// Name of the key. This is an arbitrary string used to differentiate different
+		// keys. A unique key is generated per name: two separate 'TransientCryptoKey'
+		// protos share the same generated key if their names are the same. When the
+		// data crypto key is generated, this name is not used in any way (repeating
+		// the api call will result in a different key being generated).
 		name!: string
 	})
 
@@ -1164,12 +1075,12 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type": close({
 		sensitivity_score?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type/$defs/sensitivity_score"]])
 
-		// Name of the information type. Either a name of your choosing
-		// when creating a CustomInfoType, or one of the names listed at
+		// Name of the information type. Either a name of your choosing when creating a
+		// CustomInfoType, or one of the names listed at
 		// [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference)
-		// when specifying a built-in type. When sending Cloud DLP
-		// results to Data Catalog, infoType names should conform to the
-		// pattern '[A-Za-z0-9$-_]{1,64}'.
+		// when specifying a built-in type. When sending Cloud DLP results to Data
+		// Catalog, infoType names should conform to the pattern
+		// '[A-Za-z0-9$-_]{1,64}'.
 		name!: string
 
 		// Optional version name for this InfoType.
@@ -1178,8 +1089,7 @@ import "list"
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type/$defs/sensitivity_score": close({
 		// The sensitivity score applied to the resource. Possible values:
-		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE",
-		// "SENSITIVITY_HIGH"]
+		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE", "SENSITIVITY_HIGH"]
 		score!: string
 	})
 
@@ -1204,13 +1114,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_hash_config/$defs/crypto_key/$defs/transient": close({
-		// Name of the key. This is an arbitrary string used to
-		// differentiate different keys. A unique key is generated per
-		// name: two separate 'TransientCryptoKey' protos share the same
-		// generated key if their names are the same. When the data
-		// crypto key is generated, this name is not used in any way
-		// (repeating the api call will result in a different key being
-		// generated).
+		// Name of the key. This is an arbitrary string used to differentiate different
+		// keys. A unique key is generated per name: two separate 'TransientCryptoKey'
+		// protos share the same generated key if their names are the same. When the
+		// data crypto key is generated, this name is not used in any way (repeating
+		// the api call will result in a different key being generated).
 		name!: string
 	})
 
@@ -1226,27 +1134,24 @@ import "list"
 		crypto_key!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key"]])
 		surrogate_info_type?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type"]])
 
-		// Common alphabets. Only one of this, 'custom_alphabet' or
-		// 'radix' must be specified. Possible values: ["NUMERIC",
-		// "HEXADECIMAL", "UPPER_CASE_ALPHA_NUMERIC", "ALPHA_NUMERIC"]
+		// Common alphabets. Only one of this, 'custom_alphabet' or 'radix' must be
+		// specified. Possible values: ["NUMERIC", "HEXADECIMAL",
+		// "UPPER_CASE_ALPHA_NUMERIC", "ALPHA_NUMERIC"]
 		common_alphabet?: string
 
-		// This is supported by mapping these to the alphanumeric
-		// characters that the FFX mode natively supports. This happens
-		// before/after encryption/decryption. Each character listed must
-		// appear only once. Number of characters must be in the range
-		// \[2, 95\]. This must be encoded as ASCII. The order of
-		// characters does not matter. The full list of allowed
-		// characters is:
+		// This is supported by mapping these to the alphanumeric characters that the
+		// FFX mode natively supports. This happens before/after encryption/decryption.
+		// Each character listed must appear only once. Number of characters must be in
+		// the range \[2, 95\]. This must be encoded as ASCII. The order of characters
+		// does not matter. The full list of allowed characters is:
 		//
 		// ''0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
-		// ~'!@#$%^&*()_-+={[}]|:;"'<,>.?/''. Only one of this,
-		// 'common_alphabet' or 'radix' must be specified.
+		// ~'!@#$%^&*()_-+={[}]|:;"'<,>.?/''. Only one of this, 'common_alphabet' or
+		// 'radix' must be specified.
 		custom_alphabet?: string
 
-		// The native way to select the alphabet. Must be in the range
-		// \[2, 95\]. Only one of this, 'custom_alphabet' or
-		// 'common_alphabet' must be specified.
+		// The native way to select the alphabet. Must be in the range \[2, 95\]. Only
+		// one of this, 'custom_alphabet' or 'common_alphabet' must be specified.
 		radix?: number
 	})
 
@@ -1272,13 +1177,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key/$defs/transient": close({
-		// Name of the key. This is an arbitrary string used to
-		// differentiate different keys. A unique key is generated per
-		// name: two separate 'TransientCryptoKey' protos share the same
-		// generated key if their names are the same. When the data
-		// crypto key is generated, this name is not used in any way
-		// (repeating the api call will result in a different key being
-		// generated).
+		// Name of the key. This is an arbitrary string used to differentiate different
+		// keys. A unique key is generated per name: two separate 'TransientCryptoKey'
+		// protos share the same generated key if their names are the same. When the
+		// data crypto key is generated, this name is not used in any way (repeating
+		// the api call will result in a different key being generated).
 		name!: string
 	})
 
@@ -1292,12 +1195,12 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type": close({
 		sensitivity_score?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type/$defs/sensitivity_score"]])
 
-		// Name of the information type. Either a name of your choosing
-		// when creating a CustomInfoType, or one of the names listed at
+		// Name of the information type. Either a name of your choosing when creating a
+		// CustomInfoType, or one of the names listed at
 		// [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference)
-		// when specifying a built-in type. When sending Cloud DLP
-		// results to Data Catalog, infoType names should conform to the
-		// pattern '[A-Za-z0-9$-_]{1,64}'.
+		// when specifying a built-in type. When sending Cloud DLP results to Data
+		// Catalog, infoType names should conform to the pattern
+		// '[A-Za-z0-9$-_]{1,64}'.
 		name!: string
 
 		// Optional version name for this InfoType.
@@ -1306,8 +1209,7 @@ import "list"
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type/$defs/sensitivity_score": close({
 		// The sensitivity score applied to the resource. Possible values:
-		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE",
-		// "SENSITIVITY_HIGH"]
+		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE", "SENSITIVITY_HIGH"]
 		score!: string
 	})
 
@@ -1315,17 +1217,14 @@ import "list"
 		context?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/context", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/context"]])
 		crypto_key?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/crypto_key", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/crypto_key"]])
 
-		// For example, -5 means shift date to at most 5 days back in the
-		// past.
+		// For example, -5 means shift date to at most 5 days back in the past.
 		lower_bound_days!: number
 
-		// Range of shift in days. Actual shift will be selected at random
-		// within this range (inclusive ends). Negative means shift to
-		// earlier in time. Must not be more than 365250 days (1000
-		// years) each direction.
+		// Range of shift in days. Actual shift will be selected at random within this
+		// range (inclusive ends). Negative means shift to earlier in time. Must not be
+		// more than 365250 days (1000 years) each direction.
 		//
-		// For example, 3 means shift date to at most 3 days into the
-		// future.
+		// For example, 3 means shift date to at most 3 days into the future.
 		upper_bound_days!: number
 	})
 
@@ -1351,13 +1250,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/crypto_key/$defs/transient": close({
-		// Name of the key. This is an arbitrary string used to
-		// differentiate different keys. A unique key is generated per
-		// name: two separate 'TransientCryptoKey' protos share the same
-		// generated key if their names are the same. When the data
-		// crypto key is generated, this name is not used in any way
-		// (repeating the api call will result in a different key being
-		// generated).
+		// Name of the key. This is an arbitrary string used to differentiate different
+		// keys. A unique key is generated per name: two separate 'TransientCryptoKey'
+		// protos share the same generated key if their names are the same. When the
+		// data crypto key is generated, this name is not used in any way (repeating
+		// the api call will result in a different key being generated).
 		name!: string
 	})
 
@@ -1373,9 +1270,9 @@ import "list"
 		upper_bound!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound"]])
 
 		// Size of each bucket (except for minimum and maximum buckets).
-		// So if lower_bound = 10, upper_bound = 89, and bucketSize = 10,
-		// then the following buckets would be used: -10, 10-20, 20-30,
-		// 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
+		// So if lower_bound = 10, upper_bound = 89, and bucketSize = 10, then the
+		// following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60,
+		// 60-70, 70-80, 80-89, 89+.
 		// Precision up to 2 decimals works.
 		bucket_size!: number
 	})
@@ -1409,9 +1306,8 @@ import "list"
 		// A boolean value.
 		boolean_value?: bool
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -1423,43 +1319,38 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits.
-		// Examples: "2014-10-02T15:01:23Z" and
-		// "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits.
+		// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
@@ -1468,18 +1359,17 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_dictionary_config/$defs/word_list": close({
-		// Words or phrases defining the dictionary. The dictionary must
-		// contain at least one phrase and every phrase must contain at
-		// least 2 characters that are letters or digits.
+		// Words or phrases defining the dictionary. The dictionary must contain at
+		// least one phrase and every phrase must contain at least 2 characters that
+		// are letters or digits.
 		words!: [...string]
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/replace_with_info_type_config": close({})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/info_type_transformations/$defs/transformations/$defs/primitive_transformation/$defs/time_part_config": close({
-		// The part of the time to keep. Possible values: ["YEAR",
-		// "MONTH", "DAY_OF_MONTH", "DAY_OF_WEEK", "WEEK_OF_YEAR",
-		// "HOUR_OF_DAY"]
+		// The part of the time to keep. Possible values: ["YEAR", "MONTH",
+		// "DAY_OF_MONTH", "DAY_OF_WEEK", "WEEK_OF_YEAR", "HOUR_OF_DAY"]
 		part_to_extract!: string
 	})
 
@@ -1514,9 +1404,8 @@ import "list"
 		// A boolean value.
 		boolean_value?: bool
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -1528,42 +1417,38 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/max/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
@@ -1574,9 +1459,8 @@ import "list"
 		// A boolean value.
 		boolean_value?: bool
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -1588,42 +1472,38 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/min/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
@@ -1634,9 +1514,8 @@ import "list"
 		// A boolean value.
 		boolean_value?: bool
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -1648,79 +1527,70 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/bucketing_config/$defs/buckets/$defs/replacement_value/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/character_mask_config": close({
 		characters_to_ignore?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore", [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/character_mask_config/$defs/characters_to_ignore"]])
 
-		// Character to use to mask the sensitive values—for example, *
-		// for an alphabetic string such as a name, or 0 for a numeric
-		// string
-		// such as ZIP code or credit card number. This string must have a
-		// length of 1. If not supplied, this value defaults to * for
+		// Character to use to mask the sensitive values—for example, * for an
+		// alphabetic string such as a name, or 0 for a numeric string
+		// such as ZIP code or credit card number. This string must have a length of 1.
+		// If not supplied, this value defaults to * for
 		// strings, and 0 for digits.
 		masking_character?: string
 
-		// Number of characters to mask. If not set, all matching chars
-		// will be masked. Skipped characters do not count towards this
-		// tally.
-		// If number_to_mask is negative, this denotes inverse masking.
-		// Cloud DLP masks all but a number of characters. For example,
-		// suppose you have the following values:
+		// Number of characters to mask. If not set, all matching chars will be masked.
+		// Skipped characters do not count towards this tally.
+		// If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks
+		// all but a number of characters. For example, suppose you have the following
+		// values:
 		// - 'masking_character' is *
 		// - 'number_to_mask' is -4
 		// - 'reverse_order' is false
 		// - 'characters_to_ignore' includes -
 		// - Input string is 1234-5678-9012-3456
 		//
-		// The resulting de-identified string is ****-****-****-3456.
-		// Cloud DLP masks all but the last four characters. If
-		// reverseOrder is true, all but the first four characters are
-		// masked as 1234-****-****-****.
+		// The resulting de-identified string is ****-****-****-3456. Cloud DLP masks
+		// all but the last four characters. If reverseOrder is true, all but the first
+		// four characters are masked as 1234-****-****-****.
 		number_to_mask?: number
 
-		// Mask characters in reverse order. For example, if
-		// masking_character is 0, number_to_mask is 14, and
-		// reverse_order is 'false', then the
-		// input string '1234-5678-9012-3456' is masked as
-		// '00000000000000-3456'.
+		// Mask characters in reverse order. For example, if masking_character is 0,
+		// number_to_mask is 14, and reverse_order is 'false', then the
+		// input string '1234-5678-9012-3456' is masked as '00000000000000-3456'.
 		reverse_order?: bool
 	})
 
@@ -1728,10 +1598,9 @@ import "list"
 		// Characters to not transform when masking.
 		characters_to_skip?: string
 
-		// Common characters to not transform when masking. Useful to
-		// avoid removing punctuation. Possible values: ["NUMERIC",
-		// "ALPHA_UPPER_CASE", "ALPHA_LOWER_CASE", "PUNCTUATION",
-		// "WHITESPACE"]
+		// Common characters to not transform when masking. Useful to avoid removing
+		// punctuation. Possible values: ["NUMERIC", "ALPHA_UPPER_CASE",
+		// "ALPHA_LOWER_CASE", "PUNCTUATION", "WHITESPACE"]
 		common_characters_to_ignore?: string
 	})
 
@@ -1763,13 +1632,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/crypto_key/$defs/transient": close({
-		// Name of the key. This is an arbitrary string used to
-		// differentiate different keys. A unique key is generated per
-		// name: two separate 'TransientCryptoKey' protos share the same
-		// generated key if their names are the same. When the data
-		// crypto key is generated, this name is not used in any way
-		// (repeating the api call will result in a different key being
-		// generated).
+		// Name of the key. This is an arbitrary string used to differentiate different
+		// keys. A unique key is generated per name: two separate 'TransientCryptoKey'
+		// protos share the same generated key if their names are the same. When the
+		// data crypto key is generated, this name is not used in any way (repeating
+		// the api call will result in a different key being generated).
 		name!: string
 	})
 
@@ -1783,12 +1650,12 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type": close({
 		sensitivity_score?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type/$defs/sensitivity_score"]])
 
-		// Name of the information type. Either a name of your choosing
-		// when creating a CustomInfoType, or one of the names listed at
+		// Name of the information type. Either a name of your choosing when creating a
+		// CustomInfoType, or one of the names listed at
 		// [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference)
-		// when specifying a built-in type. When sending Cloud DLP
-		// results to Data Catalog, infoType names should conform to the
-		// pattern '[A-Za-z0-9$-_]{1,64}'.
+		// when specifying a built-in type. When sending Cloud DLP results to Data
+		// Catalog, infoType names should conform to the pattern
+		// '[A-Za-z0-9$-_]{1,64}'.
 		name?: string
 
 		// Optional version name for this InfoType.
@@ -1797,8 +1664,7 @@ import "list"
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_deterministic_config/$defs/surrogate_info_type/$defs/sensitivity_score": close({
 		// The sensitivity score applied to the resource. Possible values:
-		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE",
-		// "SENSITIVITY_HIGH"]
+		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE", "SENSITIVITY_HIGH"]
 		score!: string
 	})
 
@@ -1823,13 +1689,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_hash_config/$defs/crypto_key/$defs/transient": close({
-		// Name of the key. This is an arbitrary string used to
-		// differentiate different keys. A unique key is generated per
-		// name: two separate 'TransientCryptoKey' protos share the same
-		// generated key if their names are the same. When the data
-		// crypto key is generated, this name is not used in any way
-		// (repeating the api call will result in a different key being
-		// generated).
+		// Name of the key. This is an arbitrary string used to differentiate different
+		// keys. A unique key is generated per name: two separate 'TransientCryptoKey'
+		// protos share the same generated key if their names are the same. When the
+		// data crypto key is generated, this name is not used in any way (repeating
+		// the api call will result in a different key being generated).
 		name!: string
 	})
 
@@ -1845,25 +1709,21 @@ import "list"
 		crypto_key?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key"]])
 		surrogate_info_type?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type"]])
 
-		// Common alphabets. Possible values:
-		// ["FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED", "NUMERIC",
-		// "HEXADECIMAL", "UPPER_CASE_ALPHA_NUMERIC", "ALPHA_NUMERIC"]
+		// Common alphabets. Possible values: ["FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED",
+		// "NUMERIC", "HEXADECIMAL", "UPPER_CASE_ALPHA_NUMERIC", "ALPHA_NUMERIC"]
 		common_alphabet?: string
 
-		// This is supported by mapping these to the alphanumeric
-		// characters that the FFX mode natively supports. This happens
-		// before/after encryption/decryption. Each character listed must
-		// appear only once. Number of characters must be in the range
-		// \[2, 95\]. This must be encoded as ASCII. The order of
-		// characters does not matter. The full list of allowed
-		// characters is:
+		// This is supported by mapping these to the alphanumeric characters that the
+		// FFX mode natively supports. This happens before/after encryption/decryption.
+		// Each character listed must appear only once. Number of characters must be in
+		// the range \[2, 95\]. This must be encoded as ASCII. The order of characters
+		// does not matter. The full list of allowed characters is:
 		//
 		// ''0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
 		// ~'!@#$%^&*()_-+={[}]|:;"'<,>.?/''
 		custom_alphabet?: string
 
-		// The native way to select the alphabet. Must be in the range
-		// \[2, 95\].
+		// The native way to select the alphabet. Must be in the range \[2, 95\].
 		radix?: number
 	})
 
@@ -1889,13 +1749,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/crypto_key/$defs/transient": close({
-		// Name of the key. This is an arbitrary string used to
-		// differentiate different keys. A unique key is generated per
-		// name: two separate 'TransientCryptoKey' protos share the same
-		// generated key if their names are the same. When the data
-		// crypto key is generated, this name is not used in any way
-		// (repeating the api call will result in a different key being
-		// generated).
+		// Name of the key. This is an arbitrary string used to differentiate different
+		// keys. A unique key is generated per name: two separate 'TransientCryptoKey'
+		// protos share the same generated key if their names are the same. When the
+		// data crypto key is generated, this name is not used in any way (repeating
+		// the api call will result in a different key being generated).
 		name!: string
 	})
 
@@ -1909,12 +1767,12 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type": close({
 		sensitivity_score?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type/$defs/sensitivity_score"]])
 
-		// Name of the information type. Either a name of your choosing
-		// when creating a CustomInfoType, or one of the names listed at
+		// Name of the information type. Either a name of your choosing when creating a
+		// CustomInfoType, or one of the names listed at
 		// [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference)
-		// when specifying a built-in type. When sending Cloud DLP
-		// results to Data Catalog, infoType names should conform to the
-		// pattern '[A-Za-z0-9$-_]{1,64}'.
+		// when specifying a built-in type. When sending Cloud DLP results to Data
+		// Catalog, infoType names should conform to the pattern
+		// '[A-Za-z0-9$-_]{1,64}'.
 		name?: string
 
 		// Optional version name for this InfoType.
@@ -1923,8 +1781,7 @@ import "list"
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/crypto_replace_ffx_fpe_config/$defs/surrogate_info_type/$defs/sensitivity_score": close({
 		// The sensitivity score applied to the resource. Possible values:
-		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE",
-		// "SENSITIVITY_HIGH"]
+		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE", "SENSITIVITY_HIGH"]
 		score!: string
 	})
 
@@ -1932,17 +1789,14 @@ import "list"
 		context?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/context", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/context"]])
 		crypto_key?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/crypto_key", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/crypto_key"]])
 
-		// For example, -5 means shift date to at most 5 days back in the
-		// past.
+		// For example, -5 means shift date to at most 5 days back in the past.
 		lower_bound_days!: number
 
-		// Range of shift in days. Actual shift will be selected at random
-		// within this range (inclusive ends). Negative means shift to
-		// earlier in time. Must not be more than 365250 days (1000
-		// years) each direction.
+		// Range of shift in days. Actual shift will be selected at random within this
+		// range (inclusive ends). Negative means shift to earlier in time. Must not be
+		// more than 365250 days (1000 years) each direction.
 		//
-		// For example, 3 means shift date to at most 3 days into the
-		// future.
+		// For example, 3 means shift date to at most 3 days into the future.
 		upper_bound_days!: number
 	})
 
@@ -1968,13 +1822,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/date_shift_config/$defs/crypto_key/$defs/transient": close({
-		// Name of the key. This is an arbitrary string used to
-		// differentiate different keys. A unique key is generated per
-		// name: two separate 'TransientCryptoKey' protos share the same
-		// generated key if their names are the same. When the data
-		// crypto key is generated, this name is not used in any way
-		// (repeating the api call will result in a different key being
-		// generated).
+		// Name of the key. This is an arbitrary string used to differentiate different
+		// keys. A unique key is generated per name: two separate 'TransientCryptoKey'
+		// protos share the same generated key if their names are the same. When the
+		// data crypto key is generated, this name is not used in any way (repeating
+		// the api call will result in a different key being generated).
 		name!: string
 	})
 
@@ -1990,9 +1842,9 @@ import "list"
 		upper_bound!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound"]])
 
 		// Size of each bucket (except for minimum and maximum buckets).
-		// So if lower_bound = 10, upper_bound = 89, and bucketSize = 10,
-		// then the following buckets would be used: -10, 10-20, 20-30,
-		// 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
+		// So if lower_bound = 10, upper_bound = 89, and bucketSize = 10, then the
+		// following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60,
+		// 60-70, 70-80, 80-89, 89+.
 		// Precision up to 2 decimals works.
 		bucket_size!: number
 	})
@@ -2004,9 +1856,8 @@ import "list"
 		// A boolean value.
 		boolean_value?: bool
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -2018,42 +1869,38 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/lower_bound/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
@@ -2064,9 +1911,8 @@ import "list"
 		// A boolean value.
 		boolean_value?: bool
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -2078,42 +1924,38 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/fixed_size_bucketing_config/$defs/upper_bound/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
@@ -2130,9 +1972,8 @@ import "list"
 		// A boolean value.
 		boolean_value?: bool
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -2144,42 +1985,38 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_config/$defs/new_value/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 
@@ -2188,16 +2025,15 @@ import "list"
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/replace_dictionary_config/$defs/word_list": close({
-		// Words or phrases defining the dictionary. The dictionary must
-		// contain at least one phrase and every phrase must contain at
-		// least 2 characters that are letters or digits.
+		// Words or phrases defining the dictionary. The dictionary must contain at
+		// least one phrase and every phrase must contain at least 2 characters that
+		// are letters or digits.
 		words!: [...string]
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/field_transformations/$defs/primitive_transformation/$defs/time_part_config": close({
-		// The part of the time to keep. Possible values: ["YEAR",
-		// "MONTH", "DAY_OF_MONTH", "DAY_OF_WEEK", "WEEK_OF_YEAR",
-		// "HOUR_OF_DAY"]
+		// The part of the time to keep. Possible values: ["YEAR", "MONTH",
+		// "DAY_OF_MONTH", "DAY_OF_WEEK", "WEEK_OF_YEAR", "HOUR_OF_DAY"]
 		part_to_extract?: string
 	})
 
@@ -2212,9 +2048,8 @@ import "list"
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions": close({
 		conditions?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions"]])
 
-		// The operator to apply to the result of conditions. Default and
-		// currently only supported value is AND. Default value: "AND"
-		// Possible values: ["AND"]
+		// The operator to apply to the result of conditions. Default and currently only
+		// supported value is AND. Default value: "AND" Possible values: ["AND"]
 		logical_operator?: string
 	})
 
@@ -2226,10 +2061,9 @@ import "list"
 		field!: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/field", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/field"]])
 		value?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value"]])
 
-		// Operator used to compare the field or infoType to the value.
-		// Possible values: ["EQUAL_TO", "NOT_EQUAL_TO", "GREATER_THAN",
-		// "LESS_THAN", "GREATER_THAN_OR_EQUALS", "LESS_THAN_OR_EQUALS",
-		// "EXISTS"]
+		// Operator used to compare the field or infoType to the value. Possible values:
+		// ["EQUAL_TO", "NOT_EQUAL_TO", "GREATER_THAN", "LESS_THAN",
+		// "GREATER_THAN_OR_EQUALS", "LESS_THAN_OR_EQUALS", "EXISTS"]
 		operator!: string
 	})
 
@@ -2245,9 +2079,8 @@ import "list"
 		// A boolean value.
 		boolean_value?: bool
 
-		// Represents a day of the week. Possible values: ["MONDAY",
-		// "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY",
-		// "SUNDAY"]
+		// Represents a day of the week. Possible values: ["MONDAY", "TUESDAY",
+		// "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 		day_of_week_value?: string
 
 		// A float value.
@@ -2259,42 +2092,38 @@ import "list"
 		// A string value.
 		string_value?: string
 
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		timestamp_value?: string
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/date_value": close({
-		// Day of a month. Must be from 1 to 31 and valid for the year and
-		// month, or 0 to specify a year by itself or a year and month
-		// where the day isn't significant.
+		// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+		// to specify a year by itself or a year and month where the day isn't
+		// significant.
 		day?: number
 
-		// Month of a year. Must be from 1 to 12, or 0 to specify a year
-		// without a month and day.
+		// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 		month?: number
 
-		// Year of the date. Must be from 1 to 9999, or 0 to specify a
-		// date without a year.
+		// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 		year?: number
 	})
 
 	_#defs: "/$defs/deidentify_config/$defs/record_transformations/$defs/record_suppressions/$defs/condition/$defs/expressions/$defs/conditions/$defs/conditions/$defs/value/$defs/time_value": close({
-		// Hours of day in 24 hour format. Should be from 0 to 23. An API
-		// may choose to allow the value "24:00:00" for scenarios like
-		// business closing time.
+		// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+		// allow the value "24:00:00" for scenarios like business closing time.
 		hours?: number
 
 		// Minutes of hour of day. Must be from 0 to 59.
 		minutes?: number
 
-		// Fractions of seconds in nanoseconds. Must be from 0 to
-		// 999,999,999.
+		// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 		nanos?: number
 
-		// Seconds of minutes of the time. Must normally be from 0 to 59.
-		// An API may allow the value 60 if it allows leap-seconds.
+		// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
 }

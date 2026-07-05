@@ -1,31 +1,25 @@
 package res
 
-#google_data_catalog_tag: {
+google_data_catalog_tag: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_data_catalog_tag")
 	close({
 		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
 		timeouts?: #timeouts
 
-		// Resources like Entry can have schemas associated with them.
-		// This scope allows users to attach tags to an
+		// Resources like Entry can have schemas associated with them. This scope allows
+		// users to attach tags to an
 		// individual column based on that schema.
 		//
-		// For attaching a tag to a nested column, use '.' to separate the
-		// column names. Example:
+		// For attaching a tag to a nested column, use '.' to separate the column names. Example:
 		// 'outer_column.inner_column'
 		column?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
@@ -34,18 +28,16 @@ package res
 		// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id}
 		// or
 		// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
-		// where tag_id is a system-generated identifier. Note that this
-		// Tag may not actually be stored in the location in this name.
+		// where tag_id is a system-generated identifier. Note that this Tag may not
+		// actually be stored in the location in this name.
 		name?: string
 
-		// The name of the parent this tag is attached to. This can be the
-		// name of an entry or an entry group. If an entry group, the tag
-		// will be attached to
+		// The name of the parent this tag is attached to. This can be the name of an
+		// entry or an entry group. If an entry group, the tag will be attached to
 		// all entries in that group.
 		parent?: string
 
-		// The resource name of the tag template that this tag uses.
-		// Example:
+		// The resource name of the tag template that this tag uses. Example:
 		// projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
 		// This field cannot be modified after creation.
 		template!: string
@@ -68,10 +60,10 @@ package res
 		enum_value?: string
 		field_name!: string
 
-		// The order of this field with respect to other fields in this
-		// tag. For example, a higher value can indicate
-		// a more important field. The value can be negative. Multiple
-		// fields can have the same order, and field orders
+		// The order of this field with respect to other fields in this tag. For
+		// example, a higher value can indicate
+		// a more important field. The value can be negative. Multiple fields can have
+		// the same order, and field orders
 		// within a tag do not have to be sequential.
 		order?: number
 

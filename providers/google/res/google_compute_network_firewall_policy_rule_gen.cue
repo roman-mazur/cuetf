@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_compute_network_firewall_policy_rule: {
+google_compute_network_firewall_policy_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_network_firewall_policy_rule")
 	close({
@@ -10,44 +10,35 @@ import "list"
 		target_secure_tags?: matchN(1, [#target_secure_tags, [...#target_secure_tags]])
 		timeouts?: #timeouts
 
-		// The Action to perform when the client connection triggers the
-		// rule. Valid actions are "allow", "deny", "goto_next" and
-		// "apply_security_profile_group".
+		// The Action to perform when the client connection triggers the rule. Valid
+		// actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
 		action!: string
 
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// An optional description for this resource.
 		description?: string
 
-		// The direction in which this rule applies. Possible values:
-		// ["INGRESS", "EGRESS"]
+		// The direction in which this rule applies. Possible values: ["INGRESS", "EGRESS"]
 		direction!: string
 
 		// Denotes whether the firewall policy rule is disabled.
-		// When set to true, the firewall policy rule is not enforced and
-		// traffic behaves as if it did not exist.
-		// If this is unspecified, the firewall policy rule will be
-		// enabled.
+		// When set to true, the firewall policy rule is not enforced and traffic
+		// behaves as if it did not exist.
+		// If this is unspecified, the firewall policy rule will be enabled.
 		disabled?: bool
 
 		// Denotes whether to enable logging for a particular rule.
-		// If logging is enabled, logs will be exported to the configured
-		// export destination in Stackdriver.
+		// If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
 		// Logs may be exported to BigQuery or Pub/Sub.
 		// Note: you cannot enable logging on "goto_next" rules.
 		enable_logging?: bool
@@ -56,20 +47,18 @@ import "list"
 		firewall_policy!: string
 		id?:              string
 
-		// Type of the resource. Always 'compute#firewallPolicyRule' for
-		// firewall policy rules
+		// Type of the resource. Always 'compute#firewallPolicyRule' for firewall policy rules
 		kind?: string
 
 		// An integer indicating the priority of a rule in the list.
 		// The priority must be a positive value between 0 and 2147483647.
-		// Rules are evaluated from highest to lowest priority where 0 is
-		// the highest priority and 2147483647 is the lowest prority.
+		// Rules are evaluated from highest to lowest priority where 0 is the highest
+		// priority and 2147483647 is the lowest prority.
 		priority!: number
-		project?:  string
 
-		// An optional name for the rule. This field is not a unique
-		// identifier and can be updated.
+		// An optional name for the rule. This field is not a unique identifier and can be updated.
 		rule_name?: string
+		project?:   string
 
 		// Calculation of the complexity of a single firewall policy rule.
 		rule_tuple_count?: number
@@ -77,37 +66,31 @@ import "list"
 		// A fully-qualified URL of a SecurityProfile resource instance.
 		// Example:
 		// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
-		// Must be specified if action = 'apply_security_profile_group'
-		// and cannot be specified for other actions.
+		// Must be specified if action = 'apply_security_profile_group' and cannot be
+		// specified for other actions.
 		security_profile_group?: string
 
 		// A list of forwarding rules to which this rule applies.
-		// This field allows you to control which load balancers get this
-		// rule.
+		// This field allows you to control which load balancers get this rule.
 		// For example, the following are valid values:
-		// -
-		// https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+		// - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
 		// -
 		// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
 		// - projects/project/global/forwardingRules/forwardingRule
-		// -
-		// projects/project/regions/region/forwardingRules/forwardingRule
+		// - projects/project/regions/region/forwardingRules/forwardingRule
 		target_forwarding_rules?: [...string]
 
-		// A list of service accounts indicating the sets of instances
-		// that are applied with this rule.
+		// A list of service accounts indicating the sets of instances that are applied with this rule.
 		target_service_accounts?: [...string]
 
 		// Target types of the firewall policy rule.
 		// Default value is INSTANCES.
-		// When target_type is INTERNAL_MANAGED_LB,
-		// target_forwarding_rules must be set Possible values:
-		// ["INSTANCES", "INTERNAL_MANAGED_LB"]
+		// When target_type is INTERNAL_MANAGED_LB, target_forwarding_rules must be set
+		// Possible values: ["INSTANCES", "INTERNAL_MANAGED_LB"]
 		target_type?: string
 
 		// Boolean flag indicating if the traffic should be TLS decrypted.
-		// Can be set only if action = 'apply_security_profile_group' and
-		// cannot be set for other actions.
+		// Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
 		tls_inspect?: bool
 	})
 
@@ -115,65 +98,57 @@ import "list"
 		layer4_configs!: matchN(1, [_#defs."/$defs/match/$defs/layer4_configs", [_, ...] & [..._#defs."/$defs/match/$defs/layer4_configs"]])
 		src_secure_tags?: matchN(1, [_#defs."/$defs/match/$defs/src_secure_tags", [..._#defs."/$defs/match/$defs/src_secure_tags"]])
 
-		// Address groups which should be matched against the traffic
-		// destination. Maximum number of destination address groups is
-		// 10.
+		// Address groups which should be matched against the traffic destination.
+		// Maximum number of destination address groups is 10.
 		dest_address_groups?: [...string]
 
-		// Fully Qualified Domain Name (FQDN) which should be matched
-		// against traffic destination. Maximum number of destination
-		// fqdn allowed is 100.
+		// Fully Qualified Domain Name (FQDN) which should be matched against traffic
+		// destination. Maximum number of destination fqdn allowed is 100.
 		dest_fqdns?: [...string]
 
-		// CIDR IP address range. Maximum number of destination CIDR IP
-		// ranges allowed is 5000.
+		// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 		dest_ip_ranges?: [...string]
 
-		// Network context of the traffic destination. Possible values:
-		// ["UNSPECIFIED", "INTERNET", "INTRA_VPC", "NON_INTERNET",
-		// "VPC_NETWORKS"]
+		// Network context of the traffic destination. Possible values: ["UNSPECIFIED",
+		// "INTERNET", "INTRA_VPC", "NON_INTERNET", "VPC_NETWORKS"]
 		dest_network_context?: string
 
-		// Region codes whose IP addresses will be used to match for
-		// destination of traffic. Should be specified as 2 letter
-		// country code defined as per ISO 3166 alpha-2 country codes.
-		// ex."US" Maximum number of dest region codes allowed is 5000.
+		// Region codes whose IP addresses will be used to match for destination of
+		// traffic. Should be specified as 2 letter country code defined as per ISO
+		// 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes
+		// allowed is 5000.
 		dest_region_codes?: [...string]
 
-		// Names of Network Threat Intelligence lists. The IPs in these
-		// lists will be matched against traffic destination.
+		// Names of Network Threat Intelligence lists. The IPs in these lists will be
+		// matched against traffic destination.
 		dest_threat_intelligences?: [...string]
 
-		// Address groups which should be matched against the traffic
-		// source. Maximum number of source address groups is 10.
+		// Address groups which should be matched against the traffic source. Maximum
+		// number of source address groups is 10.
 		src_address_groups?: [...string]
 
-		// Fully Qualified Domain Name (FQDN) which should be matched
-		// against traffic source. Maximum number of source fqdn allowed
-		// is 100.
+		// Fully Qualified Domain Name (FQDN) which should be matched against traffic
+		// source. Maximum number of source fqdn allowed is 100.
 		src_fqdns?: [...string]
 
-		// CIDR IP address range. Maximum number of source CIDR IP ranges
-		// allowed is 5000.
+		// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 		src_ip_ranges?: [...string]
 
-		// Network context of the traffic source. Possible values:
-		// ["UNSPECIFIED", "INTERNET", "INTRA_VPC", "NON_INTERNET",
-		// "VPC_NETWORKS"]
+		// Network context of the traffic source. Possible values: ["UNSPECIFIED",
+		// "INTERNET", "INTRA_VPC", "NON_INTERNET", "VPC_NETWORKS"]
 		src_network_context?: string
 
-		// Networks of the traffic source. It can be either a full or
-		// partial url.
+		// Networks of the traffic source. It can be either a full or partial url.
 		src_networks?: [...string]
 
-		// Region codes whose IP addresses will be used to match for
-		// source of traffic. Should be specified as 2 letter country
-		// code defined as per ISO 3166 alpha-2 country codes. ex."US"
-		// Maximum number of source region codes allowed is 5000.
+		// Region codes whose IP addresses will be used to match for source of traffic.
+		// Should be specified as 2 letter country code defined as per ISO 3166 alpha-2
+		// country codes. ex."US" Maximum number of source region codes allowed is
+		// 5000.
 		src_region_codes?: [...string]
 
-		// Names of Network Threat Intelligence lists. The IPs in these
-		// lists will be matched against traffic source.
+		// Names of Network Threat Intelligence lists. The IPs in these lists will be
+		// matched against traffic source.
 		src_threat_intelligences?: [...string]
 	})
 
@@ -181,9 +156,8 @@ import "list"
 		// Name of the secure tag, created with TagManager's TagValue API.
 		name?: string
 
-		// State of the secure tag, either EFFECTIVE or INEFFECTIVE. A
-		// secure tag is INEFFECTIVE when it is deleted or its network is
-		// deleted.
+		// State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is
+		// INEFFECTIVE when it is deleted or its network is deleted.
 		state?: string
 	})
 
@@ -194,19 +168,17 @@ import "list"
 	})
 
 	_#defs: "/$defs/match/$defs/layer4_configs": close({
-		// The IP protocol to which this rule applies. The protocol type
-		// is required when creating a firewall rule.
-		// This value can either be one of the following well known
-		// protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the
-		// IP protocol number.
+		// The IP protocol to which this rule applies. The protocol type is required
+		// when creating a firewall rule.
+		// This value can either be one of the following well known protocol strings
+		// (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
 		ip_protocol!: string
 
-		// An optional list of ports to which this rule applies. This
-		// field is only applicable for UDP or TCP protocol. Each entry
-		// must be either an integer or a range. If not specified, this
-		// rule applies to connections through any port.
-		// Example inputs include: ["22"], ["80","443"], and
-		// ["12345-12349"].
+		// An optional list of ports to which this rule applies. This field is only
+		// applicable for UDP or TCP protocol. Each entry must be either an integer or
+		// a range. If not specified, this rule applies to connections through any
+		// port.
+		// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
 		ports?: [...string]
 	})
 
@@ -214,9 +186,8 @@ import "list"
 		// Name of the secure tag, created with TagManager's TagValue API.
 		name?: string
 
-		// State of the secure tag, either EFFECTIVE or INEFFECTIVE. A
-		// secure tag is INEFFECTIVE when it is deleted or its network is
-		// deleted.
+		// State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is
+		// INEFFECTIVE when it is deleted or its network is deleted.
 		state?: string
 	})
 }

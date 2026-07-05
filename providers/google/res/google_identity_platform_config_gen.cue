@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_identity_platform_config: {
+google_identity_platform_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_identity_platform_config")
 	close({
@@ -19,8 +19,7 @@ import "list"
 		// List of domains authorized for OAuth redirects.
 		authorized_domains?: [...string]
 
-		// Whether anonymous users will be auto-deleted after a period of
-		// 30 days
+		// Whether anonymous users will be auto-deleted after a period of 30 days
 		autodelete_anonymous_users?: bool
 		id?:                         string
 
@@ -47,12 +46,11 @@ import "list"
 	#mfa: close({
 		provider_configs?: matchN(1, [_#defs."/$defs/mfa/$defs/provider_configs", [..._#defs."/$defs/mfa/$defs/provider_configs"]])
 
-		// A list of usable second factors for this project. Possible
-		// values: ["PHONE_SMS"]
+		// A list of usable second factors for this project. Possible values: ["PHONE_SMS"]
 		enabled_providers?: [...string]
 
-		// Whether MultiFactor Authentication has been enabled for this
-		// project. Possible values: ["DISABLED", "ENABLED", "MANDATORY"]
+		// Whether MultiFactor Authentication has been enabled for this project.
+		// Possible values: ["DISABLED", "ENABLED", "MANDATORY"]
 		state?: string
 	})
 
@@ -64,12 +62,11 @@ import "list"
 		// Whether this project can have tenants or not.
 		allow_tenants?: bool
 
-		// The default cloud parent org or folder that the tenant project
-		// should be created under.
-		// The parent resource name should be in the format of "/", such
-		// as "folders/123" or "organizations/456".
-		// If the value is not set, the tenant will be created under the
-		// same organization or folder as the agent project.
+		// The default cloud parent org or folder that the tenant project should be created under.
+		// The parent resource name should be in the format of "/", such as
+		// "folders/123" or "organizations/456".
+		// If the value is not set, the tenant will be created under the same
+		// organization or folder as the agent project.
 		default_tenant_location?: string
 	})
 
@@ -107,15 +104,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/blocking_functions/$defs/forward_inbound_credentials": close({
-		// Whether to pass the user's OAuth identity provider's access
-		// token.
+		// Whether to pass the user's OAuth identity provider's access token.
 		access_token?: bool
 
 		// Whether to pass the user's OIDC identity provider's ID token.
 		id_token?: bool
 
-		// Whether to pass the user's OAuth identity provider's refresh
-		// token.
+		// Whether to pass the user's OAuth identity provider's refresh token.
 		refresh_token?: bool
 	})
 
@@ -130,26 +125,25 @@ import "list"
 	})
 
 	_#defs: "/$defs/client/$defs/permissions": close({
-		// When true, end users cannot delete their account on the
-		// associated project through any of our API methods
+		// When true, end users cannot delete their account on the associated project
+		// through any of our API methods
 		disabled_user_deletion?: bool
 
-		// When true, end users cannot sign up for a new account on the
-		// associated project through any of our API methods
+		// When true, end users cannot sign up for a new account on the associated
+		// project through any of our API methods
 		disabled_user_signup?: bool
 	})
 
 	_#defs: "/$defs/mfa/$defs/provider_configs": close({
 		totp_provider_config?: matchN(1, [_#defs."/$defs/mfa/$defs/provider_configs/$defs/totp_provider_config", list.MaxItems(1) & [..._#defs."/$defs/mfa/$defs/provider_configs/$defs/totp_provider_config"]])
 
-		// Whether MultiFactor Authentication has been enabled for this
-		// project. Possible values: ["DISABLED", "ENABLED", "MANDATORY"]
+		// Whether MultiFactor Authentication has been enabled for this project.
+		// Possible values: ["DISABLED", "ENABLED", "MANDATORY"]
 		state?: string
 	})
 
 	_#defs: "/$defs/mfa/$defs/provider_configs/$defs/totp_provider_config": close({
-		// The allowed number of adjacent intervals that will be used for
-		// verification to avoid clock skew.
+		// The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
 		adjacent_intervals?: number
 	})
 
@@ -159,12 +153,10 @@ import "list"
 	})
 
 	_#defs: "/$defs/quota/$defs/sign_up_quota_config": close({
-		// A sign up APIs quota that customers can override temporarily.
-		// Value can be in between 1 and 1000.
+		// A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
 		quota?: number
 
-		// How long this quota will be active for. It is measurred in
-		// seconds, e.g., Example: "9.615s".
+		// How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
 		quota_duration?: string
 
 		// When this quota will take affect.
@@ -180,10 +172,8 @@ import "list"
 		// Whether email auth is enabled for the project or not.
 		enabled!: bool
 
-		// Whether a password is required for email auth or not. If true,
-		// both an email and
-		// password must be provided to sign in. If false, a user may sign
-		// in via either
+		// Whether a password is required for email auth or not. If true, both an email and
+		// password must be provided to sign in. If false, a user may sign in via either
 		// email/password or email link.
 		password_required?: bool
 	})
@@ -192,23 +182,20 @@ import "list"
 		// Whether phone number auth is enabled for the project or not.
 		enabled!: bool
 
-		// A map of <test phone number, fake code> that can be used for
-		// phone auth testing.
+		// A map of <test phone number, fake code> that can be used for phone auth testing.
 		test_phone_numbers?: [string]: string
 	})
 
 	_#defs: "/$defs/sms_region_config/$defs/allow_by_default": close({
 		// Two letter unicode region codes to disallow as defined by
-		// https://cldr.unicode.org/ The full list of these region codes
-		// is here:
+		// https://cldr.unicode.org/ The full list of these region codes is here:
 		// https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
 		disallowed_regions?: [...string]
 	})
 
 	_#defs: "/$defs/sms_region_config/$defs/allowlist_only": close({
 		// Two letter unicode region codes to allow as defined by
-		// https://cldr.unicode.org/ The full list of these region codes
-		// is here:
+		// https://cldr.unicode.org/ The full list of these region codes is here:
 		// https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
 		allowed_regions?: [...string]
 	})

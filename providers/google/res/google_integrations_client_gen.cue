@@ -2,27 +2,21 @@ package res
 
 import "list"
 
-#google_integrations_client: {
+google_integrations_client: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_integrations_client")
 	close({
 		cloud_kms_config?: matchN(1, [#cloud_kms_config, list.MaxItems(1) & [...#cloud_kms_config]])
 		timeouts?: #timeouts
 
-		// Indicates if sample integrations should be created along with
-		// provisioning.
+		// Indicates if sample integrations should be created along with provisioning.
 		create_sample_integrations?: bool
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
@@ -33,40 +27,29 @@ import "list"
 	})
 
 	#cloud_kms_config: close({
-		// A Cloud KMS key is a named object containing one or more key
-		// versions, along
-		// with metadata for the key. A key exists on exactly one key ring
-		// tied to a
+		// A Cloud KMS key is a named object containing one or more key versions, along
+		// with metadata for the key. A key exists on exactly one key ring tied to a
 		// specific location.
 		key!: string
 
-		// Each version of a key contains key material used for encryption
-		// or signing.
-		// A key's version is represented by an integer, starting at 1. To
-		// decrypt data
-		// or verify a signature, you must use the same key version that
-		// was used to
+		// Each version of a key contains key material used for encryption or signing.
+		// A key's version is represented by an integer, starting at 1. To decrypt data
+		// or verify a signature, you must use the same key version that was used to
 		// encrypt or sign the data.
 		key_version?: string
 
 		// Location name of the key ring, e.g. "us-west1".
 		kms_location!: string
 
-		// The Google Cloud project id of the project where the kms key
-		// stored. If empty,
-		// the kms key is stored at the same project as customer's project
-		// and ecrypted
-		// with CMEK, otherwise, the kms key is stored in the tenant
-		// project and
+		// The Google Cloud project id of the project where the kms key stored. If empty,
+		// the kms key is stored at the same project as customer's project and ecrypted
+		// with CMEK, otherwise, the kms key is stored in the tenant project and
 		// encrypted with GMEK.
 		kms_project_id?: string
 
-		// A key ring organizes keys in a specific Google Cloud location
-		// and allows you to
-		// manage access control on groups of keys. A key ring's name does
-		// not need to be
-		// unique across a Google Cloud project, but must be unique within
-		// a given location.
+		// A key ring organizes keys in a specific Google Cloud location and allows you to
+		// manage access control on groups of keys. A key ring's name does not need to be
+		// unique across a Google Cloud project, but must be unique within a given location.
 		kms_ring!: string
 	})
 

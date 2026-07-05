@@ -1,6 +1,6 @@
 package data
 
-#google_backup_dr_data_source: {
+google_backup_dr_data_source: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_backup_dr_data_source")
 	close({
@@ -48,8 +48,7 @@ package data
 		})]
 
 		// The backed up resource is a Google Cloud resource.
-		// The word 'DataSource' was included in the names to indicate
-		// that this is
+		// The word 'DataSource' was included in the names to indicate that this is
 		// the representation of the Google Cloud resource used within the
 		// DataSource object.
 		data_source_gcp_resource?: [...close({
@@ -66,8 +65,8 @@ package data
 		})]
 		data_source_id!: string
 
-		// Server specified ETag for the ManagementServer resource to
-		// prevent simultaneous updates from overwiting each other.
+		// Server specified ETag for the ManagementServer resource to prevent
+		// simultaneous updates from overwiting each other.
 		etag?: string
 		id?:   string
 
@@ -78,17 +77,15 @@ package data
 		// Name of the datasource to create.
 		// It must have the format
 		// "projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}".
-		// '{datasource}' cannot be changed after creation. It must be
-		// between 3-63 characters long and must be unique within the
-		// backup vault.
+		// '{datasource}' cannot be changed after creation. It must be between 3-63
+		// characters long and must be unique within the backup vault.
 		name?:    string
 		project?: string
 
 		// The DataSource resource instance state.
 		state?: string
 
-		// The number of bytes (metadata and data) stored in this
-		// datasource.
+		// The number of bytes (metadata and data) stored in this datasource.
 		total_stored_bytes?: string
 
 		// The time when the instance was updated.

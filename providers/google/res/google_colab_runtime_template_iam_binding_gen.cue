@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_colab_runtime_template_iam_binding: {
+google_colab_runtime_template_iam_binding: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_colab_runtime_template_iam_binding")
 	close({

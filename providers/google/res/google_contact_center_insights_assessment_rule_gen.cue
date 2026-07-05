@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_contact_center_insights_assessment_rule: {
+google_contact_center_insights_assessment_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_contact_center_insights_assessment_rule")
 	close({
@@ -10,15 +10,12 @@ import "list"
 		schedule_info?: matchN(1, [#schedule_info, list.MaxItems(1) & [...#schedule_info]])
 		timeouts?: #timeouts
 
-		// If true, apply this rule to conversations. Otherwise, this rule
-		// is
+		// If true, apply this rule to conversations. Otherwise, this rule is
 		// inactive.
 		active?: bool
 
-		// A unique ID for the new AssessmentRule. This ID will become the
-		// final
-		// component of the AssessmentRule's resource name. If no ID is
-		// specified,
+		// A unique ID for the new AssessmentRule. This ID will become the final
+		// component of the AssessmentRule's resource name. If no ID is specified,
 		// a server-generated ID will be used.
 		//
 		// This value should be 4-64 characters and must match the regular
@@ -28,16 +25,11 @@ import "list"
 		// The time at which this assessment rule was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -51,69 +43,56 @@ import "list"
 		// Identifier. The resource name of the assessment rule.
 		// Format:
 		// projects/{project}/locations/{location}/assessmentRules/{assessment_rule}
-		name?:    string
-		project?: string
+		name?: string
 
 		// The most recent time at which this assessment rule was updated.
 		update_time?: string
+		project?:     string
 	})
 
 	#sample_rule: close({
-		// To specify the filter for the conversions that should apply
-		// this sample
-		// rule. An empty filter means this sample rule applies to all
-		// conversations.
+		// To specify the filter for the conversions that should apply this sample
+		// rule. An empty filter means this sample rule applies to all conversations.
 		conversation_filter?: string
 
-		// Group by dimension to sample the conversation. If no dimension
-		// is
+		// Group by dimension to sample the conversation. If no dimension is
 		// provided, the sampling will be applied to the project level.
-		// Current supported dimensions is
-		// 'quality_metadata.agent_info.agent_id'.
+		// Current supported dimensions is 'quality_metadata.agent_info.agent_id'.
 		dimension?: string
 
-		// Percentage of conversations that we should sample based on the
-		// dimension
+		// Percentage of conversations that we should sample based on the dimension
 		// between [0, 100].
 		sample_percentage?: number
 
-		// Number of the conversations that we should sample based on the
-		// dimension.
+		// Number of the conversations that we should sample based on the dimension.
 		sample_row?: number
 	})
 
 	#schedule_info: close({
-		// End time of the schedule. If not specified, will keep
-		// scheduling new
-		// pipelines for execution until the schedule is no longer active
-		// or deleted.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and
-		// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
-		// and "2014-10-02T15:01:23.045123456Z".
+		// End time of the schedule. If not specified, will keep scheduling new
+		// pipelines for execution until the schedule is no longer active or deleted.
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+		// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		end_time?: string
 
 		// The groc expression.
 		// Format: 'every number [synchronized]'
 		// Cron syntax is not supported.
 		// Time units can be: minutes, hours
-		// Synchronized is optional and indicates that the schedule should
-		// be
-		// synchronized to the start of the interval: every 5 minutes
-		// synchronized
+		// Synchronized is optional and indicates that the schedule should be
+		// synchronized to the start of the interval: every 5 minutes synchronized
 		// means 00:00, 00:05 ...
 		// Otherwise the start time is random within the interval.
 		// Example: 'every 5 minutes'
 		// could be 00:02, 00:07, 00:12, ...
 		schedule?: string
 
-		// Start time of the schedule. If not specified, will start as
-		// soon as the
+		// Start time of the schedule. If not specified, will start as soon as the
 		// schedule is created.
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and
-		// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
-		// and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+		// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		start_time?: string
 
 		// The timezone to use for the groc expression.

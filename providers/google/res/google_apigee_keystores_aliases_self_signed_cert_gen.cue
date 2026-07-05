@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_apigee_keystores_aliases_self_signed_cert: {
+google_apigee_keystores_aliases_self_signed_cert: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_apigee_keystores_aliases_self_signed_cert")
 	close({
@@ -10,15 +10,13 @@ import "list"
 		subject_alternative_dns_names?: matchN(1, [#subject_alternative_dns_names, list.MaxItems(1) & [...#subject_alternative_dns_names]])
 		timeouts?: #timeouts
 
-		// Alias for the key/certificate pair. Values must match the
-		// regular expression [\w\s-.]{1,255}.
-		// This must be provided for all formats except selfsignedcert;
-		// self-signed certs may specify the alias in either
+		// Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
+		// This must be provided for all formats except selfsignedcert; self-signed
+		// certs may specify the alias in either
 		// this parameter or the JSON body.
 		alias!: string
 
-		// Validity duration of certificate, in days. Accepts positive
-		// non-zero value. Defaults to 365.
+		// Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
 		cert_validity_in_days?: number
 
 		// Chain of certificates under this alias.
@@ -38,16 +36,11 @@ import "list"
 			})]
 		})]
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -61,12 +54,11 @@ import "list"
 		// The Apigee keystore name associated in an Apigee environment
 		keystore!: string
 
-		// The Apigee Organization name associated with the Apigee
-		// environment
+		// The Apigee Organization name associated with the Apigee environment
 		org_id!: string
 
-		// Signature algorithm to generate private key. Valid values are
-		// SHA512withRSA, SHA384withRSA, and SHA256withRSA
+		// Signature algorithm to generate private key. Valid values are SHA512withRSA,
+		// SHA384withRSA, and SHA256withRSA
 		sig_alg!: string
 
 		// Optional.Type of Alias
@@ -74,12 +66,10 @@ import "list"
 	})
 
 	#subject: close({
-		// Common name of the organization. Maximum length is 64
-		// characters.
+		// Common name of the organization. Maximum length is 64 characters.
 		common_name?: string
 
-		// Two-letter country code. Example, IN for India, US for United
-		// States of America.
+		// Two-letter country code. Example, IN for India, US for United States of America.
 		country_code?: string
 
 		// Email address. Max 255 characters.

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_chronicle_dashboard_chart: {
+google_chronicle_dashboard_chart: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_dashboard_chart")
 	close({
@@ -11,20 +11,14 @@ import "list"
 		dashboard_query?: matchN(1, [#dashboard_query, list.MaxItems(1) & [...#dashboard_query]])
 		timeouts?: #timeouts
 
-		// The unique identifier of the chart, automatically extracted
-		// from the full resource name.
+		// The unique identifier of the chart, automatically extracted from the full resource name.
 		chart_id?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
@@ -68,9 +62,9 @@ import "list"
 		// The resource name of the DashboardChart.
 		name?: string
 
-		// Type of tile (e.g., visualization, button, markdown). Possible
-		// values: ["TILE_TYPE_UNSPECIFIED", "TILE_TYPE_VISUALIZATION",
-		// "TILE_TYPE_BUTTON", "TILE_TYPE_MARKDOWN"]
+		// Type of tile (e.g., visualization, button, markdown). Possible values:
+		// ["TILE_TYPE_UNSPECIFIED", "TILE_TYPE_VISUALIZATION", "TILE_TYPE_BUTTON",
+		// "TILE_TYPE_MARKDOWN"]
 		tile_type?: string
 	})
 
@@ -97,14 +91,10 @@ import "list"
 		// The unique system ID of the query linked to this chart.
 		dashboard_query?: string
 
-		// Name(s) of the datasource used in the chart. Available values
-		// include:
-		// 'UDM', 'ENTITY', 'INGESTION_METRICS', 'RULE_DETECTIONS',
-		// 'RULESETS',
-		// 'GLOBAL', 'IOC_MATCHES', 'RULES', 'SOAR_CASES',
-		// 'SOAR_PLAYBOOKS',
-		// 'SOAR_CASE_HISTORY', 'DATA_TABLE', 'INVESTIGATION',
-		// 'INVESTIGATION_FEEDBACK'.
+		// Name(s) of the datasource used in the chart. Available values include:
+		// 'UDM', 'ENTITY', 'INGESTION_METRICS', 'RULE_DETECTIONS', 'RULESETS',
+		// 'GLOBAL', 'IOC_MATCHES', 'RULES', 'SOAR_CASES', 'SOAR_PLAYBOOKS',
+		// 'SOAR_CASE_HISTORY', 'DATA_TABLE', 'INVESTIGATION', 'INVESTIGATION_FEEDBACK'.
 		data_sources?: [...string]
 	})
 
@@ -146,11 +136,10 @@ import "list"
 		field_values?: [...string]
 
 		// Possible values: ["EQUAL", "NOT_EQUAL", "IN", "GREATER_THAN",
-		// "GREATER_THAN_OR_EQUAL_TO", "LESS_THAN",
-		// "LESS_THAN_OR_EQUAL_TO", "BETWEEN", "PAST", "IS_NULL",
-		// "IS_NOT_NULL", "STARTS_WITH", "ENDS_WITH",
-		// "DOES_NOT_STARTS_WITH", "DOES_NOT_ENDS_WITH", "NOT_IN",
-		// "CONTAINS", "DOES_NOT_CONTAIN"]
+		// "GREATER_THAN_OR_EQUAL_TO", "LESS_THAN", "LESS_THAN_OR_EQUAL_TO", "BETWEEN",
+		// "PAST", "IS_NULL", "IS_NOT_NULL", "STARTS_WITH", "ENDS_WITH",
+		// "DOES_NOT_STARTS_WITH", "DOES_NOT_ENDS_WITH", "NOT_IN", "CONTAINS",
+		// "DOES_NOT_CONTAIN"]
 		filter_operator?: string
 	})
 
@@ -194,11 +183,10 @@ import "list"
 		field_values?: [...string]
 
 		// Possible values: ["EQUAL", "NOT_EQUAL", "IN", "GREATER_THAN",
-		// "GREATER_THAN_OR_EQUAL_TO", "LESS_THAN",
-		// "LESS_THAN_OR_EQUAL_TO", "BETWEEN", "PAST", "IS_NULL",
-		// "IS_NOT_NULL", "STARTS_WITH", "ENDS_WITH",
-		// "DOES_NOT_STARTS_WITH", "DOES_NOT_ENDS_WITH", "NOT_IN",
-		// "CONTAINS", "DOES_NOT_CONTAIN"]
+		// "GREATER_THAN_OR_EQUAL_TO", "LESS_THAN", "LESS_THAN_OR_EQUAL_TO", "BETWEEN",
+		// "PAST", "IS_NULL", "IS_NOT_NULL", "STARTS_WITH", "ENDS_WITH",
+		// "DOES_NOT_STARTS_WITH", "DOES_NOT_ENDS_WITH", "NOT_IN", "CONTAINS",
+		// "DOES_NOT_CONTAIN"]
 		filter_operator?: string
 	})
 
@@ -236,9 +224,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/dashboard_chart/$defs/visualization/$defs/button/$defs/properties": close({
-		// Possible values: ["BUTTON_STYLE_UNSPECIFIED",
-		// "BUTTON_STYLE_FILLED", "BUTTON_STYLE_OUTLINED",
-		// "BUTTON_STYLE_TRANSPARENT"]
+		// Possible values: ["BUTTON_STYLE_UNSPECIFIED", "BUTTON_STYLE_FILLED",
+		// "BUTTON_STYLE_OUTLINED", "BUTTON_STYLE_TRANSPARENT"]
 		button_style?: string
 		color?:        string
 	})
@@ -274,8 +261,7 @@ import "list"
 	_#defs: "/$defs/dashboard_chart/$defs/visualization/$defs/google_maps_config/$defs/point_settings": close({
 		color?: string
 
-		// Possible values: ["POINT_SIZE_TYPE_UNSPECIFIED",
-		// "POINT_SIZE_TYPE_FIXED",
+		// Possible values: ["POINT_SIZE_TYPE_UNSPECIFIED", "POINT_SIZE_TYPE_FIXED",
 		// "POINT_SIZE_TYPE_PROPORTIONAL_TO_SIZE"]
 		point_size_type?: string
 	})
@@ -316,17 +302,16 @@ import "list"
 		item_style?: matchN(1, [_#defs."/$defs/dashboard_chart/$defs/visualization/$defs/series/$defs/item_style", list.MaxItems(1) & [..._#defs."/$defs/dashboard_chart/$defs/visualization/$defs/series/$defs/item_style"]])
 		metric_trend_config?: matchN(1, [_#defs."/$defs/dashboard_chart/$defs/visualization/$defs/series/$defs/metric_trend_config", list.MaxItems(1) & [..._#defs."/$defs/dashboard_chart/$defs/visualization/$defs/series/$defs/metric_trend_config"]])
 		field?: string
-		label?: string
-		radius?: [...string]
 
 		// User specified series label.
 		series_name?: string
+		label?:       string
 
 		// Possible values: ["SAMESIGN", "ALL", "POSITIVE", "NEGATIVE"]
 		series_stack_strategy?: string
+		radius?: [...string]
 
-		// Possible values: ["LINE", "BAR", "PIE", "TEXT", "MAP", "GAUGE",
-		// "SCATTERPLOT"]
+		// Possible values: ["LINE", "BAR", "PIE", "TEXT", "MAP", "GAUGE", "SCATTERPLOT"]
 		series_type?:         string
 		series_unique_value?: string
 		show_background?:     bool
@@ -399,13 +384,12 @@ import "list"
 
 	_#defs: "/$defs/dashboard_chart/$defs/visualization/$defs/series/$defs/metric_trend_config": close({
 		// Possible values: ["METRIC_DISPLAY_TREND_UNSPECIFIED",
-		// "METRIC_DISPLAY_TREND_ABSOLUTE_VALUE",
-		// "METRIC_DISPLAY_TREND_PERCENTAGE",
+		// "METRIC_DISPLAY_TREND_ABSOLUTE_VALUE", "METRIC_DISPLAY_TREND_PERCENTAGE",
 		// "METRIC_DISPLAY_TREND_ABSOLUTE_VALUE_AND_PERCENTAGE"]
 		metric_display_trend?: string
 
-		// Possible values: ["METRIC_FORMAT_UNSPECIFIED",
-		// "METRIC_FORMAT_NUMBER", "METRIC_FORMAT_PLAIN_TEXT"]
+		// Possible values: ["METRIC_FORMAT_UNSPECIFIED", "METRIC_FORMAT_NUMBER",
+		// "METRIC_FORMAT_PLAIN_TEXT"]
 		metric_format?: string
 
 		// Possible values: ["METRIC_TREND_TYPE_UNSPECIFIED",
@@ -421,9 +405,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/dashboard_chart/$defs/visualization/$defs/table_config/$defs/column_render_type_settings": close({
-		// Possible values: ["RENDER_TYPE_UNSPECIFIED",
-		// "RENDER_TYPE_TEXT", "RENDER_TYPE_ICON",
-		// "RENDER_TYPE_ICON_AND_TEXT"]
+		// Possible values: ["RENDER_TYPE_UNSPECIFIED", "RENDER_TYPE_TEXT",
+		// "RENDER_TYPE_ICON", "RENDER_TYPE_ICON_AND_TEXT"]
 		column_render_type?: string
 		field?:              string
 	})
@@ -437,17 +420,15 @@ import "list"
 	_#defs: "/$defs/dashboard_chart/$defs/visualization/$defs/tooltip": close({
 		show?: bool
 
-		// Possible values: ["TOOLTIP_TRIGGER_UNSPECIFIED",
-		// "TOOLTIP_TRIGGER_NONE", "TOOLTIP_TRIGGER_ITEM",
-		// "TOOLTIP_TRIGGER_AXIS"]
+		// Possible values: ["TOOLTIP_TRIGGER_UNSPECIFIED", "TOOLTIP_TRIGGER_NONE",
+		// "TOOLTIP_TRIGGER_ITEM", "TOOLTIP_TRIGGER_AXIS"]
 		tooltip_trigger?: string
 	})
 
 	_#defs: "/$defs/dashboard_chart/$defs/visualization/$defs/visual_maps": close({
 		pieces?: matchN(1, [_#defs."/$defs/dashboard_chart/$defs/visualization/$defs/visual_maps/$defs/pieces", [..._#defs."/$defs/dashboard_chart/$defs/visualization/$defs/visual_maps/$defs/pieces"]])
 
-		// Possible values: ["VISUAL_MAP_TYPE_UNSPECIFIED", "CONTINUOUS",
-		// "PIECEWISE"]
+		// Possible values: ["VISUAL_MAP_TYPE_UNSPECIFIED", "CONTINUOUS", "PIECEWISE"]
 		visual_map_type?: string
 	})
 
@@ -482,8 +463,8 @@ import "list"
 	_#defs: "/$defs/dashboard_query/$defs/input/$defs/relative_time": close({
 		start_time_val!: string
 
-		// The time unit for the relative range. Possible values:
-		// ["SECOND", "MINUTE", "HOUR", "DAY", "WEEK", "MONTH", "YEAR"]
+		// The time unit for the relative range. Possible values: ["SECOND", "MINUTE",
+		// "HOUR", "DAY", "WEEK", "MONTH", "YEAR"]
 		time_unit!: string
 	})
 

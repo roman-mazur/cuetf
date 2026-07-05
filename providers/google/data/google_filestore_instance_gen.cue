@@ -1,22 +1,17 @@
 package data
 
-#google_filestore_instance: {
+google_filestore_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_filestore_instance")
 	close({
 		// Creation timestamp in RFC3339 text format.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -29,10 +24,9 @@ package data
 		// A description of the instance.
 		description?: string
 
-		// The desired_replica_state field controls the state of a
-		// replica. Terraform will attempt to make the actual state of
-		// the replica match the desired state. Default value: "READY"
-		// Possible values: ["PAUSED", "READY"]
+		// The desired_replica_state field controls the state of a replica. Terraform
+		// will attempt to make the actual state of the replica match the desired
+		// state. Default value: "READY" Possible values: ["PAUSED", "READY"]
 		desired_replica_state?: string
 
 		// Directory Services configuration.
@@ -46,9 +40,8 @@ package data
 			})]
 		})]
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// Output only fields for replication configuration.
@@ -85,8 +78,8 @@ package data
 		id?: string
 
 		// Replication configuration, once set, this cannot be updated.
-		// Additionally this should be specified on the replica instance
-		// only, indicating the active as the peer_instance
+		// Additionally this should be specified on the replica instance only,
+		// indicating the active as the peer_instance
 		initial_replication?: [...close({
 			replicas?: [...close({
 				peer_instance?: string
@@ -100,21 +93,18 @@ package data
 		// Resource labels to represent user-provided metadata.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// The name of the location of the instance. This can be a region
-		// for ENTERPRISE tier instances.
+		// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 		location?: string
 
 		// The resource name of the instance.
 		name!: string
 
-		// VPC networks to which the instance is connected. For this
-		// version,
+		// VPC networks to which the instance is connected. For this version,
 		// only a single network is supported.
 		networks?: [...close({
 			connect_mode?: string
@@ -141,10 +131,8 @@ package data
 
 		// Either NFSv3, for using NFS version 3 as file sharing protocol,
 		// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
-		// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and
-		// ENTERPRISE.
-		// The default is NFSv3. Default value: "NFS_V3" Possible values:
-		// ["NFS_V3", "NFS_V4_1"]
+		// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+		// The default is NFSv3. Default value: "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
 		protocol?: string
 
 		// A map of resource manager tags. Resource manager tag keys
@@ -163,8 +151,8 @@ package data
 		terraform_labels?: [string]: string
 
 		// The service tier of the instance.
-		// Possible values include: STANDARD, PREMIUM, BASIC_HDD,
-		// BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
+		// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD,
+		// HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 		tier?: string
 
 		// The name of the Filestore zone of the instance.

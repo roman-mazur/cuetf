@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_datastream_stream: {
+google_datastream_stream: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_datastream_stream")
 	close({
@@ -16,60 +16,49 @@ import "list"
 		// Create the stream without validating it.
 		create_without_validation?: bool
 
-		// A reference to a KMS encryption key. If provided, it will be
-		// used to encrypt the data. If left blank, data
-		// will be encrypted using an internal Stream-specific encryption
-		// key provisioned through KMS.
+		// A reference to a KMS encryption key. If provided, it will be used to encrypt
+		// the data. If left blank, data
+		// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
 		customer_managed_encryption_key?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Desired state of the Stream. Set this field to 'RUNNING' to
-		// start the stream,
-		// 'NOT_STARTED' to create the stream without starting and
-		// 'PAUSED' to pause
+		// Desired state of the Stream. Set this field to 'RUNNING' to start the stream,
+		// 'NOT_STARTED' to create the stream without starting and 'PAUSED' to pause
 		// the stream from a 'RUNNING' state.
-		// Possible values: NOT_STARTED, RUNNING, PAUSED. Default:
-		// NOT_STARTED
+		// Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
 		desired_state?: string
 
 		// Display name.
 		display_name!: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// Labels.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The name of the location this stream is located in.
 		location!: string
 
 		// The stream's name.
-		name?:    string
-		project?: string
+		name?: string
 
 		// The state of the stream.
-		state?: string
+		state?:   string
+		project?: string
 
 		// The stream identifier.
 		stream_id!: string
@@ -260,8 +249,7 @@ import "list"
 		// Column name.
 		column?: string
 
-		// The PostgreSQL data type. Full data types list can be found
-		// here:
+		// The PostgreSQL data type. Full data types list can be found here:
 		// https://www.postgresql.org/docs/current/datatype.html
 		data_type?: string
 
@@ -355,8 +343,7 @@ import "list"
 		// Column name.
 		column?: string
 
-		// The SQL Server data type. Full data types list can be found
-		// here:
+		// The SQL Server data type. Full data types list can be found here:
 		// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
 		data_type?: string
 
@@ -386,14 +373,12 @@ import "list"
 		single_target_dataset?: matchN(1, [_#defs."/$defs/destination_config/$defs/bigquery_destination_config/$defs/single_target_dataset", list.MaxItems(1) & [..._#defs."/$defs/destination_config/$defs/bigquery_destination_config/$defs/single_target_dataset"]])
 		source_hierarchy_datasets?: matchN(1, [_#defs."/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets", list.MaxItems(1) & [..._#defs."/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets"]])
 
-		// The guaranteed data freshness (in seconds) when querying tables
-		// created by the stream.
-		// Editing this field will only affect new tables created in the
-		// future, but existing tables
-		// will not be impacted. Lower values mean that queries will
-		// return fresher data, but may result in higher cost.
-		// A duration in seconds with up to nine fractional digits,
-		// terminated by 's'. Example: "3.5s". Defaults to 900s.
+		// The guaranteed data freshness (in seconds) when querying tables created by the stream.
+		// Editing this field will only affect new tables created in the future, but existing tables
+		// will not be impacted. Lower values mean that queries will return fresher
+		// data, but may result in higher cost.
+		// A duration in seconds with up to nine fractional digits, terminated by 's'.
+		// Example: "3.5s". Defaults to 900s.
 		data_freshness?: string
 	})
 
@@ -419,8 +404,7 @@ import "list"
 	_#defs: "/$defs/destination_config/$defs/bigquery_destination_config/$defs/merge": close({})
 
 	_#defs: "/$defs/destination_config/$defs/bigquery_destination_config/$defs/single_target_dataset": close({
-		// Dataset ID in the format
-		// projects/{project}/datasets/{dataset_id} or
+		// Dataset ID in the format projects/{project}/datasets/{dataset_id} or
 		// {project}:{dataset_id}
 		dataset_id!: string
 	})
@@ -428,32 +412,25 @@ import "list"
 	_#defs: "/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets": close({
 		dataset_template!: matchN(1, [_#defs."/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets/$defs/dataset_template", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets/$defs/dataset_template"]])
 
-		// Optional. The project id of the BigQuery dataset. If not
-		// specified, the project will be inferred from the stream
-		// resource.
+		// Optional. The project id of the BigQuery dataset. If not specified, the
+		// project will be inferred from the stream resource.
 		project_id?: string
 	})
 
 	_#defs: "/$defs/destination_config/$defs/bigquery_destination_config/$defs/source_hierarchy_datasets/$defs/dataset_template": close({
-		// If supplied, every created dataset will have its name prefixed
-		// by the provided value.
+		// If supplied, every created dataset will have its name prefixed by the provided value.
 		// The prefix and name will be separated by an underscore. i.e. _.
 		dataset_id_prefix?: string
 
-		// Describes the Cloud KMS encryption key that will be used to
-		// protect destination BigQuery
-		// table. The BigQuery Service Account associated with your
-		// project requires access to this
+		// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+		// table. The BigQuery Service Account associated with your project requires access to this
 		// encryption key. i.e.
 		// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
-		// See
-		// https://cloud.google.com/bigquery/docs/customer-managed-encryption
-		// for more information.
+		// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
 		kms_key_name?: string
 
 		// The geographic location where the dataset should reside.
-		// See https://cloud.google.com/bigquery/docs/locations for
-		// supported locations.
+		// See https://cloud.google.com/bigquery/docs/locations for supported locations.
 		location!: string
 	})
 
@@ -461,11 +438,10 @@ import "list"
 		avro_file_format?: matchN(1, [_#defs."/$defs/destination_config/$defs/gcs_destination_config/$defs/avro_file_format", list.MaxItems(1) & [..._#defs."/$defs/destination_config/$defs/gcs_destination_config/$defs/avro_file_format"]])
 		json_file_format?: matchN(1, [_#defs."/$defs/destination_config/$defs/gcs_destination_config/$defs/json_file_format", list.MaxItems(1) & [..._#defs."/$defs/destination_config/$defs/gcs_destination_config/$defs/json_file_format"]])
 
-		// The maximum duration for which new events are added before a
-		// file is closed and a new file is created.
+		// The maximum duration for which new events are added before a file is closed
+		// and a new file is created.
 		// Values within the range of 15-60 seconds are allowed.
-		// A duration in seconds with up to nine fractional digits,
-		// terminated by 's'. Example: "3.5s".
+		// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 		file_rotation_interval?: string
 
 		// The maximum file size to be saved in the bucket.
@@ -478,8 +454,7 @@ import "list"
 	_#defs: "/$defs/destination_config/$defs/gcs_destination_config/$defs/avro_file_format": close({})
 
 	_#defs: "/$defs/destination_config/$defs/gcs_destination_config/$defs/json_file_format": close({
-		// Compression of the loaded JSON file. Possible values:
-		// ["NO_COMPRESSION", "GZIP"]
+		// Compression of the loaded JSON file. Possible values: ["NO_COMPRESSION", "GZIP"]
 		compression?: string
 
 		// The schema file format along JSON data files. Possible values:
@@ -509,10 +484,8 @@ import "list"
 	_#defs: "/$defs/rule_sets/$defs/customization_rules/$defs/bigquery_partitioning/$defs/ingestion_time_partition": close({
 		// Partition granularity. Possible values:
 		// ["PARTITIONING_TIME_GRANULARITY_UNSPECIFIED",
-		// "PARTITIONING_TIME_GRANULARITY_HOUR",
-		// "PARTITIONING_TIME_GRANULARITY_DAY",
-		// "PARTITIONING_TIME_GRANULARITY_MONTH",
-		// "PARTITIONING_TIME_GRANULARITY_YEAR"]
+		// "PARTITIONING_TIME_GRANULARITY_HOUR", "PARTITIONING_TIME_GRANULARITY_DAY",
+		// "PARTITIONING_TIME_GRANULARITY_MONTH", "PARTITIONING_TIME_GRANULARITY_YEAR"]
 		partitioning_time_granularity?: string
 	})
 
@@ -536,10 +509,8 @@ import "list"
 
 		// Partition granularity. Possible values:
 		// ["PARTITIONING_TIME_GRANULARITY_UNSPECIFIED",
-		// "PARTITIONING_TIME_GRANULARITY_HOUR",
-		// "PARTITIONING_TIME_GRANULARITY_DAY",
-		// "PARTITIONING_TIME_GRANULARITY_MONTH",
-		// "PARTITIONING_TIME_GRANULARITY_YEAR"]
+		// "PARTITIONING_TIME_GRANULARITY_HOUR", "PARTITIONING_TIME_GRANULARITY_DAY",
+		// "PARTITIONING_TIME_GRANULARITY_MONTH", "PARTITIONING_TIME_GRANULARITY_YEAR"]
 		partitioning_time_granularity?: string
 	})
 
@@ -614,8 +585,7 @@ import "list"
 		exclude_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/exclude_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/exclude_objects"]])
 		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mongodb_source_config/$defs/include_objects"]])
 
-		// Optional. Maximum number of concurrent backfill tasks. The
-		// number
+		// Optional. Maximum number of concurrent backfill tasks. The number
 		// should be non-negative and less than or equal to 50. If not set
 		// (or set to 0), the system''s default value is used
 		max_concurrent_backfill_tasks?: number
@@ -673,16 +643,12 @@ import "list"
 		gtid?: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config/$defs/gtid", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mysql_source_config/$defs/gtid"]])
 		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/mysql_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/mysql_source_config/$defs/include_objects"]])
 
-		// Maximum number of concurrent backfill tasks. The number should
-		// be non negative.
-		// If not set (or set to 0), the system's default value will be
-		// used.
+		// Maximum number of concurrent backfill tasks. The number should be non negative.
+		// If not set (or set to 0), the system's default value will be used.
 		max_concurrent_backfill_tasks?: number
 
-		// Maximum number of concurrent CDC tasks. The number should be
-		// non negative.
-		// If not set (or set to 0), the system's default value will be
-		// used.
+		// Maximum number of concurrent CDC tasks. The number should be non negative.
+		// If not set (or set to 0), the system's default value will be used.
 		max_concurrent_cdc_tasks?: number
 	})
 
@@ -780,16 +746,12 @@ import "list"
 		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/oracle_source_config/$defs/include_objects"]])
 		stream_large_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/oracle_source_config/$defs/stream_large_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/oracle_source_config/$defs/stream_large_objects"]])
 
-		// Maximum number of concurrent backfill tasks. The number should
-		// be non negative.
-		// If not set (or set to 0), the system's default value will be
-		// used.
+		// Maximum number of concurrent backfill tasks. The number should be non negative.
+		// If not set (or set to 0), the system's default value will be used.
 		max_concurrent_backfill_tasks?: number
 
-		// Maximum number of concurrent CDC tasks. The number should be
-		// non negative.
-		// If not set (or set to 0), the system's default value will be
-		// used.
+		// Maximum number of concurrent CDC tasks. The number should be non negative.
+		// If not set (or set to 0), the system's default value will be used.
 		max_concurrent_cdc_tasks?: number
 	})
 
@@ -897,10 +859,8 @@ import "list"
 		exclude_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/exclude_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/exclude_objects"]])
 		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/postgresql_source_config/$defs/include_objects"]])
 
-		// Maximum number of concurrent backfill tasks. The number should
-		// be non
-		// negative. If not set (or set to 0), the system's default value
-		// will be used.
+		// Maximum number of concurrent backfill tasks. The number should be non
+		// negative. If not set (or set to 0), the system's default value will be used.
 		max_concurrent_backfill_tasks?: number
 
 		// The name of the publication that includes the set of all tables
@@ -934,8 +894,7 @@ import "list"
 		// Column name.
 		column?: string
 
-		// The PostgreSQL data type. Full data types list can be found
-		// here:
+		// The PostgreSQL data type. Full data types list can be found here:
 		// https://www.postgresql.org/docs/current/datatype.html
 		data_type?: string
 
@@ -980,8 +939,7 @@ import "list"
 		// Column name.
 		column?: string
 
-		// The PostgreSQL data type. Full data types list can be found
-		// here:
+		// The PostgreSQL data type. Full data types list can be found here:
 		// https://www.postgresql.org/docs/current/datatype.html
 		data_type?: string
 
@@ -1008,9 +966,9 @@ import "list"
 		exclude_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/salesforce_source_config/$defs/exclude_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/salesforce_source_config/$defs/exclude_objects"]])
 		include_objects?: matchN(1, [_#defs."/$defs/source_config/$defs/salesforce_source_config/$defs/include_objects", list.MaxItems(1) & [..._#defs."/$defs/source_config/$defs/salesforce_source_config/$defs/include_objects"]])
 
-		// Salesforce objects polling interval. The interval at which new
-		// changes will be polled for each object. The duration must be
-		// between 5 minutes and 24 hours.
+		// Salesforce objects polling interval. The interval at which new changes will
+		// be polled for each object. The duration must be between 5 minutes and 24
+		// hours.
 		polling_interval!: string
 	})
 
@@ -1065,8 +1023,7 @@ import "list"
 		// Max concurrent CDC tasks.
 		max_concurrent_cdc_tasks?: number
 
-		// The RPC priority to use for Spanner queries. Possible values:
-		// ["LOW", "MEDIUM", "HIGH"]
+		// The RPC priority to use for Spanner queries. Possible values: ["LOW", "MEDIUM", "HIGH"]
 		spanner_rpc_priority?: string
 	})
 
@@ -1173,8 +1130,7 @@ import "list"
 		// Column name.
 		column?: string
 
-		// The SQL Server data type. Full data types list can be found
-		// here:
+		// The SQL Server data type. Full data types list can be found here:
 		// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
 		data_type?: string
 
@@ -1219,8 +1175,7 @@ import "list"
 		// Column name.
 		column?: string
 
-		// The SQL Server data type. Full data types list can be found
-		// here:
+		// The SQL Server data type. Full data types list can be found here:
 		// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
 		data_type?: string
 

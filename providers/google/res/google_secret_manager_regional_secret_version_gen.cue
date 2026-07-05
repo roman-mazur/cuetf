@@ -1,6 +1,6 @@
 package res
 
-#google_secret_manager_regional_secret_version: {
+google_secret_manager_regional_secret_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secret_manager_regional_secret_version")
 	close({
@@ -9,28 +9,25 @@ package res
 		// The time at which the regional secret version was created.
 		create_time?: string
 
-		// The customer-managed encryption configuration of the regional
-		// secret.
+		// The customer-managed encryption configuration of the regional secret.
 		customer_managed_encryption?: [...close({
 			kms_key_version_name?: string
 		})]
 
-		// This field uses a custom implementation please refer to
-		// documentation under
+		// This field uses a custom implementation please refer to documentation under
 		// /hashicorp/terraform-provider-google-beta/website/docs/r/secret_manager_regional_regional_secret_version.html.markdown
 		// for specifics
 		deletion_policy?: string
 
-		// The time at which the regional secret version was destroyed.
-		// Only present if state is DESTROYED.
+		// The time at which the regional secret version was destroyed. Only present if state is DESTROYED.
 		destroy_time?: string
 
 		// The current state of the regional secret version.
 		enabled?: bool
 		id?:      string
 
-		// If set to 'true', the secret data is expected to be
-		// base64-encoded string and would be sent as is.
+		// If set to 'true', the secret data is expected to be base64-encoded string and
+		// would be sent as is.
 		is_secret_data_base64?: bool
 
 		// Location of Secret Manager regional secret resource.

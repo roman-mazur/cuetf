@@ -1,6 +1,6 @@
 package res
 
-#google_storage_default_object_access_control: {
+google_storage_default_object_access_control: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_default_object_access_control")
 	close({
@@ -9,16 +9,11 @@ package res
 		// The name of the bucket.
 		bucket!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -28,8 +23,7 @@ package res
 		// The email address associated with the entity.
 		email?: string
 
-		// The entity holding the permission, in one of the following
-		// forms:
+		// The entity holding the permission, in one of the following forms:
 		// * user-{{userId}}
 		// * user-{{email}} (such as "user-liz@example.com")
 		// * group-{{groupId}}
@@ -56,8 +50,7 @@ package res
 			team?:           string
 		})]
 
-		// The access permission for the entity. Possible values:
-		// ["OWNER", "READER"]
+		// The access permission for the entity. Possible values: ["OWNER", "READER"]
 		role!: string
 	})
 

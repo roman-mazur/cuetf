@@ -1,46 +1,37 @@
 package res
 
-#google_iam_oauth_client: {
+google_iam_oauth_client: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_oauth_client")
 	close({
 		timeouts?: #timeouts
 
-		// Required. The list of OAuth grant types is allowed for the
-		// OauthClient.
+		// Required. The list of OAuth grant types is allowed for the OauthClient.
 		allowed_grant_types!: [...string]
 
-		// Required. The list of redirect uris that is allowed to redirect
-		// back
+		// Required. The list of redirect uris that is allowed to redirect back
 		// when authorization process is completed.
 		allowed_redirect_uris!: [...string]
 
-		// Required. The list of scopes that the OauthClient is allowed to
-		// request during
+		// Required. The list of scopes that the OauthClient is allowed to request during
 		// OAuth flows.
 		//
 		// The following scopes are supported:
 		//
-		// * 'https://www.googleapis.com/auth/cloud-platform': See, edit,
-		// configure,
-		// and delete your Google Cloud data and see the email address for
-		// your Google
+		// * 'https://www.googleapis.com/auth/cloud-platform': See, edit, configure,
+		// and delete your Google Cloud data and see the email address for your Google
 		// Account.
-		// * 'openid': The OAuth client can associate you with your
-		// personal
+		// * 'openid': The OAuth client can associate you with your personal
 		// information on Google Cloud.
-		// * 'email': The OAuth client can read a federated identity's
-		// email address.
-		// * 'groups': The OAuth client can read a federated identity's
-		// groups.
+		// * 'email': The OAuth client can read a federated identity's email address.
+		// * 'groups': The OAuth client can read a federated identity's groups.
 		allowed_scopes!: [...string]
 
 		// Output only. The system-generated OauthClient id.
 		client_id?: string
 
 		// Immutable. The type of OauthClient. Either public or private.
-		// For private clients, the client secret can be managed using the
-		// dedicated
+		// For private clients, the client secret can be managed using the dedicated
 		// OauthClientCredential resource.
 		// Possible values:
 		// CLIENT_TYPE_UNSPECIFIED
@@ -48,16 +39,11 @@ package res
 		// CONFIDENTIAL_CLIENT
 		client_type?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -66,8 +52,7 @@ package res
 		// Cannot exceed 256 characters.
 		description?: string
 
-		// Whether the OauthClient is disabled. You cannot use a disabled
-		// OAuth
+		// Whether the OauthClient is disabled. You cannot use a disabled OAuth
 		// client.
 		disabled?: bool
 
@@ -76,15 +61,13 @@ package res
 		// Cannot exceed 32 characters.
 		display_name?: string
 
-		// Time after which the OauthClient will be permanently purged and
-		// cannot
+		// Time after which the OauthClient will be permanently purged and cannot
 		// be recovered.
 		expire_time?: string
 		id?:          string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Immutable. Identifier. The resource name of the OauthClient.
@@ -92,24 +75,20 @@ package res
 		// Format:'projects/{project}/locations/{location}/oauthClients/{oauth_client}'.
 		name?: string
 
-		// Required. The ID to use for the OauthClient, which becomes the
-		// final component of
-		// the resource name. This value should be a string of 6 to 63
-		// lowercase
-		// letters, digits, or hyphens. It must start with a letter, and
-		// cannot have a
-		// trailing hyphen. The prefix 'gcp-' is reserved for use by
-		// Google, and may
+		// Required. The ID to use for the OauthClient, which becomes the final component of
+		// the resource name. This value should be a string of 6 to 63 lowercase
+		// letters, digits, or hyphens. It must start with a letter, and cannot have a
+		// trailing hyphen. The prefix 'gcp-' is reserved for use by Google, and may
 		// not be specified.
 		oauth_client_id!: string
-		project?:         string
 
 		// The state of the OauthClient.
 		// Possible values:
 		// STATE_UNSPECIFIED
 		// ACTIVE
 		// DELETED
-		state?: string
+		state?:   string
+		project?: string
 	})
 
 	#timeouts: close({

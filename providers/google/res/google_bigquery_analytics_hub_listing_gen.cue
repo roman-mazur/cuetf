@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_bigquery_analytics_hub_listing: {
+google_bigquery_analytics_hub_listing: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_analytics_hub_listing")
 	close({
@@ -13,15 +13,14 @@ import "list"
 		restricted_export_config?: matchN(1, [#restricted_export_config, list.MaxItems(1) & [...#restricted_export_config]])
 		timeouts?: #timeouts
 
-		// If true, the listing is only available to get the resource
-		// metadata. Listing is non subscribable.
+		// If true, the listing is only available to get the resource metadata. Listing is non subscribable.
 		allow_only_metadata_sharing?: bool
 
 		// Categories of the listing. Up to two categories are allowed.
 		categories?: [...string]
 
-		// Commercial info contains the information about the commercial
-		// data products associated with the listing.
+		// Commercial info contains the information about the commercial data products
+		// associated with the listing.
 		commercial_info?: [...close({
 			cloud_marketplace?: [...close({
 				commercial_state?: string
@@ -29,46 +28,38 @@ import "list"
 			})]
 		})]
 
-		// The ID of the data exchange. Must contain only Unicode letters,
-		// numbers (0-9), underscores (_). Should not use characters that
-		// require URL-escaping, or characters outside of ASCII, spaces.
+		// The ID of the data exchange. Must contain only Unicode letters, numbers
+		// (0-9), underscores (_). Should not use characters that require URL-escaping,
+		// or characters outside of ASCII, spaces.
 		data_exchange_id!: string
 
-		// If the listing is commercial then this field must be set to
-		// true, otherwise a failure is thrown. This acts as a safety
-		// guard to avoid deleting commercial listings accidentally.
+		// If the listing is commercial then this field must be set to true, otherwise a
+		// failure is thrown. This acts as a safety guard to avoid deleting commercial
+		// listings accidentally.
 		delete_commercial?: bool
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Short description of the listing. The description must not
-		// contain Unicode non-characters and C0 and C1 control codes
-		// except tabs (HT), new lines (LF), carriage returns (CR), and
-		// page breaks (FF).
+		// Short description of the listing. The description must not contain Unicode
+		// non-characters and C0 and C1 control codes except tabs (HT), new lines (LF),
+		// carriage returns (CR), and page breaks (FF).
 		description?: string
 
-		// Specifies the type of discovery on the discovery page. Cannot
-		// be set for a restricted listing. Note that this does not
-		// control the visibility of the exchange/listing which is
-		// defined by IAM permission. Possible values:
+		// Specifies the type of discovery on the discovery page. Cannot be set for a
+		// restricted listing. Note that this does not control the visibility of the
+		// exchange/listing which is defined by IAM permission. Possible values:
 		// ["DISCOVERY_TYPE_PRIVATE", "DISCOVERY_TYPE_PUBLIC"]
 		discovery_type?: string
 
-		// Human-readable display name of the listing. The display name
-		// must contain only Unicode letters, numbers (0-9), underscores
-		// (_), dashes (-), spaces ( ), ampersands (&) and can't start or
-		// end with spaces.
+		// Human-readable display name of the listing. The display name must contain
+		// only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces (
+		// ), ampersands (&) and can't start or end with spaces.
 		display_name!: string
 
 		// Documentation describing the listing.
@@ -78,17 +69,17 @@ import "list"
 		icon?: string
 		id?:   string
 
-		// The ID of the listing. Must contain only Unicode letters,
-		// numbers (0-9), underscores (_). Should not use characters that
-		// require URL-escaping, or characters outside of ASCII, spaces.
+		// The ID of the listing. Must contain only Unicode letters, numbers (0-9),
+		// underscores (_). Should not use characters that require URL-escaping, or
+		// characters outside of ASCII, spaces.
 		listing_id!: string
 
 		// The name of the location this data exchange listing.
 		location!: string
 
-		// If true, subscriber email logging is enabled and all queries on
-		// the linked dataset will log the email address of the querying
-		// user. Once enabled, this setting cannot be turned off.
+		// If true, subscriber email logging is enabled and all queries on the linked
+		// dataset will log the email address of the querying user. Once enabled, this
+		// setting cannot be turned off.
 		log_linked_dataset_query_user_email?: bool
 
 		// The resource name of the listing. e.g.
@@ -97,11 +88,11 @@ import "list"
 
 		// Email or URL of the primary point of contact of the listing.
 		primary_contact?: string
-		project?:         string
 
-		// Email or URL of the request access of the listing. Subscribers
-		// can use this reference to request access.
+		// Email or URL of the request access of the listing. Subscribers can use this
+		// reference to request access.
 		request_access?: string
+		project?:        string
 
 		// Current state of the listing.
 		state?: string
@@ -110,22 +101,18 @@ import "list"
 	#bigquery_dataset: close({
 		selected_resources?: matchN(1, [_#defs."/$defs/bigquery_dataset/$defs/selected_resources", [..._#defs."/$defs/bigquery_dataset/$defs/selected_resources"]])
 
-		// Resource name of the dataset source for this listing. e.g.
-		// projects/myproject/datasets/123
+		// Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
 		dataset!: string
 
-		// Server owned effective state of replicas. Contains both primary
-		// and secondary replicas.
-		// Each replica includes a system-computed (output-only) state and
-		// primary designation.
+		// Server owned effective state of replicas. Contains both primary and secondary replicas.
+		// Each replica includes a system-computed (output-only) state and primary designation.
 		effective_replicas?: [...close({
 			location?:      string
 			primary_state?: string
 			replica_state?: string
 		})]
 
-		// A list of regions where the publisher has created shared
-		// dataset replicas.
+		// A list of regions where the publisher has created shared dataset replicas.
 		replica_locations?: [...string]
 	})
 
@@ -146,14 +133,12 @@ import "list"
 	})
 
 	#pubsub_topic: close({
-		// Region hint on where the data might be published. Data affinity
-		// regions are modifiable.
-		// See https://cloud.google.com/about/locations for full listing
-		// of possible Cloud regions.
+		// Region hint on where the data might be published. Data affinity regions are modifiable.
+		// See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
 		data_affinity_regions?: [...string]
 
-		// Resource name of the Pub/Sub topic source for this listing.
-		// e.g. projects/myproject/topics/topicId
+		// Resource name of the Pub/Sub topic source for this listing. e.g.
+		// projects/myproject/topics/topicId
 		topic!: string
 	})
 
@@ -161,12 +146,10 @@ import "list"
 		// If true, enable restricted export.
 		enabled?: bool
 
-		// If true, restrict direct table access(read api/tabledata.list)
-		// on linked table.
+		// If true, restrict direct table access(read api/tabledata.list) on linked table.
 		restrict_direct_table_access?: bool
 
-		// If true, restrict export of query result derived from
-		// restricted linked dataset table.
+		// If true, restrict export of query result derived from restricted linked dataset table.
 		restrict_query_result?: bool
 	})
 
@@ -182,8 +165,7 @@ import "list"
 		// Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
 		routine?: string
 
-		// Format: For table:
-		// projects/{projectId}/datasets/{datasetId}/tables/{tableId}
+		// Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId}
 		// Example:"projects/test_project/datasets/test_dataset/tables/test_table"
 		table?: string
 	})

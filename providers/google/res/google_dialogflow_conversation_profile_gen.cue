@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_dialogflow_conversation_profile: {
+google_dialogflow_conversation_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_conversation_profile")
 	close({
@@ -17,37 +17,30 @@ import "list"
 		timeouts?: #timeouts
 		tts_config?: matchN(1, [#tts_config, list.MaxItems(1) & [...#tts_config]])
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Required. Human readable name for this profile. Max length 1024
-		// bytes.
+		// Required. Human readable name for this profile. Max length 1024 bytes.
 		display_name!: string
 		id?:           string
 
-		// Language code for the conversation profile. This should be a
-		// BCP-47 language tag.
+		// Language code for the conversation profile. This should be a BCP-47 language tag.
 		language_code?: string
 
 		// The location of the conversation profile.
 		location!: string
 
 		// Identifier. The unique identifier of this conversation profile.
-		name?:    string
-		project?: string
+		name?: string
 
 		// Name of the CX SecuritySettings reference for the agent.
 		security_settings?: string
+		project?:           string
 
 		// The time zone of this conversational profile.
 		time_zone?: string
@@ -80,8 +73,7 @@ import "list"
 	})
 
 	#new_message_event_notification_config: close({
-		// Format of the message Possible values:
-		// ["MESSAGE_FORMAT_UNSPECIFIED", "PROTO", "JSON"]
+		// Format of the message Possible values: ["MESSAGE_FORMAT_UNSPECIFIED", "PROTO", "JSON"]
 		message_format?: string
 
 		// Name of the Pub/Sub topic to publish conversation events
@@ -89,28 +81,24 @@ import "list"
 	})
 
 	#new_recognition_result_notification_config: close({
-		// Format of message. Possible values:
-		// ["MESSAGE_FORMAT_UNSPECIFIED", "PROTO", "JSON"]
+		// Format of message. Possible values: ["MESSAGE_FORMAT_UNSPECIFIED", "PROTO", "JSON"]
 		message_format?: string
 
 		// Name of the Pub/Sub topic to publish conversation events like
 		// CONVERSATION_STARTED as serialized ConversationEvent protos.
-		// For telephony integration to receive notification, make sure
-		// either this topic is in the same project as the conversation
-		// or you grant service-<Conversation Project
-		// Number>@gcp-sa-dialogflow.iam.gserviceaccount.com the
-		// Dialogflow Service Agent role in the topic project.
-		// For chat integration to receive notification, make sure API
-		// caller has been granted the Dialogflow Service Agent role for
-		// the topic.
-		// Format: projects/<Project ID>/locations/<Location
-		// ID>/topics/<Topic ID>.
+		// For telephony integration to receive notification, make sure either this
+		// topic is in the same project as the conversation or you grant
+		// service-<Conversation Project
+		// Number>@gcp-sa-dialogflow.iam.gserviceaccount.com the Dialogflow Service
+		// Agent role in the topic project.
+		// For chat integration to receive notification, make sure API caller has been
+		// granted the Dialogflow Service Agent role for the topic.
+		// Format: projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>.
 		topic?: string
 	})
 
 	#notification_config: close({
-		// Format of the message Possible values:
-		// ["MESSAGE_FORMAT_UNSPECIFIED", "PROTO", "JSON"]
+		// Format of the message Possible values: ["MESSAGE_FORMAT_UNSPECIFIED", "PROTO", "JSON"]
 		message_format?: string
 
 		// Name of the Pub/Sub topic to publish conversation events
@@ -118,37 +106,33 @@ import "list"
 	})
 
 	#stt_config: close({
-		// Audio encoding of the audio content to process. Possible
-		// values: ["AUDIO_ENCODING_UNSPECIFIED",
-		// "AUDIO_ENCODING_LINEAR_16", "AUDIO_ENCODING_FLAC",
-		// "AUDIO_ENCODING_MULAW", "AUDIO_ENCODING_AMR",
+		// Audio encoding of the audio content to process. Possible values:
+		// ["AUDIO_ENCODING_UNSPECIFIED", "AUDIO_ENCODING_LINEAR_16",
+		// "AUDIO_ENCODING_FLAC", "AUDIO_ENCODING_MULAW", "AUDIO_ENCODING_AMR",
 		// "AUDIO_ENCODING_AMR_WB", "AUDIO_ENCODING_OGG_OPUS",
 		// "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE"]
 		audio_encoding?: string
 
-		// If true, Dialogflow returns SpeechWordInfo in
-		// StreamingRecognitionResult with information about the
-		// recognized speech words.
+		// If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with
+		// information about the recognized speech words.
 		enable_word_info?: bool
 
 		// The language of the supplied audio.
 		language_code?: string
 
 		// Which Speech model to select.
-		// Leave this field unspecified to use Agent Speech settings for
-		// model selection.
+		// Leave this field unspecified to use Agent Speech settings for model selection.
 		model?: string
 
 		// Sample rate (in Hertz) of the audio content sent in the query.
 		sample_rate_hertz?: number
 
 		// The speech model used in speech to text. Possible values:
-		// ["SPEECH_MODEL_VARIANT_UNSPECIFIED", "USE_BEST_AVAILABLE",
-		// "USE_STANDARD", "USE_ENHANCED"]
+		// ["SPEECH_MODEL_VARIANT_UNSPECIFIED", "USE_BEST_AVAILABLE", "USE_STANDARD",
+		// "USE_ENHANCED"]
 		speech_model_variant?: string
 
-		// Use timeout based endpointing, interpreting endpointer
-		// sensitivity as seconds of timeout value.
+		// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 		use_timeout_based_endpointing?: bool
 	})
 
@@ -161,51 +145,46 @@ import "list"
 	#tts_config: close({
 		voice?: matchN(1, [_#defs."/$defs/tts_config/$defs/voice", list.MaxItems(1) & [..._#defs."/$defs/tts_config/$defs/voice"]])
 
-		// An identifier which selects 'audio effects' profiles that are
-		// applied on (post synthesized) text to speech. Effects are
-		// applied on top of each other in the order they are given.
+		// An identifier which selects 'audio effects' profiles that are applied on
+		// (post synthesized) text to speech. Effects are applied on top of each other
+		// in the order they are given.
 		effects_profile_id?: [...string]
 
-		// Speaking pitch, in the range [-20.0, 20.0]. 20 means increase
-		// 20 semitones from the original pitch. -20 means decrease 20
-		// semitones from the original pitch.
+		// Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones
+		// from the original pitch. -20 means decrease 20 semitones from the original
+		// pitch.
 		pitch?: number
 
 		// Speaking rate/speed, in the range [0.25, 4.0].
 		speaking_rate?: number
 
-		// Volume gain (in dB) of the normal native volume supported by
-		// the specific voice.
+		// Volume gain (in dB) of the normal native volume supported by the specific voice.
 		volume_gain_db?: number
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config": close({
 		feature_configs?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs", [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs"]])
 
-		// When disableHighLatencyFeaturesSyncDelivery is true and using
-		// the AnalyzeContent API, we will not deliver the responses from
-		// high latency features in the API response. The
-		// humanAgentAssistantConfig.notification_config must be
-		// configured and enableEventBasedSuggestion must be set to true
-		// to receive the responses from high latency features in
-		// Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+		// When disableHighLatencyFeaturesSyncDelivery is true and using the
+		// AnalyzeContent API, we will not deliver the responses from high latency
+		// features in the API response. The
+		// humanAgentAssistantConfig.notification_config must be configured and
+		// enableEventBasedSuggestion must be set to true to receive the responses from
+		// high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
 		disable_high_latency_features_sync_delivery?: bool
 
-		// List of various generator resource names used in the
-		// conversation profile.
+		// List of various generator resource names used in the conversation profile.
 		generators?: [...string]
 
-		// If groupSuggestionResponses is false, and there are multiple
-		// featureConfigs in event based suggestion or
-		// StreamingAnalyzeContent, we will try to deliver suggestions to
-		// customers as soon as we get new suggestion. Different type of
-		// suggestions based on the same context will be in separate
-		// Pub/Sub event or StreamingAnalyzeContentResponse.
-		//
-		// If groupSuggestionResponses set to true. All the suggestions to
-		// the same participant based on the same context will be grouped
-		// into a single Pub/Sub event or
+		// If groupSuggestionResponses is false, and there are multiple featureConfigs
+		// in event based suggestion or StreamingAnalyzeContent, we will try to deliver
+		// suggestions to customers as soon as we get new suggestion. Different type of
+		// suggestions based on the same context will be in separate Pub/Sub event or
 		// StreamingAnalyzeContentResponse.
+		//
+		// If groupSuggestionResponses set to true. All the suggestions to the same
+		// participant based on the same context will be grouped into a single Pub/Sub
+		// event or StreamingAnalyzeContentResponse.
 		group_suggestion_responses?: bool
 	})
 
@@ -216,46 +195,42 @@ import "list"
 		suggestion_feature?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/suggestion_feature", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/suggestion_feature"]])
 		suggestion_trigger_settings?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/suggestion_trigger_settings", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/suggestion_trigger_settings"]])
 
-		// Disable the logging of search queries sent by human agents. It
-		// can prevent those queries from being stored at answer records.
+		// Disable the logging of search queries sent by human agents. It can prevent
+		// those queries from being stored at answer records.
 		// This feature is only supported for types: KNOWLEDGE_SEARCH.
 		disable_agent_query_logging?: bool
 
-		// Enable including conversation context during query answer
-		// generation.
+		// Enable including conversation context during query answer generation.
 		// This feature is only supported for types: KNOWLEDGE_SEARCH.
 		enable_conversation_augmented_query?: bool
 
-		// Automatically iterates all participants and tries to compile
-		// suggestions.
-		// This feature is only supported for types: ARTICLE_SUGGESTION,
-		// FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+		// Automatically iterates all participants and tries to compile suggestions.
+		// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ,
+		// DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
 		enable_event_based_suggestion?: bool
 
 		// Enable query suggestion only.
 		// This feature is only supported for types: KNOWLEDGE_ASSIST
 		enable_query_suggestion_only?: bool
 
-		// Enable query suggestion even if we can't find its answer. By
-		// default, queries are suggested only if we find its answer.
+		// Enable query suggestion even if we can't find its answer. By default, queries
+		// are suggested only if we find its answer.
 		// This feature is only supported for types: KNOWLEDGE_ASSIST.
 		enable_query_suggestion_when_no_answer?: bool
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/conversation_model_config": close({
-		// Version of current baseline model. It will be ignored if model
-		// is set. Valid versions are: Article Suggestion baseline model:
-		// - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+		// Version of current baseline model. It will be ignored if model is set. Valid
+		// versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default)
+		// Summarization baseline model: - 1.0
 		baseline_model_version?: string
 
-		// Conversation model resource name. Format: projects/<Project
-		// ID>/conversationModels/<Model ID>.
+		// Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
 		model?: string
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/conversation_process_config": close({
-		// Number of recent non-small-talk sentences to use as context for
-		// article and FAQ suggestion
+		// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
 		recent_sentences_count?: number
 	})
 
@@ -267,9 +242,9 @@ import "list"
 		sections?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/sections", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/sections"]])
 
 		// Confidence threshold of query result.
-		// This feature is only supported for types: ARTICLE_SUGGESTION,
-		// FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH,
-		// KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+		// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ,
+		// SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST,
+		// ENTITY_EXTRACTION.
 		confidence_threshold?: number
 
 		// Maximum number of results to return.
@@ -277,9 +252,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/context_filter_settings": close({
-		// If set to true, the last message from virtual agent (hand off
-		// message) and the message before it (trigger message of hand
-		// off) are dropped.
+		// If set to true, the last message from virtual agent (hand off message) and
+		// the message before it (trigger message of hand off) are dropped.
 		drop_handoff_messages?: bool
 
 		// If set to true, all messages from ivr stage are dropped.
@@ -292,16 +266,16 @@ import "list"
 	_#defs: "/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source": close({
 		human_agent_side_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source/$defs/human_agent_side_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source/$defs/human_agent_side_config"]])
 
-		// The name of a Dialogflow virtual agent used for end user side
-		// intent detection and suggestion. Format: projects/<Project
-		// ID>/locations/<Location ID>/agent.
+		// The name of a Dialogflow virtual agent used for end user side intent
+		// detection and suggestion. Format: projects/<Project ID>/locations/<Location
+		// ID>/agent.
 		agent!: string
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source/$defs/human_agent_side_config": close({
-		// The name of a dialogflow virtual agent used for intent
-		// detection and suggestion triggered by human agent. Format:
-		// projects/<Project ID>/locations/<Location ID>/agent.
+		// The name of a dialogflow virtual agent used for intent detection and
+		// suggestion triggered by human agent. Format: projects/<Project
+		// ID>/locations/<Location ID>/agent.
 		agent?: string
 	})
 
@@ -313,20 +287,17 @@ import "list"
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/knowledge_base_query_source": close({
-		// Knowledge bases to query. Format: projects/<Project
-		// ID>/locations/<Location ID>/knowledgeBases/<Knowledge Base
-		// ID>.
+		// Knowledge bases to query. Format: projects/<Project ID>/locations/<Location
+		// ID>/knowledgeBases/<Knowledge Base ID>.
 		knowledge_bases!: [...string]
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/end_user_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/sections": close({
-		// The selected sections chosen to return when requesting a
-		// summary of a conversation
-		// If not provided the default selection will be "{SITUATION,
-		// ACTION, RESULT}". Possible values:
-		// ["SECTION_TYPE_UNSPECIFIED", "SITUATION", "ACTION",
-		// "RESOLUTION", "REASON_FOR_CANCELLATION",
-		// "CUSTOMER_SATISFACTION", "ENTITIES"]
+		// The selected sections chosen to return when requesting a summary of a conversation
+		// If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+		// Possible values: ["SECTION_TYPE_UNSPECIFIED", "SITUATION", "ACTION",
+		// "RESOLUTION", "REASON_FOR_CANCELLATION", "CUSTOMER_SATISFACTION",
+		// "ENTITIES"]
 		section_types?: [...string]
 	})
 
@@ -339,38 +310,33 @@ import "list"
 		// Do not trigger if last utterance is small talk.
 		no_small_talk?: bool
 
-		// Only trigger suggestion if participant role of last utterance
-		// is END_USER.
+		// Only trigger suggestion if participant role of last utterance is END_USER.
 		only_end_user?: bool
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config": close({
 		feature_configs?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs", [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs"]])
 
-		// When disableHighLatencyFeaturesSyncDelivery is true and using
-		// the AnalyzeContent API, we will not deliver the responses from
-		// high latency features in the API response. The
-		// humanAgentAssistantConfig.notification_config must be
-		// configured and enableEventBasedSuggestion must be set to true
-		// to receive the responses from high latency features in
-		// Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+		// When disableHighLatencyFeaturesSyncDelivery is true and using the
+		// AnalyzeContent API, we will not deliver the responses from high latency
+		// features in the API response. The
+		// humanAgentAssistantConfig.notification_config must be configured and
+		// enableEventBasedSuggestion must be set to true to receive the responses from
+		// high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
 		disable_high_latency_features_sync_delivery?: bool
 
-		// List of various generator resource names used in the
-		// conversation profile.
+		// List of various generator resource names used in the conversation profile.
 		generators?: [...string]
 
-		// If groupSuggestionResponses is false, and there are multiple
-		// featureConfigs in event based suggestion or
-		// StreamingAnalyzeContent, we will try to deliver suggestions to
-		// customers as soon as we get new suggestion. Different type of
-		// suggestions based on the same context will be in separate
-		// Pub/Sub event or StreamingAnalyzeContentResponse.
-		//
-		// If groupSuggestionResponses set to true. All the suggestions to
-		// the same participant based on the same context will be grouped
-		// into a single Pub/Sub event or
+		// If groupSuggestionResponses is false, and there are multiple featureConfigs
+		// in event based suggestion or StreamingAnalyzeContent, we will try to deliver
+		// suggestions to customers as soon as we get new suggestion. Different type of
+		// suggestions based on the same context will be in separate Pub/Sub event or
 		// StreamingAnalyzeContentResponse.
+		//
+		// If groupSuggestionResponses set to true. All the suggestions to the same
+		// participant based on the same context will be grouped into a single Pub/Sub
+		// event or StreamingAnalyzeContentResponse.
 		group_suggestion_responses?: bool
 	})
 
@@ -381,46 +347,42 @@ import "list"
 		suggestion_feature?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/suggestion_feature", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/suggestion_feature"]])
 		suggestion_trigger_settings?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/suggestion_trigger_settings", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/suggestion_trigger_settings"]])
 
-		// Disable the logging of search queries sent by human agents. It
-		// can prevent those queries from being stored at answer records.
+		// Disable the logging of search queries sent by human agents. It can prevent
+		// those queries from being stored at answer records.
 		// This feature is only supported for types: KNOWLEDGE_SEARCH.
 		disable_agent_query_logging?: bool
 
-		// Enable including conversation context during query answer
-		// generation.
+		// Enable including conversation context during query answer generation.
 		// This feature is only supported for types: KNOWLEDGE_SEARCH.
 		enable_conversation_augmented_query?: bool
 
-		// Automatically iterates all participants and tries to compile
-		// suggestions.
-		// This feature is only supported for types: ARTICLE_SUGGESTION,
-		// FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+		// Automatically iterates all participants and tries to compile suggestions.
+		// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ,
+		// DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
 		enable_event_based_suggestion?: bool
 
 		// Enable query suggestion only.
 		// This feature is only supported for types: KNOWLEDGE_ASSIST
 		enable_query_suggestion_only?: bool
 
-		// Enable query suggestion even if we can't find its answer. By
-		// default, queries are suggested only if we find its answer.
+		// Enable query suggestion even if we can't find its answer. By default, queries
+		// are suggested only if we find its answer.
 		// This feature is only supported for types: KNOWLEDGE_ASSIST.
 		enable_query_suggestion_when_no_answer?: bool
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/conversation_model_config": close({
-		// Version of current baseline model. It will be ignored if model
-		// is set. Valid versions are: Article Suggestion baseline model:
-		// - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+		// Version of current baseline model. It will be ignored if model is set. Valid
+		// versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default)
+		// Summarization baseline model: - 1.0
 		baseline_model_version?: string
 
-		// Conversation model resource name. Format: projects/<Project
-		// ID>/conversationModels/<Model ID>.
+		// Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
 		model?: string
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/conversation_process_config": close({
-		// Number of recent non-small-talk sentences to use as context for
-		// article and FAQ suggestion
+		// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
 		recent_sentences_count?: number
 	})
 
@@ -430,9 +392,9 @@ import "list"
 		sections?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/sections", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/sections"]])
 
 		// Confidence threshold of query result.
-		// This feature is only supported for types: ARTICLE_SUGGESTION,
-		// FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH,
-		// KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+		// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ,
+		// SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST,
+		// ENTITY_EXTRACTION.
 		confidence_threshold?: number
 
 		// Maximum number of results to return.
@@ -440,9 +402,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/context_filter_settings": close({
-		// If set to true, the last message from virtual agent (hand off
-		// message) and the message before it (trigger message of hand
-		// off) are dropped.
+		// If set to true, the last message from virtual agent (hand off message) and
+		// the message before it (trigger message of hand off) are dropped.
 		drop_handoff_messages?: bool
 
 		// If set to true, all messages from ivr stage are dropped.
@@ -455,27 +416,25 @@ import "list"
 	_#defs: "/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source": close({
 		human_agent_side_config?: matchN(1, [_#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source/$defs/human_agent_side_config", list.MaxItems(1) & [..._#defs."/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source/$defs/human_agent_side_config"]])
 
-		// The name of a Dialogflow virtual agent used for end user side
-		// intent detection and suggestion. Format: projects/<Project
-		// ID>/locations/<Location ID>/agent.
+		// The name of a Dialogflow virtual agent used for end user side intent
+		// detection and suggestion. Format: projects/<Project ID>/locations/<Location
+		// ID>/agent.
 		agent!: string
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/dialogflow_query_source/$defs/human_agent_side_config": close({
-		// The name of a dialogflow virtual agent used for intent
-		// detection and suggestion triggered by human agent. Format:
-		// projects/<Project ID>/locations/<Location ID>/agent.
+		// The name of a dialogflow virtual agent used for intent detection and
+		// suggestion triggered by human agent. Format: projects/<Project
+		// ID>/locations/<Location ID>/agent.
 		agent?: string
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/human_agent_suggestion_config/$defs/feature_configs/$defs/query_config/$defs/sections": close({
-		// The selected sections chosen to return when requesting a
-		// summary of a conversation
-		// If not provided the default selection will be "{SITUATION,
-		// ACTION, RESULT}". Possible values:
-		// ["SECTION_TYPE_UNSPECIFIED", "SITUATION", "ACTION",
-		// "RESOLUTION", "REASON_FOR_CANCELLATION",
-		// "CUSTOMER_SATISFACTION", "ENTITIES"]
+		// The selected sections chosen to return when requesting a summary of a conversation
+		// If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+		// Possible values: ["SECTION_TYPE_UNSPECIFIED", "SITUATION", "ACTION",
+		// "RESOLUTION", "REASON_FOR_CANCELLATION", "CUSTOMER_SATISFACTION",
+		// "ENTITIES"]
 		section_types?: [...string]
 	})
 
@@ -488,26 +447,23 @@ import "list"
 		// Do not trigger if last utterance is small talk.
 		no_small_talk?: bool
 
-		// Only trigger suggestion if participant role of last utterance
-		// is END_USER.
+		// Only trigger suggestion if participant role of last utterance is END_USER.
 		only_end_user?: bool
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/message_analysis_config": close({
-		// Enable entity extraction in conversation messages on agent
-		// assist stage.
+		// Enable entity extraction in conversation messages on agent assist stage.
 		enable_entity_extraction?: bool
 
-		// Enable sentiment analysis in conversation messages on agent
-		// assist stage. Sentiment analysis inspects user input and
-		// identifies the prevailing subjective opinion, especially to
-		// determine a user's attitude as positive, negative, or neutral.
+		// Enable sentiment analysis in conversation messages on agent assist stage.
+		// Sentiment analysis inspects user input and identifies the prevailing
+		// subjective opinion, especially to determine a user's attitude as positive,
+		// negative, or neutral.
 		enable_sentiment_analysis?: bool
 	})
 
 	_#defs: "/$defs/human_agent_assistant_config/$defs/notification_config": close({
-		// Format of the message Possible values:
-		// ["MESSAGE_FORMAT_UNSPECIFIED", "PROTO", "JSON"]
+		// Format of the message Possible values: ["MESSAGE_FORMAT_UNSPECIFIED", "PROTO", "JSON"]
 		message_format?: string
 
 		// Name of the Pub/Sub topic to publish conversation events

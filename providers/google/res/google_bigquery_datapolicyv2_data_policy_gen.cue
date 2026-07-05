@@ -2,17 +2,15 @@ package res
 
 import "list"
 
-#google_bigquery_datapolicyv2_data_policy: {
+google_bigquery_datapolicyv2_data_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_datapolicyv2_data_policy")
 	close({
 		data_masking_policy?: matchN(1, [#data_masking_policy, list.MaxItems(1) & [...#data_masking_policy]])
 		timeouts?: #timeouts
 
-		// User-assigned (human readable) ID of the data policy that needs
-		// to be
-		// unique within a project. Used as {data_policy_id} in part of
-		// the resource
+		// User-assigned (human readable) ID of the data policy that needs to be
+		// unique within a project. Used as {data_policy_id} in part of the resource
 		// name.
 		data_policy_id!: string
 
@@ -23,48 +21,34 @@ import "list"
 		// COLUMN_LEVEL_SECURITY_POLICY
 		data_policy_type!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// The etag for this Data Policy.
-		// This field is used for UpdateDataPolicy calls. If Data Policy
-		// exists, this
-		// field is required and must match the server's etag. It will
-		// also be
-		// populated in the response of GetDataPolicy, CreateDataPolicy,
-		// and
+		// This field is used for UpdateDataPolicy calls. If Data Policy exists, this
+		// field is required and must match the server's etag. It will also be
+		// populated in the response of GetDataPolicy, CreateDataPolicy, and
 		// UpdateDataPolicy calls.
 		etag?: string
 
-		// The list of IAM principals that have Fine Grained Access to the
-		// underlying
+		// The list of IAM principals that have Fine Grained Access to the underlying
 		// data goverened by this data policy.
 		//
 		// Uses the [IAM V2 principal
-		// syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2)
-		// Only
-		// supports principal types users, groups, serviceaccounts,
-		// cloudidentity.
-		// This field is supported in V2 Data Policy only. In case of V1
-		// data policies
-		// (i.e. verion = 1 and policy_tag is set), this field is not
-		// populated.
+		// syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
+		// supports principal types users, groups, serviceaccounts, cloudidentity.
+		// This field is supported in V2 Data Policy only. In case of V1 data policies
+		// (i.e. verion = 1 and policy_tag is set), this field is not populated.
 		grantees?: [...string]
 		id?: string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Identifier. Resource name of this data policy, in the format of
@@ -75,13 +59,13 @@ import "list"
 		// 'projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}'.
 		// policy_tag is supported only for V1 data policies.
 		policy_tag?: string
-		project?:    string
 
 		// The version of the Data Policy resource.
 		// Possible values:
 		// V1
 		// V2
 		version?: string
+		project?: string
 	})
 
 	#data_masking_policy: close({
@@ -97,8 +81,7 @@ import "list"
 		// RANDOM_HASH
 		predefined_expression?: string
 
-		// The name of the BigQuery routine that contains the custom
-		// masking
+		// The name of the BigQuery routine that contains the custom masking
 		// routine, in the format of
 		// 'projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}'.
 		routine?: string

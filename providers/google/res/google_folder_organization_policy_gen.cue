@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_folder_organization_policy: {
+google_folder_organization_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_folder_organization_policy")
 	close({
@@ -11,36 +11,29 @@ import "list"
 		restore_policy?: matchN(1, [#restore_policy, list.MaxItems(1) & [...#restore_policy]])
 		timeouts?: #timeouts
 
-		// The name of the Constraint the Policy is configuring, for
-		// example, serviceuser.services.
+		// The name of the Constraint the Policy is configuring, for example, serviceuser.services.
 		constraint!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// The etag of the organization policy. etag is used for
-		// optimistic concurrency control as a way to help prevent
-		// simultaneous updates of a policy from overwriting each other.
+		// The etag of the organization policy. etag is used for optimistic concurrency
+		// control as a way to help prevent simultaneous updates of a policy from
+		// overwriting each other.
 		etag?: string
 
-		// The resource name of the folder to set the policy for. Its
-		// format is folders/{folder_id}.
+		// The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
 		folder!: string
 		id?:     string
 
-		// The timestamp in RFC3339 UTC "Zulu" format, accurate to
-		// nanoseconds, representing when the variable was last updated.
-		// Example: "2016-10-09T12:33:37.578138407Z".
+		// The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds,
+		// representing when the variable was last updated. Example:
+		// "2016-10-09T12:33:37.578138407Z".
 		update_time?: string
 
 		// Version of the Policy. Default version is 0.
@@ -48,8 +41,7 @@ import "list"
 	})
 
 	#boolean_policy: close({
-		// If true, then the Policy is enforced. If false, then any
-		// configuration is acceptable.
+		// If true, then the Policy is enforced. If false, then any configuration is acceptable.
 		enforced!: bool
 	})
 
@@ -57,19 +49,18 @@ import "list"
 		allow?: matchN(1, [_#defs."/$defs/list_policy/$defs/allow", list.MaxItems(1) & [..._#defs."/$defs/list_policy/$defs/allow"]])
 		deny?: matchN(1, [_#defs."/$defs/list_policy/$defs/deny", list.MaxItems(1) & [..._#defs."/$defs/list_policy/$defs/deny"]])
 
-		// If set to true, the values from the effective Policy of the
-		// parent resource are inherited, meaning the values set in this
-		// Policy are added to the values inherited up the hierarchy.
+		// If set to true, the values from the effective Policy of the parent resource
+		// are inherited, meaning the values set in this Policy are added to the values
+		// inherited up the hierarchy.
 		inherit_from_parent?: bool
 
-		// The Google Cloud Console will try to default to a configuration
-		// that matches the value specified in this field.
+		// The Google Cloud Console will try to default to a configuration that matches
+		// the value specified in this field.
 		suggested_value?: string
 	})
 
 	#restore_policy: close({
-		// May only be set to true. If set, then the default Policy is
-		// restored.
+		// May only be set to true. If set, then the default Policy is restored.
 		default!: bool
 	})
 
@@ -84,8 +75,7 @@ import "list"
 		// The policy allows or denies all values.
 		all?: bool
 
-		// The policy can define specific values that are allowed or
-		// denied.
+		// The policy can define specific values that are allowed or denied.
 		values?: [...string]
 	})
 
@@ -93,8 +83,7 @@ import "list"
 		// The policy allows or denies all values.
 		all?: bool
 
-		// The policy can define specific values that are allowed or
-		// denied.
+		// The policy can define specific values that are allowed or denied.
 		values?: [...string]
 	})
 }

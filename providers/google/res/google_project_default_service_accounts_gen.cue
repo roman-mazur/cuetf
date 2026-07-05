@@ -1,29 +1,26 @@
 package res
 
-#google_project_default_service_accounts: {
+google_project_default_service_accounts: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_project_default_service_accounts")
 	close({
 		timeouts?: #timeouts
 
-		// The action to be performed in the default service accounts.
-		// Valid values are: DEPRIVILEGE, DELETE, DISABLE.
-		// Note that DEPRIVILEGE action will ignore the REVERT
-		// configuration in the restore_policy.
+		// The action to be performed in the default service accounts. Valid values are:
+		// DEPRIVILEGE, DELETE, DISABLE.
+		// Note that DEPRIVILEGE action will ignore the REVERT configuration in the restore_policy.
 		action!: string
 		id?:     string
 
 		// The project ID where service accounts are created.
 		project!: string
 
-		// The action to be performed in the default service accounts on
-		// the resource destroy.
-		// Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It
-		// is applied for any action but in the DEPRIVILEGE.
+		// The action to be performed in the default service accounts on the resource destroy.
+		// Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied
+		// for any action but in the DEPRIVILEGE.
 		restore_policy?: string
 
-		// The Service Accounts changed by this resource. It is used for
-		// revert the action on the destroy.
+		// The Service Accounts changed by this resource. It is used for revert the action on the destroy.
 		service_accounts?: [string]: string
 	})
 

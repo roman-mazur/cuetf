@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_edgecontainer_cluster: {
+google_edgecontainer_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_edgecontainer_cluster")
 	close({
@@ -24,29 +24,21 @@ import "list"
 		// The time the cluster was created, in RFC3339 text format.
 		create_time?: string
 
-		// The default maximum number of pods per node used if a maximum
-		// value is not
-		// specified explicitly for a node pool in this cluster. If
-		// unspecified, the
+		// The default maximum number of pods per node used if a maximum value is not
+		// specified explicitly for a node pool in this cluster. If unspecified, the
 		// Kubernetes default value will be used.
 		default_max_pods_per_node?: number
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// The IP address of the Kubernetes API server.
@@ -58,19 +50,16 @@ import "list"
 
 		// User-defined labels for the edgecloud cluster.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location of the resource.
 		location!: string
 
-		// All the maintenance events scheduled for the cluster, including
-		// the ones
-		// ongoing, planned for the future and done in the past (up to 90
-		// days).
+		// All the maintenance events scheduled for the cluster, including the ones
+		// ongoing, planned for the future and done in the past (up to 90 days).
 		maintenance_events?: [...close({
 			create_time?:    string
 			end_time?:       string
@@ -87,18 +76,17 @@ import "list"
 		// The GDCE cluster name.
 		name!: string
 
-		// The lowest release version among all worker nodes. This field
-		// can be empty
+		// The lowest release version among all worker nodes. This field can be empty
 		// if the cluster does not have any worker nodes.
 		node_version?: string
 
 		// The port number of the Kubernetes API server.
-		port?:    number
-		project?: string
+		port?: number
 
-		// The release channel a cluster is subscribed to. Possible
-		// values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
+		// The release channel a cluster is subscribed to. Possible values:
+		// ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
 		release_channel?: string
+		project?:         string
 
 		// Indicates the status of the cluster.
 		status?: string
@@ -130,26 +118,19 @@ import "list"
 		// Google-managed key will be used instead.
 		kms_key?: string
 
-		// The Cloud KMS CryptoKeyVersion currently in use for protecting
-		// control
+		// The Cloud KMS CryptoKeyVersion currently in use for protecting control
 		// plane disks. Only applicable if kms_key is set.
 		kms_key_active_version?: string
 
-		// Availability of the Cloud KMS CryptoKey. If not
-		// 'KEY_AVAILABLE', then
-		// nodes may go offline as they cannot access their local data.
-		// This can be
-		// caused by a lack of permissions to use the key, or if the key
-		// is disabled
+		// Availability of the Cloud KMS CryptoKey. If not 'KEY_AVAILABLE', then
+		// nodes may go offline as they cannot access their local data. This can be
+		// caused by a lack of permissions to use the key, or if the key is disabled
 		// or deleted.
 		kms_key_state?: string
 
-		// Error status returned by Cloud KMS when using this key. This
-		// field may be
-		// populated only if 'kms_key_state' is not
-		// 'KMS_KEY_STATE_KEY_AVAILABLE'.
-		// If populated, this field contains the error status reported by
-		// Cloud KMS.
+		// Error status returned by Cloud KMS when using this key. This field may be
+		// populated only if 'kms_key_state' is not 'KMS_KEY_STATE_KEY_AVAILABLE'.
+		// If populated, this field contains the error status reported by Cloud KMS.
 		kms_status?: [...close({
 			code?:    number
 			message?: string
@@ -157,14 +138,12 @@ import "list"
 	})
 
 	#fleet: close({
-		// The name of the managed Hub Membership resource associated to
-		// this cluster.
+		// The name of the managed Hub Membership resource associated to this cluster.
 		// Membership names are formatted as
 		// 'projects/<project-number>/locations/global/membership/<cluster-id>'.
 		membership?: string
 
-		// The name of the Fleet host project where this cluster will be
-		// registered.
+		// The name of the Fleet host project where this cluster will be registered.
 		// Project names are formatted as
 		// 'projects/<project-number>'.
 		project!: string
@@ -176,39 +155,28 @@ import "list"
 	})
 
 	#networking: close({
-		// All pods in the cluster are assigned an RFC1918 IPv4 address
-		// from these
-		// blocks. Only a single block is supported. This field cannot be
-		// changed
+		// All pods in the cluster are assigned an RFC1918 IPv4 address from these
+		// blocks. Only a single block is supported. This field cannot be changed
 		// after creation.
 		cluster_ipv4_cidr_blocks!: [...string]
 
-		// If specified, dual stack mode is enabled and all pods in the
-		// cluster are
-		// assigned an IPv6 address from these blocks alongside from an
-		// IPv4
-		// address. Only a single block is supported. This field cannot be
-		// changed
+		// If specified, dual stack mode is enabled and all pods in the cluster are
+		// assigned an IPv6 address from these blocks alongside from an IPv4
+		// address. Only a single block is supported. This field cannot be changed
 		// after creation.
 		cluster_ipv6_cidr_blocks?: [...string]
 
-		// IP addressing type of this cluster i.e. SINGLESTACK_V4 vs
-		// DUALSTACK_V4_V6.
+		// IP addressing type of this cluster i.e. SINGLESTACK_V4 vs DUALSTACK_V4_V6.
 		network_type?: string
 
-		// All services in the cluster are assigned an RFC1918 IPv4
-		// address from these
-		// blocks. Only a single block is supported. This field cannot be
-		// changed
+		// All services in the cluster are assigned an RFC1918 IPv4 address from these
+		// blocks. Only a single block is supported. This field cannot be changed
 		// after creation.
 		services_ipv4_cidr_blocks!: [...string]
 
-		// If specified, dual stack mode is enabled and all services in
-		// the cluster are
-		// assigned an IPv6 address from these blocks alongside from an
-		// IPv4
-		// address. Only a single block is supported. This field cannot be
-		// changed
+		// If specified, dual stack mode is enabled and all services in the cluster are
+		// assigned an IPv6 address from these blocks alongside from an IPv4
+		// address. Only a single block is supported. This field cannot be changed
 		// after creation.
 		services_ipv6_cidr_blocks?: [...string]
 	})
@@ -229,10 +197,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/control_plane/$defs/local": close({
-		// Only machines matching this filter will be allowed to host
-		// control
-		// plane nodes. The filtering language accepts strings like
-		// "name=<name>",
+		// Only machines matching this filter will be allowed to host control
+		// plane nodes. The filtering language accepts strings like "name=<name>",
 		// and is documented here: [AIP-160](https://google.aip.dev/160).
 		machine_filter?: string
 
@@ -240,20 +206,17 @@ import "list"
 		// Only 1 and 3 are supported.
 		node_count?: number
 
-		// Name of the Google Distributed Cloud Edge zones where this node
-		// pool
+		// Name of the Google Distributed Cloud Edge zones where this node pool
 		// will be created. For example: 'us-central1-edge-customer-a'.
 		node_location?: string
 
-		// Policy configuration about how user applications are deployed.
-		// Possible values: ["SHARED_DEPLOYMENT_POLICY_UNSPECIFIED",
-		// "ALLOWED", "DISALLOWED"]
+		// Policy configuration about how user applications are deployed. Possible
+		// values: ["SHARED_DEPLOYMENT_POLICY_UNSPECIFIED", "ALLOWED", "DISALLOWED"]
 		shared_deployment_policy?: string
 	})
 
 	_#defs: "/$defs/control_plane/$defs/remote": close({
-		// Name of the Google Distributed Cloud Edge zones where this node
-		// pool
+		// Name of the Google Distributed Cloud Edge zones where this node pool
 		// will be created. For example: 'us-central1-edge-customer-a'.
 		node_location?: string
 	})
@@ -266,8 +229,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/maintenance_policy/$defs/maintenance_exclusions/$defs/window": close({
-		// The time that the window ends. The end time must take place
-		// after the
+		// The time that the window ends. The end time must take place after the
 		// start time.
 		end_time?: string
 
@@ -282,17 +244,14 @@ import "list"
 	_#defs: "/$defs/maintenance_policy/$defs/window/$defs/recurring_window": close({
 		window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/window/$defs/recurring_window/$defs/window", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/window/$defs/recurring_window/$defs/window"]])
 
-		// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3)
-		// for how
-		// this window recurs. They go on for the span of time between the
-		// start and
+		// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+		// this window recurs. They go on for the span of time between the start and
 		// end time.
 		recurrence?: string
 	})
 
 	_#defs: "/$defs/maintenance_policy/$defs/window/$defs/recurring_window/$defs/window": close({
-		// The time that the window ends. The end time must take place
-		// after the
+		// The time that the window ends. The end time must take place after the
 		// start time.
 		end_time?: string
 

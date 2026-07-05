@@ -2,33 +2,28 @@ package res
 
 import "list"
 
-#google_vertex_ai_rag_engine_config: {
+google_vertex_ai_rag_engine_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_rag_engine_config")
 	close({
 		rag_managed_db_config!: matchN(1, [#rag_managed_db_config, list.MaxItems(1) & [_, ...] & [...#rag_managed_db_config]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
 
 		// The resource name of the Dataset. This value is set by Google.
-		name?:    string
-		project?: string
+		name?: string
 
 		// The region of the RagEngineConfig. eg us-central1
-		region?: string
+		region?:  string
+		project?: string
 	})
 
 	#rag_managed_db_config: close({

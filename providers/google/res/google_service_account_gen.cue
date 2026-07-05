@@ -1,62 +1,54 @@
 package res
 
-#google_service_account: {
+google_service_account: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_service_account")
 	close({
 		timeouts?: #timeouts
 
-		// The account id that is used to generate the service account
-		// email address and a stable unique id. It is unique within a
-		// project, must be 6-30 characters long, and match the regular
-		// expression [a-z]([-a-z0-9]*[a-z0-9]) to comply with RFC1035.
-		// Changing this forces a new service account to be created.
+		// The account id that is used to generate the service account email address and
+		// a stable unique id. It is unique within a project, must be 6-30 characters
+		// long, and match the regular expression [a-z]([-a-z0-9]*[a-z0-9]) to comply
+		// with RFC1035. Changing this forces a new service account to be created.
 		account_id!: string
 
-		// If set to true, skip service account creation if a service
-		// account with the same email already exists.
+		// If set to true, skip service account creation if a service account with the
+		// same email already exists.
 		create_ignore_already_exists?: bool
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// A text description of the service account. Must be less than or
-		// equal to 256 UTF-8 bytes.
+		// A text description of the service account. Must be less than or equal to 256 UTF-8 bytes.
 		description?: string
 
 		// Whether the service account is disabled. Defaults to false
 		disabled?: bool
 
-		// The display name for the service account. Can be updated
-		// without creating a new resource.
+		// The display name for the service account. Can be updated without creating a new resource.
 		display_name?: string
 
-		// The e-mail address of the service account. This value should be
-		// referenced from any google_iam_policy data sources that would
-		// grant the service account privileges.
+		// The e-mail address of the service account. This value should be referenced
+		// from any google_iam_policy data sources that would grant the service account
+		// privileges.
 		email?: string
 		id?:    string
 
-		// The Identity of the service account in the form
-		// 'serviceAccount:{email}'. This value is often used to refer to
-		// the service account in order to grant IAM permissions.
+		// The Identity of the service account in the form 'serviceAccount:{email}'.
+		// This value is often used to refer to the service account in order to grant
+		// IAM permissions.
 		member?: string
 
 		// The fully-qualified name of the service account.
 		name?: string
 
-		// The ID of the project that the service account will be created
-		// in. Defaults to the provider project configuration.
+		// The ID of the project that the service account will be created in. Defaults
+		// to the provider project configuration.
 		project?: string
 
 		// The unique id of the service account.

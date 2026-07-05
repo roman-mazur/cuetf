@@ -1,11 +1,14 @@
 package data
 
-#google_container_cluster: {
+google_container_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_container_cluster")
 	close({
 		// The configuration for addons supported by GKE.
 		addons_config?: [...close({
+			agent_sandbox_config?: [...close({
+				enabled?: bool
+			})]
 			cloudrun_config?: [...close({
 				disabled?:           bool
 				load_balancer_type?: string
@@ -71,8 +74,7 @@ package data
 		// Enable NET_ADMIN for this cluster.
 		allow_net_admin?: bool
 
-		// AnonymousAuthenticationConfig allows users to restrict or
-		// enable anonymous access to the cluster.
+		// AnonymousAuthenticationConfig allows users to restrict or enable anonymous access to the cluster.
 		anonymous_authentication_config?: [...close({
 			mode?: string
 		})]
@@ -90,12 +92,10 @@ package data
 			no_unsafe_webhooks?:      bool
 		})]
 
-		// The customer allowlist Cloud Storage paths for the cluster.
-		// These paths are used with the
-		// `--autopilot-privileged-admission` flag to authorize
-		// privileged workloads in Autopilot clusters. To allow default
-		// partner allowlists, set to []. To allow no allowlists, set to
-		// [""].
+		// The customer allowlist Cloud Storage paths for the cluster. These paths are
+		// used with the `--autopilot-privileged-admission` flag to authorize
+		// privileged workloads in Autopilot clusters. To allow default partner
+		// allowlists, set to []. To allow no allowlists, set to [""].
 		autopilot_privileged_admission?: [...string]
 
 		// Configuration options for the Binary Authorization feature.
@@ -104,11 +104,10 @@ package data
 			evaluation_mode?: string
 		})]
 
-		// Per-cluster configuration of Node Auto-Provisioning with
-		// Cluster Autoscaler to automatically adjust the size of the
-		// cluster and create/delete node pools based on the current
-		// needs of the cluster's workload. See the guide to using Node
-		// Auto-Provisioning for more details.
+		// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler
+		// to automatically adjust the size of the cluster and create/delete node pools
+		// based on the current needs of the cluster's workload. See the guide to using
+		// Node Auto-Provisioning for more details.
 		cluster_autoscaling?: [...close({
 			auto_provisioning_defaults?: [...close({
 				boot_disk_kms_key?: string
@@ -155,26 +154,24 @@ package data
 			})]
 		})]
 
-		// The IP address range of the Kubernetes pods in this cluster in
-		// CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
-		// automatically chosen or specify a /14 block in 10.0.0.0/8.
-		// This field will only work for routes-based clusters, where
-		// ip_allocation_policy is not defined.
+		// The IP address range of the Kubernetes pods in this cluster in CIDR notation
+		// (e.g. 10.96.0.0/14). Leave blank to have one automatically chosen or specify
+		// a /14 block in 10.0.0.0/8. This field will only work for routes-based
+		// clusters, where ip_allocation_policy is not defined.
 		cluster_ipv4_cidr?: string
 
-		// Configuration for the confidential nodes feature, which makes
-		// nodes run on confidential VMs. Warning: This configuration
-		// can't be changed (or added/removed) after cluster creation
-		// without deleting and recreating the entire cluster.
+		// Configuration for the confidential nodes feature, which makes nodes run on
+		// confidential VMs. Warning: This configuration can't be changed (or
+		// added/removed) after cluster creation without deleting and recreating the
+		// entire cluster.
 		confidential_nodes?: [...close({
 			confidential_instance_type?: string
 			enabled?:                    bool
 		})]
 
-		// Configuration for all of the cluster's control plane endpoints.
-		// Currently supports only DNS endpoint configuration and disable
-		// IP endpoint. Other IP endpoint configurations are available in
-		// private_cluster_config.
+		// Configuration for all of the cluster's control plane endpoints. Currently
+		// supports only DNS endpoint configuration and disable IP endpoint. Other IP
+		// endpoint configurations are available in private_cluster_config.
 		control_plane_endpoints_config?: [...close({
 			dns_endpoint_config?: [...close({
 				allow_external_traffic?:    bool
@@ -192,58 +189,49 @@ package data
 			enabled?: bool
 		})]
 
-		// Application-layer Secrets Encryption settings. The object
-		// format is {state = string, key_name = string}. Valid values of
-		// state are: "ENCRYPTED"; "DECRYPTED". key_name is the name of a
-		// CloudKMS key.
+		// Application-layer Secrets Encryption settings. The object format is {state =
+		// string, key_name = string}. Valid values of state are: "ENCRYPTED";
+		// "DECRYPTED". key_name is the name of a CloudKMS key.
 		database_encryption?: [...close({
 			key_name?: string
 			state?:    string
 		})]
 
-		// The desired datapath provider for this cluster. By default,
-		// uses the IPTables-based kube-proxy implementation.
+		// The desired datapath provider for this cluster. By default, uses the
+		// IPTables-based kube-proxy implementation.
 		datapath_provider?: string
 
 		// The desired dataplane optimization mode.
 		dataplane_optimization_mode?: string
 
-		// The default maximum number of pods per node in this cluster.
-		// This doesn't work on "routes-based" clusters, clusters that
-		// don't have IP Aliasing enabled.
+		// The default maximum number of pods per node in this cluster. This doesn't
+		// work on "routes-based" clusters, clusters that don't have IP Aliasing
+		// enabled.
 		default_max_pods_per_node?: number
 
-		// Whether the cluster disables default in-node sNAT rules.
-		// In-node sNAT rules will be disabled when defaultSnatStatus is
-		// disabled.
+		// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules
+		// will be disabled when defaultSnatStatus is disabled.
 		default_snat_status?: [...close({
 			disabled?: bool
 		})]
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// When the field is set to true or unset in Terraform state, a
-		// terraform apply or terraform destroy that would delete the
-		// cluster will fail. When the field is set to false, deleting
-		// the cluster is allowed.
+		// When the field is set to true or unset in Terraform state, a terraform apply
+		// or terraform destroy that would delete the cluster will fail. When the field
+		// is set to false, deleting the cluster is allowed.
 		deletion_protection?: bool
 
 		// Description of the cluster.
 		description?: string
 
-		// Disable L4 load balancer VPC firewalls to enable firewall
-		// policies.
+		// Disable L4 load balancer VPC firewalls to enable firewall policies.
 		disable_l4_lb_firewall_reconciliation?: bool
 
 		// Configuration for Cloud DNS for Kubernetes Engine.
@@ -254,23 +242,21 @@ package data
 			cluster_dns_scope?:             string
 		})]
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
 		// Enable Autopilot for this cluster.
 		enable_autopilot?: bool
 
-		// Whether Cilium cluster-wide network policy is enabled on this
-		// cluster.
+		// Whether Cilium cluster-wide network policy is enabled on this cluster.
 		enable_cilium_clusterwide_network_policy?: bool
 
 		// Whether FQDN Network Policy is enabled on this cluster.
 		enable_fqdn_network_policy?: bool
 
-		// Whether Intra-node visibility is enabled for this cluster. This
-		// makes same node pod to pod traffic visible for VPC network.
+		// Whether Intra-node visibility is enabled for this cluster. This makes same
+		// node pod to pod traffic visible for VPC network.
 		enable_intranode_visibility?: bool
 
 		// Configuration for Kubernetes Beta APIs.
@@ -278,26 +264,24 @@ package data
 			enabled_apis?: [...string]
 		})]
 
-		// Whether to enable Kubernetes Alpha features for this cluster.
-		// Note that when this option is enabled, the cluster cannot be
-		// upgraded and will be automatically deleted after 30 days.
+		// Whether to enable Kubernetes Alpha features for this cluster. Note that when
+		// this option is enabled, the cluster cannot be upgraded and will be
+		// automatically deleted after 30 days.
 		enable_kubernetes_alpha?: bool
 
 		// Whether L4ILB Subsetting is enabled for this cluster.
 		enable_l4_ilb_subsetting?: bool
 
-		// Whether the ABAC authorizer is enabled for this cluster. When
-		// enabled, identities in the system, including service accounts,
-		// nodes, and controllers, will have statically granted
-		// permissions beyond those provided by the RBAC configuration or
-		// IAM. Defaults to false.
+		// Whether the ABAC authorizer is enabled for this cluster. When enabled,
+		// identities in the system, including service accounts, nodes, and
+		// controllers, will have statically granted permissions beyond those provided
+		// by the RBAC configuration or IAM. Defaults to false.
 		enable_legacy_abac?: bool
 
 		// Whether multi-networking is enabled for this cluster.
 		enable_multi_networking?: bool
 
-		// Enable Shielded Nodes features on all nodes in this cluster.
-		// Defaults to true.
+		// Enable Shielded Nodes features on all nodes in this cluster. Defaults to true.
 		enable_shielded_nodes?: bool
 
 		// Whether to enable Cloud TPU resources in this cluster.
@@ -327,42 +311,39 @@ package data
 			channel?: string
 		})]
 
-		// Configuration options for the auto-upgrade patch type feature,
-		// which provide more control over the speed of automatic
-		// upgrades of your GKE clusters.
+		// Configuration options for the auto-upgrade patch type feature, which provide
+		// more control over the speed of automatic upgrades of your GKE clusters.
 		gke_auto_upgrade_config?: [...close({
 			patch_mode?: string
 		})]
 		id?: string
 
-		// Configuration for Identity Service which allows customers to
-		// use external identity providers with the K8S API.
+		// Configuration for Identity Service which allows customers to use external
+		// identity providers with the K8S API.
 		identity_service_config?: [...close({
 			enabled?: bool
 		})]
 
-		// When true, the provider ignores external changes (drift) to the
-		// node count by skipping GCE API queries to the Instance Group
-		// Managers. This is a performance optimization for large
-		// clusters that saves API quota. Setting this to true will
-		// result in missing managed_instance_group_urls in the state for
-		// all node pools in the cluster.
+		// When true, the provider ignores external changes (drift) to the node count by
+		// skipping GCE API queries to the Instance Group Managers. This is a
+		// performance optimization for large clusters that saves API quota. Setting
+		// this to true will result in missing managed_instance_group_urls in the state
+		// for all node pools in the cluster.
 		ignore_node_count_changes?: bool
 
 		// Defines the config of in-transit encryption
 		in_transit_encryption_config?: string
 
-		// The number of nodes to create in this cluster's default node
-		// pool. In regional or multi-zonal clusters, this is the number
-		// of nodes per zone. Must be set if node_pool is not set. If
-		// you're using google_container_node_pool objects with no
-		// default node pool, you'll need to set this to a value of at
+		// The number of nodes to create in this cluster's default node pool. In
+		// regional or multi-zonal clusters, this is the number of nodes per zone. Must
+		// be set if node_pool is not set. If you're using google_container_node_pool
+		// objects with no default node pool, you'll need to set this to a value of at
 		// least 1, alongside setting remove_default_node_pool to true.
 		initial_node_count?: number
 
-		// Configuration of cluster IP allocation for VPC-native clusters.
-		// Adding this block enables IP aliasing, making the cluster
-		// VPC-native instead of routes-based.
+		// Configuration of cluster IP allocation for VPC-native clusters. Adding this
+		// block enables IP aliasing, making the cluster VPC-native instead of
+		// routes-based.
 		ip_allocation_policy?: [...close({
 			additional_ip_ranges_config?: [...close({
 				pod_ipv4_range_names?: [...string]
@@ -391,14 +372,12 @@ package data
 		// The fingerprint of the set of labels for this cluster.
 		label_fingerprint?: string
 
-		// The location (region or zone) in which the cluster master will
-		// be created, as well as the default node location. If you
-		// specify a zone (such as us-central1-a), the cluster will be a
-		// zonal cluster with a single cluster master. If you specify a
-		// region (such as us-west1), the cluster will be a regional
-		// cluster with multiple masters spread across zones in the
-		// region, and with default node locations in those zones as
-		// well.
+		// The location (region or zone) in which the cluster master will be created, as
+		// well as the default node location. If you specify a zone (such as
+		// us-central1-a), the cluster will be a zonal cluster with a single cluster
+		// master. If you specify a region (such as us-west1), the cluster will be a
+		// regional cluster with multiple masters spread across zones in the region,
+		// and with default node locations in those zones as well.
 		location?: string
 
 		// Logging configuration for the cluster.
@@ -406,11 +385,10 @@ package data
 			enable_components?: [...string]
 		})]
 
-		// The logging service that the cluster should write logs to.
-		// Available options include logging.googleapis.com(Legacy
-		// Stackdriver), logging.googleapis.com/kubernetes(Stackdriver
-		// Kubernetes Engine Logging), and none. Defaults to
-		// logging.googleapis.com/kubernetes.
+		// The logging service that the cluster should write logs to. Available options
+		// include logging.googleapis.com(Legacy Stackdriver),
+		// logging.googleapis.com/kubernetes(Stackdriver Kubernetes Engine Logging),
+		// and none. Defaults to logging.googleapis.com/kubernetes.
 		logging_service?: string
 
 		// The maintenance policy to use for the cluster.
@@ -441,11 +419,10 @@ package data
 			})]
 		})]
 
-		// The authentication information for accessing the Kubernetes
-		// master. Some values in this block are only returned by the API
-		// if your service account has permission to get credentials for
-		// your GKE cluster. If you see an unexpected diff unsetting your
-		// client cert, ensure you have the
+		// The authentication information for accessing the Kubernetes master. Some
+		// values in this block are only returned by the API if your service account
+		// has permission to get credentials for your GKE cluster. If you see an
+		// unexpected diff unsetting your client cert, ensure you have the
 		// container.clusters.getCredentials permission.
 		master_auth?: [...close({
 			client_certificate?: string
@@ -456,10 +433,9 @@ package data
 			cluster_ca_certificate?: string
 		})]
 
-		// The desired configuration options for master authorized
-		// networks. Omit the nested cidr_blocks attribute to disallow
-		// external access (except the cluster node IPs, which GKE
-		// automatically whitelists).
+		// The desired configuration options for master authorized networks. Omit the
+		// nested cidr_blocks attribute to disallow external access (except the cluster
+		// node IPs, which GKE automatically whitelists).
 		master_authorized_networks_config?: [...close({
 			cidr_blocks?: [...close({
 				cidr_block?:   string
@@ -469,24 +445,22 @@ package data
 			private_endpoint_enforcement_enabled?: bool
 		})]
 
-		// The current version of the master in the cluster. This may be
-		// different than the min_master_version set in the config if the
-		// master has been updated by GKE.
+		// The current version of the master in the cluster. This may be different than
+		// the min_master_version set in the config if the master has been updated by
+		// GKE.
 		master_version?: string
 
-		// If set, and enable_certificates=true, the GKE Workload Identity
-		// Certificates controller and node agent will be deployed in the
-		// cluster.
+		// If set, and enable_certificates=true, the GKE Workload Identity Certificates
+		// controller and node agent will be deployed in the cluster.
 		mesh_certificates?: [...close({
 			enable_certificates?: bool
 		})]
 
-		// The minimum version of the master. GKE will auto-update the
-		// master to new versions, so this does not guarantee the current
-		// master version--use the read-only master_version field to
-		// obtain that. If unset, the cluster's version will be set by
-		// GKE to the version of the most recent official release (which
-		// is not necessarily the latest version).
+		// The minimum version of the master. GKE will auto-update the master to new
+		// versions, so this does not guarantee the current master version--use the
+		// read-only master_version field to obtain that. If unset, the cluster's
+		// version will be set by GKE to the version of the most recent official
+		// release (which is not necessarily the latest version).
 		min_master_version?: string
 
 		// Monitoring configuration for the cluster.
@@ -504,23 +478,21 @@ package data
 			})]
 		})]
 
-		// The monitoring service that the cluster should write metrics
-		// to. Automatically send metrics from pods in the cluster to the
-		// Google Cloud Monitoring API. VM metrics will be collected by
-		// Google Compute Engine regardless of this setting Available
-		// options include monitoring.googleapis.com(Legacy Stackdriver),
-		// monitoring.googleapis.com/kubernetes(Stackdriver Kubernetes
-		// Engine Monitoring), and none. Defaults to
-		// monitoring.googleapis.com/kubernetes.
+		// The monitoring service that the cluster should write metrics to.
+		// Automatically send metrics from pods in the cluster to the Google Cloud
+		// Monitoring API. VM metrics will be collected by Google Compute Engine
+		// regardless of this setting Available options include
+		// monitoring.googleapis.com(Legacy Stackdriver),
+		// monitoring.googleapis.com/kubernetes(Stackdriver Kubernetes Engine
+		// Monitoring), and none. Defaults to monitoring.googleapis.com/kubernetes.
 		monitoring_service?: string
 
-		// The name of the cluster, unique within the project and
-		// location.
+		// The name of the cluster, unique within the project and location.
 		name!: string
 
-		// The name or self_link of the Google Compute Engine network to
-		// which the cluster is connected. For Shared VPC, set this to
-		// the self link of the shared network.
+		// The name or self_link of the Google Compute Engine network to which the
+		// cluster is connected. For Shared VPC, set this to the self link of the
+		// shared network.
 		network?: string
 
 		// Network bandwidth tier configuration.
@@ -534,8 +506,8 @@ package data
 			provider?: string
 		})]
 
-		// Determines whether alias IPs or routes will be used for pod IPs
-		// in the cluster. Defaults to VPC_NATIVE for new clusters.
+		// Determines whether alias IPs or routes will be used for pod IPs in the
+		// cluster. Defaults to VPC_NATIVE for new clusters.
 		networking_mode?: string
 
 		// The configuration of the nodepool
@@ -677,8 +649,10 @@ package data
 				memory_manager?: [...close({
 					policy?: string
 				})]
-				pod_pids_limit?:          number
-				single_process_oom_kill?: bool
+				pod_pids_limit?:                              number
+				shutdown_grace_period_critical_pods_seconds?: number
+				shutdown_grace_period_seconds?:               number
+				single_process_oom_kill?:                     bool
 				topology_manager?: [...close({
 					policy?: string
 					scope?:  string
@@ -786,21 +760,18 @@ package data
 			node_creation_mode?: string
 		})]
 
-		// The list of zones in which the cluster's nodes are located.
-		// Nodes must be in the region of their regional cluster or in
-		// the same region as their cluster's zone for zonal clusters. If
-		// this is specified for a zonal cluster, omit the cluster's
-		// zone.
+		// The list of zones in which the cluster's nodes are located. Nodes must be in
+		// the region of their regional cluster or in the same region as their
+		// cluster's zone for zonal clusters. If this is specified for a zonal cluster,
+		// omit the cluster's zone.
 		node_locations?: [...string]
 
 		// List of node pools associated with this cluster. See
-		// google_container_node_pool for schema. Warning: node pools
-		// defined inside a cluster can't be changed (or added/removed)
-		// after cluster creation without deleting and recreating the
-		// entire cluster. Unless you absolutely need the ability to say
-		// "these are the only node pools associated with this cluster",
-		// use the google_container_node_pool resource instead of this
-		// property.
+		// google_container_node_pool for schema. Warning: node pools defined inside a
+		// cluster can't be changed (or added/removed) after cluster creation without
+		// deleting and recreating the entire cluster. Unless you absolutely need the
+		// ability to say "these are the only node pools associated with this cluster",
+		// use the google_container_node_pool resource instead of this property.
 		node_pool?: [...close({
 			autoscaling?: [...close({
 				location_policy?:      string
@@ -981,8 +952,10 @@ package data
 					memory_manager?: [...close({
 						policy?: string
 					})]
-					pod_pids_limit?:          number
-					single_process_oom_kill?: bool
+					pod_pids_limit?:                              number
+					shutdown_grace_period_critical_pods_seconds?: number
+					shutdown_grace_period_seconds?:               number
+					single_process_oom_kill?:                     bool
 					topology_manager?: [...close({
 						policy?: string
 						scope?:  string
@@ -1115,9 +1088,8 @@ package data
 			version?: string
 		})]
 
-		// Node pool configs that apply to all auto-provisioned node pools
-		// in autopilot clusters and node auto-provisioning enabled
-		// clusters.
+		// Node pool configs that apply to all auto-provisioned node pools in autopilot
+		// clusters and node auto-provisioning enabled clusters.
 		node_pool_auto_config?: [...close({
 			linux_node_config?: [...close({
 				cgroup_mode?: string
@@ -1183,21 +1155,18 @@ package data
 			})]
 		})]
 
-		// The Kubernetes version on the nodes. Must either be unset or
-		// set to the same value as min_master_version on create.
-		// Defaults to the default version set by GKE which is not
-		// necessarily the latest version. This only affects nodes in the
-		// default node pool. While a fuzzy version can be specified,
-		// it's recommended that you specify explicit versions as
-		// Terraform will see spurious diffs when fuzzy versions are
-		// used. See the google_container_engine_versions data source's
-		// version_prefix field to approximate fuzzy versions in a
-		// Terraform-compatible way. To update nodes in other node pools,
-		// use the version attribute on the node pool.
+		// The Kubernetes version on the nodes. Must either be unset or set to the same
+		// value as min_master_version on create. Defaults to the default version set
+		// by GKE which is not necessarily the latest version. This only affects nodes
+		// in the default node pool. While a fuzzy version can be specified, it's
+		// recommended that you specify explicit versions as Terraform will see
+		// spurious diffs when fuzzy versions are used. See the
+		// google_container_engine_versions data source's version_prefix field to
+		// approximate fuzzy versions in a Terraform-compatible way. To update nodes in
+		// other node pools, use the version attribute on the node pool.
 		node_version?: string
 
-		// The notification config for sending cluster upgrade
-		// notifications
+		// The notification config for sending cluster upgrade notifications
 		notification_config?: [...close({
 			pubsub?: [...close({
 				enabled?: bool
@@ -1209,14 +1178,12 @@ package data
 		})]
 		operation?: string
 
-		// PodAutoscaling is used for configuration of parameters for
-		// workload autoscaling
+		// PodAutoscaling is used for configuration of parameters for workload autoscaling
 		pod_autoscaling?: [...close({
 			hpa_profile?: string
 		})]
 
-		// Configuration for private clusters, clusters with private
-		// nodes.
+		// Configuration for private clusters, clusters with private nodes.
 		private_cluster_config?: [...close({
 			enable_private_endpoint?: bool
 			enable_private_nodes?:    bool
@@ -1230,43 +1197,40 @@ package data
 			public_endpoint?:             string
 		})]
 
-		// The desired state of IPv6 connectivity to Google Services. By
-		// default, no private IPv6 access to or from Google Services
-		// (all access will be via IPv4).
+		// The desired state of IPv6 connectivity to Google Services. By default, no
+		// private IPv6 access to or from Google Services (all access will be via
+		// IPv4).
 		private_ipv6_google_access?: string
 
-		// The ID of the project in which the resource belongs. If it is
-		// not provided, the provider project is used.
+		// The ID of the project in which the resource belongs. If it is not provided,
+		// the provider project is used.
 		project?: string
 
-		// RBACBindingConfig allows user to restrict ClusterRoleBindings
-		// an RoleBindings that can be created.
+		// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings
+		// that can be created.
 		rbac_binding_config?: [...close({
 			enable_insecure_binding_system_authenticated?:   bool
 			enable_insecure_binding_system_unauthenticated?: bool
 		})]
 
-		// Configuration options for the Release channel feature, which
-		// provide more control over automatic upgrades of your GKE
-		// clusters. Note that removing this field from your config will
-		// not unenroll it. Instead, use the "UNSPECIFIED" channel.
+		// Configuration options for the Release channel feature, which provide more
+		// control over automatic upgrades of your GKE clusters. Note that removing
+		// this field from your config will not unenroll it. Instead, use the
+		// "UNSPECIFIED" channel.
 		release_channel?: [...close({
 			channel?: string
 		})]
 
-		// If true, deletes the default node pool upon cluster creation.
-		// If you're using google_container_node_pool resources with no
-		// default node pool, this should be set to true, alongside
-		// setting initial_node_count to at least 1.
+		// If true, deletes the default node pool upon cluster creation. If you're using
+		// google_container_node_pool resources with no default node pool, this should
+		// be set to true, alongside setting initial_node_count to at least 1.
 		remove_default_node_pool?: bool
 
-		// The GCE resource labels (a map of key/value pairs) to be
-		// applied to the cluster.
+		// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		resource_labels?: [string]: string
 
 		// Configuration for the ResourceUsageExportConfig feature.
@@ -1296,8 +1260,7 @@ package data
 			})]
 		})]
 
-		// Defines the config needed to enable/disable features for the
-		// Security Posture API
+		// Defines the config needed to enable/disable features for the Security Posture API
 		security_posture_config?: [...close({
 			mode?:               string
 			vulnerability_mode?: string
@@ -1306,36 +1269,33 @@ package data
 		// Server-defined URL for the resource.
 		self_link?: string
 
-		// If set, and enabled=true, services with external ips field will
-		// not be blocked
+		// If set, and enabled=true, services with external ips field will not be blocked
 		service_external_ips_config?: [...close({
 			enabled?: bool
 		})]
 
-		// The IP address range of the Kubernetes services in this
-		// cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses
-		// are typically put in the last /16 from the container CIDR.
+		// The IP address range of the Kubernetes services in this cluster, in CIDR
+		// notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last
+		// /16 from the container CIDR.
 		services_ipv4_cidr?: string
 
-		// If true, the provider will not refresh the inline node_pool
-		// state from the API during cluster reads. Set this to true only
-		// when all node pools are managed via separate
-		// google_container_node_pool resources; it substantially
-		// improves plan/apply performance on clusters with a high node
-		// pool count. Must not be set to true when inline node_pool
-		// blocks are defined on this resource.
+		// If true, the provider will not refresh the inline node_pool state from the
+		// API during cluster reads. Set this to true only when all node pools are
+		// managed via separate google_container_node_pool resources; it substantially
+		// improves plan/apply performance on clusters with a high node pool count.
+		// Must not be set to true when inline node_pool blocks are defined on this
+		// resource.
 		skip_node_pool_refresh?: bool
 
-		// The name or self_link of the Google Compute Engine subnetwork
-		// in which the cluster's instances are launched.
+		// The name or self_link of the Google Compute Engine subnetwork in which the
+		// cluster's instances are launched.
 		subnetwork?: string
 
-		// The combination of labels configured directly on the resource
-		// and default labels configured on the provider.
+		// The combination of labels configured directly on the resource and default
+		// labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// The IP address range of the Cloud TPUs in this cluster, in CIDR
-		// notation (e.g. 1.2.3.4/29).
+		// The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
 		tpu_ipv4_cidr_block?: string
 
 		// The custom keys configuration of the cluster.
@@ -1351,14 +1311,12 @@ package data
 			service_account_verification_keys?: [...string]
 		})]
 
-		// Vertical Pod Autoscaling automatically adjusts the resources of
-		// pods controlled by it.
+		// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 		vertical_pod_autoscaling?: [...close({
 			enabled?: bool
 		})]
 
-		// Configuration for the use of Kubernetes Service Accounts in GCP
-		// IAM policies.
+		// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 		workload_identity_config?: [...close({
 			workload_pool?: string
 		})]

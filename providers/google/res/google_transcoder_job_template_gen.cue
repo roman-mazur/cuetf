@@ -2,55 +2,48 @@ package res
 
 import "list"
 
-#google_transcoder_job_template: {
+google_transcoder_job_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_transcoder_job_template")
 	close({
 		config?: matchN(1, [#config, list.MaxItems(1) & [...#config]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// ID to use for the Transcoding job template.
 		job_template_id!: string
 
-		// The labels associated with this job template. You can use these
-		// to organize and group your job templates.
+		// The labels associated with this job template. You can use these to organize
+		// and group your job templates.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location of the transcoding job template resource.
 		location!: string
 
 		// The resource name of the job template.
-		name?:    string
-		project?: string
+		name?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
+		project?: string
 	})
 
 	#config: close({
@@ -73,21 +66,18 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/ad_breaks": close({
-		// Start time in seconds for the ad break, relative to the output
-		// file timeline
+		// Start time in seconds for the ad break, relative to the output file timeline
 		start_time_offset?: string
 	})
 
 	_#defs: "/$defs/config/$defs/edit_list": close({
-		// List of values identifying files that should be used in this
-		// atom.
+		// List of values identifying files that should be used in this atom.
 		inputs?: [...string]
 
 		// A unique key for this atom.
 		key?: string
 
-		// Start time in seconds for the atom, relative to the input file
-		// timeline. The default is '0s'.
+		// Start time in seconds for the atom, relative to the input file timeline. The default is '0s'.
 		start_time_offset?: string
 	})
 
@@ -106,8 +96,7 @@ import "list"
 		// Number of audio channels. The default is '2'.
 		channel_count?: number
 
-		// A list of channel names specifying layout of the audio
-		// channels. The default is ["fl", "fr"].
+		// A list of channel names specifying layout of the audio channels. The default is ["fl", "fr"].
 		channel_layout?: [...string]
 
 		// The codec for this audio stream. The default is 'aac'.
@@ -137,8 +126,7 @@ import "list"
 		// The target video frame rate in frames per second (FPS).
 		frame_rate!: number
 
-		// Select the GOP size based on the specified duration. The
-		// default is '3s'.
+		// Select the GOP size based on the specified duration. The default is '3s'.
 		gop_duration?: string
 
 		// The height of the video in pixels.
@@ -156,8 +144,7 @@ import "list"
 		// Specify the mode. The default is 'vbr'.
 		rate_control_mode?: string
 
-		// Initial fullness of the Video Buffering Verifier (VBV) buffer
-		// in bits.
+		// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
 		vbv_fullness_bits?: number
 
 		// Size of the Video Buffering Verifier (VBV) buffer in bits.
@@ -207,20 +194,17 @@ import "list"
 	_#defs: "/$defs/config/$defs/encryptions/$defs/sample_aes": close({})
 
 	_#defs: "/$defs/config/$defs/encryptions/$defs/secret_manager_key_source": close({
-		// The name of the Secret Version containing the encryption key in
-		// the following format:
-		// projects/{project}/secrets/{secret_id}/versions/{version_number}.
+		// The name of the Secret Version containing the encryption key in the following
+		// format: projects/{project}/secrets/{secret_id}/versions/{version_number}.
 		secret_version!: string
 	})
 
 	_#defs: "/$defs/config/$defs/inputs": close({
-		// A unique key for this input. Must be specified when using
-		// advanced mapping and edit lists.
+		// A unique key for this input. Must be specified when using advanced mapping and edit lists.
 		key?: string
 
-		// URI of the media. Input files must be at least 5 seconds in
-		// duration and stored in Cloud Storage (for example,
-		// gs://bucket/inputs/file.mp4).
+		// URI of the media. Input files must be at least 5 seconds in duration and
+		// stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
 		// If empty, the value is populated from Job.input_uri.
 		uri?: string
 	})
@@ -229,12 +213,10 @@ import "list"
 		// The name of the generated file. The default is 'manifest'.
 		file_name?: string
 
-		// List of user supplied MuxStream.key values that should appear
-		// in this manifest.
+		// List of user supplied MuxStream.key values that should appear in this manifest.
 		mux_streams?: [...string]
 
-		// Type of the manifest. Possible values:
-		// ["MANIFEST_TYPE_UNSPECIFIED", "HLS", "DASH"]
+		// Type of the manifest. Possible values: ["MANIFEST_TYPE_UNSPECIFIED", "HLS", "DASH"]
 		type?: string
 	})
 
@@ -263,8 +245,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/output": close({
-		// URI for the output file(s). For example,
-		// gs://my-bucket/outputs/.
+		// URI for the output file(s). For example, gs://my-bucket/outputs/.
 		uri?: string
 	})
 
@@ -290,8 +271,8 @@ import "list"
 		//
 		// * 'FADE_IN': Fade the overlay object into view.
 		//
-		// * 'FADE_OUT': Fade the overlay object out of view. Possible
-		// values: ["FADE_TYPE_UNSPECIFIED", "FADE_IN", "FADE_OUT"]
+		// * 'FADE_OUT': Fade the overlay object out of view. Possible values:
+		// ["FADE_TYPE_UNSPECIFIED", "FADE_IN", "FADE_OUT"]
 		fade_type!: string
 
 		// The time to start the fade animation, in seconds.
@@ -307,15 +288,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/config/$defs/overlays/$defs/image": close({
-		// URI of the image in Cloud Storage. For example,
-		// gs://bucket/inputs/image.png.
+		// URI of the image in Cloud Storage. For example, gs://bucket/inputs/image.png.
 		uri!: string
 	})
 
 	_#defs: "/$defs/config/$defs/pubsub_destination": close({
-		// The name of the Pub/Sub topic to publish job completion
-		// notification to. For example:
-		// projects/{project}/topics/{topic}.
+		// The name of the Pub/Sub topic to publish job completion notification to. For
+		// example: projects/{project}/topics/{topic}.
 		topic?: string
 	})
 }

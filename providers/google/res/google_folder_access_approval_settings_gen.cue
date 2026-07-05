@@ -1,71 +1,58 @@
 package res
 
-#google_folder_access_approval_settings: {
+google_folder_access_approval_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_folder_access_approval_settings")
 	close({
 		enrolled_services!: matchN(1, [#enrolled_services, [_, ...] & [...#enrolled_services]])
 		timeouts?: #timeouts
 
-		// The asymmetric crypto key version to use for signing approval
-		// requests.
-		// Empty active_key_version indicates that a Google-managed key
-		// should be used for signing.
-		// This property will be ignored if set by an ancestor of the
-		// resource, and new non-empty values may not be set.
+		// The asymmetric crypto key version to use for signing approval requests.
+		// Empty active_key_version indicates that a Google-managed key should be used for signing.
+		// This property will be ignored if set by an ancestor of the resource, and new
+		// non-empty values may not be set.
 		active_key_version?: string
 
-		// If the field is true, that indicates that an ancestor of this
-		// Folder has set active_key_version.
+		// If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
 		ancestor_has_active_key_version?: bool
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// If the field is true, that indicates that at least one service
-		// is enrolled for Access Approval in one or more ancestors of
-		// the Folder.
+		// If the field is true, that indicates that at least one service is enrolled
+		// for Access Approval in one or more ancestors of the Folder.
 		enrolled_ancestor?: bool
 
 		// ID of the folder of the access approval settings.
 		folder_id!: string
 		id?:        string
 
-		// If the field is true, that indicates that there is some
-		// configuration issue with the active_key_version
-		// configured on this Folder (e.g. it doesn't exist or the Access
-		// Approval service account doesn't have the
-		// correct permissions on it, etc.) This key version is not
-		// necessarily the effective key version at this level,
+		// If the field is true, that indicates that there is some configuration issue
+		// with the active_key_version
+		// configured on this Folder (e.g. it doesn't exist or the Access Approval
+		// service account doesn't have the
+		// correct permissions on it, etc.) This key version is not necessarily the
+		// effective key version at this level,
 		// as key versions are inherited top-down.
 		invalid_key_version?: bool
 
-		// The resource name of the settings. Format is
-		// "folders/{folder_id}/accessApprovalSettings"
+		// The resource name of the settings. Format is "folders/{folder_id}/accessApprovalSettings"
 		name?: string
 
-		// A list of email addresses to which notifications relating to
-		// approval requests should be sent.
-		// Notifications relating to a resource will be sent to all emails
-		// in the settings of ancestor
-		// resources of that resource. A maximum of 50 email addresses are
-		// allowed.
+		// A list of email addresses to which notifications relating to approval requests should be sent.
+		// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+		// resources of that resource. A maximum of 50 email addresses are allowed.
 		notification_emails?: [...string]
 	})
 
 	#enrolled_services: close({
-		// The product for which Access Approval will be enrolled. Allowed
-		// values are listed (case-sensitive):
+		// The product for which Access Approval will be enrolled. Allowed values are
+		// listed (case-sensitive):
 		// * all
 		// * App Engine
 		// * BigQuery
@@ -78,8 +65,7 @@ package res
 		// * Cloud Storage
 		// * Persistent Disk
 		//
-		// Note: These values are supported as input, but considered a
-		// legacy format:
+		// Note: These values are supported as input, but considered a legacy format:
 		// * all
 		// * appengine.googleapis.com
 		// * bigquery.googleapis.com
@@ -92,8 +78,7 @@ package res
 		// * storage.googleapis.com
 		cloud_product!: string
 
-		// The enrollment level of the service. Default value: "BLOCK_ALL"
-		// Possible values: ["BLOCK_ALL"]
+		// The enrollment level of the service. Default value: "BLOCK_ALL" Possible values: ["BLOCK_ALL"]
 		enrollment_level?: string
 	})
 

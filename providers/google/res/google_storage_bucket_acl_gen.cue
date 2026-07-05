@@ -1,6 +1,6 @@
 package res
 
-#google_storage_bucket_acl: {
+google_storage_bucket_acl: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_bucket_acl")
 	close({
@@ -10,16 +10,11 @@ package res
 		// Configure this ACL to be the default ACL.
 		default_acl?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
@@ -27,9 +22,8 @@ package res
 		// The canned GCS ACL to apply. Must be set if role_entity is not.
 		predefined_acl?: string
 
-		// List of role/entity pairs in the form ROLE:entity. See GCS
-		// Bucket ACL documentation for more details. Must be set if
-		// predefined_acl is not.
+		// List of role/entity pairs in the form ROLE:entity. See GCS Bucket ACL
+		// documentation for more details. Must be set if predefined_acl is not.
 		role_entity?: [...string]
 	})
 }

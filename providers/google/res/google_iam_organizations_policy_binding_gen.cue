@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_iam_organizations_policy_binding: {
+google_iam_organizations_policy_binding: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_iam_organizations_policy_binding")
 	close({
@@ -11,43 +11,37 @@ import "list"
 		timeouts?: #timeouts
 
 		// Optional. User defined annotations. See
-		// https://google.aip.dev/148#annotations for more details such
-		// as format and size limitations
+		// https://google.aip.dev/148#annotations for more details such as format and
+		// size limitations
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the annotations present in your configuration.
-		// Please refer to the field 'effective_annotations' for all of
-		// the annotations present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the
+		// annotations present in your configuration.
+		// Please refer to the field 'effective_annotations' for all of the annotations
+		// present on the resource.
 		annotations?: [string]: string
 
 		// Output only. The time when the policy binding was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Optional. The description of the policy binding. Must be less
-		// than or equal to 63 characters.
+		// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
 		display_name?: string
 
-		// All of annotations (key/value pairs) present on the resource in
-		// GCP, including the annotations configured through Terraform,
-		// other clients and services.
+		// All of annotations (key/value pairs) present on the resource in GCP,
+		// including the annotations configured through Terraform, other clients and
+		// services.
 		effective_annotations?: [string]: string
 
-		// Optional. The etag for the policy binding. If this is provided
-		// on update, it must match the server's etag.
+		// Optional. The etag for the policy binding. If this is provided on update, it
+		// must match the server's etag.
 		etag?: string
 		id?:   string
 
@@ -61,18 +55,15 @@ import "list"
 		// The parent organization of the Policy Binding.
 		organization!: string
 
-		// Required. Immutable. The resource name of the policy to be
-		// bound. The binding parent and policy must belong to the same
-		// Organization (or Project).
+		// Required. Immutable. The resource name of the policy to be bound. The binding
+		// parent and policy must belong to the same Organization (or Project).
 		policy!: string
 
 		// The Policy Binding ID.
 		policy_binding_id!: string
 
-		// Immutable. The kind of the policy to attach in this binding.
-		// This
-		// field must be one of the following: - Left empty (will be
-		// automatically set
+		// Immutable. The kind of the policy to attach in this binding. This
+		// field must be one of the following: - Left empty (will be automatically set
 		// to the policy kind) - The input policy kind Possible values:
 		// POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
 		policy_kind?: string
@@ -80,48 +71,39 @@ import "list"
 		// Output only. The globally unique ID of the policy to be bound.
 		policy_uid?: string
 
-		// Output only. The globally unique ID of the policy binding.
-		// Assigned when the policy binding is created.
+		// Output only. The globally unique ID of the policy binding. Assigned when the
+		// policy binding is created.
 		uid?: string
 
-		// Output only. The time when the policy binding was most recently
-		// updated.
+		// Output only. The time when the policy binding was most recently updated.
 		update_time?: string
 	})
 
 	#condition: close({
-		// Optional. Description of the expression. This is a longer text
-		// which describes the expression, e.g. when hovered over it in a
-		// UI.
+		// Optional. Description of the expression. This is a longer text which
+		// describes the expression, e.g. when hovered over it in a UI.
 		description?: string
 
-		// Textual representation of an expression in Common Expression
-		// Language syntax.
+		// Textual representation of an expression in Common Expression Language syntax.
 		expression?: string
 
-		// Optional. String indicating the location of the expression for
-		// error reporting, e.g. a file name and a position in the file.
+		// Optional. String indicating the location of the expression for error
+		// reporting, e.g. a file name and a position in the file.
 		location?: string
 
-		// Optional. Title for the expression, i.e. a short string
-		// describing its purpose. This can be used e.g. in UIs which
-		// allow to enter the expression.
+		// Optional. Title for the expression, i.e. a short string describing its
+		// purpose. This can be used e.g. in UIs which allow to enter the expression.
 		title?: string
 	})
 
 	#target: close({
-		// Required. Immutable. Full Resource Name of the principal set
-		// used for principal access boundary policy bindings.
-		// Examples for each one of the following supported principal set
-		// types:
-		// * Organization
-		// '//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID'
-		// * Workforce Identity:
-		// '//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID'
-		// * Workspace Identity:
-		// '//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID'
-		// It must be parent by the policy binding's parent (the
-		// organization).
+		// Required. Immutable. Full Resource Name of the principal set used for
+		// principal access boundary policy bindings.
+		// Examples for each one of the following supported principal set types:
+		// * Organization '//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID'
+		// * Workforce Identity: '//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID'
+		// * Workspace Identity: '//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID'
+		// It must be parent by the policy binding's parent (the organization).
 		principal_set?: string
 	})
 

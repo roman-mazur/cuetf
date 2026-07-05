@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_chronicle_data_access_scope: {
+google_chronicle_data_access_scope: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_data_access_scope")
 	close({
@@ -10,81 +10,61 @@ import "list"
 		denied_data_access_labels?: matchN(1, [#denied_data_access_labels, [...#denied_data_access_labels]])
 		timeouts?: #timeouts
 
-		// Optional. Whether or not the scope allows all labels, allow_all
-		// and
-		// allowed_data_access_labels are mutually exclusive and one of
-		// them must be
-		// present. denied_data_access_labels can still be used along with
-		// allow_all.
-		// When combined with denied_data_access_labels, access will be
-		// granted to all
-		// data that doesn't have labels mentioned in
-		// denied_data_access_labels. E.g.:
-		// A customer with scope with denied labels A and B and allow_all
-		// will be able
-		// to see all data except data labeled with A and data labeled
-		// with B and data
+		// Optional. Whether or not the scope allows all labels, allow_all and
+		// allowed_data_access_labels are mutually exclusive and one of them must be
+		// present. denied_data_access_labels can still be used along with allow_all.
+		// When combined with denied_data_access_labels, access will be granted to all
+		// data that doesn't have labels mentioned in denied_data_access_labels. E.g.:
+		// A customer with scope with denied labels A and B and allow_all will be able
+		// to see all data except data labeled with A and data labeled with B and data
 		// with labels A and B.
 		allow_all?: bool
 
 		// Output only. The user who created the data access scope.
 		author?: string
 
-		// Output only. The time at which the data access scope was
-		// created.
+		// Output only. The time at which the data access scope was created.
 		create_time?: string
 
-		// Required. The user provided scope id which will become the last
-		// part of the name
+		// Required. The user provided scope id which will become the last part of the name
 		// of the scope resource.
 		// Needs to be compliant with https://google.aip.dev/122
 		data_access_scope_id!: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Optional. A description of the data access scope for a human
-		// reader.
+		// Optional. A description of the data access scope for a human reader.
 		description?: string
 
-		// Output only. The name to be used for display to customers of
-		// the data access scope.
+		// Output only. The name to be used for display to customers of the data access scope.
 		display_name?: string
 		id?:           string
 
-		// The unique identifier for the Chronicle instance, which is the
-		// same as the customer ID.
+		// The unique identifier for the Chronicle instance, which is the same as the customer ID.
 		instance!: string
 
 		// Output only. The user who last updated the data access scope.
 		last_editor?: string
 
-		// The location of the resource. This is the geographical region
-		// where the Chronicle instance resides, such as "us" or
-		// "europe-west2".
+		// The location of the resource. This is the geographical region where the
+		// Chronicle instance resides, such as "us" or "europe-west2".
 		location!: string
 
-		// The unique full name of the data access scope. This unique
-		// identifier is generated using values provided for the URL
-		// parameters.
+		// The unique full name of the data access scope. This unique identifier is
+		// generated using values provided for the URL parameters.
 		// Format:
 		// projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{data_access_scope_id}
-		name?:    string
-		project?: string
+		name?: string
 
-		// Output only. The time at which the data access scope was last
-		// updated.
+		// Output only. The time at which the data access scope was last updated.
 		update_time?: string
+		project?:     string
 	})
 
 	#allowed_data_access_labels: close({

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_artifact_registry_repository: {
+google_artifact_registry_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_artifact_registry_repository")
 	close({
@@ -14,94 +14,74 @@ import "list"
 		virtual_repository_config?: matchN(1, [#virtual_repository_config, list.MaxItems(1) & [...#virtual_repository_config]])
 		vulnerability_scanning_config?: matchN(1, [#vulnerability_scanning_config, list.MaxItems(1) & [...#vulnerability_scanning_config]])
 
-		// If true, the cleanup pipeline is prevented from deleting
-		// versions in this
+		// If true, the cleanup pipeline is prevented from deleting versions in this
 		// repository.
 		cleanup_policy_dry_run?: bool
 
 		// The time when the repository was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
 		// The user-provided description of the repository.
 		description?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
-		// The format of packages that are stored in the repository.
-		// Supported formats
-		// can be found
-		// [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+		// The format of packages that are stored in the repository. Supported formats
+		// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 		// You can only create alpha formats if you are a member of the
 		// [alpha user
 		// group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
 		format!: string
 		id?:     string
 
-		// The Cloud KMS resource name of the customer managed encryption
-		// key that’s
+		// The Cloud KMS resource name of the customer managed encryption key that’s
 		// used to encrypt the contents of the Repository. Has the form:
 		// 'projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key'.
-		// This value may not be changed after the Repository has been
-		// created.
+		// This value may not be changed after the Repository has been created.
 		kms_key_name?: string
 
 		// Labels with user-defined metadata.
-		// This field may contain up to 64 entries. Label keys and values
-		// may be no
-		// longer than 63 characters. Label keys must begin with a
-		// lowercase letter
-		// and may only contain lowercase letters, numeric characters,
-		// underscores,
+		// This field may contain up to 64 entries. Label keys and values may be no
+		// longer than 63 characters. Label keys must begin with a lowercase letter
+		// and may only contain lowercase letters, numeric characters, underscores,
 		// and dashes.
 		//
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
-		// The name of the repository's location. In addition to specific
-		// regions,
-		// special values for multi-region locations are 'asia', 'europe',
-		// and 'us'.
-		// See
-		// [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+		// The name of the repository's location. In addition to specific regions,
+		// special values for multi-region locations are 'asia', 'europe', and 'us'.
+		// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
 		// or use the
 		// [google_artifact_registry_locations](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/artifact_registry_locations)
 		// data source for possible values.
 		location?: string
 
-		// The mode configures the repository to serve artifacts from
-		// different sources. Default value: "STANDARD_REPOSITORY"
-		// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY",
-		// "REMOTE_REPOSITORY"]
+		// The mode configures the repository to serve artifacts from different sources.
+		// Default value: "STANDARD_REPOSITORY" Possible values:
+		// ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
 		mode?: string
 
 		// The name of the repository, for example:
 		// "repo1"
-		name?:    string
-		project?: string
+		name?: string
 
-		// The repository endpoint, for example:
-		// us-docker.pkg.dev/my-proj/my-repo.
+		// The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
 		registry_uri?: string
+		project?:      string
 
 		// The last part of the repository name, for example:
 		// "repo1"
@@ -125,9 +105,8 @@ import "list"
 	})
 
 	#docker_config: close({
-		// The repository which enabled this flag prevents all tags from
-		// being modified, moved or deleted. This does not prevent tags
-		// from being created.
+		// The repository which enabled this flag prevents all tags from being modified,
+		// moved or deleted. This does not prevent tags from being created.
 		immutable_tags?: bool
 	})
 
@@ -136,9 +115,9 @@ import "list"
 		// snapshot versions.
 		allow_snapshot_overwrites?: bool
 
-		// Version policy defines the versions that the registry will
-		// accept. Default value: "VERSION_POLICY_UNSPECIFIED" Possible
-		// values: ["VERSION_POLICY_UNSPECIFIED", "RELEASE", "SNAPSHOT"]
+		// Version policy defines the versions that the registry will accept. Default
+		// value: "VERSION_POLICY_UNSPECIFIED" Possible values:
+		// ["VERSION_POLICY_UNSPECIFIED", "RELEASE", "SNAPSHOT"]
 		version_policy?: string
 	})
 
@@ -155,8 +134,7 @@ import "list"
 		// The description of the remote source.
 		description?: string
 
-		// If true, the remote repository upstream and upstream
-		// credentials will
+		// If true, the remote repository upstream and upstream credentials will
 		// not be validated.
 		disable_upstream_validation?: bool
 	})
@@ -172,17 +150,15 @@ import "list"
 	})
 
 	#vulnerability_scanning_config: close({
-		// This configures whether vulnerability scanning is automatically
-		// performed for artifacts pushed to this repository. Possible
-		// values: ["INHERITED", "DISABLED"]
+		// This configures whether vulnerability scanning is automatically performed for
+		// artifacts pushed to this repository. Possible values: ["INHERITED",
+		// "DISABLED"]
 		enablement_config?: string
 
-		// This field returns whether scanning is active for this
-		// repository.
+		// This field returns whether scanning is active for this repository.
 		enablement_state?: string
 
-		// This provides an explanation for the state of scanning on this
-		// repository.
+		// This provides an explanation for the state of scanning on this repository.
 		enablement_state_reason?: string
 	})
 
@@ -199,12 +175,10 @@ import "list"
 		// Match versions by tag prefix. Applied on any prefix match.
 		tag_prefixes?: [...string]
 
-		// Match versions by tag status. Default value: "ANY" Possible
-		// values: ["TAGGED", "UNTAGGED", "ANY"]
+		// Match versions by tag status. Default value: "ANY" Possible values: ["TAGGED", "UNTAGGED", "ANY"]
 		tag_state?: string
 
-		// Match versions by version name prefix. Applied on any prefix
-		// match.
+		// Match versions by version name prefix. Applied on any prefix match.
 		version_name_prefixes?: [...string]
 	})
 
@@ -221,9 +195,8 @@ import "list"
 	})
 
 	_#defs: "/$defs/remote_repository_config/$defs/apt_repository/$defs/public_repository": close({
-		// A common public repository base for Apt, e.g.
-		// '"debian/dists/stable"' Possible values: ["DEBIAN", "UBUNTU",
-		// "DEBIAN_SNAPSHOT"]
+		// A common public repository base for Apt, e.g. '"debian/dists/stable"'
+		// Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
 		repository_base!: string
 
 		// Specific repository from the base.
@@ -243,28 +216,24 @@ import "list"
 	_#defs: "/$defs/remote_repository_config/$defs/docker_repository": close({
 		custom_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/docker_repository/$defs/custom_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/docker_repository/$defs/custom_repository"]])
 
-		// Address of the remote repository. Possible values:
-		// ["DOCKER_HUB"]
+		// Address of the remote repository. Possible values: ["DOCKER_HUB"]
 		public_repository?: string
 	})
 
 	_#defs: "/$defs/remote_repository_config/$defs/docker_repository/$defs/custom_repository": close({
-		// Specific uri to the registry, e.g.
-		// '"https://registry-1.docker.io"'
+		// Specific uri to the registry, e.g. '"https://registry-1.docker.io"'
 		uri?: string
 	})
 
 	_#defs: "/$defs/remote_repository_config/$defs/maven_repository": close({
 		custom_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/maven_repository/$defs/custom_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/maven_repository/$defs/custom_repository"]])
 
-		// Address of the remote repository. Possible values:
-		// ["MAVEN_CENTRAL"]
+		// Address of the remote repository. Possible values: ["MAVEN_CENTRAL"]
 		public_repository?: string
 	})
 
 	_#defs: "/$defs/remote_repository_config/$defs/maven_repository/$defs/custom_repository": close({
-		// Specific uri to the registry, e.g.
-		// '"https://repo.maven.apache.org/maven2"'
+		// Specific uri to the registry, e.g. '"https://repo.maven.apache.org/maven2"'
 		uri?: string
 	})
 
@@ -276,8 +245,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/remote_repository_config/$defs/npm_repository/$defs/custom_repository": close({
-		// Specific uri to the registry, e.g.
-		// '"https://registry.npmjs.org"'
+		// Specific uri to the registry, e.g. '"https://registry.npmjs.org"'
 		uri?: string
 	})
 
@@ -298,8 +266,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/remote_repository_config/$defs/upstream_credentials/$defs/username_password_credentials": close({
-		// The Secret Manager key version that holds the password to
-		// access the
+		// The Secret Manager key version that holds the password to access the
 		// remote repository. Must be in the format of
 		// 'projects/{project}/secrets/{secret}/versions/{version}'.
 		password_secret_version?: string
@@ -313,13 +280,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/remote_repository_config/$defs/yum_repository/$defs/public_repository": close({
-		// A common public repository base for Yum. Possible values:
-		// ["CENTOS", "CENTOS_DEBUG", "CENTOS_VAULT", "CENTOS_STREAM",
-		// "ROCKY", "EPEL"]
+		// A common public repository base for Yum. Possible values: ["CENTOS",
+		// "CENTOS_DEBUG", "CENTOS_VAULT", "CENTOS_STREAM", "ROCKY", "EPEL"]
 		repository_base!: string
 
-		// Specific repository from the base, e.g.
-		// '"pub/rocky/9/BaseOS/x86_64/os"'
+		// Specific repository from the base, e.g. '"pub/rocky/9/BaseOS/x86_64/os"'
 		repository_path!: string
 	})
 
@@ -327,8 +292,7 @@ import "list"
 		// The user-provided ID of the upstream policy.
 		id?: string
 
-		// Entries with a greater priority value take precedence in the
-		// pull order.
+		// Entries with a greater priority value take precedence in the pull order.
 		priority?: number
 
 		// A reference to the repository resource, for example:

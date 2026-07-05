@@ -1,22 +1,17 @@
 package res
 
-#google_bigquery_bi_reservation: {
+google_bigquery_bi_reservation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_bi_reservation")
 	close({
 		preferred_tables?: matchN(1, [#preferred_tables, [...#preferred_tables]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 		id?:              string
@@ -24,20 +19,19 @@ package res
 		// LOCATION_DESCRIPTION
 		location!: string
 
-		// The resource name of the singleton BI reservation. Reservation
-		// names have the form
-		// 'projects/{projectId}/locations/{locationId}/biReservation'.
-		name?:    string
-		project?: string
+		// The resource name of the singleton BI reservation. Reservation names have the
+		// form 'projects/{projectId}/locations/{locationId}/biReservation'.
+		name?: string
 
 		// Size of a reservation, in bytes.
-		size?: number
+		size?:    number
+		project?: string
 
 		// The last update timestamp of a reservation.
 		//
-		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-		// resolution and up to nine fractional digits. Examples:
-		// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+		// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+		// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+		// "2014-10-02T15:01:23.045123456Z".
 		update_time?: string
 	})
 

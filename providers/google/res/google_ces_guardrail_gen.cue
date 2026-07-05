@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_ces_guardrail: {
+google_ces_guardrail: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_guardrail")
 	close({
@@ -14,24 +14,18 @@ import "list"
 		model_safety?: matchN(1, [#model_safety, list.MaxItems(1) & [...#model_safety]])
 		timeouts?: #timeouts
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		app!: string
 
 		// Timestamp when the guardrail was created.
 		create_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
@@ -44,34 +38,29 @@ import "list"
 		// Whether the guardrail is enabled.
 		enabled?: bool
 
-		// Etag used to ensure the object hasn't changed during a
-		// read-modify-write
-		// operation. If the etag is empty, the update will overwrite any
-		// concurrent
+		// Etag used to ensure the object hasn't changed during a read-modify-write
+		// operation. If the etag is empty, the update will overwrite any concurrent
 		// changes.
 		etag?: string
 
-		// The ID to use for the guardrail, which will become the final
-		// component of
-		// the guardrail's resource name. If not provided, a unique ID
-		// will be
+		// The ID to use for the guardrail, which will become the final component of
+		// the guardrail's resource name. If not provided, a unique ID will be
 		// automatically assigned for the guardrail.
 		guardrail_id!: string
 		id?:           string
 
-		// Resource ID segment making up resource 'name'. It identifies
-		// the resource within its parent collection as described in
-		// https://google.aip.dev/122.
+		// Resource ID segment making up resource 'name'. It identifies the resource
+		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
 		// Identifier. The unique identifier of the guardrail.
 		// Format:
 		// 'projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}'
-		name?:    string
-		project?: string
+		name?: string
 
 		// Timestamp when the guardrail was last updated.
 		update_time?: string
+		project?:     string
 	})
 
 	#action: close({
@@ -88,8 +77,7 @@ import "list"
 	})
 
 	#content_filter: close({
-		// List of banned phrases. Applies to both user inputs and agent
-		// responses.
+		// List of banned phrases. Applies to both user inputs and agent responses.
 		banned_contents?: [...string]
 
 		// List of banned phrases. Applies only to agent responses.
@@ -112,30 +100,23 @@ import "list"
 	#llm_policy: close({
 		model_settings?: matchN(1, [_#defs."/$defs/llm_policy/$defs/model_settings", list.MaxItems(1) & [..._#defs."/$defs/llm_policy/$defs/model_settings"]])
 
-		// By default, the LLM policy check is bypassed for short
-		// utterances.
-		// Enabling this setting applies the policy check to all
-		// utterances,
+		// By default, the LLM policy check is bypassed for short utterances.
+		// Enabling this setting applies the policy check to all utterances,
 		// including those that would normally be skipped.
 		allow_short_utterance?: bool
 
-		// If an error occurs during the policy check, fail open and do
-		// not trigger
+		// If an error occurs during the policy check, fail open and do not trigger
 		// the guardrail.
 		fail_open?: bool
 
-		// When checking this policy, consider the last 'n' messages in
-		// the
+		// When checking this policy, consider the last 'n' messages in the
 		// conversation.
 		// When not set a default value of 10 will be used.
 		max_conversation_messages?: number
 
-		// Defines when to apply the policy check during the conversation.
-		// If set to
-		// 'POLICY_SCOPE_UNSPECIFIED', the policy will be applied to the
-		// user input.
-		// When applying the policy to the agent response, additional
-		// latency will
+		// Defines when to apply the policy check during the conversation. If set to
+		// 'POLICY_SCOPE_UNSPECIFIED', the policy will be applied to the user input.
+		// When applying the policy to the agent response, additional latency will
 		// be introduced before the agent can respond.
 		// Possible values:
 		// USER_QUERY
@@ -152,12 +133,10 @@ import "list"
 		custom_policy?: matchN(1, [_#defs."/$defs/llm_prompt_security/$defs/custom_policy", list.MaxItems(1) & [..._#defs."/$defs/llm_prompt_security/$defs/custom_policy"]])
 		default_settings?: matchN(1, [_#defs."/$defs/llm_prompt_security/$defs/default_settings", list.MaxItems(1) & [..._#defs."/$defs/llm_prompt_security/$defs/default_settings"]])
 
-		// Determines the behavior when the guardrail encounters an LLM
-		// error.
+		// Determines the behavior when the guardrail encounters an LLM error.
 		// - If true: the guardrail is bypassed.
 		// - If false (default): the guardrail triggers/blocks.
-		// Note: If a custom policy is provided, this field is ignored in
-		// favor of
+		// Note: If a custom policy is provided, this field is ignored in favor of
 		// the policy's 'failOpen' configuration.
 		fail_open?: bool
 	})
@@ -182,8 +161,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/action/$defs/respond_immediately/$defs/responses": close({
-		// Whether the response is disabled. Disabled responses are not
-		// used by the
+		// Whether the response is disabled. Disabled responses are not used by the
 		// agent.
 		disabled?: bool
 
@@ -192,8 +170,7 @@ import "list"
 	})
 
 	_#defs: "/$defs/action/$defs/transfer_agent": close({
-		// The name of the agent to transfer the conversation to. The
-		// agent must be
+		// The name of the agent to transfer the conversation to. The agent must be
 		// in the same app as the current agent.
 		// Format:
 		// 'projects/{project}/locations/{location}/apps/{app}/agents/{agent}'
@@ -204,8 +181,7 @@ import "list"
 		// Human-readable description of the callback.
 		description?: string
 
-		// Whether the callback is disabled. Disabled callbacks are
-		// ignored by the
+		// Whether the callback is disabled. Disabled callbacks are ignored by the
 		// agent.
 		disabled?: bool
 
@@ -217,8 +193,7 @@ import "list"
 		// Human-readable description of the callback.
 		description?: string
 
-		// Whether the callback is disabled. Disabled callbacks are
-		// ignored by the
+		// Whether the callback is disabled. Disabled callbacks are ignored by the
 		// agent.
 		disabled?: bool
 
@@ -230,8 +205,7 @@ import "list"
 		// Human-readable description of the callback.
 		description?: string
 
-		// Whether the callback is disabled. Disabled callbacks are
-		// ignored by the
+		// Whether the callback is disabled. Disabled callbacks are ignored by the
 		// agent.
 		disabled?: bool
 
@@ -243,8 +217,7 @@ import "list"
 		// Human-readable description of the callback.
 		description?: string
 
-		// Whether the callback is disabled. Disabled callbacks are
-		// ignored by the
+		// Whether the callback is disabled. Disabled callbacks are ignored by the
 		// agent.
 		disabled?: bool
 
@@ -254,16 +227,12 @@ import "list"
 
 	_#defs: "/$defs/llm_policy/$defs/model_settings": close({
 		// The LLM model that the agent should use.
-		// If not set, the agent will inherit the model from its parent
-		// agent.
+		// If not set, the agent will inherit the model from its parent agent.
 		model?: string
 
-		// If set, this temperature will be used for the LLM model.
-		// Temperature
-		// controls the randomness of the model's responses. Lower
-		// temperatures
-		// produce responses that are more predictable. Higher
-		// temperatures produce
+		// If set, this temperature will be used for the LLM model. Temperature
+		// controls the randomness of the model's responses. Lower temperatures
+		// produce responses that are more predictable. Higher temperatures produce
 		// responses that are more creative.
 		temperature?: number
 	})
@@ -271,30 +240,23 @@ import "list"
 	_#defs: "/$defs/llm_prompt_security/$defs/custom_policy": close({
 		model_settings?: matchN(1, [_#defs."/$defs/llm_prompt_security/$defs/custom_policy/$defs/model_settings", list.MaxItems(1) & [..._#defs."/$defs/llm_prompt_security/$defs/custom_policy/$defs/model_settings"]])
 
-		// By default, the LLM policy check is bypassed for short
-		// utterances.
-		// Enabling this setting applies the policy check to all
-		// utterances,
+		// By default, the LLM policy check is bypassed for short utterances.
+		// Enabling this setting applies the policy check to all utterances,
 		// including those that would normally be skipped.
 		allow_short_utterance?: bool
 
-		// If an error occurs during the policy check, fail open and do
-		// not trigger
+		// If an error occurs during the policy check, fail open and do not trigger
 		// the guardrail.
 		fail_open?: bool
 
-		// When checking this policy, consider the last 'n' messages in
-		// the
+		// When checking this policy, consider the last 'n' messages in the
 		// conversation.
 		// When not set a default value of 10 will be used.
 		max_conversation_messages?: number
 
-		// Defines when to apply the policy check during the conversation.
-		// If set to
-		// 'POLICY_SCOPE_UNSPECIFIED', the policy will be applied to the
-		// user input.
-		// When applying the policy to the agent response, additional
-		// latency will
+		// Defines when to apply the policy check during the conversation. If set to
+		// 'POLICY_SCOPE_UNSPECIFIED', the policy will be applied to the user input.
+		// When applying the policy to the agent response, additional latency will
 		// be introduced before the agent can respond.
 		// Possible values:
 		// USER_QUERY
@@ -308,16 +270,12 @@ import "list"
 
 	_#defs: "/$defs/llm_prompt_security/$defs/custom_policy/$defs/model_settings": close({
 		// The LLM model that the agent should use.
-		// If not set, the agent will inherit the model from its parent
-		// agent.
+		// If not set, the agent will inherit the model from its parent agent.
 		model?: string
 
-		// If set, this temperature will be used for the LLM model.
-		// Temperature
-		// controls the randomness of the model's responses. Lower
-		// temperatures
-		// produce responses that are more predictable. Higher
-		// temperatures produce
+		// If set, this temperature will be used for the LLM model. Temperature
+		// controls the randomness of the model's responses. Lower temperatures
+		// produce responses that are more predictable. Higher temperatures produce
 		// responses that are more creative.
 		temperature?: number
 	})
@@ -336,9 +294,8 @@ import "list"
 		// HARM_CATEGORY_DANGEROUS_CONTENT
 		// HARM_CATEGORY_HARASSMENT
 		// HARM_CATEGORY_SEXUALLY_EXPLICIT Possible values:
-		// ["HARM_CATEGORY_HATE_SPEECH",
-		// "HARM_CATEGORY_DANGEROUS_CONTENT", "HARM_CATEGORY_HARASSMENT",
-		// "HARM_CATEGORY_SEXUALLY_EXPLICIT"]
+		// ["HARM_CATEGORY_HATE_SPEECH", "HARM_CATEGORY_DANGEROUS_CONTENT",
+		// "HARM_CATEGORY_HARASSMENT", "HARM_CATEGORY_SEXUALLY_EXPLICIT"]
 		category!: string
 
 		// The harm block threshold.
@@ -347,9 +304,8 @@ import "list"
 		// BLOCK_MEDIUM_AND_ABOVE
 		// BLOCK_ONLY_HIGH
 		// BLOCK_NONE
-		// OFF Possible values: ["BLOCK_LOW_AND_ABOVE",
-		// "BLOCK_MEDIUM_AND_ABOVE", "BLOCK_ONLY_HIGH", "BLOCK_NONE",
-		// "OFF"]
+		// OFF Possible values: ["BLOCK_LOW_AND_ABOVE", "BLOCK_MEDIUM_AND_ABOVE",
+		// "BLOCK_ONLY_HIGH", "BLOCK_NONE", "OFF"]
 		threshold!: string
 	})
 }

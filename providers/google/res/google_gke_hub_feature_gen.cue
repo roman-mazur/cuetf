@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#google_gke_hub_feature: {
+google_gke_hub_feature: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_gke_hub_feature")
 	close({
@@ -16,45 +16,38 @@ import "list"
 		// Output only. When the Feature resource was deleted.
 		delete_time?: string
 
-		// Whether Terraform will be prevented from destroying the
-		// instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete
-		// the instance,
-		// the command will fail if this field is set to "PREVENT" in
-		// Terraform state.
-		// When set to "ABANDON", the command will remove the resource
-		// from Terraform
-		// management without updating or deleting the resource in the
-		// API.
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// All of labels (key/value pairs) present on the resource in GCP,
-		// including the labels configured through Terraform, other
-		// clients and services.
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 		id?: string
 
 		// GCP labels for this Feature.
 		//
-		// **Note**: This field is non-authoritative, and will only manage
-		// the labels present in your configuration.
-		// Please refer to the field 'effective_labels' for all of the
-		// labels present on the resource.
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
 		// The location for the resource
 		location!: string
 
 		// The full, unique name of this Feature resource
-		name?:    string
-		project?: string
+		name?: string
 
 		// State of the Feature resource itself.
 		resource_state?: [...close({
 			has_resources?: bool
 			state?:         string
 		})]
+		project?: string
 
 		// Output only. The Hub-wide Feature state
 		state?: [...close({
@@ -96,10 +89,9 @@ import "list"
 	_#defs: "/$defs/fleet_default_member_config/$defs/configmanagement": close({
 		config_sync?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync", list.MaxItems(1) & [..._#defs."/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync"]])
 
-		// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync
-		// auto-upgrades, and set this field to MANAGEMENT_MANUAL or
-		// MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
-		// Possible values: ["MANAGEMENT_UNSPECIFIED",
+		// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+		// and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable
+		// Config Sync auto-upgrades. Possible values: ["MANAGEMENT_UNSPECIFIED",
 		// "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
 		management?: string
 
@@ -111,43 +103,37 @@ import "list"
 		git?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/git", list.MaxItems(1) & [..._#defs."/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/git"]])
 		oci?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/oci", list.MaxItems(1) & [..._#defs."/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/oci"]])
 
-		// Enables the installation of ConfigSync. If set to true,
-		// ConfigSync resources will be created and the other ConfigSync
-		// fields will be applied if exist. If set to false, all other
-		// ConfigSync fields will be ignored, ConfigSync resources will
-		// be deleted. If omitted, ConfigSync resources will be managed
+		// Enables the installation of ConfigSync. If set to true, ConfigSync resources
+		// will be created and the other ConfigSync fields will be applied if exist. If
+		// set to false, all other ConfigSync fields will be ignored, ConfigSync
+		// resources will be deleted. If omitted, ConfigSync resources will be managed
 		// depends on the presence of the git or oci field.
 		enabled?: bool
 
-		// The Email of the Google Cloud Service Account (GSA) used for
-		// exporting Config Sync metrics to Cloud Monitoring. The GSA
-		// should have the Monitoring Metric
+		// The Email of the Google Cloud Service Account (GSA) used for exporting Config
+		// Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric
 		// Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes
-		// ServiceAccount 'default' in the namespace
-		// 'config-management-monitoring' should be bound to the GSA.
+		// ServiceAccount 'default' in the namespace 'config-management-monitoring'
+		// should be bound to the GSA.
 		metrics_gcp_service_account_email?: string
 
-		// Set to true to enable the Config Sync admission webhook to
-		// prevent drifts. If set to 'false', disables the Config Sync
-		// admission webhook and does not prevent drifts.
+		// Set to true to enable the Config Sync admission webhook to prevent drifts. If
+		// set to 'false', disables the Config Sync admission webhook and does not
+		// prevent drifts.
 		prevent_drift?: bool
 
-		// Specifies whether the Config Sync Repo is in hierarchical or
-		// unstructured mode
+		// Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
 		source_format?: string
 	})
 
 	_#defs: "/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/git": close({
-		// The Google Cloud Service Account Email used for auth when
-		// secretType is gcpServiceAccount
+		// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
 		gcp_service_account_email?: string
 
-		// URL for the HTTPS Proxy to be used when communicating with the
-		// Git repo
+		// URL for the HTTPS Proxy to be used when communicating with the Git repo
 		https_proxy?: string
 
-		// The path within the Git repository that represents the top
-		// level of the repo to sync
+		// The path within the Git repository that represents the top level of the repo to sync
 		policy_dir?: string
 
 		// Type of secret configured for access to the Git repo
@@ -167,12 +153,11 @@ import "list"
 	})
 
 	_#defs: "/$defs/fleet_default_member_config/$defs/configmanagement/$defs/config_sync/$defs/oci": close({
-		// The Google Cloud Service Account Email used for auth when
-		// secretType is gcpServiceAccount
+		// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
 		gcp_service_account_email?: string
 
-		// The absolute path of the directory that contains the local
-		// resources. Default: the root directory of the image
+		// The absolute path of the directory that contains the local resources.
+		// Default: the root directory of the image
 		policy_dir?: string
 
 		// Type of secret configured for access to the Git repo
@@ -187,8 +172,7 @@ import "list"
 
 	_#defs: "/$defs/fleet_default_member_config/$defs/mesh": close({
 		// Whether to automatically manage Service Mesh Possible values:
-		// ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC",
-		// "MANAGEMENT_MANUAL"]
+		// ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
 		management!: string
 	})
 
@@ -204,35 +188,31 @@ import "list"
 		monitoring?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/monitoring", list.MaxItems(1) & [..._#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/monitoring"]])
 		policy_content?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/policy_content", list.MaxItems(1) & [..._#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/policy_content"]])
 
-		// Interval for Policy Controller Audit scans (in seconds). When
-		// set to 0, this disables audit functionality altogether.
+		// Interval for Policy Controller Audit scans (in seconds). When set to 0, this
+		// disables audit functionality altogether.
 		audit_interval_seconds?: number
 
-		// The maximum number of audit violations to be stored in a
-		// constraint. If not set, the internal default of 20 will be
-		// used.
+		// The maximum number of audit violations to be stored in a constraint. If not
+		// set, the internal default of 20 will be used.
 		constraint_violation_limit?: number
 
-		// The set of namespaces that are excluded from Policy Controller
-		// checks. Namespaces do not need to currently exist on the
-		// cluster.
+		// The set of namespaces that are excluded from Policy Controller checks.
+		// Namespaces do not need to currently exist on the cluster.
 		exemptable_namespaces?: [...string]
 
-		// Configures the mode of the Policy Controller installation
-		// Possible values: ["INSTALL_SPEC_UNSPECIFIED",
-		// "INSTALL_SPEC_NOT_INSTALLED", "INSTALL_SPEC_ENABLED",
-		// "INSTALL_SPEC_SUSPENDED", "INSTALL_SPEC_DETACHED"]
+		// Configures the mode of the Policy Controller installation Possible values:
+		// ["INSTALL_SPEC_UNSPECIFIED", "INSTALL_SPEC_NOT_INSTALLED",
+		// "INSTALL_SPEC_ENABLED", "INSTALL_SPEC_SUSPENDED", "INSTALL_SPEC_DETACHED"]
 		install_spec!: string
 
 		// Logs all denies and dry run failures.
 		log_denies_enabled?: bool
 
-		// Enables the ability to mutate resources using Policy
-		// Controller.
+		// Enables the ability to mutate resources using Policy Controller.
 		mutation_enabled?: bool
 
-		// Enables the ability to use Constraint Templates that reference
-		// to objects other than the object currently being evaluated.
+		// Enables the ability to use Constraint Templates that reference to objects
+		// other than the object currently being evaluated.
 		referential_rules_enabled?: bool
 	})
 
@@ -241,8 +221,8 @@ import "list"
 		pod_toleration?: matchN(1, [_#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/pod_toleration", [..._#defs."/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/deployment_configs/$defs/pod_toleration"]])
 		component!: string
 
-		// Pod affinity configuration. Possible values:
-		// ["AFFINITY_UNSPECIFIED", "NO_AFFINITY", "ANTI_AFFINITY"]
+		// Pod affinity configuration. Possible values: ["AFFINITY_UNSPECIFIED",
+		// "NO_AFFINITY", "ANTI_AFFINITY"]
 		pod_affinity?: string
 
 		// Pod replica count.
@@ -285,10 +265,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/monitoring": close({
-		// Specifies the list of backends Policy Controller will export
-		// to. An empty list would effectively disable metrics export.
-		// Possible values: ["MONITORING_BACKEND_UNSPECIFIED",
-		// "PROMETHEUS", "CLOUD_MONITORING"]
+		// Specifies the list of backends Policy Controller will export to. An empty
+		// list would effectively disable metrics export. Possible values:
+		// ["MONITORING_BACKEND_UNSPECIFIED", "PROMETHEUS", "CLOUD_MONITORING"]
 		backends?: [...string]
 	})
 
@@ -305,9 +284,9 @@ import "list"
 	})
 
 	_#defs: "/$defs/fleet_default_member_config/$defs/policycontroller/$defs/policy_controller_hub_config/$defs/policy_content/$defs/template_library": close({
-		// Configures the manner in which the template library is
-		// installed on the cluster. Possible values:
-		// ["INSTALLATION_UNSPECIFIED", "NOT_INSTALLED", "ALL"]
+		// Configures the manner in which the template library is installed on the
+		// cluster. Possible values: ["INSTALLATION_UNSPECIFIED", "NOT_INSTALLED",
+		// "ALL"]
 		installation?: string
 	})
 
@@ -315,9 +294,9 @@ import "list"
 		gke_upgrade_overrides?: matchN(1, [_#defs."/$defs/spec/$defs/clusterupgrade/$defs/gke_upgrade_overrides", [..._#defs."/$defs/spec/$defs/clusterupgrade/$defs/gke_upgrade_overrides"]])
 		post_conditions?: matchN(1, [_#defs."/$defs/spec/$defs/clusterupgrade/$defs/post_conditions", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/clusterupgrade/$defs/post_conditions"]])
 
-		// Specified if other fleet should be considered as a source of
-		// upgrades. Currently, at most one upstream fleet is allowed.
-		// The fleet name should be either fleet project number or id.
+		// Specified if other fleet should be considered as a source of upgrades.
+		// Currently, at most one upstream fleet is allowed. The fleet name should be
+		// either fleet project number or id.
 		upstream_fleets!: [...string]
 	})
 
@@ -327,24 +306,24 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/clusterupgrade/$defs/gke_upgrade_overrides/$defs/post_conditions": close({
-		// Amount of time to "soak" after a rollout has been finished
-		// before marking it COMPLETE. Cannot exceed 30 days.
+		// Amount of time to "soak" after a rollout has been finished before marking it
+		// COMPLETE. Cannot exceed 30 days.
 		soaking!: string
 	})
 
 	_#defs: "/$defs/spec/$defs/clusterupgrade/$defs/gke_upgrade_overrides/$defs/upgrade": close({
-		// Name of the upgrade, e.g., "k8s_control_plane". It should be a
-		// valid upgrade name. It must not exceet 99 characters.
+		// Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade
+		// name. It must not exceet 99 characters.
 		name!: string
 
-		// Version of the upgrade, e.g., "1.22.1-gke.100". It should be a
-		// valid version. It must not exceet 99 characters.
+		// Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version.
+		// It must not exceet 99 characters.
 		version!: string
 	})
 
 	_#defs: "/$defs/spec/$defs/clusterupgrade/$defs/post_conditions": close({
-		// Amount of time to "soak" after a rollout has been finished
-		// before marking it COMPLETE. Cannot exceed 30 days.
+		// Amount of time to "soak" after a rollout has been finished before marking it
+		// COMPLETE. Cannot exceed 30 days.
 		soaking!: string
 	})
 
@@ -370,25 +349,22 @@ import "list"
 	})
 
 	_#defs: "/$defs/spec/$defs/multiclusteringress": close({
-		// Fully-qualified Membership name which hosts the
-		// MultiClusterIngress CRD. Example:
-		// 'projects/foo-proj/locations/global/memberships/bar'
+		// Fully-qualified Membership name which hosts the MultiClusterIngress CRD.
+		// Example: 'projects/foo-proj/locations/global/memberships/bar'
 		config_membership!: string
 	})
 
 	_#defs: "/$defs/spec/$defs/rbacrolebindingactuation": close({
-		// The list of allowed custom roles (ClusterRoles). If a custom
-		// role is not part of this list, it cannot be used in a fleet
-		// scope RBACRoleBinding. If a custom role in this list is in
-		// use, it cannot be removed from the list until the scope
-		// RBACRolebindings using it are deleted.
+		// The list of allowed custom roles (ClusterRoles). If a custom role is not part
+		// of this list, it cannot be used in a fleet scope RBACRoleBinding. If a
+		// custom role in this list is in use, it cannot be removed from the list until
+		// the scope RBACRolebindings using it are deleted.
 		allowed_custom_roles?: [...string]
 	})
 
 	_#defs: "/$defs/spec/$defs/workloadidentity": close({
-		// Pool to be used for Workload Identity. This pool in
-		// trust-domain mode is used with Fleet Tenancy, so that sameness
-		// can be enforced. ex:
+		// Pool to be used for Workload Identity. This pool in trust-domain mode is used
+		// with Fleet Tenancy, so that sameness can be enforced. ex:
 		// projects/example/locations/global/workloadidentitypools/custompool
 		scope_tenancy_pool!: string
 	})
