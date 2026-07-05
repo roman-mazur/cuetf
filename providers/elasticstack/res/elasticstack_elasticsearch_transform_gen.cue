@@ -1,6 +1,6 @@
 package res
 
-#elasticstack_elasticsearch_transform: {
+elasticstack_elasticsearch_transform: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_transform")
 	close({
@@ -10,49 +10,74 @@ package res
 		source?:           #source
 		sync?:             #sync
 
-		// Specifies whether the transform checkpoint ranges should be
-		// optimized for performance.
+		// Specifies whether the transform checkpoint ranges should be optimized for performance.
 		align_checkpoints?: bool
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			create?: string
 
-		// Defines if dates in the output should be written as ISO
-		// formatted string (default) or as millis since epoch.
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+			// applicable if changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Read operations occur during any refresh or
+			// planning operation when refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			update?: string
+		})
+
+		// Defines if dates in the output should be written as ISO formatted string
+		// (default) or as millis since epoch.
 		dates_as_epoch_millis?: bool
 
-		// Specifies whether the transform should deduce the destination
-		// index mappings from the transform config.
+		// Specifies whether the transform should deduce the destination index mappings
+		// from the transform config.
 		deduce_mappings?: bool
 
-		// When true, deferrable validations are not run upon creation,
-		// but rather when the transform is started. This behavior may be
-		// desired if the source index does not exist until after the
-		// transform is created. Default is `false`
+		// When true, deferrable validations are not run upon creation, but rather when
+		// the transform is started. This behavior may be desired if the source index
+		// does not exist until after the transform is created. Default is `false`
 		defer_validation?: bool
 
 		// Free text description of the transform.
 		description?: string
 
-		// Specifies a limit on the number of input documents per second.
-		// Default (unset) value disables throttling.
+		// Specifies a limit on the number of input documents per second. Default
+		// (unset) value disables throttling.
 		docs_per_second?: number
 
-		// Controls whether the transform should be started or stopped.
-		// Default is `false` (stopped).
+		// Controls whether the transform should be started or stopped. Default is `false` (stopped).
 		enabled?: bool
 
-		// The interval between checks for changes in the source indices
-		// when the transform is running continuously. Defaults to `1m`.
+		// The interval between checks for changes in the source indices when the
+		// transform is running continuously. Defaults to `1m`.
 		frequency?: string
 
 		// Internal identifier of the resource
 		id?: string
 
-		// The latest method transforms the data by finding the latest
-		// document for each unique key. JSON definition expected. Either
-		// 'pivot' or 'latest' must be present.
+		// The latest method transforms the data by finding the latest document for each
+		// unique key. JSON definition expected. Either 'pivot' or 'latest' must be
+		// present.
 		latest?: string
 
-		// Defines the initial page size to use for the composite
-		// aggregation for each checkpoint. Default is 500.
+		// Defines the initial page size to use for the composite aggregation for each
+		// checkpoint. Default is 500.
 		max_page_search_size?: number
 
 		// Defines optional transform metadata.
@@ -61,24 +86,22 @@ package res
 		// Name of the transform you wish to create.
 		name!: string
 
-		// Defines the number of retries on a recoverable failure before
-		// the transform task is marked as failed. The default value is
-		// the cluster-level setting num_transform_failure_retries.
+		// Defines the number of retries on a recoverable failure before the transform
+		// task is marked as failed. The default value is the cluster-level setting
+		// num_transform_failure_retries.
 		num_failure_retries?: number
 
-		// The pivot method transforms the data by aggregating and
-		// grouping it. JSON definition expected. Either 'pivot' or
-		// 'latest' must be present.
+		// The pivot method transforms the data by aggregating and grouping it. JSON
+		// definition expected. Either 'pivot' or 'latest' must be present.
 		pivot?: string
 
-		// Period to wait for a response from Elasticsearch when
-		// performing any management operation. If no response is
-		// received before the timeout expires, the operation fails and
-		// returns an error. Defaults to `30s`.
+		// Period to wait for a response from Elasticsearch when performing any
+		// management operation. If no response is received before the timeout expires,
+		// the operation fails and returns an error. Defaults to `30s`.
 		timeout?: string
 
-		// In unattended mode, the transform retries indefinitely in case
-		// of an error which means the transform never fails.
+		// In unattended mode, the transform retries indefinitely in case of an error
+		// which means the transform never fails.
 		unattended?: bool
 	})
 
@@ -105,22 +128,25 @@ package res
 		// Path to a custom Certificate Authority certificate
 		ca_file?: string
 
+		// SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators)
+		// of the server TLS certificate used to pin the connection instead of a full
+		// CA chain
+		ca_fingerprint?: string
+
 		// PEM encoded certificate for client auth
 		cert_data?: string
 
-		// Path to a file containing the PEM encoded certificate for
-		// client auth
+		// Path to a file containing the PEM encoded certificate for client auth
 		cert_file?: string
 
-		// A list of endpoints where the terraform provider will point to,
-		// this must include the http(s) schema and port number.
+		// A list of endpoints where the terraform provider will point to, this must
+		// include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// ES Client Authentication field to be used with the JWT token
 		es_client_authentication?: string
 
-		// A list of headers to be sent with each request to
-		// Elasticsearch.
+		// A list of headers to be sent with each request to Elasticsearch.
 		headers?: [string]: string
 
 		// Disable TLS certificate validation
@@ -129,8 +155,7 @@ package res
 		// PEM encoded private key for client auth
 		key_data?: string
 
-		// Path to a file containing the PEM encoded private key for
-		// client auth
+		// Path to a file containing the PEM encoded private key for client auth
 		key_file?: string
 
 		// Password to use for API authentication to Elasticsearch.
@@ -148,12 +173,10 @@ package res
 		// The source indices for the transform.
 		indices!: [...string]
 
-		// A query clause that retrieves a subset of data from the source
-		// index.
+		// A query clause that retrieves a subset of data from the source index.
 		query?: string
 
-		// Definitions of search-time runtime fields that can be used by
-		// the transform.
+		// Definitions of search-time runtime fields that can be used by the transform.
 		runtime_mappings?: string
 	})
 
@@ -165,28 +188,23 @@ package res
 		// The name of the alias.
 		alias!: string
 
-		// Whether the destination index should be the only index in this
-		// alias. Defaults to false.
+		// Whether the destination index should be the only index in this alias. Defaults to false.
 		move_on_creation?: bool
 	})
 
 	_#defs: "/$defs/retention_policy/$defs/time": close({
-		// The date field that is used to calculate the age of the
-		// document.
+		// The date field that is used to calculate the age of the document.
 		field?: string
 
-		// Specifies the maximum age of a document in the destination
-		// index.
+		// Specifies the maximum age of a document in the destination index.
 		max_age?: string
 	})
 
 	_#defs: "/$defs/sync/$defs/time": close({
-		// The time delay between the current time and the latest input
-		// data time. The default value is 60s.
+		// The time delay between the current time and the latest input data time. The default value is 60s.
 		delay?: string
 
-		// The date field that is used to identify new documents in the
-		// source.
+		// The date field that is used to identify new documents in the source.
 		field?: string
 	})
 }

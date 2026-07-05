@@ -1,16 +1,15 @@
 package res
 
-#elasticstack_elasticsearch_security_api_key: {
+elasticstack_elasticsearch_security_api_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_security_api_key")
 	close({
 		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
-		// Access configuration for cross-cluster API keys. Only
-		// applicable when type is 'cross_cluster'.
+		// Access configuration for cross-cluster API keys. Only applicable when type is 'cross_cluster'.
 		access?: close({
-			// A list of replication configurations for which the
-			// cross-cluster API key will have replication privileges.
+			// A list of replication configurations for which the cross-cluster API key will
+			// have replication privileges.
 			replication?: matchN(1, [close({
 				// A list of index patterns for replication.
 				names!: [...string]
@@ -19,8 +18,7 @@ package res
 				names!: [...string]
 			})]])
 
-			// A list of search configurations for which the cross-cluster API
-			// key will have search privileges.
+			// A list of search configurations for which the cross-cluster API key will have search privileges.
 			search?: matchN(1, [close({
 				// Whether to allow access to restricted indices.
 				allow_restricted_indices?: bool
@@ -51,16 +49,10 @@ package res
 		// Generated API Key.
 		api_key?: string
 
-		// API key credentials which is the Base64-encoding of the UTF-8
-		// representation of the id and api_key joined by a colon (:).
-		encoded?: string
-
-		// Expiration time for the API key. By default, API keys never
-		// expire.
+		// Expiration time for the API key. By default, API keys never expire.
 		expiration?: string
 
-		// Expiration time in milliseconds for the API key. By default,
-		// API keys never expire.
+		// Expiration time in milliseconds for the API key. By default, API keys never expire.
 		expiration_timestamp?: number
 
 		// Internal identifier of the resource.
@@ -77,10 +69,41 @@ package res
 
 		// Role descriptors for this API key.
 		role_descriptors?: string
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			create?: string
 
-		// The type of API key. Valid values are 'rest' (default) and
-		// 'cross_cluster'. Cross-cluster API keys are used for
-		// cross-cluster search and replication.
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+			// applicable if changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Read operations occur during any refresh or
+			// planning operation when refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			update?: string
+		})
+
+		// API key credentials which is the Base64-encoding of the UTF-8 representation
+		// of the id and api_key joined by a colon (:).
+		encoded?: string
+
+		// The type of API key. Valid values are 'rest' (default) and 'cross_cluster'.
+		// Cross-cluster API keys are used for cross-cluster search and replication.
 		type?: string
 	})
 
@@ -97,22 +120,25 @@ package res
 		// Path to a custom Certificate Authority certificate
 		ca_file?: string
 
+		// SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators)
+		// of the server TLS certificate used to pin the connection instead of a full
+		// CA chain
+		ca_fingerprint?: string
+
 		// PEM encoded certificate for client auth
 		cert_data?: string
 
-		// Path to a file containing the PEM encoded certificate for
-		// client auth
+		// Path to a file containing the PEM encoded certificate for client auth
 		cert_file?: string
 
-		// A list of endpoints where the terraform provider will point to,
-		// this must include the http(s) schema and port number.
+		// A list of endpoints where the terraform provider will point to, this must
+		// include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// ES Client Authentication field to be used with the JWT token
 		es_client_authentication?: string
 
-		// A list of headers to be sent with each request to
-		// Elasticsearch.
+		// A list of headers to be sent with each request to Elasticsearch.
 		headers?: [string]: string
 
 		// Disable TLS certificate validation
@@ -121,8 +147,7 @@ package res
 		// PEM encoded private key for client auth
 		key_data?: string
 
-		// Path to a file containing the PEM encoded private key for
-		// client auth
+		// Path to a file containing the PEM encoded private key for client auth
 		key_file?: string
 
 		// Password to use for API authentication to Elasticsearch.

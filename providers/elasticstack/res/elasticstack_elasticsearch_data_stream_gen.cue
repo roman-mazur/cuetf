@@ -1,6 +1,6 @@
 package res
 
-#elasticstack_elasticsearch_data_stream: {
+elasticstack_elasticsearch_data_stream: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_data_stream")
 	close({
@@ -9,46 +9,9 @@ package res
 		// Current generation for the data stream.
 		generation?: number
 
-		// If `true`, the data stream is hidden.
-		hidden?: bool
-
-		// Internal identifier of the resource
-		id?: string
-
-		// Name of the current ILM lifecycle policy in the stream's
-		// matching index template.
-		ilm_policy?: string
-
-		// Custom metadata for the stream, copied from the _meta object of
-		// the stream's matching index template.
-		metadata?: string
-
-		// Name of the data stream to create.
-		name!: string
-
-		// If `true`, the data stream is created and managed by
-		// cross-cluster replication and the local cluster can not write
-		// into this data stream or change its mappings.
-		replicated?: bool
-
-		// Health status of the data stream.
-		status?: string
-
-		// If `true`, the data stream is created and managed by an Elastic
-		// stack component and cannot be modified through normal user
-		// interaction.
-		system?: bool
-
-		// Name of the index template used to create the data stream's
-		// backing indices.
-		template?: string
-
-		// Contains information about the data stream's @timestamp field.
-		timestamp_field?: string
-
-		// Array of objects containing information about the data stream's
-		// backing indices. The last item in this array contains
-		// information about the stream's current write index.
+		// Array of objects containing information about the data stream's backing
+		// indices. The last item in this array contains information about the stream's
+		// current write index.
 		indices?: matchN(1, [close({
 			// Name of the backing index.
 			index_name?: string
@@ -62,6 +25,68 @@ package res
 			// Universally unique identifier (UUID) for the index.
 			index_uuid?: string
 		})]])
+
+		// If `true`, the data stream is hidden.
+		hidden?: bool
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			create?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+			// applicable if changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Read operations occur during any refresh or
+			// planning operation when refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			update?: string
+		})
+
+		// Internal identifier of the resource
+		id?: string
+
+		// Name of the current ILM lifecycle policy in the stream's matching index template.
+		ilm_policy?: string
+
+		// Custom metadata for the stream, copied from the _meta object of the stream's
+		// matching index template.
+		metadata?: string
+
+		// Name of the data stream to create.
+		name!: string
+
+		// If `true`, the data stream is created and managed by cross-cluster
+		// replication and the local cluster can not write into this data stream or
+		// change its mappings.
+		replicated?: bool
+
+		// Health status of the data stream.
+		status?: string
+
+		// If `true`, the data stream is created and managed by an Elastic stack
+		// component and cannot be modified through normal user interaction.
+		system?: bool
+
+		// Name of the index template used to create the data stream's backing indices.
+		template?: string
+
+		// Contains information about the data stream's @timestamp field.
+		timestamp_field?: string
 	})
 
 	#elasticsearch_connection: close({
@@ -77,22 +102,25 @@ package res
 		// Path to a custom Certificate Authority certificate
 		ca_file?: string
 
+		// SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators)
+		// of the server TLS certificate used to pin the connection instead of a full
+		// CA chain
+		ca_fingerprint?: string
+
 		// PEM encoded certificate for client auth
 		cert_data?: string
 
-		// Path to a file containing the PEM encoded certificate for
-		// client auth
+		// Path to a file containing the PEM encoded certificate for client auth
 		cert_file?: string
 
-		// A list of endpoints where the terraform provider will point to,
-		// this must include the http(s) schema and port number.
+		// A list of endpoints where the terraform provider will point to, this must
+		// include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// ES Client Authentication field to be used with the JWT token
 		es_client_authentication?: string
 
-		// A list of headers to be sent with each request to
-		// Elasticsearch.
+		// A list of headers to be sent with each request to Elasticsearch.
 		headers?: [string]: string
 
 		// Disable TLS certificate validation
@@ -101,8 +129,7 @@ package res
 		// PEM encoded private key for client auth
 		key_data?: string
 
-		// Path to a file containing the PEM encoded private key for
-		// client auth
+		// Path to a file containing the PEM encoded private key for client auth
 		key_file?: string
 
 		// Password to use for API authentication to Elasticsearch.

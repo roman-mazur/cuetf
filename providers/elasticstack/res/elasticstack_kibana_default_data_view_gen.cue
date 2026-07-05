@@ -1,31 +1,56 @@
 package res
 
-#elasticstack_kibana_default_data_view: {
+elasticstack_kibana_default_data_view: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_default_data_view")
 	close({
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
-		// The data view identifier to set as default. NOTE: The API does
-		// not validate whether it is a valid identifier. Leave this
-		// unset (or explicitly `null`) to unset the default data view.
+		// The data view identifier to set as default. NOTE: The API does not validate
+		// whether it is a valid identifier. Leave this unset (or explicitly `null`) to
+		// unset the default data view.
 		data_view_id?: string
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			create?: string
 
-		// Update an existing default data view identifier. If set to
-		// false and a default data view already exists, the operation
-		// will fail.
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+			// applicable if changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Read operations occur during any refresh or
+			// planning operation when refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			update?: string
+		})
+
+		// Update an existing default data view identifier. If set to false and a
+		// default data view already exists, the operation will fail.
 		force?: bool
 
 		// Internal identifier of the resource.
 		id?: string
 
-		// If set to true, the default data view will not be unset when
-		// the resource is destroyed. The existing default data view will
-		// remain unchanged.
+		// If set to true, the default data view will not be unset when the resource is
+		// destroyed. The existing default data view will remain unchanged.
 		skip_delete?: bool
 
-		// The Kibana space ID to set the default data view in. Defaults
-		// to `default`.
+		// The Kibana space ID to set the default data view in. Defaults to `default`.
 		space_id?: string
 	})
 
@@ -36,13 +61,11 @@ package res
 		// Bearer Token to use for authentication to Kibana
 		bearer_token?: string
 
-		// A list of paths to CA certificates to validate the certificate
-		// presented by the Kibana server.
+		// A list of paths to CA certificates to validate the certificate presented by the Kibana server.
 		ca_certs?: [...string]
 
-		// A comma-separated list of endpoints where the terraform
-		// provider will point to, this must include the http(s) schema
-		// and port number.
+		// A comma-separated list of endpoints where the terraform provider will point
+		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// Disable TLS certificate validation

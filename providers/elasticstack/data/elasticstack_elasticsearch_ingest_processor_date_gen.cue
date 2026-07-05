@@ -1,6 +1,6 @@
 package data
 
-#elasticstack_elasticsearch_ingest_processor_date: {
+elasticstack_elasticsearch_ingest_processor_date: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_ingest_processor_date")
 	close({
@@ -25,8 +25,7 @@ package data
 		// JSON representation of this data source.
 		json?: string
 
-		// The locale to use when parsing the date, relevant when parsing
-		// month names or week days.
+		// The locale to use when parsing the date, relevant when parsing month names or week days.
 		locale?: string
 
 		// Handle failures for the processor.

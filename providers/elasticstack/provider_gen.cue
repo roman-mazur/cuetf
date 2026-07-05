@@ -1,6 +1,6 @@
 package elasticstack
 
-#provider: {
+provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/elasticstack/provider")
 	close({
@@ -22,22 +22,25 @@ package elasticstack
 		// Path to a custom Certificate Authority certificate
 		ca_file?: string
 
+		// SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators)
+		// of the server TLS certificate used to pin the connection instead of a full
+		// CA chain
+		ca_fingerprint?: string
+
 		// PEM encoded certificate for client auth
 		cert_data?: string
 
-		// Path to a file containing the PEM encoded certificate for
-		// client auth
+		// Path to a file containing the PEM encoded certificate for client auth
 		cert_file?: string
 
-		// A list of endpoints where the terraform provider will point to,
-		// this must include the http(s) schema and port number.
+		// A list of endpoints where the terraform provider will point to, this must
+		// include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// ES Client Authentication field to be used with the JWT token
 		es_client_authentication?: string
 
-		// A list of headers to be sent with each request to
-		// Elasticsearch.
+		// A list of headers to be sent with each request to Elasticsearch.
 		headers?: [string]: string
 
 		// Disable TLS certificate validation
@@ -46,8 +49,7 @@ package elasticstack
 		// PEM encoded private key for client auth
 		key_data?: string
 
-		// Path to a file containing the PEM encoded private key for
-		// client auth
+		// Path to a file containing the PEM encoded private key for client auth
 		key_file?: string
 
 		// Password to use for API authentication to Elasticsearch.
@@ -64,12 +66,11 @@ package elasticstack
 		// Bearer Token to use for authentication to Fleet.
 		bearer_token?: string
 
-		// A list of paths to CA certificates to validate the certificate
-		// presented by the Fleet server.
+		// A list of paths to CA certificates to validate the certificate presented by the Fleet server.
 		ca_certs?: [...string]
 
-		// The Fleet server where the terraform provider will point to,
-		// this must include the http(s) schema and port number.
+		// The Fleet server where the terraform provider will point to, this must
+		// include the http(s) schema and port number.
 		endpoint?: string
 
 		// Disable TLS certificate validation
@@ -89,13 +90,11 @@ package elasticstack
 		// Bearer Token to use for authentication to Kibana
 		bearer_token?: string
 
-		// A list of paths to CA certificates to validate the certificate
-		// presented by the Kibana server.
+		// A list of paths to CA certificates to validate the certificate presented by the Kibana server.
 		ca_certs?: [...string]
 
-		// A comma-separated list of endpoints where the terraform
-		// provider will point to, this must include the http(s) schema
-		// and port number.
+		// A comma-separated list of endpoints where the terraform provider will point
+		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// Disable TLS certificate validation

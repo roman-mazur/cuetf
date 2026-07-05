@@ -1,6 +1,6 @@
 package res
 
-#elasticstack_kibana_agentbuilder_agent: {
+elasticstack_kibana_agentbuilder_agent: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_agentbuilder_agent")
 	close({
@@ -8,6 +8,34 @@ package res
 
 		// The agent ID.
 		agent_id!: string
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			create?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+			// applicable if changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Read operations occur during any refresh or
+			// planning operation when refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			update?: string
+		})
 
 		// Hex color code for the agent avatar (e.g., `#BFDBFF`).
 		avatar_color?: string
@@ -30,12 +58,10 @@ package res
 		// The agent name.
 		name!: string
 
-		// Set of skill IDs to assign to the agent. Requires Elastic Stack
-		// 9.4.0 or later.
+		// Set of skill IDs to assign to the agent. Requires Elastic Stack 9.4.0 or later.
 		skill_ids?: [...string]
 
-		// An identifier for the space. If not provided, the default space
-		// is used.
+		// An identifier for the space. If not provided, the default space is used.
 		space_id?: string
 
 		// Set of tool IDs that the agent can use.
@@ -49,13 +75,11 @@ package res
 		// Bearer Token to use for authentication to Kibana
 		bearer_token?: string
 
-		// A list of paths to CA certificates to validate the certificate
-		// presented by the Kibana server.
+		// A list of paths to CA certificates to validate the certificate presented by the Kibana server.
 		ca_certs?: [...string]
 
-		// A comma-separated list of endpoints where the terraform
-		// provider will point to, this must include the http(s) schema
-		// and port number.
+		// A comma-separated list of endpoints where the terraform provider will point
+		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// Disable TLS certificate validation

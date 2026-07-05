@@ -1,6 +1,6 @@
 package res
 
-#elasticstack_kibana_security_role: {
+elasticstack_kibana_security_role: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_security_role")
 	close({
@@ -10,6 +10,34 @@ package res
 
 		// Optional description for the role
 		description?: string
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			create?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+			// applicable if changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Read operations occur during any refresh or
+			// planning operation when refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			update?: string
+		})
 
 		// Internal identifier (same as name).
 		id?: string
@@ -35,13 +63,13 @@ package res
 	#kibana: close({
 		feature?: matchN(1, [_#defs."/$defs/kibana/$defs/feature", [..._#defs."/$defs/kibana/$defs/feature"]])
 
-		// A base privilege. When specified, the base must be ["all"] or
-		// ["read"]. When the base privileges are specified, you are
-		// unable to use the "feature" section.
+		// A base privilege. When specified, the base must be ["all"] or ["read"]. When
+		// the base privileges are specified, you are unable to use the "feature"
+		// section.
 		base?: [...string]
 
-		// The spaces to apply the privileges to. To grant access to all
-		// spaces, set to ["*"], or omit the value.
+		// The spaces to apply the privileges to. To grant access to all spaces, set to
+		// ["*"], or omit the value.
 		spaces!: [...string]
 	})
 
@@ -52,13 +80,11 @@ package res
 		// Bearer Token to use for authentication to Kibana
 		bearer_token?: string
 
-		// A list of paths to CA certificates to validate the certificate
-		// presented by the Kibana server.
+		// A list of paths to CA certificates to validate the certificate presented by the Kibana server.
 		ca_certs?: [...string]
 
-		// A comma-separated list of endpoints where the terraform
-		// provider will point to, this must include the http(s) schema
-		// and port number.
+		// A comma-separated list of endpoints where the terraform provider will point
+		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// Disable TLS certificate validation
@@ -74,16 +100,13 @@ package res
 	_#defs: "/$defs/elasticsearch/$defs/indices": close({
 		field_security?: _#defs."/$defs/elasticsearch/$defs/indices/$defs/field_security"
 
-		// A list of indices (or index name patterns) to which the
-		// permissions in this entry apply.
+		// A list of indices (or index name patterns) to which the permissions in this entry apply.
 		names!: [...string]
 
-		// The index level privileges that the owners of the role have on
-		// the specified indices.
+		// The index level privileges that the owners of the role have on the specified indices.
 		privileges!: [...string]
 
-		// A search query that defines the documents the owners of the
-		// role have read access to.
+		// A search query that defines the documents the owners of the role have read access to.
 		query?: string
 	})
 
@@ -98,20 +121,21 @@ package res
 	_#defs: "/$defs/elasticsearch/$defs/remote_indices": close({
 		field_security?: _#defs."/$defs/elasticsearch/$defs/remote_indices/$defs/field_security"
 
-		// A list of cluster aliases to which the permissions in this
-		// entry apply.
+		// Include matching restricted indices in names parameter. Usage is strongly
+		// discouraged as it can grant unrestricted operations on critical data, make
+		// the entire system unstable or leak sensitive information.
+		allow_restricted_indices?: bool
+
+		// A list of cluster aliases to which the permissions in this entry apply.
 		clusters!: [...string]
 
-		// A list of indices (or index name patterns) to which the
-		// permissions in this entry apply.
+		// A list of indices (or index name patterns) to which the permissions in this entry apply.
 		names!: [...string]
 
-		// The index level privileges that the owners of the role have on
-		// the specified indices.
+		// The index level privileges that the owners of the role have on the specified indices.
 		privileges!: [...string]
 
-		// A search query that defines the documents the owners of the
-		// role have read access to.
+		// A search query that defines the documents the owners of the role have read access to.
 		query?: string
 	})
 

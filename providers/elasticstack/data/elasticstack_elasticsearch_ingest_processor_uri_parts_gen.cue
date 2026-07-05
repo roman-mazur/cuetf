@@ -1,6 +1,6 @@
 package data
 
-#elasticstack_elasticsearch_ingest_processor_uri_parts: {
+elasticstack_elasticsearch_ingest_processor_uri_parts: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_ingest_processor_uri_parts")
 	close({
@@ -22,16 +22,14 @@ package data
 		// JSON representation of this data source.
 		json?: string
 
-		// If true, the processor copies the unparsed URI to
-		// `<target_field>.original.`
+		// If true, the processor copies the unparsed URI to `<target_field>.original.`
 		keep_original?: bool
 
 		// Handle failures for the processor.
 		on_failure?: [...string]
 
-		// If `true`, the processor removes the `field` after parsing the
-		// URI string. If parsing fails, the processor does not remove
-		// the `field`.
+		// If `true`, the processor removes the `field` after parsing the URI string. If
+		// parsing fails, the processor does not remove the `field`.
 		remove_if_successful?: bool
 
 		// Identifier for the processor.

@@ -1,6 +1,6 @@
 package res
 
-#elasticstack_elasticsearch_component_template: {
+elasticstack_elasticsearch_component_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_component_template")
 	close({
@@ -9,6 +9,34 @@ package res
 
 		// Internal identifier of the resource
 		id?: string
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			create?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+			// applicable if changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Read operations occur during any refresh or
+			// planning operation when refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			update?: string
+		})
 
 		// Optional user metadata about the component template.
 		metadata?: string
@@ -33,22 +61,25 @@ package res
 		// Path to a custom Certificate Authority certificate
 		ca_file?: string
 
+		// SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators)
+		// of the server TLS certificate used to pin the connection instead of a full
+		// CA chain
+		ca_fingerprint?: string
+
 		// PEM encoded certificate for client auth
 		cert_data?: string
 
-		// Path to a file containing the PEM encoded certificate for
-		// client auth
+		// Path to a file containing the PEM encoded certificate for client auth
 		cert_file?: string
 
-		// A list of endpoints where the terraform provider will point to,
-		// this must include the http(s) schema and port number.
+		// A list of endpoints where the terraform provider will point to, this must
+		// include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// ES Client Authentication field to be used with the JWT token
 		es_client_authentication?: string
 
-		// A list of headers to be sent with each request to
-		// Elasticsearch.
+		// A list of headers to be sent with each request to Elasticsearch.
 		headers?: [string]: string
 
 		// Disable TLS certificate validation
@@ -57,8 +88,7 @@ package res
 		// PEM encoded private key for client auth
 		key_data?: string
 
-		// Path to a file containing the PEM encoded private key for
-		// client auth
+		// Path to a file containing the PEM encoded private key for client auth
 		key_file?: string
 
 		// Password to use for API authentication to Elasticsearch.
@@ -72,14 +102,13 @@ package res
 		alias?: matchN(1, [_#defs."/$defs/template/$defs/alias", [..._#defs."/$defs/template/$defs/alias"]])
 		data_stream_options?: _#defs."/$defs/template/$defs/data_stream_options"
 
-		// Mapping for fields in the index. Should be specified as a JSON
-		// object of field mappings. See the [explicit mapping
+		// Mapping for fields in the index. Should be specified as a JSON object of
+		// field mappings. See the [explicit mapping
 		// documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/explicit-mapping.html)
 		// for more details.
 		mappings?: string
 
-		// Configuration options for the index. See the [index modules
-		// settings
+		// Configuration options for the index. See the [index modules settings
 		// documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings)
 		// for more details.
 		settings?: string
@@ -89,9 +118,8 @@ package res
 		// Query used to limit documents the alias can access.
 		filter?: string
 
-		// Value used to route indexing operations to a specific shard. If
-		// specified, this overwrites the routing value for indexing
-		// operations.
+		// Value used to route indexing operations to a specific shard. If specified,
+		// this overwrites the routing value for indexing operations.
 		index_routing?: string
 
 		// If true, the alias is hidden.
@@ -100,19 +128,17 @@ package res
 		// If true, the index is the write index for the alias.
 		is_write_index?: bool
 
-		// The alias name. Index alias names support date math. See the
-		// [date math index names
+		// The alias name. Index alias names support date math. See the [date math index
+		// names
 		// documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/date-math-index-names.html)
 		// for more details.
 		name!: string
 
-		// Value used to route indexing and search operations to a
-		// specific shard.
+		// Value used to route indexing and search operations to a specific shard.
 		routing?: string
 
-		// Value used to route search operations to a specific shard. If
-		// specified, this overwrites the routing value for search
-		// operations.
+		// Value used to route search operations to a specific shard. If specified, this
+		// overwrites the routing value for search operations.
 		search_routing?: string
 	})
 
@@ -123,8 +149,7 @@ package res
 	_#defs: "/$defs/template/$defs/data_stream_options/$defs/failure_store": close({
 		lifecycle?: _#defs."/$defs/template/$defs/data_stream_options/$defs/failure_store/$defs/lifecycle"
 
-		// If true, document redirection to the failure store is enabled
-		// for new matching data streams.
+		// If true, document redirection to the failure store is enabled for new matching data streams.
 		enabled?: bool
 	})
 

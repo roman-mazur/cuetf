@@ -1,6 +1,6 @@
 package res
 
-#elasticstack_elasticsearch_index_lifecycle: {
+elasticstack_elasticsearch_index_lifecycle: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_index_lifecycle")
 	close({
@@ -11,16 +11,42 @@ package res
 		hot?:    #hot
 		warm?:   #warm
 
-		// When true, the provider will clear index.lifecycle.name from
-		// any indices that reference this policy before deleting the
-		// policy.
+		// When true, the provider will clear index.lifecycle.name from any indices that
+		// reference this policy before deleting the policy.
 		force_destroy?: bool
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			create?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+			// applicable if changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Read operations occur during any refresh or
+			// planning operation when refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			update?: string
+		})
 
 		// Internal identifier of the resource
 		id?: string
 
-		// Optional user metadata about the ilm policy. Must be valid JSON
-		// document.
+		// Optional user metadata about the ilm policy. Must be valid JSON document.
 		metadata?: string
 
 		// The DateTime of the last modification.
@@ -40,9 +66,8 @@ package res
 		set_priority?:        _#defs."/$defs/cold/$defs/set_priority"
 		unfollow?:            _#defs."/$defs/cold/$defs/unfollow"
 
-		// ILM moves indices through the lifecycle according to their age.
-		// To control the timing of these transitions, you set a minimum
-		// age for each phase.
+		// ILM moves indices through the lifecycle according to their age. To control
+		// the timing of these transitions, you set a minimum age for each phase.
 		min_age?: string
 	})
 
@@ -50,9 +75,8 @@ package res
 		delete?:            _#defs."/$defs/delete/$defs/delete"
 		wait_for_snapshot?: _#defs."/$defs/delete/$defs/wait_for_snapshot"
 
-		// ILM moves indices through the lifecycle according to their age.
-		// To control the timing of these transitions, you set a minimum
-		// age for each phase.
+		// ILM moves indices through the lifecycle according to their age. To control
+		// the timing of these transitions, you set a minimum age for each phase.
 		min_age?: string
 	})
 
@@ -69,22 +93,25 @@ package res
 		// Path to a custom Certificate Authority certificate
 		ca_file?: string
 
+		// SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators)
+		// of the server TLS certificate used to pin the connection instead of a full
+		// CA chain
+		ca_fingerprint?: string
+
 		// PEM encoded certificate for client auth
 		cert_data?: string
 
-		// Path to a file containing the PEM encoded certificate for
-		// client auth
+		// Path to a file containing the PEM encoded certificate for client auth
 		cert_file?: string
 
-		// A list of endpoints where the terraform provider will point to,
-		// this must include the http(s) schema and port number.
+		// A list of endpoints where the terraform provider will point to, this must
+		// include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// ES Client Authentication field to be used with the JWT token
 		es_client_authentication?: string
 
-		// A list of headers to be sent with each request to
-		// Elasticsearch.
+		// A list of headers to be sent with each request to Elasticsearch.
 		headers?: [string]: string
 
 		// Disable TLS certificate validation
@@ -93,8 +120,7 @@ package res
 		// PEM encoded private key for client auth
 		key_data?: string
 
-		// Path to a file containing the PEM encoded private key for
-		// client auth
+		// Path to a file containing the PEM encoded private key for client auth
 		key_file?: string
 
 		// Password to use for API authentication to Elasticsearch.
@@ -107,9 +133,8 @@ package res
 	#frozen: close({
 		searchable_snapshot?: _#defs."/$defs/frozen/$defs/searchable_snapshot"
 
-		// ILM moves indices through the lifecycle according to their age.
-		// To control the timing of these transitions, you set a minimum
-		// age for each phase.
+		// ILM moves indices through the lifecycle according to their age. To control
+		// the timing of these transitions, you set a minimum age for each phase.
 		min_age?: string
 	})
 
@@ -123,9 +148,8 @@ package res
 		shrink?:              _#defs."/$defs/hot/$defs/shrink"
 		unfollow?:            _#defs."/$defs/hot/$defs/unfollow"
 
-		// ILM moves indices through the lifecycle according to their age.
-		// To control the timing of these transitions, you set a minimum
-		// age for each phase.
+		// ILM moves indices through the lifecycle according to their age. To control
+		// the timing of these transitions, you set a minimum age for each phase.
 		min_age?: string
 	})
 
@@ -139,41 +163,37 @@ package res
 		shrink?:       _#defs."/$defs/warm/$defs/shrink"
 		unfollow?:     _#defs."/$defs/warm/$defs/unfollow"
 
-		// ILM moves indices through the lifecycle according to their age.
-		// To control the timing of these transitions, you set a minimum
-		// age for each phase.
+		// ILM moves indices through the lifecycle according to their age. To control
+		// the timing of these transitions, you set a minimum age for each phase.
 		min_age?: string
 	})
 
 	_#defs: "/$defs/cold/$defs/allocate": close({
-		// Assigns an index to nodes that have none of the specified
-		// custom attributes. Must be valid JSON document.
+		// Assigns an index to nodes that have none of the specified custom attributes.
+		// Must be valid JSON document.
 		exclude?: string
 
-		// Assigns an index to nodes that have at least one of the
-		// specified custom attributes. Must be valid JSON document.
+		// Assigns an index to nodes that have at least one of the specified custom
+		// attributes. Must be valid JSON document.
 		include?: string
 
 		// Number of replicas to assign to the index.
 		number_of_replicas?: number
 
-		// Assigns an index to nodes that have all of the specified custom
-		// attributes. Must be valid JSON document.
+		// Assigns an index to nodes that have all of the specified custom attributes.
+		// Must be valid JSON document.
 		require?: string
 
-		// The maximum number of shards for the index on a single
-		// Elasticsearch node. When omitted, the existing index setting
-		// is left unchanged.
+		// The maximum number of shards for the index on a single Elasticsearch node.
+		// When omitted, the existing index setting is left unchanged.
 		total_shards_per_node?: number
 	})
 
 	_#defs: "/$defs/cold/$defs/downsample": close({
-		// Downsampling interval. Required when the `downsample` action is
-		// configured.
+		// Downsampling interval. Required when the `downsample` action is configured.
 		fixed_interval?: string
 
-		// Maximum time to wait for the downsample operation to complete
-		// before timing out.
+		// Maximum time to wait for the downsample operation to complete before timing out.
 		wait_timeout?: string
 	})
 
@@ -183,8 +203,7 @@ package res
 	})
 
 	_#defs: "/$defs/cold/$defs/migrate": close({
-		// Controls whether ILM automatically migrates the index during
-		// this phase.
+		// Controls whether ILM automatically migrates the index during this phase.
 		enabled?: bool
 	})
 
@@ -203,8 +222,8 @@ package res
 	})
 
 	_#defs: "/$defs/cold/$defs/set_priority": close({
-		// The priority for the index. Must be 0 or greater. Required when
-		// the `set_priority` action is configured.
+		// The priority for the index. Must be 0 or greater. Required when the
+		// `set_priority` action is configured.
 		priority?: number
 	})
 
@@ -219,8 +238,8 @@ package res
 	})
 
 	_#defs: "/$defs/delete/$defs/wait_for_snapshot": close({
-		// Name of the SLM policy that the delete action should wait for.
-		// Required when the `wait_for_snapshot` action is configured.
+		// Name of the SLM policy that the delete action should wait for. Required when
+		// the `wait_for_snapshot` action is configured.
 		policy?: string
 	})
 
@@ -234,12 +253,10 @@ package res
 	})
 
 	_#defs: "/$defs/hot/$defs/downsample": close({
-		// Downsampling interval. Required when the `downsample` action is
-		// configured.
+		// Downsampling interval. Required when the `downsample` action is configured.
 		fixed_interval?: string
 
-		// Maximum time to wait for the downsample operation to complete
-		// before timing out.
+		// Maximum time to wait for the downsample operation to complete before timing out.
 		wait_timeout?: string
 	})
 
@@ -247,8 +264,8 @@ package res
 		// Codec used to compress the document store.
 		index_codec?: string
 
-		// Number of segments to merge to. To fully merge the index, set
-		// to 1. Required when the `forcemerge` action is configured.
+		// Number of segments to merge to. To fully merge the index, set to 1. Required
+		// when the `forcemerge` action is configured.
 		max_num_segments?: number
 	})
 
@@ -258,44 +275,36 @@ package res
 	})
 
 	_#defs: "/$defs/hot/$defs/rollover": close({
-		// Triggers rollover after the maximum elapsed time from index
-		// creation is reached.
+		// Triggers rollover after the maximum elapsed time from index creation is reached.
 		max_age?: string
 
-		// Triggers rollover after the specified maximum number of
-		// documents is reached.
+		// Triggers rollover after the specified maximum number of documents is reached.
 		max_docs?: number
 
-		// Triggers rollover when the largest primary shard in the index
-		// reaches a certain number of documents. Supported from
-		// Elasticsearch version **8.2**
+		// Triggers rollover when the largest primary shard in the index reaches a
+		// certain number of documents. Supported from Elasticsearch version **8.2**
 		max_primary_shard_docs?: number
 
-		// Triggers rollover when the largest primary shard in the index
-		// reaches a certain size.
+		// Triggers rollover when the largest primary shard in the index reaches a certain size.
 		max_primary_shard_size?: string
 
 		// Triggers rollover when the index reaches a certain size.
 		max_size?: string
 
-		// Prevents rollover until after the minimum elapsed time from
-		// index creation is reached. Supported from Elasticsearch
-		// version **8.4**
+		// Prevents rollover until after the minimum elapsed time from index creation is
+		// reached. Supported from Elasticsearch version **8.4**
 		min_age?: string
 
-		// Prevents rollover until after the specified minimum number of
-		// documents is reached. Supported from Elasticsearch version
-		// **8.4**
+		// Prevents rollover until after the specified minimum number of documents is
+		// reached. Supported from Elasticsearch version **8.4**
 		min_docs?: number
 
-		// Prevents rollover until the largest primary shard in the index
-		// reaches a certain number of documents. Supported from
-		// Elasticsearch version **8.4**
+		// Prevents rollover until the largest primary shard in the index reaches a
+		// certain number of documents. Supported from Elasticsearch version **8.4**
 		min_primary_shard_docs?: number
 
-		// Prevents rollover until the largest primary shard in the index
-		// reaches a certain size. Supported from Elasticsearch version
-		// **8.4**
+		// Prevents rollover until the largest primary shard in the index reaches a
+		// certain size. Supported from Elasticsearch version **8.4**
 		min_primary_shard_size?: string
 
 		// Prevents rollover until the index reaches a certain size.
@@ -312,14 +321,13 @@ package res
 	})
 
 	_#defs: "/$defs/hot/$defs/set_priority": close({
-		// The priority for the index. Must be 0 or greater. Required when
-		// the `set_priority` action is configured.
+		// The priority for the index. Must be 0 or greater. Required when the
+		// `set_priority` action is configured.
 		priority?: number
 	})
 
 	_#defs: "/$defs/hot/$defs/shrink": close({
-		// If true, the shrunken index is made writable by removing the
-		// write block.
+		// If true, the shrunken index is made writable by removing the write block.
 		allow_write_after_shrink?: bool
 
 		// The max primary shard size for the target index.
@@ -335,34 +343,31 @@ package res
 	})
 
 	_#defs: "/$defs/warm/$defs/allocate": close({
-		// Assigns an index to nodes that have none of the specified
-		// custom attributes. Must be valid JSON document.
+		// Assigns an index to nodes that have none of the specified custom attributes.
+		// Must be valid JSON document.
 		exclude?: string
 
-		// Assigns an index to nodes that have at least one of the
-		// specified custom attributes. Must be valid JSON document.
+		// Assigns an index to nodes that have at least one of the specified custom
+		// attributes. Must be valid JSON document.
 		include?: string
 
 		// Number of replicas to assign to the index.
 		number_of_replicas?: number
 
-		// Assigns an index to nodes that have all of the specified custom
-		// attributes. Must be valid JSON document.
+		// Assigns an index to nodes that have all of the specified custom attributes.
+		// Must be valid JSON document.
 		require?: string
 
-		// The maximum number of shards for the index on a single
-		// Elasticsearch node. When omitted, the existing index setting
-		// is left unchanged.
+		// The maximum number of shards for the index on a single Elasticsearch node.
+		// When omitted, the existing index setting is left unchanged.
 		total_shards_per_node?: number
 	})
 
 	_#defs: "/$defs/warm/$defs/downsample": close({
-		// Downsampling interval. Required when the `downsample` action is
-		// configured.
+		// Downsampling interval. Required when the `downsample` action is configured.
 		fixed_interval?: string
 
-		// Maximum time to wait for the downsample operation to complete
-		// before timing out.
+		// Maximum time to wait for the downsample operation to complete before timing out.
 		wait_timeout?: string
 	})
 
@@ -370,14 +375,13 @@ package res
 		// Codec used to compress the document store.
 		index_codec?: string
 
-		// Number of segments to merge to. To fully merge the index, set
-		// to 1. Required when the `forcemerge` action is configured.
+		// Number of segments to merge to. To fully merge the index, set to 1. Required
+		// when the `forcemerge` action is configured.
 		max_num_segments?: number
 	})
 
 	_#defs: "/$defs/warm/$defs/migrate": close({
-		// Controls whether ILM automatically migrates the index during
-		// this phase.
+		// Controls whether ILM automatically migrates the index during this phase.
 		enabled?: bool
 	})
 
@@ -387,14 +391,13 @@ package res
 	})
 
 	_#defs: "/$defs/warm/$defs/set_priority": close({
-		// The priority for the index. Must be 0 or greater. Required when
-		// the `set_priority` action is configured.
+		// The priority for the index. Must be 0 or greater. Required when the
+		// `set_priority` action is configured.
 		priority?: number
 	})
 
 	_#defs: "/$defs/warm/$defs/shrink": close({
-		// If true, the shrunken index is made writable by removing the
-		// write block.
+		// If true, the shrunken index is made writable by removing the write block.
 		allow_write_after_shrink?: bool
 
 		// The max primary shard size for the target index.

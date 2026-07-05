@@ -1,6 +1,6 @@
 package data
 
-#elasticstack_elasticsearch_security_user: {
+elasticstack_elasticsearch_security_user: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_security_user")
 	close({
@@ -9,8 +9,7 @@ package data
 		// The email of the user.
 		email?: string
 
-		// Specifies whether the user is enabled. The default value is
-		// true.
+		// Specifies whether the user is enabled. The default value is true.
 		enabled?: bool
 
 		// The full name of the user.
@@ -22,8 +21,7 @@ package data
 		// Arbitrary metadata that you want to associate with the user.
 		metadata?: string
 
-		// A set of roles the user has. The roles determine the user's
-		// access permissions. Default is [].
+		// A set of roles the user has. The roles determine the user's access permissions. Default is [].
 		roles?: [...string]
 
 		// An identifier for the user
@@ -43,22 +41,25 @@ package data
 		// Path to a custom Certificate Authority certificate
 		ca_file?: string
 
+		// SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators)
+		// of the server TLS certificate used to pin the connection instead of a full
+		// CA chain
+		ca_fingerprint?: string
+
 		// PEM encoded certificate for client auth
 		cert_data?: string
 
-		// Path to a file containing the PEM encoded certificate for
-		// client auth
+		// Path to a file containing the PEM encoded certificate for client auth
 		cert_file?: string
 
-		// A list of endpoints where the terraform provider will point to,
-		// this must include the http(s) schema and port number.
+		// A list of endpoints where the terraform provider will point to, this must
+		// include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// ES Client Authentication field to be used with the JWT token
 		es_client_authentication?: string
 
-		// A list of headers to be sent with each request to
-		// Elasticsearch.
+		// A list of headers to be sent with each request to Elasticsearch.
 		headers?: [string]: string
 
 		// Disable TLS certificate validation
@@ -67,8 +68,7 @@ package data
 		// PEM encoded private key for client auth
 		key_data?: string
 
-		// Path to a file containing the PEM encoded private key for
-		// client auth
+		// Path to a file containing the PEM encoded private key for client auth
 		key_file?: string
 
 		// Password to use for API authentication to Elasticsearch.

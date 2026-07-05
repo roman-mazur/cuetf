@@ -1,6 +1,6 @@
 package res
 
-#elasticstack_elasticsearch_snapshot_repository: {
+elasticstack_elasticsearch_snapshot_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_elasticsearch_snapshot_repository")
 	close({
@@ -14,12 +14,40 @@ package res
 
 		// Internal identifier of the resource
 		id?: string
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			create?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+			// applicable if changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Read operations occur during any refresh or
+			// planning operation when refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			update?: string
+		})
 
 		// Name of the snapshot repository to register or update.
 		name!: string
 
-		// If true, the request verifies the repository is functional on
-		// all master and data nodes in the cluster.
+		// If true, the request verifies the repository is functional on all master and
+		// data nodes in the cluster.
 		verify?: bool
 	})
 
@@ -33,16 +61,14 @@ package res
 		// Azure named client to use.
 		client?: string
 
-		// If true, metadata files, such as index mappings and settings,
-		// are compressed in snapshots.
+		// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 		compress?: bool
 
-		// Container name. You must create the Azure container before
-		// creating the repository.
+		// Container name. You must create the Azure container before creating the repository.
 		container?: string
 
-		// Location mode for the Azure repository. `primary_only` or
-		// `secondary_only`. See the [Azure storage redundancy
+		// Location mode for the Azure repository. `primary_only` or `secondary_only`.
+		// See the [Azure storage redundancy
 		// documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy)
 		// for more details.
 		location_mode?: string
@@ -70,22 +96,25 @@ package res
 		// Path to a custom Certificate Authority certificate
 		ca_file?: string
 
+		// SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators)
+		// of the server TLS certificate used to pin the connection instead of a full
+		// CA chain
+		ca_fingerprint?: string
+
 		// PEM encoded certificate for client auth
 		cert_data?: string
 
-		// Path to a file containing the PEM encoded certificate for
-		// client auth
+		// Path to a file containing the PEM encoded certificate for client auth
 		cert_file?: string
 
-		// A list of endpoints where the terraform provider will point to,
-		// this must include the http(s) schema and port number.
+		// A list of endpoints where the terraform provider will point to, this must
+		// include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// ES Client Authentication field to be used with the JWT token
 		es_client_authentication?: string
 
-		// A list of headers to be sent with each request to
-		// Elasticsearch.
+		// A list of headers to be sent with each request to Elasticsearch.
 		headers?: [string]: string
 
 		// Disable TLS certificate validation
@@ -94,8 +123,7 @@ package res
 		// PEM encoded private key for client auth
 		key_data?: string
 
-		// Path to a file containing the PEM encoded private key for
-		// client auth
+		// Path to a file containing the PEM encoded private key for client auth
 		key_file?: string
 
 		// Password to use for API authentication to Elasticsearch.
@@ -109,12 +137,10 @@ package res
 		// Maximum size of files in snapshots.
 		chunk_size?: string
 
-		// If true, metadata files, such as index mappings and settings,
-		// are compressed in snapshots.
+		// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 		compress?: bool
 
-		// Location of the shared filesystem used to store and retrieve
-		// snapshots.
+		// Location of the shared filesystem used to store and retrieve snapshots.
 		location?: string
 
 		// Maximum number of snapshots the repository can contain.
@@ -131,8 +157,7 @@ package res
 	})
 
 	#gcs: close({
-		// Specifies the path within the bucket to the repository data.
-		// Defaults to the root of the bucket.
+		// Specifies the path within the bucket to the repository data. Defaults to the root of the bucket.
 		base_path?: string
 
 		// The name of the bucket to be used for snapshots.
@@ -141,12 +166,10 @@ package res
 		// Maximum size of files in snapshots.
 		chunk_size?: string
 
-		// The name of the client to use to connect to Google Cloud
-		// Storage.
+		// The name of the client to use to connect to Google Cloud Storage.
 		client?: string
 
-		// If true, metadata files, such as index mappings and settings,
-		// are compressed in snapshots.
+		// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 		compress?: bool
 
 		// Maximum snapshot restore rate per node.
@@ -163,8 +186,7 @@ package res
 		// Maximum size of files in snapshots.
 		chunk_size?: string
 
-		// If true, metadata files, such as index mappings and settings,
-		// are compressed in snapshots.
+		// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 		compress?: bool
 
 		// Whether to load the default Hadoop configuration or not.
@@ -176,8 +198,7 @@ package res
 		// Maximum snapshot creation rate per node.
 		max_snapshot_bytes_per_sec?: string
 
-		// The file path within the filesystem where data is
-		// stored/loaded.
+		// The file path within the filesystem where data is stored/loaded.
 		path?: string
 
 		// If true, the repository is read-only.
@@ -194,8 +215,7 @@ package res
 		// Name of the S3 bucket to use for snapshots.
 		bucket?: string
 
-		// Minimum threshold below which the chunk is uploaded using a
-		// single request.
+		// Minimum threshold below which the chunk is uploaded using a single request.
 		buffer_size?: string
 
 		// The S3 repository supports all S3 canned ACLs.
@@ -207,12 +227,10 @@ package res
 		// The name of the S3 client to use to connect to S3.
 		client?: string
 
-		// If true, metadata files, such as index mappings and settings,
-		// are compressed in snapshots.
+		// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 		compress?: bool
 
-		// Custom S3 service endpoint, useful when using VPC endpoints or
-		// non-default S3 URLs.
+		// Custom S3 service endpoint, useful when using VPC endpoints or non-default S3 URLs.
 		endpoint?: string
 
 		// Maximum snapshot restore rate per node.
@@ -227,12 +245,10 @@ package res
 		// If true, the repository is read-only.
 		readonly?: bool
 
-		// When true, files are encrypted server-side using AES-256
-		// algorithm.
+		// When true, files are encrypted server-side using AES-256 algorithm.
 		server_side_encryption?: bool
 
-		// Sets the S3 storage class for objects stored in the snapshot
-		// repository.
+		// Sets the S3 storage class for objects stored in the snapshot repository.
 		storage_class?: string
 	})
 
@@ -240,8 +256,7 @@ package res
 		// Maximum size of files in snapshots.
 		chunk_size?: string
 
-		// If true, metadata files, such as index mappings and settings,
-		// are compressed in snapshots.
+		// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 		compress?: bool
 
 		// Maximum number of retries for http and https URLs.

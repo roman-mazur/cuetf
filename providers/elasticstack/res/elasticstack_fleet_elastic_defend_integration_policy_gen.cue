@@ -1,50 +1,13 @@
 package res
 
-#elasticstack_fleet_elastic_defend_integration_policy: {
+elasticstack_fleet_elastic_defend_integration_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_fleet_elastic_defend_integration_policy")
 	close({
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
-		// ID of the agent policy.
-		agent_policy_id!: string
-
-		// The description of the integration policy.
-		description?: string
-
-		// Enable the integration policy.
-		enabled?: bool
-
-		// Force operations, such as creation and deletion, to occur.
-		force?: bool
-
-		// The ID of this resource.
-		id?: string
-
-		// The version of the Elastic Defend integration package.
-		integration_version!: string
-
-		// The name of the integration policy.
-		name!: string
-
-		// The namespace of the integration policy.
-		namespace!: string
-
-		// Unique identifier of the Elastic Defend integration policy.
-		// Used as the import key.
-		policy_id?: string
-
-		// Elastic Defend preset configuration. Maps to
-		// `endpointConfig.preset` in the Defend API. Common values
-		// include `"NGAv1"`, `"NGAV"`, `"dataCollection"`,
-		// `"EDRComplete"`, `"EDREssential"`.
-		preset?: string
-
-		// The Kibana space IDs where this integration policy is
-		// available. When set, must match the space_ids of the
-		// referenced agent policy. If not set, will be inherited from
-		// the agent policy.
-		space_ids?: [...string]
+		// ID of the agent policy. Conflicts with agent_policy_ids.
+		agent_policy_id?: string
 
 		// Elastic Defend policy configuration.
 		policy!: close({
@@ -52,8 +15,7 @@ package res
 			linux?: close({
 				// Linux behavior protection settings.
 				behavior_protection?: close({
-					// Protection mode. Valid values: `"off"`, `"detect"`,
-					// `"prevent"`.
+					// Protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
 					mode?: string
 
 					// Whether reputation service is enabled.
@@ -83,8 +45,8 @@ package res
 
 				// Linux logging settings.
 				logging?: close({
-					// Log level for file logging. Valid values: `"info"`, `"debug"`,
-					// `"warning"`, `"error"`, `"critical"`.
+					// Log level for file logging. Valid values: `"info"`, `"debug"`, `"warning"`,
+					// `"error"`, `"critical"`.
 					file?: string
 				})
 
@@ -93,15 +55,13 @@ package res
 					// Whether blocklist is enabled.
 					blocklist?: bool
 
-					// Malware protection mode. Valid values: `"off"`, `"detect"`,
-					// `"prevent"`.
+					// Malware protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
 					mode?: string
 				})
 
 				// Linux memory protection settings.
 				memory_protection?: close({
-					// Protection mode. Valid values: `"off"`, `"detect"`,
-					// `"prevent"`.
+					// Protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
 					mode?: string
 
 					// Whether this protection is supported on the platform.
@@ -138,8 +98,7 @@ package res
 			mac?: close({
 				// macOS behavior protection settings.
 				behavior_protection?: close({
-					// Protection mode. Valid values: `"off"`, `"detect"`,
-					// `"prevent"`.
+					// Protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
 					mode?: string
 
 					// Whether reputation service is enabled.
@@ -163,8 +122,8 @@ package res
 
 				// macOS logging settings.
 				logging?: close({
-					// Log level for file logging. Valid values: `"info"`, `"debug"`,
-					// `"warning"`, `"error"`, `"critical"`.
+					// Log level for file logging. Valid values: `"info"`, `"debug"`, `"warning"`,
+					// `"error"`, `"critical"`.
 					file?: string
 				})
 
@@ -173,8 +132,7 @@ package res
 					// Whether blocklist is enabled.
 					blocklist?: bool
 
-					// Malware protection mode. Valid values: `"off"`, `"detect"`,
-					// `"prevent"`.
+					// Malware protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
 					mode?: string
 
 					// Whether to notify the user on malware detection.
@@ -186,8 +144,7 @@ package res
 
 				// macOS memory protection settings.
 				memory_protection?: close({
-					// Protection mode. Valid values: `"off"`, `"detect"`,
-					// `"prevent"`.
+					// Protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
 					mode?: string
 
 					// Whether this protection is supported on the platform.
@@ -227,8 +184,8 @@ package res
 					// Whether antivirus registration is enabled.
 					enabled?: bool
 
-					// Antivirus registration mode. Valid values: `"enabled"`,
-					// `"disabled"`, `"sync_with_malware_prevent"`.
+					// Antivirus registration mode. Valid values: `"enabled"`, `"disabled"`,
+					// `"sync_with_malware_prevent"`.
 					mode?: string
 				})
 
@@ -243,8 +200,7 @@ package res
 
 				// Windows behavior protection settings.
 				behavior_protection?: close({
-					// Protection mode. Valid values: `"off"`, `"detect"`,
-					// `"prevent"`.
+					// Protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
 					mode?: string
 
 					// Whether reputation service is enabled.
@@ -283,8 +239,8 @@ package res
 
 				// Windows logging settings.
 				logging?: close({
-					// Log level for file logging. Valid values: `"info"`, `"debug"`,
-					// `"warning"`, `"error"`, `"critical"`.
+					// Log level for file logging. Valid values: `"info"`, `"debug"`, `"warning"`,
+					// `"error"`, `"critical"`.
 					file?: string
 				})
 
@@ -293,8 +249,7 @@ package res
 					// Whether blocklist is enabled.
 					blocklist?: bool
 
-					// Malware protection mode. Valid values: `"off"`, `"detect"`,
-					// `"prevent"`.
+					// Malware protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
 					mode?: string
 
 					// Whether to notify the user on malware detection.
@@ -306,8 +261,7 @@ package res
 
 				// Windows memory protection settings.
 				memory_protection?: close({
-					// Protection mode. Valid values: `"off"`, `"detect"`,
-					// `"prevent"`.
+					// Protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
 					mode?: string
 
 					// Whether this protection is supported on the platform.
@@ -348,8 +302,7 @@ package res
 
 				// Windows ransomware protection settings.
 				ransomware?: close({
-					// Protection mode. Valid values: `"off"`, `"detect"`,
-					// `"prevent"`.
+					// Protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
 					mode?: string
 
 					// Whether this protection is supported on the platform.
@@ -357,6 +310,43 @@ package res
 				})
 			})
 		})
+
+		// List of agent policy IDs. Requires Elastic Stack >= 8.15.0. Conflicts with agent_policy_id.
+		agent_policy_ids?: [...string]
+
+		// The description of the integration policy.
+		description?: string
+
+		// Enable the integration policy.
+		enabled?: bool
+
+		// Force operations, such as creation and deletion, to occur.
+		force?: bool
+
+		// The ID of this resource.
+		id?: string
+
+		// The version of the Elastic Defend integration package.
+		integration_version!: string
+
+		// The name of the integration policy.
+		name!: string
+
+		// The namespace of the integration policy.
+		namespace!: string
+
+		// Unique identifier of the Elastic Defend integration policy. Used as the import key.
+		policy_id?: string
+
+		// Elastic Defend preset configuration. Maps to `endpointConfig.preset` in the
+		// Defend API. Common values include `"NGAv1"`, `"NGAV"`, `"dataCollection"`,
+		// `"EDRComplete"`, `"EDREssential"`.
+		preset?: string
+
+		// The Kibana space IDs where this integration policy is available. When set,
+		// must match the space_ids of the referenced agent policy. If not set, will be
+		// inherited from the agent policy.
+		space_ids?: [...string]
 	})
 
 	#kibana_connection: close({
@@ -366,13 +356,11 @@ package res
 		// Bearer Token to use for authentication to Kibana
 		bearer_token?: string
 
-		// A list of paths to CA certificates to validate the certificate
-		// presented by the Kibana server.
+		// A list of paths to CA certificates to validate the certificate presented by the Kibana server.
 		ca_certs?: [...string]
 
-		// A comma-separated list of endpoints where the terraform
-		// provider will point to, this must include the http(s) schema
-		// and port number.
+		// A comma-separated list of endpoints where the terraform provider will point
+		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// Disable TLS certificate validation

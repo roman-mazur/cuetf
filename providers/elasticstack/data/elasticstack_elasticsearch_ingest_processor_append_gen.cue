@@ -1,11 +1,10 @@
 package data
 
-#elasticstack_elasticsearch_ingest_processor_append: {
+elasticstack_elasticsearch_ingest_processor_append: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_ingest_processor_append")
 	close({
-		// If `false`, the processor does not append values already
-		// present in the field.
+		// If `false`, the processor does not append values already present in the field.
 		allow_duplicates?: bool
 
 		// Description of the processor.
@@ -26,9 +25,9 @@ package data
 		// JSON representation of this data source.
 		json?: string
 
-		// The media type for encoding value. Applies only when value is a
-		// template snippet. Must be one of `application/json`,
-		// `text/plain`, or `application/x-www-form-urlencoded`.
+		// The media type for encoding value. Applies only when value is a template
+		// snippet. Must be one of `application/json`, `text/plain`, or
+		// `application/x-www-form-urlencoded`.
 		media_type?: string
 
 		// Handle failures for the processor.

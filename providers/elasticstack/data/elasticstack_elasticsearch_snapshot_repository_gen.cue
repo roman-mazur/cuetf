@@ -1,11 +1,12 @@
 package data
 
-#elasticstack_elasticsearch_snapshot_repository: {
+elasticstack_elasticsearch_snapshot_repository: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/elasticstack_elasticsearch_snapshot_repository")
 	close({
-		// Azure Blob storage as a repository. Set only if the type of the
-		// fetched repo is `azure`.
+		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
+
+		// Azure Blob storage as a repository. Set only if the type of the fetched repo is `azure`.
 		azure?: matchN(1, [close({
 			// Specifies the path within the container to the repository data.
 			base_path?: string
@@ -16,16 +17,14 @@ package data
 			// Azure named client to use.
 			client?: string
 
-			// If true, metadata files, such as index mappings and settings,
-			// are compressed in snapshots.
+			// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 			compress?: bool
 
-			// Container name. You must create the Azure container before
-			// creating the repository.
+			// Container name. You must create the Azure container before creating the repository.
 			container?: string
 
-			// Location mode. `primary_only` or `secondary_only`. See the
-			// [Azure storage redundancy
+			// Location mode. `primary_only` or `secondary_only`. See the [Azure storage
+			// redundancy
 			// documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy)
 			// for more details.
 			location_mode?: string
@@ -48,16 +47,14 @@ package data
 			// Azure named client to use.
 			client?: string
 
-			// If true, metadata files, such as index mappings and settings,
-			// are compressed in snapshots.
+			// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 			compress?: bool
 
-			// Container name. You must create the Azure container before
-			// creating the repository.
+			// Container name. You must create the Azure container before creating the repository.
 			container?: string
 
-			// Location mode. `primary_only` or `secondary_only`. See the
-			// [Azure storage redundancy
+			// Location mode. `primary_only` or `secondary_only`. See the [Azure storage
+			// redundancy
 			// documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy)
 			// for more details.
 			location_mode?: string
@@ -71,180 +68,164 @@ package data
 			// If true, the repository is read-only.
 			readonly?: bool
 		})]])
-		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
-
-		// Shared filesystem repository. Set only if the type of the
-		// fetched repo is `fs`.
-		fs?: matchN(1, [close({
-			// Maximum size of files in snapshots.
-			chunk_size?: string
-
-			// If true, metadata files, such as index mappings and settings,
-			// are compressed in snapshots.
-			compress?: bool
-
-			// Location of the shared filesystem used to store and retrieve
-			// snapshots.
-			location?: string
-
-			// Maximum number of snapshots the repository can contain.
-			max_number_of_snapshots?: number
-
-			// Maximum snapshot restore rate per node.
-			max_restore_bytes_per_sec?: string
-
-			// Maximum snapshot creation rate per node.
-			max_snapshot_bytes_per_sec?: string
-
-			// If true, the repository is read-only.
-			readonly?: bool
-		}), [...close({
-			// Maximum size of files in snapshots.
-			chunk_size?: string
-
-			// If true, metadata files, such as index mappings and settings,
-			// are compressed in snapshots.
-			compress?: bool
-
-			// Location of the shared filesystem used to store and retrieve
-			// snapshots.
-			location?: string
-
-			// Maximum number of snapshots the repository can contain.
-			max_number_of_snapshots?: number
-
-			// Maximum snapshot restore rate per node.
-			max_restore_bytes_per_sec?: string
-
-			// Maximum snapshot creation rate per node.
-			max_snapshot_bytes_per_sec?: string
-
-			// If true, the repository is read-only.
-			readonly?: bool
-		})]])
-
-		// Google Cloud Storage service as a repository. Set only if the
-		// type of the fetched repo is `gcs`.
-		gcs?: matchN(1, [close({
-			// Specifies the path within the bucket to the repository data.
-			// Defaults to the root of the bucket.
-			base_path?: string
-
-			// The name of the bucket to be used for snapshots.
-			bucket?: string
-
-			// Maximum size of files in snapshots.
-			chunk_size?: string
-
-			// The name of the client to use to connect to Google Cloud
-			// Storage.
-			client?: string
-
-			// If true, metadata files, such as index mappings and settings,
-			// are compressed in snapshots.
-			compress?: bool
-
-			// Maximum snapshot restore rate per node.
-			max_restore_bytes_per_sec?: string
-
-			// Maximum snapshot creation rate per node.
-			max_snapshot_bytes_per_sec?: string
-
-			// If true, the repository is read-only.
-			readonly?: bool
-		}), [...close({
-			// Specifies the path within the bucket to the repository data.
-			// Defaults to the root of the bucket.
-			base_path?: string
-
-			// The name of the bucket to be used for snapshots.
-			bucket?: string
-
-			// Maximum size of files in snapshots.
-			chunk_size?: string
-
-			// The name of the client to use to connect to Google Cloud
-			// Storage.
-			client?: string
-
-			// If true, metadata files, such as index mappings and settings,
-			// are compressed in snapshots.
-			compress?: bool
-
-			// Maximum snapshot restore rate per node.
-			max_restore_bytes_per_sec?: string
-
-			// Maximum snapshot creation rate per node.
-			max_snapshot_bytes_per_sec?: string
-
-			// If true, the repository is read-only.
-			readonly?: bool
-		})]])
-
-		// HDFS File System as a repository. Set only if the type of the
-		// fetched repo is `hdfs`.
-		hdfs?: matchN(1, [close({
-			// Maximum size of files in snapshots.
-			chunk_size?: string
-
-			// If true, metadata files, such as index mappings and settings,
-			// are compressed in snapshots.
-			compress?: bool
-
-			// Whether to load the default Hadoop configuration or not.
-			load_defaults?: bool
-
-			// Maximum snapshot restore rate per node.
-			max_restore_bytes_per_sec?: string
-
-			// Maximum snapshot creation rate per node.
-			max_snapshot_bytes_per_sec?: string
-
-			// The file path within the filesystem where data is
-			// stored/loaded.
-			path?: string
-
-			// If true, the repository is read-only.
-			readonly?: bool
-
-			// The uri address for hdfs. ex: "hdfs://<host>:<port>/".
-			uri?: string
-		}), [...close({
-			// Maximum size of files in snapshots.
-			chunk_size?: string
-
-			// If true, metadata files, such as index mappings and settings,
-			// are compressed in snapshots.
-			compress?: bool
-
-			// Whether to load the default Hadoop configuration or not.
-			load_defaults?: bool
-
-			// Maximum snapshot restore rate per node.
-			max_restore_bytes_per_sec?: string
-
-			// Maximum snapshot creation rate per node.
-			max_snapshot_bytes_per_sec?: string
-
-			// The file path within the filesystem where data is
-			// stored/loaded.
-			path?: string
-
-			// If true, the repository is read-only.
-			readonly?: bool
-
-			// The uri address for hdfs. ex: "hdfs://<host>:<port>/".
-			uri?: string
-		})]])
 
 		// Internal identifier of the resource
 		id?: string
 
+		// Shared filesystem repository. Set only if the type of the fetched repo is `fs`.
+		fs?: matchN(1, [close({
+			// Maximum size of files in snapshots.
+			chunk_size?: string
+
+			// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
+			compress?: bool
+
+			// Location of the shared filesystem used to store and retrieve snapshots.
+			location?: string
+
+			// Maximum number of snapshots the repository can contain.
+			max_number_of_snapshots?: number
+
+			// Maximum snapshot restore rate per node.
+			max_restore_bytes_per_sec?: string
+
+			// Maximum snapshot creation rate per node.
+			max_snapshot_bytes_per_sec?: string
+
+			// If true, the repository is read-only.
+			readonly?: bool
+		}), [...close({
+			// Maximum size of files in snapshots.
+			chunk_size?: string
+
+			// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
+			compress?: bool
+
+			// Location of the shared filesystem used to store and retrieve snapshots.
+			location?: string
+
+			// Maximum number of snapshots the repository can contain.
+			max_number_of_snapshots?: number
+
+			// Maximum snapshot restore rate per node.
+			max_restore_bytes_per_sec?: string
+
+			// Maximum snapshot creation rate per node.
+			max_snapshot_bytes_per_sec?: string
+
+			// If true, the repository is read-only.
+			readonly?: bool
+		})]])
+
 		// Name of the snapshot repository.
 		name!: string
 
-		// AWS S3 as a repository. Set only if the type of the fetched
-		// repo is `s3`.
+		// Google Cloud Storage service as a repository. Set only if the type of the fetched repo is `gcs`.
+		gcs?: matchN(1, [close({
+			// Specifies the path within the bucket to the repository data. Defaults to the root of the bucket.
+			base_path?: string
+
+			// The name of the bucket to be used for snapshots.
+			bucket?: string
+
+			// Maximum size of files in snapshots.
+			chunk_size?: string
+
+			// The name of the client to use to connect to Google Cloud Storage.
+			client?: string
+
+			// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
+			compress?: bool
+
+			// Maximum snapshot restore rate per node.
+			max_restore_bytes_per_sec?: string
+
+			// Maximum snapshot creation rate per node.
+			max_snapshot_bytes_per_sec?: string
+
+			// If true, the repository is read-only.
+			readonly?: bool
+		}), [...close({
+			// Specifies the path within the bucket to the repository data. Defaults to the root of the bucket.
+			base_path?: string
+
+			// The name of the bucket to be used for snapshots.
+			bucket?: string
+
+			// Maximum size of files in snapshots.
+			chunk_size?: string
+
+			// The name of the client to use to connect to Google Cloud Storage.
+			client?: string
+
+			// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
+			compress?: bool
+
+			// Maximum snapshot restore rate per node.
+			max_restore_bytes_per_sec?: string
+
+			// Maximum snapshot creation rate per node.
+			max_snapshot_bytes_per_sec?: string
+
+			// If true, the repository is read-only.
+			readonly?: bool
+		})]])
+
+		// Repository type.
+		type?: string
+
+		// HDFS File System as a repository. Set only if the type of the fetched repo is `hdfs`.
+		hdfs?: matchN(1, [close({
+			// Maximum size of files in snapshots.
+			chunk_size?: string
+
+			// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
+			compress?: bool
+
+			// Whether to load the default Hadoop configuration or not.
+			load_defaults?: bool
+
+			// Maximum snapshot restore rate per node.
+			max_restore_bytes_per_sec?: string
+
+			// Maximum snapshot creation rate per node.
+			max_snapshot_bytes_per_sec?: string
+
+			// The file path within the filesystem where data is stored/loaded.
+			path?: string
+
+			// If true, the repository is read-only.
+			readonly?: bool
+
+			// The uri address for hdfs. ex: "hdfs://<host>:<port>/".
+			uri?: string
+		}), [...close({
+			// Maximum size of files in snapshots.
+			chunk_size?: string
+
+			// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
+			compress?: bool
+
+			// Whether to load the default Hadoop configuration or not.
+			load_defaults?: bool
+
+			// Maximum snapshot restore rate per node.
+			max_restore_bytes_per_sec?: string
+
+			// Maximum snapshot creation rate per node.
+			max_snapshot_bytes_per_sec?: string
+
+			// The file path within the filesystem where data is stored/loaded.
+			path?: string
+
+			// If true, the repository is read-only.
+			readonly?: bool
+
+			// The uri address for hdfs. ex: "hdfs://<host>:<port>/".
+			uri?: string
+		})]])
+
+		// AWS S3 as a repository. Set only if the type of the fetched repo is `s3`.
 		s3?: matchN(1, [close({
 			// Specifies the path to the repository data within its bucket.
 			base_path?: string
@@ -252,8 +233,7 @@ package data
 			// Name of the S3 bucket to use for snapshots.
 			bucket?: string
 
-			// Minimum threshold below which the chunk is uploaded using a
-			// single request.
+			// Minimum threshold below which the chunk is uploaded using a single request.
 			buffer_size?: string
 
 			// The S3 repository supports all S3 canned ACLs.
@@ -265,8 +245,7 @@ package data
 			// The name of the S3 client to use to connect to S3.
 			client?: string
 
-			// If true, metadata files, such as index mappings and settings,
-			// are compressed in snapshots.
+			// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 			compress?: bool
 
 			// Maximum snapshot restore rate per node.
@@ -281,12 +260,10 @@ package data
 			// If true, the repository is read-only.
 			readonly?: bool
 
-			// When true, files are encrypted server-side using AES-256
-			// algorithm.
+			// When true, files are encrypted server-side using AES-256 algorithm.
 			server_side_encryption?: bool
 
-			// Sets the S3 storage class for objects stored in the snapshot
-			// repository.
+			// Sets the S3 storage class for objects stored in the snapshot repository.
 			storage_class?: string
 		}), [...close({
 			// Specifies the path to the repository data within its bucket.
@@ -295,8 +272,7 @@ package data
 			// Name of the S3 bucket to use for snapshots.
 			bucket?: string
 
-			// Minimum threshold below which the chunk is uploaded using a
-			// single request.
+			// Minimum threshold below which the chunk is uploaded using a single request.
 			buffer_size?: string
 
 			// The S3 repository supports all S3 canned ACLs.
@@ -308,8 +284,7 @@ package data
 			// The name of the S3 client to use to connect to S3.
 			client?: string
 
-			// If true, metadata files, such as index mappings and settings,
-			// are compressed in snapshots.
+			// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 			compress?: bool
 
 			// Maximum snapshot restore rate per node.
@@ -324,26 +299,19 @@ package data
 			// If true, the repository is read-only.
 			readonly?: bool
 
-			// When true, files are encrypted server-side using AES-256
-			// algorithm.
+			// When true, files are encrypted server-side using AES-256 algorithm.
 			server_side_encryption?: bool
 
-			// Sets the S3 storage class for objects stored in the snapshot
-			// repository.
+			// Sets the S3 storage class for objects stored in the snapshot repository.
 			storage_class?: string
 		})]])
 
-		// Repository type.
-		type?: string
-
-		// URL repository. Set only if the type of the fetched repo is
-		// `url`.
+		// URL repository. Set only if the type of the fetched repo is `url`.
 		url?: matchN(1, [close({
 			// Maximum size of files in snapshots.
 			chunk_size?: string
 
-			// If true, metadata files, such as index mappings and settings,
-			// are compressed in snapshots.
+			// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 			compress?: bool
 
 			// Maximum number of retries for http and https URLs.
@@ -370,8 +338,7 @@ package data
 			// Maximum size of files in snapshots.
 			chunk_size?: string
 
-			// If true, metadata files, such as index mappings and settings,
-			// are compressed in snapshots.
+			// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 			compress?: bool
 
 			// Maximum number of retries for http and https URLs.
@@ -410,22 +377,25 @@ package data
 		// Path to a custom Certificate Authority certificate
 		ca_file?: string
 
+		// SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators)
+		// of the server TLS certificate used to pin the connection instead of a full
+		// CA chain
+		ca_fingerprint?: string
+
 		// PEM encoded certificate for client auth
 		cert_data?: string
 
-		// Path to a file containing the PEM encoded certificate for
-		// client auth
+		// Path to a file containing the PEM encoded certificate for client auth
 		cert_file?: string
 
-		// A list of endpoints where the terraform provider will point to,
-		// this must include the http(s) schema and port number.
+		// A list of endpoints where the terraform provider will point to, this must
+		// include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// ES Client Authentication field to be used with the JWT token
 		es_client_authentication?: string
 
-		// A list of headers to be sent with each request to
-		// Elasticsearch.
+		// A list of headers to be sent with each request to Elasticsearch.
 		headers?: [string]: string
 
 		// Disable TLS certificate validation
@@ -434,8 +404,7 @@ package data
 		// PEM encoded private key for client auth
 		key_data?: string
 
-		// Path to a file containing the PEM encoded private key for
-		// client auth
+		// Path to a file containing the PEM encoded private key for client auth
 		key_file?: string
 
 		// Password to use for API authentication to Elasticsearch.

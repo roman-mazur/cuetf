@@ -1,23 +1,50 @@
 package res
 
-#elasticstack_kibana_action_connector: {
+elasticstack_kibana_action_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_action_connector")
 	close({
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
-		// The configuration for the connector. Configuration properties
-		// vary depending on the connector type.
+		// The configuration for the connector. Configuration properties vary depending
+		// on the connector type.
 		//
-		// The provider injects the '__tf_provider_context' property into
-		// this JSON object. In most cases this field will be ignored
-		// when computing the difference between the current and desired
-		// state. In some cases however, this property may be shown in
-		// the Terraform plan. Any changes to the '__tf_provider_context'
-		// property can be safely ignored. This property is used
-		// internally by the provider, and you should not set this
-		// property within your Terraform configuration.
+		// The provider injects the '__tf_provider_context' property into this JSON
+		// object. In most cases this field will be ignored when computing the
+		// difference between the current and desired state. In some cases however,
+		// this property may be shown in the Terraform plan. Any changes to the
+		// '__tf_provider_context' property can be safely ignored. This property is
+		// used internally by the provider, and you should not set this property within
+		// your Terraform configuration.
 		config?: string
+		timeouts?: close({
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			create?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only
+			// applicable if changes are saved into state before the destroy operation
+			// occurs.
+			delete?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours). Read operations occur during any refresh or
+			// planning operation when refresh is enabled.
+			read?: string
+
+			// A string that can be [parsed as a
+			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+			// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+			// "m" (minutes), "h" (hours).
+			update?: string
+		})
 
 		// A UUID v1 or v4 to use instead of a randomly generated ID.
 		connector_id?: string
@@ -37,27 +64,26 @@ package res
 		// Indicates whether it is a preconfigured connector.
 		is_preconfigured?: bool
 
-		// The name of the connector. While this name does not have to be
-		// unique, a distinctive name can help you identify a connector.
+		// The name of the connector. While this name does not have to be unique, a
+		// distinctive name can help you identify a connector.
 		name!: string
 
-		// The secrets configuration for the connector. Secrets
-		// configuration properties vary depending on the connector type.
-		// Consider using `secrets_wo` when sourcing secrets from
-		// ephemeral providers so values are not persisted to state.
+		// The secrets configuration for the connector. Secrets configuration properties
+		// vary depending on the connector type. Consider using `secrets_wo` when
+		// sourcing secrets from ephemeral providers so values are not persisted to
+		// state.
 		secrets?: string
 
-		// Write-only secrets configuration for the connector. Accepts the
-		// same JSON content as `secrets` but is never persisted to
-		// state; use with ephemeral secret sources (for example Vault).
+		// Write-only secrets configuration for the connector. Accepts the same JSON
+		// content as `secrets` but is never persisted to state; use with ephemeral
+		// secret sources (for example Vault).
 		secrets_wo?: string
 
-		// Optional version string for `secrets_wo`. Bump this value when
-		// the secret rotates to trigger a re-send on the next apply.
+		// Optional version string for `secrets_wo`. Bump this value when the secret
+		// rotates to trigger a re-send on the next apply.
 		secrets_wo_version?: string
 
-		// An identifier for the space. If space_id is not provided, the
-		// default space is used.
+		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string
 	})
 
@@ -68,13 +94,11 @@ package res
 		// Bearer Token to use for authentication to Kibana
 		bearer_token?: string
 
-		// A list of paths to CA certificates to validate the certificate
-		// presented by the Kibana server.
+		// A list of paths to CA certificates to validate the certificate presented by the Kibana server.
 		ca_certs?: [...string]
 
-		// A comma-separated list of endpoints where the terraform
-		// provider will point to, this must include the http(s) schema
-		// and port number.
+		// A comma-separated list of endpoints where the terraform provider will point
+		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
 
 		// Disable TLS certificate validation

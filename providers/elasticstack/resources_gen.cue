@@ -1,79 +1,90 @@
 package elasticstack
 
-import "github.com/roman-mazur/cuetf/providers/elasticstack/res"
+import (
+	"github.com/roman-mazur/cuetf"
+	"github.com/roman-mazur/cuetf/providers/elasticstack/res"
+)
 
 #Terraform: {
 	#elasticstackPrefix: string
-	_#res: "\(#elasticstackPrefix)_apm_agent_configuration": res.#elasticstack_apm_agent_configuration
-	_#res: "\(#elasticstackPrefix)_apm_source_map": res.#elasticstack_apm_source_map
-	_#res: "\(#elasticstackPrefix)_elasticsearch_cluster_settings": res.#elasticstack_elasticsearch_cluster_settings
-	_#res: "\(#elasticstackPrefix)_elasticsearch_component_template": res.#elasticstack_elasticsearch_component_template
-	_#res: "\(#elasticstackPrefix)_elasticsearch_connector": res.#elasticstack_elasticsearch_connector
-	_#res: "\(#elasticstackPrefix)_elasticsearch_data_stream": res.#elasticstack_elasticsearch_data_stream
-	_#res: "\(#elasticstackPrefix)_elasticsearch_data_stream_lifecycle": res.#elasticstack_elasticsearch_data_stream_lifecycle
-	_#res: "\(#elasticstackPrefix)_elasticsearch_enrich_policy": res.#elasticstack_elasticsearch_enrich_policy
-	_#res: "\(#elasticstackPrefix)_elasticsearch_index_alias": res.#elasticstack_elasticsearch_index_alias
-	_#res: "\(#elasticstackPrefix)_elasticsearch_index": res.#elasticstack_elasticsearch_index
-	_#res: "\(#elasticstackPrefix)_elasticsearch_index_lifecycle": res.#elasticstack_elasticsearch_index_lifecycle
-	_#res: "\(#elasticstackPrefix)_elasticsearch_index_mappings": res.#elasticstack_elasticsearch_index_mappings
-	_#res: "\(#elasticstackPrefix)_elasticsearch_index_template": res.#elasticstack_elasticsearch_index_template
-	_#res: "\(#elasticstackPrefix)_elasticsearch_index_template_ilm_attachment": res.#elasticstack_elasticsearch_index_template_ilm_attachment
-	_#res: "\(#elasticstackPrefix)_elasticsearch_inference_endpoint": res.#elasticstack_elasticsearch_inference_endpoint
-	_#res: "\(#elasticstackPrefix)_elasticsearch_ingest_pipeline": res.#elasticstack_elasticsearch_ingest_pipeline
-	_#res: "\(#elasticstackPrefix)_elasticsearch_logstash_pipeline": res.#elasticstack_elasticsearch_logstash_pipeline
-	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_anomaly_detection_job": res.#elasticstack_elasticsearch_ml_anomaly_detection_job
-	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_calendar_event": res.#elasticstack_elasticsearch_ml_calendar_event
-	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_calendar": res.#elasticstack_elasticsearch_ml_calendar
-	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_calendar_job": res.#elasticstack_elasticsearch_ml_calendar_job
-	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_datafeed": res.#elasticstack_elasticsearch_ml_datafeed
-	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_datafeed_state": res.#elasticstack_elasticsearch_ml_datafeed_state
-	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_filter": res.#elasticstack_elasticsearch_ml_filter
-	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_job_state": res.#elasticstack_elasticsearch_ml_job_state
-	_#res: "\(#elasticstackPrefix)_elasticsearch_query_ruleset": res.#elasticstack_elasticsearch_query_ruleset
-	_#res: "\(#elasticstackPrefix)_elasticsearch_script": res.#elasticstack_elasticsearch_script
-	_#res: "\(#elasticstackPrefix)_elasticsearch_security_api_key": res.#elasticstack_elasticsearch_security_api_key
-	_#res: "\(#elasticstackPrefix)_elasticsearch_security_role": res.#elasticstack_elasticsearch_security_role
-	_#res: "\(#elasticstackPrefix)_elasticsearch_security_role_mapping": res.#elasticstack_elasticsearch_security_role_mapping
-	_#res: "\(#elasticstackPrefix)_elasticsearch_security_system_user": res.#elasticstack_elasticsearch_security_system_user
-	_#res: "\(#elasticstackPrefix)_elasticsearch_security_user": res.#elasticstack_elasticsearch_security_user
-	_#res: "\(#elasticstackPrefix)_elasticsearch_snapshot_lifecycle": res.#elasticstack_elasticsearch_snapshot_lifecycle
-	_#res: "\(#elasticstackPrefix)_elasticsearch_snapshot_repository": res.#elasticstack_elasticsearch_snapshot_repository
-	_#res: "\(#elasticstackPrefix)_elasticsearch_synonym_set": res.#elasticstack_elasticsearch_synonym_set
-	_#res: "\(#elasticstackPrefix)_elasticsearch_transform": res.#elasticstack_elasticsearch_transform
-	_#res: "\(#elasticstackPrefix)_elasticsearch_watch": res.#elasticstack_elasticsearch_watch
-	_#res: "\(#elasticstackPrefix)_fleet_agent_download_source": res.#elasticstack_fleet_agent_download_source
-	_#res: "\(#elasticstackPrefix)_fleet_agent_policy": res.#elasticstack_fleet_agent_policy
-	_#res: "\(#elasticstackPrefix)_fleet_custom_integration": res.#elasticstack_fleet_custom_integration
-	_#res: "\(#elasticstackPrefix)_fleet_elastic_defend_integration_policy": res.#elasticstack_fleet_elastic_defend_integration_policy
-	_#res: "\(#elasticstackPrefix)_fleet_integration": res.#elasticstack_fleet_integration
-	_#res: "\(#elasticstackPrefix)_fleet_integration_policy": res.#elasticstack_fleet_integration_policy
-	_#res: "\(#elasticstackPrefix)_fleet_output": res.#elasticstack_fleet_output
-	_#res: "\(#elasticstackPrefix)_fleet_proxy": res.#elasticstack_fleet_proxy
-	_#res: "\(#elasticstackPrefix)_fleet_server_host": res.#elasticstack_fleet_server_host
-	_#res: "\(#elasticstackPrefix)_kibana_action_connector": res.#elasticstack_kibana_action_connector
-	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_agent": res.#elasticstack_kibana_agentbuilder_agent
-	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_skill": res.#elasticstack_kibana_agentbuilder_skill
-	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_tool": res.#elasticstack_kibana_agentbuilder_tool
-	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_workflow": res.#elasticstack_kibana_agentbuilder_workflow
-	_#res: "\(#elasticstackPrefix)_kibana_alerting_rule": res.#elasticstack_kibana_alerting_rule
-	_#res: "\(#elasticstackPrefix)_kibana_dashboard": res.#elasticstack_kibana_dashboard
-	_#res: "\(#elasticstackPrefix)_kibana_data_view": res.#elasticstack_kibana_data_view
-	_#res: "\(#elasticstackPrefix)_kibana_default_data_view": res.#elasticstack_kibana_default_data_view
-	_#res: "\(#elasticstackPrefix)_kibana_import_saved_objects": res.#elasticstack_kibana_import_saved_objects
-	_#res: "\(#elasticstackPrefix)_kibana_install_prebuilt_rules": res.#elasticstack_kibana_install_prebuilt_rules
-	_#res: "\(#elasticstackPrefix)_kibana_maintenance_window": res.#elasticstack_kibana_maintenance_window
-	_#res: "\(#elasticstackPrefix)_kibana_security_detection_rule": res.#elasticstack_kibana_security_detection_rule
-	_#res: "\(#elasticstackPrefix)_kibana_security_enable_rule": res.#elasticstack_kibana_security_enable_rule
-	_#res: "\(#elasticstackPrefix)_kibana_security_exception_item": res.#elasticstack_kibana_security_exception_item
-	_#res: "\(#elasticstackPrefix)_kibana_security_exception_list": res.#elasticstack_kibana_security_exception_list
-	_#res: "\(#elasticstackPrefix)_kibana_security_list_data_streams": res.#elasticstack_kibana_security_list_data_streams
-	_#res: "\(#elasticstackPrefix)_kibana_security_list": res.#elasticstack_kibana_security_list
-	_#res: "\(#elasticstackPrefix)_kibana_security_list_item": res.#elasticstack_kibana_security_list_item
-	_#res: "\(#elasticstackPrefix)_kibana_security_role": res.#elasticstack_kibana_security_role
-	_#res: "\(#elasticstackPrefix)_kibana_slo": res.#elasticstack_kibana_slo
-	_#res: "\(#elasticstackPrefix)_kibana_space": res.#elasticstack_kibana_space
-	_#res: "\(#elasticstackPrefix)_kibana_synthetics_monitor": res.#elasticstack_kibana_synthetics_monitor
-	_#res: "\(#elasticstackPrefix)_kibana_synthetics_parameter": res.#elasticstack_kibana_synthetics_parameter
-	_#res: "\(#elasticstackPrefix)_kibana_synthetics_private_location": res.#elasticstack_kibana_synthetics_private_location
+	_#res: "\(#elasticstackPrefix)_apm_agent_configuration": close({res.elasticstack_apm_agent_configuration & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_apm_source_map": close({res.elasticstack_apm_source_map & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ccr_auto_follow_pattern": close({res.elasticstack_elasticsearch_ccr_auto_follow_pattern & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ccr_follower_index": close({res.elasticstack_elasticsearch_ccr_follower_index & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_cluster_settings": close({res.elasticstack_elasticsearch_cluster_settings & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_component_template": close({res.elasticstack_elasticsearch_component_template & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_connector": close({res.elasticstack_elasticsearch_connector & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_data_stream": close({res.elasticstack_elasticsearch_data_stream & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_data_stream_lifecycle": close({res.elasticstack_elasticsearch_data_stream_lifecycle & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_enrich_policy": close({res.elasticstack_elasticsearch_enrich_policy & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_index_alias": close({res.elasticstack_elasticsearch_index_alias & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_index": close({res.elasticstack_elasticsearch_index & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_index_lifecycle": close({res.elasticstack_elasticsearch_index_lifecycle & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_index_mappings": close({res.elasticstack_elasticsearch_index_mappings & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_index_template": close({res.elasticstack_elasticsearch_index_template & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_index_template_ilm_attachment": close({res.elasticstack_elasticsearch_index_template_ilm_attachment & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_inference_endpoint": close({res.elasticstack_elasticsearch_inference_endpoint & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ingest_pipeline": close({res.elasticstack_elasticsearch_ingest_pipeline & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_logstash_pipeline": close({res.elasticstack_elasticsearch_logstash_pipeline & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_anomaly_detection_job": close({res.elasticstack_elasticsearch_ml_anomaly_detection_job & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_calendar_event": close({res.elasticstack_elasticsearch_ml_calendar_event & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_calendar": close({res.elasticstack_elasticsearch_ml_calendar & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_calendar_job": close({res.elasticstack_elasticsearch_ml_calendar_job & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_datafeed": close({res.elasticstack_elasticsearch_ml_datafeed & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_datafeed_state": close({res.elasticstack_elasticsearch_ml_datafeed_state & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_filter": close({res.elasticstack_elasticsearch_ml_filter & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_job_state": close({res.elasticstack_elasticsearch_ml_job_state & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_trained_model_alias": close({res.elasticstack_elasticsearch_ml_trained_model_alias & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_ml_trained_model_deployment": close({res.elasticstack_elasticsearch_ml_trained_model_deployment & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_query_ruleset": close({res.elasticstack_elasticsearch_query_ruleset & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_script": close({res.elasticstack_elasticsearch_script & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_security_api_key": close({res.elasticstack_elasticsearch_security_api_key & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_security_role": close({res.elasticstack_elasticsearch_security_role & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_security_role_mapping": close({res.elasticstack_elasticsearch_security_role_mapping & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_security_system_user": close({res.elasticstack_elasticsearch_security_system_user & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_security_user": close({res.elasticstack_elasticsearch_security_user & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_snapshot_lifecycle": close({res.elasticstack_elasticsearch_snapshot_lifecycle & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_snapshot_repository": close({res.elasticstack_elasticsearch_snapshot_repository & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_synonym_set": close({res.elasticstack_elasticsearch_synonym_set & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_transform": close({res.elasticstack_elasticsearch_transform & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_elasticsearch_watch": close({res.elasticstack_elasticsearch_watch & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_fleet_agent_download_source": close({res.elasticstack_fleet_agent_download_source & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_fleet_agent_policy": close({res.elasticstack_fleet_agent_policy & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_fleet_custom_integration": close({res.elasticstack_fleet_custom_integration & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_fleet_elastic_defend_integration_policy": close({res.elasticstack_fleet_elastic_defend_integration_policy & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_fleet_integration": close({res.elasticstack_fleet_integration & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_fleet_integration_policy": close({res.elasticstack_fleet_integration_policy & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_fleet_output": close({res.elasticstack_fleet_output & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_fleet_proxy": close({res.elasticstack_fleet_proxy & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_fleet_server_host": close({res.elasticstack_fleet_server_host & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_action_connector": close({res.elasticstack_kibana_action_connector & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_agent": close({res.elasticstack_kibana_agentbuilder_agent & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_skill": close({res.elasticstack_kibana_agentbuilder_skill & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_tool": close({res.elasticstack_kibana_agentbuilder_tool & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_agentbuilder_workflow": close({res.elasticstack_kibana_agentbuilder_workflow & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_alerting_rule": close({res.elasticstack_kibana_alerting_rule & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_dashboard": close({res.elasticstack_kibana_dashboard & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_data_view": close({res.elasticstack_kibana_data_view & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_default_data_view": close({res.elasticstack_kibana_default_data_view & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_import_saved_objects": close({res.elasticstack_kibana_import_saved_objects & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_install_prebuilt_rules": close({res.elasticstack_kibana_install_prebuilt_rules & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_maintenance_window": close({res.elasticstack_kibana_maintenance_window & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_security_detection_rule": close({res.elasticstack_kibana_security_detection_rule & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_security_enable_rule": close({res.elasticstack_kibana_security_enable_rule & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_security_entity_store_entity": close({res.elasticstack_kibana_security_entity_store_entity & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_security_entity_store_entity_link": close({res.elasticstack_kibana_security_entity_store_entity_link & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_security_entity_store": close({res.elasticstack_kibana_security_entity_store & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_security_exception_item": close({res.elasticstack_kibana_security_exception_item & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_security_exception_list": close({res.elasticstack_kibana_security_exception_list & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_security_list_data_streams": close({res.elasticstack_kibana_security_list_data_streams & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_security_list": close({res.elasticstack_kibana_security_list & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_security_list_item": close({res.elasticstack_kibana_security_list_item & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_security_role": close({res.elasticstack_kibana_security_role & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_slo": close({res.elasticstack_kibana_slo & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_space": close({res.elasticstack_kibana_space & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_stream": close({res.elasticstack_kibana_stream & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_synthetics_monitor": close({res.elasticstack_kibana_synthetics_monitor & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_synthetics_parameter": close({res.elasticstack_kibana_synthetics_parameter & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_synthetics_private_location": close({res.elasticstack_kibana_synthetics_private_location & cuetf.MetaArgs})
 
 }
