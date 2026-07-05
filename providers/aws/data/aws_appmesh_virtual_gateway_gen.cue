@@ -1,6 +1,6 @@
 package data
 
-#aws_appmesh_virtual_gateway: {
+aws_appmesh_virtual_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_appmesh_virtual_gateway")
 	close({

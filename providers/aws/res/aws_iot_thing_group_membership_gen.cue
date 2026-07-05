@@ -1,6 +1,6 @@
 package res
 
-#aws_iot_thing_group_membership: {
+aws_iot_thing_group_membership: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_iot_thing_group_membership")
 	close({

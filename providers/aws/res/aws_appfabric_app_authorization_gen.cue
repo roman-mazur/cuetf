@@ -1,6 +1,6 @@
 package res
 
-#aws_appfabric_app_authorization: {
+aws_appfabric_app_authorization: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_appfabric_app_authorization")
 	close({

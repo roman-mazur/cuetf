@@ -1,6 +1,6 @@
 package res
 
-#aws_evidently_segment: {
+aws_evidently_segment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_evidently_segment")
 	close({

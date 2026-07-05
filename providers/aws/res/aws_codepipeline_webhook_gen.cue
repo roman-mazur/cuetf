@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_codepipeline_webhook: {
+aws_codepipeline_webhook: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_codepipeline_webhook")
 	close({

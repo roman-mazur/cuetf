@@ -1,6 +1,6 @@
 package data
 
-#aws_servicecatalog_provisioning_artifacts: {
+aws_servicecatalog_provisioning_artifacts: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_servicecatalog_provisioning_artifacts")
 	close({

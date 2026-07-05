@@ -1,6 +1,6 @@
 package res
 
-#aws_lb_target_group_attachment: {
+aws_lb_target_group_attachment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lb_target_group_attachment")
 	close({

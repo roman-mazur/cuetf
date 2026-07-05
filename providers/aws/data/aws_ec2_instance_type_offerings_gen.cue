@@ -1,6 +1,6 @@
 package data
 
-#aws_ec2_instance_type_offerings: {
+aws_ec2_instance_type_offerings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ec2_instance_type_offerings")
 	close({

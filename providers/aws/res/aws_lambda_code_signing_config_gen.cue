@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_lambda_code_signing_config: {
+aws_lambda_code_signing_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lambda_code_signing_config")
 	close({

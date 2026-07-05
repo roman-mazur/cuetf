@@ -1,6 +1,6 @@
 package res
 
-#aws_quicksight_folder_membership: {
+aws_quicksight_folder_membership: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_quicksight_folder_membership")
 	close({

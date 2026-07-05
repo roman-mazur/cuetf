@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_transcribe_language_model: {
+aws_transcribe_language_model: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_transcribe_language_model")
 	close({

@@ -1,6 +1,6 @@
 package res
 
-#aws_medialive_multiplex_program: {
+aws_medialive_multiplex_program: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_medialive_multiplex_program")
 	close({

@@ -1,6 +1,6 @@
 package data
 
-#aws_qldb_ledger: {
+aws_qldb_ledger: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_qldb_ledger")
 	close({

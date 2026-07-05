@@ -1,6 +1,6 @@
 package data
 
-#aws_bedrock_custom_model: {
+aws_bedrock_custom_model: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_bedrock_custom_model")
 	close({

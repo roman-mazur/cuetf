@@ -1,6 +1,6 @@
 package res
 
-#aws_sagemaker_mlflow_tracking_server: {
+aws_sagemaker_mlflow_tracking_server: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_mlflow_tracking_server")
 	close({

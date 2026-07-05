@@ -1,6 +1,6 @@
 package res
 
-#aws_ssm_service_setting: {
+aws_ssm_service_setting: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ssm_service_setting")
 	close({

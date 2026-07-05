@@ -1,6 +1,6 @@
 package data
 
-#aws_route53_resolver_firewall_rules: {
+aws_route53_resolver_firewall_rules: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_route53_resolver_firewall_rules")
 	close({

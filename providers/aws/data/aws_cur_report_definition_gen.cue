@@ -1,6 +1,6 @@
 package data
 
-#aws_cur_report_definition: {
+aws_cur_report_definition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_cur_report_definition")
 	close({

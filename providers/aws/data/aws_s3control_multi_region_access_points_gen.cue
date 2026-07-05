@@ -1,6 +1,6 @@
 package data
 
-#aws_s3control_multi_region_access_points: {
+aws_s3control_multi_region_access_points: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_s3control_multi_region_access_points")
 	close({

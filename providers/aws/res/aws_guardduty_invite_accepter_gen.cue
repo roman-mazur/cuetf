@@ -1,6 +1,6 @@
 package res
 
-#aws_guardduty_invite_accepter: {
+aws_guardduty_invite_accepter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_guardduty_invite_accepter")
 	close({

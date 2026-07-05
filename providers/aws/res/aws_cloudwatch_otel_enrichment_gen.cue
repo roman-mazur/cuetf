@@ -1,6 +1,6 @@
 package res
 
-#aws_cloudwatch_otel_enrichment: {
+aws_cloudwatch_otel_enrichment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudwatch_otel_enrichment")
 	close({

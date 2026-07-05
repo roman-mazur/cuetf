@@ -1,9 +1,10 @@
 package res
 
-#aws_bedrockagentcore_code_interpreter: {
+aws_bedrockagentcore_code_interpreter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_code_interpreter")
 	close({
+		certificate?: matchN(1, [#certificate, [...#certificate]])
 		network_configuration?: matchN(1, [#network_configuration, [...#network_configuration]])
 		timeouts?:             #timeouts
 		code_interpreter_arn?: string
@@ -19,6 +20,10 @@ package res
 		name!:                string
 		tags?: [string]:     string
 		tags_all?: [string]: string
+	})
+
+	#certificate: close({
+		location?: matchN(1, [_#defs."/$defs/certificate/$defs/location", [..._#defs."/$defs/certificate/$defs/location"]])
 	})
 
 	#network_configuration: close({
@@ -40,6 +45,14 @@ package res
 		// applicable if changes are saved into state before the destroy operation
 		// occurs.
 		delete?: string
+	})
+
+	_#defs: "/$defs/certificate/$defs/location": close({
+		secrets_manager?: matchN(1, [_#defs."/$defs/certificate/$defs/location/$defs/secrets_manager", [..._#defs."/$defs/certificate/$defs/location/$defs/secrets_manager"]])
+	})
+
+	_#defs: "/$defs/certificate/$defs/location/$defs/secrets_manager": close({
+		secret_arn!: string
 	})
 
 	_#defs: "/$defs/network_configuration/$defs/vpc_config": close({

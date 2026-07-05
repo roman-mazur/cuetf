@@ -1,6 +1,6 @@
 package data
 
-#aws_cognito_identity_pool: {
+aws_cognito_identity_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_cognito_identity_pool")
 	close({

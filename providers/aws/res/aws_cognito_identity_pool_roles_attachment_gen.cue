@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_cognito_identity_pool_roles_attachment: {
+aws_cognito_identity_pool_roles_attachment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cognito_identity_pool_roles_attachment")
 	close({

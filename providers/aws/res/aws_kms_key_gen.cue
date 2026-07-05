@@ -1,6 +1,6 @@
 package res
 
-#aws_kms_key: {
+aws_kms_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_kms_key")
 	close({

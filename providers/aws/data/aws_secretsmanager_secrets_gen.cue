@@ -1,6 +1,6 @@
 package data
 
-#aws_secretsmanager_secrets: {
+aws_secretsmanager_secrets: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_secretsmanager_secrets")
 	close({

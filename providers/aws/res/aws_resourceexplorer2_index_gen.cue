@@ -1,6 +1,6 @@
 package res
 
-#aws_resourceexplorer2_index: {
+aws_resourceexplorer2_index: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_resourceexplorer2_index")
 	close({

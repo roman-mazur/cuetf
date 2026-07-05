@@ -1,6 +1,6 @@
 package data
 
-#aws_cloudfront_origin_request_policy: {
+aws_cloudfront_origin_request_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_cloudfront_origin_request_policy")
 	close({

@@ -1,6 +1,6 @@
 package data
 
-#aws_ec2_service_link_virtual_interfaces: {
+aws_ec2_service_link_virtual_interfaces: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ec2_service_link_virtual_interfaces")
 	close({

@@ -1,6 +1,6 @@
 package data
 
-#aws_arcregionswitch_route53_health_checks: {
+aws_arcregionswitch_route53_health_checks: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_arcregionswitch_route53_health_checks")
 	close({

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_config_configuration_recorder: {
+aws_config_configuration_recorder: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_config_configuration_recorder")
 	close({

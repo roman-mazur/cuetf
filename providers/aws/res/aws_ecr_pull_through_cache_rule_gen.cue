@@ -1,6 +1,6 @@
 package res
 
-#aws_ecr_pull_through_cache_rule: {
+aws_ecr_pull_through_cache_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ecr_pull_through_cache_rule")
 	close({

@@ -1,6 +1,6 @@
 package res
 
-#aws_sagemaker_hub_content_reference: {
+aws_sagemaker_hub_content_reference: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_hub_content_reference")
 	close({

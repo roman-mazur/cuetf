@@ -1,6 +1,6 @@
 package data
 
-#aws_ec2_local_gateway_virtual_interface: {
+aws_ec2_local_gateway_virtual_interface: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ec2_local_gateway_virtual_interface")
 	close({

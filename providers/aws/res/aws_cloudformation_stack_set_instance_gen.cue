@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_cloudformation_stack_set_instance: {
+aws_cloudformation_stack_set_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudformation_stack_set_instance")
 	close({

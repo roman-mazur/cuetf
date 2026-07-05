@@ -1,6 +1,6 @@
 package res
 
-#aws_ram_resource_share_associations_exclusive: {
+aws_ram_resource_share_associations_exclusive: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ram_resource_share_associations_exclusive")
 	close({

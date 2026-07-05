@@ -1,6 +1,6 @@
 package res
 
-#aws_ec2_transit_gateway_policy_table_association: {
+aws_ec2_transit_gateway_policy_table_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ec2_transit_gateway_policy_table_association")
 	close({

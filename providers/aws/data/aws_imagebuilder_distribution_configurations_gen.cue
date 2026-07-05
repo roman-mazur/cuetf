@@ -1,6 +1,6 @@
 package data
 
-#aws_imagebuilder_distribution_configurations: {
+aws_imagebuilder_distribution_configurations: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_imagebuilder_distribution_configurations")
 	close({

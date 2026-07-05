@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_datasync_location_fsx_openzfs_file_system: {
+aws_datasync_location_fsx_openzfs_file_system: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datasync_location_fsx_openzfs_file_system")
 	close({

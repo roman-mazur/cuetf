@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_api_gateway_usage_plan: {
+aws_api_gateway_usage_plan: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_api_gateway_usage_plan")
 	close({

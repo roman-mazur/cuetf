@@ -1,6 +1,6 @@
 package data
 
-#aws_inspector_rules_packages: {
+aws_inspector_rules_packages: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_inspector_rules_packages")
 	close({

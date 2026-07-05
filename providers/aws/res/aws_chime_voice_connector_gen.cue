@@ -1,6 +1,6 @@
 package res
 
-#aws_chime_voice_connector: {
+aws_chime_voice_connector: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_chime_voice_connector")
 	close({

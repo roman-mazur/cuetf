@@ -1,6 +1,6 @@
 package res
 
-#aws_elastic_beanstalk_configuration_template: {
+aws_elastic_beanstalk_configuration_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_elastic_beanstalk_configuration_template")
 	close({

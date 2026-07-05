@@ -1,6 +1,6 @@
 package res
 
-#aws_redshiftdata_statement: {
+aws_redshiftdata_statement: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_redshiftdata_statement")
 	close({

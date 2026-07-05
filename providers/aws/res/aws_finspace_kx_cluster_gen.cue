@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_finspace_kx_cluster: {
+aws_finspace_kx_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_finspace_kx_cluster")
 	close({

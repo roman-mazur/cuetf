@@ -1,6 +1,6 @@
 package res
 
-#aws_securityhub_automation_rule: {
+aws_securityhub_automation_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_securityhub_automation_rule")
 	close({
@@ -14,7 +14,6 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:      string
 		description!: string
-		id?:          string
 		is_terminal?: bool
 		rule_name!:   string
 		rule_order!:  number

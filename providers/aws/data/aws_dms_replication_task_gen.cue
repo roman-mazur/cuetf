@@ -1,6 +1,6 @@
 package data
 
-#aws_dms_replication_task: {
+aws_dms_replication_task: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_dms_replication_task")
 	close({

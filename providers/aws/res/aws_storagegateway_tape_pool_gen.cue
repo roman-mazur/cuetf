@@ -1,6 +1,6 @@
 package res
 
-#aws_storagegateway_tape_pool: {
+aws_storagegateway_tape_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_storagegateway_tape_pool")
 	close({

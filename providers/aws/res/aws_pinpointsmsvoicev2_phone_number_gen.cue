@@ -1,6 +1,6 @@
 package res
 
-#aws_pinpointsmsvoicev2_phone_number: {
+aws_pinpointsmsvoicev2_phone_number: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_pinpointsmsvoicev2_phone_number")
 	close({
@@ -13,6 +13,7 @@ package res
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                      string
 		deletion_protection_enabled?: bool
+		force_disassociate?:          bool
 		id?:                          string
 		iso_country_code!:            string
 		message_type!:                string

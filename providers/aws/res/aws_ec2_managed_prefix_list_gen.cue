@@ -1,6 +1,6 @@
 package res
 
-#aws_ec2_managed_prefix_list: {
+aws_ec2_managed_prefix_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ec2_managed_prefix_list")
 	close({

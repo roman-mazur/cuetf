@@ -1,6 +1,6 @@
 package res
 
-#aws_networkmanager_transit_gateway_route_table_attachment: {
+aws_networkmanager_transit_gateway_route_table_attachment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_networkmanager_transit_gateway_route_table_attachment")
 	close({

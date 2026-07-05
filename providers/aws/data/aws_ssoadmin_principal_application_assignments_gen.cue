@@ -1,6 +1,6 @@
 package data
 
-#aws_ssoadmin_principal_application_assignments: {
+aws_ssoadmin_principal_application_assignments: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_ssoadmin_principal_application_assignments")
 	close({

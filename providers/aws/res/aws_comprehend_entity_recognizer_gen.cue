@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_comprehend_entity_recognizer: {
+aws_comprehend_entity_recognizer: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_comprehend_entity_recognizer")
 	close({

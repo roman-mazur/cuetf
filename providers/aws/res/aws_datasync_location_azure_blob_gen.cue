@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_datasync_location_azure_blob: {
+aws_datasync_location_azure_blob: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_datasync_location_azure_blob")
 	close({

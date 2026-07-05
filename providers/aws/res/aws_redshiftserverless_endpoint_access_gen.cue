@@ -1,6 +1,6 @@
 package res
 
-#aws_redshiftserverless_endpoint_access: {
+aws_redshiftserverless_endpoint_access: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_redshiftserverless_endpoint_access")
 	close({

@@ -1,6 +1,6 @@
 package data
 
-#aws_redshift_data_shares: {
+aws_redshift_data_shares: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_redshift_data_shares")
 	close({

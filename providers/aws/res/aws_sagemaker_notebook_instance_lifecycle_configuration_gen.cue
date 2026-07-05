@@ -1,6 +1,6 @@
 package res
 
-#aws_sagemaker_notebook_instance_lifecycle_configuration: {
+aws_sagemaker_notebook_instance_lifecycle_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_sagemaker_notebook_instance_lifecycle_configuration")
 	close({

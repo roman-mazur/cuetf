@@ -1,6 +1,6 @@
 package res
 
-#aws_cloudwatch_event_archive: {
+aws_cloudwatch_event_archive: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudwatch_event_archive")
 	close({

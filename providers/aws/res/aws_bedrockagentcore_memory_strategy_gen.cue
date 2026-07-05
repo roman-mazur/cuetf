@@ -1,6 +1,6 @@
 package res
 
-#aws_bedrockagentcore_memory_strategy: {
+aws_bedrockagentcore_memory_strategy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_memory_strategy")
 	close({

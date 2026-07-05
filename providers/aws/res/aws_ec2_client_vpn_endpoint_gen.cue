@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_ec2_client_vpn_endpoint: {
+aws_ec2_client_vpn_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_ec2_client_vpn_endpoint")
 	close({

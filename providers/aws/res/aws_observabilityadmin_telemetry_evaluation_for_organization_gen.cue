@@ -1,6 +1,6 @@
 package res
 
-#aws_observabilityadmin_telemetry_evaluation_for_organization: {
+aws_observabilityadmin_telemetry_evaluation_for_organization: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_observabilityadmin_telemetry_evaluation_for_organization")
 	close({

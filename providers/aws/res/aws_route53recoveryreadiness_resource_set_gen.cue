@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_route53recoveryreadiness_resource_set: {
+aws_route53recoveryreadiness_resource_set: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_route53recoveryreadiness_resource_set")
 	close({

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#aws_cloudfront_field_level_encryption_config: {
+aws_cloudfront_field_level_encryption_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudfront_field_level_encryption_config")
 	close({

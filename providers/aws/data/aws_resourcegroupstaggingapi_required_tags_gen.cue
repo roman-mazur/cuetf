@@ -1,6 +1,6 @@
 package data
 
-#aws_resourcegroupstaggingapi_required_tags: {
+aws_resourcegroupstaggingapi_required_tags: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_resourcegroupstaggingapi_required_tags")
 	close({

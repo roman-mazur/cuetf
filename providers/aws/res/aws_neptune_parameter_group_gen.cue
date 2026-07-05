@@ -1,6 +1,6 @@
 package res
 
-#aws_neptune_parameter_group: {
+aws_neptune_parameter_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_neptune_parameter_group")
 	close({

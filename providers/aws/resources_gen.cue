@@ -1,1683 +1,1689 @@
 package aws
 
-import "github.com/roman-mazur/cuetf/providers/aws/res"
+import (
+	"github.com/roman-mazur/cuetf"
+	"github.com/roman-mazur/cuetf/providers/aws/res"
+)
 
 #Terraform: {
 	#awsPrefix: string
-	_#res: "\(#awsPrefix)_accessanalyzer_analyzer": res.#aws_accessanalyzer_analyzer
-	_#res: "\(#awsPrefix)_accessanalyzer_archive_rule": res.#aws_accessanalyzer_archive_rule
-	_#res: "\(#awsPrefix)_account_alternate_contact": res.#aws_account_alternate_contact
-	_#res: "\(#awsPrefix)_account_primary_contact": res.#aws_account_primary_contact
-	_#res: "\(#awsPrefix)_account_region": res.#aws_account_region
-	_#res: "\(#awsPrefix)_acm_certificate": res.#aws_acm_certificate
-	_#res: "\(#awsPrefix)_acm_certificate_validation": res.#aws_acm_certificate_validation
-	_#res: "\(#awsPrefix)_acmpca_certificate_authority_certificate": res.#aws_acmpca_certificate_authority_certificate
-	_#res: "\(#awsPrefix)_acmpca_certificate_authority": res.#aws_acmpca_certificate_authority
-	_#res: "\(#awsPrefix)_acmpca_certificate": res.#aws_acmpca_certificate
-	_#res: "\(#awsPrefix)_acmpca_permission": res.#aws_acmpca_permission
-	_#res: "\(#awsPrefix)_acmpca_policy": res.#aws_acmpca_policy
-	_#res: "\(#awsPrefix)_alb": res.#aws_alb
-	_#res: "\(#awsPrefix)_alb_listener_certificate": res.#aws_alb_listener_certificate
-	_#res: "\(#awsPrefix)_alb_listener": res.#aws_alb_listener
-	_#res: "\(#awsPrefix)_alb_listener_rule": res.#aws_alb_listener_rule
-	_#res: "\(#awsPrefix)_alb_target_group_attachment": res.#aws_alb_target_group_attachment
-	_#res: "\(#awsPrefix)_alb_target_group": res.#aws_alb_target_group
-	_#res: "\(#awsPrefix)_ami_copy": res.#aws_ami_copy
-	_#res: "\(#awsPrefix)_ami_from_instance": res.#aws_ami_from_instance
-	_#res: "\(#awsPrefix)_ami": res.#aws_ami
-	_#res: "\(#awsPrefix)_ami_launch_permission": res.#aws_ami_launch_permission
-	_#res: "\(#awsPrefix)_amplify_app": res.#aws_amplify_app
-	_#res: "\(#awsPrefix)_amplify_backend_environment": res.#aws_amplify_backend_environment
-	_#res: "\(#awsPrefix)_amplify_branch": res.#aws_amplify_branch
-	_#res: "\(#awsPrefix)_amplify_domain_association": res.#aws_amplify_domain_association
-	_#res: "\(#awsPrefix)_amplify_webhook": res.#aws_amplify_webhook
-	_#res: "\(#awsPrefix)_api_gateway_account": res.#aws_api_gateway_account
-	_#res: "\(#awsPrefix)_api_gateway_api_key": res.#aws_api_gateway_api_key
-	_#res: "\(#awsPrefix)_api_gateway_authorizer": res.#aws_api_gateway_authorizer
-	_#res: "\(#awsPrefix)_api_gateway_base_path_mapping": res.#aws_api_gateway_base_path_mapping
-	_#res: "\(#awsPrefix)_api_gateway_client_certificate": res.#aws_api_gateway_client_certificate
-	_#res: "\(#awsPrefix)_api_gateway_deployment": res.#aws_api_gateway_deployment
-	_#res: "\(#awsPrefix)_api_gateway_documentation_part": res.#aws_api_gateway_documentation_part
-	_#res: "\(#awsPrefix)_api_gateway_documentation_version": res.#aws_api_gateway_documentation_version
-	_#res: "\(#awsPrefix)_api_gateway_domain_name_access_association": res.#aws_api_gateway_domain_name_access_association
-	_#res: "\(#awsPrefix)_api_gateway_domain_name": res.#aws_api_gateway_domain_name
-	_#res: "\(#awsPrefix)_api_gateway_gateway_response": res.#aws_api_gateway_gateway_response
-	_#res: "\(#awsPrefix)_api_gateway_integration": res.#aws_api_gateway_integration
-	_#res: "\(#awsPrefix)_api_gateway_integration_response": res.#aws_api_gateway_integration_response
-	_#res: "\(#awsPrefix)_api_gateway_method": res.#aws_api_gateway_method
-	_#res: "\(#awsPrefix)_api_gateway_method_response": res.#aws_api_gateway_method_response
-	_#res: "\(#awsPrefix)_api_gateway_method_settings": res.#aws_api_gateway_method_settings
-	_#res: "\(#awsPrefix)_api_gateway_model": res.#aws_api_gateway_model
-	_#res: "\(#awsPrefix)_api_gateway_request_validator": res.#aws_api_gateway_request_validator
-	_#res: "\(#awsPrefix)_api_gateway_resource": res.#aws_api_gateway_resource
-	_#res: "\(#awsPrefix)_api_gateway_rest_api": res.#aws_api_gateway_rest_api
-	_#res: "\(#awsPrefix)_api_gateway_rest_api_policy": res.#aws_api_gateway_rest_api_policy
-	_#res: "\(#awsPrefix)_api_gateway_rest_api_put": res.#aws_api_gateway_rest_api_put
-	_#res: "\(#awsPrefix)_api_gateway_stage": res.#aws_api_gateway_stage
-	_#res: "\(#awsPrefix)_api_gateway_usage_plan": res.#aws_api_gateway_usage_plan
-	_#res: "\(#awsPrefix)_api_gateway_usage_plan_key": res.#aws_api_gateway_usage_plan_key
-	_#res: "\(#awsPrefix)_api_gateway_vpc_link": res.#aws_api_gateway_vpc_link
-	_#res: "\(#awsPrefix)_apigatewayv2_api": res.#aws_apigatewayv2_api
-	_#res: "\(#awsPrefix)_apigatewayv2_api_mapping": res.#aws_apigatewayv2_api_mapping
-	_#res: "\(#awsPrefix)_apigatewayv2_authorizer": res.#aws_apigatewayv2_authorizer
-	_#res: "\(#awsPrefix)_apigatewayv2_deployment": res.#aws_apigatewayv2_deployment
-	_#res: "\(#awsPrefix)_apigatewayv2_domain_name": res.#aws_apigatewayv2_domain_name
-	_#res: "\(#awsPrefix)_apigatewayv2_integration": res.#aws_apigatewayv2_integration
-	_#res: "\(#awsPrefix)_apigatewayv2_integration_response": res.#aws_apigatewayv2_integration_response
-	_#res: "\(#awsPrefix)_apigatewayv2_model": res.#aws_apigatewayv2_model
-	_#res: "\(#awsPrefix)_apigatewayv2_route": res.#aws_apigatewayv2_route
-	_#res: "\(#awsPrefix)_apigatewayv2_route_response": res.#aws_apigatewayv2_route_response
-	_#res: "\(#awsPrefix)_apigatewayv2_routing_rule": res.#aws_apigatewayv2_routing_rule
-	_#res: "\(#awsPrefix)_apigatewayv2_stage": res.#aws_apigatewayv2_stage
-	_#res: "\(#awsPrefix)_apigatewayv2_vpc_link": res.#aws_apigatewayv2_vpc_link
-	_#res: "\(#awsPrefix)_app_cookie_stickiness_policy": res.#aws_app_cookie_stickiness_policy
-	_#res: "\(#awsPrefix)_appautoscaling_policy": res.#aws_appautoscaling_policy
-	_#res: "\(#awsPrefix)_appautoscaling_scheduled_action": res.#aws_appautoscaling_scheduled_action
-	_#res: "\(#awsPrefix)_appautoscaling_target": res.#aws_appautoscaling_target
-	_#res: "\(#awsPrefix)_appconfig_application": res.#aws_appconfig_application
-	_#res: "\(#awsPrefix)_appconfig_configuration_profile": res.#aws_appconfig_configuration_profile
-	_#res: "\(#awsPrefix)_appconfig_deployment": res.#aws_appconfig_deployment
-	_#res: "\(#awsPrefix)_appconfig_deployment_strategy": res.#aws_appconfig_deployment_strategy
-	_#res: "\(#awsPrefix)_appconfig_environment": res.#aws_appconfig_environment
-	_#res: "\(#awsPrefix)_appconfig_extension_association": res.#aws_appconfig_extension_association
-	_#res: "\(#awsPrefix)_appconfig_extension": res.#aws_appconfig_extension
-	_#res: "\(#awsPrefix)_appconfig_hosted_configuration_version": res.#aws_appconfig_hosted_configuration_version
-	_#res: "\(#awsPrefix)_appfabric_app_authorization_connection": res.#aws_appfabric_app_authorization_connection
-	_#res: "\(#awsPrefix)_appfabric_app_authorization": res.#aws_appfabric_app_authorization
-	_#res: "\(#awsPrefix)_appfabric_app_bundle": res.#aws_appfabric_app_bundle
-	_#res: "\(#awsPrefix)_appfabric_ingestion_destination": res.#aws_appfabric_ingestion_destination
-	_#res: "\(#awsPrefix)_appfabric_ingestion": res.#aws_appfabric_ingestion
-	_#res: "\(#awsPrefix)_appflow_connector_profile": res.#aws_appflow_connector_profile
-	_#res: "\(#awsPrefix)_appflow_flow": res.#aws_appflow_flow
-	_#res: "\(#awsPrefix)_appintegrations_data_integration": res.#aws_appintegrations_data_integration
-	_#res: "\(#awsPrefix)_appintegrations_event_integration": res.#aws_appintegrations_event_integration
-	_#res: "\(#awsPrefix)_applicationinsights_application": res.#aws_applicationinsights_application
-	_#res: "\(#awsPrefix)_appmesh_gateway_route": res.#aws_appmesh_gateway_route
-	_#res: "\(#awsPrefix)_appmesh_mesh": res.#aws_appmesh_mesh
-	_#res: "\(#awsPrefix)_appmesh_route": res.#aws_appmesh_route
-	_#res: "\(#awsPrefix)_appmesh_virtual_gateway": res.#aws_appmesh_virtual_gateway
-	_#res: "\(#awsPrefix)_appmesh_virtual_node": res.#aws_appmesh_virtual_node
-	_#res: "\(#awsPrefix)_appmesh_virtual_router": res.#aws_appmesh_virtual_router
-	_#res: "\(#awsPrefix)_appmesh_virtual_service": res.#aws_appmesh_virtual_service
-	_#res: "\(#awsPrefix)_apprunner_auto_scaling_configuration_version": res.#aws_apprunner_auto_scaling_configuration_version
-	_#res: "\(#awsPrefix)_apprunner_connection": res.#aws_apprunner_connection
-	_#res: "\(#awsPrefix)_apprunner_custom_domain_association": res.#aws_apprunner_custom_domain_association
-	_#res: "\(#awsPrefix)_apprunner_default_auto_scaling_configuration_version": res.#aws_apprunner_default_auto_scaling_configuration_version
-	_#res: "\(#awsPrefix)_apprunner_deployment": res.#aws_apprunner_deployment
-	_#res: "\(#awsPrefix)_apprunner_observability_configuration": res.#aws_apprunner_observability_configuration
-	_#res: "\(#awsPrefix)_apprunner_service": res.#aws_apprunner_service
-	_#res: "\(#awsPrefix)_apprunner_vpc_connector": res.#aws_apprunner_vpc_connector
-	_#res: "\(#awsPrefix)_apprunner_vpc_ingress_connection": res.#aws_apprunner_vpc_ingress_connection
-	_#res: "\(#awsPrefix)_appstream_directory_config": res.#aws_appstream_directory_config
-	_#res: "\(#awsPrefix)_appstream_fleet": res.#aws_appstream_fleet
-	_#res: "\(#awsPrefix)_appstream_fleet_stack_association": res.#aws_appstream_fleet_stack_association
-	_#res: "\(#awsPrefix)_appstream_image_builder": res.#aws_appstream_image_builder
-	_#res: "\(#awsPrefix)_appstream_stack": res.#aws_appstream_stack
-	_#res: "\(#awsPrefix)_appstream_user": res.#aws_appstream_user
-	_#res: "\(#awsPrefix)_appstream_user_stack_association": res.#aws_appstream_user_stack_association
-	_#res: "\(#awsPrefix)_appsync_api_cache": res.#aws_appsync_api_cache
-	_#res: "\(#awsPrefix)_appsync_api": res.#aws_appsync_api
-	_#res: "\(#awsPrefix)_appsync_api_key": res.#aws_appsync_api_key
-	_#res: "\(#awsPrefix)_appsync_channel_namespace": res.#aws_appsync_channel_namespace
-	_#res: "\(#awsPrefix)_appsync_datasource": res.#aws_appsync_datasource
-	_#res: "\(#awsPrefix)_appsync_domain_name_api_association": res.#aws_appsync_domain_name_api_association
-	_#res: "\(#awsPrefix)_appsync_domain_name": res.#aws_appsync_domain_name
-	_#res: "\(#awsPrefix)_appsync_function": res.#aws_appsync_function
-	_#res: "\(#awsPrefix)_appsync_graphql_api": res.#aws_appsync_graphql_api
-	_#res: "\(#awsPrefix)_appsync_resolver": res.#aws_appsync_resolver
-	_#res: "\(#awsPrefix)_appsync_source_api_association": res.#aws_appsync_source_api_association
-	_#res: "\(#awsPrefix)_appsync_type": res.#aws_appsync_type
-	_#res: "\(#awsPrefix)_arcregionswitch_plan": res.#aws_arcregionswitch_plan
-	_#res: "\(#awsPrefix)_arczonalshift_autoshift_observer_notification_status": res.#aws_arczonalshift_autoshift_observer_notification_status
-	_#res: "\(#awsPrefix)_arczonalshift_zonal_autoshift_configuration": res.#aws_arczonalshift_zonal_autoshift_configuration
-	_#res: "\(#awsPrefix)_athena_capacity_reservation": res.#aws_athena_capacity_reservation
-	_#res: "\(#awsPrefix)_athena_data_catalog": res.#aws_athena_data_catalog
-	_#res: "\(#awsPrefix)_athena_database": res.#aws_athena_database
-	_#res: "\(#awsPrefix)_athena_named_query": res.#aws_athena_named_query
-	_#res: "\(#awsPrefix)_athena_prepared_statement": res.#aws_athena_prepared_statement
-	_#res: "\(#awsPrefix)_athena_workgroup": res.#aws_athena_workgroup
-	_#res: "\(#awsPrefix)_auditmanager_account_registration": res.#aws_auditmanager_account_registration
-	_#res: "\(#awsPrefix)_auditmanager_assessment_delegation": res.#aws_auditmanager_assessment_delegation
-	_#res: "\(#awsPrefix)_auditmanager_assessment": res.#aws_auditmanager_assessment
-	_#res: "\(#awsPrefix)_auditmanager_assessment_report": res.#aws_auditmanager_assessment_report
-	_#res: "\(#awsPrefix)_auditmanager_control": res.#aws_auditmanager_control
-	_#res: "\(#awsPrefix)_auditmanager_framework": res.#aws_auditmanager_framework
-	_#res: "\(#awsPrefix)_auditmanager_framework_share": res.#aws_auditmanager_framework_share
-	_#res: "\(#awsPrefix)_auditmanager_organization_admin_account_registration": res.#aws_auditmanager_organization_admin_account_registration
-	_#res: "\(#awsPrefix)_autoscaling_attachment": res.#aws_autoscaling_attachment
-	_#res: "\(#awsPrefix)_autoscaling_group": res.#aws_autoscaling_group
-	_#res: "\(#awsPrefix)_autoscaling_group_tag": res.#aws_autoscaling_group_tag
-	_#res: "\(#awsPrefix)_autoscaling_lifecycle_hook": res.#aws_autoscaling_lifecycle_hook
-	_#res: "\(#awsPrefix)_autoscaling_notification": res.#aws_autoscaling_notification
-	_#res: "\(#awsPrefix)_autoscaling_policy": res.#aws_autoscaling_policy
-	_#res: "\(#awsPrefix)_autoscaling_schedule": res.#aws_autoscaling_schedule
-	_#res: "\(#awsPrefix)_autoscaling_traffic_source_attachment": res.#aws_autoscaling_traffic_source_attachment
-	_#res: "\(#awsPrefix)_autoscalingplans_scaling_plan": res.#aws_autoscalingplans_scaling_plan
-	_#res: "\(#awsPrefix)_backup_framework": res.#aws_backup_framework
-	_#res: "\(#awsPrefix)_backup_global_settings": res.#aws_backup_global_settings
-	_#res: "\(#awsPrefix)_backup_logically_air_gapped_vault": res.#aws_backup_logically_air_gapped_vault
-	_#res: "\(#awsPrefix)_backup_plan": res.#aws_backup_plan
-	_#res: "\(#awsPrefix)_backup_region_settings": res.#aws_backup_region_settings
-	_#res: "\(#awsPrefix)_backup_report_plan": res.#aws_backup_report_plan
-	_#res: "\(#awsPrefix)_backup_restore_testing_plan": res.#aws_backup_restore_testing_plan
-	_#res: "\(#awsPrefix)_backup_restore_testing_selection": res.#aws_backup_restore_testing_selection
-	_#res: "\(#awsPrefix)_backup_selection": res.#aws_backup_selection
-	_#res: "\(#awsPrefix)_backup_vault": res.#aws_backup_vault
-	_#res: "\(#awsPrefix)_backup_vault_lock_configuration": res.#aws_backup_vault_lock_configuration
-	_#res: "\(#awsPrefix)_backup_vault_notifications": res.#aws_backup_vault_notifications
-	_#res: "\(#awsPrefix)_backup_vault_policy": res.#aws_backup_vault_policy
-	_#res: "\(#awsPrefix)_batch_compute_environment": res.#aws_batch_compute_environment
-	_#res: "\(#awsPrefix)_batch_job_definition": res.#aws_batch_job_definition
-	_#res: "\(#awsPrefix)_batch_job_queue": res.#aws_batch_job_queue
-	_#res: "\(#awsPrefix)_batch_scheduling_policy": res.#aws_batch_scheduling_policy
-	_#res: "\(#awsPrefix)_bcmdataexports_export": res.#aws_bcmdataexports_export
-	_#res: "\(#awsPrefix)_bedrock_custom_model": res.#aws_bedrock_custom_model
-	_#res: "\(#awsPrefix)_bedrock_guardrail": res.#aws_bedrock_guardrail
-	_#res: "\(#awsPrefix)_bedrock_guardrail_version": res.#aws_bedrock_guardrail_version
-	_#res: "\(#awsPrefix)_bedrock_inference_profile": res.#aws_bedrock_inference_profile
-	_#res: "\(#awsPrefix)_bedrock_model_invocation_logging_configuration": res.#aws_bedrock_model_invocation_logging_configuration
-	_#res: "\(#awsPrefix)_bedrock_provisioned_model_throughput": res.#aws_bedrock_provisioned_model_throughput
-	_#res: "\(#awsPrefix)_bedrockagent_agent_action_group": res.#aws_bedrockagent_agent_action_group
-	_#res: "\(#awsPrefix)_bedrockagent_agent_alias": res.#aws_bedrockagent_agent_alias
-	_#res: "\(#awsPrefix)_bedrockagent_agent_collaborator": res.#aws_bedrockagent_agent_collaborator
-	_#res: "\(#awsPrefix)_bedrockagent_agent": res.#aws_bedrockagent_agent
-	_#res: "\(#awsPrefix)_bedrockagent_agent_knowledge_base_association": res.#aws_bedrockagent_agent_knowledge_base_association
-	_#res: "\(#awsPrefix)_bedrockagent_data_source": res.#aws_bedrockagent_data_source
-	_#res: "\(#awsPrefix)_bedrockagent_flow": res.#aws_bedrockagent_flow
-	_#res: "\(#awsPrefix)_bedrockagent_knowledge_base": res.#aws_bedrockagent_knowledge_base
-	_#res: "\(#awsPrefix)_bedrockagent_prompt": res.#aws_bedrockagent_prompt
-	_#res: "\(#awsPrefix)_bedrockagentcore_agent_runtime_endpoint": res.#aws_bedrockagentcore_agent_runtime_endpoint
-	_#res: "\(#awsPrefix)_bedrockagentcore_agent_runtime": res.#aws_bedrockagentcore_agent_runtime
-	_#res: "\(#awsPrefix)_bedrockagentcore_api_key_credential_provider": res.#aws_bedrockagentcore_api_key_credential_provider
-	_#res: "\(#awsPrefix)_bedrockagentcore_browser": res.#aws_bedrockagentcore_browser
-	_#res: "\(#awsPrefix)_bedrockagentcore_code_interpreter": res.#aws_bedrockagentcore_code_interpreter
-	_#res: "\(#awsPrefix)_bedrockagentcore_evaluator": res.#aws_bedrockagentcore_evaluator
-	_#res: "\(#awsPrefix)_bedrockagentcore_gateway": res.#aws_bedrockagentcore_gateway
-	_#res: "\(#awsPrefix)_bedrockagentcore_gateway_target": res.#aws_bedrockagentcore_gateway_target
-	_#res: "\(#awsPrefix)_bedrockagentcore_harness": res.#aws_bedrockagentcore_harness
-	_#res: "\(#awsPrefix)_bedrockagentcore_memory": res.#aws_bedrockagentcore_memory
-	_#res: "\(#awsPrefix)_bedrockagentcore_memory_strategy": res.#aws_bedrockagentcore_memory_strategy
-	_#res: "\(#awsPrefix)_bedrockagentcore_oauth2_credential_provider": res.#aws_bedrockagentcore_oauth2_credential_provider
-	_#res: "\(#awsPrefix)_bedrockagentcore_online_evaluation_config": res.#aws_bedrockagentcore_online_evaluation_config
-	_#res: "\(#awsPrefix)_bedrockagentcore_policy_engine": res.#aws_bedrockagentcore_policy_engine
-	_#res: "\(#awsPrefix)_bedrockagentcore_policy": res.#aws_bedrockagentcore_policy
-	_#res: "\(#awsPrefix)_bedrockagentcore_registry": res.#aws_bedrockagentcore_registry
-	_#res: "\(#awsPrefix)_bedrockagentcore_resource_policy": res.#aws_bedrockagentcore_resource_policy
-	_#res: "\(#awsPrefix)_bedrockagentcore_token_vault_cmk": res.#aws_bedrockagentcore_token_vault_cmk
-	_#res: "\(#awsPrefix)_bedrockagentcore_workload_identity": res.#aws_bedrockagentcore_workload_identity
-	_#res: "\(#awsPrefix)_billing_view": res.#aws_billing_view
-	_#res: "\(#awsPrefix)_budgets_budget_action": res.#aws_budgets_budget_action
-	_#res: "\(#awsPrefix)_budgets_budget": res.#aws_budgets_budget
-	_#res: "\(#awsPrefix)_ce_anomaly_monitor": res.#aws_ce_anomaly_monitor
-	_#res: "\(#awsPrefix)_ce_anomaly_subscription": res.#aws_ce_anomaly_subscription
-	_#res: "\(#awsPrefix)_ce_cost_allocation_tag": res.#aws_ce_cost_allocation_tag
-	_#res: "\(#awsPrefix)_ce_cost_category": res.#aws_ce_cost_category
-	_#res: "\(#awsPrefix)_chatbot_slack_channel_configuration": res.#aws_chatbot_slack_channel_configuration
-	_#res: "\(#awsPrefix)_chatbot_teams_channel_configuration": res.#aws_chatbot_teams_channel_configuration
-	_#res: "\(#awsPrefix)_chime_voice_connector": res.#aws_chime_voice_connector
-	_#res: "\(#awsPrefix)_chime_voice_connector_group": res.#aws_chime_voice_connector_group
-	_#res: "\(#awsPrefix)_chime_voice_connector_logging": res.#aws_chime_voice_connector_logging
-	_#res: "\(#awsPrefix)_chime_voice_connector_origination": res.#aws_chime_voice_connector_origination
-	_#res: "\(#awsPrefix)_chime_voice_connector_streaming": res.#aws_chime_voice_connector_streaming
-	_#res: "\(#awsPrefix)_chime_voice_connector_termination_credentials": res.#aws_chime_voice_connector_termination_credentials
-	_#res: "\(#awsPrefix)_chime_voice_connector_termination": res.#aws_chime_voice_connector_termination
-	_#res: "\(#awsPrefix)_chimesdkmediapipelines_media_insights_pipeline_configuration": res.#aws_chimesdkmediapipelines_media_insights_pipeline_configuration
-	_#res: "\(#awsPrefix)_chimesdkvoice_global_settings": res.#aws_chimesdkvoice_global_settings
-	_#res: "\(#awsPrefix)_chimesdkvoice_sip_media_application": res.#aws_chimesdkvoice_sip_media_application
-	_#res: "\(#awsPrefix)_chimesdkvoice_sip_rule": res.#aws_chimesdkvoice_sip_rule
-	_#res: "\(#awsPrefix)_chimesdkvoice_voice_profile_domain": res.#aws_chimesdkvoice_voice_profile_domain
-	_#res: "\(#awsPrefix)_cleanrooms_collaboration": res.#aws_cleanrooms_collaboration
-	_#res: "\(#awsPrefix)_cleanrooms_configured_table": res.#aws_cleanrooms_configured_table
-	_#res: "\(#awsPrefix)_cleanrooms_membership": res.#aws_cleanrooms_membership
-	_#res: "\(#awsPrefix)_cloud9_environment_ec2": res.#aws_cloud9_environment_ec2
-	_#res: "\(#awsPrefix)_cloud9_environment_membership": res.#aws_cloud9_environment_membership
-	_#res: "\(#awsPrefix)_cloudcontrolapi_resource": res.#aws_cloudcontrolapi_resource
-	_#res: "\(#awsPrefix)_cloudformation_stack": res.#aws_cloudformation_stack
-	_#res: "\(#awsPrefix)_cloudformation_stack_instances": res.#aws_cloudformation_stack_instances
-	_#res: "\(#awsPrefix)_cloudformation_stack_set": res.#aws_cloudformation_stack_set
-	_#res: "\(#awsPrefix)_cloudformation_stack_set_instance": res.#aws_cloudformation_stack_set_instance
-	_#res: "\(#awsPrefix)_cloudformation_type": res.#aws_cloudformation_type
-	_#res: "\(#awsPrefix)_cloudfront_anycast_ip_list": res.#aws_cloudfront_anycast_ip_list
-	_#res: "\(#awsPrefix)_cloudfront_cache_policy": res.#aws_cloudfront_cache_policy
-	_#res: "\(#awsPrefix)_cloudfront_connection_function": res.#aws_cloudfront_connection_function
-	_#res: "\(#awsPrefix)_cloudfront_connection_group": res.#aws_cloudfront_connection_group
-	_#res: "\(#awsPrefix)_cloudfront_continuous_deployment_policy": res.#aws_cloudfront_continuous_deployment_policy
-	_#res: "\(#awsPrefix)_cloudfront_distribution": res.#aws_cloudfront_distribution
-	_#res: "\(#awsPrefix)_cloudfront_distribution_tenant": res.#aws_cloudfront_distribution_tenant
-	_#res: "\(#awsPrefix)_cloudfront_field_level_encryption_config": res.#aws_cloudfront_field_level_encryption_config
-	_#res: "\(#awsPrefix)_cloudfront_field_level_encryption_profile": res.#aws_cloudfront_field_level_encryption_profile
-	_#res: "\(#awsPrefix)_cloudfront_function": res.#aws_cloudfront_function
-	_#res: "\(#awsPrefix)_cloudfront_key_group": res.#aws_cloudfront_key_group
-	_#res: "\(#awsPrefix)_cloudfront_key_value_store": res.#aws_cloudfront_key_value_store
-	_#res: "\(#awsPrefix)_cloudfront_monitoring_subscription": res.#aws_cloudfront_monitoring_subscription
-	_#res: "\(#awsPrefix)_cloudfront_multitenant_distribution": res.#aws_cloudfront_multitenant_distribution
-	_#res: "\(#awsPrefix)_cloudfront_origin_access_control": res.#aws_cloudfront_origin_access_control
-	_#res: "\(#awsPrefix)_cloudfront_origin_access_identity": res.#aws_cloudfront_origin_access_identity
-	_#res: "\(#awsPrefix)_cloudfront_origin_request_policy": res.#aws_cloudfront_origin_request_policy
-	_#res: "\(#awsPrefix)_cloudfront_public_key": res.#aws_cloudfront_public_key
-	_#res: "\(#awsPrefix)_cloudfront_realtime_log_config": res.#aws_cloudfront_realtime_log_config
-	_#res: "\(#awsPrefix)_cloudfront_response_headers_policy": res.#aws_cloudfront_response_headers_policy
-	_#res: "\(#awsPrefix)_cloudfront_trust_store": res.#aws_cloudfront_trust_store
-	_#res: "\(#awsPrefix)_cloudfront_vpc_origin": res.#aws_cloudfront_vpc_origin
-	_#res: "\(#awsPrefix)_cloudfrontkeyvaluestore_key": res.#aws_cloudfrontkeyvaluestore_key
-	_#res: "\(#awsPrefix)_cloudfrontkeyvaluestore_keys_exclusive": res.#aws_cloudfrontkeyvaluestore_keys_exclusive
-	_#res: "\(#awsPrefix)_cloudhsm_v2_cluster": res.#aws_cloudhsm_v2_cluster
-	_#res: "\(#awsPrefix)_cloudhsm_v2_hsm": res.#aws_cloudhsm_v2_hsm
-	_#res: "\(#awsPrefix)_cloudsearch_domain": res.#aws_cloudsearch_domain
-	_#res: "\(#awsPrefix)_cloudsearch_domain_service_access_policy": res.#aws_cloudsearch_domain_service_access_policy
-	_#res: "\(#awsPrefix)_cloudtrail_event_data_store": res.#aws_cloudtrail_event_data_store
-	_#res: "\(#awsPrefix)_cloudtrail": res.#aws_cloudtrail
-	_#res: "\(#awsPrefix)_cloudtrail_organization_delegated_admin_account": res.#aws_cloudtrail_organization_delegated_admin_account
-	_#res: "\(#awsPrefix)_cloudwatch_alarm_mute_rule": res.#aws_cloudwatch_alarm_mute_rule
-	_#res: "\(#awsPrefix)_cloudwatch_composite_alarm": res.#aws_cloudwatch_composite_alarm
-	_#res: "\(#awsPrefix)_cloudwatch_contributor_insight_rule": res.#aws_cloudwatch_contributor_insight_rule
-	_#res: "\(#awsPrefix)_cloudwatch_contributor_managed_insight_rule": res.#aws_cloudwatch_contributor_managed_insight_rule
-	_#res: "\(#awsPrefix)_cloudwatch_dashboard": res.#aws_cloudwatch_dashboard
-	_#res: "\(#awsPrefix)_cloudwatch_event_api_destination": res.#aws_cloudwatch_event_api_destination
-	_#res: "\(#awsPrefix)_cloudwatch_event_archive": res.#aws_cloudwatch_event_archive
-	_#res: "\(#awsPrefix)_cloudwatch_event_bus": res.#aws_cloudwatch_event_bus
-	_#res: "\(#awsPrefix)_cloudwatch_event_bus_policy": res.#aws_cloudwatch_event_bus_policy
-	_#res: "\(#awsPrefix)_cloudwatch_event_connection": res.#aws_cloudwatch_event_connection
-	_#res: "\(#awsPrefix)_cloudwatch_event_endpoint": res.#aws_cloudwatch_event_endpoint
-	_#res: "\(#awsPrefix)_cloudwatch_event_permission": res.#aws_cloudwatch_event_permission
-	_#res: "\(#awsPrefix)_cloudwatch_event_rule": res.#aws_cloudwatch_event_rule
-	_#res: "\(#awsPrefix)_cloudwatch_event_target": res.#aws_cloudwatch_event_target
-	_#res: "\(#awsPrefix)_cloudwatch_log_account_policy": res.#aws_cloudwatch_log_account_policy
-	_#res: "\(#awsPrefix)_cloudwatch_log_anomaly_detector": res.#aws_cloudwatch_log_anomaly_detector
-	_#res: "\(#awsPrefix)_cloudwatch_log_data_protection_policy": res.#aws_cloudwatch_log_data_protection_policy
-	_#res: "\(#awsPrefix)_cloudwatch_log_delivery_destination": res.#aws_cloudwatch_log_delivery_destination
-	_#res: "\(#awsPrefix)_cloudwatch_log_delivery_destination_policy": res.#aws_cloudwatch_log_delivery_destination_policy
-	_#res: "\(#awsPrefix)_cloudwatch_log_delivery": res.#aws_cloudwatch_log_delivery
-	_#res: "\(#awsPrefix)_cloudwatch_log_delivery_source": res.#aws_cloudwatch_log_delivery_source
-	_#res: "\(#awsPrefix)_cloudwatch_log_destination": res.#aws_cloudwatch_log_destination
-	_#res: "\(#awsPrefix)_cloudwatch_log_destination_policy": res.#aws_cloudwatch_log_destination_policy
-	_#res: "\(#awsPrefix)_cloudwatch_log_group": res.#aws_cloudwatch_log_group
-	_#res: "\(#awsPrefix)_cloudwatch_log_index_policy": res.#aws_cloudwatch_log_index_policy
-	_#res: "\(#awsPrefix)_cloudwatch_log_metric_filter": res.#aws_cloudwatch_log_metric_filter
-	_#res: "\(#awsPrefix)_cloudwatch_log_resource_policy": res.#aws_cloudwatch_log_resource_policy
-	_#res: "\(#awsPrefix)_cloudwatch_log_s3_table_integration_source": res.#aws_cloudwatch_log_s3_table_integration_source
-	_#res: "\(#awsPrefix)_cloudwatch_log_stream": res.#aws_cloudwatch_log_stream
-	_#res: "\(#awsPrefix)_cloudwatch_log_subscription_filter": res.#aws_cloudwatch_log_subscription_filter
-	_#res: "\(#awsPrefix)_cloudwatch_log_transformer": res.#aws_cloudwatch_log_transformer
-	_#res: "\(#awsPrefix)_cloudwatch_metric_alarm": res.#aws_cloudwatch_metric_alarm
-	_#res: "\(#awsPrefix)_cloudwatch_metric_stream": res.#aws_cloudwatch_metric_stream
-	_#res: "\(#awsPrefix)_cloudwatch_otel_enrichment": res.#aws_cloudwatch_otel_enrichment
-	_#res: "\(#awsPrefix)_cloudwatch_query_definition": res.#aws_cloudwatch_query_definition
-	_#res: "\(#awsPrefix)_codeartifact_domain": res.#aws_codeartifact_domain
-	_#res: "\(#awsPrefix)_codeartifact_domain_permissions_policy": res.#aws_codeartifact_domain_permissions_policy
-	_#res: "\(#awsPrefix)_codeartifact_repository": res.#aws_codeartifact_repository
-	_#res: "\(#awsPrefix)_codeartifact_repository_permissions_policy": res.#aws_codeartifact_repository_permissions_policy
-	_#res: "\(#awsPrefix)_codebuild_fleet": res.#aws_codebuild_fleet
-	_#res: "\(#awsPrefix)_codebuild_project": res.#aws_codebuild_project
-	_#res: "\(#awsPrefix)_codebuild_report_group": res.#aws_codebuild_report_group
-	_#res: "\(#awsPrefix)_codebuild_resource_policy": res.#aws_codebuild_resource_policy
-	_#res: "\(#awsPrefix)_codebuild_source_credential": res.#aws_codebuild_source_credential
-	_#res: "\(#awsPrefix)_codebuild_webhook": res.#aws_codebuild_webhook
-	_#res: "\(#awsPrefix)_codecatalyst_dev_environment": res.#aws_codecatalyst_dev_environment
-	_#res: "\(#awsPrefix)_codecatalyst_project": res.#aws_codecatalyst_project
-	_#res: "\(#awsPrefix)_codecatalyst_source_repository": res.#aws_codecatalyst_source_repository
-	_#res: "\(#awsPrefix)_codecommit_approval_rule_template_association": res.#aws_codecommit_approval_rule_template_association
-	_#res: "\(#awsPrefix)_codecommit_approval_rule_template": res.#aws_codecommit_approval_rule_template
-	_#res: "\(#awsPrefix)_codecommit_repository": res.#aws_codecommit_repository
-	_#res: "\(#awsPrefix)_codecommit_trigger": res.#aws_codecommit_trigger
-	_#res: "\(#awsPrefix)_codeconnections_connection": res.#aws_codeconnections_connection
-	_#res: "\(#awsPrefix)_codeconnections_host": res.#aws_codeconnections_host
-	_#res: "\(#awsPrefix)_codedeploy_app": res.#aws_codedeploy_app
-	_#res: "\(#awsPrefix)_codedeploy_deployment_config": res.#aws_codedeploy_deployment_config
-	_#res: "\(#awsPrefix)_codedeploy_deployment_group": res.#aws_codedeploy_deployment_group
-	_#res: "\(#awsPrefix)_codeguruprofiler_profiling_group": res.#aws_codeguruprofiler_profiling_group
-	_#res: "\(#awsPrefix)_codegurureviewer_repository_association": res.#aws_codegurureviewer_repository_association
-	_#res: "\(#awsPrefix)_codepipeline_custom_action_type": res.#aws_codepipeline_custom_action_type
-	_#res: "\(#awsPrefix)_codepipeline": res.#aws_codepipeline
-	_#res: "\(#awsPrefix)_codepipeline_webhook": res.#aws_codepipeline_webhook
-	_#res: "\(#awsPrefix)_codestarconnections_connection": res.#aws_codestarconnections_connection
-	_#res: "\(#awsPrefix)_codestarconnections_host": res.#aws_codestarconnections_host
-	_#res: "\(#awsPrefix)_codestarnotifications_notification_rule": res.#aws_codestarnotifications_notification_rule
-	_#res: "\(#awsPrefix)_cognito_identity_pool": res.#aws_cognito_identity_pool
-	_#res: "\(#awsPrefix)_cognito_identity_pool_provider_principal_tag": res.#aws_cognito_identity_pool_provider_principal_tag
-	_#res: "\(#awsPrefix)_cognito_identity_pool_roles_attachment": res.#aws_cognito_identity_pool_roles_attachment
-	_#res: "\(#awsPrefix)_cognito_identity_provider": res.#aws_cognito_identity_provider
-	_#res: "\(#awsPrefix)_cognito_log_delivery_configuration": res.#aws_cognito_log_delivery_configuration
-	_#res: "\(#awsPrefix)_cognito_managed_login_branding": res.#aws_cognito_managed_login_branding
-	_#res: "\(#awsPrefix)_cognito_managed_user_pool_client": res.#aws_cognito_managed_user_pool_client
-	_#res: "\(#awsPrefix)_cognito_resource_server": res.#aws_cognito_resource_server
-	_#res: "\(#awsPrefix)_cognito_risk_configuration": res.#aws_cognito_risk_configuration
-	_#res: "\(#awsPrefix)_cognito_user": res.#aws_cognito_user
-	_#res: "\(#awsPrefix)_cognito_user_group": res.#aws_cognito_user_group
-	_#res: "\(#awsPrefix)_cognito_user_in_group": res.#aws_cognito_user_in_group
-	_#res: "\(#awsPrefix)_cognito_user_pool_client": res.#aws_cognito_user_pool_client
-	_#res: "\(#awsPrefix)_cognito_user_pool_domain": res.#aws_cognito_user_pool_domain
-	_#res: "\(#awsPrefix)_cognito_user_pool": res.#aws_cognito_user_pool
-	_#res: "\(#awsPrefix)_cognito_user_pool_ui_customization": res.#aws_cognito_user_pool_ui_customization
-	_#res: "\(#awsPrefix)_comprehend_document_classifier": res.#aws_comprehend_document_classifier
-	_#res: "\(#awsPrefix)_comprehend_entity_recognizer": res.#aws_comprehend_entity_recognizer
-	_#res: "\(#awsPrefix)_computeoptimizer_enrollment_status": res.#aws_computeoptimizer_enrollment_status
-	_#res: "\(#awsPrefix)_computeoptimizer_recommendation_preferences": res.#aws_computeoptimizer_recommendation_preferences
-	_#res: "\(#awsPrefix)_config_aggregate_authorization": res.#aws_config_aggregate_authorization
-	_#res: "\(#awsPrefix)_config_config_rule": res.#aws_config_config_rule
-	_#res: "\(#awsPrefix)_config_configuration_aggregator": res.#aws_config_configuration_aggregator
-	_#res: "\(#awsPrefix)_config_configuration_recorder": res.#aws_config_configuration_recorder
-	_#res: "\(#awsPrefix)_config_configuration_recorder_status": res.#aws_config_configuration_recorder_status
-	_#res: "\(#awsPrefix)_config_conformance_pack": res.#aws_config_conformance_pack
-	_#res: "\(#awsPrefix)_config_delivery_channel": res.#aws_config_delivery_channel
-	_#res: "\(#awsPrefix)_config_organization_conformance_pack": res.#aws_config_organization_conformance_pack
-	_#res: "\(#awsPrefix)_config_organization_custom_policy_rule": res.#aws_config_organization_custom_policy_rule
-	_#res: "\(#awsPrefix)_config_organization_custom_rule": res.#aws_config_organization_custom_rule
-	_#res: "\(#awsPrefix)_config_organization_managed_rule": res.#aws_config_organization_managed_rule
-	_#res: "\(#awsPrefix)_config_remediation_configuration": res.#aws_config_remediation_configuration
-	_#res: "\(#awsPrefix)_config_retention_configuration": res.#aws_config_retention_configuration
-	_#res: "\(#awsPrefix)_connect_bot_association": res.#aws_connect_bot_association
-	_#res: "\(#awsPrefix)_connect_contact_flow": res.#aws_connect_contact_flow
-	_#res: "\(#awsPrefix)_connect_contact_flow_module": res.#aws_connect_contact_flow_module
-	_#res: "\(#awsPrefix)_connect_hours_of_operation": res.#aws_connect_hours_of_operation
-	_#res: "\(#awsPrefix)_connect_instance": res.#aws_connect_instance
-	_#res: "\(#awsPrefix)_connect_instance_storage_config": res.#aws_connect_instance_storage_config
-	_#res: "\(#awsPrefix)_connect_lambda_function_association": res.#aws_connect_lambda_function_association
-	_#res: "\(#awsPrefix)_connect_phone_number_contact_flow_association": res.#aws_connect_phone_number_contact_flow_association
-	_#res: "\(#awsPrefix)_connect_phone_number": res.#aws_connect_phone_number
-	_#res: "\(#awsPrefix)_connect_queue": res.#aws_connect_queue
-	_#res: "\(#awsPrefix)_connect_quick_connect": res.#aws_connect_quick_connect
-	_#res: "\(#awsPrefix)_connect_routing_profile": res.#aws_connect_routing_profile
-	_#res: "\(#awsPrefix)_connect_security_profile": res.#aws_connect_security_profile
-	_#res: "\(#awsPrefix)_connect_user": res.#aws_connect_user
-	_#res: "\(#awsPrefix)_connect_user_hierarchy_group": res.#aws_connect_user_hierarchy_group
-	_#res: "\(#awsPrefix)_connect_user_hierarchy_structure": res.#aws_connect_user_hierarchy_structure
-	_#res: "\(#awsPrefix)_connect_vocabulary": res.#aws_connect_vocabulary
-	_#res: "\(#awsPrefix)_controltower_baseline": res.#aws_controltower_baseline
-	_#res: "\(#awsPrefix)_controltower_control": res.#aws_controltower_control
-	_#res: "\(#awsPrefix)_controltower_landing_zone": res.#aws_controltower_landing_zone
-	_#res: "\(#awsPrefix)_costoptimizationhub_enrollment_status": res.#aws_costoptimizationhub_enrollment_status
-	_#res: "\(#awsPrefix)_costoptimizationhub_preferences": res.#aws_costoptimizationhub_preferences
-	_#res: "\(#awsPrefix)_cur_report_definition": res.#aws_cur_report_definition
-	_#res: "\(#awsPrefix)_customer_gateway": res.#aws_customer_gateway
-	_#res: "\(#awsPrefix)_customerprofiles_domain": res.#aws_customerprofiles_domain
-	_#res: "\(#awsPrefix)_customerprofiles_profile": res.#aws_customerprofiles_profile
-	_#res: "\(#awsPrefix)_dataexchange_data_set": res.#aws_dataexchange_data_set
-	_#res: "\(#awsPrefix)_dataexchange_event_action": res.#aws_dataexchange_event_action
-	_#res: "\(#awsPrefix)_dataexchange_revision_assets": res.#aws_dataexchange_revision_assets
-	_#res: "\(#awsPrefix)_dataexchange_revision": res.#aws_dataexchange_revision
-	_#res: "\(#awsPrefix)_datapipeline_pipeline_definition": res.#aws_datapipeline_pipeline_definition
-	_#res: "\(#awsPrefix)_datapipeline_pipeline": res.#aws_datapipeline_pipeline
-	_#res: "\(#awsPrefix)_datasync_agent": res.#aws_datasync_agent
-	_#res: "\(#awsPrefix)_datasync_location_azure_blob": res.#aws_datasync_location_azure_blob
-	_#res: "\(#awsPrefix)_datasync_location_efs": res.#aws_datasync_location_efs
-	_#res: "\(#awsPrefix)_datasync_location_fsx_lustre_file_system": res.#aws_datasync_location_fsx_lustre_file_system
-	_#res: "\(#awsPrefix)_datasync_location_fsx_ontap_file_system": res.#aws_datasync_location_fsx_ontap_file_system
-	_#res: "\(#awsPrefix)_datasync_location_fsx_openzfs_file_system": res.#aws_datasync_location_fsx_openzfs_file_system
-	_#res: "\(#awsPrefix)_datasync_location_fsx_windows_file_system": res.#aws_datasync_location_fsx_windows_file_system
-	_#res: "\(#awsPrefix)_datasync_location_hdfs": res.#aws_datasync_location_hdfs
-	_#res: "\(#awsPrefix)_datasync_location_nfs": res.#aws_datasync_location_nfs
-	_#res: "\(#awsPrefix)_datasync_location_object_storage": res.#aws_datasync_location_object_storage
-	_#res: "\(#awsPrefix)_datasync_location_s3": res.#aws_datasync_location_s3
-	_#res: "\(#awsPrefix)_datasync_location_smb": res.#aws_datasync_location_smb
-	_#res: "\(#awsPrefix)_datasync_task": res.#aws_datasync_task
-	_#res: "\(#awsPrefix)_datazone_asset_type": res.#aws_datazone_asset_type
-	_#res: "\(#awsPrefix)_datazone_domain": res.#aws_datazone_domain
-	_#res: "\(#awsPrefix)_datazone_environment_blueprint_configuration": res.#aws_datazone_environment_blueprint_configuration
-	_#res: "\(#awsPrefix)_datazone_environment": res.#aws_datazone_environment
-	_#res: "\(#awsPrefix)_datazone_environment_profile": res.#aws_datazone_environment_profile
-	_#res: "\(#awsPrefix)_datazone_form_type": res.#aws_datazone_form_type
-	_#res: "\(#awsPrefix)_datazone_glossary": res.#aws_datazone_glossary
-	_#res: "\(#awsPrefix)_datazone_glossary_term": res.#aws_datazone_glossary_term
-	_#res: "\(#awsPrefix)_datazone_project": res.#aws_datazone_project
-	_#res: "\(#awsPrefix)_datazone_user_profile": res.#aws_datazone_user_profile
-	_#res: "\(#awsPrefix)_dax_cluster": res.#aws_dax_cluster
-	_#res: "\(#awsPrefix)_dax_parameter_group": res.#aws_dax_parameter_group
-	_#res: "\(#awsPrefix)_dax_subnet_group": res.#aws_dax_subnet_group
-	_#res: "\(#awsPrefix)_db_cluster_snapshot": res.#aws_db_cluster_snapshot
-	_#res: "\(#awsPrefix)_db_event_subscription": res.#aws_db_event_subscription
-	_#res: "\(#awsPrefix)_db_instance_automated_backups_replication": res.#aws_db_instance_automated_backups_replication
-	_#res: "\(#awsPrefix)_db_instance": res.#aws_db_instance
-	_#res: "\(#awsPrefix)_db_instance_role_association": res.#aws_db_instance_role_association
-	_#res: "\(#awsPrefix)_db_option_group": res.#aws_db_option_group
-	_#res: "\(#awsPrefix)_db_parameter_group": res.#aws_db_parameter_group
-	_#res: "\(#awsPrefix)_db_proxy_default_target_group": res.#aws_db_proxy_default_target_group
-	_#res: "\(#awsPrefix)_db_proxy_endpoint": res.#aws_db_proxy_endpoint
-	_#res: "\(#awsPrefix)_db_proxy": res.#aws_db_proxy
-	_#res: "\(#awsPrefix)_db_proxy_target": res.#aws_db_proxy_target
-	_#res: "\(#awsPrefix)_db_snapshot_copy": res.#aws_db_snapshot_copy
-	_#res: "\(#awsPrefix)_db_snapshot": res.#aws_db_snapshot
-	_#res: "\(#awsPrefix)_db_subnet_group": res.#aws_db_subnet_group
-	_#res: "\(#awsPrefix)_default_network_acl": res.#aws_default_network_acl
-	_#res: "\(#awsPrefix)_default_route_table": res.#aws_default_route_table
-	_#res: "\(#awsPrefix)_default_security_group": res.#aws_default_security_group
-	_#res: "\(#awsPrefix)_default_subnet": res.#aws_default_subnet
-	_#res: "\(#awsPrefix)_default_vpc_dhcp_options": res.#aws_default_vpc_dhcp_options
-	_#res: "\(#awsPrefix)_default_vpc": res.#aws_default_vpc
-	_#res: "\(#awsPrefix)_detective_graph": res.#aws_detective_graph
-	_#res: "\(#awsPrefix)_detective_invitation_accepter": res.#aws_detective_invitation_accepter
-	_#res: "\(#awsPrefix)_detective_member": res.#aws_detective_member
-	_#res: "\(#awsPrefix)_detective_organization_admin_account": res.#aws_detective_organization_admin_account
-	_#res: "\(#awsPrefix)_detective_organization_configuration": res.#aws_detective_organization_configuration
-	_#res: "\(#awsPrefix)_devicefarm_device_pool": res.#aws_devicefarm_device_pool
-	_#res: "\(#awsPrefix)_devicefarm_instance_profile": res.#aws_devicefarm_instance_profile
-	_#res: "\(#awsPrefix)_devicefarm_network_profile": res.#aws_devicefarm_network_profile
-	_#res: "\(#awsPrefix)_devicefarm_project": res.#aws_devicefarm_project
-	_#res: "\(#awsPrefix)_devicefarm_test_grid_project": res.#aws_devicefarm_test_grid_project
-	_#res: "\(#awsPrefix)_devicefarm_upload": res.#aws_devicefarm_upload
-	_#res: "\(#awsPrefix)_devopsguru_event_sources_config": res.#aws_devopsguru_event_sources_config
-	_#res: "\(#awsPrefix)_devopsguru_notification_channel": res.#aws_devopsguru_notification_channel
-	_#res: "\(#awsPrefix)_devopsguru_resource_collection": res.#aws_devopsguru_resource_collection
-	_#res: "\(#awsPrefix)_devopsguru_service_integration": res.#aws_devopsguru_service_integration
-	_#res: "\(#awsPrefix)_directory_service_conditional_forwarder": res.#aws_directory_service_conditional_forwarder
-	_#res: "\(#awsPrefix)_directory_service_directory": res.#aws_directory_service_directory
-	_#res: "\(#awsPrefix)_directory_service_log_subscription": res.#aws_directory_service_log_subscription
-	_#res: "\(#awsPrefix)_directory_service_radius_settings": res.#aws_directory_service_radius_settings
-	_#res: "\(#awsPrefix)_directory_service_region": res.#aws_directory_service_region
-	_#res: "\(#awsPrefix)_directory_service_shared_directory_accepter": res.#aws_directory_service_shared_directory_accepter
-	_#res: "\(#awsPrefix)_directory_service_shared_directory": res.#aws_directory_service_shared_directory
-	_#res: "\(#awsPrefix)_directory_service_trust": res.#aws_directory_service_trust
-	_#res: "\(#awsPrefix)_dlm_lifecycle_policy": res.#aws_dlm_lifecycle_policy
-	_#res: "\(#awsPrefix)_dms_certificate": res.#aws_dms_certificate
-	_#res: "\(#awsPrefix)_dms_endpoint": res.#aws_dms_endpoint
-	_#res: "\(#awsPrefix)_dms_event_subscription": res.#aws_dms_event_subscription
-	_#res: "\(#awsPrefix)_dms_replication_config": res.#aws_dms_replication_config
-	_#res: "\(#awsPrefix)_dms_replication_instance": res.#aws_dms_replication_instance
-	_#res: "\(#awsPrefix)_dms_replication_subnet_group": res.#aws_dms_replication_subnet_group
-	_#res: "\(#awsPrefix)_dms_replication_task": res.#aws_dms_replication_task
-	_#res: "\(#awsPrefix)_dms_s3_endpoint": res.#aws_dms_s3_endpoint
-	_#res: "\(#awsPrefix)_docdb_cluster": res.#aws_docdb_cluster
-	_#res: "\(#awsPrefix)_docdb_cluster_instance": res.#aws_docdb_cluster_instance
-	_#res: "\(#awsPrefix)_docdb_cluster_parameter_group": res.#aws_docdb_cluster_parameter_group
-	_#res: "\(#awsPrefix)_docdb_cluster_snapshot": res.#aws_docdb_cluster_snapshot
-	_#res: "\(#awsPrefix)_docdb_event_subscription": res.#aws_docdb_event_subscription
-	_#res: "\(#awsPrefix)_docdb_global_cluster": res.#aws_docdb_global_cluster
-	_#res: "\(#awsPrefix)_docdb_subnet_group": res.#aws_docdb_subnet_group
-	_#res: "\(#awsPrefix)_docdbelastic_cluster": res.#aws_docdbelastic_cluster
-	_#res: "\(#awsPrefix)_drs_replication_configuration_template": res.#aws_drs_replication_configuration_template
-	_#res: "\(#awsPrefix)_dsql_cluster": res.#aws_dsql_cluster
-	_#res: "\(#awsPrefix)_dsql_cluster_peering": res.#aws_dsql_cluster_peering
-	_#res: "\(#awsPrefix)_dx_bgp_peer": res.#aws_dx_bgp_peer
-	_#res: "\(#awsPrefix)_dx_connection_association": res.#aws_dx_connection_association
-	_#res: "\(#awsPrefix)_dx_connection_confirmation": res.#aws_dx_connection_confirmation
-	_#res: "\(#awsPrefix)_dx_connection": res.#aws_dx_connection
-	_#res: "\(#awsPrefix)_dx_gateway_association": res.#aws_dx_gateway_association
-	_#res: "\(#awsPrefix)_dx_gateway_association_proposal": res.#aws_dx_gateway_association_proposal
-	_#res: "\(#awsPrefix)_dx_gateway": res.#aws_dx_gateway
-	_#res: "\(#awsPrefix)_dx_hosted_connection": res.#aws_dx_hosted_connection
-	_#res: "\(#awsPrefix)_dx_hosted_private_virtual_interface_accepter": res.#aws_dx_hosted_private_virtual_interface_accepter
-	_#res: "\(#awsPrefix)_dx_hosted_private_virtual_interface": res.#aws_dx_hosted_private_virtual_interface
-	_#res: "\(#awsPrefix)_dx_hosted_public_virtual_interface_accepter": res.#aws_dx_hosted_public_virtual_interface_accepter
-	_#res: "\(#awsPrefix)_dx_hosted_public_virtual_interface": res.#aws_dx_hosted_public_virtual_interface
-	_#res: "\(#awsPrefix)_dx_hosted_transit_virtual_interface_accepter": res.#aws_dx_hosted_transit_virtual_interface_accepter
-	_#res: "\(#awsPrefix)_dx_hosted_transit_virtual_interface": res.#aws_dx_hosted_transit_virtual_interface
-	_#res: "\(#awsPrefix)_dx_lag": res.#aws_dx_lag
-	_#res: "\(#awsPrefix)_dx_macsec_key_association": res.#aws_dx_macsec_key_association
-	_#res: "\(#awsPrefix)_dx_private_virtual_interface": res.#aws_dx_private_virtual_interface
-	_#res: "\(#awsPrefix)_dx_public_virtual_interface": res.#aws_dx_public_virtual_interface
-	_#res: "\(#awsPrefix)_dx_transit_virtual_interface": res.#aws_dx_transit_virtual_interface
-	_#res: "\(#awsPrefix)_dynamodb_contributor_insights": res.#aws_dynamodb_contributor_insights
-	_#res: "\(#awsPrefix)_dynamodb_global_secondary_index": res.#aws_dynamodb_global_secondary_index
-	_#res: "\(#awsPrefix)_dynamodb_global_table": res.#aws_dynamodb_global_table
-	_#res: "\(#awsPrefix)_dynamodb_kinesis_streaming_destination": res.#aws_dynamodb_kinesis_streaming_destination
-	_#res: "\(#awsPrefix)_dynamodb_resource_policy": res.#aws_dynamodb_resource_policy
-	_#res: "\(#awsPrefix)_dynamodb_table_export": res.#aws_dynamodb_table_export
-	_#res: "\(#awsPrefix)_dynamodb_table": res.#aws_dynamodb_table
-	_#res: "\(#awsPrefix)_dynamodb_table_item": res.#aws_dynamodb_table_item
-	_#res: "\(#awsPrefix)_dynamodb_table_replica": res.#aws_dynamodb_table_replica
-	_#res: "\(#awsPrefix)_dynamodb_tag": res.#aws_dynamodb_tag
-	_#res: "\(#awsPrefix)_ebs_default_kms_key": res.#aws_ebs_default_kms_key
-	_#res: "\(#awsPrefix)_ebs_encryption_by_default": res.#aws_ebs_encryption_by_default
-	_#res: "\(#awsPrefix)_ebs_fast_snapshot_restore": res.#aws_ebs_fast_snapshot_restore
-	_#res: "\(#awsPrefix)_ebs_snapshot_block_public_access": res.#aws_ebs_snapshot_block_public_access
-	_#res: "\(#awsPrefix)_ebs_snapshot_copy": res.#aws_ebs_snapshot_copy
-	_#res: "\(#awsPrefix)_ebs_snapshot": res.#aws_ebs_snapshot
-	_#res: "\(#awsPrefix)_ebs_snapshot_import": res.#aws_ebs_snapshot_import
-	_#res: "\(#awsPrefix)_ebs_volume_copy": res.#aws_ebs_volume_copy
-	_#res: "\(#awsPrefix)_ebs_volume": res.#aws_ebs_volume
-	_#res: "\(#awsPrefix)_ec2_allowed_images_settings": res.#aws_ec2_allowed_images_settings
-	_#res: "\(#awsPrefix)_ec2_availability_zone_group": res.#aws_ec2_availability_zone_group
-	_#res: "\(#awsPrefix)_ec2_capacity_block_reservation": res.#aws_ec2_capacity_block_reservation
-	_#res: "\(#awsPrefix)_ec2_capacity_reservation": res.#aws_ec2_capacity_reservation
-	_#res: "\(#awsPrefix)_ec2_carrier_gateway": res.#aws_ec2_carrier_gateway
-	_#res: "\(#awsPrefix)_ec2_client_vpn_authorization_rule": res.#aws_ec2_client_vpn_authorization_rule
-	_#res: "\(#awsPrefix)_ec2_client_vpn_endpoint": res.#aws_ec2_client_vpn_endpoint
-	_#res: "\(#awsPrefix)_ec2_client_vpn_network_association": res.#aws_ec2_client_vpn_network_association
-	_#res: "\(#awsPrefix)_ec2_client_vpn_route": res.#aws_ec2_client_vpn_route
-	_#res: "\(#awsPrefix)_ec2_default_credit_specification": res.#aws_ec2_default_credit_specification
-	_#res: "\(#awsPrefix)_ec2_fleet": res.#aws_ec2_fleet
-	_#res: "\(#awsPrefix)_ec2_host": res.#aws_ec2_host
-	_#res: "\(#awsPrefix)_ec2_image_block_public_access": res.#aws_ec2_image_block_public_access
-	_#res: "\(#awsPrefix)_ec2_instance_connect_endpoint": res.#aws_ec2_instance_connect_endpoint
-	_#res: "\(#awsPrefix)_ec2_instance_metadata_defaults": res.#aws_ec2_instance_metadata_defaults
-	_#res: "\(#awsPrefix)_ec2_instance_state": res.#aws_ec2_instance_state
-	_#res: "\(#awsPrefix)_ec2_local_gateway_route": res.#aws_ec2_local_gateway_route
-	_#res: "\(#awsPrefix)_ec2_local_gateway_route_table": res.#aws_ec2_local_gateway_route_table
-	_#res: "\(#awsPrefix)_ec2_local_gateway_route_table_virtual_interface_group_association": res.#aws_ec2_local_gateway_route_table_virtual_interface_group_association
-	_#res: "\(#awsPrefix)_ec2_local_gateway_route_table_vpc_association": res.#aws_ec2_local_gateway_route_table_vpc_association
-	_#res: "\(#awsPrefix)_ec2_managed_prefix_list_entry": res.#aws_ec2_managed_prefix_list_entry
-	_#res: "\(#awsPrefix)_ec2_managed_prefix_list": res.#aws_ec2_managed_prefix_list
-	_#res: "\(#awsPrefix)_ec2_network_insights_access_scope": res.#aws_ec2_network_insights_access_scope
-	_#res: "\(#awsPrefix)_ec2_network_insights_analysis": res.#aws_ec2_network_insights_analysis
-	_#res: "\(#awsPrefix)_ec2_network_insights_path": res.#aws_ec2_network_insights_path
-	_#res: "\(#awsPrefix)_ec2_secondary_network": res.#aws_ec2_secondary_network
-	_#res: "\(#awsPrefix)_ec2_secondary_subnet": res.#aws_ec2_secondary_subnet
-	_#res: "\(#awsPrefix)_ec2_serial_console_access": res.#aws_ec2_serial_console_access
-	_#res: "\(#awsPrefix)_ec2_subnet_cidr_reservation": res.#aws_ec2_subnet_cidr_reservation
-	_#res: "\(#awsPrefix)_ec2_tag": res.#aws_ec2_tag
-	_#res: "\(#awsPrefix)_ec2_traffic_mirror_filter": res.#aws_ec2_traffic_mirror_filter
-	_#res: "\(#awsPrefix)_ec2_traffic_mirror_filter_rule": res.#aws_ec2_traffic_mirror_filter_rule
-	_#res: "\(#awsPrefix)_ec2_traffic_mirror_session": res.#aws_ec2_traffic_mirror_session
-	_#res: "\(#awsPrefix)_ec2_traffic_mirror_target": res.#aws_ec2_traffic_mirror_target
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_connect": res.#aws_ec2_transit_gateway_connect
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_connect_peer": res.#aws_ec2_transit_gateway_connect_peer
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_default_route_table_association": res.#aws_ec2_transit_gateway_default_route_table_association
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_default_route_table_propagation": res.#aws_ec2_transit_gateway_default_route_table_propagation
-	_#res: "\(#awsPrefix)_ec2_transit_gateway": res.#aws_ec2_transit_gateway
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_metering_policy_entry": res.#aws_ec2_transit_gateway_metering_policy_entry
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_metering_policy": res.#aws_ec2_transit_gateway_metering_policy
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_multicast_domain_association": res.#aws_ec2_transit_gateway_multicast_domain_association
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_multicast_domain": res.#aws_ec2_transit_gateway_multicast_domain
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_multicast_group_member": res.#aws_ec2_transit_gateway_multicast_group_member
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_multicast_group_source": res.#aws_ec2_transit_gateway_multicast_group_source
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_peering_attachment_accepter": res.#aws_ec2_transit_gateway_peering_attachment_accepter
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_peering_attachment": res.#aws_ec2_transit_gateway_peering_attachment
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_policy_table_association": res.#aws_ec2_transit_gateway_policy_table_association
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_policy_table": res.#aws_ec2_transit_gateway_policy_table
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_prefix_list_reference": res.#aws_ec2_transit_gateway_prefix_list_reference
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_route": res.#aws_ec2_transit_gateway_route
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_route_table_association": res.#aws_ec2_transit_gateway_route_table_association
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_route_table": res.#aws_ec2_transit_gateway_route_table
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_route_table_propagation": res.#aws_ec2_transit_gateway_route_table_propagation
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_vpc_attachment_accepter": res.#aws_ec2_transit_gateway_vpc_attachment_accepter
-	_#res: "\(#awsPrefix)_ec2_transit_gateway_vpc_attachment": res.#aws_ec2_transit_gateway_vpc_attachment
-	_#res: "\(#awsPrefix)_ecr_account_setting": res.#aws_ecr_account_setting
-	_#res: "\(#awsPrefix)_ecr_lifecycle_policy": res.#aws_ecr_lifecycle_policy
-	_#res: "\(#awsPrefix)_ecr_pull_through_cache_rule": res.#aws_ecr_pull_through_cache_rule
-	_#res: "\(#awsPrefix)_ecr_pull_time_update_exclusion": res.#aws_ecr_pull_time_update_exclusion
-	_#res: "\(#awsPrefix)_ecr_registry_policy": res.#aws_ecr_registry_policy
-	_#res: "\(#awsPrefix)_ecr_registry_scanning_configuration": res.#aws_ecr_registry_scanning_configuration
-	_#res: "\(#awsPrefix)_ecr_replication_configuration": res.#aws_ecr_replication_configuration
-	_#res: "\(#awsPrefix)_ecr_repository_creation_template": res.#aws_ecr_repository_creation_template
-	_#res: "\(#awsPrefix)_ecr_repository": res.#aws_ecr_repository
-	_#res: "\(#awsPrefix)_ecr_repository_policy": res.#aws_ecr_repository_policy
-	_#res: "\(#awsPrefix)_ecrpublic_repository": res.#aws_ecrpublic_repository
-	_#res: "\(#awsPrefix)_ecrpublic_repository_policy": res.#aws_ecrpublic_repository_policy
-	_#res: "\(#awsPrefix)_ecs_account_setting_default": res.#aws_ecs_account_setting_default
-	_#res: "\(#awsPrefix)_ecs_capacity_provider": res.#aws_ecs_capacity_provider
-	_#res: "\(#awsPrefix)_ecs_cluster_capacity_providers": res.#aws_ecs_cluster_capacity_providers
-	_#res: "\(#awsPrefix)_ecs_cluster": res.#aws_ecs_cluster
-	_#res: "\(#awsPrefix)_ecs_daemon": res.#aws_ecs_daemon
-	_#res: "\(#awsPrefix)_ecs_daemon_task_definition": res.#aws_ecs_daemon_task_definition
-	_#res: "\(#awsPrefix)_ecs_express_gateway_service": res.#aws_ecs_express_gateway_service
-	_#res: "\(#awsPrefix)_ecs_service": res.#aws_ecs_service
-	_#res: "\(#awsPrefix)_ecs_tag": res.#aws_ecs_tag
-	_#res: "\(#awsPrefix)_ecs_task_definition": res.#aws_ecs_task_definition
-	_#res: "\(#awsPrefix)_ecs_task_set": res.#aws_ecs_task_set
-	_#res: "\(#awsPrefix)_efs_access_point": res.#aws_efs_access_point
-	_#res: "\(#awsPrefix)_efs_backup_policy": res.#aws_efs_backup_policy
-	_#res: "\(#awsPrefix)_efs_file_system": res.#aws_efs_file_system
-	_#res: "\(#awsPrefix)_efs_file_system_policy": res.#aws_efs_file_system_policy
-	_#res: "\(#awsPrefix)_efs_mount_target": res.#aws_efs_mount_target
-	_#res: "\(#awsPrefix)_efs_replication_configuration": res.#aws_efs_replication_configuration
-	_#res: "\(#awsPrefix)_egress_only_internet_gateway": res.#aws_egress_only_internet_gateway
-	_#res: "\(#awsPrefix)_eip_association": res.#aws_eip_association
-	_#res: "\(#awsPrefix)_eip_domain_name": res.#aws_eip_domain_name
-	_#res: "\(#awsPrefix)_eip": res.#aws_eip
-	_#res: "\(#awsPrefix)_eks_access_entry": res.#aws_eks_access_entry
-	_#res: "\(#awsPrefix)_eks_access_policy_association": res.#aws_eks_access_policy_association
-	_#res: "\(#awsPrefix)_eks_addon": res.#aws_eks_addon
-	_#res: "\(#awsPrefix)_eks_capability": res.#aws_eks_capability
-	_#res: "\(#awsPrefix)_eks_cluster": res.#aws_eks_cluster
-	_#res: "\(#awsPrefix)_eks_fargate_profile": res.#aws_eks_fargate_profile
-	_#res: "\(#awsPrefix)_eks_identity_provider_config": res.#aws_eks_identity_provider_config
-	_#res: "\(#awsPrefix)_eks_node_group": res.#aws_eks_node_group
-	_#res: "\(#awsPrefix)_eks_pod_identity_association": res.#aws_eks_pod_identity_association
-	_#res: "\(#awsPrefix)_elastic_beanstalk_application": res.#aws_elastic_beanstalk_application
-	_#res: "\(#awsPrefix)_elastic_beanstalk_application_version": res.#aws_elastic_beanstalk_application_version
-	_#res: "\(#awsPrefix)_elastic_beanstalk_configuration_template": res.#aws_elastic_beanstalk_configuration_template
-	_#res: "\(#awsPrefix)_elastic_beanstalk_environment": res.#aws_elastic_beanstalk_environment
-	_#res: "\(#awsPrefix)_elasticache_cluster": res.#aws_elasticache_cluster
-	_#res: "\(#awsPrefix)_elasticache_global_replication_group": res.#aws_elasticache_global_replication_group
-	_#res: "\(#awsPrefix)_elasticache_parameter_group": res.#aws_elasticache_parameter_group
-	_#res: "\(#awsPrefix)_elasticache_replication_group": res.#aws_elasticache_replication_group
-	_#res: "\(#awsPrefix)_elasticache_reserved_cache_node": res.#aws_elasticache_reserved_cache_node
-	_#res: "\(#awsPrefix)_elasticache_serverless_cache": res.#aws_elasticache_serverless_cache
-	_#res: "\(#awsPrefix)_elasticache_subnet_group": res.#aws_elasticache_subnet_group
-	_#res: "\(#awsPrefix)_elasticache_user": res.#aws_elasticache_user
-	_#res: "\(#awsPrefix)_elasticache_user_group_association": res.#aws_elasticache_user_group_association
-	_#res: "\(#awsPrefix)_elasticache_user_group": res.#aws_elasticache_user_group
-	_#res: "\(#awsPrefix)_elasticsearch_domain": res.#aws_elasticsearch_domain
-	_#res: "\(#awsPrefix)_elasticsearch_domain_policy": res.#aws_elasticsearch_domain_policy
-	_#res: "\(#awsPrefix)_elasticsearch_domain_saml_options": res.#aws_elasticsearch_domain_saml_options
-	_#res: "\(#awsPrefix)_elasticsearch_vpc_endpoint": res.#aws_elasticsearch_vpc_endpoint
-	_#res: "\(#awsPrefix)_elastictranscoder_pipeline": res.#aws_elastictranscoder_pipeline
-	_#res: "\(#awsPrefix)_elastictranscoder_preset": res.#aws_elastictranscoder_preset
-	_#res: "\(#awsPrefix)_elb_attachment": res.#aws_elb_attachment
-	_#res: "\(#awsPrefix)_elb": res.#aws_elb
-	_#res: "\(#awsPrefix)_emr_block_public_access_configuration": res.#aws_emr_block_public_access_configuration
-	_#res: "\(#awsPrefix)_emr_cluster": res.#aws_emr_cluster
-	_#res: "\(#awsPrefix)_emr_instance_fleet": res.#aws_emr_instance_fleet
-	_#res: "\(#awsPrefix)_emr_instance_group": res.#aws_emr_instance_group
-	_#res: "\(#awsPrefix)_emr_managed_scaling_policy": res.#aws_emr_managed_scaling_policy
-	_#res: "\(#awsPrefix)_emr_security_configuration": res.#aws_emr_security_configuration
-	_#res: "\(#awsPrefix)_emr_studio": res.#aws_emr_studio
-	_#res: "\(#awsPrefix)_emr_studio_session_mapping": res.#aws_emr_studio_session_mapping
-	_#res: "\(#awsPrefix)_emrcontainers_job_template": res.#aws_emrcontainers_job_template
-	_#res: "\(#awsPrefix)_emrcontainers_virtual_cluster": res.#aws_emrcontainers_virtual_cluster
-	_#res: "\(#awsPrefix)_emrserverless_application": res.#aws_emrserverless_application
-	_#res: "\(#awsPrefix)_evidently_feature": res.#aws_evidently_feature
-	_#res: "\(#awsPrefix)_evidently_launch": res.#aws_evidently_launch
-	_#res: "\(#awsPrefix)_evidently_project": res.#aws_evidently_project
-	_#res: "\(#awsPrefix)_evidently_segment": res.#aws_evidently_segment
-	_#res: "\(#awsPrefix)_finspace_kx_cluster": res.#aws_finspace_kx_cluster
-	_#res: "\(#awsPrefix)_finspace_kx_database": res.#aws_finspace_kx_database
-	_#res: "\(#awsPrefix)_finspace_kx_dataview": res.#aws_finspace_kx_dataview
-	_#res: "\(#awsPrefix)_finspace_kx_environment": res.#aws_finspace_kx_environment
-	_#res: "\(#awsPrefix)_finspace_kx_scaling_group": res.#aws_finspace_kx_scaling_group
-	_#res: "\(#awsPrefix)_finspace_kx_user": res.#aws_finspace_kx_user
-	_#res: "\(#awsPrefix)_finspace_kx_volume": res.#aws_finspace_kx_volume
-	_#res: "\(#awsPrefix)_fis_experiment_template": res.#aws_fis_experiment_template
-	_#res: "\(#awsPrefix)_fis_target_account_configuration": res.#aws_fis_target_account_configuration
-	_#res: "\(#awsPrefix)_flow_log": res.#aws_flow_log
-	_#res: "\(#awsPrefix)_fms_admin_account": res.#aws_fms_admin_account
-	_#res: "\(#awsPrefix)_fms_policy": res.#aws_fms_policy
-	_#res: "\(#awsPrefix)_fms_resource_set": res.#aws_fms_resource_set
-	_#res: "\(#awsPrefix)_fsx_backup": res.#aws_fsx_backup
-	_#res: "\(#awsPrefix)_fsx_data_repository_association": res.#aws_fsx_data_repository_association
-	_#res: "\(#awsPrefix)_fsx_file_cache": res.#aws_fsx_file_cache
-	_#res: "\(#awsPrefix)_fsx_lustre_file_system": res.#aws_fsx_lustre_file_system
-	_#res: "\(#awsPrefix)_fsx_ontap_file_system": res.#aws_fsx_ontap_file_system
-	_#res: "\(#awsPrefix)_fsx_ontap_storage_virtual_machine": res.#aws_fsx_ontap_storage_virtual_machine
-	_#res: "\(#awsPrefix)_fsx_ontap_volume": res.#aws_fsx_ontap_volume
-	_#res: "\(#awsPrefix)_fsx_openzfs_file_system": res.#aws_fsx_openzfs_file_system
-	_#res: "\(#awsPrefix)_fsx_openzfs_snapshot": res.#aws_fsx_openzfs_snapshot
-	_#res: "\(#awsPrefix)_fsx_openzfs_volume": res.#aws_fsx_openzfs_volume
-	_#res: "\(#awsPrefix)_fsx_s3_access_point_attachment": res.#aws_fsx_s3_access_point_attachment
-	_#res: "\(#awsPrefix)_fsx_windows_file_system": res.#aws_fsx_windows_file_system
-	_#res: "\(#awsPrefix)_gamelift_alias": res.#aws_gamelift_alias
-	_#res: "\(#awsPrefix)_gamelift_build": res.#aws_gamelift_build
-	_#res: "\(#awsPrefix)_gamelift_fleet": res.#aws_gamelift_fleet
-	_#res: "\(#awsPrefix)_gamelift_game_server_group": res.#aws_gamelift_game_server_group
-	_#res: "\(#awsPrefix)_gamelift_game_session_queue": res.#aws_gamelift_game_session_queue
-	_#res: "\(#awsPrefix)_gamelift_script": res.#aws_gamelift_script
-	_#res: "\(#awsPrefix)_glacier_vault": res.#aws_glacier_vault
-	_#res: "\(#awsPrefix)_glacier_vault_lock": res.#aws_glacier_vault_lock
-	_#res: "\(#awsPrefix)_globalaccelerator_accelerator": res.#aws_globalaccelerator_accelerator
-	_#res: "\(#awsPrefix)_globalaccelerator_cross_account_attachment": res.#aws_globalaccelerator_cross_account_attachment
-	_#res: "\(#awsPrefix)_globalaccelerator_custom_routing_accelerator": res.#aws_globalaccelerator_custom_routing_accelerator
-	_#res: "\(#awsPrefix)_globalaccelerator_custom_routing_endpoint_group": res.#aws_globalaccelerator_custom_routing_endpoint_group
-	_#res: "\(#awsPrefix)_globalaccelerator_custom_routing_listener": res.#aws_globalaccelerator_custom_routing_listener
-	_#res: "\(#awsPrefix)_globalaccelerator_endpoint_group": res.#aws_globalaccelerator_endpoint_group
-	_#res: "\(#awsPrefix)_globalaccelerator_listener": res.#aws_globalaccelerator_listener
-	_#res: "\(#awsPrefix)_glue_catalog_database": res.#aws_glue_catalog_database
-	_#res: "\(#awsPrefix)_glue_catalog": res.#aws_glue_catalog
-	_#res: "\(#awsPrefix)_glue_catalog_table": res.#aws_glue_catalog_table
-	_#res: "\(#awsPrefix)_glue_catalog_table_optimizer": res.#aws_glue_catalog_table_optimizer
-	_#res: "\(#awsPrefix)_glue_classifier": res.#aws_glue_classifier
-	_#res: "\(#awsPrefix)_glue_connection": res.#aws_glue_connection
-	_#res: "\(#awsPrefix)_glue_crawler": res.#aws_glue_crawler
-	_#res: "\(#awsPrefix)_glue_data_catalog_encryption_settings": res.#aws_glue_data_catalog_encryption_settings
-	_#res: "\(#awsPrefix)_glue_data_quality_ruleset": res.#aws_glue_data_quality_ruleset
-	_#res: "\(#awsPrefix)_glue_dev_endpoint": res.#aws_glue_dev_endpoint
-	_#res: "\(#awsPrefix)_glue_job": res.#aws_glue_job
-	_#res: "\(#awsPrefix)_glue_ml_transform": res.#aws_glue_ml_transform
-	_#res: "\(#awsPrefix)_glue_partition": res.#aws_glue_partition
-	_#res: "\(#awsPrefix)_glue_partition_index": res.#aws_glue_partition_index
-	_#res: "\(#awsPrefix)_glue_registry": res.#aws_glue_registry
-	_#res: "\(#awsPrefix)_glue_resource_policy": res.#aws_glue_resource_policy
-	_#res: "\(#awsPrefix)_glue_schema": res.#aws_glue_schema
-	_#res: "\(#awsPrefix)_glue_security_configuration": res.#aws_glue_security_configuration
-	_#res: "\(#awsPrefix)_glue_trigger": res.#aws_glue_trigger
-	_#res: "\(#awsPrefix)_glue_user_defined_function": res.#aws_glue_user_defined_function
-	_#res: "\(#awsPrefix)_glue_workflow": res.#aws_glue_workflow
-	_#res: "\(#awsPrefix)_grafana_license_association": res.#aws_grafana_license_association
-	_#res: "\(#awsPrefix)_grafana_role_association": res.#aws_grafana_role_association
-	_#res: "\(#awsPrefix)_grafana_workspace_api_key": res.#aws_grafana_workspace_api_key
-	_#res: "\(#awsPrefix)_grafana_workspace": res.#aws_grafana_workspace
-	_#res: "\(#awsPrefix)_grafana_workspace_saml_configuration": res.#aws_grafana_workspace_saml_configuration
-	_#res: "\(#awsPrefix)_grafana_workspace_service_account": res.#aws_grafana_workspace_service_account
-	_#res: "\(#awsPrefix)_grafana_workspace_service_account_token": res.#aws_grafana_workspace_service_account_token
-	_#res: "\(#awsPrefix)_guardduty_detector_feature": res.#aws_guardduty_detector_feature
-	_#res: "\(#awsPrefix)_guardduty_detector": res.#aws_guardduty_detector
-	_#res: "\(#awsPrefix)_guardduty_filter": res.#aws_guardduty_filter
-	_#res: "\(#awsPrefix)_guardduty_invite_accepter": res.#aws_guardduty_invite_accepter
-	_#res: "\(#awsPrefix)_guardduty_ipset": res.#aws_guardduty_ipset
-	_#res: "\(#awsPrefix)_guardduty_malware_protection_plan": res.#aws_guardduty_malware_protection_plan
-	_#res: "\(#awsPrefix)_guardduty_member_detector_feature": res.#aws_guardduty_member_detector_feature
-	_#res: "\(#awsPrefix)_guardduty_member": res.#aws_guardduty_member
-	_#res: "\(#awsPrefix)_guardduty_organization_admin_account": res.#aws_guardduty_organization_admin_account
-	_#res: "\(#awsPrefix)_guardduty_organization_configuration_feature": res.#aws_guardduty_organization_configuration_feature
-	_#res: "\(#awsPrefix)_guardduty_organization_configuration": res.#aws_guardduty_organization_configuration
-	_#res: "\(#awsPrefix)_guardduty_publishing_destination": res.#aws_guardduty_publishing_destination
-	_#res: "\(#awsPrefix)_guardduty_threatintelset": res.#aws_guardduty_threatintelset
-	_#res: "\(#awsPrefix)_iam_access_key": res.#aws_iam_access_key
-	_#res: "\(#awsPrefix)_iam_account_alias": res.#aws_iam_account_alias
-	_#res: "\(#awsPrefix)_iam_account_password_policy": res.#aws_iam_account_password_policy
-	_#res: "\(#awsPrefix)_iam_group": res.#aws_iam_group
-	_#res: "\(#awsPrefix)_iam_group_membership": res.#aws_iam_group_membership
-	_#res: "\(#awsPrefix)_iam_group_policies_exclusive": res.#aws_iam_group_policies_exclusive
-	_#res: "\(#awsPrefix)_iam_group_policy_attachment": res.#aws_iam_group_policy_attachment
-	_#res: "\(#awsPrefix)_iam_group_policy_attachments_exclusive": res.#aws_iam_group_policy_attachments_exclusive
-	_#res: "\(#awsPrefix)_iam_group_policy": res.#aws_iam_group_policy
-	_#res: "\(#awsPrefix)_iam_instance_profile": res.#aws_iam_instance_profile
-	_#res: "\(#awsPrefix)_iam_openid_connect_provider": res.#aws_iam_openid_connect_provider
-	_#res: "\(#awsPrefix)_iam_organizations_features": res.#aws_iam_organizations_features
-	_#res: "\(#awsPrefix)_iam_outbound_web_identity_federation": res.#aws_iam_outbound_web_identity_federation
-	_#res: "\(#awsPrefix)_iam_policy_attachment": res.#aws_iam_policy_attachment
-	_#res: "\(#awsPrefix)_iam_policy": res.#aws_iam_policy
-	_#res: "\(#awsPrefix)_iam_role": res.#aws_iam_role
-	_#res: "\(#awsPrefix)_iam_role_policies_exclusive": res.#aws_iam_role_policies_exclusive
-	_#res: "\(#awsPrefix)_iam_role_policy_attachment": res.#aws_iam_role_policy_attachment
-	_#res: "\(#awsPrefix)_iam_role_policy_attachments_exclusive": res.#aws_iam_role_policy_attachments_exclusive
-	_#res: "\(#awsPrefix)_iam_role_policy": res.#aws_iam_role_policy
-	_#res: "\(#awsPrefix)_iam_saml_provider": res.#aws_iam_saml_provider
-	_#res: "\(#awsPrefix)_iam_security_token_service_preferences": res.#aws_iam_security_token_service_preferences
-	_#res: "\(#awsPrefix)_iam_server_certificate": res.#aws_iam_server_certificate
-	_#res: "\(#awsPrefix)_iam_service_linked_role": res.#aws_iam_service_linked_role
-	_#res: "\(#awsPrefix)_iam_service_specific_credential": res.#aws_iam_service_specific_credential
-	_#res: "\(#awsPrefix)_iam_signing_certificate": res.#aws_iam_signing_certificate
-	_#res: "\(#awsPrefix)_iam_user": res.#aws_iam_user
-	_#res: "\(#awsPrefix)_iam_user_group_membership": res.#aws_iam_user_group_membership
-	_#res: "\(#awsPrefix)_iam_user_login_profile": res.#aws_iam_user_login_profile
-	_#res: "\(#awsPrefix)_iam_user_policies_exclusive": res.#aws_iam_user_policies_exclusive
-	_#res: "\(#awsPrefix)_iam_user_policy_attachment": res.#aws_iam_user_policy_attachment
-	_#res: "\(#awsPrefix)_iam_user_policy_attachments_exclusive": res.#aws_iam_user_policy_attachments_exclusive
-	_#res: "\(#awsPrefix)_iam_user_policy": res.#aws_iam_user_policy
-	_#res: "\(#awsPrefix)_iam_user_ssh_key": res.#aws_iam_user_ssh_key
-	_#res: "\(#awsPrefix)_iam_virtual_mfa_device": res.#aws_iam_virtual_mfa_device
-	_#res: "\(#awsPrefix)_identitystore_group": res.#aws_identitystore_group
-	_#res: "\(#awsPrefix)_identitystore_group_membership": res.#aws_identitystore_group_membership
-	_#res: "\(#awsPrefix)_identitystore_user": res.#aws_identitystore_user
-	_#res: "\(#awsPrefix)_imagebuilder_component": res.#aws_imagebuilder_component
-	_#res: "\(#awsPrefix)_imagebuilder_container_recipe": res.#aws_imagebuilder_container_recipe
-	_#res: "\(#awsPrefix)_imagebuilder_distribution_configuration": res.#aws_imagebuilder_distribution_configuration
-	_#res: "\(#awsPrefix)_imagebuilder_image": res.#aws_imagebuilder_image
-	_#res: "\(#awsPrefix)_imagebuilder_image_pipeline": res.#aws_imagebuilder_image_pipeline
-	_#res: "\(#awsPrefix)_imagebuilder_image_recipe": res.#aws_imagebuilder_image_recipe
-	_#res: "\(#awsPrefix)_imagebuilder_infrastructure_configuration": res.#aws_imagebuilder_infrastructure_configuration
-	_#res: "\(#awsPrefix)_imagebuilder_lifecycle_policy": res.#aws_imagebuilder_lifecycle_policy
-	_#res: "\(#awsPrefix)_imagebuilder_workflow": res.#aws_imagebuilder_workflow
-	_#res: "\(#awsPrefix)_inspector2_delegated_admin_account": res.#aws_inspector2_delegated_admin_account
-	_#res: "\(#awsPrefix)_inspector2_enabler": res.#aws_inspector2_enabler
-	_#res: "\(#awsPrefix)_inspector2_filter": res.#aws_inspector2_filter
-	_#res: "\(#awsPrefix)_inspector2_member_association": res.#aws_inspector2_member_association
-	_#res: "\(#awsPrefix)_inspector2_organization_configuration": res.#aws_inspector2_organization_configuration
-	_#res: "\(#awsPrefix)_inspector_assessment_target": res.#aws_inspector_assessment_target
-	_#res: "\(#awsPrefix)_inspector_assessment_template": res.#aws_inspector_assessment_template
-	_#res: "\(#awsPrefix)_inspector_resource_group": res.#aws_inspector_resource_group
-	_#res: "\(#awsPrefix)_instance": res.#aws_instance
-	_#res: "\(#awsPrefix)_internet_gateway_attachment": res.#aws_internet_gateway_attachment
-	_#res: "\(#awsPrefix)_internet_gateway": res.#aws_internet_gateway
-	_#res: "\(#awsPrefix)_internetmonitor_monitor": res.#aws_internetmonitor_monitor
-	_#res: "\(#awsPrefix)_invoicing_invoice_unit": res.#aws_invoicing_invoice_unit
-	_#res: "\(#awsPrefix)_iot_authorizer": res.#aws_iot_authorizer
-	_#res: "\(#awsPrefix)_iot_billing_group": res.#aws_iot_billing_group
-	_#res: "\(#awsPrefix)_iot_ca_certificate": res.#aws_iot_ca_certificate
-	_#res: "\(#awsPrefix)_iot_certificate": res.#aws_iot_certificate
-	_#res: "\(#awsPrefix)_iot_domain_configuration": res.#aws_iot_domain_configuration
-	_#res: "\(#awsPrefix)_iot_event_configurations": res.#aws_iot_event_configurations
-	_#res: "\(#awsPrefix)_iot_indexing_configuration": res.#aws_iot_indexing_configuration
-	_#res: "\(#awsPrefix)_iot_logging_options": res.#aws_iot_logging_options
-	_#res: "\(#awsPrefix)_iot_policy_attachment": res.#aws_iot_policy_attachment
-	_#res: "\(#awsPrefix)_iot_policy": res.#aws_iot_policy
-	_#res: "\(#awsPrefix)_iot_provisioning_template": res.#aws_iot_provisioning_template
-	_#res: "\(#awsPrefix)_iot_role_alias": res.#aws_iot_role_alias
-	_#res: "\(#awsPrefix)_iot_thing": res.#aws_iot_thing
-	_#res: "\(#awsPrefix)_iot_thing_group": res.#aws_iot_thing_group
-	_#res: "\(#awsPrefix)_iot_thing_group_membership": res.#aws_iot_thing_group_membership
-	_#res: "\(#awsPrefix)_iot_thing_principal_attachment": res.#aws_iot_thing_principal_attachment
-	_#res: "\(#awsPrefix)_iot_thing_type": res.#aws_iot_thing_type
-	_#res: "\(#awsPrefix)_iot_topic_rule_destination": res.#aws_iot_topic_rule_destination
-	_#res: "\(#awsPrefix)_iot_topic_rule": res.#aws_iot_topic_rule
-	_#res: "\(#awsPrefix)_ivs_channel": res.#aws_ivs_channel
-	_#res: "\(#awsPrefix)_ivs_playback_key_pair": res.#aws_ivs_playback_key_pair
-	_#res: "\(#awsPrefix)_ivs_recording_configuration": res.#aws_ivs_recording_configuration
-	_#res: "\(#awsPrefix)_ivschat_logging_configuration": res.#aws_ivschat_logging_configuration
-	_#res: "\(#awsPrefix)_ivschat_room": res.#aws_ivschat_room
-	_#res: "\(#awsPrefix)_kendra_data_source": res.#aws_kendra_data_source
-	_#res: "\(#awsPrefix)_kendra_experience": res.#aws_kendra_experience
-	_#res: "\(#awsPrefix)_kendra_faq": res.#aws_kendra_faq
-	_#res: "\(#awsPrefix)_kendra_index": res.#aws_kendra_index
-	_#res: "\(#awsPrefix)_kendra_query_suggestions_block_list": res.#aws_kendra_query_suggestions_block_list
-	_#res: "\(#awsPrefix)_kendra_thesaurus": res.#aws_kendra_thesaurus
-	_#res: "\(#awsPrefix)_key_pair": res.#aws_key_pair
-	_#res: "\(#awsPrefix)_keyspaces_keyspace": res.#aws_keyspaces_keyspace
-	_#res: "\(#awsPrefix)_keyspaces_table": res.#aws_keyspaces_table
-	_#res: "\(#awsPrefix)_kinesis_account_settings": res.#aws_kinesis_account_settings
-	_#res: "\(#awsPrefix)_kinesis_analytics_application": res.#aws_kinesis_analytics_application
-	_#res: "\(#awsPrefix)_kinesis_firehose_delivery_stream": res.#aws_kinesis_firehose_delivery_stream
-	_#res: "\(#awsPrefix)_kinesis_resource_policy": res.#aws_kinesis_resource_policy
-	_#res: "\(#awsPrefix)_kinesis_stream_consumer": res.#aws_kinesis_stream_consumer
-	_#res: "\(#awsPrefix)_kinesis_stream": res.#aws_kinesis_stream
-	_#res: "\(#awsPrefix)_kinesis_video_stream": res.#aws_kinesis_video_stream
-	_#res: "\(#awsPrefix)_kinesisanalyticsv2_application": res.#aws_kinesisanalyticsv2_application
-	_#res: "\(#awsPrefix)_kinesisanalyticsv2_application_snapshot": res.#aws_kinesisanalyticsv2_application_snapshot
-	_#res: "\(#awsPrefix)_kms_alias": res.#aws_kms_alias
-	_#res: "\(#awsPrefix)_kms_ciphertext": res.#aws_kms_ciphertext
-	_#res: "\(#awsPrefix)_kms_custom_key_store": res.#aws_kms_custom_key_store
-	_#res: "\(#awsPrefix)_kms_external_key": res.#aws_kms_external_key
-	_#res: "\(#awsPrefix)_kms_grant": res.#aws_kms_grant
-	_#res: "\(#awsPrefix)_kms_key": res.#aws_kms_key
-	_#res: "\(#awsPrefix)_kms_key_policy": res.#aws_kms_key_policy
-	_#res: "\(#awsPrefix)_kms_replica_external_key": res.#aws_kms_replica_external_key
-	_#res: "\(#awsPrefix)_kms_replica_key": res.#aws_kms_replica_key
-	_#res: "\(#awsPrefix)_lakeformation_data_cells_filter": res.#aws_lakeformation_data_cells_filter
-	_#res: "\(#awsPrefix)_lakeformation_data_lake_settings": res.#aws_lakeformation_data_lake_settings
-	_#res: "\(#awsPrefix)_lakeformation_identity_center_configuration": res.#aws_lakeformation_identity_center_configuration
-	_#res: "\(#awsPrefix)_lakeformation_lf_tag_expression": res.#aws_lakeformation_lf_tag_expression
-	_#res: "\(#awsPrefix)_lakeformation_lf_tag": res.#aws_lakeformation_lf_tag
-	_#res: "\(#awsPrefix)_lakeformation_opt_in": res.#aws_lakeformation_opt_in
-	_#res: "\(#awsPrefix)_lakeformation_permissions": res.#aws_lakeformation_permissions
-	_#res: "\(#awsPrefix)_lakeformation_resource": res.#aws_lakeformation_resource
-	_#res: "\(#awsPrefix)_lakeformation_resource_lf_tag": res.#aws_lakeformation_resource_lf_tag
-	_#res: "\(#awsPrefix)_lakeformation_resource_lf_tags": res.#aws_lakeformation_resource_lf_tags
-	_#res: "\(#awsPrefix)_lambda_alias": res.#aws_lambda_alias
-	_#res: "\(#awsPrefix)_lambda_capacity_provider": res.#aws_lambda_capacity_provider
-	_#res: "\(#awsPrefix)_lambda_code_signing_config": res.#aws_lambda_code_signing_config
-	_#res: "\(#awsPrefix)_lambda_event_source_mapping": res.#aws_lambda_event_source_mapping
-	_#res: "\(#awsPrefix)_lambda_function_event_invoke_config": res.#aws_lambda_function_event_invoke_config
-	_#res: "\(#awsPrefix)_lambda_function": res.#aws_lambda_function
-	_#res: "\(#awsPrefix)_lambda_function_recursion_config": res.#aws_lambda_function_recursion_config
-	_#res: "\(#awsPrefix)_lambda_function_url": res.#aws_lambda_function_url
-	_#res: "\(#awsPrefix)_lambda_invocation": res.#aws_lambda_invocation
-	_#res: "\(#awsPrefix)_lambda_layer_version": res.#aws_lambda_layer_version
-	_#res: "\(#awsPrefix)_lambda_layer_version_permission": res.#aws_lambda_layer_version_permission
-	_#res: "\(#awsPrefix)_lambda_permission": res.#aws_lambda_permission
-	_#res: "\(#awsPrefix)_lambda_provisioned_concurrency_config": res.#aws_lambda_provisioned_concurrency_config
-	_#res: "\(#awsPrefix)_lambda_runtime_management_config": res.#aws_lambda_runtime_management_config
-	_#res: "\(#awsPrefix)_launch_configuration": res.#aws_launch_configuration
-	_#res: "\(#awsPrefix)_launch_template": res.#aws_launch_template
-	_#res: "\(#awsPrefix)_lb_cookie_stickiness_policy": res.#aws_lb_cookie_stickiness_policy
-	_#res: "\(#awsPrefix)_lb": res.#aws_lb
-	_#res: "\(#awsPrefix)_lb_listener_certificate": res.#aws_lb_listener_certificate
-	_#res: "\(#awsPrefix)_lb_listener": res.#aws_lb_listener
-	_#res: "\(#awsPrefix)_lb_listener_rule": res.#aws_lb_listener_rule
-	_#res: "\(#awsPrefix)_lb_ssl_negotiation_policy": res.#aws_lb_ssl_negotiation_policy
-	_#res: "\(#awsPrefix)_lb_target_group_attachment": res.#aws_lb_target_group_attachment
-	_#res: "\(#awsPrefix)_lb_target_group": res.#aws_lb_target_group
-	_#res: "\(#awsPrefix)_lb_trust_store": res.#aws_lb_trust_store
-	_#res: "\(#awsPrefix)_lb_trust_store_revocation": res.#aws_lb_trust_store_revocation
-	_#res: "\(#awsPrefix)_lex_bot_alias": res.#aws_lex_bot_alias
-	_#res: "\(#awsPrefix)_lex_bot": res.#aws_lex_bot
-	_#res: "\(#awsPrefix)_lex_intent": res.#aws_lex_intent
-	_#res: "\(#awsPrefix)_lex_slot_type": res.#aws_lex_slot_type
-	_#res: "\(#awsPrefix)_lexv2models_bot": res.#aws_lexv2models_bot
-	_#res: "\(#awsPrefix)_lexv2models_bot_locale": res.#aws_lexv2models_bot_locale
-	_#res: "\(#awsPrefix)_lexv2models_bot_version": res.#aws_lexv2models_bot_version
-	_#res: "\(#awsPrefix)_lexv2models_intent": res.#aws_lexv2models_intent
-	_#res: "\(#awsPrefix)_lexv2models_slot": res.#aws_lexv2models_slot
-	_#res: "\(#awsPrefix)_lexv2models_slot_type": res.#aws_lexv2models_slot_type
-	_#res: "\(#awsPrefix)_licensemanager_association": res.#aws_licensemanager_association
-	_#res: "\(#awsPrefix)_licensemanager_grant_accepter": res.#aws_licensemanager_grant_accepter
-	_#res: "\(#awsPrefix)_licensemanager_grant": res.#aws_licensemanager_grant
-	_#res: "\(#awsPrefix)_licensemanager_license_configuration": res.#aws_licensemanager_license_configuration
-	_#res: "\(#awsPrefix)_lightsail_bucket_access_key": res.#aws_lightsail_bucket_access_key
-	_#res: "\(#awsPrefix)_lightsail_bucket": res.#aws_lightsail_bucket
-	_#res: "\(#awsPrefix)_lightsail_bucket_resource_access": res.#aws_lightsail_bucket_resource_access
-	_#res: "\(#awsPrefix)_lightsail_certificate": res.#aws_lightsail_certificate
-	_#res: "\(#awsPrefix)_lightsail_container_service_deployment_version": res.#aws_lightsail_container_service_deployment_version
-	_#res: "\(#awsPrefix)_lightsail_container_service": res.#aws_lightsail_container_service
-	_#res: "\(#awsPrefix)_lightsail_database": res.#aws_lightsail_database
-	_#res: "\(#awsPrefix)_lightsail_disk_attachment": res.#aws_lightsail_disk_attachment
-	_#res: "\(#awsPrefix)_lightsail_disk": res.#aws_lightsail_disk
-	_#res: "\(#awsPrefix)_lightsail_distribution": res.#aws_lightsail_distribution
-	_#res: "\(#awsPrefix)_lightsail_domain_entry": res.#aws_lightsail_domain_entry
-	_#res: "\(#awsPrefix)_lightsail_domain": res.#aws_lightsail_domain
-	_#res: "\(#awsPrefix)_lightsail_instance": res.#aws_lightsail_instance
-	_#res: "\(#awsPrefix)_lightsail_instance_public_ports": res.#aws_lightsail_instance_public_ports
-	_#res: "\(#awsPrefix)_lightsail_key_pair": res.#aws_lightsail_key_pair
-	_#res: "\(#awsPrefix)_lightsail_lb_attachment": res.#aws_lightsail_lb_attachment
-	_#res: "\(#awsPrefix)_lightsail_lb_certificate_attachment": res.#aws_lightsail_lb_certificate_attachment
-	_#res: "\(#awsPrefix)_lightsail_lb_certificate": res.#aws_lightsail_lb_certificate
-	_#res: "\(#awsPrefix)_lightsail_lb": res.#aws_lightsail_lb
-	_#res: "\(#awsPrefix)_lightsail_lb_https_redirection_policy": res.#aws_lightsail_lb_https_redirection_policy
-	_#res: "\(#awsPrefix)_lightsail_lb_stickiness_policy": res.#aws_lightsail_lb_stickiness_policy
-	_#res: "\(#awsPrefix)_lightsail_static_ip_attachment": res.#aws_lightsail_static_ip_attachment
-	_#res: "\(#awsPrefix)_lightsail_static_ip": res.#aws_lightsail_static_ip
-	_#res: "\(#awsPrefix)_load_balancer_backend_server_policy": res.#aws_load_balancer_backend_server_policy
-	_#res: "\(#awsPrefix)_load_balancer_listener_policy": res.#aws_load_balancer_listener_policy
-	_#res: "\(#awsPrefix)_load_balancer_policy": res.#aws_load_balancer_policy
-	_#res: "\(#awsPrefix)_location_geofence_collection": res.#aws_location_geofence_collection
-	_#res: "\(#awsPrefix)_location_map": res.#aws_location_map
-	_#res: "\(#awsPrefix)_location_place_index": res.#aws_location_place_index
-	_#res: "\(#awsPrefix)_location_route_calculator": res.#aws_location_route_calculator
-	_#res: "\(#awsPrefix)_location_tracker_association": res.#aws_location_tracker_association
-	_#res: "\(#awsPrefix)_location_tracker": res.#aws_location_tracker
-	_#res: "\(#awsPrefix)_m2_application": res.#aws_m2_application
-	_#res: "\(#awsPrefix)_m2_deployment": res.#aws_m2_deployment
-	_#res: "\(#awsPrefix)_m2_environment": res.#aws_m2_environment
-	_#res: "\(#awsPrefix)_macie2_account": res.#aws_macie2_account
-	_#res: "\(#awsPrefix)_macie2_classification_export_configuration": res.#aws_macie2_classification_export_configuration
-	_#res: "\(#awsPrefix)_macie2_classification_job": res.#aws_macie2_classification_job
-	_#res: "\(#awsPrefix)_macie2_custom_data_identifier": res.#aws_macie2_custom_data_identifier
-	_#res: "\(#awsPrefix)_macie2_findings_filter": res.#aws_macie2_findings_filter
-	_#res: "\(#awsPrefix)_macie2_invitation_accepter": res.#aws_macie2_invitation_accepter
-	_#res: "\(#awsPrefix)_macie2_member": res.#aws_macie2_member
-	_#res: "\(#awsPrefix)_macie2_organization_admin_account": res.#aws_macie2_organization_admin_account
-	_#res: "\(#awsPrefix)_macie2_organization_configuration": res.#aws_macie2_organization_configuration
-	_#res: "\(#awsPrefix)_main_route_table_association": res.#aws_main_route_table_association
-	_#res: "\(#awsPrefix)_media_convert_queue": res.#aws_media_convert_queue
-	_#res: "\(#awsPrefix)_media_package_channel": res.#aws_media_package_channel
-	_#res: "\(#awsPrefix)_media_packagev2_channel_group": res.#aws_media_packagev2_channel_group
-	_#res: "\(#awsPrefix)_media_store_container": res.#aws_media_store_container
-	_#res: "\(#awsPrefix)_media_store_container_policy": res.#aws_media_store_container_policy
-	_#res: "\(#awsPrefix)_medialive_channel": res.#aws_medialive_channel
-	_#res: "\(#awsPrefix)_medialive_input": res.#aws_medialive_input
-	_#res: "\(#awsPrefix)_medialive_input_security_group": res.#aws_medialive_input_security_group
-	_#res: "\(#awsPrefix)_medialive_multiplex": res.#aws_medialive_multiplex
-	_#res: "\(#awsPrefix)_medialive_multiplex_program": res.#aws_medialive_multiplex_program
-	_#res: "\(#awsPrefix)_memorydb_acl": res.#aws_memorydb_acl
-	_#res: "\(#awsPrefix)_memorydb_cluster": res.#aws_memorydb_cluster
-	_#res: "\(#awsPrefix)_memorydb_multi_region_cluster": res.#aws_memorydb_multi_region_cluster
-	_#res: "\(#awsPrefix)_memorydb_parameter_group": res.#aws_memorydb_parameter_group
-	_#res: "\(#awsPrefix)_memorydb_snapshot": res.#aws_memorydb_snapshot
-	_#res: "\(#awsPrefix)_memorydb_subnet_group": res.#aws_memorydb_subnet_group
-	_#res: "\(#awsPrefix)_memorydb_user": res.#aws_memorydb_user
-	_#res: "\(#awsPrefix)_mq_broker": res.#aws_mq_broker
-	_#res: "\(#awsPrefix)_mq_configuration": res.#aws_mq_configuration
-	_#res: "\(#awsPrefix)_msk_cluster": res.#aws_msk_cluster
-	_#res: "\(#awsPrefix)_msk_cluster_policy": res.#aws_msk_cluster_policy
-	_#res: "\(#awsPrefix)_msk_configuration": res.#aws_msk_configuration
-	_#res: "\(#awsPrefix)_msk_replicator": res.#aws_msk_replicator
-	_#res: "\(#awsPrefix)_msk_scram_secret_association": res.#aws_msk_scram_secret_association
-	_#res: "\(#awsPrefix)_msk_serverless_cluster": res.#aws_msk_serverless_cluster
-	_#res: "\(#awsPrefix)_msk_single_scram_secret_association": res.#aws_msk_single_scram_secret_association
-	_#res: "\(#awsPrefix)_msk_topic": res.#aws_msk_topic
-	_#res: "\(#awsPrefix)_msk_vpc_connection": res.#aws_msk_vpc_connection
-	_#res: "\(#awsPrefix)_mskconnect_connector": res.#aws_mskconnect_connector
-	_#res: "\(#awsPrefix)_mskconnect_custom_plugin": res.#aws_mskconnect_custom_plugin
-	_#res: "\(#awsPrefix)_mskconnect_worker_configuration": res.#aws_mskconnect_worker_configuration
-	_#res: "\(#awsPrefix)_mwaa_environment": res.#aws_mwaa_environment
-	_#res: "\(#awsPrefix)_nat_gateway_eip_association": res.#aws_nat_gateway_eip_association
-	_#res: "\(#awsPrefix)_nat_gateway": res.#aws_nat_gateway
-	_#res: "\(#awsPrefix)_neptune_cluster_endpoint": res.#aws_neptune_cluster_endpoint
-	_#res: "\(#awsPrefix)_neptune_cluster": res.#aws_neptune_cluster
-	_#res: "\(#awsPrefix)_neptune_cluster_instance": res.#aws_neptune_cluster_instance
-	_#res: "\(#awsPrefix)_neptune_cluster_parameter_group": res.#aws_neptune_cluster_parameter_group
-	_#res: "\(#awsPrefix)_neptune_cluster_snapshot": res.#aws_neptune_cluster_snapshot
-	_#res: "\(#awsPrefix)_neptune_event_subscription": res.#aws_neptune_event_subscription
-	_#res: "\(#awsPrefix)_neptune_global_cluster": res.#aws_neptune_global_cluster
-	_#res: "\(#awsPrefix)_neptune_parameter_group": res.#aws_neptune_parameter_group
-	_#res: "\(#awsPrefix)_neptune_subnet_group": res.#aws_neptune_subnet_group
-	_#res: "\(#awsPrefix)_neptunegraph_graph": res.#aws_neptunegraph_graph
-	_#res: "\(#awsPrefix)_network_acl_association": res.#aws_network_acl_association
-	_#res: "\(#awsPrefix)_network_acl": res.#aws_network_acl
-	_#res: "\(#awsPrefix)_network_acl_rule": res.#aws_network_acl_rule
-	_#res: "\(#awsPrefix)_network_interface_attachment": res.#aws_network_interface_attachment
-	_#res: "\(#awsPrefix)_network_interface": res.#aws_network_interface
-	_#res: "\(#awsPrefix)_network_interface_permission": res.#aws_network_interface_permission
-	_#res: "\(#awsPrefix)_network_interface_sg_attachment": res.#aws_network_interface_sg_attachment
-	_#res: "\(#awsPrefix)_networkfirewall_firewall": res.#aws_networkfirewall_firewall
-	_#res: "\(#awsPrefix)_networkfirewall_firewall_policy": res.#aws_networkfirewall_firewall_policy
-	_#res: "\(#awsPrefix)_networkfirewall_firewall_transit_gateway_attachment_accepter": res.#aws_networkfirewall_firewall_transit_gateway_attachment_accepter
-	_#res: "\(#awsPrefix)_networkfirewall_logging_configuration": res.#aws_networkfirewall_logging_configuration
-	_#res: "\(#awsPrefix)_networkfirewall_resource_policy": res.#aws_networkfirewall_resource_policy
-	_#res: "\(#awsPrefix)_networkfirewall_rule_group": res.#aws_networkfirewall_rule_group
-	_#res: "\(#awsPrefix)_networkfirewall_tls_inspection_configuration": res.#aws_networkfirewall_tls_inspection_configuration
-	_#res: "\(#awsPrefix)_networkfirewall_vpc_endpoint_association": res.#aws_networkfirewall_vpc_endpoint_association
-	_#res: "\(#awsPrefix)_networkflowmonitor_monitor": res.#aws_networkflowmonitor_monitor
-	_#res: "\(#awsPrefix)_networkflowmonitor_scope": res.#aws_networkflowmonitor_scope
-	_#res: "\(#awsPrefix)_networkmanager_attachment_accepter": res.#aws_networkmanager_attachment_accepter
-	_#res: "\(#awsPrefix)_networkmanager_attachment_routing_policy_label": res.#aws_networkmanager_attachment_routing_policy_label
-	_#res: "\(#awsPrefix)_networkmanager_connect_attachment": res.#aws_networkmanager_connect_attachment
-	_#res: "\(#awsPrefix)_networkmanager_connect_peer": res.#aws_networkmanager_connect_peer
-	_#res: "\(#awsPrefix)_networkmanager_connection": res.#aws_networkmanager_connection
-	_#res: "\(#awsPrefix)_networkmanager_core_network": res.#aws_networkmanager_core_network
-	_#res: "\(#awsPrefix)_networkmanager_core_network_policy_attachment": res.#aws_networkmanager_core_network_policy_attachment
-	_#res: "\(#awsPrefix)_networkmanager_customer_gateway_association": res.#aws_networkmanager_customer_gateway_association
-	_#res: "\(#awsPrefix)_networkmanager_device": res.#aws_networkmanager_device
-	_#res: "\(#awsPrefix)_networkmanager_dx_gateway_attachment": res.#aws_networkmanager_dx_gateway_attachment
-	_#res: "\(#awsPrefix)_networkmanager_global_network": res.#aws_networkmanager_global_network
-	_#res: "\(#awsPrefix)_networkmanager_link_association": res.#aws_networkmanager_link_association
-	_#res: "\(#awsPrefix)_networkmanager_link": res.#aws_networkmanager_link
-	_#res: "\(#awsPrefix)_networkmanager_prefix_list_association": res.#aws_networkmanager_prefix_list_association
-	_#res: "\(#awsPrefix)_networkmanager_site": res.#aws_networkmanager_site
-	_#res: "\(#awsPrefix)_networkmanager_site_to_site_vpn_attachment": res.#aws_networkmanager_site_to_site_vpn_attachment
-	_#res: "\(#awsPrefix)_networkmanager_transit_gateway_connect_peer_association": res.#aws_networkmanager_transit_gateway_connect_peer_association
-	_#res: "\(#awsPrefix)_networkmanager_transit_gateway_peering": res.#aws_networkmanager_transit_gateway_peering
-	_#res: "\(#awsPrefix)_networkmanager_transit_gateway_registration": res.#aws_networkmanager_transit_gateway_registration
-	_#res: "\(#awsPrefix)_networkmanager_transit_gateway_route_table_attachment": res.#aws_networkmanager_transit_gateway_route_table_attachment
-	_#res: "\(#awsPrefix)_networkmanager_vpc_attachment": res.#aws_networkmanager_vpc_attachment
-	_#res: "\(#awsPrefix)_networkmonitor_monitor": res.#aws_networkmonitor_monitor
-	_#res: "\(#awsPrefix)_networkmonitor_probe": res.#aws_networkmonitor_probe
-	_#res: "\(#awsPrefix)_notifications_channel_association": res.#aws_notifications_channel_association
-	_#res: "\(#awsPrefix)_notifications_event_rule": res.#aws_notifications_event_rule
-	_#res: "\(#awsPrefix)_notifications_managed_notification_account_contact_association": res.#aws_notifications_managed_notification_account_contact_association
-	_#res: "\(#awsPrefix)_notifications_managed_notification_additional_channel_association": res.#aws_notifications_managed_notification_additional_channel_association
-	_#res: "\(#awsPrefix)_notifications_notification_configuration": res.#aws_notifications_notification_configuration
-	_#res: "\(#awsPrefix)_notifications_notification_hub": res.#aws_notifications_notification_hub
-	_#res: "\(#awsPrefix)_notifications_organizational_unit_association": res.#aws_notifications_organizational_unit_association
-	_#res: "\(#awsPrefix)_notifications_organizations_access": res.#aws_notifications_organizations_access
-	_#res: "\(#awsPrefix)_notificationscontacts_email_contact": res.#aws_notificationscontacts_email_contact
-	_#res: "\(#awsPrefix)_oam_link": res.#aws_oam_link
-	_#res: "\(#awsPrefix)_oam_sink": res.#aws_oam_sink
-	_#res: "\(#awsPrefix)_oam_sink_policy": res.#aws_oam_sink_policy
-	_#res: "\(#awsPrefix)_observabilityadmin_centralization_rule_for_organization": res.#aws_observabilityadmin_centralization_rule_for_organization
-	_#res: "\(#awsPrefix)_observabilityadmin_s3_table_integration": res.#aws_observabilityadmin_s3_table_integration
-	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_enrichment": res.#aws_observabilityadmin_telemetry_enrichment
-	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_evaluation_for_organization": res.#aws_observabilityadmin_telemetry_evaluation_for_organization
-	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_evaluation": res.#aws_observabilityadmin_telemetry_evaluation
-	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_pipeline": res.#aws_observabilityadmin_telemetry_pipeline
-	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_rule_for_organization": res.#aws_observabilityadmin_telemetry_rule_for_organization
-	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_rule": res.#aws_observabilityadmin_telemetry_rule
-	_#res: "\(#awsPrefix)_odb_cloud_autonomous_vm_cluster": res.#aws_odb_cloud_autonomous_vm_cluster
-	_#res: "\(#awsPrefix)_odb_cloud_exadata_infrastructure": res.#aws_odb_cloud_exadata_infrastructure
-	_#res: "\(#awsPrefix)_odb_cloud_vm_cluster": res.#aws_odb_cloud_vm_cluster
-	_#res: "\(#awsPrefix)_odb_network": res.#aws_odb_network
-	_#res: "\(#awsPrefix)_odb_network_peering_connection": res.#aws_odb_network_peering_connection
-	_#res: "\(#awsPrefix)_opensearch_application": res.#aws_opensearch_application
-	_#res: "\(#awsPrefix)_opensearch_authorize_vpc_endpoint_access": res.#aws_opensearch_authorize_vpc_endpoint_access
-	_#res: "\(#awsPrefix)_opensearch_domain": res.#aws_opensearch_domain
-	_#res: "\(#awsPrefix)_opensearch_domain_policy": res.#aws_opensearch_domain_policy
-	_#res: "\(#awsPrefix)_opensearch_domain_saml_options": res.#aws_opensearch_domain_saml_options
-	_#res: "\(#awsPrefix)_opensearch_inbound_connection_accepter": res.#aws_opensearch_inbound_connection_accepter
-	_#res: "\(#awsPrefix)_opensearch_outbound_connection": res.#aws_opensearch_outbound_connection
-	_#res: "\(#awsPrefix)_opensearch_package_association": res.#aws_opensearch_package_association
-	_#res: "\(#awsPrefix)_opensearch_package": res.#aws_opensearch_package
-	_#res: "\(#awsPrefix)_opensearch_vpc_endpoint": res.#aws_opensearch_vpc_endpoint
-	_#res: "\(#awsPrefix)_opensearchserverless_access_policy": res.#aws_opensearchserverless_access_policy
-	_#res: "\(#awsPrefix)_opensearchserverless_collection": res.#aws_opensearchserverless_collection
-	_#res: "\(#awsPrefix)_opensearchserverless_collection_group": res.#aws_opensearchserverless_collection_group
-	_#res: "\(#awsPrefix)_opensearchserverless_lifecycle_policy": res.#aws_opensearchserverless_lifecycle_policy
-	_#res: "\(#awsPrefix)_opensearchserverless_security_config": res.#aws_opensearchserverless_security_config
-	_#res: "\(#awsPrefix)_opensearchserverless_security_policy": res.#aws_opensearchserverless_security_policy
-	_#res: "\(#awsPrefix)_opensearchserverless_vpc_endpoint": res.#aws_opensearchserverless_vpc_endpoint
-	_#res: "\(#awsPrefix)_organizations_account": res.#aws_organizations_account
-	_#res: "\(#awsPrefix)_organizations_aws_service_access": res.#aws_organizations_aws_service_access
-	_#res: "\(#awsPrefix)_organizations_delegated_administrator": res.#aws_organizations_delegated_administrator
-	_#res: "\(#awsPrefix)_organizations_organization": res.#aws_organizations_organization
-	_#res: "\(#awsPrefix)_organizations_organizational_unit": res.#aws_organizations_organizational_unit
-	_#res: "\(#awsPrefix)_organizations_policy_attachment": res.#aws_organizations_policy_attachment
-	_#res: "\(#awsPrefix)_organizations_policy": res.#aws_organizations_policy
-	_#res: "\(#awsPrefix)_organizations_resource_policy": res.#aws_organizations_resource_policy
-	_#res: "\(#awsPrefix)_organizations_tag": res.#aws_organizations_tag
-	_#res: "\(#awsPrefix)_osis_pipeline": res.#aws_osis_pipeline
-	_#res: "\(#awsPrefix)_outposts_capacity_task": res.#aws_outposts_capacity_task
-	_#res: "\(#awsPrefix)_paymentcryptography_key_alias": res.#aws_paymentcryptography_key_alias
-	_#res: "\(#awsPrefix)_paymentcryptography_key": res.#aws_paymentcryptography_key
-	_#res: "\(#awsPrefix)_pinpoint_adm_channel": res.#aws_pinpoint_adm_channel
-	_#res: "\(#awsPrefix)_pinpoint_apns_channel": res.#aws_pinpoint_apns_channel
-	_#res: "\(#awsPrefix)_pinpoint_apns_sandbox_channel": res.#aws_pinpoint_apns_sandbox_channel
-	_#res: "\(#awsPrefix)_pinpoint_apns_voip_channel": res.#aws_pinpoint_apns_voip_channel
-	_#res: "\(#awsPrefix)_pinpoint_apns_voip_sandbox_channel": res.#aws_pinpoint_apns_voip_sandbox_channel
-	_#res: "\(#awsPrefix)_pinpoint_app": res.#aws_pinpoint_app
-	_#res: "\(#awsPrefix)_pinpoint_baidu_channel": res.#aws_pinpoint_baidu_channel
-	_#res: "\(#awsPrefix)_pinpoint_email_channel": res.#aws_pinpoint_email_channel
-	_#res: "\(#awsPrefix)_pinpoint_email_template": res.#aws_pinpoint_email_template
-	_#res: "\(#awsPrefix)_pinpoint_event_stream": res.#aws_pinpoint_event_stream
-	_#res: "\(#awsPrefix)_pinpoint_gcm_channel": res.#aws_pinpoint_gcm_channel
-	_#res: "\(#awsPrefix)_pinpoint_sms_channel": res.#aws_pinpoint_sms_channel
-	_#res: "\(#awsPrefix)_pinpointsmsvoicev2_configuration_set": res.#aws_pinpointsmsvoicev2_configuration_set
-	_#res: "\(#awsPrefix)_pinpointsmsvoicev2_event_destination": res.#aws_pinpointsmsvoicev2_event_destination
-	_#res: "\(#awsPrefix)_pinpointsmsvoicev2_opt_out_list": res.#aws_pinpointsmsvoicev2_opt_out_list
-	_#res: "\(#awsPrefix)_pinpointsmsvoicev2_phone_number": res.#aws_pinpointsmsvoicev2_phone_number
-	_#res: "\(#awsPrefix)_pipes_pipe": res.#aws_pipes_pipe
-	_#res: "\(#awsPrefix)_placement_group": res.#aws_placement_group
-	_#res: "\(#awsPrefix)_prometheus_alert_manager_definition": res.#aws_prometheus_alert_manager_definition
-	_#res: "\(#awsPrefix)_prometheus_query_logging_configuration": res.#aws_prometheus_query_logging_configuration
-	_#res: "\(#awsPrefix)_prometheus_resource_policy": res.#aws_prometheus_resource_policy
-	_#res: "\(#awsPrefix)_prometheus_rule_group_namespace": res.#aws_prometheus_rule_group_namespace
-	_#res: "\(#awsPrefix)_prometheus_scraper": res.#aws_prometheus_scraper
-	_#res: "\(#awsPrefix)_prometheus_workspace_configuration": res.#aws_prometheus_workspace_configuration
-	_#res: "\(#awsPrefix)_prometheus_workspace": res.#aws_prometheus_workspace
-	_#res: "\(#awsPrefix)_proxy_protocol_policy": res.#aws_proxy_protocol_policy
-	_#res: "\(#awsPrefix)_qbusiness_application": res.#aws_qbusiness_application
-	_#res: "\(#awsPrefix)_qldb_ledger": res.#aws_qldb_ledger
-	_#res: "\(#awsPrefix)_qldb_stream": res.#aws_qldb_stream
-	_#res: "\(#awsPrefix)_quicksight_account_settings": res.#aws_quicksight_account_settings
-	_#res: "\(#awsPrefix)_quicksight_account_subscription": res.#aws_quicksight_account_subscription
-	_#res: "\(#awsPrefix)_quicksight_analysis": res.#aws_quicksight_analysis
-	_#res: "\(#awsPrefix)_quicksight_custom_permissions": res.#aws_quicksight_custom_permissions
-	_#res: "\(#awsPrefix)_quicksight_dashboard": res.#aws_quicksight_dashboard
-	_#res: "\(#awsPrefix)_quicksight_data_set": res.#aws_quicksight_data_set
-	_#res: "\(#awsPrefix)_quicksight_data_source": res.#aws_quicksight_data_source
-	_#res: "\(#awsPrefix)_quicksight_folder": res.#aws_quicksight_folder
-	_#res: "\(#awsPrefix)_quicksight_folder_membership": res.#aws_quicksight_folder_membership
-	_#res: "\(#awsPrefix)_quicksight_group": res.#aws_quicksight_group
-	_#res: "\(#awsPrefix)_quicksight_group_membership": res.#aws_quicksight_group_membership
-	_#res: "\(#awsPrefix)_quicksight_iam_policy_assignment": res.#aws_quicksight_iam_policy_assignment
-	_#res: "\(#awsPrefix)_quicksight_ingestion": res.#aws_quicksight_ingestion
-	_#res: "\(#awsPrefix)_quicksight_ip_restriction": res.#aws_quicksight_ip_restriction
-	_#res: "\(#awsPrefix)_quicksight_key_registration": res.#aws_quicksight_key_registration
-	_#res: "\(#awsPrefix)_quicksight_namespace": res.#aws_quicksight_namespace
-	_#res: "\(#awsPrefix)_quicksight_refresh_schedule": res.#aws_quicksight_refresh_schedule
-	_#res: "\(#awsPrefix)_quicksight_role_custom_permission": res.#aws_quicksight_role_custom_permission
-	_#res: "\(#awsPrefix)_quicksight_role_membership": res.#aws_quicksight_role_membership
-	_#res: "\(#awsPrefix)_quicksight_template_alias": res.#aws_quicksight_template_alias
-	_#res: "\(#awsPrefix)_quicksight_template": res.#aws_quicksight_template
-	_#res: "\(#awsPrefix)_quicksight_theme": res.#aws_quicksight_theme
-	_#res: "\(#awsPrefix)_quicksight_user_custom_permission": res.#aws_quicksight_user_custom_permission
-	_#res: "\(#awsPrefix)_quicksight_user": res.#aws_quicksight_user
-	_#res: "\(#awsPrefix)_quicksight_vpc_connection": res.#aws_quicksight_vpc_connection
-	_#res: "\(#awsPrefix)_ram_permission": res.#aws_ram_permission
-	_#res: "\(#awsPrefix)_ram_principal_association": res.#aws_ram_principal_association
-	_#res: "\(#awsPrefix)_ram_resource_association": res.#aws_ram_resource_association
-	_#res: "\(#awsPrefix)_ram_resource_share_accepter": res.#aws_ram_resource_share_accepter
-	_#res: "\(#awsPrefix)_ram_resource_share_associations_exclusive": res.#aws_ram_resource_share_associations_exclusive
-	_#res: "\(#awsPrefix)_ram_resource_share": res.#aws_ram_resource_share
-	_#res: "\(#awsPrefix)_ram_sharing_with_organization": res.#aws_ram_sharing_with_organization
-	_#res: "\(#awsPrefix)_rbin_rule": res.#aws_rbin_rule
-	_#res: "\(#awsPrefix)_rds_certificate": res.#aws_rds_certificate
-	_#res: "\(#awsPrefix)_rds_cluster_activity_stream": res.#aws_rds_cluster_activity_stream
-	_#res: "\(#awsPrefix)_rds_cluster_endpoint": res.#aws_rds_cluster_endpoint
-	_#res: "\(#awsPrefix)_rds_cluster": res.#aws_rds_cluster
-	_#res: "\(#awsPrefix)_rds_cluster_instance": res.#aws_rds_cluster_instance
-	_#res: "\(#awsPrefix)_rds_cluster_parameter_group": res.#aws_rds_cluster_parameter_group
-	_#res: "\(#awsPrefix)_rds_cluster_role_association": res.#aws_rds_cluster_role_association
-	_#res: "\(#awsPrefix)_rds_cluster_snapshot_copy": res.#aws_rds_cluster_snapshot_copy
-	_#res: "\(#awsPrefix)_rds_custom_db_engine_version": res.#aws_rds_custom_db_engine_version
-	_#res: "\(#awsPrefix)_rds_export_task": res.#aws_rds_export_task
-	_#res: "\(#awsPrefix)_rds_global_cluster": res.#aws_rds_global_cluster
-	_#res: "\(#awsPrefix)_rds_instance_state": res.#aws_rds_instance_state
-	_#res: "\(#awsPrefix)_rds_integration": res.#aws_rds_integration
-	_#res: "\(#awsPrefix)_rds_reserved_instance": res.#aws_rds_reserved_instance
-	_#res: "\(#awsPrefix)_rds_shard_group": res.#aws_rds_shard_group
-	_#res: "\(#awsPrefix)_redshift_authentication_profile": res.#aws_redshift_authentication_profile
-	_#res: "\(#awsPrefix)_redshift_cluster": res.#aws_redshift_cluster
-	_#res: "\(#awsPrefix)_redshift_cluster_iam_roles": res.#aws_redshift_cluster_iam_roles
-	_#res: "\(#awsPrefix)_redshift_cluster_snapshot": res.#aws_redshift_cluster_snapshot
-	_#res: "\(#awsPrefix)_redshift_data_share_authorization": res.#aws_redshift_data_share_authorization
-	_#res: "\(#awsPrefix)_redshift_data_share_consumer_association": res.#aws_redshift_data_share_consumer_association
-	_#res: "\(#awsPrefix)_redshift_endpoint_access": res.#aws_redshift_endpoint_access
-	_#res: "\(#awsPrefix)_redshift_endpoint_authorization": res.#aws_redshift_endpoint_authorization
-	_#res: "\(#awsPrefix)_redshift_event_subscription": res.#aws_redshift_event_subscription
-	_#res: "\(#awsPrefix)_redshift_hsm_client_certificate": res.#aws_redshift_hsm_client_certificate
-	_#res: "\(#awsPrefix)_redshift_hsm_configuration": res.#aws_redshift_hsm_configuration
-	_#res: "\(#awsPrefix)_redshift_idc_application": res.#aws_redshift_idc_application
-	_#res: "\(#awsPrefix)_redshift_integration": res.#aws_redshift_integration
-	_#res: "\(#awsPrefix)_redshift_logging": res.#aws_redshift_logging
-	_#res: "\(#awsPrefix)_redshift_namespace_registration": res.#aws_redshift_namespace_registration
-	_#res: "\(#awsPrefix)_redshift_parameter_group": res.#aws_redshift_parameter_group
-	_#res: "\(#awsPrefix)_redshift_partner": res.#aws_redshift_partner
-	_#res: "\(#awsPrefix)_redshift_resource_policy": res.#aws_redshift_resource_policy
-	_#res: "\(#awsPrefix)_redshift_scheduled_action": res.#aws_redshift_scheduled_action
-	_#res: "\(#awsPrefix)_redshift_snapshot_copy": res.#aws_redshift_snapshot_copy
-	_#res: "\(#awsPrefix)_redshift_snapshot_copy_grant": res.#aws_redshift_snapshot_copy_grant
-	_#res: "\(#awsPrefix)_redshift_snapshot_schedule_association": res.#aws_redshift_snapshot_schedule_association
-	_#res: "\(#awsPrefix)_redshift_snapshot_schedule": res.#aws_redshift_snapshot_schedule
-	_#res: "\(#awsPrefix)_redshift_subnet_group": res.#aws_redshift_subnet_group
-	_#res: "\(#awsPrefix)_redshift_usage_limit": res.#aws_redshift_usage_limit
-	_#res: "\(#awsPrefix)_redshiftdata_statement": res.#aws_redshiftdata_statement
-	_#res: "\(#awsPrefix)_redshiftserverless_custom_domain_association": res.#aws_redshiftserverless_custom_domain_association
-	_#res: "\(#awsPrefix)_redshiftserverless_endpoint_access": res.#aws_redshiftserverless_endpoint_access
-	_#res: "\(#awsPrefix)_redshiftserverless_namespace": res.#aws_redshiftserverless_namespace
-	_#res: "\(#awsPrefix)_redshiftserverless_resource_policy": res.#aws_redshiftserverless_resource_policy
-	_#res: "\(#awsPrefix)_redshiftserverless_snapshot": res.#aws_redshiftserverless_snapshot
-	_#res: "\(#awsPrefix)_redshiftserverless_usage_limit": res.#aws_redshiftserverless_usage_limit
-	_#res: "\(#awsPrefix)_redshiftserverless_workgroup": res.#aws_redshiftserverless_workgroup
-	_#res: "\(#awsPrefix)_rekognition_collection": res.#aws_rekognition_collection
-	_#res: "\(#awsPrefix)_rekognition_project": res.#aws_rekognition_project
-	_#res: "\(#awsPrefix)_rekognition_stream_processor": res.#aws_rekognition_stream_processor
-	_#res: "\(#awsPrefix)_resiliencehub_resiliency_policy": res.#aws_resiliencehub_resiliency_policy
-	_#res: "\(#awsPrefix)_resourceexplorer2_index": res.#aws_resourceexplorer2_index
-	_#res: "\(#awsPrefix)_resourceexplorer2_view": res.#aws_resourceexplorer2_view
-	_#res: "\(#awsPrefix)_resourcegroups_group": res.#aws_resourcegroups_group
-	_#res: "\(#awsPrefix)_resourcegroups_resource": res.#aws_resourcegroups_resource
-	_#res: "\(#awsPrefix)_rolesanywhere_profile": res.#aws_rolesanywhere_profile
-	_#res: "\(#awsPrefix)_rolesanywhere_trust_anchor": res.#aws_rolesanywhere_trust_anchor
-	_#res: "\(#awsPrefix)_route53_cidr_collection": res.#aws_route53_cidr_collection
-	_#res: "\(#awsPrefix)_route53_cidr_location": res.#aws_route53_cidr_location
-	_#res: "\(#awsPrefix)_route53_delegation_set": res.#aws_route53_delegation_set
-	_#res: "\(#awsPrefix)_route53_health_check": res.#aws_route53_health_check
-	_#res: "\(#awsPrefix)_route53_hosted_zone_dnssec": res.#aws_route53_hosted_zone_dnssec
-	_#res: "\(#awsPrefix)_route53_key_signing_key": res.#aws_route53_key_signing_key
-	_#res: "\(#awsPrefix)_route53_query_log": res.#aws_route53_query_log
-	_#res: "\(#awsPrefix)_route53_record": res.#aws_route53_record
-	_#res: "\(#awsPrefix)_route53_records_exclusive": res.#aws_route53_records_exclusive
-	_#res: "\(#awsPrefix)_route53_resolver_config": res.#aws_route53_resolver_config
-	_#res: "\(#awsPrefix)_route53_resolver_dnssec_config": res.#aws_route53_resolver_dnssec_config
-	_#res: "\(#awsPrefix)_route53_resolver_endpoint": res.#aws_route53_resolver_endpoint
-	_#res: "\(#awsPrefix)_route53_resolver_firewall_config": res.#aws_route53_resolver_firewall_config
-	_#res: "\(#awsPrefix)_route53_resolver_firewall_domain_list": res.#aws_route53_resolver_firewall_domain_list
-	_#res: "\(#awsPrefix)_route53_resolver_firewall_rule": res.#aws_route53_resolver_firewall_rule
-	_#res: "\(#awsPrefix)_route53_resolver_firewall_rule_group_association": res.#aws_route53_resolver_firewall_rule_group_association
-	_#res: "\(#awsPrefix)_route53_resolver_firewall_rule_group": res.#aws_route53_resolver_firewall_rule_group
-	_#res: "\(#awsPrefix)_route53_resolver_query_log_config_association": res.#aws_route53_resolver_query_log_config_association
-	_#res: "\(#awsPrefix)_route53_resolver_query_log_config": res.#aws_route53_resolver_query_log_config
-	_#res: "\(#awsPrefix)_route53_resolver_rule_association": res.#aws_route53_resolver_rule_association
-	_#res: "\(#awsPrefix)_route53_resolver_rule": res.#aws_route53_resolver_rule
-	_#res: "\(#awsPrefix)_route53_traffic_policy": res.#aws_route53_traffic_policy
-	_#res: "\(#awsPrefix)_route53_traffic_policy_instance": res.#aws_route53_traffic_policy_instance
-	_#res: "\(#awsPrefix)_route53_vpc_association_authorization": res.#aws_route53_vpc_association_authorization
-	_#res: "\(#awsPrefix)_route53_zone_association": res.#aws_route53_zone_association
-	_#res: "\(#awsPrefix)_route53_zone": res.#aws_route53_zone
-	_#res: "\(#awsPrefix)_route53domains_delegation_signer_record": res.#aws_route53domains_delegation_signer_record
-	_#res: "\(#awsPrefix)_route53domains_domain": res.#aws_route53domains_domain
-	_#res: "\(#awsPrefix)_route53domains_registered_domain": res.#aws_route53domains_registered_domain
-	_#res: "\(#awsPrefix)_route53profiles_association": res.#aws_route53profiles_association
-	_#res: "\(#awsPrefix)_route53profiles_profile": res.#aws_route53profiles_profile
-	_#res: "\(#awsPrefix)_route53profiles_resource_association": res.#aws_route53profiles_resource_association
-	_#res: "\(#awsPrefix)_route53recoverycontrolconfig_cluster": res.#aws_route53recoverycontrolconfig_cluster
-	_#res: "\(#awsPrefix)_route53recoverycontrolconfig_control_panel": res.#aws_route53recoverycontrolconfig_control_panel
-	_#res: "\(#awsPrefix)_route53recoverycontrolconfig_routing_control": res.#aws_route53recoverycontrolconfig_routing_control
-	_#res: "\(#awsPrefix)_route53recoverycontrolconfig_safety_rule": res.#aws_route53recoverycontrolconfig_safety_rule
-	_#res: "\(#awsPrefix)_route53recoveryreadiness_cell": res.#aws_route53recoveryreadiness_cell
-	_#res: "\(#awsPrefix)_route53recoveryreadiness_readiness_check": res.#aws_route53recoveryreadiness_readiness_check
-	_#res: "\(#awsPrefix)_route53recoveryreadiness_recovery_group": res.#aws_route53recoveryreadiness_recovery_group
-	_#res: "\(#awsPrefix)_route53recoveryreadiness_resource_set": res.#aws_route53recoveryreadiness_resource_set
-	_#res: "\(#awsPrefix)_route": res.#aws_route
-	_#res: "\(#awsPrefix)_route_table_association": res.#aws_route_table_association
-	_#res: "\(#awsPrefix)_route_table": res.#aws_route_table
-	_#res: "\(#awsPrefix)_rum_app_monitor": res.#aws_rum_app_monitor
-	_#res: "\(#awsPrefix)_rum_metrics_destination": res.#aws_rum_metrics_destination
-	_#res: "\(#awsPrefix)_s3_access_point": res.#aws_s3_access_point
-	_#res: "\(#awsPrefix)_s3_account_public_access_block": res.#aws_s3_account_public_access_block
-	_#res: "\(#awsPrefix)_s3_bucket_abac": res.#aws_s3_bucket_abac
-	_#res: "\(#awsPrefix)_s3_bucket_accelerate_configuration": res.#aws_s3_bucket_accelerate_configuration
-	_#res: "\(#awsPrefix)_s3_bucket_acl": res.#aws_s3_bucket_acl
-	_#res: "\(#awsPrefix)_s3_bucket_analytics_configuration": res.#aws_s3_bucket_analytics_configuration
-	_#res: "\(#awsPrefix)_s3_bucket_cors_configuration": res.#aws_s3_bucket_cors_configuration
-	_#res: "\(#awsPrefix)_s3_bucket": res.#aws_s3_bucket
-	_#res: "\(#awsPrefix)_s3_bucket_intelligent_tiering_configuration": res.#aws_s3_bucket_intelligent_tiering_configuration
-	_#res: "\(#awsPrefix)_s3_bucket_inventory": res.#aws_s3_bucket_inventory
-	_#res: "\(#awsPrefix)_s3_bucket_lifecycle_configuration": res.#aws_s3_bucket_lifecycle_configuration
-	_#res: "\(#awsPrefix)_s3_bucket_logging": res.#aws_s3_bucket_logging
-	_#res: "\(#awsPrefix)_s3_bucket_metadata_configuration": res.#aws_s3_bucket_metadata_configuration
-	_#res: "\(#awsPrefix)_s3_bucket_metric": res.#aws_s3_bucket_metric
-	_#res: "\(#awsPrefix)_s3_bucket_notification": res.#aws_s3_bucket_notification
-	_#res: "\(#awsPrefix)_s3_bucket_object": res.#aws_s3_bucket_object
-	_#res: "\(#awsPrefix)_s3_bucket_object_lock_configuration": res.#aws_s3_bucket_object_lock_configuration
-	_#res: "\(#awsPrefix)_s3_bucket_ownership_controls": res.#aws_s3_bucket_ownership_controls
-	_#res: "\(#awsPrefix)_s3_bucket_policy": res.#aws_s3_bucket_policy
-	_#res: "\(#awsPrefix)_s3_bucket_public_access_block": res.#aws_s3_bucket_public_access_block
-	_#res: "\(#awsPrefix)_s3_bucket_replication_configuration": res.#aws_s3_bucket_replication_configuration
-	_#res: "\(#awsPrefix)_s3_bucket_request_payment_configuration": res.#aws_s3_bucket_request_payment_configuration
-	_#res: "\(#awsPrefix)_s3_bucket_server_side_encryption_configuration": res.#aws_s3_bucket_server_side_encryption_configuration
-	_#res: "\(#awsPrefix)_s3_bucket_versioning": res.#aws_s3_bucket_versioning
-	_#res: "\(#awsPrefix)_s3_bucket_website_configuration": res.#aws_s3_bucket_website_configuration
-	_#res: "\(#awsPrefix)_s3_directory_bucket": res.#aws_s3_directory_bucket
-	_#res: "\(#awsPrefix)_s3_object_copy": res.#aws_s3_object_copy
-	_#res: "\(#awsPrefix)_s3_object": res.#aws_s3_object
-	_#res: "\(#awsPrefix)_s3control_access_grant": res.#aws_s3control_access_grant
-	_#res: "\(#awsPrefix)_s3control_access_grants_instance": res.#aws_s3control_access_grants_instance
-	_#res: "\(#awsPrefix)_s3control_access_grants_instance_resource_policy": res.#aws_s3control_access_grants_instance_resource_policy
-	_#res: "\(#awsPrefix)_s3control_access_grants_location": res.#aws_s3control_access_grants_location
-	_#res: "\(#awsPrefix)_s3control_access_point_policy": res.#aws_s3control_access_point_policy
-	_#res: "\(#awsPrefix)_s3control_bucket": res.#aws_s3control_bucket
-	_#res: "\(#awsPrefix)_s3control_bucket_lifecycle_configuration": res.#aws_s3control_bucket_lifecycle_configuration
-	_#res: "\(#awsPrefix)_s3control_bucket_policy": res.#aws_s3control_bucket_policy
-	_#res: "\(#awsPrefix)_s3control_directory_bucket_access_point_scope": res.#aws_s3control_directory_bucket_access_point_scope
-	_#res: "\(#awsPrefix)_s3control_multi_region_access_point": res.#aws_s3control_multi_region_access_point
-	_#res: "\(#awsPrefix)_s3control_multi_region_access_point_policy": res.#aws_s3control_multi_region_access_point_policy
-	_#res: "\(#awsPrefix)_s3control_multi_region_access_point_routes": res.#aws_s3control_multi_region_access_point_routes
-	_#res: "\(#awsPrefix)_s3control_object_lambda_access_point": res.#aws_s3control_object_lambda_access_point
-	_#res: "\(#awsPrefix)_s3control_object_lambda_access_point_policy": res.#aws_s3control_object_lambda_access_point_policy
-	_#res: "\(#awsPrefix)_s3control_storage_lens_configuration": res.#aws_s3control_storage_lens_configuration
-	_#res: "\(#awsPrefix)_s3files_access_point": res.#aws_s3files_access_point
-	_#res: "\(#awsPrefix)_s3files_file_system": res.#aws_s3files_file_system
-	_#res: "\(#awsPrefix)_s3files_file_system_policy": res.#aws_s3files_file_system_policy
-	_#res: "\(#awsPrefix)_s3files_mount_target": res.#aws_s3files_mount_target
-	_#res: "\(#awsPrefix)_s3files_synchronization_configuration": res.#aws_s3files_synchronization_configuration
-	_#res: "\(#awsPrefix)_s3outposts_endpoint": res.#aws_s3outposts_endpoint
-	_#res: "\(#awsPrefix)_s3tables_namespace": res.#aws_s3tables_namespace
-	_#res: "\(#awsPrefix)_s3tables_table_bucket": res.#aws_s3tables_table_bucket
-	_#res: "\(#awsPrefix)_s3tables_table_bucket_policy": res.#aws_s3tables_table_bucket_policy
-	_#res: "\(#awsPrefix)_s3tables_table_bucket_replication": res.#aws_s3tables_table_bucket_replication
-	_#res: "\(#awsPrefix)_s3tables_table": res.#aws_s3tables_table
-	_#res: "\(#awsPrefix)_s3tables_table_policy": res.#aws_s3tables_table_policy
-	_#res: "\(#awsPrefix)_s3tables_table_replication": res.#aws_s3tables_table_replication
-	_#res: "\(#awsPrefix)_s3vectors_index": res.#aws_s3vectors_index
-	_#res: "\(#awsPrefix)_s3vectors_vector_bucket": res.#aws_s3vectors_vector_bucket
-	_#res: "\(#awsPrefix)_s3vectors_vector_bucket_policy": res.#aws_s3vectors_vector_bucket_policy
-	_#res: "\(#awsPrefix)_sagemaker_algorithm": res.#aws_sagemaker_algorithm
-	_#res: "\(#awsPrefix)_sagemaker_app": res.#aws_sagemaker_app
-	_#res: "\(#awsPrefix)_sagemaker_app_image_config": res.#aws_sagemaker_app_image_config
-	_#res: "\(#awsPrefix)_sagemaker_code_repository": res.#aws_sagemaker_code_repository
-	_#res: "\(#awsPrefix)_sagemaker_data_quality_job_definition": res.#aws_sagemaker_data_quality_job_definition
-	_#res: "\(#awsPrefix)_sagemaker_device_fleet": res.#aws_sagemaker_device_fleet
-	_#res: "\(#awsPrefix)_sagemaker_device": res.#aws_sagemaker_device
-	_#res: "\(#awsPrefix)_sagemaker_domain": res.#aws_sagemaker_domain
-	_#res: "\(#awsPrefix)_sagemaker_endpoint_configuration": res.#aws_sagemaker_endpoint_configuration
-	_#res: "\(#awsPrefix)_sagemaker_endpoint": res.#aws_sagemaker_endpoint
-	_#res: "\(#awsPrefix)_sagemaker_feature_group": res.#aws_sagemaker_feature_group
-	_#res: "\(#awsPrefix)_sagemaker_flow_definition": res.#aws_sagemaker_flow_definition
-	_#res: "\(#awsPrefix)_sagemaker_hub_content_reference": res.#aws_sagemaker_hub_content_reference
-	_#res: "\(#awsPrefix)_sagemaker_hub": res.#aws_sagemaker_hub
-	_#res: "\(#awsPrefix)_sagemaker_human_task_ui": res.#aws_sagemaker_human_task_ui
-	_#res: "\(#awsPrefix)_sagemaker_hyper_parameter_tuning_job": res.#aws_sagemaker_hyper_parameter_tuning_job
-	_#res: "\(#awsPrefix)_sagemaker_image": res.#aws_sagemaker_image
-	_#res: "\(#awsPrefix)_sagemaker_image_version": res.#aws_sagemaker_image_version
-	_#res: "\(#awsPrefix)_sagemaker_labeling_job": res.#aws_sagemaker_labeling_job
-	_#res: "\(#awsPrefix)_sagemaker_mlflow_app": res.#aws_sagemaker_mlflow_app
-	_#res: "\(#awsPrefix)_sagemaker_mlflow_tracking_server": res.#aws_sagemaker_mlflow_tracking_server
-	_#res: "\(#awsPrefix)_sagemaker_model_card_export_job": res.#aws_sagemaker_model_card_export_job
-	_#res: "\(#awsPrefix)_sagemaker_model_card": res.#aws_sagemaker_model_card
-	_#res: "\(#awsPrefix)_sagemaker_model": res.#aws_sagemaker_model
-	_#res: "\(#awsPrefix)_sagemaker_model_package_group": res.#aws_sagemaker_model_package_group
-	_#res: "\(#awsPrefix)_sagemaker_model_package_group_policy": res.#aws_sagemaker_model_package_group_policy
-	_#res: "\(#awsPrefix)_sagemaker_monitoring_schedule": res.#aws_sagemaker_monitoring_schedule
-	_#res: "\(#awsPrefix)_sagemaker_notebook_instance": res.#aws_sagemaker_notebook_instance
-	_#res: "\(#awsPrefix)_sagemaker_notebook_instance_lifecycle_configuration": res.#aws_sagemaker_notebook_instance_lifecycle_configuration
-	_#res: "\(#awsPrefix)_sagemaker_pipeline": res.#aws_sagemaker_pipeline
-	_#res: "\(#awsPrefix)_sagemaker_project": res.#aws_sagemaker_project
-	_#res: "\(#awsPrefix)_sagemaker_servicecatalog_portfolio_status": res.#aws_sagemaker_servicecatalog_portfolio_status
-	_#res: "\(#awsPrefix)_sagemaker_space": res.#aws_sagemaker_space
-	_#res: "\(#awsPrefix)_sagemaker_studio_lifecycle_config": res.#aws_sagemaker_studio_lifecycle_config
-	_#res: "\(#awsPrefix)_sagemaker_training_job": res.#aws_sagemaker_training_job
-	_#res: "\(#awsPrefix)_sagemaker_user_profile": res.#aws_sagemaker_user_profile
-	_#res: "\(#awsPrefix)_sagemaker_workforce": res.#aws_sagemaker_workforce
-	_#res: "\(#awsPrefix)_sagemaker_workteam": res.#aws_sagemaker_workteam
-	_#res: "\(#awsPrefix)_savingsplans_savings_plan": res.#aws_savingsplans_savings_plan
-	_#res: "\(#awsPrefix)_scheduler_schedule": res.#aws_scheduler_schedule
-	_#res: "\(#awsPrefix)_scheduler_schedule_group": res.#aws_scheduler_schedule_group
-	_#res: "\(#awsPrefix)_schemas_discoverer": res.#aws_schemas_discoverer
-	_#res: "\(#awsPrefix)_schemas_registry": res.#aws_schemas_registry
-	_#res: "\(#awsPrefix)_schemas_registry_policy": res.#aws_schemas_registry_policy
-	_#res: "\(#awsPrefix)_schemas_schema": res.#aws_schemas_schema
-	_#res: "\(#awsPrefix)_secretsmanager_secret": res.#aws_secretsmanager_secret
-	_#res: "\(#awsPrefix)_secretsmanager_secret_policy": res.#aws_secretsmanager_secret_policy
-	_#res: "\(#awsPrefix)_secretsmanager_secret_rotation": res.#aws_secretsmanager_secret_rotation
-	_#res: "\(#awsPrefix)_secretsmanager_secret_version": res.#aws_secretsmanager_secret_version
-	_#res: "\(#awsPrefix)_secretsmanager_tag": res.#aws_secretsmanager_tag
-	_#res: "\(#awsPrefix)_security_group": res.#aws_security_group
-	_#res: "\(#awsPrefix)_security_group_rule": res.#aws_security_group_rule
-	_#res: "\(#awsPrefix)_securityhub_account": res.#aws_securityhub_account
-	_#res: "\(#awsPrefix)_securityhub_account_v2": res.#aws_securityhub_account_v2
-	_#res: "\(#awsPrefix)_securityhub_action_target": res.#aws_securityhub_action_target
-	_#res: "\(#awsPrefix)_securityhub_aggregator_v2": res.#aws_securityhub_aggregator_v2
-	_#res: "\(#awsPrefix)_securityhub_automation_rule": res.#aws_securityhub_automation_rule
-	_#res: "\(#awsPrefix)_securityhub_automation_rule_v2": res.#aws_securityhub_automation_rule_v2
-	_#res: "\(#awsPrefix)_securityhub_configuration_policy_association": res.#aws_securityhub_configuration_policy_association
-	_#res: "\(#awsPrefix)_securityhub_configuration_policy": res.#aws_securityhub_configuration_policy
-	_#res: "\(#awsPrefix)_securityhub_connector_v2": res.#aws_securityhub_connector_v2
-	_#res: "\(#awsPrefix)_securityhub_finding_aggregator": res.#aws_securityhub_finding_aggregator
-	_#res: "\(#awsPrefix)_securityhub_insight": res.#aws_securityhub_insight
-	_#res: "\(#awsPrefix)_securityhub_invite_accepter": res.#aws_securityhub_invite_accepter
-	_#res: "\(#awsPrefix)_securityhub_member": res.#aws_securityhub_member
-	_#res: "\(#awsPrefix)_securityhub_organization_admin_account": res.#aws_securityhub_organization_admin_account
-	_#res: "\(#awsPrefix)_securityhub_organization_configuration": res.#aws_securityhub_organization_configuration
-	_#res: "\(#awsPrefix)_securityhub_product_subscription": res.#aws_securityhub_product_subscription
-	_#res: "\(#awsPrefix)_securityhub_standards_control_association": res.#aws_securityhub_standards_control_association
-	_#res: "\(#awsPrefix)_securityhub_standards_control": res.#aws_securityhub_standards_control
-	_#res: "\(#awsPrefix)_securityhub_standards_subscription": res.#aws_securityhub_standards_subscription
-	_#res: "\(#awsPrefix)_securitylake_aws_log_source": res.#aws_securitylake_aws_log_source
-	_#res: "\(#awsPrefix)_securitylake_custom_log_source": res.#aws_securitylake_custom_log_source
-	_#res: "\(#awsPrefix)_securitylake_data_lake": res.#aws_securitylake_data_lake
-	_#res: "\(#awsPrefix)_securitylake_subscriber": res.#aws_securitylake_subscriber
-	_#res: "\(#awsPrefix)_securitylake_subscriber_notification": res.#aws_securitylake_subscriber_notification
-	_#res: "\(#awsPrefix)_serverlessapplicationrepository_cloudformation_stack": res.#aws_serverlessapplicationrepository_cloudformation_stack
-	_#res: "\(#awsPrefix)_service_discovery_http_namespace": res.#aws_service_discovery_http_namespace
-	_#res: "\(#awsPrefix)_service_discovery_instance": res.#aws_service_discovery_instance
-	_#res: "\(#awsPrefix)_service_discovery_private_dns_namespace": res.#aws_service_discovery_private_dns_namespace
-	_#res: "\(#awsPrefix)_service_discovery_public_dns_namespace": res.#aws_service_discovery_public_dns_namespace
-	_#res: "\(#awsPrefix)_service_discovery_service": res.#aws_service_discovery_service
-	_#res: "\(#awsPrefix)_servicecatalog_budget_resource_association": res.#aws_servicecatalog_budget_resource_association
-	_#res: "\(#awsPrefix)_servicecatalog_constraint": res.#aws_servicecatalog_constraint
-	_#res: "\(#awsPrefix)_servicecatalog_organizations_access": res.#aws_servicecatalog_organizations_access
-	_#res: "\(#awsPrefix)_servicecatalog_portfolio": res.#aws_servicecatalog_portfolio
-	_#res: "\(#awsPrefix)_servicecatalog_portfolio_share": res.#aws_servicecatalog_portfolio_share
-	_#res: "\(#awsPrefix)_servicecatalog_principal_portfolio_association": res.#aws_servicecatalog_principal_portfolio_association
-	_#res: "\(#awsPrefix)_servicecatalog_product": res.#aws_servicecatalog_product
-	_#res: "\(#awsPrefix)_servicecatalog_product_portfolio_association": res.#aws_servicecatalog_product_portfolio_association
-	_#res: "\(#awsPrefix)_servicecatalog_provisioned_product": res.#aws_servicecatalog_provisioned_product
-	_#res: "\(#awsPrefix)_servicecatalog_provisioning_artifact": res.#aws_servicecatalog_provisioning_artifact
-	_#res: "\(#awsPrefix)_servicecatalog_service_action": res.#aws_servicecatalog_service_action
-	_#res: "\(#awsPrefix)_servicecatalog_tag_option": res.#aws_servicecatalog_tag_option
-	_#res: "\(#awsPrefix)_servicecatalog_tag_option_resource_association": res.#aws_servicecatalog_tag_option_resource_association
-	_#res: "\(#awsPrefix)_servicecatalogappregistry_application": res.#aws_servicecatalogappregistry_application
-	_#res: "\(#awsPrefix)_servicecatalogappregistry_attribute_group_association": res.#aws_servicecatalogappregistry_attribute_group_association
-	_#res: "\(#awsPrefix)_servicecatalogappregistry_attribute_group": res.#aws_servicecatalogappregistry_attribute_group
-	_#res: "\(#awsPrefix)_servicequotas_auto_management": res.#aws_servicequotas_auto_management
-	_#res: "\(#awsPrefix)_servicequotas_service_quota": res.#aws_servicequotas_service_quota
-	_#res: "\(#awsPrefix)_servicequotas_template_association": res.#aws_servicequotas_template_association
-	_#res: "\(#awsPrefix)_servicequotas_template": res.#aws_servicequotas_template
-	_#res: "\(#awsPrefix)_ses_active_receipt_rule_set": res.#aws_ses_active_receipt_rule_set
-	_#res: "\(#awsPrefix)_ses_configuration_set": res.#aws_ses_configuration_set
-	_#res: "\(#awsPrefix)_ses_domain_dkim": res.#aws_ses_domain_dkim
-	_#res: "\(#awsPrefix)_ses_domain_identity": res.#aws_ses_domain_identity
-	_#res: "\(#awsPrefix)_ses_domain_identity_verification": res.#aws_ses_domain_identity_verification
-	_#res: "\(#awsPrefix)_ses_domain_mail_from": res.#aws_ses_domain_mail_from
-	_#res: "\(#awsPrefix)_ses_email_identity": res.#aws_ses_email_identity
-	_#res: "\(#awsPrefix)_ses_event_destination": res.#aws_ses_event_destination
-	_#res: "\(#awsPrefix)_ses_identity_notification_topic": res.#aws_ses_identity_notification_topic
-	_#res: "\(#awsPrefix)_ses_identity_policy": res.#aws_ses_identity_policy
-	_#res: "\(#awsPrefix)_ses_receipt_filter": res.#aws_ses_receipt_filter
-	_#res: "\(#awsPrefix)_ses_receipt_rule": res.#aws_ses_receipt_rule
-	_#res: "\(#awsPrefix)_ses_receipt_rule_set": res.#aws_ses_receipt_rule_set
-	_#res: "\(#awsPrefix)_ses_template": res.#aws_ses_template
-	_#res: "\(#awsPrefix)_sesv2_account_suppression_attributes": res.#aws_sesv2_account_suppression_attributes
-	_#res: "\(#awsPrefix)_sesv2_account_vdm_attributes": res.#aws_sesv2_account_vdm_attributes
-	_#res: "\(#awsPrefix)_sesv2_configuration_set_event_destination": res.#aws_sesv2_configuration_set_event_destination
-	_#res: "\(#awsPrefix)_sesv2_configuration_set": res.#aws_sesv2_configuration_set
-	_#res: "\(#awsPrefix)_sesv2_contact_list": res.#aws_sesv2_contact_list
-	_#res: "\(#awsPrefix)_sesv2_dedicated_ip_assignment": res.#aws_sesv2_dedicated_ip_assignment
-	_#res: "\(#awsPrefix)_sesv2_dedicated_ip_pool": res.#aws_sesv2_dedicated_ip_pool
-	_#res: "\(#awsPrefix)_sesv2_email_identity_feedback_attributes": res.#aws_sesv2_email_identity_feedback_attributes
-	_#res: "\(#awsPrefix)_sesv2_email_identity": res.#aws_sesv2_email_identity
-	_#res: "\(#awsPrefix)_sesv2_email_identity_mail_from_attributes": res.#aws_sesv2_email_identity_mail_from_attributes
-	_#res: "\(#awsPrefix)_sesv2_email_identity_policy": res.#aws_sesv2_email_identity_policy
-	_#res: "\(#awsPrefix)_sesv2_tenant": res.#aws_sesv2_tenant
-	_#res: "\(#awsPrefix)_sesv2_tenant_resource_association": res.#aws_sesv2_tenant_resource_association
-	_#res: "\(#awsPrefix)_sfn_activity": res.#aws_sfn_activity
-	_#res: "\(#awsPrefix)_sfn_alias": res.#aws_sfn_alias
-	_#res: "\(#awsPrefix)_sfn_state_machine": res.#aws_sfn_state_machine
-	_#res: "\(#awsPrefix)_shield_application_layer_automatic_response": res.#aws_shield_application_layer_automatic_response
-	_#res: "\(#awsPrefix)_shield_drt_access_log_bucket_association": res.#aws_shield_drt_access_log_bucket_association
-	_#res: "\(#awsPrefix)_shield_drt_access_role_arn_association": res.#aws_shield_drt_access_role_arn_association
-	_#res: "\(#awsPrefix)_shield_proactive_engagement": res.#aws_shield_proactive_engagement
-	_#res: "\(#awsPrefix)_shield_protection": res.#aws_shield_protection
-	_#res: "\(#awsPrefix)_shield_protection_group": res.#aws_shield_protection_group
-	_#res: "\(#awsPrefix)_shield_protection_health_check_association": res.#aws_shield_protection_health_check_association
-	_#res: "\(#awsPrefix)_shield_subscription": res.#aws_shield_subscription
-	_#res: "\(#awsPrefix)_signer_signing_job": res.#aws_signer_signing_job
-	_#res: "\(#awsPrefix)_signer_signing_profile": res.#aws_signer_signing_profile
-	_#res: "\(#awsPrefix)_signer_signing_profile_permission": res.#aws_signer_signing_profile_permission
-	_#res: "\(#awsPrefix)_snapshot_create_volume_permission": res.#aws_snapshot_create_volume_permission
-	_#res: "\(#awsPrefix)_sns_platform_application": res.#aws_sns_platform_application
-	_#res: "\(#awsPrefix)_sns_sms_preferences": res.#aws_sns_sms_preferences
-	_#res: "\(#awsPrefix)_sns_topic_data_protection_policy": res.#aws_sns_topic_data_protection_policy
-	_#res: "\(#awsPrefix)_sns_topic": res.#aws_sns_topic
-	_#res: "\(#awsPrefix)_sns_topic_policy": res.#aws_sns_topic_policy
-	_#res: "\(#awsPrefix)_sns_topic_subscription": res.#aws_sns_topic_subscription
-	_#res: "\(#awsPrefix)_spot_datafeed_subscription": res.#aws_spot_datafeed_subscription
-	_#res: "\(#awsPrefix)_spot_fleet_request": res.#aws_spot_fleet_request
-	_#res: "\(#awsPrefix)_spot_instance_request": res.#aws_spot_instance_request
-	_#res: "\(#awsPrefix)_sqs_queue": res.#aws_sqs_queue
-	_#res: "\(#awsPrefix)_sqs_queue_policy": res.#aws_sqs_queue_policy
-	_#res: "\(#awsPrefix)_sqs_queue_redrive_allow_policy": res.#aws_sqs_queue_redrive_allow_policy
-	_#res: "\(#awsPrefix)_sqs_queue_redrive_policy": res.#aws_sqs_queue_redrive_policy
-	_#res: "\(#awsPrefix)_ssm_activation": res.#aws_ssm_activation
-	_#res: "\(#awsPrefix)_ssm_association": res.#aws_ssm_association
-	_#res: "\(#awsPrefix)_ssm_default_patch_baseline": res.#aws_ssm_default_patch_baseline
-	_#res: "\(#awsPrefix)_ssm_document": res.#aws_ssm_document
-	_#res: "\(#awsPrefix)_ssm_maintenance_window": res.#aws_ssm_maintenance_window
-	_#res: "\(#awsPrefix)_ssm_maintenance_window_target": res.#aws_ssm_maintenance_window_target
-	_#res: "\(#awsPrefix)_ssm_maintenance_window_task": res.#aws_ssm_maintenance_window_task
-	_#res: "\(#awsPrefix)_ssm_parameter": res.#aws_ssm_parameter
-	_#res: "\(#awsPrefix)_ssm_patch_baseline": res.#aws_ssm_patch_baseline
-	_#res: "\(#awsPrefix)_ssm_patch_group": res.#aws_ssm_patch_group
-	_#res: "\(#awsPrefix)_ssm_resource_data_sync": res.#aws_ssm_resource_data_sync
-	_#res: "\(#awsPrefix)_ssm_service_setting": res.#aws_ssm_service_setting
-	_#res: "\(#awsPrefix)_ssmcontacts_contact_channel": res.#aws_ssmcontacts_contact_channel
-	_#res: "\(#awsPrefix)_ssmcontacts_contact": res.#aws_ssmcontacts_contact
-	_#res: "\(#awsPrefix)_ssmcontacts_plan": res.#aws_ssmcontacts_plan
-	_#res: "\(#awsPrefix)_ssmcontacts_rotation": res.#aws_ssmcontacts_rotation
-	_#res: "\(#awsPrefix)_ssmincidents_replication_set": res.#aws_ssmincidents_replication_set
-	_#res: "\(#awsPrefix)_ssmincidents_response_plan": res.#aws_ssmincidents_response_plan
-	_#res: "\(#awsPrefix)_ssmquicksetup_configuration_manager": res.#aws_ssmquicksetup_configuration_manager
-	_#res: "\(#awsPrefix)_ssoadmin_account_assignment": res.#aws_ssoadmin_account_assignment
-	_#res: "\(#awsPrefix)_ssoadmin_application_access_scope": res.#aws_ssoadmin_application_access_scope
-	_#res: "\(#awsPrefix)_ssoadmin_application_assignment_configuration": res.#aws_ssoadmin_application_assignment_configuration
-	_#res: "\(#awsPrefix)_ssoadmin_application_assignment": res.#aws_ssoadmin_application_assignment
-	_#res: "\(#awsPrefix)_ssoadmin_application": res.#aws_ssoadmin_application
-	_#res: "\(#awsPrefix)_ssoadmin_customer_managed_policy_attachment": res.#aws_ssoadmin_customer_managed_policy_attachment
-	_#res: "\(#awsPrefix)_ssoadmin_customer_managed_policy_attachments_exclusive": res.#aws_ssoadmin_customer_managed_policy_attachments_exclusive
-	_#res: "\(#awsPrefix)_ssoadmin_instance_access_control_attributes": res.#aws_ssoadmin_instance_access_control_attributes
-	_#res: "\(#awsPrefix)_ssoadmin_managed_policy_attachment": res.#aws_ssoadmin_managed_policy_attachment
-	_#res: "\(#awsPrefix)_ssoadmin_managed_policy_attachments_exclusive": res.#aws_ssoadmin_managed_policy_attachments_exclusive
-	_#res: "\(#awsPrefix)_ssoadmin_permission_set": res.#aws_ssoadmin_permission_set
-	_#res: "\(#awsPrefix)_ssoadmin_permission_set_inline_policy": res.#aws_ssoadmin_permission_set_inline_policy
-	_#res: "\(#awsPrefix)_ssoadmin_permissions_boundary_attachment": res.#aws_ssoadmin_permissions_boundary_attachment
-	_#res: "\(#awsPrefix)_ssoadmin_trusted_token_issuer": res.#aws_ssoadmin_trusted_token_issuer
-	_#res: "\(#awsPrefix)_storagegateway_cache": res.#aws_storagegateway_cache
-	_#res: "\(#awsPrefix)_storagegateway_cached_iscsi_volume": res.#aws_storagegateway_cached_iscsi_volume
-	_#res: "\(#awsPrefix)_storagegateway_file_system_association": res.#aws_storagegateway_file_system_association
-	_#res: "\(#awsPrefix)_storagegateway_gateway": res.#aws_storagegateway_gateway
-	_#res: "\(#awsPrefix)_storagegateway_nfs_file_share": res.#aws_storagegateway_nfs_file_share
-	_#res: "\(#awsPrefix)_storagegateway_smb_file_share": res.#aws_storagegateway_smb_file_share
-	_#res: "\(#awsPrefix)_storagegateway_stored_iscsi_volume": res.#aws_storagegateway_stored_iscsi_volume
-	_#res: "\(#awsPrefix)_storagegateway_tape_pool": res.#aws_storagegateway_tape_pool
-	_#res: "\(#awsPrefix)_storagegateway_upload_buffer": res.#aws_storagegateway_upload_buffer
-	_#res: "\(#awsPrefix)_storagegateway_working_storage": res.#aws_storagegateway_working_storage
-	_#res: "\(#awsPrefix)_subnet": res.#aws_subnet
-	_#res: "\(#awsPrefix)_swf_domain": res.#aws_swf_domain
-	_#res: "\(#awsPrefix)_synthetics_canary": res.#aws_synthetics_canary
-	_#res: "\(#awsPrefix)_synthetics_group_association": res.#aws_synthetics_group_association
-	_#res: "\(#awsPrefix)_synthetics_group": res.#aws_synthetics_group
-	_#res: "\(#awsPrefix)_timestreaminfluxdb_db_cluster": res.#aws_timestreaminfluxdb_db_cluster
-	_#res: "\(#awsPrefix)_timestreaminfluxdb_db_instance": res.#aws_timestreaminfluxdb_db_instance
-	_#res: "\(#awsPrefix)_timestreamquery_scheduled_query": res.#aws_timestreamquery_scheduled_query
-	_#res: "\(#awsPrefix)_timestreamwrite_database": res.#aws_timestreamwrite_database
-	_#res: "\(#awsPrefix)_timestreamwrite_table": res.#aws_timestreamwrite_table
-	_#res: "\(#awsPrefix)_transcribe_language_model": res.#aws_transcribe_language_model
-	_#res: "\(#awsPrefix)_transcribe_medical_vocabulary": res.#aws_transcribe_medical_vocabulary
-	_#res: "\(#awsPrefix)_transcribe_vocabulary_filter": res.#aws_transcribe_vocabulary_filter
-	_#res: "\(#awsPrefix)_transcribe_vocabulary": res.#aws_transcribe_vocabulary
-	_#res: "\(#awsPrefix)_transfer_access": res.#aws_transfer_access
-	_#res: "\(#awsPrefix)_transfer_agreement": res.#aws_transfer_agreement
-	_#res: "\(#awsPrefix)_transfer_certificate": res.#aws_transfer_certificate
-	_#res: "\(#awsPrefix)_transfer_connector": res.#aws_transfer_connector
-	_#res: "\(#awsPrefix)_transfer_host_key": res.#aws_transfer_host_key
-	_#res: "\(#awsPrefix)_transfer_profile": res.#aws_transfer_profile
-	_#res: "\(#awsPrefix)_transfer_server": res.#aws_transfer_server
-	_#res: "\(#awsPrefix)_transfer_ssh_key": res.#aws_transfer_ssh_key
-	_#res: "\(#awsPrefix)_transfer_tag": res.#aws_transfer_tag
-	_#res: "\(#awsPrefix)_transfer_user": res.#aws_transfer_user
-	_#res: "\(#awsPrefix)_transfer_web_app_customization": res.#aws_transfer_web_app_customization
-	_#res: "\(#awsPrefix)_transfer_web_app": res.#aws_transfer_web_app
-	_#res: "\(#awsPrefix)_transfer_workflow": res.#aws_transfer_workflow
-	_#res: "\(#awsPrefix)_uxc_account_customizations": res.#aws_uxc_account_customizations
-	_#res: "\(#awsPrefix)_verifiedaccess_endpoint": res.#aws_verifiedaccess_endpoint
-	_#res: "\(#awsPrefix)_verifiedaccess_group": res.#aws_verifiedaccess_group
-	_#res: "\(#awsPrefix)_verifiedaccess_instance": res.#aws_verifiedaccess_instance
-	_#res: "\(#awsPrefix)_verifiedaccess_instance_logging_configuration": res.#aws_verifiedaccess_instance_logging_configuration
-	_#res: "\(#awsPrefix)_verifiedaccess_instance_trust_provider_attachment": res.#aws_verifiedaccess_instance_trust_provider_attachment
-	_#res: "\(#awsPrefix)_verifiedaccess_trust_provider": res.#aws_verifiedaccess_trust_provider
-	_#res: "\(#awsPrefix)_verifiedpermissions_identity_source": res.#aws_verifiedpermissions_identity_source
-	_#res: "\(#awsPrefix)_verifiedpermissions_policy": res.#aws_verifiedpermissions_policy
-	_#res: "\(#awsPrefix)_verifiedpermissions_policy_store": res.#aws_verifiedpermissions_policy_store
-	_#res: "\(#awsPrefix)_verifiedpermissions_policy_template": res.#aws_verifiedpermissions_policy_template
-	_#res: "\(#awsPrefix)_verifiedpermissions_schema": res.#aws_verifiedpermissions_schema
-	_#res: "\(#awsPrefix)_volume_attachment": res.#aws_volume_attachment
-	_#res: "\(#awsPrefix)_vpc_block_public_access_exclusion": res.#aws_vpc_block_public_access_exclusion
-	_#res: "\(#awsPrefix)_vpc_block_public_access_options": res.#aws_vpc_block_public_access_options
-	_#res: "\(#awsPrefix)_vpc_dhcp_options_association": res.#aws_vpc_dhcp_options_association
-	_#res: "\(#awsPrefix)_vpc_dhcp_options": res.#aws_vpc_dhcp_options
-	_#res: "\(#awsPrefix)_vpc_encryption_control": res.#aws_vpc_encryption_control
-	_#res: "\(#awsPrefix)_vpc_endpoint_connection_accepter": res.#aws_vpc_endpoint_connection_accepter
-	_#res: "\(#awsPrefix)_vpc_endpoint_connection_notification": res.#aws_vpc_endpoint_connection_notification
-	_#res: "\(#awsPrefix)_vpc_endpoint": res.#aws_vpc_endpoint
-	_#res: "\(#awsPrefix)_vpc_endpoint_policy": res.#aws_vpc_endpoint_policy
-	_#res: "\(#awsPrefix)_vpc_endpoint_private_dns": res.#aws_vpc_endpoint_private_dns
-	_#res: "\(#awsPrefix)_vpc_endpoint_route_table_association": res.#aws_vpc_endpoint_route_table_association
-	_#res: "\(#awsPrefix)_vpc_endpoint_security_group_association": res.#aws_vpc_endpoint_security_group_association
-	_#res: "\(#awsPrefix)_vpc_endpoint_service_allowed_principal": res.#aws_vpc_endpoint_service_allowed_principal
-	_#res: "\(#awsPrefix)_vpc_endpoint_service": res.#aws_vpc_endpoint_service
-	_#res: "\(#awsPrefix)_vpc_endpoint_service_private_dns_verification": res.#aws_vpc_endpoint_service_private_dns_verification
-	_#res: "\(#awsPrefix)_vpc_endpoint_subnet_association": res.#aws_vpc_endpoint_subnet_association
-	_#res: "\(#awsPrefix)_vpc": res.#aws_vpc
-	_#res: "\(#awsPrefix)_vpc_ipam": res.#aws_vpc_ipam
-	_#res: "\(#awsPrefix)_vpc_ipam_organization_admin_account": res.#aws_vpc_ipam_organization_admin_account
-	_#res: "\(#awsPrefix)_vpc_ipam_pool_cidr_allocation": res.#aws_vpc_ipam_pool_cidr_allocation
-	_#res: "\(#awsPrefix)_vpc_ipam_pool_cidr": res.#aws_vpc_ipam_pool_cidr
-	_#res: "\(#awsPrefix)_vpc_ipam_pool": res.#aws_vpc_ipam_pool
-	_#res: "\(#awsPrefix)_vpc_ipam_preview_next_cidr": res.#aws_vpc_ipam_preview_next_cidr
-	_#res: "\(#awsPrefix)_vpc_ipam_resource_discovery_association": res.#aws_vpc_ipam_resource_discovery_association
-	_#res: "\(#awsPrefix)_vpc_ipam_resource_discovery": res.#aws_vpc_ipam_resource_discovery
-	_#res: "\(#awsPrefix)_vpc_ipam_scope": res.#aws_vpc_ipam_scope
-	_#res: "\(#awsPrefix)_vpc_ipv4_cidr_block_association": res.#aws_vpc_ipv4_cidr_block_association
-	_#res: "\(#awsPrefix)_vpc_ipv6_cidr_block_association": res.#aws_vpc_ipv6_cidr_block_association
-	_#res: "\(#awsPrefix)_vpc_network_performance_metric_subscription": res.#aws_vpc_network_performance_metric_subscription
-	_#res: "\(#awsPrefix)_vpc_peering_connection_accepter": res.#aws_vpc_peering_connection_accepter
-	_#res: "\(#awsPrefix)_vpc_peering_connection": res.#aws_vpc_peering_connection
-	_#res: "\(#awsPrefix)_vpc_peering_connection_options": res.#aws_vpc_peering_connection_options
-	_#res: "\(#awsPrefix)_vpc_route_server_endpoint": res.#aws_vpc_route_server_endpoint
-	_#res: "\(#awsPrefix)_vpc_route_server": res.#aws_vpc_route_server
-	_#res: "\(#awsPrefix)_vpc_route_server_peer": res.#aws_vpc_route_server_peer
-	_#res: "\(#awsPrefix)_vpc_route_server_propagation": res.#aws_vpc_route_server_propagation
-	_#res: "\(#awsPrefix)_vpc_route_server_vpc_association": res.#aws_vpc_route_server_vpc_association
-	_#res: "\(#awsPrefix)_vpc_security_group_egress_rule": res.#aws_vpc_security_group_egress_rule
-	_#res: "\(#awsPrefix)_vpc_security_group_ingress_rule": res.#aws_vpc_security_group_ingress_rule
-	_#res: "\(#awsPrefix)_vpc_security_group_rules_exclusive": res.#aws_vpc_security_group_rules_exclusive
-	_#res: "\(#awsPrefix)_vpc_security_group_vpc_association": res.#aws_vpc_security_group_vpc_association
-	_#res: "\(#awsPrefix)_vpclattice_access_log_subscription": res.#aws_vpclattice_access_log_subscription
-	_#res: "\(#awsPrefix)_vpclattice_auth_policy": res.#aws_vpclattice_auth_policy
-	_#res: "\(#awsPrefix)_vpclattice_domain_verification": res.#aws_vpclattice_domain_verification
-	_#res: "\(#awsPrefix)_vpclattice_listener": res.#aws_vpclattice_listener
-	_#res: "\(#awsPrefix)_vpclattice_listener_rule": res.#aws_vpclattice_listener_rule
-	_#res: "\(#awsPrefix)_vpclattice_resource_configuration": res.#aws_vpclattice_resource_configuration
-	_#res: "\(#awsPrefix)_vpclattice_resource_gateway": res.#aws_vpclattice_resource_gateway
-	_#res: "\(#awsPrefix)_vpclattice_resource_policy": res.#aws_vpclattice_resource_policy
-	_#res: "\(#awsPrefix)_vpclattice_service": res.#aws_vpclattice_service
-	_#res: "\(#awsPrefix)_vpclattice_service_network": res.#aws_vpclattice_service_network
-	_#res: "\(#awsPrefix)_vpclattice_service_network_resource_association": res.#aws_vpclattice_service_network_resource_association
-	_#res: "\(#awsPrefix)_vpclattice_service_network_service_association": res.#aws_vpclattice_service_network_service_association
-	_#res: "\(#awsPrefix)_vpclattice_service_network_vpc_association": res.#aws_vpclattice_service_network_vpc_association
-	_#res: "\(#awsPrefix)_vpclattice_target_group_attachment": res.#aws_vpclattice_target_group_attachment
-	_#res: "\(#awsPrefix)_vpclattice_target_group": res.#aws_vpclattice_target_group
-	_#res: "\(#awsPrefix)_vpn_concentrator": res.#aws_vpn_concentrator
-	_#res: "\(#awsPrefix)_vpn_connection": res.#aws_vpn_connection
-	_#res: "\(#awsPrefix)_vpn_connection_route": res.#aws_vpn_connection_route
-	_#res: "\(#awsPrefix)_vpn_gateway_attachment": res.#aws_vpn_gateway_attachment
-	_#res: "\(#awsPrefix)_vpn_gateway": res.#aws_vpn_gateway
-	_#res: "\(#awsPrefix)_vpn_gateway_route_propagation": res.#aws_vpn_gateway_route_propagation
-	_#res: "\(#awsPrefix)_waf_byte_match_set": res.#aws_waf_byte_match_set
-	_#res: "\(#awsPrefix)_waf_geo_match_set": res.#aws_waf_geo_match_set
-	_#res: "\(#awsPrefix)_waf_ipset": res.#aws_waf_ipset
-	_#res: "\(#awsPrefix)_waf_rate_based_rule": res.#aws_waf_rate_based_rule
-	_#res: "\(#awsPrefix)_waf_regex_match_set": res.#aws_waf_regex_match_set
-	_#res: "\(#awsPrefix)_waf_regex_pattern_set": res.#aws_waf_regex_pattern_set
-	_#res: "\(#awsPrefix)_waf_rule": res.#aws_waf_rule
-	_#res: "\(#awsPrefix)_waf_rule_group": res.#aws_waf_rule_group
-	_#res: "\(#awsPrefix)_waf_size_constraint_set": res.#aws_waf_size_constraint_set
-	_#res: "\(#awsPrefix)_waf_sql_injection_match_set": res.#aws_waf_sql_injection_match_set
-	_#res: "\(#awsPrefix)_waf_web_acl": res.#aws_waf_web_acl
-	_#res: "\(#awsPrefix)_waf_xss_match_set": res.#aws_waf_xss_match_set
-	_#res: "\(#awsPrefix)_wafregional_byte_match_set": res.#aws_wafregional_byte_match_set
-	_#res: "\(#awsPrefix)_wafregional_geo_match_set": res.#aws_wafregional_geo_match_set
-	_#res: "\(#awsPrefix)_wafregional_ipset": res.#aws_wafregional_ipset
-	_#res: "\(#awsPrefix)_wafregional_rate_based_rule": res.#aws_wafregional_rate_based_rule
-	_#res: "\(#awsPrefix)_wafregional_regex_match_set": res.#aws_wafregional_regex_match_set
-	_#res: "\(#awsPrefix)_wafregional_regex_pattern_set": res.#aws_wafregional_regex_pattern_set
-	_#res: "\(#awsPrefix)_wafregional_rule": res.#aws_wafregional_rule
-	_#res: "\(#awsPrefix)_wafregional_rule_group": res.#aws_wafregional_rule_group
-	_#res: "\(#awsPrefix)_wafregional_size_constraint_set": res.#aws_wafregional_size_constraint_set
-	_#res: "\(#awsPrefix)_wafregional_sql_injection_match_set": res.#aws_wafregional_sql_injection_match_set
-	_#res: "\(#awsPrefix)_wafregional_web_acl_association": res.#aws_wafregional_web_acl_association
-	_#res: "\(#awsPrefix)_wafregional_web_acl": res.#aws_wafregional_web_acl
-	_#res: "\(#awsPrefix)_wafregional_xss_match_set": res.#aws_wafregional_xss_match_set
-	_#res: "\(#awsPrefix)_wafv2_api_key": res.#aws_wafv2_api_key
-	_#res: "\(#awsPrefix)_wafv2_ip_set": res.#aws_wafv2_ip_set
-	_#res: "\(#awsPrefix)_wafv2_regex_pattern_set": res.#aws_wafv2_regex_pattern_set
-	_#res: "\(#awsPrefix)_wafv2_rule_group": res.#aws_wafv2_rule_group
-	_#res: "\(#awsPrefix)_wafv2_web_acl_association": res.#aws_wafv2_web_acl_association
-	_#res: "\(#awsPrefix)_wafv2_web_acl": res.#aws_wafv2_web_acl
-	_#res: "\(#awsPrefix)_wafv2_web_acl_logging_configuration": res.#aws_wafv2_web_acl_logging_configuration
-	_#res: "\(#awsPrefix)_wafv2_web_acl_rule": res.#aws_wafv2_web_acl_rule
-	_#res: "\(#awsPrefix)_wafv2_web_acl_rule_group_association": res.#aws_wafv2_web_acl_rule_group_association
-	_#res: "\(#awsPrefix)_workmail_default_domain": res.#aws_workmail_default_domain
-	_#res: "\(#awsPrefix)_workmail_domain": res.#aws_workmail_domain
-	_#res: "\(#awsPrefix)_workmail_group": res.#aws_workmail_group
-	_#res: "\(#awsPrefix)_workmail_organization": res.#aws_workmail_organization
-	_#res: "\(#awsPrefix)_workmail_user": res.#aws_workmail_user
-	_#res: "\(#awsPrefix)_workspaces_connection_alias": res.#aws_workspaces_connection_alias
-	_#res: "\(#awsPrefix)_workspaces_directory": res.#aws_workspaces_directory
-	_#res: "\(#awsPrefix)_workspaces_ip_group": res.#aws_workspaces_ip_group
-	_#res: "\(#awsPrefix)_workspaces_workspace": res.#aws_workspaces_workspace
-	_#res: "\(#awsPrefix)_workspacesweb_browser_settings_association": res.#aws_workspacesweb_browser_settings_association
-	_#res: "\(#awsPrefix)_workspacesweb_browser_settings": res.#aws_workspacesweb_browser_settings
-	_#res: "\(#awsPrefix)_workspacesweb_data_protection_settings_association": res.#aws_workspacesweb_data_protection_settings_association
-	_#res: "\(#awsPrefix)_workspacesweb_data_protection_settings": res.#aws_workspacesweb_data_protection_settings
-	_#res: "\(#awsPrefix)_workspacesweb_identity_provider": res.#aws_workspacesweb_identity_provider
-	_#res: "\(#awsPrefix)_workspacesweb_ip_access_settings_association": res.#aws_workspacesweb_ip_access_settings_association
-	_#res: "\(#awsPrefix)_workspacesweb_ip_access_settings": res.#aws_workspacesweb_ip_access_settings
-	_#res: "\(#awsPrefix)_workspacesweb_network_settings_association": res.#aws_workspacesweb_network_settings_association
-	_#res: "\(#awsPrefix)_workspacesweb_network_settings": res.#aws_workspacesweb_network_settings
-	_#res: "\(#awsPrefix)_workspacesweb_portal": res.#aws_workspacesweb_portal
-	_#res: "\(#awsPrefix)_workspacesweb_session_logger_association": res.#aws_workspacesweb_session_logger_association
-	_#res: "\(#awsPrefix)_workspacesweb_session_logger": res.#aws_workspacesweb_session_logger
-	_#res: "\(#awsPrefix)_workspacesweb_trust_store_association": res.#aws_workspacesweb_trust_store_association
-	_#res: "\(#awsPrefix)_workspacesweb_trust_store": res.#aws_workspacesweb_trust_store
-	_#res: "\(#awsPrefix)_workspacesweb_user_access_logging_settings_association": res.#aws_workspacesweb_user_access_logging_settings_association
-	_#res: "\(#awsPrefix)_workspacesweb_user_access_logging_settings": res.#aws_workspacesweb_user_access_logging_settings
-	_#res: "\(#awsPrefix)_workspacesweb_user_settings_association": res.#aws_workspacesweb_user_settings_association
-	_#res: "\(#awsPrefix)_workspacesweb_user_settings": res.#aws_workspacesweb_user_settings
-	_#res: "\(#awsPrefix)_xray_encryption_config": res.#aws_xray_encryption_config
-	_#res: "\(#awsPrefix)_xray_group": res.#aws_xray_group
-	_#res: "\(#awsPrefix)_xray_indexing_rule": res.#aws_xray_indexing_rule
-	_#res: "\(#awsPrefix)_xray_resource_policy": res.#aws_xray_resource_policy
-	_#res: "\(#awsPrefix)_xray_sampling_rule": res.#aws_xray_sampling_rule
-	_#res: "\(#awsPrefix)_xray_trace_segment_destination": res.#aws_xray_trace_segment_destination
+	_#res: "\(#awsPrefix)_accessanalyzer_analyzer": close({res.aws_accessanalyzer_analyzer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_accessanalyzer_archive_rule": close({res.aws_accessanalyzer_archive_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_account_alternate_contact": close({res.aws_account_alternate_contact & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_account_primary_contact": close({res.aws_account_primary_contact & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_account_region": close({res.aws_account_region & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_acm_certificate": close({res.aws_acm_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_acm_certificate_validation": close({res.aws_acm_certificate_validation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_acmpca_certificate_authority_certificate": close({res.aws_acmpca_certificate_authority_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_acmpca_certificate_authority": close({res.aws_acmpca_certificate_authority & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_acmpca_certificate": close({res.aws_acmpca_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_acmpca_permission": close({res.aws_acmpca_permission & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_acmpca_policy": close({res.aws_acmpca_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_alb": close({res.aws_alb & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_alb_listener_certificate": close({res.aws_alb_listener_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_alb_listener": close({res.aws_alb_listener & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_alb_listener_rule": close({res.aws_alb_listener_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_alb_target_group_attachment": close({res.aws_alb_target_group_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_alb_target_group": close({res.aws_alb_target_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ami_copy": close({res.aws_ami_copy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ami_from_instance": close({res.aws_ami_from_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ami": close({res.aws_ami & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ami_launch_permission": close({res.aws_ami_launch_permission & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_amplify_app": close({res.aws_amplify_app & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_amplify_backend_environment": close({res.aws_amplify_backend_environment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_amplify_branch": close({res.aws_amplify_branch & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_amplify_domain_association": close({res.aws_amplify_domain_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_amplify_webhook": close({res.aws_amplify_webhook & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_account": close({res.aws_api_gateway_account & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_api_key": close({res.aws_api_gateway_api_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_authorizer": close({res.aws_api_gateway_authorizer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_base_path_mapping": close({res.aws_api_gateway_base_path_mapping & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_client_certificate": close({res.aws_api_gateway_client_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_deployment": close({res.aws_api_gateway_deployment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_documentation_part": close({res.aws_api_gateway_documentation_part & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_documentation_version": close({res.aws_api_gateway_documentation_version & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_domain_name_access_association": close({res.aws_api_gateway_domain_name_access_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_domain_name": close({res.aws_api_gateway_domain_name & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_gateway_response": close({res.aws_api_gateway_gateway_response & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_integration": close({res.aws_api_gateway_integration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_integration_response": close({res.aws_api_gateway_integration_response & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_method": close({res.aws_api_gateway_method & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_method_response": close({res.aws_api_gateway_method_response & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_method_settings": close({res.aws_api_gateway_method_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_model": close({res.aws_api_gateway_model & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_request_validator": close({res.aws_api_gateway_request_validator & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_resource": close({res.aws_api_gateway_resource & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_rest_api": close({res.aws_api_gateway_rest_api & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_rest_api_policy": close({res.aws_api_gateway_rest_api_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_rest_api_put": close({res.aws_api_gateway_rest_api_put & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_stage": close({res.aws_api_gateway_stage & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_usage_plan": close({res.aws_api_gateway_usage_plan & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_usage_plan_key": close({res.aws_api_gateway_usage_plan_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_api_gateway_vpc_link": close({res.aws_api_gateway_vpc_link & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apigatewayv2_api": close({res.aws_apigatewayv2_api & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apigatewayv2_api_mapping": close({res.aws_apigatewayv2_api_mapping & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apigatewayv2_authorizer": close({res.aws_apigatewayv2_authorizer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apigatewayv2_deployment": close({res.aws_apigatewayv2_deployment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apigatewayv2_domain_name": close({res.aws_apigatewayv2_domain_name & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apigatewayv2_integration": close({res.aws_apigatewayv2_integration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apigatewayv2_integration_response": close({res.aws_apigatewayv2_integration_response & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apigatewayv2_model": close({res.aws_apigatewayv2_model & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apigatewayv2_route": close({res.aws_apigatewayv2_route & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apigatewayv2_route_response": close({res.aws_apigatewayv2_route_response & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apigatewayv2_routing_rule": close({res.aws_apigatewayv2_routing_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apigatewayv2_stage": close({res.aws_apigatewayv2_stage & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apigatewayv2_vpc_link": close({res.aws_apigatewayv2_vpc_link & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_app_cookie_stickiness_policy": close({res.aws_app_cookie_stickiness_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appautoscaling_policy": close({res.aws_appautoscaling_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appautoscaling_scheduled_action": close({res.aws_appautoscaling_scheduled_action & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appautoscaling_target": close({res.aws_appautoscaling_target & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appconfig_application": close({res.aws_appconfig_application & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appconfig_configuration_profile": close({res.aws_appconfig_configuration_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appconfig_deployment": close({res.aws_appconfig_deployment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appconfig_deployment_strategy": close({res.aws_appconfig_deployment_strategy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appconfig_environment": close({res.aws_appconfig_environment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appconfig_extension_association": close({res.aws_appconfig_extension_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appconfig_extension": close({res.aws_appconfig_extension & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appconfig_hosted_configuration_version": close({res.aws_appconfig_hosted_configuration_version & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appfabric_app_authorization_connection": close({res.aws_appfabric_app_authorization_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appfabric_app_authorization": close({res.aws_appfabric_app_authorization & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appfabric_app_bundle": close({res.aws_appfabric_app_bundle & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appfabric_ingestion_destination": close({res.aws_appfabric_ingestion_destination & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appfabric_ingestion": close({res.aws_appfabric_ingestion & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appflow_connector_profile": close({res.aws_appflow_connector_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appflow_flow": close({res.aws_appflow_flow & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appintegrations_data_integration": close({res.aws_appintegrations_data_integration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appintegrations_event_integration": close({res.aws_appintegrations_event_integration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_applicationinsights_application": close({res.aws_applicationinsights_application & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appmesh_gateway_route": close({res.aws_appmesh_gateway_route & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appmesh_mesh": close({res.aws_appmesh_mesh & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appmesh_route": close({res.aws_appmesh_route & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appmesh_virtual_gateway": close({res.aws_appmesh_virtual_gateway & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appmesh_virtual_node": close({res.aws_appmesh_virtual_node & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appmesh_virtual_router": close({res.aws_appmesh_virtual_router & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appmesh_virtual_service": close({res.aws_appmesh_virtual_service & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apprunner_auto_scaling_configuration_version": close({res.aws_apprunner_auto_scaling_configuration_version & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apprunner_connection": close({res.aws_apprunner_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apprunner_custom_domain_association": close({res.aws_apprunner_custom_domain_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apprunner_default_auto_scaling_configuration_version": close({res.aws_apprunner_default_auto_scaling_configuration_version & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apprunner_deployment": close({res.aws_apprunner_deployment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apprunner_observability_configuration": close({res.aws_apprunner_observability_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apprunner_service": close({res.aws_apprunner_service & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apprunner_vpc_connector": close({res.aws_apprunner_vpc_connector & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_apprunner_vpc_ingress_connection": close({res.aws_apprunner_vpc_ingress_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appstream_directory_config": close({res.aws_appstream_directory_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appstream_fleet": close({res.aws_appstream_fleet & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appstream_fleet_stack_association": close({res.aws_appstream_fleet_stack_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appstream_image_builder": close({res.aws_appstream_image_builder & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appstream_stack": close({res.aws_appstream_stack & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appstream_user": close({res.aws_appstream_user & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appstream_user_stack_association": close({res.aws_appstream_user_stack_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appsync_api_cache": close({res.aws_appsync_api_cache & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appsync_api": close({res.aws_appsync_api & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appsync_api_key": close({res.aws_appsync_api_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appsync_channel_namespace": close({res.aws_appsync_channel_namespace & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appsync_datasource": close({res.aws_appsync_datasource & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appsync_domain_name_api_association": close({res.aws_appsync_domain_name_api_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appsync_domain_name": close({res.aws_appsync_domain_name & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appsync_function": close({res.aws_appsync_function & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appsync_graphql_api": close({res.aws_appsync_graphql_api & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appsync_resolver": close({res.aws_appsync_resolver & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appsync_source_api_association": close({res.aws_appsync_source_api_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_appsync_type": close({res.aws_appsync_type & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_arcregionswitch_plan": close({res.aws_arcregionswitch_plan & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_arczonalshift_autoshift_observer_notification_status": close({res.aws_arczonalshift_autoshift_observer_notification_status & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_arczonalshift_zonal_autoshift_configuration": close({res.aws_arczonalshift_zonal_autoshift_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_athena_capacity_reservation": close({res.aws_athena_capacity_reservation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_athena_data_catalog": close({res.aws_athena_data_catalog & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_athena_database": close({res.aws_athena_database & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_athena_named_query": close({res.aws_athena_named_query & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_athena_prepared_statement": close({res.aws_athena_prepared_statement & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_athena_workgroup": close({res.aws_athena_workgroup & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_auditmanager_account_registration": close({res.aws_auditmanager_account_registration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_auditmanager_assessment_delegation": close({res.aws_auditmanager_assessment_delegation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_auditmanager_assessment": close({res.aws_auditmanager_assessment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_auditmanager_assessment_report": close({res.aws_auditmanager_assessment_report & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_auditmanager_control": close({res.aws_auditmanager_control & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_auditmanager_framework": close({res.aws_auditmanager_framework & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_auditmanager_framework_share": close({res.aws_auditmanager_framework_share & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_auditmanager_organization_admin_account_registration": close({res.aws_auditmanager_organization_admin_account_registration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_autoscaling_attachment": close({res.aws_autoscaling_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_autoscaling_group": close({res.aws_autoscaling_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_autoscaling_group_tag": close({res.aws_autoscaling_group_tag & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_autoscaling_lifecycle_hook": close({res.aws_autoscaling_lifecycle_hook & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_autoscaling_notification": close({res.aws_autoscaling_notification & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_autoscaling_policy": close({res.aws_autoscaling_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_autoscaling_schedule": close({res.aws_autoscaling_schedule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_autoscaling_traffic_source_attachment": close({res.aws_autoscaling_traffic_source_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_autoscalingplans_scaling_plan": close({res.aws_autoscalingplans_scaling_plan & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_backup_framework": close({res.aws_backup_framework & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_backup_global_settings": close({res.aws_backup_global_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_backup_logically_air_gapped_vault": close({res.aws_backup_logically_air_gapped_vault & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_backup_plan": close({res.aws_backup_plan & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_backup_region_settings": close({res.aws_backup_region_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_backup_report_plan": close({res.aws_backup_report_plan & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_backup_restore_testing_plan": close({res.aws_backup_restore_testing_plan & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_backup_restore_testing_selection": close({res.aws_backup_restore_testing_selection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_backup_selection": close({res.aws_backup_selection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_backup_vault": close({res.aws_backup_vault & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_backup_vault_lock_configuration": close({res.aws_backup_vault_lock_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_backup_vault_notifications": close({res.aws_backup_vault_notifications & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_backup_vault_policy": close({res.aws_backup_vault_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_batch_compute_environment": close({res.aws_batch_compute_environment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_batch_job_definition": close({res.aws_batch_job_definition & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_batch_job_queue": close({res.aws_batch_job_queue & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_batch_scheduling_policy": close({res.aws_batch_scheduling_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bcmdataexports_export": close({res.aws_bcmdataexports_export & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrock_custom_model": close({res.aws_bedrock_custom_model & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrock_foundation_model_agreement": close({res.aws_bedrock_foundation_model_agreement & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrock_guardrail": close({res.aws_bedrock_guardrail & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrock_guardrail_version": close({res.aws_bedrock_guardrail_version & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrock_inference_profile": close({res.aws_bedrock_inference_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrock_model_invocation_logging_configuration": close({res.aws_bedrock_model_invocation_logging_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrock_provisioned_model_throughput": close({res.aws_bedrock_provisioned_model_throughput & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrock_use_case_for_model_access": close({res.aws_bedrock_use_case_for_model_access & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagent_agent_action_group": close({res.aws_bedrockagent_agent_action_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagent_agent_alias": close({res.aws_bedrockagent_agent_alias & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagent_agent_collaborator": close({res.aws_bedrockagent_agent_collaborator & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagent_agent": close({res.aws_bedrockagent_agent & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagent_agent_knowledge_base_association": close({res.aws_bedrockagent_agent_knowledge_base_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagent_data_source": close({res.aws_bedrockagent_data_source & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagent_flow": close({res.aws_bedrockagent_flow & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagent_knowledge_base": close({res.aws_bedrockagent_knowledge_base & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagent_prompt": close({res.aws_bedrockagent_prompt & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_agent_runtime_endpoint": close({res.aws_bedrockagentcore_agent_runtime_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_agent_runtime": close({res.aws_bedrockagentcore_agent_runtime & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_api_key_credential_provider": close({res.aws_bedrockagentcore_api_key_credential_provider & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_browser": close({res.aws_bedrockagentcore_browser & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_code_interpreter": close({res.aws_bedrockagentcore_code_interpreter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_evaluator": close({res.aws_bedrockagentcore_evaluator & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_gateway": close({res.aws_bedrockagentcore_gateway & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_gateway_target": close({res.aws_bedrockagentcore_gateway_target & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_harness": close({res.aws_bedrockagentcore_harness & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_memory": close({res.aws_bedrockagentcore_memory & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_memory_strategy": close({res.aws_bedrockagentcore_memory_strategy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_oauth2_credential_provider": close({res.aws_bedrockagentcore_oauth2_credential_provider & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_online_evaluation_config": close({res.aws_bedrockagentcore_online_evaluation_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_policy_engine": close({res.aws_bedrockagentcore_policy_engine & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_policy": close({res.aws_bedrockagentcore_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_registry": close({res.aws_bedrockagentcore_registry & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_resource_policy": close({res.aws_bedrockagentcore_resource_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_token_vault_cmk": close({res.aws_bedrockagentcore_token_vault_cmk & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_bedrockagentcore_workload_identity": close({res.aws_bedrockagentcore_workload_identity & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_billing_view": close({res.aws_billing_view & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_budgets_budget_action": close({res.aws_budgets_budget_action & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_budgets_budget": close({res.aws_budgets_budget & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ce_anomaly_monitor": close({res.aws_ce_anomaly_monitor & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ce_anomaly_subscription": close({res.aws_ce_anomaly_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ce_cost_allocation_tag": close({res.aws_ce_cost_allocation_tag & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ce_cost_category": close({res.aws_ce_cost_category & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_chatbot_slack_channel_configuration": close({res.aws_chatbot_slack_channel_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_chatbot_teams_channel_configuration": close({res.aws_chatbot_teams_channel_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_chime_voice_connector": close({res.aws_chime_voice_connector & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_chime_voice_connector_group": close({res.aws_chime_voice_connector_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_chime_voice_connector_logging": close({res.aws_chime_voice_connector_logging & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_chime_voice_connector_origination": close({res.aws_chime_voice_connector_origination & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_chime_voice_connector_streaming": close({res.aws_chime_voice_connector_streaming & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_chime_voice_connector_termination_credentials": close({res.aws_chime_voice_connector_termination_credentials & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_chime_voice_connector_termination": close({res.aws_chime_voice_connector_termination & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_chimesdkmediapipelines_media_insights_pipeline_configuration": close({res.aws_chimesdkmediapipelines_media_insights_pipeline_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_chimesdkvoice_global_settings": close({res.aws_chimesdkvoice_global_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_chimesdkvoice_sip_media_application": close({res.aws_chimesdkvoice_sip_media_application & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_chimesdkvoice_sip_rule": close({res.aws_chimesdkvoice_sip_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_chimesdkvoice_voice_profile_domain": close({res.aws_chimesdkvoice_voice_profile_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cleanrooms_collaboration": close({res.aws_cleanrooms_collaboration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cleanrooms_configured_table": close({res.aws_cleanrooms_configured_table & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cleanrooms_membership": close({res.aws_cleanrooms_membership & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloud9_environment_ec2": close({res.aws_cloud9_environment_ec2 & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloud9_environment_membership": close({res.aws_cloud9_environment_membership & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudcontrolapi_resource": close({res.aws_cloudcontrolapi_resource & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudformation_stack": close({res.aws_cloudformation_stack & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudformation_stack_instances": close({res.aws_cloudformation_stack_instances & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudformation_stack_set": close({res.aws_cloudformation_stack_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudformation_stack_set_instance": close({res.aws_cloudformation_stack_set_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudformation_type": close({res.aws_cloudformation_type & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_anycast_ip_list": close({res.aws_cloudfront_anycast_ip_list & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_cache_policy": close({res.aws_cloudfront_cache_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_connection_function": close({res.aws_cloudfront_connection_function & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_connection_group": close({res.aws_cloudfront_connection_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_continuous_deployment_policy": close({res.aws_cloudfront_continuous_deployment_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_distribution": close({res.aws_cloudfront_distribution & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_distribution_tenant": close({res.aws_cloudfront_distribution_tenant & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_field_level_encryption_config": close({res.aws_cloudfront_field_level_encryption_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_field_level_encryption_profile": close({res.aws_cloudfront_field_level_encryption_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_function": close({res.aws_cloudfront_function & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_key_group": close({res.aws_cloudfront_key_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_key_value_store": close({res.aws_cloudfront_key_value_store & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_monitoring_subscription": close({res.aws_cloudfront_monitoring_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_multitenant_distribution": close({res.aws_cloudfront_multitenant_distribution & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_origin_access_control": close({res.aws_cloudfront_origin_access_control & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_origin_access_identity": close({res.aws_cloudfront_origin_access_identity & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_origin_request_policy": close({res.aws_cloudfront_origin_request_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_public_key": close({res.aws_cloudfront_public_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_realtime_log_config": close({res.aws_cloudfront_realtime_log_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_response_headers_policy": close({res.aws_cloudfront_response_headers_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_trust_store": close({res.aws_cloudfront_trust_store & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfront_vpc_origin": close({res.aws_cloudfront_vpc_origin & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfrontkeyvaluestore_key": close({res.aws_cloudfrontkeyvaluestore_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudfrontkeyvaluestore_keys_exclusive": close({res.aws_cloudfrontkeyvaluestore_keys_exclusive & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudhsm_v2_cluster": close({res.aws_cloudhsm_v2_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudhsm_v2_hsm": close({res.aws_cloudhsm_v2_hsm & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudsearch_domain": close({res.aws_cloudsearch_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudsearch_domain_service_access_policy": close({res.aws_cloudsearch_domain_service_access_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudtrail_event_data_store": close({res.aws_cloudtrail_event_data_store & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudtrail": close({res.aws_cloudtrail & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudtrail_organization_delegated_admin_account": close({res.aws_cloudtrail_organization_delegated_admin_account & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_alarm_mute_rule": close({res.aws_cloudwatch_alarm_mute_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_composite_alarm": close({res.aws_cloudwatch_composite_alarm & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_contributor_insight_rule": close({res.aws_cloudwatch_contributor_insight_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_contributor_managed_insight_rule": close({res.aws_cloudwatch_contributor_managed_insight_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_dashboard": close({res.aws_cloudwatch_dashboard & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_event_api_destination": close({res.aws_cloudwatch_event_api_destination & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_event_archive": close({res.aws_cloudwatch_event_archive & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_event_bus": close({res.aws_cloudwatch_event_bus & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_event_bus_policy": close({res.aws_cloudwatch_event_bus_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_event_connection": close({res.aws_cloudwatch_event_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_event_endpoint": close({res.aws_cloudwatch_event_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_event_permission": close({res.aws_cloudwatch_event_permission & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_event_rule": close({res.aws_cloudwatch_event_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_event_target": close({res.aws_cloudwatch_event_target & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_account_policy": close({res.aws_cloudwatch_log_account_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_anomaly_detector": close({res.aws_cloudwatch_log_anomaly_detector & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_data_protection_policy": close({res.aws_cloudwatch_log_data_protection_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_delivery_destination": close({res.aws_cloudwatch_log_delivery_destination & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_delivery_destination_policy": close({res.aws_cloudwatch_log_delivery_destination_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_delivery": close({res.aws_cloudwatch_log_delivery & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_delivery_source": close({res.aws_cloudwatch_log_delivery_source & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_destination": close({res.aws_cloudwatch_log_destination & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_destination_policy": close({res.aws_cloudwatch_log_destination_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_group": close({res.aws_cloudwatch_log_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_index_policy": close({res.aws_cloudwatch_log_index_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_metric_filter": close({res.aws_cloudwatch_log_metric_filter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_resource_policy": close({res.aws_cloudwatch_log_resource_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_s3_table_integration_source": close({res.aws_cloudwatch_log_s3_table_integration_source & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_stream": close({res.aws_cloudwatch_log_stream & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_subscription_filter": close({res.aws_cloudwatch_log_subscription_filter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_log_transformer": close({res.aws_cloudwatch_log_transformer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_metric_alarm": close({res.aws_cloudwatch_metric_alarm & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_metric_stream": close({res.aws_cloudwatch_metric_stream & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_otel_enrichment": close({res.aws_cloudwatch_otel_enrichment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cloudwatch_query_definition": close({res.aws_cloudwatch_query_definition & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codeartifact_domain": close({res.aws_codeartifact_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codeartifact_domain_permissions_policy": close({res.aws_codeartifact_domain_permissions_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codeartifact_repository": close({res.aws_codeartifact_repository & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codeartifact_repository_permissions_policy": close({res.aws_codeartifact_repository_permissions_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codebuild_fleet": close({res.aws_codebuild_fleet & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codebuild_project": close({res.aws_codebuild_project & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codebuild_report_group": close({res.aws_codebuild_report_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codebuild_resource_policy": close({res.aws_codebuild_resource_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codebuild_source_credential": close({res.aws_codebuild_source_credential & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codebuild_webhook": close({res.aws_codebuild_webhook & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codecatalyst_dev_environment": close({res.aws_codecatalyst_dev_environment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codecatalyst_project": close({res.aws_codecatalyst_project & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codecatalyst_source_repository": close({res.aws_codecatalyst_source_repository & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codecommit_approval_rule_template_association": close({res.aws_codecommit_approval_rule_template_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codecommit_approval_rule_template": close({res.aws_codecommit_approval_rule_template & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codecommit_repository": close({res.aws_codecommit_repository & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codecommit_trigger": close({res.aws_codecommit_trigger & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codeconnections_connection": close({res.aws_codeconnections_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codeconnections_host": close({res.aws_codeconnections_host & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codedeploy_app": close({res.aws_codedeploy_app & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codedeploy_deployment_config": close({res.aws_codedeploy_deployment_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codedeploy_deployment_group": close({res.aws_codedeploy_deployment_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codeguruprofiler_profiling_group": close({res.aws_codeguruprofiler_profiling_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codegurureviewer_repository_association": close({res.aws_codegurureviewer_repository_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codepipeline_custom_action_type": close({res.aws_codepipeline_custom_action_type & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codepipeline": close({res.aws_codepipeline & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codepipeline_webhook": close({res.aws_codepipeline_webhook & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codestarconnections_connection": close({res.aws_codestarconnections_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codestarconnections_host": close({res.aws_codestarconnections_host & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_codestarnotifications_notification_rule": close({res.aws_codestarnotifications_notification_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_identity_pool": close({res.aws_cognito_identity_pool & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_identity_pool_provider_principal_tag": close({res.aws_cognito_identity_pool_provider_principal_tag & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_identity_pool_roles_attachment": close({res.aws_cognito_identity_pool_roles_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_identity_provider": close({res.aws_cognito_identity_provider & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_log_delivery_configuration": close({res.aws_cognito_log_delivery_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_managed_login_branding": close({res.aws_cognito_managed_login_branding & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_managed_user_pool_client": close({res.aws_cognito_managed_user_pool_client & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_resource_server": close({res.aws_cognito_resource_server & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_risk_configuration": close({res.aws_cognito_risk_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_user": close({res.aws_cognito_user & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_user_group": close({res.aws_cognito_user_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_user_in_group": close({res.aws_cognito_user_in_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_user_pool_client": close({res.aws_cognito_user_pool_client & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_user_pool_domain": close({res.aws_cognito_user_pool_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_user_pool": close({res.aws_cognito_user_pool & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cognito_user_pool_ui_customization": close({res.aws_cognito_user_pool_ui_customization & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_comprehend_document_classifier": close({res.aws_comprehend_document_classifier & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_comprehend_entity_recognizer": close({res.aws_comprehend_entity_recognizer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_computeoptimizer_enrollment_status": close({res.aws_computeoptimizer_enrollment_status & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_computeoptimizer_recommendation_preferences": close({res.aws_computeoptimizer_recommendation_preferences & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_config_aggregate_authorization": close({res.aws_config_aggregate_authorization & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_config_config_rule": close({res.aws_config_config_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_config_configuration_aggregator": close({res.aws_config_configuration_aggregator & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_config_configuration_recorder": close({res.aws_config_configuration_recorder & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_config_configuration_recorder_status": close({res.aws_config_configuration_recorder_status & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_config_conformance_pack": close({res.aws_config_conformance_pack & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_config_delivery_channel": close({res.aws_config_delivery_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_config_organization_conformance_pack": close({res.aws_config_organization_conformance_pack & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_config_organization_custom_policy_rule": close({res.aws_config_organization_custom_policy_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_config_organization_custom_rule": close({res.aws_config_organization_custom_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_config_organization_managed_rule": close({res.aws_config_organization_managed_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_config_remediation_configuration": close({res.aws_config_remediation_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_config_retention_configuration": close({res.aws_config_retention_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_bot_association": close({res.aws_connect_bot_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_contact_flow": close({res.aws_connect_contact_flow & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_contact_flow_module": close({res.aws_connect_contact_flow_module & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_hours_of_operation": close({res.aws_connect_hours_of_operation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_instance": close({res.aws_connect_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_instance_storage_config": close({res.aws_connect_instance_storage_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_lambda_function_association": close({res.aws_connect_lambda_function_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_phone_number_contact_flow_association": close({res.aws_connect_phone_number_contact_flow_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_phone_number": close({res.aws_connect_phone_number & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_queue": close({res.aws_connect_queue & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_quick_connect": close({res.aws_connect_quick_connect & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_routing_profile": close({res.aws_connect_routing_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_security_profile": close({res.aws_connect_security_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_user": close({res.aws_connect_user & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_user_hierarchy_group": close({res.aws_connect_user_hierarchy_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_user_hierarchy_structure": close({res.aws_connect_user_hierarchy_structure & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_connect_vocabulary": close({res.aws_connect_vocabulary & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_controltower_baseline": close({res.aws_controltower_baseline & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_controltower_control": close({res.aws_controltower_control & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_controltower_landing_zone": close({res.aws_controltower_landing_zone & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_costoptimizationhub_enrollment_status": close({res.aws_costoptimizationhub_enrollment_status & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_costoptimizationhub_preferences": close({res.aws_costoptimizationhub_preferences & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_cur_report_definition": close({res.aws_cur_report_definition & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_customer_gateway": close({res.aws_customer_gateway & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_customerprofiles_domain": close({res.aws_customerprofiles_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_customerprofiles_profile": close({res.aws_customerprofiles_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dataexchange_data_set": close({res.aws_dataexchange_data_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dataexchange_event_action": close({res.aws_dataexchange_event_action & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dataexchange_revision_assets": close({res.aws_dataexchange_revision_assets & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dataexchange_revision": close({res.aws_dataexchange_revision & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datapipeline_pipeline_definition": close({res.aws_datapipeline_pipeline_definition & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datapipeline_pipeline": close({res.aws_datapipeline_pipeline & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datasync_agent": close({res.aws_datasync_agent & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datasync_location_azure_blob": close({res.aws_datasync_location_azure_blob & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datasync_location_efs": close({res.aws_datasync_location_efs & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datasync_location_fsx_lustre_file_system": close({res.aws_datasync_location_fsx_lustre_file_system & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datasync_location_fsx_ontap_file_system": close({res.aws_datasync_location_fsx_ontap_file_system & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datasync_location_fsx_openzfs_file_system": close({res.aws_datasync_location_fsx_openzfs_file_system & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datasync_location_fsx_windows_file_system": close({res.aws_datasync_location_fsx_windows_file_system & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datasync_location_hdfs": close({res.aws_datasync_location_hdfs & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datasync_location_nfs": close({res.aws_datasync_location_nfs & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datasync_location_object_storage": close({res.aws_datasync_location_object_storage & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datasync_location_s3": close({res.aws_datasync_location_s3 & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datasync_location_smb": close({res.aws_datasync_location_smb & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datasync_task": close({res.aws_datasync_task & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datazone_asset_type": close({res.aws_datazone_asset_type & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datazone_domain": close({res.aws_datazone_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datazone_environment_blueprint_configuration": close({res.aws_datazone_environment_blueprint_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datazone_environment": close({res.aws_datazone_environment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datazone_environment_profile": close({res.aws_datazone_environment_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datazone_form_type": close({res.aws_datazone_form_type & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datazone_glossary": close({res.aws_datazone_glossary & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datazone_glossary_term": close({res.aws_datazone_glossary_term & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datazone_project": close({res.aws_datazone_project & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_datazone_user_profile": close({res.aws_datazone_user_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dax_cluster": close({res.aws_dax_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dax_parameter_group": close({res.aws_dax_parameter_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dax_subnet_group": close({res.aws_dax_subnet_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_db_cluster_snapshot": close({res.aws_db_cluster_snapshot & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_db_event_subscription": close({res.aws_db_event_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_db_instance_automated_backups_replication": close({res.aws_db_instance_automated_backups_replication & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_db_instance": close({res.aws_db_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_db_instance_role_association": close({res.aws_db_instance_role_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_db_option_group": close({res.aws_db_option_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_db_parameter_group": close({res.aws_db_parameter_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_db_proxy_default_target_group": close({res.aws_db_proxy_default_target_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_db_proxy_endpoint": close({res.aws_db_proxy_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_db_proxy": close({res.aws_db_proxy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_db_proxy_target": close({res.aws_db_proxy_target & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_db_snapshot_copy": close({res.aws_db_snapshot_copy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_db_snapshot": close({res.aws_db_snapshot & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_db_subnet_group": close({res.aws_db_subnet_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_default_network_acl": close({res.aws_default_network_acl & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_default_route_table": close({res.aws_default_route_table & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_default_security_group": close({res.aws_default_security_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_default_subnet": close({res.aws_default_subnet & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_default_vpc_dhcp_options": close({res.aws_default_vpc_dhcp_options & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_default_vpc": close({res.aws_default_vpc & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_detective_graph": close({res.aws_detective_graph & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_detective_invitation_accepter": close({res.aws_detective_invitation_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_detective_member": close({res.aws_detective_member & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_detective_organization_admin_account": close({res.aws_detective_organization_admin_account & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_detective_organization_configuration": close({res.aws_detective_organization_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_devicefarm_device_pool": close({res.aws_devicefarm_device_pool & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_devicefarm_instance_profile": close({res.aws_devicefarm_instance_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_devicefarm_network_profile": close({res.aws_devicefarm_network_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_devicefarm_project": close({res.aws_devicefarm_project & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_devicefarm_test_grid_project": close({res.aws_devicefarm_test_grid_project & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_devicefarm_upload": close({res.aws_devicefarm_upload & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_devopsguru_event_sources_config": close({res.aws_devopsguru_event_sources_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_devopsguru_notification_channel": close({res.aws_devopsguru_notification_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_devopsguru_resource_collection": close({res.aws_devopsguru_resource_collection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_devopsguru_service_integration": close({res.aws_devopsguru_service_integration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_directory_service_conditional_forwarder": close({res.aws_directory_service_conditional_forwarder & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_directory_service_directory": close({res.aws_directory_service_directory & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_directory_service_log_subscription": close({res.aws_directory_service_log_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_directory_service_radius_settings": close({res.aws_directory_service_radius_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_directory_service_region": close({res.aws_directory_service_region & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_directory_service_shared_directory_accepter": close({res.aws_directory_service_shared_directory_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_directory_service_shared_directory": close({res.aws_directory_service_shared_directory & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_directory_service_trust": close({res.aws_directory_service_trust & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dlm_lifecycle_policy": close({res.aws_dlm_lifecycle_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dms_certificate": close({res.aws_dms_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dms_endpoint": close({res.aws_dms_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dms_event_subscription": close({res.aws_dms_event_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dms_replication_config": close({res.aws_dms_replication_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dms_replication_instance": close({res.aws_dms_replication_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dms_replication_subnet_group": close({res.aws_dms_replication_subnet_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dms_replication_task": close({res.aws_dms_replication_task & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dms_s3_endpoint": close({res.aws_dms_s3_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_docdb_cluster": close({res.aws_docdb_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_docdb_cluster_instance": close({res.aws_docdb_cluster_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_docdb_cluster_parameter_group": close({res.aws_docdb_cluster_parameter_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_docdb_cluster_snapshot": close({res.aws_docdb_cluster_snapshot & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_docdb_event_subscription": close({res.aws_docdb_event_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_docdb_global_cluster": close({res.aws_docdb_global_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_docdb_subnet_group": close({res.aws_docdb_subnet_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_docdbelastic_cluster": close({res.aws_docdbelastic_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_drs_replication_configuration_template": close({res.aws_drs_replication_configuration_template & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dsql_cluster": close({res.aws_dsql_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dsql_cluster_peering": close({res.aws_dsql_cluster_peering & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_bgp_peer": close({res.aws_dx_bgp_peer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_connection_association": close({res.aws_dx_connection_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_connection_confirmation": close({res.aws_dx_connection_confirmation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_connection": close({res.aws_dx_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_gateway_association": close({res.aws_dx_gateway_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_gateway_association_proposal": close({res.aws_dx_gateway_association_proposal & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_gateway": close({res.aws_dx_gateway & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_hosted_connection": close({res.aws_dx_hosted_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_hosted_private_virtual_interface_accepter": close({res.aws_dx_hosted_private_virtual_interface_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_hosted_private_virtual_interface": close({res.aws_dx_hosted_private_virtual_interface & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_hosted_public_virtual_interface_accepter": close({res.aws_dx_hosted_public_virtual_interface_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_hosted_public_virtual_interface": close({res.aws_dx_hosted_public_virtual_interface & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_hosted_transit_virtual_interface_accepter": close({res.aws_dx_hosted_transit_virtual_interface_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_hosted_transit_virtual_interface": close({res.aws_dx_hosted_transit_virtual_interface & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_lag": close({res.aws_dx_lag & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_macsec_key_association": close({res.aws_dx_macsec_key_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_private_virtual_interface": close({res.aws_dx_private_virtual_interface & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_public_virtual_interface": close({res.aws_dx_public_virtual_interface & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dx_transit_virtual_interface": close({res.aws_dx_transit_virtual_interface & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dynamodb_contributor_insights": close({res.aws_dynamodb_contributor_insights & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dynamodb_global_secondary_index": close({res.aws_dynamodb_global_secondary_index & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dynamodb_global_table": close({res.aws_dynamodb_global_table & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dynamodb_kinesis_streaming_destination": close({res.aws_dynamodb_kinesis_streaming_destination & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dynamodb_resource_policy": close({res.aws_dynamodb_resource_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dynamodb_table_export": close({res.aws_dynamodb_table_export & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dynamodb_table": close({res.aws_dynamodb_table & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dynamodb_table_item": close({res.aws_dynamodb_table_item & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dynamodb_table_replica": close({res.aws_dynamodb_table_replica & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_dynamodb_tag": close({res.aws_dynamodb_tag & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ebs_default_kms_key": close({res.aws_ebs_default_kms_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ebs_encryption_by_default": close({res.aws_ebs_encryption_by_default & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ebs_fast_snapshot_restore": close({res.aws_ebs_fast_snapshot_restore & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ebs_snapshot_block_public_access": close({res.aws_ebs_snapshot_block_public_access & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ebs_snapshot_copy": close({res.aws_ebs_snapshot_copy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ebs_snapshot": close({res.aws_ebs_snapshot & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ebs_snapshot_import": close({res.aws_ebs_snapshot_import & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ebs_volume_copy": close({res.aws_ebs_volume_copy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ebs_volume": close({res.aws_ebs_volume & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_allowed_images_settings": close({res.aws_ec2_allowed_images_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_availability_zone_group": close({res.aws_ec2_availability_zone_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_capacity_block_reservation": close({res.aws_ec2_capacity_block_reservation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_capacity_reservation": close({res.aws_ec2_capacity_reservation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_carrier_gateway": close({res.aws_ec2_carrier_gateway & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_client_vpn_authorization_rule": close({res.aws_ec2_client_vpn_authorization_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_client_vpn_endpoint": close({res.aws_ec2_client_vpn_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_client_vpn_network_association": close({res.aws_ec2_client_vpn_network_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_client_vpn_route": close({res.aws_ec2_client_vpn_route & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_default_credit_specification": close({res.aws_ec2_default_credit_specification & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_fleet": close({res.aws_ec2_fleet & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_host": close({res.aws_ec2_host & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_image_block_public_access": close({res.aws_ec2_image_block_public_access & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_instance_connect_endpoint": close({res.aws_ec2_instance_connect_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_instance_metadata_defaults": close({res.aws_ec2_instance_metadata_defaults & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_instance_state": close({res.aws_ec2_instance_state & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_local_gateway_route": close({res.aws_ec2_local_gateway_route & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_local_gateway_route_table": close({res.aws_ec2_local_gateway_route_table & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_local_gateway_route_table_virtual_interface_group_association": close({res.aws_ec2_local_gateway_route_table_virtual_interface_group_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_local_gateway_route_table_vpc_association": close({res.aws_ec2_local_gateway_route_table_vpc_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_managed_prefix_list_entry": close({res.aws_ec2_managed_prefix_list_entry & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_managed_prefix_list": close({res.aws_ec2_managed_prefix_list & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_network_insights_access_scope": close({res.aws_ec2_network_insights_access_scope & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_network_insights_analysis": close({res.aws_ec2_network_insights_analysis & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_network_insights_path": close({res.aws_ec2_network_insights_path & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_secondary_network": close({res.aws_ec2_secondary_network & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_secondary_subnet": close({res.aws_ec2_secondary_subnet & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_serial_console_access": close({res.aws_ec2_serial_console_access & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_subnet_cidr_reservation": close({res.aws_ec2_subnet_cidr_reservation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_tag": close({res.aws_ec2_tag & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_traffic_mirror_filter": close({res.aws_ec2_traffic_mirror_filter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_traffic_mirror_filter_rule": close({res.aws_ec2_traffic_mirror_filter_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_traffic_mirror_session": close({res.aws_ec2_traffic_mirror_session & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_traffic_mirror_target": close({res.aws_ec2_traffic_mirror_target & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_connect": close({res.aws_ec2_transit_gateway_connect & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_connect_peer": close({res.aws_ec2_transit_gateway_connect_peer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_default_route_table_association": close({res.aws_ec2_transit_gateway_default_route_table_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_default_route_table_propagation": close({res.aws_ec2_transit_gateway_default_route_table_propagation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway": close({res.aws_ec2_transit_gateway & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_metering_policy_entry": close({res.aws_ec2_transit_gateway_metering_policy_entry & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_metering_policy": close({res.aws_ec2_transit_gateway_metering_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_multicast_domain_association": close({res.aws_ec2_transit_gateway_multicast_domain_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_multicast_domain": close({res.aws_ec2_transit_gateway_multicast_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_multicast_group_member": close({res.aws_ec2_transit_gateway_multicast_group_member & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_multicast_group_source": close({res.aws_ec2_transit_gateway_multicast_group_source & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_peering_attachment_accepter": close({res.aws_ec2_transit_gateway_peering_attachment_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_peering_attachment": close({res.aws_ec2_transit_gateway_peering_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_policy_table_association": close({res.aws_ec2_transit_gateway_policy_table_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_policy_table": close({res.aws_ec2_transit_gateway_policy_table & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_prefix_list_reference": close({res.aws_ec2_transit_gateway_prefix_list_reference & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_route": close({res.aws_ec2_transit_gateway_route & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_route_table_association": close({res.aws_ec2_transit_gateway_route_table_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_route_table": close({res.aws_ec2_transit_gateway_route_table & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_route_table_propagation": close({res.aws_ec2_transit_gateway_route_table_propagation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_vpc_attachment_accepter": close({res.aws_ec2_transit_gateway_vpc_attachment_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ec2_transit_gateway_vpc_attachment": close({res.aws_ec2_transit_gateway_vpc_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecr_account_setting": close({res.aws_ecr_account_setting & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecr_lifecycle_policy": close({res.aws_ecr_lifecycle_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecr_pull_through_cache_rule": close({res.aws_ecr_pull_through_cache_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecr_pull_time_update_exclusion": close({res.aws_ecr_pull_time_update_exclusion & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecr_registry_policy": close({res.aws_ecr_registry_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecr_registry_scanning_configuration": close({res.aws_ecr_registry_scanning_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecr_replication_configuration": close({res.aws_ecr_replication_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecr_repository_creation_template": close({res.aws_ecr_repository_creation_template & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecr_repository": close({res.aws_ecr_repository & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecr_repository_policy": close({res.aws_ecr_repository_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecrpublic_repository": close({res.aws_ecrpublic_repository & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecrpublic_repository_policy": close({res.aws_ecrpublic_repository_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecs_account_setting_default": close({res.aws_ecs_account_setting_default & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecs_capacity_provider": close({res.aws_ecs_capacity_provider & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecs_cluster_capacity_providers": close({res.aws_ecs_cluster_capacity_providers & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecs_cluster": close({res.aws_ecs_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecs_daemon": close({res.aws_ecs_daemon & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecs_daemon_task_definition": close({res.aws_ecs_daemon_task_definition & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecs_express_gateway_service": close({res.aws_ecs_express_gateway_service & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecs_service": close({res.aws_ecs_service & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecs_tag": close({res.aws_ecs_tag & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecs_task_definition": close({res.aws_ecs_task_definition & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ecs_task_set": close({res.aws_ecs_task_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_efs_access_point": close({res.aws_efs_access_point & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_efs_backup_policy": close({res.aws_efs_backup_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_efs_file_system": close({res.aws_efs_file_system & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_efs_file_system_policy": close({res.aws_efs_file_system_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_efs_mount_target": close({res.aws_efs_mount_target & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_efs_replication_configuration": close({res.aws_efs_replication_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_egress_only_internet_gateway": close({res.aws_egress_only_internet_gateway & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_eip_association": close({res.aws_eip_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_eip_domain_name": close({res.aws_eip_domain_name & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_eip": close({res.aws_eip & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_eks_access_entry": close({res.aws_eks_access_entry & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_eks_access_policy_association": close({res.aws_eks_access_policy_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_eks_addon": close({res.aws_eks_addon & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_eks_capability": close({res.aws_eks_capability & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_eks_cluster": close({res.aws_eks_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_eks_fargate_profile": close({res.aws_eks_fargate_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_eks_identity_provider_config": close({res.aws_eks_identity_provider_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_eks_node_group": close({res.aws_eks_node_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_eks_pod_identity_association": close({res.aws_eks_pod_identity_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elastic_beanstalk_application": close({res.aws_elastic_beanstalk_application & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elastic_beanstalk_application_version": close({res.aws_elastic_beanstalk_application_version & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elastic_beanstalk_configuration_template": close({res.aws_elastic_beanstalk_configuration_template & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elastic_beanstalk_environment": close({res.aws_elastic_beanstalk_environment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elasticache_cluster": close({res.aws_elasticache_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elasticache_global_replication_group": close({res.aws_elasticache_global_replication_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elasticache_parameter_group": close({res.aws_elasticache_parameter_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elasticache_replication_group": close({res.aws_elasticache_replication_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elasticache_reserved_cache_node": close({res.aws_elasticache_reserved_cache_node & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elasticache_serverless_cache": close({res.aws_elasticache_serverless_cache & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elasticache_subnet_group": close({res.aws_elasticache_subnet_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elasticache_user": close({res.aws_elasticache_user & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elasticache_user_group_association": close({res.aws_elasticache_user_group_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elasticache_user_group": close({res.aws_elasticache_user_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elasticsearch_domain": close({res.aws_elasticsearch_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elasticsearch_domain_policy": close({res.aws_elasticsearch_domain_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elasticsearch_domain_saml_options": close({res.aws_elasticsearch_domain_saml_options & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elasticsearch_vpc_endpoint": close({res.aws_elasticsearch_vpc_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elastictranscoder_pipeline": close({res.aws_elastictranscoder_pipeline & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elastictranscoder_preset": close({res.aws_elastictranscoder_preset & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elb_attachment": close({res.aws_elb_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_elb": close({res.aws_elb & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_emr_block_public_access_configuration": close({res.aws_emr_block_public_access_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_emr_cluster": close({res.aws_emr_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_emr_instance_fleet": close({res.aws_emr_instance_fleet & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_emr_instance_group": close({res.aws_emr_instance_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_emr_managed_scaling_policy": close({res.aws_emr_managed_scaling_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_emr_security_configuration": close({res.aws_emr_security_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_emr_studio": close({res.aws_emr_studio & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_emr_studio_session_mapping": close({res.aws_emr_studio_session_mapping & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_emrcontainers_job_template": close({res.aws_emrcontainers_job_template & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_emrcontainers_virtual_cluster": close({res.aws_emrcontainers_virtual_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_emrserverless_application": close({res.aws_emrserverless_application & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_evidently_feature": close({res.aws_evidently_feature & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_evidently_launch": close({res.aws_evidently_launch & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_evidently_project": close({res.aws_evidently_project & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_evidently_segment": close({res.aws_evidently_segment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_finspace_kx_cluster": close({res.aws_finspace_kx_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_finspace_kx_database": close({res.aws_finspace_kx_database & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_finspace_kx_dataview": close({res.aws_finspace_kx_dataview & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_finspace_kx_environment": close({res.aws_finspace_kx_environment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_finspace_kx_scaling_group": close({res.aws_finspace_kx_scaling_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_finspace_kx_user": close({res.aws_finspace_kx_user & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_finspace_kx_volume": close({res.aws_finspace_kx_volume & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fis_experiment_template": close({res.aws_fis_experiment_template & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fis_target_account_configuration": close({res.aws_fis_target_account_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_flow_log": close({res.aws_flow_log & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fms_admin_account": close({res.aws_fms_admin_account & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fms_policy": close({res.aws_fms_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fms_resource_set": close({res.aws_fms_resource_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fsx_backup": close({res.aws_fsx_backup & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fsx_data_repository_association": close({res.aws_fsx_data_repository_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fsx_file_cache": close({res.aws_fsx_file_cache & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fsx_lustre_file_system": close({res.aws_fsx_lustre_file_system & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fsx_ontap_file_system": close({res.aws_fsx_ontap_file_system & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fsx_ontap_storage_virtual_machine": close({res.aws_fsx_ontap_storage_virtual_machine & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fsx_ontap_volume": close({res.aws_fsx_ontap_volume & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fsx_openzfs_file_system": close({res.aws_fsx_openzfs_file_system & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fsx_openzfs_snapshot": close({res.aws_fsx_openzfs_snapshot & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fsx_openzfs_volume": close({res.aws_fsx_openzfs_volume & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fsx_s3_access_point_attachment": close({res.aws_fsx_s3_access_point_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_fsx_windows_file_system": close({res.aws_fsx_windows_file_system & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_gamelift_alias": close({res.aws_gamelift_alias & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_gamelift_build": close({res.aws_gamelift_build & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_gamelift_fleet": close({res.aws_gamelift_fleet & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_gamelift_game_server_group": close({res.aws_gamelift_game_server_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_gamelift_game_session_queue": close({res.aws_gamelift_game_session_queue & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_gamelift_script": close({res.aws_gamelift_script & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glacier_vault": close({res.aws_glacier_vault & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glacier_vault_lock": close({res.aws_glacier_vault_lock & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_globalaccelerator_accelerator": close({res.aws_globalaccelerator_accelerator & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_globalaccelerator_cross_account_attachment": close({res.aws_globalaccelerator_cross_account_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_globalaccelerator_custom_routing_accelerator": close({res.aws_globalaccelerator_custom_routing_accelerator & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_globalaccelerator_custom_routing_endpoint_group": close({res.aws_globalaccelerator_custom_routing_endpoint_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_globalaccelerator_custom_routing_listener": close({res.aws_globalaccelerator_custom_routing_listener & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_globalaccelerator_endpoint_group": close({res.aws_globalaccelerator_endpoint_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_globalaccelerator_listener": close({res.aws_globalaccelerator_listener & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_catalog_database": close({res.aws_glue_catalog_database & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_catalog": close({res.aws_glue_catalog & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_catalog_table": close({res.aws_glue_catalog_table & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_catalog_table_optimizer": close({res.aws_glue_catalog_table_optimizer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_classifier": close({res.aws_glue_classifier & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_connection": close({res.aws_glue_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_crawler": close({res.aws_glue_crawler & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_data_catalog_encryption_settings": close({res.aws_glue_data_catalog_encryption_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_data_quality_ruleset": close({res.aws_glue_data_quality_ruleset & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_dev_endpoint": close({res.aws_glue_dev_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_job": close({res.aws_glue_job & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_ml_transform": close({res.aws_glue_ml_transform & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_partition": close({res.aws_glue_partition & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_partition_index": close({res.aws_glue_partition_index & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_registry": close({res.aws_glue_registry & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_resource_policy": close({res.aws_glue_resource_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_schema": close({res.aws_glue_schema & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_security_configuration": close({res.aws_glue_security_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_trigger": close({res.aws_glue_trigger & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_user_defined_function": close({res.aws_glue_user_defined_function & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_glue_workflow": close({res.aws_glue_workflow & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_grafana_license_association": close({res.aws_grafana_license_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_grafana_role_association": close({res.aws_grafana_role_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_grafana_workspace_api_key": close({res.aws_grafana_workspace_api_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_grafana_workspace": close({res.aws_grafana_workspace & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_grafana_workspace_saml_configuration": close({res.aws_grafana_workspace_saml_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_grafana_workspace_service_account": close({res.aws_grafana_workspace_service_account & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_grafana_workspace_service_account_token": close({res.aws_grafana_workspace_service_account_token & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_guardduty_detector_feature": close({res.aws_guardduty_detector_feature & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_guardduty_detector": close({res.aws_guardduty_detector & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_guardduty_filter": close({res.aws_guardduty_filter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_guardduty_invite_accepter": close({res.aws_guardduty_invite_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_guardduty_ipset": close({res.aws_guardduty_ipset & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_guardduty_malware_protection_plan": close({res.aws_guardduty_malware_protection_plan & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_guardduty_member_detector_feature": close({res.aws_guardduty_member_detector_feature & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_guardduty_member": close({res.aws_guardduty_member & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_guardduty_organization_admin_account": close({res.aws_guardduty_organization_admin_account & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_guardduty_organization_configuration_feature": close({res.aws_guardduty_organization_configuration_feature & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_guardduty_organization_configuration": close({res.aws_guardduty_organization_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_guardduty_publishing_destination": close({res.aws_guardduty_publishing_destination & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_guardduty_threatintelset": close({res.aws_guardduty_threatintelset & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_access_key": close({res.aws_iam_access_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_account_alias": close({res.aws_iam_account_alias & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_account_password_policy": close({res.aws_iam_account_password_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_group": close({res.aws_iam_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_group_membership": close({res.aws_iam_group_membership & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_group_policies_exclusive": close({res.aws_iam_group_policies_exclusive & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_group_policy_attachment": close({res.aws_iam_group_policy_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_group_policy_attachments_exclusive": close({res.aws_iam_group_policy_attachments_exclusive & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_group_policy": close({res.aws_iam_group_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_instance_profile": close({res.aws_iam_instance_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_openid_connect_provider": close({res.aws_iam_openid_connect_provider & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_organizations_features": close({res.aws_iam_organizations_features & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_outbound_web_identity_federation": close({res.aws_iam_outbound_web_identity_federation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_policy_attachment": close({res.aws_iam_policy_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_policy": close({res.aws_iam_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_role": close({res.aws_iam_role & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_role_policies_exclusive": close({res.aws_iam_role_policies_exclusive & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_role_policy_attachment": close({res.aws_iam_role_policy_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_role_policy_attachments_exclusive": close({res.aws_iam_role_policy_attachments_exclusive & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_role_policy": close({res.aws_iam_role_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_saml_provider": close({res.aws_iam_saml_provider & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_security_token_service_preferences": close({res.aws_iam_security_token_service_preferences & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_server_certificate": close({res.aws_iam_server_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_service_linked_role": close({res.aws_iam_service_linked_role & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_service_specific_credential": close({res.aws_iam_service_specific_credential & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_signing_certificate": close({res.aws_iam_signing_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_user": close({res.aws_iam_user & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_user_group_membership": close({res.aws_iam_user_group_membership & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_user_login_profile": close({res.aws_iam_user_login_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_user_policies_exclusive": close({res.aws_iam_user_policies_exclusive & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_user_policy_attachment": close({res.aws_iam_user_policy_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_user_policy_attachments_exclusive": close({res.aws_iam_user_policy_attachments_exclusive & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_user_policy": close({res.aws_iam_user_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_user_ssh_key": close({res.aws_iam_user_ssh_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iam_virtual_mfa_device": close({res.aws_iam_virtual_mfa_device & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_identitystore_group": close({res.aws_identitystore_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_identitystore_group_membership": close({res.aws_identitystore_group_membership & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_identitystore_user": close({res.aws_identitystore_user & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_imagebuilder_component": close({res.aws_imagebuilder_component & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_imagebuilder_container_recipe": close({res.aws_imagebuilder_container_recipe & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_imagebuilder_distribution_configuration": close({res.aws_imagebuilder_distribution_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_imagebuilder_image": close({res.aws_imagebuilder_image & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_imagebuilder_image_pipeline": close({res.aws_imagebuilder_image_pipeline & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_imagebuilder_image_recipe": close({res.aws_imagebuilder_image_recipe & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_imagebuilder_infrastructure_configuration": close({res.aws_imagebuilder_infrastructure_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_imagebuilder_lifecycle_policy": close({res.aws_imagebuilder_lifecycle_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_imagebuilder_workflow": close({res.aws_imagebuilder_workflow & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_inspector2_delegated_admin_account": close({res.aws_inspector2_delegated_admin_account & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_inspector2_enabler": close({res.aws_inspector2_enabler & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_inspector2_filter": close({res.aws_inspector2_filter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_inspector2_member_association": close({res.aws_inspector2_member_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_inspector2_organization_configuration": close({res.aws_inspector2_organization_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_inspector_assessment_target": close({res.aws_inspector_assessment_target & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_inspector_assessment_template": close({res.aws_inspector_assessment_template & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_inspector_resource_group": close({res.aws_inspector_resource_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_instance": close({res.aws_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_internet_gateway_attachment": close({res.aws_internet_gateway_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_internet_gateway": close({res.aws_internet_gateway & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_internetmonitor_monitor": close({res.aws_internetmonitor_monitor & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_invoicing_invoice_unit": close({res.aws_invoicing_invoice_unit & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_authorizer": close({res.aws_iot_authorizer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_billing_group": close({res.aws_iot_billing_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_ca_certificate": close({res.aws_iot_ca_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_certificate": close({res.aws_iot_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_domain_configuration": close({res.aws_iot_domain_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_event_configurations": close({res.aws_iot_event_configurations & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_indexing_configuration": close({res.aws_iot_indexing_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_logging_options": close({res.aws_iot_logging_options & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_policy_attachment": close({res.aws_iot_policy_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_policy": close({res.aws_iot_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_provisioning_template": close({res.aws_iot_provisioning_template & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_role_alias": close({res.aws_iot_role_alias & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_thing": close({res.aws_iot_thing & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_thing_group": close({res.aws_iot_thing_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_thing_group_membership": close({res.aws_iot_thing_group_membership & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_thing_principal_attachment": close({res.aws_iot_thing_principal_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_thing_type": close({res.aws_iot_thing_type & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_topic_rule_destination": close({res.aws_iot_topic_rule_destination & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_iot_topic_rule": close({res.aws_iot_topic_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ivs_channel": close({res.aws_ivs_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ivs_playback_key_pair": close({res.aws_ivs_playback_key_pair & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ivs_recording_configuration": close({res.aws_ivs_recording_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ivschat_logging_configuration": close({res.aws_ivschat_logging_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ivschat_room": close({res.aws_ivschat_room & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kendra_data_source": close({res.aws_kendra_data_source & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kendra_experience": close({res.aws_kendra_experience & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kendra_faq": close({res.aws_kendra_faq & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kendra_index": close({res.aws_kendra_index & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kendra_query_suggestions_block_list": close({res.aws_kendra_query_suggestions_block_list & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kendra_thesaurus": close({res.aws_kendra_thesaurus & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_key_pair": close({res.aws_key_pair & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_keyspaces_keyspace": close({res.aws_keyspaces_keyspace & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_keyspaces_table": close({res.aws_keyspaces_table & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kinesis_account_settings": close({res.aws_kinesis_account_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kinesis_analytics_application": close({res.aws_kinesis_analytics_application & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kinesis_firehose_delivery_stream": close({res.aws_kinesis_firehose_delivery_stream & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kinesis_resource_policy": close({res.aws_kinesis_resource_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kinesis_stream_consumer": close({res.aws_kinesis_stream_consumer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kinesis_stream": close({res.aws_kinesis_stream & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kinesis_video_stream": close({res.aws_kinesis_video_stream & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kinesisanalyticsv2_application": close({res.aws_kinesisanalyticsv2_application & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kinesisanalyticsv2_application_snapshot": close({res.aws_kinesisanalyticsv2_application_snapshot & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kms_alias": close({res.aws_kms_alias & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kms_ciphertext": close({res.aws_kms_ciphertext & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kms_custom_key_store": close({res.aws_kms_custom_key_store & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kms_external_key": close({res.aws_kms_external_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kms_grant": close({res.aws_kms_grant & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kms_key": close({res.aws_kms_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kms_key_policy": close({res.aws_kms_key_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kms_replica_external_key": close({res.aws_kms_replica_external_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_kms_replica_key": close({res.aws_kms_replica_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lakeformation_data_cells_filter": close({res.aws_lakeformation_data_cells_filter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lakeformation_data_lake_settings": close({res.aws_lakeformation_data_lake_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lakeformation_identity_center_configuration": close({res.aws_lakeformation_identity_center_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lakeformation_lf_tag_expression": close({res.aws_lakeformation_lf_tag_expression & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lakeformation_lf_tag": close({res.aws_lakeformation_lf_tag & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lakeformation_opt_in": close({res.aws_lakeformation_opt_in & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lakeformation_permissions": close({res.aws_lakeformation_permissions & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lakeformation_resource": close({res.aws_lakeformation_resource & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lakeformation_resource_lf_tag": close({res.aws_lakeformation_resource_lf_tag & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lakeformation_resource_lf_tags": close({res.aws_lakeformation_resource_lf_tags & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lambda_alias": close({res.aws_lambda_alias & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lambda_capacity_provider": close({res.aws_lambda_capacity_provider & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lambda_code_signing_config": close({res.aws_lambda_code_signing_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lambda_event_source_mapping": close({res.aws_lambda_event_source_mapping & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lambda_function_event_invoke_config": close({res.aws_lambda_function_event_invoke_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lambda_function": close({res.aws_lambda_function & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lambda_function_recursion_config": close({res.aws_lambda_function_recursion_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lambda_function_url": close({res.aws_lambda_function_url & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lambda_invocation": close({res.aws_lambda_invocation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lambda_layer_version": close({res.aws_lambda_layer_version & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lambda_layer_version_permission": close({res.aws_lambda_layer_version_permission & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lambda_permission": close({res.aws_lambda_permission & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lambda_provisioned_concurrency_config": close({res.aws_lambda_provisioned_concurrency_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lambda_runtime_management_config": close({res.aws_lambda_runtime_management_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_launch_configuration": close({res.aws_launch_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_launch_template": close({res.aws_launch_template & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lb_cookie_stickiness_policy": close({res.aws_lb_cookie_stickiness_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lb": close({res.aws_lb & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lb_listener_certificate": close({res.aws_lb_listener_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lb_listener": close({res.aws_lb_listener & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lb_listener_rule": close({res.aws_lb_listener_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lb_ssl_negotiation_policy": close({res.aws_lb_ssl_negotiation_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lb_target_group_attachment": close({res.aws_lb_target_group_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lb_target_group": close({res.aws_lb_target_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lb_trust_store": close({res.aws_lb_trust_store & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lb_trust_store_revocation": close({res.aws_lb_trust_store_revocation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lex_bot_alias": close({res.aws_lex_bot_alias & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lex_bot": close({res.aws_lex_bot & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lex_intent": close({res.aws_lex_intent & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lex_slot_type": close({res.aws_lex_slot_type & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lexv2models_bot": close({res.aws_lexv2models_bot & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lexv2models_bot_locale": close({res.aws_lexv2models_bot_locale & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lexv2models_bot_version": close({res.aws_lexv2models_bot_version & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lexv2models_intent": close({res.aws_lexv2models_intent & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lexv2models_slot": close({res.aws_lexv2models_slot & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lexv2models_slot_type": close({res.aws_lexv2models_slot_type & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_licensemanager_association": close({res.aws_licensemanager_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_licensemanager_grant_accepter": close({res.aws_licensemanager_grant_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_licensemanager_grant": close({res.aws_licensemanager_grant & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_licensemanager_license_configuration": close({res.aws_licensemanager_license_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_bucket_access_key": close({res.aws_lightsail_bucket_access_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_bucket": close({res.aws_lightsail_bucket & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_bucket_resource_access": close({res.aws_lightsail_bucket_resource_access & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_certificate": close({res.aws_lightsail_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_container_service_deployment_version": close({res.aws_lightsail_container_service_deployment_version & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_container_service": close({res.aws_lightsail_container_service & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_database": close({res.aws_lightsail_database & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_disk_attachment": close({res.aws_lightsail_disk_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_disk": close({res.aws_lightsail_disk & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_distribution": close({res.aws_lightsail_distribution & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_domain_entry": close({res.aws_lightsail_domain_entry & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_domain": close({res.aws_lightsail_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_instance": close({res.aws_lightsail_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_instance_public_ports": close({res.aws_lightsail_instance_public_ports & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_key_pair": close({res.aws_lightsail_key_pair & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_lb_attachment": close({res.aws_lightsail_lb_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_lb_certificate_attachment": close({res.aws_lightsail_lb_certificate_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_lb_certificate": close({res.aws_lightsail_lb_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_lb": close({res.aws_lightsail_lb & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_lb_https_redirection_policy": close({res.aws_lightsail_lb_https_redirection_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_lb_stickiness_policy": close({res.aws_lightsail_lb_stickiness_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_static_ip_attachment": close({res.aws_lightsail_static_ip_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_lightsail_static_ip": close({res.aws_lightsail_static_ip & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_load_balancer_backend_server_policy": close({res.aws_load_balancer_backend_server_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_load_balancer_listener_policy": close({res.aws_load_balancer_listener_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_load_balancer_policy": close({res.aws_load_balancer_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_location_geofence_collection": close({res.aws_location_geofence_collection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_location_map": close({res.aws_location_map & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_location_place_index": close({res.aws_location_place_index & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_location_route_calculator": close({res.aws_location_route_calculator & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_location_tracker_association": close({res.aws_location_tracker_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_location_tracker": close({res.aws_location_tracker & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_m2_application": close({res.aws_m2_application & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_m2_deployment": close({res.aws_m2_deployment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_m2_environment": close({res.aws_m2_environment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_macie2_account": close({res.aws_macie2_account & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_macie2_classification_export_configuration": close({res.aws_macie2_classification_export_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_macie2_classification_job": close({res.aws_macie2_classification_job & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_macie2_custom_data_identifier": close({res.aws_macie2_custom_data_identifier & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_macie2_findings_filter": close({res.aws_macie2_findings_filter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_macie2_invitation_accepter": close({res.aws_macie2_invitation_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_macie2_member": close({res.aws_macie2_member & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_macie2_organization_admin_account": close({res.aws_macie2_organization_admin_account & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_macie2_organization_configuration": close({res.aws_macie2_organization_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_main_route_table_association": close({res.aws_main_route_table_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_media_convert_queue": close({res.aws_media_convert_queue & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_media_package_channel": close({res.aws_media_package_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_media_packagev2_channel_group": close({res.aws_media_packagev2_channel_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_media_store_container": close({res.aws_media_store_container & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_media_store_container_policy": close({res.aws_media_store_container_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_medialive_channel": close({res.aws_medialive_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_medialive_input": close({res.aws_medialive_input & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_medialive_input_security_group": close({res.aws_medialive_input_security_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_medialive_multiplex": close({res.aws_medialive_multiplex & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_medialive_multiplex_program": close({res.aws_medialive_multiplex_program & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_memorydb_acl": close({res.aws_memorydb_acl & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_memorydb_cluster": close({res.aws_memorydb_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_memorydb_multi_region_cluster": close({res.aws_memorydb_multi_region_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_memorydb_parameter_group": close({res.aws_memorydb_parameter_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_memorydb_snapshot": close({res.aws_memorydb_snapshot & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_memorydb_subnet_group": close({res.aws_memorydb_subnet_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_memorydb_user": close({res.aws_memorydb_user & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_mq_broker": close({res.aws_mq_broker & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_mq_configuration": close({res.aws_mq_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_msk_cluster": close({res.aws_msk_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_msk_cluster_policy": close({res.aws_msk_cluster_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_msk_configuration": close({res.aws_msk_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_msk_replicator": close({res.aws_msk_replicator & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_msk_scram_secret_association": close({res.aws_msk_scram_secret_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_msk_serverless_cluster": close({res.aws_msk_serverless_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_msk_single_scram_secret_association": close({res.aws_msk_single_scram_secret_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_msk_topic": close({res.aws_msk_topic & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_msk_vpc_connection": close({res.aws_msk_vpc_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_mskconnect_connector": close({res.aws_mskconnect_connector & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_mskconnect_custom_plugin": close({res.aws_mskconnect_custom_plugin & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_mskconnect_worker_configuration": close({res.aws_mskconnect_worker_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_mwaa_environment": close({res.aws_mwaa_environment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_nat_gateway_eip_association": close({res.aws_nat_gateway_eip_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_nat_gateway": close({res.aws_nat_gateway & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_neptune_cluster_endpoint": close({res.aws_neptune_cluster_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_neptune_cluster": close({res.aws_neptune_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_neptune_cluster_instance": close({res.aws_neptune_cluster_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_neptune_cluster_parameter_group": close({res.aws_neptune_cluster_parameter_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_neptune_cluster_snapshot": close({res.aws_neptune_cluster_snapshot & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_neptune_event_subscription": close({res.aws_neptune_event_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_neptune_global_cluster": close({res.aws_neptune_global_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_neptune_parameter_group": close({res.aws_neptune_parameter_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_neptune_subnet_group": close({res.aws_neptune_subnet_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_neptunegraph_graph": close({res.aws_neptunegraph_graph & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_network_acl_association": close({res.aws_network_acl_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_network_acl": close({res.aws_network_acl & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_network_acl_rule": close({res.aws_network_acl_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_network_interface_attachment": close({res.aws_network_interface_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_network_interface": close({res.aws_network_interface & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_network_interface_permission": close({res.aws_network_interface_permission & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_network_interface_sg_attachment": close({res.aws_network_interface_sg_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkfirewall_firewall": close({res.aws_networkfirewall_firewall & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkfirewall_firewall_policy": close({res.aws_networkfirewall_firewall_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkfirewall_firewall_transit_gateway_attachment_accepter": close({res.aws_networkfirewall_firewall_transit_gateway_attachment_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkfirewall_logging_configuration": close({res.aws_networkfirewall_logging_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkfirewall_resource_policy": close({res.aws_networkfirewall_resource_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkfirewall_rule_group": close({res.aws_networkfirewall_rule_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkfirewall_tls_inspection_configuration": close({res.aws_networkfirewall_tls_inspection_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkfirewall_vpc_endpoint_association": close({res.aws_networkfirewall_vpc_endpoint_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkflowmonitor_monitor": close({res.aws_networkflowmonitor_monitor & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkflowmonitor_scope": close({res.aws_networkflowmonitor_scope & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_attachment_accepter": close({res.aws_networkmanager_attachment_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_attachment_routing_policy_label": close({res.aws_networkmanager_attachment_routing_policy_label & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_connect_attachment": close({res.aws_networkmanager_connect_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_connect_peer": close({res.aws_networkmanager_connect_peer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_connection": close({res.aws_networkmanager_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_core_network": close({res.aws_networkmanager_core_network & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_core_network_policy_attachment": close({res.aws_networkmanager_core_network_policy_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_customer_gateway_association": close({res.aws_networkmanager_customer_gateway_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_device": close({res.aws_networkmanager_device & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_dx_gateway_attachment": close({res.aws_networkmanager_dx_gateway_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_global_network": close({res.aws_networkmanager_global_network & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_link_association": close({res.aws_networkmanager_link_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_link": close({res.aws_networkmanager_link & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_prefix_list_association": close({res.aws_networkmanager_prefix_list_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_site": close({res.aws_networkmanager_site & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_site_to_site_vpn_attachment": close({res.aws_networkmanager_site_to_site_vpn_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_transit_gateway_connect_peer_association": close({res.aws_networkmanager_transit_gateway_connect_peer_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_transit_gateway_peering": close({res.aws_networkmanager_transit_gateway_peering & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_transit_gateway_registration": close({res.aws_networkmanager_transit_gateway_registration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_transit_gateway_route_table_attachment": close({res.aws_networkmanager_transit_gateway_route_table_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmanager_vpc_attachment": close({res.aws_networkmanager_vpc_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmonitor_monitor": close({res.aws_networkmonitor_monitor & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_networkmonitor_probe": close({res.aws_networkmonitor_probe & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_notifications_channel_association": close({res.aws_notifications_channel_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_notifications_event_rule": close({res.aws_notifications_event_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_notifications_managed_notification_account_contact_association": close({res.aws_notifications_managed_notification_account_contact_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_notifications_managed_notification_additional_channel_association": close({res.aws_notifications_managed_notification_additional_channel_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_notifications_notification_configuration": close({res.aws_notifications_notification_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_notifications_notification_hub": close({res.aws_notifications_notification_hub & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_notifications_organizational_unit_association": close({res.aws_notifications_organizational_unit_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_notifications_organizations_access": close({res.aws_notifications_organizations_access & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_notificationscontacts_email_contact": close({res.aws_notificationscontacts_email_contact & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_oam_link": close({res.aws_oam_link & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_oam_sink": close({res.aws_oam_sink & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_oam_sink_policy": close({res.aws_oam_sink_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_observabilityadmin_centralization_rule_for_organization": close({res.aws_observabilityadmin_centralization_rule_for_organization & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_observabilityadmin_s3_table_integration": close({res.aws_observabilityadmin_s3_table_integration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_enrichment": close({res.aws_observabilityadmin_telemetry_enrichment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_evaluation_for_organization": close({res.aws_observabilityadmin_telemetry_evaluation_for_organization & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_evaluation": close({res.aws_observabilityadmin_telemetry_evaluation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_pipeline": close({res.aws_observabilityadmin_telemetry_pipeline & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_rule_for_organization": close({res.aws_observabilityadmin_telemetry_rule_for_organization & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_rule": close({res.aws_observabilityadmin_telemetry_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_odb_cloud_autonomous_vm_cluster": close({res.aws_odb_cloud_autonomous_vm_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_odb_cloud_exadata_infrastructure": close({res.aws_odb_cloud_exadata_infrastructure & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_odb_cloud_vm_cluster": close({res.aws_odb_cloud_vm_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_odb_network": close({res.aws_odb_network & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_odb_network_peering_connection": close({res.aws_odb_network_peering_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearch_application": close({res.aws_opensearch_application & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearch_authorize_vpc_endpoint_access": close({res.aws_opensearch_authorize_vpc_endpoint_access & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearch_domain": close({res.aws_opensearch_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearch_domain_policy": close({res.aws_opensearch_domain_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearch_domain_saml_options": close({res.aws_opensearch_domain_saml_options & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearch_inbound_connection_accepter": close({res.aws_opensearch_inbound_connection_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearch_outbound_connection": close({res.aws_opensearch_outbound_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearch_package_association": close({res.aws_opensearch_package_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearch_package": close({res.aws_opensearch_package & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearch_vpc_endpoint": close({res.aws_opensearch_vpc_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearchserverless_access_policy": close({res.aws_opensearchserverless_access_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearchserverless_collection": close({res.aws_opensearchserverless_collection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearchserverless_collection_group": close({res.aws_opensearchserverless_collection_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearchserverless_lifecycle_policy": close({res.aws_opensearchserverless_lifecycle_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearchserverless_security_config": close({res.aws_opensearchserverless_security_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearchserverless_security_policy": close({res.aws_opensearchserverless_security_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_opensearchserverless_vpc_endpoint": close({res.aws_opensearchserverless_vpc_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_organizations_account": close({res.aws_organizations_account & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_organizations_aws_service_access": close({res.aws_organizations_aws_service_access & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_organizations_delegated_administrator": close({res.aws_organizations_delegated_administrator & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_organizations_organization": close({res.aws_organizations_organization & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_organizations_organizational_unit": close({res.aws_organizations_organizational_unit & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_organizations_policy_attachment": close({res.aws_organizations_policy_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_organizations_policy": close({res.aws_organizations_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_organizations_resource_policy": close({res.aws_organizations_resource_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_organizations_tag": close({res.aws_organizations_tag & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_osis_pipeline": close({res.aws_osis_pipeline & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_outposts_capacity_task": close({res.aws_outposts_capacity_task & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_paymentcryptography_key_alias": close({res.aws_paymentcryptography_key_alias & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_paymentcryptography_key": close({res.aws_paymentcryptography_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpoint_adm_channel": close({res.aws_pinpoint_adm_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpoint_apns_channel": close({res.aws_pinpoint_apns_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpoint_apns_sandbox_channel": close({res.aws_pinpoint_apns_sandbox_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpoint_apns_voip_channel": close({res.aws_pinpoint_apns_voip_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpoint_apns_voip_sandbox_channel": close({res.aws_pinpoint_apns_voip_sandbox_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpoint_app": close({res.aws_pinpoint_app & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpoint_baidu_channel": close({res.aws_pinpoint_baidu_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpoint_email_channel": close({res.aws_pinpoint_email_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpoint_email_template": close({res.aws_pinpoint_email_template & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpoint_event_stream": close({res.aws_pinpoint_event_stream & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpoint_gcm_channel": close({res.aws_pinpoint_gcm_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpoint_sms_channel": close({res.aws_pinpoint_sms_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpointsmsvoicev2_configuration_set": close({res.aws_pinpointsmsvoicev2_configuration_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpointsmsvoicev2_event_destination": close({res.aws_pinpointsmsvoicev2_event_destination & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpointsmsvoicev2_opt_out_list": close({res.aws_pinpointsmsvoicev2_opt_out_list & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpointsmsvoicev2_phone_number": close({res.aws_pinpointsmsvoicev2_phone_number & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pinpointsmsvoicev2_pool": close({res.aws_pinpointsmsvoicev2_pool & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_pipes_pipe": close({res.aws_pipes_pipe & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_placement_group": close({res.aws_placement_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_prometheus_alert_manager_definition": close({res.aws_prometheus_alert_manager_definition & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_prometheus_query_logging_configuration": close({res.aws_prometheus_query_logging_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_prometheus_resource_policy": close({res.aws_prometheus_resource_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_prometheus_rule_group_namespace": close({res.aws_prometheus_rule_group_namespace & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_prometheus_scraper": close({res.aws_prometheus_scraper & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_prometheus_workspace_configuration": close({res.aws_prometheus_workspace_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_prometheus_workspace": close({res.aws_prometheus_workspace & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_proxy_protocol_policy": close({res.aws_proxy_protocol_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_qbusiness_application": close({res.aws_qbusiness_application & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_qldb_ledger": close({res.aws_qldb_ledger & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_qldb_stream": close({res.aws_qldb_stream & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_account_settings": close({res.aws_quicksight_account_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_account_subscription": close({res.aws_quicksight_account_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_analysis": close({res.aws_quicksight_analysis & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_custom_permissions": close({res.aws_quicksight_custom_permissions & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_dashboard": close({res.aws_quicksight_dashboard & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_data_set": close({res.aws_quicksight_data_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_data_source": close({res.aws_quicksight_data_source & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_folder": close({res.aws_quicksight_folder & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_folder_membership": close({res.aws_quicksight_folder_membership & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_group": close({res.aws_quicksight_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_group_membership": close({res.aws_quicksight_group_membership & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_iam_policy_assignment": close({res.aws_quicksight_iam_policy_assignment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_ingestion": close({res.aws_quicksight_ingestion & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_ip_restriction": close({res.aws_quicksight_ip_restriction & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_key_registration": close({res.aws_quicksight_key_registration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_namespace": close({res.aws_quicksight_namespace & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_refresh_schedule": close({res.aws_quicksight_refresh_schedule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_role_custom_permission": close({res.aws_quicksight_role_custom_permission & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_role_membership": close({res.aws_quicksight_role_membership & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_template_alias": close({res.aws_quicksight_template_alias & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_template": close({res.aws_quicksight_template & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_theme": close({res.aws_quicksight_theme & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_user_custom_permission": close({res.aws_quicksight_user_custom_permission & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_user": close({res.aws_quicksight_user & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_quicksight_vpc_connection": close({res.aws_quicksight_vpc_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ram_permission": close({res.aws_ram_permission & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ram_principal_association": close({res.aws_ram_principal_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ram_resource_association": close({res.aws_ram_resource_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ram_resource_share_accepter": close({res.aws_ram_resource_share_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ram_resource_share_associations_exclusive": close({res.aws_ram_resource_share_associations_exclusive & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ram_resource_share": close({res.aws_ram_resource_share & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ram_sharing_with_organization": close({res.aws_ram_sharing_with_organization & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rbin_rule": close({res.aws_rbin_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_certificate": close({res.aws_rds_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_cluster_activity_stream": close({res.aws_rds_cluster_activity_stream & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_cluster_endpoint": close({res.aws_rds_cluster_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_cluster": close({res.aws_rds_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_cluster_instance": close({res.aws_rds_cluster_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_cluster_parameter_group": close({res.aws_rds_cluster_parameter_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_cluster_role_association": close({res.aws_rds_cluster_role_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_cluster_snapshot_copy": close({res.aws_rds_cluster_snapshot_copy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_custom_db_engine_version": close({res.aws_rds_custom_db_engine_version & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_export_task": close({res.aws_rds_export_task & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_global_cluster": close({res.aws_rds_global_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_instance_state": close({res.aws_rds_instance_state & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_integration": close({res.aws_rds_integration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_reserved_instance": close({res.aws_rds_reserved_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rds_shard_group": close({res.aws_rds_shard_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_authentication_profile": close({res.aws_redshift_authentication_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_cluster": close({res.aws_redshift_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_cluster_iam_roles": close({res.aws_redshift_cluster_iam_roles & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_cluster_snapshot": close({res.aws_redshift_cluster_snapshot & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_data_share_authorization": close({res.aws_redshift_data_share_authorization & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_data_share_consumer_association": close({res.aws_redshift_data_share_consumer_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_endpoint_access": close({res.aws_redshift_endpoint_access & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_endpoint_authorization": close({res.aws_redshift_endpoint_authorization & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_event_subscription": close({res.aws_redshift_event_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_hsm_client_certificate": close({res.aws_redshift_hsm_client_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_hsm_configuration": close({res.aws_redshift_hsm_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_idc_application": close({res.aws_redshift_idc_application & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_integration": close({res.aws_redshift_integration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_logging": close({res.aws_redshift_logging & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_namespace_registration": close({res.aws_redshift_namespace_registration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_parameter_group": close({res.aws_redshift_parameter_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_partner": close({res.aws_redshift_partner & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_resource_policy": close({res.aws_redshift_resource_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_scheduled_action": close({res.aws_redshift_scheduled_action & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_snapshot_copy": close({res.aws_redshift_snapshot_copy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_snapshot_copy_grant": close({res.aws_redshift_snapshot_copy_grant & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_snapshot_schedule_association": close({res.aws_redshift_snapshot_schedule_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_snapshot_schedule": close({res.aws_redshift_snapshot_schedule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_subnet_group": close({res.aws_redshift_subnet_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshift_usage_limit": close({res.aws_redshift_usage_limit & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshiftdata_statement": close({res.aws_redshiftdata_statement & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshiftserverless_custom_domain_association": close({res.aws_redshiftserverless_custom_domain_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshiftserverless_endpoint_access": close({res.aws_redshiftserverless_endpoint_access & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshiftserverless_namespace": close({res.aws_redshiftserverless_namespace & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshiftserverless_resource_policy": close({res.aws_redshiftserverless_resource_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshiftserverless_snapshot": close({res.aws_redshiftserverless_snapshot & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshiftserverless_usage_limit": close({res.aws_redshiftserverless_usage_limit & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_redshiftserverless_workgroup": close({res.aws_redshiftserverless_workgroup & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rekognition_collection": close({res.aws_rekognition_collection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rekognition_project": close({res.aws_rekognition_project & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rekognition_stream_processor": close({res.aws_rekognition_stream_processor & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_resiliencehub_resiliency_policy": close({res.aws_resiliencehub_resiliency_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_resourceexplorer2_index": close({res.aws_resourceexplorer2_index & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_resourceexplorer2_view": close({res.aws_resourceexplorer2_view & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_resourcegroups_group": close({res.aws_resourcegroups_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_resourcegroups_resource": close({res.aws_resourcegroups_resource & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rolesanywhere_profile": close({res.aws_rolesanywhere_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rolesanywhere_trust_anchor": close({res.aws_rolesanywhere_trust_anchor & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_cidr_collection": close({res.aws_route53_cidr_collection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_cidr_location": close({res.aws_route53_cidr_location & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_delegation_set": close({res.aws_route53_delegation_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_health_check": close({res.aws_route53_health_check & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_hosted_zone_dnssec": close({res.aws_route53_hosted_zone_dnssec & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_key_signing_key": close({res.aws_route53_key_signing_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_query_log": close({res.aws_route53_query_log & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_record": close({res.aws_route53_record & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_records_exclusive": close({res.aws_route53_records_exclusive & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_resolver_config": close({res.aws_route53_resolver_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_resolver_dnssec_config": close({res.aws_route53_resolver_dnssec_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_resolver_endpoint": close({res.aws_route53_resolver_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_resolver_firewall_config": close({res.aws_route53_resolver_firewall_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_resolver_firewall_domain_list": close({res.aws_route53_resolver_firewall_domain_list & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_resolver_firewall_rule": close({res.aws_route53_resolver_firewall_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_resolver_firewall_rule_group_association": close({res.aws_route53_resolver_firewall_rule_group_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_resolver_firewall_rule_group": close({res.aws_route53_resolver_firewall_rule_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_resolver_query_log_config_association": close({res.aws_route53_resolver_query_log_config_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_resolver_query_log_config": close({res.aws_route53_resolver_query_log_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_resolver_rule_association": close({res.aws_route53_resolver_rule_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_resolver_rule": close({res.aws_route53_resolver_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_traffic_policy": close({res.aws_route53_traffic_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_traffic_policy_instance": close({res.aws_route53_traffic_policy_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_vpc_association_authorization": close({res.aws_route53_vpc_association_authorization & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_zone_association": close({res.aws_route53_zone_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53_zone": close({res.aws_route53_zone & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53domains_delegation_signer_record": close({res.aws_route53domains_delegation_signer_record & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53domains_domain": close({res.aws_route53domains_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53domains_registered_domain": close({res.aws_route53domains_registered_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53profiles_association": close({res.aws_route53profiles_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53profiles_profile": close({res.aws_route53profiles_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53profiles_resource_association": close({res.aws_route53profiles_resource_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53recoverycontrolconfig_cluster": close({res.aws_route53recoverycontrolconfig_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53recoverycontrolconfig_control_panel": close({res.aws_route53recoverycontrolconfig_control_panel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53recoverycontrolconfig_routing_control": close({res.aws_route53recoverycontrolconfig_routing_control & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53recoverycontrolconfig_safety_rule": close({res.aws_route53recoverycontrolconfig_safety_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53recoveryreadiness_cell": close({res.aws_route53recoveryreadiness_cell & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53recoveryreadiness_readiness_check": close({res.aws_route53recoveryreadiness_readiness_check & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53recoveryreadiness_recovery_group": close({res.aws_route53recoveryreadiness_recovery_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route53recoveryreadiness_resource_set": close({res.aws_route53recoveryreadiness_resource_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route": close({res.aws_route & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route_table_association": close({res.aws_route_table_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_route_table": close({res.aws_route_table & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rum_app_monitor": close({res.aws_rum_app_monitor & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_rum_metrics_destination": close({res.aws_rum_metrics_destination & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_access_point": close({res.aws_s3_access_point & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_account_public_access_block": close({res.aws_s3_account_public_access_block & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_abac": close({res.aws_s3_bucket_abac & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_accelerate_configuration": close({res.aws_s3_bucket_accelerate_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_acl": close({res.aws_s3_bucket_acl & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_analytics_configuration": close({res.aws_s3_bucket_analytics_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_cors_configuration": close({res.aws_s3_bucket_cors_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket": close({res.aws_s3_bucket & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_intelligent_tiering_configuration": close({res.aws_s3_bucket_intelligent_tiering_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_inventory": close({res.aws_s3_bucket_inventory & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_lifecycle_configuration": close({res.aws_s3_bucket_lifecycle_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_logging": close({res.aws_s3_bucket_logging & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_metadata_configuration": close({res.aws_s3_bucket_metadata_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_metric": close({res.aws_s3_bucket_metric & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_notification": close({res.aws_s3_bucket_notification & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_object": close({res.aws_s3_bucket_object & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_object_lock_configuration": close({res.aws_s3_bucket_object_lock_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_ownership_controls": close({res.aws_s3_bucket_ownership_controls & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_policy": close({res.aws_s3_bucket_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_public_access_block": close({res.aws_s3_bucket_public_access_block & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_replication_configuration": close({res.aws_s3_bucket_replication_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_request_payment_configuration": close({res.aws_s3_bucket_request_payment_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_server_side_encryption_configuration": close({res.aws_s3_bucket_server_side_encryption_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_versioning": close({res.aws_s3_bucket_versioning & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_bucket_website_configuration": close({res.aws_s3_bucket_website_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_directory_bucket": close({res.aws_s3_directory_bucket & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_object_copy": close({res.aws_s3_object_copy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3_object": close({res.aws_s3_object & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_access_grant": close({res.aws_s3control_access_grant & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_access_grants_instance": close({res.aws_s3control_access_grants_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_access_grants_instance_resource_policy": close({res.aws_s3control_access_grants_instance_resource_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_access_grants_location": close({res.aws_s3control_access_grants_location & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_access_point_policy": close({res.aws_s3control_access_point_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_bucket": close({res.aws_s3control_bucket & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_bucket_lifecycle_configuration": close({res.aws_s3control_bucket_lifecycle_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_bucket_policy": close({res.aws_s3control_bucket_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_directory_bucket_access_point_scope": close({res.aws_s3control_directory_bucket_access_point_scope & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_multi_region_access_point": close({res.aws_s3control_multi_region_access_point & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_multi_region_access_point_policy": close({res.aws_s3control_multi_region_access_point_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_multi_region_access_point_routes": close({res.aws_s3control_multi_region_access_point_routes & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_object_lambda_access_point": close({res.aws_s3control_object_lambda_access_point & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_object_lambda_access_point_policy": close({res.aws_s3control_object_lambda_access_point_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3control_storage_lens_configuration": close({res.aws_s3control_storage_lens_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3files_access_point": close({res.aws_s3files_access_point & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3files_file_system": close({res.aws_s3files_file_system & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3files_file_system_policy": close({res.aws_s3files_file_system_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3files_mount_target": close({res.aws_s3files_mount_target & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3files_synchronization_configuration": close({res.aws_s3files_synchronization_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3outposts_endpoint": close({res.aws_s3outposts_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3tables_namespace": close({res.aws_s3tables_namespace & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3tables_table_bucket": close({res.aws_s3tables_table_bucket & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3tables_table_bucket_policy": close({res.aws_s3tables_table_bucket_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3tables_table_bucket_replication": close({res.aws_s3tables_table_bucket_replication & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3tables_table": close({res.aws_s3tables_table & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3tables_table_policy": close({res.aws_s3tables_table_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3tables_table_replication": close({res.aws_s3tables_table_replication & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3vectors_index": close({res.aws_s3vectors_index & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3vectors_vector_bucket": close({res.aws_s3vectors_vector_bucket & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_s3vectors_vector_bucket_policy": close({res.aws_s3vectors_vector_bucket_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_algorithm": close({res.aws_sagemaker_algorithm & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_app": close({res.aws_sagemaker_app & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_app_image_config": close({res.aws_sagemaker_app_image_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_code_repository": close({res.aws_sagemaker_code_repository & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_data_quality_job_definition": close({res.aws_sagemaker_data_quality_job_definition & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_device_fleet": close({res.aws_sagemaker_device_fleet & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_device": close({res.aws_sagemaker_device & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_domain": close({res.aws_sagemaker_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_endpoint_configuration": close({res.aws_sagemaker_endpoint_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_endpoint": close({res.aws_sagemaker_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_feature_group": close({res.aws_sagemaker_feature_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_flow_definition": close({res.aws_sagemaker_flow_definition & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_hub_content_reference": close({res.aws_sagemaker_hub_content_reference & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_hub": close({res.aws_sagemaker_hub & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_human_task_ui": close({res.aws_sagemaker_human_task_ui & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_hyper_parameter_tuning_job": close({res.aws_sagemaker_hyper_parameter_tuning_job & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_image": close({res.aws_sagemaker_image & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_image_version": close({res.aws_sagemaker_image_version & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_labeling_job": close({res.aws_sagemaker_labeling_job & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_mlflow_app": close({res.aws_sagemaker_mlflow_app & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_mlflow_tracking_server": close({res.aws_sagemaker_mlflow_tracking_server & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_model_card_export_job": close({res.aws_sagemaker_model_card_export_job & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_model_card": close({res.aws_sagemaker_model_card & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_model": close({res.aws_sagemaker_model & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_model_package_group": close({res.aws_sagemaker_model_package_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_model_package_group_policy": close({res.aws_sagemaker_model_package_group_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_monitoring_schedule": close({res.aws_sagemaker_monitoring_schedule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_notebook_instance": close({res.aws_sagemaker_notebook_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_notebook_instance_lifecycle_configuration": close({res.aws_sagemaker_notebook_instance_lifecycle_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_pipeline": close({res.aws_sagemaker_pipeline & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_project": close({res.aws_sagemaker_project & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_servicecatalog_portfolio_status": close({res.aws_sagemaker_servicecatalog_portfolio_status & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_space": close({res.aws_sagemaker_space & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_studio_lifecycle_config": close({res.aws_sagemaker_studio_lifecycle_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_training_job": close({res.aws_sagemaker_training_job & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_user_profile": close({res.aws_sagemaker_user_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_workforce": close({res.aws_sagemaker_workforce & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sagemaker_workteam": close({res.aws_sagemaker_workteam & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_savingsplans_savings_plan": close({res.aws_savingsplans_savings_plan & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_scheduler_schedule": close({res.aws_scheduler_schedule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_scheduler_schedule_group": close({res.aws_scheduler_schedule_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_schemas_discoverer": close({res.aws_schemas_discoverer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_schemas_registry": close({res.aws_schemas_registry & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_schemas_registry_policy": close({res.aws_schemas_registry_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_schemas_schema": close({res.aws_schemas_schema & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_secretsmanager_secret": close({res.aws_secretsmanager_secret & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_secretsmanager_secret_policy": close({res.aws_secretsmanager_secret_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_secretsmanager_secret_rotation": close({res.aws_secretsmanager_secret_rotation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_secretsmanager_secret_version": close({res.aws_secretsmanager_secret_version & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_secretsmanager_tag": close({res.aws_secretsmanager_tag & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_security_group": close({res.aws_security_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_security_group_rule": close({res.aws_security_group_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_account": close({res.aws_securityhub_account & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_account_v2": close({res.aws_securityhub_account_v2 & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_action_target": close({res.aws_securityhub_action_target & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_aggregator_v2": close({res.aws_securityhub_aggregator_v2 & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_automation_rule": close({res.aws_securityhub_automation_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_automation_rule_v2": close({res.aws_securityhub_automation_rule_v2 & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_configuration_policy_association": close({res.aws_securityhub_configuration_policy_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_configuration_policy": close({res.aws_securityhub_configuration_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_connector_v2": close({res.aws_securityhub_connector_v2 & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_finding_aggregator": close({res.aws_securityhub_finding_aggregator & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_insight": close({res.aws_securityhub_insight & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_invite_accepter": close({res.aws_securityhub_invite_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_member": close({res.aws_securityhub_member & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_organization_admin_account": close({res.aws_securityhub_organization_admin_account & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_organization_configuration": close({res.aws_securityhub_organization_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_product_subscription": close({res.aws_securityhub_product_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_standards_control_association": close({res.aws_securityhub_standards_control_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_standards_control": close({res.aws_securityhub_standards_control & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securityhub_standards_subscription": close({res.aws_securityhub_standards_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securitylake_aws_log_source": close({res.aws_securitylake_aws_log_source & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securitylake_custom_log_source": close({res.aws_securitylake_custom_log_source & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securitylake_data_lake": close({res.aws_securitylake_data_lake & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securitylake_subscriber": close({res.aws_securitylake_subscriber & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_securitylake_subscriber_notification": close({res.aws_securitylake_subscriber_notification & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_serverlessapplicationrepository_cloudformation_stack": close({res.aws_serverlessapplicationrepository_cloudformation_stack & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_service_discovery_http_namespace": close({res.aws_service_discovery_http_namespace & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_service_discovery_instance": close({res.aws_service_discovery_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_service_discovery_private_dns_namespace": close({res.aws_service_discovery_private_dns_namespace & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_service_discovery_public_dns_namespace": close({res.aws_service_discovery_public_dns_namespace & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_service_discovery_service": close({res.aws_service_discovery_service & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalog_budget_resource_association": close({res.aws_servicecatalog_budget_resource_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalog_constraint": close({res.aws_servicecatalog_constraint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalog_organizations_access": close({res.aws_servicecatalog_organizations_access & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalog_portfolio": close({res.aws_servicecatalog_portfolio & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalog_portfolio_share": close({res.aws_servicecatalog_portfolio_share & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalog_principal_portfolio_association": close({res.aws_servicecatalog_principal_portfolio_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalog_product": close({res.aws_servicecatalog_product & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalog_product_portfolio_association": close({res.aws_servicecatalog_product_portfolio_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalog_provisioned_product": close({res.aws_servicecatalog_provisioned_product & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalog_provisioning_artifact": close({res.aws_servicecatalog_provisioning_artifact & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalog_service_action": close({res.aws_servicecatalog_service_action & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalog_tag_option": close({res.aws_servicecatalog_tag_option & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalog_tag_option_resource_association": close({res.aws_servicecatalog_tag_option_resource_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalogappregistry_application": close({res.aws_servicecatalogappregistry_application & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalogappregistry_attribute_group_association": close({res.aws_servicecatalogappregistry_attribute_group_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicecatalogappregistry_attribute_group": close({res.aws_servicecatalogappregistry_attribute_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicequotas_auto_management": close({res.aws_servicequotas_auto_management & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicequotas_service_quota": close({res.aws_servicequotas_service_quota & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicequotas_template_association": close({res.aws_servicequotas_template_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_servicequotas_template": close({res.aws_servicequotas_template & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ses_active_receipt_rule_set": close({res.aws_ses_active_receipt_rule_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ses_configuration_set": close({res.aws_ses_configuration_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ses_domain_dkim": close({res.aws_ses_domain_dkim & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ses_domain_identity": close({res.aws_ses_domain_identity & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ses_domain_identity_verification": close({res.aws_ses_domain_identity_verification & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ses_domain_mail_from": close({res.aws_ses_domain_mail_from & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ses_email_identity": close({res.aws_ses_email_identity & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ses_event_destination": close({res.aws_ses_event_destination & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ses_identity_notification_topic": close({res.aws_ses_identity_notification_topic & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ses_identity_policy": close({res.aws_ses_identity_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ses_receipt_filter": close({res.aws_ses_receipt_filter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ses_receipt_rule": close({res.aws_ses_receipt_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ses_receipt_rule_set": close({res.aws_ses_receipt_rule_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ses_template": close({res.aws_ses_template & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sesv2_account_suppression_attributes": close({res.aws_sesv2_account_suppression_attributes & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sesv2_account_vdm_attributes": close({res.aws_sesv2_account_vdm_attributes & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sesv2_configuration_set_event_destination": close({res.aws_sesv2_configuration_set_event_destination & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sesv2_configuration_set": close({res.aws_sesv2_configuration_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sesv2_contact_list": close({res.aws_sesv2_contact_list & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sesv2_dedicated_ip_assignment": close({res.aws_sesv2_dedicated_ip_assignment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sesv2_dedicated_ip_pool": close({res.aws_sesv2_dedicated_ip_pool & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sesv2_email_identity_feedback_attributes": close({res.aws_sesv2_email_identity_feedback_attributes & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sesv2_email_identity": close({res.aws_sesv2_email_identity & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sesv2_email_identity_mail_from_attributes": close({res.aws_sesv2_email_identity_mail_from_attributes & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sesv2_email_identity_policy": close({res.aws_sesv2_email_identity_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sesv2_tenant": close({res.aws_sesv2_tenant & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sesv2_tenant_resource_association": close({res.aws_sesv2_tenant_resource_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sfn_activity": close({res.aws_sfn_activity & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sfn_alias": close({res.aws_sfn_alias & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sfn_state_machine": close({res.aws_sfn_state_machine & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_shield_application_layer_automatic_response": close({res.aws_shield_application_layer_automatic_response & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_shield_drt_access_log_bucket_association": close({res.aws_shield_drt_access_log_bucket_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_shield_drt_access_role_arn_association": close({res.aws_shield_drt_access_role_arn_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_shield_proactive_engagement": close({res.aws_shield_proactive_engagement & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_shield_protection": close({res.aws_shield_protection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_shield_protection_group": close({res.aws_shield_protection_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_shield_protection_health_check_association": close({res.aws_shield_protection_health_check_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_shield_subscription": close({res.aws_shield_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_signer_signing_job": close({res.aws_signer_signing_job & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_signer_signing_profile": close({res.aws_signer_signing_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_signer_signing_profile_permission": close({res.aws_signer_signing_profile_permission & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_snapshot_create_volume_permission": close({res.aws_snapshot_create_volume_permission & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sns_platform_application": close({res.aws_sns_platform_application & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sns_sms_preferences": close({res.aws_sns_sms_preferences & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sns_topic_data_protection_policy": close({res.aws_sns_topic_data_protection_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sns_topic": close({res.aws_sns_topic & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sns_topic_policy": close({res.aws_sns_topic_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sns_topic_subscription": close({res.aws_sns_topic_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_spot_datafeed_subscription": close({res.aws_spot_datafeed_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_spot_fleet_request": close({res.aws_spot_fleet_request & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_spot_instance_request": close({res.aws_spot_instance_request & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sqs_queue": close({res.aws_sqs_queue & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sqs_queue_policy": close({res.aws_sqs_queue_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sqs_queue_redrive_allow_policy": close({res.aws_sqs_queue_redrive_allow_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_sqs_queue_redrive_policy": close({res.aws_sqs_queue_redrive_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssm_activation": close({res.aws_ssm_activation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssm_association": close({res.aws_ssm_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssm_default_patch_baseline": close({res.aws_ssm_default_patch_baseline & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssm_document": close({res.aws_ssm_document & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssm_maintenance_window": close({res.aws_ssm_maintenance_window & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssm_maintenance_window_target": close({res.aws_ssm_maintenance_window_target & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssm_maintenance_window_task": close({res.aws_ssm_maintenance_window_task & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssm_parameter": close({res.aws_ssm_parameter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssm_patch_baseline": close({res.aws_ssm_patch_baseline & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssm_patch_group": close({res.aws_ssm_patch_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssm_resource_data_sync": close({res.aws_ssm_resource_data_sync & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssm_service_setting": close({res.aws_ssm_service_setting & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssmcontacts_contact_channel": close({res.aws_ssmcontacts_contact_channel & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssmcontacts_contact": close({res.aws_ssmcontacts_contact & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssmcontacts_plan": close({res.aws_ssmcontacts_plan & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssmcontacts_rotation": close({res.aws_ssmcontacts_rotation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssmincidents_replication_set": close({res.aws_ssmincidents_replication_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssmincidents_response_plan": close({res.aws_ssmincidents_response_plan & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssmquicksetup_configuration_manager": close({res.aws_ssmquicksetup_configuration_manager & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssoadmin_account_assignment": close({res.aws_ssoadmin_account_assignment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssoadmin_application_access_scope": close({res.aws_ssoadmin_application_access_scope & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssoadmin_application_assignment_configuration": close({res.aws_ssoadmin_application_assignment_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssoadmin_application_assignment": close({res.aws_ssoadmin_application_assignment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssoadmin_application": close({res.aws_ssoadmin_application & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssoadmin_customer_managed_policy_attachment": close({res.aws_ssoadmin_customer_managed_policy_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssoadmin_customer_managed_policy_attachments_exclusive": close({res.aws_ssoadmin_customer_managed_policy_attachments_exclusive & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssoadmin_instance_access_control_attributes": close({res.aws_ssoadmin_instance_access_control_attributes & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssoadmin_managed_policy_attachment": close({res.aws_ssoadmin_managed_policy_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssoadmin_managed_policy_attachments_exclusive": close({res.aws_ssoadmin_managed_policy_attachments_exclusive & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssoadmin_permission_set": close({res.aws_ssoadmin_permission_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssoadmin_permission_set_inline_policy": close({res.aws_ssoadmin_permission_set_inline_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssoadmin_permissions_boundary_attachment": close({res.aws_ssoadmin_permissions_boundary_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_ssoadmin_trusted_token_issuer": close({res.aws_ssoadmin_trusted_token_issuer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_storagegateway_cache": close({res.aws_storagegateway_cache & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_storagegateway_cached_iscsi_volume": close({res.aws_storagegateway_cached_iscsi_volume & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_storagegateway_file_system_association": close({res.aws_storagegateway_file_system_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_storagegateway_gateway": close({res.aws_storagegateway_gateway & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_storagegateway_nfs_file_share": close({res.aws_storagegateway_nfs_file_share & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_storagegateway_smb_file_share": close({res.aws_storagegateway_smb_file_share & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_storagegateway_stored_iscsi_volume": close({res.aws_storagegateway_stored_iscsi_volume & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_storagegateway_tape_pool": close({res.aws_storagegateway_tape_pool & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_storagegateway_upload_buffer": close({res.aws_storagegateway_upload_buffer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_storagegateway_working_storage": close({res.aws_storagegateway_working_storage & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_subnet": close({res.aws_subnet & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_swf_domain": close({res.aws_swf_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_synthetics_canary": close({res.aws_synthetics_canary & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_synthetics_group_association": close({res.aws_synthetics_group_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_synthetics_group": close({res.aws_synthetics_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_timestreaminfluxdb_db_cluster": close({res.aws_timestreaminfluxdb_db_cluster & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_timestreaminfluxdb_db_instance": close({res.aws_timestreaminfluxdb_db_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_timestreamquery_scheduled_query": close({res.aws_timestreamquery_scheduled_query & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_timestreamwrite_database": close({res.aws_timestreamwrite_database & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_timestreamwrite_table": close({res.aws_timestreamwrite_table & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transcribe_language_model": close({res.aws_transcribe_language_model & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transcribe_medical_vocabulary": close({res.aws_transcribe_medical_vocabulary & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transcribe_vocabulary_filter": close({res.aws_transcribe_vocabulary_filter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transcribe_vocabulary": close({res.aws_transcribe_vocabulary & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transfer_access": close({res.aws_transfer_access & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transfer_agreement": close({res.aws_transfer_agreement & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transfer_certificate": close({res.aws_transfer_certificate & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transfer_connector": close({res.aws_transfer_connector & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transfer_host_key": close({res.aws_transfer_host_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transfer_profile": close({res.aws_transfer_profile & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transfer_server": close({res.aws_transfer_server & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transfer_ssh_key": close({res.aws_transfer_ssh_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transfer_tag": close({res.aws_transfer_tag & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transfer_user": close({res.aws_transfer_user & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transfer_web_app_customization": close({res.aws_transfer_web_app_customization & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transfer_web_app": close({res.aws_transfer_web_app & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_transfer_workflow": close({res.aws_transfer_workflow & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_uxc_account_customizations": close({res.aws_uxc_account_customizations & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_verifiedaccess_endpoint": close({res.aws_verifiedaccess_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_verifiedaccess_group": close({res.aws_verifiedaccess_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_verifiedaccess_instance": close({res.aws_verifiedaccess_instance & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_verifiedaccess_instance_logging_configuration": close({res.aws_verifiedaccess_instance_logging_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_verifiedaccess_instance_trust_provider_attachment": close({res.aws_verifiedaccess_instance_trust_provider_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_verifiedaccess_trust_provider": close({res.aws_verifiedaccess_trust_provider & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_verifiedpermissions_identity_source": close({res.aws_verifiedpermissions_identity_source & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_verifiedpermissions_policy": close({res.aws_verifiedpermissions_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_verifiedpermissions_policy_store": close({res.aws_verifiedpermissions_policy_store & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_verifiedpermissions_policy_template": close({res.aws_verifiedpermissions_policy_template & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_verifiedpermissions_schema": close({res.aws_verifiedpermissions_schema & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_volume_attachment": close({res.aws_volume_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_block_public_access_exclusion": close({res.aws_vpc_block_public_access_exclusion & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_block_public_access_options": close({res.aws_vpc_block_public_access_options & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_dhcp_options_association": close({res.aws_vpc_dhcp_options_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_dhcp_options": close({res.aws_vpc_dhcp_options & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_encryption_control": close({res.aws_vpc_encryption_control & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_endpoint_connection_accepter": close({res.aws_vpc_endpoint_connection_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_endpoint_connection_notification": close({res.aws_vpc_endpoint_connection_notification & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_endpoint": close({res.aws_vpc_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_endpoint_policy": close({res.aws_vpc_endpoint_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_endpoint_private_dns": close({res.aws_vpc_endpoint_private_dns & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_endpoint_route_table_association": close({res.aws_vpc_endpoint_route_table_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_endpoint_security_group_association": close({res.aws_vpc_endpoint_security_group_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_endpoint_service_allowed_principal": close({res.aws_vpc_endpoint_service_allowed_principal & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_endpoint_service": close({res.aws_vpc_endpoint_service & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_endpoint_service_private_dns_verification": close({res.aws_vpc_endpoint_service_private_dns_verification & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_endpoint_subnet_association": close({res.aws_vpc_endpoint_subnet_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc": close({res.aws_vpc & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_ipam": close({res.aws_vpc_ipam & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_ipam_organization_admin_account": close({res.aws_vpc_ipam_organization_admin_account & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_ipam_pool_cidr_allocation": close({res.aws_vpc_ipam_pool_cidr_allocation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_ipam_pool_cidr": close({res.aws_vpc_ipam_pool_cidr & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_ipam_pool": close({res.aws_vpc_ipam_pool & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_ipam_preview_next_cidr": close({res.aws_vpc_ipam_preview_next_cidr & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_ipam_resource_discovery_association": close({res.aws_vpc_ipam_resource_discovery_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_ipam_resource_discovery": close({res.aws_vpc_ipam_resource_discovery & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_ipam_scope": close({res.aws_vpc_ipam_scope & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_ipv4_cidr_block_association": close({res.aws_vpc_ipv4_cidr_block_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_ipv6_cidr_block_association": close({res.aws_vpc_ipv6_cidr_block_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_network_performance_metric_subscription": close({res.aws_vpc_network_performance_metric_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_peering_connection_accepter": close({res.aws_vpc_peering_connection_accepter & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_peering_connection": close({res.aws_vpc_peering_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_peering_connection_options": close({res.aws_vpc_peering_connection_options & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_route_server_endpoint": close({res.aws_vpc_route_server_endpoint & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_route_server": close({res.aws_vpc_route_server & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_route_server_peer": close({res.aws_vpc_route_server_peer & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_route_server_propagation": close({res.aws_vpc_route_server_propagation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_route_server_vpc_association": close({res.aws_vpc_route_server_vpc_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_security_group_egress_rule": close({res.aws_vpc_security_group_egress_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_security_group_ingress_rule": close({res.aws_vpc_security_group_ingress_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_security_group_rules_exclusive": close({res.aws_vpc_security_group_rules_exclusive & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpc_security_group_vpc_association": close({res.aws_vpc_security_group_vpc_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_access_log_subscription": close({res.aws_vpclattice_access_log_subscription & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_auth_policy": close({res.aws_vpclattice_auth_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_domain_verification": close({res.aws_vpclattice_domain_verification & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_listener": close({res.aws_vpclattice_listener & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_listener_rule": close({res.aws_vpclattice_listener_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_resource_configuration": close({res.aws_vpclattice_resource_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_resource_gateway": close({res.aws_vpclattice_resource_gateway & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_resource_policy": close({res.aws_vpclattice_resource_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_service": close({res.aws_vpclattice_service & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_service_network": close({res.aws_vpclattice_service_network & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_service_network_resource_association": close({res.aws_vpclattice_service_network_resource_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_service_network_service_association": close({res.aws_vpclattice_service_network_service_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_service_network_vpc_association": close({res.aws_vpclattice_service_network_vpc_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_target_group_attachment": close({res.aws_vpclattice_target_group_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpclattice_target_group": close({res.aws_vpclattice_target_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpn_concentrator": close({res.aws_vpn_concentrator & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpn_connection": close({res.aws_vpn_connection & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpn_connection_route": close({res.aws_vpn_connection_route & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpn_gateway_attachment": close({res.aws_vpn_gateway_attachment & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpn_gateway": close({res.aws_vpn_gateway & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_vpn_gateway_route_propagation": close({res.aws_vpn_gateway_route_propagation & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_waf_byte_match_set": close({res.aws_waf_byte_match_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_waf_geo_match_set": close({res.aws_waf_geo_match_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_waf_ipset": close({res.aws_waf_ipset & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_waf_rate_based_rule": close({res.aws_waf_rate_based_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_waf_regex_match_set": close({res.aws_waf_regex_match_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_waf_regex_pattern_set": close({res.aws_waf_regex_pattern_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_waf_rule": close({res.aws_waf_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_waf_rule_group": close({res.aws_waf_rule_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_waf_size_constraint_set": close({res.aws_waf_size_constraint_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_waf_sql_injection_match_set": close({res.aws_waf_sql_injection_match_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_waf_web_acl": close({res.aws_waf_web_acl & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_waf_xss_match_set": close({res.aws_waf_xss_match_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafregional_byte_match_set": close({res.aws_wafregional_byte_match_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafregional_geo_match_set": close({res.aws_wafregional_geo_match_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafregional_ipset": close({res.aws_wafregional_ipset & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafregional_rate_based_rule": close({res.aws_wafregional_rate_based_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafregional_regex_match_set": close({res.aws_wafregional_regex_match_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafregional_regex_pattern_set": close({res.aws_wafregional_regex_pattern_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafregional_rule": close({res.aws_wafregional_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafregional_rule_group": close({res.aws_wafregional_rule_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafregional_size_constraint_set": close({res.aws_wafregional_size_constraint_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafregional_sql_injection_match_set": close({res.aws_wafregional_sql_injection_match_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafregional_web_acl_association": close({res.aws_wafregional_web_acl_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafregional_web_acl": close({res.aws_wafregional_web_acl & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafregional_xss_match_set": close({res.aws_wafregional_xss_match_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafv2_api_key": close({res.aws_wafv2_api_key & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafv2_ip_set": close({res.aws_wafv2_ip_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafv2_regex_pattern_set": close({res.aws_wafv2_regex_pattern_set & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafv2_rule_group": close({res.aws_wafv2_rule_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafv2_web_acl_association": close({res.aws_wafv2_web_acl_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafv2_web_acl": close({res.aws_wafv2_web_acl & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafv2_web_acl_logging_configuration": close({res.aws_wafv2_web_acl_logging_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafv2_web_acl_rule": close({res.aws_wafv2_web_acl_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_wafv2_web_acl_rule_group_association": close({res.aws_wafv2_web_acl_rule_group_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workmail_default_domain": close({res.aws_workmail_default_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workmail_domain": close({res.aws_workmail_domain & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workmail_group": close({res.aws_workmail_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workmail_organization": close({res.aws_workmail_organization & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workmail_user": close({res.aws_workmail_user & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspaces_connection_alias": close({res.aws_workspaces_connection_alias & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspaces_directory": close({res.aws_workspaces_directory & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspaces_ip_group": close({res.aws_workspaces_ip_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspaces_workspace": close({res.aws_workspaces_workspace & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_browser_settings_association": close({res.aws_workspacesweb_browser_settings_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_browser_settings": close({res.aws_workspacesweb_browser_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_data_protection_settings_association": close({res.aws_workspacesweb_data_protection_settings_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_data_protection_settings": close({res.aws_workspacesweb_data_protection_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_identity_provider": close({res.aws_workspacesweb_identity_provider & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_ip_access_settings_association": close({res.aws_workspacesweb_ip_access_settings_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_ip_access_settings": close({res.aws_workspacesweb_ip_access_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_network_settings_association": close({res.aws_workspacesweb_network_settings_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_network_settings": close({res.aws_workspacesweb_network_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_portal": close({res.aws_workspacesweb_portal & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_session_logger_association": close({res.aws_workspacesweb_session_logger_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_session_logger": close({res.aws_workspacesweb_session_logger & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_trust_store_association": close({res.aws_workspacesweb_trust_store_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_trust_store": close({res.aws_workspacesweb_trust_store & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_user_access_logging_settings_association": close({res.aws_workspacesweb_user_access_logging_settings_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_user_access_logging_settings": close({res.aws_workspacesweb_user_access_logging_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_user_settings_association": close({res.aws_workspacesweb_user_settings_association & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_workspacesweb_user_settings": close({res.aws_workspacesweb_user_settings & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_xray_encryption_config": close({res.aws_xray_encryption_config & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_xray_group": close({res.aws_xray_group & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_xray_indexing_rule": close({res.aws_xray_indexing_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_xray_resource_policy": close({res.aws_xray_resource_policy & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_xray_sampling_rule": close({res.aws_xray_sampling_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_xray_trace_segment_destination": close({res.aws_xray_trace_segment_destination & cuetf.MetaArgs})
 
 }

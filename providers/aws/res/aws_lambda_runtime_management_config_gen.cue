@@ -1,6 +1,6 @@
 package res
 
-#aws_lambda_runtime_management_config: {
+aws_lambda_runtime_management_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_lambda_runtime_management_config")
 	close({

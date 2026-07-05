@@ -1,6 +1,6 @@
 package data
 
-#aws_elasticache_reserved_cache_node_offering: {
+aws_elasticache_reserved_cache_node_offering: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_elasticache_reserved_cache_node_offering")
 	close({

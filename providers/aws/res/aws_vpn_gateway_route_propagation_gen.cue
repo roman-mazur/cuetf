@@ -1,6 +1,6 @@
 package res
 
-#aws_vpn_gateway_route_propagation: {
+aws_vpn_gateway_route_propagation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpn_gateway_route_propagation")
 	close({

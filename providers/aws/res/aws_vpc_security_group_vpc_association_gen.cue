@@ -1,6 +1,6 @@
 package res
 
-#aws_vpc_security_group_vpc_association: {
+aws_vpc_security_group_vpc_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_vpc_security_group_vpc_association")
 	close({

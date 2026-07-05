@@ -1,6 +1,6 @@
 package res
 
-#aws_fsx_backup: {
+aws_fsx_backup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_fsx_backup")
 	close({

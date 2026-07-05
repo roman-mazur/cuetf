@@ -1,6 +1,6 @@
 package res
 
-#aws_bedrockagentcore_agent_runtime_endpoint: {
+aws_bedrockagentcore_agent_runtime_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_agent_runtime_endpoint")
 	close({

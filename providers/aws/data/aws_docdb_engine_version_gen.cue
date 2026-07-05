@@ -1,6 +1,6 @@
 package data
 
-#aws_docdb_engine_version: {
+aws_docdb_engine_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_docdb_engine_version")
 	close({

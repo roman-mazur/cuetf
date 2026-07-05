@@ -1,6 +1,6 @@
 package res
 
-#aws_bedrockagent_agent_knowledge_base_association: {
+aws_bedrockagent_agent_knowledge_base_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagent_agent_knowledge_base_association")
 	close({

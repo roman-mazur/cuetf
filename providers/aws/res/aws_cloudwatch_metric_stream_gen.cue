@@ -1,6 +1,6 @@
 package res
 
-#aws_cloudwatch_metric_stream: {
+aws_cloudwatch_metric_stream: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudwatch_metric_stream")
 	close({
