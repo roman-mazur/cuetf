@@ -1,6 +1,6 @@
 package res
 
-#azurerm_private_dns_zone_virtual_network_link: {
+azurerm_private_dns_zone_virtual_network_link: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_private_dns_zone_virtual_network_link")
 	close({

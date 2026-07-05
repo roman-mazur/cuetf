@@ -1,6 +1,6 @@
 package data
 
-#azurerm_key_vault_certificates: {
+azurerm_key_vault_certificates: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_key_vault_certificates")
 	close({

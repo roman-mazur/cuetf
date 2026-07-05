@@ -1,6 +1,6 @@
 package res
 
-#azurerm_datadog_monitor_sso_configuration: {
+azurerm_datadog_monitor_sso_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_datadog_monitor_sso_configuration")
 	close({

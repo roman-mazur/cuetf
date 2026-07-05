@@ -1,6 +1,6 @@
 package azurerm
 
-#provider: {
+provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm/provider")
 	close({
@@ -11,95 +11,84 @@ package azurerm
 		ado_pipeline_service_connection_id?: string
 		auxiliary_tenant_ids?: [...string]
 
-		// Base64 encoded PKCS#12 certificate bundle to use when
-		// authenticating as a Service Principal using a Client
-		// Certificate
+		// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a
+		// Service Principal using a Client Certificate
 		client_certificate?: string
 
-		// The password associated with the Client Certificate. For use
-		// when authenticating as a Service Principal using a Client
-		// Certificate
+		// The password associated with the Client Certificate. For use when
+		// authenticating as a Service Principal using a Client Certificate
 		client_certificate_password?: string
 
-		// The path to the Client Certificate associated with the Service
-		// Principal for use when authenticating as a Service Principal
-		// using a Client Certificate.
+		// The path to the Client Certificate associated with the Service Principal for
+		// use when authenticating as a Service Principal using a Client Certificate.
 		client_certificate_path?: string
 
 		// The Client ID which should be used.
 		client_id?: string
 
-		// The path to a file containing the Client ID which should be
-		// used.
+		// The path to a file containing the Client ID which should be used.
 		client_id_file_path?: string
 
-		// The Client Secret which should be used. For use When
-		// authenticating as a Service Principal using a Client Secret.
+		// The Client Secret which should be used. For use When authenticating as a
+		// Service Principal using a Client Secret.
 		client_secret?: string
 
-		// The path to a file containing the Client Secret which should be
-		// used. For use When authenticating as a Service Principal using
-		// a Client Secret.
+		// The path to a file containing the Client Secret which should be used. For use
+		// When authenticating as a Service Principal using a Client Secret.
 		client_secret_file_path?: string
 
 		// This will disable the x-ms-correlation-request-id header.
 		disable_correlation_request_id?: bool
 
-		// This will disable the Terraform Partner ID which is used if a
-		// custom `partner_id` isn't specified.
+		// This will disable the Terraform Partner ID which is used if a custom
+		// `partner_id` isn't specified.
 		disable_terraform_partner_id?: bool
 
-		// The Cloud Environment which should be used. Possible values are
-		// public, usgovernment, and china. Defaults to public. Not used
-		// and should not be specified when `metadata_host` is specified.
+		// The Cloud Environment which should be used. Possible values are public,
+		// usgovernment, and china. Defaults to public. Not used and should not be
+		// specified when `metadata_host` is specified.
 		environment?: string
 
-		// The Hostname which should be used for the Azure Metadata
-		// Service.
+		// The Hostname which should be used for the Azure Metadata Service.
 		metadata_host?: string
 
-		// The API version to use for Managed Service Identity (IMDS) -
-		// for cases where the default API version is not supported by
-		// the endpoint. e.g. for Azure Container Apps.
+		// The API version to use for Managed Service Identity (IMDS) - for cases where
+		// the default API version is not supported by the endpoint. e.g. for Azure
+		// Container Apps.
 		msi_api_version?: string
 
-		// The path to a custom endpoint for Managed Service Identity - in
-		// most circumstances this should be detected automatically.
+		// The path to a custom endpoint for Managed Service Identity - in most
+		// circumstances this should be detected automatically.
 		msi_endpoint?: string
 
-		// The bearer token for the request to the OIDC provider. For use
-		// when authenticating as a Service Principal using OpenID
-		// Connect.
+		// The bearer token for the request to the OIDC provider. For use when
+		// authenticating as a Service Principal using OpenID Connect.
 		oidc_request_token?: string
 
-		// The URL for the OIDC provider from which to request an ID
-		// token. For use when authenticating as a Service Principal
-		// using OpenID Connect.
+		// The URL for the OIDC provider from which to request an ID token. For use when
+		// authenticating as a Service Principal using OpenID Connect.
 		oidc_request_url?: string
 
-		// The OIDC ID token for use when authenticating as a Service
-		// Principal using OpenID Connect.
+		// The OIDC ID token for use when authenticating as a Service Principal using OpenID Connect.
 		oidc_token?: string
 
-		// The path to a file containing an OIDC ID token for use when
-		// authenticating as a Service Principal using OpenID Connect.
+		// The path to a file containing an OIDC ID token for use when authenticating as
+		// a Service Principal using OpenID Connect.
 		oidc_token_file_path?: string
 
-		// A GUID/UUID that is registered with Microsoft to facilitate
-		// partner resource usage attribution.
+		// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
 		partner_id?: string
 
-		// The set of Resource Providers which should be automatically
-		// registered for the subscription.
+		// The set of Resource Providers which should be automatically registered for the subscription.
 		resource_provider_registrations?: string
 
-		// A list of Resource Providers to explicitly register for the
-		// subscription, in addition to those specified by the
-		// `resource_provider_registrations` property.
+		// A list of Resource Providers to explicitly register for the subscription, in
+		// addition to those specified by the `resource_provider_registrations`
+		// property.
 		resource_providers_to_register?: [...string]
 
-		// Should the AzureRM Provider use Azure AD Authentication when
-		// accessing the Storage Data Plane APIs?
+		// Should the AzureRM Provider use Azure AD Authentication when accessing the
+		// Storage Data Plane APIs?
 		storage_use_azuread?: bool
 
 		// The Subscription ID which should be used.
@@ -108,8 +97,7 @@ package azurerm
 		// The Tenant ID which should be used.
 		tenant_id?: string
 
-		// Allow Azure AKS Workload Identity to be used for
-		// Authentication.
+		// Allow Azure AKS Workload Identity to be used for Authentication.
 		use_aks_workload_identity?: bool
 
 		// Allow Azure CLI to be used for Authentication.
@@ -123,16 +111,15 @@ package azurerm
 	})
 
 	#enhanced_validation: close({
-		// Should the AzureRM Provider validate location arguments against
-		// the list of supported Azure Locations? When enabled, invalid
-		// locations are caught at plan time; when disabled, they are
-		// caught at apply time.
+		// Should the AzureRM Provider validate location arguments against the list of
+		// supported Azure Locations? When enabled, invalid locations are caught at
+		// plan time; when disabled, they are caught at apply time.
 		locations?: bool
 
-		// Should the AzureRM Provider validate Resource Provider
-		// arguments against the list of supported Resource Providers?
-		// When enabled, invalid resource providers are caught at plan
-		// time; when disabled, they are caught at apply time.
+		// Should the AzureRM Provider validate Resource Provider arguments against the
+		// list of supported Resource Providers? When enabled, invalid resource
+		// providers are caught at plan time; when disabled, they are caught at apply
+		// time.
 		resource_providers?: bool
 	})
 
@@ -157,13 +144,12 @@ package azurerm
 		virtual_machine?: matchN(1, [_#defs."/$defs/features/$defs/virtual_machine", [..._#defs."/$defs/features/$defs/virtual_machine"]])
 		virtual_machine_scale_set?: matchN(1, [_#defs."/$defs/features/$defs/virtual_machine_scale_set", [..._#defs."/$defs/features/$defs/virtual_machine_scale_set"]])
 
-		// Whether to set the resource ID into state before polling
-		// asynchronous operations for completion. Defaults to `false`.
+		// Whether to set the resource ID into state before polling asynchronous
+		// operations for completion. Defaults to `false`.
 		persist_id_on_create_before_polling_for_completion?: bool
 
-		// Whether to skip the import check and allow the provider to
-		// overwrite existing remote resources if present. Defaults to
-		// `false`.
+		// Whether to skip the import check and allow the provider to overwrite existing
+		// remote resources if present. Defaults to `false`.
 		skip_import_check_on_create_and_allow_overwriting_existing_resources?: bool
 	})
 
@@ -186,60 +172,58 @@ package azurerm
 	})
 
 	_#defs: "/$defs/features/$defs/databricks_workspace": close({
-		// When enabled, the managed resource group that contains the
-		// Unity Catalog data will be forcibly deleted when the workspace
-		// is destroyed, regardless of contents.
+		// When enabled, the managed resource group that contains the Unity Catalog data
+		// will be forcibly deleted when the workspace is destroyed, regardless of
+		// contents.
 		force_delete?: bool
 	})
 
 	_#defs: "/$defs/features/$defs/key_vault": close({
-		// When enabled soft-deleted `azurerm_key_vault` resources will be
-		// permanently deleted (e.g purged), when destroyed
+		// When enabled soft-deleted `azurerm_key_vault` resources will be permanently
+		// deleted (e.g purged), when destroyed
 		purge_soft_delete_on_destroy?: bool
 
-		// When enabled soft-deleted `azurerm_key_vault_certificate`
-		// resources will be permanently deleted (e.g purged), when
-		// destroyed
+		// When enabled soft-deleted `azurerm_key_vault_certificate` resources will be
+		// permanently deleted (e.g purged), when destroyed
 		purge_soft_deleted_certificates_on_destroy?: bool
 
 		// When enabled soft-deleted
-		// `azurerm_key_vault_managed_hardware_security_module_key`
-		// resources will be permanently deleted (e.g purged), when
-		// destroyed
+		// `azurerm_key_vault_managed_hardware_security_module_key` resources will be
+		// permanently deleted (e.g purged), when destroyed
 		purge_soft_deleted_hardware_security_module_keys_on_destroy?: bool
 
 		// When enabled soft-deleted
-		// `azurerm_key_vault_managed_hardware_security_module` resources
-		// will be permanently deleted (e.g purged), when destroyed
+		// `azurerm_key_vault_managed_hardware_security_module` resources will be
+		// permanently deleted (e.g purged), when destroyed
 		purge_soft_deleted_hardware_security_modules_on_destroy?: bool
 
-		// When enabled soft-deleted `azurerm_key_vault_key` resources
-		// will be permanently deleted (e.g purged), when destroyed
+		// When enabled soft-deleted `azurerm_key_vault_key` resources will be
+		// permanently deleted (e.g purged), when destroyed
 		purge_soft_deleted_keys_on_destroy?: bool
 
-		// When enabled soft-deleted `azurerm_key_vault_secret` resources
-		// will be permanently deleted (e.g purged), when destroyed
+		// When enabled soft-deleted `azurerm_key_vault_secret` resources will be
+		// permanently deleted (e.g purged), when destroyed
 		purge_soft_deleted_secrets_on_destroy?: bool
 
-		// When enabled soft-deleted `azurerm_key_vault_certificate`
-		// resources will be restored, instead of creating new ones
+		// When enabled soft-deleted `azurerm_key_vault_certificate` resources will be
+		// restored, instead of creating new ones
 		recover_soft_deleted_certificates?: bool
 
 		// When enabled soft-deleted
-		// `azurerm_key_vault_managed_hardware_security_module_key`
-		// resources will be restored, instead of creating new ones
+		// `azurerm_key_vault_managed_hardware_security_module_key` resources will be
+		// restored, instead of creating new ones
 		recover_soft_deleted_hardware_security_module_keys?: bool
 
-		// When enabled soft-deleted `azurerm_key_vault` resources will be
-		// restored, instead of creating new ones
+		// When enabled soft-deleted `azurerm_key_vault` resources will be restored,
+		// instead of creating new ones
 		recover_soft_deleted_key_vaults?: bool
 
-		// When enabled soft-deleted `azurerm_key_vault_key` resources
-		// will be restored, instead of creating new ones
+		// When enabled soft-deleted `azurerm_key_vault_key` resources will be restored,
+		// instead of creating new ones
 		recover_soft_deleted_keys?: bool
 
-		// When enabled soft-deleted `azurerm_key_vault_secret` resources
-		// will be restored, instead of creating new ones
+		// When enabled soft-deleted `azurerm_key_vault_secret` resources will be
+		// restored, instead of creating new ones
 		recover_soft_deleted_secrets?: bool
 	})
 
@@ -256,12 +240,11 @@ package azurerm
 	})
 
 	_#defs: "/$defs/features/$defs/netapp": close({
-		// When enabled, backups will be deleted when the
-		// `azurerm_netapp_backup_vault` resource is destroyed
+		// When enabled, backups will be deleted when the `azurerm_netapp_backup_vault`
+		// resource is destroyed
 		delete_backups_on_backup_vault_destroy?: bool
 
-		// When enabled, the volume will not be destroyed, safeguarding
-		// from severe data loss
+		// When enabled, the volume will not be destroyed, safeguarding from severe data loss
 		prevent_volume_destruction?: bool
 	})
 

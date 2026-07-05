@@ -1,6 +1,6 @@
 package res
 
-#azurerm_application_load_balancer_security_policy: {
+azurerm_application_load_balancer_security_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_application_load_balancer_security_policy")
 	close({

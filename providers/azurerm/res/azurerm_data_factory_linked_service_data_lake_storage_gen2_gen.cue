@@ -1,6 +1,6 @@
 package res
 
-#azurerm_data_factory_linked_service_data_lake_storage_gen2: {
+azurerm_data_factory_linked_service_data_lake_storage_gen2: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_linked_service_data_lake_storage_gen2")
 	close({

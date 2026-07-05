@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_web_pubsub_network_acl: {
+azurerm_web_pubsub_network_acl: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_web_pubsub_network_acl")
 	close({

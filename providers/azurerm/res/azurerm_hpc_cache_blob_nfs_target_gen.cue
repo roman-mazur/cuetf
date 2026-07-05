@@ -1,6 +1,6 @@
 package res
 
-#azurerm_hpc_cache_blob_nfs_target: {
+azurerm_hpc_cache_blob_nfs_target: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_hpc_cache_blob_nfs_target")
 	close({

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_automation_account: {
+azurerm_automation_account: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_automation_account")
 	close({

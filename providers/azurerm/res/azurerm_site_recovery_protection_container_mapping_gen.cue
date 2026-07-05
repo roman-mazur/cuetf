@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_site_recovery_protection_container_mapping: {
+azurerm_site_recovery_protection_container_mapping: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_site_recovery_protection_container_mapping")
 	close({

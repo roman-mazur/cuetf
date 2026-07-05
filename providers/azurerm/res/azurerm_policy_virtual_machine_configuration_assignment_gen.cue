@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_policy_virtual_machine_configuration_assignment: {
+azurerm_policy_virtual_machine_configuration_assignment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_policy_virtual_machine_configuration_assignment")
 	close({

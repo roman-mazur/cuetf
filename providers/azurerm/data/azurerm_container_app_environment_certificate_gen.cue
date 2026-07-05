@@ -1,13 +1,12 @@
 package data
 
-#azurerm_container_app_environment_certificate: {
+azurerm_container_app_environment_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_container_app_environment_certificate")
 	close({
 		timeouts?: #timeouts
 
-		// The Container App Managed Environment ID to configure this
-		// Certificate on.
+		// The Container App Managed Environment ID to configure this Certificate on.
 		container_app_environment_id!: string
 
 		// The expiration date for the Certificate.
@@ -25,10 +24,10 @@ package data
 
 		// The Subject Name for the Certificate.
 		subject_name?: string
-		tags?: [string]: string
 
 		// The Thumbprint of the Certificate.
 		thumbprint?: string
+		tags?: [string]: string
 	})
 
 	#timeouts: close({

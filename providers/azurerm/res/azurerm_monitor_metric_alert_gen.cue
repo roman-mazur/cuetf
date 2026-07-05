@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_monitor_metric_alert: {
+azurerm_monitor_metric_alert: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_metric_alert")
 	close({
@@ -10,27 +10,27 @@ import "list"
 		application_insights_web_test_location_availability_criteria?: matchN(1, [#application_insights_web_test_location_availability_criteria, list.MaxItems(1) & [...#application_insights_web_test_location_availability_criteria]])
 		criteria?: matchN(1, [#criteria, [...#criteria]])
 		dynamic_criteria?: matchN(1, [#dynamic_criteria, list.MaxItems(1) & [...#dynamic_criteria]])
-		timeouts?:            #timeouts
-		auto_mitigate?:       bool
-		description?:         string
-		enabled?:             bool
-		frequency?:           string
-		id?:                  string
-		name!:                string
-		resource_group_name!: string
+		timeouts?:      #timeouts
+		auto_mitigate?: bool
+
+		// The location of the target pluginsdk. Required when using subscription,
+		// resource group scope or multiple scopes.
+		target_resource_location?: string
+		description?:              string
+
+		// The resource type (e.g. Microsoft.Compute/virtualMachines) of the target
+		// pluginsdk. Required when using subscription, resource group scope or
+		// multiple scopes.
+		target_resource_type?: string
+		enabled?:              bool
+		frequency?:            string
+		id?:                   string
+		name!:                 string
+		resource_group_name!:  string
 		scopes!: [...string]
 		severity?: number
 		tags?: [string]: string
-
-		// The location of the target pluginsdk. Required when using
-		// subscription, resource group scope or multiple scopes.
-		target_resource_location?: string
-
-		// The resource type (e.g. Microsoft.Compute/virtualMachines) of
-		// the target pluginsdk. Required when using subscription,
-		// resource group scope or multiple scopes.
-		target_resource_type?: string
-		window_size?:          string
+		window_size?: string
 	})
 
 	#action: close({

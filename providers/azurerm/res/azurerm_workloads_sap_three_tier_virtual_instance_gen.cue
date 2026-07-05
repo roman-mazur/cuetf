@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_workloads_sap_three_tier_virtual_instance: {
+azurerm_workloads_sap_three_tier_virtual_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_workloads_sap_three_tier_virtual_instance")
 	close({

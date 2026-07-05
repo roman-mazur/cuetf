@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_iothub_device_update_instance: {
+azurerm_iothub_device_update_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iothub_device_update_instance")
 	close({

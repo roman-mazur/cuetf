@@ -1,6 +1,6 @@
 package res
 
-#azurerm_databricks_virtual_network_peering: {
+azurerm_databricks_virtual_network_peering: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_databricks_virtual_network_peering")
 	close({

@@ -2,22 +2,22 @@ package res
 
 import "list"
 
-#azurerm_pim_eligible_role_assignment: {
+azurerm_pim_eligible_role_assignment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_pim_eligible_role_assignment")
 	close({
 		schedule?: matchN(1, [#schedule, list.MaxItems(1) & [...#schedule]])
 		ticket?: matchN(1, [#ticket, list.MaxItems(1) & [...#ticket]])
-		timeouts?:          #timeouts
-		condition?:         string
-		condition_version?: string
-		id?:                string
+		timeouts?:  #timeouts
+		condition?: string
 
 		// The justification for this eligible role assignment
-		justification?: string
+		justification?:     string
+		condition_version?: string
 
 		// Object ID of the principal for this eligible role assignment
 		principal_id!: string
+		id?:           string
 
 		// Type of principal to which the role will be assigned
 		principal_type?: string
@@ -25,8 +25,7 @@ import "list"
 		// Role definition ID for this eligible role assignment
 		role_definition_id!: string
 
-		// Scope for this eligible role assignment, should be a valid
-		// resource ID
+		// Scope for this eligible role assignment, should be a valid resource ID
 		scope!: string
 	})
 
@@ -41,8 +40,7 @@ import "list"
 		// User-supplied ticket number to be included with the request
 		number?: string
 
-		// User-supplied ticket system name to be included with the
-		// request
+		// User-supplied ticket system name to be included with the request
 		system?: string
 	})
 

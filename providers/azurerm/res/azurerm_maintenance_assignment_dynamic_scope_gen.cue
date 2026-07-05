@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_maintenance_assignment_dynamic_scope: {
+azurerm_maintenance_assignment_dynamic_scope: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_maintenance_assignment_dynamic_scope")
 	close({

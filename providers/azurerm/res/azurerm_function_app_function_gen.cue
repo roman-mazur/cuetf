@@ -1,6 +1,6 @@
 package res
 
-#azurerm_function_app_function: {
+azurerm_function_app_function: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_function_app_function")
 	close({
@@ -16,8 +16,7 @@ package res
 		// Should this function be enabled. Defaults to `true`.
 		enabled?: bool
 
-		// The ID of the Function App in which this function should
-		// reside.
+		// The ID of the Function App in which this function should reside.
 		function_app_id!: string
 		id?:              string
 

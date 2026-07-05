@@ -1,6 +1,6 @@
 package data
 
-#azurerm_virtual_desktop_host_pool: {
+azurerm_virtual_desktop_host_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_virtual_desktop_host_pool")
 	close({

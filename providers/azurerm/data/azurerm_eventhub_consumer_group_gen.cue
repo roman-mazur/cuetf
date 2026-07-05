@@ -1,6 +1,6 @@
 package data
 
-#azurerm_eventhub_consumer_group: {
+azurerm_eventhub_consumer_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_eventhub_consumer_group")
 	close({

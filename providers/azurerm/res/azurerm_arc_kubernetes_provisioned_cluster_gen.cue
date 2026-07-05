@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_arc_kubernetes_provisioned_cluster: {
+azurerm_arc_kubernetes_provisioned_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_arc_kubernetes_provisioned_cluster")
 	close({

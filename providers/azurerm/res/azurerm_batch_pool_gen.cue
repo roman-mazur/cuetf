@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_batch_pool: {
+azurerm_batch_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_batch_pool")
 	close({
@@ -224,8 +224,7 @@ import "list"
 		password?:        string
 		registry_server!: string
 
-		// The User Assigned Identity to use for Container Registry
-		// access.
+		// The User Assigned Identity to use for Container Registry access.
 		user_assigned_identity_id?: string
 		user_name?:                 string
 	})

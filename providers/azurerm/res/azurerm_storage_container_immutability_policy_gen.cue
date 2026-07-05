@@ -1,6 +1,6 @@
 package res
 
-#azurerm_storage_container_immutability_policy: {
+azurerm_storage_container_immutability_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_storage_container_immutability_policy")
 	close({

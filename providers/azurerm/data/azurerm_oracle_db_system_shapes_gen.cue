@@ -1,6 +1,6 @@
 package data
 
-#azurerm_oracle_db_system_shapes: {
+azurerm_oracle_db_system_shapes: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_oracle_db_system_shapes")
 	close({
@@ -30,11 +30,11 @@ package data
 			runtime_minimum_core_count?:               number
 			shape_family?:                             string
 		})]
-		id?:       string
-		location!: string
 
 		// Filter the versions by zone
-		zone?: string
+		zone?:     string
+		id?:       string
+		location!: string
 	})
 
 	#timeouts: close({

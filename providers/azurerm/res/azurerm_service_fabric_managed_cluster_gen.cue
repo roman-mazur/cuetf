@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_service_fabric_managed_cluster: {
+azurerm_service_fabric_managed_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_service_fabric_managed_cluster")
 	close({

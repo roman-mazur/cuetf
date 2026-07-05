@@ -1,6 +1,6 @@
 package res
 
-#azurerm_network_interface_application_gateway_backend_address_pool_association: {
+azurerm_network_interface_application_gateway_backend_address_pool_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_network_interface_application_gateway_backend_address_pool_association")
 	close({

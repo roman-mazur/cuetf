@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_sentinel_alert_rule_nrt: {
+azurerm_sentinel_alert_rule_nrt: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_sentinel_alert_rule_nrt")
 	close({

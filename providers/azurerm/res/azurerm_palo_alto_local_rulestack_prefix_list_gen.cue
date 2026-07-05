@@ -1,6 +1,6 @@
 package res
 
-#azurerm_palo_alto_local_rulestack_prefix_list: {
+azurerm_palo_alto_local_rulestack_prefix_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_palo_alto_local_rulestack_prefix_list")
 	close({

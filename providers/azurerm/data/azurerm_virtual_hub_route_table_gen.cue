@@ -1,6 +1,6 @@
 package data
 
-#azurerm_virtual_hub_route_table: {
+azurerm_virtual_hub_route_table: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_virtual_hub_route_table")
 	close({

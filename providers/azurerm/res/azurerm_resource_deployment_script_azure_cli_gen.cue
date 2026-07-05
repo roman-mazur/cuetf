@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_resource_deployment_script_azure_cli: {
+azurerm_resource_deployment_script_azure_cli: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_resource_deployment_script_azure_cli")
 	close({

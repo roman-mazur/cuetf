@@ -1,6 +1,6 @@
 package res
 
-#azurerm_security_center_storage_defender: {
+azurerm_security_center_storage_defender: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_security_center_storage_defender")
 	close({

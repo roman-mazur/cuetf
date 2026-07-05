@@ -1,6 +1,6 @@
 package res
 
-#azurerm_data_factory_dataset_azure_blob: {
+azurerm_data_factory_dataset_azure_blob: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_dataset_azure_blob")
 	close({

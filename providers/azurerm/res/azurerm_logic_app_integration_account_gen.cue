@@ -1,6 +1,6 @@
 package res
 
-#azurerm_logic_app_integration_account: {
+azurerm_logic_app_integration_account: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_logic_app_integration_account")
 	close({

@@ -1,6 +1,6 @@
 package data
 
-#azurerm_policy_set_definition: {
+azurerm_policy_set_definition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_policy_set_definition")
 	close({

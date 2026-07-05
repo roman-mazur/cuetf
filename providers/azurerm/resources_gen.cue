@@ -1,1154 +1,1157 @@
 package azurerm
 
-import "github.com/roman-mazur/cuetf/providers/azurerm/res"
+import (
+	"github.com/roman-mazur/cuetf"
+	"github.com/roman-mazur/cuetf/providers/azurerm/res"
+)
 
 #Terraform: {
 	#azurermPrefix: string
-	_#res: "\(#azurermPrefix)_aadb2c_directory": res.#azurerm_aadb2c_directory
-	_#res: "\(#azurermPrefix)_active_directory_domain_service": res.#azurerm_active_directory_domain_service
-	_#res: "\(#azurermPrefix)_active_directory_domain_service_replica_set": res.#azurerm_active_directory_domain_service_replica_set
-	_#res: "\(#azurermPrefix)_active_directory_domain_service_trust": res.#azurerm_active_directory_domain_service_trust
-	_#res: "\(#azurermPrefix)_advanced_threat_protection": res.#azurerm_advanced_threat_protection
-	_#res: "\(#azurermPrefix)_advisor_suppression": res.#azurerm_advisor_suppression
-	_#res: "\(#azurermPrefix)_ai_foundry": res.#azurerm_ai_foundry
-	_#res: "\(#azurermPrefix)_ai_foundry_project": res.#azurerm_ai_foundry_project
-	_#res: "\(#azurermPrefix)_ai_services": res.#azurerm_ai_services
-	_#res: "\(#azurermPrefix)_analysis_services_server": res.#azurerm_analysis_services_server
-	_#res: "\(#azurermPrefix)_api_connection": res.#azurerm_api_connection
-	_#res: "\(#azurermPrefix)_api_management_api_diagnostic": res.#azurerm_api_management_api_diagnostic
-	_#res: "\(#azurermPrefix)_api_management_api": res.#azurerm_api_management_api
-	_#res: "\(#azurermPrefix)_api_management_api_operation": res.#azurerm_api_management_api_operation
-	_#res: "\(#azurermPrefix)_api_management_api_operation_policy": res.#azurerm_api_management_api_operation_policy
-	_#res: "\(#azurermPrefix)_api_management_api_operation_tag": res.#azurerm_api_management_api_operation_tag
-	_#res: "\(#azurermPrefix)_api_management_api_policy": res.#azurerm_api_management_api_policy
-	_#res: "\(#azurermPrefix)_api_management_api_release": res.#azurerm_api_management_api_release
-	_#res: "\(#azurermPrefix)_api_management_api_schema": res.#azurerm_api_management_api_schema
-	_#res: "\(#azurermPrefix)_api_management_api_tag_description": res.#azurerm_api_management_api_tag_description
-	_#res: "\(#azurermPrefix)_api_management_api_tag": res.#azurerm_api_management_api_tag
-	_#res: "\(#azurermPrefix)_api_management_api_version_set": res.#azurerm_api_management_api_version_set
-	_#res: "\(#azurermPrefix)_api_management_authorization_server": res.#azurerm_api_management_authorization_server
-	_#res: "\(#azurermPrefix)_api_management_backend": res.#azurerm_api_management_backend
-	_#res: "\(#azurermPrefix)_api_management_certificate": res.#azurerm_api_management_certificate
-	_#res: "\(#azurermPrefix)_api_management_custom_domain": res.#azurerm_api_management_custom_domain
-	_#res: "\(#azurermPrefix)_api_management_diagnostic": res.#azurerm_api_management_diagnostic
-	_#res: "\(#azurermPrefix)_api_management_email_template": res.#azurerm_api_management_email_template
-	_#res: "\(#azurermPrefix)_api_management_gateway_api": res.#azurerm_api_management_gateway_api
-	_#res: "\(#azurermPrefix)_api_management_gateway_certificate_authority": res.#azurerm_api_management_gateway_certificate_authority
-	_#res: "\(#azurermPrefix)_api_management_gateway": res.#azurerm_api_management_gateway
-	_#res: "\(#azurermPrefix)_api_management_gateway_host_name_configuration": res.#azurerm_api_management_gateway_host_name_configuration
-	_#res: "\(#azurermPrefix)_api_management": res.#azurerm_api_management
-	_#res: "\(#azurermPrefix)_api_management_global_schema": res.#azurerm_api_management_global_schema
-	_#res: "\(#azurermPrefix)_api_management_group": res.#azurerm_api_management_group
-	_#res: "\(#azurermPrefix)_api_management_group_user": res.#azurerm_api_management_group_user
-	_#res: "\(#azurermPrefix)_api_management_identity_provider_aad": res.#azurerm_api_management_identity_provider_aad
-	_#res: "\(#azurermPrefix)_api_management_identity_provider_aadb2c": res.#azurerm_api_management_identity_provider_aadb2c
-	_#res: "\(#azurermPrefix)_api_management_identity_provider_facebook": res.#azurerm_api_management_identity_provider_facebook
-	_#res: "\(#azurermPrefix)_api_management_identity_provider_google": res.#azurerm_api_management_identity_provider_google
-	_#res: "\(#azurermPrefix)_api_management_identity_provider_microsoft": res.#azurerm_api_management_identity_provider_microsoft
-	_#res: "\(#azurermPrefix)_api_management_identity_provider_twitter": res.#azurerm_api_management_identity_provider_twitter
-	_#res: "\(#azurermPrefix)_api_management_logger": res.#azurerm_api_management_logger
-	_#res: "\(#azurermPrefix)_api_management_named_value": res.#azurerm_api_management_named_value
-	_#res: "\(#azurermPrefix)_api_management_notification_recipient_email": res.#azurerm_api_management_notification_recipient_email
-	_#res: "\(#azurermPrefix)_api_management_notification_recipient_user": res.#azurerm_api_management_notification_recipient_user
-	_#res: "\(#azurermPrefix)_api_management_openid_connect_provider": res.#azurerm_api_management_openid_connect_provider
-	_#res: "\(#azurermPrefix)_api_management_policy_fragment": res.#azurerm_api_management_policy_fragment
-	_#res: "\(#azurermPrefix)_api_management_policy": res.#azurerm_api_management_policy
-	_#res: "\(#azurermPrefix)_api_management_product_api": res.#azurerm_api_management_product_api
-	_#res: "\(#azurermPrefix)_api_management_product": res.#azurerm_api_management_product
-	_#res: "\(#azurermPrefix)_api_management_product_group": res.#azurerm_api_management_product_group
-	_#res: "\(#azurermPrefix)_api_management_product_policy": res.#azurerm_api_management_product_policy
-	_#res: "\(#azurermPrefix)_api_management_product_tag": res.#azurerm_api_management_product_tag
-	_#res: "\(#azurermPrefix)_api_management_redis_cache": res.#azurerm_api_management_redis_cache
-	_#res: "\(#azurermPrefix)_api_management_standalone_gateway": res.#azurerm_api_management_standalone_gateway
-	_#res: "\(#azurermPrefix)_api_management_subscription": res.#azurerm_api_management_subscription
-	_#res: "\(#azurermPrefix)_api_management_tag": res.#azurerm_api_management_tag
-	_#res: "\(#azurermPrefix)_api_management_user": res.#azurerm_api_management_user
-	_#res: "\(#azurermPrefix)_api_management_workspace_api_version_set": res.#azurerm_api_management_workspace_api_version_set
-	_#res: "\(#azurermPrefix)_api_management_workspace_certificate": res.#azurerm_api_management_workspace_certificate
-	_#res: "\(#azurermPrefix)_api_management_workspace": res.#azurerm_api_management_workspace
-	_#res: "\(#azurermPrefix)_api_management_workspace_named_value": res.#azurerm_api_management_workspace_named_value
-	_#res: "\(#azurermPrefix)_api_management_workspace_policy_fragment": res.#azurerm_api_management_workspace_policy_fragment
-	_#res: "\(#azurermPrefix)_api_management_workspace_policy": res.#azurerm_api_management_workspace_policy
-	_#res: "\(#azurermPrefix)_app_configuration_feature": res.#azurerm_app_configuration_feature
-	_#res: "\(#azurermPrefix)_app_configuration": res.#azurerm_app_configuration
-	_#res: "\(#azurermPrefix)_app_configuration_key": res.#azurerm_app_configuration_key
-	_#res: "\(#azurermPrefix)_app_service_active_slot": res.#azurerm_app_service_active_slot
-	_#res: "\(#azurermPrefix)_app_service_certificate_binding": res.#azurerm_app_service_certificate_binding
-	_#res: "\(#azurermPrefix)_app_service_certificate": res.#azurerm_app_service_certificate
-	_#res: "\(#azurermPrefix)_app_service_certificate_order": res.#azurerm_app_service_certificate_order
-	_#res: "\(#azurermPrefix)_app_service_connection": res.#azurerm_app_service_connection
-	_#res: "\(#azurermPrefix)_app_service_custom_hostname_binding": res.#azurerm_app_service_custom_hostname_binding
-	_#res: "\(#azurermPrefix)_app_service_environment_v3": res.#azurerm_app_service_environment_v3
-	_#res: "\(#azurermPrefix)_app_service": res.#azurerm_app_service
-	_#res: "\(#azurermPrefix)_app_service_hybrid_connection": res.#azurerm_app_service_hybrid_connection
-	_#res: "\(#azurermPrefix)_app_service_managed_certificate": res.#azurerm_app_service_managed_certificate
-	_#res: "\(#azurermPrefix)_app_service_plan": res.#azurerm_app_service_plan
-	_#res: "\(#azurermPrefix)_app_service_public_certificate": res.#azurerm_app_service_public_certificate
-	_#res: "\(#azurermPrefix)_app_service_slot_custom_hostname_binding": res.#azurerm_app_service_slot_custom_hostname_binding
-	_#res: "\(#azurermPrefix)_app_service_slot": res.#azurerm_app_service_slot
-	_#res: "\(#azurermPrefix)_app_service_slot_virtual_network_swift_connection": res.#azurerm_app_service_slot_virtual_network_swift_connection
-	_#res: "\(#azurermPrefix)_app_service_source_control": res.#azurerm_app_service_source_control
-	_#res: "\(#azurermPrefix)_app_service_source_control_slot": res.#azurerm_app_service_source_control_slot
-	_#res: "\(#azurermPrefix)_app_service_source_control_token": res.#azurerm_app_service_source_control_token
-	_#res: "\(#azurermPrefix)_app_service_virtual_network_swift_connection": res.#azurerm_app_service_virtual_network_swift_connection
-	_#res: "\(#azurermPrefix)_application_gateway": res.#azurerm_application_gateway
-	_#res: "\(#azurermPrefix)_application_insights_analytics_item": res.#azurerm_application_insights_analytics_item
-	_#res: "\(#azurermPrefix)_application_insights_api_key": res.#azurerm_application_insights_api_key
-	_#res: "\(#azurermPrefix)_application_insights": res.#azurerm_application_insights
-	_#res: "\(#azurermPrefix)_application_insights_smart_detection_rule": res.#azurerm_application_insights_smart_detection_rule
-	_#res: "\(#azurermPrefix)_application_insights_standard_web_test": res.#azurerm_application_insights_standard_web_test
-	_#res: "\(#azurermPrefix)_application_insights_web_test": res.#azurerm_application_insights_web_test
-	_#res: "\(#azurermPrefix)_application_insights_workbook": res.#azurerm_application_insights_workbook
-	_#res: "\(#azurermPrefix)_application_insights_workbook_template": res.#azurerm_application_insights_workbook_template
-	_#res: "\(#azurermPrefix)_application_load_balancer_frontend": res.#azurerm_application_load_balancer_frontend
-	_#res: "\(#azurermPrefix)_application_load_balancer": res.#azurerm_application_load_balancer
-	_#res: "\(#azurermPrefix)_application_load_balancer_security_policy": res.#azurerm_application_load_balancer_security_policy
-	_#res: "\(#azurermPrefix)_application_load_balancer_subnet_association": res.#azurerm_application_load_balancer_subnet_association
-	_#res: "\(#azurermPrefix)_application_security_group": res.#azurerm_application_security_group
-	_#res: "\(#azurermPrefix)_arc_kubernetes_cluster_extension": res.#azurerm_arc_kubernetes_cluster_extension
-	_#res: "\(#azurermPrefix)_arc_kubernetes_cluster": res.#azurerm_arc_kubernetes_cluster
-	_#res: "\(#azurermPrefix)_arc_kubernetes_flux_configuration": res.#azurerm_arc_kubernetes_flux_configuration
-	_#res: "\(#azurermPrefix)_arc_kubernetes_provisioned_cluster": res.#azurerm_arc_kubernetes_provisioned_cluster
-	_#res: "\(#azurermPrefix)_arc_machine_automanage_configuration_assignment": res.#azurerm_arc_machine_automanage_configuration_assignment
-	_#res: "\(#azurermPrefix)_arc_machine_extension": res.#azurerm_arc_machine_extension
-	_#res: "\(#azurermPrefix)_arc_machine": res.#azurerm_arc_machine
-	_#res: "\(#azurermPrefix)_arc_private_link_scope": res.#azurerm_arc_private_link_scope
-	_#res: "\(#azurermPrefix)_arc_resource_bridge_appliance": res.#azurerm_arc_resource_bridge_appliance
-	_#res: "\(#azurermPrefix)_attestation_provider": res.#azurerm_attestation_provider
-	_#res: "\(#azurermPrefix)_automanage_configuration": res.#azurerm_automanage_configuration
-	_#res: "\(#azurermPrefix)_automation_account": res.#azurerm_automation_account
-	_#res: "\(#azurermPrefix)_automation_certificate": res.#azurerm_automation_certificate
-	_#res: "\(#azurermPrefix)_automation_connection_certificate": res.#azurerm_automation_connection_certificate
-	_#res: "\(#azurermPrefix)_automation_connection_classic_certificate": res.#azurerm_automation_connection_classic_certificate
-	_#res: "\(#azurermPrefix)_automation_connection": res.#azurerm_automation_connection
-	_#res: "\(#azurermPrefix)_automation_connection_service_principal": res.#azurerm_automation_connection_service_principal
-	_#res: "\(#azurermPrefix)_automation_connection_type": res.#azurerm_automation_connection_type
-	_#res: "\(#azurermPrefix)_automation_credential": res.#azurerm_automation_credential
-	_#res: "\(#azurermPrefix)_automation_dsc_configuration": res.#azurerm_automation_dsc_configuration
-	_#res: "\(#azurermPrefix)_automation_dsc_nodeconfiguration": res.#azurerm_automation_dsc_nodeconfiguration
-	_#res: "\(#azurermPrefix)_automation_hybrid_runbook_worker": res.#azurerm_automation_hybrid_runbook_worker
-	_#res: "\(#azurermPrefix)_automation_hybrid_runbook_worker_group": res.#azurerm_automation_hybrid_runbook_worker_group
-	_#res: "\(#azurermPrefix)_automation_job_schedule": res.#azurerm_automation_job_schedule
-	_#res: "\(#azurermPrefix)_automation_module": res.#azurerm_automation_module
-	_#res: "\(#azurermPrefix)_automation_powershell72_module": res.#azurerm_automation_powershell72_module
-	_#res: "\(#azurermPrefix)_automation_python3_package": res.#azurerm_automation_python3_package
-	_#res: "\(#azurermPrefix)_automation_runbook": res.#azurerm_automation_runbook
-	_#res: "\(#azurermPrefix)_automation_runtime_environment": res.#azurerm_automation_runtime_environment
-	_#res: "\(#azurermPrefix)_automation_runtime_environment_package": res.#azurerm_automation_runtime_environment_package
-	_#res: "\(#azurermPrefix)_automation_schedule": res.#azurerm_automation_schedule
-	_#res: "\(#azurermPrefix)_automation_software_update_configuration": res.#azurerm_automation_software_update_configuration
-	_#res: "\(#azurermPrefix)_automation_source_control": res.#azurerm_automation_source_control
-	_#res: "\(#azurermPrefix)_automation_variable_bool": res.#azurerm_automation_variable_bool
-	_#res: "\(#azurermPrefix)_automation_variable_datetime": res.#azurerm_automation_variable_datetime
-	_#res: "\(#azurermPrefix)_automation_variable_int": res.#azurerm_automation_variable_int
-	_#res: "\(#azurermPrefix)_automation_variable_object": res.#azurerm_automation_variable_object
-	_#res: "\(#azurermPrefix)_automation_variable_string": res.#azurerm_automation_variable_string
-	_#res: "\(#azurermPrefix)_automation_watcher": res.#azurerm_automation_watcher
-	_#res: "\(#azurermPrefix)_automation_webhook": res.#azurerm_automation_webhook
-	_#res: "\(#azurermPrefix)_availability_set": res.#azurerm_availability_set
-	_#res: "\(#azurermPrefix)_backup_container_storage_account": res.#azurerm_backup_container_storage_account
-	_#res: "\(#azurermPrefix)_backup_policy_file_share": res.#azurerm_backup_policy_file_share
-	_#res: "\(#azurermPrefix)_backup_policy_vm": res.#azurerm_backup_policy_vm
-	_#res: "\(#azurermPrefix)_backup_policy_vm_workload": res.#azurerm_backup_policy_vm_workload
-	_#res: "\(#azurermPrefix)_backup_protected_file_share": res.#azurerm_backup_protected_file_share
-	_#res: "\(#azurermPrefix)_backup_protected_vm": res.#azurerm_backup_protected_vm
-	_#res: "\(#azurermPrefix)_bastion_host": res.#azurerm_bastion_host
-	_#res: "\(#azurermPrefix)_batch_account": res.#azurerm_batch_account
-	_#res: "\(#azurermPrefix)_batch_application": res.#azurerm_batch_application
-	_#res: "\(#azurermPrefix)_batch_certificate": res.#azurerm_batch_certificate
-	_#res: "\(#azurermPrefix)_batch_job": res.#azurerm_batch_job
-	_#res: "\(#azurermPrefix)_batch_pool": res.#azurerm_batch_pool
-	_#res: "\(#azurermPrefix)_billing_account_cost_management_export": res.#azurerm_billing_account_cost_management_export
-	_#res: "\(#azurermPrefix)_blueprint_assignment": res.#azurerm_blueprint_assignment
-	_#res: "\(#azurermPrefix)_bot_channel_alexa": res.#azurerm_bot_channel_alexa
-	_#res: "\(#azurermPrefix)_bot_channel_direct_line_speech": res.#azurerm_bot_channel_direct_line_speech
-	_#res: "\(#azurermPrefix)_bot_channel_directline": res.#azurerm_bot_channel_directline
-	_#res: "\(#azurermPrefix)_bot_channel_email": res.#azurerm_bot_channel_email
-	_#res: "\(#azurermPrefix)_bot_channel_facebook": res.#azurerm_bot_channel_facebook
-	_#res: "\(#azurermPrefix)_bot_channel_line": res.#azurerm_bot_channel_line
-	_#res: "\(#azurermPrefix)_bot_channel_ms_teams": res.#azurerm_bot_channel_ms_teams
-	_#res: "\(#azurermPrefix)_bot_channel_slack": res.#azurerm_bot_channel_slack
-	_#res: "\(#azurermPrefix)_bot_channel_sms": res.#azurerm_bot_channel_sms
-	_#res: "\(#azurermPrefix)_bot_channel_web_chat": res.#azurerm_bot_channel_web_chat
-	_#res: "\(#azurermPrefix)_bot_channels_registration": res.#azurerm_bot_channels_registration
-	_#res: "\(#azurermPrefix)_bot_connection": res.#azurerm_bot_connection
-	_#res: "\(#azurermPrefix)_bot_service_azure_bot": res.#azurerm_bot_service_azure_bot
-	_#res: "\(#azurermPrefix)_bot_web_app": res.#azurerm_bot_web_app
-	_#res: "\(#azurermPrefix)_capacity_reservation": res.#azurerm_capacity_reservation
-	_#res: "\(#azurermPrefix)_capacity_reservation_group": res.#azurerm_capacity_reservation_group
-	_#res: "\(#azurermPrefix)_cdn_endpoint_custom_domain": res.#azurerm_cdn_endpoint_custom_domain
-	_#res: "\(#azurermPrefix)_cdn_endpoint": res.#azurerm_cdn_endpoint
-	_#res: "\(#azurermPrefix)_cdn_frontdoor_custom_domain_association": res.#azurerm_cdn_frontdoor_custom_domain_association
-	_#res: "\(#azurermPrefix)_cdn_frontdoor_custom_domain": res.#azurerm_cdn_frontdoor_custom_domain
-	_#res: "\(#azurermPrefix)_cdn_frontdoor_endpoint": res.#azurerm_cdn_frontdoor_endpoint
-	_#res: "\(#azurermPrefix)_cdn_frontdoor_firewall_policy": res.#azurerm_cdn_frontdoor_firewall_policy
-	_#res: "\(#azurermPrefix)_cdn_frontdoor_origin": res.#azurerm_cdn_frontdoor_origin
-	_#res: "\(#azurermPrefix)_cdn_frontdoor_origin_group": res.#azurerm_cdn_frontdoor_origin_group
-	_#res: "\(#azurermPrefix)_cdn_frontdoor_profile": res.#azurerm_cdn_frontdoor_profile
-	_#res: "\(#azurermPrefix)_cdn_frontdoor_route": res.#azurerm_cdn_frontdoor_route
-	_#res: "\(#azurermPrefix)_cdn_frontdoor_rule": res.#azurerm_cdn_frontdoor_rule
-	_#res: "\(#azurermPrefix)_cdn_frontdoor_rule_set": res.#azurerm_cdn_frontdoor_rule_set
-	_#res: "\(#azurermPrefix)_cdn_frontdoor_secret": res.#azurerm_cdn_frontdoor_secret
-	_#res: "\(#azurermPrefix)_cdn_frontdoor_security_policy": res.#azurerm_cdn_frontdoor_security_policy
-	_#res: "\(#azurermPrefix)_cdn_profile": res.#azurerm_cdn_profile
-	_#res: "\(#azurermPrefix)_chaos_studio_capability": res.#azurerm_chaos_studio_capability
-	_#res: "\(#azurermPrefix)_chaos_studio_experiment": res.#azurerm_chaos_studio_experiment
-	_#res: "\(#azurermPrefix)_chaos_studio_target": res.#azurerm_chaos_studio_target
-	_#res: "\(#azurermPrefix)_cognitive_account_customer_managed_key": res.#azurerm_cognitive_account_customer_managed_key
-	_#res: "\(#azurermPrefix)_cognitive_account": res.#azurerm_cognitive_account
-	_#res: "\(#azurermPrefix)_cognitive_account_project": res.#azurerm_cognitive_account_project
-	_#res: "\(#azurermPrefix)_cognitive_account_rai_blocklist": res.#azurerm_cognitive_account_rai_blocklist
-	_#res: "\(#azurermPrefix)_cognitive_account_rai_policy": res.#azurerm_cognitive_account_rai_policy
-	_#res: "\(#azurermPrefix)_cognitive_deployment": res.#azurerm_cognitive_deployment
-	_#res: "\(#azurermPrefix)_communication_service_email_domain_association": res.#azurerm_communication_service_email_domain_association
-	_#res: "\(#azurermPrefix)_communication_service": res.#azurerm_communication_service
-	_#res: "\(#azurermPrefix)_confidential_ledger": res.#azurerm_confidential_ledger
-	_#res: "\(#azurermPrefix)_consumption_budget_management_group": res.#azurerm_consumption_budget_management_group
-	_#res: "\(#azurermPrefix)_consumption_budget_resource_group": res.#azurerm_consumption_budget_resource_group
-	_#res: "\(#azurermPrefix)_consumption_budget_subscription": res.#azurerm_consumption_budget_subscription
-	_#res: "\(#azurermPrefix)_container_app_custom_domain": res.#azurerm_container_app_custom_domain
-	_#res: "\(#azurermPrefix)_container_app_environment_certificate": res.#azurerm_container_app_environment_certificate
-	_#res: "\(#azurermPrefix)_container_app_environment_custom_domain": res.#azurerm_container_app_environment_custom_domain
-	_#res: "\(#azurermPrefix)_container_app_environment_dapr_component": res.#azurerm_container_app_environment_dapr_component
-	_#res: "\(#azurermPrefix)_container_app_environment": res.#azurerm_container_app_environment
-	_#res: "\(#azurermPrefix)_container_app_environment_managed_certificate": res.#azurerm_container_app_environment_managed_certificate
-	_#res: "\(#azurermPrefix)_container_app_environment_storage": res.#azurerm_container_app_environment_storage
-	_#res: "\(#azurermPrefix)_container_app": res.#azurerm_container_app
-	_#res: "\(#azurermPrefix)_container_app_job": res.#azurerm_container_app_job
-	_#res: "\(#azurermPrefix)_container_connected_registry": res.#azurerm_container_connected_registry
-	_#res: "\(#azurermPrefix)_container_group": res.#azurerm_container_group
-	_#res: "\(#azurermPrefix)_container_registry_agent_pool": res.#azurerm_container_registry_agent_pool
-	_#res: "\(#azurermPrefix)_container_registry_cache_rule": res.#azurerm_container_registry_cache_rule
-	_#res: "\(#azurermPrefix)_container_registry_credential_set": res.#azurerm_container_registry_credential_set
-	_#res: "\(#azurermPrefix)_container_registry": res.#azurerm_container_registry
-	_#res: "\(#azurermPrefix)_container_registry_scope_map": res.#azurerm_container_registry_scope_map
-	_#res: "\(#azurermPrefix)_container_registry_task": res.#azurerm_container_registry_task
-	_#res: "\(#azurermPrefix)_container_registry_task_schedule_run_now": res.#azurerm_container_registry_task_schedule_run_now
-	_#res: "\(#azurermPrefix)_container_registry_token": res.#azurerm_container_registry_token
-	_#res: "\(#azurermPrefix)_container_registry_token_password": res.#azurerm_container_registry_token_password
-	_#res: "\(#azurermPrefix)_container_registry_webhook": res.#azurerm_container_registry_webhook
-	_#res: "\(#azurermPrefix)_cosmosdb_account": res.#azurerm_cosmosdb_account
-	_#res: "\(#azurermPrefix)_cosmosdb_cassandra_cluster": res.#azurerm_cosmosdb_cassandra_cluster
-	_#res: "\(#azurermPrefix)_cosmosdb_cassandra_datacenter": res.#azurerm_cosmosdb_cassandra_datacenter
-	_#res: "\(#azurermPrefix)_cosmosdb_cassandra_keyspace": res.#azurerm_cosmosdb_cassandra_keyspace
-	_#res: "\(#azurermPrefix)_cosmosdb_cassandra_table": res.#azurerm_cosmosdb_cassandra_table
-	_#res: "\(#azurermPrefix)_cosmosdb_gremlin_database": res.#azurerm_cosmosdb_gremlin_database
-	_#res: "\(#azurermPrefix)_cosmosdb_gremlin_graph": res.#azurerm_cosmosdb_gremlin_graph
-	_#res: "\(#azurermPrefix)_cosmosdb_mongo_collection": res.#azurerm_cosmosdb_mongo_collection
-	_#res: "\(#azurermPrefix)_cosmosdb_mongo_database": res.#azurerm_cosmosdb_mongo_database
-	_#res: "\(#azurermPrefix)_cosmosdb_mongo_role_definition": res.#azurerm_cosmosdb_mongo_role_definition
-	_#res: "\(#azurermPrefix)_cosmosdb_mongo_user_definition": res.#azurerm_cosmosdb_mongo_user_definition
-	_#res: "\(#azurermPrefix)_cosmosdb_postgresql_cluster": res.#azurerm_cosmosdb_postgresql_cluster
-	_#res: "\(#azurermPrefix)_cosmosdb_postgresql_coordinator_configuration": res.#azurerm_cosmosdb_postgresql_coordinator_configuration
-	_#res: "\(#azurermPrefix)_cosmosdb_postgresql_firewall_rule": res.#azurerm_cosmosdb_postgresql_firewall_rule
-	_#res: "\(#azurermPrefix)_cosmosdb_postgresql_node_configuration": res.#azurerm_cosmosdb_postgresql_node_configuration
-	_#res: "\(#azurermPrefix)_cosmosdb_postgresql_role": res.#azurerm_cosmosdb_postgresql_role
-	_#res: "\(#azurermPrefix)_cosmosdb_sql_container": res.#azurerm_cosmosdb_sql_container
-	_#res: "\(#azurermPrefix)_cosmosdb_sql_database": res.#azurerm_cosmosdb_sql_database
-	_#res: "\(#azurermPrefix)_cosmosdb_sql_dedicated_gateway": res.#azurerm_cosmosdb_sql_dedicated_gateway
-	_#res: "\(#azurermPrefix)_cosmosdb_sql_function": res.#azurerm_cosmosdb_sql_function
-	_#res: "\(#azurermPrefix)_cosmosdb_sql_role_assignment": res.#azurerm_cosmosdb_sql_role_assignment
-	_#res: "\(#azurermPrefix)_cosmosdb_sql_role_definition": res.#azurerm_cosmosdb_sql_role_definition
-	_#res: "\(#azurermPrefix)_cosmosdb_sql_stored_procedure": res.#azurerm_cosmosdb_sql_stored_procedure
-	_#res: "\(#azurermPrefix)_cosmosdb_sql_trigger": res.#azurerm_cosmosdb_sql_trigger
-	_#res: "\(#azurermPrefix)_cosmosdb_table": res.#azurerm_cosmosdb_table
-	_#res: "\(#azurermPrefix)_cost_anomaly_alert": res.#azurerm_cost_anomaly_alert
-	_#res: "\(#azurermPrefix)_cost_management_scheduled_action": res.#azurerm_cost_management_scheduled_action
-	_#res: "\(#azurermPrefix)_custom_ip_prefix": res.#azurerm_custom_ip_prefix
-	_#res: "\(#azurermPrefix)_custom_provider": res.#azurerm_custom_provider
-	_#res: "\(#azurermPrefix)_dashboard_grafana": res.#azurerm_dashboard_grafana
-	_#res: "\(#azurermPrefix)_dashboard_grafana_managed_private_endpoint": res.#azurerm_dashboard_grafana_managed_private_endpoint
-	_#res: "\(#azurermPrefix)_data_factory_credential_service_principal": res.#azurerm_data_factory_credential_service_principal
-	_#res: "\(#azurermPrefix)_data_factory_credential_user_managed_identity": res.#azurerm_data_factory_credential_user_managed_identity
-	_#res: "\(#azurermPrefix)_data_factory_custom_dataset": res.#azurerm_data_factory_custom_dataset
-	_#res: "\(#azurermPrefix)_data_factory_customer_managed_key": res.#azurerm_data_factory_customer_managed_key
-	_#res: "\(#azurermPrefix)_data_factory_data_flow": res.#azurerm_data_factory_data_flow
-	_#res: "\(#azurermPrefix)_data_factory_dataset_azure_blob": res.#azurerm_data_factory_dataset_azure_blob
-	_#res: "\(#azurermPrefix)_data_factory_dataset_azure_sql_table": res.#azurerm_data_factory_dataset_azure_sql_table
-	_#res: "\(#azurermPrefix)_data_factory_dataset_binary": res.#azurerm_data_factory_dataset_binary
-	_#res: "\(#azurermPrefix)_data_factory_dataset_cosmosdb_sqlapi": res.#azurerm_data_factory_dataset_cosmosdb_sqlapi
-	_#res: "\(#azurermPrefix)_data_factory_dataset_delimited_text": res.#azurerm_data_factory_dataset_delimited_text
-	_#res: "\(#azurermPrefix)_data_factory_dataset_http": res.#azurerm_data_factory_dataset_http
-	_#res: "\(#azurermPrefix)_data_factory_dataset_json": res.#azurerm_data_factory_dataset_json
-	_#res: "\(#azurermPrefix)_data_factory_dataset_mysql": res.#azurerm_data_factory_dataset_mysql
-	_#res: "\(#azurermPrefix)_data_factory_dataset_parquet": res.#azurerm_data_factory_dataset_parquet
-	_#res: "\(#azurermPrefix)_data_factory_dataset_postgresql": res.#azurerm_data_factory_dataset_postgresql
-	_#res: "\(#azurermPrefix)_data_factory_dataset_snowflake": res.#azurerm_data_factory_dataset_snowflake
-	_#res: "\(#azurermPrefix)_data_factory_dataset_sql_server_table": res.#azurerm_data_factory_dataset_sql_server_table
-	_#res: "\(#azurermPrefix)_data_factory_flowlet_data_flow": res.#azurerm_data_factory_flowlet_data_flow
-	_#res: "\(#azurermPrefix)_data_factory": res.#azurerm_data_factory
-	_#res: "\(#azurermPrefix)_data_factory_integration_runtime_azure": res.#azurerm_data_factory_integration_runtime_azure
-	_#res: "\(#azurermPrefix)_data_factory_integration_runtime_azure_ssis": res.#azurerm_data_factory_integration_runtime_azure_ssis
-	_#res: "\(#azurermPrefix)_data_factory_integration_runtime_self_hosted": res.#azurerm_data_factory_integration_runtime_self_hosted
-	_#res: "\(#azurermPrefix)_data_factory_linked_custom_service": res.#azurerm_data_factory_linked_custom_service
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_azure_blob_storage": res.#azurerm_data_factory_linked_service_azure_blob_storage
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_azure_databricks": res.#azurerm_data_factory_linked_service_azure_databricks
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_azure_file_storage": res.#azurerm_data_factory_linked_service_azure_file_storage
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_azure_function": res.#azurerm_data_factory_linked_service_azure_function
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_azure_search": res.#azurerm_data_factory_linked_service_azure_search
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_azure_sql_database": res.#azurerm_data_factory_linked_service_azure_sql_database
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_azure_table_storage": res.#azurerm_data_factory_linked_service_azure_table_storage
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_cosmosdb": res.#azurerm_data_factory_linked_service_cosmosdb
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_cosmosdb_mongoapi": res.#azurerm_data_factory_linked_service_cosmosdb_mongoapi
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_data_lake_storage_gen2": res.#azurerm_data_factory_linked_service_data_lake_storage_gen2
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_key_vault": res.#azurerm_data_factory_linked_service_key_vault
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_kusto": res.#azurerm_data_factory_linked_service_kusto
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_mysql": res.#azurerm_data_factory_linked_service_mysql
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_odata": res.#azurerm_data_factory_linked_service_odata
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_odbc": res.#azurerm_data_factory_linked_service_odbc
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_postgresql": res.#azurerm_data_factory_linked_service_postgresql
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_sftp": res.#azurerm_data_factory_linked_service_sftp
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_snowflake": res.#azurerm_data_factory_linked_service_snowflake
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_sql_managed_instance": res.#azurerm_data_factory_linked_service_sql_managed_instance
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_sql_server": res.#azurerm_data_factory_linked_service_sql_server
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_synapse": res.#azurerm_data_factory_linked_service_synapse
-	_#res: "\(#azurermPrefix)_data_factory_linked_service_web": res.#azurerm_data_factory_linked_service_web
-	_#res: "\(#azurermPrefix)_data_factory_managed_private_endpoint": res.#azurerm_data_factory_managed_private_endpoint
-	_#res: "\(#azurermPrefix)_data_factory_pipeline": res.#azurerm_data_factory_pipeline
-	_#res: "\(#azurermPrefix)_data_factory_trigger_blob_event": res.#azurerm_data_factory_trigger_blob_event
-	_#res: "\(#azurermPrefix)_data_factory_trigger_custom_event": res.#azurerm_data_factory_trigger_custom_event
-	_#res: "\(#azurermPrefix)_data_factory_trigger_schedule": res.#azurerm_data_factory_trigger_schedule
-	_#res: "\(#azurermPrefix)_data_factory_trigger_tumbling_window": res.#azurerm_data_factory_trigger_tumbling_window
-	_#res: "\(#azurermPrefix)_data_protection_backup_instance_blob_storage": res.#azurerm_data_protection_backup_instance_blob_storage
-	_#res: "\(#azurermPrefix)_data_protection_backup_instance_data_lake_storage": res.#azurerm_data_protection_backup_instance_data_lake_storage
-	_#res: "\(#azurermPrefix)_data_protection_backup_instance_disk": res.#azurerm_data_protection_backup_instance_disk
-	_#res: "\(#azurermPrefix)_data_protection_backup_instance_kubernetes_cluster": res.#azurerm_data_protection_backup_instance_kubernetes_cluster
-	_#res: "\(#azurermPrefix)_data_protection_backup_instance_mysql_flexible_server": res.#azurerm_data_protection_backup_instance_mysql_flexible_server
-	_#res: "\(#azurermPrefix)_data_protection_backup_instance_postgresql_flexible_server": res.#azurerm_data_protection_backup_instance_postgresql_flexible_server
-	_#res: "\(#azurermPrefix)_data_protection_backup_instance_postgresql": res.#azurerm_data_protection_backup_instance_postgresql
-	_#res: "\(#azurermPrefix)_data_protection_backup_policy_blob_storage": res.#azurerm_data_protection_backup_policy_blob_storage
-	_#res: "\(#azurermPrefix)_data_protection_backup_policy_data_lake_storage": res.#azurerm_data_protection_backup_policy_data_lake_storage
-	_#res: "\(#azurermPrefix)_data_protection_backup_policy_disk": res.#azurerm_data_protection_backup_policy_disk
-	_#res: "\(#azurermPrefix)_data_protection_backup_policy_kubernetes_cluster": res.#azurerm_data_protection_backup_policy_kubernetes_cluster
-	_#res: "\(#azurermPrefix)_data_protection_backup_policy_mysql_flexible_server": res.#azurerm_data_protection_backup_policy_mysql_flexible_server
-	_#res: "\(#azurermPrefix)_data_protection_backup_policy_postgresql_flexible_server": res.#azurerm_data_protection_backup_policy_postgresql_flexible_server
-	_#res: "\(#azurermPrefix)_data_protection_backup_policy_postgresql": res.#azurerm_data_protection_backup_policy_postgresql
-	_#res: "\(#azurermPrefix)_data_protection_backup_vault_customer_managed_key": res.#azurerm_data_protection_backup_vault_customer_managed_key
-	_#res: "\(#azurermPrefix)_data_protection_backup_vault": res.#azurerm_data_protection_backup_vault
-	_#res: "\(#azurermPrefix)_data_protection_resource_guard": res.#azurerm_data_protection_resource_guard
-	_#res: "\(#azurermPrefix)_data_share_account": res.#azurerm_data_share_account
-	_#res: "\(#azurermPrefix)_data_share_dataset_blob_storage": res.#azurerm_data_share_dataset_blob_storage
-	_#res: "\(#azurermPrefix)_data_share_dataset_data_lake_gen2": res.#azurerm_data_share_dataset_data_lake_gen2
-	_#res: "\(#azurermPrefix)_data_share_dataset_kusto_cluster": res.#azurerm_data_share_dataset_kusto_cluster
-	_#res: "\(#azurermPrefix)_data_share_dataset_kusto_database": res.#azurerm_data_share_dataset_kusto_database
-	_#res: "\(#azurermPrefix)_data_share": res.#azurerm_data_share
-	_#res: "\(#azurermPrefix)_database_migration_project": res.#azurerm_database_migration_project
-	_#res: "\(#azurermPrefix)_database_migration_service": res.#azurerm_database_migration_service
-	_#res: "\(#azurermPrefix)_databox_edge_device": res.#azurerm_databox_edge_device
-	_#res: "\(#azurermPrefix)_databricks_access_connector": res.#azurerm_databricks_access_connector
-	_#res: "\(#azurermPrefix)_databricks_virtual_network_peering": res.#azurerm_databricks_virtual_network_peering
-	_#res: "\(#azurermPrefix)_databricks_workspace_customer_managed_key": res.#azurerm_databricks_workspace_customer_managed_key
-	_#res: "\(#azurermPrefix)_databricks_workspace": res.#azurerm_databricks_workspace
-	_#res: "\(#azurermPrefix)_databricks_workspace_root_dbfs_customer_managed_key": res.#azurerm_databricks_workspace_root_dbfs_customer_managed_key
-	_#res: "\(#azurermPrefix)_datadog_monitor": res.#azurerm_datadog_monitor
-	_#res: "\(#azurermPrefix)_datadog_monitor_sso_configuration": res.#azurerm_datadog_monitor_sso_configuration
-	_#res: "\(#azurermPrefix)_datadog_monitor_tag_rule": res.#azurerm_datadog_monitor_tag_rule
-	_#res: "\(#azurermPrefix)_dedicated_hardware_security_module": res.#azurerm_dedicated_hardware_security_module
-	_#res: "\(#azurermPrefix)_dedicated_host": res.#azurerm_dedicated_host
-	_#res: "\(#azurermPrefix)_dedicated_host_group": res.#azurerm_dedicated_host_group
-	_#res: "\(#azurermPrefix)_dev_center_attached_network": res.#azurerm_dev_center_attached_network
-	_#res: "\(#azurermPrefix)_dev_center_catalog": res.#azurerm_dev_center_catalog
-	_#res: "\(#azurermPrefix)_dev_center_dev_box_definition": res.#azurerm_dev_center_dev_box_definition
-	_#res: "\(#azurermPrefix)_dev_center_environment_type": res.#azurerm_dev_center_environment_type
-	_#res: "\(#azurermPrefix)_dev_center_gallery": res.#azurerm_dev_center_gallery
-	_#res: "\(#azurermPrefix)_dev_center": res.#azurerm_dev_center
-	_#res: "\(#azurermPrefix)_dev_center_network_connection": res.#azurerm_dev_center_network_connection
-	_#res: "\(#azurermPrefix)_dev_center_project_environment_type": res.#azurerm_dev_center_project_environment_type
-	_#res: "\(#azurermPrefix)_dev_center_project": res.#azurerm_dev_center_project
-	_#res: "\(#azurermPrefix)_dev_center_project_pool": res.#azurerm_dev_center_project_pool
-	_#res: "\(#azurermPrefix)_dev_test_global_vm_shutdown_schedule": res.#azurerm_dev_test_global_vm_shutdown_schedule
-	_#res: "\(#azurermPrefix)_dev_test_lab": res.#azurerm_dev_test_lab
-	_#res: "\(#azurermPrefix)_dev_test_linux_virtual_machine": res.#azurerm_dev_test_linux_virtual_machine
-	_#res: "\(#azurermPrefix)_dev_test_policy": res.#azurerm_dev_test_policy
-	_#res: "\(#azurermPrefix)_dev_test_schedule": res.#azurerm_dev_test_schedule
-	_#res: "\(#azurermPrefix)_dev_test_virtual_network": res.#azurerm_dev_test_virtual_network
-	_#res: "\(#azurermPrefix)_dev_test_windows_virtual_machine": res.#azurerm_dev_test_windows_virtual_machine
-	_#res: "\(#azurermPrefix)_digital_twins_endpoint_eventgrid": res.#azurerm_digital_twins_endpoint_eventgrid
-	_#res: "\(#azurermPrefix)_digital_twins_endpoint_eventhub": res.#azurerm_digital_twins_endpoint_eventhub
-	_#res: "\(#azurermPrefix)_digital_twins_endpoint_servicebus": res.#azurerm_digital_twins_endpoint_servicebus
-	_#res: "\(#azurermPrefix)_digital_twins_instance": res.#azurerm_digital_twins_instance
-	_#res: "\(#azurermPrefix)_digital_twins_time_series_database_connection": res.#azurerm_digital_twins_time_series_database_connection
-	_#res: "\(#azurermPrefix)_disk_access": res.#azurerm_disk_access
-	_#res: "\(#azurermPrefix)_disk_encryption_set": res.#azurerm_disk_encryption_set
-	_#res: "\(#azurermPrefix)_dns_a_record": res.#azurerm_dns_a_record
-	_#res: "\(#azurermPrefix)_dns_aaaa_record": res.#azurerm_dns_aaaa_record
-	_#res: "\(#azurermPrefix)_dns_caa_record": res.#azurerm_dns_caa_record
-	_#res: "\(#azurermPrefix)_dns_cname_record": res.#azurerm_dns_cname_record
-	_#res: "\(#azurermPrefix)_dns_mx_record": res.#azurerm_dns_mx_record
-	_#res: "\(#azurermPrefix)_dns_ns_record": res.#azurerm_dns_ns_record
-	_#res: "\(#azurermPrefix)_dns_ptr_record": res.#azurerm_dns_ptr_record
-	_#res: "\(#azurermPrefix)_dns_srv_record": res.#azurerm_dns_srv_record
-	_#res: "\(#azurermPrefix)_dns_txt_record": res.#azurerm_dns_txt_record
-	_#res: "\(#azurermPrefix)_dns_zone": res.#azurerm_dns_zone
-	_#res: "\(#azurermPrefix)_dynatrace_monitor": res.#azurerm_dynatrace_monitor
-	_#res: "\(#azurermPrefix)_dynatrace_tag_rules": res.#azurerm_dynatrace_tag_rules
-	_#res: "\(#azurermPrefix)_elastic_cloud_elasticsearch": res.#azurerm_elastic_cloud_elasticsearch
-	_#res: "\(#azurermPrefix)_elastic_san": res.#azurerm_elastic_san
-	_#res: "\(#azurermPrefix)_elastic_san_volume": res.#azurerm_elastic_san_volume
-	_#res: "\(#azurermPrefix)_elastic_san_volume_group": res.#azurerm_elastic_san_volume_group
-	_#res: "\(#azurermPrefix)_email_communication_service_domain": res.#azurerm_email_communication_service_domain
-	_#res: "\(#azurermPrefix)_email_communication_service_domain_sender_username": res.#azurerm_email_communication_service_domain_sender_username
-	_#res: "\(#azurermPrefix)_email_communication_service": res.#azurerm_email_communication_service
-	_#res: "\(#azurermPrefix)_eventgrid_domain": res.#azurerm_eventgrid_domain
-	_#res: "\(#azurermPrefix)_eventgrid_domain_topic": res.#azurerm_eventgrid_domain_topic
-	_#res: "\(#azurermPrefix)_eventgrid_event_subscription": res.#azurerm_eventgrid_event_subscription
-	_#res: "\(#azurermPrefix)_eventgrid_namespace": res.#azurerm_eventgrid_namespace
-	_#res: "\(#azurermPrefix)_eventgrid_namespace_topic": res.#azurerm_eventgrid_namespace_topic
-	_#res: "\(#azurermPrefix)_eventgrid_partner_configuration": res.#azurerm_eventgrid_partner_configuration
-	_#res: "\(#azurermPrefix)_eventgrid_partner_namespace": res.#azurerm_eventgrid_partner_namespace
-	_#res: "\(#azurermPrefix)_eventgrid_partner_registration": res.#azurerm_eventgrid_partner_registration
-	_#res: "\(#azurermPrefix)_eventgrid_system_topic_event_subscription": res.#azurerm_eventgrid_system_topic_event_subscription
-	_#res: "\(#azurermPrefix)_eventgrid_system_topic": res.#azurerm_eventgrid_system_topic
-	_#res: "\(#azurermPrefix)_eventgrid_topic": res.#azurerm_eventgrid_topic
-	_#res: "\(#azurermPrefix)_eventhub_authorization_rule": res.#azurerm_eventhub_authorization_rule
-	_#res: "\(#azurermPrefix)_eventhub_cluster": res.#azurerm_eventhub_cluster
-	_#res: "\(#azurermPrefix)_eventhub_consumer_group": res.#azurerm_eventhub_consumer_group
-	_#res: "\(#azurermPrefix)_eventhub": res.#azurerm_eventhub
-	_#res: "\(#azurermPrefix)_eventhub_namespace_authorization_rule": res.#azurerm_eventhub_namespace_authorization_rule
-	_#res: "\(#azurermPrefix)_eventhub_namespace_customer_managed_key": res.#azurerm_eventhub_namespace_customer_managed_key
-	_#res: "\(#azurermPrefix)_eventhub_namespace_disaster_recovery_config": res.#azurerm_eventhub_namespace_disaster_recovery_config
-	_#res: "\(#azurermPrefix)_eventhub_namespace": res.#azurerm_eventhub_namespace
-	_#res: "\(#azurermPrefix)_eventhub_namespace_schema_group": res.#azurerm_eventhub_namespace_schema_group
-	_#res: "\(#azurermPrefix)_express_route_circuit_authorization": res.#azurerm_express_route_circuit_authorization
-	_#res: "\(#azurermPrefix)_express_route_circuit_connection": res.#azurerm_express_route_circuit_connection
-	_#res: "\(#azurermPrefix)_express_route_circuit": res.#azurerm_express_route_circuit
-	_#res: "\(#azurermPrefix)_express_route_circuit_peering": res.#azurerm_express_route_circuit_peering
-	_#res: "\(#azurermPrefix)_express_route_connection": res.#azurerm_express_route_connection
-	_#res: "\(#azurermPrefix)_express_route_gateway": res.#azurerm_express_route_gateway
-	_#res: "\(#azurermPrefix)_express_route_port_authorization": res.#azurerm_express_route_port_authorization
-	_#res: "\(#azurermPrefix)_express_route_port": res.#azurerm_express_route_port
-	_#res: "\(#azurermPrefix)_extended_custom_location": res.#azurerm_extended_custom_location
-	_#res: "\(#azurermPrefix)_extended_location_custom_location": res.#azurerm_extended_location_custom_location
-	_#res: "\(#azurermPrefix)_fabric_capacity": res.#azurerm_fabric_capacity
-	_#res: "\(#azurermPrefix)_federated_identity_credential": res.#azurerm_federated_identity_credential
-	_#res: "\(#azurermPrefix)_firewall_application_rule_collection": res.#azurerm_firewall_application_rule_collection
-	_#res: "\(#azurermPrefix)_firewall": res.#azurerm_firewall
-	_#res: "\(#azurermPrefix)_firewall_nat_rule_collection": res.#azurerm_firewall_nat_rule_collection
-	_#res: "\(#azurermPrefix)_firewall_network_rule_collection": res.#azurerm_firewall_network_rule_collection
-	_#res: "\(#azurermPrefix)_firewall_policy": res.#azurerm_firewall_policy
-	_#res: "\(#azurermPrefix)_firewall_policy_rule_collection_group": res.#azurerm_firewall_policy_rule_collection_group
-	_#res: "\(#azurermPrefix)_fluid_relay_server": res.#azurerm_fluid_relay_server
-	_#res: "\(#azurermPrefix)_frontdoor_custom_https_configuration": res.#azurerm_frontdoor_custom_https_configuration
-	_#res: "\(#azurermPrefix)_frontdoor_firewall_policy": res.#azurerm_frontdoor_firewall_policy
-	_#res: "\(#azurermPrefix)_frontdoor": res.#azurerm_frontdoor
-	_#res: "\(#azurermPrefix)_frontdoor_rules_engine": res.#azurerm_frontdoor_rules_engine
-	_#res: "\(#azurermPrefix)_function_app_active_slot": res.#azurerm_function_app_active_slot
-	_#res: "\(#azurermPrefix)_function_app_connection": res.#azurerm_function_app_connection
-	_#res: "\(#azurermPrefix)_function_app_flex_consumption": res.#azurerm_function_app_flex_consumption
-	_#res: "\(#azurermPrefix)_function_app_function": res.#azurerm_function_app_function
-	_#res: "\(#azurermPrefix)_function_app": res.#azurerm_function_app
-	_#res: "\(#azurermPrefix)_function_app_hybrid_connection": res.#azurerm_function_app_hybrid_connection
-	_#res: "\(#azurermPrefix)_function_app_slot": res.#azurerm_function_app_slot
-	_#res: "\(#azurermPrefix)_gallery_application": res.#azurerm_gallery_application
-	_#res: "\(#azurermPrefix)_gallery_application_version": res.#azurerm_gallery_application_version
-	_#res: "\(#azurermPrefix)_graph_services_account": res.#azurerm_graph_services_account
-	_#res: "\(#azurermPrefix)_hdinsight_hadoop_cluster": res.#azurerm_hdinsight_hadoop_cluster
-	_#res: "\(#azurermPrefix)_hdinsight_hbase_cluster": res.#azurerm_hdinsight_hbase_cluster
-	_#res: "\(#azurermPrefix)_hdinsight_interactive_query_cluster": res.#azurerm_hdinsight_interactive_query_cluster
-	_#res: "\(#azurermPrefix)_hdinsight_kafka_cluster": res.#azurerm_hdinsight_kafka_cluster
-	_#res: "\(#azurermPrefix)_hdinsight_spark_cluster": res.#azurerm_hdinsight_spark_cluster
-	_#res: "\(#azurermPrefix)_healthbot": res.#azurerm_healthbot
-	_#res: "\(#azurermPrefix)_healthcare_dicom_service": res.#azurerm_healthcare_dicom_service
-	_#res: "\(#azurermPrefix)_healthcare_fhir_service": res.#azurerm_healthcare_fhir_service
-	_#res: "\(#azurermPrefix)_healthcare_medtech_service_fhir_destination": res.#azurerm_healthcare_medtech_service_fhir_destination
-	_#res: "\(#azurermPrefix)_healthcare_medtech_service": res.#azurerm_healthcare_medtech_service
-	_#res: "\(#azurermPrefix)_healthcare_service": res.#azurerm_healthcare_service
-	_#res: "\(#azurermPrefix)_healthcare_workspace": res.#azurerm_healthcare_workspace
-	_#res: "\(#azurermPrefix)_hpc_cache_access_policy": res.#azurerm_hpc_cache_access_policy
-	_#res: "\(#azurermPrefix)_hpc_cache_blob_nfs_target": res.#azurerm_hpc_cache_blob_nfs_target
-	_#res: "\(#azurermPrefix)_hpc_cache_blob_target": res.#azurerm_hpc_cache_blob_target
-	_#res: "\(#azurermPrefix)_hpc_cache": res.#azurerm_hpc_cache
-	_#res: "\(#azurermPrefix)_hpc_cache_nfs_target": res.#azurerm_hpc_cache_nfs_target
-	_#res: "\(#azurermPrefix)_image": res.#azurerm_image
-	_#res: "\(#azurermPrefix)_iot_security_device_group": res.#azurerm_iot_security_device_group
-	_#res: "\(#azurermPrefix)_iot_security_solution": res.#azurerm_iot_security_solution
-	_#res: "\(#azurermPrefix)_iotcentral_application": res.#azurerm_iotcentral_application
-	_#res: "\(#azurermPrefix)_iotcentral_application_network_rule_set": res.#azurerm_iotcentral_application_network_rule_set
-	_#res: "\(#azurermPrefix)_iotcentral_organization": res.#azurerm_iotcentral_organization
-	_#res: "\(#azurermPrefix)_iothub_certificate": res.#azurerm_iothub_certificate
-	_#res: "\(#azurermPrefix)_iothub_consumer_group": res.#azurerm_iothub_consumer_group
-	_#res: "\(#azurermPrefix)_iothub_device_update_account": res.#azurerm_iothub_device_update_account
-	_#res: "\(#azurermPrefix)_iothub_device_update_instance": res.#azurerm_iothub_device_update_instance
-	_#res: "\(#azurermPrefix)_iothub_dps_certificate": res.#azurerm_iothub_dps_certificate
-	_#res: "\(#azurermPrefix)_iothub_dps": res.#azurerm_iothub_dps
-	_#res: "\(#azurermPrefix)_iothub_dps_shared_access_policy": res.#azurerm_iothub_dps_shared_access_policy
-	_#res: "\(#azurermPrefix)_iothub_endpoint_cosmosdb_account": res.#azurerm_iothub_endpoint_cosmosdb_account
-	_#res: "\(#azurermPrefix)_iothub_endpoint_eventhub": res.#azurerm_iothub_endpoint_eventhub
-	_#res: "\(#azurermPrefix)_iothub_endpoint_servicebus_queue": res.#azurerm_iothub_endpoint_servicebus_queue
-	_#res: "\(#azurermPrefix)_iothub_endpoint_servicebus_topic": res.#azurerm_iothub_endpoint_servicebus_topic
-	_#res: "\(#azurermPrefix)_iothub_endpoint_storage_container": res.#azurerm_iothub_endpoint_storage_container
-	_#res: "\(#azurermPrefix)_iothub_enrichment": res.#azurerm_iothub_enrichment
-	_#res: "\(#azurermPrefix)_iothub_fallback_route": res.#azurerm_iothub_fallback_route
-	_#res: "\(#azurermPrefix)_iothub_file_upload": res.#azurerm_iothub_file_upload
-	_#res: "\(#azurermPrefix)_iothub": res.#azurerm_iothub
-	_#res: "\(#azurermPrefix)_iothub_route": res.#azurerm_iothub_route
-	_#res: "\(#azurermPrefix)_iothub_shared_access_policy": res.#azurerm_iothub_shared_access_policy
-	_#res: "\(#azurermPrefix)_ip_group_cidr": res.#azurerm_ip_group_cidr
-	_#res: "\(#azurermPrefix)_ip_group": res.#azurerm_ip_group
-	_#res: "\(#azurermPrefix)_key_vault_access_policy": res.#azurerm_key_vault_access_policy
-	_#res: "\(#azurermPrefix)_key_vault_certificate_contacts": res.#azurerm_key_vault_certificate_contacts
-	_#res: "\(#azurermPrefix)_key_vault_certificate": res.#azurerm_key_vault_certificate
-	_#res: "\(#azurermPrefix)_key_vault_certificate_issuer": res.#azurerm_key_vault_certificate_issuer
-	_#res: "\(#azurermPrefix)_key_vault": res.#azurerm_key_vault
-	_#res: "\(#azurermPrefix)_key_vault_key": res.#azurerm_key_vault_key
-	_#res: "\(#azurermPrefix)_key_vault_managed_hardware_security_module": res.#azurerm_key_vault_managed_hardware_security_module
-	_#res: "\(#azurermPrefix)_key_vault_managed_hardware_security_module_key": res.#azurerm_key_vault_managed_hardware_security_module_key
-	_#res: "\(#azurermPrefix)_key_vault_managed_hardware_security_module_key_rotation_policy": res.#azurerm_key_vault_managed_hardware_security_module_key_rotation_policy
-	_#res: "\(#azurermPrefix)_key_vault_managed_hardware_security_module_role_assignment": res.#azurerm_key_vault_managed_hardware_security_module_role_assignment
-	_#res: "\(#azurermPrefix)_key_vault_managed_hardware_security_module_role_definition": res.#azurerm_key_vault_managed_hardware_security_module_role_definition
-	_#res: "\(#azurermPrefix)_key_vault_managed_storage_account": res.#azurerm_key_vault_managed_storage_account
-	_#res: "\(#azurermPrefix)_key_vault_managed_storage_account_sas_token_definition": res.#azurerm_key_vault_managed_storage_account_sas_token_definition
-	_#res: "\(#azurermPrefix)_key_vault_secret": res.#azurerm_key_vault_secret
-	_#res: "\(#azurermPrefix)_kubernetes_cluster_deployment_safeguard": res.#azurerm_kubernetes_cluster_deployment_safeguard
-	_#res: "\(#azurermPrefix)_kubernetes_cluster_extension": res.#azurerm_kubernetes_cluster_extension
-	_#res: "\(#azurermPrefix)_kubernetes_cluster": res.#azurerm_kubernetes_cluster
-	_#res: "\(#azurermPrefix)_kubernetes_cluster_node_pool": res.#azurerm_kubernetes_cluster_node_pool
-	_#res: "\(#azurermPrefix)_kubernetes_cluster_trusted_access_role_binding": res.#azurerm_kubernetes_cluster_trusted_access_role_binding
-	_#res: "\(#azurermPrefix)_kubernetes_fleet_manager": res.#azurerm_kubernetes_fleet_manager
-	_#res: "\(#azurermPrefix)_kubernetes_fleet_member": res.#azurerm_kubernetes_fleet_member
-	_#res: "\(#azurermPrefix)_kubernetes_fleet_update_run": res.#azurerm_kubernetes_fleet_update_run
-	_#res: "\(#azurermPrefix)_kubernetes_fleet_update_strategy": res.#azurerm_kubernetes_fleet_update_strategy
-	_#res: "\(#azurermPrefix)_kubernetes_flux_configuration": res.#azurerm_kubernetes_flux_configuration
-	_#res: "\(#azurermPrefix)_kusto_attached_database_configuration": res.#azurerm_kusto_attached_database_configuration
-	_#res: "\(#azurermPrefix)_kusto_cluster_customer_managed_key": res.#azurerm_kusto_cluster_customer_managed_key
-	_#res: "\(#azurermPrefix)_kusto_cluster": res.#azurerm_kusto_cluster
-	_#res: "\(#azurermPrefix)_kusto_cluster_managed_private_endpoint": res.#azurerm_kusto_cluster_managed_private_endpoint
-	_#res: "\(#azurermPrefix)_kusto_cluster_principal_assignment": res.#azurerm_kusto_cluster_principal_assignment
-	_#res: "\(#azurermPrefix)_kusto_cosmosdb_data_connection": res.#azurerm_kusto_cosmosdb_data_connection
-	_#res: "\(#azurermPrefix)_kusto_database": res.#azurerm_kusto_database
-	_#res: "\(#azurermPrefix)_kusto_database_principal_assignment": res.#azurerm_kusto_database_principal_assignment
-	_#res: "\(#azurermPrefix)_kusto_eventgrid_data_connection": res.#azurerm_kusto_eventgrid_data_connection
-	_#res: "\(#azurermPrefix)_kusto_eventhub_data_connection": res.#azurerm_kusto_eventhub_data_connection
-	_#res: "\(#azurermPrefix)_kusto_iothub_data_connection": res.#azurerm_kusto_iothub_data_connection
-	_#res: "\(#azurermPrefix)_kusto_script": res.#azurerm_kusto_script
-	_#res: "\(#azurermPrefix)_lb_backend_address_pool_address": res.#azurerm_lb_backend_address_pool_address
-	_#res: "\(#azurermPrefix)_lb_backend_address_pool": res.#azurerm_lb_backend_address_pool
-	_#res: "\(#azurermPrefix)_lb": res.#azurerm_lb
-	_#res: "\(#azurermPrefix)_lb_nat_pool": res.#azurerm_lb_nat_pool
-	_#res: "\(#azurermPrefix)_lb_nat_rule": res.#azurerm_lb_nat_rule
-	_#res: "\(#azurermPrefix)_lb_outbound_rule": res.#azurerm_lb_outbound_rule
-	_#res: "\(#azurermPrefix)_lb_probe": res.#azurerm_lb_probe
-	_#res: "\(#azurermPrefix)_lb_rule": res.#azurerm_lb_rule
-	_#res: "\(#azurermPrefix)_lighthouse_assignment": res.#azurerm_lighthouse_assignment
-	_#res: "\(#azurermPrefix)_lighthouse_definition": res.#azurerm_lighthouse_definition
-	_#res: "\(#azurermPrefix)_linux_function_app": res.#azurerm_linux_function_app
-	_#res: "\(#azurermPrefix)_linux_function_app_slot": res.#azurerm_linux_function_app_slot
-	_#res: "\(#azurermPrefix)_linux_virtual_machine": res.#azurerm_linux_virtual_machine
-	_#res: "\(#azurermPrefix)_linux_virtual_machine_scale_set": res.#azurerm_linux_virtual_machine_scale_set
-	_#res: "\(#azurermPrefix)_linux_web_app": res.#azurerm_linux_web_app
-	_#res: "\(#azurermPrefix)_linux_web_app_slot": res.#azurerm_linux_web_app_slot
-	_#res: "\(#azurermPrefix)_load_test": res.#azurerm_load_test
-	_#res: "\(#azurermPrefix)_local_network_gateway": res.#azurerm_local_network_gateway
-	_#res: "\(#azurermPrefix)_log_analytics_cluster_customer_managed_key": res.#azurerm_log_analytics_cluster_customer_managed_key
-	_#res: "\(#azurermPrefix)_log_analytics_cluster": res.#azurerm_log_analytics_cluster
-	_#res: "\(#azurermPrefix)_log_analytics_data_export_rule": res.#azurerm_log_analytics_data_export_rule
-	_#res: "\(#azurermPrefix)_log_analytics_datasource_windows_event": res.#azurerm_log_analytics_datasource_windows_event
-	_#res: "\(#azurermPrefix)_log_analytics_datasource_windows_performance_counter": res.#azurerm_log_analytics_datasource_windows_performance_counter
-	_#res: "\(#azurermPrefix)_log_analytics_linked_service": res.#azurerm_log_analytics_linked_service
-	_#res: "\(#azurermPrefix)_log_analytics_linked_storage_account": res.#azurerm_log_analytics_linked_storage_account
-	_#res: "\(#azurermPrefix)_log_analytics_query_pack": res.#azurerm_log_analytics_query_pack
-	_#res: "\(#azurermPrefix)_log_analytics_query_pack_query": res.#azurerm_log_analytics_query_pack_query
-	_#res: "\(#azurermPrefix)_log_analytics_saved_search": res.#azurerm_log_analytics_saved_search
-	_#res: "\(#azurermPrefix)_log_analytics_solution": res.#azurerm_log_analytics_solution
-	_#res: "\(#azurermPrefix)_log_analytics_storage_insights": res.#azurerm_log_analytics_storage_insights
-	_#res: "\(#azurermPrefix)_log_analytics_workspace": res.#azurerm_log_analytics_workspace
-	_#res: "\(#azurermPrefix)_log_analytics_workspace_table_custom_log": res.#azurerm_log_analytics_workspace_table_custom_log
-	_#res: "\(#azurermPrefix)_log_analytics_workspace_table": res.#azurerm_log_analytics_workspace_table
-	_#res: "\(#azurermPrefix)_logic_app_action_custom": res.#azurerm_logic_app_action_custom
-	_#res: "\(#azurermPrefix)_logic_app_action_http": res.#azurerm_logic_app_action_http
-	_#res: "\(#azurermPrefix)_logic_app_integration_account_agreement": res.#azurerm_logic_app_integration_account_agreement
-	_#res: "\(#azurermPrefix)_logic_app_integration_account_assembly": res.#azurerm_logic_app_integration_account_assembly
-	_#res: "\(#azurermPrefix)_logic_app_integration_account_batch_configuration": res.#azurerm_logic_app_integration_account_batch_configuration
-	_#res: "\(#azurermPrefix)_logic_app_integration_account_certificate": res.#azurerm_logic_app_integration_account_certificate
-	_#res: "\(#azurermPrefix)_logic_app_integration_account": res.#azurerm_logic_app_integration_account
-	_#res: "\(#azurermPrefix)_logic_app_integration_account_map": res.#azurerm_logic_app_integration_account_map
-	_#res: "\(#azurermPrefix)_logic_app_integration_account_partner": res.#azurerm_logic_app_integration_account_partner
-	_#res: "\(#azurermPrefix)_logic_app_integration_account_schema": res.#azurerm_logic_app_integration_account_schema
-	_#res: "\(#azurermPrefix)_logic_app_integration_account_session": res.#azurerm_logic_app_integration_account_session
-	_#res: "\(#azurermPrefix)_logic_app_standard": res.#azurerm_logic_app_standard
-	_#res: "\(#azurermPrefix)_logic_app_trigger_custom": res.#azurerm_logic_app_trigger_custom
-	_#res: "\(#azurermPrefix)_logic_app_trigger_http_request": res.#azurerm_logic_app_trigger_http_request
-	_#res: "\(#azurermPrefix)_logic_app_trigger_recurrence": res.#azurerm_logic_app_trigger_recurrence
-	_#res: "\(#azurermPrefix)_logic_app_workflow": res.#azurerm_logic_app_workflow
-	_#res: "\(#azurermPrefix)_machine_learning_compute_cluster": res.#azurerm_machine_learning_compute_cluster
-	_#res: "\(#azurermPrefix)_machine_learning_compute_instance": res.#azurerm_machine_learning_compute_instance
-	_#res: "\(#azurermPrefix)_machine_learning_datastore_blobstorage": res.#azurerm_machine_learning_datastore_blobstorage
-	_#res: "\(#azurermPrefix)_machine_learning_datastore_datalake_gen2": res.#azurerm_machine_learning_datastore_datalake_gen2
-	_#res: "\(#azurermPrefix)_machine_learning_datastore_fileshare": res.#azurerm_machine_learning_datastore_fileshare
-	_#res: "\(#azurermPrefix)_machine_learning_inference_cluster": res.#azurerm_machine_learning_inference_cluster
-	_#res: "\(#azurermPrefix)_machine_learning_synapse_spark": res.#azurerm_machine_learning_synapse_spark
-	_#res: "\(#azurermPrefix)_machine_learning_workspace": res.#azurerm_machine_learning_workspace
-	_#res: "\(#azurermPrefix)_machine_learning_workspace_network_outbound_rule_fqdn": res.#azurerm_machine_learning_workspace_network_outbound_rule_fqdn
-	_#res: "\(#azurermPrefix)_machine_learning_workspace_network_outbound_rule_private_endpoint": res.#azurerm_machine_learning_workspace_network_outbound_rule_private_endpoint
-	_#res: "\(#azurermPrefix)_machine_learning_workspace_network_outbound_rule_service_tag": res.#azurerm_machine_learning_workspace_network_outbound_rule_service_tag
-	_#res: "\(#azurermPrefix)_maintenance_assignment_dedicated_host": res.#azurerm_maintenance_assignment_dedicated_host
-	_#res: "\(#azurermPrefix)_maintenance_assignment_dynamic_scope": res.#azurerm_maintenance_assignment_dynamic_scope
-	_#res: "\(#azurermPrefix)_maintenance_assignment_virtual_machine": res.#azurerm_maintenance_assignment_virtual_machine
-	_#res: "\(#azurermPrefix)_maintenance_assignment_virtual_machine_scale_set": res.#azurerm_maintenance_assignment_virtual_machine_scale_set
-	_#res: "\(#azurermPrefix)_maintenance_configuration": res.#azurerm_maintenance_configuration
-	_#res: "\(#azurermPrefix)_managed_application_definition": res.#azurerm_managed_application_definition
-	_#res: "\(#azurermPrefix)_managed_application": res.#azurerm_managed_application
-	_#res: "\(#azurermPrefix)_managed_devops_pool": res.#azurerm_managed_devops_pool
-	_#res: "\(#azurermPrefix)_managed_disk": res.#azurerm_managed_disk
-	_#res: "\(#azurermPrefix)_managed_disk_sas_token": res.#azurerm_managed_disk_sas_token
-	_#res: "\(#azurermPrefix)_managed_lustre_file_system": res.#azurerm_managed_lustre_file_system
-	_#res: "\(#azurermPrefix)_managed_redis_access_policy_assignment": res.#azurerm_managed_redis_access_policy_assignment
-	_#res: "\(#azurermPrefix)_managed_redis": res.#azurerm_managed_redis
-	_#res: "\(#azurermPrefix)_managed_redis_geo_replication": res.#azurerm_managed_redis_geo_replication
-	_#res: "\(#azurermPrefix)_management_group": res.#azurerm_management_group
-	_#res: "\(#azurermPrefix)_management_group_policy_assignment": res.#azurerm_management_group_policy_assignment
-	_#res: "\(#azurermPrefix)_management_group_policy_exemption": res.#azurerm_management_group_policy_exemption
-	_#res: "\(#azurermPrefix)_management_group_policy_remediation": res.#azurerm_management_group_policy_remediation
-	_#res: "\(#azurermPrefix)_management_group_policy_set_definition": res.#azurerm_management_group_policy_set_definition
-	_#res: "\(#azurermPrefix)_management_group_subscription_association": res.#azurerm_management_group_subscription_association
-	_#res: "\(#azurermPrefix)_management_group_template_deployment": res.#azurerm_management_group_template_deployment
-	_#res: "\(#azurermPrefix)_management_lock": res.#azurerm_management_lock
-	_#res: "\(#azurermPrefix)_maps_account": res.#azurerm_maps_account
-	_#res: "\(#azurermPrefix)_maps_creator": res.#azurerm_maps_creator
-	_#res: "\(#azurermPrefix)_marketplace_agreement": res.#azurerm_marketplace_agreement
-	_#res: "\(#azurermPrefix)_marketplace_role_assignment": res.#azurerm_marketplace_role_assignment
-	_#res: "\(#azurermPrefix)_mobile_network_attached_data_network": res.#azurerm_mobile_network_attached_data_network
-	_#res: "\(#azurermPrefix)_mobile_network_data_network": res.#azurerm_mobile_network_data_network
-	_#res: "\(#azurermPrefix)_mobile_network": res.#azurerm_mobile_network
-	_#res: "\(#azurermPrefix)_mobile_network_packet_core_control_plane": res.#azurerm_mobile_network_packet_core_control_plane
-	_#res: "\(#azurermPrefix)_mobile_network_packet_core_data_plane": res.#azurerm_mobile_network_packet_core_data_plane
-	_#res: "\(#azurermPrefix)_mobile_network_service": res.#azurerm_mobile_network_service
-	_#res: "\(#azurermPrefix)_mobile_network_sim": res.#azurerm_mobile_network_sim
-	_#res: "\(#azurermPrefix)_mobile_network_sim_group": res.#azurerm_mobile_network_sim_group
-	_#res: "\(#azurermPrefix)_mobile_network_sim_policy": res.#azurerm_mobile_network_sim_policy
-	_#res: "\(#azurermPrefix)_mobile_network_site": res.#azurerm_mobile_network_site
-	_#res: "\(#azurermPrefix)_mobile_network_slice": res.#azurerm_mobile_network_slice
-	_#res: "\(#azurermPrefix)_mongo_cluster_firewall_rule": res.#azurerm_mongo_cluster_firewall_rule
-	_#res: "\(#azurermPrefix)_mongo_cluster": res.#azurerm_mongo_cluster
-	_#res: "\(#azurermPrefix)_mongo_cluster_user": res.#azurerm_mongo_cluster_user
-	_#res: "\(#azurermPrefix)_monitor_aad_diagnostic_setting": res.#azurerm_monitor_aad_diagnostic_setting
-	_#res: "\(#azurermPrefix)_monitor_action_group": res.#azurerm_monitor_action_group
-	_#res: "\(#azurermPrefix)_monitor_activity_log_alert": res.#azurerm_monitor_activity_log_alert
-	_#res: "\(#azurermPrefix)_monitor_alert_processing_rule_action_group": res.#azurerm_monitor_alert_processing_rule_action_group
-	_#res: "\(#azurermPrefix)_monitor_alert_processing_rule_suppression": res.#azurerm_monitor_alert_processing_rule_suppression
-	_#res: "\(#azurermPrefix)_monitor_alert_prometheus_rule_group": res.#azurerm_monitor_alert_prometheus_rule_group
-	_#res: "\(#azurermPrefix)_monitor_autoscale_setting": res.#azurerm_monitor_autoscale_setting
-	_#res: "\(#azurermPrefix)_monitor_data_collection_endpoint": res.#azurerm_monitor_data_collection_endpoint
-	_#res: "\(#azurermPrefix)_monitor_data_collection_rule_association": res.#azurerm_monitor_data_collection_rule_association
-	_#res: "\(#azurermPrefix)_monitor_data_collection_rule": res.#azurerm_monitor_data_collection_rule
-	_#res: "\(#azurermPrefix)_monitor_diagnostic_setting": res.#azurerm_monitor_diagnostic_setting
-	_#res: "\(#azurermPrefix)_monitor_metric_alert": res.#azurerm_monitor_metric_alert
-	_#res: "\(#azurermPrefix)_monitor_private_link_scope": res.#azurerm_monitor_private_link_scope
-	_#res: "\(#azurermPrefix)_monitor_private_link_scoped_service": res.#azurerm_monitor_private_link_scoped_service
-	_#res: "\(#azurermPrefix)_monitor_scheduled_query_rules_alert": res.#azurerm_monitor_scheduled_query_rules_alert
-	_#res: "\(#azurermPrefix)_monitor_scheduled_query_rules_alert_v2": res.#azurerm_monitor_scheduled_query_rules_alert_v2
-	_#res: "\(#azurermPrefix)_monitor_scheduled_query_rules_log": res.#azurerm_monitor_scheduled_query_rules_log
-	_#res: "\(#azurermPrefix)_monitor_smart_detector_alert_rule": res.#azurerm_monitor_smart_detector_alert_rule
-	_#res: "\(#azurermPrefix)_monitor_workspace": res.#azurerm_monitor_workspace
-	_#res: "\(#azurermPrefix)_mssql_database_extended_auditing_policy": res.#azurerm_mssql_database_extended_auditing_policy
-	_#res: "\(#azurermPrefix)_mssql_database": res.#azurerm_mssql_database
-	_#res: "\(#azurermPrefix)_mssql_database_vulnerability_assessment_rule_baseline": res.#azurerm_mssql_database_vulnerability_assessment_rule_baseline
-	_#res: "\(#azurermPrefix)_mssql_elasticpool": res.#azurerm_mssql_elasticpool
-	_#res: "\(#azurermPrefix)_mssql_failover_group": res.#azurerm_mssql_failover_group
-	_#res: "\(#azurermPrefix)_mssql_firewall_rule": res.#azurerm_mssql_firewall_rule
-	_#res: "\(#azurermPrefix)_mssql_job_agent": res.#azurerm_mssql_job_agent
-	_#res: "\(#azurermPrefix)_mssql_job_credential": res.#azurerm_mssql_job_credential
-	_#res: "\(#azurermPrefix)_mssql_job": res.#azurerm_mssql_job
-	_#res: "\(#azurermPrefix)_mssql_job_schedule": res.#azurerm_mssql_job_schedule
-	_#res: "\(#azurermPrefix)_mssql_job_step": res.#azurerm_mssql_job_step
-	_#res: "\(#azurermPrefix)_mssql_job_target_group": res.#azurerm_mssql_job_target_group
-	_#res: "\(#azurermPrefix)_mssql_managed_database": res.#azurerm_mssql_managed_database
-	_#res: "\(#azurermPrefix)_mssql_managed_instance_active_directory_administrator": res.#azurerm_mssql_managed_instance_active_directory_administrator
-	_#res: "\(#azurermPrefix)_mssql_managed_instance_failover_group": res.#azurerm_mssql_managed_instance_failover_group
-	_#res: "\(#azurermPrefix)_mssql_managed_instance": res.#azurerm_mssql_managed_instance
-	_#res: "\(#azurermPrefix)_mssql_managed_instance_security_alert_policy": res.#azurerm_mssql_managed_instance_security_alert_policy
-	_#res: "\(#azurermPrefix)_mssql_managed_instance_start_stop_schedule": res.#azurerm_mssql_managed_instance_start_stop_schedule
-	_#res: "\(#azurermPrefix)_mssql_managed_instance_transparent_data_encryption": res.#azurerm_mssql_managed_instance_transparent_data_encryption
-	_#res: "\(#azurermPrefix)_mssql_managed_instance_vulnerability_assessment": res.#azurerm_mssql_managed_instance_vulnerability_assessment
-	_#res: "\(#azurermPrefix)_mssql_outbound_firewall_rule": res.#azurerm_mssql_outbound_firewall_rule
-	_#res: "\(#azurermPrefix)_mssql_server_dns_alias": res.#azurerm_mssql_server_dns_alias
-	_#res: "\(#azurermPrefix)_mssql_server_extended_auditing_policy": res.#azurerm_mssql_server_extended_auditing_policy
-	_#res: "\(#azurermPrefix)_mssql_server": res.#azurerm_mssql_server
-	_#res: "\(#azurermPrefix)_mssql_server_microsoft_support_auditing_policy": res.#azurerm_mssql_server_microsoft_support_auditing_policy
-	_#res: "\(#azurermPrefix)_mssql_server_security_alert_policy": res.#azurerm_mssql_server_security_alert_policy
-	_#res: "\(#azurermPrefix)_mssql_server_transparent_data_encryption": res.#azurerm_mssql_server_transparent_data_encryption
-	_#res: "\(#azurermPrefix)_mssql_server_vulnerability_assessment": res.#azurerm_mssql_server_vulnerability_assessment
-	_#res: "\(#azurermPrefix)_mssql_virtual_machine_availability_group_listener": res.#azurerm_mssql_virtual_machine_availability_group_listener
-	_#res: "\(#azurermPrefix)_mssql_virtual_machine": res.#azurerm_mssql_virtual_machine
-	_#res: "\(#azurermPrefix)_mssql_virtual_machine_group": res.#azurerm_mssql_virtual_machine_group
-	_#res: "\(#azurermPrefix)_mssql_virtual_network_rule": res.#azurerm_mssql_virtual_network_rule
-	_#res: "\(#azurermPrefix)_mysql_flexible_database": res.#azurerm_mysql_flexible_database
-	_#res: "\(#azurermPrefix)_mysql_flexible_server_active_directory_administrator": res.#azurerm_mysql_flexible_server_active_directory_administrator
-	_#res: "\(#azurermPrefix)_mysql_flexible_server_configuration": res.#azurerm_mysql_flexible_server_configuration
-	_#res: "\(#azurermPrefix)_mysql_flexible_server_firewall_rule": res.#azurerm_mysql_flexible_server_firewall_rule
-	_#res: "\(#azurermPrefix)_mysql_flexible_server": res.#azurerm_mysql_flexible_server
-	_#res: "\(#azurermPrefix)_nat_gateway": res.#azurerm_nat_gateway
-	_#res: "\(#azurermPrefix)_nat_gateway_public_ip_association": res.#azurerm_nat_gateway_public_ip_association
-	_#res: "\(#azurermPrefix)_nat_gateway_public_ip_prefix_association": res.#azurerm_nat_gateway_public_ip_prefix_association
-	_#res: "\(#azurermPrefix)_netapp_account_encryption": res.#azurerm_netapp_account_encryption
-	_#res: "\(#azurermPrefix)_netapp_account": res.#azurerm_netapp_account
-	_#res: "\(#azurermPrefix)_netapp_backup_policy": res.#azurerm_netapp_backup_policy
-	_#res: "\(#azurermPrefix)_netapp_backup_vault": res.#azurerm_netapp_backup_vault
-	_#res: "\(#azurermPrefix)_netapp_pool": res.#azurerm_netapp_pool
-	_#res: "\(#azurermPrefix)_netapp_snapshot": res.#azurerm_netapp_snapshot
-	_#res: "\(#azurermPrefix)_netapp_snapshot_policy": res.#azurerm_netapp_snapshot_policy
-	_#res: "\(#azurermPrefix)_netapp_volume_bucket": res.#azurerm_netapp_volume_bucket
-	_#res: "\(#azurermPrefix)_netapp_volume_bucket_with_server": res.#azurerm_netapp_volume_bucket_with_server
-	_#res: "\(#azurermPrefix)_netapp_volume": res.#azurerm_netapp_volume
-	_#res: "\(#azurermPrefix)_netapp_volume_group_oracle": res.#azurerm_netapp_volume_group_oracle
-	_#res: "\(#azurermPrefix)_netapp_volume_group_sap_hana": res.#azurerm_netapp_volume_group_sap_hana
-	_#res: "\(#azurermPrefix)_netapp_volume_quota_rule": res.#azurerm_netapp_volume_quota_rule
-	_#res: "\(#azurermPrefix)_network_connection_monitor": res.#azurerm_network_connection_monitor
-	_#res: "\(#azurermPrefix)_network_ddos_protection_plan": res.#azurerm_network_ddos_protection_plan
-	_#res: "\(#azurermPrefix)_network_function_azure_traffic_collector": res.#azurerm_network_function_azure_traffic_collector
-	_#res: "\(#azurermPrefix)_network_function_collector_policy": res.#azurerm_network_function_collector_policy
-	_#res: "\(#azurermPrefix)_network_interface_application_gateway_backend_address_pool_association": res.#azurerm_network_interface_application_gateway_backend_address_pool_association
-	_#res: "\(#azurermPrefix)_network_interface_application_security_group_association": res.#azurerm_network_interface_application_security_group_association
-	_#res: "\(#azurermPrefix)_network_interface_backend_address_pool_association": res.#azurerm_network_interface_backend_address_pool_association
-	_#res: "\(#azurermPrefix)_network_interface": res.#azurerm_network_interface
-	_#res: "\(#azurermPrefix)_network_interface_nat_rule_association": res.#azurerm_network_interface_nat_rule_association
-	_#res: "\(#azurermPrefix)_network_interface_security_group_association": res.#azurerm_network_interface_security_group_association
-	_#res: "\(#azurermPrefix)_network_manager_admin_rule_collection": res.#azurerm_network_manager_admin_rule_collection
-	_#res: "\(#azurermPrefix)_network_manager_admin_rule": res.#azurerm_network_manager_admin_rule
-	_#res: "\(#azurermPrefix)_network_manager_connectivity_configuration": res.#azurerm_network_manager_connectivity_configuration
-	_#res: "\(#azurermPrefix)_network_manager_deployment": res.#azurerm_network_manager_deployment
-	_#res: "\(#azurermPrefix)_network_manager": res.#azurerm_network_manager
-	_#res: "\(#azurermPrefix)_network_manager_ipam_pool": res.#azurerm_network_manager_ipam_pool
-	_#res: "\(#azurermPrefix)_network_manager_ipam_pool_static_cidr": res.#azurerm_network_manager_ipam_pool_static_cidr
-	_#res: "\(#azurermPrefix)_network_manager_management_group_connection": res.#azurerm_network_manager_management_group_connection
-	_#res: "\(#azurermPrefix)_network_manager_network_group": res.#azurerm_network_manager_network_group
-	_#res: "\(#azurermPrefix)_network_manager_routing_configuration": res.#azurerm_network_manager_routing_configuration
-	_#res: "\(#azurermPrefix)_network_manager_routing_rule_collection": res.#azurerm_network_manager_routing_rule_collection
-	_#res: "\(#azurermPrefix)_network_manager_routing_rule": res.#azurerm_network_manager_routing_rule
-	_#res: "\(#azurermPrefix)_network_manager_scope_connection": res.#azurerm_network_manager_scope_connection
-	_#res: "\(#azurermPrefix)_network_manager_security_admin_configuration": res.#azurerm_network_manager_security_admin_configuration
-	_#res: "\(#azurermPrefix)_network_manager_static_member": res.#azurerm_network_manager_static_member
-	_#res: "\(#azurermPrefix)_network_manager_subscription_connection": res.#azurerm_network_manager_subscription_connection
-	_#res: "\(#azurermPrefix)_network_manager_verifier_workspace": res.#azurerm_network_manager_verifier_workspace
-	_#res: "\(#azurermPrefix)_network_manager_verifier_workspace_reachability_analysis_intent": res.#azurerm_network_manager_verifier_workspace_reachability_analysis_intent
-	_#res: "\(#azurermPrefix)_network_packet_capture": res.#azurerm_network_packet_capture
-	_#res: "\(#azurermPrefix)_network_profile": res.#azurerm_network_profile
-	_#res: "\(#azurermPrefix)_network_security_group": res.#azurerm_network_security_group
-	_#res: "\(#azurermPrefix)_network_security_perimeter_access_rule": res.#azurerm_network_security_perimeter_access_rule
-	_#res: "\(#azurermPrefix)_network_security_perimeter_association": res.#azurerm_network_security_perimeter_association
-	_#res: "\(#azurermPrefix)_network_security_perimeter": res.#azurerm_network_security_perimeter
-	_#res: "\(#azurermPrefix)_network_security_perimeter_profile": res.#azurerm_network_security_perimeter_profile
-	_#res: "\(#azurermPrefix)_network_security_rule": res.#azurerm_network_security_rule
-	_#res: "\(#azurermPrefix)_network_watcher_flow_log": res.#azurerm_network_watcher_flow_log
-	_#res: "\(#azurermPrefix)_network_watcher": res.#azurerm_network_watcher
-	_#res: "\(#azurermPrefix)_new_relic_monitor": res.#azurerm_new_relic_monitor
-	_#res: "\(#azurermPrefix)_new_relic_tag_rule": res.#azurerm_new_relic_tag_rule
-	_#res: "\(#azurermPrefix)_nginx_api_key": res.#azurerm_nginx_api_key
-	_#res: "\(#azurermPrefix)_nginx_certificate": res.#azurerm_nginx_certificate
-	_#res: "\(#azurermPrefix)_nginx_configuration": res.#azurerm_nginx_configuration
-	_#res: "\(#azurermPrefix)_nginx_deployment": res.#azurerm_nginx_deployment
-	_#res: "\(#azurermPrefix)_notification_hub_authorization_rule": res.#azurerm_notification_hub_authorization_rule
-	_#res: "\(#azurermPrefix)_notification_hub": res.#azurerm_notification_hub
-	_#res: "\(#azurermPrefix)_notification_hub_namespace": res.#azurerm_notification_hub_namespace
-	_#res: "\(#azurermPrefix)_oracle_autonomous_database_backup": res.#azurerm_oracle_autonomous_database_backup
-	_#res: "\(#azurermPrefix)_oracle_autonomous_database_clone_from_backup": res.#azurerm_oracle_autonomous_database_clone_from_backup
-	_#res: "\(#azurermPrefix)_oracle_autonomous_database_clone_from_database": res.#azurerm_oracle_autonomous_database_clone_from_database
-	_#res: "\(#azurermPrefix)_oracle_autonomous_database": res.#azurerm_oracle_autonomous_database
-	_#res: "\(#azurermPrefix)_oracle_cloud_vm_cluster": res.#azurerm_oracle_cloud_vm_cluster
-	_#res: "\(#azurermPrefix)_oracle_exadata_infrastructure": res.#azurerm_oracle_exadata_infrastructure
-	_#res: "\(#azurermPrefix)_oracle_exascale_database_storage_vault": res.#azurerm_oracle_exascale_database_storage_vault
-	_#res: "\(#azurermPrefix)_oracle_resource_anchor": res.#azurerm_oracle_resource_anchor
-	_#res: "\(#azurermPrefix)_orbital_contact": res.#azurerm_orbital_contact
-	_#res: "\(#azurermPrefix)_orbital_contact_profile": res.#azurerm_orbital_contact_profile
-	_#res: "\(#azurermPrefix)_orbital_spacecraft": res.#azurerm_orbital_spacecraft
-	_#res: "\(#azurermPrefix)_orchestrated_virtual_machine_scale_set": res.#azurerm_orchestrated_virtual_machine_scale_set
-	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack_certificate": res.#azurerm_palo_alto_local_rulestack_certificate
-	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack_fqdn_list": res.#azurerm_palo_alto_local_rulestack_fqdn_list
-	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack": res.#azurerm_palo_alto_local_rulestack
-	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack_outbound_trust_certificate_association": res.#azurerm_palo_alto_local_rulestack_outbound_trust_certificate_association
-	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack_outbound_untrust_certificate_association": res.#azurerm_palo_alto_local_rulestack_outbound_untrust_certificate_association
-	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack_prefix_list": res.#azurerm_palo_alto_local_rulestack_prefix_list
-	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack_rule": res.#azurerm_palo_alto_local_rulestack_rule
-	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_hub_local_rulestack": res.#azurerm_palo_alto_next_generation_firewall_virtual_hub_local_rulestack
-	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_hub_panorama": res.#azurerm_palo_alto_next_generation_firewall_virtual_hub_panorama
-	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_hub_strata_cloud_manager": res.#azurerm_palo_alto_next_generation_firewall_virtual_hub_strata_cloud_manager
-	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_network_local_rulestack": res.#azurerm_palo_alto_next_generation_firewall_virtual_network_local_rulestack
-	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_network_panorama": res.#azurerm_palo_alto_next_generation_firewall_virtual_network_panorama
-	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_network_strata_cloud_manager": res.#azurerm_palo_alto_next_generation_firewall_virtual_network_strata_cloud_manager
-	_#res: "\(#azurermPrefix)_palo_alto_virtual_network_appliance": res.#azurerm_palo_alto_virtual_network_appliance
-	_#res: "\(#azurermPrefix)_pim_active_role_assignment": res.#azurerm_pim_active_role_assignment
-	_#res: "\(#azurermPrefix)_pim_eligible_role_assignment": res.#azurerm_pim_eligible_role_assignment
-	_#res: "\(#azurermPrefix)_point_to_site_vpn_gateway": res.#azurerm_point_to_site_vpn_gateway
-	_#res: "\(#azurermPrefix)_policy_definition": res.#azurerm_policy_definition
-	_#res: "\(#azurermPrefix)_policy_set_definition": res.#azurerm_policy_set_definition
-	_#res: "\(#azurermPrefix)_policy_virtual_machine_configuration_assignment": res.#azurerm_policy_virtual_machine_configuration_assignment
-	_#res: "\(#azurermPrefix)_portal_dashboard": res.#azurerm_portal_dashboard
-	_#res: "\(#azurermPrefix)_portal_tenant_configuration": res.#azurerm_portal_tenant_configuration
-	_#res: "\(#azurermPrefix)_postgresql_active_directory_administrator": res.#azurerm_postgresql_active_directory_administrator
-	_#res: "\(#azurermPrefix)_postgresql_configuration": res.#azurerm_postgresql_configuration
-	_#res: "\(#azurermPrefix)_postgresql_database": res.#azurerm_postgresql_database
-	_#res: "\(#azurermPrefix)_postgresql_firewall_rule": res.#azurerm_postgresql_firewall_rule
-	_#res: "\(#azurermPrefix)_postgresql_flexible_server_active_directory_administrator": res.#azurerm_postgresql_flexible_server_active_directory_administrator
-	_#res: "\(#azurermPrefix)_postgresql_flexible_server_backup": res.#azurerm_postgresql_flexible_server_backup
-	_#res: "\(#azurermPrefix)_postgresql_flexible_server_configuration": res.#azurerm_postgresql_flexible_server_configuration
-	_#res: "\(#azurermPrefix)_postgresql_flexible_server_database": res.#azurerm_postgresql_flexible_server_database
-	_#res: "\(#azurermPrefix)_postgresql_flexible_server_firewall_rule": res.#azurerm_postgresql_flexible_server_firewall_rule
-	_#res: "\(#azurermPrefix)_postgresql_flexible_server": res.#azurerm_postgresql_flexible_server
-	_#res: "\(#azurermPrefix)_postgresql_flexible_server_virtual_endpoint": res.#azurerm_postgresql_flexible_server_virtual_endpoint
-	_#res: "\(#azurermPrefix)_postgresql_server": res.#azurerm_postgresql_server
-	_#res: "\(#azurermPrefix)_postgresql_server_key": res.#azurerm_postgresql_server_key
-	_#res: "\(#azurermPrefix)_postgresql_virtual_network_rule": res.#azurerm_postgresql_virtual_network_rule
-	_#res: "\(#azurermPrefix)_powerbi_embedded": res.#azurerm_powerbi_embedded
-	_#res: "\(#azurermPrefix)_private_dns_a_record": res.#azurerm_private_dns_a_record
-	_#res: "\(#azurermPrefix)_private_dns_aaaa_record": res.#azurerm_private_dns_aaaa_record
-	_#res: "\(#azurermPrefix)_private_dns_cname_record": res.#azurerm_private_dns_cname_record
-	_#res: "\(#azurermPrefix)_private_dns_mx_record": res.#azurerm_private_dns_mx_record
-	_#res: "\(#azurermPrefix)_private_dns_ptr_record": res.#azurerm_private_dns_ptr_record
-	_#res: "\(#azurermPrefix)_private_dns_resolver_dns_forwarding_ruleset": res.#azurerm_private_dns_resolver_dns_forwarding_ruleset
-	_#res: "\(#azurermPrefix)_private_dns_resolver_forwarding_rule": res.#azurerm_private_dns_resolver_forwarding_rule
-	_#res: "\(#azurermPrefix)_private_dns_resolver": res.#azurerm_private_dns_resolver
-	_#res: "\(#azurermPrefix)_private_dns_resolver_inbound_endpoint": res.#azurerm_private_dns_resolver_inbound_endpoint
-	_#res: "\(#azurermPrefix)_private_dns_resolver_outbound_endpoint": res.#azurerm_private_dns_resolver_outbound_endpoint
-	_#res: "\(#azurermPrefix)_private_dns_resolver_virtual_network_link": res.#azurerm_private_dns_resolver_virtual_network_link
-	_#res: "\(#azurermPrefix)_private_dns_srv_record": res.#azurerm_private_dns_srv_record
-	_#res: "\(#azurermPrefix)_private_dns_txt_record": res.#azurerm_private_dns_txt_record
-	_#res: "\(#azurermPrefix)_private_dns_zone": res.#azurerm_private_dns_zone
-	_#res: "\(#azurermPrefix)_private_dns_zone_virtual_network_link": res.#azurerm_private_dns_zone_virtual_network_link
-	_#res: "\(#azurermPrefix)_private_endpoint_application_security_group_association": res.#azurerm_private_endpoint_application_security_group_association
-	_#res: "\(#azurermPrefix)_private_endpoint": res.#azurerm_private_endpoint
-	_#res: "\(#azurermPrefix)_private_link_service": res.#azurerm_private_link_service
-	_#res: "\(#azurermPrefix)_proximity_placement_group": res.#azurerm_proximity_placement_group
-	_#res: "\(#azurermPrefix)_public_ip": res.#azurerm_public_ip
-	_#res: "\(#azurermPrefix)_public_ip_prefix": res.#azurerm_public_ip_prefix
-	_#res: "\(#azurermPrefix)_purview_account": res.#azurerm_purview_account
-	_#res: "\(#azurermPrefix)_qumulo_file_system": res.#azurerm_qumulo_file_system
-	_#res: "\(#azurermPrefix)_recovery_services_vault": res.#azurerm_recovery_services_vault
-	_#res: "\(#azurermPrefix)_recovery_services_vault_resource_guard_association": res.#azurerm_recovery_services_vault_resource_guard_association
-	_#res: "\(#azurermPrefix)_redhat_openshift_cluster": res.#azurerm_redhat_openshift_cluster
-	_#res: "\(#azurermPrefix)_redis_cache_access_policy_assignment": res.#azurerm_redis_cache_access_policy_assignment
-	_#res: "\(#azurermPrefix)_redis_cache_access_policy": res.#azurerm_redis_cache_access_policy
-	_#res: "\(#azurermPrefix)_redis_cache": res.#azurerm_redis_cache
-	_#res: "\(#azurermPrefix)_redis_enterprise_cluster": res.#azurerm_redis_enterprise_cluster
-	_#res: "\(#azurermPrefix)_redis_enterprise_database": res.#azurerm_redis_enterprise_database
-	_#res: "\(#azurermPrefix)_redis_firewall_rule": res.#azurerm_redis_firewall_rule
-	_#res: "\(#azurermPrefix)_redis_linked_server": res.#azurerm_redis_linked_server
-	_#res: "\(#azurermPrefix)_relay_hybrid_connection_authorization_rule": res.#azurerm_relay_hybrid_connection_authorization_rule
-	_#res: "\(#azurermPrefix)_relay_hybrid_connection": res.#azurerm_relay_hybrid_connection
-	_#res: "\(#azurermPrefix)_relay_namespace_authorization_rule": res.#azurerm_relay_namespace_authorization_rule
-	_#res: "\(#azurermPrefix)_relay_namespace": res.#azurerm_relay_namespace
-	_#res: "\(#azurermPrefix)_resource_deployment_script_azure_cli": res.#azurerm_resource_deployment_script_azure_cli
-	_#res: "\(#azurermPrefix)_resource_deployment_script_azure_power_shell": res.#azurerm_resource_deployment_script_azure_power_shell
-	_#res: "\(#azurermPrefix)_resource_group_cost_management_export": res.#azurerm_resource_group_cost_management_export
-	_#res: "\(#azurermPrefix)_resource_group_cost_management_view": res.#azurerm_resource_group_cost_management_view
-	_#res: "\(#azurermPrefix)_resource_group": res.#azurerm_resource_group
-	_#res: "\(#azurermPrefix)_resource_group_policy_assignment": res.#azurerm_resource_group_policy_assignment
-	_#res: "\(#azurermPrefix)_resource_group_policy_exemption": res.#azurerm_resource_group_policy_exemption
-	_#res: "\(#azurermPrefix)_resource_group_policy_remediation": res.#azurerm_resource_group_policy_remediation
-	_#res: "\(#azurermPrefix)_resource_group_template_deployment": res.#azurerm_resource_group_template_deployment
-	_#res: "\(#azurermPrefix)_resource_management_private_link_association": res.#azurerm_resource_management_private_link_association
-	_#res: "\(#azurermPrefix)_resource_management_private_link": res.#azurerm_resource_management_private_link
-	_#res: "\(#azurermPrefix)_resource_policy_assignment": res.#azurerm_resource_policy_assignment
-	_#res: "\(#azurermPrefix)_resource_policy_exemption": res.#azurerm_resource_policy_exemption
-	_#res: "\(#azurermPrefix)_resource_policy_remediation": res.#azurerm_resource_policy_remediation
-	_#res: "\(#azurermPrefix)_resource_provider_feature_registration": res.#azurerm_resource_provider_feature_registration
-	_#res: "\(#azurermPrefix)_resource_provider_registration": res.#azurerm_resource_provider_registration
-	_#res: "\(#azurermPrefix)_restore_point_collection": res.#azurerm_restore_point_collection
-	_#res: "\(#azurermPrefix)_role_assignment": res.#azurerm_role_assignment
-	_#res: "\(#azurermPrefix)_role_definition": res.#azurerm_role_definition
-	_#res: "\(#azurermPrefix)_role_management_policy": res.#azurerm_role_management_policy
-	_#res: "\(#azurermPrefix)_route_filter": res.#azurerm_route_filter
-	_#res: "\(#azurermPrefix)_route": res.#azurerm_route
-	_#res: "\(#azurermPrefix)_route_map": res.#azurerm_route_map
-	_#res: "\(#azurermPrefix)_route_server_bgp_connection": res.#azurerm_route_server_bgp_connection
-	_#res: "\(#azurermPrefix)_route_server": res.#azurerm_route_server
-	_#res: "\(#azurermPrefix)_route_table": res.#azurerm_route_table
-	_#res: "\(#azurermPrefix)_search_service": res.#azurerm_search_service
-	_#res: "\(#azurermPrefix)_search_shared_private_link_service": res.#azurerm_search_shared_private_link_service
-	_#res: "\(#azurermPrefix)_security_center_assessment": res.#azurerm_security_center_assessment
-	_#res: "\(#azurermPrefix)_security_center_assessment_policy": res.#azurerm_security_center_assessment_policy
-	_#res: "\(#azurermPrefix)_security_center_auto_provisioning": res.#azurerm_security_center_auto_provisioning
-	_#res: "\(#azurermPrefix)_security_center_automation": res.#azurerm_security_center_automation
-	_#res: "\(#azurermPrefix)_security_center_contact": res.#azurerm_security_center_contact
-	_#res: "\(#azurermPrefix)_security_center_server_vulnerability_assessment_virtual_machine": res.#azurerm_security_center_server_vulnerability_assessment_virtual_machine
-	_#res: "\(#azurermPrefix)_security_center_server_vulnerability_assessments_setting": res.#azurerm_security_center_server_vulnerability_assessments_setting
-	_#res: "\(#azurermPrefix)_security_center_setting": res.#azurerm_security_center_setting
-	_#res: "\(#azurermPrefix)_security_center_storage_defender": res.#azurerm_security_center_storage_defender
-	_#res: "\(#azurermPrefix)_security_center_subscription_pricing": res.#azurerm_security_center_subscription_pricing
-	_#res: "\(#azurermPrefix)_security_center_workspace": res.#azurerm_security_center_workspace
-	_#res: "\(#azurermPrefix)_sentinel_alert_rule_anomaly_built_in": res.#azurerm_sentinel_alert_rule_anomaly_built_in
-	_#res: "\(#azurermPrefix)_sentinel_alert_rule_anomaly_duplicate": res.#azurerm_sentinel_alert_rule_anomaly_duplicate
-	_#res: "\(#azurermPrefix)_sentinel_alert_rule_fusion": res.#azurerm_sentinel_alert_rule_fusion
-	_#res: "\(#azurermPrefix)_sentinel_alert_rule_machine_learning_behavior_analytics": res.#azurerm_sentinel_alert_rule_machine_learning_behavior_analytics
-	_#res: "\(#azurermPrefix)_sentinel_alert_rule_ms_security_incident": res.#azurerm_sentinel_alert_rule_ms_security_incident
-	_#res: "\(#azurermPrefix)_sentinel_alert_rule_nrt": res.#azurerm_sentinel_alert_rule_nrt
-	_#res: "\(#azurermPrefix)_sentinel_alert_rule_scheduled": res.#azurerm_sentinel_alert_rule_scheduled
-	_#res: "\(#azurermPrefix)_sentinel_alert_rule_threat_intelligence": res.#azurerm_sentinel_alert_rule_threat_intelligence
-	_#res: "\(#azurermPrefix)_sentinel_automation_rule": res.#azurerm_sentinel_automation_rule
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_aws_cloud_trail": res.#azurerm_sentinel_data_connector_aws_cloud_trail
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_aws_s3": res.#azurerm_sentinel_data_connector_aws_s3
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_azure_active_directory": res.#azurerm_sentinel_data_connector_azure_active_directory
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_azure_advanced_threat_protection": res.#azurerm_sentinel_data_connector_azure_advanced_threat_protection
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_azure_security_center": res.#azurerm_sentinel_data_connector_azure_security_center
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_dynamics_365": res.#azurerm_sentinel_data_connector_dynamics_365
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_iot": res.#azurerm_sentinel_data_connector_iot
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_microsoft_cloud_app_security": res.#azurerm_sentinel_data_connector_microsoft_cloud_app_security
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_microsoft_defender_advanced_threat_protection": res.#azurerm_sentinel_data_connector_microsoft_defender_advanced_threat_protection
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_microsoft_threat_intelligence": res.#azurerm_sentinel_data_connector_microsoft_threat_intelligence
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_microsoft_threat_protection": res.#azurerm_sentinel_data_connector_microsoft_threat_protection
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_office_365": res.#azurerm_sentinel_data_connector_office_365
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_office_365_project": res.#azurerm_sentinel_data_connector_office_365_project
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_office_atp": res.#azurerm_sentinel_data_connector_office_atp
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_office_irm": res.#azurerm_sentinel_data_connector_office_irm
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_office_power_bi": res.#azurerm_sentinel_data_connector_office_power_bi
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_threat_intelligence": res.#azurerm_sentinel_data_connector_threat_intelligence
-	_#res: "\(#azurermPrefix)_sentinel_data_connector_threat_intelligence_taxii": res.#azurerm_sentinel_data_connector_threat_intelligence_taxii
-	_#res: "\(#azurermPrefix)_sentinel_log_analytics_workspace_onboarding": res.#azurerm_sentinel_log_analytics_workspace_onboarding
-	_#res: "\(#azurermPrefix)_sentinel_metadata": res.#azurerm_sentinel_metadata
-	_#res: "\(#azurermPrefix)_sentinel_threat_intelligence_indicator": res.#azurerm_sentinel_threat_intelligence_indicator
-	_#res: "\(#azurermPrefix)_sentinel_watchlist": res.#azurerm_sentinel_watchlist
-	_#res: "\(#azurermPrefix)_sentinel_watchlist_item": res.#azurerm_sentinel_watchlist_item
-	_#res: "\(#azurermPrefix)_service_fabric_cluster": res.#azurerm_service_fabric_cluster
-	_#res: "\(#azurermPrefix)_service_fabric_managed_cluster": res.#azurerm_service_fabric_managed_cluster
-	_#res: "\(#azurermPrefix)_service_plan": res.#azurerm_service_plan
-	_#res: "\(#azurermPrefix)_servicebus_namespace_authorization_rule": res.#azurerm_servicebus_namespace_authorization_rule
-	_#res: "\(#azurermPrefix)_servicebus_namespace_customer_managed_key": res.#azurerm_servicebus_namespace_customer_managed_key
-	_#res: "\(#azurermPrefix)_servicebus_namespace_disaster_recovery_config": res.#azurerm_servicebus_namespace_disaster_recovery_config
-	_#res: "\(#azurermPrefix)_servicebus_namespace": res.#azurerm_servicebus_namespace
-	_#res: "\(#azurermPrefix)_servicebus_queue_authorization_rule": res.#azurerm_servicebus_queue_authorization_rule
-	_#res: "\(#azurermPrefix)_servicebus_queue": res.#azurerm_servicebus_queue
-	_#res: "\(#azurermPrefix)_servicebus_subscription": res.#azurerm_servicebus_subscription
-	_#res: "\(#azurermPrefix)_servicebus_subscription_rule": res.#azurerm_servicebus_subscription_rule
-	_#res: "\(#azurermPrefix)_servicebus_topic_authorization_rule": res.#azurerm_servicebus_topic_authorization_rule
-	_#res: "\(#azurermPrefix)_servicebus_topic": res.#azurerm_servicebus_topic
-	_#res: "\(#azurermPrefix)_shared_image_gallery": res.#azurerm_shared_image_gallery
-	_#res: "\(#azurermPrefix)_shared_image": res.#azurerm_shared_image
-	_#res: "\(#azurermPrefix)_shared_image_version": res.#azurerm_shared_image_version
-	_#res: "\(#azurermPrefix)_signalr_service_custom_certificate": res.#azurerm_signalr_service_custom_certificate
-	_#res: "\(#azurermPrefix)_signalr_service_custom_domain": res.#azurerm_signalr_service_custom_domain
-	_#res: "\(#azurermPrefix)_signalr_service": res.#azurerm_signalr_service
-	_#res: "\(#azurermPrefix)_signalr_service_network_acl": res.#azurerm_signalr_service_network_acl
-	_#res: "\(#azurermPrefix)_signalr_shared_private_link_resource": res.#azurerm_signalr_shared_private_link_resource
-	_#res: "\(#azurermPrefix)_site_recovery_fabric": res.#azurerm_site_recovery_fabric
-	_#res: "\(#azurermPrefix)_site_recovery_hyperv_network_mapping": res.#azurerm_site_recovery_hyperv_network_mapping
-	_#res: "\(#azurermPrefix)_site_recovery_hyperv_replication_policy_association": res.#azurerm_site_recovery_hyperv_replication_policy_association
-	_#res: "\(#azurermPrefix)_site_recovery_hyperv_replication_policy": res.#azurerm_site_recovery_hyperv_replication_policy
-	_#res: "\(#azurermPrefix)_site_recovery_network_mapping": res.#azurerm_site_recovery_network_mapping
-	_#res: "\(#azurermPrefix)_site_recovery_protection_container": res.#azurerm_site_recovery_protection_container
-	_#res: "\(#azurermPrefix)_site_recovery_protection_container_mapping": res.#azurerm_site_recovery_protection_container_mapping
-	_#res: "\(#azurermPrefix)_site_recovery_replicated_vm": res.#azurerm_site_recovery_replicated_vm
-	_#res: "\(#azurermPrefix)_site_recovery_replication_policy": res.#azurerm_site_recovery_replication_policy
-	_#res: "\(#azurermPrefix)_site_recovery_replication_recovery_plan": res.#azurerm_site_recovery_replication_recovery_plan
-	_#res: "\(#azurermPrefix)_site_recovery_services_vault_hyperv_site": res.#azurerm_site_recovery_services_vault_hyperv_site
-	_#res: "\(#azurermPrefix)_site_recovery_vmware_replicated_vm": res.#azurerm_site_recovery_vmware_replicated_vm
-	_#res: "\(#azurermPrefix)_site_recovery_vmware_replication_policy_association": res.#azurerm_site_recovery_vmware_replication_policy_association
-	_#res: "\(#azurermPrefix)_site_recovery_vmware_replication_policy": res.#azurerm_site_recovery_vmware_replication_policy
-	_#res: "\(#azurermPrefix)_snapshot": res.#azurerm_snapshot
-	_#res: "\(#azurermPrefix)_source_control_token": res.#azurerm_source_control_token
-	_#res: "\(#azurermPrefix)_spatial_anchors_account": res.#azurerm_spatial_anchors_account
-	_#res: "\(#azurermPrefix)_spring_cloud_accelerator": res.#azurerm_spring_cloud_accelerator
-	_#res: "\(#azurermPrefix)_spring_cloud_active_deployment": res.#azurerm_spring_cloud_active_deployment
-	_#res: "\(#azurermPrefix)_spring_cloud_api_portal_custom_domain": res.#azurerm_spring_cloud_api_portal_custom_domain
-	_#res: "\(#azurermPrefix)_spring_cloud_api_portal": res.#azurerm_spring_cloud_api_portal
-	_#res: "\(#azurermPrefix)_spring_cloud_app_cosmosdb_association": res.#azurerm_spring_cloud_app_cosmosdb_association
-	_#res: "\(#azurermPrefix)_spring_cloud_app_dynamics_application_performance_monitoring": res.#azurerm_spring_cloud_app_dynamics_application_performance_monitoring
-	_#res: "\(#azurermPrefix)_spring_cloud_app": res.#azurerm_spring_cloud_app
-	_#res: "\(#azurermPrefix)_spring_cloud_app_mysql_association": res.#azurerm_spring_cloud_app_mysql_association
-	_#res: "\(#azurermPrefix)_spring_cloud_app_redis_association": res.#azurerm_spring_cloud_app_redis_association
-	_#res: "\(#azurermPrefix)_spring_cloud_application_insights_application_performance_monitoring": res.#azurerm_spring_cloud_application_insights_application_performance_monitoring
-	_#res: "\(#azurermPrefix)_spring_cloud_application_live_view": res.#azurerm_spring_cloud_application_live_view
-	_#res: "\(#azurermPrefix)_spring_cloud_build_deployment": res.#azurerm_spring_cloud_build_deployment
-	_#res: "\(#azurermPrefix)_spring_cloud_build_pack_binding": res.#azurerm_spring_cloud_build_pack_binding
-	_#res: "\(#azurermPrefix)_spring_cloud_builder": res.#azurerm_spring_cloud_builder
-	_#res: "\(#azurermPrefix)_spring_cloud_certificate": res.#azurerm_spring_cloud_certificate
-	_#res: "\(#azurermPrefix)_spring_cloud_configuration_service": res.#azurerm_spring_cloud_configuration_service
-	_#res: "\(#azurermPrefix)_spring_cloud_connection": res.#azurerm_spring_cloud_connection
-	_#res: "\(#azurermPrefix)_spring_cloud_container_deployment": res.#azurerm_spring_cloud_container_deployment
-	_#res: "\(#azurermPrefix)_spring_cloud_custom_domain": res.#azurerm_spring_cloud_custom_domain
-	_#res: "\(#azurermPrefix)_spring_cloud_customized_accelerator": res.#azurerm_spring_cloud_customized_accelerator
-	_#res: "\(#azurermPrefix)_spring_cloud_dev_tool_portal": res.#azurerm_spring_cloud_dev_tool_portal
-	_#res: "\(#azurermPrefix)_spring_cloud_dynatrace_application_performance_monitoring": res.#azurerm_spring_cloud_dynatrace_application_performance_monitoring
-	_#res: "\(#azurermPrefix)_spring_cloud_elastic_application_performance_monitoring": res.#azurerm_spring_cloud_elastic_application_performance_monitoring
-	_#res: "\(#azurermPrefix)_spring_cloud_gateway_custom_domain": res.#azurerm_spring_cloud_gateway_custom_domain
-	_#res: "\(#azurermPrefix)_spring_cloud_gateway": res.#azurerm_spring_cloud_gateway
-	_#res: "\(#azurermPrefix)_spring_cloud_gateway_route_config": res.#azurerm_spring_cloud_gateway_route_config
-	_#res: "\(#azurermPrefix)_spring_cloud_java_deployment": res.#azurerm_spring_cloud_java_deployment
-	_#res: "\(#azurermPrefix)_spring_cloud_new_relic_application_performance_monitoring": res.#azurerm_spring_cloud_new_relic_application_performance_monitoring
-	_#res: "\(#azurermPrefix)_spring_cloud_service": res.#azurerm_spring_cloud_service
-	_#res: "\(#azurermPrefix)_spring_cloud_storage": res.#azurerm_spring_cloud_storage
-	_#res: "\(#azurermPrefix)_ssh_public_key": res.#azurerm_ssh_public_key
-	_#res: "\(#azurermPrefix)_stack_hci_cluster": res.#azurerm_stack_hci_cluster
-	_#res: "\(#azurermPrefix)_stack_hci_deployment_setting": res.#azurerm_stack_hci_deployment_setting
-	_#res: "\(#azurermPrefix)_stack_hci_extension": res.#azurerm_stack_hci_extension
-	_#res: "\(#azurermPrefix)_stack_hci_logical_network": res.#azurerm_stack_hci_logical_network
-	_#res: "\(#azurermPrefix)_stack_hci_marketplace_gallery_image": res.#azurerm_stack_hci_marketplace_gallery_image
-	_#res: "\(#azurermPrefix)_stack_hci_network_interface": res.#azurerm_stack_hci_network_interface
-	_#res: "\(#azurermPrefix)_stack_hci_storage_path": res.#azurerm_stack_hci_storage_path
-	_#res: "\(#azurermPrefix)_stack_hci_virtual_hard_disk": res.#azurerm_stack_hci_virtual_hard_disk
-	_#res: "\(#azurermPrefix)_static_site_custom_domain": res.#azurerm_static_site_custom_domain
-	_#res: "\(#azurermPrefix)_static_site": res.#azurerm_static_site
-	_#res: "\(#azurermPrefix)_static_web_app_custom_domain": res.#azurerm_static_web_app_custom_domain
-	_#res: "\(#azurermPrefix)_static_web_app_function_app_registration": res.#azurerm_static_web_app_function_app_registration
-	_#res: "\(#azurermPrefix)_static_web_app": res.#azurerm_static_web_app
-	_#res: "\(#azurermPrefix)_storage_account_customer_managed_key": res.#azurerm_storage_account_customer_managed_key
-	_#res: "\(#azurermPrefix)_storage_account": res.#azurerm_storage_account
-	_#res: "\(#azurermPrefix)_storage_account_local_user": res.#azurerm_storage_account_local_user
-	_#res: "\(#azurermPrefix)_storage_account_network_rules": res.#azurerm_storage_account_network_rules
-	_#res: "\(#azurermPrefix)_storage_account_queue_properties": res.#azurerm_storage_account_queue_properties
-	_#res: "\(#azurermPrefix)_storage_account_static_website": res.#azurerm_storage_account_static_website
-	_#res: "\(#azurermPrefix)_storage_blob": res.#azurerm_storage_blob
-	_#res: "\(#azurermPrefix)_storage_blob_inventory_policy": res.#azurerm_storage_blob_inventory_policy
-	_#res: "\(#azurermPrefix)_storage_container": res.#azurerm_storage_container
-	_#res: "\(#azurermPrefix)_storage_container_immutability_policy": res.#azurerm_storage_container_immutability_policy
-	_#res: "\(#azurermPrefix)_storage_data_lake_gen2_filesystem": res.#azurerm_storage_data_lake_gen2_filesystem
-	_#res: "\(#azurermPrefix)_storage_data_lake_gen2_path": res.#azurerm_storage_data_lake_gen2_path
-	_#res: "\(#azurermPrefix)_storage_encryption_scope": res.#azurerm_storage_encryption_scope
-	_#res: "\(#azurermPrefix)_storage_management_policy": res.#azurerm_storage_management_policy
-	_#res: "\(#azurermPrefix)_storage_mover_agent": res.#azurerm_storage_mover_agent
-	_#res: "\(#azurermPrefix)_storage_mover": res.#azurerm_storage_mover
-	_#res: "\(#azurermPrefix)_storage_mover_job_definition": res.#azurerm_storage_mover_job_definition
-	_#res: "\(#azurermPrefix)_storage_mover_project": res.#azurerm_storage_mover_project
-	_#res: "\(#azurermPrefix)_storage_mover_source_endpoint": res.#azurerm_storage_mover_source_endpoint
-	_#res: "\(#azurermPrefix)_storage_mover_target_endpoint": res.#azurerm_storage_mover_target_endpoint
-	_#res: "\(#azurermPrefix)_storage_object_replication": res.#azurerm_storage_object_replication
-	_#res: "\(#azurermPrefix)_storage_queue": res.#azurerm_storage_queue
-	_#res: "\(#azurermPrefix)_storage_share_directory": res.#azurerm_storage_share_directory
-	_#res: "\(#azurermPrefix)_storage_share_file": res.#azurerm_storage_share_file
-	_#res: "\(#azurermPrefix)_storage_share": res.#azurerm_storage_share
-	_#res: "\(#azurermPrefix)_storage_sync_cloud_endpoint": res.#azurerm_storage_sync_cloud_endpoint
-	_#res: "\(#azurermPrefix)_storage_sync": res.#azurerm_storage_sync
-	_#res: "\(#azurermPrefix)_storage_sync_group": res.#azurerm_storage_sync_group
-	_#res: "\(#azurermPrefix)_storage_sync_server_endpoint": res.#azurerm_storage_sync_server_endpoint
-	_#res: "\(#azurermPrefix)_storage_table_entity": res.#azurerm_storage_table_entity
-	_#res: "\(#azurermPrefix)_storage_table": res.#azurerm_storage_table
-	_#res: "\(#azurermPrefix)_stream_analytics_cluster": res.#azurerm_stream_analytics_cluster
-	_#res: "\(#azurermPrefix)_stream_analytics_function_javascript_uda": res.#azurerm_stream_analytics_function_javascript_uda
-	_#res: "\(#azurermPrefix)_stream_analytics_function_javascript_udf": res.#azurerm_stream_analytics_function_javascript_udf
-	_#res: "\(#azurermPrefix)_stream_analytics_job": res.#azurerm_stream_analytics_job
-	_#res: "\(#azurermPrefix)_stream_analytics_job_schedule": res.#azurerm_stream_analytics_job_schedule
-	_#res: "\(#azurermPrefix)_stream_analytics_job_storage_account": res.#azurerm_stream_analytics_job_storage_account
-	_#res: "\(#azurermPrefix)_stream_analytics_managed_private_endpoint": res.#azurerm_stream_analytics_managed_private_endpoint
-	_#res: "\(#azurermPrefix)_stream_analytics_output_blob": res.#azurerm_stream_analytics_output_blob
-	_#res: "\(#azurermPrefix)_stream_analytics_output_cosmosdb": res.#azurerm_stream_analytics_output_cosmosdb
-	_#res: "\(#azurermPrefix)_stream_analytics_output_eventhub": res.#azurerm_stream_analytics_output_eventhub
-	_#res: "\(#azurermPrefix)_stream_analytics_output_function": res.#azurerm_stream_analytics_output_function
-	_#res: "\(#azurermPrefix)_stream_analytics_output_mssql": res.#azurerm_stream_analytics_output_mssql
-	_#res: "\(#azurermPrefix)_stream_analytics_output_powerbi": res.#azurerm_stream_analytics_output_powerbi
-	_#res: "\(#azurermPrefix)_stream_analytics_output_servicebus_queue": res.#azurerm_stream_analytics_output_servicebus_queue
-	_#res: "\(#azurermPrefix)_stream_analytics_output_servicebus_topic": res.#azurerm_stream_analytics_output_servicebus_topic
-	_#res: "\(#azurermPrefix)_stream_analytics_output_synapse": res.#azurerm_stream_analytics_output_synapse
-	_#res: "\(#azurermPrefix)_stream_analytics_output_table": res.#azurerm_stream_analytics_output_table
-	_#res: "\(#azurermPrefix)_stream_analytics_reference_input_blob": res.#azurerm_stream_analytics_reference_input_blob
-	_#res: "\(#azurermPrefix)_stream_analytics_reference_input_mssql": res.#azurerm_stream_analytics_reference_input_mssql
-	_#res: "\(#azurermPrefix)_stream_analytics_stream_input_blob": res.#azurerm_stream_analytics_stream_input_blob
-	_#res: "\(#azurermPrefix)_stream_analytics_stream_input_eventhub": res.#azurerm_stream_analytics_stream_input_eventhub
-	_#res: "\(#azurermPrefix)_stream_analytics_stream_input_eventhub_v2": res.#azurerm_stream_analytics_stream_input_eventhub_v2
-	_#res: "\(#azurermPrefix)_stream_analytics_stream_input_iothub": res.#azurerm_stream_analytics_stream_input_iothub
-	_#res: "\(#azurermPrefix)_subnet": res.#azurerm_subnet
-	_#res: "\(#azurermPrefix)_subnet_nat_gateway_association": res.#azurerm_subnet_nat_gateway_association
-	_#res: "\(#azurermPrefix)_subnet_network_security_group_association": res.#azurerm_subnet_network_security_group_association
-	_#res: "\(#azurermPrefix)_subnet_route_table_association": res.#azurerm_subnet_route_table_association
-	_#res: "\(#azurermPrefix)_subnet_service_endpoint_storage_policy": res.#azurerm_subnet_service_endpoint_storage_policy
-	_#res: "\(#azurermPrefix)_subscription_cost_management_export": res.#azurerm_subscription_cost_management_export
-	_#res: "\(#azurermPrefix)_subscription_cost_management_view": res.#azurerm_subscription_cost_management_view
-	_#res: "\(#azurermPrefix)_subscription": res.#azurerm_subscription
-	_#res: "\(#azurermPrefix)_subscription_policy_assignment": res.#azurerm_subscription_policy_assignment
-	_#res: "\(#azurermPrefix)_subscription_policy_exemption": res.#azurerm_subscription_policy_exemption
-	_#res: "\(#azurermPrefix)_subscription_policy_remediation": res.#azurerm_subscription_policy_remediation
-	_#res: "\(#azurermPrefix)_subscription_template_deployment": res.#azurerm_subscription_template_deployment
-	_#res: "\(#azurermPrefix)_synapse_firewall_rule": res.#azurerm_synapse_firewall_rule
-	_#res: "\(#azurermPrefix)_synapse_integration_runtime_azure": res.#azurerm_synapse_integration_runtime_azure
-	_#res: "\(#azurermPrefix)_synapse_integration_runtime_self_hosted": res.#azurerm_synapse_integration_runtime_self_hosted
-	_#res: "\(#azurermPrefix)_synapse_linked_service": res.#azurerm_synapse_linked_service
-	_#res: "\(#azurermPrefix)_synapse_managed_private_endpoint": res.#azurerm_synapse_managed_private_endpoint
-	_#res: "\(#azurermPrefix)_synapse_private_link_hub": res.#azurerm_synapse_private_link_hub
-	_#res: "\(#azurermPrefix)_synapse_role_assignment": res.#azurerm_synapse_role_assignment
-	_#res: "\(#azurermPrefix)_synapse_spark_pool": res.#azurerm_synapse_spark_pool
-	_#res: "\(#azurermPrefix)_synapse_sql_pool_extended_auditing_policy": res.#azurerm_synapse_sql_pool_extended_auditing_policy
-	_#res: "\(#azurermPrefix)_synapse_sql_pool": res.#azurerm_synapse_sql_pool
-	_#res: "\(#azurermPrefix)_synapse_sql_pool_security_alert_policy": res.#azurerm_synapse_sql_pool_security_alert_policy
-	_#res: "\(#azurermPrefix)_synapse_sql_pool_vulnerability_assessment_baseline": res.#azurerm_synapse_sql_pool_vulnerability_assessment_baseline
-	_#res: "\(#azurermPrefix)_synapse_sql_pool_vulnerability_assessment": res.#azurerm_synapse_sql_pool_vulnerability_assessment
-	_#res: "\(#azurermPrefix)_synapse_sql_pool_workload_classifier": res.#azurerm_synapse_sql_pool_workload_classifier
-	_#res: "\(#azurermPrefix)_synapse_sql_pool_workload_group": res.#azurerm_synapse_sql_pool_workload_group
-	_#res: "\(#azurermPrefix)_synapse_workspace_aad_admin": res.#azurerm_synapse_workspace_aad_admin
-	_#res: "\(#azurermPrefix)_synapse_workspace_extended_auditing_policy": res.#azurerm_synapse_workspace_extended_auditing_policy
-	_#res: "\(#azurermPrefix)_synapse_workspace": res.#azurerm_synapse_workspace
-	_#res: "\(#azurermPrefix)_synapse_workspace_key": res.#azurerm_synapse_workspace_key
-	_#res: "\(#azurermPrefix)_synapse_workspace_security_alert_policy": res.#azurerm_synapse_workspace_security_alert_policy
-	_#res: "\(#azurermPrefix)_synapse_workspace_sql_aad_admin": res.#azurerm_synapse_workspace_sql_aad_admin
-	_#res: "\(#azurermPrefix)_synapse_workspace_vulnerability_assessment": res.#azurerm_synapse_workspace_vulnerability_assessment
-	_#res: "\(#azurermPrefix)_system_center_virtual_machine_manager_availability_set": res.#azurerm_system_center_virtual_machine_manager_availability_set
-	_#res: "\(#azurermPrefix)_system_center_virtual_machine_manager_cloud": res.#azurerm_system_center_virtual_machine_manager_cloud
-	_#res: "\(#azurermPrefix)_system_center_virtual_machine_manager_server": res.#azurerm_system_center_virtual_machine_manager_server
-	_#res: "\(#azurermPrefix)_system_center_virtual_machine_manager_virtual_machine_instance": res.#azurerm_system_center_virtual_machine_manager_virtual_machine_instance
-	_#res: "\(#azurermPrefix)_system_center_virtual_machine_manager_virtual_machine_instance_guest_agent": res.#azurerm_system_center_virtual_machine_manager_virtual_machine_instance_guest_agent
-	_#res: "\(#azurermPrefix)_system_center_virtual_machine_manager_virtual_machine_template": res.#azurerm_system_center_virtual_machine_manager_virtual_machine_template
-	_#res: "\(#azurermPrefix)_system_center_virtual_machine_manager_virtual_network": res.#azurerm_system_center_virtual_machine_manager_virtual_network
-	_#res: "\(#azurermPrefix)_tenant_template_deployment": res.#azurerm_tenant_template_deployment
-	_#res: "\(#azurermPrefix)_traffic_manager_azure_endpoint": res.#azurerm_traffic_manager_azure_endpoint
-	_#res: "\(#azurermPrefix)_traffic_manager_external_endpoint": res.#azurerm_traffic_manager_external_endpoint
-	_#res: "\(#azurermPrefix)_traffic_manager_nested_endpoint": res.#azurerm_traffic_manager_nested_endpoint
-	_#res: "\(#azurermPrefix)_traffic_manager_profile": res.#azurerm_traffic_manager_profile
-	_#res: "\(#azurermPrefix)_trusted_signing_account": res.#azurerm_trusted_signing_account
-	_#res: "\(#azurermPrefix)_user_assigned_identity": res.#azurerm_user_assigned_identity
-	_#res: "\(#azurermPrefix)_video_indexer_account": res.#azurerm_video_indexer_account
-	_#res: "\(#azurermPrefix)_virtual_desktop_application": res.#azurerm_virtual_desktop_application
-	_#res: "\(#azurermPrefix)_virtual_desktop_application_group": res.#azurerm_virtual_desktop_application_group
-	_#res: "\(#azurermPrefix)_virtual_desktop_host_pool": res.#azurerm_virtual_desktop_host_pool
-	_#res: "\(#azurermPrefix)_virtual_desktop_host_pool_registration_info": res.#azurerm_virtual_desktop_host_pool_registration_info
-	_#res: "\(#azurermPrefix)_virtual_desktop_scaling_plan": res.#azurerm_virtual_desktop_scaling_plan
-	_#res: "\(#azurermPrefix)_virtual_desktop_scaling_plan_host_pool_association": res.#azurerm_virtual_desktop_scaling_plan_host_pool_association
-	_#res: "\(#azurermPrefix)_virtual_desktop_workspace_application_group_association": res.#azurerm_virtual_desktop_workspace_application_group_association
-	_#res: "\(#azurermPrefix)_virtual_desktop_workspace": res.#azurerm_virtual_desktop_workspace
-	_#res: "\(#azurermPrefix)_virtual_hub_bgp_connection": res.#azurerm_virtual_hub_bgp_connection
-	_#res: "\(#azurermPrefix)_virtual_hub_connection": res.#azurerm_virtual_hub_connection
-	_#res: "\(#azurermPrefix)_virtual_hub": res.#azurerm_virtual_hub
-	_#res: "\(#azurermPrefix)_virtual_hub_ip": res.#azurerm_virtual_hub_ip
-	_#res: "\(#azurermPrefix)_virtual_hub_route_table": res.#azurerm_virtual_hub_route_table
-	_#res: "\(#azurermPrefix)_virtual_hub_route_table_route": res.#azurerm_virtual_hub_route_table_route
-	_#res: "\(#azurermPrefix)_virtual_hub_routing_intent": res.#azurerm_virtual_hub_routing_intent
-	_#res: "\(#azurermPrefix)_virtual_hub_security_partner_provider": res.#azurerm_virtual_hub_security_partner_provider
-	_#res: "\(#azurermPrefix)_virtual_machine_automanage_configuration_assignment": res.#azurerm_virtual_machine_automanage_configuration_assignment
-	_#res: "\(#azurermPrefix)_virtual_machine_data_disk_attachment": res.#azurerm_virtual_machine_data_disk_attachment
-	_#res: "\(#azurermPrefix)_virtual_machine_extension": res.#azurerm_virtual_machine_extension
-	_#res: "\(#azurermPrefix)_virtual_machine_gallery_application_assignment": res.#azurerm_virtual_machine_gallery_application_assignment
-	_#res: "\(#azurermPrefix)_virtual_machine": res.#azurerm_virtual_machine
-	_#res: "\(#azurermPrefix)_virtual_machine_implicit_data_disk_from_source": res.#azurerm_virtual_machine_implicit_data_disk_from_source
-	_#res: "\(#azurermPrefix)_virtual_machine_packet_capture": res.#azurerm_virtual_machine_packet_capture
-	_#res: "\(#azurermPrefix)_virtual_machine_restore_point_collection": res.#azurerm_virtual_machine_restore_point_collection
-	_#res: "\(#azurermPrefix)_virtual_machine_restore_point": res.#azurerm_virtual_machine_restore_point
-	_#res: "\(#azurermPrefix)_virtual_machine_run_command": res.#azurerm_virtual_machine_run_command
-	_#res: "\(#azurermPrefix)_virtual_machine_scale_set_extension": res.#azurerm_virtual_machine_scale_set_extension
-	_#res: "\(#azurermPrefix)_virtual_machine_scale_set": res.#azurerm_virtual_machine_scale_set
-	_#res: "\(#azurermPrefix)_virtual_machine_scale_set_packet_capture": res.#azurerm_virtual_machine_scale_set_packet_capture
-	_#res: "\(#azurermPrefix)_virtual_machine_scale_set_standby_pool": res.#azurerm_virtual_machine_scale_set_standby_pool
-	_#res: "\(#azurermPrefix)_virtual_network_dns_servers": res.#azurerm_virtual_network_dns_servers
-	_#res: "\(#azurermPrefix)_virtual_network_gateway_connection": res.#azurerm_virtual_network_gateway_connection
-	_#res: "\(#azurermPrefix)_virtual_network_gateway": res.#azurerm_virtual_network_gateway
-	_#res: "\(#azurermPrefix)_virtual_network_gateway_nat_rule": res.#azurerm_virtual_network_gateway_nat_rule
-	_#res: "\(#azurermPrefix)_virtual_network": res.#azurerm_virtual_network
-	_#res: "\(#azurermPrefix)_virtual_network_peering": res.#azurerm_virtual_network_peering
-	_#res: "\(#azurermPrefix)_virtual_wan": res.#azurerm_virtual_wan
-	_#res: "\(#azurermPrefix)_vmware_cluster": res.#azurerm_vmware_cluster
-	_#res: "\(#azurermPrefix)_vmware_express_route_authorization": res.#azurerm_vmware_express_route_authorization
-	_#res: "\(#azurermPrefix)_vmware_netapp_volume_attachment": res.#azurerm_vmware_netapp_volume_attachment
-	_#res: "\(#azurermPrefix)_vmware_private_cloud": res.#azurerm_vmware_private_cloud
-	_#res: "\(#azurermPrefix)_voice_services_communications_gateway": res.#azurerm_voice_services_communications_gateway
-	_#res: "\(#azurermPrefix)_voice_services_communications_gateway_test_line": res.#azurerm_voice_services_communications_gateway_test_line
-	_#res: "\(#azurermPrefix)_vpn_gateway_connection": res.#azurerm_vpn_gateway_connection
-	_#res: "\(#azurermPrefix)_vpn_gateway": res.#azurerm_vpn_gateway
-	_#res: "\(#azurermPrefix)_vpn_gateway_nat_rule": res.#azurerm_vpn_gateway_nat_rule
-	_#res: "\(#azurermPrefix)_vpn_server_configuration": res.#azurerm_vpn_server_configuration
-	_#res: "\(#azurermPrefix)_vpn_server_configuration_policy_group": res.#azurerm_vpn_server_configuration_policy_group
-	_#res: "\(#azurermPrefix)_vpn_site": res.#azurerm_vpn_site
-	_#res: "\(#azurermPrefix)_web_app_active_slot": res.#azurerm_web_app_active_slot
-	_#res: "\(#azurermPrefix)_web_app_hybrid_connection": res.#azurerm_web_app_hybrid_connection
-	_#res: "\(#azurermPrefix)_web_application_firewall_policy": res.#azurerm_web_application_firewall_policy
-	_#res: "\(#azurermPrefix)_web_pubsub_custom_certificate": res.#azurerm_web_pubsub_custom_certificate
-	_#res: "\(#azurermPrefix)_web_pubsub_custom_domain": res.#azurerm_web_pubsub_custom_domain
-	_#res: "\(#azurermPrefix)_web_pubsub": res.#azurerm_web_pubsub
-	_#res: "\(#azurermPrefix)_web_pubsub_hub": res.#azurerm_web_pubsub_hub
-	_#res: "\(#azurermPrefix)_web_pubsub_network_acl": res.#azurerm_web_pubsub_network_acl
-	_#res: "\(#azurermPrefix)_web_pubsub_shared_private_link_resource": res.#azurerm_web_pubsub_shared_private_link_resource
-	_#res: "\(#azurermPrefix)_web_pubsub_socketio": res.#azurerm_web_pubsub_socketio
-	_#res: "\(#azurermPrefix)_windows_function_app": res.#azurerm_windows_function_app
-	_#res: "\(#azurermPrefix)_windows_function_app_slot": res.#azurerm_windows_function_app_slot
-	_#res: "\(#azurermPrefix)_windows_virtual_machine": res.#azurerm_windows_virtual_machine
-	_#res: "\(#azurermPrefix)_windows_virtual_machine_scale_set": res.#azurerm_windows_virtual_machine_scale_set
-	_#res: "\(#azurermPrefix)_windows_web_app": res.#azurerm_windows_web_app
-	_#res: "\(#azurermPrefix)_windows_web_app_slot": res.#azurerm_windows_web_app_slot
-	_#res: "\(#azurermPrefix)_workloads_sap_discovery_virtual_instance": res.#azurerm_workloads_sap_discovery_virtual_instance
-	_#res: "\(#azurermPrefix)_workloads_sap_single_node_virtual_instance": res.#azurerm_workloads_sap_single_node_virtual_instance
-	_#res: "\(#azurermPrefix)_workloads_sap_three_tier_virtual_instance": res.#azurerm_workloads_sap_three_tier_virtual_instance
+	_#res: "\(#azurermPrefix)_aadb2c_directory": close({res.azurerm_aadb2c_directory & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_active_directory_domain_service": close({res.azurerm_active_directory_domain_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_active_directory_domain_service_replica_set": close({res.azurerm_active_directory_domain_service_replica_set & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_active_directory_domain_service_trust": close({res.azurerm_active_directory_domain_service_trust & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_advanced_threat_protection": close({res.azurerm_advanced_threat_protection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_advisor_suppression": close({res.azurerm_advisor_suppression & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_ai_foundry": close({res.azurerm_ai_foundry & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_ai_foundry_project": close({res.azurerm_ai_foundry_project & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_ai_services": close({res.azurerm_ai_services & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_analysis_services_server": close({res.azurerm_analysis_services_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_connection": close({res.azurerm_api_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_api_diagnostic": close({res.azurerm_api_management_api_diagnostic & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_api": close({res.azurerm_api_management_api & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_api_operation": close({res.azurerm_api_management_api_operation & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_api_operation_policy": close({res.azurerm_api_management_api_operation_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_api_operation_tag": close({res.azurerm_api_management_api_operation_tag & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_api_policy": close({res.azurerm_api_management_api_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_api_release": close({res.azurerm_api_management_api_release & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_api_schema": close({res.azurerm_api_management_api_schema & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_api_tag_description": close({res.azurerm_api_management_api_tag_description & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_api_tag": close({res.azurerm_api_management_api_tag & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_api_version_set": close({res.azurerm_api_management_api_version_set & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_authorization_server": close({res.azurerm_api_management_authorization_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_backend": close({res.azurerm_api_management_backend & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_certificate": close({res.azurerm_api_management_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_custom_domain": close({res.azurerm_api_management_custom_domain & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_diagnostic": close({res.azurerm_api_management_diagnostic & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_email_template": close({res.azurerm_api_management_email_template & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_gateway_api": close({res.azurerm_api_management_gateway_api & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_gateway_certificate_authority": close({res.azurerm_api_management_gateway_certificate_authority & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_gateway": close({res.azurerm_api_management_gateway & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_gateway_host_name_configuration": close({res.azurerm_api_management_gateway_host_name_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management": close({res.azurerm_api_management & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_global_schema": close({res.azurerm_api_management_global_schema & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_group": close({res.azurerm_api_management_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_group_user": close({res.azurerm_api_management_group_user & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_identity_provider_aad": close({res.azurerm_api_management_identity_provider_aad & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_identity_provider_aadb2c": close({res.azurerm_api_management_identity_provider_aadb2c & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_identity_provider_facebook": close({res.azurerm_api_management_identity_provider_facebook & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_identity_provider_google": close({res.azurerm_api_management_identity_provider_google & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_identity_provider_microsoft": close({res.azurerm_api_management_identity_provider_microsoft & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_identity_provider_twitter": close({res.azurerm_api_management_identity_provider_twitter & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_logger": close({res.azurerm_api_management_logger & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_named_value": close({res.azurerm_api_management_named_value & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_notification_recipient_email": close({res.azurerm_api_management_notification_recipient_email & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_notification_recipient_user": close({res.azurerm_api_management_notification_recipient_user & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_openid_connect_provider": close({res.azurerm_api_management_openid_connect_provider & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_policy_fragment": close({res.azurerm_api_management_policy_fragment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_policy": close({res.azurerm_api_management_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_product_api": close({res.azurerm_api_management_product_api & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_product": close({res.azurerm_api_management_product & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_product_group": close({res.azurerm_api_management_product_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_product_policy": close({res.azurerm_api_management_product_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_product_tag": close({res.azurerm_api_management_product_tag & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_redis_cache": close({res.azurerm_api_management_redis_cache & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_standalone_gateway": close({res.azurerm_api_management_standalone_gateway & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_subscription": close({res.azurerm_api_management_subscription & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_tag": close({res.azurerm_api_management_tag & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_user": close({res.azurerm_api_management_user & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_workspace_api_version_set": close({res.azurerm_api_management_workspace_api_version_set & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_workspace_certificate": close({res.azurerm_api_management_workspace_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_workspace": close({res.azurerm_api_management_workspace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_workspace_named_value": close({res.azurerm_api_management_workspace_named_value & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_workspace_policy_fragment": close({res.azurerm_api_management_workspace_policy_fragment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_api_management_workspace_policy": close({res.azurerm_api_management_workspace_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_configuration_feature": close({res.azurerm_app_configuration_feature & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_configuration": close({res.azurerm_app_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_configuration_key": close({res.azurerm_app_configuration_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_active_slot": close({res.azurerm_app_service_active_slot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_certificate_binding": close({res.azurerm_app_service_certificate_binding & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_certificate": close({res.azurerm_app_service_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_certificate_order": close({res.azurerm_app_service_certificate_order & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_connection": close({res.azurerm_app_service_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_custom_hostname_binding": close({res.azurerm_app_service_custom_hostname_binding & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_environment_v3": close({res.azurerm_app_service_environment_v3 & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service": close({res.azurerm_app_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_hybrid_connection": close({res.azurerm_app_service_hybrid_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_managed_certificate": close({res.azurerm_app_service_managed_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_plan": close({res.azurerm_app_service_plan & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_public_certificate": close({res.azurerm_app_service_public_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_slot_custom_hostname_binding": close({res.azurerm_app_service_slot_custom_hostname_binding & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_slot": close({res.azurerm_app_service_slot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_slot_virtual_network_swift_connection": close({res.azurerm_app_service_slot_virtual_network_swift_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_source_control": close({res.azurerm_app_service_source_control & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_source_control_slot": close({res.azurerm_app_service_source_control_slot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_source_control_token": close({res.azurerm_app_service_source_control_token & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_app_service_virtual_network_swift_connection": close({res.azurerm_app_service_virtual_network_swift_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_application_gateway": close({res.azurerm_application_gateway & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_application_insights_analytics_item": close({res.azurerm_application_insights_analytics_item & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_application_insights_api_key": close({res.azurerm_application_insights_api_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_application_insights": close({res.azurerm_application_insights & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_application_insights_smart_detection_rule": close({res.azurerm_application_insights_smart_detection_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_application_insights_standard_web_test": close({res.azurerm_application_insights_standard_web_test & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_application_insights_web_test": close({res.azurerm_application_insights_web_test & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_application_insights_workbook": close({res.azurerm_application_insights_workbook & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_application_insights_workbook_template": close({res.azurerm_application_insights_workbook_template & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_application_load_balancer_frontend": close({res.azurerm_application_load_balancer_frontend & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_application_load_balancer": close({res.azurerm_application_load_balancer & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_application_load_balancer_security_policy": close({res.azurerm_application_load_balancer_security_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_application_load_balancer_subnet_association": close({res.azurerm_application_load_balancer_subnet_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_application_security_group": close({res.azurerm_application_security_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_arc_kubernetes_cluster_extension": close({res.azurerm_arc_kubernetes_cluster_extension & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_arc_kubernetes_cluster": close({res.azurerm_arc_kubernetes_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_arc_kubernetes_flux_configuration": close({res.azurerm_arc_kubernetes_flux_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_arc_kubernetes_provisioned_cluster": close({res.azurerm_arc_kubernetes_provisioned_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_arc_machine_automanage_configuration_assignment": close({res.azurerm_arc_machine_automanage_configuration_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_arc_machine_extension": close({res.azurerm_arc_machine_extension & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_arc_machine": close({res.azurerm_arc_machine & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_arc_private_link_scope": close({res.azurerm_arc_private_link_scope & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_arc_resource_bridge_appliance": close({res.azurerm_arc_resource_bridge_appliance & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_attestation_provider": close({res.azurerm_attestation_provider & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automanage_configuration": close({res.azurerm_automanage_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_account": close({res.azurerm_automation_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_certificate": close({res.azurerm_automation_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_connection_certificate": close({res.azurerm_automation_connection_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_connection_classic_certificate": close({res.azurerm_automation_connection_classic_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_connection": close({res.azurerm_automation_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_connection_service_principal": close({res.azurerm_automation_connection_service_principal & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_connection_type": close({res.azurerm_automation_connection_type & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_credential": close({res.azurerm_automation_credential & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_dsc_configuration": close({res.azurerm_automation_dsc_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_dsc_nodeconfiguration": close({res.azurerm_automation_dsc_nodeconfiguration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_hybrid_runbook_worker": close({res.azurerm_automation_hybrid_runbook_worker & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_hybrid_runbook_worker_group": close({res.azurerm_automation_hybrid_runbook_worker_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_job_schedule": close({res.azurerm_automation_job_schedule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_module": close({res.azurerm_automation_module & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_powershell72_module": close({res.azurerm_automation_powershell72_module & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_python3_package": close({res.azurerm_automation_python3_package & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_runbook": close({res.azurerm_automation_runbook & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_runtime_environment": close({res.azurerm_automation_runtime_environment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_runtime_environment_package": close({res.azurerm_automation_runtime_environment_package & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_schedule": close({res.azurerm_automation_schedule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_software_update_configuration": close({res.azurerm_automation_software_update_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_source_control": close({res.azurerm_automation_source_control & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_variable_bool": close({res.azurerm_automation_variable_bool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_variable_datetime": close({res.azurerm_automation_variable_datetime & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_variable_int": close({res.azurerm_automation_variable_int & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_variable_object": close({res.azurerm_automation_variable_object & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_variable_string": close({res.azurerm_automation_variable_string & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_watcher": close({res.azurerm_automation_watcher & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_automation_webhook": close({res.azurerm_automation_webhook & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_availability_set": close({res.azurerm_availability_set & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_backup_container_storage_account": close({res.azurerm_backup_container_storage_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_backup_policy_file_share": close({res.azurerm_backup_policy_file_share & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_backup_policy_vm": close({res.azurerm_backup_policy_vm & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_backup_policy_vm_workload": close({res.azurerm_backup_policy_vm_workload & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_backup_protected_file_share": close({res.azurerm_backup_protected_file_share & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_backup_protected_vm": close({res.azurerm_backup_protected_vm & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bastion_host": close({res.azurerm_bastion_host & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_batch_account": close({res.azurerm_batch_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_batch_application": close({res.azurerm_batch_application & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_batch_certificate": close({res.azurerm_batch_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_batch_job": close({res.azurerm_batch_job & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_batch_pool": close({res.azurerm_batch_pool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_billing_account_cost_management_export": close({res.azurerm_billing_account_cost_management_export & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_blueprint_assignment": close({res.azurerm_blueprint_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bot_channel_alexa": close({res.azurerm_bot_channel_alexa & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bot_channel_direct_line_speech": close({res.azurerm_bot_channel_direct_line_speech & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bot_channel_directline": close({res.azurerm_bot_channel_directline & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bot_channel_email": close({res.azurerm_bot_channel_email & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bot_channel_facebook": close({res.azurerm_bot_channel_facebook & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bot_channel_line": close({res.azurerm_bot_channel_line & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bot_channel_ms_teams": close({res.azurerm_bot_channel_ms_teams & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bot_channel_slack": close({res.azurerm_bot_channel_slack & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bot_channel_sms": close({res.azurerm_bot_channel_sms & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bot_channel_web_chat": close({res.azurerm_bot_channel_web_chat & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bot_channels_registration": close({res.azurerm_bot_channels_registration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bot_connection": close({res.azurerm_bot_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bot_service_azure_bot": close({res.azurerm_bot_service_azure_bot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_bot_web_app": close({res.azurerm_bot_web_app & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_capacity_reservation": close({res.azurerm_capacity_reservation & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_capacity_reservation_group": close({res.azurerm_capacity_reservation_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_endpoint_custom_domain": close({res.azurerm_cdn_endpoint_custom_domain & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_endpoint": close({res.azurerm_cdn_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_frontdoor_custom_domain_association": close({res.azurerm_cdn_frontdoor_custom_domain_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_frontdoor_custom_domain": close({res.azurerm_cdn_frontdoor_custom_domain & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_frontdoor_endpoint": close({res.azurerm_cdn_frontdoor_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_frontdoor_firewall_policy": close({res.azurerm_cdn_frontdoor_firewall_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_frontdoor_origin": close({res.azurerm_cdn_frontdoor_origin & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_frontdoor_origin_group": close({res.azurerm_cdn_frontdoor_origin_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_frontdoor_profile": close({res.azurerm_cdn_frontdoor_profile & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_frontdoor_route": close({res.azurerm_cdn_frontdoor_route & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_frontdoor_rule": close({res.azurerm_cdn_frontdoor_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_frontdoor_rule_set": close({res.azurerm_cdn_frontdoor_rule_set & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_frontdoor_secret": close({res.azurerm_cdn_frontdoor_secret & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_frontdoor_security_policy": close({res.azurerm_cdn_frontdoor_security_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cdn_profile": close({res.azurerm_cdn_profile & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_chaos_studio_capability": close({res.azurerm_chaos_studio_capability & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_chaos_studio_experiment": close({res.azurerm_chaos_studio_experiment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_chaos_studio_target": close({res.azurerm_chaos_studio_target & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cognitive_account_customer_managed_key": close({res.azurerm_cognitive_account_customer_managed_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cognitive_account": close({res.azurerm_cognitive_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cognitive_account_project": close({res.azurerm_cognitive_account_project & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cognitive_account_rai_blocklist": close({res.azurerm_cognitive_account_rai_blocklist & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cognitive_account_rai_policy": close({res.azurerm_cognitive_account_rai_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cognitive_deployment": close({res.azurerm_cognitive_deployment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_communication_service_email_domain_association": close({res.azurerm_communication_service_email_domain_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_communication_service": close({res.azurerm_communication_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_confidential_ledger": close({res.azurerm_confidential_ledger & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_consumption_budget_management_group": close({res.azurerm_consumption_budget_management_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_consumption_budget_resource_group": close({res.azurerm_consumption_budget_resource_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_consumption_budget_subscription": close({res.azurerm_consumption_budget_subscription & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_app_custom_domain": close({res.azurerm_container_app_custom_domain & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_app_environment_certificate": close({res.azurerm_container_app_environment_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_app_environment_custom_domain": close({res.azurerm_container_app_environment_custom_domain & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_app_environment_dapr_component": close({res.azurerm_container_app_environment_dapr_component & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_app_environment": close({res.azurerm_container_app_environment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_app_environment_managed_certificate": close({res.azurerm_container_app_environment_managed_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_app_environment_storage": close({res.azurerm_container_app_environment_storage & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_app": close({res.azurerm_container_app & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_app_job": close({res.azurerm_container_app_job & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_connected_registry": close({res.azurerm_container_connected_registry & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_group": close({res.azurerm_container_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_registry_agent_pool": close({res.azurerm_container_registry_agent_pool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_registry_cache_rule": close({res.azurerm_container_registry_cache_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_registry_credential_set": close({res.azurerm_container_registry_credential_set & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_registry": close({res.azurerm_container_registry & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_registry_scope_map": close({res.azurerm_container_registry_scope_map & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_registry_task": close({res.azurerm_container_registry_task & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_registry_task_schedule_run_now": close({res.azurerm_container_registry_task_schedule_run_now & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_registry_token": close({res.azurerm_container_registry_token & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_registry_token_password": close({res.azurerm_container_registry_token_password & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_container_registry_webhook": close({res.azurerm_container_registry_webhook & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_account": close({res.azurerm_cosmosdb_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_cassandra_cluster": close({res.azurerm_cosmosdb_cassandra_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_cassandra_datacenter": close({res.azurerm_cosmosdb_cassandra_datacenter & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_cassandra_keyspace": close({res.azurerm_cosmosdb_cassandra_keyspace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_cassandra_table": close({res.azurerm_cosmosdb_cassandra_table & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_gremlin_database": close({res.azurerm_cosmosdb_gremlin_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_gremlin_graph": close({res.azurerm_cosmosdb_gremlin_graph & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_mongo_collection": close({res.azurerm_cosmosdb_mongo_collection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_mongo_database": close({res.azurerm_cosmosdb_mongo_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_mongo_role_definition": close({res.azurerm_cosmosdb_mongo_role_definition & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_mongo_user_definition": close({res.azurerm_cosmosdb_mongo_user_definition & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_postgresql_cluster": close({res.azurerm_cosmosdb_postgresql_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_postgresql_coordinator_configuration": close({res.azurerm_cosmosdb_postgresql_coordinator_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_postgresql_firewall_rule": close({res.azurerm_cosmosdb_postgresql_firewall_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_postgresql_node_configuration": close({res.azurerm_cosmosdb_postgresql_node_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_postgresql_role": close({res.azurerm_cosmosdb_postgresql_role & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_sql_container": close({res.azurerm_cosmosdb_sql_container & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_sql_database": close({res.azurerm_cosmosdb_sql_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_sql_dedicated_gateway": close({res.azurerm_cosmosdb_sql_dedicated_gateway & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_sql_function": close({res.azurerm_cosmosdb_sql_function & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_sql_role_assignment": close({res.azurerm_cosmosdb_sql_role_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_sql_role_definition": close({res.azurerm_cosmosdb_sql_role_definition & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_sql_stored_procedure": close({res.azurerm_cosmosdb_sql_stored_procedure & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_sql_trigger": close({res.azurerm_cosmosdb_sql_trigger & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cosmosdb_table": close({res.azurerm_cosmosdb_table & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cost_anomaly_alert": close({res.azurerm_cost_anomaly_alert & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cost_management_scheduled_action": close({res.azurerm_cost_management_scheduled_action & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_custom_ip_prefix": close({res.azurerm_custom_ip_prefix & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_custom_provider": close({res.azurerm_custom_provider & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dashboard_grafana": close({res.azurerm_dashboard_grafana & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dashboard_grafana_managed_private_endpoint": close({res.azurerm_dashboard_grafana_managed_private_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_credential_service_principal": close({res.azurerm_data_factory_credential_service_principal & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_credential_user_managed_identity": close({res.azurerm_data_factory_credential_user_managed_identity & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_custom_dataset": close({res.azurerm_data_factory_custom_dataset & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_customer_managed_key": close({res.azurerm_data_factory_customer_managed_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_data_flow": close({res.azurerm_data_factory_data_flow & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_dataset_azure_blob": close({res.azurerm_data_factory_dataset_azure_blob & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_dataset_azure_sql_table": close({res.azurerm_data_factory_dataset_azure_sql_table & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_dataset_binary": close({res.azurerm_data_factory_dataset_binary & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_dataset_cosmosdb_sqlapi": close({res.azurerm_data_factory_dataset_cosmosdb_sqlapi & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_dataset_delimited_text": close({res.azurerm_data_factory_dataset_delimited_text & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_dataset_http": close({res.azurerm_data_factory_dataset_http & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_dataset_json": close({res.azurerm_data_factory_dataset_json & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_dataset_mysql": close({res.azurerm_data_factory_dataset_mysql & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_dataset_parquet": close({res.azurerm_data_factory_dataset_parquet & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_dataset_postgresql": close({res.azurerm_data_factory_dataset_postgresql & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_dataset_snowflake": close({res.azurerm_data_factory_dataset_snowflake & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_dataset_sql_server_table": close({res.azurerm_data_factory_dataset_sql_server_table & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_flowlet_data_flow": close({res.azurerm_data_factory_flowlet_data_flow & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory": close({res.azurerm_data_factory & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_integration_runtime_azure": close({res.azurerm_data_factory_integration_runtime_azure & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_integration_runtime_azure_ssis": close({res.azurerm_data_factory_integration_runtime_azure_ssis & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_integration_runtime_self_hosted": close({res.azurerm_data_factory_integration_runtime_self_hosted & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_custom_service": close({res.azurerm_data_factory_linked_custom_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_azure_blob_storage": close({res.azurerm_data_factory_linked_service_azure_blob_storage & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_azure_databricks": close({res.azurerm_data_factory_linked_service_azure_databricks & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_azure_file_storage": close({res.azurerm_data_factory_linked_service_azure_file_storage & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_azure_function": close({res.azurerm_data_factory_linked_service_azure_function & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_azure_search": close({res.azurerm_data_factory_linked_service_azure_search & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_azure_sql_database": close({res.azurerm_data_factory_linked_service_azure_sql_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_azure_table_storage": close({res.azurerm_data_factory_linked_service_azure_table_storage & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_cosmosdb": close({res.azurerm_data_factory_linked_service_cosmosdb & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_cosmosdb_mongoapi": close({res.azurerm_data_factory_linked_service_cosmosdb_mongoapi & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_data_lake_storage_gen2": close({res.azurerm_data_factory_linked_service_data_lake_storage_gen2 & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_key_vault": close({res.azurerm_data_factory_linked_service_key_vault & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_kusto": close({res.azurerm_data_factory_linked_service_kusto & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_mysql": close({res.azurerm_data_factory_linked_service_mysql & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_odata": close({res.azurerm_data_factory_linked_service_odata & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_odbc": close({res.azurerm_data_factory_linked_service_odbc & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_postgresql": close({res.azurerm_data_factory_linked_service_postgresql & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_sftp": close({res.azurerm_data_factory_linked_service_sftp & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_snowflake": close({res.azurerm_data_factory_linked_service_snowflake & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_sql_managed_instance": close({res.azurerm_data_factory_linked_service_sql_managed_instance & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_sql_server": close({res.azurerm_data_factory_linked_service_sql_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_synapse": close({res.azurerm_data_factory_linked_service_synapse & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_linked_service_web": close({res.azurerm_data_factory_linked_service_web & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_managed_private_endpoint": close({res.azurerm_data_factory_managed_private_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_pipeline": close({res.azurerm_data_factory_pipeline & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_trigger_blob_event": close({res.azurerm_data_factory_trigger_blob_event & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_trigger_custom_event": close({res.azurerm_data_factory_trigger_custom_event & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_trigger_schedule": close({res.azurerm_data_factory_trigger_schedule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_factory_trigger_tumbling_window": close({res.azurerm_data_factory_trigger_tumbling_window & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_instance_blob_storage": close({res.azurerm_data_protection_backup_instance_blob_storage & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_instance_data_lake_storage": close({res.azurerm_data_protection_backup_instance_data_lake_storage & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_instance_disk": close({res.azurerm_data_protection_backup_instance_disk & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_instance_kubernetes_cluster": close({res.azurerm_data_protection_backup_instance_kubernetes_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_instance_mysql_flexible_server": close({res.azurerm_data_protection_backup_instance_mysql_flexible_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_instance_postgresql_flexible_server": close({res.azurerm_data_protection_backup_instance_postgresql_flexible_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_instance_postgresql": close({res.azurerm_data_protection_backup_instance_postgresql & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_policy_blob_storage": close({res.azurerm_data_protection_backup_policy_blob_storage & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_policy_data_lake_storage": close({res.azurerm_data_protection_backup_policy_data_lake_storage & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_policy_disk": close({res.azurerm_data_protection_backup_policy_disk & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_policy_kubernetes_cluster": close({res.azurerm_data_protection_backup_policy_kubernetes_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_policy_mysql_flexible_server": close({res.azurerm_data_protection_backup_policy_mysql_flexible_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_policy_postgresql_flexible_server": close({res.azurerm_data_protection_backup_policy_postgresql_flexible_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_policy_postgresql": close({res.azurerm_data_protection_backup_policy_postgresql & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_vault_customer_managed_key": close({res.azurerm_data_protection_backup_vault_customer_managed_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_vault": close({res.azurerm_data_protection_backup_vault & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_resource_guard": close({res.azurerm_data_protection_resource_guard & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_share_account": close({res.azurerm_data_share_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_share_dataset_blob_storage": close({res.azurerm_data_share_dataset_blob_storage & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_share_dataset_data_lake_gen2": close({res.azurerm_data_share_dataset_data_lake_gen2 & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_share_dataset_kusto_cluster": close({res.azurerm_data_share_dataset_kusto_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_share_dataset_kusto_database": close({res.azurerm_data_share_dataset_kusto_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_share": close({res.azurerm_data_share & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_database_migration_project": close({res.azurerm_database_migration_project & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_database_migration_service": close({res.azurerm_database_migration_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_databox_edge_device": close({res.azurerm_databox_edge_device & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_databricks_access_connector": close({res.azurerm_databricks_access_connector & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_databricks_virtual_network_peering": close({res.azurerm_databricks_virtual_network_peering & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_databricks_workspace_customer_managed_key": close({res.azurerm_databricks_workspace_customer_managed_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_databricks_workspace": close({res.azurerm_databricks_workspace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_databricks_workspace_root_dbfs_customer_managed_key": close({res.azurerm_databricks_workspace_root_dbfs_customer_managed_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_datadog_monitor": close({res.azurerm_datadog_monitor & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_datadog_monitor_sso_configuration": close({res.azurerm_datadog_monitor_sso_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_datadog_monitor_tag_rule": close({res.azurerm_datadog_monitor_tag_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dedicated_hardware_security_module": close({res.azurerm_dedicated_hardware_security_module & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dedicated_host": close({res.azurerm_dedicated_host & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dedicated_host_group": close({res.azurerm_dedicated_host_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_center_attached_network": close({res.azurerm_dev_center_attached_network & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_center_catalog": close({res.azurerm_dev_center_catalog & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_center_dev_box_definition": close({res.azurerm_dev_center_dev_box_definition & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_center_environment_type": close({res.azurerm_dev_center_environment_type & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_center_gallery": close({res.azurerm_dev_center_gallery & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_center": close({res.azurerm_dev_center & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_center_network_connection": close({res.azurerm_dev_center_network_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_center_project_environment_type": close({res.azurerm_dev_center_project_environment_type & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_center_project": close({res.azurerm_dev_center_project & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_center_project_pool": close({res.azurerm_dev_center_project_pool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_test_global_vm_shutdown_schedule": close({res.azurerm_dev_test_global_vm_shutdown_schedule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_test_lab": close({res.azurerm_dev_test_lab & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_test_linux_virtual_machine": close({res.azurerm_dev_test_linux_virtual_machine & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_test_policy": close({res.azurerm_dev_test_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_test_schedule": close({res.azurerm_dev_test_schedule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_test_virtual_network": close({res.azurerm_dev_test_virtual_network & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dev_test_windows_virtual_machine": close({res.azurerm_dev_test_windows_virtual_machine & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_digital_twins_endpoint_eventgrid": close({res.azurerm_digital_twins_endpoint_eventgrid & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_digital_twins_endpoint_eventhub": close({res.azurerm_digital_twins_endpoint_eventhub & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_digital_twins_endpoint_servicebus": close({res.azurerm_digital_twins_endpoint_servicebus & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_digital_twins_instance": close({res.azurerm_digital_twins_instance & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_digital_twins_time_series_database_connection": close({res.azurerm_digital_twins_time_series_database_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_disk_access": close({res.azurerm_disk_access & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_disk_encryption_set": close({res.azurerm_disk_encryption_set & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dns_a_record": close({res.azurerm_dns_a_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dns_aaaa_record": close({res.azurerm_dns_aaaa_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dns_caa_record": close({res.azurerm_dns_caa_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dns_cname_record": close({res.azurerm_dns_cname_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dns_mx_record": close({res.azurerm_dns_mx_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dns_ns_record": close({res.azurerm_dns_ns_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dns_ptr_record": close({res.azurerm_dns_ptr_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dns_srv_record": close({res.azurerm_dns_srv_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dns_txt_record": close({res.azurerm_dns_txt_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dns_zone": close({res.azurerm_dns_zone & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dynatrace_monitor": close({res.azurerm_dynatrace_monitor & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_dynatrace_tag_rules": close({res.azurerm_dynatrace_tag_rules & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_elastic_cloud_elasticsearch": close({res.azurerm_elastic_cloud_elasticsearch & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_elastic_san": close({res.azurerm_elastic_san & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_elastic_san_volume": close({res.azurerm_elastic_san_volume & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_elastic_san_volume_group": close({res.azurerm_elastic_san_volume_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_email_communication_service_domain": close({res.azurerm_email_communication_service_domain & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_email_communication_service_domain_sender_username": close({res.azurerm_email_communication_service_domain_sender_username & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_email_communication_service": close({res.azurerm_email_communication_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventgrid_domain": close({res.azurerm_eventgrid_domain & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventgrid_domain_topic": close({res.azurerm_eventgrid_domain_topic & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventgrid_event_subscription": close({res.azurerm_eventgrid_event_subscription & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventgrid_namespace": close({res.azurerm_eventgrid_namespace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventgrid_namespace_topic": close({res.azurerm_eventgrid_namespace_topic & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventgrid_partner_configuration": close({res.azurerm_eventgrid_partner_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventgrid_partner_namespace": close({res.azurerm_eventgrid_partner_namespace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventgrid_partner_registration": close({res.azurerm_eventgrid_partner_registration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventgrid_system_topic_event_subscription": close({res.azurerm_eventgrid_system_topic_event_subscription & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventgrid_system_topic": close({res.azurerm_eventgrid_system_topic & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventgrid_topic": close({res.azurerm_eventgrid_topic & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventhub_authorization_rule": close({res.azurerm_eventhub_authorization_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventhub_cluster": close({res.azurerm_eventhub_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventhub_consumer_group": close({res.azurerm_eventhub_consumer_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventhub": close({res.azurerm_eventhub & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventhub_namespace_authorization_rule": close({res.azurerm_eventhub_namespace_authorization_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventhub_namespace_customer_managed_key": close({res.azurerm_eventhub_namespace_customer_managed_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventhub_namespace_disaster_recovery_config": close({res.azurerm_eventhub_namespace_disaster_recovery_config & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventhub_namespace": close({res.azurerm_eventhub_namespace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_eventhub_namespace_schema_group": close({res.azurerm_eventhub_namespace_schema_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_express_route_circuit_authorization": close({res.azurerm_express_route_circuit_authorization & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_express_route_circuit_connection": close({res.azurerm_express_route_circuit_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_express_route_circuit": close({res.azurerm_express_route_circuit & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_express_route_circuit_peering": close({res.azurerm_express_route_circuit_peering & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_express_route_connection": close({res.azurerm_express_route_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_express_route_gateway": close({res.azurerm_express_route_gateway & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_express_route_port_authorization": close({res.azurerm_express_route_port_authorization & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_express_route_port": close({res.azurerm_express_route_port & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_extended_custom_location": close({res.azurerm_extended_custom_location & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_extended_location_custom_location": close({res.azurerm_extended_location_custom_location & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_fabric_capacity": close({res.azurerm_fabric_capacity & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_federated_identity_credential": close({res.azurerm_federated_identity_credential & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_firewall_application_rule_collection": close({res.azurerm_firewall_application_rule_collection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_firewall": close({res.azurerm_firewall & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_firewall_nat_rule_collection": close({res.azurerm_firewall_nat_rule_collection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_firewall_network_rule_collection": close({res.azurerm_firewall_network_rule_collection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_firewall_policy": close({res.azurerm_firewall_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_firewall_policy_rule_collection_group": close({res.azurerm_firewall_policy_rule_collection_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_fluid_relay_server": close({res.azurerm_fluid_relay_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_frontdoor_custom_https_configuration": close({res.azurerm_frontdoor_custom_https_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_frontdoor_firewall_policy": close({res.azurerm_frontdoor_firewall_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_frontdoor": close({res.azurerm_frontdoor & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_frontdoor_rules_engine": close({res.azurerm_frontdoor_rules_engine & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_function_app_active_slot": close({res.azurerm_function_app_active_slot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_function_app_connection": close({res.azurerm_function_app_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_function_app_flex_consumption": close({res.azurerm_function_app_flex_consumption & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_function_app_function": close({res.azurerm_function_app_function & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_function_app": close({res.azurerm_function_app & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_function_app_hybrid_connection": close({res.azurerm_function_app_hybrid_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_function_app_slot": close({res.azurerm_function_app_slot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_gallery_application": close({res.azurerm_gallery_application & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_gallery_application_version": close({res.azurerm_gallery_application_version & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_graph_services_account": close({res.azurerm_graph_services_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_hdinsight_hadoop_cluster": close({res.azurerm_hdinsight_hadoop_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_hdinsight_hbase_cluster": close({res.azurerm_hdinsight_hbase_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_hdinsight_interactive_query_cluster": close({res.azurerm_hdinsight_interactive_query_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_hdinsight_kafka_cluster": close({res.azurerm_hdinsight_kafka_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_hdinsight_spark_cluster": close({res.azurerm_hdinsight_spark_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_healthbot": close({res.azurerm_healthbot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_healthcare_dicom_service": close({res.azurerm_healthcare_dicom_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_healthcare_fhir_service": close({res.azurerm_healthcare_fhir_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_healthcare_medtech_service_fhir_destination": close({res.azurerm_healthcare_medtech_service_fhir_destination & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_healthcare_medtech_service": close({res.azurerm_healthcare_medtech_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_healthcare_service": close({res.azurerm_healthcare_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_healthcare_workspace": close({res.azurerm_healthcare_workspace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_hpc_cache_access_policy": close({res.azurerm_hpc_cache_access_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_hpc_cache_blob_nfs_target": close({res.azurerm_hpc_cache_blob_nfs_target & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_hpc_cache_blob_target": close({res.azurerm_hpc_cache_blob_target & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_hpc_cache": close({res.azurerm_hpc_cache & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_hpc_cache_nfs_target": close({res.azurerm_hpc_cache_nfs_target & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_image": close({res.azurerm_image & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iot_security_device_group": close({res.azurerm_iot_security_device_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iot_security_solution": close({res.azurerm_iot_security_solution & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iotcentral_application": close({res.azurerm_iotcentral_application & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iotcentral_application_network_rule_set": close({res.azurerm_iotcentral_application_network_rule_set & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iotcentral_organization": close({res.azurerm_iotcentral_organization & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_certificate": close({res.azurerm_iothub_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_consumer_group": close({res.azurerm_iothub_consumer_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_device_update_account": close({res.azurerm_iothub_device_update_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_device_update_instance": close({res.azurerm_iothub_device_update_instance & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_dps_certificate": close({res.azurerm_iothub_dps_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_dps": close({res.azurerm_iothub_dps & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_dps_shared_access_policy": close({res.azurerm_iothub_dps_shared_access_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_endpoint_cosmosdb_account": close({res.azurerm_iothub_endpoint_cosmosdb_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_endpoint_eventhub": close({res.azurerm_iothub_endpoint_eventhub & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_endpoint_servicebus_queue": close({res.azurerm_iothub_endpoint_servicebus_queue & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_endpoint_servicebus_topic": close({res.azurerm_iothub_endpoint_servicebus_topic & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_endpoint_storage_container": close({res.azurerm_iothub_endpoint_storage_container & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_enrichment": close({res.azurerm_iothub_enrichment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_fallback_route": close({res.azurerm_iothub_fallback_route & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_file_upload": close({res.azurerm_iothub_file_upload & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub": close({res.azurerm_iothub & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_route": close({res.azurerm_iothub_route & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_iothub_shared_access_policy": close({res.azurerm_iothub_shared_access_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_ip_group_cidr": close({res.azurerm_ip_group_cidr & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_ip_group": close({res.azurerm_ip_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_key_vault_access_policy": close({res.azurerm_key_vault_access_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_key_vault_certificate_contacts": close({res.azurerm_key_vault_certificate_contacts & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_key_vault_certificate": close({res.azurerm_key_vault_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_key_vault_certificate_issuer": close({res.azurerm_key_vault_certificate_issuer & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_key_vault": close({res.azurerm_key_vault & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_key_vault_key": close({res.azurerm_key_vault_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_key_vault_managed_hardware_security_module": close({res.azurerm_key_vault_managed_hardware_security_module & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_key_vault_managed_hardware_security_module_key": close({res.azurerm_key_vault_managed_hardware_security_module_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_key_vault_managed_hardware_security_module_key_rotation_policy": close({res.azurerm_key_vault_managed_hardware_security_module_key_rotation_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_key_vault_managed_hardware_security_module_role_assignment": close({res.azurerm_key_vault_managed_hardware_security_module_role_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_key_vault_managed_hardware_security_module_role_definition": close({res.azurerm_key_vault_managed_hardware_security_module_role_definition & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_key_vault_managed_storage_account": close({res.azurerm_key_vault_managed_storage_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_key_vault_managed_storage_account_sas_token_definition": close({res.azurerm_key_vault_managed_storage_account_sas_token_definition & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_key_vault_secret": close({res.azurerm_key_vault_secret & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kubernetes_cluster_deployment_safeguard": close({res.azurerm_kubernetes_cluster_deployment_safeguard & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kubernetes_cluster_extension": close({res.azurerm_kubernetes_cluster_extension & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kubernetes_cluster": close({res.azurerm_kubernetes_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kubernetes_cluster_node_pool": close({res.azurerm_kubernetes_cluster_node_pool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kubernetes_cluster_trusted_access_role_binding": close({res.azurerm_kubernetes_cluster_trusted_access_role_binding & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kubernetes_fleet_manager": close({res.azurerm_kubernetes_fleet_manager & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kubernetes_fleet_member": close({res.azurerm_kubernetes_fleet_member & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kubernetes_fleet_update_run": close({res.azurerm_kubernetes_fleet_update_run & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kubernetes_fleet_update_strategy": close({res.azurerm_kubernetes_fleet_update_strategy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kubernetes_flux_configuration": close({res.azurerm_kubernetes_flux_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kusto_attached_database_configuration": close({res.azurerm_kusto_attached_database_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kusto_cluster_customer_managed_key": close({res.azurerm_kusto_cluster_customer_managed_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kusto_cluster": close({res.azurerm_kusto_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kusto_cluster_managed_private_endpoint": close({res.azurerm_kusto_cluster_managed_private_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kusto_cluster_principal_assignment": close({res.azurerm_kusto_cluster_principal_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kusto_cosmosdb_data_connection": close({res.azurerm_kusto_cosmosdb_data_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kusto_database": close({res.azurerm_kusto_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kusto_database_principal_assignment": close({res.azurerm_kusto_database_principal_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kusto_eventgrid_data_connection": close({res.azurerm_kusto_eventgrid_data_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kusto_eventhub_data_connection": close({res.azurerm_kusto_eventhub_data_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kusto_iothub_data_connection": close({res.azurerm_kusto_iothub_data_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_kusto_script": close({res.azurerm_kusto_script & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_lb_backend_address_pool_address": close({res.azurerm_lb_backend_address_pool_address & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_lb_backend_address_pool": close({res.azurerm_lb_backend_address_pool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_lb": close({res.azurerm_lb & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_lb_nat_pool": close({res.azurerm_lb_nat_pool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_lb_nat_rule": close({res.azurerm_lb_nat_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_lb_outbound_rule": close({res.azurerm_lb_outbound_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_lb_probe": close({res.azurerm_lb_probe & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_lb_rule": close({res.azurerm_lb_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_lighthouse_assignment": close({res.azurerm_lighthouse_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_lighthouse_definition": close({res.azurerm_lighthouse_definition & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_linux_function_app": close({res.azurerm_linux_function_app & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_linux_function_app_slot": close({res.azurerm_linux_function_app_slot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_linux_virtual_machine": close({res.azurerm_linux_virtual_machine & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_linux_virtual_machine_scale_set": close({res.azurerm_linux_virtual_machine_scale_set & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_linux_web_app": close({res.azurerm_linux_web_app & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_linux_web_app_slot": close({res.azurerm_linux_web_app_slot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_load_test": close({res.azurerm_load_test & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_local_network_gateway": close({res.azurerm_local_network_gateway & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_cluster_customer_managed_key": close({res.azurerm_log_analytics_cluster_customer_managed_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_cluster": close({res.azurerm_log_analytics_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_data_export_rule": close({res.azurerm_log_analytics_data_export_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_datasource_windows_event": close({res.azurerm_log_analytics_datasource_windows_event & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_datasource_windows_performance_counter": close({res.azurerm_log_analytics_datasource_windows_performance_counter & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_linked_service": close({res.azurerm_log_analytics_linked_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_linked_storage_account": close({res.azurerm_log_analytics_linked_storage_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_query_pack": close({res.azurerm_log_analytics_query_pack & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_query_pack_query": close({res.azurerm_log_analytics_query_pack_query & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_saved_search": close({res.azurerm_log_analytics_saved_search & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_solution": close({res.azurerm_log_analytics_solution & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_storage_insights": close({res.azurerm_log_analytics_storage_insights & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_workspace": close({res.azurerm_log_analytics_workspace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_workspace_table_custom_log": close({res.azurerm_log_analytics_workspace_table_custom_log & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_log_analytics_workspace_table": close({res.azurerm_log_analytics_workspace_table & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_action_custom": close({res.azurerm_logic_app_action_custom & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_action_http": close({res.azurerm_logic_app_action_http & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_integration_account_agreement": close({res.azurerm_logic_app_integration_account_agreement & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_integration_account_assembly": close({res.azurerm_logic_app_integration_account_assembly & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_integration_account_batch_configuration": close({res.azurerm_logic_app_integration_account_batch_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_integration_account_certificate": close({res.azurerm_logic_app_integration_account_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_integration_account": close({res.azurerm_logic_app_integration_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_integration_account_map": close({res.azurerm_logic_app_integration_account_map & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_integration_account_partner": close({res.azurerm_logic_app_integration_account_partner & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_integration_account_schema": close({res.azurerm_logic_app_integration_account_schema & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_integration_account_session": close({res.azurerm_logic_app_integration_account_session & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_standard": close({res.azurerm_logic_app_standard & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_trigger_custom": close({res.azurerm_logic_app_trigger_custom & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_trigger_http_request": close({res.azurerm_logic_app_trigger_http_request & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_trigger_recurrence": close({res.azurerm_logic_app_trigger_recurrence & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_logic_app_workflow": close({res.azurerm_logic_app_workflow & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_machine_learning_compute_cluster": close({res.azurerm_machine_learning_compute_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_machine_learning_compute_instance": close({res.azurerm_machine_learning_compute_instance & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_machine_learning_datastore_blobstorage": close({res.azurerm_machine_learning_datastore_blobstorage & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_machine_learning_datastore_datalake_gen2": close({res.azurerm_machine_learning_datastore_datalake_gen2 & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_machine_learning_datastore_fileshare": close({res.azurerm_machine_learning_datastore_fileshare & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_machine_learning_inference_cluster": close({res.azurerm_machine_learning_inference_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_machine_learning_synapse_spark": close({res.azurerm_machine_learning_synapse_spark & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_machine_learning_workspace": close({res.azurerm_machine_learning_workspace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_machine_learning_workspace_network_outbound_rule_fqdn": close({res.azurerm_machine_learning_workspace_network_outbound_rule_fqdn & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_machine_learning_workspace_network_outbound_rule_private_endpoint": close({res.azurerm_machine_learning_workspace_network_outbound_rule_private_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_machine_learning_workspace_network_outbound_rule_service_tag": close({res.azurerm_machine_learning_workspace_network_outbound_rule_service_tag & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_maintenance_assignment_dedicated_host": close({res.azurerm_maintenance_assignment_dedicated_host & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_maintenance_assignment_dynamic_scope": close({res.azurerm_maintenance_assignment_dynamic_scope & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_maintenance_assignment_virtual_machine": close({res.azurerm_maintenance_assignment_virtual_machine & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_maintenance_assignment_virtual_machine_scale_set": close({res.azurerm_maintenance_assignment_virtual_machine_scale_set & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_maintenance_configuration": close({res.azurerm_maintenance_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_managed_application_definition": close({res.azurerm_managed_application_definition & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_managed_application": close({res.azurerm_managed_application & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_managed_devops_pool": close({res.azurerm_managed_devops_pool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_managed_disk": close({res.azurerm_managed_disk & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_managed_disk_sas_token": close({res.azurerm_managed_disk_sas_token & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_managed_lustre_file_system": close({res.azurerm_managed_lustre_file_system & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_managed_redis_access_policy_assignment": close({res.azurerm_managed_redis_access_policy_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_managed_redis": close({res.azurerm_managed_redis & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_managed_redis_geo_replication": close({res.azurerm_managed_redis_geo_replication & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_management_group": close({res.azurerm_management_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_management_group_policy_assignment": close({res.azurerm_management_group_policy_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_management_group_policy_exemption": close({res.azurerm_management_group_policy_exemption & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_management_group_policy_remediation": close({res.azurerm_management_group_policy_remediation & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_management_group_policy_set_definition": close({res.azurerm_management_group_policy_set_definition & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_management_group_subscription_association": close({res.azurerm_management_group_subscription_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_management_group_template_deployment": close({res.azurerm_management_group_template_deployment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_management_lock": close({res.azurerm_management_lock & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_maps_account": close({res.azurerm_maps_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_maps_creator": close({res.azurerm_maps_creator & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_marketplace_agreement": close({res.azurerm_marketplace_agreement & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_marketplace_role_assignment": close({res.azurerm_marketplace_role_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mobile_network_attached_data_network": close({res.azurerm_mobile_network_attached_data_network & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mobile_network_data_network": close({res.azurerm_mobile_network_data_network & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mobile_network": close({res.azurerm_mobile_network & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mobile_network_packet_core_control_plane": close({res.azurerm_mobile_network_packet_core_control_plane & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mobile_network_packet_core_data_plane": close({res.azurerm_mobile_network_packet_core_data_plane & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mobile_network_service": close({res.azurerm_mobile_network_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mobile_network_sim": close({res.azurerm_mobile_network_sim & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mobile_network_sim_group": close({res.azurerm_mobile_network_sim_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mobile_network_sim_policy": close({res.azurerm_mobile_network_sim_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mobile_network_site": close({res.azurerm_mobile_network_site & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mobile_network_slice": close({res.azurerm_mobile_network_slice & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mongo_cluster_firewall_rule": close({res.azurerm_mongo_cluster_firewall_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mongo_cluster": close({res.azurerm_mongo_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mongo_cluster_user": close({res.azurerm_mongo_cluster_user & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_aad_diagnostic_setting": close({res.azurerm_monitor_aad_diagnostic_setting & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_action_group": close({res.azurerm_monitor_action_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_activity_log_alert": close({res.azurerm_monitor_activity_log_alert & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_alert_processing_rule_action_group": close({res.azurerm_monitor_alert_processing_rule_action_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_alert_processing_rule_suppression": close({res.azurerm_monitor_alert_processing_rule_suppression & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_alert_prometheus_rule_group": close({res.azurerm_monitor_alert_prometheus_rule_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_autoscale_setting": close({res.azurerm_monitor_autoscale_setting & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_data_collection_endpoint": close({res.azurerm_monitor_data_collection_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_data_collection_rule_association": close({res.azurerm_monitor_data_collection_rule_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_data_collection_rule": close({res.azurerm_monitor_data_collection_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_diagnostic_setting": close({res.azurerm_monitor_diagnostic_setting & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_metric_alert": close({res.azurerm_monitor_metric_alert & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_private_link_scope": close({res.azurerm_monitor_private_link_scope & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_private_link_scoped_service": close({res.azurerm_monitor_private_link_scoped_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_scheduled_query_rules_alert": close({res.azurerm_monitor_scheduled_query_rules_alert & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_scheduled_query_rules_alert_v2": close({res.azurerm_monitor_scheduled_query_rules_alert_v2 & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_scheduled_query_rules_log": close({res.azurerm_monitor_scheduled_query_rules_log & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_smart_detector_alert_rule": close({res.azurerm_monitor_smart_detector_alert_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_monitor_workspace": close({res.azurerm_monitor_workspace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_database_extended_auditing_policy": close({res.azurerm_mssql_database_extended_auditing_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_database": close({res.azurerm_mssql_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_database_vulnerability_assessment_rule_baseline": close({res.azurerm_mssql_database_vulnerability_assessment_rule_baseline & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_elasticpool": close({res.azurerm_mssql_elasticpool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_failover_group": close({res.azurerm_mssql_failover_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_firewall_rule": close({res.azurerm_mssql_firewall_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_job_agent": close({res.azurerm_mssql_job_agent & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_job_credential": close({res.azurerm_mssql_job_credential & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_job": close({res.azurerm_mssql_job & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_job_schedule": close({res.azurerm_mssql_job_schedule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_job_step": close({res.azurerm_mssql_job_step & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_job_target_group": close({res.azurerm_mssql_job_target_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_managed_database": close({res.azurerm_mssql_managed_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_managed_instance_active_directory_administrator": close({res.azurerm_mssql_managed_instance_active_directory_administrator & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_managed_instance_failover_group": close({res.azurerm_mssql_managed_instance_failover_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_managed_instance": close({res.azurerm_mssql_managed_instance & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_managed_instance_security_alert_policy": close({res.azurerm_mssql_managed_instance_security_alert_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_managed_instance_start_stop_schedule": close({res.azurerm_mssql_managed_instance_start_stop_schedule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_managed_instance_transparent_data_encryption": close({res.azurerm_mssql_managed_instance_transparent_data_encryption & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_managed_instance_vulnerability_assessment": close({res.azurerm_mssql_managed_instance_vulnerability_assessment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_outbound_firewall_rule": close({res.azurerm_mssql_outbound_firewall_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_server_dns_alias": close({res.azurerm_mssql_server_dns_alias & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_server_extended_auditing_policy": close({res.azurerm_mssql_server_extended_auditing_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_server": close({res.azurerm_mssql_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_server_microsoft_support_auditing_policy": close({res.azurerm_mssql_server_microsoft_support_auditing_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_server_security_alert_policy": close({res.azurerm_mssql_server_security_alert_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_server_transparent_data_encryption": close({res.azurerm_mssql_server_transparent_data_encryption & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_server_vulnerability_assessment": close({res.azurerm_mssql_server_vulnerability_assessment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_virtual_machine_availability_group_listener": close({res.azurerm_mssql_virtual_machine_availability_group_listener & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_virtual_machine": close({res.azurerm_mssql_virtual_machine & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_virtual_machine_group": close({res.azurerm_mssql_virtual_machine_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mssql_virtual_network_rule": close({res.azurerm_mssql_virtual_network_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mysql_flexible_database": close({res.azurerm_mysql_flexible_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mysql_flexible_server_active_directory_administrator": close({res.azurerm_mysql_flexible_server_active_directory_administrator & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mysql_flexible_server_configuration": close({res.azurerm_mysql_flexible_server_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mysql_flexible_server_firewall_rule": close({res.azurerm_mysql_flexible_server_firewall_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_mysql_flexible_server": close({res.azurerm_mysql_flexible_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_nat_gateway": close({res.azurerm_nat_gateway & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_nat_gateway_public_ip_association": close({res.azurerm_nat_gateway_public_ip_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_nat_gateway_public_ip_prefix_association": close({res.azurerm_nat_gateway_public_ip_prefix_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_netapp_account_encryption": close({res.azurerm_netapp_account_encryption & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_netapp_account": close({res.azurerm_netapp_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_netapp_backup_policy": close({res.azurerm_netapp_backup_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_netapp_backup_vault": close({res.azurerm_netapp_backup_vault & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_netapp_pool": close({res.azurerm_netapp_pool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_netapp_snapshot": close({res.azurerm_netapp_snapshot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_netapp_snapshot_policy": close({res.azurerm_netapp_snapshot_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_netapp_volume_bucket": close({res.azurerm_netapp_volume_bucket & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_netapp_volume_bucket_with_server": close({res.azurerm_netapp_volume_bucket_with_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_netapp_volume": close({res.azurerm_netapp_volume & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_netapp_volume_group_oracle": close({res.azurerm_netapp_volume_group_oracle & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_netapp_volume_group_sap_hana": close({res.azurerm_netapp_volume_group_sap_hana & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_netapp_volume_quota_rule": close({res.azurerm_netapp_volume_quota_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_connection_monitor": close({res.azurerm_network_connection_monitor & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_ddos_protection_plan": close({res.azurerm_network_ddos_protection_plan & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_function_azure_traffic_collector": close({res.azurerm_network_function_azure_traffic_collector & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_function_collector_policy": close({res.azurerm_network_function_collector_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_interface_application_gateway_backend_address_pool_association": close({res.azurerm_network_interface_application_gateway_backend_address_pool_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_interface_application_security_group_association": close({res.azurerm_network_interface_application_security_group_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_interface_backend_address_pool_association": close({res.azurerm_network_interface_backend_address_pool_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_interface": close({res.azurerm_network_interface & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_interface_nat_rule_association": close({res.azurerm_network_interface_nat_rule_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_interface_security_group_association": close({res.azurerm_network_interface_security_group_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_admin_rule_collection": close({res.azurerm_network_manager_admin_rule_collection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_admin_rule": close({res.azurerm_network_manager_admin_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_connectivity_configuration": close({res.azurerm_network_manager_connectivity_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_deployment": close({res.azurerm_network_manager_deployment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager": close({res.azurerm_network_manager & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_ipam_pool": close({res.azurerm_network_manager_ipam_pool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_ipam_pool_static_cidr": close({res.azurerm_network_manager_ipam_pool_static_cidr & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_management_group_connection": close({res.azurerm_network_manager_management_group_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_network_group": close({res.azurerm_network_manager_network_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_routing_configuration": close({res.azurerm_network_manager_routing_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_routing_rule_collection": close({res.azurerm_network_manager_routing_rule_collection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_routing_rule": close({res.azurerm_network_manager_routing_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_scope_connection": close({res.azurerm_network_manager_scope_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_security_admin_configuration": close({res.azurerm_network_manager_security_admin_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_static_member": close({res.azurerm_network_manager_static_member & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_subscription_connection": close({res.azurerm_network_manager_subscription_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_verifier_workspace": close({res.azurerm_network_manager_verifier_workspace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_manager_verifier_workspace_reachability_analysis_intent": close({res.azurerm_network_manager_verifier_workspace_reachability_analysis_intent & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_packet_capture": close({res.azurerm_network_packet_capture & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_profile": close({res.azurerm_network_profile & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_security_group": close({res.azurerm_network_security_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_security_perimeter_access_rule": close({res.azurerm_network_security_perimeter_access_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_security_perimeter_association": close({res.azurerm_network_security_perimeter_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_security_perimeter": close({res.azurerm_network_security_perimeter & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_security_perimeter_profile": close({res.azurerm_network_security_perimeter_profile & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_security_rule": close({res.azurerm_network_security_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_watcher_flow_log": close({res.azurerm_network_watcher_flow_log & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_network_watcher": close({res.azurerm_network_watcher & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_new_relic_monitor": close({res.azurerm_new_relic_monitor & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_new_relic_tag_rule": close({res.azurerm_new_relic_tag_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_nginx_api_key": close({res.azurerm_nginx_api_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_nginx_certificate": close({res.azurerm_nginx_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_nginx_configuration": close({res.azurerm_nginx_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_nginx_deployment": close({res.azurerm_nginx_deployment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_notification_hub_authorization_rule": close({res.azurerm_notification_hub_authorization_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_notification_hub": close({res.azurerm_notification_hub & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_notification_hub_namespace": close({res.azurerm_notification_hub_namespace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_oracle_autonomous_database_backup": close({res.azurerm_oracle_autonomous_database_backup & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_oracle_autonomous_database_clone_from_backup": close({res.azurerm_oracle_autonomous_database_clone_from_backup & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_oracle_autonomous_database_clone_from_database": close({res.azurerm_oracle_autonomous_database_clone_from_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_oracle_autonomous_database": close({res.azurerm_oracle_autonomous_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_oracle_cloud_vm_cluster": close({res.azurerm_oracle_cloud_vm_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_oracle_exadata_infrastructure": close({res.azurerm_oracle_exadata_infrastructure & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_oracle_exascale_database_storage_vault": close({res.azurerm_oracle_exascale_database_storage_vault & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_oracle_resource_anchor": close({res.azurerm_oracle_resource_anchor & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_orbital_contact": close({res.azurerm_orbital_contact & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_orbital_contact_profile": close({res.azurerm_orbital_contact_profile & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_orbital_spacecraft": close({res.azurerm_orbital_spacecraft & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_orchestrated_virtual_machine_scale_set": close({res.azurerm_orchestrated_virtual_machine_scale_set & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack_certificate": close({res.azurerm_palo_alto_local_rulestack_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack_fqdn_list": close({res.azurerm_palo_alto_local_rulestack_fqdn_list & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack": close({res.azurerm_palo_alto_local_rulestack & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack_outbound_trust_certificate_association": close({res.azurerm_palo_alto_local_rulestack_outbound_trust_certificate_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack_outbound_untrust_certificate_association": close({res.azurerm_palo_alto_local_rulestack_outbound_untrust_certificate_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack_prefix_list": close({res.azurerm_palo_alto_local_rulestack_prefix_list & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_palo_alto_local_rulestack_rule": close({res.azurerm_palo_alto_local_rulestack_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_hub_local_rulestack": close({res.azurerm_palo_alto_next_generation_firewall_virtual_hub_local_rulestack & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_hub_panorama": close({res.azurerm_palo_alto_next_generation_firewall_virtual_hub_panorama & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_hub_strata_cloud_manager": close({res.azurerm_palo_alto_next_generation_firewall_virtual_hub_strata_cloud_manager & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_network_local_rulestack": close({res.azurerm_palo_alto_next_generation_firewall_virtual_network_local_rulestack & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_network_panorama": close({res.azurerm_palo_alto_next_generation_firewall_virtual_network_panorama & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_palo_alto_next_generation_firewall_virtual_network_strata_cloud_manager": close({res.azurerm_palo_alto_next_generation_firewall_virtual_network_strata_cloud_manager & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_palo_alto_virtual_network_appliance": close({res.azurerm_palo_alto_virtual_network_appliance & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_pim_active_role_assignment": close({res.azurerm_pim_active_role_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_pim_eligible_role_assignment": close({res.azurerm_pim_eligible_role_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_point_to_site_vpn_gateway": close({res.azurerm_point_to_site_vpn_gateway & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_policy_definition": close({res.azurerm_policy_definition & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_policy_set_definition": close({res.azurerm_policy_set_definition & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_policy_virtual_machine_configuration_assignment": close({res.azurerm_policy_virtual_machine_configuration_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_portal_dashboard": close({res.azurerm_portal_dashboard & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_portal_tenant_configuration": close({res.azurerm_portal_tenant_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_postgresql_active_directory_administrator": close({res.azurerm_postgresql_active_directory_administrator & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_postgresql_configuration": close({res.azurerm_postgresql_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_postgresql_database": close({res.azurerm_postgresql_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_postgresql_firewall_rule": close({res.azurerm_postgresql_firewall_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_postgresql_flexible_server_active_directory_administrator": close({res.azurerm_postgresql_flexible_server_active_directory_administrator & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_postgresql_flexible_server_backup": close({res.azurerm_postgresql_flexible_server_backup & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_postgresql_flexible_server_configuration": close({res.azurerm_postgresql_flexible_server_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_postgresql_flexible_server_database": close({res.azurerm_postgresql_flexible_server_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_postgresql_flexible_server_firewall_rule": close({res.azurerm_postgresql_flexible_server_firewall_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_postgresql_flexible_server": close({res.azurerm_postgresql_flexible_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_postgresql_flexible_server_virtual_endpoint": close({res.azurerm_postgresql_flexible_server_virtual_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_postgresql_server": close({res.azurerm_postgresql_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_postgresql_server_key": close({res.azurerm_postgresql_server_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_postgresql_virtual_network_rule": close({res.azurerm_postgresql_virtual_network_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_powerbi_embedded": close({res.azurerm_powerbi_embedded & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_a_record": close({res.azurerm_private_dns_a_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_aaaa_record": close({res.azurerm_private_dns_aaaa_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_cname_record": close({res.azurerm_private_dns_cname_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_mx_record": close({res.azurerm_private_dns_mx_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_ptr_record": close({res.azurerm_private_dns_ptr_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_resolver_dns_forwarding_ruleset": close({res.azurerm_private_dns_resolver_dns_forwarding_ruleset & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_resolver_forwarding_rule": close({res.azurerm_private_dns_resolver_forwarding_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_resolver": close({res.azurerm_private_dns_resolver & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_resolver_inbound_endpoint": close({res.azurerm_private_dns_resolver_inbound_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_resolver_outbound_endpoint": close({res.azurerm_private_dns_resolver_outbound_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_resolver_virtual_network_link": close({res.azurerm_private_dns_resolver_virtual_network_link & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_srv_record": close({res.azurerm_private_dns_srv_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_txt_record": close({res.azurerm_private_dns_txt_record & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_zone": close({res.azurerm_private_dns_zone & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_dns_zone_virtual_network_link": close({res.azurerm_private_dns_zone_virtual_network_link & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_endpoint_application_security_group_association": close({res.azurerm_private_endpoint_application_security_group_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_endpoint": close({res.azurerm_private_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_private_link_service": close({res.azurerm_private_link_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_proximity_placement_group": close({res.azurerm_proximity_placement_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_public_ip": close({res.azurerm_public_ip & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_public_ip_prefix": close({res.azurerm_public_ip_prefix & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_purview_account": close({res.azurerm_purview_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_qumulo_file_system": close({res.azurerm_qumulo_file_system & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_recovery_services_vault": close({res.azurerm_recovery_services_vault & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_recovery_services_vault_resource_guard_association": close({res.azurerm_recovery_services_vault_resource_guard_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_redhat_openshift_cluster": close({res.azurerm_redhat_openshift_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_redis_cache_access_policy_assignment": close({res.azurerm_redis_cache_access_policy_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_redis_cache_access_policy": close({res.azurerm_redis_cache_access_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_redis_cache": close({res.azurerm_redis_cache & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_redis_enterprise_cluster": close({res.azurerm_redis_enterprise_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_redis_enterprise_database": close({res.azurerm_redis_enterprise_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_redis_firewall_rule": close({res.azurerm_redis_firewall_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_redis_linked_server": close({res.azurerm_redis_linked_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_relay_hybrid_connection_authorization_rule": close({res.azurerm_relay_hybrid_connection_authorization_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_relay_hybrid_connection": close({res.azurerm_relay_hybrid_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_relay_namespace_authorization_rule": close({res.azurerm_relay_namespace_authorization_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_relay_namespace": close({res.azurerm_relay_namespace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_deployment_script_azure_cli": close({res.azurerm_resource_deployment_script_azure_cli & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_deployment_script_azure_power_shell": close({res.azurerm_resource_deployment_script_azure_power_shell & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_group_cost_management_export": close({res.azurerm_resource_group_cost_management_export & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_group_cost_management_view": close({res.azurerm_resource_group_cost_management_view & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_group": close({res.azurerm_resource_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_group_policy_assignment": close({res.azurerm_resource_group_policy_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_group_policy_exemption": close({res.azurerm_resource_group_policy_exemption & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_group_policy_remediation": close({res.azurerm_resource_group_policy_remediation & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_group_template_deployment": close({res.azurerm_resource_group_template_deployment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_management_private_link_association": close({res.azurerm_resource_management_private_link_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_management_private_link": close({res.azurerm_resource_management_private_link & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_policy_assignment": close({res.azurerm_resource_policy_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_policy_exemption": close({res.azurerm_resource_policy_exemption & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_policy_remediation": close({res.azurerm_resource_policy_remediation & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_provider_feature_registration": close({res.azurerm_resource_provider_feature_registration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_resource_provider_registration": close({res.azurerm_resource_provider_registration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_restore_point_collection": close({res.azurerm_restore_point_collection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_role_assignment": close({res.azurerm_role_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_role_definition": close({res.azurerm_role_definition & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_role_management_policy": close({res.azurerm_role_management_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_route_filter": close({res.azurerm_route_filter & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_route": close({res.azurerm_route & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_route_map": close({res.azurerm_route_map & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_route_server_bgp_connection": close({res.azurerm_route_server_bgp_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_route_server": close({res.azurerm_route_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_route_table": close({res.azurerm_route_table & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_search_service": close({res.azurerm_search_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_search_shared_private_link_service": close({res.azurerm_search_shared_private_link_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_security_center_assessment": close({res.azurerm_security_center_assessment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_security_center_assessment_policy": close({res.azurerm_security_center_assessment_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_security_center_auto_provisioning": close({res.azurerm_security_center_auto_provisioning & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_security_center_automation": close({res.azurerm_security_center_automation & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_security_center_contact": close({res.azurerm_security_center_contact & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_security_center_server_vulnerability_assessment_virtual_machine": close({res.azurerm_security_center_server_vulnerability_assessment_virtual_machine & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_security_center_server_vulnerability_assessments_setting": close({res.azurerm_security_center_server_vulnerability_assessments_setting & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_security_center_setting": close({res.azurerm_security_center_setting & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_security_center_storage_defender": close({res.azurerm_security_center_storage_defender & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_security_center_subscription_pricing": close({res.azurerm_security_center_subscription_pricing & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_security_center_workspace": close({res.azurerm_security_center_workspace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_alert_rule_anomaly_built_in": close({res.azurerm_sentinel_alert_rule_anomaly_built_in & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_alert_rule_anomaly_duplicate": close({res.azurerm_sentinel_alert_rule_anomaly_duplicate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_alert_rule_fusion": close({res.azurerm_sentinel_alert_rule_fusion & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_alert_rule_machine_learning_behavior_analytics": close({res.azurerm_sentinel_alert_rule_machine_learning_behavior_analytics & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_alert_rule_ms_security_incident": close({res.azurerm_sentinel_alert_rule_ms_security_incident & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_alert_rule_nrt": close({res.azurerm_sentinel_alert_rule_nrt & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_alert_rule_scheduled": close({res.azurerm_sentinel_alert_rule_scheduled & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_alert_rule_threat_intelligence": close({res.azurerm_sentinel_alert_rule_threat_intelligence & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_automation_rule": close({res.azurerm_sentinel_automation_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_aws_cloud_trail": close({res.azurerm_sentinel_data_connector_aws_cloud_trail & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_aws_s3": close({res.azurerm_sentinel_data_connector_aws_s3 & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_azure_active_directory": close({res.azurerm_sentinel_data_connector_azure_active_directory & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_azure_advanced_threat_protection": close({res.azurerm_sentinel_data_connector_azure_advanced_threat_protection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_azure_security_center": close({res.azurerm_sentinel_data_connector_azure_security_center & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_dynamics_365": close({res.azurerm_sentinel_data_connector_dynamics_365 & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_iot": close({res.azurerm_sentinel_data_connector_iot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_microsoft_cloud_app_security": close({res.azurerm_sentinel_data_connector_microsoft_cloud_app_security & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_microsoft_defender_advanced_threat_protection": close({res.azurerm_sentinel_data_connector_microsoft_defender_advanced_threat_protection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_microsoft_threat_intelligence": close({res.azurerm_sentinel_data_connector_microsoft_threat_intelligence & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_microsoft_threat_protection": close({res.azurerm_sentinel_data_connector_microsoft_threat_protection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_office_365": close({res.azurerm_sentinel_data_connector_office_365 & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_office_365_project": close({res.azurerm_sentinel_data_connector_office_365_project & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_office_atp": close({res.azurerm_sentinel_data_connector_office_atp & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_office_irm": close({res.azurerm_sentinel_data_connector_office_irm & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_office_power_bi": close({res.azurerm_sentinel_data_connector_office_power_bi & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_threat_intelligence": close({res.azurerm_sentinel_data_connector_threat_intelligence & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_data_connector_threat_intelligence_taxii": close({res.azurerm_sentinel_data_connector_threat_intelligence_taxii & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_log_analytics_workspace_onboarding": close({res.azurerm_sentinel_log_analytics_workspace_onboarding & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_metadata": close({res.azurerm_sentinel_metadata & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_threat_intelligence_indicator": close({res.azurerm_sentinel_threat_intelligence_indicator & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_watchlist": close({res.azurerm_sentinel_watchlist & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_sentinel_watchlist_item": close({res.azurerm_sentinel_watchlist_item & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_service_fabric_cluster": close({res.azurerm_service_fabric_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_service_fabric_managed_cluster": close({res.azurerm_service_fabric_managed_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_service_plan": close({res.azurerm_service_plan & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_servicebus_namespace_authorization_rule": close({res.azurerm_servicebus_namespace_authorization_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_servicebus_namespace_customer_managed_key": close({res.azurerm_servicebus_namespace_customer_managed_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_servicebus_namespace_disaster_recovery_config": close({res.azurerm_servicebus_namespace_disaster_recovery_config & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_servicebus_namespace": close({res.azurerm_servicebus_namespace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_servicebus_queue_authorization_rule": close({res.azurerm_servicebus_queue_authorization_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_servicebus_queue": close({res.azurerm_servicebus_queue & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_servicebus_subscription": close({res.azurerm_servicebus_subscription & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_servicebus_subscription_rule": close({res.azurerm_servicebus_subscription_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_servicebus_topic_authorization_rule": close({res.azurerm_servicebus_topic_authorization_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_servicebus_topic": close({res.azurerm_servicebus_topic & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_shared_image_gallery": close({res.azurerm_shared_image_gallery & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_shared_image": close({res.azurerm_shared_image & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_shared_image_version": close({res.azurerm_shared_image_version & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_signalr_service_custom_certificate": close({res.azurerm_signalr_service_custom_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_signalr_service_custom_domain": close({res.azurerm_signalr_service_custom_domain & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_signalr_service": close({res.azurerm_signalr_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_signalr_service_network_acl": close({res.azurerm_signalr_service_network_acl & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_signalr_shared_private_link_resource": close({res.azurerm_signalr_shared_private_link_resource & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_site_recovery_fabric": close({res.azurerm_site_recovery_fabric & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_site_recovery_hyperv_network_mapping": close({res.azurerm_site_recovery_hyperv_network_mapping & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_site_recovery_hyperv_replication_policy_association": close({res.azurerm_site_recovery_hyperv_replication_policy_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_site_recovery_hyperv_replication_policy": close({res.azurerm_site_recovery_hyperv_replication_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_site_recovery_network_mapping": close({res.azurerm_site_recovery_network_mapping & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_site_recovery_protection_container": close({res.azurerm_site_recovery_protection_container & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_site_recovery_protection_container_mapping": close({res.azurerm_site_recovery_protection_container_mapping & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_site_recovery_replicated_vm": close({res.azurerm_site_recovery_replicated_vm & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_site_recovery_replication_policy": close({res.azurerm_site_recovery_replication_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_site_recovery_replication_recovery_plan": close({res.azurerm_site_recovery_replication_recovery_plan & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_site_recovery_services_vault_hyperv_site": close({res.azurerm_site_recovery_services_vault_hyperv_site & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_site_recovery_vmware_replicated_vm": close({res.azurerm_site_recovery_vmware_replicated_vm & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_site_recovery_vmware_replication_policy_association": close({res.azurerm_site_recovery_vmware_replication_policy_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_site_recovery_vmware_replication_policy": close({res.azurerm_site_recovery_vmware_replication_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_snapshot": close({res.azurerm_snapshot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_source_control_token": close({res.azurerm_source_control_token & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spatial_anchors_account": close({res.azurerm_spatial_anchors_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_accelerator": close({res.azurerm_spring_cloud_accelerator & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_active_deployment": close({res.azurerm_spring_cloud_active_deployment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_api_portal_custom_domain": close({res.azurerm_spring_cloud_api_portal_custom_domain & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_api_portal": close({res.azurerm_spring_cloud_api_portal & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_app_cosmosdb_association": close({res.azurerm_spring_cloud_app_cosmosdb_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_app_dynamics_application_performance_monitoring": close({res.azurerm_spring_cloud_app_dynamics_application_performance_monitoring & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_app": close({res.azurerm_spring_cloud_app & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_app_mysql_association": close({res.azurerm_spring_cloud_app_mysql_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_app_redis_association": close({res.azurerm_spring_cloud_app_redis_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_application_insights_application_performance_monitoring": close({res.azurerm_spring_cloud_application_insights_application_performance_monitoring & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_application_live_view": close({res.azurerm_spring_cloud_application_live_view & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_build_deployment": close({res.azurerm_spring_cloud_build_deployment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_build_pack_binding": close({res.azurerm_spring_cloud_build_pack_binding & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_builder": close({res.azurerm_spring_cloud_builder & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_certificate": close({res.azurerm_spring_cloud_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_configuration_service": close({res.azurerm_spring_cloud_configuration_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_connection": close({res.azurerm_spring_cloud_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_container_deployment": close({res.azurerm_spring_cloud_container_deployment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_custom_domain": close({res.azurerm_spring_cloud_custom_domain & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_customized_accelerator": close({res.azurerm_spring_cloud_customized_accelerator & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_dev_tool_portal": close({res.azurerm_spring_cloud_dev_tool_portal & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_dynatrace_application_performance_monitoring": close({res.azurerm_spring_cloud_dynatrace_application_performance_monitoring & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_elastic_application_performance_monitoring": close({res.azurerm_spring_cloud_elastic_application_performance_monitoring & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_gateway_custom_domain": close({res.azurerm_spring_cloud_gateway_custom_domain & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_gateway": close({res.azurerm_spring_cloud_gateway & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_gateway_route_config": close({res.azurerm_spring_cloud_gateway_route_config & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_java_deployment": close({res.azurerm_spring_cloud_java_deployment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_new_relic_application_performance_monitoring": close({res.azurerm_spring_cloud_new_relic_application_performance_monitoring & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_service": close({res.azurerm_spring_cloud_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_spring_cloud_storage": close({res.azurerm_spring_cloud_storage & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_ssh_public_key": close({res.azurerm_ssh_public_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stack_hci_cluster": close({res.azurerm_stack_hci_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stack_hci_deployment_setting": close({res.azurerm_stack_hci_deployment_setting & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stack_hci_extension": close({res.azurerm_stack_hci_extension & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stack_hci_logical_network": close({res.azurerm_stack_hci_logical_network & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stack_hci_marketplace_gallery_image": close({res.azurerm_stack_hci_marketplace_gallery_image & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stack_hci_network_interface": close({res.azurerm_stack_hci_network_interface & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stack_hci_storage_path": close({res.azurerm_stack_hci_storage_path & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stack_hci_virtual_hard_disk": close({res.azurerm_stack_hci_virtual_hard_disk & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_static_site_custom_domain": close({res.azurerm_static_site_custom_domain & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_static_site": close({res.azurerm_static_site & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_static_web_app_custom_domain": close({res.azurerm_static_web_app_custom_domain & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_static_web_app_function_app_registration": close({res.azurerm_static_web_app_function_app_registration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_static_web_app": close({res.azurerm_static_web_app & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_account_customer_managed_key": close({res.azurerm_storage_account_customer_managed_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_account": close({res.azurerm_storage_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_account_local_user": close({res.azurerm_storage_account_local_user & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_account_network_rules": close({res.azurerm_storage_account_network_rules & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_account_queue_properties": close({res.azurerm_storage_account_queue_properties & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_account_static_website": close({res.azurerm_storage_account_static_website & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_blob": close({res.azurerm_storage_blob & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_blob_inventory_policy": close({res.azurerm_storage_blob_inventory_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_container": close({res.azurerm_storage_container & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_container_immutability_policy": close({res.azurerm_storage_container_immutability_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_data_lake_gen2_filesystem": close({res.azurerm_storage_data_lake_gen2_filesystem & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_data_lake_gen2_path": close({res.azurerm_storage_data_lake_gen2_path & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_encryption_scope": close({res.azurerm_storage_encryption_scope & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_management_policy": close({res.azurerm_storage_management_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_mover_agent": close({res.azurerm_storage_mover_agent & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_mover": close({res.azurerm_storage_mover & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_mover_job_definition": close({res.azurerm_storage_mover_job_definition & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_mover_project": close({res.azurerm_storage_mover_project & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_mover_source_endpoint": close({res.azurerm_storage_mover_source_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_mover_target_endpoint": close({res.azurerm_storage_mover_target_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_object_replication": close({res.azurerm_storage_object_replication & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_queue": close({res.azurerm_storage_queue & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_share_directory": close({res.azurerm_storage_share_directory & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_share_file": close({res.azurerm_storage_share_file & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_share": close({res.azurerm_storage_share & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_sync_cloud_endpoint": close({res.azurerm_storage_sync_cloud_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_sync": close({res.azurerm_storage_sync & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_sync_group": close({res.azurerm_storage_sync_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_sync_server_endpoint": close({res.azurerm_storage_sync_server_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_table_entity": close({res.azurerm_storage_table_entity & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_table": close({res.azurerm_storage_table & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_cluster": close({res.azurerm_stream_analytics_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_function_javascript_uda": close({res.azurerm_stream_analytics_function_javascript_uda & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_function_javascript_udf": close({res.azurerm_stream_analytics_function_javascript_udf & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_job": close({res.azurerm_stream_analytics_job & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_job_schedule": close({res.azurerm_stream_analytics_job_schedule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_job_storage_account": close({res.azurerm_stream_analytics_job_storage_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_managed_private_endpoint": close({res.azurerm_stream_analytics_managed_private_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_output_blob": close({res.azurerm_stream_analytics_output_blob & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_output_cosmosdb": close({res.azurerm_stream_analytics_output_cosmosdb & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_output_eventhub": close({res.azurerm_stream_analytics_output_eventhub & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_output_function": close({res.azurerm_stream_analytics_output_function & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_output_mssql": close({res.azurerm_stream_analytics_output_mssql & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_output_powerbi": close({res.azurerm_stream_analytics_output_powerbi & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_output_servicebus_queue": close({res.azurerm_stream_analytics_output_servicebus_queue & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_output_servicebus_topic": close({res.azurerm_stream_analytics_output_servicebus_topic & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_output_synapse": close({res.azurerm_stream_analytics_output_synapse & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_output_table": close({res.azurerm_stream_analytics_output_table & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_reference_input_blob": close({res.azurerm_stream_analytics_reference_input_blob & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_reference_input_mssql": close({res.azurerm_stream_analytics_reference_input_mssql & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_stream_input_blob": close({res.azurerm_stream_analytics_stream_input_blob & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_stream_input_eventhub": close({res.azurerm_stream_analytics_stream_input_eventhub & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_stream_input_eventhub_v2": close({res.azurerm_stream_analytics_stream_input_eventhub_v2 & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_stream_analytics_stream_input_iothub": close({res.azurerm_stream_analytics_stream_input_iothub & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_subnet": close({res.azurerm_subnet & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_subnet_nat_gateway_association": close({res.azurerm_subnet_nat_gateway_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_subnet_network_security_group_association": close({res.azurerm_subnet_network_security_group_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_subnet_route_table_association": close({res.azurerm_subnet_route_table_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_subnet_service_endpoint_storage_policy": close({res.azurerm_subnet_service_endpoint_storage_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_subscription_cost_management_export": close({res.azurerm_subscription_cost_management_export & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_subscription_cost_management_view": close({res.azurerm_subscription_cost_management_view & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_subscription": close({res.azurerm_subscription & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_subscription_policy_assignment": close({res.azurerm_subscription_policy_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_subscription_policy_exemption": close({res.azurerm_subscription_policy_exemption & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_subscription_policy_remediation": close({res.azurerm_subscription_policy_remediation & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_subscription_template_deployment": close({res.azurerm_subscription_template_deployment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_firewall_rule": close({res.azurerm_synapse_firewall_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_integration_runtime_azure": close({res.azurerm_synapse_integration_runtime_azure & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_integration_runtime_self_hosted": close({res.azurerm_synapse_integration_runtime_self_hosted & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_linked_service": close({res.azurerm_synapse_linked_service & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_managed_private_endpoint": close({res.azurerm_synapse_managed_private_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_private_link_hub": close({res.azurerm_synapse_private_link_hub & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_role_assignment": close({res.azurerm_synapse_role_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_spark_pool": close({res.azurerm_synapse_spark_pool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_sql_pool_extended_auditing_policy": close({res.azurerm_synapse_sql_pool_extended_auditing_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_sql_pool": close({res.azurerm_synapse_sql_pool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_sql_pool_security_alert_policy": close({res.azurerm_synapse_sql_pool_security_alert_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_sql_pool_vulnerability_assessment_baseline": close({res.azurerm_synapse_sql_pool_vulnerability_assessment_baseline & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_sql_pool_vulnerability_assessment": close({res.azurerm_synapse_sql_pool_vulnerability_assessment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_sql_pool_workload_classifier": close({res.azurerm_synapse_sql_pool_workload_classifier & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_sql_pool_workload_group": close({res.azurerm_synapse_sql_pool_workload_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_workspace_aad_admin": close({res.azurerm_synapse_workspace_aad_admin & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_workspace_extended_auditing_policy": close({res.azurerm_synapse_workspace_extended_auditing_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_workspace": close({res.azurerm_synapse_workspace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_workspace_key": close({res.azurerm_synapse_workspace_key & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_workspace_security_alert_policy": close({res.azurerm_synapse_workspace_security_alert_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_workspace_sql_aad_admin": close({res.azurerm_synapse_workspace_sql_aad_admin & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_synapse_workspace_vulnerability_assessment": close({res.azurerm_synapse_workspace_vulnerability_assessment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_system_center_virtual_machine_manager_availability_set": close({res.azurerm_system_center_virtual_machine_manager_availability_set & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_system_center_virtual_machine_manager_cloud": close({res.azurerm_system_center_virtual_machine_manager_cloud & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_system_center_virtual_machine_manager_server": close({res.azurerm_system_center_virtual_machine_manager_server & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_system_center_virtual_machine_manager_virtual_machine_instance": close({res.azurerm_system_center_virtual_machine_manager_virtual_machine_instance & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_system_center_virtual_machine_manager_virtual_machine_instance_guest_agent": close({res.azurerm_system_center_virtual_machine_manager_virtual_machine_instance_guest_agent & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_system_center_virtual_machine_manager_virtual_machine_template": close({res.azurerm_system_center_virtual_machine_manager_virtual_machine_template & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_system_center_virtual_machine_manager_virtual_network": close({res.azurerm_system_center_virtual_machine_manager_virtual_network & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_tenant_template_deployment": close({res.azurerm_tenant_template_deployment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_traffic_manager_azure_endpoint": close({res.azurerm_traffic_manager_azure_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_traffic_manager_external_endpoint": close({res.azurerm_traffic_manager_external_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_traffic_manager_nested_endpoint": close({res.azurerm_traffic_manager_nested_endpoint & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_traffic_manager_profile": close({res.azurerm_traffic_manager_profile & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_trusted_signing_account": close({res.azurerm_trusted_signing_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_user_assigned_identity": close({res.azurerm_user_assigned_identity & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_video_indexer_account": close({res.azurerm_video_indexer_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_desktop_application": close({res.azurerm_virtual_desktop_application & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_desktop_application_group": close({res.azurerm_virtual_desktop_application_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_desktop_host_pool": close({res.azurerm_virtual_desktop_host_pool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_desktop_host_pool_registration_info": close({res.azurerm_virtual_desktop_host_pool_registration_info & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_desktop_scaling_plan": close({res.azurerm_virtual_desktop_scaling_plan & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_desktop_scaling_plan_host_pool_association": close({res.azurerm_virtual_desktop_scaling_plan_host_pool_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_desktop_workspace_application_group_association": close({res.azurerm_virtual_desktop_workspace_application_group_association & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_desktop_workspace": close({res.azurerm_virtual_desktop_workspace & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_hub_bgp_connection": close({res.azurerm_virtual_hub_bgp_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_hub_connection": close({res.azurerm_virtual_hub_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_hub": close({res.azurerm_virtual_hub & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_hub_ip": close({res.azurerm_virtual_hub_ip & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_hub_route_table": close({res.azurerm_virtual_hub_route_table & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_hub_route_table_route": close({res.azurerm_virtual_hub_route_table_route & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_hub_routing_intent": close({res.azurerm_virtual_hub_routing_intent & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_hub_security_partner_provider": close({res.azurerm_virtual_hub_security_partner_provider & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_machine_automanage_configuration_assignment": close({res.azurerm_virtual_machine_automanage_configuration_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_machine_data_disk_attachment": close({res.azurerm_virtual_machine_data_disk_attachment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_machine_extension": close({res.azurerm_virtual_machine_extension & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_machine_gallery_application_assignment": close({res.azurerm_virtual_machine_gallery_application_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_machine": close({res.azurerm_virtual_machine & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_machine_implicit_data_disk_from_source": close({res.azurerm_virtual_machine_implicit_data_disk_from_source & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_machine_packet_capture": close({res.azurerm_virtual_machine_packet_capture & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_machine_restore_point_collection": close({res.azurerm_virtual_machine_restore_point_collection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_machine_restore_point": close({res.azurerm_virtual_machine_restore_point & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_machine_run_command": close({res.azurerm_virtual_machine_run_command & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_machine_scale_set_extension": close({res.azurerm_virtual_machine_scale_set_extension & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_machine_scale_set": close({res.azurerm_virtual_machine_scale_set & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_machine_scale_set_packet_capture": close({res.azurerm_virtual_machine_scale_set_packet_capture & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_machine_scale_set_standby_pool": close({res.azurerm_virtual_machine_scale_set_standby_pool & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_network_dns_servers": close({res.azurerm_virtual_network_dns_servers & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_network_gateway_connection": close({res.azurerm_virtual_network_gateway_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_network_gateway": close({res.azurerm_virtual_network_gateway & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_network_gateway_nat_rule": close({res.azurerm_virtual_network_gateway_nat_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_network": close({res.azurerm_virtual_network & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_network_peering": close({res.azurerm_virtual_network_peering & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_virtual_wan": close({res.azurerm_virtual_wan & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_vmware_cluster": close({res.azurerm_vmware_cluster & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_vmware_express_route_authorization": close({res.azurerm_vmware_express_route_authorization & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_vmware_netapp_volume_attachment": close({res.azurerm_vmware_netapp_volume_attachment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_vmware_private_cloud": close({res.azurerm_vmware_private_cloud & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_voice_services_communications_gateway": close({res.azurerm_voice_services_communications_gateway & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_voice_services_communications_gateway_test_line": close({res.azurerm_voice_services_communications_gateway_test_line & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_vpn_gateway_connection": close({res.azurerm_vpn_gateway_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_vpn_gateway": close({res.azurerm_vpn_gateway & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_vpn_gateway_nat_rule": close({res.azurerm_vpn_gateway_nat_rule & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_vpn_server_configuration": close({res.azurerm_vpn_server_configuration & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_vpn_server_configuration_policy_group": close({res.azurerm_vpn_server_configuration_policy_group & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_vpn_site": close({res.azurerm_vpn_site & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_web_app_active_slot": close({res.azurerm_web_app_active_slot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_web_app_hybrid_connection": close({res.azurerm_web_app_hybrid_connection & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_web_application_firewall_policy": close({res.azurerm_web_application_firewall_policy & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_web_pubsub_custom_certificate": close({res.azurerm_web_pubsub_custom_certificate & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_web_pubsub_custom_domain": close({res.azurerm_web_pubsub_custom_domain & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_web_pubsub": close({res.azurerm_web_pubsub & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_web_pubsub_hub": close({res.azurerm_web_pubsub_hub & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_web_pubsub_network_acl": close({res.azurerm_web_pubsub_network_acl & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_web_pubsub_shared_private_link_resource": close({res.azurerm_web_pubsub_shared_private_link_resource & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_web_pubsub_socketio": close({res.azurerm_web_pubsub_socketio & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_windows_function_app": close({res.azurerm_windows_function_app & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_windows_function_app_slot": close({res.azurerm_windows_function_app_slot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_windows_virtual_machine": close({res.azurerm_windows_virtual_machine & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_windows_virtual_machine_scale_set": close({res.azurerm_windows_virtual_machine_scale_set & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_windows_web_app": close({res.azurerm_windows_web_app & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_windows_web_app_slot": close({res.azurerm_windows_web_app_slot & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_workloads_sap_discovery_virtual_instance": close({res.azurerm_workloads_sap_discovery_virtual_instance & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_workloads_sap_single_node_virtual_instance": close({res.azurerm_workloads_sap_single_node_virtual_instance & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_workloads_sap_three_tier_virtual_instance": close({res.azurerm_workloads_sap_three_tier_virtual_instance & cuetf.MetaArgs})
 
 }

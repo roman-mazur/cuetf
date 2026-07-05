@@ -1,6 +1,6 @@
 package res
 
-#azurerm_public_ip_prefix: {
+azurerm_public_ip_prefix: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_public_ip_prefix")
 	close({

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_stream_analytics_stream_input_eventhub_v2: {
+azurerm_stream_analytics_stream_input_eventhub_v2: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_stream_analytics_stream_input_eventhub_v2")
 	close({

@@ -1,6 +1,6 @@
 package res
 
-#azurerm_resource_management_private_link_association: {
+azurerm_resource_management_private_link_association: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_resource_management_private_link_association")
 	close({

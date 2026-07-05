@@ -1,6 +1,6 @@
 package data
 
-#azurerm_dedicated_host_group: {
+azurerm_dedicated_host_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_dedicated_host_group")
 	close({

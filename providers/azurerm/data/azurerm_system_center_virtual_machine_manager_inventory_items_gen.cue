@@ -1,6 +1,6 @@
 package data
 
-#azurerm_system_center_virtual_machine_manager_inventory_items: {
+azurerm_system_center_virtual_machine_manager_inventory_items: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_system_center_virtual_machine_manager_inventory_items")
 	close({

@@ -1,6 +1,6 @@
 package res
 
-#azurerm_maintenance_assignment_virtual_machine: {
+azurerm_maintenance_assignment_virtual_machine: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_maintenance_assignment_virtual_machine")
 	close({

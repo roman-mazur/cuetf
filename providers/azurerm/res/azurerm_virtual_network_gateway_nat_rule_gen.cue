@@ -1,6 +1,6 @@
 package res
 
-#azurerm_virtual_network_gateway_nat_rule: {
+azurerm_virtual_network_gateway_nat_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_virtual_network_gateway_nat_rule")
 	close({

@@ -1,6 +1,6 @@
 package res
 
-#azurerm_storage_data_lake_gen2_filesystem: {
+azurerm_storage_data_lake_gen2_filesystem: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_storage_data_lake_gen2_filesystem")
 	close({

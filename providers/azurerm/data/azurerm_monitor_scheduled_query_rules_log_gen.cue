@@ -1,6 +1,6 @@
 package data
 
-#azurerm_monitor_scheduled_query_rules_log: {
+azurerm_monitor_scheduled_query_rules_log: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_monitor_scheduled_query_rules_log")
 	close({

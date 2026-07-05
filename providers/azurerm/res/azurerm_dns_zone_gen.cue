@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_dns_zone: {
+azurerm_dns_zone: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_dns_zone")
 	close({

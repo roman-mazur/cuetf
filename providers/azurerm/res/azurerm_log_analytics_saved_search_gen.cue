@@ -1,6 +1,6 @@
 package res
 
-#azurerm_log_analytics_saved_search: {
+azurerm_log_analytics_saved_search: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_log_analytics_saved_search")
 	close({

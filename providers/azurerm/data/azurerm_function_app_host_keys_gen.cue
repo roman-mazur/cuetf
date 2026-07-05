@@ -1,6 +1,6 @@
 package data
 
-#azurerm_function_app_host_keys: {
+azurerm_function_app_host_keys: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_function_app_host_keys")
 	close({

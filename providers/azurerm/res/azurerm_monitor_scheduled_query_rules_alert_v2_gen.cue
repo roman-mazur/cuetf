@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#azurerm_monitor_scheduled_query_rules_alert_v2: {
+azurerm_monitor_scheduled_query_rules_alert_v2: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_scheduled_query_rules_alert_v2")
 	close({
