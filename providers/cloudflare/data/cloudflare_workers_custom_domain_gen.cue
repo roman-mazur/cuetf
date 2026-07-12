@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_workers_custom_domain: {
+cloudflare_workers_custom_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workers_custom_domain")
 	close({
@@ -12,24 +12,6 @@ package data
 
 		// ID of the domain.
 		domain_id?: string
-
-		// Hostname of the domain. Can be either the zone apex or a
-		// subdomain of the zone. Requests to this hostname will be
-		// routed to the configured Worker.
-		hostname?: string
-
-		// ID of the domain.
-		id?: string
-
-		// Name of the Worker associated with the domain. Requests to the
-		// configured hostname will be routed to this Worker.
-		service?: string
-
-		// ID of the zone containing the domain hostname.
-		zone_id?: string
-
-		// Name of the zone containing the domain hostname.
-		zone_name?: string
 		filter?: close({
 			// Worker environment associated with the domain.
 			environment?: string
@@ -46,5 +28,22 @@ package data
 			// Name of the zone containing the domain hostname.
 			zone_name?: string
 		})
+
+		// Hostname of the domain. Can be either the zone apex or a subdomain of the
+		// zone. Requests to this hostname will be routed to the configured Worker.
+		hostname?: string
+
+		// ID of the domain.
+		id?: string
+
+		// Name of the Worker associated with the domain. Requests to the configured
+		// hostname will be routed to this Worker.
+		service?: string
+
+		// ID of the zone containing the domain hostname.
+		zone_id?: string
+
+		// Name of the zone containing the domain hostname.
+		zone_name?: string
 	})
 }

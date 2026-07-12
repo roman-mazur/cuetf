@@ -1,20 +1,26 @@
 package data
 
-#cloudflare_keyless_certificates: {
+cloudflare_keyless_certificates: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_keyless_certificates")
 	close({
 		// Max items to fetch, default: 1000
 		max_items?: number
 
-		// Identifier.
-		zone_id?: string
-
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// When the Keyless SSL was created.
 			created_on?: string
 
+			// Configuration for using Keyless SSL through a Cloudflare Tunnel.
+			tunnel?: close({
+				// Private IP of the Key Server Host.
+				private_ip?: string
+
+				// Cloudflare Tunnel Virtual Network ID.
+				vnet_id?: string
+			})
+
 			// Whether or not the Keyless SSL is on or off.
 			enabled?: bool
 
@@ -30,31 +36,28 @@ package data
 			// The keyless SSL name.
 			name?: string
 
-			// Available permissions for the Keyless SSL for the current user
-			// requesting the item.
+			// Available permissions for the Keyless SSL for the current user requesting the item.
 			permissions?: [...string]
 
-			// The keyless SSL port used to communicate between Cloudflare and
-			// the client's Keyless SSL server.
+			// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 			port?: number
 
 			// Status of the Keyless SSL.
 			// Available values: "active", "deleted".
 			status?: string
-
-			// Configuration for using Keyless SSL through a Cloudflare
-			// Tunnel.
-			tunnel?: close({
-				// Private IP of the Key Server Host.
-				private_ip?: string
-
-				// Cloudflare Tunnel Virtual Network ID.
-				vnet_id?: string
-			})
 		}), [...close({
 			// When the Keyless SSL was created.
 			created_on?: string
 
+			// Configuration for using Keyless SSL through a Cloudflare Tunnel.
+			tunnel?: close({
+				// Private IP of the Key Server Host.
+				private_ip?: string
+
+				// Cloudflare Tunnel Virtual Network ID.
+				vnet_id?: string
+			})
+
 			// Whether or not the Keyless SSL is on or off.
 			enabled?: bool
 
@@ -70,27 +73,18 @@ package data
 			// The keyless SSL name.
 			name?: string
 
-			// Available permissions for the Keyless SSL for the current user
-			// requesting the item.
+			// Available permissions for the Keyless SSL for the current user requesting the item.
 			permissions?: [...string]
 
-			// The keyless SSL port used to communicate between Cloudflare and
-			// the client's Keyless SSL server.
+			// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 			port?: number
 
 			// Status of the Keyless SSL.
 			// Available values: "active", "deleted".
 			status?: string
-
-			// Configuration for using Keyless SSL through a Cloudflare
-			// Tunnel.
-			tunnel?: close({
-				// Private IP of the Key Server Host.
-				private_ip?: string
-
-				// Cloudflare Tunnel Virtual Network ID.
-				vnet_id?: string
-			})
 		})]])
+
+		// Identifier.
+		zone_id?: string
 	})
 }

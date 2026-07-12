@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_cloudforce_one_request_priority: {
+cloudflare_cloudforce_one_request_priority: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_cloudforce_one_request_priority")
 	close({
@@ -29,16 +29,14 @@ package data
 		request?: string
 
 		// Request Status.
-		// Available values: "open", "accepted", "reported", "approved",
-		// "completed", "declined".
+		// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 		status?: string
 
 		// Brief description of the request.
 		summary?: string
 
 		// The CISA defined Traffic Light Protocol (TLP).
-		// Available values: "clear", "amber", "amber-strict", "green",
-		// "red".
+		// Available values: "clear", "amber", "amber-strict", "green", "red".
 		tlp?: string
 
 		// Tokens for the request.

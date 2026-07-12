@@ -1,31 +1,29 @@
 package res
 
-#cloudflare_zero_trust_access_service_token: {
+cloudflare_zero_trust_access_service_token: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_access_service_token")
 	close({
-		// The Account ID to use for this endpoint. Mutually exclusive
-		// with the Zone ID.
+		// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 		account_id?: string
 
-		// The Client ID for the service token. Access will check for this
-		// value in the `CF-Access-Client-ID` request header.
+		// The Client ID for the service token. Access will check for this value in the
+		// `CF-Access-Client-ID` request header.
 		client_id?: string
 
-		// The Client Secret for the service token. Access will check for
-		// this value in the `CF-Access-Client-Secret` request header.
+		// The Client Secret for the service token. Access will check for this value in
+		// the `CF-Access-Client-Secret` request header.
 		client_secret?: string
 
-		// A version number identifying the current `client_secret`
-		// associated with the service token. Incrementing it triggers a
-		// rotation; the previous secret will still be accepted until the
-		// time indicated by `previous_client_secret_expires_at`.
+		// A version number identifying the current `client_secret` associated with the
+		// service token. Incrementing it triggers a rotation; the previous secret will
+		// still be accepted until the time indicated by
+		// `previous_client_secret_expires_at`.
 		client_secret_version?: number
 
-		// The duration for how long the service token will be valid. Must
-		// be in the format `300ms` or `2h45m`. Valid time units are: ns,
-		// us (or µs), ms, s, m, h. The default is 1 year in hours
-		// (8760h).
+		// The duration for how long the service token will be valid. Must be in the
+		// format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m,
+		// h. The default is 1 year in hours (8760h).
 		duration?:   string
 		expires_at?: string
 
@@ -35,16 +33,14 @@ package res
 		// The name of the service token.
 		name!: string
 
-		// The expiration of the previous `client_secret`. This can be
-		// modified at any point after a rotation. For example, you may
-		// extend it further into the future if you need more time to
-		// update services with the new secret; or move it into the past
-		// to immediately invalidate the previous token in case of
+		// The expiration of the previous `client_secret`. This can be modified at any
+		// point after a rotation. For example, you may extend it further into the
+		// future if you need more time to update services with the new secret; or move
+		// it into the past to immediately invalidate the previous token in case of
 		// compromise.
 		previous_client_secret_expires_at?: string
 
-		// The Zone ID to use for this endpoint. Mutually exclusive with
-		// the Account ID.
+		// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 		zone_id?: string
 	})
 }

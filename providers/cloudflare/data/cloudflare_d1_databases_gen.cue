@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_d1_databases: {
+cloudflare_d1_databases: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_d1_databases")
 	close({
@@ -15,16 +15,14 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// Specifies the timestamp the resource was created as an ISO8601
-			// string.
+			// Specifies the timestamp the resource was created as an ISO8601 string.
 			created_at?: string
 
 			// D1 database identifier (UUID).
 			id?: string
 
-			// Specify the location to restrict the D1 database to run and
-			// store data. If this option is present, the location hint is
-			// ignored.
+			// Specify the location to restrict the D1 database to run and store data. If
+			// this option is present, the location hint is ignored.
 			// Available values: "eu", "fedramp".
 			jurisdiction?: string
 
@@ -35,16 +33,14 @@ package data
 			uuid?:    string
 			version?: string
 		}), [...close({
-			// Specifies the timestamp the resource was created as an ISO8601
-			// string.
+			// Specifies the timestamp the resource was created as an ISO8601 string.
 			created_at?: string
 
 			// D1 database identifier (UUID).
 			id?: string
 
-			// Specify the location to restrict the D1 database to run and
-			// store data. If this option is present, the location hint is
-			// ignored.
+			// Specify the location to restrict the D1 database to run and store data. If
+			// this option is present, the location hint is ignored.
 			// Available values: "eu", "fedramp".
 			jurisdiction?: string
 

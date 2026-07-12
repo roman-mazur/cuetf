@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_r2_bucket_sippy: {
+cloudflare_r2_bucket_sippy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_r2_bucket_sippy")
 	close({
@@ -10,13 +10,9 @@ package data
 		// Name of the bucket.
 		bucket_name!: string
 
-		// State of Sippy for this bucket.
-		enabled?: bool
-
 		// Details about the configured destination bucket.
 		destination?: close({
-			// ID of the Cloudflare API token used when writing objects to
-			// this
+			// ID of the Cloudflare API token used when writing objects to this
 			// bucket.
 			access_key_id?: string
 			account?:       string
@@ -27,6 +23,9 @@ package data
 			// Available values: "r2".
 			r2_bucket_sippy_provider?: string
 		})
+
+		// State of Sippy for this bucket.
+		enabled?: bool
 
 		// Details about the configured source bucket.
 		source?: close({

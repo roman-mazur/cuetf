@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_image: {
+cloudflare_image: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_image")
 	close({
@@ -19,14 +19,14 @@ package data
 		// Image unique identifier.
 		image_id!: string
 
-		// User modifiable key-value store. Can be used for keeping
-		// references to another system of record for managing images.
-		// Metadata must not exceed 1024 bytes.
+		// User modifiable key-value store. Can be used for keeping references to
+		// another system of record for managing images. Metadata must not exceed 1024
+		// bytes.
 		meta?: string
 
-		// Indicates whether the image can be a accessed only using it's
-		// UID. If set to true, a signed token needs to be generated with
-		// a signing key to view the image.
+		// Indicates whether the image can be a accessed only using it's UID. If set to
+		// true, a signed token needs to be generated with a signing key to view the
+		// image.
 		require_signed_urls?: bool
 
 		// When the media item was uploaded.

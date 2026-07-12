@@ -1,264 +1,268 @@
 package cloudflare
 
-import "github.com/roman-mazur/cuetf/providers/cloudflare/res"
+import (
+	"github.com/roman-mazur/cuetf"
+	"github.com/roman-mazur/cuetf/providers/cloudflare/res"
+)
 
 #Terraform: {
 	#cloudflarePrefix: string
-	_#res: "\(#cloudflarePrefix)_access_rule": res.#cloudflare_access_rule
-	_#res: "\(#cloudflarePrefix)_account_dns_settings": res.#cloudflare_account_dns_settings
-	_#res: "\(#cloudflarePrefix)_account_dns_settings_internal_view": res.#cloudflare_account_dns_settings_internal_view
-	_#res: "\(#cloudflarePrefix)_account": res.#cloudflare_account
-	_#res: "\(#cloudflarePrefix)_account_member": res.#cloudflare_account_member
-	_#res: "\(#cloudflarePrefix)_account_subscription": res.#cloudflare_account_subscription
-	_#res: "\(#cloudflarePrefix)_account_token": res.#cloudflare_account_token
-	_#res: "\(#cloudflarePrefix)_address_map": res.#cloudflare_address_map
-	_#res: "\(#cloudflarePrefix)_ai_gateway_dynamic_routing": res.#cloudflare_ai_gateway_dynamic_routing
-	_#res: "\(#cloudflarePrefix)_ai_gateway": res.#cloudflare_ai_gateway
-	_#res: "\(#cloudflarePrefix)_ai_search_instance": res.#cloudflare_ai_search_instance
-	_#res: "\(#cloudflarePrefix)_ai_search_namespace": res.#cloudflare_ai_search_namespace
-	_#res: "\(#cloudflarePrefix)_ai_search_token": res.#cloudflare_ai_search_token
-	_#res: "\(#cloudflarePrefix)_api_shield_discovery_operation": res.#cloudflare_api_shield_discovery_operation
-	_#res: "\(#cloudflarePrefix)_api_shield": res.#cloudflare_api_shield
-	_#res: "\(#cloudflarePrefix)_api_shield_operation": res.#cloudflare_api_shield_operation
-	_#res: "\(#cloudflarePrefix)_api_shield_operation_schema_validation_settings": res.#cloudflare_api_shield_operation_schema_validation_settings
-	_#res: "\(#cloudflarePrefix)_api_shield_schema": res.#cloudflare_api_shield_schema
-	_#res: "\(#cloudflarePrefix)_api_shield_schema_validation_settings": res.#cloudflare_api_shield_schema_validation_settings
-	_#res: "\(#cloudflarePrefix)_api_token": res.#cloudflare_api_token
-	_#res: "\(#cloudflarePrefix)_argo_smart_routing": res.#cloudflare_argo_smart_routing
-	_#res: "\(#cloudflarePrefix)_argo_tiered_caching": res.#cloudflare_argo_tiered_caching
-	_#res: "\(#cloudflarePrefix)_authenticated_origin_pulls_certificate": res.#cloudflare_authenticated_origin_pulls_certificate
-	_#res: "\(#cloudflarePrefix)_authenticated_origin_pulls": res.#cloudflare_authenticated_origin_pulls
-	_#res: "\(#cloudflarePrefix)_authenticated_origin_pulls_hostname_certificate": res.#cloudflare_authenticated_origin_pulls_hostname_certificate
-	_#res: "\(#cloudflarePrefix)_authenticated_origin_pulls_settings": res.#cloudflare_authenticated_origin_pulls_settings
-	_#res: "\(#cloudflarePrefix)_bot_management": res.#cloudflare_bot_management
-	_#res: "\(#cloudflarePrefix)_byo_ip_prefix": res.#cloudflare_byo_ip_prefix
-	_#res: "\(#cloudflarePrefix)_calls_sfu_app": res.#cloudflare_calls_sfu_app
-	_#res: "\(#cloudflarePrefix)_calls_turn_app": res.#cloudflare_calls_turn_app
-	_#res: "\(#cloudflarePrefix)_certificate_authorities_hostname_associations": res.#cloudflare_certificate_authorities_hostname_associations
-	_#res: "\(#cloudflarePrefix)_certificate_pack": res.#cloudflare_certificate_pack
-	_#res: "\(#cloudflarePrefix)_client_certificate": res.#cloudflare_client_certificate
-	_#res: "\(#cloudflarePrefix)_cloud_connector_rules": res.#cloudflare_cloud_connector_rules
-	_#res: "\(#cloudflarePrefix)_cloudforce_one_request_asset": res.#cloudflare_cloudforce_one_request_asset
-	_#res: "\(#cloudflarePrefix)_cloudforce_one_request": res.#cloudflare_cloudforce_one_request
-	_#res: "\(#cloudflarePrefix)_cloudforce_one_request_message": res.#cloudflare_cloudforce_one_request_message
-	_#res: "\(#cloudflarePrefix)_cloudforce_one_request_priority": res.#cloudflare_cloudforce_one_request_priority
-	_#res: "\(#cloudflarePrefix)_connectivity_directory_service": res.#cloudflare_connectivity_directory_service
-	_#res: "\(#cloudflarePrefix)_content_scanning_expression": res.#cloudflare_content_scanning_expression
-	_#res: "\(#cloudflarePrefix)_content_scanning": res.#cloudflare_content_scanning
-	_#res: "\(#cloudflarePrefix)_custom_csr": res.#cloudflare_custom_csr
-	_#res: "\(#cloudflarePrefix)_custom_hostname_fallback_origin": res.#cloudflare_custom_hostname_fallback_origin
-	_#res: "\(#cloudflarePrefix)_custom_hostname": res.#cloudflare_custom_hostname
-	_#res: "\(#cloudflarePrefix)_custom_origin_trust_store": res.#cloudflare_custom_origin_trust_store
-	_#res: "\(#cloudflarePrefix)_custom_page_asset": res.#cloudflare_custom_page_asset
-	_#res: "\(#cloudflarePrefix)_custom_pages": res.#cloudflare_custom_pages
-	_#res: "\(#cloudflarePrefix)_custom_ssl": res.#cloudflare_custom_ssl
-	_#res: "\(#cloudflarePrefix)_d1_database": res.#cloudflare_d1_database
-	_#res: "\(#cloudflarePrefix)_dls_prefix_binding": res.#cloudflare_dls_prefix_binding
-	_#res: "\(#cloudflarePrefix)_dns_firewall": res.#cloudflare_dns_firewall
-	_#res: "\(#cloudflarePrefix)_dns_record": res.#cloudflare_dns_record
-	_#res: "\(#cloudflarePrefix)_dns_zone_transfers_acl": res.#cloudflare_dns_zone_transfers_acl
-	_#res: "\(#cloudflarePrefix)_dns_zone_transfers_incoming": res.#cloudflare_dns_zone_transfers_incoming
-	_#res: "\(#cloudflarePrefix)_dns_zone_transfers_outgoing": res.#cloudflare_dns_zone_transfers_outgoing
-	_#res: "\(#cloudflarePrefix)_dns_zone_transfers_peer": res.#cloudflare_dns_zone_transfers_peer
-	_#res: "\(#cloudflarePrefix)_dns_zone_transfers_tsig": res.#cloudflare_dns_zone_transfers_tsig
-	_#res: "\(#cloudflarePrefix)_email_routing_address": res.#cloudflare_email_routing_address
-	_#res: "\(#cloudflarePrefix)_email_routing_catch_all": res.#cloudflare_email_routing_catch_all
-	_#res: "\(#cloudflarePrefix)_email_routing_dns": res.#cloudflare_email_routing_dns
-	_#res: "\(#cloudflarePrefix)_email_routing_rule": res.#cloudflare_email_routing_rule
-	_#res: "\(#cloudflarePrefix)_email_routing_settings": res.#cloudflare_email_routing_settings
-	_#res: "\(#cloudflarePrefix)_email_security_block_sender": res.#cloudflare_email_security_block_sender
-	_#res: "\(#cloudflarePrefix)_email_security_impersonation_registry": res.#cloudflare_email_security_impersonation_registry
-	_#res: "\(#cloudflarePrefix)_email_security_trusted_domains": res.#cloudflare_email_security_trusted_domains
-	_#res: "\(#cloudflarePrefix)_filter": res.#cloudflare_filter
-	_#res: "\(#cloudflarePrefix)_firewall_rule": res.#cloudflare_firewall_rule
-	_#res: "\(#cloudflarePrefix)_flagship_app": res.#cloudflare_flagship_app
-	_#res: "\(#cloudflarePrefix)_flagship_flag": res.#cloudflare_flagship_flag
-	_#res: "\(#cloudflarePrefix)_google_tag_gateway": res.#cloudflare_google_tag_gateway
-	_#res: "\(#cloudflarePrefix)_healthcheck": res.#cloudflare_healthcheck
-	_#res: "\(#cloudflarePrefix)_hostname_tls_setting": res.#cloudflare_hostname_tls_setting
-	_#res: "\(#cloudflarePrefix)_hyperdrive_config": res.#cloudflare_hyperdrive_config
-	_#res: "\(#cloudflarePrefix)_image": res.#cloudflare_image
-	_#res: "\(#cloudflarePrefix)_image_variant": res.#cloudflare_image_variant
-	_#res: "\(#cloudflarePrefix)_keyless_certificate": res.#cloudflare_keyless_certificate
-	_#res: "\(#cloudflarePrefix)_leaked_credential_check": res.#cloudflare_leaked_credential_check
-	_#res: "\(#cloudflarePrefix)_leaked_credential_check_rule": res.#cloudflare_leaked_credential_check_rule
-	_#res: "\(#cloudflarePrefix)_list": res.#cloudflare_list
-	_#res: "\(#cloudflarePrefix)_list_item": res.#cloudflare_list_item
-	_#res: "\(#cloudflarePrefix)_load_balancer": res.#cloudflare_load_balancer
-	_#res: "\(#cloudflarePrefix)_load_balancer_monitor": res.#cloudflare_load_balancer_monitor
-	_#res: "\(#cloudflarePrefix)_load_balancer_monitor_group": res.#cloudflare_load_balancer_monitor_group
-	_#res: "\(#cloudflarePrefix)_load_balancer_pool": res.#cloudflare_load_balancer_pool
-	_#res: "\(#cloudflarePrefix)_logpull_retention": res.#cloudflare_logpull_retention
-	_#res: "\(#cloudflarePrefix)_logpush_job": res.#cloudflare_logpush_job
-	_#res: "\(#cloudflarePrefix)_logpush_ownership_challenge": res.#cloudflare_logpush_ownership_challenge
-	_#res: "\(#cloudflarePrefix)_magic_network_monitoring_configuration": res.#cloudflare_magic_network_monitoring_configuration
-	_#res: "\(#cloudflarePrefix)_magic_network_monitoring_rule": res.#cloudflare_magic_network_monitoring_rule
-	_#res: "\(#cloudflarePrefix)_magic_transit_cf1_site": res.#cloudflare_magic_transit_cf1_site
-	_#res: "\(#cloudflarePrefix)_magic_transit_connector": res.#cloudflare_magic_transit_connector
-	_#res: "\(#cloudflarePrefix)_magic_transit_site_acl": res.#cloudflare_magic_transit_site_acl
-	_#res: "\(#cloudflarePrefix)_magic_transit_site": res.#cloudflare_magic_transit_site
-	_#res: "\(#cloudflarePrefix)_magic_transit_site_lan": res.#cloudflare_magic_transit_site_lan
-	_#res: "\(#cloudflarePrefix)_magic_transit_site_wan": res.#cloudflare_magic_transit_site_wan
-	_#res: "\(#cloudflarePrefix)_magic_wan_gre_tunnel": res.#cloudflare_magic_wan_gre_tunnel
-	_#res: "\(#cloudflarePrefix)_magic_wan_ipsec_tunnel": res.#cloudflare_magic_wan_ipsec_tunnel
-	_#res: "\(#cloudflarePrefix)_magic_wan_static_route": res.#cloudflare_magic_wan_static_route
-	_#res: "\(#cloudflarePrefix)_managed_transforms": res.#cloudflare_managed_transforms
-	_#res: "\(#cloudflarePrefix)_mtls_certificate": res.#cloudflare_mtls_certificate
-	_#res: "\(#cloudflarePrefix)_notification_policy": res.#cloudflare_notification_policy
-	_#res: "\(#cloudflarePrefix)_notification_policy_webhooks": res.#cloudflare_notification_policy_webhooks
-	_#res: "\(#cloudflarePrefix)_oauth_client": res.#cloudflare_oauth_client
-	_#res: "\(#cloudflarePrefix)_observatory_scheduled_test": res.#cloudflare_observatory_scheduled_test
-	_#res: "\(#cloudflarePrefix)_organization": res.#cloudflare_organization
-	_#res: "\(#cloudflarePrefix)_organization_profile": res.#cloudflare_organization_profile
-	_#res: "\(#cloudflarePrefix)_origin_ca_certificate": res.#cloudflare_origin_ca_certificate
-	_#res: "\(#cloudflarePrefix)_origin_cloud_region": res.#cloudflare_origin_cloud_region
-	_#res: "\(#cloudflarePrefix)_origin_tls_compliance_modes": res.#cloudflare_origin_tls_compliance_modes
-	_#res: "\(#cloudflarePrefix)_page_rule": res.#cloudflare_page_rule
-	_#res: "\(#cloudflarePrefix)_page_shield_policy": res.#cloudflare_page_shield_policy
-	_#res: "\(#cloudflarePrefix)_pages_domain": res.#cloudflare_pages_domain
-	_#res: "\(#cloudflarePrefix)_pages_project": res.#cloudflare_pages_project
-	_#res: "\(#cloudflarePrefix)_pipeline": res.#cloudflare_pipeline
-	_#res: "\(#cloudflarePrefix)_pipeline_sink": res.#cloudflare_pipeline_sink
-	_#res: "\(#cloudflarePrefix)_pipeline_stream": res.#cloudflare_pipeline_stream
-	_#res: "\(#cloudflarePrefix)_queue_consumer": res.#cloudflare_queue_consumer
-	_#res: "\(#cloudflarePrefix)_queue": res.#cloudflare_queue
-	_#res: "\(#cloudflarePrefix)_r2_bucket_cors": res.#cloudflare_r2_bucket_cors
-	_#res: "\(#cloudflarePrefix)_r2_bucket_event_notification": res.#cloudflare_r2_bucket_event_notification
-	_#res: "\(#cloudflarePrefix)_r2_bucket": res.#cloudflare_r2_bucket
-	_#res: "\(#cloudflarePrefix)_r2_bucket_lifecycle": res.#cloudflare_r2_bucket_lifecycle
-	_#res: "\(#cloudflarePrefix)_r2_bucket_lock": res.#cloudflare_r2_bucket_lock
-	_#res: "\(#cloudflarePrefix)_r2_bucket_sippy": res.#cloudflare_r2_bucket_sippy
-	_#res: "\(#cloudflarePrefix)_r2_custom_domain": res.#cloudflare_r2_custom_domain
-	_#res: "\(#cloudflarePrefix)_r2_data_catalog": res.#cloudflare_r2_data_catalog
-	_#res: "\(#cloudflarePrefix)_r2_managed_domain": res.#cloudflare_r2_managed_domain
-	_#res: "\(#cloudflarePrefix)_rate_limit": res.#cloudflare_rate_limit
-	_#res: "\(#cloudflarePrefix)_regional_hostname": res.#cloudflare_regional_hostname
-	_#res: "\(#cloudflarePrefix)_regional_tiered_cache": res.#cloudflare_regional_tiered_cache
-	_#res: "\(#cloudflarePrefix)_registrar_domain": res.#cloudflare_registrar_domain
-	_#res: "\(#cloudflarePrefix)_ruleset": res.#cloudflare_ruleset
-	_#res: "\(#cloudflarePrefix)_schema_validation_operation_settings": res.#cloudflare_schema_validation_operation_settings
-	_#res: "\(#cloudflarePrefix)_schema_validation_schemas": res.#cloudflare_schema_validation_schemas
-	_#res: "\(#cloudflarePrefix)_schema_validation_settings": res.#cloudflare_schema_validation_settings
-	_#res: "\(#cloudflarePrefix)_secrets_store": res.#cloudflare_secrets_store
-	_#res: "\(#cloudflarePrefix)_secrets_store_secret": res.#cloudflare_secrets_store_secret
-	_#res: "\(#cloudflarePrefix)_share": res.#cloudflare_share
-	_#res: "\(#cloudflarePrefix)_share_recipient": res.#cloudflare_share_recipient
-	_#res: "\(#cloudflarePrefix)_share_resource": res.#cloudflare_share_resource
-	_#res: "\(#cloudflarePrefix)_snippet": res.#cloudflare_snippet
-	_#res: "\(#cloudflarePrefix)_snippet_rules": res.#cloudflare_snippet_rules
-	_#res: "\(#cloudflarePrefix)_snippets": res.#cloudflare_snippets
-	_#res: "\(#cloudflarePrefix)_spectrum_application": res.#cloudflare_spectrum_application
-	_#res: "\(#cloudflarePrefix)_sso_connector": res.#cloudflare_sso_connector
-	_#res: "\(#cloudflarePrefix)_stream_audio_track": res.#cloudflare_stream_audio_track
-	_#res: "\(#cloudflarePrefix)_stream_caption_language": res.#cloudflare_stream_caption_language
-	_#res: "\(#cloudflarePrefix)_stream_download": res.#cloudflare_stream_download
-	_#res: "\(#cloudflarePrefix)_stream": res.#cloudflare_stream
-	_#res: "\(#cloudflarePrefix)_stream_key": res.#cloudflare_stream_key
-	_#res: "\(#cloudflarePrefix)_stream_live_input": res.#cloudflare_stream_live_input
-	_#res: "\(#cloudflarePrefix)_stream_watermark": res.#cloudflare_stream_watermark
-	_#res: "\(#cloudflarePrefix)_stream_webhook": res.#cloudflare_stream_webhook
-	_#res: "\(#cloudflarePrefix)_tiered_cache": res.#cloudflare_tiered_cache
-	_#res: "\(#cloudflarePrefix)_token_validation_config": res.#cloudflare_token_validation_config
-	_#res: "\(#cloudflarePrefix)_token_validation_rules": res.#cloudflare_token_validation_rules
-	_#res: "\(#cloudflarePrefix)_total_tls": res.#cloudflare_total_tls
-	_#res: "\(#cloudflarePrefix)_turnstile_widget": res.#cloudflare_turnstile_widget
-	_#res: "\(#cloudflarePrefix)_universal_ssl_setting": res.#cloudflare_universal_ssl_setting
-	_#res: "\(#cloudflarePrefix)_url_normalization_settings": res.#cloudflare_url_normalization_settings
-	_#res: "\(#cloudflarePrefix)_user_agent_blocking_rule": res.#cloudflare_user_agent_blocking_rule
-	_#res: "\(#cloudflarePrefix)_user": res.#cloudflare_user
-	_#res: "\(#cloudflarePrefix)_user_group": res.#cloudflare_user_group
-	_#res: "\(#cloudflarePrefix)_user_group_members": res.#cloudflare_user_group_members
-	_#res: "\(#cloudflarePrefix)_vulnerability_scanner_credential": res.#cloudflare_vulnerability_scanner_credential
-	_#res: "\(#cloudflarePrefix)_vulnerability_scanner_credential_set": res.#cloudflare_vulnerability_scanner_credential_set
-	_#res: "\(#cloudflarePrefix)_vulnerability_scanner_target_environment": res.#cloudflare_vulnerability_scanner_target_environment
-	_#res: "\(#cloudflarePrefix)_waiting_room_event": res.#cloudflare_waiting_room_event
-	_#res: "\(#cloudflarePrefix)_waiting_room": res.#cloudflare_waiting_room
-	_#res: "\(#cloudflarePrefix)_waiting_room_rules": res.#cloudflare_waiting_room_rules
-	_#res: "\(#cloudflarePrefix)_waiting_room_settings": res.#cloudflare_waiting_room_settings
-	_#res: "\(#cloudflarePrefix)_web3_hostname": res.#cloudflare_web3_hostname
-	_#res: "\(#cloudflarePrefix)_web_analytics_rule": res.#cloudflare_web_analytics_rule
-	_#res: "\(#cloudflarePrefix)_web_analytics_site": res.#cloudflare_web_analytics_site
-	_#res: "\(#cloudflarePrefix)_worker": res.#cloudflare_worker
-	_#res: "\(#cloudflarePrefix)_worker_version": res.#cloudflare_worker_version
-	_#res: "\(#cloudflarePrefix)_workers_cron_trigger": res.#cloudflare_workers_cron_trigger
-	_#res: "\(#cloudflarePrefix)_workers_custom_domain": res.#cloudflare_workers_custom_domain
-	_#res: "\(#cloudflarePrefix)_workers_deployment": res.#cloudflare_workers_deployment
-	_#res: "\(#cloudflarePrefix)_workers_for_platforms_dispatch_namespace": res.#cloudflare_workers_for_platforms_dispatch_namespace
-	_#res: "\(#cloudflarePrefix)_workers_kv": res.#cloudflare_workers_kv
-	_#res: "\(#cloudflarePrefix)_workers_kv_namespace": res.#cloudflare_workers_kv_namespace
-	_#res: "\(#cloudflarePrefix)_workers_route": res.#cloudflare_workers_route
-	_#res: "\(#cloudflarePrefix)_workers_script": res.#cloudflare_workers_script
-	_#res: "\(#cloudflarePrefix)_workers_script_subdomain": res.#cloudflare_workers_script_subdomain
-	_#res: "\(#cloudflarePrefix)_workflow": res.#cloudflare_workflow
-	_#res: "\(#cloudflarePrefix)_zero_trust_access_ai_controls_mcp_portal": res.#cloudflare_zero_trust_access_ai_controls_mcp_portal
-	_#res: "\(#cloudflarePrefix)_zero_trust_access_ai_controls_mcp_server": res.#cloudflare_zero_trust_access_ai_controls_mcp_server
-	_#res: "\(#cloudflarePrefix)_zero_trust_access_application": res.#cloudflare_zero_trust_access_application
-	_#res: "\(#cloudflarePrefix)_zero_trust_access_custom_page": res.#cloudflare_zero_trust_access_custom_page
-	_#res: "\(#cloudflarePrefix)_zero_trust_access_group": res.#cloudflare_zero_trust_access_group
-	_#res: "\(#cloudflarePrefix)_zero_trust_access_identity_provider": res.#cloudflare_zero_trust_access_identity_provider
-	_#res: "\(#cloudflarePrefix)_zero_trust_access_infrastructure_target": res.#cloudflare_zero_trust_access_infrastructure_target
-	_#res: "\(#cloudflarePrefix)_zero_trust_access_key_configuration": res.#cloudflare_zero_trust_access_key_configuration
-	_#res: "\(#cloudflarePrefix)_zero_trust_access_mtls_certificate": res.#cloudflare_zero_trust_access_mtls_certificate
-	_#res: "\(#cloudflarePrefix)_zero_trust_access_mtls_hostname_settings": res.#cloudflare_zero_trust_access_mtls_hostname_settings
-	_#res: "\(#cloudflarePrefix)_zero_trust_access_policy": res.#cloudflare_zero_trust_access_policy
-	_#res: "\(#cloudflarePrefix)_zero_trust_access_service_token": res.#cloudflare_zero_trust_access_service_token
-	_#res: "\(#cloudflarePrefix)_zero_trust_access_short_lived_certificate": res.#cloudflare_zero_trust_access_short_lived_certificate
-	_#res: "\(#cloudflarePrefix)_zero_trust_access_tag": res.#cloudflare_zero_trust_access_tag
-	_#res: "\(#cloudflarePrefix)_zero_trust_device_custom_profile": res.#cloudflare_zero_trust_device_custom_profile
-	_#res: "\(#cloudflarePrefix)_zero_trust_device_custom_profile_local_domain_fallback": res.#cloudflare_zero_trust_device_custom_profile_local_domain_fallback
-	_#res: "\(#cloudflarePrefix)_zero_trust_device_default_profile_certificates": res.#cloudflare_zero_trust_device_default_profile_certificates
-	_#res: "\(#cloudflarePrefix)_zero_trust_device_default_profile": res.#cloudflare_zero_trust_device_default_profile
-	_#res: "\(#cloudflarePrefix)_zero_trust_device_default_profile_local_domain_fallback": res.#cloudflare_zero_trust_device_default_profile_local_domain_fallback
-	_#res: "\(#cloudflarePrefix)_zero_trust_device_deployment_groups": res.#cloudflare_zero_trust_device_deployment_groups
-	_#res: "\(#cloudflarePrefix)_zero_trust_device_ip_profile": res.#cloudflare_zero_trust_device_ip_profile
-	_#res: "\(#cloudflarePrefix)_zero_trust_device_managed_networks": res.#cloudflare_zero_trust_device_managed_networks
-	_#res: "\(#cloudflarePrefix)_zero_trust_device_posture_integration": res.#cloudflare_zero_trust_device_posture_integration
-	_#res: "\(#cloudflarePrefix)_zero_trust_device_posture_rule": res.#cloudflare_zero_trust_device_posture_rule
-	_#res: "\(#cloudflarePrefix)_zero_trust_device_settings": res.#cloudflare_zero_trust_device_settings
-	_#res: "\(#cloudflarePrefix)_zero_trust_device_subnet": res.#cloudflare_zero_trust_device_subnet
-	_#res: "\(#cloudflarePrefix)_zero_trust_dex_rule": res.#cloudflare_zero_trust_dex_rule
-	_#res: "\(#cloudflarePrefix)_zero_trust_dex_test": res.#cloudflare_zero_trust_dex_test
-	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_custom_entry": res.#cloudflare_zero_trust_dlp_custom_entry
-	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_custom_profile": res.#cloudflare_zero_trust_dlp_custom_profile
-	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_data_class": res.#cloudflare_zero_trust_dlp_data_class
-	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_data_tag_category": res.#cloudflare_zero_trust_dlp_data_tag_category
-	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_data_tag": res.#cloudflare_zero_trust_dlp_data_tag
-	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_dataset": res.#cloudflare_zero_trust_dlp_dataset
-	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_entry": res.#cloudflare_zero_trust_dlp_entry
-	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_integration_entry": res.#cloudflare_zero_trust_dlp_integration_entry
-	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_predefined_entry": res.#cloudflare_zero_trust_dlp_predefined_entry
-	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_predefined_profile": res.#cloudflare_zero_trust_dlp_predefined_profile
-	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_sensitivity_group": res.#cloudflare_zero_trust_dlp_sensitivity_group
-	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_sensitivity_level": res.#cloudflare_zero_trust_dlp_sensitivity_level
-	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_sensitivity_level_order": res.#cloudflare_zero_trust_dlp_sensitivity_level_order
-	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_settings": res.#cloudflare_zero_trust_dlp_settings
-	_#res: "\(#cloudflarePrefix)_zero_trust_dns_location": res.#cloudflare_zero_trust_dns_location
-	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_certificate": res.#cloudflare_zero_trust_gateway_certificate
-	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_logging": res.#cloudflare_zero_trust_gateway_logging
-	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_pacfile": res.#cloudflare_zero_trust_gateway_pacfile
-	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_policy": res.#cloudflare_zero_trust_gateway_policy
-	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_proxy_endpoint": res.#cloudflare_zero_trust_gateway_proxy_endpoint
-	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_settings": res.#cloudflare_zero_trust_gateway_settings
-	_#res: "\(#cloudflarePrefix)_zero_trust_list": res.#cloudflare_zero_trust_list
-	_#res: "\(#cloudflarePrefix)_zero_trust_network_hostname_route": res.#cloudflare_zero_trust_network_hostname_route
-	_#res: "\(#cloudflarePrefix)_zero_trust_organization": res.#cloudflare_zero_trust_organization
-	_#res: "\(#cloudflarePrefix)_zero_trust_risk_behavior": res.#cloudflare_zero_trust_risk_behavior
-	_#res: "\(#cloudflarePrefix)_zero_trust_risk_scoring_integration": res.#cloudflare_zero_trust_risk_scoring_integration
-	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_cloudflared_config": res.#cloudflare_zero_trust_tunnel_cloudflared_config
-	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_cloudflared": res.#cloudflare_zero_trust_tunnel_cloudflared
-	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_cloudflared_route": res.#cloudflare_zero_trust_tunnel_cloudflared_route
-	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_cloudflared_virtual_network": res.#cloudflare_zero_trust_tunnel_cloudflared_virtual_network
-	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_warp_connector_config": res.#cloudflare_zero_trust_tunnel_warp_connector_config
-	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_warp_connector": res.#cloudflare_zero_trust_tunnel_warp_connector
-	_#res: "\(#cloudflarePrefix)_zone_auto_origin_tls_kex": res.#cloudflare_zone_auto_origin_tls_kex
-	_#res: "\(#cloudflarePrefix)_zone_cache_reserve": res.#cloudflare_zone_cache_reserve
-	_#res: "\(#cloudflarePrefix)_zone_cache_variants": res.#cloudflare_zone_cache_variants
-	_#res: "\(#cloudflarePrefix)_zone_dns_settings": res.#cloudflare_zone_dns_settings
-	_#res: "\(#cloudflarePrefix)_zone_dnssec": res.#cloudflare_zone_dnssec
-	_#res: "\(#cloudflarePrefix)_zone": res.#cloudflare_zone
-	_#res: "\(#cloudflarePrefix)_zone_hold": res.#cloudflare_zone_hold
-	_#res: "\(#cloudflarePrefix)_zone_lockdown": res.#cloudflare_zone_lockdown
-	_#res: "\(#cloudflarePrefix)_zone_setting": res.#cloudflare_zone_setting
-	_#res: "\(#cloudflarePrefix)_zone_subscription": res.#cloudflare_zone_subscription
+	_#res: "\(#cloudflarePrefix)_access_rule": close({res.cloudflare_access_rule & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_account_dns_settings": close({res.cloudflare_account_dns_settings & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_account_dns_settings_internal_view": close({res.cloudflare_account_dns_settings_internal_view & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_account": close({res.cloudflare_account & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_account_member": close({res.cloudflare_account_member & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_account_subscription": close({res.cloudflare_account_subscription & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_account_token": close({res.cloudflare_account_token & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_address_map": close({res.cloudflare_address_map & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_ai_gateway_dynamic_routing": close({res.cloudflare_ai_gateway_dynamic_routing & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_ai_gateway": close({res.cloudflare_ai_gateway & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_ai_search_instance": close({res.cloudflare_ai_search_instance & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_ai_search_namespace": close({res.cloudflare_ai_search_namespace & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_ai_search_token": close({res.cloudflare_ai_search_token & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_api_shield_discovery_operation": close({res.cloudflare_api_shield_discovery_operation & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_api_shield": close({res.cloudflare_api_shield & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_api_shield_operation": close({res.cloudflare_api_shield_operation & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_api_shield_operation_schema_validation_settings": close({res.cloudflare_api_shield_operation_schema_validation_settings & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_api_shield_schema": close({res.cloudflare_api_shield_schema & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_api_shield_schema_validation_settings": close({res.cloudflare_api_shield_schema_validation_settings & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_api_token": close({res.cloudflare_api_token & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_argo_smart_routing": close({res.cloudflare_argo_smart_routing & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_argo_tiered_caching": close({res.cloudflare_argo_tiered_caching & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_authenticated_origin_pulls_certificate": close({res.cloudflare_authenticated_origin_pulls_certificate & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_authenticated_origin_pulls": close({res.cloudflare_authenticated_origin_pulls & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_authenticated_origin_pulls_hostname_certificate": close({res.cloudflare_authenticated_origin_pulls_hostname_certificate & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_authenticated_origin_pulls_settings": close({res.cloudflare_authenticated_origin_pulls_settings & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_bot_management": close({res.cloudflare_bot_management & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_byo_ip_prefix": close({res.cloudflare_byo_ip_prefix & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_calls_sfu_app": close({res.cloudflare_calls_sfu_app & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_calls_turn_app": close({res.cloudflare_calls_turn_app & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_certificate_authorities_hostname_associations": close({res.cloudflare_certificate_authorities_hostname_associations & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_certificate_pack": close({res.cloudflare_certificate_pack & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_client_certificate": close({res.cloudflare_client_certificate & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_cloud_connector_rules": close({res.cloudflare_cloud_connector_rules & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_cloudforce_one_request_asset": close({res.cloudflare_cloudforce_one_request_asset & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_cloudforce_one_request": close({res.cloudflare_cloudforce_one_request & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_cloudforce_one_request_message": close({res.cloudflare_cloudforce_one_request_message & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_cloudforce_one_request_priority": close({res.cloudflare_cloudforce_one_request_priority & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_connectivity_directory_service": close({res.cloudflare_connectivity_directory_service & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_content_scanning_expression": close({res.cloudflare_content_scanning_expression & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_content_scanning": close({res.cloudflare_content_scanning & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_custom_csr": close({res.cloudflare_custom_csr & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_custom_hostname_fallback_origin": close({res.cloudflare_custom_hostname_fallback_origin & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_custom_hostname": close({res.cloudflare_custom_hostname & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_custom_origin_trust_store": close({res.cloudflare_custom_origin_trust_store & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_custom_page_asset": close({res.cloudflare_custom_page_asset & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_custom_pages": close({res.cloudflare_custom_pages & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_custom_ssl": close({res.cloudflare_custom_ssl & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_d1_database": close({res.cloudflare_d1_database & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_dls_prefix_binding": close({res.cloudflare_dls_prefix_binding & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_dns_firewall": close({res.cloudflare_dns_firewall & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_dns_record": close({res.cloudflare_dns_record & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_dns_zone_transfers_acl": close({res.cloudflare_dns_zone_transfers_acl & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_dns_zone_transfers_incoming": close({res.cloudflare_dns_zone_transfers_incoming & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_dns_zone_transfers_outgoing": close({res.cloudflare_dns_zone_transfers_outgoing & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_dns_zone_transfers_peer": close({res.cloudflare_dns_zone_transfers_peer & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_dns_zone_transfers_tsig": close({res.cloudflare_dns_zone_transfers_tsig & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_email_routing_address": close({res.cloudflare_email_routing_address & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_email_routing_catch_all": close({res.cloudflare_email_routing_catch_all & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_email_routing_dns": close({res.cloudflare_email_routing_dns & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_email_routing_rule": close({res.cloudflare_email_routing_rule & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_email_routing_settings": close({res.cloudflare_email_routing_settings & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_email_security_block_sender": close({res.cloudflare_email_security_block_sender & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_email_security_impersonation_registry": close({res.cloudflare_email_security_impersonation_registry & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_email_security_trusted_domains": close({res.cloudflare_email_security_trusted_domains & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_filter": close({res.cloudflare_filter & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_firewall_rule": close({res.cloudflare_firewall_rule & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_flagship_app": close({res.cloudflare_flagship_app & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_flagship_flag": close({res.cloudflare_flagship_flag & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_google_tag_gateway": close({res.cloudflare_google_tag_gateway & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_healthcheck": close({res.cloudflare_healthcheck & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_hostname_tls_setting": close({res.cloudflare_hostname_tls_setting & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_hyperdrive_config": close({res.cloudflare_hyperdrive_config & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_image": close({res.cloudflare_image & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_image_variant": close({res.cloudflare_image_variant & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_keyless_certificate": close({res.cloudflare_keyless_certificate & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_leaked_credential_check": close({res.cloudflare_leaked_credential_check & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_leaked_credential_check_rule": close({res.cloudflare_leaked_credential_check_rule & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_list": close({res.cloudflare_list & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_list_item": close({res.cloudflare_list_item & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_load_balancer": close({res.cloudflare_load_balancer & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_load_balancer_monitor": close({res.cloudflare_load_balancer_monitor & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_load_balancer_monitor_group": close({res.cloudflare_load_balancer_monitor_group & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_load_balancer_pool": close({res.cloudflare_load_balancer_pool & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_logpull_retention": close({res.cloudflare_logpull_retention & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_logpush_job": close({res.cloudflare_logpush_job & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_logpush_ownership_challenge": close({res.cloudflare_logpush_ownership_challenge & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_magic_network_monitoring_configuration": close({res.cloudflare_magic_network_monitoring_configuration & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_magic_network_monitoring_rule": close({res.cloudflare_magic_network_monitoring_rule & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_magic_transit_cf1_site": close({res.cloudflare_magic_transit_cf1_site & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_magic_transit_connector": close({res.cloudflare_magic_transit_connector & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_magic_transit_site_acl": close({res.cloudflare_magic_transit_site_acl & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_magic_transit_site": close({res.cloudflare_magic_transit_site & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_magic_transit_site_lan": close({res.cloudflare_magic_transit_site_lan & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_magic_transit_site_wan": close({res.cloudflare_magic_transit_site_wan & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_magic_wan_gre_tunnel": close({res.cloudflare_magic_wan_gre_tunnel & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_magic_wan_ipsec_tunnel": close({res.cloudflare_magic_wan_ipsec_tunnel & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_magic_wan_static_route": close({res.cloudflare_magic_wan_static_route & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_managed_transforms": close({res.cloudflare_managed_transforms & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_moq_relay": close({res.cloudflare_moq_relay & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_mtls_certificate": close({res.cloudflare_mtls_certificate & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_notification_policy": close({res.cloudflare_notification_policy & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_notification_policy_webhooks": close({res.cloudflare_notification_policy_webhooks & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_oauth_client": close({res.cloudflare_oauth_client & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_observatory_scheduled_test": close({res.cloudflare_observatory_scheduled_test & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_organization": close({res.cloudflare_organization & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_organization_profile": close({res.cloudflare_organization_profile & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_origin_ca_certificate": close({res.cloudflare_origin_ca_certificate & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_origin_cloud_region": close({res.cloudflare_origin_cloud_region & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_origin_tls_compliance_modes": close({res.cloudflare_origin_tls_compliance_modes & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_page_rule": close({res.cloudflare_page_rule & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_page_shield_policy": close({res.cloudflare_page_shield_policy & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_pages_domain": close({res.cloudflare_pages_domain & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_pages_project": close({res.cloudflare_pages_project & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_pipeline": close({res.cloudflare_pipeline & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_pipeline_sink": close({res.cloudflare_pipeline_sink & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_pipeline_stream": close({res.cloudflare_pipeline_stream & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_queue_consumer": close({res.cloudflare_queue_consumer & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_queue": close({res.cloudflare_queue & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_r2_bucket_cors": close({res.cloudflare_r2_bucket_cors & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_r2_bucket_event_notification": close({res.cloudflare_r2_bucket_event_notification & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_r2_bucket": close({res.cloudflare_r2_bucket & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_r2_bucket_lifecycle": close({res.cloudflare_r2_bucket_lifecycle & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_r2_bucket_lock": close({res.cloudflare_r2_bucket_lock & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_r2_bucket_sippy": close({res.cloudflare_r2_bucket_sippy & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_r2_custom_domain": close({res.cloudflare_r2_custom_domain & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_r2_data_catalog": close({res.cloudflare_r2_data_catalog & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_r2_managed_domain": close({res.cloudflare_r2_managed_domain & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_rate_limit": close({res.cloudflare_rate_limit & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_regional_hostname": close({res.cloudflare_regional_hostname & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_regional_tiered_cache": close({res.cloudflare_regional_tiered_cache & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_registrar_domain": close({res.cloudflare_registrar_domain & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_ruleset": close({res.cloudflare_ruleset & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_schema_validation_operation_settings": close({res.cloudflare_schema_validation_operation_settings & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_schema_validation_schemas": close({res.cloudflare_schema_validation_schemas & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_schema_validation_settings": close({res.cloudflare_schema_validation_settings & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_secrets_store": close({res.cloudflare_secrets_store & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_secrets_store_secret": close({res.cloudflare_secrets_store_secret & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_share": close({res.cloudflare_share & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_share_recipient": close({res.cloudflare_share_recipient & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_share_resource": close({res.cloudflare_share_resource & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_snippet": close({res.cloudflare_snippet & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_snippet_rules": close({res.cloudflare_snippet_rules & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_snippets": close({res.cloudflare_snippets & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_spectrum_application": close({res.cloudflare_spectrum_application & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_sso_connector": close({res.cloudflare_sso_connector & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_stream_audio_track": close({res.cloudflare_stream_audio_track & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_stream_caption_language": close({res.cloudflare_stream_caption_language & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_stream_download": close({res.cloudflare_stream_download & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_stream": close({res.cloudflare_stream & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_stream_key": close({res.cloudflare_stream_key & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_stream_live_input": close({res.cloudflare_stream_live_input & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_stream_watermark": close({res.cloudflare_stream_watermark & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_stream_webhook": close({res.cloudflare_stream_webhook & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_tiered_cache": close({res.cloudflare_tiered_cache & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_token_validation_config": close({res.cloudflare_token_validation_config & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_token_validation_rules": close({res.cloudflare_token_validation_rules & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_total_tls": close({res.cloudflare_total_tls & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_turnstile_widget": close({res.cloudflare_turnstile_widget & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_universal_ssl_setting": close({res.cloudflare_universal_ssl_setting & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_url_normalization_settings": close({res.cloudflare_url_normalization_settings & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_user_agent_blocking_rule": close({res.cloudflare_user_agent_blocking_rule & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_user": close({res.cloudflare_user & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_user_group": close({res.cloudflare_user_group & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_user_group_members": close({res.cloudflare_user_group_members & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_vulnerability_scanner_credential": close({res.cloudflare_vulnerability_scanner_credential & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_vulnerability_scanner_credential_set": close({res.cloudflare_vulnerability_scanner_credential_set & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_vulnerability_scanner_target_environment": close({res.cloudflare_vulnerability_scanner_target_environment & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_waiting_room_event": close({res.cloudflare_waiting_room_event & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_waiting_room": close({res.cloudflare_waiting_room & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_waiting_room_rules": close({res.cloudflare_waiting_room_rules & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_waiting_room_settings": close({res.cloudflare_waiting_room_settings & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_web3_hostname": close({res.cloudflare_web3_hostname & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_web_analytics_rule": close({res.cloudflare_web_analytics_rule & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_web_analytics_site": close({res.cloudflare_web_analytics_site & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_worker": close({res.cloudflare_worker & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_worker_version": close({res.cloudflare_worker_version & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_workers_cron_trigger": close({res.cloudflare_workers_cron_trigger & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_workers_custom_domain": close({res.cloudflare_workers_custom_domain & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_workers_deployment": close({res.cloudflare_workers_deployment & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_workers_for_platforms_dispatch_namespace": close({res.cloudflare_workers_for_platforms_dispatch_namespace & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_workers_kv": close({res.cloudflare_workers_kv & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_workers_kv_namespace": close({res.cloudflare_workers_kv_namespace & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_workers_route": close({res.cloudflare_workers_route & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_workers_script": close({res.cloudflare_workers_script & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_workers_script_subdomain": close({res.cloudflare_workers_script_subdomain & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_workflow": close({res.cloudflare_workflow & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_ai_controls_mcp_portal": close({res.cloudflare_zero_trust_access_ai_controls_mcp_portal & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_ai_controls_mcp_server": close({res.cloudflare_zero_trust_access_ai_controls_mcp_server & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_application": close({res.cloudflare_zero_trust_access_application & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_custom_page": close({res.cloudflare_zero_trust_access_custom_page & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_group": close({res.cloudflare_zero_trust_access_group & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_identity_provider": close({res.cloudflare_zero_trust_access_identity_provider & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_infrastructure_target": close({res.cloudflare_zero_trust_access_infrastructure_target & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_key_configuration": close({res.cloudflare_zero_trust_access_key_configuration & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_mtls_certificate": close({res.cloudflare_zero_trust_access_mtls_certificate & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_mtls_hostname_settings": close({res.cloudflare_zero_trust_access_mtls_hostname_settings & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_policy": close({res.cloudflare_zero_trust_access_policy & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_service_token": close({res.cloudflare_zero_trust_access_service_token & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_short_lived_certificate": close({res.cloudflare_zero_trust_access_short_lived_certificate & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_access_tag": close({res.cloudflare_zero_trust_access_tag & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_device_custom_profile": close({res.cloudflare_zero_trust_device_custom_profile & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_device_custom_profile_local_domain_fallback": close({res.cloudflare_zero_trust_device_custom_profile_local_domain_fallback & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_device_default_profile_certificates": close({res.cloudflare_zero_trust_device_default_profile_certificates & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_device_default_profile": close({res.cloudflare_zero_trust_device_default_profile & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_device_default_profile_local_domain_fallback": close({res.cloudflare_zero_trust_device_default_profile_local_domain_fallback & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_device_deployment_groups": close({res.cloudflare_zero_trust_device_deployment_groups & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_device_ip_profile": close({res.cloudflare_zero_trust_device_ip_profile & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_device_managed_networks": close({res.cloudflare_zero_trust_device_managed_networks & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_device_posture_integration": close({res.cloudflare_zero_trust_device_posture_integration & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_device_posture_rule": close({res.cloudflare_zero_trust_device_posture_rule & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_device_settings": close({res.cloudflare_zero_trust_device_settings & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_device_subnet": close({res.cloudflare_zero_trust_device_subnet & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dex_rule": close({res.cloudflare_zero_trust_dex_rule & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dex_test": close({res.cloudflare_zero_trust_dex_test & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_custom_entry": close({res.cloudflare_zero_trust_dlp_custom_entry & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_custom_profile": close({res.cloudflare_zero_trust_dlp_custom_profile & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_data_class": close({res.cloudflare_zero_trust_dlp_data_class & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_data_tag_category": close({res.cloudflare_zero_trust_dlp_data_tag_category & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_data_tag": close({res.cloudflare_zero_trust_dlp_data_tag & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_dataset": close({res.cloudflare_zero_trust_dlp_dataset & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_entry": close({res.cloudflare_zero_trust_dlp_entry & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_integration_entry": close({res.cloudflare_zero_trust_dlp_integration_entry & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_predefined_entry": close({res.cloudflare_zero_trust_dlp_predefined_entry & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_predefined_profile": close({res.cloudflare_zero_trust_dlp_predefined_profile & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_sensitivity_group": close({res.cloudflare_zero_trust_dlp_sensitivity_group & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_sensitivity_level": close({res.cloudflare_zero_trust_dlp_sensitivity_level & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_sensitivity_level_order": close({res.cloudflare_zero_trust_dlp_sensitivity_level_order & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dlp_settings": close({res.cloudflare_zero_trust_dlp_settings & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_dns_location": close({res.cloudflare_zero_trust_dns_location & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_certificate": close({res.cloudflare_zero_trust_gateway_certificate & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_logging": close({res.cloudflare_zero_trust_gateway_logging & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_pacfile": close({res.cloudflare_zero_trust_gateway_pacfile & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_policy": close({res.cloudflare_zero_trust_gateway_policy & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_proxy_endpoint": close({res.cloudflare_zero_trust_gateway_proxy_endpoint & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_gateway_settings": close({res.cloudflare_zero_trust_gateway_settings & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_list": close({res.cloudflare_zero_trust_list & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_network_hostname_route": close({res.cloudflare_zero_trust_network_hostname_route & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_organization": close({res.cloudflare_zero_trust_organization & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_risk_behavior": close({res.cloudflare_zero_trust_risk_behavior & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_risk_scoring_integration": close({res.cloudflare_zero_trust_risk_scoring_integration & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_cloudflared_config": close({res.cloudflare_zero_trust_tunnel_cloudflared_config & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_cloudflared": close({res.cloudflare_zero_trust_tunnel_cloudflared & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_cloudflared_route": close({res.cloudflare_zero_trust_tunnel_cloudflared_route & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_cloudflared_virtual_network": close({res.cloudflare_zero_trust_tunnel_cloudflared_virtual_network & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_warp_connector_config": close({res.cloudflare_zero_trust_tunnel_warp_connector_config & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_tunnel_warp_connector": close({res.cloudflare_zero_trust_tunnel_warp_connector & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zone_auto_origin_tls_kex": close({res.cloudflare_zone_auto_origin_tls_kex & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zone_cache_reserve": close({res.cloudflare_zone_cache_reserve & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zone_cache_variants": close({res.cloudflare_zone_cache_variants & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zone_dns_settings": close({res.cloudflare_zone_dns_settings & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zone_dnssec": close({res.cloudflare_zone_dnssec & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zone": close({res.cloudflare_zone & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zone_hold": close({res.cloudflare_zone_hold & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zone_lockdown": close({res.cloudflare_zone_lockdown & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zone_setting": close({res.cloudflare_zone_setting & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zone_subscription": close({res.cloudflare_zone_subscription & cuetf.MetaArgs})
 
 }

@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_byo_ip_prefixes: {
+cloudflare_byo_ip_prefixes: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_byo_ip_prefixes")
 	close({
@@ -18,16 +18,14 @@ package data
 			// Approval state of the prefix (P = pending, V = active).
 			approved?: string
 
-			// Autonomous System Number (ASN) the prefix will be advertised
-			// under.
+			// Autonomous System Number (ASN) the prefix will be advertised under.
 			asn?: number
 
 			// IP Prefix in Classless Inter-Domain Routing format.
 			cidr?:       string
 			created_at?: string
 
-			// Whether Cloudflare is allowed to generate the LOA document on
-			// behalf of the prefix owner.
+			// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
 			delegate_loa_creation?: bool
 
 			// Description of the prefix.
@@ -41,10 +39,10 @@ package data
 
 			// Identifier for the uploaded LOA document.
 			loa_document_id?: string
-			modified_at?:     string
 
 			// State of one kind of validation for an IP prefix.
 			ownership_validation_state?: string
+			modified_at?:                string
 
 			// Token provided to demonstrate ownership of the prefix.
 			ownership_validation_token?: string
@@ -58,16 +56,14 @@ package data
 			// Approval state of the prefix (P = pending, V = active).
 			approved?: string
 
-			// Autonomous System Number (ASN) the prefix will be advertised
-			// under.
+			// Autonomous System Number (ASN) the prefix will be advertised under.
 			asn?: number
 
 			// IP Prefix in Classless Inter-Domain Routing format.
 			cidr?:       string
 			created_at?: string
 
-			// Whether Cloudflare is allowed to generate the LOA document on
-			// behalf of the prefix owner.
+			// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
 			delegate_loa_creation?: bool
 
 			// Description of the prefix.
@@ -81,10 +77,10 @@ package data
 
 			// Identifier for the uploaded LOA document.
 			loa_document_id?: string
-			modified_at?:     string
 
 			// State of one kind of validation for an IP prefix.
 			ownership_validation_state?: string
+			modified_at?:                string
 
 			// Token provided to demonstrate ownership of the prefix.
 			ownership_validation_token?: string

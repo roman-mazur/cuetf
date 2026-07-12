@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_secrets_stores: {
+cloudflare_secrets_stores: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_secrets_stores")
 	close({
@@ -15,8 +15,7 @@ package data
 		max_items?: number
 
 		// Order secrets by values in the given field
-		// Available values: "name", "comment", "created", "modified",
-		// "status".
+		// Available values: "name", "comment", "created", "modified", "status".
 		order?: string
 
 		// The items returned by the data source

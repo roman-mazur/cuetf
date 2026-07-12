@@ -1,12 +1,11 @@
 package res
 
-#cloudflare_organization: {
+cloudflare_organization: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_organization")
 	close({
 		create_time?: string
 		id?:          string
-		name!:        string
 		meta?: close({
 			// Enable features for Organizations.
 			flags?: close({
@@ -17,20 +16,16 @@ package res
 				sub_org_creation?:  string
 			})
 
-			// Ordered chain of organization tags from the root organization
-			// down to
-			// (and including) this organization itself. Root organizations
-			// return a
-			// single-element array containing their own tag;
-			// sub-organizations return
-			// `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful
-			// for
-			// constructing authorization scopes that need to cover every
-			// ancestor
+			// Ordered chain of organization tags from the root organization down to
+			// (and including) this organization itself. Root organizations return a
+			// single-element array containing their own tag; sub-organizations return
+			// `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+			// constructing authorization scopes that need to cover every ancestor
 			// in the hierarchy.
 			hierarchy_tags?: [...string]
 			managed_by?: string
 		})
+		name!: string
 		parent?: close({
 			id!:   string
 			name?: string

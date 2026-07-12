@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_zero_trust_gateway_pacfiles: {
+cloudflare_zero_trust_gateway_pacfiles: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_gateway_pacfiles")
 	close({
@@ -15,33 +15,33 @@ package data
 
 			// Detailed description of the PAC file.
 			description?: string
-			id?:          string
 
 			// Name of the PAC file.
 			name?: string
+			id?:   string
 
 			// URL-friendly version of the PAC file name.
-			slug?:       string
-			updated_at?: string
+			slug?: string
 
 			// Unique URL to download the PAC file.
-			url?: string
+			url?:        string
+			updated_at?: string
 		}), [...close({
 			created_at?: string
 
 			// Detailed description of the PAC file.
 			description?: string
-			id?:          string
 
 			// Name of the PAC file.
 			name?: string
+			id?:   string
 
 			// URL-friendly version of the PAC file name.
-			slug?:       string
-			updated_at?: string
+			slug?: string
 
 			// Unique URL to download the PAC file.
-			url?: string
+			url?:        string
+			updated_at?: string
 		})]])
 	})
 }

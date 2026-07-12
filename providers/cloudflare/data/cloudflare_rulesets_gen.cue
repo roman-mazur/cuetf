@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_rulesets: {
+cloudflare_rulesets: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_rulesets")
 	close({
@@ -10,11 +10,7 @@ package data
 		// Maximum number of rulesets to fetch (defaults to 1000).
 		max_items?: number
 
-		// The unique ID of the zone.
-		zone_id?: string
-
-		// A list of rulesets. The returned information will not include
-		// the rules in each ruleset.
+		// A list of rulesets. The returned information will not include the rules in each ruleset.
 		rulesets?: matchN(1, [close({
 			// An informative description of the ruleset.
 			description?: string
@@ -34,17 +30,14 @@ package data
 
 			// The phase of the ruleset.
 			// Available values: "ddos_l4", "ddos_l7", "http_config_settings",
-			// "http_custom_errors", "http_log_custom_fields",
-			// "http_ratelimit", "http_request_cache_settings",
-			// "http_request_dynamic_redirect",
-			// "http_request_firewall_custom",
-			// "http_request_firewall_managed",
+			// "http_custom_errors", "http_log_custom_fields", "http_ratelimit",
+			// "http_request_cache_settings", "http_request_dynamic_redirect",
+			// "http_request_firewall_custom", "http_request_firewall_managed",
 			// "http_request_late_transform", "http_request_origin",
-			// "http_request_redirect", "http_request_sanitize",
-			// "http_request_sbfm", "http_request_transform",
-			// "http_response_compression", "http_response_firewall_managed",
-			// "http_response_headers_transform", "magic_transit",
-			// "magic_transit_ids_managed", "magic_transit_managed",
+			// "http_request_redirect", "http_request_sanitize", "http_request_sbfm",
+			// "http_request_transform", "http_response_compression",
+			// "http_response_firewall_managed", "http_response_headers_transform",
+			// "magic_transit", "magic_transit_ids_managed", "magic_transit_managed",
 			// "magic_transit_ratelimit".
 			phase?: string
 
@@ -69,22 +62,22 @@ package data
 
 			// The phase of the ruleset.
 			// Available values: "ddos_l4", "ddos_l7", "http_config_settings",
-			// "http_custom_errors", "http_log_custom_fields",
-			// "http_ratelimit", "http_request_cache_settings",
-			// "http_request_dynamic_redirect",
-			// "http_request_firewall_custom",
-			// "http_request_firewall_managed",
+			// "http_custom_errors", "http_log_custom_fields", "http_ratelimit",
+			// "http_request_cache_settings", "http_request_dynamic_redirect",
+			// "http_request_firewall_custom", "http_request_firewall_managed",
 			// "http_request_late_transform", "http_request_origin",
-			// "http_request_redirect", "http_request_sanitize",
-			// "http_request_sbfm", "http_request_transform",
-			// "http_response_compression", "http_response_firewall_managed",
-			// "http_response_headers_transform", "magic_transit",
-			// "magic_transit_ids_managed", "magic_transit_managed",
+			// "http_request_redirect", "http_request_sanitize", "http_request_sbfm",
+			// "http_request_transform", "http_response_compression",
+			// "http_response_firewall_managed", "http_response_headers_transform",
+			// "magic_transit", "magic_transit_ids_managed", "magic_transit_managed",
 			// "magic_transit_ratelimit".
 			phase?: string
 
 			// The version of the ruleset.
 			version?: string
 		})]])
+
+		// The unique ID of the zone.
+		zone_id?: string
 	})
 }

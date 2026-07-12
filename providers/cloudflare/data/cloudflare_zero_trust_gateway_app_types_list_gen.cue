@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_zero_trust_gateway_app_types_list: {
+cloudflare_zero_trust_gateway_app_types_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_gateway_app_types_list")
 	close({
@@ -12,9 +12,8 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// Identify the type of this application. Multiple applications
-			// can share the same type. Refers to the `id` of a returned
-			// application type.
+			// Identify the type of this application. Multiple applications can share the
+			// same type. Refers to the `id` of a returned application type.
 			application_type_id?: number
 			created_at?:          string
 
@@ -27,9 +26,8 @@ package data
 			// Specify the name of the application or application type.
 			name?: string
 		}), [...close({
-			// Identify the type of this application. Multiple applications
-			// can share the same type. Refers to the `id` of a returned
-			// application type.
+			// Identify the type of this application. Multiple applications can share the
+			// same type. Refers to the `id` of a returned application type.
 			application_type_id?: number
 			created_at?:          string
 

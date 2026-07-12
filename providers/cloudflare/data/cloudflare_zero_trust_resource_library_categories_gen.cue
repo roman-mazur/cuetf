@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_zero_trust_resource_library_categories: {
+cloudflare_zero_trust_resource_library_categories: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_resource_library_categories")
 	close({

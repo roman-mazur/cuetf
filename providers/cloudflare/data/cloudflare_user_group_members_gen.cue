@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_user_group_members: {
+cloudflare_user_group_members: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_user_group_members")
 	close({
@@ -16,9 +16,6 @@ package data
 
 		// User Group identifier tag.
 		id?: string
-
-		// User Group identifier tag.
-		user_group_id!: string
 
 		// List of members in the user group.
 		members?: matchN(1, [close({
@@ -42,5 +39,8 @@ package data
 			// Available values: "accepted", "pending".
 			status?: string
 		})]])
+
+		// User Group identifier tag.
+		user_group_id!: string
 	})
 }

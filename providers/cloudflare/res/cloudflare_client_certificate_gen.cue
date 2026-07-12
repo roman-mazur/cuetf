@@ -1,11 +1,17 @@
 package res
 
-#cloudflare_client_certificate: {
+cloudflare_client_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_client_certificate")
 	close({
 		// The Client Certificate PEM.
 		certificate?: string
+
+		// Certificate Authority used to issue the Client Certificate.
+		certificate_authority?: close({
+			id?:   string
+			name?: string
+		})
 
 		// Common Name of the Client Certificate.
 		common_name?: string
@@ -25,8 +31,7 @@ package res
 		// Identifier.
 		id?: string
 
-		// Date that the Client Certificate was issued by the Certificate
-		// Authority.
+		// Date that the Client Certificate was issued by the Certificate Authority.
 		issued_on?: string
 
 		// Location, provided by the CSR.
@@ -51,24 +56,15 @@ package res
 		// State, provided by the CSR.
 		state?: string
 
-		// Client Certificates may be active or revoked, and the
-		// pending_reactivation or pending_revocation represent
-		// in-progress asynchronous transitions.
-		// Available values: "active", "pending_reactivation",
-		// "pending_revocation", "revoked".
+		// Client Certificates may be active or revoked, and the pending_reactivation or
+		// pending_revocation represent in-progress asynchronous transitions.
+		// Available values: "active", "pending_reactivation", "pending_revocation", "revoked".
 		status?: string
 
-		// The number of days the Client Certificate will be valid after
-		// the issued_on date.
+		// The number of days the Client Certificate will be valid after the issued_on date.
 		validity_days!: number
 
 		// Identifier.
 		zone_id!: string
-
-		// Certificate Authority used to issue the Client Certificate.
-		certificate_authority?: close({
-			id?:   string
-			name?: string
-		})
 	})
 }

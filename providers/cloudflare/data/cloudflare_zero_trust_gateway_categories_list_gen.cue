@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_zero_trust_gateway_categories_list: {
+cloudflare_zero_trust_gateway_categories_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_gateway_categories_list")
 	close({
@@ -15,34 +15,15 @@ package data
 			// Indicate whether the category is in beta and subject to change.
 			beta?: bool
 
-			// Specify which account types can create policies for this
-			// category. `blocked` Blocks unconditionally for all accounts.
-			// `removalPending` Allows removal from policies but disables
-			// addition. `noBlock` Prevents blocking.
-			// Available values: "free", "premium", "blocked",
-			// "removalPending", "noBlock".
-			class?: string
-
-			// Provide a short summary of domains in the category.
-			description?: string
-
-			// Identify this category. Only one category per ID.
-			id?: number
-
-			// Specify the category name.
-			name?: string
-
 			// Provide all subcategories for this category.
 			subcategories?: matchN(1, [close({
 				// Indicate whether the category is in beta and subject to change.
 				beta?: bool
 
-				// Specify which account types can create policies for this
-				// category. `blocked` Blocks unconditionally for all accounts.
-				// `removalPending` Allows removal from policies but disables
-				// addition. `noBlock` Prevents blocking.
-				// Available values: "free", "premium", "blocked",
-				// "removalPending", "noBlock".
+				// Specify which account types can create policies for this category. `blocked`
+				// Blocks unconditionally for all accounts. `removalPending` Allows removal
+				// from policies but disables addition. `noBlock` Prevents blocking.
+				// Available values: "free", "premium", "blocked", "removalPending", "noBlock".
 				class?: string
 
 				// Provide a short summary of domains in the category.
@@ -57,12 +38,10 @@ package data
 				// Indicate whether the category is in beta and subject to change.
 				beta?: bool
 
-				// Specify which account types can create policies for this
-				// category. `blocked` Blocks unconditionally for all accounts.
-				// `removalPending` Allows removal from policies but disables
-				// addition. `noBlock` Prevents blocking.
-				// Available values: "free", "premium", "blocked",
-				// "removalPending", "noBlock".
+				// Specify which account types can create policies for this category. `blocked`
+				// Blocks unconditionally for all accounts. `removalPending` Allows removal
+				// from policies but disables addition. `noBlock` Prevents blocking.
+				// Available values: "free", "premium", "blocked", "removalPending", "noBlock".
 				class?: string
 
 				// Provide a short summary of domains in the category.
@@ -74,38 +53,34 @@ package data
 				// Specify the category name.
 				name?: string
 			})]])
+
+			// Specify which account types can create policies for this category. `blocked`
+			// Blocks unconditionally for all accounts. `removalPending` Allows removal
+			// from policies but disables addition. `noBlock` Prevents blocking.
+			// Available values: "free", "premium", "blocked", "removalPending", "noBlock".
+			class?: string
+
+			// Provide a short summary of domains in the category.
+			description?: string
+
+			// Identify this category. Only one category per ID.
+			id?: number
+
+			// Specify the category name.
+			name?: string
 		}), [...close({
 			// Indicate whether the category is in beta and subject to change.
 			beta?: bool
 
-			// Specify which account types can create policies for this
-			// category. `blocked` Blocks unconditionally for all accounts.
-			// `removalPending` Allows removal from policies but disables
-			// addition. `noBlock` Prevents blocking.
-			// Available values: "free", "premium", "blocked",
-			// "removalPending", "noBlock".
-			class?: string
-
-			// Provide a short summary of domains in the category.
-			description?: string
-
-			// Identify this category. Only one category per ID.
-			id?: number
-
-			// Specify the category name.
-			name?: string
-
 			// Provide all subcategories for this category.
 			subcategories?: matchN(1, [close({
 				// Indicate whether the category is in beta and subject to change.
 				beta?: bool
 
-				// Specify which account types can create policies for this
-				// category. `blocked` Blocks unconditionally for all accounts.
-				// `removalPending` Allows removal from policies but disables
-				// addition. `noBlock` Prevents blocking.
-				// Available values: "free", "premium", "blocked",
-				// "removalPending", "noBlock".
+				// Specify which account types can create policies for this category. `blocked`
+				// Blocks unconditionally for all accounts. `removalPending` Allows removal
+				// from policies but disables addition. `noBlock` Prevents blocking.
+				// Available values: "free", "premium", "blocked", "removalPending", "noBlock".
 				class?: string
 
 				// Provide a short summary of domains in the category.
@@ -120,12 +95,10 @@ package data
 				// Indicate whether the category is in beta and subject to change.
 				beta?: bool
 
-				// Specify which account types can create policies for this
-				// category. `blocked` Blocks unconditionally for all accounts.
-				// `removalPending` Allows removal from policies but disables
-				// addition. `noBlock` Prevents blocking.
-				// Available values: "free", "premium", "blocked",
-				// "removalPending", "noBlock".
+				// Specify which account types can create policies for this category. `blocked`
+				// Blocks unconditionally for all accounts. `removalPending` Allows removal
+				// from policies but disables addition. `noBlock` Prevents blocking.
+				// Available values: "free", "premium", "blocked", "removalPending", "noBlock".
 				class?: string
 
 				// Provide a short summary of domains in the category.
@@ -137,6 +110,21 @@ package data
 				// Specify the category name.
 				name?: string
 			})]])
+
+			// Specify which account types can create policies for this category. `blocked`
+			// Blocks unconditionally for all accounts. `removalPending` Allows removal
+			// from policies but disables addition. `noBlock` Prevents blocking.
+			// Available values: "free", "premium", "blocked", "removalPending", "noBlock".
+			class?: string
+
+			// Provide a short summary of domains in the category.
+			description?: string
+
+			// Identify this category. Only one category per ID.
+			id?: number
+
+			// Specify the category name.
+			name?: string
 		})]])
 	})
 }

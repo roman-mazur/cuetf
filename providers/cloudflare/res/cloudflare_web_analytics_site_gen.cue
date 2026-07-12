@@ -1,19 +1,17 @@
 package res
 
-#cloudflare_web_analytics_site: {
+cloudflare_web_analytics_site: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_web_analytics_site")
 	close({
 		// Identifier.
 		account_id!: string
 
-		// If enabled, the JavaScript snippet is automatically injected
-		// for orange-clouded sites.
+		// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 		auto_install?: bool
 		created?:      string
 
-		// Enables or disables RUM. This option can be used only when
-		// auto_install is set to true.
+		// Enables or disables RUM. This option can be used only when auto_install is set to true.
 		enabled?: bool
 
 		// The hostname to use for gray-clouded sites.
@@ -22,21 +20,8 @@ package res
 		// The Web Analytics site identifier.
 		id?: string
 
-		// If enabled, the JavaScript snippet will not be injected for
-		// visitors from the EU.
+		// If enabled, the JavaScript snippet will not be injected for visitors from the EU.
 		lite?: bool
-
-		// The Web Analytics site identifier.
-		site_tag?: string
-
-		// The Web Analytics site token.
-		site_token?: string
-
-		// Encoded JavaScript snippet.
-		snippet?: string
-
-		// The zone identifier.
-		zone_tag?: string
 
 		// A list of rules.
 		rules?: matchN(1, [close({
@@ -48,8 +33,7 @@ package res
 			// The Web Analytics rule identifier.
 			id?: string
 
-			// Whether the rule includes or excludes traffic from being
-			// measured.
+			// Whether the rule includes or excludes traffic from being measured.
 			inclusive?: bool
 
 			// Whether the rule is paused or not.
@@ -67,8 +51,7 @@ package res
 			// The Web Analytics rule identifier.
 			id?: string
 
-			// Whether the rule includes or excludes traffic from being
-			// measured.
+			// Whether the rule includes or excludes traffic from being measured.
 			inclusive?: bool
 
 			// Whether the rule is paused or not.
@@ -89,5 +72,17 @@ package res
 			// The zone identifier.
 			zone_tag?: string
 		})
+
+		// The Web Analytics site identifier.
+		site_tag?: string
+
+		// The Web Analytics site token.
+		site_token?: string
+
+		// Encoded JavaScript snippet.
+		snippet?: string
+
+		// The zone identifier.
+		zone_tag?: string
 	})
 }

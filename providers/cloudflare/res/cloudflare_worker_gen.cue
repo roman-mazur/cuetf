@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_worker: {
+cloudflare_worker: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_worker")
 	close({
@@ -10,8 +10,8 @@ package res
 		// When the Worker was created.
 		created_on?: string
 
-		// When the Worker's most recent deployment was created. `null` if
-		// the Worker has never been deployed.
+		// When the Worker's most recent deployment was created. `null` if the Worker
+		// has never been deployed.
 		deployed_on?: string
 
 		// Immutable ID of the Worker.
@@ -23,20 +23,10 @@ package res
 		// Name of the Worker.
 		name!: string
 
-		// Tags associated with the Worker.
-		tags?: [...string]
-
-		// When the Worker was most recently updated.
-		updated_on?: string
-
 		// Observability settings for the Worker.
 		observability?: close({
 			// Whether observability is enabled for the Worker.
 			enabled?: bool
-
-			// The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1
-			// = 10%).
-			head_sampling_rate?: number
 
 			// Log settings for the Worker.
 			logs?: close({
@@ -58,6 +48,9 @@ package res
 				persist?: bool
 			})
 
+			// The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+			head_sampling_rate?: number
+
 			// Trace settings for the Worker.
 			traces?: close({
 				// A list of destinations where traces will be exported to.
@@ -66,29 +59,25 @@ package res
 				// Whether traces are enabled for the Worker.
 				enabled?: bool
 
-				// The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 =
-				// 10%).
+				// The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
 				head_sampling_rate?: number
 
 				// Whether trace persistence is enabled for the Worker.
 				persist?: bool
 
-				// Controls how inbound trace context (traceparent/tracestate)
-				// headers on incoming requests are handled. "authenticated"
-				// (default) honors inbound trace context only when accompanied
-				// by a valid trace auth token. "accept" unconditionally accepts
-				// inbound trace context. Requires the trace propagation feature
-				// to be enabled.
+				// Controls how inbound trace context (traceparent/tracestate) headers on
+				// incoming requests are handled. "authenticated" (default) honors inbound
+				// trace context only when accompanied by a valid trace auth token. "accept"
+				// unconditionally accepts inbound trace context. Requires the trace
+				// propagation feature to be enabled.
 				// Available values: "authenticated", "accept".
 				propagation_policy?: string
 			})
 		})
 
-		// Other resources that reference the Worker and depend on it
-		// existing.
+		// Other resources that reference the Worker and depend on it existing.
 		references?: close({
-			// Other Workers that reference the Worker as an outbound for a
-			// dispatch namespace.
+			// Other Workers that reference the Worker as an outbound for a dispatch namespace.
 			dispatch_namespace_outbounds?: matchN(1, [close({
 				// ID of the dispatch namespace.
 				namespace_id?: string
@@ -148,8 +137,7 @@ package res
 				zone_name?: string
 			})]])
 
-			// Other Workers that reference Durable Object classes implemented
-			// by the Worker.
+			// Other Workers that reference Durable Object classes implemented by the Worker.
 			durable_objects?: matchN(1, [close({
 				// ID of the Durable Object namespace being used.
 				namespace_id?: string
@@ -220,10 +208,13 @@ package res
 			enabled?: bool
 
 			// Whether [preview
-			// URLs](https://developers.cloudflare.com/workers/configuration/previews/)
-			// are enabled for the Worker.
+			// URLs](https://developers.cloudflare.com/workers/configuration/previews/) are
+			// enabled for the Worker.
 			previews_enabled?: bool
 		})
+
+		// Tags associated with the Worker.
+		tags?: [...string]
 
 		// Other Workers that should consume logs from the Worker.
 		tail_consumers?: matchN(1, [close({
@@ -233,5 +224,8 @@ package res
 			// Name of the consumer Worker.
 			name!: string
 		})]])
+
+		// When the Worker was most recently updated.
+		updated_on?: string
 	})
 }

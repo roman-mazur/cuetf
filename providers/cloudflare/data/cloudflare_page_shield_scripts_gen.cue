@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_page_shield_scripts: {
+cloudflare_page_shield_scripts: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_page_shield_scripts")
 	close({
@@ -40,9 +40,6 @@ package data
 		url?:                       string
 		url_contains_cdn_cgi_path?: bool
 		url_reported_malicious?:    bool
-
-		// Identifier
-		zone_id?: string
 		versions?: matchN(1, [close({
 			// The cryptomining score of the JavaScript content.
 			cryptomining_score?: number
@@ -80,5 +77,8 @@ package data
 			// The malware score of the JavaScript content.
 			malware_score?: number
 		})]])
+
+		// Identifier
+		zone_id?: string
 	})
 }

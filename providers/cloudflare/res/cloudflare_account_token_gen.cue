@@ -1,14 +1,23 @@
 package res
 
-#cloudflare_account_token: {
+cloudflare_account_token: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_account_token")
 	close({
 		// Account identifier tag.
 		account_id!: string
+		condition?: close({
+			// Client IP restrictions.
+			request_ip?: close({
+				// List of IPv4/IPv6 CIDR addresses.
+				in?: [...string]
 
-		// The expiration time on or after which the JWT MUST NOT be
-		// accepted for processing.
+				// List of IPv4/IPv6 CIDR addresses.
+				not_in?: [...string]
+			})
+		})
+
+		// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 		expires_on?: string
 
 		// Token identifier tag.
@@ -26,16 +35,8 @@ package res
 		// Token name.
 		name!: string
 
-		// The time before which the token MUST NOT be accepted for
-		// processing.
+		// The time before which the token MUST NOT be accepted for processing.
 		not_before?: string
-
-		// Status of the token.
-		// Available values: "active", "disabled", "expired".
-		status?: string
-
-		// The token value.
-		value?: string
 
 		// Set of access policies assigned to the token.
 		policies!: matchN(1, [close({
@@ -43,10 +44,6 @@ package res
 			// Available values: "allow", "deny".
 			effect!: string
 
-			// A json object representing the resources that are specified to
-			// the policy.
-			resources!: string
-
 			// A set of permission groups that are specified to the policy.
 			permission_groups!: matchN(1, [close({
 				// Identifier of the permission group.
@@ -55,15 +52,14 @@ package res
 				// Identifier of the permission group.
 				id!: string
 			})]])
+
+			// A json object representing the resources that are specified to the policy.
+			resources!: string
 		}), [...close({
 			// Allow or deny operations against the resources.
 			// Available values: "allow", "deny".
 			effect!: string
 
-			// A json object representing the resources that are specified to
-			// the policy.
-			resources!: string
-
 			// A set of permission groups that are specified to the policy.
 			permission_groups!: matchN(1, [close({
 				// Identifier of the permission group.
@@ -72,16 +68,16 @@ package res
 				// Identifier of the permission group.
 				id!: string
 			})]])
-		})]])
-		condition?: close({
-			// Client IP restrictions.
-			request_ip?: close({
-				// List of IPv4/IPv6 CIDR addresses.
-				in?: [...string]
 
-				// List of IPv4/IPv6 CIDR addresses.
-				not_in?: [...string]
-			})
-		})
+			// A json object representing the resources that are specified to the policy.
+			resources!: string
+		})]])
+
+		// Status of the token.
+		// Available values: "active", "disabled", "expired".
+		status?: string
+
+		// The token value.
+		value?: string
 	})
 }

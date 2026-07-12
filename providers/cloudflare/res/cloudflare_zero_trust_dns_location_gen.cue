@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_zero_trust_dns_location: {
+cloudflare_zero_trust_dns_location: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_dns_location")
 	close({
@@ -10,44 +10,24 @@ package res
 		client_default?: bool
 		created_at?:     string
 
-		// Specify the identifier of the pair of IPv4 addresses assigned
-		// to this location. When creating a location, if this field is
-		// absent or set to null, the pair of shared IPv4 addresses
-		// (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When
-		// updating a location, if this field is absent or set to null,
-		// the pre-assigned pair remains unchanged.
+		// Specify the identifier of the pair of IPv4 addresses assigned to this
+		// location. When creating a location, if this field is absent or set to null,
+		// the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is
+		// auto-assigned. When updating a location, if this field is absent or set to
+		// null, the pre-assigned pair remains unchanged.
 		dns_destination_ips_id?: string
 
-		// Specify the UUID of the IPv6 block brought to the gateway so
-		// that this location's IPv6 address is allocated from the Bring
-		// Your Own IPv6 (BYOIPv6) block rather than the standard
-		// Cloudflare IPv6 block.
+		// Specify the UUID of the IPv6 block brought to the gateway so that this
+		// location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6)
+		// block rather than the standard Cloudflare IPv6 block.
 		dns_destination_ipv6_block_id?: string
 
-		// Specify the DNS over HTTPS domain that receives DNS requests.
-		// Gateway automatically generates this value.
+		// Specify the DNS over HTTPS domain that receives DNS requests. Gateway
+		// automatically generates this value.
 		doh_subdomain?: string
 
 		// Indicate whether the location must resolve EDNS queries.
 		ecs_support?: bool
-		id?:          string
-
-		// Defines the automatically generated IPv6 destination IP
-		// assigned to this location. Gateway counts all DNS requests
-		// sent to this IP as requests under this location.
-		ip?: string
-
-		// Show the primary destination IPv4 address from the pair
-		// identified dns_destination_ips_id. This field read-only.
-		ipv4_destination?: string
-
-		// Show the backup destination IPv4 address from the pair
-		// identified dns_destination_ips_id. This field read-only.
-		ipv4_destination_backup?: string
-
-		// Specify the location name.
-		name!:       string
-		updated_at?: string
 
 		// Configure the destination endpoints for this location.
 		endpoints?: close({
@@ -55,14 +35,9 @@ package res
 				// Indicate whether the DOH endpoint is enabled for this location.
 				enabled?: bool
 
-				// Specify whether the DOH endpoint requires user identity
-				// authentication.
-				require_token?: bool
-
-				// Specify the list of allowed source IP network ranges for this
-				// endpoint. When the list is empty, the endpoint allows all
-				// source IPs. The list takes effect only if the endpoint is
-				// enabled for this location.
+				// Specify the list of allowed source IP network ranges for this endpoint. When
+				// the list is empty, the endpoint allows all source IPs. The list takes effect
+				// only if the endpoint is enabled for this location.
 				networks?: matchN(1, [close({
 					// Specify the IP address or IP CIDR.
 					network!: string
@@ -70,15 +45,17 @@ package res
 					// Specify the IP address or IP CIDR.
 					network!: string
 				})]])
+
+				// Specify whether the DOH endpoint requires user identity authentication.
+				require_token?: bool
 			})
 			dot!: close({
 				// Indicate whether the DOT endpoint is enabled for this location.
 				enabled?: bool
 
-				// Specify the list of allowed source IP network ranges for this
-				// endpoint. When the list is empty, the endpoint allows all
-				// source IPs. The list takes effect only if the endpoint is
-				// enabled for this location.
+				// Specify the list of allowed source IP network ranges for this endpoint. When
+				// the list is empty, the endpoint allows all source IPs. The list takes effect
+				// only if the endpoint is enabled for this location.
 				networks?: matchN(1, [close({
 					// Specify the IP address or IP CIDR.
 					network!: string
@@ -88,19 +65,16 @@ package res
 				})]])
 			})
 			ipv4!: close({
-				// Indicate whether the IPv4 endpoint is enabled for this
-				// location.
+				// Indicate whether the IPv4 endpoint is enabled for this location.
 				enabled?: bool
 			})
 			ipv6!: close({
-				// Indicate whether the IPV6 endpoint is enabled for this
-				// location.
+				// Indicate whether the IPV6 endpoint is enabled for this location.
 				enabled?: bool
 
-				// Specify the list of allowed source IPv6 network ranges for this
-				// endpoint. When the list is empty, the endpoint allows all
-				// source IPs. The list takes effect only if the endpoint is
-				// enabled for this location.
+				// Specify the list of allowed source IPv6 network ranges for this endpoint.
+				// When the list is empty, the endpoint allows all source IPs. The list takes
+				// effect only if the endpoint is enabled for this location.
 				networks?: matchN(1, [close({
 					// Specify the IPv6 address or IPv6 CIDR.
 					network!: string
@@ -110,18 +84,48 @@ package res
 				})]])
 			})
 		})
+		id?: string
 
-		// Specify the list of network ranges from which requests at this
-		// location originate. The list takes effect only if it is
-		// non-empty and the IPv4 endpoint is enabled for this location.
+		// Defines the automatically generated IPv6 destination IP assigned to this
+		// location. Gateway counts all DNS requests sent to this IP as requests under
+		// this location.
+		ip?: string
+
+		// Show the primary destination IPv4 address from the pair identified
+		// dns_destination_ips_id. This field read-only.
+		ipv4_destination?: string
+
+		// Show the backup destination IPv4 address from the pair identified
+		// dns_destination_ips_id. This field read-only.
+		ipv4_destination_backup?: string
+
+		// Controls how DNS response TTLs are capped for this location relative to the
+		// account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to
+		// `inherit`.
+		max_ttl?: close({
+			// `inherit` uses the account `max_ttl_secs`. `override` uses this location's
+			// `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+			// Available values: "inherit", "override", "disabled".
+			mode!: string
+
+			// Location-specific cap on DNS response TTLs, in seconds. Required when `mode`
+			// is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
+			ttl_secs?: number
+		})
+
+		// Specify the location name.
+		name!: string
+
+		// Specify the list of network ranges from which requests at this location
+		// originate. The list takes effect only if it is non-empty and the IPv4
+		// endpoint is enabled for this location.
 		networks?: matchN(1, [close({
-			// Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a
-			// maximum of /24.
+			// Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
 			network!: string
 		}), [...close({
-			// Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a
-			// maximum of /24.
+			// Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
 			network!: string
 		})]])
+		updated_at?: string
 	})
 }

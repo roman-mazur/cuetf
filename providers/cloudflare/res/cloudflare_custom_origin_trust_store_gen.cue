@@ -1,12 +1,11 @@
 package res
 
-#cloudflare_custom_origin_trust_store: {
+cloudflare_custom_origin_trust_store: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_custom_origin_trust_store")
 	close({
-		// The root CA certificate in PEM format. Only root CA
-		// certificates are accepted; intermediate and leaf certificates
-		// are not supported.
+		// The root CA certificate in PEM format. Only root CA certificates are
+		// accepted; intermediate and leaf certificates are not supported.
 		certificate!: string
 
 		// When the certificate expires.
@@ -22,8 +21,8 @@ package res
 		signature?: string
 
 		// Status of the zone's custom SSL.
-		// Available values: "initializing", "pending_deployment",
-		// "active", "pending_deletion", "deleted", "expired".
+		// Available values: "initializing", "pending_deployment", "active",
+		// "pending_deletion", "deleted", "expired".
 		status?: string
 
 		// When the certificate was last modified.

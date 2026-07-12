@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_custom_origin_trust_stores: {
+cloudflare_custom_origin_trust_stores: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_custom_origin_trust_stores")
 	close({
@@ -13,14 +13,10 @@ package data
 		// Offset the results.
 		offset?: number
 
-		// Identifier.
-		zone_id?: string
-
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// The root CA certificate in PEM format. Only root CA
-			// certificates are accepted; intermediate and leaf certificates
-			// are not supported.
+			// The root CA certificate in PEM format. Only root CA certificates are
+			// accepted; intermediate and leaf certificates are not supported.
 			certificate?: string
 
 			// When the certificate expires.
@@ -36,8 +32,8 @@ package data
 			signature?: string
 
 			// Status of the zone's custom SSL.
-			// Available values: "initializing", "pending_deployment",
-			// "active", "pending_deletion", "deleted", "expired".
+			// Available values: "initializing", "pending_deployment", "active",
+			// "pending_deletion", "deleted", "expired".
 			status?: string
 
 			// When the certificate was last modified.
@@ -46,9 +42,8 @@ package data
 			// When the certificate was uploaded to Cloudflare.
 			uploaded_on?: string
 		}), [...close({
-			// The root CA certificate in PEM format. Only root CA
-			// certificates are accepted; intermediate and leaf certificates
-			// are not supported.
+			// The root CA certificate in PEM format. Only root CA certificates are
+			// accepted; intermediate and leaf certificates are not supported.
 			certificate?: string
 
 			// When the certificate expires.
@@ -64,8 +59,8 @@ package data
 			signature?: string
 
 			// Status of the zone's custom SSL.
-			// Available values: "initializing", "pending_deployment",
-			// "active", "pending_deletion", "deleted", "expired".
+			// Available values: "initializing", "pending_deployment", "active",
+			// "pending_deletion", "deleted", "expired".
 			status?: string
 
 			// When the certificate was last modified.
@@ -74,5 +69,8 @@ package data
 			// When the certificate was uploaded to Cloudflare.
 			uploaded_on?: string
 		})]])
+
+		// Identifier.
+		zone_id?: string
 	})
 }

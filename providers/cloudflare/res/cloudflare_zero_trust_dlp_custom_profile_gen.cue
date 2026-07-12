@@ -1,14 +1,13 @@
 package res
 
-#cloudflare_zero_trust_dlp_custom_profile: {
+cloudflare_zero_trust_dlp_custom_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_dlp_custom_profile")
 	close({
 		account_id!:         string
 		ai_context_enabled?: bool
 
-		// Related DLP policies will trigger when the match count exceeds
-		// the number set.
+		// Related DLP policies will trigger when the match count exceeds the number set.
 		allowed_match_count?:  number
 		confidence_threshold?: string
 
@@ -32,12 +31,6 @@ package res
 		// Whether this profile can be accessed by anyone.
 		open_access?: bool
 
-		// Available values: "custom", "predefined", "integration".
-		type?: string
-
-		// When the profile was lasted updated.
-		updated_at?: string
-
 		// Sensitivity levels to associate with the profile.
 		sensitivity_levels?: matchN(1, [close({
 			group_id!: string
@@ -47,22 +40,26 @@ package res
 			level_id!: string
 		})]])
 
-		// Entries from other profiles (e.g. pre-defined Cloudflare
-		// profiles, or your Microsoft Information Protection profiles).
+		// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your
+		// Microsoft Information Protection profiles).
 		shared_entries?: matchN(1, [close({
-			enabled!:  bool
-			entry_id!: string
+			enabled!: bool
 
-			// Available values: "custom", "predefined", "integration",
-			// "exact_data", "document_fingerprint".
+			// Available values: "custom", "predefined", "integration", "exact_data", "document_fingerprint".
 			entry_type!: string
+			entry_id!:   string
 		}), [...close({
-			enabled!:  bool
-			entry_id!: string
+			enabled!: bool
 
-			// Available values: "custom", "predefined", "integration",
-			// "exact_data", "document_fingerprint".
+			// Available values: "custom", "predefined", "integration", "exact_data", "document_fingerprint".
 			entry_type!: string
+			entry_id!:   string
 		})]])
+
+		// Available values: "custom", "predefined", "integration".
+		type?: string
+
+		// When the profile was lasted updated.
+		updated_at?: string
 	})
 }

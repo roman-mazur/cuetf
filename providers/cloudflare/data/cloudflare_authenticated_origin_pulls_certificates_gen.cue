@@ -1,14 +1,11 @@
 package data
 
-#cloudflare_authenticated_origin_pulls_certificates: {
+cloudflare_authenticated_origin_pulls_certificates: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_authenticated_origin_pulls_certificates")
 	close({
 		// Max items to fetch, default: 1000
 		max_items?: number
-
-		// Identifier.
-		zone_id!: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -31,9 +28,8 @@ package data
 			signature?: string
 
 			// Status of the certificate activation.
-			// Available values: "initializing", "pending_deployment",
-			// "pending_deletion", "active", "deleted",
-			// "deployment_timed_out", "deletion_timed_out".
+			// Available values: "initializing", "pending_deployment", "pending_deletion",
+			// "active", "deleted", "deployment_timed_out", "deletion_timed_out".
 			status?: string
 
 			// This is the time the certificate was uploaded.
@@ -58,13 +54,15 @@ package data
 			signature?: string
 
 			// Status of the certificate activation.
-			// Available values: "initializing", "pending_deployment",
-			// "pending_deletion", "active", "deleted",
-			// "deployment_timed_out", "deletion_timed_out".
+			// Available values: "initializing", "pending_deployment", "pending_deletion",
+			// "active", "deleted", "deployment_timed_out", "deletion_timed_out".
 			status?: string
 
 			// This is the time the certificate was uploaded.
 			uploaded_on?: string
 		})]])
+
+		// Identifier.
+		zone_id!: string
 	})
 }

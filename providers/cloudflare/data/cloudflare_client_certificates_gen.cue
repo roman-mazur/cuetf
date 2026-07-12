@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_client_certificates: {
+cloudflare_client_certificates: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_client_certificates")
 	close({
@@ -13,19 +13,17 @@ package data
 		// Offset the results.
 		offset?: number
 
-		// Client Certitifcate Status to filter results by.
-		// Available values: "all", "active", "pending_reactivation",
-		// "pending_revocation", "revoked".
-		status?: string
-
-		// Identifier.
-		zone_id?: string
-
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// The Client Certificate PEM.
 			certificate?: string
 
+			// Certificate Authority used to issue the Client Certificate.
+			certificate_authority?: close({
+				id?:   string
+				name?: string
+			})
+
 			// Common Name of the Client Certificate.
 			common_name?: string
 
@@ -44,8 +42,7 @@ package data
 			// Identifier.
 			id?: string
 
-			// Date that the Client Certificate was issued by the Certificate
-			// Authority.
+			// Date that the Client Certificate was issued by the Certificate Authority.
 			issued_on?: string
 
 			// Location, provided by the CSR.
@@ -69,26 +66,23 @@ package data
 			// State, provided by the CSR.
 			state?: string
 
-			// Client Certificates may be active or revoked, and the
-			// pending_reactivation or pending_revocation represent
-			// in-progress asynchronous transitions.
-			// Available values: "active", "pending_reactivation",
-			// "pending_revocation", "revoked".
+			// Client Certificates may be active or revoked, and the pending_reactivation or
+			// pending_revocation represent in-progress asynchronous transitions.
+			// Available values: "active", "pending_reactivation", "pending_revocation", "revoked".
 			status?: string
 
-			// The number of days the Client Certificate will be valid after
-			// the issued_on date.
+			// The number of days the Client Certificate will be valid after the issued_on date.
 			validity_days?: number
-
-			// Certificate Authority used to issue the Client Certificate.
-			certificate_authority?: close({
-				id?:   string
-				name?: string
-			})
 		}), [...close({
 			// The Client Certificate PEM.
 			certificate?: string
 
+			// Certificate Authority used to issue the Client Certificate.
+			certificate_authority?: close({
+				id?:   string
+				name?: string
+			})
+
 			// Common Name of the Client Certificate.
 			common_name?: string
 
@@ -107,8 +101,7 @@ package data
 			// Identifier.
 			id?: string
 
-			// Date that the Client Certificate was issued by the Certificate
-			// Authority.
+			// Date that the Client Certificate was issued by the Certificate Authority.
 			issued_on?: string
 
 			// Location, provided by the CSR.
@@ -132,22 +125,20 @@ package data
 			// State, provided by the CSR.
 			state?: string
 
-			// Client Certificates may be active or revoked, and the
-			// pending_reactivation or pending_revocation represent
-			// in-progress asynchronous transitions.
-			// Available values: "active", "pending_reactivation",
-			// "pending_revocation", "revoked".
+			// Client Certificates may be active or revoked, and the pending_reactivation or
+			// pending_revocation represent in-progress asynchronous transitions.
+			// Available values: "active", "pending_reactivation", "pending_revocation", "revoked".
 			status?: string
 
-			// The number of days the Client Certificate will be valid after
-			// the issued_on date.
+			// The number of days the Client Certificate will be valid after the issued_on date.
 			validity_days?: number
-
-			// Certificate Authority used to issue the Client Certificate.
-			certificate_authority?: close({
-				id?:   string
-				name?: string
-			})
 		})]])
+
+		// Client Certitifcate Status to filter results by.
+		// Available values: "all", "active", "pending_reactivation", "pending_revocation", "revoked".
+		status?: string
+
+		// Identifier.
+		zone_id?: string
 	})
 }

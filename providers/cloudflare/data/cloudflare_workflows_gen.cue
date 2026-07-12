@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_workflows: {
+cloudflare_workflows: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workflows")
 	close({
@@ -9,18 +9,9 @@ package data
 		// Max items to fetch, default: 1000
 		max_items?: number
 
-		// Allows filtering workflows` name.
-		search?: string
-
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			class_name?:   string
-			created_on?:   string
-			id?:           string
-			modified_on?:  string
-			name?:         string
-			script_name?:  string
-			triggered_on?: string
+			class_name?: string
 			instances?: close({
 				complete?:          number
 				errored?:           number
@@ -32,6 +23,7 @@ package data
 				waiting?:           number
 				waiting_for_pause?: number
 			})
+			created_on?: string
 			schedules?: matchN(1, [close({
 				cron?:          string
 				next_instance?: string
@@ -39,14 +31,13 @@ package data
 				cron?:          string
 				next_instance?: string
 			})]])
+			id?:           string
+			modified_on?:  string
+			name?:         string
+			script_name?:  string
+			triggered_on?: string
 		}), [...close({
-			class_name?:   string
-			created_on?:   string
-			id?:           string
-			modified_on?:  string
-			name?:         string
-			script_name?:  string
-			triggered_on?: string
+			class_name?: string
 			instances?: close({
 				complete?:          number
 				errored?:           number
@@ -58,6 +49,7 @@ package data
 				waiting?:           number
 				waiting_for_pause?: number
 			})
+			created_on?: string
 			schedules?: matchN(1, [close({
 				cron?:          string
 				next_instance?: string
@@ -65,6 +57,14 @@ package data
 				cron?:          string
 				next_instance?: string
 			})]])
+			id?:           string
+			modified_on?:  string
+			name?:         string
+			script_name?:  string
+			triggered_on?: string
 		})]])
+
+		// Allows filtering workflows` name.
+		search?: string
 	})
 }

@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_tiered_cache: {
+cloudflare_tiered_cache: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_tiered_cache")
 	close({

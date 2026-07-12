@@ -1,38 +1,15 @@
 package data
 
-#cloudflare_zero_trust_tunnel_warp_connector_config: {
+cloudflare_zero_trust_tunnel_warp_connector_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_tunnel_warp_connector_config")
 	close({
 		// Identifier.
 		account_id!: string
 
-		// Monotonically increasing configuration version, incremented on
-		// each PUT.
-		configuration_version?: number
-
-		// Timestamp of when the resource was created.
-		created_at?: string
-
-		// High-availability mode for the WARP Connector tunnel. `none`
-		// means HA is enabled but no provider is configured yet (newly
-		// created tunnels default to this). `disabled` means HA is
-		// explicitly turned off. `aws` uses AWS ENI move for failover.
-		// `local` uses virtual IPs (VIPs) on the local interface.
-		// Available values: "none", "disabled", "aws", "local".
-		ha_mode?: string
-
-		// UUID of the tunnel.
-		tunnel_id!: string
-
-		// Timestamp of the last update. Null if never updated.
-		updated_at?: string
-
-		// Provider-specific configuration. Present for `aws` and `local`
-		// modes.
+		// Provider-specific configuration. Present for `aws` and `local` modes.
 		config?: close({
-			// Floating Network Resource ID — the secondary ENI that is moved
-			// between nodes on failover.
+			// Floating Network Resource ID — the secondary ENI that is moved between nodes on failover.
 			fnr_id?: string
 
 			// VIPs to assign on the CloudflareWARP interface.
@@ -53,5 +30,24 @@ package data
 				address?: string
 			})]])
 		})
+
+		// Monotonically increasing configuration version, incremented on each PUT.
+		configuration_version?: number
+
+		// Timestamp of when the resource was created.
+		created_at?: string
+
+		// High-availability mode for the WARP Connector tunnel. `none` means HA is
+		// enabled but no provider is configured yet (newly created tunnels default to
+		// this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move
+		// for failover. `local` uses virtual IPs (VIPs) on the local interface.
+		// Available values: "none", "disabled", "aws", "local".
+		ha_mode?: string
+
+		// UUID of the tunnel.
+		tunnel_id!: string
+
+		// Timestamp of the last update. Null if never updated.
+		updated_at?: string
 	})
 }

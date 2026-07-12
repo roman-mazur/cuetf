@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_email_routing_addresses: {
+cloudflare_email_routing_addresses: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_email_routing_addresses")
 	close({
@@ -13,9 +13,6 @@ package data
 
 		// Max items to fetch, default: 1000
 		max_items?: number
-
-		// Filter by verified destination addresses.
-		verified?: bool
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -31,8 +28,7 @@ package data
 			// The date and time the destination address was last modified.
 			modified?: string
 
-			// The date and time the destination address has been verified.
-			// Null means not verified yet.
+			// The date and time the destination address has been verified. Null means not verified yet.
 			verified?: string
 		}), [...close({
 			// The date and time the destination address has been created.
@@ -47,9 +43,11 @@ package data
 			// The date and time the destination address was last modified.
 			modified?: string
 
-			// The date and time the destination address has been verified.
-			// Null means not verified yet.
+			// The date and time the destination address has been verified. Null means not verified yet.
 			verified?: string
 		})]])
+
+		// Filter by verified destination addresses.
+		verified?: bool
 	})
 }

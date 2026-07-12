@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_zero_trust_gateway_proxy_endpoint: {
+cloudflare_zero_trust_gateway_proxy_endpoint: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_gateway_proxy_endpoint")
 	close({
@@ -19,8 +19,7 @@ package data
 		name?:              string
 		proxy_endpoint_id!: string
 
-		// Specify the subdomain to use as the destination in the proxy
-		// client.
+		// Specify the subdomain to use as the destination in the proxy client.
 		subdomain?:  string
 		updated_at?: string
 	})

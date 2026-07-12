@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_r2_bucket_event_notification: {
+cloudflare_r2_bucket_event_notification: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_r2_bucket_event_notification")
 	close({
@@ -22,8 +22,7 @@ package data
 			// Timestamp when the rule was created.
 			created_at?: string
 
-			// A description that can be used to identify the event
-			// notification rule after creation.
+			// A description that can be used to identify the event notification rule after creation.
 			description?: string
 
 			// Notifications will be sent only for objects with this prefix.
@@ -41,8 +40,7 @@ package data
 			// Timestamp when the rule was created.
 			created_at?: string
 
-			// A description that can be used to identify the event
-			// notification rule after creation.
+			// A description that can be used to identify the event notification rule after creation.
 			description?: string
 
 			// Notifications will be sent only for objects with this prefix.

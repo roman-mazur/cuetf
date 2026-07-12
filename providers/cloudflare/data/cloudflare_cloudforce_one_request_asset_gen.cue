@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_cloudforce_one_request_asset: {
+cloudflare_cloudforce_one_request_asset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_cloudforce_one_request_asset")
 	close({

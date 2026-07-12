@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_workers_script_subdomain: {
+cloudflare_workers_script_subdomain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workers_script_subdomain")
 	close({
@@ -10,8 +10,7 @@ package data
 		// Whether the Worker is available on the workers.dev subdomain.
 		enabled?: bool
 
-		// Whether the Worker's Preview URLs are available on the
-		// workers.dev subdomain.
+		// Whether the Worker's Preview URLs are available on the workers.dev subdomain.
 		previews_enabled?: bool
 
 		// Name of the script, used in URLs and route configuration.

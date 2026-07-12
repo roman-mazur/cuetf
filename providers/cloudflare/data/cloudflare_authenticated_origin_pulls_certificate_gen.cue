@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_authenticated_origin_pulls_certificate: {
+cloudflare_authenticated_origin_pulls_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_authenticated_origin_pulls_certificate")
 	close({
@@ -26,9 +26,8 @@ package data
 		signature?: string
 
 		// Status of the certificate activation.
-		// Available values: "initializing", "pending_deployment",
-		// "pending_deletion", "active", "deleted",
-		// "deployment_timed_out", "deletion_timed_out".
+		// Available values: "initializing", "pending_deployment", "pending_deletion",
+		// "active", "deleted", "deployment_timed_out", "deletion_timed_out".
 		status?: string
 
 		// This is the time the certificate was uploaded.

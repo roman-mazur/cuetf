@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_magic_wan_static_route: {
+cloudflare_magic_wan_static_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_magic_wan_static_route")
 	close({
@@ -9,12 +9,18 @@ package data
 
 		// Identifier
 		id?: string
-
-		// Identifier
-		route_id!: string
 		route?: close({
 			// When the route was created.
 			created_on?: string
+
+			// Used only for ECMP routes.
+			scope?: close({
+				// List of colo names for the ECMP scope.
+				colo_names?: [...string]
+
+				// List of colo regions for the ECMP scope.
+				colo_regions?: [...string]
+			})
 
 			// An optional human provided description of the static route.
 			description?: string
@@ -36,15 +42,9 @@ package data
 
 			// Optional weight of the ECMP scope - if provided.
 			weight?: number
-
-			// Used only for ECMP routes.
-			scope?: close({
-				// List of colo names for the ECMP scope.
-				colo_names?: [...string]
-
-				// List of colo regions for the ECMP scope.
-				colo_regions?: [...string]
-			})
 		})
+
+		// Identifier
+		route_id!: string
 	})
 }

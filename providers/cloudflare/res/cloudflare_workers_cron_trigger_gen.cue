@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_workers_cron_trigger: {
+cloudflare_workers_cron_trigger: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_workers_cron_trigger")
 	close({
@@ -9,9 +9,6 @@ package res
 
 		// Name of the script, used in URLs and route configuration.
 		id?: string
-
-		// Name of the script, used in URLs and route configuration.
-		script_name!: string
 		schedules!: matchN(1, [close({
 			created_on?:  string
 			cron!:        string
@@ -21,5 +18,8 @@ package res
 			cron!:        string
 			modified_on?: string
 		})]])
+
+		// Name of the script, used in URLs and route configuration.
+		script_name!: string
 	})
 }

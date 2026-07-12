@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_email_routing_settings: {
+cloudflare_email_routing_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_email_routing_settings")
 	close({
@@ -22,10 +22,8 @@ package res
 		// Flag to check if the user skipped the configuration wizard.
 		skip_wizard?: bool
 
-		// Show the state of your account, and the type or configuration
-		// error.
-		// Available values: "ready", "unconfigured", "misconfigured",
-		// "misconfigured/locked", "unlocked".
+		// Show the state of your account, and the type or configuration error.
+		// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 		status?: string
 
 		// Identifier.

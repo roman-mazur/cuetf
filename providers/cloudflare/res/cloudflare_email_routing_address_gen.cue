@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_email_routing_address: {
+cloudflare_email_routing_address: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_email_routing_address")
 	close({
@@ -19,8 +19,12 @@ package res
 		// The date and time the destination address was last modified.
 		modified?: string
 
-		// The date and time the destination address has been verified.
-		// Null means not verified yet.
+		// Destination address status. Non-admin callers may only set verified addresses
+		// back to unverified; setting to verified requires admin privileges.
+		// Available values: "unverified", "verified".
+		status?: string
+
+		// The date and time the destination address has been verified. Null means not verified yet.
 		verified?: string
 	})
 }

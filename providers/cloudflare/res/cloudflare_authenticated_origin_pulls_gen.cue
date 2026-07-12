@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_authenticated_origin_pulls: {
+cloudflare_authenticated_origin_pulls: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_authenticated_origin_pulls")
 	close({
@@ -8,9 +8,8 @@ package res
 		cert_id?: string
 
 		// Status of the certificate or the association.
-		// Available values: "initializing", "pending_deployment",
-		// "pending_deletion", "active", "deleted",
-		// "deployment_timed_out", "deletion_timed_out".
+		// Available values: "initializing", "pending_deployment", "pending_deletion",
+		// "active", "deleted", "deployment_timed_out", "deletion_timed_out".
 		cert_status?: string
 
 		// The time when the certificate was updated.
@@ -21,23 +20,42 @@ package res
 
 		// The hostname certificate.
 		certificate?: string
+		config!: matchN(1, [close({
+			// Certificate identifier tag.
+			cert_id?: string
+
+			// Indicates whether hostname-level authenticated origin pulls is enabled. A
+			// null value voids the association.
+			enabled?: bool
+
+			// The hostname on the origin for which the client certificate uploaded will be used.
+			hostname?: string
+		}), [...close({
+			// Certificate identifier tag.
+			cert_id?: string
+
+			// Indicates whether hostname-level authenticated origin pulls is enabled. A
+			// null value voids the association.
+			enabled?: bool
+
+			// The hostname on the origin for which the client certificate uploaded will be used.
+			hostname?: string
+		})]])
 
 		// The time when the certificate was created.
 		created_at?: string
 
-		// Indicates whether hostname-level authenticated origin pulls is
-		// enabled. A null value voids the association.
+		// Indicates whether hostname-level authenticated origin pulls is enabled. A
+		// null value voids the association.
 		enabled?: bool
 
 		// The date when the certificate expires.
 		expires_on?: string
 
-		// The hostname on the origin for which the client certificate
-		// uploaded will be used.
+		// The hostname on the origin for which the client certificate uploaded will be used.
 		hostname?: string
 
-		// The hostname on the origin for which the client certificate
-		// uploaded will be used.
+		// The hostname on the origin for which the client certificate uploaded will be used.
 		id?: string
 
 		// The certificate authority that issued the certificate.
@@ -53,9 +71,8 @@ package res
 		signature?: string
 
 		// Status of the certificate or the association.
-		// Available values: "initializing", "pending_deployment",
-		// "pending_deletion", "active", "deleted",
-		// "deployment_timed_out", "deletion_timed_out".
+		// Available values: "initializing", "pending_deployment", "pending_deletion",
+		// "active", "deleted", "deployment_timed_out", "deletion_timed_out".
 		status?: string
 
 		// The time when the certificate was updated.
@@ -63,28 +80,5 @@ package res
 
 		// Identifier.
 		zone_id!: string
-		config!: matchN(1, [close({
-			// Certificate identifier tag.
-			cert_id?: string
-
-			// Indicates whether hostname-level authenticated origin pulls is
-			// enabled. A null value voids the association.
-			enabled?: bool
-
-			// The hostname on the origin for which the client certificate
-			// uploaded will be used.
-			hostname?: string
-		}), [...close({
-			// Certificate identifier tag.
-			cert_id?: string
-
-			// Indicates whether hostname-level authenticated origin pulls is
-			// enabled. A null value voids the association.
-			enabled?: bool
-
-			// The hostname on the origin for which the client certificate
-			// uploaded will be used.
-			hostname?: string
-		})]])
 	})
 }

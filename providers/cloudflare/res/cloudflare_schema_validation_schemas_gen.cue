@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_schema_validation_schemas: {
+cloudflare_schema_validation_schemas: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_schema_validation_schemas")
 	close({
@@ -19,8 +19,7 @@ package res
 		// A unique identifier of this schema
 		schema_id?: string
 
-		// The raw schema, e.g., the OpenAPI schema, either as JSON or
-		// YAML
+		// The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
 		source!: string
 
 		// An indicator if this schema is enabled

@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_web3_hostname: {
+cloudflare_web3_hostname: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_web3_hostname")
 	close({
@@ -16,8 +16,7 @@ package res
 		id?:          string
 		modified_on?: string
 
-		// Specify the hostname that points to the target gateway via
-		// CNAME.
+		// Specify the hostname that points to the target gateway via CNAME.
 		name!: string
 
 		// Specifies the status of the hostname's activation.

@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_snippets: {
+cloudflare_snippets: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_snippets")
 	close({
@@ -10,6 +10,12 @@ package res
 		// The list of files belonging to the snippet.
 		files!: [...string]
 
+		// Metadata about the snippet.
+		metadata!: close({
+			// Name of the file that contains the main module of the snippet.
+			main_module!: string
+		})
+
 		// The timestamp of when the snippet was last modified.
 		modified_on?: string
 
@@ -18,11 +24,5 @@ package res
 
 		// The unique ID of the zone.
 		zone_id!: string
-
-		// Metadata about the snippet.
-		metadata!: close({
-			// Name of the file that contains the main module of the snippet.
-			main_module!: string
-		})
 	})
 }

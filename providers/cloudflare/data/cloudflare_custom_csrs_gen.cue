@@ -1,19 +1,14 @@
 package data
 
-#cloudflare_custom_csrs: {
+cloudflare_custom_csrs: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_custom_csrs")
 	close({
-		// The Account ID to use for this endpoint. Mutually exclusive
-		// with the Zone ID.
+		// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 		account_id?: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number
-
-		// The Zone ID to use for this endpoint. Mutually exclusive with
-		// the Account ID.
-		zone_id?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -103,5 +98,8 @@ package data
 			// State or province name.
 			state?: string
 		})]])
+
+		// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+		zone_id?: string
 	})
 }

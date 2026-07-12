@@ -1,15 +1,13 @@
 package res
 
-#cloudflare_zero_trust_access_mtls_certificate: {
+cloudflare_zero_trust_access_mtls_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_access_mtls_certificate")
 	close({
-		// The Account ID to use for this endpoint. Mutually exclusive
-		// with the Zone ID.
+		// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 		account_id?: string
 
-		// The hostnames of the applications that will use this
-		// certificate.
+		// The hostnames of the applications that will use this certificate.
 		associated_hostnames?: [...string]
 
 		// The certificate content.
@@ -25,8 +23,7 @@ package res
 		// The name of the certificate.
 		name!: string
 
-		// The Zone ID to use for this endpoint. Mutually exclusive with
-		// the Account ID.
+		// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 		zone_id?: string
 	})
 }

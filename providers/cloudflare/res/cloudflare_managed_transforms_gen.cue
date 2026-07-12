@@ -1,17 +1,14 @@
 package res
 
-#cloudflare_managed_transforms: {
+cloudflare_managed_transforms: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_managed_transforms")
 	close({
 		// The unique ID of the zone.
 		id?: string
 
-		// The unique ID of the zone.
-		zone_id!: string
-
 		// The list of Managed Request Transforms.
-		managed_request_headers!: matchN(1, [close({
+		managed_request_headers?: matchN(1, [close({
 			// Whether the Managed Transform is enabled.
 			enabled!: bool
 
@@ -25,8 +22,11 @@ package res
 			id!: string
 		})]])
 
+		// The unique ID of the zone.
+		zone_id!: string
+
 		// The list of Managed Response Transforms.
-		managed_response_headers!: matchN(1, [close({
+		managed_response_headers?: matchN(1, [close({
 			// Whether the Managed Transform is enabled.
 			enabled!: bool
 

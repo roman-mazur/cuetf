@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_zero_trust_tunnel_cloudflared_virtual_network: {
+cloudflare_zero_trust_tunnel_cloudflared_virtual_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_tunnel_cloudflared_virtual_network")
 	close({
@@ -13,8 +13,7 @@ package res
 		// Timestamp of when the resource was created.
 		created_at?: string
 
-		// Timestamp of when the resource was deleted. If `null`, the
-		// resource has not been deleted.
+		// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
 		deleted_at?: string
 
 		// UUID of the virtual network.

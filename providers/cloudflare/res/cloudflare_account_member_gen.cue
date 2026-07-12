@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_account_member: {
+cloudflare_account_member: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_account_member")
 	close({
@@ -12,16 +12,6 @@ package res
 
 		// Membership identifier tag.
 		id?: string
-
-		// Set of roles associated with this member.
-		roles?: [...string]
-
-		// Status of the member invitation. If not provided during
-		// creation, defaults to 'pending'.
-		// Changing from 'accepted' back to 'pending' will trigger a
-		// replacement of the member resource in Terraform.
-		// Available values: "accepted", "pending".
-		status?: string
 
 		// Array of policies associated with this member.
 		policies?: matchN(1, [close({
@@ -70,6 +60,15 @@ package res
 			})]])
 		})]])
 
+		// Set of roles associated with this member.
+		roles?: [...string]
+
+		// Status of the member invitation. If not provided during creation, defaults to 'pending'.
+		// Changing from 'accepted' back to 'pending' will trigger a replacement of the
+		// member resource in Terraform.
+		// Available values: "accepted", "pending".
+		status?: string
+
 		// Details of the user associated to the membership.
 		user?: close({
 			// The contact email address of the user.
@@ -84,8 +83,8 @@ package res
 			// User's last name
 			last_name?: string
 
-			// Indicates whether two-factor authentication is enabled for the
-			// user account. Does not apply to API authentication.
+			// Indicates whether two-factor authentication is enabled for the user account.
+			// Does not apply to API authentication.
 			two_factor_authentication_enabled?: bool
 		})
 	})

@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_email_security_impersonation_registry: {
+cloudflare_email_security_impersonation_registry: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_email_security_impersonation_registry")
 	close({

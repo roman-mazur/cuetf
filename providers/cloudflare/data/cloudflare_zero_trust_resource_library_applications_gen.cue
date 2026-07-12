@@ -1,33 +1,26 @@
 package data
 
-#cloudflare_zero_trust_resource_library_applications: {
+cloudflare_zero_trust_resource_library_applications: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_resource_library_applications")
 	close({
 		account_id!: string
 
-		// Filter applications using key:value format. Supported filter
-		// keys:
+		// Filter applications using key:value format. Supported filter keys:
 		// - name: Filter by application name (e.g., name:HR)
-		// - id: Filter by application ID (e.g.,
-		// id:0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0)
+		// - id: Filter by application ID (e.g., id:0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0)
 		// - human_id: Filter by human-readable ID (e.g., human_id:HR)
-		// - hostname: Filter by hostname or support domain (e.g.,
-		// hostname:portal.example.com)
-		// - source: Filter by application source name (e.g.,
-		// source:cloudflare)
-		// - ip_subnet: Filter by IP subnet using CIDR containment —
-		// returns applications where any stored subnet contains the
-		// search value (e.g., ip_subnet:10.0.1.5/32 matches apps with
-		// 10.0.0.0/16)
-		// - intel_id: Filter by Intel API ID (e.g., intel_id:498). also
-		// supports multiple values (e.g., intel_id:498,1001)
-		// - category_id: Filter by category ID (e.g.,
-		// category_id:37f8ec03-8766-49d4-9a15-369b044c842c).
-		// - category_name: Filter by category name (e.g.,
-		// category_name:HR).
-		// - supported: Filter by supported Cloudflare product (e.g.,
-		// supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
+		// - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
+		// - source: Filter by application source name (e.g., source:cloudflare)
+		// - ip_subnet: Filter by IP subnet using CIDR containment — returns
+		// applications where any stored subnet contains the search value (e.g.,
+		// ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
+		// - intel_id: Filter by Intel API ID (e.g., intel_id:498). also supports
+		// multiple values (e.g., intel_id:498,1001)
+		// - category_id: Filter by category ID (e.g., category_id:37f8ec03-8766-49d4-9a15-369b044c842c).
+		// - category_name: Filter by category name (e.g., category_name:HR).
+		// - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS).
+		// Values: GATEWAY, ACCESS, CASB.
 		// .
 		filter?: string
 
@@ -40,20 +33,13 @@ package data
 		// Offset of results to return.
 		offset?: number
 
-		// Order results by field name and direction (e.g., name:asc).
-		// Ignored when search is provided; results are ranked by
-		// relevance instead.
+		// Order results by field name and direction (e.g., name:asc). Ignored when
+		// search is provided; results are ranked by relevance instead.
 		order_by?: string
-
-		// Fuzzy search across application name and hostnames. Results are
-		// ranked by relevance. Must be between 2 and 200 characters. Can
-		// be combined with filter parameters.
-		search?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// Confidence score for the application. Returns -1 when no score
-			// is available.
+			// Confidence score for the application. Returns -1 when no score is available.
 			application_confidence_score?: number
 
 			// Returns the score composition breakdown for the application.
@@ -71,8 +57,7 @@ package data
 			// Returns the application creation time.
 			created_at?: string
 
-			// GenAI score for the application. Returns -1 when no score is
-			// available.
+			// GenAI score for the application. Returns -1 when no score is available.
 			gen_ai_score?: number
 
 			// Returns the list of hostnames for the application.
@@ -108,8 +93,7 @@ package data
 			// Returns the application version.
 			version?: string
 		}), [...close({
-			// Confidence score for the application. Returns -1 when no score
-			// is available.
+			// Confidence score for the application. Returns -1 when no score is available.
 			application_confidence_score?: number
 
 			// Returns the score composition breakdown for the application.
@@ -127,8 +111,7 @@ package data
 			// Returns the application creation time.
 			created_at?: string
 
-			// GenAI score for the application. Returns -1 when no score is
-			// available.
+			// GenAI score for the application. Returns -1 when no score is available.
 			gen_ai_score?: number
 
 			// Returns the list of hostnames for the application.
@@ -164,5 +147,10 @@ package data
 			// Returns the application version.
 			version?: string
 		})]])
+
+		// Fuzzy search across application name and hostnames. Results are ranked by
+		// relevance. Must be between 2 and 200 characters. Can be combined with filter
+		// parameters.
+		search?: string
 	})
 }

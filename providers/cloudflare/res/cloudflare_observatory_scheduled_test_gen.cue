@@ -1,31 +1,23 @@
 package res
 
-#cloudflare_observatory_scheduled_test: {
+cloudflare_observatory_scheduled_test: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_observatory_scheduled_test")
 	close({
-		// The frequency of the scheduled test. Defaults to WEEKLY for
-		// free plans, DAILY for paid plans.
+		// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
 		frequency?: string
 
 		// A URL.
 		id?: string
 
 		// A test region.
-		// Available values: "asia-east1", "asia-northeast1",
-		// "asia-northeast2", "asia-south1", "asia-southeast1",
-		// "australia-southeast1", "europe-north1", "europe-southwest1",
-		// "europe-west1", "europe-west2", "europe-west3",
+		// Available values: "asia-east1", "asia-northeast1", "asia-northeast2",
+		// "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1",
+		// "europe-southwest1", "europe-west1", "europe-west2", "europe-west3",
 		// "europe-west4", "europe-west8", "europe-west9", "me-west1",
-		// "southamerica-east1", "us-central1", "us-east1", "us-east4",
-		// "us-south1", "us-west1".
+		// "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1",
+		// "us-west1".
 		region?: string
-
-		// A URL.
-		url!: string
-
-		// Identifier.
-		zone_id!: string
 
 		// The test schedule.
 		schedule?: close({
@@ -34,13 +26,12 @@ package res
 			frequency?: string
 
 			// A test region.
-			// Available values: "asia-east1", "asia-northeast1",
-			// "asia-northeast2", "asia-south1", "asia-southeast1",
-			// "australia-southeast1", "europe-north1", "europe-southwest1",
-			// "europe-west1", "europe-west2", "europe-west3",
+			// Available values: "asia-east1", "asia-northeast1", "asia-northeast2",
+			// "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1",
+			// "europe-southwest1", "europe-west1", "europe-west2", "europe-west3",
 			// "europe-west4", "europe-west8", "europe-west9", "me-west1",
-			// "southamerica-east1", "us-central1", "us-east1", "us-east4",
-			// "us-south1", "us-west1".
+			// "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1",
+			// "us-west1".
 			region?: string
 
 			// A URL.
@@ -49,20 +40,21 @@ package res
 		test?: close({
 			date?: string
 
-			// UUID.
-			id?: string
-
-			// The frequency of the test.
-			// Available values: "DAILY", "WEEKLY".
-			schedule_frequency?: string
-
-			// A URL.
-			url?: string
-
 			// The Lighthouse report.
 			desktop_report?: close({
 				// Cumulative Layout Shift.
 				cls?: number
+				error?: close({
+					// The error code of the Lighthouse result.
+					// Available values: "NOT_REACHABLE", "DNS_FAILURE", "NOT_HTML", "LIGHTHOUSE_TIMEOUT", "UNKNOWN".
+					code?: string
+
+					// Detailed error message.
+					detail?: string
+
+					// The final URL displayed to the user.
+					final_displayed_url?: string
+				})
 
 				// The type of device.
 				// Available values: "DESKTOP", "MOBILE".
@@ -95,24 +87,26 @@ package res
 
 				// Time To Interactive.
 				tti?: number
-				error?: close({
-					// The error code of the Lighthouse result.
-					// Available values: "NOT_REACHABLE", "DNS_FAILURE", "NOT_HTML",
-					// "LIGHTHOUSE_TIMEOUT", "UNKNOWN".
-					code?: string
-
-					// Detailed error message.
-					detail?: string
-
-					// The final URL displayed to the user.
-					final_displayed_url?: string
-				})
 			})
+
+			// UUID.
+			id?: string
 
 			// The Lighthouse report.
 			mobile_report?: close({
 				// Cumulative Layout Shift.
 				cls?: number
+				error?: close({
+					// The error code of the Lighthouse result.
+					// Available values: "NOT_REACHABLE", "DNS_FAILURE", "NOT_HTML", "LIGHTHOUSE_TIMEOUT", "UNKNOWN".
+					code?: string
+
+					// Detailed error message.
+					detail?: string
+
+					// The final URL displayed to the user.
+					final_displayed_url?: string
+				})
 
 				// The type of device.
 				// Available values: "DESKTOP", "MOBILE".
@@ -145,34 +139,34 @@ package res
 
 				// Time To Interactive.
 				tti?: number
-				error?: close({
-					// The error code of the Lighthouse result.
-					// Available values: "NOT_REACHABLE", "DNS_FAILURE", "NOT_HTML",
-					// "LIGHTHOUSE_TIMEOUT", "UNKNOWN".
-					code?: string
-
-					// Detailed error message.
-					detail?: string
-
-					// The final URL displayed to the user.
-					final_displayed_url?: string
-				})
 			})
+
+			// The frequency of the test.
+			// Available values: "DAILY", "WEEKLY".
+			schedule_frequency?: string
 
 			// A test region with a label.
 			region?: close({
 				label?: string
 
 				// A test region.
-				// Available values: "asia-east1", "asia-northeast1",
-				// "asia-northeast2", "asia-south1", "asia-southeast1",
-				// "australia-southeast1", "europe-north1", "europe-southwest1",
-				// "europe-west1", "europe-west2", "europe-west3",
+				// Available values: "asia-east1", "asia-northeast1", "asia-northeast2",
+				// "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1",
+				// "europe-southwest1", "europe-west1", "europe-west2", "europe-west3",
 				// "europe-west4", "europe-west8", "europe-west9", "me-west1",
-				// "southamerica-east1", "us-central1", "us-east1", "us-east4",
-				// "us-south1", "us-west1".
+				// "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1",
+				// "us-west1".
 				value?: string
 			})
+
+			// A URL.
+			url?: string
 		})
+
+		// A URL.
+		url!: string
+
+		// Identifier.
+		zone_id!: string
 	})
 }

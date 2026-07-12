@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_zero_trust_risk_scoring_integration: {
+cloudflare_zero_trust_risk_scoring_integration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_risk_scoring_integration")
 	close({
@@ -9,8 +9,7 @@ package data
 		// The Cloudflare account tag.
 		account_tag?: string
 
-		// Whether this integration is enabled and should export changes
-		// in risk score.
+		// Whether this integration is enabled and should export changes in risk score.
 		active?: bool
 
 		// When the integration was created in RFC3339 format.
@@ -23,8 +22,8 @@ package data
 
 		// A reference ID defined by the client.
 		// Should be set to the Access-Okta IDP integration ID.
-		// Useful when the risk-score integration needs to be associated
-		// with a secondary asset and recalled using that ID.
+		// Useful when the risk-score integration needs to be associated with a
+		// secondary asset and recalled using that ID.
 		reference_id?: string
 
 		// The base URL for the tenant. E.g. "https://tenant.okta.com".

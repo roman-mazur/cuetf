@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_byo_ip_prefix: {
+cloudflare_byo_ip_prefix: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_byo_ip_prefix")
 	close({
@@ -10,16 +10,14 @@ package data
 		// Approval state of the prefix (P = pending, V = active).
 		approved?: string
 
-		// Autonomous System Number (ASN) the prefix will be advertised
-		// under.
+		// Autonomous System Number (ASN) the prefix will be advertised under.
 		asn?: number
 
 		// IP Prefix in Classless Inter-Domain Routing format.
 		cidr?:       string
 		created_at?: string
 
-		// Whether Cloudflare is allowed to generate the LOA document on
-		// behalf of the prefix owner.
+		// Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
 		delegate_loa_creation?: bool
 
 		// Description of the prefix.
