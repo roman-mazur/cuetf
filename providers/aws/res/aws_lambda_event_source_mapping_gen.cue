@@ -16,7 +16,8 @@ aws_lambda_event_source_mapping: {
 		self_managed_event_source?: matchN(1, [#self_managed_event_source, list.MaxItems(1) & [...#self_managed_event_source]])
 		self_managed_kafka_event_source_config?: matchN(1, [#self_managed_kafka_event_source_config, list.MaxItems(1) & [...#self_managed_kafka_event_source_config]])
 		source_access_configuration?: matchN(1, [#source_access_configuration, list.MaxItems(22) & [...#source_access_configuration]])
-		arn?: string
+		timeouts?: #timeouts
+		arn?:      string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
@@ -46,8 +47,9 @@ aws_lambda_event_source_mapping: {
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		topics?: [...string]
-		tumbling_window_in_seconds?: number
-		uuid?:                       string
+		tumbling_window_in_seconds?:           number
+		use_resource_timeout_for_propagation?: bool
+		uuid?:                                 string
 	})
 
 	#amazon_managed_kafka_event_source_config: close({
@@ -95,6 +97,12 @@ aws_lambda_event_source_mapping: {
 	#source_access_configuration: close({
 		type!: string
 		uri!:  string
+	})
+
+	#timeouts: close({
+		create?: string
+		delete?: string
+		update?: string
 	})
 
 	_#defs: "/$defs/amazon_managed_kafka_event_source_config/$defs/schema_registry_config": close({

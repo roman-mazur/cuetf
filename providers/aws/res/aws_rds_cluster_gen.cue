@@ -21,6 +21,7 @@ aws_rds_cluster: {
 		allow_major_version_upgrade?: bool
 		apply_immediately?:           bool
 		arn?:                         string
+		auto_minor_version_upgrade?:  bool
 		availability_zones?: [...string]
 		backtrack_window?:          number
 		backup_retention_period?:   number

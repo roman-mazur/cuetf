@@ -5,15 +5,17 @@ aws_prometheus_workspace_configuration: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_prometheus_workspace_configuration")
 	close({
 		limits_per_label_set?: matchN(1, [#limits_per_label_set, [...#limits_per_label_set]])
-		timeouts?: #timeouts
+		timeouts?:                            #timeouts
+		out_of_order_time_window_in_seconds?: number
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                   string
-		retention_period_in_days?: number
-		workspace_id!:             string
+		region?:                       string
+		retention_period_in_days?:     number
+		rule_query_offset_in_seconds?: number
+		workspace_id!:                 string
 	})
 
 	#limits_per_label_set: close({

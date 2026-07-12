@@ -41,6 +41,7 @@ aws_sagemaker_endpoint_configuration: {
 	})
 
 	#production_variants: close({
+		capacity_reservation_config?: matchN(1, [_#defs."/$defs/production_variants/$defs/capacity_reservation_config", list.MaxItems(1) & [..._#defs."/$defs/production_variants/$defs/capacity_reservation_config"]])
 		core_dump_config?: matchN(1, [_#defs."/$defs/production_variants/$defs/core_dump_config", list.MaxItems(1) & [..._#defs."/$defs/production_variants/$defs/core_dump_config"]])
 		managed_instance_scaling?: matchN(1, [_#defs."/$defs/production_variants/$defs/managed_instance_scaling", list.MaxItems(1) & [..._#defs."/$defs/production_variants/$defs/managed_instance_scaling"]])
 		routing_config?: matchN(1, [_#defs."/$defs/production_variants/$defs/routing_config", [..._#defs."/$defs/production_variants/$defs/routing_config"]])
@@ -59,6 +60,7 @@ aws_sagemaker_endpoint_configuration: {
 	})
 
 	#shadow_production_variants: close({
+		capacity_reservation_config?: matchN(1, [_#defs."/$defs/shadow_production_variants/$defs/capacity_reservation_config", list.MaxItems(1) & [..._#defs."/$defs/shadow_production_variants/$defs/capacity_reservation_config"]])
 		core_dump_config?: matchN(1, [_#defs."/$defs/shadow_production_variants/$defs/core_dump_config", list.MaxItems(1) & [..._#defs."/$defs/shadow_production_variants/$defs/core_dump_config"]])
 		managed_instance_scaling?: matchN(1, [_#defs."/$defs/shadow_production_variants/$defs/managed_instance_scaling", list.MaxItems(1) & [..._#defs."/$defs/shadow_production_variants/$defs/managed_instance_scaling"]])
 		routing_config?: matchN(1, [_#defs."/$defs/shadow_production_variants/$defs/routing_config", [..._#defs."/$defs/shadow_production_variants/$defs/routing_config"]])
@@ -102,6 +104,11 @@ aws_sagemaker_endpoint_configuration: {
 		capture_mode!: string
 	})
 
+	_#defs: "/$defs/production_variants/$defs/capacity_reservation_config": close({
+		capacity_reservation_preference?: string
+		ml_reservation_arn?:              string
+	})
+
 	_#defs: "/$defs/production_variants/$defs/core_dump_config": close({
 		destination_s3_uri!: string
 		kms_key_id?:         string
@@ -121,6 +128,11 @@ aws_sagemaker_endpoint_configuration: {
 		max_concurrency!:         number
 		memory_size_in_mb!:       number
 		provisioned_concurrency?: number
+	})
+
+	_#defs: "/$defs/shadow_production_variants/$defs/capacity_reservation_config": close({
+		capacity_reservation_preference?: string
+		ml_reservation_arn?:              string
 	})
 
 	_#defs: "/$defs/shadow_production_variants/$defs/core_dump_config": close({
