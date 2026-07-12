@@ -33,13 +33,14 @@ github_organization_ruleset: {
 	})
 
 	#bypass_actors: close({
-		// The ID of the actor that can bypass a ruleset. When `actor_type` is
-		// `OrganizationAdmin`, this should be set to `1`. Some resources such as
-		// DeployKey do not have an ID and this should be omitted.
+		// The ID of the actor that can bypass a ruleset. Must be omitted for ID-less
+		// actor types: `OrganizationAdmin`, `EnterpriseOwner`, and `DeployKey` — the
+		// GitHub API does not use an ID for these types and will ignore any value set.
 		actor_id?: number
 
 		// The type of actor that can bypass a ruleset. Can be one of: `Integration`,
-		// `OrganizationAdmin`, `RepositoryRole`, `Team`, or `DeployKey`.
+		// `OrganizationAdmin`, `RepositoryRole`, `Team`, `DeployKey`, or
+		// `EnterpriseOwner`.
 		actor_type!: string
 
 		// When the specified actor can bypass the ruleset. pull_request means that an
