@@ -1,26 +1,30 @@
 env HOME=$WORK/_home
 
+# Expand variables
+exec bash -c 'eval "echo \"$(cat cue.mod/module.cue.tpl)\"" > cue.mod/module.cue'
+exec bash -c 'eval "echo \"$(cat example.cue.tpl)\"" > example.cue'
+
 exec cue export . -f -o input.tf.json
 
--- cue.mod/module.cue --
-module: "mod.example"
+-- cue.mod/module.cue.tpl --
+module: \"mod.example\"
 language: {
-	version: "v0.17.0"
+	version: \"${CUE_VERSION}\"
 }
 deps: {
-	"github.com/roman-mazur/cuetf/providers/github@v0": {
-		v:       "v0.2607.2"
+	\"github.com/roman-mazur/cuetf/providers/github@v0\": {
+		v:       \"${CUETF_VERSION}\"
 		default: true
 	}
 }
--- example.cue --
+-- example.cue.tpl --
 package example
 
-import gh "github.com/roman-mazur/cuetf/providers/github"
+import gh \"github.com/roman-mazur/cuetf/providers/github\"
 
 gh.#Terraform
 
 resource: github_repository: cue: {
-	name: "test"
+	name: \"test\"
 	lifecycle: prevent_destroy: true
 }

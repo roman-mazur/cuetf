@@ -14,6 +14,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"rmazur.io/cuetf/internal/ci"
 )
 
 func main() {
@@ -23,7 +25,7 @@ func main() {
 		log.Fatalf("❌ Failed to get HEAD hash: %v", err)
 	}
 
-	latestTag, _ := runCmd("git", "describe", "--tags", "--abbrev=0")
+	latestTag, _ := ci.LatestGitTag()
 	var latestTagHash string
 	if latestTag != "" {
 		latestTagHash, _ = runCmd("git", "rev-list", "-n", "1", latestTag)
