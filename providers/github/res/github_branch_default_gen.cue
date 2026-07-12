@@ -4,15 +4,25 @@ github_branch_default: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/github_branch_default")
 	close({
-		// The branch (e.g. 'main').
+		// The name of the branch to set as the default (e.g. 'main').
 		branch!: string
-		etag?:   string
-		id?:     string
 
-		// Indicate if it should rename the branch rather than use an existing branch. Defaults to 'false'.
+		// The ETag header for the repository API response.
+		etag?: string
+		id?:   string
+
+		// If `true` rename the existing branch when the `branch` input is changed. Defaults to 'false'.
 		rename?: bool
 
-		// The GitHub repository.
+		// The name of the GitHub repository.
 		repository!: string
+
+		// The ID of the GitHub repository.
+		repository_id?: number
+
+		// If `true`, poll until GitHub propagates the renamed default branch before
+		// proceeding. Only has effect when `rename` is also `true`. Defaults to
+		// 'false'.
+		wait_for_rename?: bool
 	})
 }

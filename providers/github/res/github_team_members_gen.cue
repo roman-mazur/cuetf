@@ -7,15 +7,15 @@ github_team_members: {
 		members!: matchN(1, [#members, [_, ...] & [...#members]])
 		id?: string
 
-		// The GitHub team id or slug
-		team_id!: string
+		// Slug of the GitHub team to manage membership for.
+		team_slug?: string
 	})
 
 	#members: close({
-		// The role of the user within the team. Must be one of 'member' or 'maintainer'.
+		// Role to grant the user within the team; must be one of `member` or `maintainer`.
 		role?: string
 
-		// The user to add to the team.
+		// User to add to the team.
 		username!: string
 	})
 }
