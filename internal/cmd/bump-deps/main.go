@@ -41,12 +41,23 @@ func main() {
 		if !entry.IsDir() || strings.HasPrefix(entry.Name(), ".") {
 			continue
 		}
-		modFile := filepath.Join(providersDir, entry.Name(), "cue.mod", "module.cue")
-		if err := bumpVersion(modFile, version); err != nil {
-			log.Fatalf("%s: %v", modFile, err)
+		if err := bumpVersionInModule(filepath.Join(providersDir, entry.Name()), version); err != nil {
+			log.Fatal(err)
 		}
-		fmt.Printf("updated %s\n", modFile)
 	}
+
+	if err := bumpVersionInModule("./examples", version); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func bumpVersionInModule(dir string, version string) error {
+	modFile := filepath.Join(dir, "cue.mod", "module.cue")
+	if err := bumpVersion(modFile, version); err != nil {
+		return fmt.Errorf("%s: %w", modFile, err)
+	}
+	fmt.Printf("updated %s\n", modFile)
+	return nil
 }
 
 func bumpVersion(path, version string) error {

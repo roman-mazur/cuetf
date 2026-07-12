@@ -1,7 +1,5 @@
 module: "github.com/roman-mazur/cuetf/examples"
-language: {
-	version: "v0.15.4"
-}
+language: version: "v0.15.4"
 deps: {
 	"github.com/roman-mazur/cuetf/providers/aws@v0": {
 		v:       "v0.2604.0"
@@ -12,7 +10,7 @@ deps: {
 		default: true
 	}
 	"github.com/roman-mazur/cuetf@v0": {
-		v:       "v0.2604.0"
+		v:       "v0.2607.0"
 		default: true
 	}
 }
