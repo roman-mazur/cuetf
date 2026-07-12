@@ -1,11 +1,10 @@
 package data
 
-#scaleway_account_project: {
+scaleway_account_project: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_account_project")
 	close({
-		// The date and time of the creation of the Project (Format ISO
-		// 8601)
+		// The date and time of the creation of the Project (Format ISO 8601)
 		created_at?: string
 
 		// Description of the project
@@ -21,8 +20,7 @@ package data
 		// The ID of the project
 		project_id?: string
 
-		// The date and time of the last update of the Project (Format ISO
-		// 8601)
+		// The date and time of the last update of the Project (Format ISO 8601)
 		updated_at?: string
 	})
 }

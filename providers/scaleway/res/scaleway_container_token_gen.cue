@@ -1,6 +1,6 @@
 package res
 
-#scaleway_container_token: {
+scaleway_container_token: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_container_token")
 	close({

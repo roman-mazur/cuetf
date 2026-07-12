@@ -2,14 +2,13 @@ package res
 
 import "list"
 
-#scaleway_key_manager_key: {
+scaleway_key_manager_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_key_manager_key")
 	close({
 		rotation_policy?: matchN(1, [#rotation_policy, list.MaxItems(1) & [...#rotation_policy]])
 
-		// Algorithm to use for the key. The valid algorithms depend on
-		// the usage type.
+		// Algorithm to use for the key. The valid algorithms depend on the usage type.
 		algorithm!: string
 
 		// Key creation date.
@@ -27,9 +26,9 @@ import "list"
 		// Name of the key.
 		name?: string
 
-		// Origin of the key material. Possible values: scaleway_kms (Key
-		// Manager generates the key material), external (key material
-		// comes from an external source).
+		// Origin of the key material. Possible values: scaleway_kms (Key Manager
+		// generates the key material), external (key material comes from an external
+		// source).
 		origin?: string
 
 		// The project_id you want to attach the resource to
@@ -44,8 +43,7 @@ import "list"
 		// Key last rotation date.
 		rotated_at?: string
 
-		// The rotation count tracks the number of times the key has been
-		// rotated.
+		// The rotation count tracks the number of times the key has been rotated.
 		rotation_count?: number
 
 		// State of the key. See the Key.State enum for possible values.
@@ -60,8 +58,7 @@ import "list"
 		// Key last modification date.
 		updated_at?: string
 
-		// Key usage type. Possible values: symmetric_encryption,
-		// asymmetric_encryption, asymmetric_signing.
+		// Key usage type. Possible values: symmetric_encryption, asymmetric_encryption, asymmetric_signing.
 		usage!: string
 	})
 
@@ -69,8 +66,8 @@ import "list"
 		// Timestamp indicating the next scheduled rotation.
 		next_rotation_at?: string
 
-		// Time interval between two key rotations. The minimum duration
-		// is 24 hours and the maximum duration is 1 year (876000 hours).
+		// Time interval between two key rotations. The minimum duration is 24 hours and
+		// the maximum duration is 1 year (876000 hours).
 		rotation_period!: string
 	})
 }

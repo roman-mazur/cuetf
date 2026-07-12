@@ -1,6 +1,6 @@
 package data
 
-#scaleway_lb_route: {
+scaleway_lb_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_lb_route")
 	close({
@@ -14,16 +14,14 @@ package data
 		frontend_id?: string
 		id?:          string
 
-		// Specifies the host of the server to which the request is being
-		// sent
+		// Specifies the host of the server to which the request is being sent
 		match_host_header?: string
 
-		// Value to match in the URL beginning path from an incoming
-		// request
+		// Value to match in the URL beginning path from an incoming request
 		match_path_begin?: string
 
-		// Server Name Indication TLS extension field from an incoming
-		// connection made via an SSL/TLS transport layer
+		// Server Name Indication TLS extension field from an incoming connection made
+		// via an SSL/TLS transport layer
 		match_sni?: string
 
 		// If true, all subdomains will match

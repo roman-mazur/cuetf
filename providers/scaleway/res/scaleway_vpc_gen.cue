@@ -1,14 +1,13 @@
 package res
 
-#scaleway_vpc: {
+scaleway_vpc: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_vpc")
 	close({
 		// The date and time of the creation of the private network
 		created_at?: string
 
-		// Defines whether the VPC advertises custom routes between its
-		// Private Networks
+		// Defines whether the VPC advertises custom routes between its Private Networks
 		enable_custom_routes_propagation?: bool
 
 		// Enable routing between Private Networks in the VPC

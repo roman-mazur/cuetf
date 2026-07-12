@@ -1,6 +1,6 @@
 package data
 
-#scaleway_vpc_gateway_network: {
+scaleway_vpc_gateway_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_vpc_gateway_network")
 	close({
@@ -26,8 +26,7 @@ package data
 		gateway_network_id?: string
 		id?:                 string
 
-		// Auto-configure the Gateway Network using IPAM (IP address
-		// management service)
+		// Auto-configure the Gateway Network using IPAM (IP address management service)
 		ipam_config?: [...close({
 			ipam_ip_id?:         string
 			push_default_route?: bool
@@ -48,8 +47,7 @@ package data
 		// The static IP address in CIDR on this network
 		static_address?: string
 
-		// The status of the Public Gateway's connection to the Private
-		// Network
+		// The status of the Public Gateway's connection to the Private Network
 		status?: string
 
 		// The date and time of the last update of the gateway network

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_redis_cluster: {
+scaleway_redis_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_redis_cluster")
 	close({
@@ -12,19 +12,17 @@ import "list"
 		public_network?: matchN(1, [#public_network, list.MaxItems(1) & [...#public_network]])
 		timeouts?: #timeouts
 
-		// public TLS certificate used by redis cluster, empty if tls is
-		// disabled
+		// public TLS certificate used by redis cluster, empty if tls is disabled
 		certificate?: string
 
 		// Number of nodes for the cluster.
 		cluster_size?: number
 
-		// Redis connection URI for the first reachable endpoint (public
-		// is preferred over private). Uses scheme `rediss` when TLS is
-		// enabled. Database index is always `0`. When a password is
-		// available in state, userinfo includes `user_name` and the
-		// password (Redis ACL). When `password_wo` is used, the password
-		// is omitted because it is not stored in state.
+		// Redis connection URI for the first reachable endpoint (public is preferred
+		// over private). Uses scheme `rediss` when TLS is enabled. Database index is
+		// always `0`. When a password is available in state, userinfo includes
+		// `user_name` and the password (Redis ACL). When `password_wo` is used, the
+		// password is omitted because it is not stored in state.
 		connection_string?: string
 
 		// The date and time of the creation of the Redis cluster
@@ -37,22 +35,20 @@ import "list"
 		// Type of node to use for the cluster
 		node_type!: string
 
-		// Password of the user. Only one of `password` or `password_wo`
-		// should be specified.
+		// Password of the user. Only one of `password` or `password_wo` should be specified.
 		password?: string
 
 		// Password of the user in
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// mode. Only one of `password` or `password_wo` should be
-		// specified. `password_wo` will not be set in the Terraform
-		// state. To update the `password_wo`, you must also update the
-		// `password_wo_version`.
+		// mode. Only one of `password` or `password_wo` should be specified.
+		// `password_wo` will not be set in the Terraform state. To update the
+		// `password_wo`, you must also update the `password_wo_version`.
 		password_wo?: string
 
 		// The version of the
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// password. To update the `password_wo`, you must also update
-		// the `password_wo_version`.
+		// password. To update the `password_wo`, you must also update the
+		// `password_wo_version`.
 		password_wo_version?: number
 
 		// The project_id you want to attach the resource to
@@ -87,8 +83,7 @@ import "list"
 		// ID of the rule (UUID format).
 		id?: string
 
-		// IPv4 network address of the rule in CIDR notation (IPv6 is not
-		// supported by the Scaleway API).
+		// IPv4 network address of the rule in CIDR notation (IPv6 is not supported by the Scaleway API).
 		ip!: string
 	})
 
@@ -113,8 +108,8 @@ import "list"
 		// TCP port of the endpoint
 		port?: number
 
-		// List of IPv4 addresses of the private network in CIDR notation
-		// (IPv6 is not supported by the Scaleway API)
+		// List of IPv4 addresses of the private network in CIDR notation (IPv6 is not
+		// supported by the Scaleway API)
 		service_ips?: [...string]
 
 		// The zone of the resource

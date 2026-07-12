@@ -1,6 +1,6 @@
 package data
 
-#scaleway_k8s_pool: {
+scaleway_k8s_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_k8s_pool")
 	close({
@@ -78,8 +78,7 @@ package data
 		// Size of the pool
 		size?: number
 
-		// Kubernetes taints applied at node creation but not reconciled
-		// afterwards.
+		// Kubernetes taints applied at node creation but not reconciled afterwards.
 		startup_taints?: [...close({
 			effect?: string
 			key?:    string

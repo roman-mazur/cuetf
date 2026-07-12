@@ -1,6 +1,6 @@
 package res
 
-#scaleway_iot_hub: {
+scaleway_iot_hub: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_iot_hub")
 	close({

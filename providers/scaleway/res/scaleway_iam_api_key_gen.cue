@@ -1,6 +1,6 @@
 package res
 
-#scaleway_iam_api_key: {
+scaleway_iam_api_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_iam_api_key")
 	close({
@@ -25,8 +25,7 @@ package res
 		// Whether or not the iam api key is editable
 		editable?: bool
 
-		// The date and time of the expiration of the iam api key. Cannot
-		// be changed afterwards
+		// The date and time of the expiration of the iam api key. Cannot be changed afterwards
 		expires_at?: string
 		id?:         string
 

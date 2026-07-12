@@ -1,6 +1,6 @@
 package res
 
-#scaleway_k8s_acl: {
+scaleway_k8s_acl: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_k8s_acl")
 	close({
@@ -11,8 +11,7 @@ package res
 		cluster_id!: string
 		id?:         string
 
-		// If true, no IP will be allowed and the cluster will be fully
-		// isolated
+		// If true, no IP will be allowed and the cluster will be fully isolated
 		no_ip_allowed?: bool
 
 		// The region you want to attach the resource to

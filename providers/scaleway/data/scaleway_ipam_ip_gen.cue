@@ -2,7 +2,7 @@ package data
 
 import "list"
 
-#scaleway_ipam_ip: {
+scaleway_ipam_ip: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_ipam_ip")
 	close({
@@ -14,8 +14,7 @@ import "list"
 		// The IP address with a CIDR notation
 		address_cidr?: string
 
-		// Defines whether to filter only for IPs which are attached to a
-		// resource
+		// Defines whether to filter only for IPs which are attached to a resource
 		attached?: bool
 		id?:       string
 

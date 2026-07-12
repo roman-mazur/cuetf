@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_cockpit_exporter: {
+scaleway_cockpit_exporter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_cockpit_exporter")
 	close({
@@ -10,8 +10,7 @@ import "list"
 		otlp_destination?: matchN(1, [#otlp_destination, list.MaxItems(1) & [...#otlp_destination]])
 		timeouts?: #timeouts
 
-		// Date and time of the creation of the data export (RFC 3339
-		// format)
+		// Date and time of the creation of the data export (RFC 3339 format)
 		created_at?: string
 
 		// ID of the data source linked to the data export
@@ -20,9 +19,8 @@ import "list"
 		// Description of the data export
 		description?: string
 
-		// List of Scaleway products to export. Use ["all"] to export all
-		// products. Use scaleway_cockpit_products data source for valid
-		// product names.
+		// List of Scaleway products to export. Use ["all"] to export all products. Use
+		// scaleway_cockpit_products data source for valid product names.
 		exported_products?: [...string]
 		id?: string
 
@@ -38,8 +36,7 @@ import "list"
 		// Status of the data export
 		status?: string
 
-		// Date and time of the last update of the data export (RFC 3339
-		// format)
+		// Date and time of the last update of the data export (RFC 3339 format)
 		updated_at?: string
 	})
 

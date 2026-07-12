@@ -1,6 +1,6 @@
 package data
 
-#scaleway_vpc_public_gateway_pat_rule: {
+scaleway_vpc_public_gateway_pat_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_vpc_public_gateway_pat_rule")
 	close({

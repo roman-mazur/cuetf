@@ -2,14 +2,13 @@ package data
 
 import "list"
 
-#scaleway_ipam_ips: {
+scaleway_ipam_ips: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_ipam_ips")
 	close({
 		resource?: matchN(1, [#resource, list.MaxItems(1) & [...#resource]])
 
-		// Defines whether to filter only for IPs which are attached to a
-		// resource
+		// Defines whether to filter only for IPs which are attached to a resource
 		attached?: bool
 		id?:       string
 

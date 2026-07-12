@@ -1,6 +1,6 @@
 package data
 
-#scaleway_apple_silicon_os: {
+scaleway_apple_silicon_os: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_apple_silicon_os")
 	close({

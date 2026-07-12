@@ -2,14 +2,13 @@ package res
 
 import "list"
 
-#scaleway_autoscaling_instance_template: {
+scaleway_autoscaling_instance_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_autoscaling_instance_template")
 	close({
 		volumes?: matchN(1, [#volumes, [...#volumes]])
 
-		// Cloud-config to apply to each instance (will be passed in
-		// Base64 format)
+		// Cloud-config to apply to each instance (will be passed in Base64 format)
 		cloud_init?: string
 
 		// Name of Instance commercial type
@@ -19,17 +18,15 @@ import "list"
 		created_at?: string
 		id?:         string
 
-		// Instance image ID. Can be an ID of a marketplace or personal
-		// image. This image must be compatible with `volume` and
-		// `commercial_type` template
+		// Instance image ID. Can be an ID of a marketplace or personal image. This
+		// image must be compatible with `volume` and `commercial_type` template
 		image_id?: string
 
 		// The Instance template name
 		name?: string
 
-		// Instance placement group ID. This is optional, but it is highly
-		// recommended to set a preference for Instance location within
-		// Availability Zone
+		// Instance placement group ID. This is optional, but it is highly recommended
+		// to set a preference for Instance location within Availability Zone
 		placement_group_id?: string
 
 		// Private Network IDs to attach to the new Instance
@@ -70,8 +67,7 @@ import "list"
 		// The name of the volume
 		name!: string
 
-		// The maximum IO/s expected, according to the different options
-		// available in stock (`5000 | 15000`)
+		// The maximum IO/s expected, according to the different options available in stock (`5000 | 15000`)
 		perf_iops?: number
 
 		// List of tags assigned to the volume

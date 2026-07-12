@@ -1321,6 +1321,112 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "markdown"
 			}
 		}
+		scaleway_billing_budget_alert: {
+			version: 0
+			block: {
+				attributes: {
+					budget_id: {
+						type:             "string"
+						description:      "The ID of the budget to create alert for."
+						description_kind: "markdown"
+						required:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of budget alert creation"
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the budget alert"
+						description_kind: "markdown"
+						computed:         true
+					}
+					threshold: {
+						type:             "number"
+						description:      "Threshold percentage above which the alert is sent (0-100)."
+						description_kind: "markdown"
+						required:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time when the budget alert was last updated"
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Creates and manages Scaleway Budget Alerts.
+
+					A Budget Alert triggers notifications when the spending threshold is reached.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		scaleway_billing_budget_alert_notification: {
+			version: 0
+			block: {
+				attributes: {
+					budget_alert_id: {
+						type:             "string"
+						description:      "The ID of the budget alert to create notification for."
+						description_kind: "markdown"
+						required:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of budget alert notification creation"
+						description_kind: "markdown"
+						computed:         true
+					}
+					email_addresses: {
+						type: ["set", "string"]
+						description:      "List of email addresses to receive email notifications. Precisely one of sms_phone_numbers, email_addresses, or webhook_urls must be set."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the budget alert notification"
+						description_kind: "markdown"
+						computed:         true
+					}
+					sms_phone_numbers: {
+						type: ["set", "string"]
+						description:      "List of phone numbers to receive SMS notifications. Precisely one of sms_phone_numbers, email_addresses, or webhook_urls must be set."
+						description_kind: "markdown"
+						optional:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The type of notification (sms, email, or webhook)"
+						description_kind: "markdown"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time when the budget alert notification was last updated"
+						description_kind: "markdown"
+						computed:         true
+					}
+					webhook_urls: {
+						type: ["set", "string"]
+						description:      "List of webhook URLs to receive webhook notifications. Precisely one of sms_phone_numbers, email_addresses, or webhook_urls must be set."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				description: """
+					Creates and manages Scaleway Budget Alert Notifications.
+
+					A Budget Alert Notification defines how to notify recipients when a budget alert is triggered.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		scaleway_block_snapshot: {
 			version: 0
 			block: {
@@ -4752,6 +4858,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						type:             "string"
 						description:      "The date and time of the last update of the DNS stage"
 						description_kind: "plain"
+						computed:         true
+					}
+					wildcard_domain: {
+						type:             "bool"
+						description:      "Defines whether wildcard (subdomains) is supported for the given domain. A wildcard certificate is required to make it work"
+						description_kind: "plain"
+						optional:         true
 						computed:         true
 					}
 				}
@@ -9951,6 +10064,20 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 						max_items: 1
 					}
+					retry_policy: {
+						nesting_mode: "list"
+						block: {
+							attributes: max_retries: {
+								type:             "number"
+								description:      "The maximum number of retries upon job failure."
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "Defines a retry policy for the job."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					secret_reference: {
 						nesting_mode: "set"
 						block: {
@@ -10349,6 +10476,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									description:      "Autoscaler logging level expressed from 0 to 4 (4 being the more verbose)."
 									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 								max_graceful_termination_sec: {
 									type:             "number"
@@ -10379,6 +10507,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									description:      "If true, the autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath."
 									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 							}
 							description:      "The autoscaler configuration for the cluster"
@@ -10557,7 +10686,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						type:             "string"
 						description:      "The name of the pool"
 						description_kind: "plain"
-						required:         true
+						optional:         true
 					}
 					node_type: {
 						type:             "string"
@@ -14904,6 +15033,20 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "Enable or disable high availability for the database instance"
 						description_kind: "plain"
 						optional:         true
+					}
+					maintenances: {
+						type: ["list", ["object", {
+							closed_at:     "string"
+							forced_at:     "string"
+							is_applicable: "bool"
+							reason:        "string"
+							starts_at:     "string"
+							status:        "string"
+							stops_at:      "string"
+						}]]
+						description:      "List of scheduled maintenance events on the database instance"
+						description_kind: "plain"
+						computed:         true
 					}
 					name: {
 						type:             "string"
@@ -20020,6 +20163,128 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "markdown"
 			}
 		}
+		scaleway_billing_budget_alert: {
+			version: 0
+			block: {
+				attributes: {
+					alert_id: {
+						type:             "string"
+						description:      "The ID of the budget alert to retrieve."
+						description_kind: "markdown"
+						required:         true
+					}
+					budget_id: {
+						type:             "string"
+						description:      "The ID of the budget. If not provided, it will be retrieved from the alert."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of budget alert creation"
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the budget alert"
+						description_kind: "markdown"
+						computed:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The organization ID. If not provided, the default organization configured in the provider is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					threshold: {
+						type:             "number"
+						description:      "Threshold percentage above which the alert is sent"
+						description_kind: "markdown"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time when the budget alert was last updated"
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Retrieves information about a Scaleway Budget Alert.
+
+					Use this data source to get details of an existing budget alert by its ID.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		scaleway_billing_budget_alert_notification: {
+			version: 0
+			block: {
+				attributes: {
+					budget_alert_id: {
+						type:             "string"
+						description:      "The ID of the budget alert. If not provided, it will be retrieved from the notification."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The date and time of budget alert notification creation"
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the budget alert notification"
+						description_kind: "markdown"
+						computed:         true
+					}
+					notification_id: {
+						type:             "string"
+						description:      "The ID of the budget alert notification to retrieve."
+						description_kind: "markdown"
+						required:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "The organization ID. If not provided, the default organization configured in the provider is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					recipients: {
+						type: ["set", "string"]
+						description:      "List of recipients for this notification"
+						description_kind: "markdown"
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The type of notification (sms, email, or webhook)"
+						description_kind: "markdown"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The date and time when the budget alert notification was last updated"
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Retrieves information about a Scaleway Budget Alert Notification.
+
+					Use this data source to get details of an existing budget alert notification by its ID.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		scaleway_billing_consumptions: {
 			version: 0
 			block: {
@@ -22246,6 +22511,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					updated_at: {
 						type:             "string"
 						description:      "The date and time of the last update of the DNS stage"
+						description_kind: "plain"
+						computed:         true
+					}
+					wildcard_domain: {
+						type:             "bool"
+						description:      "Defines whether wildcard (subdomains) is supported for the given domain. A wildcard certificate is required to make it work"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -28905,6 +29176,20 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					maintenances: {
+						type: ["list", ["object", {
+							closed_at:     "string"
+							forced_at:     "string"
+							is_applicable: "bool"
+							reason:        "string"
+							starts_at:     "string"
+							status:        "string"
+							stops_at:      "string"
+						}]]
+						description:      "List of scheduled maintenance events on the database instance"
+						description_kind: "plain"
+						computed:         true
+					}
 					name: {
 						type:             "string"
 						description:      "Name of the database instance"
@@ -32393,6 +32678,56 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_block_snapshot: {
+			version: 0
+			block: {
+				attributes: {
+					include_deleted: {
+						type:             "bool"
+						description:      "Display deleted snapshots not erased yet"
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the snapshot to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID of the snapshot to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs of the block snapshot to filter on Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "Tags of the snapshot to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					volume_ids: {
+						type: ["list", "string"]
+						description:      "Volume IDs to list snapshots from. Use [\"*\"] only to include all volumes in each selected zone and project. Otherwise each value must be a zonal ID (`zone/uuid`) or a bare volume UUID."
+						description_kind: "plain"
+						optional:         true
+					}
+					zones: {
+						type: ["list", "string"]
+						description:      "Zones of the block snapshot to filter on Use '*' to list from all zones"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		scaleway_domain_record: {
 			version: 0
 			block: {
@@ -33763,6 +34098,20 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 			}
 		}
+		scaleway_billing_budget_alert: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
+		scaleway_billing_budget_alert_notification: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
 		scaleway_block_snapshot: {
 			version: 0
 			attributes: {
@@ -34196,6 +34545,21 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 			}
 		}
+		scaleway_instance_server: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				zone: {
+					type:                "string"
+					description:         "The zone of the resource"
+					required_for_import: true
+				}
+			}
+		}
 		scaleway_instance_snapshot: {
 			version: 0
 			attributes: {
@@ -34332,6 +34696,51 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			}
 		}
 		scaleway_ipam_ip: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_k8s_acl: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_k8s_cluster: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_k8s_pool: {
 			version: 0
 			attributes: {
 				id: {
@@ -35718,6 +36127,35 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			}
 			description: """
 				The [`scaleway_rdb_database_restore_backup`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/rdb_database_restore_backup) action restores a backup to an instance.
+
+				Refer to the RDB [documentation](https://www.scaleway.com/en/docs/managed-databases-for-postgresql-and-mysql/) and [API documentation](https://www.scaleway.com/en/developers/api/managed-databases-for-postgresql-and-mysql/) for more information.
+
+				"""
+			description_kind: "markdown"
+		}
+		scaleway_rdb_instance_apply_maintenance: block: {
+			attributes: {
+				instance_id: {
+					type:             "string"
+					description:      "RDB instance ID to apply maintenance on. Can be a plain UUID or a regional ID."
+					description_kind: "plain"
+					required:         true
+				}
+				region: {
+					type:             "string"
+					description:      "The region you want to attach the resource to"
+					description_kind: "plain"
+					optional:         true
+				}
+				wait: {
+					type:             "bool"
+					description:      "Wait for the instance maintenance to complete before returning."
+					description_kind: "plain"
+					optional:         true
+				}
+			}
+			description: """
+				The [`scaleway_rdb_instance_apply_maintenance`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/rdb_instance_apply_maintenance) action applies pending maintenance tasks on a Managed Database instance.
 
 				Refer to the RDB [documentation](https://www.scaleway.com/en/docs/managed-databases-for-postgresql-and-mysql/) and [API documentation](https://www.scaleway.com/en/developers/api/managed-databases-for-postgresql-and-mysql/) for more information.
 

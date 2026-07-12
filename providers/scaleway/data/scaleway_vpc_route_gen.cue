@@ -1,6 +1,6 @@
 package data
 
-#scaleway_vpc_route: {
+scaleway_vpc_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_vpc_route")
 	close({
@@ -23,8 +23,7 @@ package data
 		// The ID of the nexthop resource
 		nexthop_resource_id?: string
 
-		// Only routes with a matching next hop resource type will be
-		// returned
+		// Only routes with a matching next hop resource type will be returned
 		nexthop_resource_type?: string
 
 		// The ID of the nexthop VPC Connector

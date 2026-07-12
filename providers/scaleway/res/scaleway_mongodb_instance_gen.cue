@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_mongodb_instance: {
+scaleway_mongodb_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_mongodb_instance")
 	close({
@@ -27,22 +27,20 @@ import "list"
 		// Type of node to use for the instance
 		node_type!: string
 
-		// Password of the user. Only one of `password` or `password_wo`
-		// should be specified.
+		// Password of the user. Only one of `password` or `password_wo` should be specified.
 		password?: string
 
 		// Password of the user in
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// mode. Only one of `password` or `password_wo` should be
-		// specified. `password_wo` will not be set in the Terraform
-		// state. To update the `password_wo`, you must also update the
-		// `password_wo_version`.
+		// mode. Only one of `password` or `password_wo` should be specified.
+		// `password_wo` will not be set in the Terraform state. To update the
+		// `password_wo`, you must also update the `password_wo_version`.
 		password_wo?: string
 
 		// The version of the
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// password. To update the `password_wo`, you must also update
-		// the `password_wo_version`.
+		// password. To update the `password_wo`, you must also update the
+		// `password_wo_version`.
 		password_wo_version?: number
 
 		// The project_id you want to attach the resource to
@@ -63,8 +61,7 @@ import "list"
 		// Snapshot schedule retention in days
 		snapshot_schedule_retention_days?: number
 
-		// List of tags ["tag1", "tag2", ...] attached to a MongoDB
-		// instance
+		// List of tags ["tag1", "tag2", ...] attached to a MongoDB instance
 		tags?: [...string]
 
 		// PEM-encoded TLS certificate for MongoDB

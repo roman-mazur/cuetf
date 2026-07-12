@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_datawarehouse_deployment: {
+scaleway_datawarehouse_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_datawarehouse_deployment")
 	close({
@@ -22,32 +22,30 @@ import "list"
 		// Name of the Datawarehouse deployment
 		name!: string
 
-		// Password for the first user of the deployment. Only one of
-		// `password` or `password_wo` should be specified.
+		// Password for the first user of the deployment. Only one of `password` or
+		// `password_wo` should be specified.
 		password?: string
 
 		// Password for the first user of the deployment in
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// mode. Only one of `password` or `password_wo` should be
-		// specified. `password_wo` will not be set in the Terraform
-		// state. To update the `password_wo`, you must also update the
-		// `password_wo_version`. When updating, the password is rotated
-		// via the Data Warehouse Users API (the initial user is selected
-		// as an admin user when present, otherwise the first user by
-		// name).
+		// mode. Only one of `password` or `password_wo` should be specified.
+		// `password_wo` will not be set in the Terraform state. To update the
+		// `password_wo`, you must also update the `password_wo_version`. When
+		// updating, the password is rotated via the Data Warehouse Users API (the
+		// initial user is selected as an admin user when present, otherwise the first
+		// user by name).
 		password_wo?: string
 
 		// The version of the
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// password. To update the `password_wo`, you must also update
-		// the `password_wo_version`.
+		// password. To update the `password_wo`, you must also update the
+		// `password_wo_version`.
 		password_wo_version?: number
 
 		// The project_id you want to attach the resource to
 		project_id?: string
 
-		// Public endpoint configuration. A public endpoint is created by
-		// default.
+		// Public endpoint configuration. A public endpoint is created by default.
 		public_network?: [...close({
 			dns_record?: string
 			id?:         string
@@ -66,13 +64,12 @@ import "list"
 		// Number of replicas
 		replica_count!: number
 
-		// Number of shards for the deployment. This value is immutable
-		// and cannot be changed after creation.
+		// Number of shards for the deployment. This value is immutable and cannot be
+		// changed after creation.
 		shard_count?: number
 
-		// Whether the deployment should be running (`true`) or stopped
-		// (`false`). Maps to the Start deployment and Stop deployment
-		// API actions.
+		// Whether the deployment should be running (`true`) or stopped (`false`). Maps
+		// to the Start deployment and Stop deployment API actions.
 		started?: bool
 
 		// The status of the deployment

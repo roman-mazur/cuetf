@@ -1,6 +1,6 @@
 package res
 
-#scaleway_apple_silicon_server: {
+scaleway_apple_silicon_server: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_apple_silicon_server")
 	close({
@@ -14,8 +14,7 @@ package res
 		// The date and time of the creation of the server
 		created_at?: string
 
-		// The minimal date and time on which you can delete this server
-		// due to Apple licence
+		// The minimal date and time on which you can delete this server due to Apple licence
 		deletable_at?: string
 
 		// Whether or not to enable VPC access

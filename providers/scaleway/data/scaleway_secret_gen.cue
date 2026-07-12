@@ -1,6 +1,6 @@
 package data
 
-#scaleway_secret: {
+scaleway_secret: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_secret")
 	close({
@@ -10,9 +10,9 @@ package data
 		// Description of the secret
 		description?: string
 
-		// Ephemeral policy of the secret. Policy that defines
-		// whether/when a secret's versions expire. By default, the
-		// policy is applied to all the secret's versions.
+		// Ephemeral policy of the secret. Policy that defines whether/when a secret's
+		// versions expire. By default, the policy is applied to all the secret's
+		// versions.
 		ephemeral_policy?: [...close({
 			action?:                string
 			expires_once_accessed?: bool
@@ -32,8 +32,7 @@ package data
 		// The project ID the resource is associated to
 		project_id?: string
 
-		// True if secret protection is enabled on a given secret. A
-		// protected secret cannot be deleted.
+		// True if secret protection is enabled on a given secret. A protected secret cannot be deleted.
 		protected?: bool
 
 		// The region you want to attach the resource to
@@ -48,9 +47,8 @@ package data
 		// List of tags ["tag1", "tag2", ...] associated to secret
 		tags?: [...string]
 
-		// Type of the secret could be any value among: [unknown_type
-		// opaque certificate key_value basic_credentials
-		// database_credentials ssh_key]
+		// Type of the secret could be any value among: [unknown_type opaque certificate
+		// key_value basic_credentials database_credentials ssh_key]
 		type?: string
 
 		// Date and time of secret's creation (RFC 3339 format)

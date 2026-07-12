@@ -1,6 +1,6 @@
 package res
 
-#scaleway_object: {
+scaleway_object: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_object")
 	close({
@@ -15,9 +15,9 @@ package res
 		// Content of the file to upload, should be base64 encoded
 		content_base64?: string
 
-		// The standard MIME type of the object's content (e.g.,
-		// 'application/json', 'text/plain'). This specifies how the
-		// object should be interpreted by clients. See RFC 9110:
+		// The standard MIME type of the object's content (e.g., 'application/json',
+		// 'text/plain'). This specifies how the object should be interpreted by
+		// clients. See RFC 9110:
 		// https://www.rfc-editor.org/rfc/rfc9110.html#name-content-type
 		content_type?: string
 
@@ -43,8 +43,7 @@ package res
 		// Customer's encryption keys to encrypt data (SSE-C)
 		sse_customer_key?: string
 
-		// Specifies the Scaleway Object Storage class to which you want
-		// the object to transition
+		// Specifies the Scaleway Object Storage class to which you want the object to transition
 		storage_class?: string
 
 		// Map of object's tags

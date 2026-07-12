@@ -1,6 +1,6 @@
 package res
 
-#scaleway_iot_network: {
+scaleway_iot_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_iot_network")
 	close({
@@ -25,8 +25,7 @@ package res
 		// The endpoint key to keep secret
 		secret?: string
 
-		// The prefix that will be prepended to all topics for this
-		// Network
+		// The prefix that will be prepended to all topics for this Network
 		topic_prefix?: string
 
 		// The type of the network

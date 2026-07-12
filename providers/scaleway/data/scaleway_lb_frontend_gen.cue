@@ -1,6 +1,6 @@
 package data
 
-#scaleway_lb_frontend: {
+scaleway_lb_frontend: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_lb_frontend")
 	close({
@@ -34,12 +34,11 @@ package data
 		// Certificate ID
 		certificate_id?: string
 
-		// Collection of Certificate IDs related to the load balancer and
-		// domain
+		// Collection of Certificate IDs related to the load balancer and domain
 		certificate_ids?: [...string]
 
-		// Rate limit for new connections established on this frontend.
-		// Use 0 value to disable, else value is connections per second
+		// Rate limit for new connections established on this frontend. Use 0 value to
+		// disable, else value is connections per second
 		connection_rate_limit?: number
 
 		// The date and time of the creation of the frontend
@@ -51,9 +50,9 @@ package data
 		// Activates HTTP/3 protocol
 		enable_http3?: bool
 
-		// This boolean determines if ACLs should be managed externally
-		// through the 'lb_acl' resource. If set to `true`, `acl`
-		// attribute cannot be set directly in the lb frontend
+		// This boolean determines if ACLs should be managed externally through the
+		// 'lb_acl' resource. If set to `true`, `acl` attribute cannot be set directly
+		// in the lb frontend
 		external_acls?: bool
 
 		// The ID of the frontend

@@ -1,6 +1,6 @@
 package res
 
-#scaleway_instance_security_group: {
+scaleway_instance_security_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_instance_security_group")
 	close({
@@ -47,8 +47,7 @@ package res
 		// Action when rule match request (drop or accept)
 		action!: string
 
-		// Ip range for this rule (e.g: 192.168.1.0/24). Only one of ip or
-		// ip_range should be provided
+		// Ip range for this rule (e.g: 192.168.1.0/24). Only one of ip or ip_range should be provided
 		ip_range?: string
 
 		// Network port for this rule
@@ -65,8 +64,7 @@ package res
 		// Action when rule match request (drop or accept)
 		action!: string
 
-		// Ip range for this rule (e.g: 192.168.1.0/24). Only one of ip or
-		// ip_range should be provided
+		// Ip range for this rule (e.g: 192.168.1.0/24). Only one of ip or ip_range should be provided
 		ip_range?: string
 
 		// Network port for this rule

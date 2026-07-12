@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_k8s_cluster: {
+scaleway_k8s_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_k8s_cluster")
 	close({
@@ -14,8 +14,7 @@ import "list"
 		// The list of admission plugins to enable on the cluster
 		admission_plugins?: [...string]
 
-		// Additional Subject Alternative Names for the Kubernetes API
-		// server certificate
+		// Additional Subject Alternative Names for the Kubernetes API server certificate
 		apiserver_cert_sans?: [...string]
 
 		// Kubernetes API server URL
@@ -27,8 +26,8 @@ import "list"
 		// The date and time of the creation of the Kubernetes cluster
 		created_at?: string
 
-		// Delete additional resources like block volumes, load-balancers
-		// and the private network (if empty) on cluster deletion
+		// Delete additional resources like block volumes, load-balancers and the
+		// private network (if empty) on cluster deletion
 		delete_additional_resources!: bool
 
 		// The description of the cluster
@@ -85,8 +84,8 @@ import "list"
 		// True if an upgrade is available
 		upgrade_available?: bool
 
-		// Whether the pools should be automatically upgraded alongside
-		// the cluster, or have to be upgraded separately.
+		// Whether the pools should be automatically upgraded alongside the cluster, or
+		// have to be upgraded separately.
 		upgrade_pools?: bool
 
 		// The version of the cluster
@@ -108,8 +107,7 @@ import "list"
 	})
 
 	#autoscaler_config: close({
-		// Detect similar node groups and balance the number of nodes
-		// between them
+		// Detect similar node groups and balance the number of nodes between them
 		balance_similar_node_groups?: bool
 
 		// Disable the scale down feature of the autoscaler
@@ -121,38 +119,33 @@ import "list"
 		// Type of node group expander to be used in scale up
 		expander?: string
 
-		// Pods with priority below cutoff will be expendable. They can be
-		// killed without any consideration during scale down and they
-		// don't cause scale up. Pods with null priority (PodPriority
-		// disabled) are non expendable
+		// Pods with priority below cutoff will be expendable. They can be killed
+		// without any consideration during scale down and they don't cause scale up.
+		// Pods with null priority (PodPriority disabled) are non expendable
 		expendable_pods_priority_cutoff?: number
 
-		// Ignore DaemonSet pods when calculating resource utilization for
-		// scaling down
+		// Ignore DaemonSet pods when calculating resource utilization for scaling down
 		ignore_daemonsets_utilization?: bool
 
-		// Autoscaler logging level expressed from 0 to 4 (4 being the
-		// more verbose).
+		// Autoscaler logging level expressed from 0 to 4 (4 being the more verbose).
 		log_level?: number
 
-		// Maximum number of seconds the cluster autoscaler waits for pod
-		// termination when trying to scale down a node
+		// Maximum number of seconds the cluster autoscaler waits for pod termination
+		// when trying to scale down a node
 		max_graceful_termination_sec?: number
 
 		// How long after scale up that scale down evaluation resumes
 		scale_down_delay_after_add?: string
 
-		// How long a node should be unneeded before it is eligible for
-		// scale down
+		// How long a node should be unneeded before it is eligible for scale down
 		scale_down_unneeded_time?: string
 
-		// Node utilization level, defined as sum of requested resources
-		// divided by capacity, below which a node can be considered for
-		// scale down
+		// Node utilization level, defined as sum of requested resources divided by
+		// capacity, below which a node can be considered for scale down
 		scale_down_utilization_threshold?: number
 
-		// If true, the autoscaler will never delete nodes with pods with
-		// local storage, e.g. EmptyDir or HostPath.
+		// If true, the autoscaler will never delete nodes with pods with local storage,
+		// e.g. EmptyDir or HostPath.
 		skip_nodes_with_local_storage?: bool
 	})
 
@@ -166,12 +159,10 @@ import "list"
 		// Prefix prepended to group claims
 		groups_prefix?: string
 
-		// URL of the provider which allows the API server to discover
-		// public signing keys
+		// URL of the provider which allows the API server to discover public signing keys
 		issuer_url!: string
 
-		// Multiple key=value pairs that describes a required claim in the
-		// ID Token
+		// Multiple key=value pairs that describes a required claim in the ID Token
 		required_claim?: [...string]
 
 		// JWT claim to use as the user name

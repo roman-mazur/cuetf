@@ -1,6 +1,6 @@
 package data
 
-#scaleway_s2s_vpn_customer_gateway: {
+scaleway_s2s_vpn_customer_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_s2s_vpn_customer_gateway")
 	close({

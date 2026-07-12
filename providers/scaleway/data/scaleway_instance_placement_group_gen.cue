@@ -1,6 +1,6 @@
 package data
 
-#scaleway_instance_placement_group: {
+scaleway_instance_placement_group: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_instance_placement_group")
 	close({
@@ -15,8 +15,7 @@ package data
 		// The ID of the placementgroup
 		placement_group_id?: string
 
-		// One of the two policy_mode may be selected: enforced or
-		// optional.
+		// One of the two policy_mode may be selected: enforced or optional.
 		policy_mode?: string
 
 		// Is true when the policy is respected.

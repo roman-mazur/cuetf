@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_edge_services_backend_stage: {
+scaleway_edge_services_backend_stage: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_edge_services_backend_stage")
 	close({
@@ -57,23 +57,20 @@ import "list"
 	})
 
 	_#defs: "/$defs/lb_backend_config/$defs/lb_config": close({
-		// Fully Qualified Domain Name (in the format
-		// subdomain.example.com) to use in HTTP requests sent towards
-		// your Load Balancer
+		// Fully Qualified Domain Name (in the format subdomain.example.com) to use in
+		// HTTP requests sent towards your Load Balancer
 		domain_name?: string
 
 		// ID of the frontend linked to the Load Balancer
 		frontend_id?: string
 
-		// Defines whether to forward websocket requests to the load
-		// balancer
+		// Defines whether to forward websocket requests to the load balancer
 		has_websocket?: bool
 
 		// ID of the Load Balancer
 		id?: string
 
-		// Defines whether the Load Balancer's frontend handles SSL
-		// connections
+		// Defines whether the Load Balancer's frontend handles SSL connections
 		is_ssl?: bool
 
 		// The zone you want to attach the resource to

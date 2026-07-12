@@ -1,6 +1,6 @@
 package data
 
-#scaleway_opensearch_deployment: {
+scaleway_opensearch_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_opensearch_deployment")
 	close({
@@ -46,9 +46,8 @@ package data
 		// The project_id you want to attach the resource to
 		project_id?: string
 
-		// URL of the OpenSearch Dashboards service when it is exposed on
-		// a public endpoint (including when the API uses a private
-		// network)
+		// URL of the OpenSearch Dashboards service when it is exposed on a public
+		// endpoint (including when the API uses a private network)
 		public_dashboard_url?: string
 
 		// The region you want to attach the resource to

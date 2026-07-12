@@ -1,6 +1,6 @@
 package data
 
-#scaleway_interlink_routing_policy: {
+scaleway_interlink_routing_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_interlink_routing_policy")
 	close({
@@ -17,12 +17,10 @@ package data
 		// The Organization ID the routing policy is associated with
 		organization_id?: string
 
-		// IP prefixes to accept from the peer (ranges of route
-		// announcements to accept)
+		// IP prefixes to accept from the peer (ranges of route announcements to accept)
 		prefix_filter_in?: [...string]
 
-		// IP prefix filters to advertise to the peer (ranges of routes to
-		// advertise)
+		// IP prefix filters to advertise to the peer (ranges of routes to advertise)
 		prefix_filter_out?: [...string]
 
 		// The project_id you want to attach the resource to

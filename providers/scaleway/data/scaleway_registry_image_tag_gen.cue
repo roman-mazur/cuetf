@@ -1,14 +1,13 @@
 package data
 
-#scaleway_registry_image_tag: {
+scaleway_registry_image_tag: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_registry_image_tag")
 	close({
 		// Date and time of creation
 		created_at?: string
 
-		// Hash of the tag content. Several tags of a same image may have
-		// the same digest
+		// Hash of the tag content. Several tags of a same image may have the same digest
 		digest?: string
 		id?:     string
 

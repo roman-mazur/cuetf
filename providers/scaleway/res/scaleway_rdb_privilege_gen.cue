@@ -1,6 +1,6 @@
 package res
 
-#scaleway_rdb_privilege: {
+scaleway_rdb_privilege: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_rdb_privilege")
 	close({
@@ -9,8 +9,8 @@ package res
 		// Database name
 		database_name!: string
 
-		// Actual permission currently set in Scaleway. May differ from
-		// 'permission' after database schema changes
+		// Actual permission currently set in Scaleway. May differ from 'permission'
+		// after database schema changes
 		effective_permission?: string
 		id?:                   string
 
@@ -20,8 +20,8 @@ package res
 		// Desired permission (readonly, readwrite, all, custom, none)
 		permission!: string
 
-		// Permission synchronization status: 'synced' if effective
-		// matches desired, 'drifted' if they differ
+		// Permission synchronization status: 'synced' if effective matches desired,
+		// 'drifted' if they differ
 		permission_status?: string
 
 		// The region you want to attach the resource to

@@ -1,11 +1,10 @@
 package data
 
-#scaleway_object_bucket: {
+scaleway_object_bucket: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_object_bucket")
 	close({
-		// ACL of the bucket: either 'private', 'public-read',
-		// 'public-read-write' or 'authenticated-read'.
+		// ACL of the bucket: either 'private', 'public-read', 'public-read-write' or 'authenticated-read'.
 		acl?: string
 
 		// API URL of the bucket
@@ -27,8 +26,8 @@ package data
 		force_destroy?: bool
 		id?:            string
 
-		// Lifecycle configuration is a set of rules that define actions
-		// that Scaleway Object Storage applies to a group of objects
+		// Lifecycle configuration is a set of rules that define actions that Scaleway
+		// Object Storage applies to a group of objects
 		lifecycle_rule?: [...close({
 			abort_incomplete_multipart_upload_days?: number
 			enabled?:                                bool

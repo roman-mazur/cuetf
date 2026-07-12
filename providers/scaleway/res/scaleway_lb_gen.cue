@@ -2,27 +2,24 @@ package res
 
 import "list"
 
-#scaleway_lb: {
+scaleway_lb: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_lb")
 	close({
 		private_network?: matchN(1, [#private_network, list.MaxItems(8) & [...#private_network]])
 		timeouts?: #timeouts
 
-		// Defines whether to automatically assign a flexible public IP to
-		// the load balancer
+		// Defines whether to automatically assign a flexible public IP to the load balancer
 		assign_flexible_ip?: bool
 
-		// Defines whether to automatically assign a flexible public IPv6
-		// to the load balancer
+		// Defines whether to automatically assign a flexible public IPv6 to the load balancer
 		assign_flexible_ipv6?: bool
 
 		// The description of the lb
 		description?: string
 
-		// This boolean determines if private network attachments should
-		// be managed externally through the
-		// `scaleway_lb_private_network` resource. When set,
+		// This boolean determines if private network attachments should be managed
+		// externally through the `scaleway_lb_private_network` resource. When set,
 		// `private_network` must not be configured in this resource
 		external_private_networks?: bool
 		id?:                        string
@@ -42,8 +39,7 @@ import "list"
 		// The organization_id you want to attach the resource to
 		organization_id?: string
 
-		// List of private IPv4 and IPv6 addresses associated with the
-		// resource
+		// List of private IPv4 and IPv6 addresses associated with the resource
 		private_ips?: [...close({
 			address?: string
 			id?:      string
@@ -69,8 +65,7 @@ import "list"
 	})
 
 	#private_network: close({
-		// IPAM ID of a pre-reserved IP address to assign to the Load
-		// Balancer on this Private Network
+		// IPAM ID of a pre-reserved IP address to assign to the Load Balancer on this Private Network
 		ipam_ids?: [...string]
 
 		// The Private Network ID

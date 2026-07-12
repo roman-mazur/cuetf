@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_domain_record: {
+scaleway_domain_record: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_domain_record")
 	close({
@@ -87,13 +87,13 @@ import "list"
 	})
 
 	_#defs: "/$defs/geo_ip/$defs/matches": close({
-		// List of continents (eg: EU for Europe, NA for North America, AS
-		// for Asia...). List of all continents code:
+		// List of continents (eg: EU for Europe, NA for North America, AS for Asia...).
+		// List of all continents code:
 		// https://api.scaleway.com/domain-private/v2beta1/continents
 		continents?: [...string]
 
-		// List of countries (eg: FR for France, US for the United States,
-		// GB for Great Britain...). List of all countries code:
+		// List of countries (eg: FR for France, US for the United States, GB for Great
+		// Britain...). List of all countries code:
 		// https://api.scaleway.com/domain-private/v2beta1/countries
 		countries?: [...string]
 

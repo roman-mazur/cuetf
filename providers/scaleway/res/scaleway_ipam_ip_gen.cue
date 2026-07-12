@@ -1,6 +1,6 @@
 package res
 
-#scaleway_ipam_ip: {
+scaleway_ipam_ip: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_ipam_ip")
 	close({
@@ -54,8 +54,7 @@ package res
 		// MAC address of the custom resource
 		mac_address!: string
 
-		// When the resource is in a Private Network, a DNS record is
-		// available to resolve the resource name
+		// When the resource is in a Private Network, a DNS record is available to resolve the resource name
 		name?: string
 	})
 
@@ -63,8 +62,7 @@ package res
 		// Private Network the IP lives in if the IP is a private IP
 		private_network_id?: string
 
-		// Private Network subnet the IP lives in if the IP is a private
-		// IP in a Private Network
+		// Private Network subnet the IP lives in if the IP is a private IP in a Private Network
 		subnet_id?: string
 
 		// Zone the IP lives in if the IP is a public zoned one

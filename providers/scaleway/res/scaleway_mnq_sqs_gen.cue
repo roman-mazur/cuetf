@@ -1,6 +1,6 @@
 package res
 
-#scaleway_mnq_sqs: {
+scaleway_mnq_sqs: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_mnq_sqs")
 	close({

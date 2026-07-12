@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_lb_acl: {
+scaleway_lb_acl: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_lb_acl")
 	close({
@@ -20,8 +20,7 @@ import "list"
 		frontend_id!: string
 		id?:          string
 
-		// The priority of the ACL. (ACLs are applied in ascending order,
-		// 0 is the first ACL executed)
+		// The priority of the ACL. (ACLs are applied in ascending order, 0 is the first ACL executed)
 		index!: number
 
 		// The ACL name
@@ -42,8 +41,7 @@ import "list"
 		// The HTTP filter to match
 		http_filter?: string
 
-		// You can use this field with http_header_match acl type to set
-		// the header name to filter
+		// You can use this field with http_header_match acl type to set the header name to filter
 		http_filter_option?: string
 
 		// A list of possible values to match for the given HTTP filter
@@ -52,8 +50,7 @@ import "list"
 		// If set to true, the condition will be of type "unless"
 		invert?: bool
 
-		// A list of IPs or CIDR v4/v6 addresses of the client of the
-		// session to match
+		// A list of IPs or CIDR v4/v6 addresses of the client of the session to match
 		ip_subnet?: [...string]
 
 		// Defines whether Edge Services IPs should be matched

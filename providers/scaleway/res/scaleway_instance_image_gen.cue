@@ -1,6 +1,6 @@
 package res
 
-#scaleway_instance_image: {
+scaleway_instance_image: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_instance_image")
 	close({
@@ -25,8 +25,7 @@ package res
 		// The date and time of the creation of the image
 		creation_date?: string
 
-		// The ID of the backed-up server from which the snapshot was
-		// taken
+		// The ID of the backed-up server from which the snapshot was taken
 		from_server_id?: string
 		id?:             string
 

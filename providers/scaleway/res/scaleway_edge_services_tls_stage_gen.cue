@@ -1,6 +1,6 @@
 package res
 
-#scaleway_edge_services_tls_stage: {
+scaleway_edge_services_tls_stage: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_edge_services_tls_stage")
 	close({
@@ -19,8 +19,8 @@ package res
 		created_at?: string
 		id?:         string
 
-		// Set to true when Scaleway generates and manages a Let's Encrypt
-		// certificate for the TLS stage/custom endpoint
+		// Set to true when Scaleway generates and manages a Let's Encrypt certificate
+		// for the TLS stage/custom endpoint
 		managed_certificate?: bool
 
 		// The ID of the pipeline

@@ -1,6 +1,6 @@
 package res
 
-#scaleway_container_namespace: {
+scaleway_container_namespace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_container_namespace")
 	close({
@@ -28,8 +28,7 @@ package res
 		// The secret environment variables of the container namespace
 		secret_environment_variables?: [string]: string
 
-		// List of tags ["tag1", "tag2", ...] attached to the container
-		// namespace
+		// List of tags ["tag1", "tag2", ...] attached to the container namespace
 		tags?: [...string]
 	})
 

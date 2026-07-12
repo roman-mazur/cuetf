@@ -2,15 +2,14 @@ package res
 
 import "list"
 
-#scaleway_cockpit_token: {
+scaleway_cockpit_token: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_cockpit_token")
 	close({
 		scopes?: matchN(1, [#scopes, list.MaxItems(1) & [...#scopes]])
 		timeouts?: #timeouts
 
-		// The date and time of the creation of the Cockpit Token (Format
-		// ISO 8601)
+		// The date and time of the creation of the Cockpit Token (Format ISO 8601)
 		created_at?: string
 		id?:         string
 
@@ -26,8 +25,7 @@ import "list"
 		// The secret key of the token
 		secret_key?: string
 
-		// The date and time of the last update of the Cockpit Token
-		// (Format ISO 8601)
+		// The date and time of the last update of the Cockpit Token (Format ISO 8601)
 		updated_at?: string
 	})
 

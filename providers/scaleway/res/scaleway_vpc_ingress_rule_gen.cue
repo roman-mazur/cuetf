@@ -1,6 +1,6 @@
 package res
 
-#scaleway_vpc_ingress_rule: {
+scaleway_vpc_ingress_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_vpc_ingress_rule")
 	close({
@@ -23,8 +23,7 @@ package res
 		// The region you want to attach the resource to
 		region?: string
 
-		// Source IP range to which this rule applies (CIDR notation with
-		// subnet mask)
+		// Source IP range to which this rule applies (CIDR notation with subnet mask)
 		source!: string
 
 		// The tags associated with the ingress rule

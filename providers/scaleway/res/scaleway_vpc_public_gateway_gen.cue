@@ -1,13 +1,12 @@
 package res
 
-#scaleway_vpc_public_gateway: {
+scaleway_vpc_public_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_vpc_public_gateway")
 	close({
 		timeouts?: #timeouts
 
-		// Set a definitive list of IP ranges (in CIDR notation) allowed
-		// to connect to the SSH bastion
+		// Set a definitive list of IP ranges (in CIDR notation) allowed to connect to the SSH bastion
 		allowed_ip_ranges?: [...string]
 
 		// The bandwidth available of the gateway
@@ -38,8 +37,7 @@ package res
 		// The project_id you want to attach the resource to
 		project_id?: string
 
-		// Trigger a refresh of the SSH keys for a given Public Gateway by
-		// changing this field's value
+		// Trigger a refresh of the SSH keys for a given Public Gateway by changing this field's value
 		refresh_ssh_keys?: string
 
 		// The status of the public gateway

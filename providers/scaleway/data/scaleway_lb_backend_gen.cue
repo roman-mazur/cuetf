@@ -1,20 +1,17 @@
 package data
 
-#scaleway_lb_backend: {
+scaleway_lb_backend: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_lb_backend")
 	close({
 		// The ID of the backend
 		backend_id?: string
 
-		// Scaleway S3 bucket website to be served in case all backend
-		// servers are down
+		// Scaleway S3 bucket website to be served in case all backend servers are down
 		//
-		// **NOTE** : Only the host part of the Scaleway S3 bucket website
-		// is expected.
-		// E.g. 'failover-website.s3-website.fr-par.scw.cloud' if your
-		// bucket website URL is
-		// 'https://failover-website.s3-website.fr-par.scw.cloud/'.
+		// **NOTE** : Only the host part of the Scaleway S3 bucket website is expected.
+		// E.g. 'failover-website.s3-website.fr-par.scw.cloud' if your bucket website
+		// URL is 'https://failover-website.s3-website.fr-par.scw.cloud/'.
 		failover_host?: string
 
 		// User sessions will be forwarded to this port of backend servers
@@ -46,15 +43,13 @@ package data
 			uri?:         string
 		})]
 
-		// Number of allowed failed HC requests before the backend server
-		// is marked down
+		// Number of allowed failed HC requests before the backend server is marked down
 		health_check_max_retries?: number
 
 		// Port the HC requests will be send to. Default to `forward_port`
 		health_check_port?: number
 
-		// Defines whether proxy protocol should be activated for the
-		// health check
+		// Defines whether proxy protocol should be activated for the health check
 		health_check_send_proxy?: bool
 
 		// TCP Health check
@@ -63,13 +58,13 @@ package data
 		// Timeout before we consider a HC request failed
 		health_check_timeout?: string
 
-		// Time to wait between two consecutive health checks when a
-		// backend server is in a transient state (going UP or DOWN)
+		// Time to wait between two consecutive health checks when a backend server is
+		// in a transient state (going UP or DOWN)
 		health_check_transient_delay?: string
 		id?:                           string
 
-		// Specifies whether the Load Balancer should check the backend
-		// server’s certificate before initiating a connection
+		// Specifies whether the Load Balancer should check the backend server’s
+		// certificate before initiating a connection
 		ignore_ssl_server_verify?: bool
 
 		// The load-balancer ID
@@ -111,8 +106,8 @@ package data
 		// Maximum initial server connection establishment time
 		timeout_connect?: string
 
-		// Maximum time (in seconds) for a request to be left pending in
-		// queue when `max_connections` is reached
+		// Maximum time (in seconds) for a request to be left pending in queue when
+		// `max_connections` is reached
 		timeout_queue?: string
 
 		// Maximum server connection inactivity time
