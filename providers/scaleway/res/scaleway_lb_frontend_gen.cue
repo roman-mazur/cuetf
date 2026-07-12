@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_lb_frontend: {
+scaleway_lb_frontend: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_lb_frontend")
 	close({
@@ -12,12 +12,11 @@ import "list"
 		// The load-balancer backend ID
 		backend_id!: string
 
-		// Collection of Certificate IDs related to the load balancer and
-		// domain
+		// Collection of Certificate IDs related to the load balancer and domain
 		certificate_ids?: [...string]
 
-		// Rate limit for new connections established on this frontend.
-		// Use 0 value to disable, else value is connections per second
+		// Rate limit for new connections established on this frontend. Use 0 value to
+		// disable, else value is connections per second
 		connection_rate_limit?: number
 
 		// The date and time of the creation of the frontend
@@ -29,9 +28,9 @@ import "list"
 		// Activates HTTP/3 protocol
 		enable_http3?: bool
 
-		// This boolean determines if ACLs should be managed externally
-		// through the 'lb_acl' resource. If set to `true`, `acl`
-		// attribute cannot be set directly in the lb frontend
+		// This boolean determines if ACLs should be managed externally through the
+		// 'lb_acl' resource. If set to `true`, `acl` attribute cannot be set directly
+		// in the lb frontend
 		external_acls?: bool
 		id?:            string
 
@@ -97,8 +96,7 @@ import "list"
 		// The HTTP filter to match
 		http_filter?: string
 
-		// You can use this field with http_header_match acl type to set
-		// the header name to filter
+		// You can use this field with http_header_match acl type to set the header name to filter
 		http_filter_option?: string
 
 		// A list of possible values to match for the given HTTP filter
@@ -107,8 +105,7 @@ import "list"
 		// If set to true, the condition will be of type "unless"
 		invert?: bool
 
-		// A list of IPs or CIDR v4/v6 addresses of the client of the
-		// session to match
+		// A list of IPs or CIDR v4/v6 addresses of the client of the session to match
 		ip_subnet?: [...string]
 
 		// Defines whether Edge Services IPs should be matched

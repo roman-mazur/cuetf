@@ -1,6 +1,6 @@
 package data
 
-#scaleway_instance_image: {
+scaleway_instance_image: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_instance_image")
 	close({

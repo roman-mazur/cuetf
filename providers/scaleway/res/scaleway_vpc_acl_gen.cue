@@ -1,6 +1,6 @@
 package res
 
-#scaleway_vpc_acl: {
+scaleway_vpc_acl: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_vpc_acl")
 	close({
@@ -10,8 +10,8 @@ package res
 		default_policy?: string
 		id?:             string
 
-		// Defines whether this set of ACL rules is for IPv6 (false =
-		// IPv4). Each Network ACL can have rules for only one IP type
+		// Defines whether this set of ACL rules is for IPv6 (false = IPv4). Each
+		// Network ACL can have rules for only one IP type
 		is_ipv6?: bool
 
 		// The region you want to attach the resource to
@@ -28,31 +28,25 @@ package res
 		// The rule description
 		description?: string
 
-		// Destination IP range to which this rule applies (CIDR notation
-		// with subnet mask)
+		// Destination IP range to which this rule applies (CIDR notation with subnet mask)
 		destination?: string
 
-		// Ending port of the destination port range to which this rule
-		// applies (inclusive)
+		// Ending port of the destination port range to which this rule applies (inclusive)
 		dst_port_high?: number
 
-		// Starting port of the destination port range to which this rule
-		// applies (inclusive)
+		// Starting port of the destination port range to which this rule applies (inclusive)
 		dst_port_low?: number
 
 		// The protocol to which this rule applies. Default value: ANY
 		protocol?: string
 
-		// Source IP range to which this rule applies (CIDR notation with
-		// subnet mask)
+		// Source IP range to which this rule applies (CIDR notation with subnet mask)
 		source?: string
 
-		// Ending port of the source port range to which this rule applies
-		// (inclusive)
+		// Ending port of the source port range to which this rule applies (inclusive)
 		src_port_high?: number
 
-		// Starting port of the source port range to which this rule
-		// applies (inclusive)
+		// Starting port of the source port range to which this rule applies (inclusive)
 		src_port_low?: number
 	})
 }

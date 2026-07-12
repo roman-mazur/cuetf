@@ -1,14 +1,13 @@
 package data
 
-#scaleway_vpc_private_network: {
+scaleway_vpc_private_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_vpc_private_network")
 	close({
 		// The date and time of the creation of the private network
 		created_at?: string
 
-		// Defines whether default v4 and v6 routes are propagated for
-		// this Private Network
+		// Defines whether default v4 and v6 routes are propagated for this Private Network
 		enable_default_route_propagation?: bool
 		id?:                               string
 
@@ -34,8 +33,7 @@ package data
 			updated_at?:    string
 		})]
 
-		// Defines whether the private network is Regional. By default, it
-		// will be Zonal
+		// Defines whether the private network is Regional. By default, it will be Zonal
 		is_regional?: bool
 
 		// The name of the private network

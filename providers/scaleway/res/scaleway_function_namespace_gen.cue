@@ -1,6 +1,6 @@
 package res
 
-#scaleway_function_namespace: {
+scaleway_function_namespace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_function_namespace")
 	close({
@@ -34,8 +34,7 @@ package res
 		// The environment variables of the function namespace
 		secret_environment_variables?: [string]: string
 
-		// List of tags ["tag1", "tag2", ...] attached to the function
-		// namespace
+		// List of tags ["tag1", "tag2", ...] attached to the function namespace
 		tags?: [...string]
 	})
 

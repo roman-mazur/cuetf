@@ -1,6 +1,6 @@
 package data
 
-#scaleway_secret_version: {
+scaleway_secret_version: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_secret_version")
 	close({
@@ -12,17 +12,15 @@ package data
 
 		// The raw data payload of your secret version in
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// mode. Must not exceed 64KiB in size (e.g.
-		// `my-secret-version-payload`). Only one of `data` or `data_wo`
-		// should be specified. `data_wo` will not be set in the
-		// Terraform state. To update the `data_wo`, you must also update
-		// the `data_wo_version`.
+		// mode. Must not exceed 64KiB in size (e.g. `my-secret-version-payload`). Only
+		// one of `data` or `data_wo` should be specified. `data_wo` will not be set in
+		// the Terraform state. To update the `data_wo`, you must also update the
+		// `data_wo_version`.
 		data_wo?: string
 
 		// The version of the
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// data. To update the `data_wo`, you must also update the
-		// `data_wo_version`.
+		// data. To update the `data_wo`, you must also update the `data_wo_version`.
 		data_wo_version?: number
 
 		// Description of the secret version

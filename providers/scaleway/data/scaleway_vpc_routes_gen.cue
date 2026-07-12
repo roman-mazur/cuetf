@@ -1,6 +1,6 @@
 package data
 
-#scaleway_vpc_routes: {
+scaleway_vpc_routes: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_vpc_routes")
 	close({
@@ -9,16 +9,13 @@ package data
 		// Only routes with an IPv6 destination will be returned
 		is_ipv6?: bool
 
-		// Only routes with a matching next hop private network ID will be
-		// returned
+		// Only routes with a matching next hop private network ID will be returned
 		nexthop_private_network_id?: string
 
-		// Only routes with a matching next hop resource ID will be
-		// returned
+		// Only routes with a matching next hop resource ID will be returned
 		nexthop_resource_id?: string
 
-		// Only Routes with a matching next hop resource type will be
-		// returned
+		// Only Routes with a matching next hop resource type will be returned
 		nexthop_resource_type?: string
 
 		// The region you want to attach the resource to

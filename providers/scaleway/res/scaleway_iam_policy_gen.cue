@@ -1,6 +1,6 @@
 package res
 
-#scaleway_iam_policy: {
+scaleway_iam_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_iam_policy")
 	close({
@@ -45,15 +45,13 @@ package res
 		// Conditions of the policy
 		condition?: string
 
-		// ID of organization scoped to the rule. Only one of project_ids
-		// and organization_id may be set.
+		// ID of organization scoped to the rule. Only one of project_ids and organization_id may be set.
 		organization_id?: string
 
 		// Names of permission sets bound to the rule.
 		permission_set_names!: [...string]
 
-		// List of project IDs scoped to the rule. Only one of project_ids
-		// and organization_id may be set.
+		// List of project IDs scoped to the rule. Only one of project_ids and organization_id may be set.
 		project_ids?: [...string]
 	})
 }

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_object_bucket_server_side_encryption_configuration: {
+scaleway_object_bucket_server_side_encryption_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_object_bucket_server_side_encryption_configuration")
 	close({
@@ -27,14 +27,12 @@ import "list"
 	})
 
 	_#defs: "/$defs/rule/$defs/apply_server_side_encryption_by_default": close({
-		// Scaleway KMS master key ID used for the SSE-KMS encryption.
-		// This can only be used when you set the value of sse_algorithm
-		// as 'aws:kms'. Will return an error if this element is absent
-		// while the sse_algorithm is 'aws:kms'.
+		// Scaleway KMS master key ID used for the SSE-KMS encryption. This can only be
+		// used when you set the value of sse_algorithm as 'aws:kms'. Will return an
+		// error if this element is absent while the sse_algorithm is 'aws:kms'.
 		kms_master_key_id?: string
 
-		// Server-side encryption algorithm to use. Valid values are
-		// 'AES256', 'aws:kms'
+		// Server-side encryption algorithm to use. Valid values are 'AES256', 'aws:kms'
 		sse_algorithm!: string
 	})
 }

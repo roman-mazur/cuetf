@@ -1,14 +1,13 @@
 package data
 
-#scaleway_k8s_cluster: {
+scaleway_k8s_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_k8s_cluster")
 	close({
 		// The list of admission plugins to enable on the cluster
 		admission_plugins?: [...string]
 
-		// Additional Subject Alternative Names for the Kubernetes API
-		// server certificate
+		// Additional Subject Alternative Names for the Kubernetes API server certificate
 		apiserver_cert_sans?: [...string]
 
 		// Kubernetes API server URL
@@ -111,8 +110,8 @@ package data
 		// True if an upgrade is available
 		upgrade_available?: bool
 
-		// Whether the pools should be automatically upgraded alongside
-		// the cluster, or have to be upgraded separately.
+		// Whether the pools should be automatically upgraded alongside the cluster, or
+		// have to be upgraded separately.
 		upgrade_pools?: bool
 
 		// The version of the cluster

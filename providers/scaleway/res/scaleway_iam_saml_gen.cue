@@ -1,6 +1,6 @@
 package res
 
-#scaleway_iam_saml: {
+scaleway_iam_saml: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_iam_saml")
 	close({
@@ -10,8 +10,8 @@ package res
 		// The ID of the SAML configuration
 		id?: string
 
-		// The organization ID. If not provided, the default organization
-		// configured in the provider is used.
+		// The organization ID. If not provided, the default organization configured in
+		// the provider is used.
 		organization_id?: string
 
 		// The Service Provider information

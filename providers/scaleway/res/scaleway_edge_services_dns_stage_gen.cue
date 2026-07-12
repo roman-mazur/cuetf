@@ -1,6 +1,6 @@
 package res
 
-#scaleway_edge_services_dns_stage: {
+scaleway_edge_services_dns_stage: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_edge_services_dns_stage")
 	close({
@@ -16,8 +16,7 @@ package res
 		// Default Fully Qualified Domain Name attached to the stage
 		default_fqdn?: string
 
-		// Fully Qualified Domain Name (in the format
-		// subdomain.example.com) to attach to the stage
+		// Fully Qualified Domain Name (in the format subdomain.example.com) to attach to the stage
 		fqdns?: [...string]
 		id?: string
 
@@ -35,5 +34,9 @@ package res
 
 		// The date and time of the last update of the DNS stage
 		updated_at?: string
+
+		// Defines whether wildcard (subdomains) is supported for the given domain. A
+		// wildcard certificate is required to make it work
+		wildcard_domain?: bool
 	})
 }

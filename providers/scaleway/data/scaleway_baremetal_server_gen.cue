@@ -1,11 +1,10 @@
 package data
 
-#scaleway_baremetal_server: {
+scaleway_baremetal_server: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_baremetal_server")
 	close({
-		// Configuration data to pass to cloud-init such as a YAML cloud
-		// config data or a user-data script
+		// Configuration data to pass to cloud-init such as a YAML cloud config data or a user-data script
 		cloud_init?: string
 
 		// Some description to associate to the server, max 255 characters
@@ -18,8 +17,8 @@ package data
 		hostname?: string
 		id?:       string
 
-		// If True, this boolean allows to create a server without the
-		// install config if you want to provide it later
+		// If True, this boolean allows to create a server without the install config if
+		// you want to provide it later
 		install_config_afterward?: bool
 
 		// IP addresses attached to the server.
@@ -77,26 +76,23 @@ package data
 		// The partitioning schema in json format
 		partitioning?: string
 
-		// Password used for the installation. Only one of `password` or
-		// `password_wo` should be specified.
+		// Password used for the installation. Only one of `password` or `password_wo` should be specified.
 		password?: string
 
 		// Password used for the installation in
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// mode. Only one of `password` or `password_wo` should be
-		// specified. `password_wo` will not be set in the Terraform
-		// state. To update the `password_wo`, you must also update the
-		// `password_wo_version`.
+		// mode. Only one of `password` or `password_wo` should be specified.
+		// `password_wo` will not be set in the Terraform state. To update the
+		// `password_wo`, you must also update the `password_wo_version`.
 		password_wo?: string
 
 		// The version of the
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// password. To update the `password_wo`, you must also update
-		// the `password_wo_version`.
+		// password. To update the `password_wo`, you must also update the
+		// `password_wo_version`.
 		password_wo_version?: number
 
-		// List of private IPv4 and IPv6 addresses associated with the
-		// resource
+		// List of private IPv4 and IPv6 addresses associated with the resource
 		private_ips?: [...close({
 			address?: string
 			id?:      string
@@ -116,34 +112,31 @@ package data
 		// The project_id you want to attach the resource to
 		project_id?: string
 
-		// If true, the baremetal server is protected against accidental
-		// deletion via the Scaleway API.
+		// If true, the baremetal server is protected against accidental deletion via the Scaleway API.
 		protected?: bool
 
-		// If True, this boolean allows to reinstall the server on SSH key
-		// IDs, user or password changes
+		// If True, this boolean allows to reinstall the server on SSH key IDs, user or password changes
 		reinstall_on_config_changes?: bool
 
 		// The ID of the server
 		server_id?: string
 
-		// Password used for the service to install. Only one of
-		// `service_password` or `service_password_wo` should be
-		// specified.
+		// Password used for the service to install. Only one of `service_password` or
+		// `service_password_wo` should be specified.
 		service_password?: string
 
 		// Password used for the service to install in
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// mode. Only one of `service_password` or `service_password_wo`
-		// should be specified. `service_password_wo` will not be set in
-		// the Terraform state. To update the `service_password_wo`, you
-		// must also update the `service_password_wo_version`.
+		// mode. Only one of `service_password` or `service_password_wo` should be
+		// specified. `service_password_wo` will not be set in the Terraform state. To
+		// update the `service_password_wo`, you must also update the
+		// `service_password_wo_version`.
 		service_password_wo?: string
 
 		// The version of the
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// service password. To update the `service_password_wo`, you
-		// must also update the `service_password_wo_version`.
+		// service password. To update the `service_password_wo`, you must also update
+		// the `service_password_wo_version`.
 		service_password_wo_version?: number
 
 		// User used for the service to install.
@@ -151,10 +144,9 @@ package data
 
 		// Array of SSH key IDs allowed to SSH to the server
 		//
-		// **NOTE** : If you are attempting to update your SSH key IDs, it
-		// will induce the reinstall of your server.
-		// If this behaviour is wanted, please set
-		// 'reinstall_on_ssh_key_changes' argument to true.
+		// **NOTE** : If you are attempting to update your SSH key IDs, it will induce
+		// the reinstall of your server.
+		// If this behaviour is wanted, please set 'reinstall_on_ssh_key_changes' argument to true.
 		ssh_key_ids?: [...string]
 
 		// Array of tags to associate with the server

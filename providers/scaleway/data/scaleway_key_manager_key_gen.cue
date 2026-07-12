@@ -1,11 +1,10 @@
 package data
 
-#scaleway_key_manager_key: {
+scaleway_key_manager_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_key_manager_key")
 	close({
-		// Algorithm to use for the key. The valid algorithms depend on
-		// the usage type.
+		// Algorithm to use for the key. The valid algorithms depend on the usage type.
 		algorithm?: string
 
 		// Key creation date.
@@ -26,9 +25,9 @@ package data
 		// Name of the key.
 		name?: string
 
-		// Origin of the key material. Possible values: scaleway_kms (Key
-		// Manager generates the key material), external (key material
-		// comes from an external source).
+		// Origin of the key material. Possible values: scaleway_kms (Key Manager
+		// generates the key material), external (key material comes from an external
+		// source).
 		origin?: string
 
 		// The project_id you want to attach the resource to
@@ -43,8 +42,7 @@ package data
 		// Key last rotation date.
 		rotated_at?: string
 
-		// The rotation count tracks the number of times the key has been
-		// rotated.
+		// The rotation count tracks the number of times the key has been rotated.
 		rotation_count?: number
 
 		// Key rotation policy.
@@ -65,8 +63,7 @@ package data
 		// Key last modification date.
 		updated_at?: string
 
-		// Key usage type. Possible values: symmetric_encryption,
-		// asymmetric_encryption, asymmetric_signing.
+		// Key usage type. Possible values: symmetric_encryption, asymmetric_encryption, asymmetric_signing.
 		usage?: string
 	})
 }

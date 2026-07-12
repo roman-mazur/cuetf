@@ -2,15 +2,15 @@ package res
 
 import "list"
 
-#scaleway_job_definition: {
+scaleway_job_definition: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_job_definition")
 	close({
 		cron?: matchN(1, [#cron, list.MaxItems(1) & [...#cron]])
+		retry_policy?: matchN(1, [#retry_policy, list.MaxItems(1) & [...#retry_policy]])
 		secret_reference?: matchN(1, [#secret_reference, [...#secret_reference]])
 
-		// Job arguments in list format. Overrides the default arguments
-		// defined in the job image.
+		// Job arguments in list format. Overrides the default arguments defined in the job image.
 		args?: [...string]
 
 		// CPU limit of the job
@@ -41,8 +41,8 @@ import "list"
 		// The region you want to attach the resource to
 		region?: string
 
-		// Command to use for the job (in list format). Overrides the
-		// default command defined in the job image.
+		// Command to use for the job (in list format). Overrides the default command
+		// defined in the job image.
 		startup_command?: [...string]
 
 		// Timeout for the job in seconds
@@ -53,9 +53,13 @@ import "list"
 		// UNIX cron schedule to run job
 		schedule!: string
 
-		// Timezone for the cron schedule, in tz database format (e.g.,
-		// 'Europe/Paris').
+		// Timezone for the cron schedule, in tz database format (e.g., 'Europe/Paris').
 		timezone!: string
+	})
+
+	#retry_policy: close({
+		// The maximum number of retries upon job failure.
+		max_retries?: number
 	})
 
 	#secret_reference: close({
@@ -65,9 +69,8 @@ import "list"
 		// The absolute file path where the secret will be mounted.
 		file?: string
 
-		// The secret unique identifier, it could be formatted as
-		// region/UUID or UUID. In case the region is passed, it must be
-		// the same as the job definition.
+		// The secret unique identifier, it could be formatted as region/UUID or UUID.
+		// In case the region is passed, it must be the same as the job definition.
 		secret_id!: string
 
 		// The secret reference UUID

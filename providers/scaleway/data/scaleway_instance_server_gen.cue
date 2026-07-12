@@ -1,14 +1,13 @@
 package data
 
-#scaleway_instance_server: {
+scaleway_instance_server: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_instance_server")
 	close({
 		// The additional volumes attached to the server
 		additional_volume_ids?: [...string]
 
-		// The ID of the IAM SSH key used to encrypt the initial admin
-		// password on a Windows server
+		// The ID of the IAM SSH key used to encrypt the initial admin password on a Windows server
 		admin_password_encryption_ssh_key_id?: string
 
 		// The boot type of the server
@@ -51,8 +50,7 @@ package data
 		// True when the placement group policy is respected
 		placement_group_policy_respected?: bool
 
-		// List of private IPv4 and IPv6 addresses associated with the
-		// resource
+		// List of private IPv4 and IPv6 addresses associated with the resource
 		private_ips?: [...close({
 			address?: string
 			id?:      string
@@ -70,12 +68,10 @@ package data
 		// The project_id you want to attach the resource to
 		project_id?: string
 
-		// If true, the instance is protected against accidental deletion
-		// via the Scaleway API.
+		// If true, the instance is protected against accidental deletion via the Scaleway API.
 		protected?: bool
 
-		// List of private IPv4 and IPv6 addresses attached to your
-		// instance
+		// List of private IPv4 and IPv6 addresses attached to your instance
 		public_ips?: [...close({
 			address?:           string
 			dynamic?:           bool

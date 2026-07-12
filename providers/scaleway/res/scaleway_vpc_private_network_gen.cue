@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_vpc_private_network: {
+scaleway_vpc_private_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_vpc_private_network")
 	close({
@@ -12,8 +12,7 @@ import "list"
 		// The date and time of the creation of the private network
 		created_at?: string
 
-		// Defines whether default v4 and v6 routes are propagated for
-		// this Private Network
+		// Defines whether default v4 and v6 routes are propagated for this Private Network
 		enable_default_route_propagation?: bool
 		id?:                               string
 
@@ -40,8 +39,8 @@ import "list"
 	})
 
 	#ipv4_subnet: close({
-		// The network address of the subnet in dotted decimal notation,
-		// e.g., '192.168.0.0' for a '192.168.0.0/24' subnet
+		// The network address of the subnet in dotted decimal notation, e.g.,
+		// '192.168.0.0' for a '192.168.0.0/24' subnet
 		address?: string
 
 		// The date and time of the creation of the subnet
@@ -50,15 +49,13 @@ import "list"
 		// The subnet ID
 		id?: string
 
-		// The length of the network prefix, e.g., 24 for a 255.255.255.0
-		// mask
+		// The length of the network prefix, e.g., 24 for a 255.255.255.0 mask
 		prefix_length?: number
 
 		// The subnet CIDR
 		subnet?: string
 
-		// The subnet mask expressed in dotted decimal notation, e.g.,
-		// '255.255.255.0' for a /24 subnet
+		// The subnet mask expressed in dotted decimal notation, e.g., '255.255.255.0' for a /24 subnet
 		subnet_mask?: string
 
 		// The date and time of the last update of the subnet
@@ -66,8 +63,8 @@ import "list"
 	})
 
 	#ipv6_subnets: close({
-		// The network address of the subnet in dotted decimal notation,
-		// e.g., '192.168.0.0' for a '192.168.0.0/24' subnet
+		// The network address of the subnet in dotted decimal notation, e.g.,
+		// '192.168.0.0' for a '192.168.0.0/24' subnet
 		address?: string
 
 		// The date and time of the creation of the subnet
@@ -76,15 +73,13 @@ import "list"
 		// The subnet ID
 		id?: string
 
-		// The length of the network prefix, e.g., 24 for a 255.255.255.0
-		// mask
+		// The length of the network prefix, e.g., 24 for a 255.255.255.0 mask
 		prefix_length?: number
 
 		// The subnet CIDR
 		subnet?: string
 
-		// The subnet mask expressed in dotted decimal notation, e.g.,
-		// '255.255.255.0' for a /24 subnet
+		// The subnet mask expressed in dotted decimal notation, e.g., '255.255.255.0' for a /24 subnet
 		subnet_mask?: string
 
 		// The date and time of the last update of the subnet

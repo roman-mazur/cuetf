@@ -1,6 +1,6 @@
 package data
 
-#scaleway_billing_budget: {
+scaleway_billing_budget: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_billing_budget")
 	close({
@@ -19,8 +19,8 @@ package data
 		// The ID of the budget
 		id?: string
 
-		// The organization ID. If not provided, the default organization
-		// configured in the provider is used.
+		// The organization ID. If not provided, the default organization configured in
+		// the provider is used.
 		organization_id?: string
 
 		// The date and time when the budget was last updated

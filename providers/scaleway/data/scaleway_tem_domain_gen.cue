@@ -1,6 +1,6 @@
 package data
 
-#scaleway_tem_domain: {
+scaleway_tem_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_tem_domain")
 	close({
@@ -19,12 +19,10 @@ package data
 		// DKIM name for the domain, as should be recorded in the DNS zone
 		dkim_name?: string
 
-		// DMARC record for the domain, as should be recorded in the DNS
-		// zone
+		// DMARC record for the domain, as should be recorded in the DNS zone
 		dmarc_config?: string
 
-		// DMARC name for the domain, as should be recorded in the DNS
-		// zone
+		// DMARC name for the domain, as should be recorded in the DNS zone
 		dmarc_name?: string
 
 		// The ID of the tem domain
@@ -34,8 +32,7 @@ package data
 		// Error message if the last check failed
 		last_error?: string
 
-		// Date and time the domain was last found to be valid (RFC 3339
-		// format)
+		// Date and time the domain was last found to be valid (RFC 3339 format)
 		last_valid_at?: string
 
 		// The Scaleway's blackhole MX server to use
@@ -80,8 +77,8 @@ package data
 		// SMTP port to use to send emails. (Port 25)
 		smtp_port_unsecure?: number
 
-		// SMTPS auth user refers to the identifier for a user authorized
-		// to send emails via SMTPS, ensuring secure email transmission
+		// SMTPS auth user refers to the identifier for a user authorized to send emails
+		// via SMTPS, ensuring secure email transmission
 		smtps_auth_user?: string
 
 		// SMTPS port to use to send emails over TLS Wrapper. (Port 465)
@@ -90,12 +87,10 @@ package data
 		// SMTPS port to use to send emails over TLS Wrapper. (Port 2465)
 		smtps_port_alternative?: number
 
-		// Snippet of the SPF record that should be registered in the DNS
-		// zone
+		// Snippet of the SPF record that should be registered in the DNS zone
 		spf_config?: string
 
-		// Complete SPF record value for the domain, as should be recorded
-		// in the DNS zone
+		// Complete SPF record value for the domain, as should be recorded in the DNS zone
 		spf_value?: string
 
 		// Status of the domain

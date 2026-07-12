@@ -1,11 +1,10 @@
 package data
 
-#scaleway_cockpit: {
+scaleway_cockpit: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_cockpit")
 	close({
-		// [DEPRECATED] Endpoints list. Please use
-		// 'scaleway_cockpit_source' instead.
+		// [DEPRECATED] Endpoints list. Please use 'scaleway_cockpit_source' instead.
 		endpoints?: [...close({
 			alertmanager_url?: string
 			grafana_url?:      string
@@ -15,8 +14,7 @@ package data
 		})]
 		id?: string
 
-		// [DEPRECATED] The plan ID of the cockpit. This field is no
-		// longer relevant.
+		// [DEPRECATED] The plan ID of the cockpit. This field is no longer relevant.
 		plan_id?: string
 
 		// The project_id you want to attach the resource to

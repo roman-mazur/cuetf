@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_rdb_instance: {
+scaleway_rdb_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_rdb_instance")
 	close({
@@ -12,8 +12,7 @@ import "list"
 		private_network?: matchN(1, [#private_network, list.MaxItems(1) & [...#private_network]])
 		timeouts?: #timeouts
 
-		// Boolean to store logical backups in the same region as the
-		// database instance
+		// Boolean to store logical backups in the same region as the database instance
 		backup_same_region?: bool
 
 		// Backup schedule frequency in hours
@@ -31,9 +30,9 @@ import "list"
 		// Enable or disable encryption at rest for the database instance
 		encryption_at_rest?: bool
 
-		// Database's engine version name (e.g., 'PostgreSQL-16',
-		// 'MySQL-8'). Changing this value triggers a blue/green upgrade
-		// using MajorUpgradeWorkflow with automatic endpoint migration
+		// Database's engine version name (e.g., 'PostgreSQL-16', 'MySQL-8'). Changing
+		// this value triggers a blue/green upgrade using MajorUpgradeWorkflow with
+		// automatic endpoint migration
 		engine?: string
 		id?:     string
 
@@ -42,6 +41,17 @@ import "list"
 
 		// Enable or disable high availability for the database instance
 		is_ha_cluster?: bool
+
+		// List of scheduled maintenance events on the database instance
+		maintenances?: [...close({
+			closed_at?:     string
+			forced_at?:     string
+			is_applicable?: bool
+			reason?:        string
+			starts_at?:     string
+			status?:        string
+			stops_at?:      string
+		})]
 
 		// Name of the database instance
 		name?: string
@@ -52,22 +62,21 @@ import "list"
 		// The organization_id you want to attach the resource to
 		organization_id?: string
 
-		// Password for the first user of the database instance. Only one
-		// of `password` or `password_wo` should be specified.
+		// Password for the first user of the database instance. Only one of `password`
+		// or `password_wo` should be specified.
 		password?: string
 
 		// Password for the first user of the database instance in
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// mode. Only one of `password` or `password_wo` should be
-		// specified. `password_wo` will not be set in the Terraform
-		// state. To update the `password_wo`, you must also update the
-		// `password_wo_version`.
+		// mode. Only one of `password` or `password_wo` should be specified.
+		// `password_wo` will not be set in the Terraform state. To update the
+		// `password_wo`, you must also update the `password_wo_version`.
 		password_wo?: string
 
 		// The version of the
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// password. To update the `password_wo`, you must also update
-		// the `password_wo_version`.
+		// password. To update the `password_wo`, you must also update the
+		// `password_wo_version`.
 		password_wo_version?: number
 
 		// The project_id you want to attach the resource to
@@ -86,13 +95,12 @@ import "list"
 		// Map of engine settings to be set on a running instance.
 		settings?: [string]: string
 
-		// ID of an existing snapshot to create a new instance from. This
-		// allows restoring a database instance to the state captured in
-		// the specified snapshot. Conflicts with the `engine` attribute.
+		// ID of an existing snapshot to create a new instance from. This allows
+		// restoring a database instance to the state captured in the specified
+		// snapshot. Conflicts with the `engine` attribute.
 		snapshot_id?: string
 
-		// List of tags ["tag1", "tag2", ...] attached to a database
-		// instance
+		// List of tags ["tag1", "tag2", ...] attached to a database instance
 		tags?: [...string]
 
 		// List of available engine versions for upgrade
@@ -131,12 +139,10 @@ import "list"
 	})
 
 	#logs_policy: close({
-		// The max age (in days) of remote logs to keep on the Database
-		// Instance
+		// The max age (in days) of remote logs to keep on the Database Instance
 		max_age_retention?: number
 
-		// The max disk size of remote logs to keep on the Database
-		// Instance.
+		// The max disk size of remote logs to keep on the Database Instance.
 		total_disk_retention?: number
 	})
 
@@ -149,8 +155,7 @@ import "list"
 	})
 
 	#private_network: close({
-		// Whether or not the private network endpoint should be
-		// configured with IPAM
+		// Whether or not the private network endpoint should be configured with IPAM
 		enable_ipam?: bool
 
 		// The endpoint ID

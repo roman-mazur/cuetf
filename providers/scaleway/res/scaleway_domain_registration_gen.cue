@@ -2,15 +2,14 @@ package res
 
 import "list"
 
-#scaleway_domain_registration: {
+scaleway_domain_registration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_domain_registration")
 	close({
 		owner_contact?: matchN(1, [#owner_contact, list.MaxItems(1) & [...#owner_contact]])
 		timeouts?: #timeouts
 
-		// Details of the administrative contact (read-only, set by the
-		// API).
+		// Details of the administrative contact (read-only, set by the API).
 		administrative_contact?: [...close({
 			address_line_1?:              string
 			address_line_2?:              string
@@ -86,8 +85,7 @@ import "list"
 		duration_in_years?: number
 		id?:                string
 
-		// ID of the owner contact. Either `owner_contact_id` or
-		// `owner_contact` must be provided.
+		// ID of the owner contact. Either `owner_contact_id` or `owner_contact` must be provided.
 		owner_contact_id?: string
 
 		// The project_id you want to attach the resource to
@@ -157,12 +155,10 @@ import "list"
 		// City of the contact's address.
 		city!: string
 
-		// Company identification code (e.g., SIREN/SIRET in France) for
-		// the contact.
+		// Company identification code (e.g., SIREN/SIRET in France) for the contact.
 		company_identification_code?: string
 
-		// Name of the company associated with the contact (if
-		// applicable).
+		// Name of the company associated with the contact (if applicable).
 		company_name?: string
 
 		// Country code of the contact's address (ISO format).
@@ -189,8 +185,7 @@ import "list"
 		// Last name of the contact.
 		lastname!: string
 
-		// Legal form of the contact (e.g., 'individual' or
-		// 'organization').
+		// Legal form of the contact (e.g., 'individual' or 'organization').
 		legal_form!: string
 
 		// Primary phone number of the contact.
@@ -232,24 +227,20 @@ import "list"
 		individual_info?: matchN(1, [_#defs."/$defs/owner_contact/$defs/extension_fr/$defs/individual_info", list.MaxItems(1) & [..._#defs."/$defs/owner_contact/$defs/extension_fr/$defs/individual_info"]])
 		trademark_info?: matchN(1, [_#defs."/$defs/owner_contact/$defs/extension_fr/$defs/trademark_info", list.MaxItems(1) & [..._#defs."/$defs/owner_contact/$defs/extension_fr/$defs/trademark_info"]])
 
-		// Mode of the French extension (e.g., 'individual', 'duns',
-		// 'association', etc.).
+		// Mode of the French extension (e.g., 'individual', 'duns', 'association', etc.).
 		mode?: string
 	})
 
 	_#defs: "/$defs/owner_contact/$defs/extension_fr/$defs/association_info": close({
-		// Publication date in the Official Journal (RFC3339 format) for
-		// association information.
+		// Publication date in the Official Journal (RFC3339 format) for association information.
 		publication_jo?: string
 
-		// Page number of the publication in the Official Journal for
-		// association information.
+		// Page number of the publication in the Official Journal for association information.
 		publication_jo_page?: number
 	})
 
 	_#defs: "/$defs/owner_contact/$defs/extension_fr/$defs/code_auth_afnic_info": close({
-		// AFNIC authorization code for the contact (specific to French
-		// domains).
+		// AFNIC authorization code for the contact (specific to French domains).
 		code_auth_afnic?: string
 	})
 

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_object_bucket_lock_configuration: {
+scaleway_object_bucket_lock_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_object_bucket_lock_configuration")
 	close({
@@ -24,16 +24,14 @@ import "list"
 	})
 
 	_#defs: "/$defs/rule/$defs/default_retention": close({
-		// The number of days that you want to specify for the default
-		// retention period.
+		// The number of days that you want to specify for the default retention period.
 		days?: number
 
-		// The default Object Lock retention mode you want to apply to new
-		// objects placed in the specified bucket.
+		// The default Object Lock retention mode you want to apply to new objects
+		// placed in the specified bucket.
 		mode!: string
 
-		// The number of years that you want to specify for the default
-		// retention period.
+		// The number of years that you want to specify for the default retention period.
 		years?: number
 	})
 }

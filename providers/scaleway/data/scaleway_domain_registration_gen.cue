@@ -1,11 +1,10 @@
 package data
 
-#scaleway_domain_registration: {
+scaleway_domain_registration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_domain_registration")
 	close({
-		// Details of the administrative contact (read-only, set by the
-		// API).
+		// Details of the administrative contact (read-only, set by the API).
 		administrative_contact?: [...close({
 			address_line_1?:              string
 			address_line_2?:              string
@@ -84,8 +83,7 @@ package data
 		duration_in_years?: number
 		id?:                string
 
-		// Details of the owner contact. Either `owner_contact_id` or
-		// `owner_contact` must be provided.
+		// Details of the owner contact. Either `owner_contact_id` or `owner_contact` must be provided.
 		owner_contact?: [...close({
 			address_line_1?:              string
 			address_line_2?:              string
@@ -132,8 +130,7 @@ package data
 			zip?:                     string
 		})]
 
-		// ID of the owner contact. Either `owner_contact_id` or
-		// `owner_contact` must be provided.
+		// ID of the owner contact. Either `owner_contact_id` or `owner_contact` must be provided.
 		owner_contact_id?: string
 
 		// The project_id you want to attach the resource to

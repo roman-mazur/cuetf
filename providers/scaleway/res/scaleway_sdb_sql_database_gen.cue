@@ -1,6 +1,6 @@
 package res
 
-#scaleway_sdb_sql_database: {
+scaleway_sdb_sql_database: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_sdb_sql_database")
 	close({
@@ -10,12 +10,10 @@ package res
 		endpoint?: string
 		id?:       string
 
-		// The maximum number of CPU units for your Serverless SQL
-		// Database
+		// The maximum number of CPU units for your Serverless SQL Database
 		max_cpu?: number
 
-		// The minimum number of CPU units for your Serverless SQL
-		// Database
+		// The minimum number of CPU units for your Serverless SQL Database
 		min_cpu?: number
 
 		// The database name

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_function_trigger: {
+scaleway_function_trigger: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_function_trigger")
 	close({
@@ -28,8 +28,7 @@ import "list"
 		// ID of the mnq nats account
 		account_id?: string
 
-		// Project ID of the project where the mnq sqs exists, defaults to
-		// provider project_id
+		// Project ID of the project where the mnq sqs exists, defaults to provider project_id
 		project_id?: string
 
 		// Region where the mnq sqs exists, defaults to function's region
@@ -40,8 +39,7 @@ import "list"
 	})
 
 	#sqs: close({
-		// Project ID of the project where the mnq sqs exists, defaults to
-		// provider project_id
+		// Project ID of the project where the mnq sqs exists, defaults to provider project_id
 		project_id?: string
 
 		// Name of the queue

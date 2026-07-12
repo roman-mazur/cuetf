@@ -1,6 +1,6 @@
 package res
 
-#scaleway_account_ssh_key: {
+scaleway_account_ssh_key: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_account_ssh_key")
 	close({

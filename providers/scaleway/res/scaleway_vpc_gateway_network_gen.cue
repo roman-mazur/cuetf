@@ -1,6 +1,6 @@
 package res
 
-#scaleway_vpc_gateway_network: {
+scaleway_vpc_gateway_network: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_vpc_gateway_network")
 	close({
@@ -24,8 +24,7 @@ package res
 		// The ID of the private network where connect to
 		private_network_id!: string
 
-		// The status of the Public Gateway's connection to the Private
-		// Network
+		// The status of the Public Gateway's connection to the Private Network
 		status?: string
 
 		// The date and time of the last update of the gateway network
@@ -36,12 +35,10 @@ package res
 	})
 
 	#ipam_config: close({
-		// Use this IPAM-booked IP ID as the Gateway's IP in this Private
-		// Network
+		// Use this IPAM-booked IP ID as the Gateway's IP in this Private Network
 		ipam_ip_id?: string
 
-		// Defines whether the default route is enabled on that Gateway
-		// Network
+		// Defines whether the default route is enabled on that Gateway Network
 		push_default_route?: bool
 	})
 

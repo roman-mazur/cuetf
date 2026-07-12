@@ -1,6 +1,6 @@
 package res
 
-#scaleway_mnq_nats_account: {
+scaleway_mnq_nats_account: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_mnq_nats_account")
 	close({

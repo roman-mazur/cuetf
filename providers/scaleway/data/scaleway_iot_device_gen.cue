@@ -1,11 +1,10 @@
 package data
 
-#scaleway_iot_device: {
+scaleway_iot_device: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_iot_device")
 	close({
-		// Allow plain and server-authenticated SSL connections in
-		// addition to mutually-authenticated ones
+		// Allow plain and server-authenticated SSL connections in addition to mutually-authenticated ones
 		allow_insecure?: bool
 
 		// Allow multiple connections
@@ -36,8 +35,7 @@ package data
 		// The date and time of last MQTT activity of the device
 		last_activity_at?: string
 
-		// Rules to authorize or deny the device to publish/subscribe to
-		// specific topics
+		// Rules to authorize or deny the device to publish/subscribe to specific topics
 		message_filters?: [...close({
 			publish?: [...close({
 				policy?: string

@@ -1,11 +1,10 @@
 package data
 
-#scaleway_rdb_instance: {
+scaleway_rdb_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_rdb_instance")
 	close({
-		// Boolean to store logical backups in the same region as the
-		// database instance
+		// Boolean to store logical backups in the same region as the database instance
 		backup_same_region?: bool
 
 		// Backup schedule frequency in hours
@@ -29,9 +28,9 @@ package data
 		// Endpoint port of the database instance
 		endpoint_port?: number
 
-		// Database's engine version name (e.g., 'PostgreSQL-16',
-		// 'MySQL-8'). Changing this value triggers a blue/green upgrade
-		// using MajorUpgradeWorkflow with automatic endpoint migration
+		// Database's engine version name (e.g., 'PostgreSQL-16', 'MySQL-8'). Changing
+		// this value triggers a blue/green upgrade using MajorUpgradeWorkflow with
+		// automatic endpoint migration
 		engine?: string
 		id?:     string
 
@@ -59,6 +58,17 @@ package data
 			total_disk_retention?: number
 		})]
 
+		// List of scheduled maintenance events on the database instance
+		maintenances?: [...close({
+			closed_at?:     string
+			forced_at?:     string
+			is_applicable?: bool
+			reason?:        string
+			starts_at?:     string
+			status?:        string
+			stops_at?:      string
+		})]
+
 		// Name of the database instance
 		name?: string
 
@@ -68,22 +78,21 @@ package data
 		// The organization_id you want to attach the resource to
 		organization_id?: string
 
-		// Password for the first user of the database instance. Only one
-		// of `password` or `password_wo` should be specified.
+		// Password for the first user of the database instance. Only one of `password`
+		// or `password_wo` should be specified.
 		password?: string
 
 		// Password for the first user of the database instance in
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// mode. Only one of `password` or `password_wo` should be
-		// specified. `password_wo` will not be set in the Terraform
-		// state. To update the `password_wo`, you must also update the
-		// `password_wo_version`.
+		// mode. Only one of `password` or `password_wo` should be specified.
+		// `password_wo` will not be set in the Terraform state. To update the
+		// `password_wo`, you must also update the `password_wo_version`.
 		password_wo?: string
 
 		// The version of the
 		// [write-only](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments)
-		// password. To update the `password_wo`, you must also update
-		// the `password_wo_version`.
+		// password. To update the `password_wo`, you must also update the
+		// `password_wo_version`.
 		password_wo_version?: number
 
 		// The private IPv4 address associated with the resource
@@ -121,13 +130,12 @@ package data
 		// Map of engine settings to be set on a running instance.
 		settings?: [string]: string
 
-		// ID of an existing snapshot to create a new instance from. This
-		// allows restoring a database instance to the state captured in
-		// the specified snapshot. Conflicts with the `engine` attribute.
+		// ID of an existing snapshot to create a new instance from. This allows
+		// restoring a database instance to the state captured in the specified
+		// snapshot. Conflicts with the `engine` attribute.
 		snapshot_id?: string
 
-		// List of tags ["tag1", "tag2", ...] attached to a database
-		// instance
+		// List of tags ["tag1", "tag2", ...] attached to a database instance
 		tags?: [...string]
 
 		// List of available engine versions for upgrade

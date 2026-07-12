@@ -1,6 +1,6 @@
 package data
 
-#scaleway_object_bucket_server_side_encryption_configuration: {
+scaleway_object_bucket_server_side_encryption_configuration: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_object_bucket_server_side_encryption_configuration")
 	close({

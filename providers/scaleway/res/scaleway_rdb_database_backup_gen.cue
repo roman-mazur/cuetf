@@ -1,6 +1,6 @@
 package res
 
-#scaleway_rdb_database_backup: {
+scaleway_rdb_database_backup: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_rdb_database_backup")
 	close({
@@ -34,15 +34,13 @@ package res
 		// The region you want to attach the resource to
 		region?: string
 
-		// Whether the backup is stored in the same region as the source
-		// instance.
+		// Whether the backup is stored in the same region as the source instance.
 		same_region?: bool
 
 		// Size of the backup (in bytes).
 		size?: number
 
-		// Status of the backup (creating, ready, restoring, deleting,
-		// error, exporting, locked).
+		// Status of the backup (creating, ready, restoring, deleting, error, exporting, locked).
 		status?: string
 
 		// Updated date (Format ISO 8601).

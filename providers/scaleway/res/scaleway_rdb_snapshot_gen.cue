@@ -1,6 +1,6 @@
 package res
 
-#scaleway_rdb_snapshot: {
+scaleway_rdb_snapshot: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_rdb_snapshot")
 	close({
@@ -19,8 +19,7 @@ package res
 		// Name of the snapshot.
 		name!: string
 
-		// The type of the database instance for which the snapshot was
-		// created.
+		// The type of the database instance for which the snapshot was created.
 		node_type?: string
 
 		// The region you want to attach the resource to

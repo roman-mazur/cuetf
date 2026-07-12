@@ -1,13 +1,12 @@
 package res
 
-#scaleway_apple_silicon_runner: {
+scaleway_apple_silicon_runner: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_apple_silicon_runner")
 	close({
 		timeouts?: #timeouts
 
-		// The CI/CD provider for the runner. Must be either 'github' or
-		// 'gitlab'
+		// The CI/CD provider for the runner. Must be either 'github' or 'gitlab'
 		ci_provider!: string
 
 		// The error message of the runner

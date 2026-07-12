@@ -1,6 +1,6 @@
 package res
 
-#scaleway_edge_services_cache_stage: {
+scaleway_edge_services_cache_stage: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_edge_services_cache_stage")
 	close({
@@ -12,13 +12,11 @@ package res
 		// The date and time of the creation of the cache stage
 		created_at?: string
 
-		// The Time To Live (TTL) in seconds. Defines how long content is
-		// cached
+		// The Time To Live (TTL) in seconds. Defines how long content is cached
 		fallback_ttl?: number
 		id?:           string
 
-		// Defines whether responses to requests with cookies must be
-		// stored in the cache
+		// Defines whether responses to requests with cookies must be stored in the cache
 		include_cookies?: bool
 
 		// The ID of the pipeline

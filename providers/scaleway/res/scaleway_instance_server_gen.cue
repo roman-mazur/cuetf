@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_instance_server: {
+scaleway_instance_server: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_instance_server")
 	close({
@@ -16,8 +16,7 @@ import "list"
 		// The additional volumes attached to the server
 		additional_volume_ids?: [...string]
 
-		// The ID of the IAM SSH key used to encrypt the initial admin
-		// password on a Windows server
+		// The ID of the IAM SSH key used to encrypt the initial admin password on a Windows server
 		admin_password_encryption_ssh_key_id?: string
 
 		// The boot type of the server
@@ -54,8 +53,7 @@ import "list"
 		// The project_id you want to attach the resource to
 		project_id?: string
 
-		// If true, the instance is protected against accidental deletion
-		// via the Scaleway API.
+		// If true, the instance is protected against accidental deletion via the Scaleway API.
 		protected?: bool
 
 		// Delete and re-create server if type change

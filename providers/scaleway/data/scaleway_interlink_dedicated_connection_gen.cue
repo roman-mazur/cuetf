@@ -1,6 +1,6 @@
 package data
 
-#scaleway_interlink_dedicated_connection: {
+scaleway_interlink_dedicated_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_interlink_dedicated_connection")
 	close({
@@ -16,8 +16,7 @@ package data
 		// Creation date of the dedicated connection
 		created_at?: string
 
-		// Demarcation details required by the data center to set up the
-		// Cross Connect
+		// Demarcation details required by the data center to set up the Cross Connect
 		demarcation_info?: string
 		id?:               string
 

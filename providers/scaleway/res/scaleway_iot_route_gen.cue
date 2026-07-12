@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_iot_route: {
+scaleway_iot_route: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_iot_route")
 	close({
@@ -41,8 +41,7 @@ import "list"
 		// The database port
 		port!: number
 
-		// SQL query to be executed ($TOPIC and $PAYLOAD variables are
-		// available, see documentation)
+		// SQL query to be executed ($TOPIC and $PAYLOAD variables are available, see documentation)
 		query!: string
 
 		// The database username
@@ -70,8 +69,7 @@ import "list"
 		// The string to prefix object names with
 		object_prefix?: string
 
-		// How the S3 route's objects will be created: one per topic or
-		// one per message
+		// How the S3 route's objects will be created: one per topic or one per message
 		strategy!: string
 	})
 

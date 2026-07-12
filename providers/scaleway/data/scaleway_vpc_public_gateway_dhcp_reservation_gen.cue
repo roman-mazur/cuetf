@@ -1,6 +1,6 @@
 package data
 
-#scaleway_vpc_public_gateway_dhcp_reservation: {
+scaleway_vpc_public_gateway_dhcp_reservation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_vpc_public_gateway_dhcp_reservation")
 	close({
@@ -23,9 +23,8 @@ package data
 		// The ID of dhcp entry reservation
 		reservation_id?: string
 
-		// The reservation type, either static (DHCP reservation) or
-		// dynamic (DHCP lease). Possible values are reservation and
-		// lease
+		// The reservation type, either static (DHCP reservation) or dynamic (DHCP
+		// lease). Possible values are reservation and lease
 		type?: string
 
 		// The configuration last modification date.

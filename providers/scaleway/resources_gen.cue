@@ -1,157 +1,162 @@
 package scaleway
 
-import "github.com/roman-mazur/cuetf/providers/scaleway/res"
+import (
+	"github.com/roman-mazur/cuetf"
+	"github.com/roman-mazur/cuetf/providers/scaleway/res"
+)
 
 #Terraform: {
 	#scalewayPrefix: string
-	_#res: "\(#scalewayPrefix)_account_project": res.#scaleway_account_project
-	_#res: "\(#scalewayPrefix)_account_ssh_key": res.#scaleway_account_ssh_key
-	_#res: "\(#scalewayPrefix)_apple_silicon_runner": res.#scaleway_apple_silicon_runner
-	_#res: "\(#scalewayPrefix)_apple_silicon_server": res.#scaleway_apple_silicon_server
-	_#res: "\(#scalewayPrefix)_autoscaling_instance_group": res.#scaleway_autoscaling_instance_group
-	_#res: "\(#scalewayPrefix)_autoscaling_instance_policy": res.#scaleway_autoscaling_instance_policy
-	_#res: "\(#scalewayPrefix)_autoscaling_instance_template": res.#scaleway_autoscaling_instance_template
-	_#res: "\(#scalewayPrefix)_baremetal_server": res.#scaleway_baremetal_server
-	_#res: "\(#scalewayPrefix)_billing_budget": res.#scaleway_billing_budget
-	_#res: "\(#scalewayPrefix)_block_snapshot": res.#scaleway_block_snapshot
-	_#res: "\(#scalewayPrefix)_block_volume": res.#scaleway_block_volume
-	_#res: "\(#scalewayPrefix)_cockpit_alert_manager": res.#scaleway_cockpit_alert_manager
-	_#res: "\(#scalewayPrefix)_cockpit_exporter": res.#scaleway_cockpit_exporter
-	_#res: "\(#scalewayPrefix)_cockpit": res.#scaleway_cockpit
-	_#res: "\(#scalewayPrefix)_cockpit_grafana_user": res.#scaleway_cockpit_grafana_user
-	_#res: "\(#scalewayPrefix)_cockpit_source": res.#scaleway_cockpit_source
-	_#res: "\(#scalewayPrefix)_cockpit_token": res.#scaleway_cockpit_token
-	_#res: "\(#scalewayPrefix)_container_cron": res.#scaleway_container_cron
-	_#res: "\(#scalewayPrefix)_container_domain": res.#scaleway_container_domain
-	_#res: "\(#scalewayPrefix)_container": res.#scaleway_container
-	_#res: "\(#scalewayPrefix)_container_namespace": res.#scaleway_container_namespace
-	_#res: "\(#scalewayPrefix)_container_token": res.#scaleway_container_token
-	_#res: "\(#scalewayPrefix)_container_trigger": res.#scaleway_container_trigger
-	_#res: "\(#scalewayPrefix)_datalab": res.#scaleway_datalab
-	_#res: "\(#scalewayPrefix)_datawarehouse_database": res.#scaleway_datawarehouse_database
-	_#res: "\(#scalewayPrefix)_datawarehouse_deployment": res.#scaleway_datawarehouse_deployment
-	_#res: "\(#scalewayPrefix)_datawarehouse_user": res.#scaleway_datawarehouse_user
-	_#res: "\(#scalewayPrefix)_domain_record": res.#scaleway_domain_record
-	_#res: "\(#scalewayPrefix)_domain_registration": res.#scaleway_domain_registration
-	_#res: "\(#scalewayPrefix)_domain_zone": res.#scaleway_domain_zone
-	_#res: "\(#scalewayPrefix)_edge_services_backend_stage": res.#scaleway_edge_services_backend_stage
-	_#res: "\(#scalewayPrefix)_edge_services_cache_stage": res.#scaleway_edge_services_cache_stage
-	_#res: "\(#scalewayPrefix)_edge_services_dns_stage": res.#scaleway_edge_services_dns_stage
-	_#res: "\(#scalewayPrefix)_edge_services_head_stage": res.#scaleway_edge_services_head_stage
-	_#res: "\(#scalewayPrefix)_edge_services_pipeline": res.#scaleway_edge_services_pipeline
-	_#res: "\(#scalewayPrefix)_edge_services_plan": res.#scaleway_edge_services_plan
-	_#res: "\(#scalewayPrefix)_edge_services_route_stage": res.#scaleway_edge_services_route_stage
-	_#res: "\(#scalewayPrefix)_edge_services_tls_stage": res.#scaleway_edge_services_tls_stage
-	_#res: "\(#scalewayPrefix)_edge_services_waf_stage": res.#scaleway_edge_services_waf_stage
-	_#res: "\(#scalewayPrefix)_file_filesystem": res.#scaleway_file_filesystem
-	_#res: "\(#scalewayPrefix)_flexible_ip": res.#scaleway_flexible_ip
-	_#res: "\(#scalewayPrefix)_flexible_ip_mac_address": res.#scaleway_flexible_ip_mac_address
-	_#res: "\(#scalewayPrefix)_function_cron": res.#scaleway_function_cron
-	_#res: "\(#scalewayPrefix)_function_domain": res.#scaleway_function_domain
-	_#res: "\(#scalewayPrefix)_function": res.#scaleway_function
-	_#res: "\(#scalewayPrefix)_function_namespace": res.#scaleway_function_namespace
-	_#res: "\(#scalewayPrefix)_function_token": res.#scaleway_function_token
-	_#res: "\(#scalewayPrefix)_function_trigger": res.#scaleway_function_trigger
-	_#res: "\(#scalewayPrefix)_iam_api_key": res.#scaleway_iam_api_key
-	_#res: "\(#scalewayPrefix)_iam_application": res.#scaleway_iam_application
-	_#res: "\(#scalewayPrefix)_iam_group": res.#scaleway_iam_group
-	_#res: "\(#scalewayPrefix)_iam_group_membership": res.#scaleway_iam_group_membership
-	_#res: "\(#scalewayPrefix)_iam_policy": res.#scaleway_iam_policy
-	_#res: "\(#scalewayPrefix)_iam_saml_certificate": res.#scaleway_iam_saml_certificate
-	_#res: "\(#scalewayPrefix)_iam_saml": res.#scaleway_iam_saml
-	_#res: "\(#scalewayPrefix)_iam_scim": res.#scaleway_iam_scim
-	_#res: "\(#scalewayPrefix)_iam_scim_token": res.#scaleway_iam_scim_token
-	_#res: "\(#scalewayPrefix)_iam_ssh_key": res.#scaleway_iam_ssh_key
-	_#res: "\(#scalewayPrefix)_iam_user": res.#scaleway_iam_user
-	_#res: "\(#scalewayPrefix)_inference_deployment": res.#scaleway_inference_deployment
-	_#res: "\(#scalewayPrefix)_inference_model": res.#scaleway_inference_model
-	_#res: "\(#scalewayPrefix)_instance_image": res.#scaleway_instance_image
-	_#res: "\(#scalewayPrefix)_instance_ip": res.#scaleway_instance_ip
-	_#res: "\(#scalewayPrefix)_instance_ip_reverse_dns": res.#scaleway_instance_ip_reverse_dns
-	_#res: "\(#scalewayPrefix)_instance_placement_group": res.#scaleway_instance_placement_group
-	_#res: "\(#scalewayPrefix)_instance_private_nic": res.#scaleway_instance_private_nic
-	_#res: "\(#scalewayPrefix)_instance_security_group": res.#scaleway_instance_security_group
-	_#res: "\(#scalewayPrefix)_instance_security_group_rules": res.#scaleway_instance_security_group_rules
-	_#res: "\(#scalewayPrefix)_instance_server": res.#scaleway_instance_server
-	_#res: "\(#scalewayPrefix)_instance_snapshot": res.#scaleway_instance_snapshot
-	_#res: "\(#scalewayPrefix)_instance_user_data": res.#scaleway_instance_user_data
-	_#res: "\(#scalewayPrefix)_instance_volume": res.#scaleway_instance_volume
-	_#res: "\(#scalewayPrefix)_interlink_link": res.#scaleway_interlink_link
-	_#res: "\(#scalewayPrefix)_interlink_routing_policy": res.#scaleway_interlink_routing_policy
-	_#res: "\(#scalewayPrefix)_iot_device": res.#scaleway_iot_device
-	_#res: "\(#scalewayPrefix)_iot_hub": res.#scaleway_iot_hub
-	_#res: "\(#scalewayPrefix)_iot_network": res.#scaleway_iot_network
-	_#res: "\(#scalewayPrefix)_iot_route": res.#scaleway_iot_route
-	_#res: "\(#scalewayPrefix)_ipam_ip": res.#scaleway_ipam_ip
-	_#res: "\(#scalewayPrefix)_ipam_ip_reverse_dns": res.#scaleway_ipam_ip_reverse_dns
-	_#res: "\(#scalewayPrefix)_job_definition": res.#scaleway_job_definition
-	_#res: "\(#scalewayPrefix)_k8s_acl": res.#scaleway_k8s_acl
-	_#res: "\(#scalewayPrefix)_k8s_cluster": res.#scaleway_k8s_cluster
-	_#res: "\(#scalewayPrefix)_k8s_pool": res.#scaleway_k8s_pool
-	_#res: "\(#scalewayPrefix)_kafka_cluster": res.#scaleway_kafka_cluster
-	_#res: "\(#scalewayPrefix)_key_manager_key": res.#scaleway_key_manager_key
-	_#res: "\(#scalewayPrefix)_lb_acl": res.#scaleway_lb_acl
-	_#res: "\(#scalewayPrefix)_lb_backend": res.#scaleway_lb_backend
-	_#res: "\(#scalewayPrefix)_lb_certificate": res.#scaleway_lb_certificate
-	_#res: "\(#scalewayPrefix)_lb_frontend": res.#scaleway_lb_frontend
-	_#res: "\(#scalewayPrefix)_lb": res.#scaleway_lb
-	_#res: "\(#scalewayPrefix)_lb_ip": res.#scaleway_lb_ip
-	_#res: "\(#scalewayPrefix)_lb_private_network": res.#scaleway_lb_private_network
-	_#res: "\(#scalewayPrefix)_lb_route": res.#scaleway_lb_route
-	_#res: "\(#scalewayPrefix)_mnq_nats_account": res.#scaleway_mnq_nats_account
-	_#res: "\(#scalewayPrefix)_mnq_nats_credentials": res.#scaleway_mnq_nats_credentials
-	_#res: "\(#scalewayPrefix)_mnq_sns_credentials": res.#scaleway_mnq_sns_credentials
-	_#res: "\(#scalewayPrefix)_mnq_sns": res.#scaleway_mnq_sns
-	_#res: "\(#scalewayPrefix)_mnq_sns_topic": res.#scaleway_mnq_sns_topic
-	_#res: "\(#scalewayPrefix)_mnq_sns_topic_subscription": res.#scaleway_mnq_sns_topic_subscription
-	_#res: "\(#scalewayPrefix)_mnq_sqs_credentials": res.#scaleway_mnq_sqs_credentials
-	_#res: "\(#scalewayPrefix)_mnq_sqs": res.#scaleway_mnq_sqs
-	_#res: "\(#scalewayPrefix)_mnq_sqs_queue": res.#scaleway_mnq_sqs_queue
-	_#res: "\(#scalewayPrefix)_mongodb_instance": res.#scaleway_mongodb_instance
-	_#res: "\(#scalewayPrefix)_mongodb_snapshot": res.#scaleway_mongodb_snapshot
-	_#res: "\(#scalewayPrefix)_mongodb_user": res.#scaleway_mongodb_user
-	_#res: "\(#scalewayPrefix)_object_bucket_acl": res.#scaleway_object_bucket_acl
-	_#res: "\(#scalewayPrefix)_object_bucket": res.#scaleway_object_bucket
-	_#res: "\(#scalewayPrefix)_object_bucket_lock_configuration": res.#scaleway_object_bucket_lock_configuration
-	_#res: "\(#scalewayPrefix)_object_bucket_policy": res.#scaleway_object_bucket_policy
-	_#res: "\(#scalewayPrefix)_object_bucket_server_side_encryption_configuration": res.#scaleway_object_bucket_server_side_encryption_configuration
-	_#res: "\(#scalewayPrefix)_object_bucket_website_configuration": res.#scaleway_object_bucket_website_configuration
-	_#res: "\(#scalewayPrefix)_object": res.#scaleway_object
-	_#res: "\(#scalewayPrefix)_opensearch_deployment": res.#scaleway_opensearch_deployment
-	_#res: "\(#scalewayPrefix)_rdb_acl": res.#scaleway_rdb_acl
-	_#res: "\(#scalewayPrefix)_rdb_database_backup": res.#scaleway_rdb_database_backup
-	_#res: "\(#scalewayPrefix)_rdb_database": res.#scaleway_rdb_database
-	_#res: "\(#scalewayPrefix)_rdb_instance": res.#scaleway_rdb_instance
-	_#res: "\(#scalewayPrefix)_rdb_privilege": res.#scaleway_rdb_privilege
-	_#res: "\(#scalewayPrefix)_rdb_read_replica": res.#scaleway_rdb_read_replica
-	_#res: "\(#scalewayPrefix)_rdb_snapshot": res.#scaleway_rdb_snapshot
-	_#res: "\(#scalewayPrefix)_rdb_user": res.#scaleway_rdb_user
-	_#res: "\(#scalewayPrefix)_redis_cluster": res.#scaleway_redis_cluster
-	_#res: "\(#scalewayPrefix)_registry_namespace": res.#scaleway_registry_namespace
-	_#res: "\(#scalewayPrefix)_s2s_vpn_connection": res.#scaleway_s2s_vpn_connection
-	_#res: "\(#scalewayPrefix)_s2s_vpn_customer_gateway": res.#scaleway_s2s_vpn_customer_gateway
-	_#res: "\(#scalewayPrefix)_s2s_vpn_gateway": res.#scaleway_s2s_vpn_gateway
-	_#res: "\(#scalewayPrefix)_s2s_vpn_routing_policy": res.#scaleway_s2s_vpn_routing_policy
-	_#res: "\(#scalewayPrefix)_sdb_sql_database": res.#scaleway_sdb_sql_database
-	_#res: "\(#scalewayPrefix)_secret": res.#scaleway_secret
-	_#res: "\(#scalewayPrefix)_secret_version": res.#scaleway_secret_version
-	_#res: "\(#scalewayPrefix)_tem_blocked_list": res.#scaleway_tem_blocked_list
-	_#res: "\(#scalewayPrefix)_tem_domain": res.#scaleway_tem_domain
-	_#res: "\(#scalewayPrefix)_tem_domain_validation": res.#scaleway_tem_domain_validation
-	_#res: "\(#scalewayPrefix)_tem_webhook": res.#scaleway_tem_webhook
-	_#res: "\(#scalewayPrefix)_vpc_acl": res.#scaleway_vpc_acl
-	_#res: "\(#scalewayPrefix)_vpc_connector": res.#scaleway_vpc_connector
-	_#res: "\(#scalewayPrefix)_vpc_gateway_network": res.#scaleway_vpc_gateway_network
-	_#res: "\(#scalewayPrefix)_vpc": res.#scaleway_vpc
-	_#res: "\(#scalewayPrefix)_vpc_ingress_rule": res.#scaleway_vpc_ingress_rule
-	_#res: "\(#scalewayPrefix)_vpc_private_network": res.#scaleway_vpc_private_network
-	_#res: "\(#scalewayPrefix)_vpc_public_gateway_dhcp": res.#scaleway_vpc_public_gateway_dhcp
-	_#res: "\(#scalewayPrefix)_vpc_public_gateway_dhcp_reservation": res.#scaleway_vpc_public_gateway_dhcp_reservation
-	_#res: "\(#scalewayPrefix)_vpc_public_gateway": res.#scaleway_vpc_public_gateway
-	_#res: "\(#scalewayPrefix)_vpc_public_gateway_ip": res.#scaleway_vpc_public_gateway_ip
-	_#res: "\(#scalewayPrefix)_vpc_public_gateway_ip_reverse_dns": res.#scaleway_vpc_public_gateway_ip_reverse_dns
-	_#res: "\(#scalewayPrefix)_vpc_public_gateway_pat_rule": res.#scaleway_vpc_public_gateway_pat_rule
-	_#res: "\(#scalewayPrefix)_vpc_route": res.#scaleway_vpc_route
-	_#res: "\(#scalewayPrefix)_webhosting": res.#scaleway_webhosting
+	_#res: "\(#scalewayPrefix)_account_project": close({res.scaleway_account_project & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_account_ssh_key": close({res.scaleway_account_ssh_key & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_apple_silicon_runner": close({res.scaleway_apple_silicon_runner & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_apple_silicon_server": close({res.scaleway_apple_silicon_server & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_autoscaling_instance_group": close({res.scaleway_autoscaling_instance_group & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_autoscaling_instance_policy": close({res.scaleway_autoscaling_instance_policy & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_autoscaling_instance_template": close({res.scaleway_autoscaling_instance_template & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_baremetal_server": close({res.scaleway_baremetal_server & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_billing_budget_alert": close({res.scaleway_billing_budget_alert & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_billing_budget_alert_notification": close({res.scaleway_billing_budget_alert_notification & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_billing_budget": close({res.scaleway_billing_budget & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_block_snapshot": close({res.scaleway_block_snapshot & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_block_volume": close({res.scaleway_block_volume & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_cockpit_alert_manager": close({res.scaleway_cockpit_alert_manager & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_cockpit_exporter": close({res.scaleway_cockpit_exporter & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_cockpit": close({res.scaleway_cockpit & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_cockpit_grafana_user": close({res.scaleway_cockpit_grafana_user & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_cockpit_source": close({res.scaleway_cockpit_source & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_cockpit_token": close({res.scaleway_cockpit_token & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_container_cron": close({res.scaleway_container_cron & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_container_domain": close({res.scaleway_container_domain & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_container": close({res.scaleway_container & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_container_namespace": close({res.scaleway_container_namespace & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_container_token": close({res.scaleway_container_token & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_container_trigger": close({res.scaleway_container_trigger & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_datalab": close({res.scaleway_datalab & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_datawarehouse_database": close({res.scaleway_datawarehouse_database & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_datawarehouse_deployment": close({res.scaleway_datawarehouse_deployment & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_datawarehouse_user": close({res.scaleway_datawarehouse_user & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_domain_record": close({res.scaleway_domain_record & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_domain_registration": close({res.scaleway_domain_registration & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_domain_zone": close({res.scaleway_domain_zone & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_edge_services_backend_stage": close({res.scaleway_edge_services_backend_stage & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_edge_services_cache_stage": close({res.scaleway_edge_services_cache_stage & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_edge_services_dns_stage": close({res.scaleway_edge_services_dns_stage & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_edge_services_head_stage": close({res.scaleway_edge_services_head_stage & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_edge_services_pipeline": close({res.scaleway_edge_services_pipeline & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_edge_services_plan": close({res.scaleway_edge_services_plan & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_edge_services_route_stage": close({res.scaleway_edge_services_route_stage & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_edge_services_tls_stage": close({res.scaleway_edge_services_tls_stage & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_edge_services_waf_stage": close({res.scaleway_edge_services_waf_stage & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_file_filesystem": close({res.scaleway_file_filesystem & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_flexible_ip": close({res.scaleway_flexible_ip & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_flexible_ip_mac_address": close({res.scaleway_flexible_ip_mac_address & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_function_cron": close({res.scaleway_function_cron & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_function_domain": close({res.scaleway_function_domain & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_function": close({res.scaleway_function & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_function_namespace": close({res.scaleway_function_namespace & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_function_token": close({res.scaleway_function_token & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_function_trigger": close({res.scaleway_function_trigger & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iam_api_key": close({res.scaleway_iam_api_key & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iam_application": close({res.scaleway_iam_application & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iam_group": close({res.scaleway_iam_group & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iam_group_membership": close({res.scaleway_iam_group_membership & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iam_policy": close({res.scaleway_iam_policy & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iam_saml_certificate": close({res.scaleway_iam_saml_certificate & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iam_saml": close({res.scaleway_iam_saml & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iam_scim": close({res.scaleway_iam_scim & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iam_scim_token": close({res.scaleway_iam_scim_token & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iam_ssh_key": close({res.scaleway_iam_ssh_key & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iam_user": close({res.scaleway_iam_user & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_inference_deployment": close({res.scaleway_inference_deployment & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_inference_model": close({res.scaleway_inference_model & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_instance_image": close({res.scaleway_instance_image & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_instance_ip": close({res.scaleway_instance_ip & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_instance_ip_reverse_dns": close({res.scaleway_instance_ip_reverse_dns & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_instance_placement_group": close({res.scaleway_instance_placement_group & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_instance_private_nic": close({res.scaleway_instance_private_nic & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_instance_security_group": close({res.scaleway_instance_security_group & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_instance_security_group_rules": close({res.scaleway_instance_security_group_rules & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_instance_server": close({res.scaleway_instance_server & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_instance_snapshot": close({res.scaleway_instance_snapshot & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_instance_user_data": close({res.scaleway_instance_user_data & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_instance_volume": close({res.scaleway_instance_volume & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_interlink_link": close({res.scaleway_interlink_link & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_interlink_routing_policy": close({res.scaleway_interlink_routing_policy & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iot_device": close({res.scaleway_iot_device & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iot_hub": close({res.scaleway_iot_hub & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iot_network": close({res.scaleway_iot_network & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_iot_route": close({res.scaleway_iot_route & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_ipam_ip": close({res.scaleway_ipam_ip & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_ipam_ip_reverse_dns": close({res.scaleway_ipam_ip_reverse_dns & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_job_definition": close({res.scaleway_job_definition & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_k8s_acl": close({res.scaleway_k8s_acl & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_k8s_cluster": close({res.scaleway_k8s_cluster & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_k8s_pool": close({res.scaleway_k8s_pool & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_kafka_cluster": close({res.scaleway_kafka_cluster & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_key_manager_key": close({res.scaleway_key_manager_key & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_lb_acl": close({res.scaleway_lb_acl & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_lb_backend": close({res.scaleway_lb_backend & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_lb_certificate": close({res.scaleway_lb_certificate & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_lb_frontend": close({res.scaleway_lb_frontend & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_lb": close({res.scaleway_lb & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_lb_ip": close({res.scaleway_lb_ip & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_lb_private_network": close({res.scaleway_lb_private_network & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_lb_route": close({res.scaleway_lb_route & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_mnq_nats_account": close({res.scaleway_mnq_nats_account & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_mnq_nats_credentials": close({res.scaleway_mnq_nats_credentials & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_mnq_sns_credentials": close({res.scaleway_mnq_sns_credentials & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_mnq_sns": close({res.scaleway_mnq_sns & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_mnq_sns_topic": close({res.scaleway_mnq_sns_topic & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_mnq_sns_topic_subscription": close({res.scaleway_mnq_sns_topic_subscription & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_mnq_sqs_credentials": close({res.scaleway_mnq_sqs_credentials & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_mnq_sqs": close({res.scaleway_mnq_sqs & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_mnq_sqs_queue": close({res.scaleway_mnq_sqs_queue & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_mongodb_instance": close({res.scaleway_mongodb_instance & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_mongodb_snapshot": close({res.scaleway_mongodb_snapshot & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_mongodb_user": close({res.scaleway_mongodb_user & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_object_bucket_acl": close({res.scaleway_object_bucket_acl & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_object_bucket": close({res.scaleway_object_bucket & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_object_bucket_lock_configuration": close({res.scaleway_object_bucket_lock_configuration & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_object_bucket_policy": close({res.scaleway_object_bucket_policy & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_object_bucket_server_side_encryption_configuration": close({res.scaleway_object_bucket_server_side_encryption_configuration & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_object_bucket_website_configuration": close({res.scaleway_object_bucket_website_configuration & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_object": close({res.scaleway_object & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_opensearch_deployment": close({res.scaleway_opensearch_deployment & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_rdb_acl": close({res.scaleway_rdb_acl & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_rdb_database_backup": close({res.scaleway_rdb_database_backup & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_rdb_database": close({res.scaleway_rdb_database & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_rdb_instance": close({res.scaleway_rdb_instance & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_rdb_privilege": close({res.scaleway_rdb_privilege & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_rdb_read_replica": close({res.scaleway_rdb_read_replica & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_rdb_snapshot": close({res.scaleway_rdb_snapshot & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_rdb_user": close({res.scaleway_rdb_user & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_redis_cluster": close({res.scaleway_redis_cluster & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_registry_namespace": close({res.scaleway_registry_namespace & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_s2s_vpn_connection": close({res.scaleway_s2s_vpn_connection & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_s2s_vpn_customer_gateway": close({res.scaleway_s2s_vpn_customer_gateway & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_s2s_vpn_gateway": close({res.scaleway_s2s_vpn_gateway & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_s2s_vpn_routing_policy": close({res.scaleway_s2s_vpn_routing_policy & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_sdb_sql_database": close({res.scaleway_sdb_sql_database & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_secret": close({res.scaleway_secret & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_secret_version": close({res.scaleway_secret_version & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_tem_blocked_list": close({res.scaleway_tem_blocked_list & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_tem_domain": close({res.scaleway_tem_domain & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_tem_domain_validation": close({res.scaleway_tem_domain_validation & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_tem_webhook": close({res.scaleway_tem_webhook & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_vpc_acl": close({res.scaleway_vpc_acl & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_vpc_connector": close({res.scaleway_vpc_connector & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_vpc_gateway_network": close({res.scaleway_vpc_gateway_network & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_vpc": close({res.scaleway_vpc & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_vpc_ingress_rule": close({res.scaleway_vpc_ingress_rule & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_vpc_private_network": close({res.scaleway_vpc_private_network & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_vpc_public_gateway_dhcp": close({res.scaleway_vpc_public_gateway_dhcp & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_vpc_public_gateway_dhcp_reservation": close({res.scaleway_vpc_public_gateway_dhcp_reservation & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_vpc_public_gateway": close({res.scaleway_vpc_public_gateway & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_vpc_public_gateway_ip": close({res.scaleway_vpc_public_gateway_ip & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_vpc_public_gateway_ip_reverse_dns": close({res.scaleway_vpc_public_gateway_ip_reverse_dns & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_vpc_public_gateway_pat_rule": close({res.scaleway_vpc_public_gateway_pat_rule & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_vpc_route": close({res.scaleway_vpc_route & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_webhosting": close({res.scaleway_webhosting & cuetf.MetaArgs})
 
 }

@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_mnq_sqs_queue: {
+scaleway_mnq_sqs_queue: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_mnq_sqs_queue")
 	close({
@@ -15,12 +15,10 @@ import "list"
 		// The ARN of the queue
 		arn?: string
 
-		// Specifies whether to enable content-based deduplication. Allows
-		// omitting the deduplication ID
+		// Specifies whether to enable content-based deduplication. Allows omitting the deduplication ID
 		content_based_deduplication?: bool
 
-		// Whether the queue is a FIFO queue. If true, the queue name must
-		// end with .fifo
+		// Whether the queue is a FIFO queue. If true, the queue name must end with .fifo
 		fifo_queue?: bool
 		id?:         string
 
@@ -33,15 +31,13 @@ import "list"
 		// The name of the queue. Conflicts with name_prefix.
 		name?: string
 
-		// Creates a unique name beginning with the specified prefix.
-		// Conflicts with name.
+		// Creates a unique name beginning with the specified prefix. Conflicts with name.
 		name_prefix?: string
 
 		// The project_id you want to attach the resource to
 		project_id?: string
 
-		// The number of seconds to wait for a message to arrive in the
-		// queue before returning.
+		// The number of seconds to wait for a message to arrive in the queue before returning.
 		receive_wait_time_seconds?: number
 
 		// The region you want to attach the resource to
@@ -61,13 +57,12 @@ import "list"
 	})
 
 	#dead_letter_queue: close({
-		// The ID or ARN of the dead-letter queue where messages are sent
-		// after the maximum receive count is exceeded.
+		// The ID or ARN of the dead-letter queue where messages are sent after the
+		// maximum receive count is exceeded.
 		id!: string
 
-		// The number of times a message is delivered to the source queue
-		// before being sent to the dead-letter queue. Must be between 1
-		// and 1,000.
+		// The number of times a message is delivered to the source queue before being
+		// sent to the dead-letter queue. Must be between 1 and 1,000.
 		max_receive_count!: number
 	})
 

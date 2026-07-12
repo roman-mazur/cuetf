@@ -2,7 +2,7 @@ package res
 
 import "list"
 
-#scaleway_k8s_pool: {
+scaleway_k8s_pool: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_k8s_pool")
 	close({
@@ -43,7 +43,7 @@ import "list"
 		min_size?: number
 
 		// The name of the pool
-		name!: string
+		name?: string
 
 		// Server type of the pool servers
 		node_type!: string
@@ -133,8 +133,7 @@ import "list"
 		// The maximum number of nodes to be created during the upgrade
 		max_surge?: number
 
-		// The maximum number of nodes that can be not ready at the same
-		// time
+		// The maximum number of nodes that can be not ready at the same time
 		max_unavailable?: number
 	})
 }

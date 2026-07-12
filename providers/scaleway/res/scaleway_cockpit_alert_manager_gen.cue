@@ -1,6 +1,6 @@
 package res
 
-#scaleway_cockpit_alert_manager: {
+scaleway_cockpit_alert_manager: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_cockpit_alert_manager")
 	close({
@@ -10,9 +10,8 @@ package res
 		alert_manager_url?: string
 		id?:                string
 
-		// List of preconfigured alert rule IDs to enable explicitly. Use
-		// the scaleway_cockpit_preconfigured_alert data source to list
-		// available alerts.
+		// List of preconfigured alert rule IDs to enable explicitly. Use the
+		// scaleway_cockpit_preconfigured_alert data source to list available alerts.
 		preconfigured_alert_ids?: [...string]
 
 		// The project_id you want to attach the resource to

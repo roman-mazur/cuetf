@@ -1,6 +1,6 @@
 package data
 
-#scaleway_edge_services_pipeline: {
+scaleway_edge_services_pipeline: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_edge_services_pipeline")
 	close({

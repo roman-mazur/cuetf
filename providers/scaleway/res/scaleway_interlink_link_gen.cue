@@ -1,14 +1,13 @@
 package res
 
-#scaleway_interlink_link: {
+scaleway_interlink_link: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_interlink_link")
 	close({
 		timeouts?: #timeouts
 
-		// Desired bandwidth for the link. Must be compatible with
-		// available link bandwidths and remaining bandwidth capacity of
-		// the connection
+		// Desired bandwidth for the link. Must be compatible with available link
+		// bandwidths and remaining bandwidth capacity of the connection
 		bandwidth_mbps!: number
 
 		// Status of the link's BGP IPv4 session
@@ -17,15 +16,13 @@ package res
 		// Status of the link's BGP IPv6 session
 		bgp_v6_status?: string
 
-		// If set, creates a self-hosted link using this dedicated
-		// physical connection
+		// If set, creates a self-hosted link using this dedicated physical connection
 		connection_id?: string
 
 		// Creation date of the link
 		created_at?: string
 
-		// Defines whether route propagation is enabled or not. Defaults
-		// to false
+		// Defines whether route propagation is enabled or not. Defaults to false
 		enable_route_propagation?: bool
 		id?:                       string
 
@@ -38,17 +35,16 @@ package res
 		// Used to identify a link from a user or partner's point of view
 		pairing_key?: string
 
-		// If set, creates a hosted link on a partner's connection.
-		// Specify the ID of the chosen partner, who already has a shared
-		// connection with available bandwidth
+		// If set, creates a hosted link on a partner's connection. Specify the ID of
+		// the chosen partner, who already has a shared connection with available
+		// bandwidth
 		partner_id?: string
 
-		// For self-hosted links, the peer AS Number to establish BGP
-		// session. Required when `connection_id` is set
+		// For self-hosted links, the peer AS Number to establish BGP session. Required
+		// when `connection_id` is set
 		peer_asn?: number
 
-		// BGP configuration on peer's side (on-premises or other hosting
-		// provider)
+		// BGP configuration on peer's side (on-premises or other hosting provider)
 		peer_bgp_config?: [...close({
 			asn?:  number
 			ipv4?: string
@@ -64,12 +60,12 @@ package res
 		// The region you want to attach the resource to
 		region?: string
 
-		// If set, attaches this routing policy containing IPv4 prefixes
-		// to the link. A BGP IPv4 session will be created
+		// If set, attaches this routing policy containing IPv4 prefixes to the link. A
+		// BGP IPv4 session will be created
 		routing_policy_v4_id?: string
 
-		// If set, attaches this routing policy containing IPv6 prefixes
-		// to the link. A BGP IPv6 session will be created
+		// If set, attaches this routing policy containing IPv6 prefixes to the link. A
+		// BGP IPv6 session will be created
 		routing_policy_v6_id?: string
 
 		// BGP configuration on Scaleway's side
@@ -88,9 +84,8 @@ package res
 		// Last modification date of the link
 		updated_at?: string
 
-		// For self-hosted links only, the VLAN ID. If the VLAN is not
-		// available (already taken or out of range), an error is
-		// returned
+		// For self-hosted links only, the VLAN ID. If the VLAN is not available
+		// (already taken or out of range), an error is returned
 		vlan?: number
 
 		// ID of the Scaleway VPC to attach to the link

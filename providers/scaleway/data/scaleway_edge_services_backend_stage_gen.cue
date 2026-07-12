@@ -1,6 +1,6 @@
 package data
 
-#scaleway_edge_services_backend_stage: {
+scaleway_edge_services_backend_stage: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_edge_services_backend_stage")
 	close({
@@ -13,8 +13,7 @@ package data
 		// Filter by S3 bucket region
 		bucket_region?: string
 
-		// The Scaleway Serverless Container backend linked to the backend
-		// stage
+		// The Scaleway Serverless Container backend linked to the backend stage
 		container_backend_config?: [...close({
 			container_id?: string
 			region?:       string
@@ -23,8 +22,7 @@ package data
 		// The date and time of the creation of the backend stage
 		created_at?: string
 
-		// The Scaleway Serverless Function backend linked to the backend
-		// stage
+		// The Scaleway Serverless Function backend linked to the backend stage
 		function_backend_config?: [...close({
 			function_id?: string
 			region?:      string
@@ -52,8 +50,7 @@ package data
 		// The project_id you want to attach the resource to
 		project_id?: string
 
-		// The Scaleway Object Storage origin bucket (S3) linked to the
-		// backend stage
+		// The Scaleway Object Storage origin bucket (S3) linked to the backend stage
 		s3_backend_config?: [...close({
 			bucket_name?:   string
 			bucket_region?: string

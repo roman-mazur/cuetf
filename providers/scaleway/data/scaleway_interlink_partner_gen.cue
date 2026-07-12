@@ -1,6 +1,6 @@
 package data
 
-#scaleway_interlink_partner: {
+scaleway_interlink_partner: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_interlink_partner")
 	close({

@@ -1,6 +1,6 @@
 package data
 
-#scaleway_audit_trail_event: {
+scaleway_audit_trail_event: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_audit_trail_event")
 	close({
@@ -31,8 +31,7 @@ package data
 		// Name of the method of the API call performed
 		method_name?: string
 
-		// Defines the order in which events are returned. Default value:
-		// recorded_at_desc
+		// Defines the order in which events are returned. Default value: recorded_at_desc
 		order_by?: string
 
 		// ID of the organization containing the Audit Trail events.
@@ -41,21 +40,20 @@ package data
 		// ID of the User or IAM application at the origin of the event
 		principal_id?: string
 
-		// Scaleway product associated with the listed events in a
-		// hyphenated format
+		// Scaleway product associated with the listed events in a hyphenated format
 		product_name?: string
 
 		// ID of the project containing the Audit Trail events.
 		project_id?: string
 
-		// The `recorded_after` parameter defines the earliest timestamp
-		// from which Audit Trail events are retrieved. Returns `one hour
-		// ago` by default (Format ISO 8601)
+		// The `recorded_after` parameter defines the earliest timestamp from which
+		// Audit Trail events are retrieved. Returns `one hour ago` by default (Format
+		// ISO 8601)
 		recorded_after?: string
 
-		// The `recorded_before` parameter defines the latest timestamp up
-		// to which Audit Trail events are retrieved. Must be later than
-		// recorded_after. Returns `now` by default (Format ISO 8601)
+		// The `recorded_before` parameter defines the latest timestamp up to which
+		// Audit Trail events are retrieved. Must be later than recorded_after. Returns
+		// `now` by default (Format ISO 8601)
 		recorded_before?: string
 
 		// The region you want to attach the resource to
@@ -64,8 +62,7 @@ package data
 		// ID of the Scaleway resource associated with the listed events
 		resource_id?: string
 
-		// Type of the scaleway resources associated with the listed
-		// events
+		// Type of the scaleway resources associated with the listed events
 		resource_type?: string
 
 		// Name of the service of the API call performed

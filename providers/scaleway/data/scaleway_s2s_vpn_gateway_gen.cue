@@ -1,6 +1,6 @@
 package data
 
-#scaleway_s2s_vpn_gateway: {
+scaleway_s2s_vpn_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_s2s_vpn_gateway")
 	close({
@@ -14,12 +14,10 @@ package data
 		gateway_type?: string
 		id?:           string
 
-		// The ID of the IPAM private IPv4 address to attach to the VPN
-		// gateway
+		// The ID of the IPAM private IPv4 address to attach to the VPN gateway
 		ipam_private_ipv4_id?: string
 
-		// The ID of the IPAM private IPv6 address to attach to the VPN
-		// gateway
+		// The ID of the IPAM private IPv6 address to attach to the VPN gateway
 		ipam_private_ipv6_id?: string
 
 		// The name of the VPN gateway

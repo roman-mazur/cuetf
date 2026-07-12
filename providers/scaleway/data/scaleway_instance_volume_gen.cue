@@ -1,6 +1,6 @@
 package data
 
-#scaleway_instance_volume: {
+scaleway_instance_volume: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_instance_volume")
 	close({
@@ -8,8 +8,7 @@ package data
 		from_snapshot_id?: string
 		id?:               string
 
-		// If true, consider that this volume may have been migrated and
-		// no longer exists.
+		// If true, consider that this volume may have been migrated and no longer exists.
 		migrate_to_sbs?: bool
 
 		// The name of the volume
