@@ -8,13 +8,13 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 
 	"cuelang.org/go/cue/ast"
 	"cuelang.org/go/cue/format"
 	"cuelang.org/go/cue/parser"
+	"rmazur.io/cuetf/internal/ci"
 )
 
 const rootDep = "github.com/roman-mazur/cuetf@v0"
@@ -24,7 +24,7 @@ func main() {
 	version := flag.Arg(0)
 	if version == "" {
 		var err error
-		version, err = latestTag()
+		version, err = ci.LatestGitTag()
 		if err != nil {
 			log.Fatalf("no version given and could not read latest git tag: %v", err)
 		}
@@ -115,12 +115,4 @@ func setDepVersion(f *ast.File, version string) bool {
 		}
 	}
 	return false
-}
-
-func latestTag() (string, error) {
-	out, err := exec.Command("git", "describe", "--tags", "--abbrev=0").Output()
-	if err != nil {
-		return "", err
-	}
-	return strings.TrimSpace(string(out)), nil
 }

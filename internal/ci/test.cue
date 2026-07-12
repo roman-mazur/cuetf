@@ -4,7 +4,10 @@ workflows: test: {
 	on: push: branches: ["main"]
 	on: pull_request: branches: ["main"]
 
-	jobs: main: #script: "go test -count 2 ./..."
+	jobs: main: {
+		#useGit: true
+		#script: "go test -count 2 ./..."
+	}
 
 	jobs: "ci-check": #script: """
 		go generate ./internal/ci
