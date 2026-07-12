@@ -18,10 +18,12 @@ import "github.com/roman-mazur/cuetf"
 
 	_#profiderDef: {
 		alias?: string
-		#provider
+		_#providerSchema
 	}
 	provider: (prefix): *_#profiderDef | [_#profiderDef, ..._#profiderDef]
 
 	resource?: [type=providerName]: [name=string]: _#res[type]
 	data?: [type=providerName]: [name=string]:     _#ds[type]
 }
+
+_#providerSchema: provider
