@@ -47,7 +47,7 @@ func main() {
 	}
 
 	if err := bumpVersionInModule("./examples", version); err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 }
 
