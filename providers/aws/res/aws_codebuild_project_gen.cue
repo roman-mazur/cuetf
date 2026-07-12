@@ -79,6 +79,7 @@ aws_codebuild_project: {
 		registry_credential?: matchN(1, [_#defs."/$defs/environment/$defs/registry_credential", list.MaxItems(1) & [..._#defs."/$defs/environment/$defs/registry_credential"]])
 		certificate?:                 string
 		compute_type!:                string
+		host_kernel?:                 string
 		image!:                       string
 		image_pull_credentials_type?: string
 		privileged_mode?:             bool

@@ -11,6 +11,8 @@ aws_cloudfront_key_value_store: {
 		id?:                 string
 		last_modified_time?: string
 		name!:               string
+		tags?: [string]:     string
+		tags_all?: [string]: string
 	})
 
 	#timeouts: close({

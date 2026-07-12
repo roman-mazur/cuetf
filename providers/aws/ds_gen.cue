@@ -529,6 +529,7 @@ import (
 	_#ds: "\(#awsPrefix)_route53_traffic_policy_document": close({data.aws_route53_traffic_policy_document & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_route53_zone": close({data.aws_route53_zone & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_route53_zones": close({data.aws_route53_zones & cuetf.MetaArgs})
+	_#ds: "\(#awsPrefix)_route53profiles_profile": close({data.aws_route53profiles_profile & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_route53profiles_profiles": close({data.aws_route53profiles_profiles & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_route": close({data.aws_route & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_route_table": close({data.aws_route_table & cuetf.MetaArgs})

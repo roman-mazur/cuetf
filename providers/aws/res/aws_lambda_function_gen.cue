@@ -62,8 +62,9 @@ aws_lambda_function: {
 		source_kms_key_arn?:             string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		timeout?: number
-		version?: string
+		timeout?:                              number
+		use_resource_timeout_for_propagation?: bool
+		version?:                              string
 	})
 
 	#capacity_provider_config: close({

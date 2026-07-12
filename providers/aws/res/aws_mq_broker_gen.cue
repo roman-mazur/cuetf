@@ -38,7 +38,14 @@ aws_mq_broker: {
 		})]
 		pending_data_replication_mode?: string
 		publicly_accessible?:           bool
+		resource_share_arns?: [...string]
 		security_groups?: [...string]
+		shared_resources?: [...close({
+			dns_names?: [...string]
+			resource_arn?: string
+			status?:       string
+			type?:         string
+		})]
 		storage_type?: string
 		subnet_ids?: [...string]
 		tags?: [string]:     string

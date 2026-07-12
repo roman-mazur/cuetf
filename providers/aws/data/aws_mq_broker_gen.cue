@@ -56,7 +56,14 @@ aws_mq_broker: {
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+		resource_share_arns?: [...string]
 		security_groups?: [...string]
+		shared_resources?: [...close({
+			dns_names?: [...string]
+			resource_arn?: string
+			status?:       string
+			type?:         string
+		})]
 		storage_type?: string
 		subnet_ids?: [...string]
 		tags?: [string]: string
