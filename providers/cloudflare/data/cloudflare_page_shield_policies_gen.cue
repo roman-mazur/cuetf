@@ -1,14 +1,11 @@
 package data
 
-#cloudflare_page_shield_policies: {
+cloudflare_page_shield_policies: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_page_shield_policies")
 	close({
 		// Max items to fetch, default: 1000
 		max_items?: number
-
-		// Identifier
-		zone_id?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -22,8 +19,8 @@ package data
 			// Whether the policy is enabled
 			enabled?: bool
 
-			// The expression which must match for the policy to be applied,
-			// using the Cloudflare Firewall rule expression syntax
+			// The expression which must match for the policy to be applied, using the
+			// Cloudflare Firewall rule expression syntax
 			expression?: string
 
 			// Identifier
@@ -42,8 +39,8 @@ package data
 			// Whether the policy is enabled
 			enabled?: bool
 
-			// The expression which must match for the policy to be applied,
-			// using the Cloudflare Firewall rule expression syntax
+			// The expression which must match for the policy to be applied, using the
+			// Cloudflare Firewall rule expression syntax
 			expression?: string
 
 			// Identifier
@@ -52,5 +49,8 @@ package data
 			// The policy which will be applied
 			value?: string
 		})]])
+
+		// Identifier
+		zone_id?: string
 	})
 }

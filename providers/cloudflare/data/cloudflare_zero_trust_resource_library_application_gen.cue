@@ -1,13 +1,12 @@
 package data
 
-#cloudflare_zero_trust_resource_library_application: {
+cloudflare_zero_trust_resource_library_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_resource_library_application")
 	close({
 		account_id!: string
 
-		// Confidence score for the application. Returns -1 when no score
-		// is available.
+		// Confidence score for the application. Returns -1 when no score is available.
 		application_confidence_score?: number
 
 		// Returns the score composition breakdown for the application.
@@ -25,8 +24,7 @@ package data
 		// Returns the application creation time.
 		created_at?: string
 
-		// GenAI score for the application. Returns -1 when no score is
-		// available.
+		// GenAI score for the application. Returns -1 when no score is available.
 		gen_ai_score?: number
 
 		// Returns the list of hostnames for the application.

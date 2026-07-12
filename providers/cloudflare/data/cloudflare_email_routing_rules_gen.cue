@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_email_routing_rules: {
+cloudflare_email_routing_rules: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_email_routing_rules")
 	close({
@@ -9,9 +9,6 @@ package data
 
 		// Max items to fetch, default: 1000
 		max_items?: number
-
-		// Identifier.
-		zone_id?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -30,9 +27,6 @@ package data
 
 			// Routing rule status.
 			enabled?: bool
-
-			// Routing rule identifier.
-			id?: string
 
 			// Matching patterns to forward to your actions.
 			matchers?: matchN(1, [close({
@@ -58,6 +52,9 @@ package data
 				// Value for matcher.
 				value?: string
 			})]])
+
+			// Routing rule identifier.
+			id?: string
 
 			// Routing rule name.
 			name?: string
@@ -81,9 +78,6 @@ package data
 			// Routing rule status.
 			enabled?: bool
 
-			// Routing rule identifier.
-			id?: string
-
 			// Matching patterns to forward to your actions.
 			matchers?: matchN(1, [close({
 				// Field for type matcher.
@@ -109,11 +103,17 @@ package data
 				value?: string
 			})]])
 
+			// Routing rule identifier.
+			id?: string
+
 			// Routing rule name.
 			name?: string
 
 			// Priority of the routing rule.
 			priority?: number
 		})]])
+
+		// Identifier.
+		zone_id?: string
 	})
 }

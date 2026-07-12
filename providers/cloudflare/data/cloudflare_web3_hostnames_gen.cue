@@ -1,14 +1,11 @@
 package data
 
-#cloudflare_web3_hostnames: {
+cloudflare_web3_hostnames: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_web3_hostnames")
 	close({
 		// Max items to fetch, default: 1000
 		max_items?: number
-
-		// Specify the identifier of the hostname.
-		zone_id?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -21,12 +18,11 @@ package data
 			dnslink?: string
 
 			// Specify the identifier of the hostname.
-			id?:          string
-			modified_on?: string
+			id?: string
 
-			// Specify the hostname that points to the target gateway via
-			// CNAME.
-			name?: string
+			// Specify the hostname that points to the target gateway via CNAME.
+			name?:        string
+			modified_on?: string
 
 			// Specifies the status of the hostname's activation.
 			// Available values: "active", "pending", "deleting", "error".
@@ -45,12 +41,11 @@ package data
 			dnslink?: string
 
 			// Specify the identifier of the hostname.
-			id?:          string
-			modified_on?: string
+			id?: string
 
-			// Specify the hostname that points to the target gateway via
-			// CNAME.
-			name?: string
+			// Specify the hostname that points to the target gateway via CNAME.
+			name?:        string
+			modified_on?: string
 
 			// Specifies the status of the hostname's activation.
 			// Available values: "active", "pending", "deleting", "error".
@@ -60,5 +55,8 @@ package data
 			// Available values: "ethereum", "ipfs", "ipfs_universal_path".
 			target?: string
 		})]])
+
+		// Specify the identifier of the hostname.
+		zone_id?: string
 	})
 }

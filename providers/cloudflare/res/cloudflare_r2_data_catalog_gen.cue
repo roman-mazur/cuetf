@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_r2_data_catalog: {
+cloudflare_r2_data_catalog: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_r2_data_catalog")
 	close({
@@ -20,14 +20,6 @@ package res
 		// Use this to uniquely identify the activated catalog.
 		id?: string
 
-		// Specifies the catalog name (generated from account and bucket
-		// name).
-		name?: string
-
-		// Indicates the status of the catalog.
-		// Available values: "active", "inactive".
-		status?: string
-
 		// Configures maintenance for the catalog.
 		maintenance_config?: close({
 			// Configures compaction for catalog maintenance.
@@ -36,25 +28,20 @@ package res
 				// Available values: "enabled", "disabled".
 				state?: string
 
-				// Sets the target file size for compaction in megabytes. Defaults
-				// to "128".
+				// Sets the target file size for compaction in megabytes. Defaults to "128".
 				// Available values: "64", "128", "256", "512".
 				target_size_mb?: string
 			})
 
 			// Configures snapshot expiration settings.
 			snapshot_expiration?: close({
-				// Specifies the maximum age for snapshots. The system deletes
-				// snapshots older than this age.
-				// Format: <number><unit> where unit is d (days), h (hours), m
-				// (minutes), or s (seconds).
-				// Examples: "7d" (7 days), "48h" (48 hours), "2880m" (2,880
-				// minutes).
+				// Specifies the maximum age for snapshots. The system deletes snapshots older than this age.
+				// Format: <number><unit> where unit is d (days), h (hours), m (minutes), or s (seconds).
+				// Examples: "7d" (7 days), "48h" (48 hours), "2880m" (2,880 minutes).
 				// Defaults to "7d".
 				max_snapshot_age?: string
 
-				// Specifies the minimum number of snapshots to retain. Defaults
-				// to 100.
+				// Specifies the minimum number of snapshots to retain. Defaults to 100.
 				min_snapshots_to_keep?: number
 
 				// Specifies the state of maintenance operations.
@@ -62,5 +49,12 @@ package res
 				state?: string
 			})
 		})
+
+		// Specifies the catalog name (generated from account and bucket name).
+		name?: string
+
+		// Indicates the status of the catalog.
+		// Available values: "active", "inactive".
+		status?: string
 	})
 }

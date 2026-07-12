@@ -1,15 +1,11 @@
 package data
 
-#cloudflare_ai_gateway_dynamic_routing: {
+cloudflare_ai_gateway_dynamic_routing: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_ai_gateway_dynamic_routing")
 	close({
-		account_id?:  string
-		created_at?:  string
-		gateway_id!:  string
-		id!:          string
-		modified_at?: string
-		name?:        string
+		account_id?: string
+		created_at?: string
 		deployment?: close({
 			created_at?:    string
 			deployment_id?: string
@@ -17,10 +13,6 @@ package data
 		})
 		elements?: matchN(1, [close({
 			id?: string
-
-			// Available values: "start", "conditional", "percentage", "rate",
-			// "model", "end".
-			type?: string
 			outputs?: close({
 				element_id?: string
 				fallback?: close({
@@ -39,14 +31,17 @@ package data
 					element_id?: string
 				})
 			})
+
+			// Available values: "start", "conditional", "percentage", "rate", "model", "end".
+			type?: string
 			properties?: close({
 				ai_gateway_dynamic_routing_provider?: string
-				conditions?:                          string
-				key?:                                 string
-				limit?:                               number
 
 				// Available values: "count", "cost".
 				limit_type?: string
+				conditions?: string
+				key?:        string
+				limit?:      number
 				model?:      string
 				retries?:    number
 				timeout?:    number
@@ -54,10 +49,6 @@ package data
 			})
 		}), [...close({
 			id?: string
-
-			// Available values: "start", "conditional", "percentage", "rate",
-			// "model", "end".
-			type?: string
 			outputs?: close({
 				element_id?: string
 				fallback?: close({
@@ -76,20 +67,27 @@ package data
 					element_id?: string
 				})
 			})
+
+			// Available values: "start", "conditional", "percentage", "rate", "model", "end".
+			type?: string
 			properties?: close({
 				ai_gateway_dynamic_routing_provider?: string
-				conditions?:                          string
-				key?:                                 string
-				limit?:                               number
 
 				// Available values: "count", "cost".
 				limit_type?: string
+				conditions?: string
+				key?:        string
+				limit?:      number
 				model?:      string
 				retries?:    number
 				timeout?:    number
 				window?:     number
 			})
 		})]])
+		gateway_id!:  string
+		id!:          string
+		modified_at?: string
+		name?:        string
 		version?: close({
 			// Available values: "true", "false".
 			active?:     string

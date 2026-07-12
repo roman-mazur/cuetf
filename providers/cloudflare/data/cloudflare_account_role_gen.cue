@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_account_role: {
+cloudflare_account_role: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_account_role")
 	close({
@@ -15,9 +15,6 @@ package data
 
 		// Role name.
 		name?: string
-
-		// Role identifier tag.
-		role_id!: string
 		permissions?: close({
 			analytics?: close({
 				read?:  bool
@@ -68,5 +65,8 @@ package data
 				write?: bool
 			})
 		})
+
+		// Role identifier tag.
+		role_id!: string
 	})
 }

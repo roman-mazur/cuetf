@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_secrets_store_secret: {
+cloudflare_secrets_store_secret: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_secrets_store_secret")
 	close({
@@ -12,6 +12,21 @@ package data
 
 		// Whenthe secret was created.
 		created?: string
+		filter?: close({
+			// Direction to sort objects
+			// Available values: "asc", "desc".
+			direction?: string
+
+			// Order secrets by values in the given field
+			// Available values: "name", "comment", "created", "modified", "status".
+			order?: string
+
+			// Only secrets with the given scopes will be returned
+			scopes?: [...[...string]]
+
+			// Search secrets using a filter string, filtering across name and comment
+			search?: string
+		})
 
 		// Secret identifier tag.
 		id?: string
@@ -33,22 +48,5 @@ package data
 
 		// Store Identifier
 		store_id!: string
-		filter?: close({
-			// Direction to sort objects
-			// Available values: "asc", "desc".
-			direction?: string
-
-			// Order secrets by values in the given field
-			// Available values: "name", "comment", "created", "modified",
-			// "status".
-			order?: string
-
-			// Only secrets with the given scopes will be returned
-			scopes?: [...[...string]]
-
-			// Search secrets using a filter string, filtering across name and
-			// comment
-			search?: string
-		})
 	})
 }

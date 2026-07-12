@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_oauth_client: {
+cloudflare_oauth_client: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_oauth_client")
 	close({
@@ -16,23 +16,30 @@ package res
 		// Human-readable name of the OAuth client.
 		client_name!: string
 
-		// The client secret. This is the only time the secret is returned
-		// in a response.
+		// The client secret. This is the only time the secret is returned in a response.
 		client_secret?: string
 
 		// URL of the home page of the client.
 		client_uri?: string
 
+		// Client URI domain control verification state.
+		client_uri_verification?: close({
+			// Current verification status for the client URI host.
+			// Available values: "pending", "in_progress", "verified", "failed".
+			status?: string
+
+			// Exact TXT record value that must be added to DNS to prove ownership of the client URI host.
+			text?: string
+		})
+
 		// Timestamp when the OAuth client was created.
 		created_at?: string
 
-		// Array of OAuth grant types the client is allowed to use.
-		// `authorization_code` is required; `refresh_token` may be
-		// included optionally.
+		// Array of OAuth grant types the client is allowed to use. `authorization_code`
+		// is required; `refresh_token` may be included optionally.
 		grant_types!: [...string]
 
-		// Indicates whether the client has a rotated secret that has not
-		// yet been deleted.
+		// Indicates whether the client has a rotated secret that has not yet been deleted.
 		has_rotated_secret?: bool
 
 		// URL of the client's logo.
@@ -47,8 +54,7 @@ package res
 		// Array of allowed post-logout redirect URIs.
 		post_logout_redirect_uris?: [...string]
 
-		// Timestamp when the OAuth client was promoted to public
-		// visibility.
+		// Timestamp when the OAuth client was promoted to public visibility.
 		promoted_at?: string
 
 		// Array of allowed redirect URIs for the client.
@@ -57,18 +63,15 @@ package res
 		// Array of OAuth response types the client is allowed to use.
 		response_types!: [...string]
 
-		// Array of OAuth scopes the client is allowed to request.
-		// Colon-delimited scopes are not accepted. Dot-delimited scopes
-		// are validated against available OAuth API scopes; simple
-		// identity scopes are allowed. Protocol scopes `offline_access`
-		// and `openid` are added or removed automatically based on
-		// `grant_types` and `response_types`.
+		// Array of OAuth scopes the client is allowed to request. Colon-delimited
+		// scopes are not accepted. Dot-delimited scopes are validated against
+		// available OAuth API scopes; simple identity scopes are allowed. Protocol
+		// scopes `offline_access` and `openid` are added or removed automatically
+		// based on `grant_types` and `response_types`.
 		scopes!: [...string]
 
-		// The authentication method the client uses at the token
-		// endpoint.
-		// Available values: "none", "client_secret_basic",
-		// "client_secret_post".
+		// The authentication method the client uses at the token endpoint.
+		// Available values: "none", "client_secret_basic", "client_secret_post".
 		token_endpoint_auth_method!: string
 
 		// URL that points to a terms of service document.
@@ -77,24 +80,11 @@ package res
 		// Timestamp when the OAuth client was last updated.
 		updated_at?: string
 
-		// Promote the OAuth client from private to public visibility.
-		// Only `public` is accepted; demotion to `private` is not
-		// supported. Promotion requires a non-empty client name, logo
-		// URI, verified client URI host, and at least one non-identity
-		// scope.
+		// Promote the OAuth client from private to public visibility. Only `public` is
+		// accepted; demotion to `private` is not supported. Promotion requires a
+		// non-empty client name, logo URI, verified client URI host, and at least one
+		// non-identity scope.
 		// Available values: "public".
 		visibility?: string
-
-		// Client URI domain control verification state.
-		client_uri_verification?: close({
-			// Current verification status for the client URI host.
-			// Available values: "pending", "in_progress", "verified",
-			// "failed".
-			status?: string
-
-			// Exact TXT record value that must be added to DNS to prove
-			// ownership of the client URI host.
-			text?: string
-		})
 	})
 }

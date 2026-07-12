@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_share_resources: {
+cloudflare_share_resources: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_share_resources")
 	close({
@@ -15,13 +15,6 @@ package data
 		// "gateway-destination-ip", "gateway-block-page-settings",
 		// "gateway-extended-email-matching", "idp-federation-grant".
 		resource_type?: string
-
-		// Share identifier tag.
-		share_id!: string
-
-		// Filter share resources by status.
-		// Available values: "active", "deleting", "deleted".
-		status?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -87,5 +80,12 @@ package data
 			// Available values: "active", "deleting", "deleted".
 			status?: string
 		})]])
+
+		// Share identifier tag.
+		share_id!: string
+
+		// Filter share resources by status.
+		// Available values: "active", "deleting", "deleted".
+		status?: string
 	})
 }

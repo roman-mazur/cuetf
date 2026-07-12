@@ -1,23 +1,18 @@
 package data
 
-#cloudflare_stream_audio_track: {
+cloudflare_stream_audio_track: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_stream_audio_track")
 	close({
 		// The account identifier tag.
 		account_id!: string
 
-		// A Cloudflare-generated unique identifier for a media item.
-		identifier!: string
-
 		// Array of audio tracks for the video.
 		audio?: matchN(1, [close({
-			// Denotes whether the audio track will be played by default in a
-			// player.
+			// Denotes whether the audio track will be played by default in a player.
 			default?: bool
 
-			// A string to uniquely identify the track amongst other audio
-			// track labels for the specified video.
+			// A string to uniquely identify the track amongst other audio track labels for the specified video.
 			label?: string
 
 			// Specifies the processing status of the video.
@@ -27,12 +22,10 @@ package data
 			// A Cloudflare-generated unique identifier for a media item.
 			uid?: string
 		}), [...close({
-			// Denotes whether the audio track will be played by default in a
-			// player.
+			// Denotes whether the audio track will be played by default in a player.
 			default?: bool
 
-			// A string to uniquely identify the track amongst other audio
-			// track labels for the specified video.
+			// A string to uniquely identify the track amongst other audio track labels for the specified video.
 			label?: string
 
 			// Specifies the processing status of the video.
@@ -42,5 +35,8 @@ package data
 			// A Cloudflare-generated unique identifier for a media item.
 			uid?: string
 		})]])
+
+		// A Cloudflare-generated unique identifier for a media item.
+		identifier!: string
 	})
 }

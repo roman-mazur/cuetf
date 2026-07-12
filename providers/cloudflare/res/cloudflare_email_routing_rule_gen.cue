@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_email_routing_rule: {
+cloudflare_email_routing_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_email_routing_rule")
 	close({
@@ -19,9 +19,6 @@ package res
 
 		// Routing rule status.
 		enabled?: bool
-
-		// Routing rule identifier.
-		id?: string
 
 		// Matching patterns to forward to your actions.
 		matchers!: matchN(1, [close({
@@ -48,11 +45,24 @@ package res
 			value?: string
 		})]])
 
+		// Routing rule identifier.
+		id?: string
+
 		// Routing rule name.
 		name?: string
 
+		// Public tag (script_tag) of the Worker that owns this rule. Required when
+		// `source` is `wrangler`.
+		owner_worker_tag?: string
+
 		// Priority of the routing rule.
 		priority?: number
+
+		// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+		// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+		// to `api` when omitted on write.
+		// Available values: "api", "wrangler".
+		source?: string
 
 		// Identifier.
 		zone_id!: string

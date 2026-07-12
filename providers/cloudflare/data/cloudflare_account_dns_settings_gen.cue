@@ -1,45 +1,23 @@
 package data
 
-#cloudflare_account_dns_settings: {
+cloudflare_account_dns_settings: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_account_dns_settings")
 	close({
 		// Identifier.
 		account_id?: string
 
-		// When enabled, forces all proxied DNS records in the account to
-		// behave as DNS-only at the edge, regardless of each record's
-		// individual proxy setting. Note that this account-level
-		// override does not modify the records themselves; it only
-		// affects how they are served at the edge. See more on [Enforce
+		// When enabled, forces all proxied DNS records in the account to behave as
+		// DNS-only at the edge, regardless of each record's individual proxy setting.
+		// Note that this account-level override does not modify the records
+		// themselves; it only affects how they are served at the edge. See more on
+		// [Enforce
 		// DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
 		enforce_dns_only?: bool
 		zone_defaults?: close({
-			// Whether to flatten all CNAME records in the zone. Note that,
-			// due to DNS limitations, a CNAME record at the zone apex will
-			// always be flattened.
+			// Whether to flatten all CNAME records in the zone. Note that, due to DNS
+			// limitations, a CNAME record at the zone apex will always be flattened.
 			flatten_all_cnames?: bool
-
-			// Whether to enable Foundation DNS Advanced Nameservers on the
-			// zone.
-			foundation_dns?: bool
-
-			// Whether to enable multi-provider DNS, which causes Cloudflare
-			// to activate the zone even when non-Cloudflare NS records
-			// exist, and to respect NS records at the zone apex during
-			// outbound zone transfers.
-			multi_provider?: bool
-
-			// The time to live (TTL) of the zone's nameserver (NS) records.
-			ns_ttl?: number
-
-			// Allows a Secondary DNS zone to use (proxied) override records
-			// and CNAME flattening at the zone apex.
-			secondary_overrides?: bool
-
-			// Whether the zone mode is a regular or CDN/DNS only zone.
-			// Available values: "standard", "cdn_only", "dns_only".
-			zone_mode?: string
 
 			// Settings for this internal zone.
 			internal_dns?: close({
@@ -47,45 +25,61 @@ package data
 				reference_zone_id?: string
 			})
 
-			// Settings determining the nameservers through which the zone
-			// should be available.
+			// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+			foundation_dns?: bool
+
+			// Settings determining the nameservers through which the zone should be available.
 			nameservers?: close({
 				// Nameserver type
-				// Available values: "cloudflare.standard",
-				// "cloudflare.standard.random", "custom.account",
-				// "custom.tenant".
+				// Available values: "cloudflare.standard", "cloudflare.standard.random",
+				// "custom.account", "custom.tenant".
 				type?: string
 			})
 
+			// Whether to enable multi-provider DNS, which causes Cloudflare to activate the
+			// zone even when non-Cloudflare NS records exist, and to respect NS records at
+			// the zone apex during outbound zone transfers.
+			multi_provider?: bool
+
 			// Components of the zone's SOA record.
 			soa?: close({
-				// Time in seconds of being unable to query the primary server
-				// after which secondary servers should stop serving the zone.
+				// Time in seconds of being unable to query the primary server after which
+				// secondary servers should stop serving the zone.
 				expire?: number
 
-				// The time to live (TTL) for negative caching of records within
-				// the zone.
+				// The time to live (TTL) for negative caching of records within the zone.
 				min_ttl?: number
 
-				// The primary nameserver, which may be used for outbound zone
-				// transfers. If null, a Cloudflare-assigned value will be used.
+				// The primary nameserver, which may be used for outbound zone transfers. If
+				// null, a Cloudflare-assigned value will be used.
 				mname?: string
 
-				// Time in seconds after which secondary servers should re-check
-				// the SOA record to see if the zone has been updated.
+				// Time in seconds after which secondary servers should re-check the SOA record
+				// to see if the zone has been updated.
 				refresh?: number
 
-				// Time in seconds after which secondary servers should retry
-				// queries after the primary server was unresponsive.
+				// Time in seconds after which secondary servers should retry queries after the
+				// primary server was unresponsive.
 				retry?: number
 
-				// The email address of the zone administrator, with the first
-				// label representing the local part of the email address.
+				// The email address of the zone administrator, with the first label
+				// representing the local part of the email address.
 				rname?: string
 
 				// The time to live (TTL) of the SOA record itself.
 				ttl?: number
 			})
+
+			// The time to live (TTL) of the zone's nameserver (NS) records.
+			ns_ttl?: number
+
+			// Allows a Secondary DNS zone to use (proxied) override records and CNAME
+			// flattening at the zone apex.
+			secondary_overrides?: bool
+
+			// Whether the zone mode is a regular or CDN/DNS only zone.
+			// Available values: "standard", "cdn_only", "dns_only".
+			zone_mode?: string
 		})
 	})
 }

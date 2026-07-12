@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_account: {
+cloudflare_account: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_account")
 	close({
@@ -10,9 +10,6 @@ package res
 		// Identifier
 		id?: string
 
-		// Account name
-		name!: string
-
 		// Parent container details
 		managed_by?: close({
 			// ID of the parent Organization, if one exists
@@ -21,6 +18,9 @@ package res
 			// Name of the parent Organization, if one exists
 			parent_org_name?: string
 		})
+
+		// Account name
+		name!: string
 
 		// Account settings
 		settings?: close({
@@ -32,8 +32,8 @@ package res
 			enforce_twofactor?: bool
 		})
 
-		// information related to the tenant unit, and optionally, an id
-		// of the unit to create the account on. see
+		// information related to the tenant unit, and optionally, an id of the unit to
+		// create the account on. see
 		// https://developers.cloudflare.com/tenant/how-to/manage-accounts/
 		unit?: close({
 			// Tenant unit ID

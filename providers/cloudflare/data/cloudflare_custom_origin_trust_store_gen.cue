@@ -1,12 +1,11 @@
 package data
 
-#cloudflare_custom_origin_trust_store: {
+cloudflare_custom_origin_trust_store: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_custom_origin_trust_store")
 	close({
-		// The root CA certificate in PEM format. Only root CA
-		// certificates are accepted; intermediate and leaf certificates
-		// are not supported.
+		// The root CA certificate in PEM format. Only root CA certificates are
+		// accepted; intermediate and leaf certificates are not supported.
 		certificate?: string
 
 		// Identifier.
@@ -14,6 +13,13 @@ package data
 
 		// When the certificate expires.
 		expires_on?: string
+		filter?: close({
+			// Limit to the number of records returned.
+			limit?: number
+
+			// Offset the results.
+			offset?: number
+		})
 
 		// Identifier.
 		id?: string
@@ -25,8 +31,8 @@ package data
 		signature?: string
 
 		// Status of the zone's custom SSL.
-		// Available values: "initializing", "pending_deployment",
-		// "active", "pending_deletion", "deleted", "expired".
+		// Available values: "initializing", "pending_deployment", "active",
+		// "pending_deletion", "deleted", "expired".
 		status?: string
 
 		// When the certificate was last modified.
@@ -37,12 +43,5 @@ package data
 
 		// Identifier.
 		zone_id?: string
-		filter?: close({
-			// Limit to the number of records returned.
-			limit?: number
-
-			// Offset the results.
-			offset?: number
-		})
 	})
 }

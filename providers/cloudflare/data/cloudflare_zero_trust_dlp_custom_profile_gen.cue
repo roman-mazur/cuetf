@@ -1,14 +1,13 @@
 package data
 
-#cloudflare_zero_trust_dlp_custom_profile: {
+cloudflare_zero_trust_dlp_custom_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dlp_custom_profile")
 	close({
 		account_id?:         string
 		ai_context_enabled?: bool
 
-		// Related DLP policies will trigger when the match count exceeds
-		// the number set.
+		// Related DLP policies will trigger when the match count exceeds the number set.
 		allowed_match_count?: number
 
 		// Available values: "low", "medium", "high", "very_high".
@@ -35,12 +34,6 @@ package data
 		open_access?: bool
 		profile_id!:  string
 
-		// Available values: "custom", "predefined", "integration".
-		type?: string
-
-		// When the profile was lasted updated.
-		updated_at?: string
-
 		// Sensitivity levels associated with this profile.
 		sensitivity_levels?: matchN(1, [close({
 			group_id?: string
@@ -51,29 +44,29 @@ package data
 		})]])
 		shared_entries?: matchN(1, [close({
 			// Only applies to custom word lists.
-			// Determines if the words should be matched in a case-sensitive
-			// manner
+			// Determines if the words should be matched in a case-sensitive manner
 			// Cannot be set to false if secret is true
 			case_sensitive?: bool
-			created_at?:     string
-			description?:    string
-			enabled?:        bool
-			id?:             string
-			name?:           string
-			profile_id?:     string
-			secret?:         bool
+			confidence?: close({
+				// Indicates whether this entry has AI remote service validation.
+				ai_context_available?: bool
 
-			// Available values: "custom", "custom_prompt_topic",
-			// "predefined", "integration", "exact_data",
-			// "document_fingerprint", "word_list".
-			type?:       string
-			updated_at?: string
-			word_list?:  string
+				// Indicates whether this entry has any form of validation that is not an AI remote service.
+				available?: bool
+			})
+			created_at?: string
+
+			// Available values: "custom", "custom_prompt_topic", "predefined",
+			// "integration", "exact_data", "document_fingerprint", "word_list".
+			type?: string
+			pattern?: close({
+				regex?: string
+			})
+			description?: string
 
 			// A Predefined AI prompt classification topic entry.
 			variant?: close({
-				// A customer-facing explanation of what this predefined AI prompt
-				// topic represents.
+				// A customer-facing explanation of what this predefined AI prompt topic represents.
 				description?: string
 
 				// Available values: "Intent", "Content".
@@ -82,42 +75,38 @@ package data
 				// Available values: "PromptTopic", "General".
 				type?: string
 			})
-			confidence?: close({
-				// Indicates whether this entry has AI remote service validation.
-				ai_context_available?: bool
-
-				// Indicates whether this entry has any form of validation that is
-				// not an AI remote service.
-				available?: bool
-			})
-			pattern?: close({
-				regex?: string
-			})
+			enabled?:    bool
+			id?:         string
+			name?:       string
+			profile_id?: string
+			secret?:     bool
+			updated_at?: string
+			word_list?:  string
 		}), [...close({
 			// Only applies to custom word lists.
-			// Determines if the words should be matched in a case-sensitive
-			// manner
+			// Determines if the words should be matched in a case-sensitive manner
 			// Cannot be set to false if secret is true
 			case_sensitive?: bool
-			created_at?:     string
-			description?:    string
-			enabled?:        bool
-			id?:             string
-			name?:           string
-			profile_id?:     string
-			secret?:         bool
+			confidence?: close({
+				// Indicates whether this entry has AI remote service validation.
+				ai_context_available?: bool
 
-			// Available values: "custom", "custom_prompt_topic",
-			// "predefined", "integration", "exact_data",
-			// "document_fingerprint", "word_list".
-			type?:       string
-			updated_at?: string
-			word_list?:  string
+				// Indicates whether this entry has any form of validation that is not an AI remote service.
+				available?: bool
+			})
+			created_at?: string
+
+			// Available values: "custom", "custom_prompt_topic", "predefined",
+			// "integration", "exact_data", "document_fingerprint", "word_list".
+			type?: string
+			pattern?: close({
+				regex?: string
+			})
+			description?: string
 
 			// A Predefined AI prompt classification topic entry.
 			variant?: close({
-				// A customer-facing explanation of what this predefined AI prompt
-				// topic represents.
+				// A customer-facing explanation of what this predefined AI prompt topic represents.
 				description?: string
 
 				// Available values: "Intent", "Content".
@@ -126,17 +115,19 @@ package data
 				// Available values: "PromptTopic", "General".
 				type?: string
 			})
-			confidence?: close({
-				// Indicates whether this entry has AI remote service validation.
-				ai_context_available?: bool
-
-				// Indicates whether this entry has any form of validation that is
-				// not an AI remote service.
-				available?: bool
-			})
-			pattern?: close({
-				regex?: string
-			})
+			enabled?:    bool
+			id?:         string
+			name?:       string
+			profile_id?: string
+			secret?:     bool
+			updated_at?: string
+			word_list?:  string
 		})]])
+
+		// Available values: "custom", "predefined", "integration".
+		type?: string
+
+		// When the profile was lasted updated.
+		updated_at?: string
 	})
 }

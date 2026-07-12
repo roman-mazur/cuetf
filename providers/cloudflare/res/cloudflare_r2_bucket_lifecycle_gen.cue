@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_r2_bucket_lifecycle: {
+cloudflare_r2_bucket_lifecycle: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_r2_bucket_lifecycle")
 	close({
@@ -15,8 +15,7 @@ package res
 		rules?: matchN(1, [close({
 			// Transition to abort ongoing multipart uploads.
 			abort_multipart_uploads_transition?: close({
-				// Condition for lifecycle transitions to apply after an object
-				// reaches an age in seconds.
+				// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 				condition?: close({
 					max_age!: number
 
@@ -25,56 +24,53 @@ package res
 				})
 			})
 
-			// Conditions that apply to all transitions of this rule.
-			conditions!: close({
-				// Transitions will only apply to objects/uploads in the bucket
-				// that start with the given prefix, an empty prefix can be
-				// provided to scope rule to all objects/uploads.
-				prefix!: string
-			})
-
-			// Transition to delete objects.
-			delete_objects_transition?: close({
-				// Condition for lifecycle transitions to apply after an object
-				// reaches an age in seconds.
-				condition?: close({
-					date?:    string
-					max_age?: number
-
-					// Available values: "Age", "Date".
-					type!: string
-				})
-			})
-
 			// Whether or not this rule is in effect.
 			enabled!: bool
+
+			// Conditions that apply to all transitions of this rule.
+			conditions!: close({
+				// Transitions will only apply to objects/uploads in the bucket that start with
+				// the given prefix, an empty prefix can be provided to scope rule to all
+				// objects/uploads.
+				prefix!: string
+			})
 
 			// Unique identifier for this rule.
 			id!: string
 
-			// Transitions to change the storage class of objects.
-			storage_class_transitions?: matchN(1, [close({
-				// Condition for lifecycle transitions to apply after an object
-				// reaches an age in seconds.
-				condition!: close({
-					date?:    string
-					max_age?: number
+			// Transition to delete objects.
+			delete_objects_transition?: close({
+				// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
+				condition?: close({
+					date?: string
 
 					// Available values: "Age", "Date".
-					type!: string
+					type!:    string
+					max_age?: number
+				})
+			})
+
+			// Transitions to change the storage class of objects.
+			storage_class_transitions?: matchN(1, [close({
+				// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
+				condition!: close({
+					date?: string
+
+					// Available values: "Age", "Date".
+					type!:    string
+					max_age?: number
 				})
 
 				// Available values: "InfrequentAccess".
 				storage_class!: string
 			}), [...close({
-				// Condition for lifecycle transitions to apply after an object
-				// reaches an age in seconds.
+				// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 				condition!: close({
-					date?:    string
-					max_age?: number
+					date?: string
 
 					// Available values: "Age", "Date".
-					type!: string
+					type!:    string
+					max_age?: number
 				})
 
 				// Available values: "InfrequentAccess".
@@ -83,8 +79,7 @@ package res
 		}), [...close({
 			// Transition to abort ongoing multipart uploads.
 			abort_multipart_uploads_transition?: close({
-				// Condition for lifecycle transitions to apply after an object
-				// reaches an age in seconds.
+				// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 				condition?: close({
 					max_age!: number
 
@@ -93,56 +88,53 @@ package res
 				})
 			})
 
-			// Conditions that apply to all transitions of this rule.
-			conditions!: close({
-				// Transitions will only apply to objects/uploads in the bucket
-				// that start with the given prefix, an empty prefix can be
-				// provided to scope rule to all objects/uploads.
-				prefix!: string
-			})
-
-			// Transition to delete objects.
-			delete_objects_transition?: close({
-				// Condition for lifecycle transitions to apply after an object
-				// reaches an age in seconds.
-				condition?: close({
-					date?:    string
-					max_age?: number
-
-					// Available values: "Age", "Date".
-					type!: string
-				})
-			})
-
 			// Whether or not this rule is in effect.
 			enabled!: bool
+
+			// Conditions that apply to all transitions of this rule.
+			conditions!: close({
+				// Transitions will only apply to objects/uploads in the bucket that start with
+				// the given prefix, an empty prefix can be provided to scope rule to all
+				// objects/uploads.
+				prefix!: string
+			})
 
 			// Unique identifier for this rule.
 			id!: string
 
-			// Transitions to change the storage class of objects.
-			storage_class_transitions?: matchN(1, [close({
-				// Condition for lifecycle transitions to apply after an object
-				// reaches an age in seconds.
-				condition!: close({
-					date?:    string
-					max_age?: number
+			// Transition to delete objects.
+			delete_objects_transition?: close({
+				// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
+				condition?: close({
+					date?: string
 
 					// Available values: "Age", "Date".
-					type!: string
+					type!:    string
+					max_age?: number
+				})
+			})
+
+			// Transitions to change the storage class of objects.
+			storage_class_transitions?: matchN(1, [close({
+				// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
+				condition!: close({
+					date?: string
+
+					// Available values: "Age", "Date".
+					type!:    string
+					max_age?: number
 				})
 
 				// Available values: "InfrequentAccess".
 				storage_class!: string
 			}), [...close({
-				// Condition for lifecycle transitions to apply after an object
-				// reaches an age in seconds.
+				// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 				condition!: close({
-					date?:    string
-					max_age?: number
+					date?: string
 
 					// Available values: "Age", "Date".
-					type!: string
+					type!:    string
+					max_age?: number
 				})
 
 				// Available values: "InfrequentAccess".

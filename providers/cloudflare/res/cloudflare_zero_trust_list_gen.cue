@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_zero_trust_list: {
+cloudflare_zero_trust_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_list")
 	close({
@@ -12,18 +12,6 @@ package res
 
 		// Identify the API resource with a UUID.
 		id?: string
-
-		// Indicate the number of items in the list.
-		list_count?: number
-
-		// Specify the list name.
-		name!: string
-
-		// Specify the list type.
-		// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP",
-		// "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
-		type!:       string
-		updated_at?: string
 
 		// Add items to the list.
 		items?: matchN(1, [close({
@@ -39,5 +27,17 @@ package res
 			// Specify the item value.
 			value?: string
 		})]])
+
+		// Indicate the number of items in the list.
+		list_count?: number
+
+		// Specify the list name.
+		name!: string
+
+		// Specify the list type.
+		// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY",
+		// "LOCATION", "DEVICE", "AAGUID".
+		type!:       string
+		updated_at?: string
 	})
 }

@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_zero_trust_dlp_predefined_profile: {
+cloudflare_zero_trust_dlp_predefined_profile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dlp_predefined_profile")
 	close({
@@ -9,8 +9,7 @@ package data
 		allowed_match_count?:  number
 		confidence_threshold?: string
 
-		// Entries to enable for this predefined profile. Any entries not
-		// provided will be disabled.
+		// Entries to enable for this predefined profile. Any entries not provided will be disabled.
 		enabled_entries?: [...string]
 		id?: string
 

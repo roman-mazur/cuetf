@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_pipeline_sinks: {
+cloudflare_pipeline_sinks: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_pipeline_sinks")
 	close({
@@ -21,21 +21,6 @@ package data
 				// Cloudflare Account ID for the bucket
 				account_id?: string
 
-				// R2 Bucket to write to
-				bucket?: string
-
-				// Jurisdiction this bucket is hosted in
-				jurisdiction?: string
-
-				// Table namespace
-				namespace?: string
-
-				// Subpath within the bucket to write to
-				path?: string
-
-				// Table name
-				table_name?: string
-
 				// Controls filename prefix/suffix and strategy.
 				file_naming?: close({
 					// The prefix to use in file name. i.e prefix-<uuid>.parquet
@@ -45,10 +30,12 @@ package data
 					// Available values: "serial", "uuid", "uuid_v7", "ulid".
 					strategy?: string
 
-					// This will overwrite the default file suffix. i.e .parquet, use
-					// with caution
+					// This will overwrite the default file suffix. i.e .parquet, use with caution
 					suffix?: string
 				})
+
+				// R2 Bucket to write to
+				bucket?: string
 
 				// Data-layout partitioning for sinks.
 				partitioning?: close({
@@ -56,35 +43,33 @@ package data
 					time_pattern?: string
 				})
 
-				// Rolling policy for file sinks (when & why to close a file and
-				// open a new one).
+				// Jurisdiction this bucket is hosted in
+				jurisdiction?: string
+
+				// Rolling policy for file sinks (when & why to close a file and open a new one).
 				rolling_policy?: close({
 					// Files will be rolled after reaching this number of bytes
 					file_size_bytes?: number
 
-					// Number of seconds of inactivity to wait before rolling over to
-					// a new file
+					// Number of seconds of inactivity to wait before rolling over to a new file
 					inactivity_seconds?: number
 
 					// Number of seconds to wait before rolling over to a new file
 					interval_seconds?: number
 				})
+
+				// Table namespace
+				namespace?: string
+
+				// Subpath within the bucket to write to
+				path?: string
+
+				// Table name
+				table_name?: string
 			})
-
-			// Indicates a unique identifier for this sink.
-			id?: string
-
-			// Defines the name of the Sink.
-			name?: string
-
-			// Specifies the type of sink.
-			// Available values: "r2", "r2_data_catalog".
-			type?:        string
-			created_at?:  string
-			modified_at?: string
+			created_at?: string
 			format?: close({
-				// Available values: "uncompressed", "snappy", "gzip", "zstd",
-				// "lz4".
+				// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
 				compression?: string
 
 				// Available values: "number", "string", "bytes".
@@ -98,37 +83,38 @@ package data
 				type?:         string
 				unstructured?: bool
 			})
+
+			// Indicates a unique identifier for this sink.
+			id?: string
 			schema?: close({
 				fields?: matchN(1, [close({
 					metadata_key?: string
-					name?:         string
-					required?:     bool
-					sql_name?:     string
 
-					// Available values: "int32", "int64", "float32", "float64",
-					// "bool", "string", "binary", "timestamp", "json".
+					// Available values: "int32", "int64", "float32", "float64", "bool", "string",
+					// "binary", "timestamp", "json".
 					type?: string
+					name?: string
 
-					// Available values: "second", "millisecond", "microsecond",
-					// "nanosecond".
-					unit?: string
+					// Available values: "second", "millisecond", "microsecond", "nanosecond".
+					unit?:     string
+					required?: bool
+					sql_name?: string
 				}), [...close({
 					metadata_key?: string
-					name?:         string
-					required?:     bool
-					sql_name?:     string
 
-					// Available values: "int32", "int64", "float32", "float64",
-					// "bool", "string", "binary", "timestamp", "json".
+					// Available values: "int32", "int64", "float32", "float64", "bool", "string",
+					// "binary", "timestamp", "json".
 					type?: string
+					name?: string
 
-					// Available values: "second", "millisecond", "microsecond",
-					// "nanosecond".
-					unit?: string
+					// Available values: "second", "millisecond", "microsecond", "nanosecond".
+					unit?:     string
+					required?: bool
+					sql_name?: string
 				})]])
+				inferred?: bool
 				format?: close({
-					// Available values: "uncompressed", "snappy", "gzip", "zstd",
-					// "lz4".
+					// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
 					compression?: string
 
 					// Available values: "number", "string", "bytes".
@@ -142,29 +128,21 @@ package data
 					type?:         string
 					unstructured?: bool
 				})
-				inferred?: bool
 			})
+
+			// Defines the name of the Sink.
+			name?:        string
+			modified_at?: string
+
+			// Specifies the type of sink.
+			// Available values: "r2", "r2_data_catalog".
+			type?: string
 		}), [...close({
 			// Defines the configuration of the R2 Sink.
 			config?: close({
 				// Cloudflare Account ID for the bucket
 				account_id?: string
 
-				// R2 Bucket to write to
-				bucket?: string
-
-				// Jurisdiction this bucket is hosted in
-				jurisdiction?: string
-
-				// Table namespace
-				namespace?: string
-
-				// Subpath within the bucket to write to
-				path?: string
-
-				// Table name
-				table_name?: string
-
 				// Controls filename prefix/suffix and strategy.
 				file_naming?: close({
 					// The prefix to use in file name. i.e prefix-<uuid>.parquet
@@ -174,10 +152,12 @@ package data
 					// Available values: "serial", "uuid", "uuid_v7", "ulid".
 					strategy?: string
 
-					// This will overwrite the default file suffix. i.e .parquet, use
-					// with caution
+					// This will overwrite the default file suffix. i.e .parquet, use with caution
 					suffix?: string
 				})
+
+				// R2 Bucket to write to
+				bucket?: string
 
 				// Data-layout partitioning for sinks.
 				partitioning?: close({
@@ -185,35 +165,33 @@ package data
 					time_pattern?: string
 				})
 
-				// Rolling policy for file sinks (when & why to close a file and
-				// open a new one).
+				// Jurisdiction this bucket is hosted in
+				jurisdiction?: string
+
+				// Rolling policy for file sinks (when & why to close a file and open a new one).
 				rolling_policy?: close({
 					// Files will be rolled after reaching this number of bytes
 					file_size_bytes?: number
 
-					// Number of seconds of inactivity to wait before rolling over to
-					// a new file
+					// Number of seconds of inactivity to wait before rolling over to a new file
 					inactivity_seconds?: number
 
 					// Number of seconds to wait before rolling over to a new file
 					interval_seconds?: number
 				})
+
+				// Table namespace
+				namespace?: string
+
+				// Subpath within the bucket to write to
+				path?: string
+
+				// Table name
+				table_name?: string
 			})
-
-			// Indicates a unique identifier for this sink.
-			id?: string
-
-			// Defines the name of the Sink.
-			name?: string
-
-			// Specifies the type of sink.
-			// Available values: "r2", "r2_data_catalog".
-			type?:        string
-			created_at?:  string
-			modified_at?: string
+			created_at?: string
 			format?: close({
-				// Available values: "uncompressed", "snappy", "gzip", "zstd",
-				// "lz4".
+				// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
 				compression?: string
 
 				// Available values: "number", "string", "bytes".
@@ -227,37 +205,38 @@ package data
 				type?:         string
 				unstructured?: bool
 			})
+
+			// Indicates a unique identifier for this sink.
+			id?: string
 			schema?: close({
 				fields?: matchN(1, [close({
 					metadata_key?: string
-					name?:         string
-					required?:     bool
-					sql_name?:     string
 
-					// Available values: "int32", "int64", "float32", "float64",
-					// "bool", "string", "binary", "timestamp", "json".
+					// Available values: "int32", "int64", "float32", "float64", "bool", "string",
+					// "binary", "timestamp", "json".
 					type?: string
+					name?: string
 
-					// Available values: "second", "millisecond", "microsecond",
-					// "nanosecond".
-					unit?: string
+					// Available values: "second", "millisecond", "microsecond", "nanosecond".
+					unit?:     string
+					required?: bool
+					sql_name?: string
 				}), [...close({
 					metadata_key?: string
-					name?:         string
-					required?:     bool
-					sql_name?:     string
 
-					// Available values: "int32", "int64", "float32", "float64",
-					// "bool", "string", "binary", "timestamp", "json".
+					// Available values: "int32", "int64", "float32", "float64", "bool", "string",
+					// "binary", "timestamp", "json".
 					type?: string
+					name?: string
 
-					// Available values: "second", "millisecond", "microsecond",
-					// "nanosecond".
-					unit?: string
+					// Available values: "second", "millisecond", "microsecond", "nanosecond".
+					unit?:     string
+					required?: bool
+					sql_name?: string
 				})]])
+				inferred?: bool
 				format?: close({
-					// Available values: "uncompressed", "snappy", "gzip", "zstd",
-					// "lz4".
+					// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
 					compression?: string
 
 					// Available values: "number", "string", "bytes".
@@ -271,8 +250,15 @@ package data
 					type?:         string
 					unstructured?: bool
 				})
-				inferred?: bool
 			})
+
+			// Defines the name of the Sink.
+			name?:        string
+			modified_at?: string
+
+			// Specifies the type of sink.
+			// Available values: "r2", "r2_data_catalog".
+			type?: string
 		})]])
 	})
 }

@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_authenticated_origin_pulls: {
+cloudflare_authenticated_origin_pulls: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_authenticated_origin_pulls")
 	close({
@@ -8,9 +8,8 @@ package data
 		cert_id?: string
 
 		// Status of the certificate or the association.
-		// Available values: "initializing", "pending_deployment",
-		// "pending_deletion", "active", "deleted",
-		// "deployment_timed_out", "deletion_timed_out".
+		// Available values: "initializing", "pending_deployment", "pending_deletion",
+		// "active", "deleted", "deployment_timed_out", "deletion_timed_out".
 		cert_status?: string
 
 		// The time when the certificate was updated.
@@ -25,15 +24,14 @@ package data
 		// The time when the certificate was created.
 		created_at?: string
 
-		// Indicates whether hostname-level authenticated origin pulls is
-		// enabled. A null value voids the association.
+		// Indicates whether hostname-level authenticated origin pulls is enabled. A
+		// null value voids the association.
 		enabled?: bool
 
 		// The date when the certificate expires.
 		expires_on?: string
 
-		// The hostname on the origin for which the client certificate
-		// uploaded will be used.
+		// The hostname on the origin for which the client certificate uploaded will be used.
 		hostname!: string
 
 		// The certificate authority that issued the certificate.
@@ -46,9 +44,8 @@ package data
 		signature?: string
 
 		// Status of the certificate or the association.
-		// Available values: "initializing", "pending_deployment",
-		// "pending_deletion", "active", "deleted",
-		// "deployment_timed_out", "deletion_timed_out".
+		// Available values: "initializing", "pending_deployment", "pending_deletion",
+		// "active", "deleted", "deployment_timed_out", "deletion_timed_out".
 		status?: string
 
 		// The time when the certificate was updated.

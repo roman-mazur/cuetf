@@ -1,58 +1,62 @@
 package data
 
-#cloudflare_organizations: {
+cloudflare_organizations: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_organizations")
 	close({
 		containing?: close({
-			// Filter the list of organizations to the ones that contain this
-			// particular
+			// Filter the list of organizations to the ones that contain this particular
 			// account.
 			account?: string
 
-			// Filter the list of organizations to the ones that contain this
-			// particular
+			// Filter the list of organizations to the ones that contain this particular
 			// organization.
 			organization?: string
 
-			// Filter the list of organizations to the ones that contain this
-			// particular
+			// Filter the list of organizations to the ones that contain this particular
 			// user.
 			//
-			// IMPORTANT: Just because an organization "contains" a user is
-			// not a
-			// representation of any authorization or privilege to manage any
-			// resources
-			// therein. An organization "containing" a user simply means the
-			// user is managed by
+			// IMPORTANT: Just because an organization "contains" a user is not a
+			// representation of any authorization or privilege to manage any resources
+			// therein. An organization "containing" a user simply means the user is managed by
 			// that organization.
 			user?: string
 		})
 
-		// Only return organizations with the specified IDs (ex.
-		// id=foo&id=bar). Send multiple elements
+		// Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
 		// by repeating the query value.
 		id?: [...string]
+		name?: close({
+			// (case-insensitive) Filter the list of organizations to where the name contains a particular
+			// string.
+			contains?: string
+
+			// (case-insensitive) Filter the list of organizations to where the name ends with a particular
+			// string.
+			ends_with?: string
+
+			// (case-insensitive) Filter the list of organizations to where the name starts with a
+			// particular string.
+			starts_with?: string
+		})
 
 		// Max items to fetch, default: 1000
 		max_items?: number
+		parent?: close({
+			// Filter the list of organizations to the ones that are a sub-organization
+			// of the specified organization.
+			//
+			// "null" is a valid value to provide for this parameter. It means "where
+			// an organization has no parent (i.e. it is a 'root' organization)."
+			id?: string
+		})
 
 		// The amount of items to return. Defaults to 10.
 		page_size?: number
 
-		// An opaque token returned from the last list response that when
-		// provided will retrieve the next page.
-		//
-		// Parameters used to filter the retrieved list must remain in
-		// subsequent
-		// requests with a page token.
-		page_token?: string
-
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			create_time?: string
-			id?:          string
-			name?:        string
 			meta?: close({
 				// Enable features for Organizations.
 				flags?: close({
@@ -63,24 +67,21 @@ package data
 					sub_org_creation?:  string
 				})
 
-				// Ordered chain of organization tags from the root organization
-				// down to
-				// (and including) this organization itself. Root organizations
-				// return a
-				// single-element array containing their own tag;
-				// sub-organizations return
-				// `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful
-				// for
-				// constructing authorization scopes that need to cover every
-				// ancestor
+				// Ordered chain of organization tags from the root organization down to
+				// (and including) this organization itself. Root organizations return a
+				// single-element array containing their own tag; sub-organizations return
+				// `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+				// constructing authorization scopes that need to cover every ancestor
 				// in the hierarchy.
 				hierarchy_tags?: [...string]
 				managed_by?: string
 			})
+			id?: string
 			parent?: close({
 				id?:   string
 				name?: string
 			})
+			name?: string
 			profile?: close({
 				business_address?:  string
 				business_email?:    string
@@ -90,8 +91,6 @@ package data
 			})
 		}), [...close({
 			create_time?: string
-			id?:          string
-			name?:        string
 			meta?: close({
 				// Enable features for Organizations.
 				flags?: close({
@@ -102,24 +101,21 @@ package data
 					sub_org_creation?:  string
 				})
 
-				// Ordered chain of organization tags from the root organization
-				// down to
-				// (and including) this organization itself. Root organizations
-				// return a
-				// single-element array containing their own tag;
-				// sub-organizations return
-				// `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful
-				// for
-				// constructing authorization scopes that need to cover every
-				// ancestor
+				// Ordered chain of organization tags from the root organization down to
+				// (and including) this organization itself. Root organizations return a
+				// single-element array containing their own tag; sub-organizations return
+				// `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+				// constructing authorization scopes that need to cover every ancestor
 				// in the hierarchy.
 				hierarchy_tags?: [...string]
 				managed_by?: string
 			})
+			id?: string
 			parent?: close({
 				id?:   string
 				name?: string
 			})
+			name?: string
 			profile?: close({
 				business_address?:  string
 				business_email?:    string
@@ -128,32 +124,12 @@ package data
 				external_metadata?: string
 			})
 		})]])
-		name?: close({
-			// (case-insensitive) Filter the list of organizations to where
-			// the name contains a particular
-			// string.
-			contains?: string
 
-			// (case-insensitive) Filter the list of organizations to where
-			// the name ends with a particular
-			// string.
-			ends_with?: string
-
-			// (case-insensitive) Filter the list of organizations to where
-			// the name starts with a
-			// particular string.
-			starts_with?: string
-		})
-		parent?: close({
-			// Filter the list of organizations to the ones that are a
-			// sub-organization
-			// of the specified organization.
-			//
-			// "null" is a valid value to provide for this parameter. It means
-			// "where
-			// an organization has no parent (i.e. it is a 'root'
-			// organization)."
-			id?: string
-		})
+		// An opaque token returned from the last list response that when
+		// provided will retrieve the next page.
+		//
+		// Parameters used to filter the retrieved list must remain in subsequent
+		// requests with a page token.
+		page_token?: string
 	})
 }

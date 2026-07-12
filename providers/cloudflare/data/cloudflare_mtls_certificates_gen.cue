@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_mtls_certificates: {
+cloudflare_mtls_certificates: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_mtls_certificates")
 	close({
@@ -27,8 +27,7 @@ package data
 			// The certificate authority that issued the certificate.
 			issuer?: string
 
-			// Optional unique name for the certificate. Only used for human
-			// readability.
+			// Optional unique name for the certificate. Only used for human readability.
 			name?: string
 
 			// The certificate serial number.
@@ -55,8 +54,7 @@ package data
 			// The certificate authority that issued the certificate.
 			issuer?: string
 
-			// Optional unique name for the certificate. Only used for human
-			// readability.
+			// Optional unique name for the certificate. Only used for human readability.
 			name?: string
 
 			// The certificate serial number.

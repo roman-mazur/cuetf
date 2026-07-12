@@ -1,9 +1,10 @@
 package res
 
-#cloudflare_zero_trust_dex_rule: {
+cloudflare_zero_trust_dex_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_dex_rule")
 	close({
+		// Unique identifier linked to an account.
 		account_id!:  string
 		created_at?:  string
 		description?: string
@@ -15,11 +16,9 @@ package res
 		match!: string
 
 		// The name of the Rule.
-		name!:       string
-		updated_at?: string
+		name!: string
 		targeted_tests?: matchN(1, [close({
-			// The configuration object which contains the details for the
-			// WARP client to conduct the test.
+			// The configuration object which contains the details for the WARP client to conduct the test.
 			data?: close({
 				// The desired endpoint to test.
 				host?: string
@@ -36,8 +35,7 @@ package res
 			name?:    string
 			test_id?: string
 		}), [...close({
-			// The configuration object which contains the details for the
-			// WARP client to conduct the test.
+			// The configuration object which contains the details for the WARP client to conduct the test.
 			data?: close({
 				// The desired endpoint to test.
 				host?: string
@@ -54,5 +52,6 @@ package res
 			name?:    string
 			test_id?: string
 		})]])
+		updated_at?: string
 	})
 }

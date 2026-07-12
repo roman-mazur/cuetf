@@ -1,81 +1,19 @@
 package data
 
-#cloudflare_api_shield_operation: {
+cloudflare_api_shield_operation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_api_shield_operation")
 	close({
-		// The endpoint which can contain path parameter templates in
-		// curly braces, each will be replaced from left to right with
-		// {varN}, starting with {var1}, during insertion. This will
-		// further be Cloudflare-normalized upon insertion. See:
-		// https://developers.cloudflare.com/rules/normalization/how-it-works/.
+		// The endpoint which can contain path parameter templates in curly braces, each
+		// will be replaced from left to right with {varN}, starting with {var1},
+		// during insertion. This will further be Cloudflare-normalized upon insertion.
+		// See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
 		endpoint?: string
 
-		// Add feature(s) to the results. The feature name that is given
-		// here corresponds to the resulting feature object. Have a look
-		// at the top-level object description for more details on the
-		// specific meaning.
+		// Add feature(s) to the results. The feature name that is given here
+		// corresponds to the resulting feature object. Have a look at the top-level
+		// object description for more details on the specific meaning.
 		feature?: [...string]
-
-		// RFC3986-compliant host.
-		host?: string
-
-		// UUID.
-		id?:           string
-		last_updated?: string
-
-		// The HTTP method used to access the endpoint.
-		// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT",
-		// "DELETE", "CONNECT", "PATCH", "TRACE".
-		method?: string
-
-		// UUID.
-		operation_id?: string
-
-		// When true, includes OpenAPI schemas (both uploaded and learned)
-		// for the operation in the response. Due to the conversion
-		// overhead, this parameter is only supported on single-operation
-		// retrieval.
-		with_schemas?: bool
-
-		// Identifier.
-		zone_id?: string
-
-		// OpenAPI JSON schemas for an operation, including both
-		// user-uploaded and Cloudflare-learned schemas.
-		schemas?: close({
-			// An OpenAPI operation object fragment containing schema
-			// information for an operation. May include parameter
-			// definitions, request body specifications, and a component
-			// schema extension.
-			learned?: close({
-				// OpenAPI parameter objects describing path, query, header, or
-				// cookie parameters.
-				parameters?: [...{
-					[string]: string
-				}]
-
-				// OpenAPI request body object describing the expected request
-				// payload.
-				request_body?: [string]: string
-			})
-
-			// An OpenAPI operation object fragment containing schema
-			// information for an operation. May include parameter
-			// definitions, request body specifications, and a component
-			// schema extension.
-			uploaded?: close({
-				// OpenAPI parameter objects describing path, query, header, or
-				// cookie parameters.
-				parameters?: [...{
-					[string]: string
-				}]
-
-				// OpenAPI request body object describing the expected request
-				// payload.
-				request_body?: [string]: string
-			})
-		})
 		features?: close({
 			// API Routing settings on endpoint.
 			api_routing?: close({
@@ -128,8 +66,7 @@ package data
 					// An array containing the learned parameter schemas.
 					parameters?: [...string]
 
-					// An empty response object. This field is required to yield a
-					// valid operation schema.
+					// An empty response object. This field is required to yield a valid operation schema.
 					responses?: string
 				})
 			})
@@ -148,8 +85,7 @@ package data
 					name?: string
 				})
 
-				// True if a Cloudflare-provided learned schema is available for
-				// this endpoint.
+				// True if a Cloudflare-provided learned schema is available for this endpoint.
 				learned_available?: bool
 
 				// Action taken on requests failing validation.
@@ -160,8 +96,7 @@ package data
 				// The total number of auth-ids seen across this calculation.
 				auth_id_tokens?: number
 
-				// The number of data points used for the threshold suggestion
-				// calculation.
+				// The number of data points used for the threshold suggestion calculation.
 				data_points?:  number
 				last_updated?: string
 
@@ -180,8 +115,7 @@ package data
 				// The estimated number of requests covered by these calculations.
 				requests?: number
 
-				// The suggested threshold in requests done by the same auth_id or
-				// period_seconds.
+				// The suggested threshold in requests done by the same auth_id or period_seconds.
 				suggested_threshold?: number
 			})
 		})
@@ -190,14 +124,12 @@ package data
 			// Available values: "asc", "desc".
 			direction?: string
 
-			// Filter results to only include endpoints containing this
-			// pattern.
+			// Filter results to only include endpoints containing this pattern.
 			endpoint?: string
 
-			// Add feature(s) to the results. The feature name that is given
-			// here corresponds to the resulting feature object. Have a look
-			// at the top-level object description for more details on the
-			// specific meaning.
+			// Add feature(s) to the results. The feature name that is given here
+			// corresponds to the resulting feature object. Have a look at the top-level
+			// object description for more details on the specific meaning.
 			feature?: [...string]
 
 			// Filter results to only include the specified hosts.
@@ -206,12 +138,62 @@ package data
 			// Filter results to only include the specified HTTP methods.
 			method?: [...string]
 
-			// Field to order by. When requesting a feature, the feature keys
-			// are available for ordering as well, e.g.,
-			// `thresholds.suggested_threshold`.
-			// Available values: "method", "host", "endpoint",
-			// "thresholds.$key".
+			// Field to order by. When requesting a feature, the feature keys are available
+			// for ordering as well, e.g., `thresholds.suggested_threshold`.
+			// Available values: "method", "host", "endpoint", "thresholds.$key".
 			order?: string
 		})
+
+		// RFC3986-compliant host.
+		host?: string
+
+		// UUID.
+		id?:           string
+		last_updated?: string
+
+		// The HTTP method used to access the endpoint.
+		// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
+		method?: string
+
+		// UUID.
+		operation_id?: string
+
+		// OpenAPI JSON schemas for an operation, including both user-uploaded and
+		// Cloudflare-learned schemas.
+		schemas?: close({
+			// An OpenAPI operation object fragment containing schema information for an
+			// operation. May include parameter definitions, request body specifications,
+			// and a component schema extension.
+			learned?: close({
+				// OpenAPI parameter objects describing path, query, header, or cookie parameters.
+				parameters?: [...{
+					[string]: string
+				}]
+
+				// OpenAPI request body object describing the expected request payload.
+				request_body?: [string]: string
+			})
+
+			// An OpenAPI operation object fragment containing schema information for an
+			// operation. May include parameter definitions, request body specifications,
+			// and a component schema extension.
+			uploaded?: close({
+				// OpenAPI parameter objects describing path, query, header, or cookie parameters.
+				parameters?: [...{
+					[string]: string
+				}]
+
+				// OpenAPI request body object describing the expected request payload.
+				request_body?: [string]: string
+			})
+		})
+
+		// When true, includes OpenAPI schemas (both uploaded and learned) for the
+		// operation in the response. Due to the conversion overhead, this parameter is
+		// only supported on single-operation retrieval.
+		with_schemas?: bool
+
+		// Identifier.
+		zone_id?: string
 	})
 }

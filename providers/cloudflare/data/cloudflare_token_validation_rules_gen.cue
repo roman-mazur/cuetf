@@ -1,28 +1,45 @@
 package data
 
-#cloudflare_token_validation_rules: {
+cloudflare_token_validation_rules: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_token_validation_rules")
 	close({
-		// Action to take on requests that match operations included in
-		// `selector` and fail `expression`.
+		// Action to take on requests that match operations included in `selector` and fail `expression`.
 		// Available values: "log", "block".
 		action?:     string
 		created_at?: string
 
-		// A human-readable description that gives more details than
-		// `title`.
+		// A human-readable description that gives more details than `title`.
 		description?: string
 
 		// Toggle rule on or off.
 		enabled?: bool
 
-		// Rule expression. Requests that fail to match this expression
-		// will be subject to `action`.
+		// Rule expression. Requests that fail to match this expression will be subject to `action`.
 		//
 		// For details on expressions, see the [Cloudflare
 		// Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
 		expression?: string
+		filter?: close({
+			// Action to take on requests that match operations included in `selector` and fail `expression`.
+			// Available values: "log", "block".
+			action?: string
+
+			// Toggle rule on or off.
+			enabled?: bool
+
+			// Select rules with this host in `include`.
+			host?: string
+
+			// Select rules with this host in `include`.
+			hostname?: string
+
+			// Select rules with these IDs.
+			id?: string
+
+			// Select rules using any of these token configurations.
+			token_configuration?: [...string]
+		})
 
 		// UUID.
 		id?:           string
@@ -30,12 +47,6 @@ package data
 
 		// UUID.
 		rule_id?: string
-
-		// A human-readable name for the rule.
-		title?: string
-
-		// Identifier.
-		zone_id?: string
 
 		// Select operations covered by this rule.
 		//
@@ -60,26 +71,11 @@ package data
 				host?: [...string]
 			})]])
 		})
-		filter?: close({
-			// Action to take on requests that match operations included in
-			// `selector` and fail `expression`.
-			// Available values: "log", "block".
-			action?: string
 
-			// Toggle rule on or off.
-			enabled?: bool
+		// A human-readable name for the rule.
+		title?: string
 
-			// Select rules with this host in `include`.
-			host?: string
-
-			// Select rules with this host in `include`.
-			hostname?: string
-
-			// Select rules with these IDs.
-			id?: string
-
-			// Select rules using any of these token configurations.
-			token_configuration?: [...string]
-		})
+		// Identifier.
+		zone_id?: string
 	})
 }

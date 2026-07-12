@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_email_routing_catch_all: {
+cloudflare_email_routing_catch_all: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_email_routing_catch_all")
 	close({
@@ -20,9 +20,6 @@ package data
 		// Routing rule status.
 		enabled?: bool
 
-		// Identifier.
-		id?: string
-
 		// List of matchers for the catch-all routing rule.
 		matchers?: matchN(1, [close({
 			// Type of matcher. Default is 'all'.
@@ -34,8 +31,17 @@ package data
 			type?: string
 		})]])
 
+		// Identifier.
+		id?: string
+
 		// Routing rule name.
 		name?: string
+
+		// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+		// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+		// to `api` when omitted on write.
+		// Available values: "api", "wrangler".
+		source?: string
 
 		// Identifier.
 		zone_id?: string

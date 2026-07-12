@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_filter: {
+cloudflare_filter: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_filter")
 	close({
@@ -10,6 +10,22 @@ package data
 		// The filter expression. For more information, refer to
 		// [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 		expression?: string
+		filter?: close({
+			// A case-insensitive string to find in the description.
+			description?: string
+
+			// A case-insensitive string to find in the expression.
+			expression?: string
+
+			// The unique identifier of the filter.
+			id?: string
+
+			// When true, indicates that the filter is currently paused.
+			paused?: bool
+
+			// The filter ref (a short reference tag) to search for. Must be an exact match.
+			ref?: string
+		})
 
 		// The unique identifier of the filter.
 		filter_id?: string
@@ -25,22 +41,5 @@ package data
 
 		// Defines an identifier.
 		zone_id?: string
-		filter?: close({
-			// A case-insensitive string to find in the description.
-			description?: string
-
-			// A case-insensitive string to find in the expression.
-			expression?: string
-
-			// The unique identifier of the filter.
-			id?: string
-
-			// When true, indicates that the filter is currently paused.
-			paused?: bool
-
-			// The filter ref (a short reference tag) to search for. Must be
-			// an exact match.
-			ref?: string
-		})
 	})
 }

@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_account_dns_settings_internal_view: {
+cloudflare_account_dns_settings_internal_view: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_account_dns_settings_internal_view")
 	close({

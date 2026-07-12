@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_web_analytics_sites: {
+cloudflare_web_analytics_sites: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_web_analytics_sites")
 	close({
@@ -16,22 +16,8 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// If enabled, the JavaScript snippet is automatically injected
-			// for orange-clouded sites.
+			// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 			auto_install?: bool
-			created?:      string
-
-			// The Web Analytics site identifier.
-			id?: string
-
-			// The Web Analytics site identifier.
-			site_tag?: string
-
-			// The Web Analytics site token.
-			site_token?: string
-
-			// Encoded JavaScript snippet.
-			snippet?: string
 
 			// A list of rules.
 			rules?: matchN(1, [close({
@@ -43,8 +29,7 @@ package data
 				// The Web Analytics rule identifier.
 				id?: string
 
-				// Whether the rule includes or excludes traffic from being
-				// measured.
+				// Whether the rule includes or excludes traffic from being measured.
 				inclusive?: bool
 
 				// Whether the rule is paused or not.
@@ -62,8 +47,7 @@ package data
 				// The Web Analytics rule identifier.
 				id?: string
 
-				// Whether the rule includes or excludes traffic from being
-				// measured.
+				// Whether the rule includes or excludes traffic from being measured.
 				inclusive?: bool
 
 				// Whether the rule is paused or not.
@@ -73,6 +57,10 @@ package data
 				paths?: [...string]
 				priority?: number
 			})]])
+			created?: string
+
+			// The Web Analytics site identifier.
+			id?: string
 			ruleset?: close({
 				// Whether the ruleset is enabled.
 				enabled?: bool
@@ -84,23 +72,18 @@ package data
 				// The zone identifier.
 				zone_tag?: string
 			})
+
+			// The Web Analytics site identifier.
+			site_tag?: string
+
+			// The Web Analytics site token.
+			site_token?: string
+
+			// Encoded JavaScript snippet.
+			snippet?: string
 		}), [...close({
-			// If enabled, the JavaScript snippet is automatically injected
-			// for orange-clouded sites.
+			// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 			auto_install?: bool
-			created?:      string
-
-			// The Web Analytics site identifier.
-			id?: string
-
-			// The Web Analytics site identifier.
-			site_tag?: string
-
-			// The Web Analytics site token.
-			site_token?: string
-
-			// Encoded JavaScript snippet.
-			snippet?: string
 
 			// A list of rules.
 			rules?: matchN(1, [close({
@@ -112,8 +95,7 @@ package data
 				// The Web Analytics rule identifier.
 				id?: string
 
-				// Whether the rule includes or excludes traffic from being
-				// measured.
+				// Whether the rule includes or excludes traffic from being measured.
 				inclusive?: bool
 
 				// Whether the rule is paused or not.
@@ -131,8 +113,7 @@ package data
 				// The Web Analytics rule identifier.
 				id?: string
 
-				// Whether the rule includes or excludes traffic from being
-				// measured.
+				// Whether the rule includes or excludes traffic from being measured.
 				inclusive?: bool
 
 				// Whether the rule is paused or not.
@@ -142,6 +123,10 @@ package data
 				paths?: [...string]
 				priority?: number
 			})]])
+			created?: string
+
+			// The Web Analytics site identifier.
+			id?: string
 			ruleset?: close({
 				// Whether the ruleset is enabled.
 				enabled?: bool
@@ -153,6 +138,15 @@ package data
 				// The zone identifier.
 				zone_tag?: string
 			})
+
+			// The Web Analytics site identifier.
+			site_tag?: string
+
+			// The Web Analytics site token.
+			site_token?: string
+
+			// Encoded JavaScript snippet.
+			snippet?: string
 		})]])
 	})
 }

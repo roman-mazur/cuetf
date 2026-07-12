@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_cloudforce_one_requests: {
+cloudflare_cloudforce_one_requests: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_cloudforce_one_requests")
 	close({
@@ -31,18 +31,6 @@ package data
 		// Requested information from request.
 		request_type?: string
 
-		// Field to sort results by.
-		sort_by?: string
-
-		// Sort order (asc or desc).
-		// Available values: "asc", "desc".
-		sort_order?: string
-
-		// Request Status.
-		// Available values: "open", "accepted", "reported", "approved",
-		// "completed", "declined".
-		status?: string
-
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Request completion time.
@@ -67,16 +55,14 @@ package data
 			request?: string
 
 			// Request Status.
-			// Available values: "open", "accepted", "reported", "approved",
-			// "completed", "declined".
+			// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 			status?: string
 
 			// Brief description of the request.
 			summary?: string
 
 			// The CISA defined Traffic Light Protocol (TLP).
-			// Available values: "clear", "amber", "amber-strict", "green",
-			// "red".
+			// Available values: "clear", "amber", "amber-strict", "green", "red".
 			tlp?: string
 
 			// Tokens for the request.
@@ -107,16 +93,14 @@ package data
 			request?: string
 
 			// Request Status.
-			// Available values: "open", "accepted", "reported", "approved",
-			// "completed", "declined".
+			// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 			status?: string
 
 			// Brief description of the request.
 			summary?: string
 
 			// The CISA defined Traffic Light Protocol (TLP).
-			// Available values: "clear", "amber", "amber-strict", "green",
-			// "red".
+			// Available values: "clear", "amber", "amber-strict", "green", "red".
 			tlp?: string
 
 			// Tokens for the request.
@@ -125,5 +109,16 @@ package data
 			// Request last updated time.
 			updated?: string
 		})]])
+
+		// Field to sort results by.
+		sort_by?: string
+
+		// Sort order (asc or desc).
+		// Available values: "asc", "desc".
+		sort_order?: string
+
+		// Request Status.
+		// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
+		status?: string
 	})
 }

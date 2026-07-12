@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_accounts: {
+cloudflare_accounts: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_accounts")
 	close({
@@ -19,15 +19,6 @@ package data
 			// Timestamp for the creation of the account
 			created_on?: string
 
-			// Identifier
-			id?: string
-
-			// Account name
-			name?: string
-
-			// Available values: "standard", "enterprise".
-			type?: string
-
 			// Parent container details
 			managed_by?: close({
 				// ID of the parent Organization, if one exists
@@ -36,6 +27,9 @@ package data
 				// Name of the parent Organization, if one exists
 				parent_org_name?: string
 			})
+
+			// Identifier
+			id?: string
 
 			// Account settings
 			settings?: close({
@@ -46,19 +40,16 @@ package data
 				// Two-Factor Authentication is enabled
 				enforce_twofactor?: bool
 			})
+
+			// Account name
+			name?: string
+
+			// Available values: "standard", "enterprise".
+			type?: string
 		}), [...close({
 			// Timestamp for the creation of the account
 			created_on?: string
 
-			// Identifier
-			id?: string
-
-			// Account name
-			name?: string
-
-			// Available values: "standard", "enterprise".
-			type?: string
-
 			// Parent container details
 			managed_by?: close({
 				// ID of the parent Organization, if one exists
@@ -67,6 +58,9 @@ package data
 				// Name of the parent Organization, if one exists
 				parent_org_name?: string
 			})
+
+			// Identifier
+			id?: string
 
 			// Account settings
 			settings?: close({
@@ -77,6 +71,12 @@ package data
 				// Two-Factor Authentication is enabled
 				enforce_twofactor?: bool
 			})
+
+			// Account name
+			name?: string
+
+			// Available values: "standard", "enterprise".
+			type?: string
 		})]])
 	})
 }

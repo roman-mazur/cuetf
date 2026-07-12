@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_zero_trust_dlp_data_class: {
+cloudflare_zero_trust_dlp_data_class: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_dlp_data_class")
 	close({
@@ -12,7 +12,6 @@ package data
 		expression?:  string
 		id?:          string
 		name?:        string
-		updated_at?:  string
 		sensitivity_levels?: matchN(1, [close({
 			group_id?: string
 			level_id?: string
@@ -20,5 +19,6 @@ package data
 			group_id?: string
 			level_id?: string
 		})]])
+		updated_at?: string
 	})
 }

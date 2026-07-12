@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_user: {
+cloudflare_user: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_user")
 	close({
@@ -30,23 +30,6 @@ package res
 
 		// User's last name
 		last_name?: string
-
-		// Indicates whether user has been suspended
-		suspended?: bool
-
-		// User's telephone number
-		telephone?: string
-
-		// Indicates whether two-factor authentication is enabled for the
-		// user account. Does not apply to API authentication.
-		two_factor_authentication_enabled?: bool
-
-		// Indicates whether two-factor authentication is required by one
-		// of the accounts that the user is a member of.
-		two_factor_authentication_locked?: bool
-
-		// The zipcode or postal code where the user lives.
-		zipcode?: string
 		organizations?: matchN(1, [close({
 			// Identifier
 			id?: string
@@ -60,8 +43,7 @@ package res
 			// List of roles that a user has within an organization.
 			roles?: [...string]
 
-			// Whether the user is a member of the organization or has an
-			// invitation pending.
+			// Whether the user is a member of the organization or has an invitation pending.
 			// Available values: "member", "invited".
 			status?: string
 		}), [...close({
@@ -77,10 +59,26 @@ package res
 			// List of roles that a user has within an organization.
 			roles?: [...string]
 
-			// Whether the user is a member of the organization or has an
-			// invitation pending.
+			// Whether the user is a member of the organization or has an invitation pending.
 			// Available values: "member", "invited".
 			status?: string
 		})]])
+
+		// Indicates whether user has been suspended
+		suspended?: bool
+
+		// User's telephone number
+		telephone?: string
+
+		// Indicates whether two-factor authentication is enabled for the user account.
+		// Does not apply to API authentication.
+		two_factor_authentication_enabled?: bool
+
+		// Indicates whether two-factor authentication is required by one of the
+		// accounts that the user is a member of.
+		two_factor_authentication_locked?: bool
+
+		// The zipcode or postal code where the user lives.
+		zipcode?: string
 	})
 }

@@ -1,48 +1,13 @@
 package res
 
-#cloudflare_zero_trust_access_policy: {
+cloudflare_zero_trust_access_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_access_policy")
 	close({
 		// Identifier.
 		account_id!: string
 
-		// Requires the user to request access from an administrator at
-		// the start of each session.
-		approval_required?: bool
-
-		// The action Access will take if a user matches this policy.
-		// Infrastructure application policies can only use the Allow
-		// action.
-		// Available values: "allow", "deny", "non_identity", "bypass".
-		decision!: string
-
-		// The UUID of the policy
-		id?: string
-
-		// Require this application to be served in an isolated browser
-		// for users matching this policy. 'Client Web Isolation' must be
-		// on for the account in order to use this feature.
-		isolation_required?: bool
-
-		// The name of the Access policy.
-		name!: string
-
-		// A custom message that will appear on the purpose justification
-		// screen.
-		purpose_justification_prompt?: string
-
-		// Require users to enter a justification when they log in to the
-		// application.
-		purpose_justification_required?: bool
-
-		// The amount of time that tokens issued for the application will
-		// be valid. Must be in the format `300ms` or `2h45m`. Valid time
-		// units are: ns, us (or µs), ms, s, m, h.
-		session_duration?: string
-
-		// Administrators who can approve a temporary authentication
-		// request.
+		// Administrators who can approve a temporary authentication request.
 		approval_groups?: matchN(1, [close({
 			// The number of approvals needed to obtain access.
 			approvals_needed!: number
@@ -63,30 +28,31 @@ package res
 			email_list_uuid?: string
 		})]])
 
-		// The rules that define how users may connect to targets secured
-		// by your application.
+		// Requires the user to request access from an administrator at the start of each session.
+		approval_required?: bool
+
+		// The rules that define how users may connect to targets secured by your application.
 		connection_rules?: close({
-			// The RDP-specific rules that define clipboard behavior for RDP
-			// connections.
+			// The RDP-specific rules that define clipboard behavior for RDP connections.
 			rdp?: close({
-				// Clipboard formats allowed when copying from local machine to
-				// remote RDP session.
+				// Clipboard formats allowed when copying from local machine to remote RDP session.
 				allowed_clipboard_local_to_remote_formats?: [...string]
 
-				// Clipboard formats allowed when copying from remote RDP session
-				// to local machine.
+				// Clipboard formats allowed when copying from remote RDP session to local machine.
 				allowed_clipboard_remote_to_local_formats?: [...string]
 			})
 		})
 
-		// Rules evaluated with a NOT logical operator. To match the
-		// policy, a user cannot meet any of the Exclude rules.
+		// The action Access will take if a user matches this policy. Infrastructure
+		// application policies can only use the Allow action.
+		// Available values: "allow", "deny", "non_identity", "bypass".
+		decision!: string
+
+		// Rules evaluated with a NOT logical operator. To match the policy, a user
+		// cannot meet any of the Exclude rules.
 		exclude?: matchN(1, [close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
-
-			// An empty object which matches on all users.
-			everyone?: close({})
 			auth_context?: close({
 				// The ACID of an Authentication context.
 				ac_id!: string
@@ -97,9 +63,11 @@ package res
 				// The ID of your Azure identity provider.
 				identity_provider_id!: string
 			})
+
+			// An empty object which matches on all users.
+			everyone?: close({})
 			auth_method?: close({
-				// The type of authentication method
-				// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+				// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 				auth_method!: string
 			})
 			azure_ad?: close({
@@ -138,8 +106,8 @@ package res
 				// The API endpoint containing your business logic.
 				evaluate_url!: string
 
-				// The API endpoint containing the key that Access uses to verify
-				// that the response came from your API.
+				// The API endpoint containing the key that Access uses to verify that the
+				// response came from your API.
 				keys_url!: string
 			})
 			geo?: close({
@@ -215,16 +183,12 @@ package res
 				token_id!: string
 			})
 			user_risk_score?: close({
-				// A list of risk score levels to match. Values can be low,
-				// medium, high, or unscored.
+				// A list of risk score levels to match. Values can be low, medium, high, or unscored.
 				user_risk_score!: [...string]
 			})
 		}), [...close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
-
-			// An empty object which matches on all users.
-			everyone?: close({})
 			auth_context?: close({
 				// The ACID of an Authentication context.
 				ac_id!: string
@@ -235,9 +199,11 @@ package res
 				// The ID of your Azure identity provider.
 				identity_provider_id!: string
 			})
+
+			// An empty object which matches on all users.
+			everyone?: close({})
 			auth_method?: close({
-				// The type of authentication method
-				// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+				// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 				auth_method!: string
 			})
 			azure_ad?: close({
@@ -276,8 +242,8 @@ package res
 				// The API endpoint containing your business logic.
 				evaluate_url!: string
 
-				// The API endpoint containing the key that Access uses to verify
-				// that the response came from your API.
+				// The API endpoint containing the key that Access uses to verify that the
+				// response came from your API.
 				keys_url!: string
 			})
 			geo?: close({
@@ -353,20 +319,18 @@ package res
 				token_id!: string
 			})
 			user_risk_score?: close({
-				// A list of risk score levels to match. Values can be low,
-				// medium, high, or unscored.
+				// A list of risk score levels to match. Values can be low, medium, high, or unscored.
 				user_risk_score!: [...string]
 			})
 		})]])
 
-		// Rules evaluated with an OR logical operator. A user needs to
-		// meet only one of the Include rules.
+		// The UUID of the policy
+		id?: string
+
+		// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
 		include?: matchN(1, [close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
-
-			// An empty object which matches on all users.
-			everyone?: close({})
 			auth_context?: close({
 				// The ACID of an Authentication context.
 				ac_id!: string
@@ -377,9 +341,11 @@ package res
 				// The ID of your Azure identity provider.
 				identity_provider_id!: string
 			})
+
+			// An empty object which matches on all users.
+			everyone?: close({})
 			auth_method?: close({
-				// The type of authentication method
-				// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+				// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 				auth_method!: string
 			})
 			azure_ad?: close({
@@ -418,8 +384,8 @@ package res
 				// The API endpoint containing your business logic.
 				evaluate_url!: string
 
-				// The API endpoint containing the key that Access uses to verify
-				// that the response came from your API.
+				// The API endpoint containing the key that Access uses to verify that the
+				// response came from your API.
 				keys_url!: string
 			})
 			geo?: close({
@@ -495,16 +461,12 @@ package res
 				token_id!: string
 			})
 			user_risk_score?: close({
-				// A list of risk score levels to match. Values can be low,
-				// medium, high, or unscored.
+				// A list of risk score levels to match. Values can be low, medium, high, or unscored.
 				user_risk_score!: [...string]
 			})
 		}), [...close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
-
-			// An empty object which matches on all users.
-			everyone?: close({})
 			auth_context?: close({
 				// The ACID of an Authentication context.
 				ac_id!: string
@@ -515,9 +477,11 @@ package res
 				// The ID of your Azure identity provider.
 				identity_provider_id!: string
 			})
+
+			// An empty object which matches on all users.
+			everyone?: close({})
 			auth_method?: close({
-				// The type of authentication method
-				// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+				// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 				auth_method!: string
 			})
 			azure_ad?: close({
@@ -556,8 +520,8 @@ package res
 				// The API endpoint containing your business logic.
 				evaluate_url!: string
 
-				// The API endpoint containing the key that Access uses to verify
-				// that the response came from your API.
+				// The API endpoint containing the key that Access uses to verify that the
+				// response came from your API.
 				keys_url!: string
 			})
 			geo?: close({
@@ -633,35 +597,44 @@ package res
 				token_id!: string
 			})
 			user_risk_score?: close({
-				// A list of risk score levels to match. Values can be low,
-				// medium, high, or unscored.
+				// A list of risk score levels to match. Values can be low, medium, high, or unscored.
 				user_risk_score!: [...string]
 			})
 		})]])
+
+		// Require this application to be served in an isolated browser for users
+		// matching this policy. 'Client Web Isolation' must be on for the account in
+		// order to use this feature.
+		isolation_required?: bool
 
 		// Configures multi-factor authentication (MFA) settings.
 		mfa_config?: close({
 			// Lists the MFA methods that users can authenticate with.
 			allowed_authenticators?: [...string]
 
-			// Indicates whether to disable MFA for this resource. This option
-			// is available at the application and policy level.
+			// Indicates whether to disable MFA for this resource. This option is available
+			// at the application and policy level.
 			mfa_disabled?: bool
 
-			// Defines the duration of an MFA session. Must be in minutes (m)
-			// or hours (h). Minimum: 0m. Maximum: 720h (30 days).
-			// Examples:`5m` or `24h`.
+			// Defines the duration of an MFA session. Must be in minutes (m) or hours (h).
+			// Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
 			session_duration?: string
 		})
 
-		// Rules evaluated with an AND logical operator. To match the
-		// policy, a user must meet all of the Require rules.
+		// The name of the Access policy.
+		name!: string
+
+		// A custom message that will appear on the purpose justification screen.
+		purpose_justification_prompt?: string
+
+		// Require users to enter a justification when they log in to the application.
+		purpose_justification_required?: bool
+
+		// Rules evaluated with an AND logical operator. To match the policy, a user
+		// must meet all of the Require rules.
 		require?: matchN(1, [close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
-
-			// An empty object which matches on all users.
-			everyone?: close({})
 			auth_context?: close({
 				// The ACID of an Authentication context.
 				ac_id!: string
@@ -672,9 +645,11 @@ package res
 				// The ID of your Azure identity provider.
 				identity_provider_id!: string
 			})
+
+			// An empty object which matches on all users.
+			everyone?: close({})
 			auth_method?: close({
-				// The type of authentication method
-				// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+				// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 				auth_method!: string
 			})
 			azure_ad?: close({
@@ -713,8 +688,8 @@ package res
 				// The API endpoint containing your business logic.
 				evaluate_url!: string
 
-				// The API endpoint containing the key that Access uses to verify
-				// that the response came from your API.
+				// The API endpoint containing the key that Access uses to verify that the
+				// response came from your API.
 				keys_url!: string
 			})
 			geo?: close({
@@ -790,16 +765,12 @@ package res
 				token_id!: string
 			})
 			user_risk_score?: close({
-				// A list of risk score levels to match. Values can be low,
-				// medium, high, or unscored.
+				// A list of risk score levels to match. Values can be low, medium, high, or unscored.
 				user_risk_score!: [...string]
 			})
 		}), [...close({
 			// An empty object which matches on all service tokens.
 			any_valid_service_token?: close({})
-
-			// An empty object which matches on all users.
-			everyone?: close({})
 			auth_context?: close({
 				// The ACID of an Authentication context.
 				ac_id!: string
@@ -810,9 +781,11 @@ package res
 				// The ID of your Azure identity provider.
 				identity_provider_id!: string
 			})
+
+			// An empty object which matches on all users.
+			everyone?: close({})
 			auth_method?: close({
-				// The type of authentication method
-				// https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+				// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
 				auth_method!: string
 			})
 			azure_ad?: close({
@@ -851,8 +824,8 @@ package res
 				// The API endpoint containing your business logic.
 				evaluate_url!: string
 
-				// The API endpoint containing the key that Access uses to verify
-				// that the response came from your API.
+				// The API endpoint containing the key that Access uses to verify that the
+				// response came from your API.
 				keys_url!: string
 			})
 			geo?: close({
@@ -928,10 +901,14 @@ package res
 				token_id!: string
 			})
 			user_risk_score?: close({
-				// A list of risk score levels to match. Values can be low,
-				// medium, high, or unscored.
+				// A list of risk score levels to match. Values can be low, medium, high, or unscored.
 				user_risk_score!: [...string]
 			})
 		})]])
+
+		// The amount of time that tokens issued for the application will be valid. Must
+		// be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs),
+		// ms, s, m, h.
+		session_duration?: string
 	})
 }

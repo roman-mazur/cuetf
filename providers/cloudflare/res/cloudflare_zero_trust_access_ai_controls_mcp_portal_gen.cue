@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_zero_trust_access_ai_controls_mcp_portal: {
+cloudflare_zero_trust_access_ai_controls_mcp_portal: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_access_ai_controls_mcp_portal")
 	close({
@@ -19,12 +19,10 @@ package res
 		modified_by?: string
 		name!:        string
 
-		// Route outbound MCP traffic through Zero Trust Secure Web
-		// Gateway
+		// Route outbound MCP traffic through Zero Trust Secure Web Gateway
 		secure_web_gateway?: bool
 		servers?: matchN(1, [close({
 			default_disabled?: bool
-			on_behalf?:        bool
 
 			// server id
 			server_id!: string
@@ -39,6 +37,7 @@ package res
 				enabled?:     bool
 				name!:        string
 			})]])
+			on_behalf?: bool
 			updated_tools?: matchN(1, [close({
 				alias?:       string
 				description?: string
@@ -52,7 +51,6 @@ package res
 			})]])
 		}), [...close({
 			default_disabled?: bool
-			on_behalf?:        bool
 
 			// server id
 			server_id!: string
@@ -67,6 +65,7 @@ package res
 				enabled?:     bool
 				name!:        string
 			})]])
+			on_behalf?: bool
 			updated_tools?: matchN(1, [close({
 				alias?:       string
 				description?: string

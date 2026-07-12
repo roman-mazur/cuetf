@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_workers_for_platforms_dispatch_namespaces: {
+cloudflare_workers_for_platforms_dispatch_namespaces: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workers_for_platforms_dispatch_namespaces")
 	close({
@@ -36,13 +36,12 @@ package data
 			// The current number of scripts in this Dispatch Namespace.
 			script_count?: number
 
-			// Whether the Workers in the namespace are executed in a
-			// "trusted" manner. When a Worker is trusted, it has access to
-			// the shared caches for the zone in the Cache API, and has
-			// access to the `request.cf` object on incoming Requests. When a
-			// Worker is untrusted, caches are not shared across the zone,
-			// and `request.cf` is undefined. By default, Workers in a
-			// namespace are "untrusted".
+			// Whether the Workers in the namespace are executed in a "trusted" manner. When
+			// a Worker is trusted, it has access to the shared caches for the zone in the
+			// Cache API, and has access to the `request.cf` object on incoming Requests.
+			// When a Worker is untrusted, caches are not shared across the zone, and
+			// `request.cf` is undefined. By default, Workers in a namespace are
+			// "untrusted".
 			trusted_workers?: bool
 		}), [...close({
 			// Identifier.
@@ -69,13 +68,12 @@ package data
 			// The current number of scripts in this Dispatch Namespace.
 			script_count?: number
 
-			// Whether the Workers in the namespace are executed in a
-			// "trusted" manner. When a Worker is trusted, it has access to
-			// the shared caches for the zone in the Cache API, and has
-			// access to the `request.cf` object on incoming Requests. When a
-			// Worker is untrusted, caches are not shared across the zone,
-			// and `request.cf` is undefined. By default, Workers in a
-			// namespace are "untrusted".
+			// Whether the Workers in the namespace are executed in a "trusted" manner. When
+			// a Worker is trusted, it has access to the shared caches for the zone in the
+			// Cache API, and has access to the `request.cf` object on incoming Requests.
+			// When a Worker is untrusted, caches are not shared across the zone, and
+			// `request.cf` is undefined. By default, Workers in a namespace are
+			// "untrusted".
 			trusted_workers?: bool
 		})]])
 	})

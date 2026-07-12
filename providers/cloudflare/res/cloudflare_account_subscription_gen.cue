@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_account_subscription: {
+cloudflare_account_subscription: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_account_subscription")
 	close({
@@ -10,12 +10,11 @@ package res
 		// The monetary unit in which pricing information is displayed.
 		currency?: string
 
-		// The end of the current period and also when the next billing is
-		// due.
+		// The end of the current period and also when the next billing is due.
 		current_period_end?: string
 
-		// When the current billing period started. May match
-		// initial_period_start if this is the first period.
+		// When the current billing period started. May match initial_period_start if
+		// this is the first period.
 		current_period_start?: string
 
 		// How often the subscription is renewed automatically.
@@ -25,14 +24,8 @@ package res
 		// Subscription identifier tag.
 		id?: string
 
-		// The price of the subscription that will be billed, in US
-		// dollars.
+		// The price of the subscription that will be billed, in US dollars.
 		price?: number
-
-		// The state that the subscription is in.
-		// Available values: "Trial", "Provisioned", "Paid",
-		// "AwaitingPayment", "Cancelled", "Failed", "Expired".
-		state?: string
 
 		// The rate plan applied to the subscription.
 		rate_plan?: close({
@@ -45,8 +38,7 @@ package res
 			// The ID of the rate plan.
 			id?: string
 
-			// Whether a rate plan is enterprise-based (or newly adopted term
-			// contract).
+			// Whether a rate plan is enterprise-based (or newly adopted term contract).
 			is_contract?: bool
 
 			// The full name of the rate plan.
@@ -55,9 +47,13 @@ package res
 			// The scope that this rate plan applies to.
 			scope?: string
 
-			// The list of sets this rate plan applies to. Returns array of
-			// strings.
+			// The list of sets this rate plan applies to. Returns array of strings.
 			sets?: [...string]
 		})
+
+		// The state that the subscription is in.
+		// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment",
+		// "Cancelled", "Failed", "Expired".
+		state?: string
 	})
 }

@@ -1,24 +1,21 @@
 package res
 
-#cloudflare_token_validation_rules: {
+cloudflare_token_validation_rules: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_token_validation_rules")
 	close({
-		// Action to take on requests that match operations included in
-		// `selector` and fail `expression`.
+		// Action to take on requests that match operations included in `selector` and fail `expression`.
 		// Available values: "log", "block".
 		action!:     string
 		created_at?: string
 
-		// A human-readable description that gives more details than
-		// `title`.
+		// A human-readable description that gives more details than `title`.
 		description!: string
 
 		// Toggle rule on or off.
 		enabled!: bool
 
-		// Rule expression. Requests that fail to match this expression
-		// will be subject to `action`.
+		// Rule expression. Requests that fail to match this expression will be subject to `action`.
 		//
 		// For details on expressions, see the [Cloudflare
 		// Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
@@ -27,12 +24,6 @@ package res
 		// UUID.
 		id?:           string
 		last_updated?: string
-
-		// A human-readable name for the rule.
-		title!: string
-
-		// Identifier.
-		zone_id!: string
 
 		// Update rule order among zone rules.
 		position?: close({
@@ -69,5 +60,11 @@ package res
 				host?: [...string]
 			})]])
 		})
+
+		// A human-readable name for the rule.
+		title!: string
+
+		// Identifier.
+		zone_id!: string
 	})
 }

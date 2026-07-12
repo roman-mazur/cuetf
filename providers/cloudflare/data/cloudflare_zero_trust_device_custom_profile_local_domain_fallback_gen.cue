@@ -1,13 +1,12 @@
 package data
 
-#cloudflare_zero_trust_device_custom_profile_local_domain_fallback: {
+cloudflare_zero_trust_device_custom_profile_local_domain_fallback: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_device_custom_profile_local_domain_fallback")
 	close({
 		account_id?: string
 
-		// A description of the fallback domain, displayed in the client
-		// UI.
+		// A description of the fallback domain, displayed in the client UI.
 		description?: string
 
 		// A list of IP addresses to handle domain resolution.

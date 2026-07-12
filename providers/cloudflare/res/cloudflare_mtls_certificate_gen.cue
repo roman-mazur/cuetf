@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_mtls_certificate: {
+cloudflare_mtls_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_mtls_certificate")
 	close({
@@ -10,9 +10,9 @@ package res
 		// Indicates whether the certificate is a CA or leaf certificate.
 		ca!: bool
 
-		// The uploaded root CA certificate or certificate chain.
-		// Certificates must be provided in PEM format with the
-		// certificate matching the private_key first in the chain.
+		// The uploaded root CA certificate or certificate chain. Certificates must be
+		// provided in PEM format with the certificate matching the private_key first
+		// in the chain.
 		certificates!: string
 
 		// When the certificate expires.
@@ -24,13 +24,11 @@ package res
 		// The certificate authority that issued the certificate.
 		issuer?: string
 
-		// Optional unique name for the certificate. Only used for human
-		// readability.
+		// Optional unique name for the certificate. Only used for human readability.
 		name?: string
 
-		// The private key for the certificate. This field is only needed
-		// for specific use cases such as using a custom certificate with
-		// Zero Trust's block page.
+		// The private key for the certificate. This field is only needed for specific
+		// use cases such as using a custom certificate with Zero Trust's block page.
 		private_key?: string
 
 		// The certificate serial number.

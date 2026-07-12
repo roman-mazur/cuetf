@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_api_shield_schema: {
+cloudflare_api_shield_schema: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_api_shield_schema")
 	close({
@@ -13,8 +13,7 @@ package data
 		// Name of the schema
 		name?: string
 
-		// Omit the source-files of schemas and only retrieve their
-		// meta-data.
+		// Omit the source-files of schemas and only retrieve their meta-data.
 		omit_source?: bool
 		schema_id!:   string
 

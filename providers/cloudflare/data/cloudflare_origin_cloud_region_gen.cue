@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_origin_cloud_region: {
+cloudflare_origin_cloud_region: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_origin_cloud_region")
 	close({

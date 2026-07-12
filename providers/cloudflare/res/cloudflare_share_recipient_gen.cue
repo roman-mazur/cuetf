@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_share_recipient: {
+cloudflare_share_recipient: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_share_recipient")
 	close({
@@ -8,8 +8,7 @@ package res
 		account_id!: string
 
 		// Share Recipient association status.
-		// Available values: "associating", "associated",
-		// "disassociating", "disassociated".
+		// Available values: "associating", "associated", "disassociating", "disassociated".
 		association_status?: string
 
 		// When the share was created.
@@ -26,9 +25,6 @@ package res
 
 		// The account that will receive the share.
 		recipient_account_id?: string
-
-		// Share identifier tag.
-		share_id!: string
 		resources?: matchN(1, [close({
 			// Share Recipient error message.
 			error?: string
@@ -54,5 +50,8 @@ package res
 			// Whether the error is terminal or will be continually retried.
 			terminal?: bool
 		})]])
+
+		// Share identifier tag.
+		share_id!: string
 	})
 }

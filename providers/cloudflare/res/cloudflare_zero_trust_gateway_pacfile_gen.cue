@@ -1,6 +1,6 @@
 package res
 
-#cloudflare_zero_trust_gateway_pacfile: {
+cloudflare_zero_trust_gateway_pacfile: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_gateway_pacfile")
 	close({
@@ -17,8 +17,7 @@ package res
 		// Name of the PAC file.
 		name!: string
 
-		// URL-friendly version of the PAC file name. If not provided, it
-		// will be auto-generated
+		// URL-friendly version of the PAC file name. If not provided, it will be auto-generated
 		slug?:       string
 		updated_at?: string
 

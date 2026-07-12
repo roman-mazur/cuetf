@@ -1,10 +1,14 @@
 package data
 
-#cloudflare_schema_validation_schemas: {
+cloudflare_schema_validation_schemas: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_schema_validation_schemas")
 	close({
 		created_at?: string
+		filter?: close({
+			// Filter for enabled schemas
+			validation_enabled?: bool
+		})
 
 		// UUID.
 		id?: string
@@ -16,15 +20,13 @@ package data
 		// A human-readable name for the schema
 		name?: string
 
-		// Omit the source-files of schemas and only retrieve their
-		// meta-data.
+		// Omit the source-files of schemas and only retrieve their meta-data.
 		omit_source?: bool
 
 		// UUID.
 		schema_id?: string
 
-		// The raw schema, e.g., the OpenAPI schema, either as JSON or
-		// YAML
+		// The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
 		source?: string
 
 		// An indicator if this schema is enabled
@@ -32,9 +34,5 @@ package data
 
 		// Identifier.
 		zone_id?: string
-		filter?: close({
-			// Filter for enabled schemas
-			validation_enabled?: bool
-		})
 	})
 }

@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_zero_trust_device_managed_networks_list: {
+cloudflare_zero_trust_device_managed_networks_list: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_device_managed_networks_list")
 	close({
@@ -11,25 +11,23 @@ package data
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// The configuration object containing information for the WARP
-			// client to detect the managed network.
+			// The configuration object containing information for the WARP client to detect
+			// the managed network.
 			config?: close({
-				// The SHA-256 hash of the TLS certificate presented by the host
-				// found at tls_sockaddr. If absent, regular certificate
-				// verification (trusted roots, valid timestamp, etc) will be
-				// used to validate the certificate.
+				// The SHA-256 hash of the TLS certificate presented by the host found at
+				// tls_sockaddr. If absent, regular certificate verification (trusted roots,
+				// valid timestamp, etc) will be used to validate the certificate.
 				sha256?: string
 
-				// A network address of the form "host:port" that the WARP client
-				// will use to detect the presence of a TLS host.
+				// A network address of the form "host:port" that the WARP client will use to
+				// detect the presence of a TLS host.
 				tls_sockaddr?: string
 			})
 
 			// API UUID.
 			id?: string
 
-			// The name of the device managed network. This name must be
-			// unique.
+			// The name of the device managed network. This name must be unique.
 			name?: string
 
 			// API UUID.
@@ -39,25 +37,23 @@ package data
 			// Available values: "tls".
 			type?: string
 		}), [...close({
-			// The configuration object containing information for the WARP
-			// client to detect the managed network.
+			// The configuration object containing information for the WARP client to detect
+			// the managed network.
 			config?: close({
-				// The SHA-256 hash of the TLS certificate presented by the host
-				// found at tls_sockaddr. If absent, regular certificate
-				// verification (trusted roots, valid timestamp, etc) will be
-				// used to validate the certificate.
+				// The SHA-256 hash of the TLS certificate presented by the host found at
+				// tls_sockaddr. If absent, regular certificate verification (trusted roots,
+				// valid timestamp, etc) will be used to validate the certificate.
 				sha256?: string
 
-				// A network address of the form "host:port" that the WARP client
-				// will use to detect the presence of a TLS host.
+				// A network address of the form "host:port" that the WARP client will use to
+				// detect the presence of a TLS host.
 				tls_sockaddr?: string
 			})
 
 			// API UUID.
 			id?: string
 
-			// The name of the device managed network. This name must be
-			// unique.
+			// The name of the device managed network. This name must be unique.
 			name?: string
 
 			// API UUID.

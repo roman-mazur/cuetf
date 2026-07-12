@@ -1,6 +1,6 @@
 package data
 
-#cloudflare_email_routing_rule: {
+cloudflare_email_routing_rule: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_email_routing_rule")
 	close({
@@ -19,6 +19,10 @@ package data
 
 		// Routing rule status.
 		enabled?: bool
+		filter?: close({
+			// Filter by enabled routing rules.
+			enabled?: bool
+		})
 
 		// Routing rule identifier.
 		id?: string
@@ -57,11 +61,13 @@ package data
 		// Routing rule identifier.
 		rule_identifier?: string
 
+		// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+		// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+		// to `api` when omitted on write.
+		// Available values: "api", "wrangler".
+		source?: string
+
 		// Identifier.
 		zone_id?: string
-		filter?: close({
-			// Filter by enabled routing rules.
-			enabled?: bool
-		})
 	})
 }
