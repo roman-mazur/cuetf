@@ -56,6 +56,7 @@ import (
 	_#ds: "\(#azurermPrefix)_billing_mpa_account_scope": close({data.azurerm_billing_mpa_account_scope & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_blueprint_definition": close({data.azurerm_blueprint_definition & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_blueprint_published_version": close({data.azurerm_blueprint_published_version & cuetf.MetaArgs})
+	_#ds: "\(#azurermPrefix)_cdn_frontdoor_batch_rule_set": close({data.azurerm_cdn_frontdoor_batch_rule_set & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_cdn_frontdoor_custom_domain": close({data.azurerm_cdn_frontdoor_custom_domain & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_cdn_frontdoor_endpoint": close({data.azurerm_cdn_frontdoor_endpoint & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_cdn_frontdoor_firewall_policy": close({data.azurerm_cdn_frontdoor_firewall_policy & cuetf.MetaArgs})

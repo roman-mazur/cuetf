@@ -104,6 +104,7 @@ azurerm_orchestrated_virtual_machine_scale_set: {
 		name!:                          string
 		network_security_group_id?:     string
 		primary?:                       bool
+		tags?: [string]: string
 	})
 
 	#os_disk: close({

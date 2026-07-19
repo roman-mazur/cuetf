@@ -8,23 +8,25 @@ azurerm_container_registry: {
 	close({
 		georeplications?: matchN(1, [#georeplications, [...#georeplications]])
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		timeouts?:               #timeouts
-		admin_enabled?:          bool
-		admin_password?:         string
-		admin_username?:         string
-		anonymous_pull_enabled?: bool
-		data_endpoint_enabled?:  bool
+		timeouts?:                                     #timeouts
+		admin_enabled?:                                bool
+		admin_password?:                               string
+		admin_username?:                               string
+		anonymous_pull_enabled?:                       bool
+		azuread_authentication_as_arm_policy_enabled?: bool
+		data_endpoint_enabled?:                        bool
 		data_endpoint_host_names?: [...string]
 		encryption?: [...close({
 			identity_client_id?: string
 			key_vault_key_id?:   string
 		})]
-		export_policy_enabled?:      bool
-		id?:                         string
-		location!:                   string
-		login_server?:               string
-		name!:                       string
-		network_rule_bypass_option?: string
+		export_policy_enabled?:                 bool
+		id?:                                    string
+		location!:                              string
+		login_server?:                          string
+		name!:                                  string
+		network_rule_bypass_for_tasks_enabled?: bool
+		network_rule_bypass_option?:            string
 		network_rule_set?: [...close({
 			default_action?: string
 			ip_rule?: [...close({
@@ -36,6 +38,7 @@ azurerm_container_registry: {
 		quarantine_policy_enabled?:     bool
 		resource_group_name!:           string
 		retention_policy_in_days?:      number
+		role_assignment_mode?:          string
 		sku!:                           string
 		tags?: [string]: string
 		trust_policy_enabled?:    bool
