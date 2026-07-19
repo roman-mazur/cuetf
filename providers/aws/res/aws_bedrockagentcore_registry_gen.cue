@@ -49,11 +49,23 @@ aws_bedrockagentcore_registry: {
 	})
 
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer": close({
+		allowed_workload_configuration?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/allowed_workload_configuration", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/allowed_workload_configuration"]])
 		custom_claim?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/custom_claim", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/custom_claim"]])
+		private_endpoint?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint"]])
+		private_endpoint_overrides?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides"]])
 		allowed_audience?: [...string]
 		allowed_clients?: [...string]
 		allowed_scopes?: [...string]
 		discovery_url!: string
+	})
+
+	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/allowed_workload_configuration": close({
+		hosting_environment?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/allowed_workload_configuration/$defs/hosting_environment", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/allowed_workload_configuration/$defs/hosting_environment"]])
+		workload_identities?: [...string]
+	})
+
+	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/allowed_workload_configuration/$defs/hosting_environment": close({
+		arn!: string
 	})
 
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/custom_claim": close({
@@ -70,5 +82,46 @@ aws_bedrockagentcore_registry: {
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/custom_claim/$defs/authorizing_claim_match_value/$defs/claim_match_value": close({
 		match_value_string?: string
 		match_value_string_list?: [...string]
+	})
+
+	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint": close({
+		managed_vpc_resource?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint/$defs/managed_vpc_resource", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint/$defs/managed_vpc_resource"]])
+		self_managed_lattice_resource?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint/$defs/self_managed_lattice_resource", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint/$defs/self_managed_lattice_resource"]])
+	})
+
+	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint/$defs/managed_vpc_resource": close({
+		endpoint_ip_address_type!: string
+		routing_domain?:           string
+		security_group_ids?: [...string]
+		subnet_ids!: [...string]
+		tags?: [string]: string
+		vpc_identifier!: string
+	})
+
+	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint/$defs/self_managed_lattice_resource": close({
+		resource_configuration_identifier!: string
+	})
+
+	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides": close({
+		private_endpoint?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides/$defs/private_endpoint", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides/$defs/private_endpoint"]])
+		domain!: string
+	})
+
+	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides/$defs/private_endpoint": close({
+		managed_vpc_resource?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides/$defs/private_endpoint/$defs/managed_vpc_resource", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides/$defs/private_endpoint/$defs/managed_vpc_resource"]])
+		self_managed_lattice_resource?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides/$defs/private_endpoint/$defs/self_managed_lattice_resource", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides/$defs/private_endpoint/$defs/self_managed_lattice_resource"]])
+	})
+
+	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides/$defs/private_endpoint/$defs/managed_vpc_resource": close({
+		endpoint_ip_address_type!: string
+		routing_domain?:           string
+		security_group_ids?: [...string]
+		subnet_ids!: [...string]
+		tags?: [string]: string
+		vpc_identifier!: string
+	})
+
+	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides/$defs/private_endpoint/$defs/self_managed_lattice_resource": close({
+		resource_configuration_identifier!: string
 	})
 }

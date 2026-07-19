@@ -1,3 +1,3 @@
 package aws
 
-#Version: "6.54.0"
+#Version: "6.55.0"

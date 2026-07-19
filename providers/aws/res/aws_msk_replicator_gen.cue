@@ -83,6 +83,7 @@ aws_msk_replicator: {
 	})
 
 	_#defs: "/$defs/replication_info_list/$defs/consumer_group_replication": close({
+		consumer_group_offset_sync_mode?: string
 		consumer_groups_to_exclude?: [...string]
 		consumer_groups_to_replicate!: [...string]
 		detect_and_copy_new_consumer_groups?: bool

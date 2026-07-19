@@ -28,7 +28,8 @@ aws_bedrock_guardrail: {
 		status?:                    string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		version?: string
+		updated_at?: string
+		version?:    string
 	})
 
 	#content_policy_config: close({
