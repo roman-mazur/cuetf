@@ -20,6 +20,7 @@ azurerm_api_management_logger: {
 
 	#application_insights: close({
 		connection_string?:   string
+		identity_client_id?:  string
 		instrumentation_key?: string
 	})
 

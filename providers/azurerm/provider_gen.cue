@@ -112,8 +112,7 @@ provider: {
 
 	#enhanced_validation: close({
 		// Should the AzureRM Provider validate location arguments against the list of
-		// supported Azure Locations? When enabled, invalid locations are caught at
-		// plan time; when disabled, they are caught at apply time.
+		// supported Azure Locations?
 		locations?: bool
 
 		// Should the AzureRM Provider validate Resource Provider arguments against the
@@ -129,6 +128,7 @@ provider: {
 		application_insights?: matchN(1, [_#defs."/$defs/features/$defs/application_insights", [..._#defs."/$defs/features/$defs/application_insights"]])
 		cognitive_account?: matchN(1, [_#defs."/$defs/features/$defs/cognitive_account", [..._#defs."/$defs/features/$defs/cognitive_account"]])
 		databricks_workspace?: matchN(1, [_#defs."/$defs/features/$defs/databricks_workspace", [..._#defs."/$defs/features/$defs/databricks_workspace"]])
+		enhanced_validation?: matchN(1, [_#defs."/$defs/features/$defs/enhanced_validation", [..._#defs."/$defs/features/$defs/enhanced_validation"]])
 		key_vault?: matchN(1, [_#defs."/$defs/features/$defs/key_vault", [..._#defs."/$defs/features/$defs/key_vault"]])
 		log_analytics_workspace?: matchN(1, [_#defs."/$defs/features/$defs/log_analytics_workspace", [..._#defs."/$defs/features/$defs/log_analytics_workspace"]])
 		machine_learning?: matchN(1, [_#defs."/$defs/features/$defs/machine_learning", [..._#defs."/$defs/features/$defs/machine_learning"]])
@@ -138,6 +138,7 @@ provider: {
 		recovery_service?: matchN(1, [_#defs."/$defs/features/$defs/recovery_service", [..._#defs."/$defs/features/$defs/recovery_service"]])
 		recovery_services_vaults?: matchN(1, [_#defs."/$defs/features/$defs/recovery_services_vaults", [..._#defs."/$defs/features/$defs/recovery_services_vaults"]])
 		resource_group?: matchN(1, [_#defs."/$defs/features/$defs/resource_group", [..._#defs."/$defs/features/$defs/resource_group"]])
+		servicebus?: matchN(1, [_#defs."/$defs/features/$defs/servicebus", [..._#defs."/$defs/features/$defs/servicebus"]])
 		storage?: matchN(1, [_#defs."/$defs/features/$defs/storage", [..._#defs."/$defs/features/$defs/storage"]])
 		subscription?: matchN(1, [_#defs."/$defs/features/$defs/subscription", [..._#defs."/$defs/features/$defs/subscription"]])
 		template_deployment?: matchN(1, [_#defs."/$defs/features/$defs/template_deployment", [..._#defs."/$defs/features/$defs/template_deployment"]])
@@ -176,6 +177,31 @@ provider: {
 		// will be forcibly deleted when the workspace is destroyed, regardless of
 		// contents.
 		force_delete?: bool
+	})
+
+	_#defs: "/$defs/features/$defs/enhanced_validation": close({
+		// Should the AzureRM Provider validate location arguments against the list of
+		// supported Azure Locations? When enabled, invalid locations are caught at
+		// plan time; when disabled, they are caught at apply time.
+		locations?: bool
+
+		// Should the AzureRM Provider call the Azure Preflight Validation API at plan
+		// time to check the request payload for each Preflight-supported resource is
+		// valid. Note: requires valid credentials and external Azure API access at
+		// plan-time.
+		preflight_enabled?: bool
+
+		// The Azure location to use as a fallback when Preflight Validation is enabled
+		// and a resource does not specify a location. This is typically used for
+		// resources that derive their location from a dependency that has not yet been
+		// created.
+		preflight_location_fallback?: string
+
+		// Should the AzureRM Provider validate Resource Provider arguments against the
+		// list of supported Resource Providers? When enabled, invalid resource
+		// providers are caught at plan time; when disabled, they are caught at apply
+		// time.
+		resource_providers?: bool
 	})
 
 	_#defs: "/$defs/features/$defs/key_vault": close({
@@ -264,6 +290,12 @@ provider: {
 
 	_#defs: "/$defs/features/$defs/resource_group": close({
 		prevent_deletion_if_contains_resources?: bool
+	})
+
+	_#defs: "/$defs/features/$defs/servicebus": close({
+		// When enabled, the $Default rule is automatically deleted after creating a
+		// Service Bus subscription, preventing unfiltered message delivery.
+		auto_delete_subscription_default_rule?: bool
 	})
 
 	_#defs: "/$defs/features/$defs/storage": close({

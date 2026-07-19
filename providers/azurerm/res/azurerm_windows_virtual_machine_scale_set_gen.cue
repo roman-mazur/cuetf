@@ -93,16 +93,16 @@ azurerm_windows_virtual_machine_scale_set: {
 	})
 
 	#data_disk: close({
-		caching!:                        string
-		create_option?:                  string
-		disk_encryption_set_id?:         string
-		disk_size_gb!:                   number
-		lun!:                            number
-		name?:                           string
-		storage_account_type!:           string
-		ultra_ssd_disk_iops_read_write?: number
-		ultra_ssd_disk_mbps_read_write?: number
-		write_accelerator_enabled?:      bool
+		caching!:                   string
+		create_option?:             string
+		disk_encryption_set_id?:    string
+		disk_iops_read_write?:      number
+		disk_mbps_read_write?:      number
+		disk_size_gb!:              number
+		lun!:                       number
+		name?:                      string
+		storage_account_type!:      string
+		write_accelerator_enabled?: bool
 	})
 
 	#extension: close({

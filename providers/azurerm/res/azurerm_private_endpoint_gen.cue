@@ -15,6 +15,7 @@ azurerm_private_endpoint: {
 			ip_addresses?: [...string]
 		})]
 		custom_network_interface_name?: string
+		edge_zone?:                     string
 		id?:                            string
 		location!:                      string
 		name!:                          string

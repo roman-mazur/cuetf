@@ -34,9 +34,10 @@ azurerm_logic_app_standard: {
 			password?: string
 			username?: string
 		})]
-		storage_account_access_key!: string
-		storage_account_name!:       string
-		storage_account_share_name?: string
+		storage_account_access_key?:  string
+		storage_account_name?:        string
+		storage_account_share_name?:  string
+		storage_key_vault_secret_id?: string
 		tags?: [string]: string
 		use_extension_bundle?:       bool
 		version?:                    string
