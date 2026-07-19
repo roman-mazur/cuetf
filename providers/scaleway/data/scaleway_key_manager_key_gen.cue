@@ -51,6 +51,9 @@ scaleway_key_manager_key: {
 			rotation_period?:  string
 		})]
 
+		// The Scaleway Resource Name (SRN) of the key
+		srn?: string
+
 		// State of the key. See the Key.State enum for possible values.
 		state?: string
 

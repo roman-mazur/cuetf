@@ -46,6 +46,9 @@ scaleway_key_manager_key: {
 		// The rotation count tracks the number of times the key has been rotated.
 		rotation_count?: number
 
+		// The Scaleway Resource Name (SRN) of the key
+		srn?: string
+
 		// State of the key. See the Key.State enum for possible values.
 		state?: string
 

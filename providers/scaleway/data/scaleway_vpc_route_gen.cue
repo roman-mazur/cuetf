@@ -35,6 +35,9 @@ scaleway_vpc_route: {
 		// The ID of the route
 		route_id?: string
 
+		// The Scaleway Resource Name (SRN) of the route
+		srn?: string
+
 		// The tags associated with the Route
 		tags?: [...string]
 

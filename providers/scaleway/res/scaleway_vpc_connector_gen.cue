@@ -20,6 +20,9 @@ scaleway_vpc_connector: {
 		// The region you want to attach the resource to
 		region?: string
 
+		// The Scaleway Resource Name (SRN) of the vpc connector
+		srn?: string
+
 		// The VPC connector status
 		status?: string
 

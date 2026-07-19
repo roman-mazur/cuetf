@@ -1451,6 +1451,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the snapshot"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the snapshot"
@@ -1596,6 +1602,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The snapshot to create the volume from"
 						description_kind: "plain"
 						optional:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the volume"
+						description_kind: "plain"
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -5354,9 +5366,15 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					size_in_gb: {
 						type:             "number"
-						description:      "The Filesystem size_in_gb in bytes, with a granularity of 100 GB (10^11 bytes). Must be compliant with the minimum (100 GB) and maximum (10 TB) allowed size_in_gb."
+						description:      "The filesystem size in GB. Minimum 25GB, maximum 10TB"
 						description_kind: "plain"
 						required:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the filesystem"
+						description_kind: "plain"
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -10179,6 +10197,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									description_kind: "plain"
 									optional:         true
 								}
+								srn: {
+									type:             "string"
+									description:      "The Scaleway Resource Name (SRN) of the ACL rule"
+									description_kind: "plain"
+									computed:         true
+								}
 							}
 							description:      "The list of network rules that manage inbound traffic"
 							description_kind: "plain"
@@ -10350,6 +10374,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The IP used for the DNS Service."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the cluster"
+						description_kind: "plain"
 						computed:         true
 					}
 					status: {
@@ -10704,6 +10734,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							}]]
 							public_ip:    "string"
 							public_ip_v6: "string"
+							srn:          "string"
 							status:       "string"
 						}]]
 						description:      "List of nodes in the pool"
@@ -10754,6 +10785,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "Size of the pool"
 						description_kind: "plain"
 						required:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the pool"
+						description_kind: "plain"
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -11154,6 +11191,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the key"
+						description_kind: "plain"
+						computed:         true
+					}
 					state: {
 						type:             "string"
 						description:      "State of the key. See the Key.State enum for possible values."
@@ -11208,6 +11251,94 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					max_items: 1
 				}
 				description_kind: "plain"
+			}
+		}
+		scaleway_key_manager_key_material: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "The ID of the key material resource (same as key_id)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					key_id: {
+						type:             "string"
+						description:      "ID of the key to import key material into. The key's origin must be external (UUID format). Can be a plain UUID or a regional ID."
+						description_kind: "markdown"
+						required:         true
+					}
+					key_material: {
+						type:             "string"
+						description:      "The key material to import. The key material is a random sequence of bytes used to derive a cryptographic key. Can be provided as raw bytes or a base64-encoded string (the provider will automatically normalize the input)."
+						description_kind: "markdown"
+						optional:         true
+						sensitive:        true
+					}
+					key_material_wo: {
+						type:             "string"
+						description:      "The key material to import in write-only mode. The key material is a random sequence of bytes used to derive a cryptographic key. Can be provided as raw bytes or a base64-encoded string (the provider will automatically normalize the input). The key material will not be stored in the Terraform state."
+						description_kind: "markdown"
+						optional:         true
+						write_only:       true
+					}
+					key_material_wo_version: {
+						type:             "number"
+						description:      "Version number to track changes to the write-only key material. Increment this value to trigger resource recreation. Required when using 'key_material_wo'."
+						description_kind: "markdown"
+						optional:         true
+					}
+					key_state: {
+						type:             "string"
+						description:      "The current state of the key (enabled, disabled, pending_key_material)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					origin: {
+						type:             "string"
+						description:      "The origin of the key (should be 'external')."
+						description_kind: "markdown"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region of the key. If not set, the region is derived from the key_id when possible or from the provider configuration."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					salt: {
+						type:             "string"
+						description:      "Optional salt for key derivation. A salt is random data added to key material to ensure unique derived keys, even if the input is similar. It helps strengthen security when the key material has low randomness (low entropy). Can be provided as raw bytes or a base64-encoded string (the provider will automatically normalize the input)."
+						description_kind: "markdown"
+						optional:         true
+						sensitive:        true
+					}
+					salt_wo: {
+						type:             "string"
+						description:      "Optional salt for key derivation in write-only mode. A salt is random data added to key material to ensure unique derived keys. Can be provided as raw bytes or a base64-encoded string (the provider will automatically normalize the input). The salt will not be stored in the Terraform state."
+						description_kind: "markdown"
+						optional:         true
+						write_only:       true
+					}
+					salt_wo_version: {
+						type:             "number"
+						description:      "Version number to track changes to the write-only salt. Increment this value to recreate the resource with new salt. Required when using 'salt_wo'."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				description: """
+					Import externally generated key material into Key Manager to derive a new cryptographic key. The key's origin must be external.
+
+					-> **Security Best Practice:**
+					For enhanced security, we recommend using the [`key_material_wo`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) and [`salt_wo`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) write-only arguments instead of the regular `key_material` and `salt` arguments. This ensures your sensitive cryptographic material is never stored in Terraform state files, providing superior protection against accidental exposure. Write-Only arguments are supported in Terraform 1.11.0 and later.
+
+					-> **Note:** When using write-only arguments (`key_material_wo` and `salt_wo`), you must also provide the corresponding version fields (`key_material_wo_version` and `salt_wo_version`) to enable proper resource lifecycle management.
+
+					"""
+				description_kind: "markdown"
 			}
 		}
 		scaleway_lb: {
@@ -16916,6 +17047,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the secret"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "Status of the secret"
@@ -17064,6 +17201,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The secret ID associated with this version"
 						description_kind: "plain"
 						required:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the secret version"
+						description_kind: "plain"
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -17555,6 +17698,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the private network"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the VPC"
@@ -17712,6 +17861,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the vpc connector"
+						description_kind: "plain"
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -17978,6 +18133,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						required:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the ingress rule"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the ingress rule"
@@ -18065,6 +18226,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the private network"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with private network"
@@ -18122,6 +18289,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									description_kind: "plain"
 									computed:         true
 								}
+								srn: {
+									type:             "string"
+									description:      "The Scaleway Resource Name (SRN) of the subnet"
+									description_kind: "plain"
+									computed:         true
+								}
 								subnet: {
 									type:             "string"
 									description:      "The subnet CIDR"
@@ -18172,6 +18345,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 								prefix_length: {
 									type:             "number"
 									description:      "The length of the network prefix, e.g., 24 for a 255.255.255.0 mask"
+									description_kind: "plain"
+									computed:         true
+								}
+								srn: {
+									type:             "string"
+									description:      "The Scaleway Resource Name (SRN) of the subnet"
 									description_kind: "plain"
 									computed:         true
 								}
@@ -18861,6 +19040,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the route"
+						description_kind: "plain"
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -20439,6 +20624,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the snapshot"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the snapshot"
@@ -20504,6 +20695,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					snapshot_id: {
 						type:             "string"
 						description:      "The snapshot to create the volume from"
+						description_kind: "plain"
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the volume"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -26335,6 +26532,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the cluster"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "The status of the cluster"
@@ -26485,6 +26688,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							}]]
 							public_ip:    "string"
 							public_ip_v6: "string"
+							srn:          "string"
 							status:       "string"
 						}]]
 						description:      "List of nodes in the pool"
@@ -26538,6 +26742,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "Size of the pool"
 						description_kind: "plain"
 						optional:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the pool"
+						description_kind: "plain"
+						computed:         true
 					}
 					startup_taints: {
 						type: ["set", ["object", {
@@ -26659,6 +26869,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the version"
+						description_kind: "plain"
+						computed:         true
 					}
 				}
 				description: """
@@ -26885,6 +27101,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							rotation_period:  "string"
 						}]]
 						description:      "Key rotation policy."
+						description_kind: "plain"
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the key"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -30300,6 +30522,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the secret"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "Status of the secret"
@@ -30425,6 +30653,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The Name of the secret"
 						description_kind: "plain"
 						optional:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the secret version"
+						description_kind: "plain"
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -30776,6 +31010,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the private network"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the VPC"
@@ -30897,6 +31137,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the vpc connector"
+						description_kind: "plain"
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -31107,6 +31353,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the ingress rule"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the ingress rule"
@@ -31163,6 +31415,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							created_at:    "string"
 							id:            "string"
 							prefix_length: "number"
+							srn:           "string"
 							subnet:        "string"
 							subnet_mask:   "string"
 							updated_at:    "string"
@@ -31177,6 +31430,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							created_at:    "string"
 							id:            "string"
 							prefix_length: "number"
+							srn:           "string"
 							subnet:        "string"
 							subnet_mask:   "string"
 							updated_at:    "string"
@@ -31220,6 +31474,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the private network"
+						description_kind: "plain"
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -31792,6 +32052,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The ID of the route"
 						description_kind: "plain"
 						optional:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the route"
+						description_kind: "plain"
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -33991,20 +34257,37 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			}
 		}
 	}
-	functions: region_from_id: {
-		description: "Given an ID string value, returns the region contained in the ID."
-		summary:     "Extract a region from the ID"
-		return_type: "string"
-		parameters: [{
-			name:        "id"
-			description: "id to extract the region from"
-			type:        "string"
-		}, {
-			name:        "skip_region_validation"
-			description: "If true, will skip region validation with the region known by the Scaleway SDK."
-			is_nullable: true
-			type:        "bool"
-		}]
+	functions: {
+		id_from_regional_id: {
+			description: "Given a regional ID string value, returns the ID without the region prefix."
+			summary:     "Extract the ID without region from a regional ID"
+			return_type: "string"
+			parameters: [{
+				name:        "regional_id"
+				description: "regional ID to extract the ID from"
+				type:        "string"
+			}, {
+				name:        "skip_region_validation"
+				description: "If true, will skip region validation with the region known by the Scaleway SDK."
+				is_nullable: true
+				type:        "bool"
+			}]
+		}
+		region_from_id: {
+			description: "Given an ID string value, returns the region contained in the ID."
+			summary:     "Extract a region from the ID"
+			return_type: "string"
+			parameters: [{
+				name:        "id"
+				description: "id to extract the region from"
+				type:        "string"
+			}, {
+				name:        "skip_region_validation"
+				description: "If true, will skip region validation with the region known by the Scaleway SDK."
+				is_nullable: true
+				type:        "bool"
+			}]
+		}
 	}
 	resource_identity_schemas: {
 		scaleway_account_project: {

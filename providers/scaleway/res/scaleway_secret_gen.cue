@@ -29,6 +29,9 @@ scaleway_secret: {
 		// The region you want to attach the resource to
 		region?: string
 
+		// The Scaleway Resource Name (SRN) of the secret
+		srn?: string
+
 		// Status of the secret
 		status?: string
 

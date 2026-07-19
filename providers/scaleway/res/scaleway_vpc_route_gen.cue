@@ -26,6 +26,9 @@ scaleway_vpc_route: {
 		// The region you want to attach the resource to
 		region?: string
 
+		// The Scaleway Resource Name (SRN) of the route
+		srn?: string
+
 		// The tags associated with the Route
 		tags?: [...string]
 

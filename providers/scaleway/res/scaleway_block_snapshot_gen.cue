@@ -17,6 +17,9 @@ scaleway_block_snapshot: {
 		// The project_id you want to attach the resource to
 		project_id?: string
 
+		// The Scaleway Resource Name (SRN) of the snapshot
+		srn?: string
+
 		// The tags associated with the snapshot
 		tags?: [...string]
 

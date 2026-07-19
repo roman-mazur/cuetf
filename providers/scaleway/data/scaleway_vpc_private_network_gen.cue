@@ -17,6 +17,7 @@ scaleway_vpc_private_network: {
 			created_at?:    string
 			id?:            string
 			prefix_length?: number
+			srn?:           string
 			subnet?:        string
 			subnet_mask?:   string
 			updated_at?:    string
@@ -28,6 +29,7 @@ scaleway_vpc_private_network: {
 			created_at?:    string
 			id?:            string
 			prefix_length?: number
+			srn?:           string
 			subnet?:        string
 			subnet_mask?:   string
 			updated_at?:    string
@@ -50,6 +52,9 @@ scaleway_vpc_private_network: {
 
 		// The region you want to attach the resource to
 		region?: string
+
+		// The Scaleway Resource Name (SRN) of the private network
+		srn?: string
 
 		// The tags associated with private network
 		tags?: [...string]

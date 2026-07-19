@@ -25,10 +25,11 @@ scaleway_file_filesystem: {
 		// The region you want to attach the resource to
 		region?: string
 
-		// The Filesystem size_in_gb in bytes, with a granularity of 100 GB (10^11
-		// bytes). Must be compliant with the minimum (100 GB) and maximum (10 TB)
-		// allowed size_in_gb.
+		// The filesystem size in GB. Minimum 25GB, maximum 10TB
 		size_in_gb!: number
+
+		// The Scaleway Resource Name (SRN) of the filesystem
+		srn?: string
 
 		// The Current status of the filesystem (e.g. creating, available, ...)
 		status?: string

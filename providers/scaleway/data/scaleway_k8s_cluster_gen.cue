@@ -95,6 +95,9 @@ scaleway_k8s_cluster: {
 		// The IP used for the DNS Service.
 		service_dns_ip?: string
 
+		// The Scaleway Resource Name (SRN) of the cluster
+		srn?: string
+
 		// The status of the cluster
 		status?: string
 
