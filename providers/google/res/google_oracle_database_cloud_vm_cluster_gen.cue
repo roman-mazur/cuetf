@@ -54,6 +54,11 @@ google_oracle_database_cloud_vm_cluster: {
 		// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
 		exadata_infrastructure!: string
 
+		// The name of ExascaleDbStorageVault associated with the VM Cluster.
+		// Format:
+		// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+		exascale_db_storage_vault?: string
+
 		// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
 		// of Exadata infrastructure.
 		gcp_oracle_zone?: string
@@ -211,6 +216,13 @@ google_oracle_database_cloud_vm_cluster: {
 		// FAILED
 		// MAINTENANCE_IN_PROGRESS
 		state?: string
+
+		// The storage management type of the VM Cluster.
+		// Possible values:
+		// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+		// ASM
+		// EXASCALE
+		storage_management_type?: string
 
 		// The storage allocation for the disk group, in gigabytes (GB).
 		storage_size_gb?: number

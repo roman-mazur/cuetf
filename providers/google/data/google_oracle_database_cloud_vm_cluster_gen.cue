@@ -49,6 +49,11 @@ google_oracle_database_cloud_vm_cluster: {
 		// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
 		exadata_infrastructure?: string
 
+		// The name of ExascaleDbStorageVault associated with the VM Cluster.
+		// Format:
+		// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+		exascale_db_storage_vault?: string
+
 		// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
 		// of Exadata infrastructure.
 		gcp_oracle_zone?: string
@@ -127,9 +132,10 @@ google_oracle_database_cloud_vm_cluster: {
 			shape?:                      string
 			sparse_diskgroup_enabled?:   bool
 			ssh_public_keys?: [...string]
-			state?:           string
-			storage_size_gb?: number
-			system_version?:  string
+			state?:                   string
+			storage_management_type?: string
+			storage_size_gb?:         number
+			system_version?:          string
 			time_zone?: [...close({
 				id?:      string
 				version?: string

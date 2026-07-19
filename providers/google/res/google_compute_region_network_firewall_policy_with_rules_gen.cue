@@ -141,9 +141,25 @@ google_compute_region_network_firewall_policy_with_rules: {
 		// Must be specified if action is 'apply_security_profile_group'.
 		security_profile_group?: string
 
+		// A list of forwarding rules to which this rule applies.
+		// This field allows you to control which load balancers get this rule.
+		// For example, the following are valid values:
+		// - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+		// -
+		// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+		// - projects/project/global/forwardingRules/forwardingRule
+		// - projects/project/regions/region/forwardingRules/forwardingRule
+		target_forwarding_rules?: [...string]
+
 		// A list of service accounts indicating the sets of
 		// instances that are applied with this rule.
 		target_service_accounts?: [...string]
+
+		// Target types of the firewall policy rule.
+		// Default value is INSTANCES.
+		// When target_type is INTERNAL_MANAGED_LB, target_forwarding_rules must be set
+		// Possible values: ["INSTANCES", "INTERNAL_MANAGED_LB"]
+		target_type?: string
 
 		// Boolean flag indicating if the traffic should be TLS decrypted.
 		// It can be set only if action = 'apply_security_profile_group' and cannot be

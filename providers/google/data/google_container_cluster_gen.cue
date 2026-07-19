@@ -412,6 +412,20 @@ google_container_cluster: {
 				})]
 				start_time?: string
 			})]
+			recurring_maintenance_window?: [...close({
+				delay_until?: [...close({
+					day?:   number
+					month?: number
+					year?:  number
+				})]
+				recurrence?:      string
+				window_duration?: string
+				window_start_time?: [...close({
+					hours?:   number
+					minutes?: number
+					seconds?: number
+				})]
+			})]
 			recurring_window?: [...close({
 				end_time?:   string
 				recurrence?: string
@@ -664,6 +678,13 @@ google_container_cluster: {
 					enable_ptp_kvm_time_sync?: bool
 				})]
 				cgroup_mode?: string
+				custom_node_init?: [...close({
+					init_script?: [...close({
+						gcp_secret_manager_secret_uri?: string
+						gcs_generation?:                number
+						gcs_uri?:                       string
+					})]
+				})]
 				hugepages_config?: [...close({
 					hugepage_size_1g?: number
 					hugepage_size_2m?: number
@@ -783,6 +804,13 @@ google_container_cluster: {
 			ignore_node_count_changes?: bool
 			initial_node_count?:        number
 			instance_group_urls?: [...string]
+			maintenance_policy?: [...close({
+				exclusion_until_end_of_support?: [...close({
+					enabled?:    bool
+					end_time?:   string
+					start_time?: string
+				})]
+			})]
 			managed_instance_group_urls?: [...string]
 			management?: [...close({
 				auto_repair?:  bool
@@ -967,6 +995,13 @@ google_container_cluster: {
 						enable_ptp_kvm_time_sync?: bool
 					})]
 					cgroup_mode?: string
+					custom_node_init?: [...close({
+						init_script?: [...close({
+							gcp_secret_manager_secret_uri?: string
+							gcs_generation?:                number
+							gcs_uri?:                       string
+						})]
+					})]
 					hugepages_config?: [...close({
 						hugepage_size_1g?: number
 						hugepage_size_2m?: number

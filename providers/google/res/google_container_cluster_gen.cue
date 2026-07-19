@@ -496,6 +496,7 @@ google_container_cluster: {
 		daily_maintenance_window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/daily_maintenance_window", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/daily_maintenance_window"]])
 		disruption_budget?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/disruption_budget", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/disruption_budget"]])
 		maintenance_exclusion?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion", list.MaxItems(20) & [..._#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion"]])
+		recurring_maintenance_window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/recurring_maintenance_window", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/recurring_maintenance_window"]])
 		recurring_window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/recurring_window", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/recurring_window"]])
 	})
 
@@ -678,6 +679,7 @@ google_container_cluster: {
 
 	#node_pool: close({
 		autoscaling?: matchN(1, [_#defs."/$defs/node_pool/$defs/autoscaling", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/autoscaling"]])
+		maintenance_policy?: matchN(1, [_#defs."/$defs/node_pool/$defs/maintenance_policy", [..._#defs."/$defs/node_pool/$defs/maintenance_policy"]])
 		management?: matchN(1, [_#defs."/$defs/node_pool/$defs/management", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/management"]])
 		network_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/network_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/network_config"]])
 		node_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config"]])
@@ -1194,6 +1196,25 @@ google_container_cluster: {
 		scope!: string
 	})
 
+	_#defs: "/$defs/maintenance_policy/$defs/recurring_maintenance_window": close({
+		delay_until?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/recurring_maintenance_window/$defs/delay_until", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/recurring_maintenance_window/$defs/delay_until"]])
+		window_start_time!: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/recurring_maintenance_window/$defs/window_start_time", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/maintenance_policy/$defs/recurring_maintenance_window/$defs/window_start_time"]])
+		recurrence!:      string
+		window_duration!: string
+	})
+
+	_#defs: "/$defs/maintenance_policy/$defs/recurring_maintenance_window/$defs/delay_until": close({
+		day!:   number
+		month!: number
+		year!:  number
+	})
+
+	_#defs: "/$defs/maintenance_policy/$defs/recurring_maintenance_window/$defs/window_start_time": close({
+		hours!:   number
+		minutes!: number
+		seconds!: number
+	})
+
 	_#defs: "/$defs/maintenance_policy/$defs/recurring_window": close({
 		end_time!:   string
 		recurrence!: string
@@ -1566,6 +1587,7 @@ google_container_cluster: {
 
 	_#defs: "/$defs/node_config/$defs/linux_node_config": close({
 		accurate_time_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config"]])
+		custom_node_init?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init"]])
 		hugepages_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config"]])
 		node_kernel_module_loading?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading"]])
 		swap_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/swap_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/swap_config"]])
@@ -1586,6 +1608,21 @@ google_container_cluster: {
 	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config": close({
 		// Whether to enable accurate time synchronization with PTP-KVM.
 		enable_ptp_kvm_time_sync?: bool
+	})
+
+	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init": close({
+		init_script?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init/$defs/init_script", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init/$defs/init_script"]])
+	})
+
+	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init/$defs/init_script": close({
+		// The Secret Manager secret URI of the init script.
+		gcp_secret_manager_secret_uri?: string
+
+		// The GCS generation of the init script.
+		gcs_generation?: number
+
+		// The GCS URI of the init script.
+		gcs_uri?: string
 	})
 
 	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config": close({
@@ -1753,6 +1790,21 @@ google_container_cluster: {
 		// Minimum number of all nodes in the node pool. Must be >=0 and <=
 		// total_max_node_count. Cannot be used with per zone limits.
 		total_min_node_count?: number
+	})
+
+	_#defs: "/$defs/node_pool/$defs/maintenance_policy": close({
+		exclusion_until_end_of_support?: matchN(1, [_#defs."/$defs/node_pool/$defs/maintenance_policy/$defs/exclusion_until_end_of_support", [..._#defs."/$defs/node_pool/$defs/maintenance_policy/$defs/exclusion_until_end_of_support"]])
+	})
+
+	_#defs: "/$defs/node_pool/$defs/maintenance_policy/$defs/exclusion_until_end_of_support": close({
+		// Whether to enable the maintenance exclusion until the end of support for this NodePool.
+		enabled?: bool
+
+		// End time of the maintenance exclusion.
+		end_time?: string
+
+		// Start time of the maintenance exclusion.
+		start_time?: string
 	})
 
 	_#defs: "/$defs/node_pool/$defs/management": close({
@@ -2278,6 +2330,7 @@ google_container_cluster: {
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/linux_node_config": close({
 		accurate_time_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config"]])
+		custom_node_init?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init"]])
 		hugepages_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config"]])
 		node_kernel_module_loading?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading"]])
 		swap_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/swap_config"]])
@@ -2298,6 +2351,21 @@ google_container_cluster: {
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config": close({
 		// Whether to enable accurate time synchronization with PTP-KVM.
 		enable_ptp_kvm_time_sync?: bool
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init": close({
+		init_script?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init/$defs/init_script", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init/$defs/init_script"]])
+	})
+
+	_#defs: "/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init/$defs/init_script": close({
+		// The Secret Manager secret URI of the init script.
+		gcp_secret_manager_secret_uri?: string
+
+		// The GCS generation of the init script.
+		gcs_generation?: number
+
+		// The GCS URI of the init script.
+		gcs_uri?: string
 	})
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config": close({

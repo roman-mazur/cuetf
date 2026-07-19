@@ -51,6 +51,9 @@ google_compute_instance_group_manager: {
 			default_action_on_failure?: string
 			force_update_on_repair?:    string
 			on_failed_health_check?:    string
+			on_repair?: [...close({
+				allow_changing_zone?: string
+			})]
 		})]
 
 		// Pagination behavior of the listManagedInstances API method for this managed

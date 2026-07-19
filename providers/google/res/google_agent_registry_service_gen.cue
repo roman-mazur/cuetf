@@ -33,6 +33,9 @@ google_agent_registry_service: {
 		// The location of the resource.
 		location!: string
 
+		// The resource name of the Service.
+		name?: string
+
 		// The resource name of the resulting Agent, MCP Server, or Endpoint.
 		registry_resource?: string
 		project?:           string

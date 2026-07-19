@@ -14,8 +14,9 @@ google_oracle_database_cloud_vm_clusters: {
 			deletion_protection?: bool
 			display_name?:        string
 			effective_labels?: [string]: string
-			exadata_infrastructure?: string
-			gcp_oracle_zone?:        string
+			exadata_infrastructure?:    string
+			exascale_db_storage_vault?: string
+			gcp_oracle_zone?:           string
 			identity_connector?: [...close({
 				connection_state?:    string
 				service_agent_email?: string
@@ -60,9 +61,10 @@ google_oracle_database_cloud_vm_clusters: {
 				shape?:                      string
 				sparse_diskgroup_enabled?:   bool
 				ssh_public_keys?: [...string]
-				state?:           string
-				storage_size_gb?: number
-				system_version?:  string
+				state?:                   string
+				storage_management_type?: string
+				storage_size_gb?:         number
+				system_version?:          string
 				time_zone?: [...close({
 					id?:      string
 					version?: string

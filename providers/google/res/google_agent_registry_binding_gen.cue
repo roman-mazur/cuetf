@@ -35,6 +35,9 @@ google_agent_registry_binding: {
 		// The location of the resource.
 		location!: string
 
+		// The resource name of the Binding.
+		name?: string
+
 		// The timestamp when the resource was updated.
 		update_time?: string
 		project?:     string

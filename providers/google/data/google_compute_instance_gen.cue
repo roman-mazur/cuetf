@@ -306,6 +306,12 @@ google_compute_instance: {
 		// labels configured on the provider.
 		terraform_labels?: [string]: string
 
+		// Workload identity config.
+		workload_identity_config?: [...close({
+			identity?:                     string
+			identity_certificate_enabled?: bool
+		})]
+
 		// The zone of the instance. If self_link is provided, this value is ignored. If
 		// neither self_link nor zone are provided, the provider zone is used.
 		zone?: string
