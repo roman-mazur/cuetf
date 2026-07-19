@@ -705,6 +705,9 @@ provider: {
 		lambda?: string
 
 		// Use this to override the default service endpoint URL
+		lambdamicrovms?: string
+
+		// Use this to override the default service endpoint URL
 		launchwizard?: string
 
 		// Use this to override the default service endpoint URL

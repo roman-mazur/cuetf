@@ -264,6 +264,7 @@ import (
 	_#ds: "\(#awsPrefix)_elasticache_replication_group": close({data.aws_elasticache_replication_group & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_elasticache_reserved_cache_node_offering": close({data.aws_elasticache_reserved_cache_node_offering & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_elasticache_serverless_cache": close({data.aws_elasticache_serverless_cache & cuetf.MetaArgs})
+	_#ds: "\(#awsPrefix)_elasticache_service_updates": close({data.aws_elasticache_service_updates & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_elasticache_subnet_group": close({data.aws_elasticache_subnet_group & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_elasticache_user": close({data.aws_elasticache_user & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_elasticsearch_domain": close({data.aws_elasticsearch_domain & cuetf.MetaArgs})
