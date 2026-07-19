@@ -17,6 +17,7 @@ google_compute_instance_template: {
 		service_account?: matchN(1, [#service_account, list.MaxItems(1) & [...#service_account]])
 		shielded_instance_config?: matchN(1, [#shielded_instance_config, list.MaxItems(1) & [...#shielded_instance_config]])
 		timeouts?: #timeouts
+		workload_identity_config?: matchN(1, [#workload_identity_config, list.MaxItems(1) & [...#workload_identity_config]])
 
 		// Whether to allow sending and receiving of packets with non-matching source or
 		// destination IPs. This defaults to false.
@@ -407,6 +408,14 @@ google_compute_instance_template: {
 	#timeouts: close({
 		create?: string
 		delete?: string
+	})
+
+	#workload_identity_config: close({
+		// Identity SPIFFE id.
+		identity?: string
+
+		// Specifies whether identity certificates are enabled.
+		identity_certificate_enabled?: bool
 	})
 
 	_#defs: "/$defs/disk/$defs/disk_encryption_key": close({

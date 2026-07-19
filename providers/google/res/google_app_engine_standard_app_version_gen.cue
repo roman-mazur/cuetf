@@ -17,7 +17,20 @@ google_app_engine_standard_app_version: {
 		vpc_access_connector?: matchN(1, [#vpc_access_connector, list.MaxItems(1) & [...#vpc_access_connector]])
 
 		// Allows App Engine second generation runtimes to access the legacy bundled services.
+		// Cannot specify both 'app_engine_apis' and 'app_engine_bundled_services' together.
 		app_engine_apis?: bool
+
+		// A list of legacy bundled services to enable for this version on an App Engine
+		// second-generation runtime.
+		// Cannot specify both 'app_engine_apis' and 'app_engine_bundled_services'
+		// together. Possible values: ["BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE",
+		// "BUNDLED_SERVICE_TYPE_BLOBSTORE", "BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE",
+		// "BUNDLED_SERVICE_TYPE_DATASTORE_V3", "BUNDLED_SERVICE_TYPE_IMAGES",
+		// "BUNDLED_SERVICE_TYPE_MAIL", "BUNDLED_SERVICE_TYPE_MEMCACHE",
+		// "BUNDLED_SERVICE_TYPE_MODULES", "BUNDLED_SERVICE_TYPE_SEARCH",
+		// "BUNDLED_SERVICE_TYPE_TASKQUEUES", "BUNDLED_SERVICE_TYPE_URLFETCH",
+		// "BUNDLED_SERVICE_TYPE_USERS"]
+		app_engine_bundled_services?: [...string]
 
 		// If set to 'true', the service will be deleted if it is the last version.
 		delete_service_on_destroy?: bool

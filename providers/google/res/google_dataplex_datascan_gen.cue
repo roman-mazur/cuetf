@@ -102,7 +102,10 @@ google_dataplex_datascan: {
 		storage_config?: matchN(1, [_#defs."/$defs/data_discovery_spec/$defs/storage_config", list.MaxItems(1) & [..._#defs."/$defs/data_discovery_spec/$defs/storage_config"]])
 	})
 
-	#data_documentation_spec: close({})
+	#data_documentation_spec: close({
+		// If set, the latest DataScan job result will be published to Knowledge Catalog.
+		catalog_publishing_enabled?: bool
+	})
 
 	#data_profile_spec: close({
 		exclude_fields?: matchN(1, [_#defs."/$defs/data_profile_spec/$defs/exclude_fields", list.MaxItems(1) & [..._#defs."/$defs/data_profile_spec/$defs/exclude_fields"]])

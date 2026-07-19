@@ -51,6 +51,7 @@ google_data_loss_prevention_inspect_template: {
 		custom_info_types?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types", [..._#defs."/$defs/inspect_config/$defs/custom_info_types"]])
 		info_types?: matchN(1, [_#defs."/$defs/inspect_config/$defs/info_types", [..._#defs."/$defs/inspect_config/$defs/info_types"]])
 		limits?: matchN(1, [_#defs."/$defs/inspect_config/$defs/limits", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/limits"]])
+		min_likelihood_per_info_type?: matchN(1, [_#defs."/$defs/inspect_config/$defs/min_likelihood_per_info_type", [..._#defs."/$defs/inspect_config/$defs/min_likelihood_per_info_type"]])
 		rule_set?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set", [..._#defs."/$defs/inspect_config/$defs/rule_set"]])
 
 		// List of options defining data content to scan. If empty, text, images, and
@@ -209,6 +210,25 @@ google_data_loss_prevention_inspect_template: {
 		// The sensitivity score applied to the resource. Possible values:
 		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE", "SENSITIVITY_HIGH"]
 		score!: string
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/min_likelihood_per_info_type": close({
+		info_type?: matchN(1, [_#defs."/$defs/inspect_config/$defs/min_likelihood_per_info_type/$defs/info_type", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/min_likelihood_per_info_type/$defs/info_type"]])
+
+		// Only returns findings equal or above this threshold. See
+		// https://cloud.google.com/dlp/docs/likelihood for more info. Possible values:
+		// ["VERY_UNLIKELY", "UNLIKELY", "POSSIBLE", "LIKELY", "VERY_LIKELY"]
+		min_likelihood!: string
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/min_likelihood_per_info_type/$defs/info_type": close({
+		// Name of the information type. Either a name of your choosing when creating a
+		// CustomInfoType, or one of the names listed
+		// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+		name!: string
+
+		// Version name for this InfoType.
+		version?: string
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/rule_set": close({

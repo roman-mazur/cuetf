@@ -58,6 +58,9 @@ google_sql_database_instance: {
 		})]
 		encryption_key_name?: string
 
+		// Whether to enforce the new SQL network architecture.
+		enforce_new_sql_network_architecture?: bool
+
 		// The description of final backup if instance enable create final backup during instance deletion.
 		final_backup_description?: string
 
@@ -612,6 +615,10 @@ google_sql_database_instance: {
 		// This is required to enable outbound connection on a PSC instance.
 		network_attachment_uri?: string
 
+		// Whether a service connection policy is created for the auto connections
+		// configured for the instance.
+		psc_auto_connection_policy_enabled?: bool
+
 		// Whether PSC auto DNS is enabled for this instance.
 		psc_auto_dns_enabled?: bool
 
@@ -637,6 +644,12 @@ google_sql_database_instance: {
 
 		// The IP address of the consumer endpoint.
 		ip_address?: string
+
+		// The service connection policy created for the auto connection.
+		service_connection_policy?: string
+
+		// The result of the service connection policy creation.
+		service_connection_policy_creation_result?: string
 
 		// The connection status of the consumer endpoint.
 		status?: string

@@ -30,8 +30,11 @@ google_firestore_field: {
 
 		// The name of this field. Format:
 		// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}'
-		name?:    string
-		project?: string
+		name?: string
+
+		// Whether to skip waiting for the field operation to complete.
+		skip_wait?: bool
+		project?:   string
 	})
 
 	#index_config: close({

@@ -142,6 +142,8 @@ google_compute_instance_group_manager: {
 	})
 
 	#instance_lifecycle_policy: close({
+		on_repair?: matchN(1, [_#defs."/$defs/instance_lifecycle_policy/$defs/on_repair", list.MaxItems(1) & [..._#defs."/$defs/instance_lifecycle_policy/$defs/on_repair"]])
+
 		// Specifies the action that a MIG performs on a failed VM. If the value of the
 		// "on_failed_health_check" field is DEFAULT_ACTION, then the same action also
 		// applies to the VMs on which your application fails a health check. Valid
@@ -302,6 +304,14 @@ google_compute_instance_group_manager: {
 
 		// Version name.
 		name?: string
+	})
+
+	_#defs: "/$defs/instance_lifecycle_policy/$defs/on_repair": close({
+		// Specifies whether the MIG can change a VM's zone during a repair. If "YES",
+		// MIG can select a different zone for the VM during a repair. Else if "NO",
+		// MIG cannot change a VM's zone during a repair. The default value of
+		// allow_changing_zone is "NO".
+		allow_changing_zone?: string
 	})
 
 	_#defs: "/$defs/version/$defs/target_size": close({

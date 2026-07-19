@@ -6,11 +6,6 @@ google_storage_anywhere_cache: {
 	close({
 		timeouts?: #timeouts
 
-		// The cache admission policy dictates whether a block should be inserted upon a
-		// cache miss. Default value: "admit-on-first-miss" Possible values:
-		// ["admit-on-first-miss", "admit-on-second-miss"]
-		admission_policy?: string
-
 		// The ID of the Anywhere cache instance.
 		anywhere_cache_id?: string
 

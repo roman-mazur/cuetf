@@ -7,6 +7,7 @@ google_container_node_pool: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_node_pool")
 	close({
 		autoscaling?: matchN(1, [#autoscaling, list.MaxItems(1) & [...#autoscaling]])
+		maintenance_policy?: matchN(1, [#maintenance_policy, [...#maintenance_policy]])
 		management?: matchN(1, [#management, list.MaxItems(1) & [...#management]])
 		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
 		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
@@ -110,6 +111,10 @@ google_container_node_pool: {
 		// Minimum number of all nodes in the node pool. Must be >=0 and <=
 		// total_max_node_count. Cannot be used with per zone limits.
 		total_min_node_count?: number
+	})
+
+	#maintenance_policy: close({
+		exclusion_until_end_of_support?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/exclusion_until_end_of_support", [..._#defs."/$defs/maintenance_policy/$defs/exclusion_until_end_of_support"]])
 	})
 
 	#management: close({
@@ -324,6 +329,17 @@ google_container_node_pool: {
 
 		// Update strategy for the given nodepool.
 		strategy?: string
+	})
+
+	_#defs: "/$defs/maintenance_policy/$defs/exclusion_until_end_of_support": close({
+		// Whether to enable the maintenance exclusion until the end of support for this NodePool.
+		enabled?: bool
+
+		// End time of the maintenance exclusion.
+		end_time?: string
+
+		// Start time of the maintenance exclusion.
+		start_time?: string
 	})
 
 	_#defs: "/$defs/network_config/$defs/additional_node_network_configs": close({
@@ -688,6 +704,7 @@ google_container_node_pool: {
 
 	_#defs: "/$defs/node_config/$defs/linux_node_config": close({
 		accurate_time_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config"]])
+		custom_node_init?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init"]])
 		hugepages_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config"]])
 		node_kernel_module_loading?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/node_kernel_module_loading"]])
 		swap_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/swap_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/swap_config"]])
@@ -708,6 +725,21 @@ google_container_node_pool: {
 	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/accurate_time_config": close({
 		// Whether to enable accurate time synchronization with PTP-KVM.
 		enable_ptp_kvm_time_sync?: bool
+	})
+
+	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init": close({
+		init_script?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init/$defs/init_script", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init/$defs/init_script"]])
+	})
+
+	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/custom_node_init/$defs/init_script": close({
+		// The Secret Manager secret URI of the init script.
+		gcp_secret_manager_secret_uri?: string
+
+		// The GCS generation of the init script.
+		gcs_generation?: number
+
+		// The GCS URI of the init script.
+		gcs_uri?: string
 	})
 
 	_#defs: "/$defs/node_config/$defs/linux_node_config/$defs/hugepages_config": close({

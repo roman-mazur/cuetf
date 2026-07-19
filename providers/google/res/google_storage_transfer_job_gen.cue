@@ -374,6 +374,11 @@ google_storage_transfer_job: {
 		// should generally not begin with a '/'.
 		path?: string
 
+		// Service Directory Service used as the endpoint for transfers from a
+		// customer-managed VPC. Format:
+		// projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}
+		private_network_service?: string
+
 		// The name of the Azure Storage account.
 		storage_account!: string
 	})

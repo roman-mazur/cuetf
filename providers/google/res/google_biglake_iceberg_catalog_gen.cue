@@ -6,6 +6,7 @@ google_biglake_iceberg_catalog: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_biglake_iceberg_catalog")
 	close({
+		federated_catalog_options?: matchN(1, [#federated_catalog_options, list.MaxItems(1) & [...#federated_catalog_options]])
 		restricted_locations_config?: matchN(1, [#restricted_locations_config, list.MaxItems(1) & [...#restricted_locations_config]])
 		timeouts?: #timeouts
 
@@ -13,8 +14,17 @@ google_biglake_iceberg_catalog: {
 		// empty if credential vending was never enabled for the catalog.
 		biglake_service_account?: string
 
-		// The catalog type of the IcebergCatalog. Possible values:
-		// ["CATALOG_TYPE_GCS_BUCKET", "CATALOG_TYPE_BIGLAKE"]
+		// Output only. The unique ID of the service account used for credential
+		// vending. Used for federation scenarios.
+		biglake_service_account_id?: string
+
+		// The catalog type of the IcebergCatalog.
+		// * 'CATALOG_TYPE_GCS_BUCKET': Google Cloud Storage bucket catalog type.
+		// * 'CATALOG_TYPE_BIGLAKE': BigLake catalog type.
+		// * 'CATALOG_TYPE_FEDERATED': Federated catalog type, for integrating with
+		// external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+		// Possible values: ["CATALOG_TYPE_GCS_BUCKET", "CATALOG_TYPE_BIGLAKE",
+		// "CATALOG_TYPE_FEDERATED"]
 		catalog_type!: string
 
 		// Output only. The creation time of the IcebergCatalog.
@@ -46,7 +56,10 @@ google_biglake_iceberg_catalog: {
 		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
-		id?:              string
+
+		// A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+		description?: string
+		id?:          string
 
 		// The name of the IcebergCatalog.
 		// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
@@ -76,6 +89,31 @@ google_biglake_iceberg_catalog: {
 		update_time?: string
 	})
 
+	#federated_catalog_options: close({
+		glue_catalog_info?: matchN(1, [_#defs."/$defs/federated_catalog_options/$defs/glue_catalog_info", list.MaxItems(1) & [..._#defs."/$defs/federated_catalog_options/$defs/glue_catalog_info"]])
+		refresh_options?: matchN(1, [_#defs."/$defs/federated_catalog_options/$defs/refresh_options", list.MaxItems(1) & [..._#defs."/$defs/federated_catalog_options/$defs/refresh_options"]])
+		unity_catalog_info?: matchN(1, [_#defs."/$defs/federated_catalog_options/$defs/unity_catalog_info", list.MaxItems(1) & [..._#defs."/$defs/federated_catalog_options/$defs/unity_catalog_info"]])
+
+		// Output only. The status of the most recent metadata refresh.
+		refresh_status?: [...close({
+			end_time?:   string
+			start_time?: string
+			status?: [...close({
+				code?:    number
+				message?: string
+			})]
+		})]
+
+		// The secret resource name in Secret Manager, in the format
+		// 'projects/{projectId}/locations/{location}/secrets/{secret_id}'.
+		// Used to store credentials for authenticating with the remote catalog.
+		secret_name?: string
+
+		// The Service Directory service name for private network connectivity
+		// through Cross-Cloud Interconnect.
+		service_directory_name?: string
+	})
+
 	#restricted_locations_config: close({
 		// A list of GCS locations (e.g., 'gs://my-other-bucket/...') that are
 		// permitted for use by resources within this catalog. Each entry can be
@@ -87,5 +125,45 @@ google_biglake_iceberg_catalog: {
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/federated_catalog_options/$defs/glue_catalog_info": close({
+		// The AWS region where the Glue catalog is located.
+		aws_region!: string
+
+		// The ARN of the AWS IAM role to assume for accessing the Glue catalog.
+		aws_role_arn!: string
+
+		// The AWS Glue warehouse identifier (account ID or S3 table bucket).
+		warehouse!: string
+	})
+
+	_#defs: "/$defs/federated_catalog_options/$defs/refresh_options": close({
+		refresh_schedule?: matchN(1, [_#defs."/$defs/federated_catalog_options/$defs/refresh_options/$defs/refresh_schedule", list.MaxItems(1) & [..._#defs."/$defs/federated_catalog_options/$defs/refresh_options/$defs/refresh_schedule"]])
+		refresh_scope?: matchN(1, [_#defs."/$defs/federated_catalog_options/$defs/refresh_options/$defs/refresh_scope", list.MaxItems(1) & [..._#defs."/$defs/federated_catalog_options/$defs/refresh_options/$defs/refresh_scope"]])
+	})
+
+	_#defs: "/$defs/federated_catalog_options/$defs/refresh_options/$defs/refresh_schedule": close({
+		// The interval between metadata refreshes, expressed as a duration
+		// string (e.g., '300s').
+		// The value must be at least 300s or 0s to disable refresh.
+		refresh_interval?: string
+	})
+
+	_#defs: "/$defs/federated_catalog_options/$defs/refresh_options/$defs/refresh_scope": close({
+		// A list of namespace filters to limit which namespaces are
+		// synchronized from the remote catalog.
+		namespace_filters?: [...string]
+	})
+
+	_#defs: "/$defs/federated_catalog_options/$defs/unity_catalog_info": close({
+		// The name of the catalog within the Unity Catalog instance.
+		catalog_name!: string
+
+		// The Databricks workspace instance name.
+		instance_name!: string
+
+		// The application ID of the Databricks service principal for OIDC authentication.
+		service_principal_application_id?: string
 	})
 }

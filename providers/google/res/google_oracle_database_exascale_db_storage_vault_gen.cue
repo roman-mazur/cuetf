@@ -38,6 +38,11 @@ google_oracle_database_exascale_db_storage_vault: {
 		// ExascaleDbStorageVault.
 		entitlement_id?: string
 
+		// The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+		// In the format:
+		// projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+		exadata_infrastructure?: string
+
 		// The ID of the ExascaleDbStorageVault to create. This value is
 		// restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of
 		// 63 characters in length. The value must start with a letter and end with a

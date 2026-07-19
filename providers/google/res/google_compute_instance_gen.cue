@@ -21,6 +21,7 @@ google_compute_instance: {
 		service_account?: matchN(1, [#service_account, list.MaxItems(1) & [...#service_account]])
 		shielded_instance_config?: matchN(1, [#shielded_instance_config, list.MaxItems(1) & [...#shielded_instance_config]])
 		timeouts?: #timeouts
+		workload_identity_config?: matchN(1, [#workload_identity_config, list.MaxItems(1) & [...#workload_identity_config]])
 
 		// If true, allows Terraform to stop the instance to update its properties. If
 		// you try to update a property that requires stopping the instance without
@@ -437,6 +438,14 @@ google_compute_instance: {
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	#workload_identity_config: close({
+		// Identity SPIFFE id.
+		identity?: string
+
+		// Specifies whether identity certificates are enabled.
+		identity_certificate_enabled?: bool
 	})
 
 	_#defs: "/$defs/boot_disk/$defs/initialize_params": close({

@@ -263,5 +263,11 @@ google_compute_instance_template: {
 		// The combination of labels configured directly on the resource and default
 		// labels configured on the provider.
 		terraform_labels?: [string]: string
+
+		// Workload identity config.
+		workload_identity_config?: [...close({
+			identity?:                     string
+			identity_certificate_enabled?: bool
+		})]
 	})
 }

@@ -29,10 +29,11 @@ google_sql_database_instances: {
 				dns_scope?:       string
 				name?:            string
 			})]
-			encryption_key_name?:      string
-			final_backup_description?: string
-			first_ip_address?:         string
-			instance_type?:            string
+			encryption_key_name?:                  string
+			enforce_new_sql_network_architecture?: bool
+			final_backup_description?:             string
+			first_ip_address?:                     string
+			instance_type?:                        string
 			ip_address?: [...close({
 				ip_address?:     string
 				time_to_retire?: string
@@ -181,13 +182,16 @@ google_sql_database_instances: {
 					private_network?:                               string
 					psc_config?: [...close({
 						allowed_consumer_projects?: [...string]
-						network_attachment_uri?: string
+						network_attachment_uri?:             string
+						psc_auto_connection_policy_enabled?: bool
 						psc_auto_connections?: [...close({
-							consumer_network?:            string
-							consumer_network_status?:     string
-							consumer_service_project_id?: string
-							ip_address?:                  string
-							status?:                      string
+							consumer_network?:                          string
+							consumer_network_status?:                   string
+							consumer_service_project_id?:               string
+							ip_address?:                                string
+							service_connection_policy?:                 string
+							service_connection_policy_creation_result?: string
+							status?:                                    string
 						})]
 						psc_auto_dns_enabled?:           bool
 						psc_enabled?:                    bool
