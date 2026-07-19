@@ -30,6 +30,9 @@ scaleway_k8s_acl: {
 
 		// Allow access to cluster from all Scaleway ranges
 		scaleway_ranges?: bool
+
+		// The Scaleway Resource Name (SRN) of the ACL rule
+		srn?: string
 	})
 
 	#timeouts: close({

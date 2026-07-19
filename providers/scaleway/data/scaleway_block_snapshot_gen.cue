@@ -26,6 +26,9 @@ scaleway_block_snapshot: {
 		// The ID of the snapshot
 		snapshot_id?: string
 
+		// The Scaleway Resource Name (SRN) of the snapshot
+		srn?: string
+
 		// The tags associated with the snapshot
 		tags?: [...string]
 

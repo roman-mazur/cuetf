@@ -40,6 +40,9 @@ scaleway_secret_version: {
 		// The secret ID associated with this version
 		secret_id!: string
 
+		// The Scaleway Resource Name (SRN) of the secret version
+		srn?: string
+
 		// Status of the secret version
 		status?: string
 

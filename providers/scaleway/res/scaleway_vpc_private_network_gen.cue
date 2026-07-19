@@ -28,6 +28,9 @@ scaleway_vpc_private_network: {
 		// The region you want to attach the resource to
 		region?: string
 
+		// The Scaleway Resource Name (SRN) of the private network
+		srn?: string
+
 		// The tags associated with private network
 		tags?: [...string]
 
@@ -52,6 +55,9 @@ scaleway_vpc_private_network: {
 		// The length of the network prefix, e.g., 24 for a 255.255.255.0 mask
 		prefix_length?: number
 
+		// The Scaleway Resource Name (SRN) of the subnet
+		srn?: string
+
 		// The subnet CIDR
 		subnet?: string
 
@@ -75,6 +81,9 @@ scaleway_vpc_private_network: {
 
 		// The length of the network prefix, e.g., 24 for a 255.255.255.0 mask
 		prefix_length?: number
+
+		// The Scaleway Resource Name (SRN) of the subnet
+		srn?: string
 
 		// The subnet CIDR
 		subnet?: string

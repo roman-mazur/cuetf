@@ -25,6 +25,9 @@ scaleway_block_volume: {
 		// The snapshot to create the volume from
 		snapshot_id?: string
 
+		// The Scaleway Resource Name (SRN) of the volume
+		srn?: string
+
 		// The tags associated with the volume
 		tags?: [...string]
 

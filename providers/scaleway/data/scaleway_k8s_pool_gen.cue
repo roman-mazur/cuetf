@@ -51,6 +51,7 @@ scaleway_k8s_pool: {
 			})]
 			public_ip?:    string
 			public_ip_v6?: string
+			srn?:          string
 			status?:       string
 		})]
 
@@ -77,6 +78,9 @@ scaleway_k8s_pool: {
 
 		// Size of the pool
 		size?: number
+
+		// The Scaleway Resource Name (SRN) of the pool
+		srn?: string
 
 		// Kubernetes taints applied at node creation but not reconciled afterwards.
 		startup_taints?: [...close({

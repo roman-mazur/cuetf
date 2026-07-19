@@ -95,6 +95,7 @@ import (
 	_#res: "\(#scalewayPrefix)_k8s_pool": close({res.scaleway_k8s_pool & cuetf.MetaArgs})
 	_#res: "\(#scalewayPrefix)_kafka_cluster": close({res.scaleway_kafka_cluster & cuetf.MetaArgs})
 	_#res: "\(#scalewayPrefix)_key_manager_key": close({res.scaleway_key_manager_key & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_key_manager_key_material": close({res.scaleway_key_manager_key_material & cuetf.MetaArgs})
 	_#res: "\(#scalewayPrefix)_lb_acl": close({res.scaleway_lb_acl & cuetf.MetaArgs})
 	_#res: "\(#scalewayPrefix)_lb_backend": close({res.scaleway_lb_backend & cuetf.MetaArgs})
 	_#res: "\(#scalewayPrefix)_lb_certificate": close({res.scaleway_lb_certificate & cuetf.MetaArgs})

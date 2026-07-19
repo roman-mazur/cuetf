@@ -32,6 +32,9 @@ scaleway_vpc: {
 		// The region you want to attach the resource to
 		region?: string
 
+		// The Scaleway Resource Name (SRN) of the private network
+		srn?: string
+
 		// The tags associated with the VPC
 		tags?: [...string]
 

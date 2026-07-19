@@ -29,6 +29,9 @@ scaleway_vpc_ingress_rule: {
 		// Source IP range to which this rule applies (CIDR notation with subnet mask)
 		source?: string
 
+		// The Scaleway Resource Name (SRN) of the ingress rule
+		srn?: string
+
 		// The tags associated with the ingress rule
 		tags?: [...string]
 
