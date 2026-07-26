@@ -8,6 +8,7 @@ google_backup_dr_data_sources: {
 
 		// The list of DataSources found.
 		data_sources?: [...close({
+			backup_blocked_by_vault_access_restriction?: bool
 			backup_config_info?: [...close({
 				backup_appliance_backup_config?: [...close({
 					application_name?:      string

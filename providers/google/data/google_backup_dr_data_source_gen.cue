@@ -4,6 +4,9 @@ google_backup_dr_data_source: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_backup_dr_data_source")
 	close({
+		// This field is set to true if the backup is blocked by vault access restriction.
+		backup_blocked_by_vault_access_restriction?: bool
+
 		// Details of how the resource is configured for backup.
 		backup_config_info?: [...close({
 			backup_appliance_backup_config?: [...close({

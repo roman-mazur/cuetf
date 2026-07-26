@@ -69,11 +69,17 @@ google_sql_database_instance: {
 		// configured with a count.
 		first_ip_address?: string
 
+		// When this parameter is set to true, Cloud SQL instances can perform in-place
+		// major version upgrades of read replicas along with the primary instance when
+		// 'database_version' is updated. This is an input-only field that is not
+		// persisted in the API and only takes effect during a major version upgrade.
+		include_replicas_for_major_version_upgrade?: bool
+		id?:                                         string
+
 		// The type of the instance. See
 		// https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType
 		// for supported values.
 		instance_type?: string
-		id?:            string
 
 		// Maintenance version.
 		maintenance_version?: string
@@ -144,6 +150,12 @@ google_sql_database_instance: {
 
 		// The service account email address assigned to the instance.
 		service_account_email_address?: string
+
+		// When set to true, Cloud SQL instances can switch storing point-in-time
+		// recovery transaction logs from a data disk to Cloud Storage, freeing up data
+		// disk space and enabling longer retention windows. This is an input-only
+		// field that is not persisted in the API.
+		switch_transaction_logs_to_cloud_storage_enabled?: bool
 		server_ca_cert?: [...close({
 			cert?:             string
 			common_name?:      string
@@ -642,6 +654,9 @@ google_sql_database_instance: {
 		// The project ID of consumer service project of this consumer endpoint.
 		consumer_service_project_id?: string
 
+		// The status of the automated DNS provisioning for the instance.
+		instance_auto_dns_status?: string
+
 		// The IP address of the consumer endpoint.
 		ip_address?: string
 
@@ -653,6 +668,9 @@ google_sql_database_instance: {
 
 		// The connection status of the consumer endpoint.
 		status?: string
+
+		// The status of the automated DNS provisioning for the write endpoint.
+		write_endpoint_auto_dns_status?: string
 	})
 
 	_#defs: "/$defs/settings/$defs/location_preference": close({

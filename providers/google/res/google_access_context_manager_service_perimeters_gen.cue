@@ -145,6 +145,8 @@ google_access_context_manager_service_perimeters: {
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_from/$defs/sources": close({
+		psc_endpoint?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_from/$defs/sources/$defs/psc_endpoint", list.MaxItems(1) & [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_from/$defs/sources/$defs/psc_endpoint"]])
+
 		// An AccessLevel resource name that allows resources outside the
 		// ServicePerimeter to be accessed from the inside.
 		access_level?: string
@@ -156,6 +158,14 @@ google_access_context_manager_service_perimeters: {
 		// organization that the perimeter is defined in. '*' is not allowed, the
 		// case of allowing all Google Cloud resources only is not supported.
 		resource?: string
+	})
+
+	_#defs: "/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_from/$defs/sources/$defs/psc_endpoint": close({
+		// The full resource name of the global forwarding rule that identifies a
+		// Private Service Connect endpoint.
+		// Forwarding rule format:
+		// '//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}'.
+		forwarding_rule?: string
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/spec/$defs/egress_policies/$defs/egress_to": close({
@@ -223,6 +233,8 @@ google_access_context_manager_service_perimeters: {
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/spec/$defs/ingress_policies/$defs/ingress_from/$defs/sources": close({
+		psc_endpoint?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/ingress_policies/$defs/ingress_from/$defs/sources/$defs/psc_endpoint", list.MaxItems(1) & [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/ingress_policies/$defs/ingress_from/$defs/sources/$defs/psc_endpoint"]])
+
 		// An 'AccessLevel' resource name that allow resources within the
 		// 'ServicePerimeters' to be accessed from the internet. 'AccessLevels' listed
 		// must be in the same policy as this 'ServicePerimeter'. Referencing a nonexistent
@@ -240,6 +252,14 @@ google_access_context_manager_service_perimeters: {
 		// organization that the perimeter is defined in. '*' is not allowed, the case
 		// of allowing all Google Cloud resources only is not supported.
 		resource?: string
+	})
+
+	_#defs: "/$defs/service_perimeters/$defs/spec/$defs/ingress_policies/$defs/ingress_from/$defs/sources/$defs/psc_endpoint": close({
+		// The full resource name of the global forwarding rule that identifies a
+		// Private Service Connect endpoint.
+		// Forwarding rule format:
+		// '//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}'.
+		forwarding_rule?: string
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/spec/$defs/ingress_policies/$defs/ingress_to": close({
@@ -282,6 +302,8 @@ google_access_context_manager_service_perimeters: {
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/spec/$defs/vpc_accessible_services": close({
+		allowed_service_patterns?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/vpc_accessible_services/$defs/allowed_service_patterns", [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/vpc_accessible_services/$defs/allowed_service_patterns"]])
+
 		// The list of APIs usable within the Service Perimeter.
 		// Must be empty unless 'enableRestriction' is True.
 		allowed_services?: [...string]
@@ -289,6 +311,32 @@ google_access_context_manager_service_perimeters: {
 		// Whether to restrict API calls within the Service Perimeter to the
 		// list of APIs specified in 'allowedServices'.
 		enable_restriction?: bool
+
+		// Defines the enforcement scopes of service patterns. Possible values:
+		// ["GOOGLE_APIS_VIA_PRIVATE_PATH"]
+		service_patterns_enforcement_scopes?: [...string]
+	})
+
+	_#defs: "/$defs/service_perimeters/$defs/spec/$defs/vpc_accessible_services/$defs/allowed_service_patterns": close({
+		modifiers?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/vpc_accessible_services/$defs/allowed_service_patterns/$defs/modifiers", [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/vpc_accessible_services/$defs/allowed_service_patterns/$defs/modifiers"]])
+
+		// URL pattern to allow.
+		pattern?: string
+
+		// Supported service to allow.
+		service?: string
+	})
+
+	_#defs: "/$defs/service_perimeters/$defs/spec/$defs/vpc_accessible_services/$defs/allowed_service_patterns/$defs/modifiers": close({
+		add_request_header?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/spec/$defs/vpc_accessible_services/$defs/allowed_service_patterns/$defs/modifiers/$defs/add_request_header", list.MaxItems(1) & [..._#defs."/$defs/service_perimeters/$defs/spec/$defs/vpc_accessible_services/$defs/allowed_service_patterns/$defs/modifiers/$defs/add_request_header"]])
+	})
+
+	_#defs: "/$defs/service_perimeters/$defs/spec/$defs/vpc_accessible_services/$defs/allowed_service_patterns/$defs/modifiers/$defs/add_request_header": close({
+		// HTTP header key.
+		key!: string
+
+		// HTTP header value.
+		value!: string
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/status": close({
@@ -352,6 +400,8 @@ google_access_context_manager_service_perimeters: {
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_from/$defs/sources": close({
+		psc_endpoint?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_from/$defs/sources/$defs/psc_endpoint", list.MaxItems(1) & [..._#defs."/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_from/$defs/sources/$defs/psc_endpoint"]])
+
 		// An AccessLevel resource name that allows resources outside the
 		// ServicePerimeter to be accessed from the inside.
 		access_level?: string
@@ -363,6 +413,14 @@ google_access_context_manager_service_perimeters: {
 		// organization that the perimeter is defined in. '*' is not allowed, the
 		// case of allowing all Google Cloud resources only is not supported.
 		resource?: string
+	})
+
+	_#defs: "/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_from/$defs/sources/$defs/psc_endpoint": close({
+		// The full resource name of the global forwarding rule that identifies a
+		// Private Service Connect endpoint.
+		// Forwarding rule format:
+		// '//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}'.
+		forwarding_rule?: string
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/status/$defs/egress_policies/$defs/egress_to": close({
@@ -430,6 +488,8 @@ google_access_context_manager_service_perimeters: {
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/status/$defs/ingress_policies/$defs/ingress_from/$defs/sources": close({
+		psc_endpoint?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/ingress_policies/$defs/ingress_from/$defs/sources/$defs/psc_endpoint", list.MaxItems(1) & [..._#defs."/$defs/service_perimeters/$defs/status/$defs/ingress_policies/$defs/ingress_from/$defs/sources/$defs/psc_endpoint"]])
+
 		// An 'AccessLevel' resource name that allow resources within the
 		// 'ServicePerimeters' to be accessed from the internet. 'AccessLevels' listed
 		// must be in the same policy as this 'ServicePerimeter'. Referencing a nonexistent
@@ -447,6 +507,14 @@ google_access_context_manager_service_perimeters: {
 		// organization that the perimeter is defined in. '*' is not allowed, the case
 		// of allowing all Google Cloud resources only is not supported.
 		resource?: string
+	})
+
+	_#defs: "/$defs/service_perimeters/$defs/status/$defs/ingress_policies/$defs/ingress_from/$defs/sources/$defs/psc_endpoint": close({
+		// The full resource name of the global forwarding rule that identifies a
+		// Private Service Connect endpoint.
+		// Forwarding rule format:
+		// '//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}'.
+		forwarding_rule?: string
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/status/$defs/ingress_policies/$defs/ingress_to": close({
@@ -489,6 +557,8 @@ google_access_context_manager_service_perimeters: {
 	})
 
 	_#defs: "/$defs/service_perimeters/$defs/status/$defs/vpc_accessible_services": close({
+		allowed_service_patterns?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/vpc_accessible_services/$defs/allowed_service_patterns", [..._#defs."/$defs/service_perimeters/$defs/status/$defs/vpc_accessible_services/$defs/allowed_service_patterns"]])
+
 		// The list of APIs usable within the Service Perimeter.
 		// Must be empty unless 'enableRestriction' is True.
 		allowed_services?: [...string]
@@ -496,5 +566,31 @@ google_access_context_manager_service_perimeters: {
 		// Whether to restrict API calls within the Service Perimeter to the
 		// list of APIs specified in 'allowedServices'.
 		enable_restriction?: bool
+
+		// Defines the enforcement scopes of service patterns. Possible values:
+		// ["GOOGLE_APIS_VIA_PRIVATE_PATH"]
+		service_patterns_enforcement_scopes?: [...string]
+	})
+
+	_#defs: "/$defs/service_perimeters/$defs/status/$defs/vpc_accessible_services/$defs/allowed_service_patterns": close({
+		modifiers?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/vpc_accessible_services/$defs/allowed_service_patterns/$defs/modifiers", [..._#defs."/$defs/service_perimeters/$defs/status/$defs/vpc_accessible_services/$defs/allowed_service_patterns/$defs/modifiers"]])
+
+		// URL pattern to allow.
+		pattern?: string
+
+		// Supported service to allow.
+		service?: string
+	})
+
+	_#defs: "/$defs/service_perimeters/$defs/status/$defs/vpc_accessible_services/$defs/allowed_service_patterns/$defs/modifiers": close({
+		add_request_header?: matchN(1, [_#defs."/$defs/service_perimeters/$defs/status/$defs/vpc_accessible_services/$defs/allowed_service_patterns/$defs/modifiers/$defs/add_request_header", list.MaxItems(1) & [..._#defs."/$defs/service_perimeters/$defs/status/$defs/vpc_accessible_services/$defs/allowed_service_patterns/$defs/modifiers/$defs/add_request_header"]])
+	})
+
+	_#defs: "/$defs/service_perimeters/$defs/status/$defs/vpc_accessible_services/$defs/allowed_service_patterns/$defs/modifiers/$defs/add_request_header": close({
+		// HTTP header key.
+		key!: string
+
+		// HTTP header value.
+		value!: string
 	})
 }

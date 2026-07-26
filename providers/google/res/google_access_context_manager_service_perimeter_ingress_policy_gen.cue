@@ -78,6 +78,8 @@ google_access_context_manager_service_perimeter_ingress_policy: {
 	})
 
 	_#defs: "/$defs/ingress_from/$defs/sources": close({
+		psc_endpoint?: matchN(1, [_#defs."/$defs/ingress_from/$defs/sources/$defs/psc_endpoint", list.MaxItems(1) & [..._#defs."/$defs/ingress_from/$defs/sources/$defs/psc_endpoint"]])
+
 		// An 'AccessLevel' resource name that allow resources within the
 		// 'ServicePerimeters' to be accessed from the internet. 'AccessLevels' listed
 		// must be in the same policy as this 'ServicePerimeter'. Referencing a nonexistent
@@ -98,6 +100,14 @@ google_access_context_manager_service_perimeter_ingress_policy: {
 		// organization that the perimeter is defined in. '*' is not allowed, the case
 		// of allowing all Google Cloud resources only is not supported.
 		resource?: string
+	})
+
+	_#defs: "/$defs/ingress_from/$defs/sources/$defs/psc_endpoint": close({
+		// The full resource name of the global forwarding rule that identifies a
+		// Private Service Connect endpoint.
+		// Forwarding rule format:
+		// '//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}'.
+		forwarding_rule?: string
 	})
 
 	_#defs: "/$defs/ingress_to/$defs/operations": close({

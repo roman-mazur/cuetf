@@ -51,8 +51,10 @@ google_discovery_engine_data_store: {
 			default_parsing_config?: [...close({
 				digital_parsing_config?: [...close({})]
 				layout_parsing_config?: [...close({
-					enable_image_annotation?: bool
-					enable_table_annotation?: bool
+					enable_get_processed_document?: bool
+					enable_image_annotation?:       bool
+					enable_llm_layout_parsing?:     bool
+					enable_table_annotation?:       bool
 					exclude_html_classes?: [...string]
 					exclude_html_elements?: [...string]
 					exclude_html_ids?: [...string]
@@ -67,8 +69,10 @@ google_discovery_engine_data_store: {
 				digital_parsing_config?: [...close({})]
 				file_type?: string
 				layout_parsing_config?: [...close({
-					enable_image_annotation?: bool
-					enable_table_annotation?: bool
+					enable_get_processed_document?: bool
+					enable_image_annotation?:       bool
+					enable_llm_layout_parsing?:     bool
+					enable_table_annotation?:       bool
 					exclude_html_classes?: [...string]
 					exclude_html_elements?: [...string]
 					exclude_html_ids?: [...string]

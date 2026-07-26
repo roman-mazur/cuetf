@@ -182,8 +182,8 @@ google_compute_region_instance_template: {
 		disk_name?: string
 
 		// The size of the image in gigabytes. If not specified, it will inherit the
-		// size of its base image. For SCRATCH disks, the size must be one of 375 or
-		// 3000 GB, with a default of 375 GB.
+		// size of its base image. For SCRATCH disks, the size must be one of 375,
+		// 3000, 3500, 7000 or 14000 GB, with a default of 375 GB.
 		disk_size_gb?: number
 
 		// The Google Compute Engine disk type. Such as "pd-ssd", "local-ssd",
@@ -369,7 +369,13 @@ google_compute_region_instance_template: {
 		// Allows instance to be preempted. This defaults to false.
 		preemptible?: bool
 
-		// Whether the instance is spot. If this is set as SPOT.
+		// Describes the desired provisioning model for the instance. Possible values
+		// are STANDARD, SPOT, FLEX_START, and RESERVATION_BOUND. For STANDARD,
+		// resources are provisioned immediately. For SPOT, resources are offered at a
+		// discount compared to standard pricing but may be preempted. For FLEX_START,
+		// resources are offered at a discount with flexible start times. For
+		// RESERVATION_BOUND, the instance is bound to a specific reservation and will
+		// only consume capacity from that reservation.
 		provisioning_model?: string
 
 		// Specifies the timestamp, when the instance will be terminated,

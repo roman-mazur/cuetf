@@ -279,8 +279,8 @@ google_dataproc_cluster: {
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/gce_cluster_config/$defs/confidential_instance_config": close({
-		// Defines whether the instance should have confidential compute enabled.
-		enable_confidential_compute?: bool
+		// Defines the type of Confidential Compute technology to use.
+		confidential_instance_type?: string
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/gce_cluster_config/$defs/node_group_affinity": close({
@@ -414,6 +414,8 @@ google_dataproc_cluster: {
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list": close({
+		disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config"]])
+
 		// Full machine-type names, e.g. "n1-standard-16".
 		machine_types?: [...string]
 
@@ -422,6 +424,30 @@ google_dataproc_cluster: {
 		// priority rank and fallback to next rank based on availability. Machine types
 		// and instance selections with the same priority have the same preference.
 		rank?: number
+	})
+
+	_#defs: "/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config": close({
+		// Indicates how many IOPS to provision for the disk. This sets the number of
+		// I/O operations per second that the disk can handle.
+		boot_disk_provisioned_iops?: number
+
+		// Indicates how much throughput to provision for the disk. This sets the number
+		// of throughput mb per second that the disk can handle.
+		boot_disk_provisioned_throughput?: number
+
+		// Size of the primary disk attached to each node, specified in GB. The smallest
+		// allowed disk size is 10GB.
+		boot_disk_size_gb?: number
+
+		// The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard".
+		boot_disk_type?: string
+
+		// Interface type of local SSDs (no Local SSDs or NVMe). Valid values: "scsi"
+		// (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+		local_ssd_interface?: string
+
+		// The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
+		num_local_ssds?: number
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/metastore_config": close({
@@ -484,6 +510,8 @@ google_dataproc_cluster: {
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list": close({
+		disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config"]])
+
 		// Full machine-type names, e.g. "n1-standard-16".
 		machine_types?: [...string]
 
@@ -492,6 +520,30 @@ google_dataproc_cluster: {
 		// priority rank and fallback to next rank based on availability. Machine types
 		// and instance selections with the same priority have the same preference.
 		rank?: number
+	})
+
+	_#defs: "/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config": close({
+		// Indicates how many IOPS to provision for the disk. This sets the number of
+		// I/O operations per second that the disk can handle.
+		boot_disk_provisioned_iops?: number
+
+		// Indicates how much throughput to provision for the disk. This sets the number
+		// of throughput mb per second that the disk can handle.
+		boot_disk_provisioned_throughput?: number
+
+		// Size of the primary disk attached to each node, specified in GB. The smallest
+		// allowed disk size is 10GB.
+		boot_disk_size_gb?: number
+
+		// The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard".
+		boot_disk_type?: string
+
+		// Interface type of local SSDs (no Local SSDs or NVMe). Valid values: "scsi"
+		// (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+		local_ssd_interface?: string
+
+		// The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
+		num_local_ssds?: number
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/provisioning_model_mix": close({
@@ -669,6 +721,8 @@ google_dataproc_cluster: {
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list": close({
+		disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config"]])
+
 		// Full machine-type names, e.g. "n1-standard-16".
 		machine_types?: [...string]
 
@@ -677,6 +731,30 @@ google_dataproc_cluster: {
 		// priority rank and fallback to next rank based on availability. Machine types
 		// and instance selections with the same priority have the same preference.
 		rank?: number
+	})
+
+	_#defs: "/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config": close({
+		// Indicates how many IOPS to provision for the disk. This sets the number of
+		// I/O operations per second that the disk can handle.
+		boot_disk_provisioned_iops?: number
+
+		// Indicates how much throughput to provision for the disk. This sets the number
+		// of throughput mb per second that the disk can handle.
+		boot_disk_provisioned_throughput?: number
+
+		// Size of the primary disk attached to each node, specified in GB. The smallest
+		// allowed disk size is 10GB.
+		boot_disk_size_gb?: number
+
+		// The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard".
+		boot_disk_type?: string
+
+		// Interface type of local SSDs (no Local SSDs or NVMe). Valid values: "scsi"
+		// (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+		local_ssd_interface?: string
+
+		// The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
+		num_local_ssds?: number
 	})
 
 	_#defs: "/$defs/virtual_cluster_config/$defs/auxiliary_services_config": close({

@@ -71,6 +71,12 @@ google_sql_database_instance: {
 		first_ip_address?: string
 		id?:               string
 
+		// When this parameter is set to true, Cloud SQL instances can perform in-place
+		// major version upgrades of read replicas along with the primary instance when
+		// 'database_version' is updated. This is an input-only field that is not
+		// persisted in the API and only takes effect during a major version upgrade.
+		include_replicas_for_major_version_upgrade?: bool
+
 		// The type of the instance. See
 		// https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType
 		// for supported values.
@@ -289,10 +295,12 @@ google_sql_database_instance: {
 						consumer_network?:                          string
 						consumer_network_status?:                   string
 						consumer_service_project_id?:               string
+						instance_auto_dns_status?:                  string
 						ip_address?:                                string
 						service_connection_policy?:                 string
 						service_connection_policy_creation_result?: string
 						status?:                                    string
+						write_endpoint_auto_dns_status?:            string
 					})]
 					psc_auto_dns_enabled?:           bool
 					psc_enabled?:                    bool
@@ -345,5 +353,11 @@ google_sql_database_instance: {
 			user_labels?: [string]: string
 			version?: number
 		})]
+
+		// When set to true, Cloud SQL instances can switch storing point-in-time
+		// recovery transaction logs from a data disk to Cloud Storage, freeing up data
+		// disk space and enabling longer retention windows. This is an input-only
+		// field that is not persisted in the API.
+		switch_transaction_logs_to_cloud_storage_enabled?: bool
 	})
 }

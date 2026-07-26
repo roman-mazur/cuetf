@@ -127,8 +127,14 @@ google_discovery_engine_data_store: {
 	_#defs: "/$defs/document_processing_config/$defs/default_parsing_config/$defs/digital_parsing_config": close({})
 
 	_#defs: "/$defs/document_processing_config/$defs/default_parsing_config/$defs/layout_parsing_config": close({
+		// If true, the processed document will be made available for the GetProcessedDocument API.
+		enable_get_processed_document?: bool
+
 		// If true, the LLM based annotation is added to the image during parsing.
 		enable_image_annotation?: bool
+
+		// If true, the pdf layout will be refined using an LLM.
+		enable_llm_layout_parsing?: bool
 
 		// If true, the LLM based annotation is added to the table during parsing.
 		enable_table_annotation?: bool
@@ -162,8 +168,14 @@ google_discovery_engine_data_store: {
 	_#defs: "/$defs/document_processing_config/$defs/parsing_config_overrides/$defs/digital_parsing_config": close({})
 
 	_#defs: "/$defs/document_processing_config/$defs/parsing_config_overrides/$defs/layout_parsing_config": close({
+		// If true, the processed document will be made available for the GetProcessedDocument API.
+		enable_get_processed_document?: bool
+
 		// If true, the LLM based annotation is added to the image during parsing.
 		enable_image_annotation?: bool
+
+		// If true, the pdf layout will be refined using an LLM.
+		enable_llm_layout_parsing?: bool
 
 		// If true, the LLM based annotation is added to the table during parsing.
 		enable_table_annotation?: bool

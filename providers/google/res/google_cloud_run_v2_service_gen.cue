@@ -205,6 +205,12 @@ google_cloud_run_v2_service: {
 		reconciling?: bool
 		project?:     string
 
+		// A map of resource manager tags.
+		// Resource manager tag keys and values have the same definition as resource manager tags.
+		// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format
+		// tagValues/{tag_value_id}.
+		tags?: [string]: string
+
 		// The Condition of this Service, containing its readiness status, and detailed
 		// error information in case it did not reach a serving state. See comments in
 		// reconciling for additional information on reconciliation process in Cloud

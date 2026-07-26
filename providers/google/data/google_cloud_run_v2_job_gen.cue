@@ -172,6 +172,12 @@ google_cloud_run_v2_job: {
 		// terminalCondition and conditions
 		reconciling?: bool
 
+		// A map of resource manager tags.
+		// Resource manager tag keys and values have the same definition as resource manager tags.
+		// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format
+		// tagValues/{tag_value_id}.
+		tags?: [string]: string
+
 		// The template used to create executions for this Job.
 		template?: [...close({
 			annotations?: [string]: string
