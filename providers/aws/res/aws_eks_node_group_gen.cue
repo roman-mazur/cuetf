@@ -13,6 +13,7 @@ aws_eks_node_group: {
 		taint?: matchN(1, [#taint, list.MaxItems(50) & [...#taint]])
 		timeouts?: #timeouts
 		update_config?: matchN(1, [#update_config, list.MaxItems(1) & [...#update_config]])
+		warm_pool_config?: matchN(1, [#warm_pool_config, list.MaxItems(1) & [...#warm_pool_config]])
 		ami_type?: string
 
 		// Region where this resource will be
@@ -87,6 +88,13 @@ aws_eks_node_group: {
 		max_unavailable?:            number
 		max_unavailable_percentage?: number
 		update_strategy?:            string
+	})
+
+	#warm_pool_config: close({
+		max_group_prepared_capacity?: number
+		min_size?:                    number
+		pool_state?:                  string
+		reuse_on_scale_in?:           bool
 	})
 
 	_#defs: "/$defs/node_repair_config/$defs/node_repair_config_overrides": close({

@@ -24,6 +24,7 @@ aws_bedrockagent_data_source: {
 
 	#data_source_configuration: close({
 		confluence_configuration?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/confluence_configuration", [..._#defs."/$defs/data_source_configuration/$defs/confluence_configuration"]])
+		managed_knowledge_base_connector_configuration?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration", [..._#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration"]])
 		s3_configuration?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/s3_configuration", [..._#defs."/$defs/data_source_configuration/$defs/s3_configuration"]])
 		salesforce_configuration?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/salesforce_configuration", [..._#defs."/$defs/data_source_configuration/$defs/salesforce_configuration"]])
 		share_point_configuration?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/share_point_configuration", [..._#defs."/$defs/data_source_configuration/$defs/share_point_configuration"]])
@@ -49,6 +50,12 @@ aws_bedrockagent_data_source: {
 		// applicable if changes are saved into state before the destroy operation
 		// occurs.
 		delete?: string
+
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
+		update?: string
 	})
 
 	#vector_ingestion_configuration: close({
@@ -86,6 +93,35 @@ aws_bedrockagent_data_source: {
 		credentials_secret_arn!: string
 		host_type!:              string
 		host_url!:               string
+	})
+
+	_#defs: "/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration": close({
+		deletion_protection_configuration?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/deletion_protection_configuration", [..._#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/deletion_protection_configuration"]])
+		media_extraction_configuration?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration", [..._#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration"]])
+		connector_parameters?: string
+	})
+
+	_#defs: "/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/deletion_protection_configuration": close({
+		deletion_protection_status!:    string
+		deletion_protection_threshold?: number
+	})
+
+	_#defs: "/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration": close({
+		audio_extraction_configuration?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration/$defs/audio_extraction_configuration", [..._#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration/$defs/audio_extraction_configuration"]])
+		image_extraction_configuration?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration/$defs/image_extraction_configuration", [..._#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration/$defs/image_extraction_configuration"]])
+		video_extraction_configuration?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration/$defs/video_extraction_configuration", [..._#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration/$defs/video_extraction_configuration"]])
+	})
+
+	_#defs: "/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration/$defs/audio_extraction_configuration": close({
+		audio_extraction_status!: string
+	})
+
+	_#defs: "/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration/$defs/image_extraction_configuration": close({
+		image_extraction_status!: string
+	})
+
+	_#defs: "/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration/$defs/video_extraction_configuration": close({
+		video_extraction_status!: string
 	})
 
 	_#defs: "/$defs/data_source_configuration/$defs/s3_configuration": close({

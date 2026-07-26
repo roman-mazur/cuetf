@@ -22,12 +22,16 @@ aws_msk_cluster: {
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                                        string
 		bootstrap_brokers?:                             string
+		bootstrap_brokers_ipv6?:                        string
 		bootstrap_brokers_public_sasl_iam?:             string
 		bootstrap_brokers_public_sasl_scram?:           string
 		bootstrap_brokers_public_tls?:                  string
 		bootstrap_brokers_sasl_iam?:                    string
+		bootstrap_brokers_sasl_iam_ipv6?:               string
 		bootstrap_brokers_sasl_scram?:                  string
+		bootstrap_brokers_sasl_scram_ipv6?:             string
 		bootstrap_brokers_tls?:                         string
+		bootstrap_brokers_tls_ipv6?:                    string
 		bootstrap_brokers_vpc_connectivity_sasl_iam?:   string
 		bootstrap_brokers_vpc_connectivity_sasl_scram?: string
 		bootstrap_brokers_vpc_connectivity_tls?:        string

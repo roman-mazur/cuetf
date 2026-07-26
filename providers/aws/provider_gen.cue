@@ -750,6 +750,9 @@ provider: {
 		macie2?: string
 
 		// Use this to override the default service endpoint URL
+		mailmanager?: string
+
+		// Use this to override the default service endpoint URL
 		managedgrafana?: string
 
 		// Use this to override the default service endpoint URL

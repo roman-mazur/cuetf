@@ -4,6 +4,8 @@ aws_opensearchserverless_security_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_opensearchserverless_security_config")
 	close({
+		iam_federation_options?: matchN(1, [#iam_federation_options, [...#iam_federation_options]])
+		iam_identity_center_options?: matchN(1, [#iam_identity_center_options, [...#iam_identity_center_options]])
 		saml_options?: matchN(1, [#saml_options, [...#saml_options]])
 
 		// Version of the configuration.
@@ -22,8 +24,27 @@ aws_opensearchserverless_security_config: {
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 
-		// Type of configuration. Must be `saml`.
+		// Type of configuration. Valid values: `saml`, `iamidentitycenter` or `iamfederation`.
 		type!: string
+	})
+
+	#iam_federation_options: close({
+		// Group attribute.
+		group_attribute?: string
+
+		// User attribute.
+		user_attribute?: string
+	})
+
+	#iam_identity_center_options: close({
+		// Group attribute.
+		group_attribute?: string
+
+		// Instance ARN.
+		instance_arn!: string
+
+		// User attribute.
+		user_attribute?: string
 	})
 
 	#saml_options: close({

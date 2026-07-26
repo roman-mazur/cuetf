@@ -27,6 +27,7 @@ aws_bedrockagent_knowledge_base: {
 
 	#knowledge_base_configuration: close({
 		kendra_knowledge_base_configuration?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/kendra_knowledge_base_configuration", [..._#defs."/$defs/knowledge_base_configuration/$defs/kendra_knowledge_base_configuration"]])
+		managed_knowledge_base_configuration?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration", [..._#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration"]])
 		sql_knowledge_base_configuration?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/sql_knowledge_base_configuration", [..._#defs."/$defs/knowledge_base_configuration/$defs/sql_knowledge_base_configuration"]])
 		vector_knowledge_base_configuration?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration", [..._#defs."/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration"]])
 		type!: string
@@ -68,6 +69,44 @@ aws_bedrockagent_knowledge_base: {
 
 	_#defs: "/$defs/knowledge_base_configuration/$defs/kendra_knowledge_base_configuration": close({
 		kendra_index_arn!: string
+	})
+
+	_#defs: "/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration": close({
+		embedding_model_configuration?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration", [..._#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration"]])
+		server_side_encryption_configuration?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/server_side_encryption_configuration", [..._#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/server_side_encryption_configuration"]])
+		embedding_model_arn?:  string
+		embedding_model_type?: string
+	})
+
+	_#defs: "/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration": close({
+		bedrock_embedding_model_configuration?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration", [..._#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration"]])
+	})
+
+	_#defs: "/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration": close({
+		audio?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/audio", [..._#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/audio"]])
+		video?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/video", [..._#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/video"]])
+		dimensions?:          number
+		embedding_data_type?: string
+	})
+
+	_#defs: "/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/audio": close({
+		segmentation_configuration?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/audio/$defs/segmentation_configuration", [..._#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/audio/$defs/segmentation_configuration"]])
+	})
+
+	_#defs: "/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/audio/$defs/segmentation_configuration": close({
+		fixed_length_duration!: number
+	})
+
+	_#defs: "/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/video": close({
+		segmentation_configuration?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/video/$defs/segmentation_configuration", [..._#defs."/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/video/$defs/segmentation_configuration"]])
+	})
+
+	_#defs: "/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/video/$defs/segmentation_configuration": close({
+		fixed_length_duration!: number
+	})
+
+	_#defs: "/$defs/knowledge_base_configuration/$defs/managed_knowledge_base_configuration/$defs/server_side_encryption_configuration": close({
+		kms_key_arn?: string
 	})
 
 	_#defs: "/$defs/knowledge_base_configuration/$defs/sql_knowledge_base_configuration": close({
@@ -161,8 +200,26 @@ aws_bedrockagent_knowledge_base: {
 	})
 
 	_#defs: "/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration": close({
+		audio?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/audio", [..._#defs."/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/audio"]])
+		video?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/video", [..._#defs."/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/video"]])
 		dimensions?:          number
 		embedding_data_type?: string
+	})
+
+	_#defs: "/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/audio": close({
+		segmentation_configuration?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/audio/$defs/segmentation_configuration", [..._#defs."/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/audio/$defs/segmentation_configuration"]])
+	})
+
+	_#defs: "/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/audio/$defs/segmentation_configuration": close({
+		fixed_length_duration!: number
+	})
+
+	_#defs: "/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/video": close({
+		segmentation_configuration?: matchN(1, [_#defs."/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/video/$defs/segmentation_configuration", [..._#defs."/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/video/$defs/segmentation_configuration"]])
+	})
+
+	_#defs: "/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration/$defs/embedding_model_configuration/$defs/bedrock_embedding_model_configuration/$defs/video/$defs/segmentation_configuration": close({
+		fixed_length_duration!: number
 	})
 
 	_#defs: "/$defs/knowledge_base_configuration/$defs/vector_knowledge_base_configuration/$defs/supplemental_data_storage_configuration": close({

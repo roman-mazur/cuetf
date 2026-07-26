@@ -55,5 +55,11 @@ aws_eks_node_group: {
 			update_strategy?:            string
 		})]
 		version?: string
+		warm_pool_config?: [...close({
+			max_group_prepared_capacity?: number
+			min_size?:                    number
+			pool_state?:                  string
+			reuse_on_scale_in?:           bool
+		})]
 	})
 }
