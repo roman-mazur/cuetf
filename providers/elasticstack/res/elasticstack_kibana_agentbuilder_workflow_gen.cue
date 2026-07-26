@@ -49,7 +49,7 @@ elasticstack_kibana_agentbuilder_workflow: {
 		// The workflow name (extracted from YAML configuration).
 		name?: string
 
-		// An identifier for the Kibana space. If not provided, the default space is used.
+		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string
 
 		// Whether the workflow configuration is valid.

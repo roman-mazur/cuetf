@@ -10,7 +10,7 @@ elasticstack_elasticsearch_ingest_processor_html_strip: {
 		// The field to apply the replacement to.
 		field!: string
 
-		// Internal identifier of the resource
+		// Internal identifier of the resource.
 		id?: string
 
 		// Conditionally execute the processor

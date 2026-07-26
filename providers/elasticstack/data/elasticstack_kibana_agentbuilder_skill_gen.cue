@@ -43,8 +43,7 @@ elasticstack_kibana_agentbuilder_skill: {
 		// `<space_id>/<skill_id>` string.
 		skill_id!: string
 
-		// An identifier for the Kibana space. If not provided, the default space is
-		// used unless the `skill_id` argument supplies a composite space.
+		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string
 
 		// Set of tool IDs from the tool registry that this skill references.

@@ -22,7 +22,7 @@ elasticstack_elasticsearch_ingest_processor_community_id: {
 		// Field containing the ICMP type.
 		icmp_type?: number
 
-		// Internal identifier of the resource
+		// Internal identifier of the resource.
 		id?: string
 
 		// Conditionally execute the processor

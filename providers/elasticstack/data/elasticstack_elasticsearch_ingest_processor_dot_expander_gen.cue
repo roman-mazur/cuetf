@@ -10,7 +10,7 @@ elasticstack_elasticsearch_ingest_processor_dot_expander: {
 		// The field to expand into an object field. If set to *, all top-level fields will be expanded.
 		field!: string
 
-		// Internal identifier of the resource
+		// Internal identifier of the resource.
 		id?: string
 
 		// Conditionally execute the processor

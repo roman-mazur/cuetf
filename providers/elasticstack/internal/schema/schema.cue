@@ -2769,7 +2769,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					deletion_protection: {
 						type: "bool"
 						description: """
-									Whether to allow Terraform to destroy the index. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply command that deletes the instance will fail.
+									Whether to allow Terraform to destroy the index. Unless this field is set to `false` in Terraform state, a `terraform destroy` or `terraform apply` command that deletes the index will fail.
+
+									Destroying (or replacing) a protected index is a **two-step process**: the check always runs against the index's last-applied state, not the new plan, so you cannot set `deletion_protection = false` in the same `terraform apply` that also destroys or replaces the index (for example, a configuration change that forces replacement).
+
+									1. Apply a change that sets `deletion_protection = false` on its own.
+									2. Only then run the `terraform apply` or `terraform destroy` that removes or replaces the index.
 
 									"""
 						description_kind: "plain"
@@ -3346,6 +3351,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					Creates Elasticsearch indices. See: https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html
 
 					Set `use_existing` = true to tolerate or adopt an index that already exists at create time (for example after a replacement race or when adopting an out-of-band index); see the `use_existing` attribute description for details.
+
+					Set `deletion_protection = false` and apply that change on its own **before** any apply that destroys or replaces the index (for example a change that forces replacement); see the `deletion_protection` attribute description for the required two-step workflow.
 
 					"""
 				description_kind: "plain"
@@ -4869,7 +4876,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											}
 											index_routing: {
 												type:             "string"
-												description:      "Value used to route indexing operations to a specific shard. If specified, this overwrites the `routing` value for indexing operations."
+												description:      "Value used to route indexing operations to a specific shard. If specified, this overwrites the routing value for indexing operations."
 												description_kind: "markdown"
 												optional:         true
 												computed:         true
@@ -4890,7 +4897,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											}
 											name: {
 												type:             "string"
-												description:      "The alias name."
+												description:      "The alias name. Index alias names support date math. See the [date math index names documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/date-math-index-names.html) for more details."
 												description_kind: "markdown"
 												required:         true
 											}
@@ -5385,7 +5392,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -12143,8 +12150,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						required:         true
 					}
 					policy_id: {
-						type:             "string"
-						description:      "Unique identifier of the agent policy."
+						type: "string"
+						description: """
+									Unique identifier of the agent policy. When omitted, Fleet auto-generates a UUID. When set, the value must be 1-255 characters and must not contain path separators (`"/"`), traversal sequences (`".."`), or reserved keys (`"__proto__"`, `"constructor"`, `"prototype"`). Invalid explicit values fail at plan time.
+
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -12411,6 +12421,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			version: 0
 			block: {
 				attributes: {
+					advanced_settings: {
+						type: ["map", "string"]
+						description:      "Elastic Defend advanced settings as a map of setting name to value. Keys use Elastic's documented dot notation with OS prefix (for example `linux.advanced.artifacts.global.base_url`). See https://www.elastic.co/docs/reference/security/defend-advanced-settings for available settings."
+						description_kind: "plain"
+						optional:         true
+					}
 					agent_policy_id: {
 						type:             "string"
 						description:      "ID of the agent policy. Conflicts with agent_policy_ids."
@@ -13563,6 +13579,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					inputs: {
 						nested_type: {
 							attributes: {
+								condition: {
+									type:             "string"
+									description:      "Agent condition expression to evaluate whether to apply this input."
+									description_kind: "plain"
+									optional:         true
+								}
 								defaults: {
 									nested_type: {
 										attributes: {
@@ -13611,6 +13633,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								streams: {
 									nested_type: {
 										attributes: {
+											condition: {
+												type:             "string"
+												description:      "Agent condition expression to evaluate whether to apply this stream."
+												description_kind: "plain"
+												optional:         true
+											}
 											enabled: {
 												type:             "bool"
 												description:      "Enable the stream."
@@ -14024,7 +14052,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					output_id: {
 						type:             "string"
-						description:      "Unique identifier of the output."
+						description:      "Unique identifier of the output. When omitted, Fleet auto-generates an ID. When set, the value must be 1-255 characters and must not contain path separators (\"/\"), traversal sequences (\"..\"), or reserved keys (\"__proto__\", \"constructor\", \"prototype\"). Invalid explicit values fail at plan time."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -14371,7 +14399,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					host_id: {
 						type:             "string"
-						description:      "Unique identifier of the Fleet server host."
+						description:      "Unique identifier of the Fleet server host. When omitted, Fleet auto-generates an ID. When set, the value must be 1-255 characters and must not contain path separators (\"/\"), traversal sequences (\"..\"), or reserved keys (\"__proto__\", \"constructor\", \"prototype\"). Invalid explicit values fail at plan time."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -14579,7 +14607,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -14738,7 +14766,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "An identifier for the space. If not provided, the default space is used."
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -14906,7 +14934,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "An identifier for the Kibana space. If not provided, the default space is used."
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -15034,7 +15062,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "An identifier for the Kibana space. If not provided, the default space is used."
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -15186,7 +15214,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "An identifier for the Kibana space. If not provided, the default space is used."
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -15424,7 +15452,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -15674,7 +15702,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			}
 		}
 		elasticstack_kibana_dashboard: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					access_control: {
@@ -15785,9 +15813,395 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					panels: {
 						nested_type: {
 							attributes: {
+								aiops_change_point_chart_config: {
+									nested_type: {
+										attributes: {
+											aggregation_function: {
+												type:             "string"
+												description:      "The aggregation function used to calculate the metric values. One of `avg`, `max`, `min`, `sum`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											data_view_id: {
+												type:             "string"
+												description:      "The data view ID used for change point detection."
+												description_kind: "markdown"
+												required:         true
+											}
+											description: {
+												type:             "string"
+												description:      "Optional panel description."
+												description_kind: "markdown"
+												optional:         true
+											}
+											hide_border: {
+												type:             "bool"
+												description:      "When true, hides the panel border."
+												description_kind: "markdown"
+												optional:         true
+											}
+											hide_title: {
+												type:             "bool"
+												description:      "When true, hides the panel title."
+												description_kind: "markdown"
+												optional:         true
+											}
+											max_series_to_plot: {
+												type:             "number"
+												description:      "Maximum number of change points to visualise. Kibana default is `6`. Float32 in state matches the Kibana API and avoids refresh drift."
+												description_kind: "markdown"
+												optional:         true
+											}
+											metric_field: {
+												type:             "string"
+												description:      "The metric field used by the aggregation function."
+												description_kind: "markdown"
+												required:         true
+											}
+											partitions: {
+												type: ["set", "string"]
+												description:      "Optional split field values to include in the panel. Modelled as a set to prevent plan drift from API-returned ordering; duplicate entries are silently deduplicated. An empty set is not meaningful (omit the attribute to disable filtering); a non-null set must contain at least one entry."
+												description_kind: "markdown"
+												optional:         true
+											}
+											split_field: {
+												type:             "string"
+												description:      "The optional field used to split change-point results."
+												description_kind: "markdown"
+												optional:         true
+											}
+											time_range: {
+												nested_type: {
+													attributes: {
+														from: {
+															type:             "string"
+															description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+															description_kind: "markdown"
+															required:         true
+														}
+														mode: {
+															type:             "string"
+															description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+															description_kind: "markdown"
+															optional:         true
+														}
+														to: {
+															type:             "string"
+															description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Optional panel time range (`from`, `to`, optional `mode`). When omitted, the panel inherits the dashboard `time_range` and this attribute stays null in state (REQ-009)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											title: {
+												type:             "string"
+												description:      "Optional panel title shown in the panel header."
+												description_kind: "markdown"
+												optional:         true
+											}
+											view_type: {
+												type:             "string"
+												description:      "The type of change point detection view to display. One of `charts`, `table`."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Configuration for an AIOps change point chart panel. Anchored to a data view and metric field; optional aggregation, split, partitions, and view controls follow the API-documented enums. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								aiops_log_rate_analysis_config: {
+									nested_type: {
+										attributes: {
+											data_view_id: {
+												type:             "string"
+												description:      "The data view ID used to run log rate analysis."
+												description_kind: "markdown"
+												required:         true
+											}
+											description: {
+												type:             "string"
+												description:      "Optional panel description."
+												description_kind: "markdown"
+												optional:         true
+											}
+											hide_border: {
+												type:             "bool"
+												description:      "When true, hides the panel border."
+												description_kind: "markdown"
+												optional:         true
+											}
+											hide_title: {
+												type:             "bool"
+												description:      "When true, hides the panel title."
+												description_kind: "markdown"
+												optional:         true
+											}
+											time_range: {
+												nested_type: {
+													attributes: {
+														from: {
+															type:             "string"
+															description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+															description_kind: "markdown"
+															required:         true
+														}
+														mode: {
+															type:             "string"
+															description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+															description_kind: "markdown"
+															optional:         true
+														}
+														to: {
+															type:             "string"
+															description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Optional panel time range (`from`, `to`, optional `mode`). When omitted, the panel inherits the dashboard `time_range` and this attribute stays null in state (REQ-009)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											title: {
+												type:             "string"
+												description:      "Optional panel title shown in the panel header."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Configuration for an AIOps log rate analysis panel. Anchored to a data view; the remaining fields are the standard optional panel presentation passthroughs. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								aiops_pattern_analysis_config: {
+									nested_type: {
+										attributes: {
+											data_view_id: {
+												type:             "string"
+												description:      "The data view ID used for pattern analysis."
+												description_kind: "markdown"
+												required:         true
+											}
+											description: {
+												type:             "string"
+												description:      "Optional panel description."
+												description_kind: "markdown"
+												optional:         true
+											}
+											field_name: {
+												type:             "string"
+												description:      "The text field on which to run pattern analysis."
+												description_kind: "markdown"
+												required:         true
+											}
+											hide_border: {
+												type:             "bool"
+												description:      "When true, hides the panel border."
+												description_kind: "markdown"
+												optional:         true
+											}
+											hide_title: {
+												type:             "bool"
+												description:      "When true, hides the panel title."
+												description_kind: "markdown"
+												optional:         true
+											}
+											minimum_time_range: {
+												type:             "string"
+												description:      "Minimum time range for pattern analysis. One of `no_minimum`, `1_week`, `1_month`, `3_months`, `6_months`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											random_sampler_mode: {
+												type:             "string"
+												description:      "The random sampler mode. One of `off`, `on_automatic`, `on_manual`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											random_sampler_probability: {
+												type:             "number"
+												description:      "Sampling probability, only meaningful when `random_sampler_mode = on_manual`. Must be between `0.00001` and `0.5`. Float32 in state matches the Kibana API and avoids refresh drift."
+												description_kind: "markdown"
+												optional:         true
+											}
+											time_range: {
+												nested_type: {
+													attributes: {
+														from: {
+															type:             "string"
+															description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+															description_kind: "markdown"
+															required:         true
+														}
+														mode: {
+															type:             "string"
+															description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+															description_kind: "markdown"
+															optional:         true
+														}
+														to: {
+															type:             "string"
+															description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Optional panel time range (`from`, `to`, optional `mode`). When omitted, the panel inherits the dashboard `time_range` and this attribute stays null in state (REQ-009)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											title: {
+												type:             "string"
+												description:      "Optional panel title shown in the panel header."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Configuration for an AIOps pattern analysis panel. Anchored to a data view and text field; optional sampling and time-range controls follow the API-documented bounds. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_change_point_chart_config`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								apm_service_map_config: {
+									nested_type: {
+										attributes: {
+											alert_status_filter: {
+												type: ["set", "string"]
+												description:      "Filter services by alert status."
+												description_kind: "markdown"
+												optional:         true
+											}
+											anomaly_severity_filter: {
+												type: ["set", "string"]
+												description:      "Filter services by anomaly severity."
+												description_kind: "markdown"
+												optional:         true
+											}
+											connection_filter: {
+												type: ["set", "string"]
+												description:      "Filter services by connection state."
+												description_kind: "markdown"
+												optional:         true
+											}
+											description: {
+												type:             "string"
+												description:      "Optional panel description."
+												description_kind: "markdown"
+												optional:         true
+											}
+											environment: {
+												type:             "string"
+												description:      "APM service environment (for example, `production`)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											hide_border: {
+												type:             "bool"
+												description:      "When true, hides the panel border."
+												description_kind: "markdown"
+												optional:         true
+											}
+											hide_title: {
+												type:             "bool"
+												description:      "When true, hides the panel title."
+												description_kind: "markdown"
+												optional:         true
+											}
+											kuery: {
+												type:             "string"
+												description:      "KQL query string applied to the service map."
+												description_kind: "markdown"
+												optional:         true
+											}
+											map_orientation: {
+												type:             "string"
+												description:      "Layout orientation of the service map."
+												description_kind: "markdown"
+												optional:         true
+											}
+											service_group_id: {
+												type:             "string"
+												description:      "Opaque identifier of a saved APM service group."
+												description_kind: "markdown"
+												optional:         true
+											}
+											service_name: {
+												type:             "string"
+												description:      "Focus the service map on a specific APM service."
+												description_kind: "markdown"
+												optional:         true
+											}
+											slo_status_filter: {
+												type: ["set", "string"]
+												description:      "Filter services by SLO status."
+												description_kind: "markdown"
+												optional:         true
+											}
+											sync_with_dashboard_filters: {
+												type:             "bool"
+												description:      "When set, the panel follows dashboard-level filters."
+												description_kind: "markdown"
+												optional:         true
+											}
+											time_range: {
+												nested_type: {
+													attributes: {
+														from: {
+															type:             "string"
+															description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+															description_kind: "markdown"
+															required:         true
+														}
+														mode: {
+															type:             "string"
+															description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+															description_kind: "markdown"
+															optional:         true
+														}
+														to: {
+															type:             "string"
+															description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Optional panel time range (`from`, `to`, and optional `mode`)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											title: {
+												type:             "string"
+												description:      "Optional panel title shown in the panel header."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Configuration for an APM service map panel. All fields are optional. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
+									description_kind: "markdown"
+									optional:         true
+								}
 								config_json: {
 									type:             "string"
-									description:      "The configuration of the panel as a JSON string. Practitioner-authored panel-level `config_json` is valid only when `type` is `markdown` or `vis`. Typed panel kinds such as `image`, `slo_alerts`, and `discover_session` use their dedicated blocks (`image_config`, `slo_alerts_config`, `discover_session_config`), not panel-level `config_json`. Mutually exclusive with `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+									description:      "The configuration of the panel as a JSON string. Practitioner-authored panel-level `config_json` is valid only when `type` is `markdown` or `vis`. Typed panel kinds such as `image`, `slo_alerts`, `discover_session`, `field_stats_table`, `ml_anomaly_swimlane`, `ml_anomaly_charts`, and `ml_single_metric_viewer` use their dedicated blocks (`image_config`, `slo_alerts_config`, `discover_session_config`, `field_stats_table_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`), not panel-level `config_json`. Mutually exclusive with `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 									description_kind: "markdown"
 									optional:         true
 									computed:         true
@@ -16269,7 +16683,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a `discover_session` panel (`kbn-dashboard-panel-type-discover_session`). Set exactly one of `by_value` or `by_reference`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`."
+									description:      "Configuration for a `discover_session` panel (`kbn-dashboard-panel-type-discover_session`). Set exactly one of `by_value` or `by_reference`. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -16367,7 +16781,180 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for an ES|QL control panel. Use this to manage ES|QL variable controls on a dashboard. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for an ES|QL control panel. Use this to manage ES|QL variable controls on a dashboard. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								field_stats_table_config: {
+									nested_type: {
+										attributes: {
+											by_dataview: {
+												nested_type: {
+													attributes: {
+														data_view_id: {
+															type:             "string"
+															description:      "The identifier of the source data view."
+															description_kind: "markdown"
+															required:         true
+														}
+														description: {
+															type:             "string"
+															description:      "Optional panel description."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_border: {
+															type:             "bool"
+															description:      "When true, hides the panel border."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_title: {
+															type:             "bool"
+															description:      "When true, hides the panel title."
+															description_kind: "markdown"
+															optional:         true
+														}
+														show_distributions: {
+															type:             "bool"
+															description:      "When true, shows distribution mini-charts in the field statistics table. Null-preserved on read (REQ-009)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														time_range: {
+															nested_type: {
+																attributes: {
+																	from: {
+																		type:             "string"
+																		description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	mode: {
+																		type:             "string"
+																		description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	to: {
+																		type:             "string"
+																		description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Optional panel time range override (`from`, `to`, optional `mode`). Null-preserved on read: when omitted in configuration, this attribute stays null in state even if Kibana returns values (REQ-009)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Optional panel title shown in the panel header."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description: """
+															Field statistics backed by a Kibana data view (`view_type = "dataview"` on the wire).
+
+															Requires `data_view_id`. Optional presentation fields and `show_distributions` apply to this branch only.
+
+															"""
+												description_kind: "markdown"
+												optional:         true
+											}
+											by_esql: {
+												nested_type: {
+													attributes: {
+														description: {
+															type:             "string"
+															description:      "Optional panel description."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_border: {
+															type:             "bool"
+															description:      "When true, hides the panel border."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_title: {
+															type:             "bool"
+															description:      "When true, hides the panel title."
+															description_kind: "markdown"
+															optional:         true
+														}
+														query: {
+															type:             "string"
+															description:      "The ES|QL query string (mapped to `query.esql` in the API)."
+															description_kind: "markdown"
+															required:         true
+														}
+														show_distributions: {
+															type:             "bool"
+															description:      "When true, shows distribution mini-charts in the field statistics table. Null-preserved on read (REQ-009)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														time_range: {
+															nested_type: {
+																attributes: {
+																	from: {
+																		type:             "string"
+																		description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	mode: {
+																		type:             "string"
+																		description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	to: {
+																		type:             "string"
+																		description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Optional panel time range override (`from`, `to`, optional `mode`). Null-preserved on read: when omitted in configuration, this attribute stays null in state even if Kibana returns values (REQ-009)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Optional panel title shown in the panel header."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description: """
+															Field statistics backed by an ES|QL query (`view_type = "esql"` on the wire).
+
+															Requires `query` (mapped to `query.esql` in the API). Optional presentation fields and `show_distributions` apply to this branch only.
+
+															"""
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description: """
+												Configuration for a `field_stats_table` panel (Data Visualizer field-statistics table).
+
+												Set exactly one of `by_dataview` or `by_esql`. The active branch determines the API `view_type` discriminator (`dataview` or `esql`); practitioners do not set `view_type` directly.
+												 Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+												"""
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -16605,7 +17192,149 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for an `image` panel (`kbn-dashboard-panel-type-image`). Required when `type` is `image`. References the Kibana Dashboard API image embeddable `config` shape. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for an `image` panel (`kbn-dashboard-panel-type-image`). Required when `type` is `image`. References the Kibana Dashboard API image embeddable `config` shape. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								links_config: {
+									nested_type: {
+										attributes: {
+											by_reference: {
+												nested_type: {
+													attributes: {
+														description: {
+															type:             "string"
+															description:      "Optional panel description."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_border: {
+															type:             "bool"
+															description:      "When true, hides the panel border."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_title: {
+															type:             "bool"
+															description:      "When true, hides the panel title."
+															description_kind: "markdown"
+															optional:         true
+														}
+														ref_id: {
+															type:             "string"
+															description:      "Reference id of a Kibana Links library saved object."
+															description_kind: "markdown"
+															required:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Optional panel title shown in the panel header."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Reference a Kibana Links library saved object."
+												description_kind: "markdown"
+												optional:         true
+											}
+											by_value: {
+												nested_type: {
+													attributes: {
+														description: {
+															type:             "string"
+															description:      "Optional panel description."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_border: {
+															type:             "bool"
+															description:      "When true, hides the panel border."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_title: {
+															type:             "bool"
+															description:      "When true, hides the panel title."
+															description_kind: "markdown"
+															optional:         true
+														}
+														layout: {
+															type:             "string"
+															description:      "Layout direction for the links panel."
+															description_kind: "markdown"
+															required:         true
+														}
+														links: {
+															nested_type: {
+																attributes: {
+																	destination: {
+																		type:             "string"
+																		description:      "Destination of the link: dashboard saved-object id for `dashboard` links, or a URL for `external` links."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	encode_url: {
+																		type:             "bool"
+																		description:      "When true, the external URL is percent-encoded."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	label: {
+																		type:             "string"
+																		description:      "Optional display label for the link."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	open_in_new_tab: {
+																		type:             "bool"
+																		description:      "When true, opens the link in a new browser tab."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	type: {
+																		type:             "string"
+																		description:      "Type of link: `dashboard` for an internal Kibana dashboard link, or `external` for an arbitrary URL."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	use_filters: {
+																		type:             "bool"
+																		description:      "When true, the dashboard link applies the current filters."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	use_time_range: {
+																		type:             "bool"
+																		description:      "When true, the dashboard link applies the current time range."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																}
+																nesting_mode: "list"
+															}
+															description:      "List of links to display in the panel."
+															description_kind: "markdown"
+															required:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Optional panel title shown in the panel header."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Inline links panel configuration."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Configuration for a `links` panel (`kbn-dashboard-panel-type-links`). Set exactly one of `by_value` or `by_reference`. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -16709,197 +17438,703 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a `markdown` panel (the Kibana Dashboard API `kbn-dashboard-panel-type-markdown` shape). Set exactly one of `by_value` (inline `content` with required nested `settings`) or `by_reference` (existing library item via `ref_id`). Presentation fields (`description`, `hide_title`, `title`, `hide_border`) are supported in both branches. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for a `markdown` panel (the Kibana Dashboard API `kbn-dashboard-panel-type-markdown` shape). Set exactly one of `by_value` (inline `content` with required nested `settings`) or `by_reference` (existing library item via `ref_id`). Presentation fields (`description`, `hide_title`, `title`, `hide_border`) are supported in both branches. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ml_anomaly_charts_config: {
+									nested_type: {
+										attributes: {
+											description: {
+												type:             "string"
+												description:      "Optional panel description."
+												description_kind: "markdown"
+												optional:         true
+											}
+											hide_border: {
+												type:             "bool"
+												description:      "When true, hides the panel border."
+												description_kind: "markdown"
+												optional:         true
+											}
+											hide_title: {
+												type:             "bool"
+												description:      "When true, hides the panel title."
+												description_kind: "markdown"
+												optional:         true
+											}
+											job_ids: {
+												type: ["list", "string"]
+												description:      "Anomaly detection job IDs or group IDs whose results appear in the charts. At least one entry is required."
+												description_kind: "markdown"
+												required:         true
+											}
+											max_series_to_plot: {
+												type:             "number"
+												description:      "Maximum number of anomaly series to plot."
+												description_kind: "markdown"
+												optional:         true
+											}
+											severity_threshold: {
+												nested_type: {
+													attributes: {
+														max: {
+															type:             "number"
+															description:      "Upper bound of a raw severity range. Valid only with `min` when `severity` is unset."
+															description_kind: "markdown"
+															optional:         true
+														}
+														min: {
+															type:             "number"
+															description:      "Lower bound of a raw severity range. Required when `severity` is omitted."
+															description_kind: "markdown"
+															optional:         true
+														}
+														severity: {
+															type:             "string"
+															description:      "Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`)."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "list"
+												}
+												description:      "Severity bands to display. Each item sets either a named `severity` shortcut or a raw numeric `min`/`max` range, never both."
+												description_kind: "markdown"
+												optional:         true
+											}
+											time_range: {
+												nested_type: {
+													attributes: {
+														from: {
+															type:             "string"
+															description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+															description_kind: "markdown"
+															required:         true
+														}
+														mode: {
+															type:             "string"
+															description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+															description_kind: "markdown"
+															optional:         true
+														}
+														to: {
+															type:             "string"
+															description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Optional panel-level time range (`from`, `to`, and optional `mode`)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											title: {
+												type:             "string"
+												description:      "Optional panel title shown in the panel header."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Configuration for an ML anomaly charts panel (`kbn-dashboard-panel-type-ml_anomaly_charts`). Required when `type` is `ml_anomaly_charts`. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ml_anomaly_swimlane_config: {
+									nested_type: {
+										attributes: {
+											description: {
+												type:             "string"
+												description:      "Optional panel description."
+												description_kind: "markdown"
+												optional:         true
+											}
+											hide_border: {
+												type:             "bool"
+												description:      "When true, hides the panel border."
+												description_kind: "markdown"
+												optional:         true
+											}
+											hide_title: {
+												type:             "bool"
+												description:      "When true, hides the panel title."
+												description_kind: "markdown"
+												optional:         true
+											}
+											job_ids: {
+												type: ["list", "string"]
+												description:      "IDs of anomaly detection jobs or groups whose results appear in the swim lane. At least one entry is required."
+												description_kind: "markdown"
+												required:         true
+											}
+											per_page: {
+												type:             "number"
+												description:      "Number of rows to display per page in a view-by swim lane. Ignored for overall swim lanes."
+												description_kind: "markdown"
+												optional:         true
+											}
+											swimlane_type: {
+												type:             "string"
+												description:      "Swim lane mode. Use `overall` for a single aggregate lane or `viewBy` to split anomalies by field."
+												description_kind: "markdown"
+												required:         true
+											}
+											time_range: {
+												nested_type: {
+													attributes: {
+														from: {
+															type:             "string"
+															description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+															description_kind: "markdown"
+															required:         true
+														}
+														mode: {
+															type:             "string"
+															description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+															description_kind: "markdown"
+															optional:         true
+														}
+														to: {
+															type:             "string"
+															description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Optional panel-level time range (`from`, `to`, and optional `mode`)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											title: {
+												type:             "string"
+												description:      "Optional panel title shown in the panel header."
+												description_kind: "markdown"
+												optional:         true
+											}
+											view_by: {
+												type:             "string"
+												description:      "Field name used to split anomalies into a view-by swim lane. Required when `swimlane_type` is `viewBy`; must not be set when `swimlane_type` is `overall`."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Configuration for an ML anomaly swim lane panel (`kbn-dashboard-panel-type-ml_anomaly_swimlane`). Required when `type` is `ml_anomaly_swimlane`. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								ml_single_metric_viewer_config: {
+									nested_type: {
+										attributes: {
+											description: {
+												type:             "string"
+												description:      "Optional panel description."
+												description_kind: "markdown"
+												optional:         true
+											}
+											forecast_id: {
+												type:             "string"
+												description:      "Forecast identifier to overlay on the chart."
+												description_kind: "markdown"
+												optional:         true
+											}
+											function_description: {
+												type:             "string"
+												description:      "For `metric` detectors, selects which value to plot: `min`, `max`, or `mean`. Ignored for other detector functions."
+												description_kind: "markdown"
+												optional:         true
+											}
+											hide_border: {
+												type:             "bool"
+												description:      "When true, hides the panel border."
+												description_kind: "markdown"
+												optional:         true
+											}
+											hide_title: {
+												type:             "bool"
+												description:      "When true, hides the panel title."
+												description_kind: "markdown"
+												optional:         true
+											}
+											job_ids: {
+												type: ["list", "string"]
+												description:      "Anomaly detection job ID whose results appear in the single metric viewer. Exactly one entry is required."
+												description_kind: "markdown"
+												required:         true
+											}
+											selected_detector_index: {
+												type:             "number"
+												description:      "Zero-based index of the detector within the job whose results are shown."
+												description_kind: "markdown"
+												optional:         true
+											}
+											selected_entities: {
+												nested_type: {
+													attributes: {
+														numeric_value: {
+															type:             "number"
+															description:      "Numeric entity value for the field."
+															description_kind: "markdown"
+															optional:         true
+														}
+														string_value: {
+															type:             "string"
+															description:      "String entity value for the field."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "map"
+												}
+												description:      "Values of partition, by, or over fields that identify the single time series to display. Each map entry must set exactly one of `string_value` or `numeric_value`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											time_range: {
+												nested_type: {
+													attributes: {
+														from: {
+															type:             "string"
+															description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+															description_kind: "markdown"
+															required:         true
+														}
+														mode: {
+															type:             "string"
+															description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+															description_kind: "markdown"
+															optional:         true
+														}
+														to: {
+															type:             "string"
+															description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Optional panel-level time range (`from`, `to`, and optional `mode`)."
+												description_kind: "markdown"
+												optional:         true
+											}
+											title: {
+												type:             "string"
+												description:      "Optional panel title shown in the panel header."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Configuration for an ML single metric viewer panel (`kbn-dashboard-panel-type-ml_single_metric_viewer`). Required when `type` is `ml_single_metric_viewer`. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
 								options_list_control_config: {
 									nested_type: {
 										attributes: {
-											data_view_id: {
-												type:             "string"
-												description:      "The ID of the data view that the control is tied to."
-												description_kind: "markdown"
-												required:         true
-											}
-											display_settings: {
+											by_esql: {
 												nested_type: {
 													attributes: {
-														hide_action_bar: {
-															type:             "bool"
-															description:      "When true, hides the action bar on the control."
+														display_settings: {
+															nested_type: {
+																attributes: {
+																	hide_action_bar: {
+																		type:             "bool"
+																		description:      "When true, hides the action bar on the control."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_exclude: {
+																		type:             "bool"
+																		description:      "When true, hides the exclude toggle."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_exists: {
+																		type:             "bool"
+																		description:      "When true, hides the exists filter option."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_sort: {
+																		type:             "bool"
+																		description:      "When true, hides the sort control."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	placeholder: {
+																		type:             "string"
+																		description:      "Placeholder text shown when no option is selected."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Display preferences for the control widget."
 															description_kind: "markdown"
 															optional:         true
 														}
-														hide_exclude: {
-															type:             "bool"
-															description:      "When true, hides the exclude toggle."
-															description_kind: "markdown"
-															optional:         true
-														}
-														hide_exists: {
-															type:             "bool"
-															description:      "When true, hides the exists filter option."
-															description_kind: "markdown"
-															optional:         true
-														}
-														hide_sort: {
-															type:             "bool"
-															description:      "When true, hides the sort control."
-															description_kind: "markdown"
-															optional:         true
-														}
-														placeholder: {
+														esql_query: {
 															type:             "string"
-															description:      "Placeholder text shown when no option is selected."
+															description:      "The ES|QL query that produces the available option values."
+															description_kind: "markdown"
+															required:         true
+														}
+														exclude: {
+															type:             "bool"
+															description:      "When true, selected options are used as an exclusion filter rather than an inclusion filter."
+															description_kind: "markdown"
+															optional:         true
+														}
+														exists_selected: {
+															type:             "bool"
+															description:      "When true, the control filters for documents where the field exists."
+															description_kind: "markdown"
+															optional:         true
+														}
+														ignore_validations: {
+															type:             "bool"
+															description:      "Whether the control skips field-level validation against the data view."
+															description_kind: "markdown"
+															optional:         true
+														}
+														run_past_timeout: {
+															type:             "bool"
+															description:      "When true, the control continues to show results even when the underlying query times out."
+															description_kind: "markdown"
+															optional:         true
+														}
+														search_technique: {
+															type:             "string"
+															description:      "The technique used to match suggestions. Must be one of `prefix`, `wildcard`, or `exact` when set."
+															description_kind: "markdown"
+															optional:         true
+														}
+														selected_options: {
+															type: ["list", "string"]
+															description:      "The initially or persistently selected option values. All values are represented as strings."
+															description_kind: "markdown"
+															optional:         true
+														}
+														single_select: {
+															type:             "bool"
+															description:      "When true, only one option may be selected at a time."
+															description_kind: "markdown"
+															optional:         true
+														}
+														sort: {
+															nested_type: {
+																attributes: {
+																	by: {
+																		type:             "string"
+																		description:      "The field or criterion to sort by. Must be one of `_count` or `_key`."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	direction: {
+																		type:             "string"
+																		description:      "The sort direction. Must be one of `asc` or `desc`."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Default sort configuration for the suggestion list."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Human-readable label displayed above the control."
+															description_kind: "markdown"
+															optional:         true
+														}
+														use_global_filters: {
+															type:             "bool"
+															description:      "Whether the control applies the dashboard's global filters to its own query."
+															description_kind: "markdown"
+															optional:         true
+														}
+														values_source: {
+															type:             "string"
+															description:      "The source discriminator for this branch. Must be `esql_query`."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Configuration for an options list control sourced from an ES|QL query. Mutually exclusive with `by_field`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											by_field: {
+												nested_type: {
+													attributes: {
+														data_view_id: {
+															type:             "string"
+															description:      "The ID of the data view that the control is tied to."
+															description_kind: "markdown"
+															required:         true
+														}
+														display_settings: {
+															nested_type: {
+																attributes: {
+																	hide_action_bar: {
+																		type:             "bool"
+																		description:      "When true, hides the action bar on the control."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_exclude: {
+																		type:             "bool"
+																		description:      "When true, hides the exclude toggle."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_exists: {
+																		type:             "bool"
+																		description:      "When true, hides the exists filter option."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_sort: {
+																		type:             "bool"
+																		description:      "When true, hides the sort control."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	placeholder: {
+																		type:             "string"
+																		description:      "Placeholder text shown when no option is selected."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Display preferences for the control widget."
+															description_kind: "markdown"
+															optional:         true
+														}
+														exclude: {
+															type:             "bool"
+															description:      "When true, selected options are used as an exclusion filter rather than an inclusion filter."
+															description_kind: "markdown"
+															optional:         true
+														}
+														exists_selected: {
+															type:             "bool"
+															description:      "When true, the control filters for documents where the field exists."
+															description_kind: "markdown"
+															optional:         true
+														}
+														field_name: {
+															type:             "string"
+															description:      "The name of the field in the data view that the control is tied to."
+															description_kind: "markdown"
+															required:         true
+														}
+														ignore_validations: {
+															type:             "bool"
+															description:      "Whether the control skips field-level validation against the data view."
+															description_kind: "markdown"
+															optional:         true
+														}
+														run_past_timeout: {
+															type:             "bool"
+															description:      "When true, the control continues to show results even when the underlying query times out."
+															description_kind: "markdown"
+															optional:         true
+														}
+														search_technique: {
+															type:             "string"
+															description:      "The technique used to match suggestions. Must be one of `prefix`, `wildcard`, or `exact` when set."
+															description_kind: "markdown"
+															optional:         true
+														}
+														selected_options: {
+															type: ["list", "string"]
+															description:      "The initially or persistently selected option values. All values are represented as strings."
+															description_kind: "markdown"
+															optional:         true
+														}
+														single_select: {
+															type:             "bool"
+															description:      "When true, only one option may be selected at a time."
+															description_kind: "markdown"
+															optional:         true
+														}
+														sort: {
+															nested_type: {
+																attributes: {
+																	by: {
+																		type:             "string"
+																		description:      "The field or criterion to sort by. Must be one of `_count` or `_key`."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	direction: {
+																		type:             "string"
+																		description:      "The sort direction. Must be one of `asc` or `desc`."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Default sort configuration for the suggestion list."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Human-readable label displayed above the control."
+															description_kind: "markdown"
+															optional:         true
+														}
+														use_global_filters: {
+															type:             "bool"
+															description:      "Whether the control applies the dashboard's global filters to its own query."
 															description_kind: "markdown"
 															optional:         true
 														}
 													}
 													nesting_mode: "single"
 												}
-												description:      "Display preferences for the control widget."
-												description_kind: "markdown"
-												optional:         true
-											}
-											exclude: {
-												type:             "bool"
-												description:      "When true, selected options are used as an exclusion filter rather than an inclusion filter."
-												description_kind: "markdown"
-												optional:         true
-											}
-											exists_selected: {
-												type:             "bool"
-												description:      "When true, the control filters for documents where the field exists."
-												description_kind: "markdown"
-												optional:         true
-											}
-											field_name: {
-												type:             "string"
-												description:      "The name of the field in the data view that the control is tied to."
-												description_kind: "markdown"
-												required:         true
-											}
-											ignore_validations: {
-												type:             "bool"
-												description:      "Whether the control skips field-level validation against the data view."
-												description_kind: "markdown"
-												optional:         true
-											}
-											run_past_timeout: {
-												type:             "bool"
-												description:      "When true, the control continues to show results even when the underlying query times out."
-												description_kind: "markdown"
-												optional:         true
-											}
-											search_technique: {
-												type:             "string"
-												description:      "The technique used to match suggestions. Must be one of `prefix`, `wildcard`, or `exact` when set."
-												description_kind: "markdown"
-												optional:         true
-											}
-											selected_options: {
-												type: ["list", "string"]
-												description:      "The initially or persistently selected option values. All values are represented as strings."
-												description_kind: "markdown"
-												optional:         true
-											}
-											single_select: {
-												type:             "bool"
-												description:      "When true, only one option may be selected at a time."
-												description_kind: "markdown"
-												optional:         true
-											}
-											sort: {
-												nested_type: {
-													attributes: {
-														by: {
-															type:             "string"
-															description:      "The field or criterion to sort by. Must be one of `_count` or `_key`."
-															description_kind: "markdown"
-															required:         true
-														}
-														direction: {
-															type:             "string"
-															description:      "The sort direction. Must be one of `asc` or `desc`."
-															description_kind: "markdown"
-															required:         true
-														}
-													}
-													nesting_mode: "single"
-												}
-												description:      "Default sort configuration for the suggestion list."
-												description_kind: "markdown"
-												optional:         true
-											}
-											title: {
-												type:             "string"
-												description:      "Human-readable label displayed above the control."
-												description_kind: "markdown"
-												optional:         true
-											}
-											use_global_filters: {
-												type:             "bool"
-												description:      "Whether the control applies the dashboard's global filters to its own query."
+												description:      "Configuration for an options list control sourced from a Kibana data view field. Mutually exclusive with `by_esql`."
 												description_kind: "markdown"
 												optional:         true
 											}
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for an options list control panel. Provides a dropdown or multi-select filter based on a field in a data view. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for an options list control panel. Provides a dropdown or multi-select filter based on a field in a data view (`by_field`) or an ES|QL query (`by_esql`). Exactly one of `by_field` or `by_esql` must be set. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
 								range_slider_control_config: {
 									nested_type: {
 										attributes: {
-											data_view_id: {
-												type:             "string"
-												description:      "The ID of the data view that the control is tied to."
-												description_kind: "markdown"
-												required:         true
-											}
-											field_name: {
-												type:             "string"
-												description:      "The name of the field in the data view that the control is tied to."
-												description_kind: "markdown"
-												required:         true
-											}
-											ignore_validations: {
-												type:             "bool"
-												description:      "Whether to suppress validation errors during intermediate states."
+											by_esql: {
+												nested_type: {
+													attributes: {
+														esql_query: {
+															type:             "string"
+															description:      "The ES|QL query that produces the min/max range values."
+															description_kind: "markdown"
+															required:         true
+														}
+														ignore_validations: {
+															type:             "bool"
+															description:      "Whether to suppress validation errors during intermediate states."
+															description_kind: "markdown"
+															optional:         true
+														}
+														step: {
+															type:             "number"
+															description:      "The step size for the range slider. Stored as float32 to match the Kibana API type and avoid refresh drift."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "A human-readable title for the control."
+															description_kind: "markdown"
+															optional:         true
+														}
+														use_global_filters: {
+															type:             "bool"
+															description:      "Whether the control respects dashboard-level filters."
+															description_kind: "markdown"
+															optional:         true
+														}
+														value: {
+															type: ["list", "string"]
+															description:      "Initial range as a list of exactly 2 strings: [min, max]."
+															description_kind: "markdown"
+															optional:         true
+														}
+														values_source: {
+															type:             "string"
+															description:      "The source of the range values. Must be `esql_query`."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Range slider sourced from an ES|QL query. Mutually exclusive with `by_field`."
 												description_kind: "markdown"
 												optional:         true
 											}
-											step: {
-												type:             "number"
-												description:      "The step size for the range slider. Stored as float32 to match the Kibana API type and avoid refresh drift."
-												description_kind: "markdown"
-												optional:         true
-											}
-											title: {
-												type:             "string"
-												description:      "A human-readable title for the control."
-												description_kind: "markdown"
-												optional:         true
-											}
-											use_global_filters: {
-												type:             "bool"
-												description:      "Whether the control respects dashboard-level filters."
-												description_kind: "markdown"
-												optional:         true
-											}
-											value: {
-												type: ["list", "string"]
-												description:      "Initial range as a list of exactly 2 strings: [min, max]."
+											by_field: {
+												nested_type: {
+													attributes: {
+														data_view_id: {
+															type:             "string"
+															description:      "The ID of the data view that the control is tied to."
+															description_kind: "markdown"
+															required:         true
+														}
+														field_name: {
+															type:             "string"
+															description:      "The name of the field in the data view that the control is tied to."
+															description_kind: "markdown"
+															required:         true
+														}
+														ignore_validations: {
+															type:             "bool"
+															description:      "Whether to suppress validation errors during intermediate states."
+															description_kind: "markdown"
+															optional:         true
+														}
+														step: {
+															type:             "number"
+															description:      "The step size for the range slider. Stored as float32 to match the Kibana API type and avoid refresh drift."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "A human-readable title for the control."
+															description_kind: "markdown"
+															optional:         true
+														}
+														use_global_filters: {
+															type:             "bool"
+															description:      "Whether the control respects dashboard-level filters."
+															description_kind: "markdown"
+															optional:         true
+														}
+														value: {
+															type: ["list", "string"]
+															description:      "Initial range as a list of exactly 2 strings: [min, max]."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Range slider sourced from a Kibana data view field. Mutually exclusive with `by_esql`."
 												description_kind: "markdown"
 												optional:         true
 											}
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a range slider control panel. Provides a min/max range filter tied to a data view field. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for a range slider control panel. Provides a min/max range filter sourced from either a data view field (`by_field`) or an ES|QL query (`by_esql`). Exactly one of the two must be set. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -16995,7 +18230,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for an `slo_alerts` panel (`kbn-dashboard-panel-type-slo_alerts`). Required when `type` is `slo_alerts`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for an `slo_alerts` panel (`kbn-dashboard-panel-type-slo_alerts`). Required when `type` is `slo_alerts`. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -17081,7 +18316,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for an SLO burn rate panel. Use this for panels that visualize the burn rate of an SLO over a configurable look-back window. Mutually exclusive with `config_json`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for an SLO burn rate panel. Use this for panels that visualize the burn rate of an SLO over a configurable look-back window. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -17161,7 +18396,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for an SLO error budget panel. Displays the burn chart of remaining error budget for a specific SLO. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for an SLO error budget panel. Displays the burn chart of remaining error budget for a specific SLO. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -17359,7 +18594,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for an SLO overview panel. Use either `single` (for a single SLO) or `groups` (for grouped SLO overview). Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for an SLO overview panel. Use either `single` (for a single SLO) or `groups` (for grouped SLO overview). Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -17519,7 +18754,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a Synthetics monitors panel. Displays a table of Elastic Synthetics monitors and their current status. All fields are optional — omit the block entirely for a bare panel with no filtering. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for a Synthetics monitors panel. Displays a table of Elastic Synthetics monitors and their current status. All fields are optional — omit the block entirely for a bare panel with no filtering. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -17707,7 +18942,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a Synthetics stats overview panel. All fields are optional; an absent or empty block shows statistics for all monitors visible within the space. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for a Synthetics stats overview panel. All fields are optional; an absent or empty block shows statistics for all monitors visible within the space. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -17735,7 +18970,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a time slider control panel. Controls the visible time window within the dashboard's global time range. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+									description:      "Configuration for a time slider control panel. Controls the visible time window within the dashboard's global time range. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -23062,7 +24297,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										}
 										nesting_mode: "single"
 									}
-									description:      "Configuration for a `vis` panel (`type = \"vis\"`). Typed alternative to panel-level `config_json`: set exactly one of `by_value` (exactly one of 12 Lens chart kinds) or `by_reference`. With `by_reference`, use structured `drilldowns` and optional `time_range`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `discover_session_config`."
+									description:      "Configuration for a `vis` panel (`type = \"vis\"`). Typed alternative to panel-level `config_json`: set exactly one of `by_value` (exactly one of 12 Lens chart kinds) or `by_reference`. With `by_reference`, use structured `drilldowns` and optional `time_range`. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -23181,131 +24416,279 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								options_list_control_config: {
 									nested_type: {
 										attributes: {
-											data_view_id: {
-												type:             "string"
-												description:      "The ID of the data view that the control is tied to."
-												description_kind: "markdown"
-												required:         true
-											}
-											display_settings: {
+											by_esql: {
 												nested_type: {
 													attributes: {
-														hide_action_bar: {
-															type:             "bool"
-															description:      "When true, hides the action bar on the control."
+														display_settings: {
+															nested_type: {
+																attributes: {
+																	hide_action_bar: {
+																		type:             "bool"
+																		description:      "When true, hides the action bar on the control."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_exclude: {
+																		type:             "bool"
+																		description:      "When true, hides the exclude toggle."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_exists: {
+																		type:             "bool"
+																		description:      "When true, hides the exists filter option."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_sort: {
+																		type:             "bool"
+																		description:      "When true, hides the sort control."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	placeholder: {
+																		type:             "string"
+																		description:      "Placeholder text shown when no option is selected."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Display preferences for the control widget."
 															description_kind: "markdown"
 															optional:         true
 														}
-														hide_exclude: {
-															type:             "bool"
-															description:      "When true, hides the exclude toggle."
-															description_kind: "markdown"
-															optional:         true
-														}
-														hide_exists: {
-															type:             "bool"
-															description:      "When true, hides the exists filter option."
-															description_kind: "markdown"
-															optional:         true
-														}
-														hide_sort: {
-															type:             "bool"
-															description:      "When true, hides the sort control."
-															description_kind: "markdown"
-															optional:         true
-														}
-														placeholder: {
+														esql_query: {
 															type:             "string"
-															description:      "Placeholder text shown when no option is selected."
+															description:      "The ES|QL query that produces the available option values."
+															description_kind: "markdown"
+															required:         true
+														}
+														exclude: {
+															type:             "bool"
+															description:      "When true, selected options are used as an exclusion filter rather than an inclusion filter."
+															description_kind: "markdown"
+															optional:         true
+														}
+														exists_selected: {
+															type:             "bool"
+															description:      "When true, the control filters for documents where the field exists."
+															description_kind: "markdown"
+															optional:         true
+														}
+														ignore_validations: {
+															type:             "bool"
+															description:      "Whether the control skips field-level validation against the data view."
+															description_kind: "markdown"
+															optional:         true
+														}
+														run_past_timeout: {
+															type:             "bool"
+															description:      "When true, the control continues to show results even when the underlying query times out."
+															description_kind: "markdown"
+															optional:         true
+														}
+														search_technique: {
+															type:             "string"
+															description:      "The technique used to match suggestions. Must be one of `prefix`, `wildcard`, or `exact` when set."
+															description_kind: "markdown"
+															optional:         true
+														}
+														selected_options: {
+															type: ["list", "string"]
+															description:      "The initially or persistently selected option values. All values are represented as strings."
+															description_kind: "markdown"
+															optional:         true
+														}
+														single_select: {
+															type:             "bool"
+															description:      "When true, only one option may be selected at a time."
+															description_kind: "markdown"
+															optional:         true
+														}
+														sort: {
+															nested_type: {
+																attributes: {
+																	by: {
+																		type:             "string"
+																		description:      "The field or criterion to sort by. Must be one of `_count` or `_key`."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	direction: {
+																		type:             "string"
+																		description:      "The sort direction. Must be one of `asc` or `desc`."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Default sort configuration for the suggestion list."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Human-readable label displayed above the control."
+															description_kind: "markdown"
+															optional:         true
+														}
+														use_global_filters: {
+															type:             "bool"
+															description:      "Whether the control applies the dashboard's global filters to its own query."
+															description_kind: "markdown"
+															optional:         true
+														}
+														values_source: {
+															type:             "string"
+															description:      "The source discriminator for this branch. Must be `esql_query`."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Configuration for an options list control sourced from an ES|QL query. Mutually exclusive with `by_field`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											by_field: {
+												nested_type: {
+													attributes: {
+														data_view_id: {
+															type:             "string"
+															description:      "The ID of the data view that the control is tied to."
+															description_kind: "markdown"
+															required:         true
+														}
+														display_settings: {
+															nested_type: {
+																attributes: {
+																	hide_action_bar: {
+																		type:             "bool"
+																		description:      "When true, hides the action bar on the control."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_exclude: {
+																		type:             "bool"
+																		description:      "When true, hides the exclude toggle."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_exists: {
+																		type:             "bool"
+																		description:      "When true, hides the exists filter option."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_sort: {
+																		type:             "bool"
+																		description:      "When true, hides the sort control."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	placeholder: {
+																		type:             "string"
+																		description:      "Placeholder text shown when no option is selected."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Display preferences for the control widget."
+															description_kind: "markdown"
+															optional:         true
+														}
+														exclude: {
+															type:             "bool"
+															description:      "When true, selected options are used as an exclusion filter rather than an inclusion filter."
+															description_kind: "markdown"
+															optional:         true
+														}
+														exists_selected: {
+															type:             "bool"
+															description:      "When true, the control filters for documents where the field exists."
+															description_kind: "markdown"
+															optional:         true
+														}
+														field_name: {
+															type:             "string"
+															description:      "The name of the field in the data view that the control is tied to."
+															description_kind: "markdown"
+															required:         true
+														}
+														ignore_validations: {
+															type:             "bool"
+															description:      "Whether the control skips field-level validation against the data view."
+															description_kind: "markdown"
+															optional:         true
+														}
+														run_past_timeout: {
+															type:             "bool"
+															description:      "When true, the control continues to show results even when the underlying query times out."
+															description_kind: "markdown"
+															optional:         true
+														}
+														search_technique: {
+															type:             "string"
+															description:      "The technique used to match suggestions. Must be one of `prefix`, `wildcard`, or `exact` when set."
+															description_kind: "markdown"
+															optional:         true
+														}
+														selected_options: {
+															type: ["list", "string"]
+															description:      "The initially or persistently selected option values. All values are represented as strings."
+															description_kind: "markdown"
+															optional:         true
+														}
+														single_select: {
+															type:             "bool"
+															description:      "When true, only one option may be selected at a time."
+															description_kind: "markdown"
+															optional:         true
+														}
+														sort: {
+															nested_type: {
+																attributes: {
+																	by: {
+																		type:             "string"
+																		description:      "The field or criterion to sort by. Must be one of `_count` or `_key`."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	direction: {
+																		type:             "string"
+																		description:      "The sort direction. Must be one of `asc` or `desc`."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Default sort configuration for the suggestion list."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Human-readable label displayed above the control."
+															description_kind: "markdown"
+															optional:         true
+														}
+														use_global_filters: {
+															type:             "bool"
+															description:      "Whether the control applies the dashboard's global filters to its own query."
 															description_kind: "markdown"
 															optional:         true
 														}
 													}
 													nesting_mode: "single"
 												}
-												description:      "Display preferences for the control widget."
-												description_kind: "markdown"
-												optional:         true
-											}
-											exclude: {
-												type:             "bool"
-												description:      "When true, selected options are used as an exclusion filter rather than an inclusion filter."
-												description_kind: "markdown"
-												optional:         true
-											}
-											exists_selected: {
-												type:             "bool"
-												description:      "When true, the control filters for documents where the field exists."
-												description_kind: "markdown"
-												optional:         true
-											}
-											field_name: {
-												type:             "string"
-												description:      "The name of the field in the data view that the control is tied to."
-												description_kind: "markdown"
-												required:         true
-											}
-											ignore_validations: {
-												type:             "bool"
-												description:      "Whether the control skips field-level validation against the data view."
-												description_kind: "markdown"
-												optional:         true
-											}
-											run_past_timeout: {
-												type:             "bool"
-												description:      "When true, the control continues to show results even when the underlying query times out."
-												description_kind: "markdown"
-												optional:         true
-											}
-											search_technique: {
-												type:             "string"
-												description:      "The technique used to match suggestions. Must be one of `prefix`, `wildcard`, or `exact` when set."
-												description_kind: "markdown"
-												optional:         true
-											}
-											selected_options: {
-												type: ["list", "string"]
-												description:      "The initially or persistently selected option values. All values are represented as strings."
-												description_kind: "markdown"
-												optional:         true
-											}
-											single_select: {
-												type:             "bool"
-												description:      "When true, only one option may be selected at a time."
-												description_kind: "markdown"
-												optional:         true
-											}
-											sort: {
-												nested_type: {
-													attributes: {
-														by: {
-															type:             "string"
-															description:      "The field or criterion to sort by. Must be one of `_count` or `_key`."
-															description_kind: "markdown"
-															required:         true
-														}
-														direction: {
-															type:             "string"
-															description:      "The sort direction. Must be one of `asc` or `desc`."
-															description_kind: "markdown"
-															required:         true
-														}
-													}
-													nesting_mode: "single"
-												}
-												description:      "Default sort configuration for the suggestion list."
-												description_kind: "markdown"
-												optional:         true
-											}
-											title: {
-												type:             "string"
-												description:      "Human-readable label displayed above the control."
-												description_kind: "markdown"
-												optional:         true
-											}
-											use_global_filters: {
-												type:             "bool"
-												description:      "Whether the control applies the dashboard's global filters to its own query."
+												description:      "Configuration for an options list control sourced from a Kibana data view field. Mutually exclusive with `by_esql`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -23315,7 +24698,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description: """
 												These blocks apply to the dashboard pinned control bar rather than an in-grid panel. Attribute definitions match the corresponding `panels[]` control configs for the same block names.
 
-												Configuration for an options list control. Provides a dropdown or multi-select filter based on a field in a data view. Mutually exclusive with `time_slider_control_config`, `esql_control_config`, `range_slider_control_config`.
+												Configuration for an options list control. Provides a dropdown or multi-select filter based on a field in a data view (`by_field`) or an ES|QL query (`by_esql`). Exactly one of `by_field` or `by_esql` must be set. Mutually exclusive with `time_slider_control_config`, `esql_control_config`, `range_slider_control_config`.
 												"""
 									description_kind: "markdown"
 									optional:         true
@@ -23323,45 +24706,107 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								range_slider_control_config: {
 									nested_type: {
 										attributes: {
-											data_view_id: {
-												type:             "string"
-												description:      "The ID of the data view that the control is tied to."
-												description_kind: "markdown"
-												required:         true
-											}
-											field_name: {
-												type:             "string"
-												description:      "The name of the field in the data view that the control is tied to."
-												description_kind: "markdown"
-												required:         true
-											}
-											ignore_validations: {
-												type:             "bool"
-												description:      "Whether to suppress validation errors during intermediate states."
+											by_esql: {
+												nested_type: {
+													attributes: {
+														esql_query: {
+															type:             "string"
+															description:      "The ES|QL query that produces the min/max range values."
+															description_kind: "markdown"
+															required:         true
+														}
+														ignore_validations: {
+															type:             "bool"
+															description:      "Whether to suppress validation errors during intermediate states."
+															description_kind: "markdown"
+															optional:         true
+														}
+														step: {
+															type:             "number"
+															description:      "The step size for the range slider. Stored as float32 to match the Kibana API type and avoid refresh drift."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "A human-readable title for the control."
+															description_kind: "markdown"
+															optional:         true
+														}
+														use_global_filters: {
+															type:             "bool"
+															description:      "Whether the control respects dashboard-level filters."
+															description_kind: "markdown"
+															optional:         true
+														}
+														value: {
+															type: ["list", "string"]
+															description:      "Initial range as a list of exactly 2 strings: [min, max]."
+															description_kind: "markdown"
+															optional:         true
+														}
+														values_source: {
+															type:             "string"
+															description:      "The source of the range values. Must be `esql_query`."
+															description_kind: "markdown"
+															required:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Range slider sourced from an ES|QL query. Mutually exclusive with `by_field`."
 												description_kind: "markdown"
 												optional:         true
 											}
-											step: {
-												type:             "number"
-												description:      "The step size for the range slider. Stored as float32 to match the Kibana API type and avoid refresh drift."
-												description_kind: "markdown"
-												optional:         true
-											}
-											title: {
-												type:             "string"
-												description:      "A human-readable title for the control."
-												description_kind: "markdown"
-												optional:         true
-											}
-											use_global_filters: {
-												type:             "bool"
-												description:      "Whether the control respects dashboard-level filters."
-												description_kind: "markdown"
-												optional:         true
-											}
-											value: {
-												type: ["list", "string"]
-												description:      "Initial range as a list of exactly 2 strings: [min, max]."
+											by_field: {
+												nested_type: {
+													attributes: {
+														data_view_id: {
+															type:             "string"
+															description:      "The ID of the data view that the control is tied to."
+															description_kind: "markdown"
+															required:         true
+														}
+														field_name: {
+															type:             "string"
+															description:      "The name of the field in the data view that the control is tied to."
+															description_kind: "markdown"
+															required:         true
+														}
+														ignore_validations: {
+															type:             "bool"
+															description:      "Whether to suppress validation errors during intermediate states."
+															description_kind: "markdown"
+															optional:         true
+														}
+														step: {
+															type:             "number"
+															description:      "The step size for the range slider. Stored as float32 to match the Kibana API type and avoid refresh drift."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "A human-readable title for the control."
+															description_kind: "markdown"
+															optional:         true
+														}
+														use_global_filters: {
+															type:             "bool"
+															description:      "Whether the control respects dashboard-level filters."
+															description_kind: "markdown"
+															optional:         true
+														}
+														value: {
+															type: ["list", "string"]
+															description:      "Initial range as a list of exactly 2 strings: [min, max]."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Range slider sourced from a Kibana data view field. Mutually exclusive with `by_esql`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -23371,7 +24816,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description: """
 												These blocks apply to the dashboard pinned control bar rather than an in-grid panel. Attribute definitions match the corresponding `panels[]` control configs for the same block names.
 
-												Configuration for a range slider control. Provides a min/max range filter tied to a data view field. Mutually exclusive with `time_slider_control_config`, `esql_control_config`, `options_list_control_config`.
+												Configuration for a range slider control. Provides a min/max range filter sourced from either a data view field (`by_field`) or an ES|QL query (`by_esql`). Exactly one of the two must be set. Mutually exclusive with `time_slider_control_config`, `esql_control_config`, `options_list_control_config`.
 												"""
 									description_kind: "markdown"
 									optional:         true
@@ -23508,9 +24953,395 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								panels: {
 									nested_type: {
 										attributes: {
+											aiops_change_point_chart_config: {
+												nested_type: {
+													attributes: {
+														aggregation_function: {
+															type:             "string"
+															description:      "The aggregation function used to calculate the metric values. One of `avg`, `max`, `min`, `sum`."
+															description_kind: "markdown"
+															optional:         true
+														}
+														data_view_id: {
+															type:             "string"
+															description:      "The data view ID used for change point detection."
+															description_kind: "markdown"
+															required:         true
+														}
+														description: {
+															type:             "string"
+															description:      "Optional panel description."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_border: {
+															type:             "bool"
+															description:      "When true, hides the panel border."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_title: {
+															type:             "bool"
+															description:      "When true, hides the panel title."
+															description_kind: "markdown"
+															optional:         true
+														}
+														max_series_to_plot: {
+															type:             "number"
+															description:      "Maximum number of change points to visualise. Kibana default is `6`. Float32 in state matches the Kibana API and avoids refresh drift."
+															description_kind: "markdown"
+															optional:         true
+														}
+														metric_field: {
+															type:             "string"
+															description:      "The metric field used by the aggregation function."
+															description_kind: "markdown"
+															required:         true
+														}
+														partitions: {
+															type: ["set", "string"]
+															description:      "Optional split field values to include in the panel. Modelled as a set to prevent plan drift from API-returned ordering; duplicate entries are silently deduplicated. An empty set is not meaningful (omit the attribute to disable filtering); a non-null set must contain at least one entry."
+															description_kind: "markdown"
+															optional:         true
+														}
+														split_field: {
+															type:             "string"
+															description:      "The optional field used to split change-point results."
+															description_kind: "markdown"
+															optional:         true
+														}
+														time_range: {
+															nested_type: {
+																attributes: {
+																	from: {
+																		type:             "string"
+																		description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	mode: {
+																		type:             "string"
+																		description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	to: {
+																		type:             "string"
+																		description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Optional panel time range (`from`, `to`, optional `mode`). When omitted, the panel inherits the dashboard `time_range` and this attribute stays null in state (REQ-009)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Optional panel title shown in the panel header."
+															description_kind: "markdown"
+															optional:         true
+														}
+														view_type: {
+															type:             "string"
+															description:      "The type of change point detection view to display. One of `charts`, `table`."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Configuration for an AIOps change point chart panel. Anchored to a data view and metric field; optional aggregation, split, partitions, and view controls follow the API-documented enums. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											aiops_log_rate_analysis_config: {
+												nested_type: {
+													attributes: {
+														data_view_id: {
+															type:             "string"
+															description:      "The data view ID used to run log rate analysis."
+															description_kind: "markdown"
+															required:         true
+														}
+														description: {
+															type:             "string"
+															description:      "Optional panel description."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_border: {
+															type:             "bool"
+															description:      "When true, hides the panel border."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_title: {
+															type:             "bool"
+															description:      "When true, hides the panel title."
+															description_kind: "markdown"
+															optional:         true
+														}
+														time_range: {
+															nested_type: {
+																attributes: {
+																	from: {
+																		type:             "string"
+																		description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	mode: {
+																		type:             "string"
+																		description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	to: {
+																		type:             "string"
+																		description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Optional panel time range (`from`, `to`, optional `mode`). When omitted, the panel inherits the dashboard `time_range` and this attribute stays null in state (REQ-009)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Optional panel title shown in the panel header."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Configuration for an AIOps log rate analysis panel. Anchored to a data view; the remaining fields are the standard optional panel presentation passthroughs. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											aiops_pattern_analysis_config: {
+												nested_type: {
+													attributes: {
+														data_view_id: {
+															type:             "string"
+															description:      "The data view ID used for pattern analysis."
+															description_kind: "markdown"
+															required:         true
+														}
+														description: {
+															type:             "string"
+															description:      "Optional panel description."
+															description_kind: "markdown"
+															optional:         true
+														}
+														field_name: {
+															type:             "string"
+															description:      "The text field on which to run pattern analysis."
+															description_kind: "markdown"
+															required:         true
+														}
+														hide_border: {
+															type:             "bool"
+															description:      "When true, hides the panel border."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_title: {
+															type:             "bool"
+															description:      "When true, hides the panel title."
+															description_kind: "markdown"
+															optional:         true
+														}
+														minimum_time_range: {
+															type:             "string"
+															description:      "Minimum time range for pattern analysis. One of `no_minimum`, `1_week`, `1_month`, `3_months`, `6_months`."
+															description_kind: "markdown"
+															optional:         true
+														}
+														random_sampler_mode: {
+															type:             "string"
+															description:      "The random sampler mode. One of `off`, `on_automatic`, `on_manual`."
+															description_kind: "markdown"
+															optional:         true
+														}
+														random_sampler_probability: {
+															type:             "number"
+															description:      "Sampling probability, only meaningful when `random_sampler_mode = on_manual`. Must be between `0.00001` and `0.5`. Float32 in state matches the Kibana API and avoids refresh drift."
+															description_kind: "markdown"
+															optional:         true
+														}
+														time_range: {
+															nested_type: {
+																attributes: {
+																	from: {
+																		type:             "string"
+																		description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	mode: {
+																		type:             "string"
+																		description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	to: {
+																		type:             "string"
+																		description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Optional panel time range (`from`, `to`, optional `mode`). When omitted, the panel inherits the dashboard `time_range` and this attribute stays null in state (REQ-009)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Optional panel title shown in the panel header."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Configuration for an AIOps pattern analysis panel. Anchored to a data view and text field; optional sampling and time-range controls follow the API-documented bounds. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_change_point_chart_config`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											apm_service_map_config: {
+												nested_type: {
+													attributes: {
+														alert_status_filter: {
+															type: ["set", "string"]
+															description:      "Filter services by alert status."
+															description_kind: "markdown"
+															optional:         true
+														}
+														anomaly_severity_filter: {
+															type: ["set", "string"]
+															description:      "Filter services by anomaly severity."
+															description_kind: "markdown"
+															optional:         true
+														}
+														connection_filter: {
+															type: ["set", "string"]
+															description:      "Filter services by connection state."
+															description_kind: "markdown"
+															optional:         true
+														}
+														description: {
+															type:             "string"
+															description:      "Optional panel description."
+															description_kind: "markdown"
+															optional:         true
+														}
+														environment: {
+															type:             "string"
+															description:      "APM service environment (for example, `production`)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_border: {
+															type:             "bool"
+															description:      "When true, hides the panel border."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_title: {
+															type:             "bool"
+															description:      "When true, hides the panel title."
+															description_kind: "markdown"
+															optional:         true
+														}
+														kuery: {
+															type:             "string"
+															description:      "KQL query string applied to the service map."
+															description_kind: "markdown"
+															optional:         true
+														}
+														map_orientation: {
+															type:             "string"
+															description:      "Layout orientation of the service map."
+															description_kind: "markdown"
+															optional:         true
+														}
+														service_group_id: {
+															type:             "string"
+															description:      "Opaque identifier of a saved APM service group."
+															description_kind: "markdown"
+															optional:         true
+														}
+														service_name: {
+															type:             "string"
+															description:      "Focus the service map on a specific APM service."
+															description_kind: "markdown"
+															optional:         true
+														}
+														slo_status_filter: {
+															type: ["set", "string"]
+															description:      "Filter services by SLO status."
+															description_kind: "markdown"
+															optional:         true
+														}
+														sync_with_dashboard_filters: {
+															type:             "bool"
+															description:      "When set, the panel follows dashboard-level filters."
+															description_kind: "markdown"
+															optional:         true
+														}
+														time_range: {
+															nested_type: {
+																attributes: {
+																	from: {
+																		type:             "string"
+																		description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	mode: {
+																		type:             "string"
+																		description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	to: {
+																		type:             "string"
+																		description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Optional panel time range (`from`, `to`, and optional `mode`)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Optional panel title shown in the panel header."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Configuration for an APM service map panel. All fields are optional. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
+												description_kind: "markdown"
+												optional:         true
+											}
 											config_json: {
 												type:             "string"
-												description:      "The configuration of the panel as a JSON string. Practitioner-authored panel-level `config_json` is valid only when `type` is `markdown` or `vis`. Typed panel kinds such as `image`, `slo_alerts`, and `discover_session` use their dedicated blocks (`image_config`, `slo_alerts_config`, `discover_session_config`), not panel-level `config_json`. Mutually exclusive with `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+												description:      "The configuration of the panel as a JSON string. Practitioner-authored panel-level `config_json` is valid only when `type` is `markdown` or `vis`. Typed panel kinds such as `image`, `slo_alerts`, `discover_session`, `field_stats_table`, `ml_anomaly_swimlane`, `ml_anomaly_charts`, and `ml_single_metric_viewer` use their dedicated blocks (`image_config`, `slo_alerts_config`, `discover_session_config`, `field_stats_table_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`), not panel-level `config_json`. Mutually exclusive with `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 												description_kind: "markdown"
 												optional:         true
 												computed:         true
@@ -23992,7 +25823,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a `discover_session` panel (`kbn-dashboard-panel-type-discover_session`). Set exactly one of `by_value` or `by_reference`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`."
+												description:      "Configuration for a `discover_session` panel (`kbn-dashboard-panel-type-discover_session`). Set exactly one of `by_value` or `by_reference`. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -24090,7 +25921,180 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for an ES|QL control panel. Use this to manage ES|QL variable controls on a dashboard. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for an ES|QL control panel. Use this to manage ES|QL variable controls on a dashboard. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											field_stats_table_config: {
+												nested_type: {
+													attributes: {
+														by_dataview: {
+															nested_type: {
+																attributes: {
+																	data_view_id: {
+																		type:             "string"
+																		description:      "The identifier of the source data view."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	description: {
+																		type:             "string"
+																		description:      "Optional panel description."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_border: {
+																		type:             "bool"
+																		description:      "When true, hides the panel border."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_title: {
+																		type:             "bool"
+																		description:      "When true, hides the panel title."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	show_distributions: {
+																		type:             "bool"
+																		description:      "When true, shows distribution mini-charts in the field statistics table. Null-preserved on read (REQ-009)."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	time_range: {
+																		nested_type: {
+																			attributes: {
+																				from: {
+																					type:             "string"
+																					description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+																					description_kind: "markdown"
+																					required:         true
+																				}
+																				mode: {
+																					type:             "string"
+																					description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																				to: {
+																					type:             "string"
+																					description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+																					description_kind: "markdown"
+																					required:         true
+																				}
+																			}
+																			nesting_mode: "single"
+																		}
+																		description:      "Optional panel time range override (`from`, `to`, optional `mode`). Null-preserved on read: when omitted in configuration, this attribute stays null in state even if Kibana returns values (REQ-009)."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	title: {
+																		type:             "string"
+																		description:      "Optional panel title shown in the panel header."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description: """
+																		Field statistics backed by a Kibana data view (`view_type = "dataview"` on the wire).
+
+																		Requires `data_view_id`. Optional presentation fields and `show_distributions` apply to this branch only.
+
+																		"""
+															description_kind: "markdown"
+															optional:         true
+														}
+														by_esql: {
+															nested_type: {
+																attributes: {
+																	description: {
+																		type:             "string"
+																		description:      "Optional panel description."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_border: {
+																		type:             "bool"
+																		description:      "When true, hides the panel border."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_title: {
+																		type:             "bool"
+																		description:      "When true, hides the panel title."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	query: {
+																		type:             "string"
+																		description:      "The ES|QL query string (mapped to `query.esql` in the API)."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	show_distributions: {
+																		type:             "bool"
+																		description:      "When true, shows distribution mini-charts in the field statistics table. Null-preserved on read (REQ-009)."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	time_range: {
+																		nested_type: {
+																			attributes: {
+																				from: {
+																					type:             "string"
+																					description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+																					description_kind: "markdown"
+																					required:         true
+																				}
+																				mode: {
+																					type:             "string"
+																					description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																				to: {
+																					type:             "string"
+																					description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+																					description_kind: "markdown"
+																					required:         true
+																				}
+																			}
+																			nesting_mode: "single"
+																		}
+																		description:      "Optional panel time range override (`from`, `to`, optional `mode`). Null-preserved on read: when omitted in configuration, this attribute stays null in state even if Kibana returns values (REQ-009)."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	title: {
+																		type:             "string"
+																		description:      "Optional panel title shown in the panel header."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description: """
+																		Field statistics backed by an ES|QL query (`view_type = "esql"` on the wire).
+
+																		Requires `query` (mapped to `query.esql` in the API). Optional presentation fields and `show_distributions` apply to this branch only.
+
+																		"""
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description: """
+															Configuration for a `field_stats_table` panel (Data Visualizer field-statistics table).
+
+															Set exactly one of `by_dataview` or `by_esql`. The active branch determines the API `view_type` discriminator (`dataview` or `esql`); practitioners do not set `view_type` directly.
+															 Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+															"""
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -24328,7 +26332,149 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for an `image` panel (`kbn-dashboard-panel-type-image`). Required when `type` is `image`. References the Kibana Dashboard API image embeddable `config` shape. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for an `image` panel (`kbn-dashboard-panel-type-image`). Required when `type` is `image`. References the Kibana Dashboard API image embeddable `config` shape. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											links_config: {
+												nested_type: {
+													attributes: {
+														by_reference: {
+															nested_type: {
+																attributes: {
+																	description: {
+																		type:             "string"
+																		description:      "Optional panel description."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_border: {
+																		type:             "bool"
+																		description:      "When true, hides the panel border."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_title: {
+																		type:             "bool"
+																		description:      "When true, hides the panel title."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	ref_id: {
+																		type:             "string"
+																		description:      "Reference id of a Kibana Links library saved object."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	title: {
+																		type:             "string"
+																		description:      "Optional panel title shown in the panel header."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Reference a Kibana Links library saved object."
+															description_kind: "markdown"
+															optional:         true
+														}
+														by_value: {
+															nested_type: {
+																attributes: {
+																	description: {
+																		type:             "string"
+																		description:      "Optional panel description."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_border: {
+																		type:             "bool"
+																		description:      "When true, hides the panel border."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	hide_title: {
+																		type:             "bool"
+																		description:      "When true, hides the panel title."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	layout: {
+																		type:             "string"
+																		description:      "Layout direction for the links panel."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	links: {
+																		nested_type: {
+																			attributes: {
+																				destination: {
+																					type:             "string"
+																					description:      "Destination of the link: dashboard saved-object id for `dashboard` links, or a URL for `external` links."
+																					description_kind: "markdown"
+																					required:         true
+																				}
+																				encode_url: {
+																					type:             "bool"
+																					description:      "When true, the external URL is percent-encoded."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																				label: {
+																					type:             "string"
+																					description:      "Optional display label for the link."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																				open_in_new_tab: {
+																					type:             "bool"
+																					description:      "When true, opens the link in a new browser tab."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																				type: {
+																					type:             "string"
+																					description:      "Type of link: `dashboard` for an internal Kibana dashboard link, or `external` for an arbitrary URL."
+																					description_kind: "markdown"
+																					required:         true
+																				}
+																				use_filters: {
+																					type:             "bool"
+																					description:      "When true, the dashboard link applies the current filters."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																				use_time_range: {
+																					type:             "bool"
+																					description:      "When true, the dashboard link applies the current time range."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																			}
+																			nesting_mode: "list"
+																		}
+																		description:      "List of links to display in the panel."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	title: {
+																		type:             "string"
+																		description:      "Optional panel title shown in the panel header."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Inline links panel configuration."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Configuration for a `links` panel (`kbn-dashboard-panel-type-links`). Set exactly one of `by_value` or `by_reference`. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -24432,197 +26578,703 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a `markdown` panel (the Kibana Dashboard API `kbn-dashboard-panel-type-markdown` shape). Set exactly one of `by_value` (inline `content` with required nested `settings`) or `by_reference` (existing library item via `ref_id`). Presentation fields (`description`, `hide_title`, `title`, `hide_border`) are supported in both branches. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for a `markdown` panel (the Kibana Dashboard API `kbn-dashboard-panel-type-markdown` shape). Set exactly one of `by_value` (inline `content` with required nested `settings`) or `by_reference` (existing library item via `ref_id`). Presentation fields (`description`, `hide_title`, `title`, `hide_border`) are supported in both branches. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											ml_anomaly_charts_config: {
+												nested_type: {
+													attributes: {
+														description: {
+															type:             "string"
+															description:      "Optional panel description."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_border: {
+															type:             "bool"
+															description:      "When true, hides the panel border."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_title: {
+															type:             "bool"
+															description:      "When true, hides the panel title."
+															description_kind: "markdown"
+															optional:         true
+														}
+														job_ids: {
+															type: ["list", "string"]
+															description:      "Anomaly detection job IDs or group IDs whose results appear in the charts. At least one entry is required."
+															description_kind: "markdown"
+															required:         true
+														}
+														max_series_to_plot: {
+															type:             "number"
+															description:      "Maximum number of anomaly series to plot."
+															description_kind: "markdown"
+															optional:         true
+														}
+														severity_threshold: {
+															nested_type: {
+																attributes: {
+																	max: {
+																		type:             "number"
+																		description:      "Upper bound of a raw severity range. Valid only with `min` when `severity` is unset."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	min: {
+																		type:             "number"
+																		description:      "Lower bound of a raw severity range. Required when `severity` is omitted."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	severity: {
+																		type:             "string"
+																		description:      "Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`)."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																}
+																nesting_mode: "list"
+															}
+															description:      "Severity bands to display. Each item sets either a named `severity` shortcut or a raw numeric `min`/`max` range, never both."
+															description_kind: "markdown"
+															optional:         true
+														}
+														time_range: {
+															nested_type: {
+																attributes: {
+																	from: {
+																		type:             "string"
+																		description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	mode: {
+																		type:             "string"
+																		description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	to: {
+																		type:             "string"
+																		description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Optional panel-level time range (`from`, `to`, and optional `mode`)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Optional panel title shown in the panel header."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Configuration for an ML anomaly charts panel (`kbn-dashboard-panel-type-ml_anomaly_charts`). Required when `type` is `ml_anomaly_charts`. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											ml_anomaly_swimlane_config: {
+												nested_type: {
+													attributes: {
+														description: {
+															type:             "string"
+															description:      "Optional panel description."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_border: {
+															type:             "bool"
+															description:      "When true, hides the panel border."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_title: {
+															type:             "bool"
+															description:      "When true, hides the panel title."
+															description_kind: "markdown"
+															optional:         true
+														}
+														job_ids: {
+															type: ["list", "string"]
+															description:      "IDs of anomaly detection jobs or groups whose results appear in the swim lane. At least one entry is required."
+															description_kind: "markdown"
+															required:         true
+														}
+														per_page: {
+															type:             "number"
+															description:      "Number of rows to display per page in a view-by swim lane. Ignored for overall swim lanes."
+															description_kind: "markdown"
+															optional:         true
+														}
+														swimlane_type: {
+															type:             "string"
+															description:      "Swim lane mode. Use `overall` for a single aggregate lane or `viewBy` to split anomalies by field."
+															description_kind: "markdown"
+															required:         true
+														}
+														time_range: {
+															nested_type: {
+																attributes: {
+																	from: {
+																		type:             "string"
+																		description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	mode: {
+																		type:             "string"
+																		description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	to: {
+																		type:             "string"
+																		description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Optional panel-level time range (`from`, `to`, and optional `mode`)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Optional panel title shown in the panel header."
+															description_kind: "markdown"
+															optional:         true
+														}
+														view_by: {
+															type:             "string"
+															description:      "Field name used to split anomalies into a view-by swim lane. Required when `swimlane_type` is `viewBy`; must not be set when `swimlane_type` is `overall`."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Configuration for an ML anomaly swim lane panel (`kbn-dashboard-panel-type-ml_anomaly_swimlane`). Required when `type` is `ml_anomaly_swimlane`. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											ml_single_metric_viewer_config: {
+												nested_type: {
+													attributes: {
+														description: {
+															type:             "string"
+															description:      "Optional panel description."
+															description_kind: "markdown"
+															optional:         true
+														}
+														forecast_id: {
+															type:             "string"
+															description:      "Forecast identifier to overlay on the chart."
+															description_kind: "markdown"
+															optional:         true
+														}
+														function_description: {
+															type:             "string"
+															description:      "For `metric` detectors, selects which value to plot: `min`, `max`, or `mean`. Ignored for other detector functions."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_border: {
+															type:             "bool"
+															description:      "When true, hides the panel border."
+															description_kind: "markdown"
+															optional:         true
+														}
+														hide_title: {
+															type:             "bool"
+															description:      "When true, hides the panel title."
+															description_kind: "markdown"
+															optional:         true
+														}
+														job_ids: {
+															type: ["list", "string"]
+															description:      "Anomaly detection job ID whose results appear in the single metric viewer. Exactly one entry is required."
+															description_kind: "markdown"
+															required:         true
+														}
+														selected_detector_index: {
+															type:             "number"
+															description:      "Zero-based index of the detector within the job whose results are shown."
+															description_kind: "markdown"
+															optional:         true
+														}
+														selected_entities: {
+															nested_type: {
+																attributes: {
+																	numeric_value: {
+																		type:             "number"
+																		description:      "Numeric entity value for the field."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	string_value: {
+																		type:             "string"
+																		description:      "String entity value for the field."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																}
+																nesting_mode: "map"
+															}
+															description:      "Values of partition, by, or over fields that identify the single time series to display. Each map entry must set exactly one of `string_value` or `numeric_value`."
+															description_kind: "markdown"
+															optional:         true
+														}
+														time_range: {
+															nested_type: {
+																attributes: {
+																	from: {
+																		type:             "string"
+																		description:      "Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	mode: {
+																		type:             "string"
+																		description:      "Optional time range mode. When set, must be `absolute` or `relative`."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	to: {
+																		type:             "string"
+																		description:      "End of the time range (e.g., 'now', '2023-12-31T23:59:59Z')."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Optional panel-level time range (`from`, `to`, and optional `mode`)."
+															description_kind: "markdown"
+															optional:         true
+														}
+														title: {
+															type:             "string"
+															description:      "Optional panel title shown in the panel header."
+															description_kind: "markdown"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Configuration for an ML single metric viewer panel (`kbn-dashboard-panel-type-ml_single_metric_viewer`). Required when `type` is `ml_single_metric_viewer`. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
 											options_list_control_config: {
 												nested_type: {
 													attributes: {
-														data_view_id: {
-															type:             "string"
-															description:      "The ID of the data view that the control is tied to."
-															description_kind: "markdown"
-															required:         true
-														}
-														display_settings: {
+														by_esql: {
 															nested_type: {
 																attributes: {
-																	hide_action_bar: {
-																		type:             "bool"
-																		description:      "When true, hides the action bar on the control."
+																	display_settings: {
+																		nested_type: {
+																			attributes: {
+																				hide_action_bar: {
+																					type:             "bool"
+																					description:      "When true, hides the action bar on the control."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																				hide_exclude: {
+																					type:             "bool"
+																					description:      "When true, hides the exclude toggle."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																				hide_exists: {
+																					type:             "bool"
+																					description:      "When true, hides the exists filter option."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																				hide_sort: {
+																					type:             "bool"
+																					description:      "When true, hides the sort control."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																				placeholder: {
+																					type:             "string"
+																					description:      "Placeholder text shown when no option is selected."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																			}
+																			nesting_mode: "single"
+																		}
+																		description:      "Display preferences for the control widget."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
-																	hide_exclude: {
-																		type:             "bool"
-																		description:      "When true, hides the exclude toggle."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_exists: {
-																		type:             "bool"
-																		description:      "When true, hides the exists filter option."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	hide_sort: {
-																		type:             "bool"
-																		description:      "When true, hides the sort control."
-																		description_kind: "markdown"
-																		optional:         true
-																	}
-																	placeholder: {
+																	esql_query: {
 																		type:             "string"
-																		description:      "Placeholder text shown when no option is selected."
+																		description:      "The ES|QL query that produces the available option values."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	exclude: {
+																		type:             "bool"
+																		description:      "When true, selected options are used as an exclusion filter rather than an inclusion filter."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	exists_selected: {
+																		type:             "bool"
+																		description:      "When true, the control filters for documents where the field exists."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	ignore_validations: {
+																		type:             "bool"
+																		description:      "Whether the control skips field-level validation against the data view."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	run_past_timeout: {
+																		type:             "bool"
+																		description:      "When true, the control continues to show results even when the underlying query times out."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	search_technique: {
+																		type:             "string"
+																		description:      "The technique used to match suggestions. Must be one of `prefix`, `wildcard`, or `exact` when set."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	selected_options: {
+																		type: ["list", "string"]
+																		description:      "The initially or persistently selected option values. All values are represented as strings."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	single_select: {
+																		type:             "bool"
+																		description:      "When true, only one option may be selected at a time."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	sort: {
+																		nested_type: {
+																			attributes: {
+																				by: {
+																					type:             "string"
+																					description:      "The field or criterion to sort by. Must be one of `_count` or `_key`."
+																					description_kind: "markdown"
+																					required:         true
+																				}
+																				direction: {
+																					type:             "string"
+																					description:      "The sort direction. Must be one of `asc` or `desc`."
+																					description_kind: "markdown"
+																					required:         true
+																				}
+																			}
+																			nesting_mode: "single"
+																		}
+																		description:      "Default sort configuration for the suggestion list."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	title: {
+																		type:             "string"
+																		description:      "Human-readable label displayed above the control."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	use_global_filters: {
+																		type:             "bool"
+																		description:      "Whether the control applies the dashboard's global filters to its own query."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	values_source: {
+																		type:             "string"
+																		description:      "The source discriminator for this branch. Must be `esql_query`."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Configuration for an options list control sourced from an ES|QL query. Mutually exclusive with `by_field`."
+															description_kind: "markdown"
+															optional:         true
+														}
+														by_field: {
+															nested_type: {
+																attributes: {
+																	data_view_id: {
+																		type:             "string"
+																		description:      "The ID of the data view that the control is tied to."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	display_settings: {
+																		nested_type: {
+																			attributes: {
+																				hide_action_bar: {
+																					type:             "bool"
+																					description:      "When true, hides the action bar on the control."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																				hide_exclude: {
+																					type:             "bool"
+																					description:      "When true, hides the exclude toggle."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																				hide_exists: {
+																					type:             "bool"
+																					description:      "When true, hides the exists filter option."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																				hide_sort: {
+																					type:             "bool"
+																					description:      "When true, hides the sort control."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																				placeholder: {
+																					type:             "string"
+																					description:      "Placeholder text shown when no option is selected."
+																					description_kind: "markdown"
+																					optional:         true
+																				}
+																			}
+																			nesting_mode: "single"
+																		}
+																		description:      "Display preferences for the control widget."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	exclude: {
+																		type:             "bool"
+																		description:      "When true, selected options are used as an exclusion filter rather than an inclusion filter."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	exists_selected: {
+																		type:             "bool"
+																		description:      "When true, the control filters for documents where the field exists."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	field_name: {
+																		type:             "string"
+																		description:      "The name of the field in the data view that the control is tied to."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	ignore_validations: {
+																		type:             "bool"
+																		description:      "Whether the control skips field-level validation against the data view."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	run_past_timeout: {
+																		type:             "bool"
+																		description:      "When true, the control continues to show results even when the underlying query times out."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	search_technique: {
+																		type:             "string"
+																		description:      "The technique used to match suggestions. Must be one of `prefix`, `wildcard`, or `exact` when set."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	selected_options: {
+																		type: ["list", "string"]
+																		description:      "The initially or persistently selected option values. All values are represented as strings."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	single_select: {
+																		type:             "bool"
+																		description:      "When true, only one option may be selected at a time."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	sort: {
+																		nested_type: {
+																			attributes: {
+																				by: {
+																					type:             "string"
+																					description:      "The field or criterion to sort by. Must be one of `_count` or `_key`."
+																					description_kind: "markdown"
+																					required:         true
+																				}
+																				direction: {
+																					type:             "string"
+																					description:      "The sort direction. Must be one of `asc` or `desc`."
+																					description_kind: "markdown"
+																					required:         true
+																				}
+																			}
+																			nesting_mode: "single"
+																		}
+																		description:      "Default sort configuration for the suggestion list."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	title: {
+																		type:             "string"
+																		description:      "Human-readable label displayed above the control."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	use_global_filters: {
+																		type:             "bool"
+																		description:      "Whether the control applies the dashboard's global filters to its own query."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
 																}
 																nesting_mode: "single"
 															}
-															description:      "Display preferences for the control widget."
-															description_kind: "markdown"
-															optional:         true
-														}
-														exclude: {
-															type:             "bool"
-															description:      "When true, selected options are used as an exclusion filter rather than an inclusion filter."
-															description_kind: "markdown"
-															optional:         true
-														}
-														exists_selected: {
-															type:             "bool"
-															description:      "When true, the control filters for documents where the field exists."
-															description_kind: "markdown"
-															optional:         true
-														}
-														field_name: {
-															type:             "string"
-															description:      "The name of the field in the data view that the control is tied to."
-															description_kind: "markdown"
-															required:         true
-														}
-														ignore_validations: {
-															type:             "bool"
-															description:      "Whether the control skips field-level validation against the data view."
-															description_kind: "markdown"
-															optional:         true
-														}
-														run_past_timeout: {
-															type:             "bool"
-															description:      "When true, the control continues to show results even when the underlying query times out."
-															description_kind: "markdown"
-															optional:         true
-														}
-														search_technique: {
-															type:             "string"
-															description:      "The technique used to match suggestions. Must be one of `prefix`, `wildcard`, or `exact` when set."
-															description_kind: "markdown"
-															optional:         true
-														}
-														selected_options: {
-															type: ["list", "string"]
-															description:      "The initially or persistently selected option values. All values are represented as strings."
-															description_kind: "markdown"
-															optional:         true
-														}
-														single_select: {
-															type:             "bool"
-															description:      "When true, only one option may be selected at a time."
-															description_kind: "markdown"
-															optional:         true
-														}
-														sort: {
-															nested_type: {
-																attributes: {
-																	by: {
-																		type:             "string"
-																		description:      "The field or criterion to sort by. Must be one of `_count` or `_key`."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																	direction: {
-																		type:             "string"
-																		description:      "The sort direction. Must be one of `asc` or `desc`."
-																		description_kind: "markdown"
-																		required:         true
-																	}
-																}
-																nesting_mode: "single"
-															}
-															description:      "Default sort configuration for the suggestion list."
-															description_kind: "markdown"
-															optional:         true
-														}
-														title: {
-															type:             "string"
-															description:      "Human-readable label displayed above the control."
-															description_kind: "markdown"
-															optional:         true
-														}
-														use_global_filters: {
-															type:             "bool"
-															description:      "Whether the control applies the dashboard's global filters to its own query."
+															description:      "Configuration for an options list control sourced from a Kibana data view field. Mutually exclusive with `by_esql`."
 															description_kind: "markdown"
 															optional:         true
 														}
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for an options list control panel. Provides a dropdown or multi-select filter based on a field in a data view. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for an options list control panel. Provides a dropdown or multi-select filter based on a field in a data view (`by_field`) or an ES|QL query (`by_esql`). Exactly one of `by_field` or `by_esql` must be set. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
 											range_slider_control_config: {
 												nested_type: {
 													attributes: {
-														data_view_id: {
-															type:             "string"
-															description:      "The ID of the data view that the control is tied to."
-															description_kind: "markdown"
-															required:         true
-														}
-														field_name: {
-															type:             "string"
-															description:      "The name of the field in the data view that the control is tied to."
-															description_kind: "markdown"
-															required:         true
-														}
-														ignore_validations: {
-															type:             "bool"
-															description:      "Whether to suppress validation errors during intermediate states."
+														by_esql: {
+															nested_type: {
+																attributes: {
+																	esql_query: {
+																		type:             "string"
+																		description:      "The ES|QL query that produces the min/max range values."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	ignore_validations: {
+																		type:             "bool"
+																		description:      "Whether to suppress validation errors during intermediate states."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	step: {
+																		type:             "number"
+																		description:      "The step size for the range slider. Stored as float32 to match the Kibana API type and avoid refresh drift."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	title: {
+																		type:             "string"
+																		description:      "A human-readable title for the control."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	use_global_filters: {
+																		type:             "bool"
+																		description:      "Whether the control respects dashboard-level filters."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	value: {
+																		type: ["list", "string"]
+																		description:      "Initial range as a list of exactly 2 strings: [min, max]."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	values_source: {
+																		type:             "string"
+																		description:      "The source of the range values. Must be `esql_query`."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Range slider sourced from an ES|QL query. Mutually exclusive with `by_field`."
 															description_kind: "markdown"
 															optional:         true
 														}
-														step: {
-															type:             "number"
-															description:      "The step size for the range slider. Stored as float32 to match the Kibana API type and avoid refresh drift."
-															description_kind: "markdown"
-															optional:         true
-														}
-														title: {
-															type:             "string"
-															description:      "A human-readable title for the control."
-															description_kind: "markdown"
-															optional:         true
-														}
-														use_global_filters: {
-															type:             "bool"
-															description:      "Whether the control respects dashboard-level filters."
-															description_kind: "markdown"
-															optional:         true
-														}
-														value: {
-															type: ["list", "string"]
-															description:      "Initial range as a list of exactly 2 strings: [min, max]."
+														by_field: {
+															nested_type: {
+																attributes: {
+																	data_view_id: {
+																		type:             "string"
+																		description:      "The ID of the data view that the control is tied to."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	field_name: {
+																		type:             "string"
+																		description:      "The name of the field in the data view that the control is tied to."
+																		description_kind: "markdown"
+																		required:         true
+																	}
+																	ignore_validations: {
+																		type:             "bool"
+																		description:      "Whether to suppress validation errors during intermediate states."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	step: {
+																		type:             "number"
+																		description:      "The step size for the range slider. Stored as float32 to match the Kibana API type and avoid refresh drift."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	title: {
+																		type:             "string"
+																		description:      "A human-readable title for the control."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	use_global_filters: {
+																		type:             "bool"
+																		description:      "Whether the control respects dashboard-level filters."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																	value: {
+																		type: ["list", "string"]
+																		description:      "Initial range as a list of exactly 2 strings: [min, max]."
+																		description_kind: "markdown"
+																		optional:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description:      "Range slider sourced from a Kibana data view field. Mutually exclusive with `by_esql`."
 															description_kind: "markdown"
 															optional:         true
 														}
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a range slider control panel. Provides a min/max range filter tied to a data view field. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for a range slider control panel. Provides a min/max range filter sourced from either a data view field (`by_field`) or an ES|QL query (`by_esql`). Exactly one of the two must be set. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -24718,7 +27370,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for an `slo_alerts` panel (`kbn-dashboard-panel-type-slo_alerts`). Required when `type` is `slo_alerts`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for an `slo_alerts` panel (`kbn-dashboard-panel-type-slo_alerts`). Required when `type` is `slo_alerts`. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -24804,7 +27456,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for an SLO burn rate panel. Use this for panels that visualize the burn rate of an SLO over a configurable look-back window. Mutually exclusive with `config_json`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for an SLO burn rate panel. Use this for panels that visualize the burn rate of an SLO over a configurable look-back window. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -24884,7 +27536,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for an SLO error budget panel. Displays the burn chart of remaining error budget for a specific SLO. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for an SLO error budget panel. Displays the burn chart of remaining error budget for a specific SLO. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -25082,7 +27734,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for an SLO overview panel. Use either `single` (for a single SLO) or `groups` (for grouped SLO overview). Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for an SLO overview panel. Use either `single` (for a single SLO) or `groups` (for grouped SLO overview). Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -25242,7 +27894,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a Synthetics monitors panel. Displays a table of Elastic Synthetics monitors and their current status. All fields are optional — omit the block entirely for a bare panel with no filtering. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for a Synthetics monitors panel. Displays a table of Elastic Synthetics monitors and their current status. All fields are optional — omit the block entirely for a bare panel with no filtering. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -25430,7 +28082,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a Synthetics stats overview panel. All fields are optional; an absent or empty block shows statistics for all monitors visible within the space. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for a Synthetics stats overview panel. All fields are optional; an absent or empty block shows statistics for all monitors visible within the space. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -25458,7 +28110,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a time slider control panel. Controls the visible time window within the dashboard's global time range. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`."
+												description:      "Configuration for a time slider control panel. Controls the visible time window within the dashboard's global time range. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `vis_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -30785,7 +33437,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "single"
 												}
-												description:      "Configuration for a `vis` panel (`type = \"vis\"`). Typed alternative to panel-level `config_json`: set exactly one of `by_value` (exactly one of 12 Lens chart kinds) or `by_reference`. With `by_reference`, use structured `drilldowns` and optional `time_range`. Mutually exclusive with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `image_config`, `slo_alerts_config`, `discover_session_config`."
+												description:      "Configuration for a `vis` panel (`type = \"vis\"`). Typed alternative to panel-level `config_json`: set exactly one of `by_value` (exactly one of 12 Lens chart kinds) or `by_reference`. With `by_reference`, use structured `drilldowns` and optional `time_range`. Mutually exclusive with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`, `synthetics_monitors_config`, `synthetics_stats_overview_config`, `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`, `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`, `discover_session_config`, `field_stats_table_config`, `aiops_log_rate_analysis_config`, `links_config`, `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -31260,7 +33912,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -31391,7 +34043,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "The Kibana space ID to set the default data view in. Defaults to `default`."
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -31673,7 +34325,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -31914,7 +34566,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -32014,6 +34666,423 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 				}
 				description:      "Creates and manages Kibana [maintenance windows](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-maintenance-window)"
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_osquery_pack: {
+			version: 0
+			block: {
+				attributes: {
+					description: {
+						type:             "string"
+						description:      "Description of the Osquery pack."
+						description_kind: "markdown"
+						optional:         true
+					}
+					enabled: {
+						type:             "bool"
+						description:      "Whether the pack is enabled."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Composite identifier in the form `<space_id>/<pack_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Human-readable name of the Osquery pack."
+						description_kind: "markdown"
+						required:         true
+					}
+					pack_id: {
+						type:             "string"
+						description:      "Server-generated Kibana saved object identifier for the pack (`saved_object_id`)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					policy_ids: {
+						type: ["set", "string"]
+						description:      "Fleet agent policy IDs this pack is deployed to."
+						description_kind: "markdown"
+						optional:         true
+					}
+					queries: {
+						nested_type: {
+							attributes: {
+								ecs_mapping: {
+									nested_type: {
+										attributes: {
+											field: {
+												type:             "string"
+												description:      "Query result column name to map from."
+												description_kind: "markdown"
+												optional:         true
+											}
+											value: {
+												type:             "string"
+												description:      "Static scalar ECS mapping value."
+												description_kind: "markdown"
+												optional:         true
+											}
+											values: {
+												type: ["set", "string"]
+												description:      "Static array ECS mapping values."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "map"
+									}
+									description:      "Maps query result columns to ECS field paths. Each map value must set exactly one of `field`, `value`, or `values`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								platform: {
+									type: ["set", "string"]
+									description:      "Target platforms for the query. Allowed values: `linux`, `darwin`, `windows`."
+									description_kind: "markdown"
+									optional:         true
+								}
+								query: {
+									type:             "string"
+									description:      "Osquery SQL query text."
+									description_kind: "markdown"
+									required:         true
+								}
+								removed: {
+									type:             "bool"
+									description:      "Whether the query is marked removed. Returned by the API and may be set explicitly in configuration. When omitted or unknown at plan time, the prior state value is preserved (`UseStateForUnknown`)."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								saved_query_id: {
+									type:             "string"
+									description:      "References an `elasticstack_kibana_osquery_saved_query` resource."
+									description_kind: "markdown"
+									optional:         true
+								}
+								snapshot: {
+									type:             "bool"
+									description:      "Whether the query is a snapshot. Returned by the API and may be set explicitly in configuration. When omitted or unknown at plan time, the prior state value is preserved (`UseStateForUnknown`)."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								version: {
+									type:             "string"
+									description:      "Query version string."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "map"
+						}
+						description:      "Osquery queries in the pack. Map keys are query names (canonical identifiers in Kibana)."
+						description_kind: "markdown"
+						required:         true
+					}
+					shards: {
+						type: ["map", "number"]
+						description:      "Percent (1-100) of hosts per policy ID that receive the pack."
+						description_kind: "markdown"
+						optional:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages a user-defined Osquery query pack in Kibana. Requires Kibana 8.5.0 or later. Prebuilt packs shipped with the osquery_manager integration cannot be managed by this resource; use the `elasticstack_kibana_osquery_pack` data source to read them instead."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_osquery_saved_query: {
+			version: 0
+			block: {
+				attributes: {
+					description: {
+						type:             "string"
+						description:      "Human-readable description of the saved query."
+						description_kind: "markdown"
+						optional:         true
+					}
+					ecs_mapping: {
+						nested_type: {
+							attributes: {
+								field: {
+									type:             "string"
+									description:      "Query result column name to map from."
+									description_kind: "markdown"
+									optional:         true
+								}
+								value: {
+									type:             "string"
+									description:      "Static scalar ECS mapping value."
+									description_kind: "markdown"
+									optional:         true
+								}
+								values: {
+									type: ["set", "string"]
+									description:      "Static array ECS mapping values."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "map"
+						}
+						description:      "Maps query result columns to ECS field paths. Each map value must set exactly one of `field`, `value`, or `values`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Composite identifier in the form `<space_id>/<saved_query_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					interval: {
+						type:             "number"
+						description:      "Query execution interval in seconds. Required by the Kibana Osquery API on create and update."
+						description_kind: "markdown"
+						required:         true
+					}
+					platform: {
+						type: ["set", "string"]
+						description:      "Target platforms for the query. Allowed values: `linux`, `darwin`, `windows`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					query: {
+						type:             "string"
+						description:      "Osquery SQL query text."
+						description_kind: "markdown"
+						required:         true
+					}
+					removed: {
+						type:             "bool"
+						description:      "Whether the saved query is marked removed. Returned by the API and may be set explicitly in configuration. When omitted or unknown at plan time, the prior state value is preserved (`UseStateForUnknown`)."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					saved_object_id: {
+						type:             "string"
+						description:      "Kibana saved object identifier used internally by Kibana's Osquery saved query detail, update, and delete APIs."
+						description_kind: "markdown"
+						computed:         true
+					}
+					saved_query_id: {
+						type:             "string"
+						description:      "Stable user-facing identifier for the saved query. Forces replacement when changed."
+						description_kind: "markdown"
+						required:         true
+					}
+					snapshot: {
+						type:             "bool"
+						description:      "Whether the saved query is a snapshot. Returned by the API and may be set explicitly in configuration. When omitted or unknown at plan time, the prior state value is preserved (`UseStateForUnknown`)."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+					version: {
+						type:             "string"
+						description:      "Saved query version string."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages a user-defined Osquery saved query in Kibana. Requires Kibana 8.5.0 or later. Prebuilt queries shipped with the osquery_manager integration cannot be managed by this resource; use the `elasticstack_kibana_osquery_saved_query` data source to read them instead. Import of prebuilt queries fails; use the data source for prebuilt queries."
 				description_kind: "markdown"
 			}
 		}
@@ -33137,7 +36206,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -33365,8 +36434,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "An identifier for the Kibana space. If omitted, the default space is used."
-						description_kind: "plain"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -34374,8 +37443,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "An identifier for the Kibana space. If omitted, the default space is used."
-						description_kind: "plain"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -34607,7 +37676,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "An identifier for the space. If not provided, the default space is used."
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -36136,7 +39205,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -37165,7 +40234,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "An identifier for the space. If not provided, the default space is used."
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -37425,7 +40494,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							attributes: {
 								check: {
 									type:             "string"
-									description:      "The check request settings.. Raw JSON object, use `jsonencode` function to represent JSON"
+									description:      "HTTP request and response check settings. Supported sub-keys include `request.{method,headers,body}` and `response.{status,body,headers,json}`. For example, to assert an expected HTTP status: `check = jsonencode({ response = { status = [200, 201, 301] } })`. See [Heartbeat HTTP options](https://www.elastic.co/docs/reference/beats/heartbeat/monitor-http-options) for the full list of supported keys (note: the Heartbeat YAML uses dotted keys like `check.response.status`; here they are passed as nested JSON). Raw JSON object, use `jsonencode` function to represent JSON"
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -37481,7 +40550,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								response: {
 									type:             "string"
-									description:      "Controls the indexing of the HTTP response body contents to the `http.response.body.contents` field.. Raw JSON object, use `jsonencode` function to represent JSON"
+									description:      "Controls the indexing of the HTTP response body contents to the `http.response.body.contents` field. Supported sub-keys include `include_body` (`on_error`/`never`/`always`) and `include_body_max_bytes`. See [Heartbeat HTTP options](https://www.elastic.co/docs/reference/beats/heartbeat/monitor-http-options) for the full list. Raw JSON object, use `jsonencode` function to represent JSON"
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -39988,7 +43057,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -40064,7 +43133,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -40147,7 +43216,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -40251,7 +43320,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -40356,7 +43425,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -40457,7 +43526,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -40560,7 +43629,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -40663,7 +43732,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -40762,7 +43831,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -40839,7 +43908,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -40907,7 +43976,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -40968,7 +44037,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -41062,7 +44131,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -41129,7 +44198,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -41217,7 +44286,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -41318,7 +44387,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -41411,7 +44480,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -41587,7 +44656,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -41661,7 +44730,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -41755,7 +44824,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -41928,7 +44997,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -42039,7 +45108,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -42216,7 +45285,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -42283,7 +45352,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -42357,7 +45426,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -42425,7 +45494,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -42745,7 +45814,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -42812,7 +45881,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -42886,7 +45955,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -42973,7 +46042,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -43047,7 +46116,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource"
+						description:      "Internal identifier of the resource."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -45534,7 +48603,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -45665,8 +48734,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					tools: {
 						nested_type: {
@@ -45862,7 +48932,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "An identifier for the Kibana space. If not provided, the default space is used unless the `skill_id` argument supplies a composite space."
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -45970,8 +49040,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					tags: {
 						type: ["set", "string"]
@@ -46082,7 +49153,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -46205,8 +49276,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: kibana_connection: {
@@ -46266,6 +49338,363 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				}
 				description:      "Export Kibana saved objects. This data source allows you to export saved objects from Kibana and store the result in the Terraform state."
 				description_kind: "plain"
+			}
+		}
+		elasticstack_kibana_osquery_pack: {
+			version: 0
+			block: {
+				attributes: {
+					description: {
+						type:             "string"
+						description:      "Description of the Osquery pack."
+						description_kind: "markdown"
+						computed:         true
+					}
+					enabled: {
+						type:             "bool"
+						description:      "Whether the pack is enabled."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Composite identifier in the form `<space_id>/<pack_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Human-readable name of the Osquery pack."
+						description_kind: "markdown"
+						computed:         true
+					}
+					pack_id: {
+						type:             "string"
+						description:      "Kibana saved object identifier for the pack (`saved_object_id`)."
+						description_kind: "markdown"
+						required:         true
+					}
+					policy_ids: {
+						type: ["set", "string"]
+						description:      "Fleet agent policy IDs this pack is deployed to."
+						description_kind: "markdown"
+						computed:         true
+					}
+					queries: {
+						nested_type: {
+							attributes: {
+								ecs_mapping: {
+									nested_type: {
+										attributes: {
+											field: {
+												type:             "string"
+												description:      "Query result column name to map from."
+												description_kind: "markdown"
+												computed:         true
+											}
+											value: {
+												type:             "string"
+												description:      "Static scalar ECS mapping value."
+												description_kind: "markdown"
+												computed:         true
+											}
+											values: {
+												type: ["set", "string"]
+												description:      "Static array ECS mapping values."
+												description_kind: "markdown"
+												computed:         true
+											}
+										}
+										nesting_mode: "map"
+									}
+									description:      "Maps query result columns to ECS field paths."
+									description_kind: "markdown"
+									computed:         true
+								}
+								platform: {
+									type: ["set", "string"]
+									description:      "Target platforms for the query. Allowed values: `linux`, `darwin`, `windows`."
+									description_kind: "markdown"
+									computed:         true
+								}
+								query: {
+									type:             "string"
+									description:      "Osquery SQL query text."
+									description_kind: "markdown"
+									computed:         true
+								}
+								removed: {
+									type:             "bool"
+									description:      "Whether the query is marked removed."
+									description_kind: "markdown"
+									computed:         true
+								}
+								saved_query_id: {
+									type:             "string"
+									description:      "References an `elasticstack_kibana_osquery_saved_query` resource."
+									description_kind: "markdown"
+									computed:         true
+								}
+								snapshot: {
+									type:             "bool"
+									description:      "Whether the query is a snapshot."
+									description_kind: "markdown"
+									computed:         true
+								}
+								version: {
+									type:             "string"
+									description:      "Query version string."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "map"
+						}
+						description:      "Osquery queries in the pack. Map keys are query names (canonical identifiers in Kibana)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					read_only: {
+						type:             "bool"
+						description:      "Whether the pack is prebuilt and read-only. Prebuilt packs can be read by this data source but not managed by the resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					shards: {
+						type: ["map", "number"]
+						description:      "Percent (1-100) of hosts per policy ID that receive the pack."
+						description_kind: "markdown"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "Kibana space identifier. When omitted, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Reads any Osquery query pack from Kibana by `pack_id` (`saved_object_id`), including user-defined and prebuilt (read-only) packs. Prebuilt packs cannot be managed by the `elasticstack_kibana_osquery_pack` resource. Requires Kibana 8.5.0 or later."
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_osquery_saved_query: {
+			version: 0
+			block: {
+				attributes: {
+					description: {
+						type:             "string"
+						description:      "Human-readable description of the saved query."
+						description_kind: "markdown"
+						computed:         true
+					}
+					ecs_mapping: {
+						nested_type: {
+							attributes: {
+								field: {
+									type:             "string"
+									description:      "Query result column name to map from."
+									description_kind: "markdown"
+									computed:         true
+								}
+								value: {
+									type:             "string"
+									description:      "Static scalar ECS mapping value."
+									description_kind: "markdown"
+									computed:         true
+								}
+								values: {
+									type: ["set", "string"]
+									description:      "Static array ECS mapping values."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "map"
+						}
+						description:      "Maps query result columns to ECS field paths."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Composite identifier in the form `<space_id>/<saved_query_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					interval: {
+						type:             "number"
+						description:      "Query execution interval in seconds."
+						description_kind: "markdown"
+						computed:         true
+					}
+					platform: {
+						type: ["set", "string"]
+						description:      "Target platforms for the query."
+						description_kind: "markdown"
+						computed:         true
+					}
+					prebuilt: {
+						type:             "bool"
+						description:      "Whether the saved query is prebuilt by the osquery_manager integration package."
+						description_kind: "markdown"
+						computed:         true
+					}
+					query: {
+						type:             "string"
+						description:      "Osquery SQL query text."
+						description_kind: "markdown"
+						computed:         true
+					}
+					removed: {
+						type:             "bool"
+						description:      "Whether the saved query is marked removed."
+						description_kind: "markdown"
+						computed:         true
+					}
+					saved_object_id: {
+						type:             "string"
+						description:      "Kibana saved object identifier used by Kibana's Osquery saved query detail API."
+						description_kind: "markdown"
+						computed:         true
+					}
+					saved_query_id: {
+						type:             "string"
+						description:      "Stable identifier for the saved query to look up."
+						description_kind: "markdown"
+						required:         true
+					}
+					snapshot: {
+						type:             "bool"
+						description:      "Whether the saved query is a snapshot."
+						description_kind: "markdown"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					version: {
+						type:             "string"
+						description:      "Saved query version string."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Reads an Osquery saved query from Kibana, including prebuilt queries shipped with the osquery_manager integration. Requires Kibana 8.5.0 or later. A common use is looking up saved query IDs referenced by Security detection rule response actions."
+				description_kind: "markdown"
 			}
 		}
 		elasticstack_kibana_security_entity_store_entities: {
@@ -46505,8 +49934,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "An identifier for the Kibana space. If omitted, the default space is used."
-						description_kind: "plain"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -46799,8 +50228,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "An identifier for the Kibana space. If omitted, the default space is used."
-						description_kind: "plain"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}

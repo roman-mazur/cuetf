@@ -13,7 +13,7 @@ elasticstack_elasticsearch_ingest_processor_csv: {
 		// The field to extract data from.
 		field!: string
 
-		// Internal identifier of the resource
+		// Internal identifier of the resource.
 		id?: string
 
 		// Conditionally execute the processor

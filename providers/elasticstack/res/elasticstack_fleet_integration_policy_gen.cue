@@ -11,6 +11,9 @@ elasticstack_fleet_integration_policy: {
 
 		// Integration inputs mapped by input ID.
 		inputs?: [string]: close({
+			// Agent condition expression to evaluate whether to apply this input.
+			condition?: string
+
 			// Input defaults.
 			defaults?: close({
 				// Stream-level defaults mapped by stream ID.
@@ -31,6 +34,9 @@ elasticstack_fleet_integration_policy: {
 
 			// Input streams mapped by stream ID.
 			streams?: [string]: close({
+				// Agent condition expression to evaluate whether to apply this stream.
+				condition?: string
+
 				// Enable the stream.
 				enabled?: bool
 

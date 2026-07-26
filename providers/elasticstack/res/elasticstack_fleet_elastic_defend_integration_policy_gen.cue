@@ -6,8 +6,12 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 	close({
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
-		// ID of the agent policy. Conflicts with agent_policy_ids.
-		agent_policy_id?: string
+		// Elastic Defend advanced settings as a map of setting name to value. Keys use
+		// Elastic's documented dot notation with OS prefix (for example
+		// `linux.advanced.artifacts.global.base_url`). See
+		// https://www.elastic.co/docs/reference/security/defend-advanced-settings for
+		// available settings.
+		advanced_settings?: [string]: string
 
 		// Elastic Defend policy configuration.
 		policy!: close({
@@ -310,6 +314,9 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 				})
 			})
 		})
+
+		// ID of the agent policy. Conflicts with agent_policy_ids.
+		agent_policy_id?: string
 
 		// List of agent policy IDs. Requires Elastic Stack >= 8.15.0. Conflicts with agent_policy_id.
 		agent_policy_ids?: [...string]

@@ -69,6 +69,8 @@ import (
 	_#res: "\(#elasticstackPrefix)_kibana_import_saved_objects": close({res.elasticstack_kibana_import_saved_objects & cuetf.MetaArgs})
 	_#res: "\(#elasticstackPrefix)_kibana_install_prebuilt_rules": close({res.elasticstack_kibana_install_prebuilt_rules & cuetf.MetaArgs})
 	_#res: "\(#elasticstackPrefix)_kibana_maintenance_window": close({res.elasticstack_kibana_maintenance_window & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_osquery_pack": close({res.elasticstack_kibana_osquery_pack & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_kibana_osquery_saved_query": close({res.elasticstack_kibana_osquery_saved_query & cuetf.MetaArgs})
 	_#res: "\(#elasticstackPrefix)_kibana_security_detection_rule": close({res.elasticstack_kibana_security_detection_rule & cuetf.MetaArgs})
 	_#res: "\(#elasticstackPrefix)_kibana_security_enable_rule": close({res.elasticstack_kibana_security_enable_rule & cuetf.MetaArgs})
 	_#res: "\(#elasticstackPrefix)_kibana_security_entity_store_entity": close({res.elasticstack_kibana_security_entity_store_entity & cuetf.MetaArgs})

@@ -13,7 +13,7 @@ elasticstack_elasticsearch_ingest_processor_dissect: {
 		// The field to dissect.
 		field!: string
 
-		// Internal identifier of the resource
+		// Internal identifier of the resource.
 		id?: string
 
 		// Conditionally execute the processor

@@ -1,15 +1,29 @@
 package res
 
-elasticstack_kibana_default_data_view: {
+elasticstack_kibana_osquery_saved_query: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_default_data_view")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_osquery_saved_query")
 	close({
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
-		// The data view identifier to set as default. NOTE: The API does not validate
-		// whether it is a valid identifier. Leave this unset (or explicitly `null`) to
-		// unset the default data view.
-		data_view_id?: string
+		// Human-readable description of the saved query.
+		description?: string
+
+		// Maps query result columns to ECS field paths. Each map value must set exactly
+		// one of `field`, `value`, or `values`.
+		ecs_mapping?: [string]: close({
+			// Query result column name to map from.
+			field?: string
+
+			// Static scalar ECS mapping value.
+			value?: string
+
+			// Static array ECS mapping values.
+			values?: [...string]
+		})
+
+		// Composite identifier in the form `<space_id>/<saved_query_id>`.
+		id?: string
 		timeouts?: close({
 			// A string that can be [parsed as a
 			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
@@ -39,19 +53,37 @@ elasticstack_kibana_default_data_view: {
 			update?: string
 		})
 
-		// Update an existing default data view identifier. If set to false and a
-		// default data view already exists, the operation will fail.
-		force?: bool
+		// Query execution interval in seconds. Required by the Kibana Osquery API on create and update.
+		interval!: number
 
-		// Internal identifier of the resource.
-		id?: string
+		// Target platforms for the query. Allowed values: `linux`, `darwin`, `windows`.
+		platform?: [...string]
 
-		// If set to true, the default data view will not be unset when the resource is
-		// destroyed. The existing default data view will remain unchanged.
-		skip_delete?: bool
+		// Osquery SQL query text.
+		query!: string
+
+		// Whether the saved query is marked removed. Returned by the API and may be set
+		// explicitly in configuration. When omitted or unknown at plan time, the prior
+		// state value is preserved (`UseStateForUnknown`).
+		removed?: bool
+
+		// Kibana saved object identifier used internally by Kibana's Osquery saved
+		// query detail, update, and delete APIs.
+		saved_object_id?: string
+
+		// Stable user-facing identifier for the saved query. Forces replacement when changed.
+		saved_query_id!: string
+
+		// Whether the saved query is a snapshot. Returned by the API and may be set
+		// explicitly in configuration. When omitted or unknown at plan time, the prior
+		// state value is preserved (`UseStateForUnknown`).
+		snapshot?: bool
 
 		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string
+
+		// Saved query version string.
+		version?: string
 	})
 
 	#kibana_connection: close({
