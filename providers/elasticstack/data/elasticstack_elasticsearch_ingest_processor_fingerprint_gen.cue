@@ -10,7 +10,7 @@ elasticstack_elasticsearch_ingest_processor_fingerprint: {
 		// Array of fields to include in the fingerprint.
 		fields!: [...string]
 
-		// Internal identifier of the resource
+		// Internal identifier of the resource.
 		id?: string
 
 		// Conditionally execute the processor

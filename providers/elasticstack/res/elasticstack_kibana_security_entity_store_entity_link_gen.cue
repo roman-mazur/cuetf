@@ -44,7 +44,7 @@ elasticstack_kibana_security_entity_store_entity_link: {
 		// The normalized JSON representation of the resolution group returned by the Kibana API.
 		resolution_group_json?: string
 
-		// An identifier for the space. If not provided, the default space is used.
+		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string
 
 		// The entity identifier that linked entities resolve to.

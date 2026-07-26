@@ -10,7 +10,7 @@ elasticstack_elasticsearch_ingest_processor_remove: {
 		// Fields to be removed.
 		field!: [...string]
 
-		// Internal identifier of the resource
+		// Internal identifier of the resource.
 		id?: string
 
 		// Conditionally execute the processor

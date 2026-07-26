@@ -1,15 +1,54 @@
 package res
 
-elasticstack_kibana_default_data_view: {
+elasticstack_kibana_osquery_pack: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
-	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_default_data_view")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_osquery_pack")
 	close({
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
-		// The data view identifier to set as default. NOTE: The API does not validate
-		// whether it is a valid identifier. Leave this unset (or explicitly `null`) to
-		// unset the default data view.
-		data_view_id?: string
+		// Description of the Osquery pack.
+		description?: string
+
+		// Osquery queries in the pack. Map keys are query names (canonical identifiers in Kibana).
+		queries!: [string]: close({
+			// Maps query result columns to ECS field paths. Each map value must set exactly
+			// one of `field`, `value`, or `values`.
+			ecs_mapping?: [string]: close({
+				// Query result column name to map from.
+				field?: string
+
+				// Static scalar ECS mapping value.
+				value?: string
+
+				// Static array ECS mapping values.
+				values?: [...string]
+			})
+
+			// Target platforms for the query. Allowed values: `linux`, `darwin`, `windows`.
+			platform?: [...string]
+
+			// Osquery SQL query text.
+			query!: string
+
+			// Whether the query is marked removed. Returned by the API and may be set
+			// explicitly in configuration. When omitted or unknown at plan time, the prior
+			// state value is preserved (`UseStateForUnknown`).
+			removed?: bool
+
+			// References an `elasticstack_kibana_osquery_saved_query` resource.
+			saved_query_id?: string
+
+			// Whether the query is a snapshot. Returned by the API and may be set
+			// explicitly in configuration. When omitted or unknown at plan time, the prior
+			// state value is preserved (`UseStateForUnknown`).
+			snapshot?: bool
+
+			// Query version string.
+			version?: string
+		})
+
+		// Whether the pack is enabled.
+		enabled?: bool
 		timeouts?: close({
 			// A string that can be [parsed as a
 			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
@@ -39,16 +78,20 @@ elasticstack_kibana_default_data_view: {
 			update?: string
 		})
 
-		// Update an existing default data view identifier. If set to false and a
-		// default data view already exists, the operation will fail.
-		force?: bool
-
-		// Internal identifier of the resource.
+		// Composite identifier in the form `<space_id>/<pack_id>`.
 		id?: string
 
-		// If set to true, the default data view will not be unset when the resource is
-		// destroyed. The existing default data view will remain unchanged.
-		skip_delete?: bool
+		// Human-readable name of the Osquery pack.
+		name!: string
+
+		// Server-generated Kibana saved object identifier for the pack (`saved_object_id`).
+		pack_id?: string
+
+		// Fleet agent policy IDs this pack is deployed to.
+		policy_ids?: [...string]
+
+		// Percent (1-100) of hosts per policy ID that receive the pack.
+		shards?: [string]: number
 
 		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string

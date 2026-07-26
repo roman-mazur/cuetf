@@ -193,7 +193,7 @@ elasticstack_kibana_security_entity_store_entities: {
 		// Fields to include in response _source.
 		source?: [...string]
 
-		// An identifier for the Kibana space. If omitted, the default space is used.
+		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string
 	})
 

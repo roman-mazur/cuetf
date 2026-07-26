@@ -144,7 +144,11 @@ elasticstack_fleet_agent_policy: {
 		// The namespace of the agent policy.
 		namespace!: string
 
-		// Unique identifier of the agent policy.
+		// Unique identifier of the agent policy. When omitted, Fleet auto-generates a
+		// UUID. When set, the value must be 1-255 characters and must not contain path
+		// separators (`"/"`), traversal sequences (`".."`), or reserved keys
+		// (`"__proto__"`, `"constructor"`, `"prototype"`). Invalid explicit values
+		// fail at plan time.
 		policy_id?: string
 
 		// Map of agent versions to target percentages for automatic upgrade. The key is

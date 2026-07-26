@@ -18,7 +18,7 @@ elasticstack_elasticsearch_ingest_processor_geoip: {
 		// If `true` only first found geoip data will be returned, even if field contains array.
 		first_only?: bool
 
-		// Internal identifier of the resource
+		// Internal identifier of the resource.
 		id?: string
 
 		// Conditionally execute the processor

@@ -37,7 +37,11 @@ elasticstack_fleet_server_host: {
 			update?: string
 		})
 
-		// Unique identifier of the Fleet server host.
+		// Unique identifier of the Fleet server host. When omitted, Fleet
+		// auto-generates an ID. When set, the value must be 1-255 characters and must
+		// not contain path separators ("/"), traversal sequences (".."), or reserved
+		// keys ("__proto__", "constructor", "prototype"). Invalid explicit values fail
+		// at plan time.
 		host_id?: string
 
 		// A list of hosts.

@@ -16,7 +16,7 @@ elasticstack_elasticsearch_ingest_processor_kv: {
 		// Regex pattern to use for splitting key-value pairs.
 		field_split!: string
 
-		// Internal identifier of the resource
+		// Internal identifier of the resource.
 		id?: string
 
 		// Conditionally execute the processor

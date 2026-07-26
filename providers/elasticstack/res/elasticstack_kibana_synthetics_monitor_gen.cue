@@ -42,7 +42,14 @@ elasticstack_kibana_synthetics_monitor: {
 
 		// HTTP Monitor specific fields
 		http?: close({
-			// The check request settings.. Raw JSON object, use `jsonencode` function to represent JSON
+			// HTTP request and response check settings. Supported sub-keys include
+			// `request.{method,headers,body}` and `response.{status,body,headers,json}`.
+			// For example, to assert an expected HTTP status: `check = jsonencode({
+			// response = { status = [200, 201, 301] } })`. See [Heartbeat HTTP
+			// options](https://www.elastic.co/docs/reference/beats/heartbeat/monitor-http-options)
+			// for the full list of supported keys (note: the Heartbeat YAML uses dotted
+			// keys like `check.response.status`; here they are passed as nested JSON). Raw
+			// JSON object, use `jsonencode` function to represent JSON
 			check?: string
 
 			// Whether to ping using the ipv4 protocol.
@@ -70,8 +77,12 @@ elasticstack_kibana_synthetics_monitor: {
 			proxy_url?: string
 
 			// Controls the indexing of the HTTP response body contents to the
-			// `http.response.body.contents` field.. Raw JSON object, use `jsonencode`
-			// function to represent JSON
+			// `http.response.body.contents` field. Supported sub-keys include
+			// `include_body` (`on_error`/`never`/`always`) and `include_body_max_bytes`.
+			// See [Heartbeat HTTP
+			// options](https://www.elastic.co/docs/reference/beats/heartbeat/monitor-http-options)
+			// for the full list. Raw JSON object, use `jsonencode` function to represent
+			// JSON
 			response?: string
 
 			// Certificate.

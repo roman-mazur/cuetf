@@ -67,27 +67,280 @@ elasticstack_kibana_dashboard: {
 
 		// The panels to display in the dashboard.
 		panels?: matchN(1, [close({
-			// The configuration of the panel as a JSON string. Practitioner-authored
-			// panel-level `config_json` is valid only when `type` is `markdown` or `vis`.
-			// Typed panel kinds such as `image`, `slo_alerts`, and `discover_session` use
-			// their dedicated blocks (`image_config`, `slo_alerts_config`,
-			// `discover_session_config`), not panel-level `config_json`. Mutually
-			// exclusive with `slo_burn_rate_config`, `slo_error_budget_config`,
+			// Configuration for an AIOps change point chart panel. Anchored to a data view
+			// and metric field; optional aggregation, split, partitions, and view controls
+			// follow the API-documented enums. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
 			// `slo_overview_config`, `synthetics_monitors_config`,
 			// `synthetics_stats_overview_config`, `time_slider_control_config`,
 			// `options_list_control_config`, `range_slider_control_config`,
-			// `esql_control_config`, `markdown_config`, `image_config`,
-			// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `slo_alerts_config`, `vis_config`,
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`.
+			aiops_change_point_chart_config?: close({
+				// The aggregation function used to calculate the metric values. One of `avg`, `max`, `min`, `sum`.
+				aggregation_function?: string
+
+				// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+				// panel inherits the dashboard `time_range` and this attribute stays null in
+				// state (REQ-009).
+				time_range?: close({
+					// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+					from!: string
+
+					// Optional time range mode. When set, must be `absolute` or `relative`.
+					mode?: string
+
+					// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+					to!: string
+				})
+
+				// The data view ID used for change point detection.
+				data_view_id!: string
+
+				// Optional panel description.
+				description?: string
+
+				// When true, hides the panel border.
+				hide_border?: bool
+
+				// When true, hides the panel title.
+				hide_title?: bool
+
+				// Maximum number of change points to visualise. Kibana default is `6`. Float32
+				// in state matches the Kibana API and avoids refresh drift.
+				max_series_to_plot?: number
+
+				// The metric field used by the aggregation function.
+				metric_field!: string
+
+				// Optional split field values to include in the panel. Modelled as a set to
+				// prevent plan drift from API-returned ordering; duplicate entries are
+				// silently deduplicated. An empty set is not meaningful (omit the attribute to
+				// disable filtering); a non-null set must contain at least one entry.
+				partitions?: [...string]
+
+				// The optional field used to split change-point results.
+				split_field?: string
+
+				// Optional panel title shown in the panel header.
+				title?: string
+
+				// The type of change point detection view to display. One of `charts`, `table`.
+				view_type?: string
+			})
+
+			// The configuration of the panel as a JSON string. Practitioner-authored
+			// panel-level `config_json` is valid only when `type` is `markdown` or `vis`.
+			// Typed panel kinds such as `image`, `slo_alerts`, `discover_session`,
+			// `field_stats_table`, `ml_anomaly_swimlane`, `ml_anomaly_charts`, and
+			// `ml_single_metric_viewer` use their dedicated blocks (`image_config`,
+			// `slo_alerts_config`, `discover_session_config`, `field_stats_table_config`,
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`), not panel-level `config_json`. Mutually
+			// exclusive with `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+			// `time_slider_control_config`, `options_list_control_config`,
+			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			config_json?: string
+
+			// Configuration for an AIOps log rate analysis panel. Anchored to a data view;
+			// the remaining fields are the standard optional panel presentation
+			// passthroughs. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `slo_alerts_config`, `vis_config`,
+			// `discover_session_config`, `field_stats_table_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+			aiops_log_rate_analysis_config?: close({
+				// The data view ID used to run log rate analysis.
+				data_view_id!: string
+
+				// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+				// panel inherits the dashboard `time_range` and this attribute stays null in
+				// state (REQ-009).
+				time_range?: close({
+					// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+					from!: string
+
+					// Optional time range mode. When set, must be `absolute` or `relative`.
+					mode?: string
+
+					// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+					to!: string
+				})
+
+				// Optional panel description.
+				description?: string
+
+				// When true, hides the panel border.
+				hide_border?: bool
+
+				// When true, hides the panel title.
+				hide_title?: bool
+
+				// Optional panel title shown in the panel header.
+				title?: string
+			})
+
+			// The identifier of the panel (API `id`).
+			id?: string
+
+			// Configuration for an AIOps pattern analysis panel. Anchored to a data view
+			// and text field; optional sampling and time-range controls follow the
+			// API-documented bounds. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `slo_alerts_config`, `vis_config`,
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_change_point_chart_config`.
+			aiops_pattern_analysis_config?: close({
+				// The data view ID used for pattern analysis.
+				data_view_id!: string
+
+				// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+				// panel inherits the dashboard `time_range` and this attribute stays null in
+				// state (REQ-009).
+				time_range?: close({
+					// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+					from!: string
+
+					// Optional time range mode. When set, must be `absolute` or `relative`.
+					mode?: string
+
+					// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+					to!: string
+				})
+
+				// Optional panel description.
+				description?: string
+
+				// The text field on which to run pattern analysis.
+				field_name!: string
+
+				// When true, hides the panel border.
+				hide_border?: bool
+
+				// When true, hides the panel title.
+				hide_title?: bool
+
+				// Minimum time range for pattern analysis. One of `no_minimum`, `1_week`,
+				// `1_month`, `3_months`, `6_months`.
+				minimum_time_range?: string
+
+				// The random sampler mode. One of `off`, `on_automatic`, `on_manual`.
+				random_sampler_mode?: string
+
+				// Sampling probability, only meaningful when `random_sampler_mode = on_manual`.
+				// Must be between `0.00001` and `0.5`. Float32 in state matches the Kibana API
+				// and avoids refresh drift.
+				random_sampler_probability?: number
+
+				// Optional panel title shown in the panel header.
+				title?: string
+			})
+
+			// The type of the panel (e.g. 'markdown', 'vis').
+			type!: string
+
+			// Configuration for an APM service map panel. All fields are optional. Mutually
+			// exclusive with `config_json`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+			// `time_slider_control_config`, `options_list_control_config`,
+			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+			apm_service_map_config?: close({
+				// Filter services by alert status.
+				alert_status_filter?: [...string]
+
+				// Optional panel time range (`from`, `to`, and optional `mode`).
+				time_range?: close({
+					// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+					from!: string
+
+					// Optional time range mode. When set, must be `absolute` or `relative`.
+					mode?: string
+
+					// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+					to!: string
+				})
+
+				// Filter services by anomaly severity.
+				anomaly_severity_filter?: [...string]
+
+				// Filter services by connection state.
+				connection_filter?: [...string]
+
+				// Optional panel description.
+				description?: string
+
+				// APM service environment (for example, `production`).
+				environment?: string
+
+				// When true, hides the panel border.
+				hide_border?: bool
+
+				// When true, hides the panel title.
+				hide_title?: bool
+
+				// KQL query string applied to the service map.
+				kuery?: string
+
+				// Layout orientation of the service map.
+				map_orientation?: string
+
+				// Opaque identifier of a saved APM service group.
+				service_group_id?: string
+
+				// Focus the service map on a specific APM service.
+				service_name?: string
+
+				// Filter services by SLO status.
+				slo_status_filter?: [...string]
+
+				// When set, the panel follows dashboard-level filters.
+				sync_with_dashboard_filters?: bool
+
+				// Optional panel title shown in the panel header.
+				title?: string
+			})
 
 			// Configuration for a `discover_session` panel
 			// (`kbn-dashboard-panel-type-discover_session`). Set exactly one of `by_value`
 			// or `by_reference`. Mutually exclusive with `config_json`,
-			// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
-			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-			// `time_slider_control_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-			// `image_config`, `slo_alerts_config`, `vis_config`.
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `slo_alerts_config`, `vis_config`,
+			// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+			// `links_config`, `aiops_pattern_analysis_config`,
+			// `aiops_change_point_chart_config`.
 			discover_session_config?: close({
 				// Reference an existing Discover session saved object via `ref_id`. Client-side
 				// `references` JSON is not modeled in v1 (see change design). Omit
@@ -361,16 +614,17 @@ elasticstack_kibana_dashboard: {
 				title?: string
 			})
 
-			// The identifier of the panel (API `id`).
-			id?: string
-
 			// Configuration for an ES|QL control panel. Use this to manage ES|QL variable
 			// controls on a dashboard. Mutually exclusive with `config_json`,
-			// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
-			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-			// `time_slider_control_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `markdown_config`, `image_config`,
-			// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			esql_control_config?: close({
 				// Pre-populated list of available options shown before the query executes.
 				available_options?: [...string]
@@ -416,14 +670,129 @@ elasticstack_kibana_dashboard: {
 				variable_type!: string
 			})
 
-			// Configuration for an `image` panel (`kbn-dashboard-panel-type-image`).
-			// Required when `type` is `image`. References the Kibana Dashboard API image
-			// embeddable `config` shape. Mutually exclusive with `config_json`,
+			// Configuration for a `field_stats_table` panel (Data Visualizer field-statistics table).
+			//
+			// Set exactly one of `by_dataview` or `by_esql`. The active branch determines
+			// the API `view_type` discriminator (`dataview` or `esql`); practitioners do
+			// not set `view_type` directly.
+			// Mutually exclusive with `config_json`, `apm_service_map_config`,
 			// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 			// `time_slider_control_config`, `options_list_control_config`,
 			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-			// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `aiops_log_rate_analysis_config`,
+			// `links_config`, `aiops_pattern_analysis_config`,
+			// `aiops_change_point_chart_config`.
+			field_stats_table_config?: close({
+				// Field statistics backed by a Kibana data view (`view_type = "dataview"` on the wire).
+				//
+				// Requires `data_view_id`. Optional presentation fields and
+				// `show_distributions` apply to this branch only.
+				by_dataview?: close({
+					// The identifier of the source data view.
+					data_view_id!: string
+
+					// Optional panel time range override (`from`, `to`, optional `mode`).
+					// Null-preserved on read: when omitted in configuration, this attribute stays
+					// null in state even if Kibana returns values (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// Optional panel description.
+					description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// When true, shows distribution mini-charts in the field statistics table.
+					// Null-preserved on read (REQ-009).
+					show_distributions?: bool
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// Field statistics backed by an ES|QL query (`view_type = "esql"` on the wire).
+				//
+				// Requires `query` (mapped to `query.esql` in the API). Optional presentation
+				// fields and `show_distributions` apply to this branch only.
+				by_esql?: close({
+					// Optional panel description.
+					description?: string
+
+					// Optional panel time range override (`from`, `to`, optional `mode`).
+					// Null-preserved on read: when omitted in configuration, this attribute stays
+					// null in state even if Kibana returns values (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// The ES|QL query string (mapped to `query.esql` in the API).
+					query!: string
+
+					// When true, shows distribution mini-charts in the field statistics table.
+					// Null-preserved on read (REQ-009).
+					show_distributions?: bool
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+			})
+
+			// The grid coordinates and dimensions of the panel.
+			grid!: close({
+				// The height.
+				h?: number
+
+				// The width.
+				w?: number
+
+				// The X coordinate.
+				x!: number
+
+				// The Y coordinate.
+				y!: number
+			})
+
+			// Configuration for an `image` panel (`kbn-dashboard-panel-type-image`).
+			// Required when `type` is `image`. References the Kibana Dashboard API image
+			// embeddable `config` shape. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `slo_alerts_config`, `vis_config`, `discover_session_config`,
+			// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+			// `links_config`, `aiops_pattern_analysis_config`,
+			// `aiops_change_point_chart_config`.
 			image_config?: close({
 				// Accessible alternate text for the image.
 				alt_text?: string
@@ -578,17 +947,120 @@ elasticstack_kibana_dashboard: {
 				title?: string
 			})
 
+			// Configuration for a `links` panel (`kbn-dashboard-panel-type-links`). Set
+			// exactly one of `by_value` or `by_reference`. Mutually exclusive with
+			// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+			// `time_slider_control_config`, `options_list_control_config`,
+			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `aiops_pattern_analysis_config`,
+			// `aiops_change_point_chart_config`.
+			links_config?: close({
+				// Reference a Kibana Links library saved object.
+				by_reference?: close({
+					// Optional panel description.
+					description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Reference id of a Kibana Links library saved object.
+					ref_id!: string
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// Inline links panel configuration.
+				by_value?: close({
+					// Optional panel description.
+					description?: string
+
+					// List of links to display in the panel.
+					links!: matchN(1, [close({
+						// Destination of the link: dashboard saved-object id for `dashboard` links, or
+						// a URL for `external` links.
+						destination!: string
+
+						// When true, the external URL is percent-encoded.
+						encode_url?: bool
+
+						// Optional display label for the link.
+						label?: string
+
+						// When true, opens the link in a new browser tab.
+						open_in_new_tab?: bool
+
+						// Type of link: `dashboard` for an internal Kibana dashboard link, or
+						// `external` for an arbitrary URL.
+						type!: string
+
+						// When true, the dashboard link applies the current filters.
+						use_filters?: bool
+
+						// When true, the dashboard link applies the current time range.
+						use_time_range?: bool
+					}), [...close({
+						// Destination of the link: dashboard saved-object id for `dashboard` links, or
+						// a URL for `external` links.
+						destination!: string
+
+						// When true, the external URL is percent-encoded.
+						encode_url?: bool
+
+						// Optional display label for the link.
+						label?: string
+
+						// When true, opens the link in a new browser tab.
+						open_in_new_tab?: bool
+
+						// Type of link: `dashboard` for an internal Kibana dashboard link, or
+						// `external` for an arbitrary URL.
+						type!: string
+
+						// When true, the dashboard link applies the current filters.
+						use_filters?: bool
+
+						// When true, the dashboard link applies the current time range.
+						use_time_range?: bool
+					})]])
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Layout direction for the links panel.
+					layout!: string
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+			})
+
 			// Configuration for a `markdown` panel (the Kibana Dashboard API
 			// `kbn-dashboard-panel-type-markdown` shape). Set exactly one of `by_value`
 			// (inline `content` with required nested `settings`) or `by_reference`
 			// (existing library item via `ref_id`). Presentation fields (`description`,
 			// `hide_title`, `title`, `hide_border`) are supported in both branches.
-			// Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-			// `slo_error_budget_config`, `slo_overview_config`,
+			// Mutually exclusive with `config_json`, `apm_service_map_config`,
+			// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 			// `time_slider_control_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `image_config`,
-			// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+			// `range_slider_control_config`, `esql_control_config`,
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			markdown_config?: close({
 				// Reference an existing markdown library item via `ref_id`. Optional
 				// `description`, `hide_title`, `title`, and `hide_border`.
@@ -637,116 +1109,413 @@ elasticstack_kibana_dashboard: {
 				})
 			})
 
-			// Configuration for an options list control panel. Provides a dropdown or
-			// multi-select filter based on a field in a data view. Mutually exclusive with
-			// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// Configuration for an ML anomaly charts panel
+			// (`kbn-dashboard-panel-type-ml_anomaly_charts`). Required when `type` is
+			// `ml_anomaly_charts`. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
 			// `slo_overview_config`, `synthetics_monitors_config`,
 			// `synthetics_stats_overview_config`, `time_slider_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-			// `image_config`, `slo_alerts_config`, `vis_config`,
-			// `discover_session_config`.
-			options_list_control_config?: close({
-				// The ID of the data view that the control is tied to.
-				data_view_id!: string
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+			ml_anomaly_charts_config?: close({
+				// Optional panel description.
+				description?: string
 
-				// Display preferences for the control widget.
-				display_settings?: close({
-					// When true, hides the action bar on the control.
-					hide_action_bar?: bool
+				// Severity bands to display. Each item sets either a named `severity` shortcut
+				// or a raw numeric `min`/`max` range, never both.
+				severity_threshold?: matchN(1, [close({
+					// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+					max?: number
 
-					// When true, hides the exclude toggle.
-					hide_exclude?: bool
+					// Lower bound of a raw severity range. Required when `severity` is omitted.
+					min?: number
 
-					// When true, hides the exists filter option.
-					hide_exists?: bool
+					// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
+					severity?: string
+				}), [...close({
+					// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+					max?: number
 
-					// When true, hides the sort control.
-					hide_sort?: bool
+					// Lower bound of a raw severity range. Required when `severity` is omitted.
+					min?: number
 
-					// Placeholder text shown when no option is selected.
-					placeholder?: string
+					// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
+					severity?: string
+				})]])
+
+				// When true, hides the panel border.
+				hide_border?: bool
+
+				// Optional panel-level time range (`from`, `to`, and optional `mode`).
+				time_range?: close({
+					// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+					from!: string
+
+					// Optional time range mode. When set, must be `absolute` or `relative`.
+					mode?: string
+
+					// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+					to!: string
 				})
 
-				// When true, selected options are used as an exclusion filter rather than an inclusion filter.
-				exclude?: bool
+				// When true, hides the panel title.
+				hide_title?: bool
 
-				// Default sort configuration for the suggestion list.
-				sort?: close({
-					// The field or criterion to sort by. Must be one of `_count` or `_key`.
-					by!: string
+				// Anomaly detection job IDs or group IDs whose results appear in the charts. At
+				// least one entry is required.
+				job_ids!: [...string]
 
-					// The sort direction. Must be one of `asc` or `desc`.
-					direction!: string
+				// Maximum number of anomaly series to plot.
+				max_series_to_plot?: number
+
+				// Optional panel title shown in the panel header.
+				title?: string
+			})
+
+			// Configuration for an ML anomaly swim lane panel
+			// (`kbn-dashboard-panel-type-ml_anomaly_swimlane`). Required when `type` is
+			// `ml_anomaly_swimlane`. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+			ml_anomaly_swimlane_config?: close({
+				// Optional panel description.
+				description?: string
+
+				// Optional panel-level time range (`from`, `to`, and optional `mode`).
+				time_range?: close({
+					// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+					from!: string
+
+					// Optional time range mode. When set, must be `absolute` or `relative`.
+					mode?: string
+
+					// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+					to!: string
 				})
 
-				// When true, the control filters for documents where the field exists.
-				exists_selected?: bool
+				// When true, hides the panel border.
+				hide_border?: bool
 
-				// The name of the field in the data view that the control is tied to.
-				field_name!: string
+				// When true, hides the panel title.
+				hide_title?: bool
 
-				// Whether the control skips field-level validation against the data view.
-				ignore_validations?: bool
+				// IDs of anomaly detection jobs or groups whose results appear in the swim
+				// lane. At least one entry is required.
+				job_ids!: [...string]
 
-				// When true, the control continues to show results even when the underlying query times out.
-				run_past_timeout?: bool
+				// Number of rows to display per page in a view-by swim lane. Ignored for overall swim lanes.
+				per_page?: number
 
-				// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
-				// or `exact` when set.
-				search_technique?: string
+				// Swim lane mode. Use `overall` for a single aggregate lane or `viewBy` to
+				// split anomalies by field.
+				swimlane_type!: string
 
-				// The initially or persistently selected option values. All values are represented as strings.
-				selected_options?: [...string]
-
-				// When true, only one option may be selected at a time.
-				single_select?: bool
-
-				// Human-readable label displayed above the control.
+				// Optional panel title shown in the panel header.
 				title?: string
 
-				// Whether the control applies the dashboard's global filters to its own query.
-				use_global_filters?: bool
+				// Field name used to split anomalies into a view-by swim lane. Required when
+				// `swimlane_type` is `viewBy`; must not be set when `swimlane_type` is
+				// `overall`.
+				view_by?: string
+			})
+
+			// Configuration for an ML single metric viewer panel
+			// (`kbn-dashboard-panel-type-ml_single_metric_viewer`). Required when `type`
+			// is `ml_single_metric_viewer`. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+			ml_single_metric_viewer_config?: close({
+				// Optional panel description.
+				description?: string
+
+				// Values of partition, by, or over fields that identify the single time series
+				// to display. Each map entry must set exactly one of `string_value` or
+				// `numeric_value`.
+				selected_entities?: [string]: close({
+					// Numeric entity value for the field.
+					numeric_value?: number
+
+					// String entity value for the field.
+					string_value?: string
+				})
+
+				// Forecast identifier to overlay on the chart.
+				forecast_id?: string
+
+				// Optional panel-level time range (`from`, `to`, and optional `mode`).
+				time_range?: close({
+					// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+					from!: string
+
+					// Optional time range mode. When set, must be `absolute` or `relative`.
+					mode?: string
+
+					// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+					to!: string
+				})
+
+				// For `metric` detectors, selects which value to plot: `min`, `max`, or `mean`.
+				// Ignored for other detector functions.
+				function_description?: string
+
+				// When true, hides the panel border.
+				hide_border?: bool
+
+				// When true, hides the panel title.
+				hide_title?: bool
+
+				// Anomaly detection job ID whose results appear in the single metric viewer.
+				// Exactly one entry is required.
+				job_ids!: [...string]
+
+				// Zero-based index of the detector within the job whose results are shown.
+				selected_detector_index?: number
+
+				// Optional panel title shown in the panel header.
+				title?: string
+			})
+
+			// Configuration for an options list control panel. Provides a dropdown or
+			// multi-select filter based on a field in a data view (`by_field`) or an ES|QL
+			// query (`by_esql`). Exactly one of `by_field` or `by_esql` must be set.
+			// Mutually exclusive with `config_json`, `apm_service_map_config`,
+			// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+			// `time_slider_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `slo_alerts_config`, `vis_config`,
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+			options_list_control_config?: close({
+				// Configuration for an options list control sourced from an ES|QL query.
+				// Mutually exclusive with `by_field`.
+				by_esql?: close({
+					// Display preferences for the control widget.
+					display_settings?: close({
+						// When true, hides the action bar on the control.
+						hide_action_bar?: bool
+
+						// When true, hides the exclude toggle.
+						hide_exclude?: bool
+
+						// When true, hides the exists filter option.
+						hide_exists?: bool
+
+						// When true, hides the sort control.
+						hide_sort?: bool
+
+						// Placeholder text shown when no option is selected.
+						placeholder?: string
+					})
+
+					// The ES|QL query that produces the available option values.
+					esql_query!: string
+
+					// When true, the control filters for documents where the field exists.
+					exists_selected?: bool
+
+					// Whether the control skips field-level validation against the data view.
+					ignore_validations?: bool
+
+					// When true, the control continues to show results even when the underlying query times out.
+					run_past_timeout?: bool
+
+					// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+					// or `exact` when set.
+					search_technique?: string
+
+					// The initially or persistently selected option values. All values are represented as strings.
+					selected_options?: [...string]
+
+					// When true, only one option may be selected at a time.
+					single_select?: bool
+
+					// Default sort configuration for the suggestion list.
+					sort?: close({
+						// The field or criterion to sort by. Must be one of `_count` or `_key`.
+						by!: string
+
+						// The sort direction. Must be one of `asc` or `desc`.
+						direction!: string
+					})
+
+					// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+					exclude?: bool
+
+					// Human-readable label displayed above the control.
+					title?: string
+
+					// Whether the control applies the dashboard's global filters to its own query.
+					use_global_filters?: bool
+
+					// The source discriminator for this branch. Must be `esql_query`.
+					values_source!: string
+				})
+
+				// Configuration for an options list control sourced from a Kibana data view
+				// field. Mutually exclusive with `by_esql`.
+				by_field?: close({
+					// The ID of the data view that the control is tied to.
+					data_view_id!: string
+
+					// Display preferences for the control widget.
+					display_settings?: close({
+						// When true, hides the action bar on the control.
+						hide_action_bar?: bool
+
+						// When true, hides the exclude toggle.
+						hide_exclude?: bool
+
+						// When true, hides the exists filter option.
+						hide_exists?: bool
+
+						// When true, hides the sort control.
+						hide_sort?: bool
+
+						// Placeholder text shown when no option is selected.
+						placeholder?: string
+					})
+
+					// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+					exclude?: bool
+
+					// Default sort configuration for the suggestion list.
+					sort?: close({
+						// The field or criterion to sort by. Must be one of `_count` or `_key`.
+						by!: string
+
+						// The sort direction. Must be one of `asc` or `desc`.
+						direction!: string
+					})
+
+					// When true, the control filters for documents where the field exists.
+					exists_selected?: bool
+
+					// The name of the field in the data view that the control is tied to.
+					field_name!: string
+
+					// Whether the control skips field-level validation against the data view.
+					ignore_validations?: bool
+
+					// When true, the control continues to show results even when the underlying query times out.
+					run_past_timeout?: bool
+
+					// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+					// or `exact` when set.
+					search_technique?: string
+
+					// The initially or persistently selected option values. All values are represented as strings.
+					selected_options?: [...string]
+
+					// When true, only one option may be selected at a time.
+					single_select?: bool
+
+					// Human-readable label displayed above the control.
+					title?: string
+
+					// Whether the control applies the dashboard's global filters to its own query.
+					use_global_filters?: bool
+				})
 			})
 
 			// Configuration for a range slider control panel. Provides a min/max range
-			// filter tied to a data view field. Mutually exclusive with `config_json`,
-			// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
+			// filter sourced from either a data view field (`by_field`) or an ES|QL query
+			// (`by_esql`). Exactly one of the two must be set. Mutually exclusive with
+			// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
 			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 			// `time_slider_control_config`, `options_list_control_config`,
-			// `esql_control_config`, `markdown_config`, `image_config`,
-			// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `slo_alerts_config`, `vis_config`,
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			range_slider_control_config?: close({
-				// The ID of the data view that the control is tied to.
-				data_view_id!: string
+				// Range slider sourced from an ES|QL query. Mutually exclusive with `by_field`.
+				by_esql?: close({
+					// The ES|QL query that produces the min/max range values.
+					esql_query!: string
 
-				// The name of the field in the data view that the control is tied to.
-				field_name!: string
+					// Whether to suppress validation errors during intermediate states.
+					ignore_validations?: bool
 
-				// Whether to suppress validation errors during intermediate states.
-				ignore_validations?: bool
+					// The step size for the range slider. Stored as float32 to match the Kibana API
+					// type and avoid refresh drift.
+					step?: number
 
-				// The step size for the range slider. Stored as float32 to match the Kibana API
-				// type and avoid refresh drift.
-				step?: number
+					// A human-readable title for the control.
+					title?: string
 
-				// A human-readable title for the control.
-				title?: string
+					// Whether the control respects dashboard-level filters.
+					use_global_filters?: bool
 
-				// Whether the control respects dashboard-level filters.
-				use_global_filters?: bool
+					// Initial range as a list of exactly 2 strings: [min, max].
+					value?: [...string]
 
-				// Initial range as a list of exactly 2 strings: [min, max].
-				value?: [...string]
+					// The source of the range values. Must be `esql_query`.
+					values_source!: string
+				})
+
+				// Range slider sourced from a Kibana data view field. Mutually exclusive with `by_esql`.
+				by_field?: close({
+					// The ID of the data view that the control is tied to.
+					data_view_id!: string
+
+					// The name of the field in the data view that the control is tied to.
+					field_name!: string
+
+					// Whether to suppress validation errors during intermediate states.
+					ignore_validations?: bool
+
+					// The step size for the range slider. Stored as float32 to match the Kibana API
+					// type and avoid refresh drift.
+					step?: number
+
+					// A human-readable title for the control.
+					title?: string
+
+					// Whether the control respects dashboard-level filters.
+					use_global_filters?: bool
+
+					// Initial range as a list of exactly 2 strings: [min, max].
+					value?: [...string]
+				})
 			})
 
 			// Configuration for an `slo_alerts` panel
 			// (`kbn-dashboard-panel-type-slo_alerts`). Required when `type` is
-			// `slo_alerts`. Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-			// `slo_error_budget_config`, `slo_overview_config`,
-			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-			// `time_slider_control_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-			// `image_config`, `vis_config`, `discover_session_config`.
+			// `slo_alerts`. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `vis_config`, `discover_session_config`,
+			// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+			// `links_config`, `aiops_pattern_analysis_config`,
+			// `aiops_change_point_chart_config`.
 			slo_alerts_config?: close({
 				// Optional panel description.
 				description?: string
@@ -813,12 +1582,16 @@ elasticstack_kibana_dashboard: {
 
 			// Configuration for an SLO burn rate panel. Use this for panels that visualize
 			// the burn rate of an SLO over a configurable look-back window. Mutually
-			// exclusive with `config_json`, `slo_error_budget_config`,
-			// `slo_overview_config`, `synthetics_monitors_config`,
-			// `synthetics_stats_overview_config`, `time_slider_control_config`,
-			// `options_list_control_config`, `range_slider_control_config`,
-			// `esql_control_config`, `markdown_config`, `image_config`,
-			// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+			// exclusive with `config_json`, `apm_service_map_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+			// `time_slider_control_config`, `options_list_control_config`,
+			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			slo_burn_rate_config?: close({
 				// Optional panel description.
 				description?: string
@@ -873,12 +1646,16 @@ elasticstack_kibana_dashboard: {
 
 			// Configuration for an SLO error budget panel. Displays the burn chart of
 			// remaining error budget for a specific SLO. Mutually exclusive with
-			// `config_json`, `slo_burn_rate_config`, `slo_overview_config`,
-			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-			// `time_slider_control_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 			// `image_config`, `slo_alerts_config`, `vis_config`,
-			// `discover_session_config`.
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			slo_error_budget_config?: close({
 				// Optional panel description.
 				description?: string
@@ -931,12 +1708,16 @@ elasticstack_kibana_dashboard: {
 
 			// Configuration for an SLO overview panel. Use either `single` (for a single
 			// SLO) or `groups` (for grouped SLO overview). Mutually exclusive with
-			// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-			// `time_slider_control_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 			// `image_config`, `slo_alerts_config`, `vis_config`,
-			// `discover_session_config`.
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			slo_overview_config?: close({
 				// Configuration for a grouped SLO overview panel. Mutually exclusive with `single`.
 				groups?: close({
@@ -1058,12 +1839,16 @@ elasticstack_kibana_dashboard: {
 			// Configuration for a Synthetics monitors panel. Displays a table of Elastic
 			// Synthetics monitors and their current status. All fields are optional — omit
 			// the block entirely for a bare panel with no filtering. Mutually exclusive
-			// with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-			// `slo_overview_config`, `synthetics_stats_overview_config`,
-			// `time_slider_control_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 			// `image_config`, `slo_alerts_config`, `vis_config`,
-			// `discover_session_config`.
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			synthetics_monitors_config?: close({
 				// Optional panel description.
 				description?: string
@@ -1163,12 +1948,16 @@ elasticstack_kibana_dashboard: {
 
 			// Configuration for a Synthetics stats overview panel. All fields are optional;
 			// an absent or empty block shows statistics for all monitors visible within
-			// the space. Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-			// `slo_error_budget_config`, `slo_overview_config`,
+			// the space. Mutually exclusive with `config_json`, `apm_service_map_config`,
+			// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 			// `synthetics_monitors_config`, `time_slider_control_config`,
 			// `options_list_control_config`, `range_slider_control_config`,
-			// `esql_control_config`, `markdown_config`, `image_config`,
-			// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `slo_alerts_config`, `vis_config`,
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			synthetics_stats_overview_config?: close({
 				// Optional panel description.
 				description?: string
@@ -1293,12 +2082,16 @@ elasticstack_kibana_dashboard: {
 
 			// Configuration for a time slider control panel. Controls the visible time
 			// window within the dashboard's global time range. Mutually exclusive with
-			// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-			// `slo_overview_config`, `synthetics_monitors_config`,
-			// `synthetics_stats_overview_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 			// `image_config`, `slo_alerts_config`, `vis_config`,
-			// `discover_session_config`.
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			time_slider_control_config?: close({
 				// End of the visible time window as a fraction of the dashboard global range
 				// (0.0–1.0). Float32 in state matches the Kibana API and avoids refresh drift.
@@ -1312,34 +2105,20 @@ elasticstack_kibana_dashboard: {
 				start_percentage_of_time_range?: number
 			})
 
-			// The type of the panel (e.g. 'markdown', 'vis').
-			type!: string
-
-			// The grid coordinates and dimensions of the panel.
-			grid!: close({
-				// The height.
-				h?: number
-
-				// The width.
-				w?: number
-
-				// The X coordinate.
-				x!: number
-
-				// The Y coordinate.
-				y!: number
-			})
-
 			// Configuration for a `vis` panel (`type = "vis"`). Typed alternative to
 			// panel-level `config_json`: set exactly one of `by_value` (exactly one of 12
 			// Lens chart kinds) or `by_reference`. With `by_reference`, use structured
 			// `drilldowns` and optional `time_range`. Mutually exclusive with
-			// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-			// `slo_overview_config`, `synthetics_monitors_config`,
-			// `synthetics_stats_overview_config`, `time_slider_control_config`,
-			// `options_list_control_config`, `range_slider_control_config`,
-			// `esql_control_config`, `markdown_config`, `image_config`,
-			// `slo_alerts_config`, `discover_session_config`.
+			// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+			// `time_slider_control_config`, `options_list_control_config`,
+			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			vis_config?: close({
 				// By-reference `vis` configuration: structured `drilldowns`, `ref_id`, optional
 				// `references_json`, and optional `time_range`.
@@ -4979,27 +5758,280 @@ elasticstack_kibana_dashboard: {
 				})
 			})
 		}), [...close({
-			// The configuration of the panel as a JSON string. Practitioner-authored
-			// panel-level `config_json` is valid only when `type` is `markdown` or `vis`.
-			// Typed panel kinds such as `image`, `slo_alerts`, and `discover_session` use
-			// their dedicated blocks (`image_config`, `slo_alerts_config`,
-			// `discover_session_config`), not panel-level `config_json`. Mutually
-			// exclusive with `slo_burn_rate_config`, `slo_error_budget_config`,
+			// Configuration for an AIOps change point chart panel. Anchored to a data view
+			// and metric field; optional aggregation, split, partitions, and view controls
+			// follow the API-documented enums. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
 			// `slo_overview_config`, `synthetics_monitors_config`,
 			// `synthetics_stats_overview_config`, `time_slider_control_config`,
 			// `options_list_control_config`, `range_slider_control_config`,
-			// `esql_control_config`, `markdown_config`, `image_config`,
-			// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `slo_alerts_config`, `vis_config`,
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`.
+			aiops_change_point_chart_config?: close({
+				// The aggregation function used to calculate the metric values. One of `avg`, `max`, `min`, `sum`.
+				aggregation_function?: string
+
+				// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+				// panel inherits the dashboard `time_range` and this attribute stays null in
+				// state (REQ-009).
+				time_range?: close({
+					// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+					from!: string
+
+					// Optional time range mode. When set, must be `absolute` or `relative`.
+					mode?: string
+
+					// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+					to!: string
+				})
+
+				// The data view ID used for change point detection.
+				data_view_id!: string
+
+				// Optional panel description.
+				description?: string
+
+				// When true, hides the panel border.
+				hide_border?: bool
+
+				// When true, hides the panel title.
+				hide_title?: bool
+
+				// Maximum number of change points to visualise. Kibana default is `6`. Float32
+				// in state matches the Kibana API and avoids refresh drift.
+				max_series_to_plot?: number
+
+				// The metric field used by the aggregation function.
+				metric_field!: string
+
+				// Optional split field values to include in the panel. Modelled as a set to
+				// prevent plan drift from API-returned ordering; duplicate entries are
+				// silently deduplicated. An empty set is not meaningful (omit the attribute to
+				// disable filtering); a non-null set must contain at least one entry.
+				partitions?: [...string]
+
+				// The optional field used to split change-point results.
+				split_field?: string
+
+				// Optional panel title shown in the panel header.
+				title?: string
+
+				// The type of change point detection view to display. One of `charts`, `table`.
+				view_type?: string
+			})
+
+			// The configuration of the panel as a JSON string. Practitioner-authored
+			// panel-level `config_json` is valid only when `type` is `markdown` or `vis`.
+			// Typed panel kinds such as `image`, `slo_alerts`, `discover_session`,
+			// `field_stats_table`, `ml_anomaly_swimlane`, `ml_anomaly_charts`, and
+			// `ml_single_metric_viewer` use their dedicated blocks (`image_config`,
+			// `slo_alerts_config`, `discover_session_config`, `field_stats_table_config`,
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`), not panel-level `config_json`. Mutually
+			// exclusive with `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+			// `time_slider_control_config`, `options_list_control_config`,
+			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			config_json?: string
+
+			// Configuration for an AIOps log rate analysis panel. Anchored to a data view;
+			// the remaining fields are the standard optional panel presentation
+			// passthroughs. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `slo_alerts_config`, `vis_config`,
+			// `discover_session_config`, `field_stats_table_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+			aiops_log_rate_analysis_config?: close({
+				// The data view ID used to run log rate analysis.
+				data_view_id!: string
+
+				// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+				// panel inherits the dashboard `time_range` and this attribute stays null in
+				// state (REQ-009).
+				time_range?: close({
+					// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+					from!: string
+
+					// Optional time range mode. When set, must be `absolute` or `relative`.
+					mode?: string
+
+					// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+					to!: string
+				})
+
+				// Optional panel description.
+				description?: string
+
+				// When true, hides the panel border.
+				hide_border?: bool
+
+				// When true, hides the panel title.
+				hide_title?: bool
+
+				// Optional panel title shown in the panel header.
+				title?: string
+			})
+
+			// The identifier of the panel (API `id`).
+			id?: string
+
+			// Configuration for an AIOps pattern analysis panel. Anchored to a data view
+			// and text field; optional sampling and time-range controls follow the
+			// API-documented bounds. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `slo_alerts_config`, `vis_config`,
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_change_point_chart_config`.
+			aiops_pattern_analysis_config?: close({
+				// The data view ID used for pattern analysis.
+				data_view_id!: string
+
+				// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+				// panel inherits the dashboard `time_range` and this attribute stays null in
+				// state (REQ-009).
+				time_range?: close({
+					// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+					from!: string
+
+					// Optional time range mode. When set, must be `absolute` or `relative`.
+					mode?: string
+
+					// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+					to!: string
+				})
+
+				// Optional panel description.
+				description?: string
+
+				// The text field on which to run pattern analysis.
+				field_name!: string
+
+				// When true, hides the panel border.
+				hide_border?: bool
+
+				// When true, hides the panel title.
+				hide_title?: bool
+
+				// Minimum time range for pattern analysis. One of `no_minimum`, `1_week`,
+				// `1_month`, `3_months`, `6_months`.
+				minimum_time_range?: string
+
+				// The random sampler mode. One of `off`, `on_automatic`, `on_manual`.
+				random_sampler_mode?: string
+
+				// Sampling probability, only meaningful when `random_sampler_mode = on_manual`.
+				// Must be between `0.00001` and `0.5`. Float32 in state matches the Kibana API
+				// and avoids refresh drift.
+				random_sampler_probability?: number
+
+				// Optional panel title shown in the panel header.
+				title?: string
+			})
+
+			// The type of the panel (e.g. 'markdown', 'vis').
+			type!: string
+
+			// Configuration for an APM service map panel. All fields are optional. Mutually
+			// exclusive with `config_json`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+			// `time_slider_control_config`, `options_list_control_config`,
+			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+			apm_service_map_config?: close({
+				// Filter services by alert status.
+				alert_status_filter?: [...string]
+
+				// Optional panel time range (`from`, `to`, and optional `mode`).
+				time_range?: close({
+					// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+					from!: string
+
+					// Optional time range mode. When set, must be `absolute` or `relative`.
+					mode?: string
+
+					// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+					to!: string
+				})
+
+				// Filter services by anomaly severity.
+				anomaly_severity_filter?: [...string]
+
+				// Filter services by connection state.
+				connection_filter?: [...string]
+
+				// Optional panel description.
+				description?: string
+
+				// APM service environment (for example, `production`).
+				environment?: string
+
+				// When true, hides the panel border.
+				hide_border?: bool
+
+				// When true, hides the panel title.
+				hide_title?: bool
+
+				// KQL query string applied to the service map.
+				kuery?: string
+
+				// Layout orientation of the service map.
+				map_orientation?: string
+
+				// Opaque identifier of a saved APM service group.
+				service_group_id?: string
+
+				// Focus the service map on a specific APM service.
+				service_name?: string
+
+				// Filter services by SLO status.
+				slo_status_filter?: [...string]
+
+				// When set, the panel follows dashboard-level filters.
+				sync_with_dashboard_filters?: bool
+
+				// Optional panel title shown in the panel header.
+				title?: string
+			})
 
 			// Configuration for a `discover_session` panel
 			// (`kbn-dashboard-panel-type-discover_session`). Set exactly one of `by_value`
 			// or `by_reference`. Mutually exclusive with `config_json`,
-			// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
-			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-			// `time_slider_control_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-			// `image_config`, `slo_alerts_config`, `vis_config`.
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `slo_alerts_config`, `vis_config`,
+			// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+			// `links_config`, `aiops_pattern_analysis_config`,
+			// `aiops_change_point_chart_config`.
 			discover_session_config?: close({
 				// Reference an existing Discover session saved object via `ref_id`. Client-side
 				// `references` JSON is not modeled in v1 (see change design). Omit
@@ -5273,16 +6305,17 @@ elasticstack_kibana_dashboard: {
 				title?: string
 			})
 
-			// The identifier of the panel (API `id`).
-			id?: string
-
 			// Configuration for an ES|QL control panel. Use this to manage ES|QL variable
 			// controls on a dashboard. Mutually exclusive with `config_json`,
-			// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
-			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-			// `time_slider_control_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `markdown_config`, `image_config`,
-			// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			esql_control_config?: close({
 				// Pre-populated list of available options shown before the query executes.
 				available_options?: [...string]
@@ -5328,14 +6361,129 @@ elasticstack_kibana_dashboard: {
 				variable_type!: string
 			})
 
-			// Configuration for an `image` panel (`kbn-dashboard-panel-type-image`).
-			// Required when `type` is `image`. References the Kibana Dashboard API image
-			// embeddable `config` shape. Mutually exclusive with `config_json`,
+			// Configuration for a `field_stats_table` panel (Data Visualizer field-statistics table).
+			//
+			// Set exactly one of `by_dataview` or `by_esql`. The active branch determines
+			// the API `view_type` discriminator (`dataview` or `esql`); practitioners do
+			// not set `view_type` directly.
+			// Mutually exclusive with `config_json`, `apm_service_map_config`,
 			// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 			// `time_slider_control_config`, `options_list_control_config`,
 			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-			// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `aiops_log_rate_analysis_config`,
+			// `links_config`, `aiops_pattern_analysis_config`,
+			// `aiops_change_point_chart_config`.
+			field_stats_table_config?: close({
+				// Field statistics backed by a Kibana data view (`view_type = "dataview"` on the wire).
+				//
+				// Requires `data_view_id`. Optional presentation fields and
+				// `show_distributions` apply to this branch only.
+				by_dataview?: close({
+					// The identifier of the source data view.
+					data_view_id!: string
+
+					// Optional panel time range override (`from`, `to`, optional `mode`).
+					// Null-preserved on read: when omitted in configuration, this attribute stays
+					// null in state even if Kibana returns values (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// Optional panel description.
+					description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// When true, shows distribution mini-charts in the field statistics table.
+					// Null-preserved on read (REQ-009).
+					show_distributions?: bool
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// Field statistics backed by an ES|QL query (`view_type = "esql"` on the wire).
+				//
+				// Requires `query` (mapped to `query.esql` in the API). Optional presentation
+				// fields and `show_distributions` apply to this branch only.
+				by_esql?: close({
+					// Optional panel description.
+					description?: string
+
+					// Optional panel time range override (`from`, `to`, optional `mode`).
+					// Null-preserved on read: when omitted in configuration, this attribute stays
+					// null in state even if Kibana returns values (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// The ES|QL query string (mapped to `query.esql` in the API).
+					query!: string
+
+					// When true, shows distribution mini-charts in the field statistics table.
+					// Null-preserved on read (REQ-009).
+					show_distributions?: bool
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+			})
+
+			// The grid coordinates and dimensions of the panel.
+			grid!: close({
+				// The height.
+				h?: number
+
+				// The width.
+				w?: number
+
+				// The X coordinate.
+				x!: number
+
+				// The Y coordinate.
+				y!: number
+			})
+
+			// Configuration for an `image` panel (`kbn-dashboard-panel-type-image`).
+			// Required when `type` is `image`. References the Kibana Dashboard API image
+			// embeddable `config` shape. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `slo_alerts_config`, `vis_config`, `discover_session_config`,
+			// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+			// `links_config`, `aiops_pattern_analysis_config`,
+			// `aiops_change_point_chart_config`.
 			image_config?: close({
 				// Accessible alternate text for the image.
 				alt_text?: string
@@ -5490,17 +6638,120 @@ elasticstack_kibana_dashboard: {
 				title?: string
 			})
 
+			// Configuration for a `links` panel (`kbn-dashboard-panel-type-links`). Set
+			// exactly one of `by_value` or `by_reference`. Mutually exclusive with
+			// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+			// `time_slider_control_config`, `options_list_control_config`,
+			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `aiops_pattern_analysis_config`,
+			// `aiops_change_point_chart_config`.
+			links_config?: close({
+				// Reference a Kibana Links library saved object.
+				by_reference?: close({
+					// Optional panel description.
+					description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Reference id of a Kibana Links library saved object.
+					ref_id!: string
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// Inline links panel configuration.
+				by_value?: close({
+					// Optional panel description.
+					description?: string
+
+					// List of links to display in the panel.
+					links!: matchN(1, [close({
+						// Destination of the link: dashboard saved-object id for `dashboard` links, or
+						// a URL for `external` links.
+						destination!: string
+
+						// When true, the external URL is percent-encoded.
+						encode_url?: bool
+
+						// Optional display label for the link.
+						label?: string
+
+						// When true, opens the link in a new browser tab.
+						open_in_new_tab?: bool
+
+						// Type of link: `dashboard` for an internal Kibana dashboard link, or
+						// `external` for an arbitrary URL.
+						type!: string
+
+						// When true, the dashboard link applies the current filters.
+						use_filters?: bool
+
+						// When true, the dashboard link applies the current time range.
+						use_time_range?: bool
+					}), [...close({
+						// Destination of the link: dashboard saved-object id for `dashboard` links, or
+						// a URL for `external` links.
+						destination!: string
+
+						// When true, the external URL is percent-encoded.
+						encode_url?: bool
+
+						// Optional display label for the link.
+						label?: string
+
+						// When true, opens the link in a new browser tab.
+						open_in_new_tab?: bool
+
+						// Type of link: `dashboard` for an internal Kibana dashboard link, or
+						// `external` for an arbitrary URL.
+						type!: string
+
+						// When true, the dashboard link applies the current filters.
+						use_filters?: bool
+
+						// When true, the dashboard link applies the current time range.
+						use_time_range?: bool
+					})]])
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Layout direction for the links panel.
+					layout!: string
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+			})
+
 			// Configuration for a `markdown` panel (the Kibana Dashboard API
 			// `kbn-dashboard-panel-type-markdown` shape). Set exactly one of `by_value`
 			// (inline `content` with required nested `settings`) or `by_reference`
 			// (existing library item via `ref_id`). Presentation fields (`description`,
 			// `hide_title`, `title`, `hide_border`) are supported in both branches.
-			// Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-			// `slo_error_budget_config`, `slo_overview_config`,
+			// Mutually exclusive with `config_json`, `apm_service_map_config`,
+			// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 			// `time_slider_control_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `image_config`,
-			// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+			// `range_slider_control_config`, `esql_control_config`,
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			markdown_config?: close({
 				// Reference an existing markdown library item via `ref_id`. Optional
 				// `description`, `hide_title`, `title`, and `hide_border`.
@@ -5549,116 +6800,413 @@ elasticstack_kibana_dashboard: {
 				})
 			})
 
-			// Configuration for an options list control panel. Provides a dropdown or
-			// multi-select filter based on a field in a data view. Mutually exclusive with
-			// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// Configuration for an ML anomaly charts panel
+			// (`kbn-dashboard-panel-type-ml_anomaly_charts`). Required when `type` is
+			// `ml_anomaly_charts`. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
 			// `slo_overview_config`, `synthetics_monitors_config`,
 			// `synthetics_stats_overview_config`, `time_slider_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-			// `image_config`, `slo_alerts_config`, `vis_config`,
-			// `discover_session_config`.
-			options_list_control_config?: close({
-				// The ID of the data view that the control is tied to.
-				data_view_id!: string
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+			ml_anomaly_charts_config?: close({
+				// Optional panel description.
+				description?: string
 
-				// Display preferences for the control widget.
-				display_settings?: close({
-					// When true, hides the action bar on the control.
-					hide_action_bar?: bool
+				// Severity bands to display. Each item sets either a named `severity` shortcut
+				// or a raw numeric `min`/`max` range, never both.
+				severity_threshold?: matchN(1, [close({
+					// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+					max?: number
 
-					// When true, hides the exclude toggle.
-					hide_exclude?: bool
+					// Lower bound of a raw severity range. Required when `severity` is omitted.
+					min?: number
 
-					// When true, hides the exists filter option.
-					hide_exists?: bool
+					// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
+					severity?: string
+				}), [...close({
+					// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+					max?: number
 
-					// When true, hides the sort control.
-					hide_sort?: bool
+					// Lower bound of a raw severity range. Required when `severity` is omitted.
+					min?: number
 
-					// Placeholder text shown when no option is selected.
-					placeholder?: string
+					// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
+					severity?: string
+				})]])
+
+				// When true, hides the panel border.
+				hide_border?: bool
+
+				// Optional panel-level time range (`from`, `to`, and optional `mode`).
+				time_range?: close({
+					// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+					from!: string
+
+					// Optional time range mode. When set, must be `absolute` or `relative`.
+					mode?: string
+
+					// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+					to!: string
 				})
 
-				// When true, selected options are used as an exclusion filter rather than an inclusion filter.
-				exclude?: bool
+				// When true, hides the panel title.
+				hide_title?: bool
 
-				// Default sort configuration for the suggestion list.
-				sort?: close({
-					// The field or criterion to sort by. Must be one of `_count` or `_key`.
-					by!: string
+				// Anomaly detection job IDs or group IDs whose results appear in the charts. At
+				// least one entry is required.
+				job_ids!: [...string]
 
-					// The sort direction. Must be one of `asc` or `desc`.
-					direction!: string
+				// Maximum number of anomaly series to plot.
+				max_series_to_plot?: number
+
+				// Optional panel title shown in the panel header.
+				title?: string
+			})
+
+			// Configuration for an ML anomaly swim lane panel
+			// (`kbn-dashboard-panel-type-ml_anomaly_swimlane`). Required when `type` is
+			// `ml_anomaly_swimlane`. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+			ml_anomaly_swimlane_config?: close({
+				// Optional panel description.
+				description?: string
+
+				// Optional panel-level time range (`from`, `to`, and optional `mode`).
+				time_range?: close({
+					// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+					from!: string
+
+					// Optional time range mode. When set, must be `absolute` or `relative`.
+					mode?: string
+
+					// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+					to!: string
 				})
 
-				// When true, the control filters for documents where the field exists.
-				exists_selected?: bool
+				// When true, hides the panel border.
+				hide_border?: bool
 
-				// The name of the field in the data view that the control is tied to.
-				field_name!: string
+				// When true, hides the panel title.
+				hide_title?: bool
 
-				// Whether the control skips field-level validation against the data view.
-				ignore_validations?: bool
+				// IDs of anomaly detection jobs or groups whose results appear in the swim
+				// lane. At least one entry is required.
+				job_ids!: [...string]
 
-				// When true, the control continues to show results even when the underlying query times out.
-				run_past_timeout?: bool
+				// Number of rows to display per page in a view-by swim lane. Ignored for overall swim lanes.
+				per_page?: number
 
-				// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
-				// or `exact` when set.
-				search_technique?: string
+				// Swim lane mode. Use `overall` for a single aggregate lane or `viewBy` to
+				// split anomalies by field.
+				swimlane_type!: string
 
-				// The initially or persistently selected option values. All values are represented as strings.
-				selected_options?: [...string]
-
-				// When true, only one option may be selected at a time.
-				single_select?: bool
-
-				// Human-readable label displayed above the control.
+				// Optional panel title shown in the panel header.
 				title?: string
 
-				// Whether the control applies the dashboard's global filters to its own query.
-				use_global_filters?: bool
+				// Field name used to split anomalies into a view-by swim lane. Required when
+				// `swimlane_type` is `viewBy`; must not be set when `swimlane_type` is
+				// `overall`.
+				view_by?: string
+			})
+
+			// Configuration for an ML single metric viewer panel
+			// (`kbn-dashboard-panel-type-ml_single_metric_viewer`). Required when `type`
+			// is `ml_single_metric_viewer`. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+			ml_single_metric_viewer_config?: close({
+				// Optional panel description.
+				description?: string
+
+				// Values of partition, by, or over fields that identify the single time series
+				// to display. Each map entry must set exactly one of `string_value` or
+				// `numeric_value`.
+				selected_entities?: [string]: close({
+					// Numeric entity value for the field.
+					numeric_value?: number
+
+					// String entity value for the field.
+					string_value?: string
+				})
+
+				// Forecast identifier to overlay on the chart.
+				forecast_id?: string
+
+				// Optional panel-level time range (`from`, `to`, and optional `mode`).
+				time_range?: close({
+					// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+					from!: string
+
+					// Optional time range mode. When set, must be `absolute` or `relative`.
+					mode?: string
+
+					// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+					to!: string
+				})
+
+				// For `metric` detectors, selects which value to plot: `min`, `max`, or `mean`.
+				// Ignored for other detector functions.
+				function_description?: string
+
+				// When true, hides the panel border.
+				hide_border?: bool
+
+				// When true, hides the panel title.
+				hide_title?: bool
+
+				// Anomaly detection job ID whose results appear in the single metric viewer.
+				// Exactly one entry is required.
+				job_ids!: [...string]
+
+				// Zero-based index of the detector within the job whose results are shown.
+				selected_detector_index?: number
+
+				// Optional panel title shown in the panel header.
+				title?: string
+			})
+
+			// Configuration for an options list control panel. Provides a dropdown or
+			// multi-select filter based on a field in a data view (`by_field`) or an ES|QL
+			// query (`by_esql`). Exactly one of `by_field` or `by_esql` must be set.
+			// Mutually exclusive with `config_json`, `apm_service_map_config`,
+			// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+			// `time_slider_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `slo_alerts_config`, `vis_config`,
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+			options_list_control_config?: close({
+				// Configuration for an options list control sourced from an ES|QL query.
+				// Mutually exclusive with `by_field`.
+				by_esql?: close({
+					// Display preferences for the control widget.
+					display_settings?: close({
+						// When true, hides the action bar on the control.
+						hide_action_bar?: bool
+
+						// When true, hides the exclude toggle.
+						hide_exclude?: bool
+
+						// When true, hides the exists filter option.
+						hide_exists?: bool
+
+						// When true, hides the sort control.
+						hide_sort?: bool
+
+						// Placeholder text shown when no option is selected.
+						placeholder?: string
+					})
+
+					// The ES|QL query that produces the available option values.
+					esql_query!: string
+
+					// When true, the control filters for documents where the field exists.
+					exists_selected?: bool
+
+					// Whether the control skips field-level validation against the data view.
+					ignore_validations?: bool
+
+					// When true, the control continues to show results even when the underlying query times out.
+					run_past_timeout?: bool
+
+					// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+					// or `exact` when set.
+					search_technique?: string
+
+					// The initially or persistently selected option values. All values are represented as strings.
+					selected_options?: [...string]
+
+					// When true, only one option may be selected at a time.
+					single_select?: bool
+
+					// Default sort configuration for the suggestion list.
+					sort?: close({
+						// The field or criterion to sort by. Must be one of `_count` or `_key`.
+						by!: string
+
+						// The sort direction. Must be one of `asc` or `desc`.
+						direction!: string
+					})
+
+					// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+					exclude?: bool
+
+					// Human-readable label displayed above the control.
+					title?: string
+
+					// Whether the control applies the dashboard's global filters to its own query.
+					use_global_filters?: bool
+
+					// The source discriminator for this branch. Must be `esql_query`.
+					values_source!: string
+				})
+
+				// Configuration for an options list control sourced from a Kibana data view
+				// field. Mutually exclusive with `by_esql`.
+				by_field?: close({
+					// The ID of the data view that the control is tied to.
+					data_view_id!: string
+
+					// Display preferences for the control widget.
+					display_settings?: close({
+						// When true, hides the action bar on the control.
+						hide_action_bar?: bool
+
+						// When true, hides the exclude toggle.
+						hide_exclude?: bool
+
+						// When true, hides the exists filter option.
+						hide_exists?: bool
+
+						// When true, hides the sort control.
+						hide_sort?: bool
+
+						// Placeholder text shown when no option is selected.
+						placeholder?: string
+					})
+
+					// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+					exclude?: bool
+
+					// Default sort configuration for the suggestion list.
+					sort?: close({
+						// The field or criterion to sort by. Must be one of `_count` or `_key`.
+						by!: string
+
+						// The sort direction. Must be one of `asc` or `desc`.
+						direction!: string
+					})
+
+					// When true, the control filters for documents where the field exists.
+					exists_selected?: bool
+
+					// The name of the field in the data view that the control is tied to.
+					field_name!: string
+
+					// Whether the control skips field-level validation against the data view.
+					ignore_validations?: bool
+
+					// When true, the control continues to show results even when the underlying query times out.
+					run_past_timeout?: bool
+
+					// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+					// or `exact` when set.
+					search_technique?: string
+
+					// The initially or persistently selected option values. All values are represented as strings.
+					selected_options?: [...string]
+
+					// When true, only one option may be selected at a time.
+					single_select?: bool
+
+					// Human-readable label displayed above the control.
+					title?: string
+
+					// Whether the control applies the dashboard's global filters to its own query.
+					use_global_filters?: bool
+				})
 			})
 
 			// Configuration for a range slider control panel. Provides a min/max range
-			// filter tied to a data view field. Mutually exclusive with `config_json`,
-			// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
+			// filter sourced from either a data view field (`by_field`) or an ES|QL query
+			// (`by_esql`). Exactly one of the two must be set. Mutually exclusive with
+			// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
 			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 			// `time_slider_control_config`, `options_list_control_config`,
-			// `esql_control_config`, `markdown_config`, `image_config`,
-			// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `slo_alerts_config`, `vis_config`,
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			range_slider_control_config?: close({
-				// The ID of the data view that the control is tied to.
-				data_view_id!: string
+				// Range slider sourced from an ES|QL query. Mutually exclusive with `by_field`.
+				by_esql?: close({
+					// The ES|QL query that produces the min/max range values.
+					esql_query!: string
 
-				// The name of the field in the data view that the control is tied to.
-				field_name!: string
+					// Whether to suppress validation errors during intermediate states.
+					ignore_validations?: bool
 
-				// Whether to suppress validation errors during intermediate states.
-				ignore_validations?: bool
+					// The step size for the range slider. Stored as float32 to match the Kibana API
+					// type and avoid refresh drift.
+					step?: number
 
-				// The step size for the range slider. Stored as float32 to match the Kibana API
-				// type and avoid refresh drift.
-				step?: number
+					// A human-readable title for the control.
+					title?: string
 
-				// A human-readable title for the control.
-				title?: string
+					// Whether the control respects dashboard-level filters.
+					use_global_filters?: bool
 
-				// Whether the control respects dashboard-level filters.
-				use_global_filters?: bool
+					// Initial range as a list of exactly 2 strings: [min, max].
+					value?: [...string]
 
-				// Initial range as a list of exactly 2 strings: [min, max].
-				value?: [...string]
+					// The source of the range values. Must be `esql_query`.
+					values_source!: string
+				})
+
+				// Range slider sourced from a Kibana data view field. Mutually exclusive with `by_esql`.
+				by_field?: close({
+					// The ID of the data view that the control is tied to.
+					data_view_id!: string
+
+					// The name of the field in the data view that the control is tied to.
+					field_name!: string
+
+					// Whether to suppress validation errors during intermediate states.
+					ignore_validations?: bool
+
+					// The step size for the range slider. Stored as float32 to match the Kibana API
+					// type and avoid refresh drift.
+					step?: number
+
+					// A human-readable title for the control.
+					title?: string
+
+					// Whether the control respects dashboard-level filters.
+					use_global_filters?: bool
+
+					// Initial range as a list of exactly 2 strings: [min, max].
+					value?: [...string]
+				})
 			})
 
 			// Configuration for an `slo_alerts` panel
 			// (`kbn-dashboard-panel-type-slo_alerts`). Required when `type` is
-			// `slo_alerts`. Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-			// `slo_error_budget_config`, `slo_overview_config`,
-			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-			// `time_slider_control_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-			// `image_config`, `vis_config`, `discover_session_config`.
+			// `slo_alerts`. Mutually exclusive with `config_json`,
+			// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `vis_config`, `discover_session_config`,
+			// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+			// `links_config`, `aiops_pattern_analysis_config`,
+			// `aiops_change_point_chart_config`.
 			slo_alerts_config?: close({
 				// Optional panel description.
 				description?: string
@@ -5725,12 +7273,16 @@ elasticstack_kibana_dashboard: {
 
 			// Configuration for an SLO burn rate panel. Use this for panels that visualize
 			// the burn rate of an SLO over a configurable look-back window. Mutually
-			// exclusive with `config_json`, `slo_error_budget_config`,
-			// `slo_overview_config`, `synthetics_monitors_config`,
-			// `synthetics_stats_overview_config`, `time_slider_control_config`,
-			// `options_list_control_config`, `range_slider_control_config`,
-			// `esql_control_config`, `markdown_config`, `image_config`,
-			// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+			// exclusive with `config_json`, `apm_service_map_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+			// `time_slider_control_config`, `options_list_control_config`,
+			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			slo_burn_rate_config?: close({
 				// Optional panel description.
 				description?: string
@@ -5785,12 +7337,16 @@ elasticstack_kibana_dashboard: {
 
 			// Configuration for an SLO error budget panel. Displays the burn chart of
 			// remaining error budget for a specific SLO. Mutually exclusive with
-			// `config_json`, `slo_burn_rate_config`, `slo_overview_config`,
-			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-			// `time_slider_control_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_overview_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 			// `image_config`, `slo_alerts_config`, `vis_config`,
-			// `discover_session_config`.
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			slo_error_budget_config?: close({
 				// Optional panel description.
 				description?: string
@@ -5843,12 +7399,16 @@ elasticstack_kibana_dashboard: {
 
 			// Configuration for an SLO overview panel. Use either `single` (for a single
 			// SLO) or `groups` (for grouped SLO overview). Mutually exclusive with
-			// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-			// `time_slider_control_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `synthetics_monitors_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 			// `image_config`, `slo_alerts_config`, `vis_config`,
-			// `discover_session_config`.
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			slo_overview_config?: close({
 				// Configuration for a grouped SLO overview panel. Mutually exclusive with `single`.
 				groups?: close({
@@ -5970,12 +7530,16 @@ elasticstack_kibana_dashboard: {
 			// Configuration for a Synthetics monitors panel. Displays a table of Elastic
 			// Synthetics monitors and their current status. All fields are optional — omit
 			// the block entirely for a bare panel with no filtering. Mutually exclusive
-			// with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-			// `slo_overview_config`, `synthetics_stats_overview_config`,
-			// `time_slider_control_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_stats_overview_config`, `time_slider_control_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 			// `image_config`, `slo_alerts_config`, `vis_config`,
-			// `discover_session_config`.
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			synthetics_monitors_config?: close({
 				// Optional panel description.
 				description?: string
@@ -6075,12 +7639,16 @@ elasticstack_kibana_dashboard: {
 
 			// Configuration for a Synthetics stats overview panel. All fields are optional;
 			// an absent or empty block shows statistics for all monitors visible within
-			// the space. Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-			// `slo_error_budget_config`, `slo_overview_config`,
+			// the space. Mutually exclusive with `config_json`, `apm_service_map_config`,
+			// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 			// `synthetics_monitors_config`, `time_slider_control_config`,
 			// `options_list_control_config`, `range_slider_control_config`,
-			// `esql_control_config`, `markdown_config`, `image_config`,
-			// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+			// `image_config`, `slo_alerts_config`, `vis_config`,
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			synthetics_stats_overview_config?: close({
 				// Optional panel description.
 				description?: string
@@ -6205,12 +7773,16 @@ elasticstack_kibana_dashboard: {
 
 			// Configuration for a time slider control panel. Controls the visible time
 			// window within the dashboard's global time range. Mutually exclusive with
-			// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-			// `slo_overview_config`, `synthetics_monitors_config`,
-			// `synthetics_stats_overview_config`, `options_list_control_config`,
-			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+			// `options_list_control_config`, `range_slider_control_config`,
+			// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+			// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 			// `image_config`, `slo_alerts_config`, `vis_config`,
-			// `discover_session_config`.
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			time_slider_control_config?: close({
 				// End of the visible time window as a fraction of the dashboard global range
 				// (0.0–1.0). Float32 in state matches the Kibana API and avoids refresh drift.
@@ -6224,34 +7796,20 @@ elasticstack_kibana_dashboard: {
 				start_percentage_of_time_range?: number
 			})
 
-			// The type of the panel (e.g. 'markdown', 'vis').
-			type!: string
-
-			// The grid coordinates and dimensions of the panel.
-			grid!: close({
-				// The height.
-				h?: number
-
-				// The width.
-				w?: number
-
-				// The X coordinate.
-				x!: number
-
-				// The Y coordinate.
-				y!: number
-			})
-
 			// Configuration for a `vis` panel (`type = "vis"`). Typed alternative to
 			// panel-level `config_json`: set exactly one of `by_value` (exactly one of 12
 			// Lens chart kinds) or `by_reference`. With `by_reference`, use structured
 			// `drilldowns` and optional `time_range`. Mutually exclusive with
-			// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-			// `slo_overview_config`, `synthetics_monitors_config`,
-			// `synthetics_stats_overview_config`, `time_slider_control_config`,
-			// `options_list_control_config`, `range_slider_control_config`,
-			// `esql_control_config`, `markdown_config`, `image_config`,
-			// `slo_alerts_config`, `discover_session_config`.
+			// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+			// `slo_error_budget_config`, `slo_overview_config`,
+			// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+			// `time_slider_control_config`, `options_list_control_config`,
+			// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+			// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+			// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+			// `discover_session_config`, `field_stats_table_config`,
+			// `aiops_log_rate_analysis_config`, `links_config`,
+			// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 			vis_config?: close({
 				// By-reference `vis` configuration: structured `drilldowns`, `ref_id`, optional
 				// `references_json`, and optional `time_range`.
@@ -9966,70 +11524,140 @@ elasticstack_kibana_dashboard: {
 			// configs for the same block names.
 			//
 			// Configuration for an options list control. Provides a dropdown or
-			// multi-select filter based on a field in a data view. Mutually exclusive with
-			// `time_slider_control_config`, `esql_control_config`,
+			// multi-select filter based on a field in a data view (`by_field`) or an ES|QL
+			// query (`by_esql`). Exactly one of `by_field` or `by_esql` must be set.
+			// Mutually exclusive with `time_slider_control_config`, `esql_control_config`,
 			// `range_slider_control_config`.
 			options_list_control_config?: close({
-				// The ID of the data view that the control is tied to.
-				data_view_id!: string
+				// Configuration for an options list control sourced from an ES|QL query.
+				// Mutually exclusive with `by_field`.
+				by_esql?: close({
+					// Display preferences for the control widget.
+					display_settings?: close({
+						// When true, hides the action bar on the control.
+						hide_action_bar?: bool
 
-				// Display preferences for the control widget.
-				display_settings?: close({
-					// When true, hides the action bar on the control.
-					hide_action_bar?: bool
+						// When true, hides the exclude toggle.
+						hide_exclude?: bool
 
-					// When true, hides the exclude toggle.
-					hide_exclude?: bool
+						// When true, hides the exists filter option.
+						hide_exists?: bool
 
-					// When true, hides the exists filter option.
-					hide_exists?: bool
+						// When true, hides the sort control.
+						hide_sort?: bool
 
-					// When true, hides the sort control.
-					hide_sort?: bool
+						// Placeholder text shown when no option is selected.
+						placeholder?: string
+					})
 
-					// Placeholder text shown when no option is selected.
-					placeholder?: string
+					// The ES|QL query that produces the available option values.
+					esql_query!: string
+
+					// When true, the control filters for documents where the field exists.
+					exists_selected?: bool
+
+					// Whether the control skips field-level validation against the data view.
+					ignore_validations?: bool
+
+					// When true, the control continues to show results even when the underlying query times out.
+					run_past_timeout?: bool
+
+					// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+					// or `exact` when set.
+					search_technique?: string
+
+					// The initially or persistently selected option values. All values are represented as strings.
+					selected_options?: [...string]
+
+					// When true, only one option may be selected at a time.
+					single_select?: bool
+
+					// Default sort configuration for the suggestion list.
+					sort?: close({
+						// The field or criterion to sort by. Must be one of `_count` or `_key`.
+						by!: string
+
+						// The sort direction. Must be one of `asc` or `desc`.
+						direction!: string
+					})
+
+					// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+					exclude?: bool
+
+					// Human-readable label displayed above the control.
+					title?: string
+
+					// Whether the control applies the dashboard's global filters to its own query.
+					use_global_filters?: bool
+
+					// The source discriminator for this branch. Must be `esql_query`.
+					values_source!: string
 				})
 
-				// When true, selected options are used as an exclusion filter rather than an inclusion filter.
-				exclude?: bool
+				// Configuration for an options list control sourced from a Kibana data view
+				// field. Mutually exclusive with `by_esql`.
+				by_field?: close({
+					// The ID of the data view that the control is tied to.
+					data_view_id!: string
 
-				// Default sort configuration for the suggestion list.
-				sort?: close({
-					// The field or criterion to sort by. Must be one of `_count` or `_key`.
-					by!: string
+					// Display preferences for the control widget.
+					display_settings?: close({
+						// When true, hides the action bar on the control.
+						hide_action_bar?: bool
 
-					// The sort direction. Must be one of `asc` or `desc`.
-					direction!: string
+						// When true, hides the exclude toggle.
+						hide_exclude?: bool
+
+						// When true, hides the exists filter option.
+						hide_exists?: bool
+
+						// When true, hides the sort control.
+						hide_sort?: bool
+
+						// Placeholder text shown when no option is selected.
+						placeholder?: string
+					})
+
+					// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+					exclude?: bool
+
+					// Default sort configuration for the suggestion list.
+					sort?: close({
+						// The field or criterion to sort by. Must be one of `_count` or `_key`.
+						by!: string
+
+						// The sort direction. Must be one of `asc` or `desc`.
+						direction!: string
+					})
+
+					// When true, the control filters for documents where the field exists.
+					exists_selected?: bool
+
+					// The name of the field in the data view that the control is tied to.
+					field_name!: string
+
+					// Whether the control skips field-level validation against the data view.
+					ignore_validations?: bool
+
+					// When true, the control continues to show results even when the underlying query times out.
+					run_past_timeout?: bool
+
+					// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+					// or `exact` when set.
+					search_technique?: string
+
+					// The initially or persistently selected option values. All values are represented as strings.
+					selected_options?: [...string]
+
+					// When true, only one option may be selected at a time.
+					single_select?: bool
+
+					// Human-readable label displayed above the control.
+					title?: string
+
+					// Whether the control applies the dashboard's global filters to its own query.
+					use_global_filters?: bool
 				})
-
-				// When true, the control filters for documents where the field exists.
-				exists_selected?: bool
-
-				// The name of the field in the data view that the control is tied to.
-				field_name!: string
-
-				// Whether the control skips field-level validation against the data view.
-				ignore_validations?: bool
-
-				// When true, the control continues to show results even when the underlying query times out.
-				run_past_timeout?: bool
-
-				// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
-				// or `exact` when set.
-				search_technique?: string
-
-				// The initially or persistently selected option values. All values are represented as strings.
-				selected_options?: [...string]
-
-				// When true, only one option may be selected at a time.
-				single_select?: bool
-
-				// Human-readable label displayed above the control.
-				title?: string
-
-				// Whether the control applies the dashboard's global filters to its own query.
-				use_global_filters?: bool
 			})
 
 			// These blocks apply to the dashboard pinned control bar rather than an in-grid
@@ -10037,31 +11665,60 @@ elasticstack_kibana_dashboard: {
 			// configs for the same block names.
 			//
 			// Configuration for a range slider control. Provides a min/max range filter
-			// tied to a data view field. Mutually exclusive with
+			// sourced from either a data view field (`by_field`) or an ES|QL query
+			// (`by_esql`). Exactly one of the two must be set. Mutually exclusive with
 			// `time_slider_control_config`, `esql_control_config`,
 			// `options_list_control_config`.
 			range_slider_control_config?: close({
-				// The ID of the data view that the control is tied to.
-				data_view_id!: string
+				// Range slider sourced from an ES|QL query. Mutually exclusive with `by_field`.
+				by_esql?: close({
+					// The ES|QL query that produces the min/max range values.
+					esql_query!: string
 
-				// The name of the field in the data view that the control is tied to.
-				field_name!: string
+					// Whether to suppress validation errors during intermediate states.
+					ignore_validations?: bool
 
-				// Whether to suppress validation errors during intermediate states.
-				ignore_validations?: bool
+					// The step size for the range slider. Stored as float32 to match the Kibana API
+					// type and avoid refresh drift.
+					step?: number
 
-				// The step size for the range slider. Stored as float32 to match the Kibana API
-				// type and avoid refresh drift.
-				step?: number
+					// A human-readable title for the control.
+					title?: string
 
-				// A human-readable title for the control.
-				title?: string
+					// Whether the control respects dashboard-level filters.
+					use_global_filters?: bool
 
-				// Whether the control respects dashboard-level filters.
-				use_global_filters?: bool
+					// Initial range as a list of exactly 2 strings: [min, max].
+					value?: [...string]
 
-				// Initial range as a list of exactly 2 strings: [min, max].
-				value?: [...string]
+					// The source of the range values. Must be `esql_query`.
+					values_source!: string
+				})
+
+				// Range slider sourced from a Kibana data view field. Mutually exclusive with `by_esql`.
+				by_field?: close({
+					// The ID of the data view that the control is tied to.
+					data_view_id!: string
+
+					// The name of the field in the data view that the control is tied to.
+					field_name!: string
+
+					// Whether to suppress validation errors during intermediate states.
+					ignore_validations?: bool
+
+					// The step size for the range slider. Stored as float32 to match the Kibana API
+					// type and avoid refresh drift.
+					step?: number
+
+					// A human-readable title for the control.
+					title?: string
+
+					// Whether the control respects dashboard-level filters.
+					use_global_filters?: bool
+
+					// Initial range as a list of exactly 2 strings: [min, max].
+					value?: [...string]
+				})
 			})
 
 			// These blocks apply to the dashboard pinned control bar rather than an in-grid
@@ -10147,70 +11804,140 @@ elasticstack_kibana_dashboard: {
 			// configs for the same block names.
 			//
 			// Configuration for an options list control. Provides a dropdown or
-			// multi-select filter based on a field in a data view. Mutually exclusive with
-			// `time_slider_control_config`, `esql_control_config`,
+			// multi-select filter based on a field in a data view (`by_field`) or an ES|QL
+			// query (`by_esql`). Exactly one of `by_field` or `by_esql` must be set.
+			// Mutually exclusive with `time_slider_control_config`, `esql_control_config`,
 			// `range_slider_control_config`.
 			options_list_control_config?: close({
-				// The ID of the data view that the control is tied to.
-				data_view_id!: string
+				// Configuration for an options list control sourced from an ES|QL query.
+				// Mutually exclusive with `by_field`.
+				by_esql?: close({
+					// Display preferences for the control widget.
+					display_settings?: close({
+						// When true, hides the action bar on the control.
+						hide_action_bar?: bool
 
-				// Display preferences for the control widget.
-				display_settings?: close({
-					// When true, hides the action bar on the control.
-					hide_action_bar?: bool
+						// When true, hides the exclude toggle.
+						hide_exclude?: bool
 
-					// When true, hides the exclude toggle.
-					hide_exclude?: bool
+						// When true, hides the exists filter option.
+						hide_exists?: bool
 
-					// When true, hides the exists filter option.
-					hide_exists?: bool
+						// When true, hides the sort control.
+						hide_sort?: bool
 
-					// When true, hides the sort control.
-					hide_sort?: bool
+						// Placeholder text shown when no option is selected.
+						placeholder?: string
+					})
 
-					// Placeholder text shown when no option is selected.
-					placeholder?: string
+					// The ES|QL query that produces the available option values.
+					esql_query!: string
+
+					// When true, the control filters for documents where the field exists.
+					exists_selected?: bool
+
+					// Whether the control skips field-level validation against the data view.
+					ignore_validations?: bool
+
+					// When true, the control continues to show results even when the underlying query times out.
+					run_past_timeout?: bool
+
+					// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+					// or `exact` when set.
+					search_technique?: string
+
+					// The initially or persistently selected option values. All values are represented as strings.
+					selected_options?: [...string]
+
+					// When true, only one option may be selected at a time.
+					single_select?: bool
+
+					// Default sort configuration for the suggestion list.
+					sort?: close({
+						// The field or criterion to sort by. Must be one of `_count` or `_key`.
+						by!: string
+
+						// The sort direction. Must be one of `asc` or `desc`.
+						direction!: string
+					})
+
+					// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+					exclude?: bool
+
+					// Human-readable label displayed above the control.
+					title?: string
+
+					// Whether the control applies the dashboard's global filters to its own query.
+					use_global_filters?: bool
+
+					// The source discriminator for this branch. Must be `esql_query`.
+					values_source!: string
 				})
 
-				// When true, selected options are used as an exclusion filter rather than an inclusion filter.
-				exclude?: bool
+				// Configuration for an options list control sourced from a Kibana data view
+				// field. Mutually exclusive with `by_esql`.
+				by_field?: close({
+					// The ID of the data view that the control is tied to.
+					data_view_id!: string
 
-				// Default sort configuration for the suggestion list.
-				sort?: close({
-					// The field or criterion to sort by. Must be one of `_count` or `_key`.
-					by!: string
+					// Display preferences for the control widget.
+					display_settings?: close({
+						// When true, hides the action bar on the control.
+						hide_action_bar?: bool
 
-					// The sort direction. Must be one of `asc` or `desc`.
-					direction!: string
+						// When true, hides the exclude toggle.
+						hide_exclude?: bool
+
+						// When true, hides the exists filter option.
+						hide_exists?: bool
+
+						// When true, hides the sort control.
+						hide_sort?: bool
+
+						// Placeholder text shown when no option is selected.
+						placeholder?: string
+					})
+
+					// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+					exclude?: bool
+
+					// Default sort configuration for the suggestion list.
+					sort?: close({
+						// The field or criterion to sort by. Must be one of `_count` or `_key`.
+						by!: string
+
+						// The sort direction. Must be one of `asc` or `desc`.
+						direction!: string
+					})
+
+					// When true, the control filters for documents where the field exists.
+					exists_selected?: bool
+
+					// The name of the field in the data view that the control is tied to.
+					field_name!: string
+
+					// Whether the control skips field-level validation against the data view.
+					ignore_validations?: bool
+
+					// When true, the control continues to show results even when the underlying query times out.
+					run_past_timeout?: bool
+
+					// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+					// or `exact` when set.
+					search_technique?: string
+
+					// The initially or persistently selected option values. All values are represented as strings.
+					selected_options?: [...string]
+
+					// When true, only one option may be selected at a time.
+					single_select?: bool
+
+					// Human-readable label displayed above the control.
+					title?: string
+
+					// Whether the control applies the dashboard's global filters to its own query.
+					use_global_filters?: bool
 				})
-
-				// When true, the control filters for documents where the field exists.
-				exists_selected?: bool
-
-				// The name of the field in the data view that the control is tied to.
-				field_name!: string
-
-				// Whether the control skips field-level validation against the data view.
-				ignore_validations?: bool
-
-				// When true, the control continues to show results even when the underlying query times out.
-				run_past_timeout?: bool
-
-				// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
-				// or `exact` when set.
-				search_technique?: string
-
-				// The initially or persistently selected option values. All values are represented as strings.
-				selected_options?: [...string]
-
-				// When true, only one option may be selected at a time.
-				single_select?: bool
-
-				// Human-readable label displayed above the control.
-				title?: string
-
-				// Whether the control applies the dashboard's global filters to its own query.
-				use_global_filters?: bool
 			})
 
 			// These blocks apply to the dashboard pinned control bar rather than an in-grid
@@ -10218,31 +11945,60 @@ elasticstack_kibana_dashboard: {
 			// configs for the same block names.
 			//
 			// Configuration for a range slider control. Provides a min/max range filter
-			// tied to a data view field. Mutually exclusive with
+			// sourced from either a data view field (`by_field`) or an ES|QL query
+			// (`by_esql`). Exactly one of the two must be set. Mutually exclusive with
 			// `time_slider_control_config`, `esql_control_config`,
 			// `options_list_control_config`.
 			range_slider_control_config?: close({
-				// The ID of the data view that the control is tied to.
-				data_view_id!: string
+				// Range slider sourced from an ES|QL query. Mutually exclusive with `by_field`.
+				by_esql?: close({
+					// The ES|QL query that produces the min/max range values.
+					esql_query!: string
 
-				// The name of the field in the data view that the control is tied to.
-				field_name!: string
+					// Whether to suppress validation errors during intermediate states.
+					ignore_validations?: bool
 
-				// Whether to suppress validation errors during intermediate states.
-				ignore_validations?: bool
+					// The step size for the range slider. Stored as float32 to match the Kibana API
+					// type and avoid refresh drift.
+					step?: number
 
-				// The step size for the range slider. Stored as float32 to match the Kibana API
-				// type and avoid refresh drift.
-				step?: number
+					// A human-readable title for the control.
+					title?: string
 
-				// A human-readable title for the control.
-				title?: string
+					// Whether the control respects dashboard-level filters.
+					use_global_filters?: bool
 
-				// Whether the control respects dashboard-level filters.
-				use_global_filters?: bool
+					// Initial range as a list of exactly 2 strings: [min, max].
+					value?: [...string]
 
-				// Initial range as a list of exactly 2 strings: [min, max].
-				value?: [...string]
+					// The source of the range values. Must be `esql_query`.
+					values_source!: string
+				})
+
+				// Range slider sourced from a Kibana data view field. Mutually exclusive with `by_esql`.
+				by_field?: close({
+					// The ID of the data view that the control is tied to.
+					data_view_id!: string
+
+					// The name of the field in the data view that the control is tied to.
+					field_name!: string
+
+					// Whether to suppress validation errors during intermediate states.
+					ignore_validations?: bool
+
+					// The step size for the range slider. Stored as float32 to match the Kibana API
+					// type and avoid refresh drift.
+					step?: number
+
+					// A human-readable title for the control.
+					title?: string
+
+					// Whether the control respects dashboard-level filters.
+					use_global_filters?: bool
+
+					// Initial range as a list of exactly 2 strings: [min, max].
+					value?: [...string]
+				})
 			})
 
 			// These blocks apply to the dashboard pinned control bar rather than an in-grid
@@ -10314,27 +12070,280 @@ elasticstack_kibana_dashboard: {
 
 			// The panels to display in the section.
 			panels?: matchN(1, [close({
-				// The configuration of the panel as a JSON string. Practitioner-authored
-				// panel-level `config_json` is valid only when `type` is `markdown` or `vis`.
-				// Typed panel kinds such as `image`, `slo_alerts`, and `discover_session` use
-				// their dedicated blocks (`image_config`, `slo_alerts_config`,
-				// `discover_session_config`), not panel-level `config_json`. Mutually
-				// exclusive with `slo_burn_rate_config`, `slo_error_budget_config`,
+				// Configuration for an AIOps change point chart panel. Anchored to a data view
+				// and metric field; optional aggregation, split, partitions, and view controls
+				// follow the API-documented enums. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
 				// `slo_overview_config`, `synthetics_monitors_config`,
 				// `synthetics_stats_overview_config`, `time_slider_control_config`,
 				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`.
+				aiops_change_point_chart_config?: close({
+					// The aggregation function used to calculate the metric values. One of `avg`, `max`, `min`, `sum`.
+					aggregation_function?: string
+
+					// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+					// panel inherits the dashboard `time_range` and this attribute stays null in
+					// state (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// The data view ID used for change point detection.
+					data_view_id!: string
+
+					// Optional panel description.
+					description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Maximum number of change points to visualise. Kibana default is `6`. Float32
+					// in state matches the Kibana API and avoids refresh drift.
+					max_series_to_plot?: number
+
+					// The metric field used by the aggregation function.
+					metric_field!: string
+
+					// Optional split field values to include in the panel. Modelled as a set to
+					// prevent plan drift from API-returned ordering; duplicate entries are
+					// silently deduplicated. An empty set is not meaningful (omit the attribute to
+					// disable filtering); a non-null set must contain at least one entry.
+					partitions?: [...string]
+
+					// The optional field used to split change-point results.
+					split_field?: string
+
+					// Optional panel title shown in the panel header.
+					title?: string
+
+					// The type of change point detection view to display. One of `charts`, `table`.
+					view_type?: string
+				})
+
+				// The configuration of the panel as a JSON string. Practitioner-authored
+				// panel-level `config_json` is valid only when `type` is `markdown` or `vis`.
+				// Typed panel kinds such as `image`, `slo_alerts`, `discover_session`,
+				// `field_stats_table`, `ml_anomaly_swimlane`, `ml_anomaly_charts`, and
+				// `ml_single_metric_viewer` use their dedicated blocks (`image_config`,
+				// `slo_alerts_config`, `discover_session_config`, `field_stats_table_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`), not panel-level `config_json`. Mutually
+				// exclusive with `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				config_json?: string
+
+				// Configuration for an AIOps log rate analysis panel. Anchored to a data view;
+				// the remaining fields are the standard optional panel presentation
+				// passthroughs. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				aiops_log_rate_analysis_config?: close({
+					// The data view ID used to run log rate analysis.
+					data_view_id!: string
+
+					// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+					// panel inherits the dashboard `time_range` and this attribute stays null in
+					// state (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// Optional panel description.
+					description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// The identifier of the panel (API `id`).
+				id?: string
+
+				// Configuration for an AIOps pattern analysis panel. Anchored to a data view
+				// and text field; optional sampling and time-range controls follow the
+				// API-documented bounds. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_change_point_chart_config`.
+				aiops_pattern_analysis_config?: close({
+					// The data view ID used for pattern analysis.
+					data_view_id!: string
+
+					// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+					// panel inherits the dashboard `time_range` and this attribute stays null in
+					// state (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// Optional panel description.
+					description?: string
+
+					// The text field on which to run pattern analysis.
+					field_name!: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Minimum time range for pattern analysis. One of `no_minimum`, `1_week`,
+					// `1_month`, `3_months`, `6_months`.
+					minimum_time_range?: string
+
+					// The random sampler mode. One of `off`, `on_automatic`, `on_manual`.
+					random_sampler_mode?: string
+
+					// Sampling probability, only meaningful when `random_sampler_mode = on_manual`.
+					// Must be between `0.00001` and `0.5`. Float32 in state matches the Kibana API
+					// and avoids refresh drift.
+					random_sampler_probability?: number
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// The type of the panel (e.g. 'markdown', 'vis').
+				type!: string
+
+				// Configuration for an APM service map panel. All fields are optional. Mutually
+				// exclusive with `config_json`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				apm_service_map_config?: close({
+					// Filter services by alert status.
+					alert_status_filter?: [...string]
+
+					// Optional panel time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// Filter services by anomaly severity.
+					anomaly_severity_filter?: [...string]
+
+					// Filter services by connection state.
+					connection_filter?: [...string]
+
+					// Optional panel description.
+					description?: string
+
+					// APM service environment (for example, `production`).
+					environment?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// KQL query string applied to the service map.
+					kuery?: string
+
+					// Layout orientation of the service map.
+					map_orientation?: string
+
+					// Opaque identifier of a saved APM service group.
+					service_group_id?: string
+
+					// Focus the service map on a specific APM service.
+					service_name?: string
+
+					// Filter services by SLO status.
+					slo_status_filter?: [...string]
+
+					// When set, the panel follows dashboard-level filters.
+					sync_with_dashboard_filters?: bool
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
 
 				// Configuration for a `discover_session` panel
 				// (`kbn-dashboard-panel-type-discover_session`). Set exactly one of `by_value`
 				// or `by_reference`. Mutually exclusive with `config_json`,
-				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `image_config`, `slo_alerts_config`, `vis_config`.
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
 				discover_session_config?: close({
 					// Reference an existing Discover session saved object via `ref_id`. Client-side
 					// `references` JSON is not modeled in v1 (see change design). Omit
@@ -10608,16 +12617,17 @@ elasticstack_kibana_dashboard: {
 					title?: string
 				})
 
-				// The identifier of the panel (API `id`).
-				id?: string
-
 				// Configuration for an ES|QL control panel. Use this to manage ES|QL variable
 				// controls on a dashboard. Mutually exclusive with `config_json`,
-				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				esql_control_config?: close({
 					// Pre-populated list of available options shown before the query executes.
 					available_options?: [...string]
@@ -10663,14 +12673,129 @@ elasticstack_kibana_dashboard: {
 					variable_type!: string
 				})
 
-				// Configuration for an `image` panel (`kbn-dashboard-panel-type-image`).
-				// Required when `type` is `image`. References the Kibana Dashboard API image
-				// embeddable `config` shape. Mutually exclusive with `config_json`,
+				// Configuration for a `field_stats_table` panel (Data Visualizer field-statistics table).
+				//
+				// Set exactly one of `by_dataview` or `by_esql`. The active branch determines
+				// the API `view_type` discriminator (`dataview` or `esql`); practitioners do
+				// not set `view_type` directly.
+				// Mutually exclusive with `config_json`, `apm_service_map_config`,
 				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 				// `time_slider_control_config`, `options_list_control_config`,
 				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
+				field_stats_table_config?: close({
+					// Field statistics backed by a Kibana data view (`view_type = "dataview"` on the wire).
+					//
+					// Requires `data_view_id`. Optional presentation fields and
+					// `show_distributions` apply to this branch only.
+					by_dataview?: close({
+						// The identifier of the source data view.
+						data_view_id!: string
+
+						// Optional panel time range override (`from`, `to`, optional `mode`).
+						// Null-preserved on read: when omitted in configuration, this attribute stays
+						// null in state even if Kibana returns values (REQ-009).
+						time_range?: close({
+							// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+							from!: string
+
+							// Optional time range mode. When set, must be `absolute` or `relative`.
+							mode?: string
+
+							// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+							to!: string
+						})
+
+						// Optional panel description.
+						description?: string
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// When true, shows distribution mini-charts in the field statistics table.
+						// Null-preserved on read (REQ-009).
+						show_distributions?: bool
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+
+					// Field statistics backed by an ES|QL query (`view_type = "esql"` on the wire).
+					//
+					// Requires `query` (mapped to `query.esql` in the API). Optional presentation
+					// fields and `show_distributions` apply to this branch only.
+					by_esql?: close({
+						// Optional panel description.
+						description?: string
+
+						// Optional panel time range override (`from`, `to`, optional `mode`).
+						// Null-preserved on read: when omitted in configuration, this attribute stays
+						// null in state even if Kibana returns values (REQ-009).
+						time_range?: close({
+							// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+							from!: string
+
+							// Optional time range mode. When set, must be `absolute` or `relative`.
+							mode?: string
+
+							// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+							to!: string
+						})
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// The ES|QL query string (mapped to `query.esql` in the API).
+						query!: string
+
+						// When true, shows distribution mini-charts in the field statistics table.
+						// Null-preserved on read (REQ-009).
+						show_distributions?: bool
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+				})
+
+				// The grid coordinates and dimensions of the panel.
+				grid!: close({
+					// The height.
+					h?: number
+
+					// The width.
+					w?: number
+
+					// The X coordinate.
+					x!: number
+
+					// The Y coordinate.
+					y!: number
+				})
+
+				// Configuration for an `image` panel (`kbn-dashboard-panel-type-image`).
+				// Required when `type` is `image`. References the Kibana Dashboard API image
+				// embeddable `config` shape. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `slo_alerts_config`, `vis_config`, `discover_session_config`,
+				// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
 				image_config?: close({
 					// Accessible alternate text for the image.
 					alt_text?: string
@@ -10825,17 +12950,120 @@ elasticstack_kibana_dashboard: {
 					title?: string
 				})
 
+				// Configuration for a `links` panel (`kbn-dashboard-panel-type-links`). Set
+				// exactly one of `by_value` or `by_reference`. Mutually exclusive with
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
+				links_config?: close({
+					// Reference a Kibana Links library saved object.
+					by_reference?: close({
+						// Optional panel description.
+						description?: string
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// Reference id of a Kibana Links library saved object.
+						ref_id!: string
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+
+					// Inline links panel configuration.
+					by_value?: close({
+						// Optional panel description.
+						description?: string
+
+						// List of links to display in the panel.
+						links!: matchN(1, [close({
+							// Destination of the link: dashboard saved-object id for `dashboard` links, or
+							// a URL for `external` links.
+							destination!: string
+
+							// When true, the external URL is percent-encoded.
+							encode_url?: bool
+
+							// Optional display label for the link.
+							label?: string
+
+							// When true, opens the link in a new browser tab.
+							open_in_new_tab?: bool
+
+							// Type of link: `dashboard` for an internal Kibana dashboard link, or
+							// `external` for an arbitrary URL.
+							type!: string
+
+							// When true, the dashboard link applies the current filters.
+							use_filters?: bool
+
+							// When true, the dashboard link applies the current time range.
+							use_time_range?: bool
+						}), [...close({
+							// Destination of the link: dashboard saved-object id for `dashboard` links, or
+							// a URL for `external` links.
+							destination!: string
+
+							// When true, the external URL is percent-encoded.
+							encode_url?: bool
+
+							// Optional display label for the link.
+							label?: string
+
+							// When true, opens the link in a new browser tab.
+							open_in_new_tab?: bool
+
+							// Type of link: `dashboard` for an internal Kibana dashboard link, or
+							// `external` for an arbitrary URL.
+							type!: string
+
+							// When true, the dashboard link applies the current filters.
+							use_filters?: bool
+
+							// When true, the dashboard link applies the current time range.
+							use_time_range?: bool
+						})]])
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// Layout direction for the links panel.
+						layout!: string
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+				})
+
 				// Configuration for a `markdown` panel (the Kibana Dashboard API
 				// `kbn-dashboard-panel-type-markdown` shape). Set exactly one of `by_value`
 				// (inline `content` with required nested `settings`) or `by_reference`
 				// (existing library item via `ref_id`). Presentation fields (`description`,
 				// `hide_title`, `title`, `hide_border`) are supported in both branches.
-				// Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-				// `slo_error_budget_config`, `slo_overview_config`,
+				// Mutually exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `range_slider_control_config`, `esql_control_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				markdown_config?: close({
 					// Reference an existing markdown library item via `ref_id`. Optional
 					// `description`, `hide_title`, `title`, and `hide_border`.
@@ -10884,116 +13112,413 @@ elasticstack_kibana_dashboard: {
 					})
 				})
 
-				// Configuration for an options list control panel. Provides a dropdown or
-				// multi-select filter based on a field in a data view. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// Configuration for an ML anomaly charts panel
+				// (`kbn-dashboard-panel-type-ml_anomaly_charts`). Required when `type` is
+				// `ml_anomaly_charts`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
 				// `slo_overview_config`, `synthetics_monitors_config`,
 				// `synthetics_stats_overview_config`, `time_slider_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
-				options_list_control_config?: close({
-					// The ID of the data view that the control is tied to.
-					data_view_id!: string
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				ml_anomaly_charts_config?: close({
+					// Optional panel description.
+					description?: string
 
-					// Display preferences for the control widget.
-					display_settings?: close({
-						// When true, hides the action bar on the control.
-						hide_action_bar?: bool
+					// Severity bands to display. Each item sets either a named `severity` shortcut
+					// or a raw numeric `min`/`max` range, never both.
+					severity_threshold?: matchN(1, [close({
+						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						max?: number
 
-						// When true, hides the exclude toggle.
-						hide_exclude?: bool
+						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						min?: number
 
-						// When true, hides the exists filter option.
-						hide_exists?: bool
+						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
+						severity?: string
+					}), [...close({
+						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						max?: number
 
-						// When true, hides the sort control.
-						hide_sort?: bool
+						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						min?: number
 
-						// Placeholder text shown when no option is selected.
-						placeholder?: string
+						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
+						severity?: string
+					})]])
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// Optional panel-level time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
 					})
 
-					// When true, selected options are used as an exclusion filter rather than an inclusion filter.
-					exclude?: bool
+					// When true, hides the panel title.
+					hide_title?: bool
 
-					// Default sort configuration for the suggestion list.
-					sort?: close({
-						// The field or criterion to sort by. Must be one of `_count` or `_key`.
-						by!: string
+					// Anomaly detection job IDs or group IDs whose results appear in the charts. At
+					// least one entry is required.
+					job_ids!: [...string]
 
-						// The sort direction. Must be one of `asc` or `desc`.
-						direction!: string
+					// Maximum number of anomaly series to plot.
+					max_series_to_plot?: number
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// Configuration for an ML anomaly swim lane panel
+				// (`kbn-dashboard-panel-type-ml_anomaly_swimlane`). Required when `type` is
+				// `ml_anomaly_swimlane`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				ml_anomaly_swimlane_config?: close({
+					// Optional panel description.
+					description?: string
+
+					// Optional panel-level time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
 					})
 
-					// When true, the control filters for documents where the field exists.
-					exists_selected?: bool
+					// When true, hides the panel border.
+					hide_border?: bool
 
-					// The name of the field in the data view that the control is tied to.
-					field_name!: string
+					// When true, hides the panel title.
+					hide_title?: bool
 
-					// Whether the control skips field-level validation against the data view.
-					ignore_validations?: bool
+					// IDs of anomaly detection jobs or groups whose results appear in the swim
+					// lane. At least one entry is required.
+					job_ids!: [...string]
 
-					// When true, the control continues to show results even when the underlying query times out.
-					run_past_timeout?: bool
+					// Number of rows to display per page in a view-by swim lane. Ignored for overall swim lanes.
+					per_page?: number
 
-					// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
-					// or `exact` when set.
-					search_technique?: string
+					// Swim lane mode. Use `overall` for a single aggregate lane or `viewBy` to
+					// split anomalies by field.
+					swimlane_type!: string
 
-					// The initially or persistently selected option values. All values are represented as strings.
-					selected_options?: [...string]
-
-					// When true, only one option may be selected at a time.
-					single_select?: bool
-
-					// Human-readable label displayed above the control.
+					// Optional panel title shown in the panel header.
 					title?: string
 
-					// Whether the control applies the dashboard's global filters to its own query.
-					use_global_filters?: bool
+					// Field name used to split anomalies into a view-by swim lane. Required when
+					// `swimlane_type` is `viewBy`; must not be set when `swimlane_type` is
+					// `overall`.
+					view_by?: string
+				})
+
+				// Configuration for an ML single metric viewer panel
+				// (`kbn-dashboard-panel-type-ml_single_metric_viewer`). Required when `type`
+				// is `ml_single_metric_viewer`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				ml_single_metric_viewer_config?: close({
+					// Optional panel description.
+					description?: string
+
+					// Values of partition, by, or over fields that identify the single time series
+					// to display. Each map entry must set exactly one of `string_value` or
+					// `numeric_value`.
+					selected_entities?: [string]: close({
+						// Numeric entity value for the field.
+						numeric_value?: number
+
+						// String entity value for the field.
+						string_value?: string
+					})
+
+					// Forecast identifier to overlay on the chart.
+					forecast_id?: string
+
+					// Optional panel-level time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// For `metric` detectors, selects which value to plot: `min`, `max`, or `mean`.
+					// Ignored for other detector functions.
+					function_description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Anomaly detection job ID whose results appear in the single metric viewer.
+					// Exactly one entry is required.
+					job_ids!: [...string]
+
+					// Zero-based index of the detector within the job whose results are shown.
+					selected_detector_index?: number
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// Configuration for an options list control panel. Provides a dropdown or
+				// multi-select filter based on a field in a data view (`by_field`) or an ES|QL
+				// query (`by_esql`). Exactly one of `by_field` or `by_esql` must be set.
+				// Mutually exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				options_list_control_config?: close({
+					// Configuration for an options list control sourced from an ES|QL query.
+					// Mutually exclusive with `by_field`.
+					by_esql?: close({
+						// Display preferences for the control widget.
+						display_settings?: close({
+							// When true, hides the action bar on the control.
+							hide_action_bar?: bool
+
+							// When true, hides the exclude toggle.
+							hide_exclude?: bool
+
+							// When true, hides the exists filter option.
+							hide_exists?: bool
+
+							// When true, hides the sort control.
+							hide_sort?: bool
+
+							// Placeholder text shown when no option is selected.
+							placeholder?: string
+						})
+
+						// The ES|QL query that produces the available option values.
+						esql_query!: string
+
+						// When true, the control filters for documents where the field exists.
+						exists_selected?: bool
+
+						// Whether the control skips field-level validation against the data view.
+						ignore_validations?: bool
+
+						// When true, the control continues to show results even when the underlying query times out.
+						run_past_timeout?: bool
+
+						// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+						// or `exact` when set.
+						search_technique?: string
+
+						// The initially or persistently selected option values. All values are represented as strings.
+						selected_options?: [...string]
+
+						// When true, only one option may be selected at a time.
+						single_select?: bool
+
+						// Default sort configuration for the suggestion list.
+						sort?: close({
+							// The field or criterion to sort by. Must be one of `_count` or `_key`.
+							by!: string
+
+							// The sort direction. Must be one of `asc` or `desc`.
+							direction!: string
+						})
+
+						// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+						exclude?: bool
+
+						// Human-readable label displayed above the control.
+						title?: string
+
+						// Whether the control applies the dashboard's global filters to its own query.
+						use_global_filters?: bool
+
+						// The source discriminator for this branch. Must be `esql_query`.
+						values_source!: string
+					})
+
+					// Configuration for an options list control sourced from a Kibana data view
+					// field. Mutually exclusive with `by_esql`.
+					by_field?: close({
+						// The ID of the data view that the control is tied to.
+						data_view_id!: string
+
+						// Display preferences for the control widget.
+						display_settings?: close({
+							// When true, hides the action bar on the control.
+							hide_action_bar?: bool
+
+							// When true, hides the exclude toggle.
+							hide_exclude?: bool
+
+							// When true, hides the exists filter option.
+							hide_exists?: bool
+
+							// When true, hides the sort control.
+							hide_sort?: bool
+
+							// Placeholder text shown when no option is selected.
+							placeholder?: string
+						})
+
+						// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+						exclude?: bool
+
+						// Default sort configuration for the suggestion list.
+						sort?: close({
+							// The field or criterion to sort by. Must be one of `_count` or `_key`.
+							by!: string
+
+							// The sort direction. Must be one of `asc` or `desc`.
+							direction!: string
+						})
+
+						// When true, the control filters for documents where the field exists.
+						exists_selected?: bool
+
+						// The name of the field in the data view that the control is tied to.
+						field_name!: string
+
+						// Whether the control skips field-level validation against the data view.
+						ignore_validations?: bool
+
+						// When true, the control continues to show results even when the underlying query times out.
+						run_past_timeout?: bool
+
+						// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+						// or `exact` when set.
+						search_technique?: string
+
+						// The initially or persistently selected option values. All values are represented as strings.
+						selected_options?: [...string]
+
+						// When true, only one option may be selected at a time.
+						single_select?: bool
+
+						// Human-readable label displayed above the control.
+						title?: string
+
+						// Whether the control applies the dashboard's global filters to its own query.
+						use_global_filters?: bool
+					})
 				})
 
 				// Configuration for a range slider control panel. Provides a min/max range
-				// filter tied to a data view field. Mutually exclusive with `config_json`,
-				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
+				// filter sourced from either a data view field (`by_field`) or an ES|QL query
+				// (`by_esql`). Exactly one of the two must be set. Mutually exclusive with
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 				// `time_slider_control_config`, `options_list_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				range_slider_control_config?: close({
-					// The ID of the data view that the control is tied to.
-					data_view_id!: string
+					// Range slider sourced from an ES|QL query. Mutually exclusive with `by_field`.
+					by_esql?: close({
+						// The ES|QL query that produces the min/max range values.
+						esql_query!: string
 
-					// The name of the field in the data view that the control is tied to.
-					field_name!: string
+						// Whether to suppress validation errors during intermediate states.
+						ignore_validations?: bool
 
-					// Whether to suppress validation errors during intermediate states.
-					ignore_validations?: bool
+						// The step size for the range slider. Stored as float32 to match the Kibana API
+						// type and avoid refresh drift.
+						step?: number
 
-					// The step size for the range slider. Stored as float32 to match the Kibana API
-					// type and avoid refresh drift.
-					step?: number
+						// A human-readable title for the control.
+						title?: string
 
-					// A human-readable title for the control.
-					title?: string
+						// Whether the control respects dashboard-level filters.
+						use_global_filters?: bool
 
-					// Whether the control respects dashboard-level filters.
-					use_global_filters?: bool
+						// Initial range as a list of exactly 2 strings: [min, max].
+						value?: [...string]
 
-					// Initial range as a list of exactly 2 strings: [min, max].
-					value?: [...string]
+						// The source of the range values. Must be `esql_query`.
+						values_source!: string
+					})
+
+					// Range slider sourced from a Kibana data view field. Mutually exclusive with `by_esql`.
+					by_field?: close({
+						// The ID of the data view that the control is tied to.
+						data_view_id!: string
+
+						// The name of the field in the data view that the control is tied to.
+						field_name!: string
+
+						// Whether to suppress validation errors during intermediate states.
+						ignore_validations?: bool
+
+						// The step size for the range slider. Stored as float32 to match the Kibana API
+						// type and avoid refresh drift.
+						step?: number
+
+						// A human-readable title for the control.
+						title?: string
+
+						// Whether the control respects dashboard-level filters.
+						use_global_filters?: bool
+
+						// Initial range as a list of exactly 2 strings: [min, max].
+						value?: [...string]
+					})
 				})
 
 				// Configuration for an `slo_alerts` panel
 				// (`kbn-dashboard-panel-type-slo_alerts`). Required when `type` is
-				// `slo_alerts`. Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-				// `slo_error_budget_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `image_config`, `vis_config`, `discover_session_config`.
+				// `slo_alerts`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `vis_config`, `discover_session_config`,
+				// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
 				slo_alerts_config?: close({
 					// Optional panel description.
 					description?: string
@@ -11060,12 +13585,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for an SLO burn rate panel. Use this for panels that visualize
 				// the burn rate of an SLO over a configurable look-back window. Mutually
-				// exclusive with `config_json`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_monitors_config`,
-				// `synthetics_stats_overview_config`, `time_slider_control_config`,
-				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				slo_burn_rate_config?: close({
 					// Optional panel description.
 					description?: string
@@ -11120,12 +13649,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for an SLO error budget panel. Displays the burn chart of
 				// remaining error budget for a specific SLO. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				slo_error_budget_config?: close({
 					// Optional panel description.
 					description?: string
@@ -11178,12 +13711,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for an SLO overview panel. Use either `single` (for a single
 				// SLO) or `groups` (for grouped SLO overview). Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				slo_overview_config?: close({
 					// Configuration for a grouped SLO overview panel. Mutually exclusive with `single`.
 					groups?: close({
@@ -11305,12 +13842,16 @@ elasticstack_kibana_dashboard: {
 				// Configuration for a Synthetics monitors panel. Displays a table of Elastic
 				// Synthetics monitors and their current status. All fields are optional — omit
 				// the block entirely for a bare panel with no filtering. Mutually exclusive
-				// with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				synthetics_monitors_config?: close({
 					// Optional panel description.
 					description?: string
@@ -11410,12 +13951,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for a Synthetics stats overview panel. All fields are optional;
 				// an absent or empty block shows statistics for all monitors visible within
-				// the space. Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-				// `slo_error_budget_config`, `slo_overview_config`,
+				// the space. Mutually exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `time_slider_control_config`,
 				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				synthetics_stats_overview_config?: close({
 					// Optional panel description.
 					description?: string
@@ -11540,12 +14085,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for a time slider control panel. Controls the visible time
 				// window within the dashboard's global time range. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_monitors_config`,
-				// `synthetics_stats_overview_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				time_slider_control_config?: close({
 					// End of the visible time window as a fraction of the dashboard global range
 					// (0.0–1.0). Float32 in state matches the Kibana API and avoids refresh drift.
@@ -11559,34 +14108,20 @@ elasticstack_kibana_dashboard: {
 					start_percentage_of_time_range?: number
 				})
 
-				// The type of the panel (e.g. 'markdown', 'vis').
-				type!: string
-
-				// The grid coordinates and dimensions of the panel.
-				grid!: close({
-					// The height.
-					h?: number
-
-					// The width.
-					w?: number
-
-					// The X coordinate.
-					x!: number
-
-					// The Y coordinate.
-					y!: number
-				})
-
 				// Configuration for a `vis` panel (`type = "vis"`). Typed alternative to
 				// panel-level `config_json`: set exactly one of `by_value` (exactly one of 12
 				// Lens chart kinds) or `by_reference`. With `by_reference`, use structured
 				// `drilldowns` and optional `time_range`. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_monitors_config`,
-				// `synthetics_stats_overview_config`, `time_slider_control_config`,
-				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `discover_session_config`.
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				vis_config?: close({
 					// By-reference `vis` configuration: structured `drilldowns`, `ref_id`, optional
 					// `references_json`, and optional `time_range`.
@@ -15226,27 +17761,280 @@ elasticstack_kibana_dashboard: {
 					})
 				})
 			}), [...close({
-				// The configuration of the panel as a JSON string. Practitioner-authored
-				// panel-level `config_json` is valid only when `type` is `markdown` or `vis`.
-				// Typed panel kinds such as `image`, `slo_alerts`, and `discover_session` use
-				// their dedicated blocks (`image_config`, `slo_alerts_config`,
-				// `discover_session_config`), not panel-level `config_json`. Mutually
-				// exclusive with `slo_burn_rate_config`, `slo_error_budget_config`,
+				// Configuration for an AIOps change point chart panel. Anchored to a data view
+				// and metric field; optional aggregation, split, partitions, and view controls
+				// follow the API-documented enums. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
 				// `slo_overview_config`, `synthetics_monitors_config`,
 				// `synthetics_stats_overview_config`, `time_slider_control_config`,
 				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`.
+				aiops_change_point_chart_config?: close({
+					// The aggregation function used to calculate the metric values. One of `avg`, `max`, `min`, `sum`.
+					aggregation_function?: string
+
+					// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+					// panel inherits the dashboard `time_range` and this attribute stays null in
+					// state (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// The data view ID used for change point detection.
+					data_view_id!: string
+
+					// Optional panel description.
+					description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Maximum number of change points to visualise. Kibana default is `6`. Float32
+					// in state matches the Kibana API and avoids refresh drift.
+					max_series_to_plot?: number
+
+					// The metric field used by the aggregation function.
+					metric_field!: string
+
+					// Optional split field values to include in the panel. Modelled as a set to
+					// prevent plan drift from API-returned ordering; duplicate entries are
+					// silently deduplicated. An empty set is not meaningful (omit the attribute to
+					// disable filtering); a non-null set must contain at least one entry.
+					partitions?: [...string]
+
+					// The optional field used to split change-point results.
+					split_field?: string
+
+					// Optional panel title shown in the panel header.
+					title?: string
+
+					// The type of change point detection view to display. One of `charts`, `table`.
+					view_type?: string
+				})
+
+				// The configuration of the panel as a JSON string. Practitioner-authored
+				// panel-level `config_json` is valid only when `type` is `markdown` or `vis`.
+				// Typed panel kinds such as `image`, `slo_alerts`, `discover_session`,
+				// `field_stats_table`, `ml_anomaly_swimlane`, `ml_anomaly_charts`, and
+				// `ml_single_metric_viewer` use their dedicated blocks (`image_config`,
+				// `slo_alerts_config`, `discover_session_config`, `field_stats_table_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`), not panel-level `config_json`. Mutually
+				// exclusive with `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				config_json?: string
+
+				// Configuration for an AIOps log rate analysis panel. Anchored to a data view;
+				// the remaining fields are the standard optional panel presentation
+				// passthroughs. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				aiops_log_rate_analysis_config?: close({
+					// The data view ID used to run log rate analysis.
+					data_view_id!: string
+
+					// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+					// panel inherits the dashboard `time_range` and this attribute stays null in
+					// state (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// Optional panel description.
+					description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// The identifier of the panel (API `id`).
+				id?: string
+
+				// Configuration for an AIOps pattern analysis panel. Anchored to a data view
+				// and text field; optional sampling and time-range controls follow the
+				// API-documented bounds. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_change_point_chart_config`.
+				aiops_pattern_analysis_config?: close({
+					// The data view ID used for pattern analysis.
+					data_view_id!: string
+
+					// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+					// panel inherits the dashboard `time_range` and this attribute stays null in
+					// state (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// Optional panel description.
+					description?: string
+
+					// The text field on which to run pattern analysis.
+					field_name!: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Minimum time range for pattern analysis. One of `no_minimum`, `1_week`,
+					// `1_month`, `3_months`, `6_months`.
+					minimum_time_range?: string
+
+					// The random sampler mode. One of `off`, `on_automatic`, `on_manual`.
+					random_sampler_mode?: string
+
+					// Sampling probability, only meaningful when `random_sampler_mode = on_manual`.
+					// Must be between `0.00001` and `0.5`. Float32 in state matches the Kibana API
+					// and avoids refresh drift.
+					random_sampler_probability?: number
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// The type of the panel (e.g. 'markdown', 'vis').
+				type!: string
+
+				// Configuration for an APM service map panel. All fields are optional. Mutually
+				// exclusive with `config_json`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				apm_service_map_config?: close({
+					// Filter services by alert status.
+					alert_status_filter?: [...string]
+
+					// Optional panel time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// Filter services by anomaly severity.
+					anomaly_severity_filter?: [...string]
+
+					// Filter services by connection state.
+					connection_filter?: [...string]
+
+					// Optional panel description.
+					description?: string
+
+					// APM service environment (for example, `production`).
+					environment?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// KQL query string applied to the service map.
+					kuery?: string
+
+					// Layout orientation of the service map.
+					map_orientation?: string
+
+					// Opaque identifier of a saved APM service group.
+					service_group_id?: string
+
+					// Focus the service map on a specific APM service.
+					service_name?: string
+
+					// Filter services by SLO status.
+					slo_status_filter?: [...string]
+
+					// When set, the panel follows dashboard-level filters.
+					sync_with_dashboard_filters?: bool
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
 
 				// Configuration for a `discover_session` panel
 				// (`kbn-dashboard-panel-type-discover_session`). Set exactly one of `by_value`
 				// or `by_reference`. Mutually exclusive with `config_json`,
-				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `image_config`, `slo_alerts_config`, `vis_config`.
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
 				discover_session_config?: close({
 					// Reference an existing Discover session saved object via `ref_id`. Client-side
 					// `references` JSON is not modeled in v1 (see change design). Omit
@@ -15520,16 +18308,17 @@ elasticstack_kibana_dashboard: {
 					title?: string
 				})
 
-				// The identifier of the panel (API `id`).
-				id?: string
-
 				// Configuration for an ES|QL control panel. Use this to manage ES|QL variable
 				// controls on a dashboard. Mutually exclusive with `config_json`,
-				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				esql_control_config?: close({
 					// Pre-populated list of available options shown before the query executes.
 					available_options?: [...string]
@@ -15575,14 +18364,129 @@ elasticstack_kibana_dashboard: {
 					variable_type!: string
 				})
 
-				// Configuration for an `image` panel (`kbn-dashboard-panel-type-image`).
-				// Required when `type` is `image`. References the Kibana Dashboard API image
-				// embeddable `config` shape. Mutually exclusive with `config_json`,
+				// Configuration for a `field_stats_table` panel (Data Visualizer field-statistics table).
+				//
+				// Set exactly one of `by_dataview` or `by_esql`. The active branch determines
+				// the API `view_type` discriminator (`dataview` or `esql`); practitioners do
+				// not set `view_type` directly.
+				// Mutually exclusive with `config_json`, `apm_service_map_config`,
 				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 				// `time_slider_control_config`, `options_list_control_config`,
 				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
+				field_stats_table_config?: close({
+					// Field statistics backed by a Kibana data view (`view_type = "dataview"` on the wire).
+					//
+					// Requires `data_view_id`. Optional presentation fields and
+					// `show_distributions` apply to this branch only.
+					by_dataview?: close({
+						// The identifier of the source data view.
+						data_view_id!: string
+
+						// Optional panel time range override (`from`, `to`, optional `mode`).
+						// Null-preserved on read: when omitted in configuration, this attribute stays
+						// null in state even if Kibana returns values (REQ-009).
+						time_range?: close({
+							// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+							from!: string
+
+							// Optional time range mode. When set, must be `absolute` or `relative`.
+							mode?: string
+
+							// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+							to!: string
+						})
+
+						// Optional panel description.
+						description?: string
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// When true, shows distribution mini-charts in the field statistics table.
+						// Null-preserved on read (REQ-009).
+						show_distributions?: bool
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+
+					// Field statistics backed by an ES|QL query (`view_type = "esql"` on the wire).
+					//
+					// Requires `query` (mapped to `query.esql` in the API). Optional presentation
+					// fields and `show_distributions` apply to this branch only.
+					by_esql?: close({
+						// Optional panel description.
+						description?: string
+
+						// Optional panel time range override (`from`, `to`, optional `mode`).
+						// Null-preserved on read: when omitted in configuration, this attribute stays
+						// null in state even if Kibana returns values (REQ-009).
+						time_range?: close({
+							// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+							from!: string
+
+							// Optional time range mode. When set, must be `absolute` or `relative`.
+							mode?: string
+
+							// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+							to!: string
+						})
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// The ES|QL query string (mapped to `query.esql` in the API).
+						query!: string
+
+						// When true, shows distribution mini-charts in the field statistics table.
+						// Null-preserved on read (REQ-009).
+						show_distributions?: bool
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+				})
+
+				// The grid coordinates and dimensions of the panel.
+				grid!: close({
+					// The height.
+					h?: number
+
+					// The width.
+					w?: number
+
+					// The X coordinate.
+					x!: number
+
+					// The Y coordinate.
+					y!: number
+				})
+
+				// Configuration for an `image` panel (`kbn-dashboard-panel-type-image`).
+				// Required when `type` is `image`. References the Kibana Dashboard API image
+				// embeddable `config` shape. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `slo_alerts_config`, `vis_config`, `discover_session_config`,
+				// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
 				image_config?: close({
 					// Accessible alternate text for the image.
 					alt_text?: string
@@ -15737,17 +18641,120 @@ elasticstack_kibana_dashboard: {
 					title?: string
 				})
 
+				// Configuration for a `links` panel (`kbn-dashboard-panel-type-links`). Set
+				// exactly one of `by_value` or `by_reference`. Mutually exclusive with
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
+				links_config?: close({
+					// Reference a Kibana Links library saved object.
+					by_reference?: close({
+						// Optional panel description.
+						description?: string
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// Reference id of a Kibana Links library saved object.
+						ref_id!: string
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+
+					// Inline links panel configuration.
+					by_value?: close({
+						// Optional panel description.
+						description?: string
+
+						// List of links to display in the panel.
+						links!: matchN(1, [close({
+							// Destination of the link: dashboard saved-object id for `dashboard` links, or
+							// a URL for `external` links.
+							destination!: string
+
+							// When true, the external URL is percent-encoded.
+							encode_url?: bool
+
+							// Optional display label for the link.
+							label?: string
+
+							// When true, opens the link in a new browser tab.
+							open_in_new_tab?: bool
+
+							// Type of link: `dashboard` for an internal Kibana dashboard link, or
+							// `external` for an arbitrary URL.
+							type!: string
+
+							// When true, the dashboard link applies the current filters.
+							use_filters?: bool
+
+							// When true, the dashboard link applies the current time range.
+							use_time_range?: bool
+						}), [...close({
+							// Destination of the link: dashboard saved-object id for `dashboard` links, or
+							// a URL for `external` links.
+							destination!: string
+
+							// When true, the external URL is percent-encoded.
+							encode_url?: bool
+
+							// Optional display label for the link.
+							label?: string
+
+							// When true, opens the link in a new browser tab.
+							open_in_new_tab?: bool
+
+							// Type of link: `dashboard` for an internal Kibana dashboard link, or
+							// `external` for an arbitrary URL.
+							type!: string
+
+							// When true, the dashboard link applies the current filters.
+							use_filters?: bool
+
+							// When true, the dashboard link applies the current time range.
+							use_time_range?: bool
+						})]])
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// Layout direction for the links panel.
+						layout!: string
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+				})
+
 				// Configuration for a `markdown` panel (the Kibana Dashboard API
 				// `kbn-dashboard-panel-type-markdown` shape). Set exactly one of `by_value`
 				// (inline `content` with required nested `settings`) or `by_reference`
 				// (existing library item via `ref_id`). Presentation fields (`description`,
 				// `hide_title`, `title`, `hide_border`) are supported in both branches.
-				// Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-				// `slo_error_budget_config`, `slo_overview_config`,
+				// Mutually exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `range_slider_control_config`, `esql_control_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				markdown_config?: close({
 					// Reference an existing markdown library item via `ref_id`. Optional
 					// `description`, `hide_title`, `title`, and `hide_border`.
@@ -15796,116 +18803,413 @@ elasticstack_kibana_dashboard: {
 					})
 				})
 
-				// Configuration for an options list control panel. Provides a dropdown or
-				// multi-select filter based on a field in a data view. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// Configuration for an ML anomaly charts panel
+				// (`kbn-dashboard-panel-type-ml_anomaly_charts`). Required when `type` is
+				// `ml_anomaly_charts`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
 				// `slo_overview_config`, `synthetics_monitors_config`,
 				// `synthetics_stats_overview_config`, `time_slider_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
-				options_list_control_config?: close({
-					// The ID of the data view that the control is tied to.
-					data_view_id!: string
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				ml_anomaly_charts_config?: close({
+					// Optional panel description.
+					description?: string
 
-					// Display preferences for the control widget.
-					display_settings?: close({
-						// When true, hides the action bar on the control.
-						hide_action_bar?: bool
+					// Severity bands to display. Each item sets either a named `severity` shortcut
+					// or a raw numeric `min`/`max` range, never both.
+					severity_threshold?: matchN(1, [close({
+						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						max?: number
 
-						// When true, hides the exclude toggle.
-						hide_exclude?: bool
+						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						min?: number
 
-						// When true, hides the exists filter option.
-						hide_exists?: bool
+						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
+						severity?: string
+					}), [...close({
+						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						max?: number
 
-						// When true, hides the sort control.
-						hide_sort?: bool
+						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						min?: number
 
-						// Placeholder text shown when no option is selected.
-						placeholder?: string
+						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
+						severity?: string
+					})]])
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// Optional panel-level time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
 					})
 
-					// When true, selected options are used as an exclusion filter rather than an inclusion filter.
-					exclude?: bool
+					// When true, hides the panel title.
+					hide_title?: bool
 
-					// Default sort configuration for the suggestion list.
-					sort?: close({
-						// The field or criterion to sort by. Must be one of `_count` or `_key`.
-						by!: string
+					// Anomaly detection job IDs or group IDs whose results appear in the charts. At
+					// least one entry is required.
+					job_ids!: [...string]
 
-						// The sort direction. Must be one of `asc` or `desc`.
-						direction!: string
+					// Maximum number of anomaly series to plot.
+					max_series_to_plot?: number
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// Configuration for an ML anomaly swim lane panel
+				// (`kbn-dashboard-panel-type-ml_anomaly_swimlane`). Required when `type` is
+				// `ml_anomaly_swimlane`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				ml_anomaly_swimlane_config?: close({
+					// Optional panel description.
+					description?: string
+
+					// Optional panel-level time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
 					})
 
-					// When true, the control filters for documents where the field exists.
-					exists_selected?: bool
+					// When true, hides the panel border.
+					hide_border?: bool
 
-					// The name of the field in the data view that the control is tied to.
-					field_name!: string
+					// When true, hides the panel title.
+					hide_title?: bool
 
-					// Whether the control skips field-level validation against the data view.
-					ignore_validations?: bool
+					// IDs of anomaly detection jobs or groups whose results appear in the swim
+					// lane. At least one entry is required.
+					job_ids!: [...string]
 
-					// When true, the control continues to show results even when the underlying query times out.
-					run_past_timeout?: bool
+					// Number of rows to display per page in a view-by swim lane. Ignored for overall swim lanes.
+					per_page?: number
 
-					// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
-					// or `exact` when set.
-					search_technique?: string
+					// Swim lane mode. Use `overall` for a single aggregate lane or `viewBy` to
+					// split anomalies by field.
+					swimlane_type!: string
 
-					// The initially or persistently selected option values. All values are represented as strings.
-					selected_options?: [...string]
-
-					// When true, only one option may be selected at a time.
-					single_select?: bool
-
-					// Human-readable label displayed above the control.
+					// Optional panel title shown in the panel header.
 					title?: string
 
-					// Whether the control applies the dashboard's global filters to its own query.
-					use_global_filters?: bool
+					// Field name used to split anomalies into a view-by swim lane. Required when
+					// `swimlane_type` is `viewBy`; must not be set when `swimlane_type` is
+					// `overall`.
+					view_by?: string
+				})
+
+				// Configuration for an ML single metric viewer panel
+				// (`kbn-dashboard-panel-type-ml_single_metric_viewer`). Required when `type`
+				// is `ml_single_metric_viewer`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				ml_single_metric_viewer_config?: close({
+					// Optional panel description.
+					description?: string
+
+					// Values of partition, by, or over fields that identify the single time series
+					// to display. Each map entry must set exactly one of `string_value` or
+					// `numeric_value`.
+					selected_entities?: [string]: close({
+						// Numeric entity value for the field.
+						numeric_value?: number
+
+						// String entity value for the field.
+						string_value?: string
+					})
+
+					// Forecast identifier to overlay on the chart.
+					forecast_id?: string
+
+					// Optional panel-level time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// For `metric` detectors, selects which value to plot: `min`, `max`, or `mean`.
+					// Ignored for other detector functions.
+					function_description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Anomaly detection job ID whose results appear in the single metric viewer.
+					// Exactly one entry is required.
+					job_ids!: [...string]
+
+					// Zero-based index of the detector within the job whose results are shown.
+					selected_detector_index?: number
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// Configuration for an options list control panel. Provides a dropdown or
+				// multi-select filter based on a field in a data view (`by_field`) or an ES|QL
+				// query (`by_esql`). Exactly one of `by_field` or `by_esql` must be set.
+				// Mutually exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				options_list_control_config?: close({
+					// Configuration for an options list control sourced from an ES|QL query.
+					// Mutually exclusive with `by_field`.
+					by_esql?: close({
+						// Display preferences for the control widget.
+						display_settings?: close({
+							// When true, hides the action bar on the control.
+							hide_action_bar?: bool
+
+							// When true, hides the exclude toggle.
+							hide_exclude?: bool
+
+							// When true, hides the exists filter option.
+							hide_exists?: bool
+
+							// When true, hides the sort control.
+							hide_sort?: bool
+
+							// Placeholder text shown when no option is selected.
+							placeholder?: string
+						})
+
+						// The ES|QL query that produces the available option values.
+						esql_query!: string
+
+						// When true, the control filters for documents where the field exists.
+						exists_selected?: bool
+
+						// Whether the control skips field-level validation against the data view.
+						ignore_validations?: bool
+
+						// When true, the control continues to show results even when the underlying query times out.
+						run_past_timeout?: bool
+
+						// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+						// or `exact` when set.
+						search_technique?: string
+
+						// The initially or persistently selected option values. All values are represented as strings.
+						selected_options?: [...string]
+
+						// When true, only one option may be selected at a time.
+						single_select?: bool
+
+						// Default sort configuration for the suggestion list.
+						sort?: close({
+							// The field or criterion to sort by. Must be one of `_count` or `_key`.
+							by!: string
+
+							// The sort direction. Must be one of `asc` or `desc`.
+							direction!: string
+						})
+
+						// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+						exclude?: bool
+
+						// Human-readable label displayed above the control.
+						title?: string
+
+						// Whether the control applies the dashboard's global filters to its own query.
+						use_global_filters?: bool
+
+						// The source discriminator for this branch. Must be `esql_query`.
+						values_source!: string
+					})
+
+					// Configuration for an options list control sourced from a Kibana data view
+					// field. Mutually exclusive with `by_esql`.
+					by_field?: close({
+						// The ID of the data view that the control is tied to.
+						data_view_id!: string
+
+						// Display preferences for the control widget.
+						display_settings?: close({
+							// When true, hides the action bar on the control.
+							hide_action_bar?: bool
+
+							// When true, hides the exclude toggle.
+							hide_exclude?: bool
+
+							// When true, hides the exists filter option.
+							hide_exists?: bool
+
+							// When true, hides the sort control.
+							hide_sort?: bool
+
+							// Placeholder text shown when no option is selected.
+							placeholder?: string
+						})
+
+						// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+						exclude?: bool
+
+						// Default sort configuration for the suggestion list.
+						sort?: close({
+							// The field or criterion to sort by. Must be one of `_count` or `_key`.
+							by!: string
+
+							// The sort direction. Must be one of `asc` or `desc`.
+							direction!: string
+						})
+
+						// When true, the control filters for documents where the field exists.
+						exists_selected?: bool
+
+						// The name of the field in the data view that the control is tied to.
+						field_name!: string
+
+						// Whether the control skips field-level validation against the data view.
+						ignore_validations?: bool
+
+						// When true, the control continues to show results even when the underlying query times out.
+						run_past_timeout?: bool
+
+						// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+						// or `exact` when set.
+						search_technique?: string
+
+						// The initially or persistently selected option values. All values are represented as strings.
+						selected_options?: [...string]
+
+						// When true, only one option may be selected at a time.
+						single_select?: bool
+
+						// Human-readable label displayed above the control.
+						title?: string
+
+						// Whether the control applies the dashboard's global filters to its own query.
+						use_global_filters?: bool
+					})
 				})
 
 				// Configuration for a range slider control panel. Provides a min/max range
-				// filter tied to a data view field. Mutually exclusive with `config_json`,
-				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
+				// filter sourced from either a data view field (`by_field`) or an ES|QL query
+				// (`by_esql`). Exactly one of the two must be set. Mutually exclusive with
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 				// `time_slider_control_config`, `options_list_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				range_slider_control_config?: close({
-					// The ID of the data view that the control is tied to.
-					data_view_id!: string
+					// Range slider sourced from an ES|QL query. Mutually exclusive with `by_field`.
+					by_esql?: close({
+						// The ES|QL query that produces the min/max range values.
+						esql_query!: string
 
-					// The name of the field in the data view that the control is tied to.
-					field_name!: string
+						// Whether to suppress validation errors during intermediate states.
+						ignore_validations?: bool
 
-					// Whether to suppress validation errors during intermediate states.
-					ignore_validations?: bool
+						// The step size for the range slider. Stored as float32 to match the Kibana API
+						// type and avoid refresh drift.
+						step?: number
 
-					// The step size for the range slider. Stored as float32 to match the Kibana API
-					// type and avoid refresh drift.
-					step?: number
+						// A human-readable title for the control.
+						title?: string
 
-					// A human-readable title for the control.
-					title?: string
+						// Whether the control respects dashboard-level filters.
+						use_global_filters?: bool
 
-					// Whether the control respects dashboard-level filters.
-					use_global_filters?: bool
+						// Initial range as a list of exactly 2 strings: [min, max].
+						value?: [...string]
 
-					// Initial range as a list of exactly 2 strings: [min, max].
-					value?: [...string]
+						// The source of the range values. Must be `esql_query`.
+						values_source!: string
+					})
+
+					// Range slider sourced from a Kibana data view field. Mutually exclusive with `by_esql`.
+					by_field?: close({
+						// The ID of the data view that the control is tied to.
+						data_view_id!: string
+
+						// The name of the field in the data view that the control is tied to.
+						field_name!: string
+
+						// Whether to suppress validation errors during intermediate states.
+						ignore_validations?: bool
+
+						// The step size for the range slider. Stored as float32 to match the Kibana API
+						// type and avoid refresh drift.
+						step?: number
+
+						// A human-readable title for the control.
+						title?: string
+
+						// Whether the control respects dashboard-level filters.
+						use_global_filters?: bool
+
+						// Initial range as a list of exactly 2 strings: [min, max].
+						value?: [...string]
+					})
 				})
 
 				// Configuration for an `slo_alerts` panel
 				// (`kbn-dashboard-panel-type-slo_alerts`). Required when `type` is
-				// `slo_alerts`. Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-				// `slo_error_budget_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `image_config`, `vis_config`, `discover_session_config`.
+				// `slo_alerts`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `vis_config`, `discover_session_config`,
+				// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
 				slo_alerts_config?: close({
 					// Optional panel description.
 					description?: string
@@ -15972,12 +19276,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for an SLO burn rate panel. Use this for panels that visualize
 				// the burn rate of an SLO over a configurable look-back window. Mutually
-				// exclusive with `config_json`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_monitors_config`,
-				// `synthetics_stats_overview_config`, `time_slider_control_config`,
-				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				slo_burn_rate_config?: close({
 					// Optional panel description.
 					description?: string
@@ -16032,12 +19340,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for an SLO error budget panel. Displays the burn chart of
 				// remaining error budget for a specific SLO. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				slo_error_budget_config?: close({
 					// Optional panel description.
 					description?: string
@@ -16090,12 +19402,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for an SLO overview panel. Use either `single` (for a single
 				// SLO) or `groups` (for grouped SLO overview). Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				slo_overview_config?: close({
 					// Configuration for a grouped SLO overview panel. Mutually exclusive with `single`.
 					groups?: close({
@@ -16217,12 +19533,16 @@ elasticstack_kibana_dashboard: {
 				// Configuration for a Synthetics monitors panel. Displays a table of Elastic
 				// Synthetics monitors and their current status. All fields are optional — omit
 				// the block entirely for a bare panel with no filtering. Mutually exclusive
-				// with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				synthetics_monitors_config?: close({
 					// Optional panel description.
 					description?: string
@@ -16322,12 +19642,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for a Synthetics stats overview panel. All fields are optional;
 				// an absent or empty block shows statistics for all monitors visible within
-				// the space. Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-				// `slo_error_budget_config`, `slo_overview_config`,
+				// the space. Mutually exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `time_slider_control_config`,
 				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				synthetics_stats_overview_config?: close({
 					// Optional panel description.
 					description?: string
@@ -16452,12 +19776,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for a time slider control panel. Controls the visible time
 				// window within the dashboard's global time range. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_monitors_config`,
-				// `synthetics_stats_overview_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				time_slider_control_config?: close({
 					// End of the visible time window as a fraction of the dashboard global range
 					// (0.0–1.0). Float32 in state matches the Kibana API and avoids refresh drift.
@@ -16471,34 +19799,20 @@ elasticstack_kibana_dashboard: {
 					start_percentage_of_time_range?: number
 				})
 
-				// The type of the panel (e.g. 'markdown', 'vis').
-				type!: string
-
-				// The grid coordinates and dimensions of the panel.
-				grid!: close({
-					// The height.
-					h?: number
-
-					// The width.
-					w?: number
-
-					// The X coordinate.
-					x!: number
-
-					// The Y coordinate.
-					y!: number
-				})
-
 				// Configuration for a `vis` panel (`type = "vis"`). Typed alternative to
 				// panel-level `config_json`: set exactly one of `by_value` (exactly one of 12
 				// Lens chart kinds) or `by_reference`. With `by_reference`, use structured
 				// `drilldowns` and optional `time_range`. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_monitors_config`,
-				// `synthetics_stats_overview_config`, `time_slider_control_config`,
-				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `discover_session_config`.
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				vis_config?: close({
 					// By-reference `vis` configuration: structured `drilldowns`, `ref_id`, optional
 					// `references_json`, and optional `time_range`.
@@ -20156,27 +23470,280 @@ elasticstack_kibana_dashboard: {
 
 			// The panels to display in the section.
 			panels?: matchN(1, [close({
-				// The configuration of the panel as a JSON string. Practitioner-authored
-				// panel-level `config_json` is valid only when `type` is `markdown` or `vis`.
-				// Typed panel kinds such as `image`, `slo_alerts`, and `discover_session` use
-				// their dedicated blocks (`image_config`, `slo_alerts_config`,
-				// `discover_session_config`), not panel-level `config_json`. Mutually
-				// exclusive with `slo_burn_rate_config`, `slo_error_budget_config`,
+				// Configuration for an AIOps change point chart panel. Anchored to a data view
+				// and metric field; optional aggregation, split, partitions, and view controls
+				// follow the API-documented enums. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
 				// `slo_overview_config`, `synthetics_monitors_config`,
 				// `synthetics_stats_overview_config`, `time_slider_control_config`,
 				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`.
+				aiops_change_point_chart_config?: close({
+					// The aggregation function used to calculate the metric values. One of `avg`, `max`, `min`, `sum`.
+					aggregation_function?: string
+
+					// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+					// panel inherits the dashboard `time_range` and this attribute stays null in
+					// state (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// The data view ID used for change point detection.
+					data_view_id!: string
+
+					// Optional panel description.
+					description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Maximum number of change points to visualise. Kibana default is `6`. Float32
+					// in state matches the Kibana API and avoids refresh drift.
+					max_series_to_plot?: number
+
+					// The metric field used by the aggregation function.
+					metric_field!: string
+
+					// Optional split field values to include in the panel. Modelled as a set to
+					// prevent plan drift from API-returned ordering; duplicate entries are
+					// silently deduplicated. An empty set is not meaningful (omit the attribute to
+					// disable filtering); a non-null set must contain at least one entry.
+					partitions?: [...string]
+
+					// The optional field used to split change-point results.
+					split_field?: string
+
+					// Optional panel title shown in the panel header.
+					title?: string
+
+					// The type of change point detection view to display. One of `charts`, `table`.
+					view_type?: string
+				})
+
+				// The configuration of the panel as a JSON string. Practitioner-authored
+				// panel-level `config_json` is valid only when `type` is `markdown` or `vis`.
+				// Typed panel kinds such as `image`, `slo_alerts`, `discover_session`,
+				// `field_stats_table`, `ml_anomaly_swimlane`, `ml_anomaly_charts`, and
+				// `ml_single_metric_viewer` use their dedicated blocks (`image_config`,
+				// `slo_alerts_config`, `discover_session_config`, `field_stats_table_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`), not panel-level `config_json`. Mutually
+				// exclusive with `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				config_json?: string
+
+				// Configuration for an AIOps log rate analysis panel. Anchored to a data view;
+				// the remaining fields are the standard optional panel presentation
+				// passthroughs. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				aiops_log_rate_analysis_config?: close({
+					// The data view ID used to run log rate analysis.
+					data_view_id!: string
+
+					// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+					// panel inherits the dashboard `time_range` and this attribute stays null in
+					// state (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// Optional panel description.
+					description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// The identifier of the panel (API `id`).
+				id?: string
+
+				// Configuration for an AIOps pattern analysis panel. Anchored to a data view
+				// and text field; optional sampling and time-range controls follow the
+				// API-documented bounds. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_change_point_chart_config`.
+				aiops_pattern_analysis_config?: close({
+					// The data view ID used for pattern analysis.
+					data_view_id!: string
+
+					// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+					// panel inherits the dashboard `time_range` and this attribute stays null in
+					// state (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// Optional panel description.
+					description?: string
+
+					// The text field on which to run pattern analysis.
+					field_name!: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Minimum time range for pattern analysis. One of `no_minimum`, `1_week`,
+					// `1_month`, `3_months`, `6_months`.
+					minimum_time_range?: string
+
+					// The random sampler mode. One of `off`, `on_automatic`, `on_manual`.
+					random_sampler_mode?: string
+
+					// Sampling probability, only meaningful when `random_sampler_mode = on_manual`.
+					// Must be between `0.00001` and `0.5`. Float32 in state matches the Kibana API
+					// and avoids refresh drift.
+					random_sampler_probability?: number
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// The type of the panel (e.g. 'markdown', 'vis').
+				type!: string
+
+				// Configuration for an APM service map panel. All fields are optional. Mutually
+				// exclusive with `config_json`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				apm_service_map_config?: close({
+					// Filter services by alert status.
+					alert_status_filter?: [...string]
+
+					// Optional panel time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// Filter services by anomaly severity.
+					anomaly_severity_filter?: [...string]
+
+					// Filter services by connection state.
+					connection_filter?: [...string]
+
+					// Optional panel description.
+					description?: string
+
+					// APM service environment (for example, `production`).
+					environment?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// KQL query string applied to the service map.
+					kuery?: string
+
+					// Layout orientation of the service map.
+					map_orientation?: string
+
+					// Opaque identifier of a saved APM service group.
+					service_group_id?: string
+
+					// Focus the service map on a specific APM service.
+					service_name?: string
+
+					// Filter services by SLO status.
+					slo_status_filter?: [...string]
+
+					// When set, the panel follows dashboard-level filters.
+					sync_with_dashboard_filters?: bool
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
 
 				// Configuration for a `discover_session` panel
 				// (`kbn-dashboard-panel-type-discover_session`). Set exactly one of `by_value`
 				// or `by_reference`. Mutually exclusive with `config_json`,
-				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `image_config`, `slo_alerts_config`, `vis_config`.
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
 				discover_session_config?: close({
 					// Reference an existing Discover session saved object via `ref_id`. Client-side
 					// `references` JSON is not modeled in v1 (see change design). Omit
@@ -20450,16 +24017,17 @@ elasticstack_kibana_dashboard: {
 					title?: string
 				})
 
-				// The identifier of the panel (API `id`).
-				id?: string
-
 				// Configuration for an ES|QL control panel. Use this to manage ES|QL variable
 				// controls on a dashboard. Mutually exclusive with `config_json`,
-				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				esql_control_config?: close({
 					// Pre-populated list of available options shown before the query executes.
 					available_options?: [...string]
@@ -20505,14 +24073,129 @@ elasticstack_kibana_dashboard: {
 					variable_type!: string
 				})
 
-				// Configuration for an `image` panel (`kbn-dashboard-panel-type-image`).
-				// Required when `type` is `image`. References the Kibana Dashboard API image
-				// embeddable `config` shape. Mutually exclusive with `config_json`,
+				// Configuration for a `field_stats_table` panel (Data Visualizer field-statistics table).
+				//
+				// Set exactly one of `by_dataview` or `by_esql`. The active branch determines
+				// the API `view_type` discriminator (`dataview` or `esql`); practitioners do
+				// not set `view_type` directly.
+				// Mutually exclusive with `config_json`, `apm_service_map_config`,
 				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 				// `time_slider_control_config`, `options_list_control_config`,
 				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
+				field_stats_table_config?: close({
+					// Field statistics backed by a Kibana data view (`view_type = "dataview"` on the wire).
+					//
+					// Requires `data_view_id`. Optional presentation fields and
+					// `show_distributions` apply to this branch only.
+					by_dataview?: close({
+						// The identifier of the source data view.
+						data_view_id!: string
+
+						// Optional panel time range override (`from`, `to`, optional `mode`).
+						// Null-preserved on read: when omitted in configuration, this attribute stays
+						// null in state even if Kibana returns values (REQ-009).
+						time_range?: close({
+							// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+							from!: string
+
+							// Optional time range mode. When set, must be `absolute` or `relative`.
+							mode?: string
+
+							// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+							to!: string
+						})
+
+						// Optional panel description.
+						description?: string
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// When true, shows distribution mini-charts in the field statistics table.
+						// Null-preserved on read (REQ-009).
+						show_distributions?: bool
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+
+					// Field statistics backed by an ES|QL query (`view_type = "esql"` on the wire).
+					//
+					// Requires `query` (mapped to `query.esql` in the API). Optional presentation
+					// fields and `show_distributions` apply to this branch only.
+					by_esql?: close({
+						// Optional panel description.
+						description?: string
+
+						// Optional panel time range override (`from`, `to`, optional `mode`).
+						// Null-preserved on read: when omitted in configuration, this attribute stays
+						// null in state even if Kibana returns values (REQ-009).
+						time_range?: close({
+							// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+							from!: string
+
+							// Optional time range mode. When set, must be `absolute` or `relative`.
+							mode?: string
+
+							// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+							to!: string
+						})
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// The ES|QL query string (mapped to `query.esql` in the API).
+						query!: string
+
+						// When true, shows distribution mini-charts in the field statistics table.
+						// Null-preserved on read (REQ-009).
+						show_distributions?: bool
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+				})
+
+				// The grid coordinates and dimensions of the panel.
+				grid!: close({
+					// The height.
+					h?: number
+
+					// The width.
+					w?: number
+
+					// The X coordinate.
+					x!: number
+
+					// The Y coordinate.
+					y!: number
+				})
+
+				// Configuration for an `image` panel (`kbn-dashboard-panel-type-image`).
+				// Required when `type` is `image`. References the Kibana Dashboard API image
+				// embeddable `config` shape. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `slo_alerts_config`, `vis_config`, `discover_session_config`,
+				// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
 				image_config?: close({
 					// Accessible alternate text for the image.
 					alt_text?: string
@@ -20667,17 +24350,120 @@ elasticstack_kibana_dashboard: {
 					title?: string
 				})
 
+				// Configuration for a `links` panel (`kbn-dashboard-panel-type-links`). Set
+				// exactly one of `by_value` or `by_reference`. Mutually exclusive with
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
+				links_config?: close({
+					// Reference a Kibana Links library saved object.
+					by_reference?: close({
+						// Optional panel description.
+						description?: string
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// Reference id of a Kibana Links library saved object.
+						ref_id!: string
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+
+					// Inline links panel configuration.
+					by_value?: close({
+						// Optional panel description.
+						description?: string
+
+						// List of links to display in the panel.
+						links!: matchN(1, [close({
+							// Destination of the link: dashboard saved-object id for `dashboard` links, or
+							// a URL for `external` links.
+							destination!: string
+
+							// When true, the external URL is percent-encoded.
+							encode_url?: bool
+
+							// Optional display label for the link.
+							label?: string
+
+							// When true, opens the link in a new browser tab.
+							open_in_new_tab?: bool
+
+							// Type of link: `dashboard` for an internal Kibana dashboard link, or
+							// `external` for an arbitrary URL.
+							type!: string
+
+							// When true, the dashboard link applies the current filters.
+							use_filters?: bool
+
+							// When true, the dashboard link applies the current time range.
+							use_time_range?: bool
+						}), [...close({
+							// Destination of the link: dashboard saved-object id for `dashboard` links, or
+							// a URL for `external` links.
+							destination!: string
+
+							// When true, the external URL is percent-encoded.
+							encode_url?: bool
+
+							// Optional display label for the link.
+							label?: string
+
+							// When true, opens the link in a new browser tab.
+							open_in_new_tab?: bool
+
+							// Type of link: `dashboard` for an internal Kibana dashboard link, or
+							// `external` for an arbitrary URL.
+							type!: string
+
+							// When true, the dashboard link applies the current filters.
+							use_filters?: bool
+
+							// When true, the dashboard link applies the current time range.
+							use_time_range?: bool
+						})]])
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// Layout direction for the links panel.
+						layout!: string
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+				})
+
 				// Configuration for a `markdown` panel (the Kibana Dashboard API
 				// `kbn-dashboard-panel-type-markdown` shape). Set exactly one of `by_value`
 				// (inline `content` with required nested `settings`) or `by_reference`
 				// (existing library item via `ref_id`). Presentation fields (`description`,
 				// `hide_title`, `title`, `hide_border`) are supported in both branches.
-				// Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-				// `slo_error_budget_config`, `slo_overview_config`,
+				// Mutually exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `range_slider_control_config`, `esql_control_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				markdown_config?: close({
 					// Reference an existing markdown library item via `ref_id`. Optional
 					// `description`, `hide_title`, `title`, and `hide_border`.
@@ -20726,116 +24512,413 @@ elasticstack_kibana_dashboard: {
 					})
 				})
 
-				// Configuration for an options list control panel. Provides a dropdown or
-				// multi-select filter based on a field in a data view. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// Configuration for an ML anomaly charts panel
+				// (`kbn-dashboard-panel-type-ml_anomaly_charts`). Required when `type` is
+				// `ml_anomaly_charts`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
 				// `slo_overview_config`, `synthetics_monitors_config`,
 				// `synthetics_stats_overview_config`, `time_slider_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
-				options_list_control_config?: close({
-					// The ID of the data view that the control is tied to.
-					data_view_id!: string
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				ml_anomaly_charts_config?: close({
+					// Optional panel description.
+					description?: string
 
-					// Display preferences for the control widget.
-					display_settings?: close({
-						// When true, hides the action bar on the control.
-						hide_action_bar?: bool
+					// Severity bands to display. Each item sets either a named `severity` shortcut
+					// or a raw numeric `min`/`max` range, never both.
+					severity_threshold?: matchN(1, [close({
+						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						max?: number
 
-						// When true, hides the exclude toggle.
-						hide_exclude?: bool
+						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						min?: number
 
-						// When true, hides the exists filter option.
-						hide_exists?: bool
+						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
+						severity?: string
+					}), [...close({
+						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						max?: number
 
-						// When true, hides the sort control.
-						hide_sort?: bool
+						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						min?: number
 
-						// Placeholder text shown when no option is selected.
-						placeholder?: string
+						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
+						severity?: string
+					})]])
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// Optional panel-level time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
 					})
 
-					// When true, selected options are used as an exclusion filter rather than an inclusion filter.
-					exclude?: bool
+					// When true, hides the panel title.
+					hide_title?: bool
 
-					// Default sort configuration for the suggestion list.
-					sort?: close({
-						// The field or criterion to sort by. Must be one of `_count` or `_key`.
-						by!: string
+					// Anomaly detection job IDs or group IDs whose results appear in the charts. At
+					// least one entry is required.
+					job_ids!: [...string]
 
-						// The sort direction. Must be one of `asc` or `desc`.
-						direction!: string
+					// Maximum number of anomaly series to plot.
+					max_series_to_plot?: number
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// Configuration for an ML anomaly swim lane panel
+				// (`kbn-dashboard-panel-type-ml_anomaly_swimlane`). Required when `type` is
+				// `ml_anomaly_swimlane`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				ml_anomaly_swimlane_config?: close({
+					// Optional panel description.
+					description?: string
+
+					// Optional panel-level time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
 					})
 
-					// When true, the control filters for documents where the field exists.
-					exists_selected?: bool
+					// When true, hides the panel border.
+					hide_border?: bool
 
-					// The name of the field in the data view that the control is tied to.
-					field_name!: string
+					// When true, hides the panel title.
+					hide_title?: bool
 
-					// Whether the control skips field-level validation against the data view.
-					ignore_validations?: bool
+					// IDs of anomaly detection jobs or groups whose results appear in the swim
+					// lane. At least one entry is required.
+					job_ids!: [...string]
 
-					// When true, the control continues to show results even when the underlying query times out.
-					run_past_timeout?: bool
+					// Number of rows to display per page in a view-by swim lane. Ignored for overall swim lanes.
+					per_page?: number
 
-					// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
-					// or `exact` when set.
-					search_technique?: string
+					// Swim lane mode. Use `overall` for a single aggregate lane or `viewBy` to
+					// split anomalies by field.
+					swimlane_type!: string
 
-					// The initially or persistently selected option values. All values are represented as strings.
-					selected_options?: [...string]
-
-					// When true, only one option may be selected at a time.
-					single_select?: bool
-
-					// Human-readable label displayed above the control.
+					// Optional panel title shown in the panel header.
 					title?: string
 
-					// Whether the control applies the dashboard's global filters to its own query.
-					use_global_filters?: bool
+					// Field name used to split anomalies into a view-by swim lane. Required when
+					// `swimlane_type` is `viewBy`; must not be set when `swimlane_type` is
+					// `overall`.
+					view_by?: string
+				})
+
+				// Configuration for an ML single metric viewer panel
+				// (`kbn-dashboard-panel-type-ml_single_metric_viewer`). Required when `type`
+				// is `ml_single_metric_viewer`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				ml_single_metric_viewer_config?: close({
+					// Optional panel description.
+					description?: string
+
+					// Values of partition, by, or over fields that identify the single time series
+					// to display. Each map entry must set exactly one of `string_value` or
+					// `numeric_value`.
+					selected_entities?: [string]: close({
+						// Numeric entity value for the field.
+						numeric_value?: number
+
+						// String entity value for the field.
+						string_value?: string
+					})
+
+					// Forecast identifier to overlay on the chart.
+					forecast_id?: string
+
+					// Optional panel-level time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// For `metric` detectors, selects which value to plot: `min`, `max`, or `mean`.
+					// Ignored for other detector functions.
+					function_description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Anomaly detection job ID whose results appear in the single metric viewer.
+					// Exactly one entry is required.
+					job_ids!: [...string]
+
+					// Zero-based index of the detector within the job whose results are shown.
+					selected_detector_index?: number
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// Configuration for an options list control panel. Provides a dropdown or
+				// multi-select filter based on a field in a data view (`by_field`) or an ES|QL
+				// query (`by_esql`). Exactly one of `by_field` or `by_esql` must be set.
+				// Mutually exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				options_list_control_config?: close({
+					// Configuration for an options list control sourced from an ES|QL query.
+					// Mutually exclusive with `by_field`.
+					by_esql?: close({
+						// Display preferences for the control widget.
+						display_settings?: close({
+							// When true, hides the action bar on the control.
+							hide_action_bar?: bool
+
+							// When true, hides the exclude toggle.
+							hide_exclude?: bool
+
+							// When true, hides the exists filter option.
+							hide_exists?: bool
+
+							// When true, hides the sort control.
+							hide_sort?: bool
+
+							// Placeholder text shown when no option is selected.
+							placeholder?: string
+						})
+
+						// The ES|QL query that produces the available option values.
+						esql_query!: string
+
+						// When true, the control filters for documents where the field exists.
+						exists_selected?: bool
+
+						// Whether the control skips field-level validation against the data view.
+						ignore_validations?: bool
+
+						// When true, the control continues to show results even when the underlying query times out.
+						run_past_timeout?: bool
+
+						// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+						// or `exact` when set.
+						search_technique?: string
+
+						// The initially or persistently selected option values. All values are represented as strings.
+						selected_options?: [...string]
+
+						// When true, only one option may be selected at a time.
+						single_select?: bool
+
+						// Default sort configuration for the suggestion list.
+						sort?: close({
+							// The field or criterion to sort by. Must be one of `_count` or `_key`.
+							by!: string
+
+							// The sort direction. Must be one of `asc` or `desc`.
+							direction!: string
+						})
+
+						// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+						exclude?: bool
+
+						// Human-readable label displayed above the control.
+						title?: string
+
+						// Whether the control applies the dashboard's global filters to its own query.
+						use_global_filters?: bool
+
+						// The source discriminator for this branch. Must be `esql_query`.
+						values_source!: string
+					})
+
+					// Configuration for an options list control sourced from a Kibana data view
+					// field. Mutually exclusive with `by_esql`.
+					by_field?: close({
+						// The ID of the data view that the control is tied to.
+						data_view_id!: string
+
+						// Display preferences for the control widget.
+						display_settings?: close({
+							// When true, hides the action bar on the control.
+							hide_action_bar?: bool
+
+							// When true, hides the exclude toggle.
+							hide_exclude?: bool
+
+							// When true, hides the exists filter option.
+							hide_exists?: bool
+
+							// When true, hides the sort control.
+							hide_sort?: bool
+
+							// Placeholder text shown when no option is selected.
+							placeholder?: string
+						})
+
+						// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+						exclude?: bool
+
+						// Default sort configuration for the suggestion list.
+						sort?: close({
+							// The field or criterion to sort by. Must be one of `_count` or `_key`.
+							by!: string
+
+							// The sort direction. Must be one of `asc` or `desc`.
+							direction!: string
+						})
+
+						// When true, the control filters for documents where the field exists.
+						exists_selected?: bool
+
+						// The name of the field in the data view that the control is tied to.
+						field_name!: string
+
+						// Whether the control skips field-level validation against the data view.
+						ignore_validations?: bool
+
+						// When true, the control continues to show results even when the underlying query times out.
+						run_past_timeout?: bool
+
+						// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+						// or `exact` when set.
+						search_technique?: string
+
+						// The initially or persistently selected option values. All values are represented as strings.
+						selected_options?: [...string]
+
+						// When true, only one option may be selected at a time.
+						single_select?: bool
+
+						// Human-readable label displayed above the control.
+						title?: string
+
+						// Whether the control applies the dashboard's global filters to its own query.
+						use_global_filters?: bool
+					})
 				})
 
 				// Configuration for a range slider control panel. Provides a min/max range
-				// filter tied to a data view field. Mutually exclusive with `config_json`,
-				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
+				// filter sourced from either a data view field (`by_field`) or an ES|QL query
+				// (`by_esql`). Exactly one of the two must be set. Mutually exclusive with
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 				// `time_slider_control_config`, `options_list_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				range_slider_control_config?: close({
-					// The ID of the data view that the control is tied to.
-					data_view_id!: string
+					// Range slider sourced from an ES|QL query. Mutually exclusive with `by_field`.
+					by_esql?: close({
+						// The ES|QL query that produces the min/max range values.
+						esql_query!: string
 
-					// The name of the field in the data view that the control is tied to.
-					field_name!: string
+						// Whether to suppress validation errors during intermediate states.
+						ignore_validations?: bool
 
-					// Whether to suppress validation errors during intermediate states.
-					ignore_validations?: bool
+						// The step size for the range slider. Stored as float32 to match the Kibana API
+						// type and avoid refresh drift.
+						step?: number
 
-					// The step size for the range slider. Stored as float32 to match the Kibana API
-					// type and avoid refresh drift.
-					step?: number
+						// A human-readable title for the control.
+						title?: string
 
-					// A human-readable title for the control.
-					title?: string
+						// Whether the control respects dashboard-level filters.
+						use_global_filters?: bool
 
-					// Whether the control respects dashboard-level filters.
-					use_global_filters?: bool
+						// Initial range as a list of exactly 2 strings: [min, max].
+						value?: [...string]
 
-					// Initial range as a list of exactly 2 strings: [min, max].
-					value?: [...string]
+						// The source of the range values. Must be `esql_query`.
+						values_source!: string
+					})
+
+					// Range slider sourced from a Kibana data view field. Mutually exclusive with `by_esql`.
+					by_field?: close({
+						// The ID of the data view that the control is tied to.
+						data_view_id!: string
+
+						// The name of the field in the data view that the control is tied to.
+						field_name!: string
+
+						// Whether to suppress validation errors during intermediate states.
+						ignore_validations?: bool
+
+						// The step size for the range slider. Stored as float32 to match the Kibana API
+						// type and avoid refresh drift.
+						step?: number
+
+						// A human-readable title for the control.
+						title?: string
+
+						// Whether the control respects dashboard-level filters.
+						use_global_filters?: bool
+
+						// Initial range as a list of exactly 2 strings: [min, max].
+						value?: [...string]
+					})
 				})
 
 				// Configuration for an `slo_alerts` panel
 				// (`kbn-dashboard-panel-type-slo_alerts`). Required when `type` is
-				// `slo_alerts`. Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-				// `slo_error_budget_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `image_config`, `vis_config`, `discover_session_config`.
+				// `slo_alerts`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `vis_config`, `discover_session_config`,
+				// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
 				slo_alerts_config?: close({
 					// Optional panel description.
 					description?: string
@@ -20902,12 +24985,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for an SLO burn rate panel. Use this for panels that visualize
 				// the burn rate of an SLO over a configurable look-back window. Mutually
-				// exclusive with `config_json`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_monitors_config`,
-				// `synthetics_stats_overview_config`, `time_slider_control_config`,
-				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				slo_burn_rate_config?: close({
 					// Optional panel description.
 					description?: string
@@ -20962,12 +25049,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for an SLO error budget panel. Displays the burn chart of
 				// remaining error budget for a specific SLO. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				slo_error_budget_config?: close({
 					// Optional panel description.
 					description?: string
@@ -21020,12 +25111,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for an SLO overview panel. Use either `single` (for a single
 				// SLO) or `groups` (for grouped SLO overview). Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				slo_overview_config?: close({
 					// Configuration for a grouped SLO overview panel. Mutually exclusive with `single`.
 					groups?: close({
@@ -21147,12 +25242,16 @@ elasticstack_kibana_dashboard: {
 				// Configuration for a Synthetics monitors panel. Displays a table of Elastic
 				// Synthetics monitors and their current status. All fields are optional — omit
 				// the block entirely for a bare panel with no filtering. Mutually exclusive
-				// with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				synthetics_monitors_config?: close({
 					// Optional panel description.
 					description?: string
@@ -21252,12 +25351,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for a Synthetics stats overview panel. All fields are optional;
 				// an absent or empty block shows statistics for all monitors visible within
-				// the space. Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-				// `slo_error_budget_config`, `slo_overview_config`,
+				// the space. Mutually exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `time_slider_control_config`,
 				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				synthetics_stats_overview_config?: close({
 					// Optional panel description.
 					description?: string
@@ -21382,12 +25485,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for a time slider control panel. Controls the visible time
 				// window within the dashboard's global time range. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_monitors_config`,
-				// `synthetics_stats_overview_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				time_slider_control_config?: close({
 					// End of the visible time window as a fraction of the dashboard global range
 					// (0.0–1.0). Float32 in state matches the Kibana API and avoids refresh drift.
@@ -21401,34 +25508,20 @@ elasticstack_kibana_dashboard: {
 					start_percentage_of_time_range?: number
 				})
 
-				// The type of the panel (e.g. 'markdown', 'vis').
-				type!: string
-
-				// The grid coordinates and dimensions of the panel.
-				grid!: close({
-					// The height.
-					h?: number
-
-					// The width.
-					w?: number
-
-					// The X coordinate.
-					x!: number
-
-					// The Y coordinate.
-					y!: number
-				})
-
 				// Configuration for a `vis` panel (`type = "vis"`). Typed alternative to
 				// panel-level `config_json`: set exactly one of `by_value` (exactly one of 12
 				// Lens chart kinds) or `by_reference`. With `by_reference`, use structured
 				// `drilldowns` and optional `time_range`. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_monitors_config`,
-				// `synthetics_stats_overview_config`, `time_slider_control_config`,
-				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `discover_session_config`.
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				vis_config?: close({
 					// By-reference `vis` configuration: structured `drilldowns`, `ref_id`, optional
 					// `references_json`, and optional `time_range`.
@@ -25068,27 +29161,280 @@ elasticstack_kibana_dashboard: {
 					})
 				})
 			}), [...close({
-				// The configuration of the panel as a JSON string. Practitioner-authored
-				// panel-level `config_json` is valid only when `type` is `markdown` or `vis`.
-				// Typed panel kinds such as `image`, `slo_alerts`, and `discover_session` use
-				// their dedicated blocks (`image_config`, `slo_alerts_config`,
-				// `discover_session_config`), not panel-level `config_json`. Mutually
-				// exclusive with `slo_burn_rate_config`, `slo_error_budget_config`,
+				// Configuration for an AIOps change point chart panel. Anchored to a data view
+				// and metric field; optional aggregation, split, partitions, and view controls
+				// follow the API-documented enums. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
 				// `slo_overview_config`, `synthetics_monitors_config`,
 				// `synthetics_stats_overview_config`, `time_slider_control_config`,
 				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`.
+				aiops_change_point_chart_config?: close({
+					// The aggregation function used to calculate the metric values. One of `avg`, `max`, `min`, `sum`.
+					aggregation_function?: string
+
+					// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+					// panel inherits the dashboard `time_range` and this attribute stays null in
+					// state (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// The data view ID used for change point detection.
+					data_view_id!: string
+
+					// Optional panel description.
+					description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Maximum number of change points to visualise. Kibana default is `6`. Float32
+					// in state matches the Kibana API and avoids refresh drift.
+					max_series_to_plot?: number
+
+					// The metric field used by the aggregation function.
+					metric_field!: string
+
+					// Optional split field values to include in the panel. Modelled as a set to
+					// prevent plan drift from API-returned ordering; duplicate entries are
+					// silently deduplicated. An empty set is not meaningful (omit the attribute to
+					// disable filtering); a non-null set must contain at least one entry.
+					partitions?: [...string]
+
+					// The optional field used to split change-point results.
+					split_field?: string
+
+					// Optional panel title shown in the panel header.
+					title?: string
+
+					// The type of change point detection view to display. One of `charts`, `table`.
+					view_type?: string
+				})
+
+				// The configuration of the panel as a JSON string. Practitioner-authored
+				// panel-level `config_json` is valid only when `type` is `markdown` or `vis`.
+				// Typed panel kinds such as `image`, `slo_alerts`, `discover_session`,
+				// `field_stats_table`, `ml_anomaly_swimlane`, `ml_anomaly_charts`, and
+				// `ml_single_metric_viewer` use their dedicated blocks (`image_config`,
+				// `slo_alerts_config`, `discover_session_config`, `field_stats_table_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`), not panel-level `config_json`. Mutually
+				// exclusive with `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				config_json?: string
+
+				// Configuration for an AIOps log rate analysis panel. Anchored to a data view;
+				// the remaining fields are the standard optional panel presentation
+				// passthroughs. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				aiops_log_rate_analysis_config?: close({
+					// The data view ID used to run log rate analysis.
+					data_view_id!: string
+
+					// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+					// panel inherits the dashboard `time_range` and this attribute stays null in
+					// state (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// Optional panel description.
+					description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// The identifier of the panel (API `id`).
+				id?: string
+
+				// Configuration for an AIOps pattern analysis panel. Anchored to a data view
+				// and text field; optional sampling and time-range controls follow the
+				// API-documented bounds. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_change_point_chart_config`.
+				aiops_pattern_analysis_config?: close({
+					// The data view ID used for pattern analysis.
+					data_view_id!: string
+
+					// Optional panel time range (`from`, `to`, optional `mode`). When omitted, the
+					// panel inherits the dashboard `time_range` and this attribute stays null in
+					// state (REQ-009).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// Optional panel description.
+					description?: string
+
+					// The text field on which to run pattern analysis.
+					field_name!: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Minimum time range for pattern analysis. One of `no_minimum`, `1_week`,
+					// `1_month`, `3_months`, `6_months`.
+					minimum_time_range?: string
+
+					// The random sampler mode. One of `off`, `on_automatic`, `on_manual`.
+					random_sampler_mode?: string
+
+					// Sampling probability, only meaningful when `random_sampler_mode = on_manual`.
+					// Must be between `0.00001` and `0.5`. Float32 in state matches the Kibana API
+					// and avoids refresh drift.
+					random_sampler_probability?: number
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// The type of the panel (e.g. 'markdown', 'vis').
+				type!: string
+
+				// Configuration for an APM service map panel. All fields are optional. Mutually
+				// exclusive with `config_json`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				apm_service_map_config?: close({
+					// Filter services by alert status.
+					alert_status_filter?: [...string]
+
+					// Optional panel time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// Filter services by anomaly severity.
+					anomaly_severity_filter?: [...string]
+
+					// Filter services by connection state.
+					connection_filter?: [...string]
+
+					// Optional panel description.
+					description?: string
+
+					// APM service environment (for example, `production`).
+					environment?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// KQL query string applied to the service map.
+					kuery?: string
+
+					// Layout orientation of the service map.
+					map_orientation?: string
+
+					// Opaque identifier of a saved APM service group.
+					service_group_id?: string
+
+					// Focus the service map on a specific APM service.
+					service_name?: string
+
+					// Filter services by SLO status.
+					slo_status_filter?: [...string]
+
+					// When set, the panel follows dashboard-level filters.
+					sync_with_dashboard_filters?: bool
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
 
 				// Configuration for a `discover_session` panel
 				// (`kbn-dashboard-panel-type-discover_session`). Set exactly one of `by_value`
 				// or `by_reference`. Mutually exclusive with `config_json`,
-				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `image_config`, `slo_alerts_config`, `vis_config`.
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
 				discover_session_config?: close({
 					// Reference an existing Discover session saved object via `ref_id`. Client-side
 					// `references` JSON is not modeled in v1 (see change design). Omit
@@ -25362,16 +29708,17 @@ elasticstack_kibana_dashboard: {
 					title?: string
 				})
 
-				// The identifier of the panel (API `id`).
-				id?: string
-
 				// Configuration for an ES|QL control panel. Use this to manage ES|QL variable
 				// controls on a dashboard. Mutually exclusive with `config_json`,
-				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `markdown_config`, `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				esql_control_config?: close({
 					// Pre-populated list of available options shown before the query executes.
 					available_options?: [...string]
@@ -25417,14 +29764,129 @@ elasticstack_kibana_dashboard: {
 					variable_type!: string
 				})
 
-				// Configuration for an `image` panel (`kbn-dashboard-panel-type-image`).
-				// Required when `type` is `image`. References the Kibana Dashboard API image
-				// embeddable `config` shape. Mutually exclusive with `config_json`,
+				// Configuration for a `field_stats_table` panel (Data Visualizer field-statistics table).
+				//
+				// Set exactly one of `by_dataview` or `by_esql`. The active branch determines
+				// the API `view_type` discriminator (`dataview` or `esql`); practitioners do
+				// not set `view_type` directly.
+				// Mutually exclusive with `config_json`, `apm_service_map_config`,
 				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 				// `time_slider_control_config`, `options_list_control_config`,
 				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
+				field_stats_table_config?: close({
+					// Field statistics backed by a Kibana data view (`view_type = "dataview"` on the wire).
+					//
+					// Requires `data_view_id`. Optional presentation fields and
+					// `show_distributions` apply to this branch only.
+					by_dataview?: close({
+						// The identifier of the source data view.
+						data_view_id!: string
+
+						// Optional panel time range override (`from`, `to`, optional `mode`).
+						// Null-preserved on read: when omitted in configuration, this attribute stays
+						// null in state even if Kibana returns values (REQ-009).
+						time_range?: close({
+							// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+							from!: string
+
+							// Optional time range mode. When set, must be `absolute` or `relative`.
+							mode?: string
+
+							// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+							to!: string
+						})
+
+						// Optional panel description.
+						description?: string
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// When true, shows distribution mini-charts in the field statistics table.
+						// Null-preserved on read (REQ-009).
+						show_distributions?: bool
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+
+					// Field statistics backed by an ES|QL query (`view_type = "esql"` on the wire).
+					//
+					// Requires `query` (mapped to `query.esql` in the API). Optional presentation
+					// fields and `show_distributions` apply to this branch only.
+					by_esql?: close({
+						// Optional panel description.
+						description?: string
+
+						// Optional panel time range override (`from`, `to`, optional `mode`).
+						// Null-preserved on read: when omitted in configuration, this attribute stays
+						// null in state even if Kibana returns values (REQ-009).
+						time_range?: close({
+							// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+							from!: string
+
+							// Optional time range mode. When set, must be `absolute` or `relative`.
+							mode?: string
+
+							// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+							to!: string
+						})
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// The ES|QL query string (mapped to `query.esql` in the API).
+						query!: string
+
+						// When true, shows distribution mini-charts in the field statistics table.
+						// Null-preserved on read (REQ-009).
+						show_distributions?: bool
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+				})
+
+				// The grid coordinates and dimensions of the panel.
+				grid!: close({
+					// The height.
+					h?: number
+
+					// The width.
+					w?: number
+
+					// The X coordinate.
+					x!: number
+
+					// The Y coordinate.
+					y!: number
+				})
+
+				// Configuration for an `image` panel (`kbn-dashboard-panel-type-image`).
+				// Required when `type` is `image`. References the Kibana Dashboard API image
+				// embeddable `config` shape. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `slo_alerts_config`, `vis_config`, `discover_session_config`,
+				// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
 				image_config?: close({
 					// Accessible alternate text for the image.
 					alt_text?: string
@@ -25579,17 +30041,120 @@ elasticstack_kibana_dashboard: {
 					title?: string
 				})
 
+				// Configuration for a `links` panel (`kbn-dashboard-panel-type-links`). Set
+				// exactly one of `by_value` or `by_reference`. Mutually exclusive with
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
+				links_config?: close({
+					// Reference a Kibana Links library saved object.
+					by_reference?: close({
+						// Optional panel description.
+						description?: string
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// Reference id of a Kibana Links library saved object.
+						ref_id!: string
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+
+					// Inline links panel configuration.
+					by_value?: close({
+						// Optional panel description.
+						description?: string
+
+						// List of links to display in the panel.
+						links!: matchN(1, [close({
+							// Destination of the link: dashboard saved-object id for `dashboard` links, or
+							// a URL for `external` links.
+							destination!: string
+
+							// When true, the external URL is percent-encoded.
+							encode_url?: bool
+
+							// Optional display label for the link.
+							label?: string
+
+							// When true, opens the link in a new browser tab.
+							open_in_new_tab?: bool
+
+							// Type of link: `dashboard` for an internal Kibana dashboard link, or
+							// `external` for an arbitrary URL.
+							type!: string
+
+							// When true, the dashboard link applies the current filters.
+							use_filters?: bool
+
+							// When true, the dashboard link applies the current time range.
+							use_time_range?: bool
+						}), [...close({
+							// Destination of the link: dashboard saved-object id for `dashboard` links, or
+							// a URL for `external` links.
+							destination!: string
+
+							// When true, the external URL is percent-encoded.
+							encode_url?: bool
+
+							// Optional display label for the link.
+							label?: string
+
+							// When true, opens the link in a new browser tab.
+							open_in_new_tab?: bool
+
+							// Type of link: `dashboard` for an internal Kibana dashboard link, or
+							// `external` for an arbitrary URL.
+							type!: string
+
+							// When true, the dashboard link applies the current filters.
+							use_filters?: bool
+
+							// When true, the dashboard link applies the current time range.
+							use_time_range?: bool
+						})]])
+
+						// When true, hides the panel border.
+						hide_border?: bool
+
+						// When true, hides the panel title.
+						hide_title?: bool
+
+						// Layout direction for the links panel.
+						layout!: string
+
+						// Optional panel title shown in the panel header.
+						title?: string
+					})
+				})
+
 				// Configuration for a `markdown` panel (the Kibana Dashboard API
 				// `kbn-dashboard-panel-type-markdown` shape). Set exactly one of `by_value`
 				// (inline `content` with required nested `settings`) or `by_reference`
 				// (existing library item via `ref_id`). Presentation fields (`description`,
 				// `hide_title`, `title`, `hide_border`) are supported in both branches.
-				// Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-				// `slo_error_budget_config`, `slo_overview_config`,
+				// Mutually exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `range_slider_control_config`, `esql_control_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				markdown_config?: close({
 					// Reference an existing markdown library item via `ref_id`. Optional
 					// `description`, `hide_title`, `title`, and `hide_border`.
@@ -25638,116 +30203,413 @@ elasticstack_kibana_dashboard: {
 					})
 				})
 
-				// Configuration for an options list control panel. Provides a dropdown or
-				// multi-select filter based on a field in a data view. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// Configuration for an ML anomaly charts panel
+				// (`kbn-dashboard-panel-type-ml_anomaly_charts`). Required when `type` is
+				// `ml_anomaly_charts`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
 				// `slo_overview_config`, `synthetics_monitors_config`,
 				// `synthetics_stats_overview_config`, `time_slider_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
-				options_list_control_config?: close({
-					// The ID of the data view that the control is tied to.
-					data_view_id!: string
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				ml_anomaly_charts_config?: close({
+					// Optional panel description.
+					description?: string
 
-					// Display preferences for the control widget.
-					display_settings?: close({
-						// When true, hides the action bar on the control.
-						hide_action_bar?: bool
+					// Severity bands to display. Each item sets either a named `severity` shortcut
+					// or a raw numeric `min`/`max` range, never both.
+					severity_threshold?: matchN(1, [close({
+						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						max?: number
 
-						// When true, hides the exclude toggle.
-						hide_exclude?: bool
+						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						min?: number
 
-						// When true, hides the exists filter option.
-						hide_exists?: bool
+						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
+						severity?: string
+					}), [...close({
+						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						max?: number
 
-						// When true, hides the sort control.
-						hide_sort?: bool
+						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						min?: number
 
-						// Placeholder text shown when no option is selected.
-						placeholder?: string
+						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
+						severity?: string
+					})]])
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// Optional panel-level time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
 					})
 
-					// When true, selected options are used as an exclusion filter rather than an inclusion filter.
-					exclude?: bool
+					// When true, hides the panel title.
+					hide_title?: bool
 
-					// Default sort configuration for the suggestion list.
-					sort?: close({
-						// The field or criterion to sort by. Must be one of `_count` or `_key`.
-						by!: string
+					// Anomaly detection job IDs or group IDs whose results appear in the charts. At
+					// least one entry is required.
+					job_ids!: [...string]
 
-						// The sort direction. Must be one of `asc` or `desc`.
-						direction!: string
+					// Maximum number of anomaly series to plot.
+					max_series_to_plot?: number
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// Configuration for an ML anomaly swim lane panel
+				// (`kbn-dashboard-panel-type-ml_anomaly_swimlane`). Required when `type` is
+				// `ml_anomaly_swimlane`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				ml_anomaly_swimlane_config?: close({
+					// Optional panel description.
+					description?: string
+
+					// Optional panel-level time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
 					})
 
-					// When true, the control filters for documents where the field exists.
-					exists_selected?: bool
+					// When true, hides the panel border.
+					hide_border?: bool
 
-					// The name of the field in the data view that the control is tied to.
-					field_name!: string
+					// When true, hides the panel title.
+					hide_title?: bool
 
-					// Whether the control skips field-level validation against the data view.
-					ignore_validations?: bool
+					// IDs of anomaly detection jobs or groups whose results appear in the swim
+					// lane. At least one entry is required.
+					job_ids!: [...string]
 
-					// When true, the control continues to show results even when the underlying query times out.
-					run_past_timeout?: bool
+					// Number of rows to display per page in a view-by swim lane. Ignored for overall swim lanes.
+					per_page?: number
 
-					// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
-					// or `exact` when set.
-					search_technique?: string
+					// Swim lane mode. Use `overall` for a single aggregate lane or `viewBy` to
+					// split anomalies by field.
+					swimlane_type!: string
 
-					// The initially or persistently selected option values. All values are represented as strings.
-					selected_options?: [...string]
-
-					// When true, only one option may be selected at a time.
-					single_select?: bool
-
-					// Human-readable label displayed above the control.
+					// Optional panel title shown in the panel header.
 					title?: string
 
-					// Whether the control applies the dashboard's global filters to its own query.
-					use_global_filters?: bool
+					// Field name used to split anomalies into a view-by swim lane. Required when
+					// `swimlane_type` is `viewBy`; must not be set when `swimlane_type` is
+					// `overall`.
+					view_by?: string
+				})
+
+				// Configuration for an ML single metric viewer panel
+				// (`kbn-dashboard-panel-type-ml_single_metric_viewer`). Required when `type`
+				// is `ml_single_metric_viewer`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				ml_single_metric_viewer_config?: close({
+					// Optional panel description.
+					description?: string
+
+					// Values of partition, by, or over fields that identify the single time series
+					// to display. Each map entry must set exactly one of `string_value` or
+					// `numeric_value`.
+					selected_entities?: [string]: close({
+						// Numeric entity value for the field.
+						numeric_value?: number
+
+						// String entity value for the field.
+						string_value?: string
+					})
+
+					// Forecast identifier to overlay on the chart.
+					forecast_id?: string
+
+					// Optional panel-level time range (`from`, `to`, and optional `mode`).
+					time_range?: close({
+						// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
+						from!: string
+
+						// Optional time range mode. When set, must be `absolute` or `relative`.
+						mode?: string
+
+						// End of the time range (e.g., 'now', '2023-12-31T23:59:59Z').
+						to!: string
+					})
+
+					// For `metric` detectors, selects which value to plot: `min`, `max`, or `mean`.
+					// Ignored for other detector functions.
+					function_description?: string
+
+					// When true, hides the panel border.
+					hide_border?: bool
+
+					// When true, hides the panel title.
+					hide_title?: bool
+
+					// Anomaly detection job ID whose results appear in the single metric viewer.
+					// Exactly one entry is required.
+					job_ids!: [...string]
+
+					// Zero-based index of the detector within the job whose results are shown.
+					selected_detector_index?: number
+
+					// Optional panel title shown in the panel header.
+					title?: string
+				})
+
+				// Configuration for an options list control panel. Provides a dropdown or
+				// multi-select filter based on a field in a data view (`by_field`) or an ES|QL
+				// query (`by_esql`). Exactly one of `by_field` or `by_esql` must be set.
+				// Mutually exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
+				options_list_control_config?: close({
+					// Configuration for an options list control sourced from an ES|QL query.
+					// Mutually exclusive with `by_field`.
+					by_esql?: close({
+						// Display preferences for the control widget.
+						display_settings?: close({
+							// When true, hides the action bar on the control.
+							hide_action_bar?: bool
+
+							// When true, hides the exclude toggle.
+							hide_exclude?: bool
+
+							// When true, hides the exists filter option.
+							hide_exists?: bool
+
+							// When true, hides the sort control.
+							hide_sort?: bool
+
+							// Placeholder text shown when no option is selected.
+							placeholder?: string
+						})
+
+						// The ES|QL query that produces the available option values.
+						esql_query!: string
+
+						// When true, the control filters for documents where the field exists.
+						exists_selected?: bool
+
+						// Whether the control skips field-level validation against the data view.
+						ignore_validations?: bool
+
+						// When true, the control continues to show results even when the underlying query times out.
+						run_past_timeout?: bool
+
+						// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+						// or `exact` when set.
+						search_technique?: string
+
+						// The initially or persistently selected option values. All values are represented as strings.
+						selected_options?: [...string]
+
+						// When true, only one option may be selected at a time.
+						single_select?: bool
+
+						// Default sort configuration for the suggestion list.
+						sort?: close({
+							// The field or criterion to sort by. Must be one of `_count` or `_key`.
+							by!: string
+
+							// The sort direction. Must be one of `asc` or `desc`.
+							direction!: string
+						})
+
+						// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+						exclude?: bool
+
+						// Human-readable label displayed above the control.
+						title?: string
+
+						// Whether the control applies the dashboard's global filters to its own query.
+						use_global_filters?: bool
+
+						// The source discriminator for this branch. Must be `esql_query`.
+						values_source!: string
+					})
+
+					// Configuration for an options list control sourced from a Kibana data view
+					// field. Mutually exclusive with `by_esql`.
+					by_field?: close({
+						// The ID of the data view that the control is tied to.
+						data_view_id!: string
+
+						// Display preferences for the control widget.
+						display_settings?: close({
+							// When true, hides the action bar on the control.
+							hide_action_bar?: bool
+
+							// When true, hides the exclude toggle.
+							hide_exclude?: bool
+
+							// When true, hides the exists filter option.
+							hide_exists?: bool
+
+							// When true, hides the sort control.
+							hide_sort?: bool
+
+							// Placeholder text shown when no option is selected.
+							placeholder?: string
+						})
+
+						// When true, selected options are used as an exclusion filter rather than an inclusion filter.
+						exclude?: bool
+
+						// Default sort configuration for the suggestion list.
+						sort?: close({
+							// The field or criterion to sort by. Must be one of `_count` or `_key`.
+							by!: string
+
+							// The sort direction. Must be one of `asc` or `desc`.
+							direction!: string
+						})
+
+						// When true, the control filters for documents where the field exists.
+						exists_selected?: bool
+
+						// The name of the field in the data view that the control is tied to.
+						field_name!: string
+
+						// Whether the control skips field-level validation against the data view.
+						ignore_validations?: bool
+
+						// When true, the control continues to show results even when the underlying query times out.
+						run_past_timeout?: bool
+
+						// The technique used to match suggestions. Must be one of `prefix`, `wildcard`,
+						// or `exact` when set.
+						search_technique?: string
+
+						// The initially or persistently selected option values. All values are represented as strings.
+						selected_options?: [...string]
+
+						// When true, only one option may be selected at a time.
+						single_select?: bool
+
+						// Human-readable label displayed above the control.
+						title?: string
+
+						// Whether the control applies the dashboard's global filters to its own query.
+						use_global_filters?: bool
+					})
 				})
 
 				// Configuration for a range slider control panel. Provides a min/max range
-				// filter tied to a data view field. Mutually exclusive with `config_json`,
-				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
+				// filter sourced from either a data view field (`by_field`) or an ES|QL query
+				// (`by_esql`). Exactly one of the two must be set. Mutually exclusive with
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
 				// `time_slider_control_config`, `options_list_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				range_slider_control_config?: close({
-					// The ID of the data view that the control is tied to.
-					data_view_id!: string
+					// Range slider sourced from an ES|QL query. Mutually exclusive with `by_field`.
+					by_esql?: close({
+						// The ES|QL query that produces the min/max range values.
+						esql_query!: string
 
-					// The name of the field in the data view that the control is tied to.
-					field_name!: string
+						// Whether to suppress validation errors during intermediate states.
+						ignore_validations?: bool
 
-					// Whether to suppress validation errors during intermediate states.
-					ignore_validations?: bool
+						// The step size for the range slider. Stored as float32 to match the Kibana API
+						// type and avoid refresh drift.
+						step?: number
 
-					// The step size for the range slider. Stored as float32 to match the Kibana API
-					// type and avoid refresh drift.
-					step?: number
+						// A human-readable title for the control.
+						title?: string
 
-					// A human-readable title for the control.
-					title?: string
+						// Whether the control respects dashboard-level filters.
+						use_global_filters?: bool
 
-					// Whether the control respects dashboard-level filters.
-					use_global_filters?: bool
+						// Initial range as a list of exactly 2 strings: [min, max].
+						value?: [...string]
 
-					// Initial range as a list of exactly 2 strings: [min, max].
-					value?: [...string]
+						// The source of the range values. Must be `esql_query`.
+						values_source!: string
+					})
+
+					// Range slider sourced from a Kibana data view field. Mutually exclusive with `by_esql`.
+					by_field?: close({
+						// The ID of the data view that the control is tied to.
+						data_view_id!: string
+
+						// The name of the field in the data view that the control is tied to.
+						field_name!: string
+
+						// Whether to suppress validation errors during intermediate states.
+						ignore_validations?: bool
+
+						// The step size for the range slider. Stored as float32 to match the Kibana API
+						// type and avoid refresh drift.
+						step?: number
+
+						// A human-readable title for the control.
+						title?: string
+
+						// Whether the control respects dashboard-level filters.
+						use_global_filters?: bool
+
+						// Initial range as a list of exactly 2 strings: [min, max].
+						value?: [...string]
+					})
 				})
 
 				// Configuration for an `slo_alerts` panel
 				// (`kbn-dashboard-panel-type-slo_alerts`). Required when `type` is
-				// `slo_alerts`. Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-				// `slo_error_budget_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
-				// `image_config`, `vis_config`, `discover_session_config`.
+				// `slo_alerts`. Mutually exclusive with `config_json`,
+				// `apm_service_map_config`, `slo_burn_rate_config`, `slo_error_budget_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `vis_config`, `discover_session_config`,
+				// `field_stats_table_config`, `aiops_log_rate_analysis_config`,
+				// `links_config`, `aiops_pattern_analysis_config`,
+				// `aiops_change_point_chart_config`.
 				slo_alerts_config?: close({
 					// Optional panel description.
 					description?: string
@@ -25814,12 +30676,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for an SLO burn rate panel. Use this for panels that visualize
 				// the burn rate of an SLO over a configurable look-back window. Mutually
-				// exclusive with `config_json`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_monitors_config`,
-				// `synthetics_stats_overview_config`, `time_slider_control_config`,
-				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `vis_config`, `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				slo_burn_rate_config?: close({
 					// Optional panel description.
 					description?: string
@@ -25874,12 +30740,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for an SLO error budget panel. Displays the burn chart of
 				// remaining error budget for a specific SLO. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_overview_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_overview_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				slo_error_budget_config?: close({
 					// Optional panel description.
 					description?: string
@@ -25932,12 +30802,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for an SLO overview panel. Use either `single` (for a single
 				// SLO) or `groups` (for grouped SLO overview). Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `synthetics_monitors_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				slo_overview_config?: close({
 					// Configuration for a grouped SLO overview panel. Mutually exclusive with `single`.
 					groups?: close({
@@ -26059,12 +30933,16 @@ elasticstack_kibana_dashboard: {
 				// Configuration for a Synthetics monitors panel. Displays a table of Elastic
 				// Synthetics monitors and their current status. All fields are optional — omit
 				// the block entirely for a bare panel with no filtering. Mutually exclusive
-				// with `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_stats_overview_config`,
-				// `time_slider_control_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// with `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_stats_overview_config`, `time_slider_control_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				synthetics_monitors_config?: close({
 					// Optional panel description.
 					description?: string
@@ -26164,12 +31042,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for a Synthetics stats overview panel. All fields are optional;
 				// an absent or empty block shows statistics for all monitors visible within
-				// the space. Mutually exclusive with `config_json`, `slo_burn_rate_config`,
-				// `slo_error_budget_config`, `slo_overview_config`,
+				// the space. Mutually exclusive with `config_json`, `apm_service_map_config`,
+				// `slo_burn_rate_config`, `slo_error_budget_config`, `slo_overview_config`,
 				// `synthetics_monitors_config`, `time_slider_control_config`,
 				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `vis_config`, `discover_session_config`.
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
+				// `image_config`, `slo_alerts_config`, `vis_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				synthetics_stats_overview_config?: close({
 					// Optional panel description.
 					description?: string
@@ -26294,12 +31176,16 @@ elasticstack_kibana_dashboard: {
 
 				// Configuration for a time slider control panel. Controls the visible time
 				// window within the dashboard's global time range. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_monitors_config`,
-				// `synthetics_stats_overview_config`, `options_list_control_config`,
-				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `options_list_control_config`, `range_slider_control_config`,
+				// `esql_control_config`, `markdown_config`, `ml_anomaly_swimlane_config`,
+				// `ml_anomaly_charts_config`, `ml_single_metric_viewer_config`,
 				// `image_config`, `slo_alerts_config`, `vis_config`,
-				// `discover_session_config`.
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				time_slider_control_config?: close({
 					// End of the visible time window as a fraction of the dashboard global range
 					// (0.0–1.0). Float32 in state matches the Kibana API and avoids refresh drift.
@@ -26313,34 +31199,20 @@ elasticstack_kibana_dashboard: {
 					start_percentage_of_time_range?: number
 				})
 
-				// The type of the panel (e.g. 'markdown', 'vis').
-				type!: string
-
-				// The grid coordinates and dimensions of the panel.
-				grid!: close({
-					// The height.
-					h?: number
-
-					// The width.
-					w?: number
-
-					// The X coordinate.
-					x!: number
-
-					// The Y coordinate.
-					y!: number
-				})
-
 				// Configuration for a `vis` panel (`type = "vis"`). Typed alternative to
 				// panel-level `config_json`: set exactly one of `by_value` (exactly one of 12
 				// Lens chart kinds) or `by_reference`. With `by_reference`, use structured
 				// `drilldowns` and optional `time_range`. Mutually exclusive with
-				// `config_json`, `slo_burn_rate_config`, `slo_error_budget_config`,
-				// `slo_overview_config`, `synthetics_monitors_config`,
-				// `synthetics_stats_overview_config`, `time_slider_control_config`,
-				// `options_list_control_config`, `range_slider_control_config`,
-				// `esql_control_config`, `markdown_config`, `image_config`,
-				// `slo_alerts_config`, `discover_session_config`.
+				// `config_json`, `apm_service_map_config`, `slo_burn_rate_config`,
+				// `slo_error_budget_config`, `slo_overview_config`,
+				// `synthetics_monitors_config`, `synthetics_stats_overview_config`,
+				// `time_slider_control_config`, `options_list_control_config`,
+				// `range_slider_control_config`, `esql_control_config`, `markdown_config`,
+				// `ml_anomaly_swimlane_config`, `ml_anomaly_charts_config`,
+				// `ml_single_metric_viewer_config`, `image_config`, `slo_alerts_config`,
+				// `discover_session_config`, `field_stats_table_config`,
+				// `aiops_log_rate_analysis_config`, `links_config`,
+				// `aiops_pattern_analysis_config`, `aiops_change_point_chart_config`.
 				vis_config?: close({
 					// By-reference `vis` configuration: structured `drilldowns`, `ref_id`, optional
 					// `references_json`, and optional `time_range`.

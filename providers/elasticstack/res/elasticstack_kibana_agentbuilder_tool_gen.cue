@@ -44,7 +44,7 @@ elasticstack_kibana_agentbuilder_tool: {
 		// The composite ID of the tool: `<space_id>/<tool_id>`.
 		id?: string
 
-		// An identifier for the Kibana space. If not provided, the default space is used.
+		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string
 
 		// List of tags for the tool.

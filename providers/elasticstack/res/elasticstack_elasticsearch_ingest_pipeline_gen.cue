@@ -37,7 +37,7 @@ elasticstack_elasticsearch_ingest_pipeline: {
 			update?: string
 		})
 
-		// Internal identifier of the resource
+		// Internal identifier of the resource.
 		id?: string
 
 		// Optional user metadata about the ingest pipeline.

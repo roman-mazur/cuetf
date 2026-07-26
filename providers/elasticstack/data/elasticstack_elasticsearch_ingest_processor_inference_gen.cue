@@ -13,7 +13,7 @@ elasticstack_elasticsearch_ingest_processor_inference: {
 		// document fields to the model's expected input fields.
 		field_map?: [string]: string
 
-		// Internal identifier of the resource
+		// Internal identifier of the resource.
 		id?: string
 
 		// Conditionally execute the processor

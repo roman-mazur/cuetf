@@ -147,7 +147,7 @@ elasticstack_elasticsearch_index_template: {
 		filter?: string
 
 		// Value used to route indexing operations to a specific shard. If specified,
-		// this overwrites the `routing` value for indexing operations.
+		// this overwrites the routing value for indexing operations.
 		index_routing?: string
 
 		// If true, the alias is hidden.
@@ -156,7 +156,10 @@ elasticstack_elasticsearch_index_template: {
 		// If true, the index is the write index for the alias.
 		is_write_index?: bool
 
-		// The alias name.
+		// The alias name. Index alias names support date math. See the [date math index
+		// names
+		// documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/date-math-index-names.html)
+		// for more details.
 		name!: string
 
 		// Value used to route indexing and search operations to a specific shard.

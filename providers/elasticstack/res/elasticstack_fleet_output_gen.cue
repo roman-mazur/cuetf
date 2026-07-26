@@ -164,7 +164,10 @@ elasticstack_fleet_output: {
 		// The name of the output.
 		name!: string
 
-		// Unique identifier of the output.
+		// Unique identifier of the output. When omitted, Fleet auto-generates an ID.
+		// When set, the value must be 1-255 characters and must not contain path
+		// separators ("/"), traversal sequences (".."), or reserved keys ("__proto__",
+		// "constructor", "prototype"). Invalid explicit values fail at plan time.
 		output_id?: string
 
 		// Service token for remote Elasticsearch outputs.

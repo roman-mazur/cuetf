@@ -17,7 +17,7 @@ elasticstack_elasticsearch_ingest_processor_date_index_name: {
 		// The field to get the date or timestamp from.
 		field!: string
 
-		// Internal identifier of the resource
+		// Internal identifier of the resource.
 		id?: string
 
 		// Conditionally execute the processor

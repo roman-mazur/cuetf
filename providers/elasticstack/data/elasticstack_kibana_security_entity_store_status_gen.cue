@@ -143,7 +143,7 @@ elasticstack_kibana_security_entity_store_status: {
 		// The overall operational status of the Entity Store.
 		overall_status?: string
 
-		// An identifier for the Kibana space. If omitted, the default space is used.
+		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string
 
 		// Normalized JSON of the full status response.
