@@ -90,7 +90,11 @@ google_backup_dr_backup_vault: {
 		// expiration schedule defined by the associated backup plan is shorter than the minimum
 		// retention set by the backup vault.
 		force_update?: bool
-		id?:           string
+
+		// If set to true, we will force update access restriction even if some non
+		// compliant data sources are present.
+		force_update_access_restriction?: bool
+		id?:                              string
 
 		// If set, the following restrictions against deletion of the backup vault
 		// instance can be overridden:
@@ -129,6 +133,7 @@ google_backup_dr_backup_vault: {
 		// ACTIVE
 		// DELETING
 		// ERROR
+		// UPDATING
 		state?: string
 
 		// The combination of labels configured directly on the resource

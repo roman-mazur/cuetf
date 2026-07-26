@@ -35,6 +35,9 @@ google_workbench_instance: {
 		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
+		// Optional. If true, deletion protection will be enabled for this Workbench Instance.
+		enable_deletion_protection?: bool
+
 		// Flag to enable managed end user credentials for the instance.
 		enable_managed_euc?: bool
 
@@ -132,6 +135,9 @@ google_workbench_instance: {
 		// Optional. Custom metadata to apply to this instance.
 		metadata?: [string]: string
 
+		// Optional. The minimum CPU platform to use for this instance.
+		min_cpu_platform?: string
+
 		// Optional. The Compute Engine tags to add to instance (see [Tagging
 		// instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
 		tags?: [...string]
@@ -213,6 +219,9 @@ google_workbench_instance: {
 		// 'projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}'
 		// Learn more about using your own encryption keys.'
 		kms_key?: string
+
+		// Optional. Resource policies applied to this disk.
+		resource_policies?: [...string]
 	})
 
 	_#defs: "/$defs/gce_setup/$defs/network_interfaces": close({

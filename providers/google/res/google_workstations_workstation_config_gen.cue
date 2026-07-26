@@ -252,6 +252,9 @@ google_workstations_workstation_config: {
 		// https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 		enable_nested_virtualization?: bool
 
+		// Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+		instance_metadata?: [string]: string
+
 		// The name of a Compute Engine machine type.
 		machine_type?: string
 

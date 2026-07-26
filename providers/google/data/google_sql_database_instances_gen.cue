@@ -29,11 +29,12 @@ google_sql_database_instances: {
 				dns_scope?:       string
 				name?:            string
 			})]
-			encryption_key_name?:                  string
-			enforce_new_sql_network_architecture?: bool
-			final_backup_description?:             string
-			first_ip_address?:                     string
-			instance_type?:                        string
+			encryption_key_name?:                        string
+			enforce_new_sql_network_architecture?:       bool
+			final_backup_description?:                   string
+			first_ip_address?:                           string
+			include_replicas_for_major_version_upgrade?: bool
+			instance_type?:                              string
 			ip_address?: [...close({
 				ip_address?:     string
 				time_to_retire?: string
@@ -188,10 +189,12 @@ google_sql_database_instances: {
 							consumer_network?:                          string
 							consumer_network_status?:                   string
 							consumer_service_project_id?:               string
+							instance_auto_dns_status?:                  string
 							ip_address?:                                string
 							service_connection_policy?:                 string
 							service_connection_policy_creation_result?: string
 							status?:                                    string
+							write_endpoint_auto_dns_status?:            string
 						})]
 						psc_auto_dns_enabled?:           bool
 						psc_enabled?:                    bool
@@ -244,6 +247,7 @@ google_sql_database_instances: {
 				user_labels?: [string]: string
 				version?: number
 			})]
+			switch_transaction_logs_to_cloud_storage_enabled?: bool
 		})]
 
 		// Project ID of the project that contains the instances.

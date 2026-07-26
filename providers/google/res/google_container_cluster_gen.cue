@@ -1681,10 +1681,13 @@ google_container_cluster: {
 	})
 
 	_#defs: "/$defs/node_config/$defs/node_image_config": close({
-		// The name of the image to use for this node.
+		// The Operating System image for the node pool. This is a private feature,
+		// please contact your Google account team for allowlisting this feature.
 		image?: string
 
-		// The project containing the image to use for this node.
+		// The GCP project storing the Operating System image for the node pool. This is
+		// a private feature, please contact your Google account team for allowlisting
+		// this feature.
 		image_project?: string
 	})
 
@@ -2424,10 +2427,13 @@ google_container_cluster: {
 	})
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/node_image_config": close({
-		// The name of the image to use for this node.
+		// The Operating System image for the node pool. This is a private feature,
+		// please contact your Google account team for allowlisting this feature.
 		image?: string
 
-		// The project containing the image to use for this node.
+		// The GCP project storing the Operating System image for the node pool. This is
+		// a private feature, please contact your Google account team for allowlisting
+		// this feature.
 		image_project?: string
 	})
 

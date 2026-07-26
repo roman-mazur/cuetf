@@ -14,6 +14,8 @@ google_backup_dr_backup_plan_association: {
 		// protect both standard Disks and Regional Disks resources.
 		// - A Backup Plan configured for 'file.googleapis.com/Instance' can only
 		// protect Filestore instances.
+		// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only
+		// protect Cloud SQL instances.
 		backup_plan!: string
 
 		// The id of backupplan association
