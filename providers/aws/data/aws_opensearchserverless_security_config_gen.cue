@@ -4,6 +4,8 @@ aws_opensearchserverless_security_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_opensearchserverless_security_config")
 	close({
+		iam_federation_options?: matchN(1, [#iam_federation_options, [...#iam_federation_options]])
+		iam_identity_center_options?: matchN(1, [#iam_identity_center_options, [...#iam_identity_center_options]])
 		saml_options?: matchN(1, [#saml_options, [...#saml_options]])
 
 		// The version of the security configuration.
@@ -29,6 +31,25 @@ aws_opensearchserverless_security_config: {
 
 		// The type of security configuration.
 		type?: string
+	})
+
+	#iam_federation_options: close({
+		// Group attribute.
+		group_attribute?: string
+
+		// User attribute.
+		user_attribute?: string
+	})
+
+	#iam_identity_center_options: close({
+		// Group attribute.
+		group_attribute?: string
+
+		// Instance ARN.
+		instance_arn?: string
+
+		// User attribute.
+		user_attribute?: string
 	})
 
 	#saml_options: close({

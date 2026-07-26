@@ -54,6 +54,10 @@ aws_s3tables_table: {
 
 	_#defs: "/$defs/metadata/$defs/iceberg": close({
 		schema?: matchN(1, [_#defs."/$defs/metadata/$defs/iceberg/$defs/schema", [..._#defs."/$defs/metadata/$defs/iceberg/$defs/schema"]])
+
+		// A map of configuration properties for the Iceberg table, for example
+		// `write.distribution-mode` and `write.sort-order`.
+		properties?: [string]: string
 	})
 
 	_#defs: "/$defs/metadata/$defs/iceberg/$defs/schema": close({

@@ -9,6 +9,7 @@ aws_autoscaling_group: {
 		availability_zone_distribution?: matchN(1, [#availability_zone_distribution, list.MaxItems(1) & [...#availability_zone_distribution]])
 		capacity_reservation_specification?: matchN(1, [#capacity_reservation_specification, list.MaxItems(1) & [...#capacity_reservation_specification]])
 		initial_lifecycle_hook?: matchN(1, [#initial_lifecycle_hook, [...#initial_lifecycle_hook]])
+		instance_lifecycle_policy?: matchN(1, [#instance_lifecycle_policy, list.MaxItems(1) & [...#instance_lifecycle_policy]])
 		instance_maintenance_policy?: matchN(1, [#instance_maintenance_policy, list.MaxItems(1) & [...#instance_maintenance_policy]])
 		instance_refresh?: matchN(1, [#instance_refresh, list.MaxItems(1) & [...#instance_refresh]])
 		launch_template?: matchN(1, [#launch_template, list.MaxItems(1) & [...#launch_template]])
@@ -79,6 +80,10 @@ aws_autoscaling_group: {
 		role_arn?:                string
 	})
 
+	#instance_lifecycle_policy: close({
+		retention_triggers?: matchN(1, [_#defs."/$defs/instance_lifecycle_policy/$defs/retention_triggers", list.MaxItems(1) & [..._#defs."/$defs/instance_lifecycle_policy/$defs/retention_triggers"]])
+	})
+
 	#instance_maintenance_policy: close({
 		max_healthy_percentage!: number
 		min_healthy_percentage!: number
@@ -127,6 +132,10 @@ aws_autoscaling_group: {
 	_#defs: "/$defs/capacity_reservation_specification/$defs/capacity_reservation_target": close({
 		capacity_reservation_ids?: [...string]
 		capacity_reservation_resource_group_arns?: [...string]
+	})
+
+	_#defs: "/$defs/instance_lifecycle_policy/$defs/retention_triggers": close({
+		terminate_hook_abandon?: string
 	})
 
 	_#defs: "/$defs/instance_refresh/$defs/preferences": close({

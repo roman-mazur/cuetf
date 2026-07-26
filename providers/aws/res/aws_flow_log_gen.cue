@@ -7,6 +7,7 @@ aws_flow_log: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_flow_log")
 	close({
 		destination_options?: matchN(1, [#destination_options, list.MaxItems(1) & [...#destination_options]])
+		tag_field_specification?: matchN(1, [#tag_field_specification, [...#tag_field_specification]])
 		arn?: string
 
 		// Region where this resource will be
@@ -36,5 +37,10 @@ aws_flow_log: {
 		file_format?:                string
 		hive_compatible_partitions?: bool
 		per_hour_partition?:         bool
+	})
+
+	#tag_field_specification: close({
+		resource_type!: string
+		tag_keys!: [...string]
 	})
 }
