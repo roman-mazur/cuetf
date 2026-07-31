@@ -14491,7 +14491,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -14599,7 +14599,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -14707,7 +14707,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -14818,7 +14818,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -15031,12 +15031,875 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
         }]
         TotalGpuMemoryInMiB: 16384
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "unsupported"
+    RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
+}, {
+    InstanceType:      "g5.12xlarge"
+    CurrentGeneration: false
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.3
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          48
+        DefaultCores:          24
+        DefaultThreadsPerCore: 2
+    }
+    MemoryInfo: {
+        SizeInMiB: 196608
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 3800
+        Disks: [{
+            SizeInGB: 3800
+            Count:    1
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  16000
+            BaselineThroughputInMBps: 2000.0
+            BaselineIops:             65000
+            MaximumBandwidthInMbps:   16000
+            MaximumThroughputInMBps:  2000.0
+            MaximumIops:              65000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 22
+        AttachmentLimitType:   "shared"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "40 Gigabit"
+        MaximumNetworkInterfaces: 15
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "40 Gigabit"
+            MaximumNetworkInterfaces:         15
+            BaselineBandwidthInGbps:          40.0
+            PeakBandwidthInGbps:              40.0
+            DefaultEnaQueueCountPerInterface: 32
+        }]
+        Ipv4AddressesPerInterface: 50
+        Ipv6AddressesPerInterface: 50
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 1
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
+    }
+    GpuInfo: {
+        Gpus: [{
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            4
+            LogicalGpuCount:  4
+            GpuPartitionSize: 1.0
+            Workloads: ["graphics", "ml-ai"]
+            MemoryInfo: {
+                SizeInMiB: 22888
+            }
+        }]
+        TotalGpuMemoryInMiB: 91552
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "unsupported"
+    RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
+}, {
+    InstanceType:      "g5.16xlarge"
+    CurrentGeneration: false
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.3
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          64
+        DefaultCores:          32
+        DefaultThreadsPerCore: 2
+    }
+    MemoryInfo: {
+        SizeInMiB: 262144
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 1900
+        Disks: [{
+            SizeInGB: 1900
+            Count:    1
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  16000
+            BaselineThroughputInMBps: 2000.0
+            BaselineIops:             65000
+            MaximumBandwidthInMbps:   16000
+            MaximumThroughputInMBps:  2000.0
+            MaximumIops:              65000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "25 Gigabit"
+        MaximumNetworkInterfaces: 8
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "25 Gigabit"
+            MaximumNetworkInterfaces:         8
+            BaselineBandwidthInGbps:          25.0
+            PeakBandwidthInGbps:              25.0
+            DefaultEnaQueueCountPerInterface: 32
+        }]
+        Ipv4AddressesPerInterface: 30
+        Ipv6AddressesPerInterface: 30
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 1
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
+    }
+    GpuInfo: {
+        Gpus: [{
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
+            MemoryInfo: {
+                SizeInMiB: 22888
+            }
+        }]
+        TotalGpuMemoryInMiB: 22888
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "unsupported"
+    RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
+}, {
+    InstanceType:      "g5.24xlarge"
+    CurrentGeneration: false
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.3
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          96
+        DefaultCores:          48
+        DefaultThreadsPerCore: 2
+    }
+    MemoryInfo: {
+        SizeInMiB: 393216
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 3800
+        Disks: [{
+            SizeInGB: 3800
+            Count:    1
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  19000
+            BaselineThroughputInMBps: 2375.0
+            BaselineIops:             80000
+            MaximumBandwidthInMbps:   19000
+            MaximumThroughputInMBps:  2375.0
+            MaximumIops:              80000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 22
+        AttachmentLimitType:   "shared"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "50 Gigabit"
+        MaximumNetworkInterfaces: 15
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "50 Gigabit"
+            MaximumNetworkInterfaces:         15
+            BaselineBandwidthInGbps:          50.0
+            PeakBandwidthInGbps:              50.0
+            DefaultEnaQueueCountPerInterface: 32
+        }]
+        Ipv4AddressesPerInterface: 50
+        Ipv6AddressesPerInterface: 50
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 1
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
+    }
+    GpuInfo: {
+        Gpus: [{
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            4
+            LogicalGpuCount:  4
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
+            MemoryInfo: {
+                SizeInMiB: 22888
+            }
+        }]
+        TotalGpuMemoryInMiB: 91552
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "unsupported"
+    RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
+}, {
+    InstanceType:      "g5.2xlarge"
+    CurrentGeneration: false
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.3
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          8
+        DefaultCores:          4
+        DefaultThreadsPerCore: 2
+    }
+    MemoryInfo: {
+        SizeInMiB: 32768
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 450
+        Disks: [{
+            SizeInGB: 450
+            Count:    1
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  850
+            BaselineThroughputInMBps: 106.25
+            BaselineIops:             3500
+            MaximumBandwidthInMbps:   3500
+            MaximumThroughputInMBps:  437.5
+            MaximumIops:              15000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 10 Gigabit"
+        MaximumNetworkInterfaces: 4
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 10 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          5.0
+            PeakBandwidthInGbps:              10.0
+            DefaultEnaQueueCountPerInterface: 8
+        }]
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
+    }
+    GpuInfo: {
+        Gpus: [{
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
+            MemoryInfo: {
+                SizeInMiB: 22888
+            }
+        }]
+        TotalGpuMemoryInMiB: 22888
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "unsupported"
+    RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
+}, {
+    InstanceType:      "g5.48xlarge"
+    CurrentGeneration: false
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.3
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          192
+        DefaultCores:          96
+        DefaultThreadsPerCore: 2
+    }
+    MemoryInfo: {
+        SizeInMiB: 786432
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 7600
+        Disks: [{
+            SizeInGB: 3800
+            Count:    2
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  19000
+            BaselineThroughputInMBps: 2375.0
+            BaselineIops:             80000
+            MaximumBandwidthInMbps:   19000
+            MaximumThroughputInMBps:  2375.0
+            MaximumIops:              80000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 9
+        AttachmentLimitType:   "shared"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "100 Gigabit"
+        MaximumNetworkInterfaces: 7
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "100 Gigabit"
+            MaximumNetworkInterfaces:         7
+            BaselineBandwidthInGbps:          100.0
+            PeakBandwidthInGbps:              100.0
+            DefaultEnaQueueCountPerInterface: 32
+        }]
+        Ipv4AddressesPerInterface: 50
+        Ipv6AddressesPerInterface: 50
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 1
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
+    }
+    GpuInfo: {
+        Gpus: [{
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            8
+            LogicalGpuCount:  8
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
+            MemoryInfo: {
+                SizeInMiB: 22888
+            }
+        }]
+        TotalGpuMemoryInMiB: 183104
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       true
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "unsupported"
+    RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
+}, {
+    InstanceType:      "g5.4xlarge"
+    CurrentGeneration: false
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.3
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          16
+        DefaultCores:          8
+        DefaultThreadsPerCore: 2
+    }
+    MemoryInfo: {
+        SizeInMiB: 65536
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 600
+        Disks: [{
+            SizeInGB: 600
+            Count:    1
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  4750
+            BaselineThroughputInMBps: 593.75
+            BaselineIops:             20000
+            MaximumBandwidthInMbps:   4750
+            MaximumThroughputInMBps:  593.75
+            MaximumIops:              20000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 25 Gigabit"
+        MaximumNetworkInterfaces: 8
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 25 Gigabit"
+            MaximumNetworkInterfaces:         8
+            BaselineBandwidthInGbps:          10.0
+            PeakBandwidthInGbps:              25.0
+            DefaultEnaQueueCountPerInterface: 32
+        }]
+        Ipv4AddressesPerInterface:    30
+        Ipv6AddressesPerInterface:    30
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
+    }
+    GpuInfo: {
+        Gpus: [{
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
+            MemoryInfo: {
+                SizeInMiB: 22888
+            }
+        }]
+        TotalGpuMemoryInMiB: 22888
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "unsupported"
+    RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
+}, {
+    InstanceType:      "g5.8xlarge"
+    CurrentGeneration: false
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.3
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          32
+        DefaultCores:          16
+        DefaultThreadsPerCore: 2
+    }
+    MemoryInfo: {
+        SizeInMiB: 131072
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 900
+        Disks: [{
+            SizeInGB: 900
+            Count:    1
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  16000
+            BaselineThroughputInMBps: 2000.0
+            BaselineIops:             65000
+            MaximumBandwidthInMbps:   16000
+            MaximumThroughputInMBps:  2000.0
+            MaximumIops:              65000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "25 Gigabit"
+        MaximumNetworkInterfaces: 8
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "25 Gigabit"
+            MaximumNetworkInterfaces:         8
+            BaselineBandwidthInGbps:          25.0
+            PeakBandwidthInGbps:              25.0
+            DefaultEnaQueueCountPerInterface: 32
+        }]
+        Ipv4AddressesPerInterface: 30
+        Ipv6AddressesPerInterface: 30
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 1
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
+    }
+    GpuInfo: {
+        Gpus: [{
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
+            MemoryInfo: {
+                SizeInMiB: 22888
+            }
+        }]
+        TotalGpuMemoryInMiB: 22888
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "unsupported"
+    RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
+}, {
+    InstanceType:      "g5.xlarge"
+    CurrentGeneration: false
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.3
+        Manufacturer:             "AMD"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          4
+        DefaultCores:          2
+        DefaultThreadsPerCore: 2
+    }
+    MemoryInfo: {
+        SizeInMiB: 16384
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 250
+        Disks: [{
+            SizeInGB: 250
+            Count:    1
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  700
+            BaselineThroughputInMBps: 87.5
+            BaselineIops:             3000
+            MaximumBandwidthInMbps:   3500
+            MaximumThroughputInMBps:  437.5
+            MaximumIops:              15000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 25
+        AttachmentLimitType:   "shared"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 10 Gigabit"
+        MaximumNetworkInterfaces: 4
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 10 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          2.5
+            PeakBandwidthInGbps:              10.0
+            DefaultEnaQueueCountPerInterface: 8
+        }]
+        Ipv4AddressesPerInterface:    15
+        Ipv6AddressesPerInterface:    15
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported: false
+    }
+    GpuInfo: {
+        Gpus: [{
+            Name:             "A10G"
+            Manufacturer:     "NVIDIA"
+            Count:            1
+            LogicalGpuCount:  1
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai", "graphics"]
+            MemoryInfo: {
+                SizeInMiB: 22888
+            }
+        }]
+        TotalGpuMemoryInMiB: 22888
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]
@@ -15143,7 +16006,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -15255,7 +16118,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -15476,7 +16339,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -15697,7 +16560,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -15918,7 +16781,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -16027,7 +16890,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -16139,7 +17002,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }

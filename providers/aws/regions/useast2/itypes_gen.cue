@@ -23608,7 +23608,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -23697,7 +23697,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -23786,7 +23786,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -23875,7 +23875,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -23964,7 +23964,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -24056,7 +24056,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -24145,7 +24145,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -24234,7 +24234,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -24323,7 +24323,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -24409,7 +24409,7 @@ InstanceTypes: [{
     BareMetal: true
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -24496,7 +24496,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -24585,7 +24585,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -24684,7 +24684,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -24783,7 +24783,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -24882,7 +24882,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -24981,7 +24981,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -25083,7 +25083,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -25182,7 +25182,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -25281,7 +25281,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -25380,7 +25380,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -25476,7 +25476,7 @@ InstanceTypes: [{
     BareMetal: true
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -25573,7 +25573,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -26591,7 +26591,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -26696,7 +26696,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -26801,7 +26801,7 @@ InstanceTypes: [{
             Count:            2
             LogicalGpuCount:  2
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -27560,7 +27560,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -27774,7 +27774,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -27992,7 +27992,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -28098,7 +28098,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -29085,7 +29085,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -29306,7 +29306,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -29527,7 +29527,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -29639,7 +29639,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -30000,7 +30000,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -30439,7 +30439,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.25
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 5722
             }
@@ -31070,7 +31070,7 @@ InstanceTypes: [{
         AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
-        NetworkPerformance:       "60 Gigabit"
+        NetworkPerformance:       "Up to 60 Gigabit"
         MaximumNetworkInterfaces: 4
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
@@ -31108,7 +31108,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 32768
             }
@@ -31325,7 +31325,7 @@ InstanceTypes: [{
         AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
-        NetworkPerformance:       "60 Gigabit"
+        NetworkPerformance:       "Up to 100 Gigabit"
         MaximumNetworkInterfaces: 8
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
@@ -31437,16 +31437,16 @@ InstanceTypes: [{
         AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
-        NetworkPerformance:       "80 Gigabit"
+        NetworkPerformance:       "100 Gigabit"
         MaximumNetworkInterfaces: 10
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
             NetworkCardIndex:                    0
-            NetworkPerformance:                  "Up to 100 Gigabit"
+            NetworkPerformance:                  "100 Gigabit"
             MaximumNetworkInterfaces:            10
             AdditionalFlexibleNetworkInterfaces: 0
-            BaselineBandwidthInGbps:             85.0
+            BaselineBandwidthInGbps:             100.0
             PeakBandwidthInGbps:                 100.0
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                80
@@ -31818,7 +31818,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -31951,7 +31951,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -32060,7 +32060,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -32172,7 +32172,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -70354,7 +70354,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -70443,7 +70443,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -70532,7 +70532,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -70621,7 +70621,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -70710,7 +70710,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -70802,7 +70802,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -70891,7 +70891,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -70980,7 +70980,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -71069,7 +71069,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -71155,7 +71155,7 @@ InstanceTypes: [{
     BareMetal: true
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -71242,7 +71242,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -71331,7 +71331,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -71430,7 +71430,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -71529,7 +71529,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -71628,7 +71628,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -71727,7 +71727,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -71829,7 +71829,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -71928,7 +71928,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -72027,7 +72027,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -72126,7 +72126,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -72222,7 +72222,7 @@ InstanceTypes: [{
     BareMetal: true
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
@@ -72319,7 +72319,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["arm64"]
-        SustainedClockSpeedInGhz: 2.8
+        SustainedClockSpeedInGhz: 3.3
         Manufacturer:             "AWS"
     }
     VCpuInfo: {
