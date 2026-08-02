@@ -44,12 +44,45 @@ google_gke_hub_rollout_sequence: {
 		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 		labels?: [string]: string
 
+		// Minimum control plane version that the clusters in the sequence should be upgraded to.
+		// Setting this field will cause the creation of a rollout to the specified version.
+		// Any rollout of the same type already running on the first stage of the
+		// sequence will be cancelled to allow for the creation of the new rollout.
+		// Should be a valid [semantic version](https://semver.org/).
+		// Version aliases are supported, as described in the [cluster version
+		// docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+		// Note that the 'latest' and '-' aliases are not supported for this field.
+		// Supported formats: '1.X', '1.X.Y', '1.X.Y-gke.N'.
+		min_control_plane_version?: string
+
+		// Minimum node version that the clusters in the sequence should be upgraded to.
+		// Setting this field will cause the creation of a rollout to the specified version.
+		// Any rollout of the same type already running on the first stage of the
+		// sequence will be cancelled to allow for the creation of the new rollout.
+		// Should be a valid [semantic version](https://semver.org/).
+		// Version aliases are supported, as described in the [cluster version
+		// docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+		// Note that the 'latest' and '-' aliases are not supported for this field.
+		// Supported formats: '1.X', '1.X.Y', '1.X.Y-gke.N'.
+		min_node_version?: string
+
 		// The full resource name of the RolloutSequence.
 		name?: string
+
+		// The operational state of the rollout sequence.
+		operational_state?: [...close({
+			state?: string
+		})]
 
 		// The user-provided identifier of the RolloutSequence.
 		rollout_sequence_id!: string
 		project?:             string
+
+		// The current target control plane version.
+		target_control_plane_version?: string
+
+		// The current target node version.
+		target_node_version?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

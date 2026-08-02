@@ -45,6 +45,9 @@ google_container_cluster: {
 			network_policy_config?: [...close({
 				disabled?: bool
 			})]
+			node_readiness_config?: [...close({
+				enabled?: bool
+			})]
 			parallelstore_csi_driver_config?: [...close({
 				enabled?: bool
 			})]
@@ -231,6 +234,13 @@ google_container_cluster: {
 		// Description of the cluster.
 		description?: string
 
+		// The desired emulated version for the cluster. Used to complete a
+		// rollback-safe upgrade after a soak period. Must be in major.minor format
+		// (e.g., "1.31"). To complete the upgrade declaratively, set this field to the
+		// target minor version. Removing this field from your configuration will not
+		// trigger completion.
+		desired_emulated_version?: string
+
 		// Disable L4 load balancer VPC firewalls to enable firewall policies.
 		disable_l4_lb_firewall_reconciliation?: bool
 
@@ -245,6 +255,9 @@ google_container_cluster: {
 		// All of labels (key/value pairs) present on the resource in GCP, including the
 		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
+
+		// The current emulated Kubernetes version running on the GKE cluster control plane.
+		emulated_version?: string
 
 		// Enable Autopilot for this cluster.
 		enable_autopilot?: bool
@@ -1275,6 +1288,11 @@ google_container_cluster: {
 			})]
 			enable_network_egress_metering?:       bool
 			enable_resource_consumption_metering?: bool
+		})]
+
+		// Configuration for rollback-safe (two-step) upgrades.
+		rollback_safe_upgrade?: [...close({
+			control_plane_soak_duration?: string
 		})]
 
 		// Configuration for the Secret Manager feature.

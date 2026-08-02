@@ -62,6 +62,7 @@ google_model_armor_template: {
 	})
 
 	#template_metadata: close({
+		filter_version_selector?: matchN(1, [_#defs."/$defs/template_metadata/$defs/filter_version_selector", list.MaxItems(1) & [..._#defs."/$defs/template_metadata/$defs/filter_version_selector"]])
 		multi_language_detection?: matchN(1, [_#defs."/$defs/template_metadata/$defs/multi_language_detection", list.MaxItems(1) & [..._#defs."/$defs/template_metadata/$defs/multi_language_detection"]])
 
 		// Indicates the custom error code set by the user to be returned to the end
@@ -176,6 +177,19 @@ google_model_armor_template: {
 		// ENABLED
 		// DISABLED
 		filter_enforcement?: string
+	})
+
+	_#defs: "/$defs/template_metadata/$defs/filter_version_selector": close({
+		// A predefined filter version alias. The template automatically follows the
+		// version this alias points to.
+		// Possible values:
+		// FILTER_VERSION_ALIAS_STABLE
+		// FILTER_VERSION_ALIAS_LATEST
+		alias?: string
+
+		// Pins the template to a specific, immutable filter version. Expected
+		// format is a case-sensitive string such as 'v1' or 'v2'.
+		version?: string
 	})
 
 	_#defs: "/$defs/template_metadata/$defs/multi_language_detection": close({

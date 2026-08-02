@@ -294,7 +294,13 @@ google_compute_backend_service: {
 			enable?: bool
 			optional_fields?: [...string]
 			optional_mode?: string
-			sample_rate?:   number
+			request_headers?: [...close({
+				header_name?: string
+			})]
+			response_headers?: [...close({
+				header_name?: string
+			})]
+			sample_rate?: number
 		})]
 
 		// Specifies the default maximum duration (timeout) for streams to this service.

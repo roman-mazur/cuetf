@@ -44,6 +44,7 @@ google_container_cluster: {
 		rbac_binding_config?: matchN(1, [#rbac_binding_config, list.MaxItems(1) & [...#rbac_binding_config]])
 		release_channel?: matchN(1, [#release_channel, list.MaxItems(1) & [...#release_channel]])
 		resource_usage_export_config?: matchN(1, [#resource_usage_export_config, list.MaxItems(1) & [...#resource_usage_export_config]])
+		rollback_safe_upgrade?: matchN(1, [#rollback_safe_upgrade, list.MaxItems(1) & [...#rollback_safe_upgrade]])
 		secret_manager_config?: matchN(1, [#secret_manager_config, list.MaxItems(1) & [...#secret_manager_config]])
 		secret_sync_config?: matchN(1, [#secret_sync_config, list.MaxItems(1) & [...#secret_sync_config]])
 		security_posture_config?: matchN(1, [#security_posture_config, list.MaxItems(1) & [...#security_posture_config]])
@@ -96,12 +97,22 @@ google_container_cluster: {
 		// Description of the cluster.
 		description?: string
 
+		// The desired emulated version for the cluster. Used to complete a
+		// rollback-safe upgrade after a soak period. Must be in major.minor format
+		// (e.g., "1.31"). To complete the upgrade declaratively, set this field to the
+		// target minor version. Removing this field from your configuration will not
+		// trigger completion.
+		desired_emulated_version?: string
+
 		// Disable L4 load balancer VPC firewalls to enable firewall policies.
 		disable_l4_lb_firewall_reconciliation?: bool
 
 		// All of labels (key/value pairs) present on the resource in GCP, including the
 		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
+
+		// The current emulated Kubernetes version running on the GKE cluster control plane.
+		emulated_version?: string
 
 		// Enable Autopilot for this cluster.
 		enable_autopilot?: bool
@@ -290,6 +301,7 @@ google_container_cluster: {
 		http_load_balancing?: matchN(1, [_#defs."/$defs/addons_config/$defs/http_load_balancing", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/http_load_balancing"]])
 		lustre_csi_driver_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/lustre_csi_driver_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/lustre_csi_driver_config"]])
 		network_policy_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/network_policy_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/network_policy_config"]])
+		node_readiness_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/node_readiness_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/node_readiness_config"]])
 		parallelstore_csi_driver_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/parallelstore_csi_driver_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/parallelstore_csi_driver_config"]])
 		pod_snapshot_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/pod_snapshot_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/pod_snapshot_config"]])
 		ray_operator_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/ray_operator_config", list.MaxItems(3) & [..._#defs."/$defs/addons_config/$defs/ray_operator_config"]])
@@ -840,6 +852,15 @@ google_container_cluster: {
 		enable_resource_consumption_metering?: bool
 	})
 
+	#rollback_safe_upgrade: close({
+		// A user-defined period that the cluster remains in the rollbackable state. A
+		// duration in seconds with up to nine fractional digits, ending with 's'.
+		// Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If
+		// omitted, the two-step upgrade is skipped and a standard one-step upgrade is
+		// performed.
+		control_plane_soak_duration?: string
+	})
+
 	#secret_manager_config: close({
 		rotation_config?: matchN(1, [_#defs."/$defs/secret_manager_config/$defs/rotation_config", list.MaxItems(1) & [..._#defs."/$defs/secret_manager_config/$defs/rotation_config"]])
 
@@ -977,6 +998,10 @@ google_container_cluster: {
 
 	_#defs: "/$defs/addons_config/$defs/network_policy_config": close({
 		disabled!: bool
+	})
+
+	_#defs: "/$defs/addons_config/$defs/node_readiness_config": close({
+		enabled!: bool
 	})
 
 	_#defs: "/$defs/addons_config/$defs/parallelstore_csi_driver_config": close({

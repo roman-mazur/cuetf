@@ -172,6 +172,18 @@ google_cloud_run_v2_job: {
 		// terminalCondition and conditions
 		reconciling?: bool
 
+		// A unique string used as a suffix creating a new execution upon job create or
+		// update. The Job will become ready when the execution is successfully
+		// completed.
+		// The sum of job name and token length must be fewer than 63 characters.
+		run_execution_token?: string
+
+		// A unique string used as a suffix creating a new execution upon job create or
+		// update. The Job will become ready when the execution is successfully
+		// started.
+		// The sum of job name and token length must be fewer than 63 characters.
+		start_execution_token?: string
+
 		// A map of resource manager tags.
 		// Resource manager tag keys and values have the same definition as resource manager tags.
 		// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format

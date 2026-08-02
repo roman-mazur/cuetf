@@ -60,6 +60,11 @@ google_compute_interconnect: {
 		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
 
+		// URL of the InterconnectLocation object that represents where this connection
+		// is to be provisioned.
+		// Specifies the location inside Google's Networks.
+		effective_location?: string
+
 		// A list of outages expected for this Interconnect.
 		expected_outages?: [...close({
 			affected_circuits?: [...string]
@@ -121,7 +126,7 @@ google_compute_interconnect: {
 		link_type!: string
 
 		// URL of the InterconnectLocation object that represents where this connection
-		// is to be provisioned.
+		// is requested to be provisioned.
 		// Specifies the location inside Google's Networks.
 		location!: string
 
