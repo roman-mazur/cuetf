@@ -4,15 +4,14 @@ azurerm_private_dns_aaaa_record: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_private_dns_aaaa_record")
 	close({
-		timeouts?: #timeouts
-		fqdn?:     string
-		id?:       string
-		name!:     string
+		timeouts?:            #timeouts
+		fqdn?:                string
+		id?:                  string
+		name!:                string
+		private_dns_zone_id!: string
 		records!: [...string]
-		resource_group_name!: string
 		tags?: [string]: string
-		ttl!:       number
-		zone_name!: string
+		ttl!: number
 	})
 
 	#timeouts: close({

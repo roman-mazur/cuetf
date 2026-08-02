@@ -13,11 +13,9 @@ azurerm_storage_account: {
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		immutability_policy?: matchN(1, [#immutability_policy, list.MaxItems(1) & [...#immutability_policy]])
 		network_rules?: matchN(1, [#network_rules, list.MaxItems(1) & [...#network_rules]])
-		queue_properties?: matchN(1, [#queue_properties, list.MaxItems(1) & [...#queue_properties]])
 		routing?: matchN(1, [#routing, list.MaxItems(1) & [...#routing]])
 		sas_policy?: matchN(1, [#sas_policy, list.MaxItems(1) & [...#sas_policy]])
 		share_properties?: matchN(1, [#share_properties, list.MaxItems(1) & [...#share_properties]])
-		static_website?: matchN(1, [#static_website, list.MaxItems(1) & [...#static_website]])
 		timeouts?:                           #timeouts
 		access_tier?:                        string
 		account_kind?:                       string
@@ -145,7 +143,7 @@ azurerm_storage_account: {
 	})
 
 	#customer_managed_key: close({
-		key_vault_key_id?:          string
+		key_vault_key_id!:          string
 		user_assigned_identity_id!: string
 	})
 
@@ -170,13 +168,6 @@ azurerm_storage_account: {
 		virtual_network_subnet_ids?: [...string]
 	})
 
-	#queue_properties: close({
-		cors_rule?: matchN(1, [_#defs."/$defs/queue_properties/$defs/cors_rule", list.MaxItems(5) & [..._#defs."/$defs/queue_properties/$defs/cors_rule"]])
-		hour_metrics?: matchN(1, [_#defs."/$defs/queue_properties/$defs/hour_metrics", list.MaxItems(1) & [..._#defs."/$defs/queue_properties/$defs/hour_metrics"]])
-		logging?: matchN(1, [_#defs."/$defs/queue_properties/$defs/logging", list.MaxItems(1) & [..._#defs."/$defs/queue_properties/$defs/logging"]])
-		minute_metrics?: matchN(1, [_#defs."/$defs/queue_properties/$defs/minute_metrics", list.MaxItems(1) & [..._#defs."/$defs/queue_properties/$defs/minute_metrics"]])
-	})
-
 	#routing: close({
 		choice?:                      string
 		publish_internet_endpoints?:  bool
@@ -192,11 +183,6 @@ azurerm_storage_account: {
 		cors_rule?: matchN(1, [_#defs."/$defs/share_properties/$defs/cors_rule", list.MaxItems(5) & [..._#defs."/$defs/share_properties/$defs/cors_rule"]])
 		retention_policy?: matchN(1, [_#defs."/$defs/share_properties/$defs/retention_policy", list.MaxItems(1) & [..._#defs."/$defs/share_properties/$defs/retention_policy"]])
 		smb?: matchN(1, [_#defs."/$defs/share_properties/$defs/smb", list.MaxItems(1) & [..._#defs."/$defs/share_properties/$defs/smb"]])
-	})
-
-	#static_website: close({
-		error_404_document?: string
-		index_document?:     string
 	})
 
 	#timeouts: close({
@@ -239,36 +225,6 @@ azurerm_storage_account: {
 	_#defs: "/$defs/network_rules/$defs/private_link_access": close({
 		endpoint_resource_id!: string
 		endpoint_tenant_id?:   string
-	})
-
-	_#defs: "/$defs/queue_properties/$defs/cors_rule": close({
-		allowed_headers!: [...string]
-		allowed_methods!: [...string]
-		allowed_origins!: [...string]
-		exposed_headers!: [...string]
-		max_age_in_seconds!: number
-	})
-
-	_#defs: "/$defs/queue_properties/$defs/hour_metrics": close({
-		enabled!:               bool
-		include_apis?:          bool
-		retention_policy_days?: number
-		version!:               string
-	})
-
-	_#defs: "/$defs/queue_properties/$defs/logging": close({
-		delete!:                bool
-		read!:                  bool
-		retention_policy_days?: number
-		version!:               string
-		write!:                 bool
-	})
-
-	_#defs: "/$defs/queue_properties/$defs/minute_metrics": close({
-		enabled!:               bool
-		include_apis?:          bool
-		retention_policy_days?: number
-		version!:               string
 	})
 
 	_#defs: "/$defs/share_properties/$defs/cors_rule": close({

@@ -11,7 +11,7 @@ azurerm_storage_table: {
 		// The Resource Manager ID of this Storage Table.
 		resource_manager_id?: string
 		name!:                string
-		storage_account_id?:  string
+		storage_account_id!:  string
 	})
 
 	#acl: close({

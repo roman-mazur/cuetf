@@ -8,7 +8,7 @@ azurerm_storage_queue: {
 		id?:       string
 		metadata?: [string]: string
 		name!:               string
-		storage_account_id?: string
+		storage_account_id!: string
 		url?:                string
 	})
 

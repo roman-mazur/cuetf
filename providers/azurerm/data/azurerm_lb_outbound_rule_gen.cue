@@ -7,7 +7,6 @@ azurerm_lb_outbound_rule: {
 		timeouts?:                 #timeouts
 		allocated_outbound_ports?: number
 		backend_address_pool_id?:  string
-		enable_tcp_reset?:         bool
 		frontend_ip_configuration?: [...close({
 			id?:   string
 			name?: string

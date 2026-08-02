@@ -10,7 +10,6 @@ azurerm_nginx_deployment: {
 		frontend_private?: matchN(1, [#frontend_private, [...#frontend_private]])
 		frontend_public?: matchN(1, [#frontend_public, list.MaxItems(1) & [...#frontend_public]])
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		logging_storage_account?: matchN(1, [#logging_storage_account, [...#logging_storage_account]])
 		network_interface?: matchN(1, [#network_interface, [...#network_interface]])
 		timeouts?: #timeouts
 		web_application_firewall?: matchN(1, [#web_application_firewall, list.MaxItems(1) & [...#web_application_firewall]])
@@ -49,11 +48,6 @@ azurerm_nginx_deployment: {
 		principal_id?: string
 		tenant_id?:    string
 		type!:         string
-	})
-
-	#logging_storage_account: close({
-		container_name?: string
-		name?:           string
 	})
 
 	#network_interface: close({

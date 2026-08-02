@@ -15,7 +15,10 @@ azurerm_subnet: {
 		private_link_service_network_policies_enabled?: bool
 		resource_group_name!:                           string
 		route_table_id?:                                string
-		service_endpoints?: [...string]
+		service_endpoint?: [...close({
+			network_identifier?: string
+			service?:            string
+		})]
 		virtual_network_name!: string
 	})
 

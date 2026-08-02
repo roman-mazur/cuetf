@@ -27,7 +27,6 @@ azurerm_mysql_flexible_server: {
 		point_in_time_restore_time_in_utc?: string
 		private_dns_zone_id?:               string
 		public_network_access?:             string
-		public_network_access_enabled?:     bool
 		replica_capacity?:                  number
 		replication_role?:                  string
 		resource_group_name!:               string

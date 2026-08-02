@@ -41,13 +41,12 @@ azurerm_container_registry: {
 		role_assignment_mode?:          string
 		sku!:                           string
 		tags?: [string]: string
-		trust_policy_enabled?:    bool
 		zone_redundancy_enabled?: bool
 	})
 
 	#georeplications: close({
-		location!:                  string
-		regional_endpoint_enabled?: bool
+		global_endpoint_routing_enabled!: bool
+		location!:                        string
 		tags?: [string]: string
 		zone_redundancy_enabled?: bool
 	})

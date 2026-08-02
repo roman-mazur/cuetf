@@ -16,7 +16,7 @@ azurerm_bot_web_app: {
 		luis_key?:                                string
 		microsoft_app_id!:                        string
 		microsoft_app_tenant_id?:                 string
-		microsoft_app_type?:                      string
+		microsoft_app_type!:                      string
 		microsoft_app_user_assigned_identity_id?: string
 		name!:                                    string
 		resource_group_name!:                     string

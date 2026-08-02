@@ -7,7 +7,7 @@ azurerm_servicebus_namespace_authorization_rule: {
 		timeouts?:                          #timeouts
 		id?:                                string
 		name!:                              string
-		namespace_id?:                      string
+		namespace_id!:                      string
 		primary_connection_string?:         string
 		primary_connection_string_alias?:   string
 		primary_key?:                       string

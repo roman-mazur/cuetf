@@ -28,11 +28,10 @@ azurerm_virtual_machine_scale_set: {
 		location?: string
 		name!:     string
 		network_interface?: [...close({
-			auxiliary_mode?: string
-			auxiliary_sku?:  string
+			accelerated_networking_enabled?: bool
+			auxiliary_mode?:                 string
+			auxiliary_sku?:                  string
 			dns_servers?: [...string]
-			enable_accelerated_networking?: bool
-			enable_ip_forwarding?:          bool
 			ip_configuration?: [...close({
 				application_gateway_backend_address_pool_ids?: [...string]
 				application_security_group_ids?: [...string]
@@ -54,6 +53,7 @@ azurerm_virtual_machine_scale_set: {
 				subnet_id?: string
 				version?:   string
 			})]
+			ip_forwarding_enabled?:     bool
 			name?:                      string
 			network_security_group_id?: string
 			primary?:                   bool

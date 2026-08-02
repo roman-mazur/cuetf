@@ -13,7 +13,7 @@ azurerm_storage_share: {
 		name!:               string
 		quota!:              number
 		rbac_scope_id?:      string
-		storage_account_id?: string
+		storage_account_id!: string
 		url?:                string
 	})
 

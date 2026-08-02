@@ -25,6 +25,7 @@ azurerm_cdn_frontdoor_secret: {
 	})
 
 	_#defs: "/$defs/secret/$defs/customer_certificate": close({
+		expiration_date?:          string
 		key_vault_certificate_id!: string
 		subject_alternative_names?: [...string]
 	})

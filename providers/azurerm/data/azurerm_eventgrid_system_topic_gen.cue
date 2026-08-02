@@ -12,13 +12,11 @@ azurerm_eventgrid_system_topic: {
 			tenant_id?:    string
 			type?:         string
 		})]
-		location?:               string
-		metric_arm_resource_id?: string
-		metric_resource_id?:     string
-		name!:                   string
-		resource_group_name!:    string
-		source_arm_resource_id?: string
-		source_resource_id?:     string
+		location?:            string
+		metric_resource_id?:  string
+		name!:                string
+		resource_group_name!: string
+		source_resource_id?:  string
 		tags?: [string]: string
 		topic_type?: string
 	})

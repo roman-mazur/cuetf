@@ -45,6 +45,11 @@ azurerm_container_app_environment: {
 		log_analytics_workspace_id?: string
 		location!:                   string
 
+		// The destination for the application logs. Possible values include
+		// `log-analytics` and `azure-monitor`. Omitting this value will result in logs
+		// being streamed only.
+		logs_destination?: string
+
 		// Should mutual transport layer security (mTLS) be enabled? Defaults to
 		// `false`. **Note:** This feature is in public preview. Enabling mTLS for your
 		// applications may increase response latency and reduce maximum throughput in
@@ -52,8 +57,7 @@ azurerm_container_app_environment: {
 		mutual_tls_enabled?: bool
 
 		// The name of the Container Apps Managed Environment.
-		name!:             string
-		logs_destination?: string
+		name!: string
 
 		// The IP range, in CIDR notation, that is reserved for environment infrastructure IP addresses.
 		platform_reserved_cidr?: string

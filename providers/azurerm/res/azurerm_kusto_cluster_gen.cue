@@ -8,11 +8,9 @@ azurerm_kusto_cluster: {
 	close({
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		language_extension?: matchN(1, [#language_extension, [...#language_extension]])
-		language_extensions?: matchN(1, [#language_extensions, [...#language_extensions]])
 		optimized_auto_scale?: matchN(1, [#optimized_auto_scale, list.MaxItems(1) & [...#optimized_auto_scale]])
 		sku!: matchN(1, [#sku, list.MaxItems(1) & [_, ...] & [...#sku]])
 		timeouts?: #timeouts
-		virtual_network_configuration?: matchN(1, [#virtual_network_configuration, list.MaxItems(1) & [...#virtual_network_configuration]])
 		allowed_fqdns?: [...string]
 		allowed_ip_ranges?: [...string]
 		auto_stop_enabled?:                  bool
@@ -46,11 +44,6 @@ azurerm_kusto_cluster: {
 		name!:  string
 	})
 
-	#language_extensions: close({
-		image!: string
-		name!:  string
-	})
-
 	#optimized_auto_scale: close({
 		maximum_instances!: number
 		minimum_instances!: number
@@ -66,11 +59,5 @@ azurerm_kusto_cluster: {
 		delete?: string
 		read?:   string
 		update?: string
-	})
-
-	#virtual_network_configuration: close({
-		data_management_public_ip_id!: string
-		engine_public_ip_id!:          string
-		subnet_id!:                    string
 	})
 }

@@ -231,7 +231,6 @@ azurerm_linux_web_app: {
 				node_version?:             string
 				php_version?:              string
 				python_version?:           string
-				ruby_version?:             string
 			})]
 			auto_heal_setting?: [...close({
 				action?: [...close({

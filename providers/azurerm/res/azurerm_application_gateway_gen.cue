@@ -6,7 +6,6 @@ azurerm_application_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_application_gateway")
 	close({
-		authentication_certificate?: matchN(1, [#authentication_certificate, [...#authentication_certificate]])
 		autoscale_configuration?: matchN(1, [#autoscale_configuration, list.MaxItems(1) & [...#autoscale_configuration]])
 		backend?: matchN(1, [#backend, [...#backend]])
 		backend_address_pool!: matchN(1, [#backend_address_pool, [_, ...] & [...#backend_address_pool]])
@@ -50,12 +49,6 @@ azurerm_application_gateway: {
 		zones?: [...string]
 	})
 
-	#authentication_certificate: close({
-		data!: string
-		id?:   string
-		name!: string
-	})
-
 	#autoscale_configuration: close({
 		max_capacity?: number
 		min_capacity!: number
@@ -82,7 +75,6 @@ azurerm_application_gateway: {
 	})
 
 	#backend_http_settings: close({
-		authentication_certificate?: matchN(1, [_#defs."/$defs/backend_http_settings/$defs/authentication_certificate", [..._#defs."/$defs/backend_http_settings/$defs/authentication_certificate"]])
 		connection_draining?: matchN(1, [_#defs."/$defs/backend_http_settings/$defs/connection_draining", list.MaxItems(1) & [..._#defs."/$defs/backend_http_settings/$defs/connection_draining"]])
 		affinity_cookie_name?:                 string
 		certificate_chain_validation_enabled?: bool
@@ -324,11 +316,6 @@ azurerm_application_gateway: {
 		request_body_check?:       bool
 		rule_set_type?:            string
 		rule_set_version!:         string
-	})
-
-	_#defs: "/$defs/backend_http_settings/$defs/authentication_certificate": close({
-		id?:   string
-		name!: string
 	})
 
 	_#defs: "/$defs/backend_http_settings/$defs/connection_draining": close({

@@ -81,8 +81,8 @@ azurerm_linux_virtual_machine_scale_set: {
 	})
 
 	#automatic_os_upgrade_policy: close({
-		disable_automatic_rollback!:  bool
-		enable_automatic_os_upgrade!: bool
+		automatic_os_upgrade_enabled!: bool
+		automatic_rollback_enabled!:   bool
 	})
 
 	#boot_diagnostics: close({
@@ -132,14 +132,14 @@ azurerm_linux_virtual_machine_scale_set: {
 
 	#network_interface: close({
 		ip_configuration!: matchN(1, [_#defs."/$defs/network_interface/$defs/ip_configuration", [_, ...] & [..._#defs."/$defs/network_interface/$defs/ip_configuration"]])
-		auxiliary_mode?: string
-		auxiliary_sku?:  string
+		accelerated_networking_enabled?: bool
+		auxiliary_mode?:                 string
+		auxiliary_sku?:                  string
 		dns_servers?: [...string]
-		enable_accelerated_networking?: bool
-		enable_ip_forwarding?:          bool
-		name!:                          string
-		network_security_group_id?:     string
-		primary?:                       bool
+		ip_forwarding_enabled?:     bool
+		name!:                      string
+		network_security_group_id?: string
+		primary?:                   bool
 	})
 
 	#os_disk: close({

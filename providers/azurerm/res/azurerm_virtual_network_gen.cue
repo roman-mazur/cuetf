@@ -37,8 +37,11 @@ azurerm_virtual_network: {
 			private_link_service_network_policies_enabled?: bool
 			route_table_id?:                                string
 			security_group?:                                string
+			service_endpoint?: [...close({
+				network_identifier?: string
+				service?:            string
+			})]
 			service_endpoint_policy_ids?: [...string]
-			service_endpoints?: [...string]
 		})]
 		tags?: [string]: string
 	})

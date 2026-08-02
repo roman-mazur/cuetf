@@ -26,7 +26,7 @@ azurerm_kubernetes_cluster: {
 		microsoft_defender?: matchN(1, [#microsoft_defender, list.MaxItems(1) & [...#microsoft_defender]])
 		monitor_metrics?: matchN(1, [#monitor_metrics, list.MaxItems(1) & [...#monitor_metrics]])
 		network_profile?: matchN(1, [#network_profile, list.MaxItems(1) & [...#network_profile]])
-		node_provisioning_profile?: matchN(1, [#node_provisioning_profile, list.MaxItems(1) & [...#node_provisioning_profile]])
+		node_provisioning_profile!: matchN(1, [#node_provisioning_profile, list.MaxItems(1) & [_, ...] & [...#node_provisioning_profile]])
 		oms_agent?: matchN(1, [#oms_agent, list.MaxItems(1) & [...#oms_agent]])
 		service_mesh_profile?: matchN(1, [#service_mesh_profile, list.MaxItems(1) & [...#service_mesh_profile]])
 		service_principal?: matchN(1, [#service_principal, list.MaxItems(1) & [...#service_principal]])

@@ -17,7 +17,7 @@ azurerm_network_watcher_flow_log: {
 		resource_group_name!:  string
 		storage_account_id!:   string
 		tags?: [string]: string
-		target_resource_id?: string
+		target_resource_id!: string
 		version?:            number
 	})
 

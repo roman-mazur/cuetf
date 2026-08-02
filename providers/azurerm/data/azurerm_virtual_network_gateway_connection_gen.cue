@@ -6,10 +6,10 @@ azurerm_virtual_network_gateway_connection: {
 	close({
 		timeouts?:                     #timeouts
 		authorization_key?:            string
+		bgp_enabled?:                  bool
 		connection_protocol?:          string
 		dpd_timeout_seconds?:          number
 		egress_bytes_transferred?:     number
-		enable_bgp?:                   bool
 		express_route_circuit_id?:     string
 		express_route_gateway_bypass?: bool
 		id?:                           string

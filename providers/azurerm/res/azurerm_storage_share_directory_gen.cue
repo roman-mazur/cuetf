@@ -8,7 +8,7 @@ azurerm_storage_share_directory: {
 		id?:       string
 		metadata?: [string]: string
 		name!:              string
-		storage_share_url?: string
+		storage_share_url!: string
 	})
 
 	#timeouts: close({

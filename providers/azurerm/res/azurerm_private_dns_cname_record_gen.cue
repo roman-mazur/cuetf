@@ -8,11 +8,10 @@ azurerm_private_dns_cname_record: {
 		fqdn?:                string
 		id?:                  string
 		name!:                string
+		private_dns_zone_id!: string
 		record!:              string
-		resource_group_name!: string
 		tags?: [string]: string
-		ttl!:       number
-		zone_name!: string
+		ttl!: number
 	})
 
 	#timeouts: close({

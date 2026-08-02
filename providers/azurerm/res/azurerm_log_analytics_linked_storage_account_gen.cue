@@ -9,8 +9,7 @@ azurerm_log_analytics_linked_storage_account: {
 		id?:                  string
 		resource_group_name!: string
 		storage_account_ids!: [...string]
-		workspace_id?:          string
-		workspace_resource_id?: string
+		workspace_id!: string
 	})
 
 	#timeouts: close({

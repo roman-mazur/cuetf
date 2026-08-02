@@ -12,7 +12,7 @@ azurerm_eventhub: {
 		id?:                string
 		message_retention?: number
 		name!:              string
-		namespace_id?:      string
+		namespace_id!:      string
 		partition_count!:   number
 		partition_ids?: [...string]
 		status?: string

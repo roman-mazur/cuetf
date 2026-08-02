@@ -108,14 +108,13 @@ azurerm_container_app: {
 						name?:  string
 						value?: string
 					})]
-					host?:                             string
-					initial_delay?:                    number
-					interval_seconds?:                 number
-					path?:                             string
-					port?:                             number
-					termination_grace_period_seconds?: number
-					timeout?:                          number
-					transport?:                        string
+					host?:             string
+					initial_delay?:    number
+					interval_seconds?: number
+					path?:             string
+					port?:             number
+					timeout?:          number
+					transport?:        string
 				})]
 				memory?: string
 				name?:   string
@@ -140,14 +139,13 @@ azurerm_container_app: {
 						name?:  string
 						value?: string
 					})]
-					host?:                             string
-					initial_delay?:                    number
-					interval_seconds?:                 number
-					path?:                             string
-					port?:                             number
-					termination_grace_period_seconds?: number
-					timeout?:                          number
-					transport?:                        string
+					host?:             string
+					initial_delay?:    number
+					interval_seconds?: number
+					path?:             string
+					port?:             number
+					timeout?:          number
+					transport?:        string
 				})]
 				volume_mounts?: [...close({
 					name?:     string

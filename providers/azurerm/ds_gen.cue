@@ -186,6 +186,7 @@ import (
 	_#ds: "\(#azurermPrefix)_key_vault_managed_hardware_security_module_role_definition": close({data.azurerm_key_vault_managed_hardware_security_module_role_definition & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_key_vault_secret": close({data.azurerm_key_vault_secret & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_key_vault_secrets": close({data.azurerm_key_vault_secrets & cuetf.MetaArgs})
+	_#ds: "\(#azurermPrefix)_kubernetes_automatic_cluster": close({data.azurerm_kubernetes_automatic_cluster & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_kubernetes_cluster": close({data.azurerm_kubernetes_cluster & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_kubernetes_cluster_node_pool": close({data.azurerm_kubernetes_cluster_node_pool & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_kubernetes_fleet_manager": close({data.azurerm_kubernetes_fleet_manager & cuetf.MetaArgs})

@@ -7,7 +7,7 @@ azurerm_storage_account_customer_managed_key: {
 		timeouts?:                     #timeouts
 		federated_identity_client_id?: string
 		id?:                           string
-		key_vault_key_id?:             string
+		key_vault_key_id!:             string
 		storage_account_id!:           string
 		user_assigned_identity_id?:    string
 	})

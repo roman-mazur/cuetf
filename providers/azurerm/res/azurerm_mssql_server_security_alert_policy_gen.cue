@@ -6,7 +6,7 @@ azurerm_mssql_server_security_alert_policy: {
 	close({
 		timeouts?: #timeouts
 		disabled_alerts?: [...string]
-		email_account_admins?: bool
+		email_account_admins_enabled?: bool
 		email_addresses?: [...string]
 		id?:                         string
 		resource_group_name!:        string

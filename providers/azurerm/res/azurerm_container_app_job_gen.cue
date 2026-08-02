@@ -184,10 +184,6 @@ azurerm_container_app_job: {
 		// The port number on which to connect. Possible values are between `1` and `65535`.
 		port!: number
 
-		// The time in seconds after the container is sent the termination signal before
-		// the process if forcibly killed.
-		termination_grace_period_seconds?: number
-
 		// Time in seconds after which the probe times out. Possible values are between
 		// `1` an `240`. Defaults to `1`.
 		timeout?: number
@@ -279,10 +275,6 @@ azurerm_container_app_job: {
 
 		// The port number on which to connect. Possible values are between `1` and `65535`.
 		port!: number
-
-		// The time in seconds after the container is sent the termination signal before
-		// the process if forcibly killed.
-		termination_grace_period_seconds?: number
 
 		// Time in seconds after which the probe times out. Possible values are between
 		// `1` an `240`. Defaults to `1`.

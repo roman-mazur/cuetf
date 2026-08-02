@@ -21,7 +21,7 @@ azurerm_security_center_automation: {
 		connection_string?: string
 		resource_id!:       string
 		trigger_url?:       string
-		type?:              string
+		type!:              string
 	})
 
 	#source: close({

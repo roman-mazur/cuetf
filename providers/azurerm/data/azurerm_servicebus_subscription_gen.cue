@@ -10,7 +10,6 @@ azurerm_servicebus_subscription: {
 		dead_lettering_on_filter_evaluation_error?: bool
 		dead_lettering_on_message_expiration?:      bool
 		default_message_ttl?:                       string
-		enable_batched_operations?:                 bool
 		forward_dead_lettered_messages_to?:         string
 		forward_to?:                                string
 		id?:                                        string
@@ -18,7 +17,7 @@ azurerm_servicebus_subscription: {
 		max_delivery_count?:                        number
 		name!:                                      string
 		requires_session?:                          bool
-		topic_id?:                                  string
+		topic_id!:                                  string
 	})
 
 	#timeouts: close({

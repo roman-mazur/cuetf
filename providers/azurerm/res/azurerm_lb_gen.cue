@@ -12,11 +12,9 @@ azurerm_lb: {
 		name!:               string
 		private_ip_address?: string
 		private_ip_addresses?: [...string]
-		public_ip_address_id?: string
-		resource_group_name!:  string
-		sku?:                  string
-		sku_tier?:             string
-		subnet_id?:            string
+		resource_group_name!: string
+		sku?:                 string
+		sku_tier?:            string
 		tags?: [string]: string
 	})
 

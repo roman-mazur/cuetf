@@ -19,16 +19,16 @@ azurerm_eventgrid_event_subscription: {
 		webhook_endpoint?: matchN(1, [#webhook_endpoint, list.MaxItems(1) & [...#webhook_endpoint]])
 		advanced_filtering_on_arrays_enabled?: bool
 		event_delivery_schema?:                string
-		eventhub_endpoint_id?:                 string
+		eventhub_id?:                          string
 		expiration_time_utc?:                  string
-		hybrid_connection_endpoint_id?:        string
+		hybrid_connection_id?:                 string
 		id?:                                   string
 		included_event_types?: [...string]
 		labels?: [...string]
-		name!:                          string
-		scope!:                         string
-		service_bus_queue_endpoint_id?: string
-		service_bus_topic_endpoint_id?: string
+		name!:                 string
+		scope!:                string
+		service_bus_queue_id?: string
+		service_bus_topic_id?: string
 	})
 
 	#advanced_filter: close({

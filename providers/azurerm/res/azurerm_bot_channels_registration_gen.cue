@@ -17,7 +17,7 @@ azurerm_bot_channels_registration: {
 		location!:                                string
 		microsoft_app_id!:                        string
 		microsoft_app_tenant_id?:                 string
-		microsoft_app_type?:                      string
+		microsoft_app_type!:                      string
 		microsoft_app_user_assigned_identity_id?: string
 		name!:                                    string
 		public_network_access_enabled?:           bool

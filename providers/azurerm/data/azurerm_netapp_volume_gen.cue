@@ -28,7 +28,10 @@ azurerm_netapp_volume: {
 		key_vault_private_endpoint_id?: string
 		large_volume_enabled?:          bool
 		location?:                      string
-		mount_ip_addresses?: [...string]
+		mount_target?: [...close({
+			ip_address?:      string
+			smb_server_fqdn?: string
+		})]
 		name!:             string
 		network_features?: string
 		pool_name!:        string

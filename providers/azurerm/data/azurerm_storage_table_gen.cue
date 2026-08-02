@@ -16,7 +16,7 @@ azurerm_storage_table: {
 		id?:                  string
 		name!:                string
 		resource_manager_id?: string
-		storage_account_id?:  string
+		storage_account_id!:  string
 	})
 
 	#timeouts: close({
