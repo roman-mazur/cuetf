@@ -88,7 +88,10 @@ google_bigquery_routine: {
 	})
 
 	#arguments: close({
-		// Defaults to FIXED_TYPE. Default value: "FIXED_TYPE" Possible values: ["FIXED_TYPE", "ANY_TYPE"]
+		table_type?: matchN(1, [_#defs."/$defs/arguments/$defs/table_type", list.MaxItems(1) & [..._#defs."/$defs/arguments/$defs/table_type"]])
+
+		// Defaults to FIXED_TYPE. Default value: "FIXED_TYPE" Possible values:
+		// ["FIXED_TYPE", "ANY_TYPE", "FIXED_TABLE"]
 		argument_kind?: string
 
 		// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
@@ -180,5 +183,23 @@ google_bigquery_routine: {
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/arguments/$defs/table_type": close({
+		columns?: matchN(1, [_#defs."/$defs/arguments/$defs/table_type/$defs/columns", [..._#defs."/$defs/arguments/$defs/table_type/$defs/columns"]])
+	})
+
+	_#defs: "/$defs/arguments/$defs/table_type/$defs/columns": close({
+		// The name of the column.
+		name?: string
+
+		// A JSON schema for the data type of the column. Required unless argumentKind = ANY_TYPE.
+		// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+		// will create a diff, even if the JSON itself hasn't changed. If the API returns
+		// a different value for the same schema, e.g. it switched the order of values
+		// or replaced STRUCT field type with RECORD field type, we currently cannot
+		// suppress the recurring diff this causes. As a workaround, we recommend using
+		// the schema as returned by the API.
+		type?: string
 	})
 }

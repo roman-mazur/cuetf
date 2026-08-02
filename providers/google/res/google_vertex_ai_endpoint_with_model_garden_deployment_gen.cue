@@ -101,6 +101,7 @@ google_vertex_ai_endpoint_with_model_garden_deployment: {
 	#timeouts: close({
 		create?: string
 		delete?: string
+		update?: string
 	})
 
 	_#defs: "/$defs/deploy_config/$defs/dedicated_resources": close({

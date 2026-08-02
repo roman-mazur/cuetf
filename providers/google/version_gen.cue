@@ -1,3 +1,3 @@
 package google
 
-#Version: "7.41.0"
+#Version: "7.42.0"

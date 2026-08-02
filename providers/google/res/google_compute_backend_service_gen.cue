@@ -475,6 +475,9 @@ google_compute_backend_service: {
 	})
 
 	#log_config: close({
+		request_headers?: matchN(1, [_#defs."/$defs/log_config/$defs/request_headers", [..._#defs."/$defs/log_config/$defs/request_headers"]])
+		response_headers?: matchN(1, [_#defs."/$defs/log_config/$defs/response_headers", [..._#defs."/$defs/log_config/$defs/response_headers"]])
+
 		// Whether to enable logging for the load balancer traffic served by this backend service.
 		enable?: bool
 
@@ -777,6 +780,16 @@ google_compute_backend_service: {
 		// ["ROUND_ROBIN", "LEAST_REQUEST", "RING_HASH", "RANDOM",
 		// "ORIGINAL_DESTINATION", "MAGLEV"]
 		name!: string
+	})
+
+	_#defs: "/$defs/log_config/$defs/request_headers": close({
+		// The header name to match on for logging.
+		header_name!: string
+	})
+
+	_#defs: "/$defs/log_config/$defs/response_headers": close({
+		// The header name to match on for logging.
+		header_name!: string
 	})
 
 	_#defs: "/$defs/outlier_detection/$defs/base_ejection_time": close({

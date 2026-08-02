@@ -11,6 +11,7 @@ provider: {
 		access_token?:                               string
 		active_directory_custom_endpoint?:           string
 		add_terraform_attribution_label?:            bool
+		agent_identity_custom_endpoint?:             string
 		agent_registry_custom_endpoint?:             string
 		alloydb_custom_endpoint?:                    string
 		apigee_custom_endpoint?:                     string

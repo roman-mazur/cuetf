@@ -523,6 +523,9 @@ google_compute_region_backend_service: {
 	})
 
 	#log_config: close({
+		request_headers?: matchN(1, [_#defs."/$defs/log_config/$defs/request_headers", [..._#defs."/$defs/log_config/$defs/request_headers"]])
+		response_headers?: matchN(1, [_#defs."/$defs/log_config/$defs/response_headers", [..._#defs."/$defs/log_config/$defs/response_headers"]])
+
 		// Whether to enable logging for the load balancer traffic served by this backend service.
 		enable?: bool
 
@@ -742,6 +745,16 @@ google_compute_region_backend_service: {
 		// The name of the VM instance of the leader network endpoint. The instance must
 		// already be attached to the NEG specified in the haPolicy.leader.backendGroup.
 		instance?: string
+	})
+
+	_#defs: "/$defs/log_config/$defs/request_headers": close({
+		// The header name to match on for logging.
+		header_name!: string
+	})
+
+	_#defs: "/$defs/log_config/$defs/response_headers": close({
+		// The header name to match on for logging.
+		header_name!: string
 	})
 
 	_#defs: "/$defs/network_pass_through_lb_traffic_policy/$defs/zonal_affinity": close({
