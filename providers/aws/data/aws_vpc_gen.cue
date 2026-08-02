@@ -26,11 +26,18 @@ aws_vpc: {
 		enable_network_address_usage_metrics?: bool
 		id?:                                   string
 		instance_tenancy?:                     string
-		ipv6_association_id?:                  string
-		ipv6_cidr_block?:                      string
-		main_route_table_id?:                  string
-		owner_id?:                             string
-		state?:                                string
+		ipv6_cidr_block_associations?: [...close({
+			association_id?:         string
+			ip_source?:              string
+			ipv6_address_attribute?: string
+			ipv6_cidr_block?:        string
+			ipv6_pool?:              string
+			network_border_group?:   string
+			state?:                  string
+		})]
+		main_route_table_id?: string
+		owner_id?:            string
+		state?:               string
 		tags?: [string]: string
 	})
 

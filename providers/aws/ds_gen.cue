@@ -249,6 +249,7 @@ import (
 	_#ds: "\(#awsPrefix)_eip": close({data.aws_eip & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_eips": close({data.aws_eips & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_eks_access_entry": close({data.aws_eks_access_entry & cuetf.MetaArgs})
+	_#ds: "\(#awsPrefix)_eks_access_policies": close({data.aws_eks_access_policies & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_eks_addon": close({data.aws_eks_addon & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_eks_addon_version": close({data.aws_eks_addon_version & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_eks_cluster_auth": close({data.aws_eks_cluster_auth & cuetf.MetaArgs})

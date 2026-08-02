@@ -4,7 +4,12 @@ aws_secretsmanager_secret_rotation: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_secretsmanager_secret_rotation")
 	close({
-		id?: string
+		external_secret_rotation_metadata?: [...close({
+			key?:   string
+			value?: string
+		})]
+		external_secret_rotation_role_arn?: string
+		id?:                                string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

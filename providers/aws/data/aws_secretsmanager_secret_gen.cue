@@ -19,5 +19,6 @@ aws_secretsmanager_secret: {
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		tags?: [string]: string
+		type?: string
 	})
 }

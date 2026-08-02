@@ -47,6 +47,12 @@ aws_bedrockagentcore_memory: {
 		// applicable if changes are saved into state before the destroy operation
 		// occurs.
 		delete?: string
+
+		// A string that can be [parsed as a
+		// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
+		// unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds),
+		// "m" (minutes), "h" (hours).
+		update?: string
 	})
 
 	_#defs: "/$defs/stream_delivery_resources/$defs/resource": close({

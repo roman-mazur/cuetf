@@ -89,12 +89,15 @@ aws_codepipeline: {
 	})
 
 	_#defs: "/$defs/stage/$defs/action": close({
+		output_artifacts_for_compute_action?: matchN(1, [_#defs."/$defs/stage/$defs/action/$defs/output_artifacts_for_compute_action", [..._#defs."/$defs/stage/$defs/action/$defs/output_artifacts_for_compute_action"]])
 		category!: string
+		commands?: [...string]
 		configuration?: [string]: string
 		input_artifacts?: [...string]
 		name!:      string
 		namespace?: string
 		output_artifacts?: [...string]
+		output_variables?: [...string]
 		owner!:              string
 		provider!:           string
 		region?:             string
@@ -102,6 +105,11 @@ aws_codepipeline: {
 		run_order?:          number
 		timeout_in_minutes?: number
 		version!:            string
+	})
+
+	_#defs: "/$defs/stage/$defs/action/$defs/output_artifacts_for_compute_action": close({
+		files?: [...string]
+		name!: string
 	})
 
 	_#defs: "/$defs/stage/$defs/before_entry": close({
