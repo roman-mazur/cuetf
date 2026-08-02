@@ -6,7 +6,6 @@ azurerm_data_factory_linked_service_azure_blob_storage: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_factory_linked_service_azure_blob_storage")
 	close({
-		key_vault_sas_token?: matchN(1, [#key_vault_sas_token, list.MaxItems(1) & [...#key_vault_sas_token]])
 		sas_token_linked_key_vault_key?: matchN(1, [#sas_token_linked_key_vault_key, list.MaxItems(1) & [...#sas_token_linked_key_vault_key]])
 		service_principal_linked_key_vault_key?: matchN(1, [#service_principal_linked_key_vault_key, list.MaxItems(1) & [...#service_principal_linked_key_vault_key]])
 		timeouts?: #timeouts
@@ -27,11 +26,6 @@ azurerm_data_factory_linked_service_azure_blob_storage: {
 		storage_kind?:          string
 		tenant_id?:             string
 		use_managed_identity?:  bool
-	})
-
-	#key_vault_sas_token: close({
-		linked_service_name!: string
-		secret_name!:         string
 	})
 
 	#sas_token_linked_key_vault_key: close({

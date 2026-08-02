@@ -8,11 +8,10 @@ azurerm_storage_share: {
 		timeouts?: #timeouts
 		id?:       string
 		metadata?: [string]: string
-		name!:                 string
-		quota?:                number
-		rbac_scope_id?:        string
-		storage_account_id?:   string
-		storage_account_name?: string
+		name!:               string
+		quota?:              number
+		rbac_scope_id?:      string
+		storage_account_id!: string
 	})
 
 	#acl: close({

@@ -5,10 +5,6 @@ azurerm_application_gateway: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_application_gateway")
 	close({
 		timeouts?: #timeouts
-		authentication_certificate?: [...close({
-			id?:   string
-			name?: string
-		})]
 		autoscale_configuration?: [...close({
 			max_capacity?: number
 			min_capacity?: number
@@ -32,11 +28,7 @@ azurerm_application_gateway: {
 			name?: string
 		})]
 		backend_http_settings?: [...close({
-			affinity_cookie_name?: string
-			authentication_certificate?: [...close({
-				id?:   string
-				name?: string
-			})]
+			affinity_cookie_name?:                 string
 			certificate_chain_validation_enabled?: bool
 			connection_draining?: [...close({
 				drain_timeout_sec?: number

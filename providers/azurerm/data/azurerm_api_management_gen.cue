@@ -21,32 +21,27 @@ azurerm_api_management: {
 			developer_portal?: [...close({
 				host_name?:                    string
 				key_vault_certificate_id?:     string
-				key_vault_id?:                 string
 				negotiate_client_certificate?: bool
 			})]
 			management?: [...close({
 				host_name?:                    string
 				key_vault_certificate_id?:     string
-				key_vault_id?:                 string
 				negotiate_client_certificate?: bool
 			})]
 			portal?: [...close({
 				host_name?:                    string
 				key_vault_certificate_id?:     string
-				key_vault_id?:                 string
 				negotiate_client_certificate?: bool
 			})]
 			proxy?: [...close({
 				default_ssl_binding?:          bool
 				host_name?:                    string
 				key_vault_certificate_id?:     string
-				key_vault_id?:                 string
 				negotiate_client_certificate?: bool
 			})]
 			scm?: [...close({
 				host_name?:                    string
 				key_vault_certificate_id?:     string
-				key_vault_id?:                 string
 				negotiate_client_certificate?: bool
 			})]
 		})]

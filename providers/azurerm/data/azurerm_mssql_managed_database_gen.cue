@@ -7,11 +7,10 @@ azurerm_mssql_managed_database: {
 		timeouts?: #timeouts
 		id?:       string
 		long_term_retention_policy?: [...close({
-			immutable_backups_enabled?: bool
-			monthly_retention?:         string
-			week_of_year?:              number
-			weekly_retention?:          string
-			yearly_retention?:          string
+			monthly_retention?: string
+			week_of_year?:      number
+			weekly_retention?:  string
+			yearly_retention?:  string
 		})]
 		managed_instance_id!:   string
 		managed_instance_name?: string

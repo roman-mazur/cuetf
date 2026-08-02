@@ -12,7 +12,7 @@ azurerm_disk_encryption_set: {
 		encryption_type?:           string
 		federated_client_id?:       string
 		id?:                        string
-		key_vault_key_id?:          string
+		key_vault_key_id!:          string
 		key_vault_key_url?:         string
 		location!:                  string
 		name!:                      string

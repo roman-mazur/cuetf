@@ -12,7 +12,7 @@ azurerm_storage_blob: {
 		id?:               string
 		metadata?: [string]: string
 		name!:                 string
-		storage_container_id?: string
+		storage_container_id!: string
 		type?:                 string
 		url?:                  string
 	})

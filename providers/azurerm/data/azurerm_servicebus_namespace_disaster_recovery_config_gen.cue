@@ -10,7 +10,7 @@ azurerm_servicebus_namespace_disaster_recovery_config: {
 		default_secondary_key?:             string
 		id?:                                string
 		name!:                              string
-		namespace_id?:                      string
+		namespace_id!:                      string
 		partner_namespace_id?:              string
 		primary_connection_string_alias?:   string
 		secondary_connection_string_alias?: string

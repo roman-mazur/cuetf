@@ -64,15 +64,15 @@ azurerm_orchestrated_virtual_machine_scale_set: {
 	})
 
 	#data_disk: close({
-		caching!:                        string
-		create_option?:                  string
-		disk_encryption_set_id?:         string
-		disk_size_gb?:                   number
-		lun?:                            number
-		storage_account_type!:           string
-		ultra_ssd_disk_iops_read_write?: number
-		ultra_ssd_disk_mbps_read_write?: number
-		write_accelerator_enabled?:      bool
+		caching!:                   string
+		create_option?:             string
+		disk_encryption_set_id?:    string
+		disk_iops_read_write?:      number
+		disk_mbps_read_write?:      number
+		disk_size_gb?:              number
+		lun?:                       number
+		storage_account_type!:      string
+		write_accelerator_enabled?: bool
 	})
 
 	#extension: close({
@@ -96,14 +96,14 @@ azurerm_orchestrated_virtual_machine_scale_set: {
 
 	#network_interface: close({
 		ip_configuration!: matchN(1, [_#defs."/$defs/network_interface/$defs/ip_configuration", [_, ...] & [..._#defs."/$defs/network_interface/$defs/ip_configuration"]])
-		auxiliary_mode?: string
-		auxiliary_sku?:  string
+		accelerated_networking_enabled?: bool
+		auxiliary_mode?:                 string
+		auxiliary_sku?:                  string
 		dns_servers?: [...string]
-		enable_accelerated_networking?: bool
-		enable_ip_forwarding?:          bool
-		name!:                          string
-		network_security_group_id?:     string
-		primary?:                       bool
+		ip_forwarding_enabled?:     bool
+		name!:                      string
+		network_security_group_id?: string
+		primary?:                   bool
 		tags?: [string]: string
 	})
 
@@ -144,7 +144,7 @@ azurerm_orchestrated_virtual_machine_scale_set: {
 	})
 
 	#sku_profile: close({
-		virtual_machine_size?: matchN(1, [_#defs."/$defs/sku_profile/$defs/virtual_machine_size", list.MaxItems(5) & [..._#defs."/$defs/sku_profile/$defs/virtual_machine_size"]])
+		virtual_machine_size!: matchN(1, [_#defs."/$defs/sku_profile/$defs/virtual_machine_size", list.MaxItems(5) & [_, ...] & [..._#defs."/$defs/sku_profile/$defs/virtual_machine_size"]])
 		allocation_strategy!: string
 	})
 
@@ -233,15 +233,15 @@ azurerm_orchestrated_virtual_machine_scale_set: {
 		additional_unattend_content?: matchN(1, [_#defs."/$defs/os_profile/$defs/windows_configuration/$defs/additional_unattend_content", [..._#defs."/$defs/os_profile/$defs/windows_configuration/$defs/additional_unattend_content"]])
 		secret?: matchN(1, [_#defs."/$defs/os_profile/$defs/windows_configuration/$defs/secret", [..._#defs."/$defs/os_profile/$defs/windows_configuration/$defs/secret"]])
 		winrm_listener?: matchN(1, [_#defs."/$defs/os_profile/$defs/windows_configuration/$defs/winrm_listener", [..._#defs."/$defs/os_profile/$defs/windows_configuration/$defs/winrm_listener"]])
-		admin_password!:           string
-		admin_username!:           string
-		computer_name_prefix?:     string
-		enable_automatic_updates?: bool
-		hotpatching_enabled?:      bool
-		patch_assessment_mode?:    string
-		patch_mode?:               string
-		provision_vm_agent?:       bool
-		timezone?:                 string
+		admin_password!:            string
+		admin_username!:            string
+		automatic_updates_enabled?: bool
+		computer_name_prefix?:      string
+		hotpatching_enabled?:       bool
+		patch_assessment_mode?:     string
+		patch_mode?:                string
+		provision_vm_agent?:        bool
+		timezone?:                  string
 	})
 
 	_#defs: "/$defs/os_profile/$defs/windows_configuration/$defs/additional_unattend_content": close({

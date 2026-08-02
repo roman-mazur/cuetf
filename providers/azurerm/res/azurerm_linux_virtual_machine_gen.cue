@@ -57,11 +57,12 @@ azurerm_linux_virtual_machine: {
 		size!:                string
 		source_image_id?:     string
 		tags?: [string]: string
-		user_data?:                    string
-		virtual_machine_id?:           string
-		virtual_machine_scale_set_id?: string
-		vtpm_enabled?:                 bool
-		zone?:                         string
+		user_data?:                         string
+		virtual_machine_id?:                string
+		virtual_machine_scale_set_id?:      string
+		vm_agent_platform_updates_enabled?: bool
+		vtpm_enabled?:                      bool
+		zone?:                              string
 	})
 
 	#additional_capabilities: close({

@@ -28,12 +28,12 @@ azurerm_windows_virtual_machine_scale_set: {
 		winrm_listener?: matchN(1, [#winrm_listener, [...#winrm_listener]])
 		admin_password!:                                    string
 		admin_username!:                                    string
+		automatic_updates_enabled?:                         bool
 		capacity_reservation_group_id?:                     string
 		computer_name_prefix?:                              string
 		custom_data?:                                       string
 		do_not_run_extensions_on_overprovisioned_machines?: bool
 		edge_zone?:                                         string
-		enable_automatic_updates?:                          bool
 		encryption_at_host_enabled?:                        bool
 		eviction_policy?:                                   string
 		extension_operations_enabled?:                      bool
@@ -84,8 +84,8 @@ azurerm_windows_virtual_machine_scale_set: {
 	})
 
 	#automatic_os_upgrade_policy: close({
-		disable_automatic_rollback!:  bool
-		enable_automatic_os_upgrade!: bool
+		automatic_os_upgrade_enabled!: bool
+		automatic_rollback_enabled!:   bool
 	})
 
 	#boot_diagnostics: close({
@@ -135,14 +135,14 @@ azurerm_windows_virtual_machine_scale_set: {
 
 	#network_interface: close({
 		ip_configuration!: matchN(1, [_#defs."/$defs/network_interface/$defs/ip_configuration", [_, ...] & [..._#defs."/$defs/network_interface/$defs/ip_configuration"]])
-		auxiliary_mode?: string
-		auxiliary_sku?:  string
+		accelerated_networking_enabled?: bool
+		auxiliary_mode?:                 string
+		auxiliary_sku?:                  string
 		dns_servers?: [...string]
-		enable_accelerated_networking?: bool
-		enable_ip_forwarding?:          bool
-		name!:                          string
-		network_security_group_id?:     string
-		primary?:                       bool
+		ip_forwarding_enabled?:     bool
+		name!:                      string
+		network_security_group_id?: string
+		primary?:                   bool
 	})
 
 	#os_disk: close({

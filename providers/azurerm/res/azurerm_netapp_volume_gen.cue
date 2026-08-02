@@ -54,7 +54,10 @@ azurerm_netapp_volume: {
 		smb_non_browsable_enabled?:     bool
 		key_vault_private_endpoint_id?: string
 		location!:                      string
-		mount_ip_addresses?: [...string]
+		mount_target?: [...close({
+			ip_address?:      string
+			smb_server_fqdn?: string
+		})]
 		name!:             string
 		network_features?: string
 		pool_name!:        string

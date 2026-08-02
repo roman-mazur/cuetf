@@ -9,10 +9,9 @@ azurerm_private_dns_txt_record: {
 		fqdn?:                string
 		id?:                  string
 		name!:                string
-		resource_group_name!: string
+		private_dns_zone_id!: string
 		tags?: [string]: string
-		ttl!:       number
-		zone_name!: string
+		ttl!: number
 	})
 
 	#record: close({

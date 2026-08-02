@@ -10,7 +10,7 @@ azurerm_datadog_monitor_sso_configuration: {
 		id?:                        string
 		login_url?:                 string
 		name?:                      string
-		single_sign_on?:            string
+		single_sign_on!:            string
 	})
 
 	#timeouts: close({

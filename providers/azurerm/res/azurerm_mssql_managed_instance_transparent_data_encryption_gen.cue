@@ -8,7 +8,6 @@ azurerm_mssql_managed_instance_transparent_data_encryption: {
 		auto_rotation_enabled?: bool
 		id?:                    string
 		key_vault_key_id?:      string
-		managed_hsm_key_id?:    string
 		managed_instance_id!:   string
 	})
 

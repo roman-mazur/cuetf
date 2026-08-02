@@ -9,7 +9,7 @@ azurerm_kusto_attached_database_configuration: {
 		sharing?: matchN(1, [#sharing, list.MaxItems(1) & [...#sharing]])
 		timeouts?: #timeouts
 		attached_database_names?: [...string]
-		cluster_id?:                          string
+		cluster_id!:                          string
 		cluster_name!:                        string
 		database_name!:                       string
 		database_name_override?:              string

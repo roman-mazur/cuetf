@@ -9,7 +9,7 @@ azurerm_cdn_frontdoor_rule: {
 		actions!: matchN(1, [#actions, list.MaxItems(1) & [_, ...] & [...#actions]])
 		conditions?: matchN(1, [#conditions, list.MaxItems(1) & [...#conditions]])
 		timeouts?:                    #timeouts
-		behavior_on_match?:           string
+		behaviour_on_match?:          string
 		cdn_frontdoor_rule_set_id!:   string
 		cdn_frontdoor_rule_set_name?: string
 		id?:                          string
@@ -18,33 +18,33 @@ azurerm_cdn_frontdoor_rule: {
 	})
 
 	#actions: close({
-		request_header_action?: matchN(1, [_#defs."/$defs/actions/$defs/request_header_action", [..._#defs."/$defs/actions/$defs/request_header_action"]])
-		response_header_action?: matchN(1, [_#defs."/$defs/actions/$defs/response_header_action", [..._#defs."/$defs/actions/$defs/response_header_action"]])
-		route_configuration_override_action?: matchN(1, [_#defs."/$defs/actions/$defs/route_configuration_override_action", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/route_configuration_override_action"]])
-		url_redirect_action?: matchN(1, [_#defs."/$defs/actions/$defs/url_redirect_action", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/url_redirect_action"]])
-		url_rewrite_action?: matchN(1, [_#defs."/$defs/actions/$defs/url_rewrite_action", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/url_rewrite_action"]])
+		modify_request_header?: matchN(1, [_#defs."/$defs/actions/$defs/modify_request_header", [..._#defs."/$defs/actions/$defs/modify_request_header"]])
+		modify_response_header?: matchN(1, [_#defs."/$defs/actions/$defs/modify_response_header", [..._#defs."/$defs/actions/$defs/modify_response_header"]])
+		route_configuration_override?: matchN(1, [_#defs."/$defs/actions/$defs/route_configuration_override", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/route_configuration_override"]])
+		url_redirect?: matchN(1, [_#defs."/$defs/actions/$defs/url_redirect", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/url_redirect"]])
+		url_rewrite?: matchN(1, [_#defs."/$defs/actions/$defs/url_rewrite", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/url_rewrite"]])
 	})
 
 	#conditions: close({
-		client_port_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/client_port_condition", [..._#defs."/$defs/conditions/$defs/client_port_condition"]])
-		cookies_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/cookies_condition", [..._#defs."/$defs/conditions/$defs/cookies_condition"]])
-		host_name_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/host_name_condition", [..._#defs."/$defs/conditions/$defs/host_name_condition"]])
-		http_version_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/http_version_condition", [..._#defs."/$defs/conditions/$defs/http_version_condition"]])
-		is_device_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/is_device_condition", [..._#defs."/$defs/conditions/$defs/is_device_condition"]])
-		post_args_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/post_args_condition", [..._#defs."/$defs/conditions/$defs/post_args_condition"]])
-		query_string_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/query_string_condition", [..._#defs."/$defs/conditions/$defs/query_string_condition"]])
-		remote_address_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/remote_address_condition", [..._#defs."/$defs/conditions/$defs/remote_address_condition"]])
-		request_body_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/request_body_condition", [..._#defs."/$defs/conditions/$defs/request_body_condition"]])
-		request_header_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/request_header_condition", [..._#defs."/$defs/conditions/$defs/request_header_condition"]])
-		request_method_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/request_method_condition", [..._#defs."/$defs/conditions/$defs/request_method_condition"]])
-		request_scheme_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/request_scheme_condition", [..._#defs."/$defs/conditions/$defs/request_scheme_condition"]])
-		request_uri_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/request_uri_condition", [..._#defs."/$defs/conditions/$defs/request_uri_condition"]])
-		server_port_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/server_port_condition", [..._#defs."/$defs/conditions/$defs/server_port_condition"]])
-		socket_address_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/socket_address_condition", [..._#defs."/$defs/conditions/$defs/socket_address_condition"]])
-		ssl_protocol_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/ssl_protocol_condition", [..._#defs."/$defs/conditions/$defs/ssl_protocol_condition"]])
-		url_file_extension_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/url_file_extension_condition", [..._#defs."/$defs/conditions/$defs/url_file_extension_condition"]])
-		url_filename_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/url_filename_condition", [..._#defs."/$defs/conditions/$defs/url_filename_condition"]])
-		url_path_condition?: matchN(1, [_#defs."/$defs/conditions/$defs/url_path_condition", [..._#defs."/$defs/conditions/$defs/url_path_condition"]])
+		client_port?: matchN(1, [_#defs."/$defs/conditions/$defs/client_port", [..._#defs."/$defs/conditions/$defs/client_port"]])
+		device_type?: matchN(1, [_#defs."/$defs/conditions/$defs/device_type", [..._#defs."/$defs/conditions/$defs/device_type"]])
+		host_name?: matchN(1, [_#defs."/$defs/conditions/$defs/host_name", [..._#defs."/$defs/conditions/$defs/host_name"]])
+		http_version?: matchN(1, [_#defs."/$defs/conditions/$defs/http_version", [..._#defs."/$defs/conditions/$defs/http_version"]])
+		post_argument?: matchN(1, [_#defs."/$defs/conditions/$defs/post_argument", [..._#defs."/$defs/conditions/$defs/post_argument"]])
+		query_string?: matchN(1, [_#defs."/$defs/conditions/$defs/query_string", [..._#defs."/$defs/conditions/$defs/query_string"]])
+		remote_address?: matchN(1, [_#defs."/$defs/conditions/$defs/remote_address", [..._#defs."/$defs/conditions/$defs/remote_address"]])
+		request_body?: matchN(1, [_#defs."/$defs/conditions/$defs/request_body", [..._#defs."/$defs/conditions/$defs/request_body"]])
+		request_cookies?: matchN(1, [_#defs."/$defs/conditions/$defs/request_cookies", [..._#defs."/$defs/conditions/$defs/request_cookies"]])
+		request_file_extension?: matchN(1, [_#defs."/$defs/conditions/$defs/request_file_extension", [..._#defs."/$defs/conditions/$defs/request_file_extension"]])
+		request_filename?: matchN(1, [_#defs."/$defs/conditions/$defs/request_filename", [..._#defs."/$defs/conditions/$defs/request_filename"]])
+		request_header?: matchN(1, [_#defs."/$defs/conditions/$defs/request_header", [..._#defs."/$defs/conditions/$defs/request_header"]])
+		request_method?: matchN(1, [_#defs."/$defs/conditions/$defs/request_method", [..._#defs."/$defs/conditions/$defs/request_method"]])
+		request_path?: matchN(1, [_#defs."/$defs/conditions/$defs/request_path", [..._#defs."/$defs/conditions/$defs/request_path"]])
+		request_scheme?: matchN(1, [_#defs."/$defs/conditions/$defs/request_scheme", [..._#defs."/$defs/conditions/$defs/request_scheme"]])
+		request_url?: matchN(1, [_#defs."/$defs/conditions/$defs/request_url", [..._#defs."/$defs/conditions/$defs/request_url"]])
+		server_port?: matchN(1, [_#defs."/$defs/conditions/$defs/server_port", [..._#defs."/$defs/conditions/$defs/server_port"]])
+		socket_address?: matchN(1, [_#defs."/$defs/conditions/$defs/socket_address", [..._#defs."/$defs/conditions/$defs/socket_address"]])
+		ssl_protocol?: matchN(1, [_#defs."/$defs/conditions/$defs/ssl_protocol", [..._#defs."/$defs/conditions/$defs/ssl_protocol"]])
 	})
 
 	#timeouts: close({
@@ -54,167 +54,156 @@ azurerm_cdn_frontdoor_rule: {
 		update?: string
 	})
 
-	_#defs: "/$defs/actions/$defs/request_header_action": close({
-		header_action!: string
-		header_name!:   string
-		value?:         string
+	_#defs: "/$defs/actions/$defs/modify_request_header": close({
+		header_name!:  string
+		header_value?: string
+		operator!:     string
 	})
 
-	_#defs: "/$defs/actions/$defs/response_header_action": close({
-		header_action!: string
-		header_name!:   string
-		value?:         string
+	_#defs: "/$defs/actions/$defs/modify_response_header": close({
+		header_name!:  string
+		header_value?: string
+		operator!:     string
 	})
 
-	_#defs: "/$defs/actions/$defs/route_configuration_override_action": close({
-		cache_behavior?:                string
-		cache_duration?:                string
-		cdn_frontdoor_origin_group_id?: string
-		compression_enabled?:           bool
-		forwarding_protocol?:           string
-		query_string_caching_behavior?: string
+	_#defs: "/$defs/actions/$defs/route_configuration_override": close({
+		caching!: matchN(1, [_#defs."/$defs/actions/$defs/route_configuration_override/$defs/caching", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/actions/$defs/route_configuration_override/$defs/caching"]])
+		origin_group?: matchN(1, [_#defs."/$defs/actions/$defs/route_configuration_override/$defs/origin_group", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/route_configuration_override/$defs/origin_group"]])
+	})
+
+	_#defs: "/$defs/actions/$defs/route_configuration_override/$defs/caching": close({
+		behaviour!:              string
+		compression_enabled?:    bool
+		duration?:               string
+		query_string_behaviour?: string
 		query_string_parameters?: [...string]
 	})
 
-	_#defs: "/$defs/actions/$defs/url_redirect_action": close({
-		destination_fragment?: string
-		destination_hostname!: string
-		destination_path?:     string
-		query_string?:         string
-		redirect_protocol?:    string
-		redirect_type!:        string
+	_#defs: "/$defs/actions/$defs/route_configuration_override/$defs/origin_group": close({
+		cdn_frontdoor_origin_group_id!: string
+		forwarding_protocol!:           string
 	})
 
-	_#defs: "/$defs/actions/$defs/url_rewrite_action": close({
-		destination!:             string
-		preserve_unmatched_path?: bool
-		source_pattern!:          string
+	_#defs: "/$defs/actions/$defs/url_redirect": close({
+		destination_fragment?:  string
+		destination_host_name?: string
+		destination_path?:      string
+		query_string?:          string
+		redirect_protocol?:     string
+		redirect_type!:         string
 	})
 
-	_#defs: "/$defs/conditions/$defs/client_port_condition": close({
-		match_values?: [...string]
-		negate_condition?: bool
-		operator!:         string
+	_#defs: "/$defs/actions/$defs/url_rewrite": close({
+		destination_path!:                string
+		preserve_unmatched_path_enabled?: bool
+		source_pattern!:                  string
 	})
 
-	_#defs: "/$defs/conditions/$defs/cookies_condition": close({
-		cookie_name!: string
-		match_values?: [...string]
-		negate_condition?: bool
-		operator!:         string
+	_#defs: "/$defs/conditions/$defs/client_port": close({
+		operator!: string
+		values?: [...string]
+	})
+
+	_#defs: "/$defs/conditions/$defs/device_type": close({
+		operator!: string
+		values!: [...string]
+	})
+
+	_#defs: "/$defs/conditions/$defs/host_name": close({
+		operator!: string
 		transforms?: [...string]
+		values?: [...string]
 	})
 
-	_#defs: "/$defs/conditions/$defs/host_name_condition": close({
-		match_values?: [...string]
-		negate_condition?: bool
-		operator!:         string
+	_#defs: "/$defs/conditions/$defs/http_version": close({
+		operator!: string
+		values!: [...string]
+	})
+
+	_#defs: "/$defs/conditions/$defs/post_argument": close({
+		name!:     string
+		operator!: string
 		transforms?: [...string]
+		values?: [...string]
 	})
 
-	_#defs: "/$defs/conditions/$defs/http_version_condition": close({
-		match_values!: [...string]
-		negate_condition?: bool
-		operator?:         string
-	})
-
-	_#defs: "/$defs/conditions/$defs/is_device_condition": close({
-		match_values?: [...string]
-		negate_condition?: bool
-		operator?:         string
-	})
-
-	_#defs: "/$defs/conditions/$defs/post_args_condition": close({
-		match_values?: [...string]
-		negate_condition?: bool
-		operator!:         string
-		post_args_name!:   string
+	_#defs: "/$defs/conditions/$defs/query_string": close({
+		operator!: string
 		transforms?: [...string]
+		values?: [...string]
 	})
 
-	_#defs: "/$defs/conditions/$defs/query_string_condition": close({
-		match_values?: [...string]
-		negate_condition?: bool
-		operator!:         string
+	_#defs: "/$defs/conditions/$defs/remote_address": close({
+		operator!: string
+		values!: [...string]
+	})
+
+	_#defs: "/$defs/conditions/$defs/request_body": close({
+		operator!: string
 		transforms?: [...string]
+		values?: [...string]
 	})
 
-	_#defs: "/$defs/conditions/$defs/remote_address_condition": close({
-		match_values?: [...string]
-		negate_condition?: bool
-		operator?:         string
-	})
-
-	_#defs: "/$defs/conditions/$defs/request_body_condition": close({
-		match_values!: [...string]
-		negate_condition?: bool
-		operator!:         string
+	_#defs: "/$defs/conditions/$defs/request_cookies": close({
+		name!:     string
+		operator!: string
 		transforms?: [...string]
+		values?: [...string]
 	})
 
-	_#defs: "/$defs/conditions/$defs/request_header_condition": close({
-		header_name!: string
-		match_values?: [...string]
-		negate_condition?: bool
-		operator!:         string
+	_#defs: "/$defs/conditions/$defs/request_file_extension": close({
+		operator!: string
 		transforms?: [...string]
+		values?: [...string]
 	})
 
-	_#defs: "/$defs/conditions/$defs/request_method_condition": close({
-		match_values!: [...string]
-		negate_condition?: bool
-		operator?:         string
-	})
-
-	_#defs: "/$defs/conditions/$defs/request_scheme_condition": close({
-		match_values?: [...string]
-		negate_condition?: bool
-		operator?:         string
-	})
-
-	_#defs: "/$defs/conditions/$defs/request_uri_condition": close({
-		match_values?: [...string]
-		negate_condition?: bool
-		operator!:         string
+	_#defs: "/$defs/conditions/$defs/request_filename": close({
+		operator!: string
 		transforms?: [...string]
+		values?: [...string]
 	})
 
-	_#defs: "/$defs/conditions/$defs/server_port_condition": close({
-		match_values!: [...string]
-		negate_condition?: bool
-		operator!:         string
-	})
-
-	_#defs: "/$defs/conditions/$defs/socket_address_condition": close({
-		match_values?: [...string]
-		negate_condition?: bool
-		operator?:         string
-	})
-
-	_#defs: "/$defs/conditions/$defs/ssl_protocol_condition": close({
-		match_values!: [...string]
-		negate_condition?: bool
-		operator?:         string
-	})
-
-	_#defs: "/$defs/conditions/$defs/url_file_extension_condition": close({
-		match_values!: [...string]
-		negate_condition?: bool
-		operator!:         string
+	_#defs: "/$defs/conditions/$defs/request_header": close({
+		name!:     string
+		operator!: string
 		transforms?: [...string]
+		values?: [...string]
 	})
 
-	_#defs: "/$defs/conditions/$defs/url_filename_condition": close({
-		match_values?: [...string]
-		negate_condition?: bool
-		operator!:         string
-		transforms?: [...string]
+	_#defs: "/$defs/conditions/$defs/request_method": close({
+		operator!: string
+		values!: [...string]
 	})
 
-	_#defs: "/$defs/conditions/$defs/url_path_condition": close({
-		match_values?: [...string]
-		negate_condition?: bool
-		operator!:         string
+	_#defs: "/$defs/conditions/$defs/request_path": close({
+		operator!: string
 		transforms?: [...string]
+		values?: [...string]
+	})
+
+	_#defs: "/$defs/conditions/$defs/request_scheme": close({
+		operator!: string
+		values!: [...string]
+	})
+
+	_#defs: "/$defs/conditions/$defs/request_url": close({
+		operator!: string
+		transforms?: [...string]
+		values?: [...string]
+	})
+
+	_#defs: "/$defs/conditions/$defs/server_port": close({
+		operator!: string
+		values?: [...string]
+	})
+
+	_#defs: "/$defs/conditions/$defs/socket_address": close({
+		operator!: string
+		values!: [...string]
+	})
+
+	_#defs: "/$defs/conditions/$defs/ssl_protocol": close({
+		operator!: string
+		values!: [...string]
 	})
 }

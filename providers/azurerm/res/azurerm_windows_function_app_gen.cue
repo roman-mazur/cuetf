@@ -710,7 +710,8 @@ azurerm_windows_function_app: {
 		// The version of Java to use. Possible values are `1.8`, `11`, `17`, `21` and `25`
 		java_version?: string
 
-		// The version of Node to use. Possible values include `~12`, `~14`, `~16`, `~18`, `~20` and `~22`
+		// The version of Node to use. Possible values include `~12`, `~14`, `~16`,
+		// `~18`, `~20`, `~22` and `~24`
 		node_version?: string
 
 		// The PowerShell Core version to use. Possible values are `7`, `7.2`, `7.4`, and `7.6`

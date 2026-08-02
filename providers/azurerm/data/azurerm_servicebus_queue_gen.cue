@@ -10,9 +10,6 @@ azurerm_servicebus_queue: {
 		dead_lettering_on_message_expiration?:    bool
 		default_message_ttl?:                     string
 		duplicate_detection_history_time_window?: string
-		enable_batched_operations?:               bool
-		enable_express?:                          bool
-		enable_partitioning?:                     bool
 		express_enabled?:                         bool
 		forward_dead_lettered_messages_to?:       string
 		forward_to?:                              string
@@ -21,7 +18,7 @@ azurerm_servicebus_queue: {
 		max_delivery_count?:                      number
 		max_size_in_megabytes?:                   number
 		name!:                                    string
-		namespace_id?:                            string
+		namespace_id!:                            string
 		partitioning_enabled?:                    bool
 		requires_duplicate_detection?:            bool
 		requires_session?:                        bool

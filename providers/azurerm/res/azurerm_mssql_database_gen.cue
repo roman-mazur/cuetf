@@ -61,11 +61,10 @@ azurerm_mssql_database: {
 	})
 
 	#long_term_retention_policy: close({
-		immutable_backups_enabled?: bool
-		monthly_retention?:         string
-		week_of_year?:              number
-		weekly_retention?:          string
-		yearly_retention?:          string
+		monthly_retention?: string
+		week_of_year?:      number
+		weekly_retention?:  string
+		yearly_retention?:  string
 	})
 
 	#short_term_retention_policy: close({
@@ -75,7 +74,7 @@ azurerm_mssql_database: {
 
 	#threat_detection_policy: close({
 		disabled_alerts?: [...string]
-		email_account_admins?: string
+		email_account_admins_enabled?: bool
 		email_addresses?: [...string]
 		retention_days?:             number
 		state?:                      string

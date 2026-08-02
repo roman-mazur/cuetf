@@ -12,10 +12,9 @@ azurerm_storage_container: {
 		has_legal_hold?:                    bool
 		id?:                                string
 		metadata?: [string]: string
-		name!:                 string
-		storage_account_id?:   string
-		storage_account_name?: string
-		url?:                  string
+		name!:               string
+		storage_account_id!: string
+		url?:                string
 	})
 
 	#timeouts: close({

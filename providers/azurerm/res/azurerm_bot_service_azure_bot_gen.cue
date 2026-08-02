@@ -20,7 +20,7 @@ azurerm_bot_service_azure_bot: {
 		microsoft_app_id!:              string
 		microsoft_app_msi_id?:          string
 		microsoft_app_tenant_id?:       string
-		microsoft_app_type?:            string
+		microsoft_app_type!:            string
 		name!:                          string
 		public_network_access_enabled?: bool
 		resource_group_name!:           string

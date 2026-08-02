@@ -18,7 +18,7 @@ azurerm_cognitive_account_rai_policy: {
 		block_enabled!:      bool
 		filter_enabled!:     bool
 		name!:               string
-		severity_threshold!: string
+		severity_threshold?: string
 		source!:             string
 	})
 

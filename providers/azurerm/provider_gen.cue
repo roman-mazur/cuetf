@@ -4,7 +4,6 @@ provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/azurerm/provider")
 	close({
-		enhanced_validation?: matchN(1, [#enhanced_validation, [...#enhanced_validation]])
 		features?: matchN(1, [#features, [...#features]])
 
 		// The Azure DevOps Pipeline Service Connection ID.
@@ -108,18 +107,6 @@ provider: {
 
 		// Allow OpenID Connect to be used for authentication
 		use_oidc?: bool
-	})
-
-	#enhanced_validation: close({
-		// Should the AzureRM Provider validate location arguments against the list of
-		// supported Azure Locations?
-		locations?: bool
-
-		// Should the AzureRM Provider validate Resource Provider arguments against the
-		// list of supported Resource Providers? When enabled, invalid resource
-		// providers are caught at plan time; when disabled, they are caught at apply
-		// time.
-		resource_providers?: bool
 	})
 
 	#features: close({

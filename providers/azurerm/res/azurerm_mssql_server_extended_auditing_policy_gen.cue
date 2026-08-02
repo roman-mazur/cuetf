@@ -6,6 +6,7 @@ azurerm_mssql_server_extended_auditing_policy: {
 	close({
 		timeouts?: #timeouts
 		audit_actions_and_groups?: [...string]
+		blob_storage_endpoint?:                   string
 		enabled?:                                 bool
 		id?:                                      string
 		log_monitoring_enabled?:                  bool
@@ -15,7 +16,6 @@ azurerm_mssql_server_extended_auditing_policy: {
 		storage_account_access_key?:              string
 		storage_account_access_key_is_secondary?: bool
 		storage_account_subscription_id?:         string
-		storage_endpoint?:                        string
 	})
 
 	#timeouts: close({

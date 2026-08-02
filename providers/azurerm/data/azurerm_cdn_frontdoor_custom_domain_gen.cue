@@ -23,8 +23,7 @@ azurerm_cdn_frontdoor_custom_domain: {
 				})]
 				type?: string
 			})]
-			minimum_tls_version?: string
-			minimum_version?:     string
+			minimum_version?: string
 		})]
 		validation_token?: string
 	})

@@ -15,7 +15,8 @@ azurerm_storage_share_file: {
 		name!:              string
 		path?:              string
 		source?:            string
-		storage_share_url?: string
+		source_content?:    string
+		storage_share_url!: string
 	})
 
 	#timeouts: close({

@@ -30,7 +30,7 @@ azurerm_hdinsight_spark_cluster: {
 		ssh_endpoint?:                  string
 		tags?: [string]: string
 		tier!:            string
-		tls_min_version?: string
+		tls_min_version!: string
 		zones?: [...string]
 	})
 
@@ -99,17 +99,17 @@ azurerm_hdinsight_spark_cluster: {
 	})
 
 	#storage_account: close({
-		is_default!:           bool
-		storage_account_key!:  string
-		storage_container_id!: string
-		storage_resource_id?:  string
+		is_default!:            bool
+		storage_account_id?:    string
+		storage_account_key!:   string
+		storage_container_url!: string
 	})
 
 	#storage_account_gen2: close({
-		filesystem_id!:                string
-		is_default!:                   bool
-		managed_identity_resource_id!: string
-		storage_resource_id!:          string
+		filesystem_id!:             string
+		is_default!:                bool
+		storage_account_id!:        string
+		user_assigned_identity_id!: string
 	})
 
 	#timeouts: close({

@@ -12,7 +12,7 @@ azurerm_data_factory_pipeline: {
 		description?:                    string
 		folder?:                         string
 		id?:                             string
-		moniter_metrics_after_duration?: string
+		monitor_metrics_after_duration?: string
 		name!:                           string
 		parameters?: [string]: string
 		variables?: [string]:  string

@@ -9,14 +9,11 @@ azurerm_servicebus_topic: {
 		batched_operations_enabled?:              bool
 		default_message_ttl?:                     string
 		duplicate_detection_history_time_window?: string
-		enable_batched_operations?:               bool
-		enable_express?:                          bool
-		enable_partitioning?:                     bool
 		express_enabled?:                         bool
 		id?:                                      string
 		max_size_in_megabytes?:                   number
 		name!:                                    string
-		namespace_id?:                            string
+		namespace_id!:                            string
 		partitioning_enabled?:                    bool
 		requires_duplicate_detection?:            bool
 		status?:                                  string

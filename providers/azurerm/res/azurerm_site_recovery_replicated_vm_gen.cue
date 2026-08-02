@@ -27,14 +27,18 @@ azurerm_site_recovery_replicated_vm: {
 		multi_vm_group_name?: string
 		name!:                string
 		network_interface?: [...close({
-			failover_test_public_ip_address_id?: string
-			failover_test_static_ip?:            string
-			failover_test_subnet_name?:          string
-			recovery_load_balancer_backend_address_pool_ids?: [...string]
-			recovery_public_ip_address_id?: string
-			source_network_interface_id?:   string
-			target_static_ip?:              string
-			target_subnet_name?:            string
+			ip_configuration?: [...close({
+				failover_test_public_ip_address_id?: string
+				failover_test_static_ip?:            string
+				failover_test_subnet_name?:          string
+				name?:                               string
+				primary?:                            bool
+				recovery_load_balancer_backend_address_pool_ids?: [...string]
+				recovery_public_ip_address_id?: string
+				target_static_ip?:              string
+				target_subnet_name?:            string
+			})]
+			source_network_interface_id?: string
 		})]
 		recovery_replication_policy_id!:            string
 		recovery_vault_name!:                       string

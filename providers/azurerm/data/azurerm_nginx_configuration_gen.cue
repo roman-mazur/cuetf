@@ -13,7 +13,6 @@ azurerm_nginx_configuration: {
 		nginx_deployment_id!: string
 		package_data?:        string
 		protected_file?: [...close({
-			content?:      string
 			content_hash?: string
 			virtual_path?: string
 		})]

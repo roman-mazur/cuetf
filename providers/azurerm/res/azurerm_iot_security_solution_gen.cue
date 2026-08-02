@@ -7,7 +7,7 @@ azurerm_iot_security_solution: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_iot_security_solution")
 	close({
 		additional_workspace?: matchN(1, [#additional_workspace, [...#additional_workspace]])
-		recommendations_enabled?: matchN(1, [#recommendations_enabled, list.MaxItems(1) & [...#recommendations_enabled]])
+		recommendations?: matchN(1, [#recommendations, list.MaxItems(1) & [...#recommendations]])
 		timeouts?: #timeouts
 		disabled_data_sources?: [...string]
 		display_name!: string
@@ -30,7 +30,7 @@ azurerm_iot_security_solution: {
 		workspace_id!: string
 	})
 
-	#recommendations_enabled: close({
+	#recommendations: close({
 		acr_authentication?:               bool
 		agent_send_unutilized_msg?:        bool
 		baseline?:                         bool

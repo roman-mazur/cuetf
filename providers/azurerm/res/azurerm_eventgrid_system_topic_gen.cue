@@ -7,14 +7,13 @@ azurerm_eventgrid_system_topic: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_eventgrid_system_topic")
 	close({
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		timeouts?:               #timeouts
-		id?:                     string
-		location!:               string
-		metric_arm_resource_id?: string
-		metric_resource_id?:     string
-		name!:                   string
-		resource_group_name!:    string
-		source_resource_id?:     string
+		timeouts?:            #timeouts
+		id?:                  string
+		location!:            string
+		metric_resource_id?:  string
+		name!:                string
+		resource_group_name!: string
+		source_resource_id!:  string
 		tags?: [string]: string
 		topic_type!: string
 	})

@@ -5,6 +5,7 @@ azurerm_mssql_database_extended_auditing_policy: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_mssql_database_extended_auditing_policy")
 	close({
 		timeouts?:                                #timeouts
+		blob_storage_endpoint?:                   string
 		database_id!:                             string
 		enabled?:                                 bool
 		id?:                                      string
@@ -12,7 +13,6 @@ azurerm_mssql_database_extended_auditing_policy: {
 		retention_in_days?:                       number
 		storage_account_access_key?:              string
 		storage_account_access_key_is_secondary?: bool
-		storage_endpoint?:                        string
 	})
 
 	#timeouts: close({

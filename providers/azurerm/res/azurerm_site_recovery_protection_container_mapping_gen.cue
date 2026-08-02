@@ -20,8 +20,7 @@ azurerm_site_recovery_protection_container_mapping: {
 
 	#automatic_update: close({
 		authentication_type?:   string
-		automation_account_id?: string
-		enabled?:               bool
+		automation_account_id!: string
 	})
 
 	#timeouts: close({

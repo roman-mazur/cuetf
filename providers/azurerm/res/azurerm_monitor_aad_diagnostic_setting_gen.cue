@@ -1,7 +1,5 @@
 package res
 
-import "list"
-
 azurerm_monitor_aad_diagnostic_setting: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_monitor_aad_diagnostic_setting")
@@ -17,7 +15,6 @@ azurerm_monitor_aad_diagnostic_setting: {
 	})
 
 	#enabled_log: close({
-		retention_policy?: matchN(1, [_#defs."/$defs/enabled_log/$defs/retention_policy", list.MaxItems(1) & [..._#defs."/$defs/enabled_log/$defs/retention_policy"]])
 		category!: string
 	})
 
@@ -26,10 +23,5 @@ azurerm_monitor_aad_diagnostic_setting: {
 		delete?: string
 		read?:   string
 		update?: string
-	})
-
-	_#defs: "/$defs/enabled_log/$defs/retention_policy": close({
-		days?:    number
-		enabled?: bool
 	})
 }

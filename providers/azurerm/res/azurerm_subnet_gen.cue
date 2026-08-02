@@ -8,16 +8,22 @@ azurerm_subnet: {
 	close({
 		delegation?: matchN(1, [#delegation, [...#delegation]])
 		ip_address_pool?: matchN(1, [#ip_address_pool, list.MaxItems(1) & [...#ip_address_pool]])
+		service_endpoint?: matchN(1, [#service_endpoint, [...#service_endpoint]])
 		timeouts?: #timeouts
 		address_prefixes?: [...string]
 		default_outbound_access_enabled?:               bool
 		id?:                                            string
 		name!:                                          string
+		network_security_group_id?:                     string
+		network_security_group_id_wo?:                  string
+		network_security_group_id_wo_version?:          number
 		private_endpoint_network_policies?:             string
 		private_link_service_network_policies_enabled?: bool
 		resource_group_name!:                           string
+		route_table_id?:                                string
+		route_table_id_wo?:                             string
+		route_table_id_wo_version?:                     number
 		service_endpoint_policy_ids?: [...string]
-		service_endpoints?: [...string]
 		sharing_scope?:        string
 		virtual_network_name!: string
 	})
@@ -31,6 +37,11 @@ azurerm_subnet: {
 		allocated_ip_address_prefixes?: [...string]
 		id!:                     string
 		number_of_ip_addresses!: string
+	})
+
+	#service_endpoint: close({
+		network_identifier?: string
+		service!:            string
 	})
 
 	#timeouts: close({

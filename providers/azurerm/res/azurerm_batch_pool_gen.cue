@@ -7,7 +7,6 @@ azurerm_batch_pool: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_batch_pool")
 	close({
 		auto_scale?: matchN(1, [#auto_scale, list.MaxItems(1) & [...#auto_scale]])
-		certificate?: matchN(1, [#certificate, [...#certificate]])
 		container_configuration?: matchN(1, [#container_configuration, list.MaxItems(1) & [...#container_configuration]])
 		data_disks?: matchN(1, [#data_disks, [...#data_disks]])
 		disk_encryption?: matchN(1, [#disk_encryption, [...#disk_encryption]])
@@ -43,13 +42,6 @@ azurerm_batch_pool: {
 	#auto_scale: close({
 		evaluation_interval?: string
 		formula!:             string
-	})
-
-	#certificate: close({
-		id!:             string
-		store_location!: string
-		store_name?:     string
-		visibility?: [...string]
 	})
 
 	#container_configuration: close({

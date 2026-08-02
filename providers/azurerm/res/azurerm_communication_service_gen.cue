@@ -5,7 +5,7 @@ azurerm_communication_service: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_communication_service")
 	close({
 		timeouts?:                    #timeouts
-		data_location?:               string
+		data_location!:               string
 		hostname?:                    string
 		id?:                          string
 		name!:                        string

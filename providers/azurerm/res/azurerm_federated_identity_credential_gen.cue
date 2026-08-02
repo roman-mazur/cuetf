@@ -10,7 +10,7 @@ azurerm_federated_identity_credential: {
 		issuer!:                    string
 		name!:                      string
 		subject!:                   string
-		user_assigned_identity_id?: string
+		user_assigned_identity_id!: string
 	})
 
 	#timeouts: close({

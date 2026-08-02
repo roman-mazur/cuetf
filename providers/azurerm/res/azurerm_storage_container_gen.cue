@@ -13,7 +13,7 @@ azurerm_storage_container: {
 		id?:                                string
 		metadata?: [string]: string
 		name!:               string
-		storage_account_id?: string
+		storage_account_id!: string
 		url?:                string
 	})
 

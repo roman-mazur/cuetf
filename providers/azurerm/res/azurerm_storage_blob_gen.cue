@@ -18,7 +18,7 @@ azurerm_storage_blob: {
 		source?:               string
 		source_content?:       string
 		source_uri?:           string
-		storage_container_id?: string
+		storage_container_id!: string
 		type!:                 string
 		url?:                  string
 	})

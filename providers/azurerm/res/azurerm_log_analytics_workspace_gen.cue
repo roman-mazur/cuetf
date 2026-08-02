@@ -14,8 +14,8 @@ azurerm_log_analytics_workspace: {
 		data_collection_rule_id?:                 string
 		id?:                                      string
 		immediate_data_purge_on_30_days_enabled?: bool
-		internet_ingestion_enabled?:              bool
-		internet_query_enabled?:                  bool
+		internet_ingestion_access_type?:          string
+		internet_query_access_type?:              string
 		local_authentication_enabled?:            bool
 		location!:                                string
 		name!:                                    string

@@ -70,7 +70,6 @@ azurerm_logic_app_standard: {
 			linux_fx_version?:                 string
 			min_tls_version?:                  string
 			pre_warmed_instance_count?:        number
-			public_network_access_enabled?:    bool
 			runtime_scale_monitoring_enabled?: bool
 			scm_ip_restriction?: [...close({
 				action?: string

@@ -21,8 +21,8 @@ azurerm_cosmosdb_account: {
 			id?:                string
 			location?:          string
 		})]
-		id?:                                         string
-		ip_range_filter?:                            string
+		id?: string
+		ip_range_filter?: [...string]
 		is_virtual_network_filter_enabled?:          bool
 		key_vault_key_id?:                           string
 		kind?:                                       string
