@@ -5,6 +5,7 @@ aws_bedrockagentcore_memory_strategy: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_memory_strategy")
 	close({
 		configuration?: matchN(1, [#configuration, [...#configuration]])
+		reflection_configuration?: matchN(1, [#reflection_configuration, [...#reflection_configuration]])
 		timeouts?:    #timeouts
 		description?: string
 
@@ -12,19 +13,23 @@ aws_bedrockagentcore_memory_strategy: {
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:                    string
-		memory_execution_role_arn?: string
-		memory_id!:                 string
-		memory_strategy_id?:        string
-		name!:                      string
-		namespaces!: [...string]
+		region?:             string
+		memory_id!:          string
+		memory_strategy_id?: string
+		name!:               string
+		namespace_templates?: [...string]
 		type!: string
 	})
 
 	#configuration: close({
 		consolidation?: matchN(1, [_#defs."/$defs/configuration/$defs/consolidation", [..._#defs."/$defs/configuration/$defs/consolidation"]])
 		extraction?: matchN(1, [_#defs."/$defs/configuration/$defs/extraction", [..._#defs."/$defs/configuration/$defs/extraction"]])
+		reflection?: matchN(1, [_#defs."/$defs/configuration/$defs/reflection", [..._#defs."/$defs/configuration/$defs/reflection"]])
 		type!: string
+	})
+
+	#reflection_configuration: close({
+		namespace_templates!: [...string]
 	})
 
 	#timeouts: close({
@@ -57,5 +62,11 @@ aws_bedrockagentcore_memory_strategy: {
 	_#defs: "/$defs/configuration/$defs/extraction": close({
 		append_to_prompt!: string
 		model_id!:         string
+	})
+
+	_#defs: "/$defs/configuration/$defs/reflection": close({
+		append_to_prompt!: string
+		model_id!:         string
+		namespace_templates!: [...string]
 	})
 }

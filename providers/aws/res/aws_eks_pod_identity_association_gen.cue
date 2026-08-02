@@ -11,6 +11,7 @@ aws_eks_pod_identity_association: {
 		external_id?:          string
 		id?:                   string
 		namespace!:            string
+		policy?:               string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

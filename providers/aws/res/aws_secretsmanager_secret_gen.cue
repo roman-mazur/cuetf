@@ -22,6 +22,7 @@ aws_secretsmanager_secret: {
 		recovery_window_in_days?:        number
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		type?: string
 	})
 
 	#replica: close({
