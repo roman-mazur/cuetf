@@ -10,7 +10,7 @@ cloudflare_secrets_store_secret: {
 		// Freeform text describing the secret
 		comment?: string
 
-		// Whenthe secret was created.
+		// When the secret was created.
 		created?: string
 
 		// Secret identifier tag.

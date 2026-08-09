@@ -8,7 +8,7 @@ cloudflare_spectrum_application: {
 		app_id?: string
 
 		// Enables Argo Smart Routing for this application.
-		// Notes: Only available for TCP applications with traffic_type set to "direct".
+		// Notes: Only available for TCP or UDP applications with traffic_type set to "direct".
 		argo_smart_routing?: bool
 
 		// When the Application was created.

@@ -7,6 +7,9 @@ cloudflare_zero_trust_dex_test: {
 		// Unique identifier linked to an account.
 		account_id?: string
 
+		// Date the test was created, in RFC 3339 format.
+		created?: string
+
 		// The configuration object which contains the details for the WARP client to conduct the test.
 		data?: close({
 			// The desired endpoint to test.
@@ -71,5 +74,8 @@ cloudflare_zero_trust_dex_test: {
 
 		// The unique identifier for the test.
 		test_id?: string
+
+		// Date the test was last updated, in RFC 3339 format.
+		updated?: string
 	})
 }

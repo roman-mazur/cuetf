@@ -8,6 +8,9 @@ cloudflare_api_tokens: {
 		// Available values: "asc", "desc".
 		direction?: string
 
+		// When true, includes recently-expired tokens in the response.
+		include_expired?: bool
+
 		// Max items to fetch, default: 1000
 		max_items?: number
 

@@ -7,15 +7,15 @@ cloudflare_secrets_store: {
 		// Account Identifier
 		account_id!: string
 
-		// Whenthe secret was created.
+		// When the secret was created.
 		created?: string
 		filter?: close({
-			// Direction to sort objects
+			// Direction to sort objects.
 			// Available values: "asc", "desc".
 			direction?: string
 
-			// Order secrets by values in the given field
-			// Available values: "name", "comment", "created", "modified", "status".
+			// Order stores by values in the given field.
+			// Available values: "name", "created", "modified".
 			order?: string
 		})
 
@@ -25,7 +25,7 @@ cloudflare_secrets_store: {
 		// When the secret was modified.
 		modified?: string
 
-		// The name of the store
+		// The name of the store.
 		name?: string
 
 		// Store Identifier

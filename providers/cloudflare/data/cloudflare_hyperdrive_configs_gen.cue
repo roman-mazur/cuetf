@@ -91,6 +91,11 @@ cloudflare_hyperdrive_configs: {
 			// If not specified, defaults to 20 for free tier and 60 for paid tier.
 			// Contact Cloudflare if you need a higher limit.
 			origin_connection_limit?: number
+
+			// Defines the last time the Hyperdrive connection pool was explicitly restarted
+			// via the restart endpoint. Omitted if the pool has never been explicitly
+			// restarted.
+			restarted_on?: string
 		}), [...close({
 			caching?: close({
 				// Set to true to disable caching of SQL responses. Default is false.
@@ -171,6 +176,11 @@ cloudflare_hyperdrive_configs: {
 			// If not specified, defaults to 20 for free tier and 60 for paid tier.
 			// Contact Cloudflare if you need a higher limit.
 			origin_connection_limit?: number
+
+			// Defines the last time the Hyperdrive connection pool was explicitly restarted
+			// via the restart endpoint. Omitted if the pool has never been explicitly
+			// restarted.
+			restarted_on?: string
 		})]])
 	})
 }

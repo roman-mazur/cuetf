@@ -249,10 +249,11 @@ cloudflare_zero_trust_gateway_policy: {
 				})]])
 			})
 
-			// Ignore category matches at CNAME domains in a response. When off, evaluate
-			// categories in this rule against all CNAME domain categories in the response.
-			// Settable only for `dns` and `dns_resolver` rules.
-			ignore_cname_category_matches?: bool
+			// Remove headers from allowed requests by name. A maximum of 20 header
+			// operations (add + set + delete) is allowed per policy. Each header name may
+			// not exceed 256 bytes. Settable only for `http` rules with the action set to
+			// `allow`.
+			delete_headers?: [...string]
 
 			// Configure how Gateway Proxy traffic egresses. You can enable this setting for
 			// rules with Egress actions and filters, or omit it to indicate local egress
@@ -269,9 +270,10 @@ cloudflare_zero_trust_gateway_policy: {
 				ipv6?: string
 			})
 
-			// Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE].
-			// Settable only for `dns` rules.
-			insecure_disable_dnssec_validation?: bool
+			// Ignore category matches at CNAME domains in a response. When off, evaluate
+			// categories in this rule against all CNAME domain categories in the response.
+			// Settable only for `dns` and `dns_resolver` rules.
+			ignore_cname_category_matches?: bool
 
 			// Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
 			forensic_copy?: close({
@@ -279,10 +281,9 @@ cloudflare_zero_trust_gateway_policy: {
 				enabled?: bool
 			})
 
-			// Enable IPs in DNS resolver category blocks. The system blocks only domain
-			// name categories unless you enable this setting. Settable only for `dns` and
-			// `dns_resolver` rules.
-			ip_categories?: bool
+			// Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE].
+			// Settable only for `dns` rules.
+			insecure_disable_dnssec_validation?: bool
 
 			// Send matching traffic to the supplied destination IP address and port.
 			// Settable only for `l4` rules with the action set to `l4_override`.
@@ -294,10 +295,10 @@ cloudflare_zero_trust_gateway_policy: {
 				port?: number
 			})
 
-			// Indicates whether to include IPs in DNS resolver indicator feed blocks.
-			// Default, indicator feeds block only domain names. Settable only for `dns`
-			// and `dns_resolver` rules.
-			ip_indicator_feeds?: bool
+			// Enable IPs in DNS resolver category blocks. The system blocks only domain
+			// name categories unless you enable this setting. Settable only for `dns` and
+			// `dns_resolver` rules.
+			ip_categories?: bool
 
 			// Configure a notification to display on the user's device when this rule
 			// matched. Settable for all types of rules with the action set to `block`.
@@ -316,9 +317,10 @@ cloudflare_zero_trust_gateway_policy: {
 				support_url?: string
 			})
 
-			// Defines a hostname for override, for the matching DNS queries. Settable only
-			// for `dns` rules with the action set to `override`.
-			override_host?: string
+			// Indicates whether to include IPs in DNS resolver indicator feed blocks.
+			// Default, indicator feeds block only domain names. Settable only for `dns`
+			// and `dns_resolver` rules.
+			ip_indicator_feeds?: bool
 
 			// Configure DLP payload logging. Settable only for `http` rules.
 			payload_log?: close({
@@ -326,15 +328,38 @@ cloudflare_zero_trust_gateway_policy: {
 				enabled?: bool
 			})
 
-			// Defines a an IP or set of IPs for overriding matched DNS queries. Settable
-			// only for `dns` rules with the action set to `override`.
-			override_ips?: [...string]
+			// Defines a hostname for override, for the matching DNS queries. Settable only
+			// for `dns` rules with the action set to `override`.
+			override_host?: string
 
 			// Configure settings that apply to quarantine rules. Settable only for `http` rules.
 			quarantine?: close({
 				// Specify the types of files to sandbox.
 				file_types?: [...string]
 			})
+
+			// Defines a an IP or set of IPs for overriding matched DNS queries. Settable
+			// only for `dns` rules with the action set to `override`.
+			override_ips?: [...string]
+
+			// Apply settings to redirect rules. Settable only for `http` rules with the
+			// action set to `redirect`.
+			redirect?: close({
+				// Specify whether to pass the context information as query parameters.
+				include_context?: bool
+
+				// Specify whether to append the path and query parameters from the original request to target_uri.
+				preserve_path_and_query?: bool
+
+				// Specify the URI to which the user is redirected.
+				target_uri!: string
+			})
+
+			// Enable to send queries that match the policy to Cloudflare's default 1.1.1.1
+			// DNS resolver. Cannot set when 'dns_resolvers' specified or
+			// 'resolve_dns_internally' is set. Only valid when a rule's action set to
+			// 'resolve'. Settable only for `dns_resolver` rules.
+			resolve_dns_through_cloudflare?: bool
 
 			// Configure to forward the query to the internal DNS service, passing the
 			// specified 'view_id' as input. Not used when 'dns_resolvers' is specified or
@@ -351,24 +376,14 @@ cloudflare_zero_trust_gateway_policy: {
 				view_id?: string
 			})
 
-			// Enable to send queries that match the policy to Cloudflare's default 1.1.1.1
-			// DNS resolver. Cannot set when 'dns_resolvers' specified or
-			// 'resolve_dns_internally' is set. Only valid when a rule's action set to
-			// 'resolve'. Settable only for `dns_resolver` rules.
-			resolve_dns_through_cloudflare?: bool
-
-			// Apply settings to redirect rules. Settable only for `http` rules with the
-			// action set to `redirect`.
-			redirect?: close({
-				// Specify whether to pass the context information as query parameters.
-				include_context?: bool
-
-				// Specify whether to append the path and query parameters from the original request to target_uri.
-				preserve_path_and_query?: bool
-
-				// Specify the URI to which the user is redirected.
-				target_uri!: string
-			})
+			// Replace existing headers on allowed requests with the specified key-value
+			// pairs. If a header does not exist, it is added. Header values may contain
+			// `@{selector.name}` variable references that are interpolated at the edge.
+			// Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add +
+			// set + delete) is allowed per policy. Each header name may not exceed 256
+			// bytes and each header value may not exceed 4 KB. Settable only for `http`
+			// rules with the action set to `allow`.
+			set_headers?: [string]: [...string]
 
 			// Configure behavior when an upstream certificate is invalid or an SSL error
 			// occurs. Settable only for `http` rules with the action set to `allow`.

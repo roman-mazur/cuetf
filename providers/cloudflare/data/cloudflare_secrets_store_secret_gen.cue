@@ -7,24 +7,24 @@ cloudflare_secrets_store_secret: {
 		// Account Identifier
 		account_id!: string
 
-		// Freeform text describing the secret
+		// Freeform text describing the secret.
 		comment?: string
 
-		// Whenthe secret was created.
+		// When the secret was created.
 		created?: string
 		filter?: close({
-			// Direction to sort objects
+			// Direction to sort objects.
 			// Available values: "asc", "desc".
 			direction?: string
 
-			// Order secrets by values in the given field
+			// Order secrets by values in the given field.
 			// Available values: "name", "comment", "created", "modified", "status".
 			order?: string
 
-			// Only secrets with the given scopes will be returned
-			scopes?: [...[...string]]
+			// Only secrets with the given scopes will be returned.
+			scopes?: [...string]
 
-			// Search secrets using a filter string, filtering across name and comment
+			// Search secrets using a filter string, filtering across name and comment.
 			search?: string
 		})
 
@@ -34,7 +34,7 @@ cloudflare_secrets_store_secret: {
 		// When the secret was modified.
 		modified?: string
 
-		// The name of the secret
+		// The name of the secret.
 		name?: string
 
 		// The list of services that can use this secret.

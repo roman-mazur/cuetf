@@ -42,6 +42,13 @@ cloudflare_turnstile_widgets: {
 
 			// When the widget was created.
 			created_on?: string
+
+			// Origin that created this widget, recorded at creation time and
+			// immutable afterward. Server-derived from the create request; not
+			// client-settable. Omitted from the response for widgets created
+			// before this field existed.
+			// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+			deployed_via?: string
 			domains?: [...string]
 
 			// Return the Ephemeral ID in /siteverify (ENT only).
@@ -49,6 +56,12 @@ cloudflare_turnstile_widgets: {
 
 			// Widget item identifier tag.
 			id?: string
+
+			// Origin of the most recent mutation (create, update, delete, or
+			// secret rotation). Server-derived; not client-settable. Omitted for
+			// widgets last mutated before this field existed.
+			// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+			last_modified_via?: string
 
 			// Widget Mode
 			// Available values: "non-interactive", "invisible", "managed".
@@ -83,6 +96,13 @@ cloudflare_turnstile_widgets: {
 
 			// When the widget was created.
 			created_on?: string
+
+			// Origin that created this widget, recorded at creation time and
+			// immutable afterward. Server-derived from the create request; not
+			// client-settable. Omitted from the response for widgets created
+			// before this field existed.
+			// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+			deployed_via?: string
 			domains?: [...string]
 
 			// Return the Ephemeral ID in /siteverify (ENT only).
@@ -90,6 +110,12 @@ cloudflare_turnstile_widgets: {
 
 			// Widget item identifier tag.
 			id?: string
+
+			// Origin of the most recent mutation (create, update, delete, or
+			// secret rotation). Server-derived; not client-settable. Omitted for
+			// widgets last mutated before this field existed.
+			// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+			last_modified_via?: string
 
 			// Widget Mode
 			// Available values: "non-interactive", "invisible", "managed".

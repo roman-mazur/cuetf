@@ -168,9 +168,10 @@ cloudflare_zero_trust_device_posture_rules: {
 				version_operator?: string
 			})
 
-			// Sets the expiration time for a posture check result. If empty, the result
-			// remains valid until it is overwritten by new data from the WARP client.
-			expiration?: string
+			// Whether the rule is enabled. This is a computed, read-only value. It is false
+			// for deprecated Kolide posture rules that still use the issue_count input,
+			// and true otherwise.
+			enabled?: bool
 
 			// The conditions that the client must match to run the rule.
 			match?: matchN(1, [close({
@@ -180,6 +181,10 @@ cloudflare_zero_trust_device_posture_rules: {
 				// Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
 				platform?: string
 			})]])
+
+			// Sets the expiration time for a posture check result. If empty, the result
+			// remains valid until it is overwritten by new data from the WARP client.
+			expiration?: string
 
 			// API UUID.
 			id?: string
@@ -357,9 +362,10 @@ cloudflare_zero_trust_device_posture_rules: {
 				version_operator?: string
 			})
 
-			// Sets the expiration time for a posture check result. If empty, the result
-			// remains valid until it is overwritten by new data from the WARP client.
-			expiration?: string
+			// Whether the rule is enabled. This is a computed, read-only value. It is false
+			// for deprecated Kolide posture rules that still use the issue_count input,
+			// and true otherwise.
+			enabled?: bool
 
 			// The conditions that the client must match to run the rule.
 			match?: matchN(1, [close({
@@ -369,6 +375,10 @@ cloudflare_zero_trust_device_posture_rules: {
 				// Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
 				platform?: string
 			})]])
+
+			// Sets the expiration time for a posture check result. If empty, the result
+			// remains valid until it is overwritten by new data from the WARP client.
+			expiration?: string
 
 			// API UUID.
 			id?: string

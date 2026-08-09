@@ -16,6 +16,9 @@ cloudflare_zero_trust_dex_tests: {
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
+			// Date the test was created, in RFC 3339 format.
+			created?: string
+
 			// The configuration object which contains the details for the WARP client to conduct the test.
 			data?: close({
 				// The desired endpoint to test.
@@ -32,15 +35,6 @@ cloudflare_zero_trust_dex_tests: {
 
 			// Additional details about the test.
 			description?: string
-
-			// The unique identifier for the test.
-			id?: string
-
-			// How often the test will run.
-			interval?: string
-
-			// The name of the DEX test. Must be unique.
-			name?: string
 
 			// DEX rules targeted by this test
 			target_policies?: matchN(1, [close({
@@ -64,12 +58,27 @@ cloudflare_zero_trust_dex_tests: {
 			})]])
 
 			// Determines whether or not the test is active.
-			enabled?:  bool
+			enabled?: bool
+
+			// The unique identifier for the test.
+			id?: string
+
+			// How often the test will run.
+			interval?: string
+
+			// The name of the DEX test. Must be unique.
+			name?:     string
 			targeted?: bool
 
 			// The unique identifier for the test.
 			test_id?: string
+
+			// Date the test was last updated, in RFC 3339 format.
+			updated?: string
 		}), [...close({
+			// Date the test was created, in RFC 3339 format.
+			created?: string
+
 			// The configuration object which contains the details for the WARP client to conduct the test.
 			data?: close({
 				// The desired endpoint to test.
@@ -86,15 +95,6 @@ cloudflare_zero_trust_dex_tests: {
 
 			// Additional details about the test.
 			description?: string
-
-			// The unique identifier for the test.
-			id?: string
-
-			// How often the test will run.
-			interval?: string
-
-			// The name of the DEX test. Must be unique.
-			name?: string
 
 			// DEX rules targeted by this test
 			target_policies?: matchN(1, [close({
@@ -118,11 +118,23 @@ cloudflare_zero_trust_dex_tests: {
 			})]])
 
 			// Determines whether or not the test is active.
-			enabled?:  bool
+			enabled?: bool
+
+			// The unique identifier for the test.
+			id?: string
+
+			// How often the test will run.
+			interval?: string
+
+			// The name of the DEX test. Must be unique.
+			name?:     string
 			targeted?: bool
 
 			// The unique identifier for the test.
 			test_id?: string
+
+			// Date the test was last updated, in RFC 3339 format.
+			updated?: string
 		})]])
 
 		// Filter by test name.

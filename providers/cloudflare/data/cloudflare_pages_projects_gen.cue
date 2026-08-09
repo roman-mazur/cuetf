@@ -218,6 +218,12 @@ cloudflare_pages_projects: {
 				// Short Id (8 character) of the deployment.
 				short_id?: string
 
+				// Why the deployment was skipped.
+				// Available values: "commit_message", "preview_deployments_disabled",
+				// "production_deployments_disabled", "path_config", "branch_config",
+				// "pages_to_workers_conversion".
+				skip_reason?: string
+
 				// The live URL to view this deployment.
 				url?: string
 
@@ -647,6 +653,12 @@ cloudflare_pages_projects: {
 
 				// Short Id (8 character) of the deployment.
 				short_id?: string
+
+				// Why the deployment was skipped.
+				// Available values: "commit_message", "preview_deployments_disabled",
+				// "production_deployments_disabled", "path_config", "branch_config",
+				// "pages_to_workers_conversion".
+				skip_reason?: string
 
 				// The live URL to view this deployment.
 				url?: string
@@ -937,6 +949,12 @@ cloudflare_pages_projects: {
 				// Short Id (8 character) of the deployment.
 				short_id?: string
 
+				// Why the deployment was skipped.
+				// Available values: "commit_message", "preview_deployments_disabled",
+				// "production_deployments_disabled", "path_config", "branch_config",
+				// "pages_to_workers_conversion".
+				skip_reason?: string
+
 				// The live URL to view this deployment.
 				url?: string
 
@@ -1366,6 +1384,12 @@ cloudflare_pages_projects: {
 
 				// Short Id (8 character) of the deployment.
 				short_id?: string
+
+				// Why the deployment was skipped.
+				// Available values: "commit_message", "preview_deployments_disabled",
+				// "production_deployments_disabled", "path_config", "branch_config",
+				// "pages_to_workers_conversion".
+				skip_reason?: string
 
 				// The live URL to view this deployment.
 				url?: string

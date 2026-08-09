@@ -7,6 +7,15 @@ cloudflare_zero_trust_device_subnet: {
 		// Cloudflare account ID
 		account_id?: string
 
+		// IP capacity information for the subnet.
+		capacity?: close({
+			// Total number of assignable IPs in the subnet.
+			total?: number
+
+			// Number of assigned IPs in the subnet.
+			used?: number
+		})
+
 		// An optional description of the subnet.
 		comment?: string
 
@@ -33,7 +42,7 @@ cloudflare_zero_trust_device_subnet: {
 		subnet_id!: string
 
 		// The type of subnet.
-		// Available values: "cloudflare_source", "warp".
+		// Available values: "cloudflare_source", "initial_resolved_ip", "warp".
 		subnet_type?: string
 	})
 }

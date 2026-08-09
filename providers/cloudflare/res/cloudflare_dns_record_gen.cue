@@ -16,7 +16,7 @@ cloudflare_dns_record: {
 		// When the record was created.
 		created_on?: string
 
-		// Components of a CAA record.
+		// Components of a MX record.
 		data?: close({
 			// Algorithm.
 			algorithm?: number
@@ -86,7 +86,10 @@ cloudflare_dns_record: {
 			// Preference.
 			preference?: number
 
-			// Priority.
+			// Required for MX and URI records; ignored for other record types (but may
+			// still be returned by the API). Records with lower priorities are preferred.
+			// This field is to be deprecated in favor of the priority field within the
+			// data map.
 			priority?: number
 
 			// Protocol.
@@ -113,7 +116,7 @@ cloudflare_dns_record: {
 			// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 			tag?: string
 
-			// Target.
+			// A valid mail server hostname, or "." for a NULL MX record.
 			target?: string
 
 			// Type.

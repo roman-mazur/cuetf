@@ -473,6 +473,70 @@ cloudflare_worker_version: {
 		// module that exports a `fetch` handler).
 		main_module?: string
 
+		// Declarative exports for the version, including Durable Object
+		// classes (with their `storage` backend) and named Worker
+		// entrypoints. On reads, tombstoned lifecycle entries are
+		// omitted, so only live exports (`created` and
+		// `expecting-transfer`) are returned. `exports` and `migrations`
+		// are mutually exclusive on upload.
+		exports?: [string]: close({
+			// Cache override for this entrypoint. It applies only to
+			// `type: worker` entries and overrides the Worker's global
+			// `cache_options.enabled` for that entrypoint.
+			cache?: close({
+				// Whether caching is enabled for this entrypoint.
+				enabled!: bool
+			})
+
+			// Destination class name for a `state: renamed` tombstone. The
+			// target must appear as a live (`created`) entry in the same
+			// `exports` map. Write-only: never present in GET responses.
+			renamed_to?: string
+
+			// Lifecycle state of the export entry. Defaults to `created`
+			// (a normal, live export) when omitted.
+			//
+			// `deleted`, `renamed`, and `transferred` are tombstones:
+			// write-only lifecycle operations that retire, rename, or hand
+			// off a provisioned Durable Object namespace. They are applied
+			// at upload and are filtered out of GET responses, so a read
+			// only ever returns `created` or `expecting-transfer`.
+			//
+			// `expecting-transfer` is a live export whose data is being
+			// received from another script via the two-phase transfer flow;
+			// it carries `storage` and `transfer_from`.
+			// Available values: "created", "deleted", "renamed", "transferred", "expecting-transfer".
+			state?: string
+
+			// Storage backend for a `type: durable-object` export. Required
+			// for live Durable Object entries (`created` and
+			// `expecting-transfer`). `sqlite` selects SQLite-backed storage;
+			// `legacy-kv` selects the legacy key-value storage.
+			// Available values: "sqlite", "legacy-kv".
+			storage?: string
+
+			// Source script for a `state: expecting-transfer` entry. The
+			// namespace on this script is materialised from the source
+			// script's data via the pending-transfer flow. Present on reads
+			// for `expecting-transfer` entries.
+			transfer_from?: string
+
+			// Destination script for a `state: transferred` tombstone. Must
+			// reference a script in the same account; cross-dispatch-namespace
+			// transfers are rejected. Write-only: never present in GET
+			// responses.
+			transferred_to?: string
+
+			// The kind of export.
+			// Available values: "worker", "durable-object".
+			type!: string
+		})
+
+		// The base64-encoded main script content. This is only returned for service
+		// worker syntax workers (not ES modules). Used when importing existing workers
+		// that use the older service worker syntax.
+		main_script_base64?: string
+
 		// Resource limits enforced at runtime.
 		limits?: close({
 			// CPU time limit in milliseconds.
@@ -481,11 +545,6 @@ cloudflare_worker_version: {
 			// Subrequest limit per request.
 			subrequests?: number
 		})
-
-		// The base64-encoded main script content. This is only returned for service
-		// worker syntax workers (not ES modules). Used when importing existing workers
-		// that use the older service worker syntax.
-		main_script_base64?: string
 
 		// Durable Object migration tag. Set when the version is deployed. Omitted if
 		// the version has not been deployed or the Worker does not use Durable
@@ -596,6 +655,9 @@ cloudflare_worker_version: {
 			old_tag?: string
 		})
 
+		// The integer version number, starting from one.
+		"number"?: number
+
 		// Code, sourcemaps, and other content used at runtime.
 		//
 		// This includes
@@ -638,8 +700,8 @@ cloudflare_worker_version: {
 			name!: string
 		})]])
 
-		// The integer version number, starting from one.
-		"number"?: number
+		// The client used to create the version.
+		source?: string
 
 		// The list of npm packages that were installed and used when this Worker
 		// version was built.
@@ -663,8 +725,9 @@ cloudflare_worker_version: {
 			package_json_version!: string
 		})]])
 
-		// The client used to create the version.
-		source?: string
+		// Time in milliseconds spent on [Worker
+		// startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+		startup_time_ms?: number
 
 		// Configuration for [Smart
 		// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -705,10 +768,6 @@ cloudflare_worker_version: {
 			// Cloud region for targeted placement in format 'provider:region'.
 			region?: string
 		})
-
-		// Time in milliseconds spent on [Worker
-		// startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
-		startup_time_ms?: number
 
 		// All routable URLs that always point to this version. Does not include alias
 		// URLs, since aliases can be updated to point to a different version.

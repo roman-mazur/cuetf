@@ -23,10 +23,11 @@ cloudflare_custom_csr: {
 		csr?: string
 
 		// Custom CSR identifier tag.
-		custom_csr_id!: string
+		custom_csr_id?: string
 
 		// Optional description for the CSR.
 		description?: string
+		filter?: close({})
 
 		// Custom CSR identifier tag.
 		id?: string

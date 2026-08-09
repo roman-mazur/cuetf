@@ -43,6 +43,12 @@ cloudflare_r2_bucket_sippy: {
 			// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
 			access_key_id?: string
 
+			// Access key for the Azure Storage account. Mutually exclusive with sasToken.
+			account_key?: string
+
+			// Name of the Azure Storage account.
+			account_name?: string
+
 			// Name of the AWS S3 bucket.
 			bucket?: string
 
@@ -52,14 +58,20 @@ cloudflare_r2_bucket_sippy: {
 			// Client email of an IAM credential (ideally scoped to a single GCS bucket).
 			client_email?: string
 
-			// Available values: "aws", "gcs", "s3".
+			// Available values: "aws", "gcs", "s3", "azure".
 			cloud_provider?: string
+
+			// Name of the Azure Blob Storage container.
+			container?: string
 
 			// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
 			private_key?: string
 
 			// Name of the AWS availability zone.
 			region?: string
+
+			// Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
+			sas_token?: string
 
 			// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
 			secret_access_key?: string
