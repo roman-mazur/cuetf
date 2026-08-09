@@ -94,7 +94,28 @@ cloudflare_zero_trust_device_default_profile: {
 			suffix?: string
 		})]])
 		gateway_unique_id?: string
-		id?:                string
+
+		// Global Acceleration settings for China. When configured, WARP clients connect
+		// to the Global Accelerator addresses instead of the default ones. Please
+		// contact your account representative to enable this feature on your account.
+		// See
+		// https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+		global_acceleration?: close({
+			// IP:port entries for the API endpoints.
+			api_endpoints!: [...string]
+
+			// Global acceleration settings are used only when "enabled".
+			enabled!: bool
+
+			// IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints
+			// or masque_endpoints must be provided.
+			masque_endpoints!: [...string]
+
+			// IP:port entries for the WireGuard tunnel endpoints. Either
+			// wireguard_endpoints or masque_endpoints must be provided.
+			wireguard_endpoints!: [...string]
+		})
+		id?: string
 
 		// List of routes included in the WARP client's tunnel. Both 'exclude' and
 		// 'include' cannot be set in the same request.

@@ -85,5 +85,10 @@ cloudflare_hyperdrive_config: {
 		// If not specified, defaults to 20 for free tier and 60 for paid tier.
 		// Contact Cloudflare if you need a higher limit.
 		origin_connection_limit?: number
+
+		// Defines the last time the Hyperdrive connection pool was explicitly restarted
+		// via the restart endpoint. Omitted if the pool has never been explicitly
+		// restarted.
+		restarted_on?: string
 	})
 }

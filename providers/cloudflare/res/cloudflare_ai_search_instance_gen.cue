@@ -110,7 +110,14 @@ cloudflare_ai_search_instance: {
 				// Disable MCP endpoint for this public endpoint
 				disabled?: bool
 			})
-			enabled?: bool
+
+			// When false, the instance is reachable only via a registered custom domain and
+			// the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404.
+			// Requires at least one custom domain. Defaults to true.
+			// public_endpoint_params is replaced wholesale on update, so resend
+			// default_domain_enabled on every update to keep the default host off —
+			// omitting it resets to true.
+			default_domain_enabled?: bool
 			rate_limit?: close({
 				period_ms?: number
 
@@ -118,6 +125,7 @@ cloudflare_ai_search_instance: {
 				technique?: string
 				requests?:  number
 			})
+			enabled?: bool
 			search_endpoint?: close({
 				// Disable search endpoint for this public endpoint
 				disabled?: bool
@@ -162,8 +170,9 @@ cloudflare_ai_search_instance: {
 
 			// Controls which documents are candidates for BM25 scoring. 'and' restricts
 			// candidates to documents containing all query terms; 'or' includes any
-			// document containing at least one term, ranked by BM25 relevance. Defaults to
-			// 'and'.
+			// document containing at least one term, ranked by BM25 relevance. When
+			// omitted on an update, the existing stored value is preserved; when never
+			// set, search falls back to 'and'.
 			// Available values: "and", "or".
 			keyword_match_mode?: string
 		})

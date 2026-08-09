@@ -10,7 +10,8 @@ cloudflare_token_validation_config: {
 		credentials?: close({
 			keys?: matchN(1, [close({
 				// Algorithm
-				// Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
+				// Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512",
+				// "ES256", "ES384", "HS256", "HS384", "HS512".
 				alg?: string
 
 				// Curve
@@ -24,7 +25,7 @@ cloudflare_token_validation_config: {
 				kid?: string
 
 				// Key Type
-				// Available values: "RSA", "EC".
+				// Available values: "RSA", "EC", "oct".
 				kty?: string
 
 				// RSA modulus
@@ -37,7 +38,8 @@ cloudflare_token_validation_config: {
 				y?: string
 			}), [...close({
 				// Algorithm
-				// Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
+				// Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512",
+				// "ES256", "ES384", "HS256", "HS384", "HS512".
 				alg?: string
 
 				// Curve
@@ -51,7 +53,7 @@ cloudflare_token_validation_config: {
 				kid?: string
 
 				// Key Type
-				// Available values: "RSA", "EC".
+				// Available values: "RSA", "EC", "oct".
 				kty?: string
 
 				// RSA modulus

@@ -21,6 +21,9 @@ cloudflare_api_token: {
 			// Direction to order results.
 			// Available values: "asc", "desc".
 			direction?: string
+
+			// When true, includes recently-expired tokens in the response.
+			include_expired?: bool
 		})
 
 		// Token identifier tag.

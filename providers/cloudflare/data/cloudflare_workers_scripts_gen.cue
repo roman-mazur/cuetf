@@ -32,8 +32,68 @@ cloudflare_workers_scripts: {
 			// Worker.
 			compatibility_date?: string
 
-			// Whether a Worker contains modules.
-			has_modules?: bool
+			// Declarative exports for the Worker's most recent version,
+			// including Durable Object classes (with their `storage`
+			// backend) and named Worker entrypoints. Tombstoned lifecycle
+			// entries are omitted, so only live exports (`created` and
+			// `expecting-transfer`) are returned.
+			exports?: [string]: close({
+				// Cache override for this entrypoint. It applies only to
+				// `type: worker` entries and overrides the Worker's global
+				// `cache_options.enabled` for that entrypoint.
+				cache?: close({
+					// Whether caching is enabled for this entrypoint.
+					enabled?: bool
+				})
+
+				// Destination class name for a `state: renamed` tombstone. The
+				// target must appear as a live (`created`) entry in the same
+				// `exports` map. Write-only: never present in GET responses.
+				renamed_to?: string
+
+				// Lifecycle state of the export entry. Defaults to `created`
+				// (a normal, live export) when omitted.
+				//
+				// `deleted`, `renamed`, and `transferred` are tombstones:
+				// write-only lifecycle operations that retire, rename, or hand
+				// off a provisioned Durable Object namespace. They are applied
+				// at upload and are filtered out of GET responses, so a read
+				// only ever returns `created` or `expecting-transfer`.
+				//
+				// `expecting-transfer` is a live export whose data is being
+				// received from another script via the two-phase transfer flow;
+				// it carries `storage` and `transfer_from`.
+				// Available values: "created", "deleted", "renamed", "transferred", "expecting-transfer".
+				state?: string
+
+				// Storage backend for a `type: durable-object` export. Required
+				// for live Durable Object entries (`created` and
+				// `expecting-transfer`). `sqlite` selects SQLite-backed storage;
+				// `legacy-kv` selects the legacy key-value storage.
+				// Available values: "sqlite", "legacy-kv".
+				storage?: string
+
+				// Source script for a `state: expecting-transfer` entry. The
+				// namespace on this script is materialised from the source
+				// script's data via the pending-transfer flow. Present on reads
+				// for `expecting-transfer` entries.
+				transfer_from?: string
+
+				// Destination script for a `state: transferred` tombstone. Must
+				// reference a script in the same account; cross-dispatch-namespace
+				// transfers are rejected. Write-only: never present in GET
+				// responses.
+				transferred_to?: string
+
+				// The kind of export.
+				// Available values: "worker", "durable-object".
+				type?: string
+			})
+
+			// Flags that enable or disable certain features in the Workers runtime. Used to
+			// enable upcoming features or opt in or out of specific changes not included
+			// in a `compatibility_date`.
+			compatibility_flags?: [...string]
 
 			// The name used to identify the script.
 			id?: string
@@ -65,10 +125,8 @@ cloudflare_workers_scripts: {
 				name?: string
 			})]])
 
-			// Flags that enable or disable certain features in the Workers runtime. Used to
-			// enable upcoming features or opt in or out of specific changes not included
-			// in a `compatibility_date`.
-			compatibility_flags?: [...string]
+			// When the script was created.
+			created_on?: string
 
 			// Observability settings for the Worker.
 			observability?: close({
@@ -122,8 +180,8 @@ cloudflare_workers_scripts: {
 				})
 			})
 
-			// When the script was created.
-			created_on?: string
+			// Hashed script content, can be used in a If-None-Match header when updating.
+			etag?: string
 
 			// Configuration for [Smart
 			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -174,8 +232,8 @@ cloudflare_workers_scripts: {
 				status?: string
 			})
 
-			// Hashed script content, can be used in a If-None-Match header when updating.
-			etag?: string
+			// The names of handlers exported as part of the default export.
+			handlers?: [...string]
 
 			// Routes associated with the Worker.
 			routes?: matchN(1, [close({
@@ -200,8 +258,8 @@ cloudflare_workers_scripts: {
 				script?: string
 			})]])
 
-			// The names of handlers exported as part of the default export.
-			handlers?: [...string]
+			// Whether a Worker contains assets.
+			has_assets?: bool
 
 			// The immutable ID of the script.
 			tag?: string
@@ -230,8 +288,8 @@ cloudflare_workers_scripts: {
 				service?: string
 			})]])
 
-			// Whether a Worker contains assets.
-			has_assets?: bool
+			// Whether a Worker contains modules.
+			has_modules?: bool
 
 			// Usage model for the Worker invocations.
 			// Available values: "standard", "bundled", "unbound".
@@ -257,8 +315,68 @@ cloudflare_workers_scripts: {
 			// Worker.
 			compatibility_date?: string
 
-			// Whether a Worker contains modules.
-			has_modules?: bool
+			// Declarative exports for the Worker's most recent version,
+			// including Durable Object classes (with their `storage`
+			// backend) and named Worker entrypoints. Tombstoned lifecycle
+			// entries are omitted, so only live exports (`created` and
+			// `expecting-transfer`) are returned.
+			exports?: [string]: close({
+				// Cache override for this entrypoint. It applies only to
+				// `type: worker` entries and overrides the Worker's global
+				// `cache_options.enabled` for that entrypoint.
+				cache?: close({
+					// Whether caching is enabled for this entrypoint.
+					enabled?: bool
+				})
+
+				// Destination class name for a `state: renamed` tombstone. The
+				// target must appear as a live (`created`) entry in the same
+				// `exports` map. Write-only: never present in GET responses.
+				renamed_to?: string
+
+				// Lifecycle state of the export entry. Defaults to `created`
+				// (a normal, live export) when omitted.
+				//
+				// `deleted`, `renamed`, and `transferred` are tombstones:
+				// write-only lifecycle operations that retire, rename, or hand
+				// off a provisioned Durable Object namespace. They are applied
+				// at upload and are filtered out of GET responses, so a read
+				// only ever returns `created` or `expecting-transfer`.
+				//
+				// `expecting-transfer` is a live export whose data is being
+				// received from another script via the two-phase transfer flow;
+				// it carries `storage` and `transfer_from`.
+				// Available values: "created", "deleted", "renamed", "transferred", "expecting-transfer".
+				state?: string
+
+				// Storage backend for a `type: durable-object` export. Required
+				// for live Durable Object entries (`created` and
+				// `expecting-transfer`). `sqlite` selects SQLite-backed storage;
+				// `legacy-kv` selects the legacy key-value storage.
+				// Available values: "sqlite", "legacy-kv".
+				storage?: string
+
+				// Source script for a `state: expecting-transfer` entry. The
+				// namespace on this script is materialised from the source
+				// script's data via the pending-transfer flow. Present on reads
+				// for `expecting-transfer` entries.
+				transfer_from?: string
+
+				// Destination script for a `state: transferred` tombstone. Must
+				// reference a script in the same account; cross-dispatch-namespace
+				// transfers are rejected. Write-only: never present in GET
+				// responses.
+				transferred_to?: string
+
+				// The kind of export.
+				// Available values: "worker", "durable-object".
+				type?: string
+			})
+
+			// Flags that enable or disable certain features in the Workers runtime. Used to
+			// enable upcoming features or opt in or out of specific changes not included
+			// in a `compatibility_date`.
+			compatibility_flags?: [...string]
 
 			// The name used to identify the script.
 			id?: string
@@ -290,10 +408,8 @@ cloudflare_workers_scripts: {
 				name?: string
 			})]])
 
-			// Flags that enable or disable certain features in the Workers runtime. Used to
-			// enable upcoming features or opt in or out of specific changes not included
-			// in a `compatibility_date`.
-			compatibility_flags?: [...string]
+			// When the script was created.
+			created_on?: string
 
 			// Observability settings for the Worker.
 			observability?: close({
@@ -347,8 +463,8 @@ cloudflare_workers_scripts: {
 				})
 			})
 
-			// When the script was created.
-			created_on?: string
+			// Hashed script content, can be used in a If-None-Match header when updating.
+			etag?: string
 
 			// Configuration for [Smart
 			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -399,8 +515,8 @@ cloudflare_workers_scripts: {
 				status?: string
 			})
 
-			// Hashed script content, can be used in a If-None-Match header when updating.
-			etag?: string
+			// The names of handlers exported as part of the default export.
+			handlers?: [...string]
 
 			// Routes associated with the Worker.
 			routes?: matchN(1, [close({
@@ -425,8 +541,8 @@ cloudflare_workers_scripts: {
 				script?: string
 			})]])
 
-			// The names of handlers exported as part of the default export.
-			handlers?: [...string]
+			// Whether a Worker contains assets.
+			has_assets?: bool
 
 			// The immutable ID of the script.
 			tag?: string
@@ -455,8 +571,8 @@ cloudflare_workers_scripts: {
 				service?: string
 			})]])
 
-			// Whether a Worker contains assets.
-			has_assets?: bool
+			// Whether a Worker contains modules.
+			has_modules?: bool
 
 			// Usage model for the Worker invocations.
 			// Available values: "standard", "bundled", "unbound".

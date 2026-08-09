@@ -4,8 +4,8 @@ cloudflare_account_subscription: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_account_subscription")
 	close({
-		// Identifier
-		account_id!: string
+		// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+		account_id?: string
 
 		// The monetary unit in which pricing information is displayed.
 		currency?: string

@@ -7,7 +7,16 @@ cloudflare_workflow: {
 		account_id!: string
 		class_name!: string
 		created_on?: string
-		id?:         string
+
+		// Default retention applied to instances of this version when they do not set their own retention.
+		default_retention?: close({
+			// Specifies the duration in milliseconds or as a string like '5 minutes'.
+			error_retention?: _
+
+			// Specifies the duration in milliseconds or as a string like '5 minutes'.
+			success_retention?: _
+		})
+		id?: string
 		instances?: close({
 			complete?:          number
 			errored?:           number

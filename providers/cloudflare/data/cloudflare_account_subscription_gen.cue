@@ -4,7 +4,7 @@ cloudflare_account_subscription: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_account_subscription")
 	close({
-		// Identifier
+		// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 		account_id?: string
 
 		// The monetary unit in which pricing information is displayed.
@@ -21,7 +21,7 @@ cloudflare_account_subscription: {
 		// Available values: "weekly", "monthly", "quarterly", "yearly".
 		frequency?: string
 
-		// Identifier
+		// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 		id?: string
 
 		// The price of the subscription that will be billed, in US dollars.
@@ -58,5 +58,8 @@ cloudflare_account_subscription: {
 		// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment",
 		// "Cancelled", "Failed", "Expired".
 		state?: string
+
+		// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+		zone_id?: string
 	})
 }

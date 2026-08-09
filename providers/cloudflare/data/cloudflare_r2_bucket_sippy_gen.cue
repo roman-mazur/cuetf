@@ -35,7 +35,10 @@ cloudflare_r2_bucket_sippy: {
 			// S3-compatible URL (Generic S3-compatible providers only).
 			bucket_url?: string
 
-			// Available values: "aws", "gcs", "s3".
+			// Name of the Azure Blob Storage container (Azure only).
+			container?: string
+
+			// Available values: "aws", "gcs", "s3", "azure".
 			r2_bucket_sippy_provider?: string
 
 			// Region where the bucket resides (AWS only).

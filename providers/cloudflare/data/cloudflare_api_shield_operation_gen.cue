@@ -85,7 +85,7 @@ cloudflare_api_shield_operation: {
 					name?: string
 				})
 
-				// True if a Cloudflare-provided learned schema is available for this endpoint.
+				// Deprecated. Always false.
 				learned_available?: bool
 
 				// Action taken on requests failing validation.

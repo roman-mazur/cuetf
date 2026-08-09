@@ -20,8 +20,9 @@ cloudflare_zero_trust_access_service_tokens: {
 			client_id?: string
 
 			// The duration for how long the service token will be valid. Must be in the
-			// format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m,
-			// h. The default is 1 year in hours (8760h).
+			// format `300ms` or `2h45m`, or the special value `forever` for non-expiring
+			// tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1
+			// year in hours (8760h).
 			duration?:   string
 			expires_at?: string
 
@@ -36,8 +37,9 @@ cloudflare_zero_trust_access_service_tokens: {
 			client_id?: string
 
 			// The duration for how long the service token will be valid. Must be in the
-			// format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m,
-			// h. The default is 1 year in hours (8760h).
+			// format `300ms` or `2h45m`, or the special value `forever` for non-expiring
+			// tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1
+			// year in hours (8760h).
 			duration?:   string
 			expires_at?: string
 

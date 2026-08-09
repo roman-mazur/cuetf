@@ -7,6 +7,9 @@ cloudflare_zero_trust_access_policy: {
 		// Identifier.
 		account_id!: string
 
+		// Number of access applications currently using this policy.
+		app_count?: number
+
 		// Administrators who can approve a temporary authentication request.
 		approval_groups?: matchN(1, [close({
 			// The number of approvals needed to obtain access.
@@ -42,6 +45,7 @@ cloudflare_zero_trust_access_policy: {
 				allowed_clipboard_remote_to_local_formats?: [...string]
 			})
 		})
+		created_at?: string
 
 		// The action Access will take if a user matches this policy. Infrastructure
 		// application policies can only use the Allow action.
@@ -905,10 +909,12 @@ cloudflare_zero_trust_access_policy: {
 				user_risk_score!: [...string]
 			})
 		})]])
+		reusable?: bool
 
 		// The amount of time that tokens issued for the application will be valid. Must
 		// be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs),
 		// ms, s, m, h.
 		session_duration?: string
+		updated_at?:       string
 	})
 }
