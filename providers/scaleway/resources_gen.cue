@@ -9,6 +9,9 @@ import (
 	#scalewayPrefix: string
 	_#res: "\(#scalewayPrefix)_account_project": close({res.scaleway_account_project & cuetf.MetaArgs})
 	_#res: "\(#scalewayPrefix)_account_ssh_key": close({res.scaleway_account_ssh_key & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_annotations_binding": close({res.scaleway_annotations_binding & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_annotations_key": close({res.scaleway_annotations_key & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_annotations_value": close({res.scaleway_annotations_value & cuetf.MetaArgs})
 	_#res: "\(#scalewayPrefix)_apple_silicon_runner": close({res.scaleway_apple_silicon_runner & cuetf.MetaArgs})
 	_#res: "\(#scalewayPrefix)_apple_silicon_server": close({res.scaleway_apple_silicon_server & cuetf.MetaArgs})
 	_#res: "\(#scalewayPrefix)_autoscaling_instance_group": close({res.scaleway_autoscaling_instance_group & cuetf.MetaArgs})

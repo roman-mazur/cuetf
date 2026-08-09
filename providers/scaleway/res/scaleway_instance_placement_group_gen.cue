@@ -10,15 +10,6 @@ scaleway_instance_placement_group: {
 		// The name of the placement group
 		name?: string
 
-		// The organization_id you want to attach the resource to
-		organization_id?: string
-
-		// One of the two policy_mode may be selected: enforced or optional.
-		policy_mode?: string
-
-		// Is true when the policy is respected.
-		policy_respected?: bool
-
 		// The operating mode is selected by a policy_type
 		policy_type?: string
 

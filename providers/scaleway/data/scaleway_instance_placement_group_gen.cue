@@ -9,9 +9,6 @@ scaleway_instance_placement_group: {
 		// The name of the placement group
 		name?: string
 
-		// The organization_id you want to attach the resource to
-		organization_id?: string
-
 		// The ID of the placementgroup
 		placement_group_id?: string
 

@@ -175,6 +175,121 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_annotations_binding: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description:      "The ID of the annotation binding resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					key_id: {
+						type:             "string"
+						description:      "ID of the key associated to the binding."
+						description_kind: "markdown"
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "Scaleway Resource Number to associate."
+						description_kind: "markdown"
+						required:         true
+					}
+					value_id: {
+						type:             "string"
+						description:      "ID of the value to associate."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					Creates and manages Scaleway Annotations Bindings.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		scaleway_annotations_key: {
+			version: 0
+			block: {
+				attributes: {
+					description: {
+						type:             "string"
+						description:      "Description of the annotation key."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the annotation key resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the annotation key."
+						description_kind: "markdown"
+						required:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "ID of the organization. If not set, the organization ID is derived from the provider configuration."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				description: """
+					Create an annotation key to define custom metadata labels that can be attached to Scaleway resources. Annotation keys allow you to organize and categorize resources using custom tags with meaningful names and descriptions.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		scaleway_annotations_value: {
+			version: 0
+			block: {
+				attributes: {
+					description: {
+						type:             "string"
+						description:      "Description of the annotation value."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the annotation value resource."
+						description_kind: "markdown"
+						computed:         true
+					}
+					key_id: {
+						type:             "string"
+						description:      "ID of the key the value is associated to."
+						description_kind: "markdown"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the annotation value."
+						description_kind: "markdown"
+						required:         true
+					}
+					value_id: {
+						type:             "string"
+						description:      "The ID of the annotation value."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Create an annotation value to define a specific label instance that can be attached to Scaleway resources. Annotation values are associated with annotation keys and represent concrete tag values (e.g., "production" as a value for an "environment" key).
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		scaleway_apple_silicon_runner: {
 			version: 0
 			block: {
@@ -5366,7 +5481,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					size_in_gb: {
 						type:             "number"
-						description:      "The filesystem size in GB. Minimum 25GB, maximum 10TB"
+						description:      "The filesystem size in GB. Minimum 25GB, maximum 50TB"
 						description_kind: "plain"
 						required:         true
 					}
@@ -7763,22 +7878,18 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
-					organization_id: {
-						type:             "string"
-						description:      "The organization_id you want to attach the resource to"
-						description_kind: "plain"
-						computed:         true
-					}
 					policy_mode: {
 						type:             "string"
 						description:      "One of the two policy_mode may be selected: enforced or optional."
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					policy_respected: {
 						type:             "bool"
 						description:      "Is true when the policy is respected."
 						description_kind: "plain"
+						deprecated:       true
 						computed:         true
 					}
 					policy_type: {
@@ -11234,9 +11345,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						attributes: {
 							next_rotation_at: {
 								type:             "string"
-								description:      "Timestamp indicating the next scheduled rotation."
+								description:      "Timestamp indicating the next scheduled rotation. Computed from rotation_period if not set."
 								description_kind: "plain"
 								optional:         true
+								computed:         true
 							}
 							rotation_period: {
 								type:             "string"
@@ -19442,6 +19554,126 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_annotations_binding: {
+			version: 0
+			block: {
+				attributes: {
+					binding_id: {
+						type:             "string"
+						description:      "The ID of the annotation binding to retrieve."
+						description_kind: "markdown"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the annotation binding."
+						description_kind: "markdown"
+						computed:         true
+					}
+					key_id: {
+						type:             "string"
+						description:      "ID of the key associated to the binding."
+						description_kind: "markdown"
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "Scaleway Resource Number associated to the binding."
+						description_kind: "markdown"
+						computed:         true
+					}
+					value_id: {
+						type:             "string"
+						description:      "ID of the value associated to the binding."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Use this data source to retrieve information about an annotation binding.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		scaleway_annotations_key: {
+			version: 0
+			block: {
+				attributes: {
+					description: {
+						type:             "string"
+						description:      "Description of the annotation key."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the annotation key."
+						description_kind: "markdown"
+						computed:         true
+					}
+					key_id: {
+						type:             "string"
+						description:      "The ID of the annotation key to retrieve."
+						description_kind: "markdown"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the annotation key."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Retrieves information about an existing annotation key using its ID.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		scaleway_annotations_value: {
+			version: 0
+			block: {
+				attributes: {
+					description: {
+						type:             "string"
+						description:      "Description of the annotation value."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the annotation value."
+						description_kind: "markdown"
+						computed:         true
+					}
+					key_id: {
+						type:             "string"
+						description:      "ID of the key the value is associated to."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the annotation value."
+						description_kind: "markdown"
+						computed:         true
+					}
+					value_id: {
+						type:             "string"
+						description:      "The ID of the annotation value to retrieve."
+						description_kind: "markdown"
+						required:         true
+					}
+				}
+				description: """
+					Retrieves information about an existing annotation value using its ID.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		scaleway_apple_silicon_os: {
 			version: 0
 			block: {
@@ -24476,12 +24708,6 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The name of the placement group"
 						description_kind: "plain"
 						optional:         true
-					}
-					organization_id: {
-						type:             "string"
-						description:      "The organization_id you want to attach the resource to"
-						description_kind: "plain"
-						computed:         true
 					}
 					placement_group_id: {
 						type:             "string"
@@ -32994,6 +33220,44 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_block_volume: {
+			version: 0
+			block: {
+				attributes: {
+					name: {
+						type:             "string"
+						description:      "Name of the volume to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					organization_id: {
+						type:             "string"
+						description:      "Organization ID of the volume to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs of the block volume to filter on Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "Tags of the volume to filter on"
+						description_kind: "plain"
+						optional:         true
+					}
+					zones: {
+						type: ["list", "string"]
+						description:      "Zones of the block volume to filter on Use '*' to list from all zones"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		scaleway_domain_record: {
 			version: 0
 			block: {
@@ -34303,6 +34567,27 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			attributes: id: {
 				type:                "string"
 				description:         "The id of the resource (UUID format)"
+				required_for_import: true
+			}
+		}
+		scaleway_annotations_binding: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
+		scaleway_annotations_key: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
+		scaleway_annotations_value: {
+			version: 0
+			attributes: id: {
+				type:                "string"
 				required_for_import: true
 			}
 		}
