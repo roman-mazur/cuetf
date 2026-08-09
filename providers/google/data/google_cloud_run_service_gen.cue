@@ -160,6 +160,7 @@ google_cloud_run_service: {
 						limits?: [string]:   string
 						requests?: [string]: string
 					})]
+					sandbox_launcher?: bool
 					startup_probe?: [...close({
 						failure_threshold?: number
 						grpc?: [...close({

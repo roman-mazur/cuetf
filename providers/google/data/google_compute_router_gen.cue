@@ -50,6 +50,9 @@ google_compute_router: {
 		// except the last character, which cannot be a dash.
 		name!: string
 
+		// A URI of an NCC Gateway spoke
+		ncc_gateway?: string
+
 		// A reference to the network to which this router belongs.
 		network!: string
 

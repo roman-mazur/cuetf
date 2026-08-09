@@ -10,6 +10,14 @@ google_discovery_engine_data_store: {
 		document_processing_config?: matchN(1, [#document_processing_config, list.MaxItems(1) & [...#document_processing_config]])
 		timeouts?: #timeouts
 
+		// Immutable. Whether data in the DataStore has ACL information. If set to 'true',
+		// the source data must have ACL. ACL will be ingested when data is ingested by
+		// DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+		// Document can't be accessed by calling DocumentService.GetDocument or
+		// DocumentService.ListDocuments. Currently ACL is only supported in the 'GENERIC'
+		// industry vertical with non-'PUBLIC_WEBSITE' content config.
+		acl_enabled?: bool
+
 		// The content config of the data store. Possible values: ["NO_CONTENT",
 		// "CONTENT_REQUIRED", "PUBLIC_WEBSITE"]
 		content_config?: string

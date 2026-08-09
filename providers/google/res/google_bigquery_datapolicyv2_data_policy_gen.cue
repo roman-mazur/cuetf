@@ -6,6 +6,7 @@ google_bigquery_datapolicyv2_data_policy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_datapolicyv2_data_policy")
 	close({
+		data_governance_tag?: matchN(1, [#data_governance_tag, list.MaxItems(1) & [...#data_governance_tag]])
 		data_masking_policy?: matchN(1, [#data_masking_policy, list.MaxItems(1) & [...#data_masking_policy]])
 		timeouts?: #timeouts
 
@@ -66,6 +67,16 @@ google_bigquery_datapolicyv2_data_policy: {
 		// V2
 		version?: string
 		project?: string
+	})
+
+	#data_governance_tag: close({
+		// Tag keys are globally unique. Tag key is expected to be in the namespaced
+		// format, for example "parent-id/pii" where "parent-id" is the ID of the
+		// parent organization or project resource for this tag key.
+		key?: string
+
+		// Tag value is expected to be the short name.
+		value?: string
 	})
 
 	#data_masking_policy: close({

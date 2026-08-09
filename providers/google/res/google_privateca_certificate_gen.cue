@@ -240,7 +240,7 @@ google_privateca_certificate: {
 		locality?: string
 
 		// The organization of the subject.
-		organization!: string
+		organization?: string
 
 		// The organizational unit of the subject.
 		organizational_unit?: string

@@ -246,6 +246,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					description_kind: "plain"
 					optional:         true
 				}
+				cloud_support_custom_endpoint: {
+					type:             "string"
+					description_kind: "plain"
+					optional:         true
+				}
 				cloud_tasks_custom_endpoint: {
 					type:             "string"
 					description_kind: "plain"
@@ -9285,6 +9290,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					service_account: {
+						type:             "string"
+						description:      "The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be '{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com'."
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: timeouts: {
 					nesting_mode: "single"
@@ -15091,6 +15102,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						optional:         true
 						computed:         true
 					}
+					source_project_id: {
+						type:             "string"
+						description:      "Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins."
+						description_kind: "plain"
+						optional:         true
+					}
 					state: {
 						type: "string"
 						description: """
@@ -19310,6 +19327,14 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											max_items: 1
 										}
 										description:      "Specific settings for a Maven remote repository."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								no_cache: {
+									nesting_mode: "list"
+									block: {
+										description:      "The repository will act as a non-caching proxy (connector mode)."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -26384,6 +26409,162 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_bigquery_analytics_hub_query_template: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "Timestamp when the QueryTemplate was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					data_exchange_id: {
+						type:             "string"
+						description:      "The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces."
+						description_kind: "plain"
+						required:         true
+					}
+					deletion_policy: {
+						type:             "string"
+						description:      "This field uses a custom implementation please refer to documentation under /hashicorp/terraform-provider-google-beta/website/docs/r/bigquery_analytics_hub_query_template.html.markdown for specifics"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type: "string"
+						description: """
+									Short description of the QueryTemplate. The description must not contain
+									Unicode non-characters and C0 and C1 control codes except tabs,
+									new lines, carriage returns, and page breaks.
+									Default value is an empty string. Max length: 2000 bytes.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					display_name: {
+						type: "string"
+						description: """
+									Human-readable display name of the QueryTemplate. The display name must
+									contain only Unicode letters, numbers (0-9), underscores (_), dashes (-),
+									spaces ( ), ampersands (&) and can't start or end with spaces. Default
+									value is an empty string.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					documentation: {
+						type:             "string"
+						description:      "Documentation describing the QueryTemplate."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The name of the location this data exchange query template."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The resource name of the QueryTemplate. e.g. 'projects/myproject/locations/us/dataExchanges/123/queryTemplates/456'"
+						description_kind: "plain"
+						computed:         true
+					}
+					primary_contact: {
+						type:             "string"
+						description:      "Email or URL of the primary point of contact of the QueryTemplate."
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					query_template_id: {
+						type:             "string"
+						description:      "Unique QueryTemplate ID."
+						description_kind: "plain"
+						required:         true
+					}
+					state: {
+						type:             "string"
+						description:      "The QueryTemplate lifecycle state."
+						description_kind: "plain"
+						computed:         true
+					}
+					submit: {
+						type:             "bool"
+						description:      "If set to 'true', the QueryTemplate will be submitted for approval and cannot be updated afterwards. This is a one-time action."
+						description_kind: "plain"
+						optional:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Timestamp when the QueryTemplate was last modified."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					routine: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								definition_body: {
+									type:             "string"
+									description:      "SQL query logic."
+									description_kind: "plain"
+									optional:         true
+								}
+								routine_type: {
+									type:             "string"
+									description:      "Type of routine (e.g., TABLE_VALUED_FUNCTION). Possible values: [\"TABLE_VALUED_FUNCTION\"]"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "The routine associated with the QueryTemplate."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_bigquery_bi_reservation: {
 			version: 0
 			block: {
@@ -28008,6 +28189,28 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 				}
 				block_types: {
+					data_governance_tag: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								key: {
+									type:             "string"
+									description:      "Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example \"parent-id/pii\" where \"parent-id\" is the ID of the parent organization or project resource for this tag key."
+									description_kind: "plain"
+									optional:         true
+								}
+								value: {
+									type:             "string"
+									description:      "Tag value is expected to be the short name."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "Data Governance tag bound to the Data Policy."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					data_masking_policy: {
 						nesting_mode: "list"
 						block: {
@@ -30500,6 +30703,18 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "Output only. The resource name of the assignment."
 						description_kind: "plain"
 						computed:         true
+					}
+					principal: {
+						type: "string"
+						description: """
+									Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+									* 'principal://goog/subject/USER_EMAIL_ADDRESS' for users,
+									* 'principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS' for service accounts,
+									* 'principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID' for workload identity pool identities.
+									* The special value 'unknown_or_deleted_user' represents principals which cannot be read from the user info service, for example deleted users.
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 					project: {
 						type:             "string"
@@ -54174,6 +54389,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 															optional:         true
 															computed:         true
 														}
+														sandbox_launcher: {
+															type:             "bool"
+															description:      "Indicates that this container can act as a sandbox supervisor and launch sandboxes."
+															description_kind: "plain"
+															optional:         true
+														}
 														working_dir: {
 															type: "string"
 															description: """
@@ -57077,6 +57298,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											name: {
 												type:             "string"
 												description:      "Name of the container specified as a DNS_LABEL."
+												description_kind: "plain"
+												optional:         true
+											}
+											sandbox_launcher: {
+												type:             "bool"
+												description:      "Indicates that this container can act as a sandbox supervisor and launch sandboxes."
 												description_kind: "plain"
 												optional:         true
 											}
@@ -61521,6 +61748,128 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description_kind: "plain"
 						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_cloud_support_support_event_subscription: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "The time at which the subscription was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					delete_time: {
+						type:             "string"
+						description:      "The time at which the subscription was deleted."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					failure_reason: {
+						type: "string"
+						description: """
+									Reason why subscription is failing. State of subscription
+									must be FAILING in order for this to have a value.
+									Possible values:
+									PERMISSION_DENIED
+									TOPIC_NOT_FOUND
+									OTHER
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Identifier. The resource name of the support event subscription."
+						description_kind: "plain"
+						computed:         true
+					}
+					organization: {
+						type:             "string"
+						description:      "The organization ID for the support event subscription."
+						description_kind: "plain"
+						required:         true
+					}
+					pub_sub_topic: {
+						type: "string"
+						description: """
+									The name of the Pub/Sub topic to publish notifications to.
+									Format: projects/{project}/topics/{topic}
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					purge_time: {
+						type:             "string"
+						description:      "The time at which the subscription will be purged."
+						description_kind: "plain"
+						computed:         true
+					}
+					state: {
+						type: "string"
+						description: """
+									The state of the subscription.
+									Possible values:
+									WORKING
+									FAILING
+									DELETED
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The time at which the subscription was last updated."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
 					}
 				}
 				description_kind: "plain"
@@ -108707,6 +109056,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									"""
 						description_kind: "plain"
 						required:         true
+					}
+					ncc_gateway: {
+						type:             "string"
+						description:      "A URI of an NCC Gateway spoke"
+						description_kind: "plain"
+						optional:         true
 					}
 					network: {
 						type:             "string"
@@ -176360,6 +176715,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 0
 			block: {
 				attributes: {
+					acl_enabled: {
+						type: "bool"
+						description: """
+									Immutable. Whether data in the DataStore has ACL information. If set to 'true',
+									the source data must have ACL. ACL will be ingested when data is ingested by
+									DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+									Document can't be accessed by calling DocumentService.GetDocument or
+									DocumentService.ListDocuments. Currently ACL is only supported in the 'GENERIC'
+									industry vertical with non-'PUBLIC_WEBSITE' content config.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					content_config: {
 						type:             "string"
 						description:      "The content config of the data store. Possible values: [\"NO_CONTENT\", \"CONTENT_REQUIRED\", \"PUBLIC_WEBSITE\"]"
@@ -189011,12 +189379,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								}
 							}
 							description: """
-										The fields supported by this index. The last non-stored field entry is
-										always for the field path '__name__'. If, on creation, '__name__' was not
-										specified as the last field, it will be added automatically with the same
-										direction as that of the last field defined. If the final field in a
-										composite index is not directional, the '__name__' will be ordered
-										'"ASCENDING"' (unless explicitly specified otherwise).
+										The field(s) supported by this index. Indexes with the 'ANY_API' 'api_scope' in Standard
+										edition databases have special behavior with respect to the '__name__' field. In these
+										indexes, the last non-stored field entry is always for the field path '__name__'. If, on
+										creation, '__name__' was not specified as the last field, it will be added automatically
+										with the same direction as that of the last field defined. If the final field in an
+										index is not directional, the '__name__' will be ordered '"ASCENDING"' (unless explicitly
+										specified otherwise).
 										"""
 							description_kind: "plain"
 						}
@@ -194218,7 +194587,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											type:             "string"
 											description:      "Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool"
 											description_kind: "plain"
-											required:         true
+											optional:         true
 										}
 										description:      "Workload Identity feature spec."
 										description_kind: "plain"
@@ -232463,6 +232832,166 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_network_connectivity_gateway_advertised_route: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "The time the gateway advertised route was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "An optional description of the gateway advertised route."
+						description_kind: "plain"
+						optional:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					ip_range: {
+						type: "string"
+						description: """
+									This route's advertised IP address range. Must be a valid CIDR-formatted prefix.
+									If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location for the resource"
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the gateway advertised route. Route names must be unique."
+						description_kind: "plain"
+						required:         true
+					}
+					priority: {
+						type: "number"
+						description: """
+									The priority of this advertised route. You can choose a value from 0 to 65335.
+									If you don't provide a value, Google Cloud assigns a priority of 100 to the ranges.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					recipient: {
+						type:             "string"
+						description:      "the recipient of this advertised route Possible values: [\"RECIPIENT_UNSPECIFIED\", \"ADVERTISE_TO_HUB\"]"
+						description_kind: "plain"
+						optional:         true
+					}
+					spoke: {
+						type:             "string"
+						description:      "The name of the spoke"
+						description_kind: "plain"
+						required:         true
+					}
+					state: {
+						type:             "string"
+						description:      "The current lifecycle state of this gateway advertised route."
+						description_kind: "plain"
+						computed:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					unique_id: {
+						type: "string"
+						description: """
+									The Google-generated UUID for the gateway advertised route.
+									This value is unique across all gateway advertised route resources.
+									If a gateway advertised route is deleted and another with the same name is created, the new route is assigned a different uniqueId.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The time the gateway advertised route was last updated."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_network_connectivity_group: {
 			version: 0
 			block: {
@@ -234060,6 +234589,42 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 				}
 				block_types: {
+					gateway: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								capacity: {
+									type:             "string"
+									description:      "the capacity of the gateway spoke, in Gbps. Possible values: [\"CAPACITY_1_GBPS\", \"CAPACITY_10_GBPS\", \"CAPACITY_100_GBPS\"]"
+									description_kind: "plain"
+									required:         true
+								}
+								routers: {
+									type: ["list", "string"]
+									description:      "Set of Cloud Routers that are attached to this NCC-GW"
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							block_types: ip_range_reservations: {
+								nesting_mode: "list"
+								block: {
+									attributes: ip_range: {
+										type:             "string"
+										description:      "A block of IP address ranges used to allocate supporting infrastructure for this gateway—for example, 10.1.2.0/23. The IP address block must be a /23 range. This IP address block must not overlap with subnets in any spoke or peer network that the gateway can communicate with."
+										description_kind: "plain"
+										required:         true
+									}
+									description:      "A list of IP ranges that are reserved for this gateway's internal infrastructure."
+									description_kind: "plain"
+								}
+								min_items: 1
+							}
+							description:      "This is a gateway that can apply specialized processing to traffic going through it."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					linked_interconnect_attachments: {
 						nesting_mode: "list"
 						block: {
@@ -268282,7 +268847,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 															type:             "string"
 															description:      "The organization of the subject."
 															description_kind: "plain"
-															required:         true
+															optional:         true
 														}
 														organizational_unit: {
 															type:             "string"
@@ -306908,8 +307473,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						computed:         true
 					}
 					source_contents: {
-						type:             "string"
-						description:      "Workflow code to be executed. The size limit is 128KB."
+						type: "string"
+						description: """
+									Workflow code to be executed. The size limit is 128KB.
+
+									~> **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
@@ -311298,6 +311867,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								}]]
 								public_repository: "string"
 							}]]
+							no_cache: ["list", ["object", {}]]
 							npm_repository: ["list", ["object", {
 								custom_repository: ["list", ["object", {
 									uri: "string"
@@ -315773,6 +316343,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										limits: ["map", "string"]
 										requests: ["map", "string"]
 									}]]
+									sandbox_launcher: "bool"
 									startup_probe: ["list", ["object", {
 										failure_threshold: "number"
 										grpc: ["list", ["object", {
@@ -316721,6 +317292,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									limits: ["map", "string"]
 									startup_cpu_boost: "bool"
 								}]]
+								sandbox_launcher: "bool"
 								startup_probe: ["list", ["object", {
 									failure_threshold: "number"
 									grpc: ["list", ["object", {
@@ -327648,6 +328220,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					ncc_gateway: {
+						type:             "string"
+						description:      "A URI of an NCC Gateway spoke"
+						description_kind: "plain"
+						computed:         true
+					}
 					network: {
 						type:             "string"
 						description:      "A reference to the network to which this router belongs."
@@ -333365,6 +333943,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 0
 			block: {
 				attributes: {
+					acl_enabled: {
+						type: "bool"
+						description: """
+									Immutable. Whether data in the DataStore has ACL information. If set to 'true',
+									the source data must have ACL. ACL will be ingested when data is ingested by
+									DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+									Document can't be accessed by calling DocumentService.GetDocument or
+									DocumentService.ListDocuments. Currently ACL is only supported in the 'GENERIC'
+									industry vertical with non-'PUBLIC_WEBSITE' content config.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
 					advanced_site_search_config: {
 						type: ["list", ["object", {
 							disable_automatic_refresh: "bool"
@@ -353049,6 +353640,24 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_compute_instance: {
+			version: 0
+			block: {
+				attributes: {
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					zone: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_compute_instant_snapshot: {
 			version: 0
 			block: {
@@ -353512,6 +354121,295 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_discovery_engine_assistant: {
+			version: 0
+			block: {
+				attributes: {
+					collection_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					engine_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_discovery_engine_chat_engine: {
+			version: 0
+			block: {
+				attributes: {
+					collection_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_discovery_engine_cmek_config: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_discovery_engine_control: {
+			version: 0
+			block: {
+				attributes: {
+					collection_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					engine_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_discovery_engine_data_store: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_discovery_engine_license_config: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_discovery_engine_recommendation_engine: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_discovery_engine_schema: {
+			version: 0
+			block: {
+				attributes: {
+					data_store_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_discovery_engine_search_engine: {
+			version: 0
+			block: {
+				attributes: {
+					collection_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_discovery_engine_serving_config: {
+			version: 0
+			block: {
+				attributes: {
+					collection_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					engine_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_discovery_engine_sitemap: {
+			version: 0
+			block: {
+				attributes: {
+					data_store_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_discovery_engine_target_site: {
+			version: 0
+			block: {
+				attributes: {
+					data_store_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_discovery_engine_user_store: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_dns_managed_zone: {
 			version: 0
 			block: {
@@ -353607,6 +354505,17 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_project_iam_custom_role: {
+			version: 0
+			block: {
+				attributes: project: {
+					type:             "string"
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		google_project_iam_member: {
 			version: 0
 			block: {
@@ -353652,6 +354561,34 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_pubsub_subscription_iam_member: {
+			version: 0
+			block: {
+				attributes: {
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					subscription: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_pubsub_topic: {
 			version: 0
 			block: {
@@ -353681,6 +354618,29 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					type:             "string"
 					description_kind: "plain"
 					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		google_service_account_iam_member: {
+			version: 0
+			block: {
+				attributes: {
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					service_account_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
 				}
 				description_kind: "plain"
 			}
@@ -355323,6 +356283,27 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_bigquery_analytics_hub_query_template: {
+			version: 1
+			attributes: {
+				data_exchange_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				query_template_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_bigquery_bi_reservation: {
 			version: 1
 			attributes: {
@@ -356899,6 +357880,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					optional_for_import: true
 				}
 				parent: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_cloud_support_support_event_subscription: {
+			version: 1
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				organization: {
 					type:                "string"
 					required_for_import: true
 				}
@@ -365373,6 +366367,27 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_network_connectivity_gateway_advertised_route: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				spoke: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_network_connectivity_group: {
 			version: 1
 			attributes: {
@@ -367127,6 +368142,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_project_iam_custom_role: {
+			version: 1
+			attributes: {
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				role_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_project_iam_member: {
 			version: 1
 			attributes: {
@@ -367267,6 +368295,31 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				project: {
 					type:                "string"
 					optional_for_import: true
+				}
+			}
+		}
+		google_pubsub_subscription_iam_member: {
+			version: 1
+			attributes: {
+				condition_title: {
+					type:                "string"
+					optional_for_import: true
+				}
+				member: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				role: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription: {
+					type:                "string"
+					required_for_import: true
 				}
 			}
 		}
@@ -368045,6 +369098,27 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				project: {
 					type:                "string"
 					optional_for_import: true
+				}
+			}
+		}
+		google_service_account_iam_member: {
+			version: 1
+			attributes: {
+				condition_title: {
+					type:                "string"
+					optional_for_import: true
+				}
+				member: {
+					type:                "string"
+					required_for_import: true
+				}
+				role: {
+					type:                "string"
+					required_for_import: true
+				}
+				service_account_id: {
+					type:                "string"
+					required_for_import: true
 				}
 			}
 		}

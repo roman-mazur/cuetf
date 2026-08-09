@@ -54,6 +54,7 @@ provider: {
 		cloud_run_v2_custom_endpoint?:               string
 		cloud_scheduler_custom_endpoint?:            string
 		cloud_security_compliance_custom_endpoint?:  string
+		cloud_support_custom_endpoint?:              string
 		cloud_tasks_custom_endpoint?:                string
 		cloudbuildv2_custom_endpoint?:               string
 		clouddeploy_custom_endpoint?:                string

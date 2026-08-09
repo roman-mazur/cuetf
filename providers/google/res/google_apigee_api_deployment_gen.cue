@@ -29,6 +29,10 @@ google_apigee_api_deployment: {
 
 		// The revision of the API proxy to be deployed.
 		revision!: string
+
+		// The Google Cloud IAM service account to use as the identity for the deployed
+		// proxy. The format must be '{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com'.
+		service_account?: string
 	})
 
 	#timeouts: close({

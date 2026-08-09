@@ -126,6 +126,7 @@ google_artifact_registry_repository: {
 		common_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/common_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/common_repository"]])
 		docker_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/docker_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/docker_repository"]])
 		maven_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/maven_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/maven_repository"]])
+		no_cache?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/no_cache", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/no_cache"]])
 		npm_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/npm_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/npm_repository"]])
 		python_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/python_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/python_repository"]])
 		upstream_credentials?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/upstream_credentials", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/upstream_credentials"]])
@@ -236,6 +237,8 @@ google_artifact_registry_repository: {
 		// Specific uri to the registry, e.g. '"https://repo.maven.apache.org/maven2"'
 		uri?: string
 	})
+
+	_#defs: "/$defs/remote_repository_config/$defs/no_cache": close({})
 
 	_#defs: "/$defs/remote_repository_config/$defs/npm_repository": close({
 		custom_repository?: matchN(1, [_#defs."/$defs/remote_repository_config/$defs/npm_repository/$defs/custom_repository", list.MaxItems(1) & [..._#defs."/$defs/remote_repository_config/$defs/npm_repository/$defs/custom_repository"]])
