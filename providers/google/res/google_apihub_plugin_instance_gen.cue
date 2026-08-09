@@ -58,6 +58,13 @@ google_apihub_plugin_instance: {
 		// are /a-z[0-9]-_/.
 		plugin_instance_id!: string
 
+		// Optional. The source project id of the plugin instance. This will be the id
+		// of runtime project in case of gcp based plugins and org id in case of non
+		// gcp based plugins. This field will be a required field for Google provided
+		// on-ramp plugins.
+		source_project_id?: string
+		project?:           string
+
 		// The current state of the plugin instance (e.g., enabled, disabled,
 		// provisioning).
 		// Possible values:
@@ -68,8 +75,7 @@ google_apihub_plugin_instance: {
 		// ERROR
 		// FAILED
 		// DELETING
-		state?:   string
-		project?: string
+		state?: string
 
 		// Timestamp indicating when the plugin instance was last updated.
 		update_time?: string

@@ -305,6 +305,7 @@ google_cloud_run_v2_service: {
 					limits?: [string]: string
 					startup_cpu_boost?: bool
 				})]
+				sandbox_launcher?: bool
 				startup_probe?: [...close({
 					failure_threshold?: number
 					grpc?: [...close({

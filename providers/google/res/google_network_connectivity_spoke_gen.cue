@@ -6,6 +6,7 @@ google_network_connectivity_spoke: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_connectivity_spoke")
 	close({
+		gateway?: matchN(1, [#gateway, list.MaxItems(1) & [...#gateway]])
 		linked_interconnect_attachments?: matchN(1, [#linked_interconnect_attachments, list.MaxItems(1) & [...#linked_interconnect_attachments]])
 		linked_producer_vpc_network?: matchN(1, [#linked_producer_vpc_network, list.MaxItems(1) & [...#linked_producer_vpc_network]])
 		linked_router_appliance_instances?: matchN(1, [#linked_router_appliance_instances, list.MaxItems(1) & [...#linked_router_appliance_instances]])
@@ -75,6 +76,17 @@ google_network_connectivity_spoke: {
 
 		// Output only. The time the spoke was last updated.
 		update_time?: string
+	})
+
+	#gateway: close({
+		ip_range_reservations!: matchN(1, [_#defs."/$defs/gateway/$defs/ip_range_reservations", [_, ...] & [..._#defs."/$defs/gateway/$defs/ip_range_reservations"]])
+
+		// the capacity of the gateway spoke, in Gbps. Possible values:
+		// ["CAPACITY_1_GBPS", "CAPACITY_10_GBPS", "CAPACITY_100_GBPS"]
+		capacity!: string
+
+		// Set of Cloud Routers that are attached to this NCC-GW
+		routers?: [...string]
 	})
 
 	#linked_interconnect_attachments: close({
@@ -176,6 +188,14 @@ google_network_connectivity_spoke: {
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/gateway/$defs/ip_range_reservations": close({
+		// A block of IP address ranges used to allocate supporting infrastructure for
+		// this gateway—for example, 10.1.2.0/23. The IP address block must be a /23
+		// range. This IP address block must not overlap with subnets in any spoke or
+		// peer network that the gateway can communicate with.
+		ip_range!: string
 	})
 
 	_#defs: "/$defs/linked_router_appliance_instances/$defs/instances": close({

@@ -330,6 +330,9 @@ google_cloud_run_service: {
 
 		// Name of the container
 		name?: string
+
+		// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+		sandbox_launcher?: bool
 	})
 
 	_#defs: "/$defs/template/$defs/spec/$defs/containers/$defs/env": close({

@@ -366,6 +366,6 @@ google_gke_hub_feature: {
 		// Pool to be used for Workload Identity. This pool in trust-domain mode is used
 		// with Fleet Tenancy, so that sameness can be enforced. ex:
 		// projects/example/locations/global/workloadidentitypools/custompool
-		scope_tenancy_pool!: string
+		scope_tenancy_pool?: string
 	})
 }

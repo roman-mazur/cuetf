@@ -4,6 +4,14 @@ google_discovery_engine_data_store: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_discovery_engine_data_store")
 	close({
+		// Immutable. Whether data in the DataStore has ACL information. If set to 'true',
+		// the source data must have ACL. ACL will be ingested when data is ingested by
+		// DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+		// Document can't be accessed by calling DocumentService.GetDocument or
+		// DocumentService.ListDocuments. Currently ACL is only supported in the 'GENERIC'
+		// industry vertical with non-'PUBLIC_WEBSITE' content config.
+		acl_enabled?: bool
+
 		// Configuration data for advance site search.
 		advanced_site_search_config?: [...close({
 			disable_automatic_refresh?: bool

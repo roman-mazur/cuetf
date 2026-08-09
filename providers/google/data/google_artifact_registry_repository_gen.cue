@@ -133,6 +133,7 @@ google_artifact_registry_repository: {
 				})]
 				public_repository?: string
 			})]
+			no_cache?: [...close({})]
 			npm_repository?: [...close({
 				custom_repository?: [...close({
 					uri?: string
