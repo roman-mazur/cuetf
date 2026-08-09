@@ -49,12 +49,19 @@ aws_ecs_capacity_provider: {
 	})
 
 	_#defs: "/$defs/managed_instances_provider/$defs/instance_launch_template": close({
+		capacity_reservations?: matchN(1, [_#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/capacity_reservations", list.MaxItems(1) & [..._#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/capacity_reservations"]])
 		instance_requirements?: matchN(1, [_#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/instance_requirements", list.MaxItems(1) & [..._#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/instance_requirements"]])
+		local_storage_configuration?: matchN(1, [_#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/local_storage_configuration", list.MaxItems(1) & [..._#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/local_storage_configuration"]])
 		network_configuration!: matchN(1, [_#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/network_configuration", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/network_configuration"]])
 		storage_configuration?: matchN(1, [_#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/storage_configuration", list.MaxItems(1) & [..._#defs."/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/storage_configuration"]])
 		capacity_option_type?:     string
 		ec2_instance_profile_arn!: string
 		monitoring?:               string
+	})
+
+	_#defs: "/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/capacity_reservations": close({
+		reservation_group_arn?:  string
+		reservation_preference?: string
 	})
 
 	_#defs: "/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/instance_requirements": close({
@@ -127,6 +134,10 @@ aws_ecs_capacity_provider: {
 	_#defs: "/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/instance_requirements/$defs/vcpu_count": close({
 		max?: number
 		min!: number
+	})
+
+	_#defs: "/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/local_storage_configuration": close({
+		use_local_storage?: bool
 	})
 
 	_#defs: "/$defs/managed_instances_provider/$defs/instance_launch_template/$defs/network_configuration": close({

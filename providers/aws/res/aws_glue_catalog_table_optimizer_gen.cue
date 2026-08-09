@@ -18,10 +18,21 @@ aws_glue_catalog_table_optimizer: {
 	})
 
 	#configuration: close({
+		compaction_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/compaction_configuration", [..._#defs."/$defs/configuration/$defs/compaction_configuration"]])
 		orphan_file_deletion_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/orphan_file_deletion_configuration", [..._#defs."/$defs/configuration/$defs/orphan_file_deletion_configuration"]])
 		retention_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/retention_configuration", [..._#defs."/$defs/configuration/$defs/retention_configuration"]])
 		enabled!:  bool
 		role_arn!: string
+	})
+
+	_#defs: "/$defs/configuration/$defs/compaction_configuration": close({
+		iceberg_configuration?: matchN(1, [_#defs."/$defs/configuration/$defs/compaction_configuration/$defs/iceberg_configuration", [..._#defs."/$defs/configuration/$defs/compaction_configuration/$defs/iceberg_configuration"]])
+	})
+
+	_#defs: "/$defs/configuration/$defs/compaction_configuration/$defs/iceberg_configuration": close({
+		delete_file_threshold?: number
+		min_input_files?:       number
+		strategy?:              string
 	})
 
 	_#defs: "/$defs/configuration/$defs/orphan_file_deletion_configuration": close({

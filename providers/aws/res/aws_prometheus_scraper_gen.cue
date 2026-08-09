@@ -25,6 +25,7 @@ aws_prometheus_scraper: {
 
 	#destination: close({
 		amp?: matchN(1, [_#defs."/$defs/destination/$defs/amp", [..._#defs."/$defs/destination/$defs/amp"]])
+		cloudwatch?: matchN(1, [_#defs."/$defs/destination/$defs/cloudwatch", [..._#defs."/$defs/destination/$defs/cloudwatch"]])
 	})
 
 	#role_configuration: close({
@@ -61,6 +62,10 @@ aws_prometheus_scraper: {
 
 	_#defs: "/$defs/destination/$defs/amp": close({
 		workspace_arn!: string
+	})
+
+	_#defs: "/$defs/destination/$defs/cloudwatch": close({
+		dataset_arn!: string
 	})
 
 	_#defs: "/$defs/source/$defs/eks": close({

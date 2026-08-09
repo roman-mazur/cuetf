@@ -26,6 +26,7 @@ aws_dx_connection: {
 		region?:         string
 		request_macsec?: bool
 		skip_destroy?:   bool
+		state?:          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vlan_id?: number
