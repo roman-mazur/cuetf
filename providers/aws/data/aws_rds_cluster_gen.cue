@@ -17,6 +17,7 @@ aws_rds_cluster: {
 		db_cluster_parameter_group_name?: string
 		db_subnet_group_name?:            string
 		db_system_id?:                    string
+		deletion_protection?:             bool
 		enabled_cloudwatch_logs_exports?: [...string]
 		endpoint?:                            string
 		engine?:                              string

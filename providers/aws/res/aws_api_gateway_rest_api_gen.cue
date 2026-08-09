@@ -7,6 +7,7 @@ aws_api_gateway_rest_api: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_api_gateway_rest_api")
 	close({
 		endpoint_configuration?: matchN(1, [#endpoint_configuration, list.MaxItems(1) & [...#endpoint_configuration]])
+		timeouts?:       #timeouts
 		api_key_source?: string
 
 		// Region where this resource will be
@@ -39,5 +40,11 @@ aws_api_gateway_rest_api: {
 		ip_address_type?: string
 		types!: [...string]
 		vpc_endpoint_ids?: [...string]
+	})
+
+	#timeouts: close({
+		create?: string
+		delete?: string
+		update?: string
 	})
 }

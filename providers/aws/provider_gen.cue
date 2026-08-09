@@ -927,6 +927,9 @@ provider: {
 		resiliencehub?: string
 
 		// Use this to override the default service endpoint URL
+		resiliencehubv2?: string
+
+		// Use this to override the default service endpoint URL
 		resourceexplorer2?: string
 
 		// Use this to override the default service endpoint URL
