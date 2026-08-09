@@ -66,7 +66,7 @@ scaleway_key_manager_key: {
 	})
 
 	#rotation_policy: close({
-		// Timestamp indicating the next scheduled rotation.
+		// Timestamp indicating the next scheduled rotation. Computed from rotation_period if not set.
 		next_rotation_at?: string
 
 		// Time interval between two key rotations. The minimum duration is 24 hours and
