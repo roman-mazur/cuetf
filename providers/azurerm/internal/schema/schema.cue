@@ -136713,7 +136713,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_storage_queue: {
-			version: 1
+			version: 2
 			block: {
 				attributes: {
 					id: {
@@ -137412,7 +137412,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_storage_table_entity: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					entity: {
